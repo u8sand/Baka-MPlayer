@@ -6,7 +6,8 @@ MpvHandler::MpvHandler(int64_t wid, void (*_wakeup)(void*), void *_win):
 //    win(_win),
     volume(50),
     time(0),
-    timeRemaining(0)
+    timeRemaining(0),
+    paused(0)
 {
     mpv = mpv_create();
     if(!mpv)
@@ -84,6 +85,7 @@ bool MpvHandler::OpenFile(QString url)
     {
         const char *args[] = {"loadfile", url.toUtf8().data(), NULL};
         mpv_command_async(mpv, 0, args);
+        SetPaused(false);
     }
     else
         return false;
@@ -104,11 +106,13 @@ bool MpvHandler::PlayPause(bool justPause)
         {
             const char *args[] = {"set", "pause", "yes", NULL};
             mpv_command_async(mpv, 0, args);
+            SetPaused(true);
         }
         else
         {
             const char *args[] = {"cycle", "pause", NULL};
             mpv_command_async(mpv, 0, args);
+            SetPaused(!GetPaused());
         }
         return true;
     }
@@ -152,3 +156,4 @@ bool MpvHandler::Volume(int level)
     }
     return false;
 }
+

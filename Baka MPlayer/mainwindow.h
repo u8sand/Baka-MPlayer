@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QSlider>
 #include <QLabel>
+#include <QPushButton>
 
 #include "mpvhandler.h"
 
@@ -38,6 +39,8 @@ private slots:
 
     void on_nextButton_clicked();
 
+    void on_volumeSlider_valueChanged(int value);
+
 private:
     Ui::MainWindow *ui;
     MpvHandler *mpv;
@@ -45,6 +48,7 @@ private:
     QSlider *seekBar;
     QLabel *durationLabel,
            *remainingLabel;
+    QPushButton *playButton;
 };
 
 #endif // MAINWINDOW_H

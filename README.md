@@ -20,7 +20,7 @@ In order to run the executable, you require:
 In order to open this project, you require:
 
 * Qt5 Creator
-* mpv-git (compiled libmpv)
+* mpv-git (compiled libmpv and pkg-config support)
 
 ## Bug reports
 

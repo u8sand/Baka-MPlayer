@@ -19,6 +19,7 @@ MainWindow::MainWindow(QWidget *parent):
     seekBar = this->findChild<QSlider*>("seekBar");
     durationLabel = this->findChild<QLabel*>("durationLabel");
     remainingLabel = this->findChild<QLabel*>("remainingLabel");
+    playButton = this->findChild<QPushButton*>("playButton");
 
     mpv = new MpvHandler(this->findChild<QFrame*>("outputFrame")->winId(), wakeup, this);
 }
@@ -83,16 +84,28 @@ void MainWindow::on_openButton_clicked()
 {
     QString filename = QFileDialog::getOpenFileName(this, "Open file");
     mpv->OpenFile(filename);
+    if(mpv->GetPaused())
+        playButton->setText("►");
+    else
+        playButton->setText("ll");
 }
 
 void MainWindow::on_playButton_clicked()
 {
     mpv->PlayPause();
+    if(mpv->GetPaused())
+        playButton->setText("►");
+    else
+        playButton->setText("ll");
 }
 
 void MainWindow::on_rewindButton_clicked()
 {
     mpv->Stop();
+    if(mpv->GetPaused())
+        playButton->setText("►");
+    else
+        playButton->setText("ll");
 }
 
 void MainWindow::on_previousButton_clicked()
@@ -103,4 +116,9 @@ void MainWindow::on_previousButton_clicked()
 void MainWindow::on_nextButton_clicked()
 {
     mpv->Seek(5, true);
+}
+
+void MainWindow::on_volumeSlider_valueChanged(int value)
+{
+    mpv->Volume(value);
 }

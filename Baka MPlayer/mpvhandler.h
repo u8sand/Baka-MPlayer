@@ -13,6 +13,8 @@ public:
         NoEvent,
         FileOpened,
         FileEnded,
+        Played,
+        Paused,
         TimeChanged,
         TimeRemainingChanged,
         Shutdown,
@@ -34,10 +36,12 @@ public:
     inline int GetVolume() const { return volume; }
     inline time_t GetTime() const { return time; }
     inline time_t GetTimeRemaining() const { return timeRemaining; }
+    inline bool GetPaused() const { return paused; }
 protected:
     inline void SetVolume(int v) { volume = v;  }
     inline void SetTime(time_t t) { time = t; }
     inline void SetTimeRemaining(time_t t) { timeRemaining = t; }
+    inline void SetPaused(bool p) { paused = p; }
 private:
     mpv_handle *mpv;
 //    void (*wakeup)(void*);
@@ -46,6 +50,7 @@ private:
     int volume;
     time_t time,
            timeRemaining;
+    bool paused;
 };
 
 #endif // MPVHANDLER_H
