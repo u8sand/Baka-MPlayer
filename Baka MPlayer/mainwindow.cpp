@@ -30,37 +30,45 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+inline void MainWindow::SetDurationLabel()
+{
+    durationLabel->setText(QDateTime::fromTime_t(mpv->GetTime()).toUTC().toString("hh:mm:ss"));
+}
+
+inline void MainWindow::SetRemainingLabel()
+{
+    remainingLabel->setText(QDateTime::fromTime_t(mpv->GetTotalTime()-mpv->GetTime()).toUTC().toString("-hh:mm:ss"));
+}
+
+inline void MainWindow::SetSeekBar()
+{
+    seekBar->setValue(seekBar->maximum()*((double)mpv->GetTime()/mpv->GetTotalTime()));
+}
+
+inline void MainWindow::SetPlayButton()
+{
+    if(mpv->GetState() == MpvHandler::Playing)
+        playButton->setText("ll");
+    else
+        playButton->setText("►");
+}
+
 bool MainWindow::HandleMpvEvent(MpvHandler::MpvEvent event)
 {
     switch(event)
     {
-//    case MpvHandler::FileOpened:
-//        break;
-    case MpvHandler::FileEnded:
-        durationLabel->setText(QDateTime::fromTime_t(mpv->GetTime()).toUTC().toString("hh:mm:ss"));
-        remainingLabel->setText(QDateTime::fromTime_t(mpv->GetTimeRemaining()).toUTC().toString("-hh:mm:ss"));
-        seekBar->setValue(seekBar->maximum()*((double)mpv->GetTime()/(mpv->GetTime()+mpv->GetTimeRemaining())));
-        break;
     case MpvHandler::TimeChanged:
-        durationLabel->setText(QDateTime::fromTime_t(mpv->GetTime()).toUTC().toString("hh:mm:ss"));
-        seekBar->setValue(seekBar->maximum()*((double)mpv->GetTime()/(mpv->GetTime()+mpv->GetTimeRemaining())));
+        SetDurationLabel();
+        SetRemainingLabel();
+        SetSeekBar();
         break;
-    case MpvHandler::TimeRemainingChanged:
-        remainingLabel->setText(QDateTime::fromTime_t(mpv->GetTimeRemaining()).toUTC().toString("-hh:mm:ss"));
-        break;
-    case MpvHandler::PausedChanged:
-        if(mpv->GetPaused())
-            playButton->setText("►");
-        else
-            playButton->setText("ll");
-        break;
-    case MpvHandler::Shutdown:
-        QMessageBox::critical(this, "Shutdown", "mpv shutdown on us T_T");
+    case MpvHandler::StateChanged:
+        SetPlayButton();
         break;
     case MpvHandler::NoEvent:
         return false;
     default:
-        return true;
+        break;
     }
     return true;
 }

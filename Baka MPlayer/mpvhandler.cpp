@@ -1,24 +1,30 @@
 #include "mpvhandler.h"
 
-MpvHandler::MpvHandler(int64_t wid, void (*_wakeup)(void*), void *_win):
-    mpv(NULL),
+MpvHandler::MpvHandler(int64_t _wid, void (*_wakeup)(void*), void *_win):
+    mpv(0),
+//    wid(_wid),
 //    wakeup(_wakeup),
 //    win(_win),
-    volume(50),
+    volume(100),
     time(0),
-    timeRemaining(0),
-    paused(0)
+    totalTime(0),
+    state(Stopped)
 {
     mpv = mpv_create();
     if(!mpv)
-        throw "Could not create mpv";
-    mpv_set_option(mpv, "wid", MPV_FORMAT_INT64, &wid);
+        throw "Could not create mpv object";
+
+    mpv_set_option(mpv, "wid", MPV_FORMAT_INT64, &_wid);
 
     mpv_set_option_string(mpv, "input-default-bindings", "no");
+    mpv_set_option_string(mpv, "slave-broken", "yes");
     mpv_set_option_string(mpv, "idle", "yes");
+    mpv_set_option_string(mpv, "keep-open", "yes");
 
     mpv_observe_property(mpv, 0, "time-pos", MPV_FORMAT_DOUBLE);
-    mpv_observe_property(mpv, 0, "time-remaining", MPV_FORMAT_DOUBLE);
+    mpv_observe_property(mpv, 0, "length", MPV_FORMAT_DOUBLE);
+
+    mpv_set_property(mpv, "volume", MPV_FORMAT_INT64, &volume);
 
     mpv_set_wakeup_callback(mpv, _wakeup, _win);
 
@@ -29,8 +35,10 @@ MpvHandler::MpvHandler(int64_t wid, void (*_wakeup)(void*), void *_win):
 MpvHandler::~MpvHandler()
 {
     if(mpv)
-     mpv_terminate_destroy(mpv);
-    mpv = NULL;
+    {
+        mpv_terminate_destroy(mpv);
+        mpv = NULL;
+    }
 }
 
 MpvHandler::MpvEvent MpvHandler::HandleEvent()
@@ -53,34 +61,33 @@ MpvHandler::MpvEvent MpvHandler::HandleEvent()
                     return TimeChanged;
                 }
             }
-            if (strcmp(prop->name, "time-remaining") == 0)
+            if (strcmp(prop->name, "length") == 0)
             {
                 if (prop->format == MPV_FORMAT_DOUBLE)
                 {
-                    SetTimeRemaining((time_t)*(double*)prop->data);
-                    return TimeRemainingChanged;
+                    SetTotalTime((time_t)*(double*)prop->data);
+                    return TimeChanged;
                 }
             }
             break;
         }
         case MPV_EVENT_PAUSE:
-            SetPaused(true);
-            return PausedChanged;
-            break;
+            SetState(Paused);
+            return StateChanged;
         case MPV_EVENT_START_FILE:
         case MPV_EVENT_UNPAUSE:
-            SetPaused(false);
-            return PausedChanged;
-            break;
+            SetState(Playing);
+            return StateChanged;
         case MPV_EVENT_FILE_LOADED:
             return FileOpened;
-            break;
         case MPV_EVENT_IDLE:
             SetTime(0);
-            SetTimeRemaining(0);
+            SetState(Stopped);
+            return Idling;
+        case MPV_EVENT_END_FILE:
+            SetTime(0);
+            SetState(Stopped);
             return FileEnded;
-        case MPV_EVENT_SHUTDOWN:
-            return Shutdown;
         default:
             return UnhandledEvent;
         }
@@ -94,10 +101,9 @@ bool MpvHandler::OpenFile(QString url)
     {
         const char *args[] = {"loadfile", url.toUtf8().data(), NULL};
         mpv_command_async(mpv, 0, args);
+        return true;
     }
-    else
-        return false;
-    return true;
+    return false;
 }
 
 //bool MpvHandler::OpenFile(QString url, QString subFile)

@@ -11,13 +11,18 @@ public:
     enum MpvEvent
     {
         NoEvent,
+        Idling,
         FileOpened,
         FileEnded,
-        PausedChanged,
+        StateChanged,
         TimeChanged,
-        TimeRemainingChanged,
-        Shutdown,
         UnhandledEvent
+    };
+    enum MpvState
+    {
+        Playing,
+        Paused,
+        Stopped
     };
 
     MpvHandler(int64_t wid, void (*wakeup)(void*), void *win);
@@ -34,22 +39,23 @@ public:
 
     inline int GetVolume() const { return volume; }
     inline time_t GetTime() const { return time; }
-    inline time_t GetTimeRemaining() const { return timeRemaining; }
-    inline bool GetPaused() const { return paused; }
+    inline time_t GetTotalTime() const { return totalTime; }
+    inline MpvState GetState() const { return state; }
 protected:
     inline void SetVolume(int v) { volume = v;  }
     inline void SetTime(time_t t) { time = t; }
-    inline void SetTimeRemaining(time_t t) { timeRemaining = t; }
-    inline void SetPaused(bool p) { paused = p; }
+    inline void SetTotalTime(time_t t) { totalTime = t; }
+    inline void SetState(MpvState s) { state = s; }
 private:
     mpv_handle *mpv;
+//    int64_t wid;
 //    void (*wakeup)(void*);
 //    void *win;
 
-    int volume;
+    int64_t volume;
     time_t time,
-           timeRemaining;
-    bool paused;
+           totalTime;
+    MpvState state;
 };
 
 #endif // MPVHANDLER_H
