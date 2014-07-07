@@ -63,6 +63,15 @@ MpvHandler::MpvEvent MpvHandler::HandleEvent()
             }
             break;
         }
+        case MPV_EVENT_PAUSE:
+            SetPaused(true);
+            return PausedChanged;
+            break;
+        case MPV_EVENT_START_FILE:
+        case MPV_EVENT_UNPAUSE:
+            SetPaused(false);
+            return PausedChanged;
+            break;
         case MPV_EVENT_FILE_LOADED:
             return FileOpened;
             break;
@@ -85,7 +94,6 @@ bool MpvHandler::OpenFile(QString url)
     {
         const char *args[] = {"loadfile", url.toUtf8().data(), NULL};
         mpv_command_async(mpv, 0, args);
-        SetPaused(false);
     }
     else
         return false;
@@ -106,13 +114,11 @@ bool MpvHandler::PlayPause(bool justPause)
         {
             const char *args[] = {"set", "pause", "yes", NULL};
             mpv_command_async(mpv, 0, args);
-            SetPaused(true);
         }
         else
         {
             const char *args[] = {"cycle", "pause", NULL};
             mpv_command_async(mpv, 0, args);
-            SetPaused(!GetPaused());
         }
         return true;
     }

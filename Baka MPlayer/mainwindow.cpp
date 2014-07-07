@@ -48,6 +48,12 @@ bool MainWindow::HandleMpvEvent(MpvHandler::MpvEvent event)
     case MpvHandler::TimeRemainingChanged:
         remainingLabel->setText(QDateTime::fromTime_t(mpv->GetTimeRemaining()).toUTC().toString("-hh:mm:ss"));
         break;
+    case MpvHandler::PausedChanged:
+        if(mpv->GetPaused())
+            playButton->setText("►");
+        else
+            playButton->setText("ll");
+        break;
     case MpvHandler::Shutdown:
         QMessageBox::critical(this, "Shutdown", "mpv shutdown on us T_T");
         break;
@@ -84,28 +90,16 @@ void MainWindow::on_openButton_clicked()
 {
     QString filename = QFileDialog::getOpenFileName(this, "Open file");
     mpv->OpenFile(filename);
-    if(mpv->GetPaused())
-        playButton->setText("►");
-    else
-        playButton->setText("ll");
 }
 
 void MainWindow::on_playButton_clicked()
 {
     mpv->PlayPause();
-    if(mpv->GetPaused())
-        playButton->setText("►");
-    else
-        playButton->setText("ll");
 }
 
 void MainWindow::on_rewindButton_clicked()
 {
     mpv->Stop();
-    if(mpv->GetPaused())
-        playButton->setText("►");
-    else
-        playButton->setText("ll");
 }
 
 void MainWindow::on_previousButton_clicked()
