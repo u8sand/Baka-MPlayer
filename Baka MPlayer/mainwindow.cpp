@@ -48,7 +48,7 @@ inline void MainWindow::SetSeekBar()
 
 inline void MainWindow::SetPlayButton()
 {
-    if(mpv->GetState() == MpvHandler::Playing)
+    if(mpv->GetPlayState() == MpvHandler::Playing)
         playButton->setIcon(QIcon(":/img/default_pause.svg"));
     else
         playButton->setIcon(QIcon(":/img/default_play.svg"));
@@ -141,7 +141,7 @@ void MainWindow::on_rewindButton_clicked()
     }
     else
     {
-        switch(mpv->GetState())
+        switch(mpv->GetPlayState())
         {
             case MpvHandler::Playing:
                 break;

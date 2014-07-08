@@ -18,7 +18,7 @@ public:
         TimeChanged,
         UnhandledEvent
     };
-    enum MpvState
+    enum MpvPlayState
     {
         Playing,
         Paused,
@@ -41,12 +41,12 @@ public:
     inline int GetVolume() const { return volume; }
     inline time_t GetTime() const { return time; }
     inline time_t GetTotalTime() const { return totalTime; }
-    inline MpvState GetState() const { return state; }
+    inline MpvPlayState GetPlayState() const { return state; }
 protected:
     inline void SetVolume(int v) { volume = v;  }
     inline void SetTime(time_t t) { time = t; }
     inline void SetTotalTime(time_t t) { totalTime = t; }
-    inline void SetState(MpvState s) { state = s; }
+    inline void SetPlayState(MpvPlayState s) { state = s; }
 private:
     mpv_handle *mpv;
     int64_t wid;
@@ -56,7 +56,7 @@ private:
     int64_t volume;
     time_t time,
            totalTime;
-    MpvState state;
+    MpvPlayState state;
 };
 
 #endif // MPVHANDLER_H
