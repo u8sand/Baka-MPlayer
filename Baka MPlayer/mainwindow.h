@@ -25,8 +25,7 @@ protected:
     virtual bool event(QEvent *event);
     bool HandleMpvEvent(MpvHandler::MpvEvent event);
 
-    inline void SetDurationLabel();
-    inline void SetRemainingLabel();
+    inline void SetTimeLabels();
     inline void SetSeekBar();
     inline void SetPlayButton();
     inline void EnableControls();

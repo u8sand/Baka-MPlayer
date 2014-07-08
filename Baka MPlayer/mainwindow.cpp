@@ -35,13 +35,9 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-inline void MainWindow::SetDurationLabel()
+inline void MainWindow::SetTimeLabels()
 {
     durationLabel->setText(QDateTime::fromTime_t(mpv->GetTime()).toUTC().toString("h:mm:ss"));
-}
-
-inline void MainWindow::SetRemainingLabel()
-{
     remainingLabel->setText(QDateTime::fromTime_t(mpv->GetTotalTime()-mpv->GetTime()).toUTC().toString("-h:mm:ss"));
 }
 
@@ -86,14 +82,12 @@ bool MainWindow::HandleMpvEvent(MpvHandler::MpvEvent event)
     case MpvHandler::FileOpened:
         EnableControls();
     case MpvHandler::FileEnded:
-        SetDurationLabel();
-        SetRemainingLabel();
+        SetTimeLabels();
         SetSeekBar();
         SetPlayButton();
         break;
     case MpvHandler::TimeChanged:
-        SetDurationLabel();
-        SetRemainingLabel();
+        SetTimeLabels();
         SetSeekBar();
         break;
     case MpvHandler::StateChanged:
