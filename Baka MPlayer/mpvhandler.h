@@ -33,9 +33,10 @@ public:
     bool OpenFile(QString url);
     //bool OpenFile(QString url, QString subFile);
     bool PlayPause(bool justPause = false);
+    bool Stop();
+    bool Rewind();
     bool Seek(int pos, bool relative = false);
     bool Volume(int level);
-    bool Stop();
 
     inline int GetVolume() const { return volume; }
     inline time_t GetTime() const { return time; }

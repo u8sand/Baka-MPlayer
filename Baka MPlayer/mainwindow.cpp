@@ -135,7 +135,21 @@ void MainWindow::on_playButton_clicked()
 
 void MainWindow::on_rewindButton_clicked()
 {
-    mpv->Stop();
+    if(mpv->GetTime() < 3)
+    {
+        mpv->Stop();
+    }
+    else
+    {
+        switch(mpv->GetState())
+        {
+            case MpvHandler::Playing:
+                break;
+            default:
+                mpv->Stop();
+                break;
+        }
+    }
 }
 
 void MainWindow::on_previousButton_clicked()
