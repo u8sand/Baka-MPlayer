@@ -171,6 +171,9 @@ QSlider::handle:horizontal {
        </item>
        <item>
         <widget class="CustomSlider" name="seekBar">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
          <property name="maximum">
           <number>1000000</number>
          </property>
@@ -600,6 +603,9 @@ QSlider::handle:horizontal {
      <addaction name="action_none"/>
     </widget>
     <widget class="QMenu" name="menu_Chapters">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="title">
       <string>&amp;Chapters</string>
      </property>
@@ -626,6 +632,9 @@ QSlider::handle:horizontal {
      <addaction name="action_none_3"/>
     </widget>
     <widget class="QMenu" name="menu_Font_Size">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="title">
       <string>&amp;Font Size</string>
      </property>
@@ -719,41 +728,65 @@ QSlider::handle:horizontal {
    </property>
   </action>
   <action name="actionOpen_Last_File">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Open &amp;Last File</string>
    </property>
   </action>
   <action name="actionShow_in_Folder">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Show in &amp;Folder</string>
    </property>
   </action>
   <action name="actionPl_ay_Next_File">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Pl&amp;ay Next File</string>
    </property>
   </action>
   <action name="actionPlay_Previous_File">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Play &amp;Previous File</string>
    </property>
   </action>
   <action name="action_Play">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>&amp;Play</string>
    </property>
   </action>
   <action name="action_Stop">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>&amp;Stop</string>
    </property>
   </action>
   <action name="action_Rewind">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>&amp;Rewind</string>
    </property>
   </action>
   <action name="actionR_estart">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>R&amp;estart</string>
    </property>
@@ -807,21 +840,33 @@ QSlider::handle:horizontal {
    </property>
   </action>
   <action name="action_Frame_Step">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>&amp;Frame Step</string>
    </property>
   </action>
   <action name="actionFrame_Back_Step">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Frame &amp;Back Step</string>
    </property>
   </action>
   <action name="action_Jump_To_Time">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>&amp;Jump To Time</string>
    </property>
   </action>
   <action name="actionFull_Screen">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Full &amp;Screen</string>
    </property>
@@ -939,6 +984,9 @@ QSlider::handle:horizontal {
    </property>
   </action>
   <action name="action_Take_Snapshot">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>&amp;Take Snapshot</string>
    </property>
@@ -949,6 +997,9 @@ QSlider::handle:horizontal {
    </property>
   </action>
   <action name="actionMedia_Info">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Media &amp;Info</string>
    </property>
@@ -977,6 +1028,9 @@ QSlider::handle:horizontal {
   <action name="action_Hide_Album_Art">
    <property name="checkable">
     <bool>true</bool>
+   </property>
+   <property name="enabled">
+    <bool>false</bool>
    </property>
    <property name="text">
     <string>&amp;Hide Album Art</string>

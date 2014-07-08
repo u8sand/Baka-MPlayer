@@ -60,10 +60,23 @@ inline void MainWindow::SetPlayButton()
 
 inline void MainWindow::EnableControls()
 {
-    playButton->setEnabled(true);
+    seekBar->setEnabled(true);
+
+    // playback controls
     rewindButton->setEnabled(true);
     previousButton->setEnabled(true);
+    playButton->setEnabled(true);
     nextButton->setEnabled(true);
+    playlistButton->setEnabled(true);
+    
+    // menubar
+    action_Play->setEnabled(true);
+    action_Stop->setEnabled(true);
+    action_Rewind->setEnabled(true);
+    actionR_estart->setEnabled(true);
+    action_Jump_To_Time->setEnabled(true);
+    actionMedia_Info->setEnabled(true);
+    action_Show_Playlist->setEnabled(true);
 }
 
 bool MainWindow::HandleMpvEvent(MpvHandler::MpvEvent event)
