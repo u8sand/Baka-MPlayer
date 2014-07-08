@@ -48,9 +48,9 @@ protected:
     inline void SetState(MpvState s) { state = s; }
 private:
     mpv_handle *mpv;
-//    int64_t wid;
-//    void (*wakeup)(void*);
-//    void *win;
+    int64_t wid;
+    void (*wakeup)(void*);
+    void *win;
 
     int64_t volume;
     time_t time,

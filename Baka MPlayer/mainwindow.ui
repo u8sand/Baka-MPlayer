@@ -118,7 +118,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QSlider" name="seekBar">
+        <widget class="CustomSlider" name="seekBar">
          <property name="maximum">
           <number>1000000</number>
          </property>
@@ -246,7 +246,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QSlider" name="volumeSlider">
+        <widget class="CustomSlider" name="volumeSlider">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -816,6 +816,13 @@
    </property>
   </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>CustomSlider</class>
+   <extends>QSlider</extends>
+   <header>customslider.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

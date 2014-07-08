@@ -2,9 +2,9 @@
 
 MpvHandler::MpvHandler(int64_t _wid, void (*_wakeup)(void*), void *_win):
     mpv(0),
-//    wid(_wid),
-//    wakeup(_wakeup),
-//    win(_win),
+    wid(_wid),
+    wakeup(_wakeup),
+    win(_win),
     volume(100),
     time(0),
     totalTime(0),
@@ -14,19 +14,10 @@ MpvHandler::MpvHandler(int64_t _wid, void (*_wakeup)(void*), void *_win):
     if(!mpv)
         throw "Could not create mpv object";
 
-    mpv_set_option(mpv, "wid", MPV_FORMAT_INT64, &_wid);
-
+    mpv_set_option(mpv, "wid", MPV_FORMAT_INT64, &wid);
     mpv_set_option_string(mpv, "input-default-bindings", "no");
-    mpv_set_option_string(mpv, "slave-broken", "yes");
     mpv_set_option_string(mpv, "idle", "yes");
-    mpv_set_option_string(mpv, "keep-open", "yes");
-
-    mpv_observe_property(mpv, 0, "time-pos", MPV_FORMAT_DOUBLE);
-    mpv_observe_property(mpv, 0, "length", MPV_FORMAT_DOUBLE);
-
     mpv_set_property(mpv, "volume", MPV_FORMAT_INT64, &volume);
-
-    mpv_set_wakeup_callback(mpv, _wakeup, _win);
 
     if(mpv_initialize(mpv) < 0)
         throw "Could not initialize mpv";
@@ -100,7 +91,12 @@ bool MpvHandler::OpenFile(QString url)
     if(mpv)
     {
         const char *args[] = {"loadfile", url.toUtf8().data(), NULL};
-        mpv_command_async(mpv, 0, args);
+        mpv_command(mpv, args);
+
+        mpv_observe_property(mpv, 0, "time-pos", MPV_FORMAT_DOUBLE);
+        mpv_observe_property(mpv, 0, "length", MPV_FORMAT_DOUBLE);
+        mpv_set_wakeup_callback(mpv, wakeup, win);
+
         return true;
     }
     return false;

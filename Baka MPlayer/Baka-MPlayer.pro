@@ -17,7 +17,8 @@ SOURCES += main.cpp\
     mpvhandler.cpp
 
 HEADERS  += mainwindow.h \
-    mpvhandler.h
+    mpvhandler.h \
+    customslider.h
 
 FORMS    += mainwindow.ui
 

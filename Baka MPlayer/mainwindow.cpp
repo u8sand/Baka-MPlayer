@@ -13,7 +13,8 @@ static void wakeup(void *ctx)
 
 MainWindow::MainWindow(QWidget *parent):
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::MainWindow),
+    seekPressed(false)
 {
     ui->setupUi(this);
     seekBar = this->findChild<QSlider*>("seekBar");
@@ -22,6 +23,7 @@ MainWindow::MainWindow(QWidget *parent):
     playButton = this->findChild<QPushButton*>("playButton");
 
     mpv = new MpvHandler(this->findChild<QFrame*>("outputFrame")->winId(), wakeup, this);
+    this->findChild<QSlider*>("volumeSlider")->setValue(mpv->GetVolume());
 }
 
 MainWindow::~MainWindow()
@@ -57,6 +59,12 @@ bool MainWindow::HandleMpvEvent(MpvHandler::MpvEvent event)
 {
     switch(event)
     {
+    case MpvHandler::FileEnded:
+        SetDurationLabel();
+        SetRemainingLabel();
+        SetSeekBar();
+        SetPlayButton();
+        break;
     case MpvHandler::TimeChanged:
         SetDurationLabel();
         SetRemainingLabel();
@@ -120,7 +128,17 @@ void MainWindow::on_nextButton_clicked()
     mpv->Seek(5, true);
 }
 
-void MainWindow::on_volumeSlider_valueChanged(int value)
+void MainWindow::on_volumeSlider_sliderMoved(int position)
 {
-    mpv->Volume(value);
+    mpv->Volume(position);
+}
+
+void MainWindow::on_seekBar_sliderMoved(int position)
+{
+    mpv->Seek(((double)position/seekBar->maximum())*mpv->GetTotalTime());
+}
+
+void MainWindow::on_seekBar_sliderPressed()
+{
+    mpv->Seek(((double)seekBar->value()/seekBar->maximum())*mpv->GetTotalTime());
 }

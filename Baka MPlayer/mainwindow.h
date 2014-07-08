@@ -37,11 +37,15 @@ private slots:
     void on_rewindButton_clicked();
     void on_previousButton_clicked();
     void on_nextButton_clicked();
-    void on_volumeSlider_valueChanged(int value);
+    void on_volumeSlider_sliderMoved(int position);
+    void on_seekBar_sliderMoved(int position);
+
+    void on_seekBar_sliderPressed();
 
 private:
     Ui::MainWindow *ui;
     MpvHandler *mpv;
+    bool seekPressed;
 
     QSlider *seekBar;
     QLabel *durationLabel,
