@@ -50,9 +50,9 @@ inline void MainWindow::SetSeekBar()
 inline void MainWindow::SetPlayButton()
 {
     if(mpv->GetState() == MpvHandler::Playing)
-        playButton->setText("ll");
+        playButton->setIcon(QIcon(":/img/default_pause.svg"));
     else
-        playButton->setText("►");
+        playButton->setIcon(QIcon(":/img/default_play.svg"));
 }
 
 bool MainWindow::HandleMpvEvent(MpvHandler::MpvEvent event)
