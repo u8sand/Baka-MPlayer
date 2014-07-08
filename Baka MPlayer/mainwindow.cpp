@@ -13,14 +13,17 @@ static void wakeup(void *ctx)
 
 MainWindow::MainWindow(QWidget *parent):
     QMainWindow(parent),
-    ui(new Ui::MainWindow),
-    seekPressed(false)
+    ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
     seekBar = this->findChild<QSlider*>("seekBar");
     durationLabel = this->findChild<QLabel*>("durationLabel");
     remainingLabel = this->findChild<QLabel*>("remainingLabel");
+    playlist = this->findChild<QListWidget*>("playlistWidget");
     playButton = this->findChild<QPushButton*>("playButton");
+    rewindButton = this->findChild<QPushButton*>("rewindButton");
+    previousButton = this->findChild<QPushButton*>("previousButton");
+    nextButton = this->findChild<QPushButton*>("nextButton");
 
     mpv = new MpvHandler(this->findChild<QFrame*>("outputFrame")->winId(), wakeup, this);
     this->findChild<QSlider*>("volumeSlider")->setValue(mpv->GetVolume());
@@ -34,12 +37,12 @@ MainWindow::~MainWindow()
 
 inline void MainWindow::SetDurationLabel()
 {
-    durationLabel->setText(QDateTime::fromTime_t(mpv->GetTime()).toUTC().toString("hh:mm:ss"));
+    durationLabel->setText(QDateTime::fromTime_t(mpv->GetTime()).toUTC().toString("h:mm:ss"));
 }
 
 inline void MainWindow::SetRemainingLabel()
 {
-    remainingLabel->setText(QDateTime::fromTime_t(mpv->GetTotalTime()-mpv->GetTime()).toUTC().toString("-hh:mm:ss"));
+    remainingLabel->setText(QDateTime::fromTime_t(mpv->GetTotalTime()-mpv->GetTime()).toUTC().toString("-h:mm:ss"));
 }
 
 inline void MainWindow::SetSeekBar()
@@ -55,10 +58,20 @@ inline void MainWindow::SetPlayButton()
         playButton->setIcon(QIcon(":/img/default_play.svg"));
 }
 
+inline void MainWindow::EnableControls()
+{
+    playButton->setEnabled(true);
+    rewindButton->setEnabled(true);
+    previousButton->setEnabled(true);
+    nextButton->setEnabled(true);
+}
+
 bool MainWindow::HandleMpvEvent(MpvHandler::MpvEvent event)
 {
     switch(event)
     {
+    case MpvHandler::FileOpened:
+        EnableControls();
     case MpvHandler::FileEnded:
         SetDurationLabel();
         SetRemainingLabel();
@@ -141,4 +154,10 @@ void MainWindow::on_seekBar_sliderMoved(int position)
 void MainWindow::on_seekBar_sliderPressed()
 {
     mpv->Seek(((double)seekBar->value()/seekBar->maximum())*mpv->GetTotalTime());
+}
+
+void MainWindow::on_playlistButton_clicked()
+{
+    // todo: playlist functionality
+    playlist->setVisible(!playlist->isVisible());
 }

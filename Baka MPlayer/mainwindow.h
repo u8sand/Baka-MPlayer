@@ -5,6 +5,7 @@
 #include <QSlider>
 #include <QLabel>
 #include <QPushButton>
+#include <QListWidget>
 
 #include "mpvhandler.h"
 
@@ -28,6 +29,7 @@ protected:
     inline void SetRemainingLabel();
     inline void SetSeekBar();
     inline void SetPlayButton();
+    inline void EnableControls();
 
 private slots:
     void on_action_Open_File_triggered();
@@ -39,18 +41,22 @@ private slots:
     void on_nextButton_clicked();
     void on_volumeSlider_sliderMoved(int position);
     void on_seekBar_sliderMoved(int position);
-
     void on_seekBar_sliderPressed();
+
+    void on_playlistButton_clicked();
 
 private:
     Ui::MainWindow *ui;
     MpvHandler *mpv;
-    bool seekPressed;
 
     QSlider *seekBar;
     QLabel *durationLabel,
            *remainingLabel;
-    QPushButton *playButton;
+    QListWidget *playlist;
+    QPushButton *playButton,
+                *rewindButton,
+                *previousButton,
+                *nextButton;
 };
 
 #endif // MAINWINDOW_H

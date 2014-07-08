@@ -24,3 +24,6 @@ FORMS    += mainwindow.ui
 
 unix: CONFIG += link_pkgconfig
 unix: PKGCONFIG += mpv
+
+RESOURCES += \
+    rsclist.qrc
