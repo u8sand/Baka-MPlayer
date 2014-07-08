@@ -22,13 +22,10 @@
 	color: white;
 }
 
-QMenu::item { background-color: black; }
-
-#menubar {
+QMenuBar, QMenuBar::item {
 	background: #141414;
 	color: dodgerblue;
 }
-
 
 
 
