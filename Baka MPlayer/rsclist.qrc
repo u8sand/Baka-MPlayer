@@ -1,0 +1,24 @@
+<RCC>
+  <qresource prefix="/">
+    <file>img/default_open.svg</file>
+    <file>img/down_open.svg</file>
+    <file>img/down_next.svg</file>
+    <file>img/default_next.svg</file>
+    <file>img/down_reverse.svg</file>
+    <file>img/disabled_reverse.svg</file>
+    <file>img/default_reverse.svg</file>
+    <file>img/down_previous.svg</file>
+    <file>img/disabled_previous.svg</file>
+    <file>img/default_previous.svg</file>
+    <file>img/down_playlist.svg</file>
+    <file>img/disabled_playlist.svg</file>
+    <file>img/default_playlist.svg</file>
+    <file>img/disabled_next.svg</file>
+    <file>img/disabled_play.svg</file>
+    <file>img/down_play.svg</file>
+    <file>img/default_play.svg</file>
+    <file>img/down_pause.svg</file>
+    <file>img/disabled_pause.svg</file>
+    <file>img/default_pause.svg</file>
+  </qresource>
+</RCC>

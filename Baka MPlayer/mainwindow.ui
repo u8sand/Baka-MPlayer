@@ -16,6 +16,40 @@
   <property name="autoFillBackground">
    <bool>false</bool>
   </property>
+  <property name="styleSheet">
+   <string notr="true">#MainWindow, QWidget, QMenu {
+	background: #141414;
+	color: white;
+}
+
+QMenu::item { background-color: black; }
+
+#menubar {
+	background: #141414;
+	color: dodgerblue;
+}
+
+
+
+
+QSlider::groove:horizontal {
+	background: gray;
+	height: 1px;
+}
+
+QSlider::sub-page:horizontal {
+	background: dodgerblue;
+}
+
+QSlider::handle:horizontal {
+	background: white;
+	border: 1px solid black;
+	border-radius: 6px;
+	margin-top: -6px;
+	margin-bottom: -6px;
+	width: 12px;
+}</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="mainLayout">
     <property name="spacing">
@@ -83,6 +117,9 @@
             <height>16777215</height>
            </size>
           </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
          </widget>
         </widget>
        </item>
@@ -112,8 +149,23 @@
        </property>
        <item>
         <widget class="QLabel" name="durationLabel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>50</width>
+           <height>16777215</height>
+          </size>
+         </property>
          <property name="text">
           <string>0:00:00</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
        </item>
@@ -132,8 +184,23 @@
        </item>
        <item>
         <widget class="QLabel" name="remainingLabel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>50</width>
+           <height>16777215</height>
+          </size>
+         </property>
          <property name="text">
           <string>-0:00:00</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
        </item>
@@ -163,14 +230,33 @@
        </property>
        <item>
         <widget class="QPushButton" name="openButton">
-         <property name="maximumSize">
-          <size>
-           <width>70</width>
-           <height>16777215</height>
-          </size>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
          </property>
          <property name="text">
-          <string>Open</string>
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="rsclist.qrc">
+           <normaloff>:/img/default_open.svg</normaloff>:/img/default_open.svg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>18</width>
+           <height>18</height>
+          </size>
+         </property>
+         <property name="flat">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -189,32 +275,83 @@
        </item>
        <item>
         <widget class="QPushButton" name="rewindButton">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
          <property name="maximumSize">
           <size>
            <width>30</width>
            <height>16777215</height>
           </size>
          </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
          <property name="text">
-          <string>|&lt;</string>
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="rsclist.qrc">
+           <normaloff>:/img/default_reverse.svg</normaloff>
+           <disabledoff>:/img/disabled_reverse.svg</disabledoff>
+           <disabledon>:/img/disabled_reverse.svg</disabledon>:/img/default_reverse.svg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>22</width>
+           <height>18</height>
+          </size>
+         </property>
+         <property name="flat">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="previousButton">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
          <property name="maximumSize">
           <size>
            <width>30</width>
            <height>16777215</height>
           </size>
          </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
          <property name="text">
-          <string>&lt;&lt;</string>
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="rsclist.qrc">
+           <normaloff>:/img/default_previous.svg</normaloff>
+           <disabledoff>:/img/disabled_previous.svg</disabledoff>
+           <disabledon>:/img/disabled_previous.svg</disabledon>:/img/default_previous.svg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>25</width>
+           <height>18</height>
+          </size>
+         </property>
+         <property name="flat">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="playButton">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -227,28 +364,73 @@
            <height>35</height>
           </size>
          </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
          <property name="text">
-          <string>►</string>
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="rsclist.qrc">
+           <normaloff>:/img/default_play.svg</normaloff>
+           <disabledoff>:/img/disabled_play.svg</disabledoff>
+           <disabledon>:/img/disabled_play.svg</disabledon>:/img/default_play.svg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>30</width>
+           <height>35</height>
+          </size>
+         </property>
+         <property name="flat">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="nextButton">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
          <property name="maximumSize">
           <size>
            <width>30</width>
            <height>16777215</height>
           </size>
          </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
          <property name="text">
-          <string>&gt;&gt;</string>
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="rsclist.qrc">
+           <normaloff>:/img/default_next.svg</normaloff>
+           <disabledoff>:/img/disabled_next.svg</disabledoff>
+           <disabledon>:/img/disabled_next.svg</disabledon>:/img/default_next.svg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>25</width>
+           <height>18</height>
+          </size>
+         </property>
+         <property name="flat">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
        <item>
         <widget class="CustomSlider" name="volumeSlider">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
@@ -256,8 +438,11 @@
          <property name="maximumSize">
           <size>
            <width>250</width>
-           <height>16777215</height>
+           <height>18</height>
           </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
          </property>
          <property name="maximum">
           <number>100</number>
@@ -291,23 +476,38 @@
        </item>
        <item>
         <widget class="QPushButton" name="playlistButton">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
-         <property name="maximumSize">
-          <size>
-           <width>70</width>
-           <height>16777215</height>
-          </size>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
          </property>
          <property name="text">
-          <string>Playlist</string>
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="rsclist.qrc">
+           <normaloff>:/img/default_playlist.svg</normaloff>
+           <disabledoff>:/img/disabled_playlist.svg</disabledoff>
+           <disabledon>:/img/disabled_playlist.svg</disabledon>:/img/default_playlist.svg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>18</width>
+           <height>18</height>
+          </size>
          </property>
          <property name="flat">
-          <bool>false</bool>
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -322,7 +522,7 @@
      <x>0</x>
      <y>0</y>
      <width>570</width>
-     <height>19</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
@@ -823,6 +1023,8 @@
    <header>customslider.h</header>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="rsclist.qrc"/>
+ </resources>
  <connections/>
 </ui>
