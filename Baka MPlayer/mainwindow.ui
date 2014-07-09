@@ -39,11 +39,12 @@ QSlider::sub-page:horizontal {
 }
 
 QSlider::handle:horizontal {
-	background: white;
-	border: 1px solid black;
-	border-radius: 6px;
-	margin-top: -6px;
-	margin-bottom: -6px;
+	background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+							stop: 0 silver, stop: 1 darkgray);
+	/*border: 1px solid black;*/
+	border-radius: 5px;
+	margin-top: -5px;
+	margin-bottom: -5px;
 	width: 12px;
 }</string>
   </property>
