@@ -16,6 +16,8 @@ MainWindow::MainWindow(QWidget *parent):
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    // todo: make this less selective--perhaps load all controls
     seekBar = this->findChild<CustomSlider*>("seekBar");
     durationLabel = this->findChild<QLabel*>("durationLabel");
     remainingLabel = this->findChild<QLabel*>("remainingLabel");
@@ -24,6 +26,7 @@ MainWindow::MainWindow(QWidget *parent):
     previousButton = this->findChild<QPushButton*>("previousButton");
     nextButton = this->findChild<QPushButton*>("nextButton");
     playlistWidget = this->findChild<QListWidget*>("playlistWidget");
+    playAction = this->findChild<QAction*>("action_Play");
 
     settings = new SettingsManager();
     // todo: apply form settings
@@ -61,9 +64,15 @@ inline void MainWindow::SetSeekBar()
 inline void MainWindow::SetPlayButton()
 {
     if(mpv->GetPlayState() == MpvHandler::Playing)
+    {
         playButton->setIcon(QIcon(":/img/default_pause.svg"));
+        playAction->setText("&Pause");
+    }
     else
+    {
         playButton->setIcon(QIcon(":/img/default_play.svg"));
+        playAction->setText("&Play");
+    }
 }
 
 inline void MainWindow::EnableControls()
@@ -75,16 +84,16 @@ inline void MainWindow::EnableControls()
     previousButton->setEnabled(true);
     playButton->setEnabled(true);
     nextButton->setEnabled(true);
-    playlistButton->setEnabled(true);
+    this->findChild<QPushButton*>("playlistButton")->setEnabled(true);
     
     // menubar
-    action_Play->setEnabled(true);
-    action_Stop->setEnabled(true);
-    action_Rewind->setEnabled(true);
-    actionR_estart->setEnabled(true);
-    action_Jump_To_Time->setEnabled(true);
-    actionMedia_Info->setEnabled(true);
-    action_Show_Playlist->setEnabled(true);
+    playAction->setEnabled(true);
+    this->findChild<QAction*>("action_Stop")->setEnabled(true);
+    this->findChild<QAction*>("action_Rewind")->setEnabled(true);
+    this->findChild<QAction*>("actionR_estart")->setEnabled(true);
+    this->findChild<QAction*>("action_Jump_To_Time")->setEnabled(true);
+    this->findChild<QAction*>("actionMedia_Info")->setEnabled(true);
+    this->findChild<QAction*>("action_Show_Playlist")->setEnabled(true);
 }
 
 bool MainWindow::HandleMpvEvent(MpvHandler::MpvEvent event)
@@ -194,4 +203,9 @@ void MainWindow::on_playlistButton_clicked()
 {
     // todo: playlist functionality
     playlistWidget->setVisible(!playlistWidget->isVisible());
+}
+
+void MainWindow::on_action_Play_triggered()
+{
+    mpv->PlayPause();
 }

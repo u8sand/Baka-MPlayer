@@ -6,6 +6,7 @@
 #include <QLabel>
 #include <QPushButton>
 #include <QListWidget>
+#include <QAction>
 
 #include "settingsmanager.h"
 #include "mpvhandler.h"
@@ -46,6 +47,8 @@ private slots:
     void on_playlistButton_clicked();
 
 
+    void on_action_Play_triggered();
+
 private:
     Ui::MainWindow *ui;
     SettingsManager *settings;
@@ -60,6 +63,7 @@ private:
                 *previousButton,
                 *nextButton;
     QListWidget *playlistWidget;
+    QAction     *playAction;
 };
 
 #endif // MAINWINDOW_H

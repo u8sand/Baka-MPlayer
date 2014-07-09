@@ -63,21 +63,21 @@ MpvHandler::MpvEvent MpvHandler::HandleEvent()
             break;
         }
         case MPV_EVENT_PAUSE:
-            SetState(Paused);
+            SetPlayState(Paused);
             return StateChanged;
         case MPV_EVENT_START_FILE:
         case MPV_EVENT_UNPAUSE:
-            SetState(Playing);
+            SetPlayState(Playing);
             return StateChanged;
         case MPV_EVENT_FILE_LOADED:
             return FileOpened;
         case MPV_EVENT_IDLE:
             SetTime(0);
-            SetState(Stopped);
+            SetPlayState(Stopped);
             return Idling;
         case MPV_EVENT_END_FILE:
             SetTime(0);
-            SetState(Stopped);
+            SetPlayState(Stopped);
             return FileEnded;
         default:
             return UnhandledEvent;
