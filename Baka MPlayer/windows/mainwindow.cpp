@@ -13,6 +13,8 @@ MainWindow::MainWindow(QWidget *parent):
     ui->setupUi(this);
 
     // mpv updates
+    connect(ui->mpv, SIGNAL(FileChanged(QString)),
+            ui->playlist, SIGNAL(SelectFile(QString url)));
     connect(ui->mpv, SIGNAL(TimeChanged(time_t)),
             this, SLOT(SetTime(time_t)));
     connect(ui->mpv, SIGNAL(PlayStateChanged(Mpv::PlayState)),
@@ -29,6 +31,8 @@ MainWindow::MainWindow(QWidget *parent):
             this, SLOT(OpenFile()));
     connect(ui->playButton, SIGNAL(clicked()),
             ui->mpv, SLOT(PlayPause()));
+    connect(ui->playlistButton, SIGNAL(clicked()),
+            ui->playlist, SLOT(ToggleVisibility()));
 
     // menu
     connect(ui->action_Open_File, SIGNAL(triggered()),
@@ -38,10 +42,10 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->actionE_xit, SIGNAL(triggered()),
             QCoreApplication::instance(), SLOT(quit()));
 
-//    QStringList args = QCoreApplication::arguments();
-//    for(QStringList::iterator it = args.begin(); it != args.end(); ++it)
-//        playlist->addItem(*it);
-//    playlist->PlayNext();
+    QStringList args = QCoreApplication::arguments();
+    for(QStringList::iterator it = args.begin()+1; it != args.end(); ++it)
+        ui->playlist->addItem(*it);
+    ui->playlist->PlayNext();
 }
 
 MainWindow::~MainWindow()
@@ -116,7 +120,6 @@ void MainWindow::OpenFile()
 
 void MainWindow::on_rewindButton_clicked()
 {
-    // not sure why this clause is here; todo: ask
     if(ui->mpv->GetTime() < 3)
     {
         ui->mpv->Stop();
@@ -152,10 +155,4 @@ void MainWindow::on_seekBar_sliderMoved(int position)
 void MainWindow::on_seekBar_sliderPressed()
 {
     ui->mpv->Seek(((double)ui->seekBar->value()/ui->seekBar->maximum())*ui->mpv->GetTotalTime());
-}
-
-void MainWindow::on_playlistButton_clicked()
-{
-    // todo: playlist functionality
-    ui->playlistWidget->setVisible(!ui->playlistWidget->isVisible());
 }

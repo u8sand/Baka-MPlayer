@@ -24,17 +24,9 @@ MpvHandler::MpvHandler(QWidget *parent):
     mpv_set_option(mpv, "wid", MPV_FORMAT_INT64, &wid);
 
     mpv_set_option_string(mpv, "input-default-bindings", "no");
-    mpv_set_option_string(mpv, "idle", "yes");
 
     mpv_observe_property(mpv, 0, "time-pos", MPV_FORMAT_DOUBLE);
     mpv_observe_property(mpv, 0, "length", MPV_FORMAT_DOUBLE);
-
-    mpv_request_event(mpv, MPV_EVENT_IDLE, 1);
-    mpv_request_event(mpv, MPV_EVENT_FILE_LOADED, 1);
-    mpv_request_event(mpv, MPV_EVENT_START_FILE, 1);
-    mpv_request_event(mpv, MPV_EVENT_PAUSE, 1);
-    mpv_request_event(mpv, MPV_EVENT_UNPAUSE, 1);
-    mpv_request_event(mpv, MPV_EVENT_END_FILE, 1);
 
     mpv_set_wakeup_callback(mpv, wakeup, this);
 
@@ -79,7 +71,7 @@ bool MpvHandler::event(QEvent *event)
                 break;
             case MPV_EVENT_FILE_LOADED:
                 //SetFile(event->data);
-                SetFile("new");
+                SetFile((QString)*(char*)event->data);
                 break;
             case MPV_EVENT_START_FILE:
                 SetPlayState(Mpv::Started);

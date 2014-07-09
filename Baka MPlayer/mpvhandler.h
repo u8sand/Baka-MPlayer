@@ -25,7 +25,6 @@ class MpvHandler : public QFrame
 {
     Q_OBJECT
 public:
-
     explicit MpvHandler(QWidget *parent = 0);
     ~MpvHandler();
 
@@ -67,7 +66,5 @@ private:
            totalTime;
     Mpv::PlayState playState;
 };
-
-
 
 #endif // MPVHANDLER_H

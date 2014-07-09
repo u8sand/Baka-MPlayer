@@ -102,7 +102,7 @@ QSlider::handle:horizontal {
            <enum>QFrame::Raised</enum>
           </property>
          </widget>
-         <widget class="QListWidget" name="playlistWidget">
+         <widget class="PlaylistManager" name="playlist">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -1097,6 +1097,11 @@ QSlider::handle:horizontal {
    <extends>QFrame</extends>
    <header>mpvhandler.h</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>PlaylistManager</class>
+   <extends>QListWidget</extends>
+   <header>playlistmanager.h</header>
   </customwidget>
  </customwidgets>
  <resources>

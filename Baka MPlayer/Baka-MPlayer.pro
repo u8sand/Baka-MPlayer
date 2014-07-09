@@ -13,16 +13,20 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
     mpvhandler.cpp \
-    settingsmanager.cpp
+    settingsmanager.cpp \
+    windows/mainwindow.cpp \
+    widgets/playlistmanager.cpp
 
-HEADERS  += mainwindow.h \
+HEADERS  += \
     mpvhandler.h \
-    customslider.h \
-    settingsmanager.h
+    settingsmanager.h \
+    windows/mainwindow.h \
+    widgets/customslider.h \
+    widgets/playlistmanager.h
 
-FORMS    += ui/mainwindow.ui
+FORMS    += \
+    windows/mainwindow.ui
 
 unix: CONFIG += link_pkgconfig
 unix: PKGCONFIG += mpv

@@ -3,9 +3,8 @@
 
 #include <QMainWindow>
 
-#include "settingsmanager.h"
 #include "mpvhandler.h"
-//#include "playlistmanager.h"
+#include "settingsmanager.h"
 
 namespace Ui {
 class MainWindow;
@@ -23,13 +22,12 @@ protected:
     inline void SetTimeLabels();
     inline void SetSeekBar();
     inline void SetPlayButton();
-    inline void EnableControls();
+    inline void SetControls(bool enable);
 
 private slots:
     void OpenFile();
 
     void SetTime(time_t time);
-    void SetControls(bool enable);
     void SetPlayState(Mpv::PlayState state);
 
     void HandleError(QString error);
@@ -40,11 +38,9 @@ private slots:
     void on_nextButton_clicked();
     void on_seekBar_sliderMoved(int position);
     void on_seekBar_sliderPressed();
-    void on_playlistButton_clicked();
 private:
     Ui::MainWindow *ui;
     SettingsManager *settings;
-//    PlaylistManager *playlist;
 };
 
 #endif // MAINWINDOW_H
