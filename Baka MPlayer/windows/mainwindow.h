@@ -29,6 +29,7 @@ private slots:
     void OpenFile();
 
     void SetTime(time_t time);
+    void SetControls(bool enable);
     void SetPlayState(Mpv::PlayState state);
 
     void HandleError(QString error);
