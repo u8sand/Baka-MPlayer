@@ -58,26 +58,31 @@ void MainWindow::SetTime(time_t time)
     ui->remainingLabel->setText(QDateTime::fromTime_t(ui->mpv->GetTotalTime()-time).toUTC().toString("-h:mm:ss"));
 }
 
+void MainWindow::SetControls(bool enable)
+{
+    ui->seekBar->setEnabled(enable);
+    // playback controls
+    ui->rewindButton->setEnabled(enable);
+    ui->previousButton->setEnabled(enable);
+    ui->playButton->setEnabled(enable);
+    ui->nextButton->setEnabled(enable);
+    ui->playlistButton->setEnabled(enable);
+    // menubar
+    ui->action_Play->setEnabled(enable);
+    ui->action_Stop->setEnabled(enable);
+    ui->action_Rewind->setEnabled(enable);
+    ui->actionR_estart->setEnabled(enable);
+    ui->action_Jump_To_Time->setEnabled(enable);
+    ui->actionMedia_Info->setEnabled(enable);
+    ui->action_Show_Playlist->setEnabled(enable);
+}
+
 void MainWindow::SetPlayState(Mpv::PlayState playState)
 {
     switch(playState)
     {
     case Mpv::Started:
-        ui->seekBar->setEnabled(true);
-        // playback controls
-        ui->rewindButton->setEnabled(true);
-        ui->previousButton->setEnabled(true);
-        ui->playButton->setEnabled(true);
-        ui->nextButton->setEnabled(true);
-        ui->playlistButton->setEnabled(true);
-        // menubar
-        ui->action_Play->setEnabled(true);
-        ui->action_Stop->setEnabled(true);
-        ui->action_Rewind->setEnabled(true);
-        ui->actionR_estart->setEnabled(true);
-        ui->action_Jump_To_Time->setEnabled(true);
-        ui->actionMedia_Info->setEnabled(true);
-        ui->action_Show_Playlist->setEnabled(true);
+        SetControls(true);
         break;
     case Mpv::Playing:
         ui->playButton->setIcon(QIcon(":/img/default_pause.svg"));
@@ -94,21 +99,7 @@ void MainWindow::SetPlayState(Mpv::PlayState playState)
     case Mpv::Idle:
     case Mpv::Ended:
         SetTime(0);
-        ui->seekBar->setEnabled(false);
-        // playback controls
-        ui->rewindButton->setEnabled(false);
-        ui->previousButton->setEnabled(false);
-        ui->playButton->setEnabled(false);
-        ui->nextButton->setEnabled(false);
-        ui->playlistButton->setEnabled(false);
-        // menubar
-        ui->action_Play->setEnabled(false);
-        ui->action_Stop->setEnabled(false);
-        ui->action_Rewind->setEnabled(false);
-        ui->actionR_estart->setEnabled(false);
-        ui->action_Jump_To_Time->setEnabled(false);
-        ui->actionMedia_Info->setEnabled(false);
-        ui->action_Show_Playlist->setEnabled(false);
+        SetControls(false);
         break;
     }
 }
