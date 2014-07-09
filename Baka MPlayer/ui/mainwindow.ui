@@ -246,7 +246,7 @@ QSlider::handle:horizontal {
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="rsclist.qrc">
+          <iconset resource="../rsclist.qrc">
            <normaloff>:/img/default_open.svg</normaloff>:/img/default_open.svg</iconset>
          </property>
          <property name="iconSize">
@@ -294,7 +294,7 @@ QSlider::handle:horizontal {
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="rsclist.qrc">
+          <iconset resource="../rsclist.qrc">
            <normaloff>:/img/default_reverse.svg</normaloff>
            <disabledoff>:/img/disabled_reverse.svg</disabledoff>
            <disabledon>:/img/disabled_reverse.svg</disabledon>:/img/default_reverse.svg</iconset>
@@ -331,7 +331,7 @@ QSlider::handle:horizontal {
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="rsclist.qrc">
+          <iconset resource="../rsclist.qrc">
            <normaloff>:/img/default_previous.svg</normaloff>
            <disabledoff>:/img/disabled_previous.svg</disabledoff>
            <disabledon>:/img/disabled_previous.svg</disabledon>:/img/default_previous.svg</iconset>
@@ -374,7 +374,7 @@ QSlider::handle:horizontal {
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="rsclist.qrc">
+          <iconset resource="../rsclist.qrc">
            <normaloff>:/img/default_play.svg</normaloff>
            <disabledoff>:/img/disabled_play.svg</disabledoff>
            <disabledon>:/img/disabled_play.svg</disabledon>:/img/default_play.svg</iconset>
@@ -411,7 +411,7 @@ QSlider::handle:horizontal {
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="rsclist.qrc">
+          <iconset resource="../rsclist.qrc">
            <normaloff>:/img/default_next.svg</normaloff>
            <disabledoff>:/img/disabled_next.svg</disabledoff>
            <disabledon>:/img/disabled_next.svg</disabledon>:/img/default_next.svg</iconset>
@@ -495,7 +495,7 @@ QSlider::handle:horizontal {
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="rsclist.qrc">
+          <iconset resource="../rsclist.qrc">
            <normaloff>:/img/default_playlist.svg</normaloff>
            <disabledoff>:/img/disabled_playlist.svg</disabledoff>
            <disabledon>:/img/disabled_playlist.svg</disabledon>:/img/default_playlist.svg</iconset>
@@ -522,7 +522,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>570</width>
-     <height>21</height>
+     <height>19</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
@@ -1024,7 +1024,7 @@ QSlider::handle:horizontal {
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="rsclist.qrc"/>
+  <include location="../rsclist.qrc"/>
  </resources>
  <connections/>
 </ui>

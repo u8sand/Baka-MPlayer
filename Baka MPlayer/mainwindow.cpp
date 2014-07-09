@@ -16,21 +16,33 @@ MainWindow::MainWindow(QWidget *parent):
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    seekBar = this->findChild<QSlider*>("seekBar");
+    seekBar = this->findChild<CustomSlider*>("seekBar");
     durationLabel = this->findChild<QLabel*>("durationLabel");
     remainingLabel = this->findChild<QLabel*>("remainingLabel");
-    playlist = this->findChild<QListWidget*>("playlistWidget");
     playButton = this->findChild<QPushButton*>("playButton");
     rewindButton = this->findChild<QPushButton*>("rewindButton");
     previousButton = this->findChild<QPushButton*>("previousButton");
     nextButton = this->findChild<QPushButton*>("nextButton");
+    playlistWidget = this->findChild<QListWidget*>("playlistWidget");
 
+    settings = new SettingsManager();
+    // todo: apply form settings
+
+//    playlist = new PlaylistManager(playlistWidget);
+
+    // todo: forward mpv-related settings to the mpv handler
     mpv = new MpvHandler(this->findChild<QFrame*>("outputFrame")->winId(), wakeup, this);
-    this->findChild<QSlider*>("volumeSlider")->setValue(mpv->GetVolume());
+
+//    QStringList args = QCoreApplication::arguments();
+//    for(QStringList::iterator it = args.begin(); it != args.end(); ++it)
+//        playlist->addItem(*it);
+//    playlist->PlayNext();
 }
 
 MainWindow::~MainWindow()
 {
+    // todo: save form settings
+    delete settings;
     delete mpv;
     delete ui;
 }
@@ -77,6 +89,7 @@ bool MainWindow::HandleMpvEvent(MpvHandler::MpvEvent event)
         SetRemainingLabel();
         SetSeekBar();
         SetPlayButton();
+//        playlist->PlayNext();
         break;
     case MpvHandler::TimeChanged:
         SetDurationLabel();
@@ -159,5 +172,5 @@ void MainWindow::on_seekBar_sliderPressed()
 void MainWindow::on_playlistButton_clicked()
 {
     // todo: playlist functionality
-    playlist->setVisible(!playlist->isVisible());
+    playlistWidget->setVisible(!playlistWidget->isVisible());
 }

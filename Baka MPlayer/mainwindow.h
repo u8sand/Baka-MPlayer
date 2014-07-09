@@ -7,7 +7,9 @@
 #include <QPushButton>
 #include <QListWidget>
 
+#include "settingsmanager.h"
 #include "mpvhandler.h"
+//#include "playlistmanager.h"
 
 namespace Ui {
 class MainWindow;
@@ -42,21 +44,23 @@ private slots:
     void on_volumeSlider_sliderMoved(int position);
     void on_seekBar_sliderMoved(int position);
     void on_seekBar_sliderPressed();
-
     void on_playlistButton_clicked();
+
 
 private:
     Ui::MainWindow *ui;
+    SettingsManager *settings;
     MpvHandler *mpv;
+//    PlaylistManager *playlist;
 
     QSlider *seekBar;
     QLabel *durationLabel,
            *remainingLabel;
-    QListWidget *playlist;
     QPushButton *playButton,
                 *rewindButton,
                 *previousButton,
                 *nextButton;
+    QListWidget *playlistWidget;
 };
 
 #endif // MAINWINDOW_H
