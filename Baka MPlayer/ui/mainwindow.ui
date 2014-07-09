@@ -22,13 +22,11 @@
 	color: white;
 }
 
-QMenu::item { background-color: black; }
-
-#menubar {
+QMenuBar, QMenuBar::item {
 	background: #141414;
-	color: dodgerblue;
+	color: deepskyblue;
+	font-size: 11px;
 }
-
 
 
 
@@ -42,11 +40,11 @@ QSlider::sub-page:horizontal {
 }
 
 QSlider::handle:horizontal {
-	background: white;
-	border: 1px solid black;
-	border-radius: 6px;
-	margin-top: -6px;
-	margin-bottom: -6px;
+	background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+					stop: 0 silver, stop: 1 darkgray);
+	border: 2px solid #202020;
+	border-radius: 7px;
+	margin: -7px 0;
 	width: 12px;
 }</string>
   </property>
@@ -131,18 +129,18 @@ QSlider::handle:horizontal {
       <property name="maximumSize">
        <size>
         <width>16777215</width>
-        <height>15</height>
+        <height>14</height>
        </size>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <property name="leftMargin">
-        <number>8</number>
+        <number>2</number>
        </property>
        <property name="topMargin">
         <number>0</number>
        </property>
        <property name="rightMargin">
-        <number>8</number>
+        <number>2</number>
        </property>
        <property name="bottomMargin">
         <number>0</number>
@@ -171,6 +169,9 @@ QSlider::handle:horizontal {
        </item>
        <item>
         <widget class="CustomSlider" name="seekBar">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
          <property name="maximum">
           <number>1000000</number>
          </property>
@@ -192,7 +193,7 @@ QSlider::handle:horizontal {
          </property>
          <property name="maximumSize">
           <size>
-           <width>50</width>
+           <width>55</width>
            <height>16777215</height>
           </size>
          </property>
@@ -212,7 +213,7 @@ QSlider::handle:horizontal {
       <property name="maximumSize">
        <size>
         <width>16777215</width>
-        <height>40</height>
+        <height>38</height>
        </size>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout">
@@ -236,6 +237,12 @@ QSlider::handle:horizontal {
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
+         <property name="maximumSize">
+          <size>
+           <width>16</width>
+           <height>16</height>
+          </size>
+         </property>
          <property name="cursor">
           <cursorShape>PointingHandCursor</cursorShape>
          </property>
@@ -251,8 +258,8 @@ QSlider::handle:horizontal {
          </property>
          <property name="iconSize">
           <size>
-           <width>18</width>
-           <height>18</height>
+           <width>16</width>
+           <height>16</height>
           </size>
          </property>
          <property name="flat">
@@ -280,8 +287,8 @@ QSlider::handle:horizontal {
          </property>
          <property name="maximumSize">
           <size>
-           <width>30</width>
-           <height>16777215</height>
+           <width>24</width>
+           <height>16</height>
           </size>
          </property>
          <property name="cursor">
@@ -301,8 +308,8 @@ QSlider::handle:horizontal {
          </property>
          <property name="iconSize">
           <size>
-           <width>22</width>
-           <height>18</height>
+           <width>20</width>
+           <height>16</height>
           </size>
          </property>
          <property name="flat">
@@ -317,8 +324,8 @@ QSlider::handle:horizontal {
          </property>
          <property name="maximumSize">
           <size>
-           <width>30</width>
-           <height>16777215</height>
+           <width>26</width>
+           <height>16</height>
           </size>
          </property>
          <property name="cursor">
@@ -338,8 +345,8 @@ QSlider::handle:horizontal {
          </property>
          <property name="iconSize">
           <size>
-           <width>25</width>
-           <height>18</height>
+           <width>22</width>
+           <height>16</height>
           </size>
          </property>
          <property name="flat">
@@ -360,8 +367,8 @@ QSlider::handle:horizontal {
          </property>
          <property name="maximumSize">
           <size>
-           <width>35</width>
-           <height>35</height>
+           <width>28</width>
+           <height>16777215</height>
           </size>
          </property>
          <property name="cursor">
@@ -381,8 +388,8 @@ QSlider::handle:horizontal {
          </property>
          <property name="iconSize">
           <size>
-           <width>30</width>
-           <height>35</height>
+           <width>24</width>
+           <height>32</height>
           </size>
          </property>
          <property name="flat">
@@ -395,10 +402,16 @@ QSlider::handle:horizontal {
          <property name="enabled">
           <bool>false</bool>
          </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="maximumSize">
           <size>
-           <width>30</width>
-           <height>16777215</height>
+           <width>26</width>
+           <height>16</height>
           </size>
          </property>
          <property name="cursor">
@@ -418,8 +431,8 @@ QSlider::handle:horizontal {
          </property>
          <property name="iconSize">
           <size>
-           <width>25</width>
-           <height>18</height>
+           <width>22</width>
+           <height>16</height>
           </size>
          </property>
          <property name="flat">
@@ -435,10 +448,10 @@ QSlider::handle:horizontal {
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
-         <property name="maximumSize">
+         <property name="minimumSize">
           <size>
-           <width>250</width>
-           <height>18</height>
+           <width>100</width>
+           <height>0</height>
           </size>
          </property>
          <property name="cursor">
@@ -485,6 +498,12 @@ QSlider::handle:horizontal {
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
+         <property name="maximumSize">
+          <size>
+           <width>16</width>
+           <height>16</height>
+          </size>
+         </property>
          <property name="cursor">
           <cursorShape>PointingHandCursor</cursorShape>
          </property>
@@ -502,8 +521,8 @@ QSlider::handle:horizontal {
          </property>
          <property name="iconSize">
           <size>
-           <width>18</width>
-           <height>18</height>
+           <width>16</width>
+           <height>16</height>
           </size>
          </property>
          <property name="flat">
@@ -600,6 +619,9 @@ QSlider::handle:horizontal {
      <addaction name="action_none"/>
     </widget>
     <widget class="QMenu" name="menu_Chapters">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="title">
       <string>&amp;Chapters</string>
      </property>
@@ -626,6 +648,9 @@ QSlider::handle:horizontal {
      <addaction name="action_none_3"/>
     </widget>
     <widget class="QMenu" name="menu_Font_Size">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="title">
       <string>&amp;Font Size</string>
      </property>
@@ -719,41 +744,65 @@ QSlider::handle:horizontal {
    </property>
   </action>
   <action name="actionOpen_Last_File">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Open &amp;Last File</string>
    </property>
   </action>
   <action name="actionShow_in_Folder">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Show in &amp;Folder</string>
    </property>
   </action>
   <action name="actionPl_ay_Next_File">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Pl&amp;ay Next File</string>
    </property>
   </action>
   <action name="actionPlay_Previous_File">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Play &amp;Previous File</string>
    </property>
   </action>
   <action name="action_Play">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>&amp;Play</string>
    </property>
   </action>
   <action name="action_Stop">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>&amp;Stop</string>
    </property>
   </action>
   <action name="action_Rewind">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>&amp;Rewind</string>
    </property>
   </action>
   <action name="actionR_estart">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>R&amp;estart</string>
    </property>
@@ -807,21 +856,33 @@ QSlider::handle:horizontal {
    </property>
   </action>
   <action name="action_Frame_Step">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>&amp;Frame Step</string>
    </property>
   </action>
   <action name="actionFrame_Back_Step">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Frame &amp;Back Step</string>
    </property>
   </action>
   <action name="action_Jump_To_Time">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>&amp;Jump To Time</string>
    </property>
   </action>
   <action name="actionFull_Screen">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Full &amp;Screen</string>
    </property>
@@ -939,6 +1000,9 @@ QSlider::handle:horizontal {
    </property>
   </action>
   <action name="action_Take_Snapshot">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>&amp;Take Snapshot</string>
    </property>
@@ -949,6 +1013,9 @@ QSlider::handle:horizontal {
    </property>
   </action>
   <action name="actionMedia_Info">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Media &amp;Info</string>
    </property>
@@ -977,6 +1044,9 @@ QSlider::handle:horizontal {
   <action name="action_Hide_Album_Art">
    <property name="checkable">
     <bool>true</bool>
+   </property>
+   <property name="enabled">
+    <bool>false</bool>
    </property>
    <property name="text">
     <string>&amp;Hide Album Art</string>

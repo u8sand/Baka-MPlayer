@@ -47,13 +47,9 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-inline void MainWindow::SetDurationLabel()
+inline void MainWindow::SetTimeLabels()
 {
     durationLabel->setText(QDateTime::fromTime_t(mpv->GetTime()).toUTC().toString("h:mm:ss"));
-}
-
-inline void MainWindow::SetRemainingLabel()
-{
     remainingLabel->setText(QDateTime::fromTime_t(mpv->GetTotalTime()-mpv->GetTime()).toUTC().toString("-h:mm:ss"));
 }
 
@@ -64,7 +60,7 @@ inline void MainWindow::SetSeekBar()
 
 inline void MainWindow::SetPlayButton()
 {
-    if(mpv->GetState() == MpvHandler::Playing)
+    if(mpv->GetPlayState() == MpvHandler::Playing)
         playButton->setIcon(QIcon(":/img/default_pause.svg"));
     else
         playButton->setIcon(QIcon(":/img/default_play.svg"));
@@ -72,10 +68,23 @@ inline void MainWindow::SetPlayButton()
 
 inline void MainWindow::EnableControls()
 {
-    playButton->setEnabled(true);
+    seekBar->setEnabled(true);
+
+    // playback controls
     rewindButton->setEnabled(true);
     previousButton->setEnabled(true);
+    playButton->setEnabled(true);
     nextButton->setEnabled(true);
+    playlistButton->setEnabled(true);
+    
+    // menubar
+    action_Play->setEnabled(true);
+    action_Stop->setEnabled(true);
+    action_Rewind->setEnabled(true);
+    actionR_estart->setEnabled(true);
+    action_Jump_To_Time->setEnabled(true);
+    actionMedia_Info->setEnabled(true);
+    action_Show_Playlist->setEnabled(true);
 }
 
 bool MainWindow::HandleMpvEvent(MpvHandler::MpvEvent event)
@@ -85,15 +94,13 @@ bool MainWindow::HandleMpvEvent(MpvHandler::MpvEvent event)
     case MpvHandler::FileOpened:
         EnableControls();
     case MpvHandler::FileEnded:
-        SetDurationLabel();
-        SetRemainingLabel();
+        SetTimeLabels();
         SetSeekBar();
         SetPlayButton();
 //        playlist->PlayNext();
         break;
     case MpvHandler::TimeChanged:
-        SetDurationLabel();
-        SetRemainingLabel();
+        SetTimeLabels();
         SetSeekBar();
         break;
     case MpvHandler::StateChanged:
@@ -141,7 +148,21 @@ void MainWindow::on_playButton_clicked()
 
 void MainWindow::on_rewindButton_clicked()
 {
-    mpv->Stop();
+    if(mpv->GetTime() < 3)
+    {
+        mpv->Stop();
+    }
+    else
+    {
+        switch(mpv->GetPlayState())
+        {
+            case MpvHandler::Playing:
+                break;
+            default:
+                mpv->Stop();
+                break;
+        }
+    }
 }
 
 void MainWindow::on_previousButton_clicked()

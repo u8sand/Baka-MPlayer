@@ -138,6 +138,17 @@ bool MpvHandler::Stop()
     return false;
 }
 
+bool MpvHandler::Rewind()
+{
+    if(mpv)
+    {
+        const char *args[] = {"seek", "0", "absolute", NULL};
+        mpv_command_async(mpv, 0, args);
+        return true;
+    }
+    return false;
+}
+
 bool MpvHandler::Seek(int pos, bool relative)
 {
     if(mpv)
