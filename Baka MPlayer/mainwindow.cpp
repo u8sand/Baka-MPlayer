@@ -17,17 +17,6 @@ MainWindow::MainWindow(QWidget *parent):
 {
     ui->setupUi(this);
 
-    // todo: make this less selective--perhaps load all controls
-    seekBar = this->findChild<CustomSlider*>("seekBar");
-    durationLabel = this->findChild<QLabel*>("durationLabel");
-    remainingLabel = this->findChild<QLabel*>("remainingLabel");
-    playButton = this->findChild<QPushButton*>("playButton");
-    rewindButton = this->findChild<QPushButton*>("rewindButton");
-    previousButton = this->findChild<QPushButton*>("previousButton");
-    nextButton = this->findChild<QPushButton*>("nextButton");
-    playlistWidget = this->findChild<QListWidget*>("playlistWidget");
-    playAction = this->findChild<QAction*>("action_Play");
-
     settings = new SettingsManager();
     // todo: apply form settings
 
@@ -52,48 +41,48 @@ MainWindow::~MainWindow()
 
 inline void MainWindow::SetTimeLabels()
 {
-    durationLabel->setText(QDateTime::fromTime_t(mpv->GetTime()).toUTC().toString("h:mm:ss"));
-    remainingLabel->setText(QDateTime::fromTime_t(mpv->GetTotalTime()-mpv->GetTime()).toUTC().toString("-h:mm:ss"));
+    ui->durationLabel->setText(QDateTime::fromTime_t(mpv->GetTime()).toUTC().toString("h:mm:ss"));
+    ui->remainingLabel->setText(QDateTime::fromTime_t(mpv->GetTotalTime()-mpv->GetTime()).toUTC().toString("-h:mm:ss"));
 }
 
 inline void MainWindow::SetSeekBar()
 {
-    seekBar->setValue(seekBar->maximum()*((double)mpv->GetTime()/mpv->GetTotalTime()));
+    ui->seekBar->setValue(ui->seekBar->maximum()*((double)mpv->GetTime()/mpv->GetTotalTime()));
 }
 
 inline void MainWindow::SetPlayButton()
 {
     if(mpv->GetPlayState() == MpvHandler::Playing)
     {
-        playButton->setIcon(QIcon(":/img/default_pause.svg"));
-        playAction->setText("&Pause");
+        ui->playButton->setIcon(QIcon(":/img/default_pause.svg"));
+        ui->action_Play->setText("&Pause");
     }
     else
     {
-        playButton->setIcon(QIcon(":/img/default_play.svg"));
-        playAction->setText("&Play");
+        ui->playButton->setIcon(QIcon(":/img/default_play.svg"));
+        ui->action_Play->setText("&Play");
     }
 }
 
 inline void MainWindow::EnableControls()
 {
-    seekBar->setEnabled(true);
+    ui->seekBar->setEnabled(true);
 
     // playback controls
-    rewindButton->setEnabled(true);
-    previousButton->setEnabled(true);
-    playButton->setEnabled(true);
-    nextButton->setEnabled(true);
-    this->findChild<QPushButton*>("playlistButton")->setEnabled(true);
+    ui->rewindButton->setEnabled(true);
+    ui->previousButton->setEnabled(true);
+    ui->playButton->setEnabled(true);
+    ui->nextButton->setEnabled(true);
+    ui->playlistButton->setEnabled(true);
     
     // menubar
-    playAction->setEnabled(true);
-    this->findChild<QAction*>("action_Stop")->setEnabled(true);
-    this->findChild<QAction*>("action_Rewind")->setEnabled(true);
-    this->findChild<QAction*>("actionR_estart")->setEnabled(true);
-    this->findChild<QAction*>("action_Jump_To_Time")->setEnabled(true);
-    this->findChild<QAction*>("actionMedia_Info")->setEnabled(true);
-    this->findChild<QAction*>("action_Show_Playlist")->setEnabled(true);
+    ui->action_Play->setEnabled(true);
+    ui->action_Stop->setEnabled(true);
+    ui->action_Rewind->setEnabled(true);
+    ui->actionR_estart->setEnabled(true);
+    ui->action_Jump_To_Time->setEnabled(true);
+    ui->actionMedia_Info->setEnabled(true);
+    ui->action_Show_Playlist->setEnabled(true);
 }
 
 bool MainWindow::HandleMpvEvent(MpvHandler::MpvEvent event)
@@ -191,18 +180,18 @@ void MainWindow::on_volumeSlider_sliderMoved(int position)
 
 void MainWindow::on_seekBar_sliderMoved(int position)
 {
-    mpv->Seek(((double)position/seekBar->maximum())*mpv->GetTotalTime());
+    mpv->Seek(((double)position/ui->seekBar->maximum())*mpv->GetTotalTime());
 }
 
 void MainWindow::on_seekBar_sliderPressed()
 {
-    mpv->Seek(((double)seekBar->value()/seekBar->maximum())*mpv->GetTotalTime());
+    mpv->Seek(((double)ui->seekBar->value()/ui->seekBar->maximum())*mpv->GetTotalTime());
 }
 
 void MainWindow::on_playlistButton_clicked()
 {
     // todo: playlist functionality
-    playlistWidget->setVisible(!playlistWidget->isVisible());
+    ui->playlistWidget->setVisible(!ui->playlistWidget->isVisible());
 }
 
 void MainWindow::on_action_Play_triggered()

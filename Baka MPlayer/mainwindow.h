@@ -2,11 +2,6 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QSlider>
-#include <QLabel>
-#include <QPushButton>
-#include <QListWidget>
-#include <QAction>
 
 #include "settingsmanager.h"
 #include "mpvhandler.h"
@@ -54,16 +49,6 @@ private:
     SettingsManager *settings;
     MpvHandler *mpv;
 //    PlaylistManager *playlist;
-
-    QSlider *seekBar;
-    QLabel *durationLabel,
-           *remainingLabel;
-    QPushButton *playButton,
-                *rewindButton,
-                *previousButton,
-                *nextButton;
-    QListWidget *playlistWidget;
-    QAction     *playAction;
 };
 
 #endif // MAINWINDOW_H
