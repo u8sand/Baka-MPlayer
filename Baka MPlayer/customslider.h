@@ -13,7 +13,11 @@ class CustomSlider : public QSlider
 {
     Q_OBJECT
 public:
-    explicit CustomSlider(QObject *parent = 0) {}
+    explicit CustomSlider(QWidget *parent = 0):
+        QSlider(parent)
+    {
+
+    }
 
 protected:
     void mousePressEvent(QMouseEvent *event)

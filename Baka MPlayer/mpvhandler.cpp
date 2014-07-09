@@ -1,23 +1,42 @@
 #include "mpvhandler.h"
 
-MpvHandler::MpvHandler(int64_t _wid, void (*_wakeup)(void*), void *_win):
+#include <QCoreApplication>
+
+static void wakeup(void *ctx)
+{
+    MpvHandler *mpvhandler = (MpvHandler*)ctx;
+    QCoreApplication::postEvent(mpvhandler, new QEvent(QEvent::User));
+}
+
+MpvHandler::MpvHandler(QWidget *parent):
+    QFrame(parent),
     mpv(0),
-    wid(_wid),
-    wakeup(_wakeup),
-    win(_win),
-    volume(100),
+    url(""),
     time(0),
     totalTime(0),
-    state(Stopped)
+    playState(Mpv::Stopped)
 {
     mpv = mpv_create();
     if(!mpv)
         throw "Could not create mpv object";
 
+    int64_t wid = this->winId();
     mpv_set_option(mpv, "wid", MPV_FORMAT_INT64, &wid);
+
     mpv_set_option_string(mpv, "input-default-bindings", "no");
     mpv_set_option_string(mpv, "idle", "yes");
-    mpv_set_property(mpv, "volume", MPV_FORMAT_INT64, &volume);
+
+    mpv_observe_property(mpv, 0, "time-pos", MPV_FORMAT_DOUBLE);
+    mpv_observe_property(mpv, 0, "length", MPV_FORMAT_DOUBLE);
+
+    mpv_request_event(mpv, MPV_EVENT_IDLE, 1);
+    mpv_request_event(mpv, MPV_EVENT_FILE_LOADED, 1);
+    mpv_request_event(mpv, MPV_EVENT_START_FILE, 1);
+    mpv_request_event(mpv, MPV_EVENT_PAUSE, 1);
+    mpv_request_event(mpv, MPV_EVENT_UNPAUSE, 1);
+    mpv_request_event(mpv, MPV_EVENT_END_FILE, 1);
+
+    mpv_set_wakeup_callback(mpv, wakeup, this);
 
     if(mpv_initialize(mpv) < 0)
         throw "Could not initialize mpv";
@@ -32,83 +51,72 @@ MpvHandler::~MpvHandler()
     }
 }
 
-MpvHandler::MpvEvent MpvHandler::HandleEvent()
+bool MpvHandler::event(QEvent *event)
 {
-    if(mpv)
+    if(event->type() == QEvent::User)
     {
-        mpv_event *event = mpv_wait_event(mpv, 0);
-        if (event->event_id == MPV_EVENT_NONE)
-            return NoEvent;
-        switch (event->event_id)
+        while(mpv)
         {
-        case MPV_EVENT_PROPERTY_CHANGE:
-        {
-            mpv_event_property *prop = (mpv_event_property*)event->data;
-            if (strcmp(prop->name, "time-pos") == 0)
+            mpv_event *event = mpv_wait_event(mpv, 0);
+            if (event->event_id == MPV_EVENT_NONE)
+                break;
+            switch (event->event_id)
             {
-                if (prop->format == MPV_FORMAT_DOUBLE)
-                {
-                    SetTime((time_t)*(double*)prop->data);
-                    return TimeChanged;
-                }
-            }
-            if (strcmp(prop->name, "length") == 0)
+            case MPV_EVENT_PROPERTY_CHANGE:
             {
-                if (prop->format == MPV_FORMAT_DOUBLE)
-                {
-                    SetTotalTime((time_t)*(double*)prop->data);
-                    return TimeChanged;
-                }
+                mpv_event_property *prop = (mpv_event_property*)event->data;
+                if (strcmp(prop->name, "time-pos") == 0)
+                    if (prop->format == MPV_FORMAT_DOUBLE)
+                        SetTime((time_t)*(double*)prop->data);
+                if (strcmp(prop->name, "length") == 0)
+                    if (prop->format == MPV_FORMAT_DOUBLE)
+                        SetTotalTime((time_t)*(double*)prop->data);
+                break;
             }
-            break;
+            case MPV_EVENT_IDLE:
+                SetTime(0);
+                SetPlayState(Mpv::Idle);
+                break;
+            case MPV_EVENT_FILE_LOADED:
+                //SetFile(event->data);
+                SetFile("new");
+                break;
+            case MPV_EVENT_START_FILE:
+                SetPlayState(Mpv::Started);
+            case MPV_EVENT_UNPAUSE:
+                SetPlayState(Mpv::Playing);
+                break;
+            case MPV_EVENT_PAUSE:
+                SetPlayState(Mpv::Paused);
+                break;
+            case MPV_EVENT_END_FILE:
+                SetTime(0);
+                SetPlayState(Mpv::Ended);
+                SetPlayState(Mpv::Stopped);
+                break;
+            default:
+                // unhandled events
+                break;
+            }
         }
-        case MPV_EVENT_PAUSE:
-            SetPlayState(Paused);
-            return StateChanged;
-        case MPV_EVENT_START_FILE:
-        case MPV_EVENT_UNPAUSE:
-            SetPlayState(Playing);
-            return StateChanged;
-        case MPV_EVENT_FILE_LOADED:
-            return FileOpened;
-        case MPV_EVENT_IDLE:
-            SetTime(0);
-            SetPlayState(Stopped);
-            return Idling;
-        case MPV_EVENT_END_FILE:
-            SetTime(0);
-            SetPlayState(Stopped);
-            return FileEnded;
-        default:
-            return UnhandledEvent;
-        }
-    }
-    return NoEvent;
-}
-
-bool MpvHandler::OpenFile(QString url)
-{
-    if(mpv)
-    {
-        const char *args[] = {"loadfile", url.toUtf8().data(), NULL};
-        mpv_command(mpv, args);
-
-        mpv_observe_property(mpv, 0, "time-pos", MPV_FORMAT_DOUBLE);
-        mpv_observe_property(mpv, 0, "length", MPV_FORMAT_DOUBLE);
-        mpv_set_wakeup_callback(mpv, wakeup, win);
-
         return true;
     }
-    return false;
+    return QFrame::event(event);
 }
 
-//bool MpvHandler::OpenFile(QString url, QString subFile)
-//{
-//    // externalSub = subFile;
-//    return OpenFile(url);
-//}
+void MpvHandler::OpenFile(QString url/*, QString subFile = ""*/)
+{
+    if(mpv)
+    {
+//        externalSub = subFile;
+        const char *args[] = {"loadfile", url.toUtf8().data(), NULL};
+        mpv_command(mpv, args);
+    }
+    else
+        emit ErrorSignal("Mpv not initialized");
+}
 
-bool MpvHandler::PlayPause(bool justPause)
+void MpvHandler::PlayPause(bool justPause)
 {
     if(mpv)
     {
@@ -122,34 +130,34 @@ bool MpvHandler::PlayPause(bool justPause)
             const char *args[] = {"cycle", "pause", NULL};
             mpv_command_async(mpv, 0, args);
         }
-        return true;
     }
-    return false;
+    else
+        emit ErrorSignal("Mpv not initialized");
 }
 
-bool MpvHandler::Stop()
+void MpvHandler::Stop()
 {
     if(mpv)
     {
         Seek(0);
         PlayPause(true);
-        return true;
     }
-    return false;
+    else
+        emit ErrorSignal("Mpv not initialized");
 }
 
-bool MpvHandler::Rewind()
+void MpvHandler::Rewind()
 {
     if(mpv)
     {
         const char *args[] = {"seek", "0", "absolute", NULL};
         mpv_command_async(mpv, 0, args);
-        return true;
     }
-    return false;
+    else
+        emit ErrorSignal("Mpv not initialized");
 }
 
-bool MpvHandler::Seek(int pos, bool relative)
+void MpvHandler::Seek(int pos, bool relative)
 {
     if(mpv)
     {
@@ -158,12 +166,12 @@ bool MpvHandler::Seek(int pos, bool relative)
                               relative ? "relative" : "absolute",
                               NULL};
         mpv_command_async(mpv, 0, args);
-        return true;
     }
-    return false;
+    else
+        emit ErrorSignal("Mpv not initialized");
 }
 
-bool MpvHandler::Volume(int level)
+void MpvHandler::AdjustVolume(int level)
 {
     if(mpv)
     {
@@ -171,8 +179,8 @@ bool MpvHandler::Volume(int level)
                               QString::number(level).toUtf8().data(),
                               NULL};
         mpv_command_async(mpv, 0, args);
-        return true;
     }
-    return false;
+    else
+        emit ErrorSignal("Error Adjusting Volume");
 }
 

@@ -1,62 +1,73 @@
 #ifndef MPVHANDLER_H
 #define MPVHANDLER_H
 
+#include <QMetaType>
+#include <QFrame>
 #include <QString>
 
 #include <mpv/client.h>
 
-class MpvHandler
+namespace Mpv
 {
-public:
-    enum MpvEvent
+    enum PlayState
     {
-        NoEvent,
-        Idling,
-        FileOpened,
-        FileEnded,
-        StateChanged,
-        TimeChanged,
-        UnhandledEvent
-    };
-    enum MpvPlayState
-    {
+        Idle,
+        Started,
         Playing,
         Paused,
-        Stopped
+        Stopped,
+        Ended
     };
+}
+Q_DECLARE_METATYPE(Mpv::PlayState)
 
-    MpvHandler(int64_t wid, void (*wakeup)(void*), void *win);
+class MpvHandler : public QFrame
+{
+    Q_OBJECT
+public:
+
+    explicit MpvHandler(QWidget *parent = 0);
     ~MpvHandler();
 
-    MpvEvent HandleEvent();
-
-    bool OpenFile(QString url);
-    //bool OpenFile(QString url, QString subFile);
-    bool PlayPause(bool justPause = false);
-    bool Stop();
-    bool Rewind();
-    bool Seek(int pos, bool relative = false);
-    bool Volume(int level);
-
-    inline int GetVolume() const { return volume; }
+    inline QString GetUrl() const { return url; }
     inline time_t GetTime() const { return time; }
     inline time_t GetTotalTime() const { return totalTime; }
-    inline MpvPlayState GetPlayState() const { return state; }
+    inline Mpv::PlayState GetPlayState() const { return playState; }
+
 protected:
-    inline void SetVolume(int v) { volume = v;  }
-    inline void SetTime(time_t t) { time = t; }
-    inline void SetTotalTime(time_t t) { totalTime = t; }
-    inline void SetPlayState(MpvPlayState s) { state = s; }
+    virtual bool event(QEvent *event);
+
+public slots:
+    void OpenFile(QString s);
+    void PlayPause(bool justPause = false);
+    void Stop();
+    void Rewind();
+    void Seek(int pos, bool relative = false);
+    void AdjustVolume(int level);
+
+private slots:
+    void SetFile(QString s) { url = s; emit FileChanged(s); }
+    void SetTime(time_t t) { time = t; emit TimeChanged(t); }
+    void SetTotalTime(time_t t) { totalTime = t; emit TotalTimeChanged(t); }
+    void SetPlayState(Mpv::PlayState s) { playState = s; emit PlayStateChanged(s); }
+
+signals:
+    void FileChanged(QString url);
+    void TimeChanged(time_t t);
+    void TotalTimeChanged(time_t t);
+    void PlayStateChanged(Mpv::PlayState playState);
+    void ErrorSignal(QString error);
+
+
 private:
     mpv_handle *mpv;
-    int64_t wid;
-    void (*wakeup)(void*);
-    void *win;
 
-    int64_t volume;
+    QString url;
     time_t time,
            totalTime;
-    MpvPlayState state;
+    Mpv::PlayState playState;
 };
+
+
 
 #endif // MPVHANDLER_H

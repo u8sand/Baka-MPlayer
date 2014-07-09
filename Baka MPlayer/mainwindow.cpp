@@ -5,25 +5,38 @@
 #include <QFileDialog>
 #include <QDateTime>
 
-static void wakeup(void *ctx)
-{
-    MainWindow *mainwindow = (MainWindow*)ctx;
-    QCoreApplication::postEvent(mainwindow, new QEvent(QEvent::User));
-}
-
 MainWindow::MainWindow(QWidget *parent):
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::MainWindow),
+    settings(new SettingsManager)
 {
     ui->setupUi(this);
 
-    settings = new SettingsManager();
-    // todo: apply form settings
+    // mpv updates
+    connect(ui->mpv, SIGNAL(TimeChanged(time_t)),
+            this, SLOT(SetTime(time_t)));
+    connect(ui->mpv, SIGNAL(PlayStateChanged(Mpv::PlayState)),
+            this, SLOT(SetPlayState(Mpv::PlayState)));
+    connect(ui->mpv, SIGNAL(ErrorSignal(QString)),
+            this, SLOT(HandleError(QString)));
 
-//    playlist = new PlaylistManager(playlistWidget);
+    // slider
+    connect(this->ui->volumeSlider, SIGNAL(valueChanged(int)),
+            this->ui->mpv, SLOT(AdjustVolume(int)));
 
-    // todo: forward mpv-related settings to the mpv handler
-    mpv = new MpvHandler(this->findChild<QFrame*>("outputFrame")->winId(), wakeup, this);
+    // buttons
+    connect(ui->openButton, SIGNAL(clicked()),
+            this, SLOT(OpenFile()));
+    connect(ui->playButton, SIGNAL(clicked()),
+            ui->mpv, SLOT(PlayPause()));
+
+    // menu
+    connect(ui->action_Open_File, SIGNAL(triggered()),
+            this, SLOT(OpenFile()));
+    connect(ui->action_Play, SIGNAL(triggered()),
+            ui->mpv, SLOT(PlayPause()));
+    connect(ui->actionE_xit, SIGNAL(triggered()),
+            QCoreApplication::instance(), SLOT(quit()));
 
 //    QStringList args = QCoreApplication::arguments();
 //    for(QStringList::iterator it = args.begin(); it != args.end(); ++it)
@@ -35,129 +48,99 @@ MainWindow::~MainWindow()
 {
     // todo: save form settings
     delete settings;
-    delete mpv;
     delete ui;
 }
 
-inline void MainWindow::SetTimeLabels()
+void MainWindow::SetTime(time_t time)
 {
-    ui->durationLabel->setText(QDateTime::fromTime_t(mpv->GetTime()).toUTC().toString("h:mm:ss"));
-    ui->remainingLabel->setText(QDateTime::fromTime_t(mpv->GetTotalTime()-mpv->GetTime()).toUTC().toString("-h:mm:ss"));
+    ui->seekBar->setValue(ui->seekBar->maximum()*((double)time/ui->mpv->GetTotalTime()));
+    ui->durationLabel->setText(QDateTime::fromTime_t(time).toUTC().toString("h:mm:ss"));
+    ui->remainingLabel->setText(QDateTime::fromTime_t(ui->mpv->GetTotalTime()-time).toUTC().toString("-h:mm:ss"));
 }
 
-inline void MainWindow::SetSeekBar()
+void MainWindow::SetPlayState(Mpv::PlayState playState)
 {
-    ui->seekBar->setValue(ui->seekBar->maximum()*((double)mpv->GetTime()/mpv->GetTotalTime()));
-}
-
-inline void MainWindow::SetPlayButton()
-{
-    if(mpv->GetPlayState() == MpvHandler::Playing)
+    switch(playState)
     {
+    case Mpv::Started:
+        ui->seekBar->setEnabled(true);
+        // playback controls
+        ui->rewindButton->setEnabled(true);
+        ui->previousButton->setEnabled(true);
+        ui->playButton->setEnabled(true);
+        ui->nextButton->setEnabled(true);
+        ui->playlistButton->setEnabled(true);
+        // menubar
+        ui->action_Play->setEnabled(true);
+        ui->action_Stop->setEnabled(true);
+        ui->action_Rewind->setEnabled(true);
+        ui->actionR_estart->setEnabled(true);
+        ui->action_Jump_To_Time->setEnabled(true);
+        ui->actionMedia_Info->setEnabled(true);
+        ui->action_Show_Playlist->setEnabled(true);
+        break;
+    case Mpv::Playing:
         ui->playButton->setIcon(QIcon(":/img/default_pause.svg"));
         ui->action_Play->setText("&Pause");
-    }
-    else
-    {
+        break;
+    case Mpv::Paused:
         ui->playButton->setIcon(QIcon(":/img/default_play.svg"));
         ui->action_Play->setText("&Play");
-    }
-}
-
-inline void MainWindow::EnableControls()
-{
-    ui->seekBar->setEnabled(true);
-
-    // playback controls
-    ui->rewindButton->setEnabled(true);
-    ui->previousButton->setEnabled(true);
-    ui->playButton->setEnabled(true);
-    ui->nextButton->setEnabled(true);
-    ui->playlistButton->setEnabled(true);
-    
-    // menubar
-    ui->action_Play->setEnabled(true);
-    ui->action_Stop->setEnabled(true);
-    ui->action_Rewind->setEnabled(true);
-    ui->actionR_estart->setEnabled(true);
-    ui->action_Jump_To_Time->setEnabled(true);
-    ui->actionMedia_Info->setEnabled(true);
-    ui->action_Show_Playlist->setEnabled(true);
-}
-
-bool MainWindow::HandleMpvEvent(MpvHandler::MpvEvent event)
-{
-    switch(event)
-    {
-    case MpvHandler::FileOpened:
-        EnableControls();
-    case MpvHandler::FileEnded:
-        SetTimeLabels();
-        SetSeekBar();
-        SetPlayButton();
-//        playlist->PlayNext();
         break;
-    case MpvHandler::TimeChanged:
-        SetTimeLabels();
-        SetSeekBar();
+    case Mpv::Stopped:
+        ui->playButton->setIcon(QIcon(":/img/default_play.svg"));
+        ui->action_Play->setText("&Play");
         break;
-    case MpvHandler::StateChanged:
-        SetPlayButton();
-        break;
-    case MpvHandler::NoEvent:
-        return false;
-    default:
+    case Mpv::Idle:
+    case Mpv::Ended:
+        SetTime(0);
+        ui->seekBar->setEnabled(false);
+        // playback controls
+        ui->rewindButton->setEnabled(false);
+        ui->previousButton->setEnabled(false);
+        ui->playButton->setEnabled(false);
+        ui->nextButton->setEnabled(false);
+        ui->playlistButton->setEnabled(false);
+        // menubar
+        ui->action_Play->setEnabled(false);
+        ui->action_Stop->setEnabled(false);
+        ui->action_Rewind->setEnabled(false);
+        ui->actionR_estart->setEnabled(false);
+        ui->action_Jump_To_Time->setEnabled(false);
+        ui->actionMedia_Info->setEnabled(false);
+        ui->action_Show_Playlist->setEnabled(false);
         break;
     }
-    return true;
 }
 
-bool MainWindow::event(QEvent *event)
+void MainWindow::HandleError(QString err)
 {
-    if(event->type() == QEvent::User)
-    {
-        while(HandleMpvEvent(mpv->HandleEvent()));
-        return true;
-    }
-    return QMainWindow::event(event);
+    QMessageBox::warning(this, "Error", err);
 }
 
-void MainWindow::on_action_Open_File_triggered()
+void MainWindow::OpenFile()
 {
     QString filename = QFileDialog::getOpenFileName(this, "Open file");
-    mpv->OpenFile(filename);
+    ui->mpv->OpenFile(filename);
 }
 
-void MainWindow::on_actionE_xit_triggered()
-{
-    QCoreApplication::exit();
-}
-
-void MainWindow::on_openButton_clicked()
-{
-    QString filename = QFileDialog::getOpenFileName(this, "Open file");
-    mpv->OpenFile(filename);
-}
-
-void MainWindow::on_playButton_clicked()
-{
-    mpv->PlayPause();
-}
+// todo: convert the rest of these to signals
 
 void MainWindow::on_rewindButton_clicked()
 {
-    if(mpv->GetTime() < 3)
+    // not sure why this clause is here; todo: ask
+    if(ui->mpv->GetTime() < 3)
     {
-        mpv->Stop();
+        ui->mpv->Stop();
     }
     else
     {
-        switch(mpv->GetPlayState())
+        switch(ui->mpv->GetPlayState())
         {
-            case MpvHandler::Playing:
+            case Mpv::Playing:
                 break;
             default:
-                mpv->Stop();
+                ui->mpv->Stop();
                 break;
         }
     }
@@ -165,36 +148,26 @@ void MainWindow::on_rewindButton_clicked()
 
 void MainWindow::on_previousButton_clicked()
 {
-    mpv->Seek(-5, true);
+    ui->mpv->Seek(-5, true);
 }
 
 void MainWindow::on_nextButton_clicked()
 {
-    mpv->Seek(5, true);
-}
-
-void MainWindow::on_volumeSlider_sliderMoved(int position)
-{
-    mpv->Volume(position);
+    ui->mpv->Seek(5, true);
 }
 
 void MainWindow::on_seekBar_sliderMoved(int position)
 {
-    mpv->Seek(((double)position/ui->seekBar->maximum())*mpv->GetTotalTime());
+    ui->mpv->Seek(((double)position/ui->seekBar->maximum())*ui->mpv->GetTotalTime());
 }
 
 void MainWindow::on_seekBar_sliderPressed()
 {
-    mpv->Seek(((double)ui->seekBar->value()/ui->seekBar->maximum())*mpv->GetTotalTime());
+    ui->mpv->Seek(((double)ui->seekBar->value()/ui->seekBar->maximum())*ui->mpv->GetTotalTime());
 }
 
 void MainWindow::on_playlistButton_clicked()
 {
     // todo: playlist functionality
     ui->playlistWidget->setVisible(!ui->playlistWidget->isVisible());
-}
-
-void MainWindow::on_action_Play_triggered()
-{
-    mpv->PlayPause();
 }

@@ -88,7 +88,7 @@ QSlider::handle:horizontal {
          <property name="handleWidth">
           <number>4</number>
          </property>
-         <widget class="QFrame" name="outputFrame">
+         <widget class="MpvHandler" name="mpv">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
             <horstretch>0</horstretch>
@@ -541,7 +541,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>570</width>
-     <height>19</height>
+     <height>17</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
@@ -1091,6 +1091,12 @@ QSlider::handle:horizontal {
    <class>CustomSlider</class>
    <extends>QSlider</extends>
    <header>customslider.h</header>
+  </customwidget>
+  <customwidget>
+   <class>MpvHandler</class>
+   <extends>QFrame</extends>
+   <header>mpvhandler.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources>
