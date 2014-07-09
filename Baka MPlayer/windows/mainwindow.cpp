@@ -89,9 +89,6 @@ void MainWindow::SetPlayState(Mpv::PlayState playState)
         ui->action_Play->setText("&Pause");
         break;
     case Mpv::Paused:
-        ui->playButton->setIcon(QIcon(":/img/default_play.svg"));
-        ui->action_Play->setText("&Play");
-        break;
     case Mpv::Stopped:
         ui->playButton->setIcon(QIcon(":/img/default_play.svg"));
         ui->action_Play->setText("&Play");

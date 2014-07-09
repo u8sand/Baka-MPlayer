@@ -113,7 +113,7 @@ void MpvHandler::OpenFile(QString url/*, QString subFile = ""*/)
         mpv_command(mpv, args);
     }
     else
-        emit ErrorSignal("Mpv not initialized");
+        emit ErrorSignal("mpv was not initialized");
 }
 
 void MpvHandler::PlayPause(bool justPause)
@@ -132,7 +132,7 @@ void MpvHandler::PlayPause(bool justPause)
         }
     }
     else
-        emit ErrorSignal("Mpv not initialized");
+        emit ErrorSignal("mpv was not initialized");
 }
 
 void MpvHandler::Stop()
@@ -143,7 +143,7 @@ void MpvHandler::Stop()
         PlayPause(true);
     }
     else
-        emit ErrorSignal("Mpv not initialized");
+        emit ErrorSignal("mpv was not initialized");
 }
 
 void MpvHandler::Rewind()
@@ -154,7 +154,7 @@ void MpvHandler::Rewind()
         mpv_command_async(mpv, 0, args);
     }
     else
-        emit ErrorSignal("Mpv not initialized");
+        emit ErrorSignal("mpv was not initialized");
 }
 
 void MpvHandler::Seek(int pos, bool relative)
@@ -168,7 +168,7 @@ void MpvHandler::Seek(int pos, bool relative)
         mpv_command_async(mpv, 0, args);
     }
     else
-        emit ErrorSignal("Mpv not initialized");
+        emit ErrorSignal("mpv was not initialized");
 }
 
 void MpvHandler::AdjustVolume(int level)
@@ -181,6 +181,6 @@ void MpvHandler::AdjustVolume(int level)
         mpv_command_async(mpv, 0, args);
     }
     else
-        emit ErrorSignal("Error Adjusting Volume");
+        emit ErrorSignal("mpv was not initialized");
 }
 
