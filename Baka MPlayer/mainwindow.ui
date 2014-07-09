@@ -24,7 +24,7 @@
 
 QMenuBar, QMenuBar::item {
 	background: #141414;
-	color: dodgerblue;
+	color: deepskyblue;
 }
 
 
