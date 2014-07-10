@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Baka MPlayer</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="../rsclist.qrc">
+    <normaloff>:/img/icon.ico</normaloff>:/img/icon.ico</iconset>
+  </property>
   <property name="autoFillBackground">
    <bool>false</bool>
   </property>
@@ -541,7 +545,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>570</width>
-     <height>17</height>
+     <height>19</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
