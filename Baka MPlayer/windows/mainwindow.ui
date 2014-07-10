@@ -100,7 +100,7 @@ QSlider::handle:horizontal {
            </sizepolicy>
           </property>
           <property name="frameShape">
-           <enum>QFrame::StyledPanel</enum>
+           <enum>QFrame::NoFrame</enum>
           </property>
           <property name="frameShadow">
            <enum>QFrame::Raised</enum>
@@ -222,13 +222,13 @@ QSlider::handle:horizontal {
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <property name="leftMargin">
-        <number>10</number>
+        <number>12</number>
        </property>
        <property name="topMargin">
         <number>0</number>
        </property>
        <property name="rightMargin">
-        <number>10</number>
+        <number>12</number>
        </property>
        <property name="bottomMargin">
         <number>5</number>
@@ -252,9 +252,6 @@ QSlider::handle:horizontal {
          </property>
          <property name="autoFillBackground">
           <bool>false</bool>
-         </property>
-         <property name="text">
-          <string/>
          </property>
          <property name="icon">
           <iconset resource="../rsclist.qrc">
@@ -301,9 +298,6 @@ QSlider::handle:horizontal {
          <property name="autoFillBackground">
           <bool>false</bool>
          </property>
-         <property name="text">
-          <string/>
-         </property>
          <property name="icon">
           <iconset resource="../rsclist.qrc">
            <normaloff>:/img/default_reverse.svg</normaloff>
@@ -337,9 +331,6 @@ QSlider::handle:horizontal {
          </property>
          <property name="autoFillBackground">
           <bool>false</bool>
-         </property>
-         <property name="text">
-          <string/>
          </property>
          <property name="icon">
           <iconset resource="../rsclist.qrc">
@@ -381,9 +372,6 @@ QSlider::handle:horizontal {
          <property name="autoFillBackground">
           <bool>false</bool>
          </property>
-         <property name="text">
-          <string/>
-         </property>
          <property name="icon">
           <iconset>
            <normaloff>../img/disabled_play.svg</normaloff>../img/disabled_play.svg</iconset>
@@ -422,9 +410,6 @@ QSlider::handle:horizontal {
          <property name="autoFillBackground">
           <bool>false</bool>
          </property>
-         <property name="text">
-          <string/>
-         </property>
          <property name="icon">
           <iconset resource="../rsclist.qrc">
            <normaloff>:/img/default_next.svg</normaloff>
@@ -455,9 +440,6 @@ QSlider::handle:horizontal {
            <width>100</width>
            <height>0</height>
           </size>
-         </property>
-         <property name="cursor">
-          <cursorShape>PointingHandCursor</cursorShape>
          </property>
          <property name="maximum">
           <number>100</number>
@@ -512,9 +494,6 @@ QSlider::handle:horizontal {
          <property name="autoFillBackground">
           <bool>false</bool>
          </property>
-         <property name="text">
-          <string/>
-         </property>
          <property name="icon">
           <iconset resource="../rsclist.qrc">
            <normaloff>:/img/default_playlist.svg</normaloff>
@@ -543,7 +522,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>570</width>
-     <height>17</height>
+     <height>19</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
