@@ -359,7 +359,7 @@ QSlider::handle:horizontal {
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="playButton">
+        <widget class="PlayPauseButton" name="playButton">
          <property name="enabled">
           <bool>false</bool>
          </property>
@@ -385,10 +385,8 @@ QSlider::handle:horizontal {
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="../rsclist.qrc">
-           <normaloff>:/img/default_play.svg</normaloff>
-           <disabledoff>:/img/disabled_play.svg</disabledoff>
-           <disabledon>:/img/disabled_play.svg</disabledon>:/img/default_play.svg</iconset>
+          <iconset>
+           <normaloff>../img/disabled_play.svg</normaloff>../img/disabled_play.svg</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -545,7 +543,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>570</width>
-     <height>19</height>
+     <height>17</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
@@ -1095,6 +1093,11 @@ QSlider::handle:horizontal {
    <class>CustomSlider</class>
    <extends>QSlider</extends>
    <header>customslider.h</header>
+  </customwidget>
+  <customwidget>
+   <class>PlayPauseButton</class>
+   <extends>QPushButton</extends>
+   <header>playpausebutton.h</header>
   </customwidget>
  </customwidgets>
  <resources>

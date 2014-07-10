@@ -23,7 +23,8 @@ HEADERS  += \
     settingsmanager.h \
     windows/mainwindow.h \
     widgets/customslider.h \
-    playlistmanager.h
+    playlistmanager.h \
+    widgets/playpausebutton.h
 
 FORMS    += \
     windows/mainwindow.ui

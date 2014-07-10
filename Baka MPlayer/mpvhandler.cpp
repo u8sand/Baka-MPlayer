@@ -11,7 +11,7 @@ static void wakeup(void *ctx)
 MpvHandler::MpvHandler( int64_t wid, QObject *parent):
     QObject(parent),
     mpv(0),
-    url(""),
+//    url(""),
     time(0),
     totalTime(0),
     playState(Mpv::Stopped)

@@ -114,6 +114,7 @@ void MainWindow::SetControls(bool enable)
     ui->rewindButton->setEnabled(enable);
     ui->previousButton->setEnabled(enable);
     ui->playButton->setEnabled(enable);
+    ui->playButton->Update();
     ui->nextButton->setEnabled(enable);
     ui->playlistButton->setEnabled(enable);
     // menubar
@@ -134,12 +135,12 @@ void MainWindow::SetPlayState(Mpv::PlayState playState)
         SetControls(true);
         break;
     case Mpv::Playing:
-        ui->playButton->setIcon(QIcon(":/img/default_pause.svg"));
+        ui->playButton->SetPlay(false);
         ui->action_Play->setText("&Pause");
         break;
     case Mpv::Paused:
     case Mpv::Stopped:
-        ui->playButton->setIcon(QIcon(":/img/default_play.svg"));
+        ui->playButton->SetPlay(true);
         ui->action_Play->setText("&Play");
         break;
     case Mpv::Idle:
@@ -161,26 +162,17 @@ void MainWindow::OpenFile()
     mpv->OpenFile(filename);
 }
 
-// todo: convert the rest of these to signals
-
 void MainWindow::on_rewindButton_clicked()
 {
     // if user presses rewind button twice within 3 seconds, stop video
     if(mpv->GetTime() < 3)
-    {
         mpv->Stop();
-    }
     else
     {
-        switch(mpv->GetPlayState())
-        {
-            case Mpv::Playing:
-                mpv->Rewind();
-                break;
-            default:
-                mpv->Stop();
-                break;
-        }
+        if(mpv->GetPlayState() == Mpv::Playing)
+            mpv->Rewind();
+        else
+            mpv->Stop();
     }
 }
 
