@@ -2,7 +2,7 @@
 #define MPVHANDLER_H
 
 #include <QMetaType>
-#include <QFrame>
+#include <QObject>
 #include <QString>
 
 #include <mpv/client.h>
@@ -21,11 +21,11 @@ namespace Mpv
 }
 Q_DECLARE_METATYPE(Mpv::PlayState)
 
-class MpvHandler : public QFrame
+class MpvHandler : public QObject
 {
     Q_OBJECT
 public:
-    explicit MpvHandler(QWidget *parent = 0);
+    explicit MpvHandler(int64_t wid, QObject *parent = 0);
     ~MpvHandler();
 
     inline QString GetUrl() const { return url; }

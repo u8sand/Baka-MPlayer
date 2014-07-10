@@ -5,6 +5,7 @@
 
 #include "mpvhandler.h"
 #include "settingsmanager.h"
+#include "playlistmanager.h"
 
 namespace Ui {
 class MainWindow;
@@ -41,6 +42,8 @@ private slots:
 private:
     Ui::MainWindow *ui;
     SettingsManager *settings;
+    MpvHandler *mpv;
+    PlaylistManager *playlist;
 };
 
 #endif // MAINWINDOW_H

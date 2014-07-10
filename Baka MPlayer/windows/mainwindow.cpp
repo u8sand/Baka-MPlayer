@@ -7,59 +7,104 @@
 
 MainWindow::MainWindow(QWidget *parent):
     QMainWindow(parent),
-    ui(new Ui::MainWindow),
-    settings(new SettingsManager)
+    ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
+    settings = new SettingsManager();
+    mpv = new MpvHandler(ui->mpvFrame->winId());
+    playlist = new PlaylistManager(ui->playlistWidget);
+
     // mpv updates
-    connect(ui->mpv, SIGNAL(FileChanged(QString)),
-            ui->playlist, SIGNAL(SelectFile(QString url)));
-    connect(ui->mpv, SIGNAL(TimeChanged(time_t)),
+    connect(mpv, SIGNAL(FileChanged(QString)),
+            playlist, SIGNAL(SelectFile(QString url)));
+    connect(mpv, SIGNAL(TimeChanged(time_t)),
             this, SLOT(SetTime(time_t)));
-    connect(ui->mpv, SIGNAL(PlayStateChanged(Mpv::PlayState)),
+    connect(mpv, SIGNAL(PlayStateChanged(Mpv::PlayState)),
             this, SLOT(SetPlayState(Mpv::PlayState)));
-    connect(ui->mpv, SIGNAL(ErrorSignal(QString)),
+    connect(mpv, SIGNAL(ErrorSignal(QString)),
             this, SLOT(HandleError(QString)));
 
-    // slider
-    connect(this->ui->volumeSlider, SIGNAL(valueChanged(int)),
-            this->ui->mpv, SLOT(AdjustVolume(int)));
+    // sliders
+    connect(ui->volumeSlider, SIGNAL(valueChanged(int)),
+            mpv, SLOT(AdjustVolume(int)));
+//    connect(ui->seekBar, SIGNAL(sliderMoved(int)),
+//            mpv, SLOT(Seek(int)));
+//    connect(ui->seekBar, SIGNAL(sliderPressed()),
+//            mpv, SLOT(Seek(int)));
 
     // buttons
     connect(ui->openButton, SIGNAL(clicked()),
             this, SLOT(OpenFile()));
     connect(ui->playButton, SIGNAL(clicked()),
-            ui->mpv, SLOT(PlayPause()));
+            mpv, SLOT(PlayPause()));
     connect(ui->playlistButton, SIGNAL(clicked()),
-            ui->playlist, SLOT(ToggleVisibility()));
+            playlist, SLOT(ToggleVisibility()));
 
-    // menu
+    // file menu
+//    connect(ui->action_New_Player, SIGNAL(triggered()),
+//            this, SLOT(NewPlayer()));
     connect(ui->action_Open_File, SIGNAL(triggered()),
             this, SLOT(OpenFile()));
-    connect(ui->action_Play, SIGNAL(triggered()),
-            ui->mpv, SLOT(PlayPause()));
+//    connect(ui->actionOpen_URL, SIGNAL(triggered()),
+//            this, SLOT(OpenURL()));
+//    connect(ui->actionOpen_Path_from_Clipboard, SIGNAL(triggered()),
+//            this, SLOT(OpenFileFromClipboard()));
+//    connect(ui->actionOpen_Last_File, SIGNAL(triggered()),
+//            this, SLOT(OpenLast()));
     connect(ui->actionE_xit, SIGNAL(triggered()),
             QCoreApplication::instance(), SLOT(quit()));
 
-    QStringList args = QCoreApplication::arguments();
-    for(QStringList::iterator it = args.begin()+1; it != args.end(); ++it)
-        ui->playlist->addItem(*it);
-    ui->playlist->PlayNext();
+    // playback menu
+    connect(ui->action_Play, SIGNAL(triggered()),
+            mpv, SLOT(PlayPause()));
+    connect(ui->action_Stop, SIGNAL(triggered()),
+            mpv, SLOT(Stop()));
+    connect(ui->action_Rewind, SIGNAL(triggered()),
+            mpv, SLOT(Rewind()));
+//    connect(ui->actionR_estart, SIGNAL(triggered()),
+//            mpv, SLOT(Restart()));
+//    connect(ui->actionShu_ffle, SIGNAL(triggered()),
+//            playlist, SLOT(Shuffle()));
+    // repeat
+//    connect(ui->actionStop_after_current, SIGNAL(triggered()),
+//            playlist, SLOT(StopAfterCurrent()));
+//    conect(ui->action_Frame_Step, SIGNAL(triggered()),
+//           mpv, SLOT(Seek(int)));
+//    conect(ui->actionFrame_Back_Step, SIGNAL(triggered()),
+//           mpv, SLOT(Seek(int)));
+//    connect(ui->action_Jump_To_Time, SIGNAL(triggered()),
+//            this, SLOT(JumpToTime()));
+
+    // media
+
+    // subtitles
+
+    // tools
+
+    //options
+
+    //help
+
+//    QStringList args = QCoreApplication::arguments();
+//    for(QStringList::iterator it = args.begin()+1; it != args.end(); ++it)
+//        playlist->addItem(*it);
+//    playlist->PlayNext();
 }
 
 MainWindow::~MainWindow()
 {
-    // todo: save form settings
+    delete playlist;
+    delete mpv;
     delete settings;
     delete ui;
 }
 
 void MainWindow::SetTime(time_t time)
 {
-    ui->seekBar->setValue(ui->seekBar->maximum()*((double)time/ui->mpv->GetTotalTime()));
+    ui->seekBar->setValue(ui->seekBar->maximum()*((double)time/mpv->GetTotalTime()));
     ui->durationLabel->setText(QDateTime::fromTime_t(time).toUTC().toString("h:mm:ss"));
-    ui->remainingLabel->setText(QDateTime::fromTime_t(ui->mpv->GetTotalTime()-time).toUTC().toString("-h:mm:ss"));
+    ui->remainingLabel->setText(QDateTime::fromTime_t(mpv->GetTotalTime()-time).toUTC().toString("-h:mm:ss"));
 }
 
 void MainWindow::SetControls(bool enable)
@@ -113,25 +158,25 @@ void MainWindow::HandleError(QString err)
 void MainWindow::OpenFile()
 {
     QString filename = QFileDialog::getOpenFileName(this, "Open file");
-    ui->mpv->OpenFile(filename);
+    mpv->OpenFile(filename);
 }
 
 // todo: convert the rest of these to signals
 
 void MainWindow::on_rewindButton_clicked()
 {
-    if(ui->mpv->GetTime() < 3)
+    if(mpv->GetTime() < 3)
     {
-        ui->mpv->Stop();
+        mpv->Stop();
     }
     else
     {
-        switch(ui->mpv->GetPlayState())
+        switch(mpv->GetPlayState())
         {
             case Mpv::Playing:
                 break;
             default:
-                ui->mpv->Stop();
+                mpv->Stop();
                 break;
         }
     }
@@ -139,20 +184,20 @@ void MainWindow::on_rewindButton_clicked()
 
 void MainWindow::on_previousButton_clicked()
 {
-    ui->mpv->Seek(-5, true);
+    mpv->Seek(-5, true);
 }
 
 void MainWindow::on_nextButton_clicked()
 {
-    ui->mpv->Seek(5, true);
+    mpv->Seek(5, true);
 }
 
 void MainWindow::on_seekBar_sliderMoved(int position)
 {
-    ui->mpv->Seek(((double)position/ui->seekBar->maximum())*ui->mpv->GetTotalTime());
+    mpv->Seek(((double)position/ui->seekBar->maximum())*mpv->GetTotalTime());
 }
 
 void MainWindow::on_seekBar_sliderPressed()
 {
-    ui->mpv->Seek(((double)ui->seekBar->value()/ui->seekBar->maximum())*ui->mpv->GetTotalTime());
+    mpv->Seek(((double)ui->seekBar->value()/ui->seekBar->maximum())*mpv->GetTotalTime());
 }

@@ -1,7 +1,12 @@
 #include "settingsmanager.h"
 
 SettingsManager::SettingsManager(QObject *parent):
-    QSettings("bakamplayer.ini", QSettings::IniFormat, parent)
+    QObject(parent),
+    settings(new QSettings("bakamplayer.ini", QSettings::IniFormat, parent))
 {
-    // todo: set default settings
+
+}
+
+SettingsManager::~SettingsManager()
+{
 }

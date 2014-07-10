@@ -8,8 +8,8 @@ static void wakeup(void *ctx)
     QCoreApplication::postEvent(mpvhandler, new QEvent(QEvent::User));
 }
 
-MpvHandler::MpvHandler(QWidget *parent):
-    QFrame(parent),
+MpvHandler::MpvHandler( int64_t wid, QObject *parent):
+    QObject(parent),
     mpv(0),
     url(""),
     time(0),
@@ -20,7 +20,6 @@ MpvHandler::MpvHandler(QWidget *parent):
     if(!mpv)
         throw "Could not create mpv object";
 
-    int64_t wid = this->winId();
     mpv_set_option(mpv, "wid", MPV_FORMAT_INT64, &wid);
 
     mpv_set_option_string(mpv, "input-default-bindings", "no");
@@ -71,7 +70,7 @@ bool MpvHandler::event(QEvent *event)
                 break;
             case MPV_EVENT_FILE_LOADED:
                 //SetFile(event->data);
-                SetFile((QString)*(char*)event->data);
+                //SetFile((QString)*(char*)event->data);
                 break;
             case MPV_EVENT_START_FILE:
                 SetPlayState(Mpv::Started);
@@ -93,7 +92,7 @@ bool MpvHandler::event(QEvent *event)
         }
         return true;
     }
-    return QFrame::event(event);
+    return QObject::event(event);
 }
 
 void MpvHandler::OpenFile(QString url/*, QString subFile = ""*/)

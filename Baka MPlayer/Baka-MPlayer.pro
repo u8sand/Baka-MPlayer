@@ -16,14 +16,14 @@ SOURCES += main.cpp\
     mpvhandler.cpp \
     settingsmanager.cpp \
     windows/mainwindow.cpp \
-    widgets/playlistmanager.cpp
+    playlistmanager.cpp
 
 HEADERS  += \
     mpvhandler.h \
     settingsmanager.h \
     windows/mainwindow.h \
     widgets/customslider.h \
-    widgets/playlistmanager.h
+    playlistmanager.h
 
 FORMS    += \
     windows/mainwindow.ui

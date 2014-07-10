@@ -1,7 +1,8 @@
 #include "playlistmanager.h"
 
-PlaylistManager::PlaylistManager(QWidget *parent) :
-    QListWidget(parent)
+PlaylistManager::PlaylistManager(QListWidget *_playlist, QObject *parent) :
+    QObject(parent),
+    playlist(_playlist)
 {
 }
 
@@ -16,5 +17,5 @@ void PlaylistManager::SelectFile(QString url)
 
 void PlaylistManager::ToggleVisibility()
 {
-    this->setVisible(!this->isVisible());
+    playlist->setVisible(!playlist->isVisible());
 }
