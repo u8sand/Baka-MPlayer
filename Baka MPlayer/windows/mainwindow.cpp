@@ -165,6 +165,7 @@ void MainWindow::OpenFile()
 
 void MainWindow::on_rewindButton_clicked()
 {
+    // if user presses rewind button twice within 3 seconds, stop video
     if(mpv->GetTime() < 3)
     {
         mpv->Stop();
@@ -174,6 +175,7 @@ void MainWindow::on_rewindButton_clicked()
         switch(mpv->GetPlayState())
         {
             case Mpv::Playing:
+                mpv->Rewind();
                 break;
             default:
                 mpv->Stop();
