@@ -65,7 +65,7 @@ private:
     QString url;
     time_t time,
            totalTime;
-    int64_t volume;
+    int volume;
     Mpv::PlayState playState;
 };
 
