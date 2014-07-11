@@ -33,6 +33,10 @@ CONFIG += c++11
 
 unix: CONFIG += link_pkgconfig
 unix: PKGCONFIG += mpv
+#unix: INCLUDEPATH += "/usr/include"
+#unix: LIBS += "/usr/lib"
+win32: INCLUDEPATH += "../res/include"
+win32: LIBS += -L"../res/lib" -lmpv
 
 RESOURCES += \
     rsclist.qrc
