@@ -1,5 +1,7 @@
 <RCC>
   <qresource prefix="/">
+    <file>img/exists.svg</file>
+    <file>img/not_exists.svg</file>
     <file>img/icon.ico</file>
     <file>img/default_open.svg</file>
     <file>img/down_open.svg</file>

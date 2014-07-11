@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>600</width>
+    <width>650</width>
     <height>86</height>
    </rect>
   </property>
@@ -17,6 +17,7 @@
    <string notr="true">QWidget {
 	background: #141414;
 	color: white;
+	font: 14px &quot;Lucida Sans Unicode&quot;;
 }
 
 QLineEdit {
@@ -25,37 +26,59 @@ QLineEdit {
 }
 
 QPushButton {
-    background: dodgerblue;
+    background: black;
 	color: white;
-    border: 2px solid black;
+    border: 2px solid dodgerblue;
     border-radius: 6px;
-    min-width: 80px;
+    min-width: 90px;
+	min-height: 25px;
 }
 
 QPushButton:pressed {
-    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+    background-color: dodgerblue;
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <property name="spacing">
-     <number>0</number>
+     <number>10</number>
     </property>
     <property name="leftMargin">
-     <number>5</number>
+     <number>10</number>
     </property>
     <property name="topMargin">
-     <number>5</number>
+     <number>10</number>
     </property>
     <property name="rightMargin">
-     <number>5</number>
+     <number>10</number>
     </property>
     <property name="bottomMargin">
-     <number>5</number>
+     <number>10</number>
     </property>
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <property name="spacing">
+       <number>8</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="validEntryLabel">
+        <property name="minimumSize">
+         <size>
+          <width>16</width>
+          <height>16</height>
+         </size>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="../rsclist.qrc">:/img/not_exists.svg</pixmap>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="margin">
+         <number>2</number>
+        </property>
+       </widget>
+      </item>
       <item>
        <widget class="QLabel" name="label">
         <property name="text">
@@ -68,6 +91,18 @@ QPushButton:pressed {
       </item>
       <item>
        <widget class="QLabel" name="typeLabel">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>50</width>
+          <height>0</height>
+         </size>
+        </property>
         <property name="frameShape">
          <enum>QFrame::NoFrame</enum>
         </property>
@@ -83,6 +118,9 @@ QPushButton:pressed {
     </item>
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="spacing">
+       <number>8</number>
+      </property>
       <item>
        <widget class="QPushButton" name="okButton">
         <property name="sizePolicy">
@@ -209,6 +247,8 @@ QPushButton:pressed {
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="../rsclist.qrc"/>
+ </resources>
  <connections/>
 </ui>
