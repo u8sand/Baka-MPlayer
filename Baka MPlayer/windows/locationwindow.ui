@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>650</width>
-    <height>86</height>
+    <height>82</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -40,9 +40,6 @@ QPushButton:pressed {
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
-    <property name="spacing">
-     <number>10</number>
-    </property>
     <property name="leftMargin">
      <number>10</number>
     </property>
