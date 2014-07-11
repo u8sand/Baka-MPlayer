@@ -1,0 +1,6 @@
+lib/libmpv.a - libmpv compiled for x86_64 windows environment with mingw-w64
+include/mpv/client.h - libmpv header file
+	The Qt Project File is set to look here (res/{include,lib}) for the mpv include/library.
+
+
+mxe.sh - script used to download mingw-w64 and required libraries and compile mpv (on linux)
