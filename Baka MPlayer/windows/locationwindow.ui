@@ -22,7 +22,7 @@
 
 QLineEdit {
 	border: 2px solid gray;
-	border-radius: 4px;
+	border-radius: 6px;
 }
 
 QPushButton {
@@ -70,9 +70,6 @@ QPushButton:pressed {
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
-        </property>
-        <property name="margin">
-         <number>2</number>
         </property>
        </widget>
       </item>
