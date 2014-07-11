@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QListWidget>
+#include <QString>
 
 class PlaylistManager : public QObject
 {
@@ -11,12 +12,15 @@ public:
     explicit PlaylistManager(QListWidget *playlist, QObject *parent = 0);
 
     void PlayNext();
-signals:
-
 
 public slots:
     void SelectFile(QString url);
     void ToggleVisibility();
+    void AddFile(QString url);
+    void AddDirectory(QString path);
+
+signals:
+    void Play(QString file);
 
 private:
     QListWidget *playlist;

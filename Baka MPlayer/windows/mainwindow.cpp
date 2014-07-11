@@ -22,22 +22,26 @@ MainWindow::MainWindow(QWidget *parent):
     ui->splitter->setStretchFactor(1, 0); // fixed size during resize (playlistWidget)
 
     // mpv updates
-    connect(mpv, SIGNAL(FileChanged(QString)),
-            playlist, SIGNAL(SelectFile(QString url)));
+    connect(mpv, SIGNAL(UrlChanged(QString)),
+            playlist, SLOT(SelectFile(QString)));
     connect(mpv, SIGNAL(TimeChanged(time_t)),
             this, SLOT(SetTime(time_t)));
     connect(mpv, SIGNAL(PlayStateChanged(Mpv::PlayState)),
             this, SLOT(SetPlayState(Mpv::PlayState)));
+    connect(mpv, SIGNAL(VolumeChanged(int)),
+            ui->volumeSlider, SLOT(setValueNoSignal(int)));
     connect(mpv, SIGNAL(ErrorSignal(QString)),
             this, SLOT(HandleError(QString)));
+
+    // playlist
+    connect(playlist, SIGNAL(Play(QString)),
+            mpv, SLOT(OpenFile(QString)));
 
     // sliders
     connect(ui->volumeSlider, SIGNAL(valueChanged(int)),
             mpv, SLOT(AdjustVolume(int)));
-//    connect(ui->seekBar, SIGNAL(sliderMoved(int)),
-//            mpv, SLOT(Seek(int)));
-//    connect(ui->seekBar, SIGNAL(sliderPressed()),
-//            mpv, SLOT(Seek(int)));
+    connect(ui->seekBar, SIGNAL(valueChanged(int)),
+            this, SLOT(Seek(int)));
 
     // buttons
     connect(ui->openButton, SIGNAL(clicked()),
@@ -92,10 +96,10 @@ MainWindow::MainWindow(QWidget *parent):
 
     //help
 
-//    QStringList args = QCoreApplication::arguments();
-//    for(QStringList::iterator it = args.begin()+1; it != args.end(); ++it)
-//        playlist->addItem(*it);
-//    playlist->PlayNext();
+    QStringList args = QCoreApplication::arguments();
+    for(QStringList::iterator it = args.begin()+1; it != args.end(); ++it)
+        playlist->AddDirectory(*it);
+    playlist->PlayNext();
 }
 
 MainWindow::~MainWindow()
@@ -108,7 +112,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::SetTime(time_t time)
 {
-    ui->seekBar->setValue(ui->seekBar->maximum()*((double)time/mpv->GetTotalTime()));
+    ui->seekBar->setValueNoSignal(ui->seekBar->maximum()*((double)time/mpv->GetTotalTime()));
     ui->durationLabel->setText(QDateTime::fromTime_t(time).toUTC().toString("h:mm:ss"));
     ui->remainingLabel->setText(QDateTime::fromTime_t(mpv->GetTotalTime()-time).toUTC().toString("-h:mm:ss"));
 }
@@ -168,6 +172,11 @@ void MainWindow::OpenFile()
     mpv->OpenFile(filename);
 }
 
+void MainWindow::Seek(int position)
+{
+    mpv->Seek(((double)position/ui->seekBar->maximum())*mpv->GetTotalTime());
+}
+
 void MainWindow::on_rewindButton_clicked()
 {
     // if user presses rewind button twice within 3 seconds, stop video
@@ -184,20 +193,10 @@ void MainWindow::on_rewindButton_clicked()
 
 void MainWindow::on_previousButton_clicked()
 {
-    mpv->Seek(-5, true);
+    mpv->Seek(-10, true);
 }
 
 void MainWindow::on_nextButton_clicked()
 {
-    mpv->Seek(5, true);
-}
-
-void MainWindow::on_seekBar_sliderMoved(int position)
-{
-    mpv->Seek(((double)position/ui->seekBar->maximum())*mpv->GetTotalTime());
-}
-
-void MainWindow::on_seekBar_sliderPressed()
-{
-    mpv->Seek(((double)ui->seekBar->value()/ui->seekBar->maximum())*mpv->GetTotalTime());
+    mpv->Seek(10, true);
 }

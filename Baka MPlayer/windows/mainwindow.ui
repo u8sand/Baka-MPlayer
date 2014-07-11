@@ -96,6 +96,9 @@ QSlider::handle:horizontal {
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
+          <property name="acceptDrops">
+           <bool>false</bool>
+          </property>
           <property name="frameShape">
            <enum>QFrame::NoFrame</enum>
           </property>
@@ -156,6 +159,9 @@ QSlider::handle:horizontal {
        <item>
         <widget class="CustomSlider" name="seekBar">
          <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="acceptDrops">
           <bool>false</bool>
          </property>
          <property name="maximum">
@@ -430,7 +436,7 @@ QSlider::handle:horizontal {
           <number>5</number>
          </property>
          <property name="value">
-          <number>50</number>
+          <number>100</number>
          </property>
          <property name="tracking">
           <bool>false</bool>

@@ -20,9 +20,6 @@ public:
     ~MainWindow();
 
 protected:
-    inline void SetTimeLabels();
-    inline void SetSeekBar();
-    inline void SetPlayButton();
     inline void SetControls(bool enable);
 
 private slots:
@@ -30,6 +27,7 @@ private slots:
 
     void SetTime(time_t time);
     void SetPlayState(Mpv::PlayState state);
+    void Seek(int position);
 
     void HandleError(QString error);
 
@@ -37,8 +35,6 @@ private slots:
     void on_rewindButton_clicked();
     void on_previousButton_clicked();
     void on_nextButton_clicked();
-    void on_seekBar_sliderMoved(int position);
-    void on_seekBar_sliderPressed();
 private:
     Ui::MainWindow *ui;
     SettingsManager *settings;

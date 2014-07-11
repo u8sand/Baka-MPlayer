@@ -14,6 +14,14 @@ public:
 
     }
 
+public slots:
+    void setValueNoSignal(int value)
+    {
+        this->blockSignals(true);
+        this->setValue(value);
+        this->blockSignals(false);
+    }
+
 protected:
     void mousePressEvent(QMouseEvent *event)
     {

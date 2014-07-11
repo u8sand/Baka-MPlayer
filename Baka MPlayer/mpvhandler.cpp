@@ -1,7 +1,7 @@
 #include "mpvhandler.h"
 
 #include <QCoreApplication>
-
+#include <string>
 static void wakeup(void *ctx)
 {
     MpvHandler *mpvhandler = (MpvHandler*)ctx;
@@ -11,9 +11,10 @@ static void wakeup(void *ctx)
 MpvHandler::MpvHandler( int64_t wid, QObject *parent):
     QObject(parent),
     mpv(0),
-//    url(""),
+    url(""),
     time(0),
     totalTime(0),
+    volume(100),
     playState(Mpv::Stopped)
 {
     mpv = mpv_create();
@@ -22,10 +23,16 @@ MpvHandler::MpvHandler( int64_t wid, QObject *parent):
 
     mpv_set_option(mpv, "wid", MPV_FORMAT_INT64, &wid);
 
-    mpv_set_option_string(mpv, "input-default-bindings", "no");
+    mpv_set_option_string(mpv, "input-default-bindings", "yes"); // mpv default key bindings
+//    mpv_set_option_string(mpv, "osd", "no"); // no onscreen display
+//    mpv_set_option_string(mpv, "osc", "no"); // no onscreen controller
+
+    // customize keybindings and seek values etc...
 
     mpv_observe_property(mpv, 0, "time-pos", MPV_FORMAT_DOUBLE);
     mpv_observe_property(mpv, 0, "length", MPV_FORMAT_DOUBLE);
+    mpv_observe_property(mpv, 0, "volume", MPV_FORMAT_DOUBLE);
+    mpv_observe_property(mpv, 0, "path", MPV_FORMAT_STRING);
 
     mpv_set_wakeup_callback(mpv, wakeup, this);
 
@@ -62,15 +69,17 @@ bool MpvHandler::event(QEvent *event)
                 if (strcmp(prop->name, "length") == 0)
                     if (prop->format == MPV_FORMAT_DOUBLE)
                         SetTotalTime((time_t)*(double*)prop->data);
+                if (strcmp(prop->name, "volume") == 0)
+                    if (prop->format == MPV_FORMAT_DOUBLE)
+                        SetVolume((int)*(double*)prop->data);
+                if (strcmp(prop->name, "path") == 0)
+                    if (prop->format == MPV_FORMAT_STRING)
+                        SetUrl(((std::string*)prop->data)->c_str());
                 break;
             }
             case MPV_EVENT_IDLE:
                 SetTime(0);
                 SetPlayState(Mpv::Idle);
-                break;
-            case MPV_EVENT_FILE_LOADED:
-                //SetFile(event->data);
-                //SetFile((QString)*(char*)event->data);
                 break;
             case MPV_EVENT_START_FILE:
                 SetPlayState(Mpv::Started);
@@ -84,6 +93,9 @@ bool MpvHandler::event(QEvent *event)
                 SetTime(0);
                 SetPlayState(Mpv::Ended);
                 SetPlayState(Mpv::Stopped);
+                break;
+            case MPV_EVENT_SHUTDOWN:
+                QCoreApplication::quit();
                 break;
             default:
                 // unhandled events
@@ -156,7 +168,7 @@ void MpvHandler::Seek(int pos, bool relative)
                               QString::number(pos).toUtf8().data(),
                               relative ? "relative" : "absolute",
                               NULL};
-        mpv_command_async(mpv, 0, args);
+        mpv_command(mpv, args);
     }
     else
         emit ErrorSignal("mpv was not initialized");
