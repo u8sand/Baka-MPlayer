@@ -17,11 +17,8 @@
    <iconset resource="../rsclist.qrc">
     <normaloff>:/img/icon.ico</normaloff>:/img/icon.ico</iconset>
   </property>
-  <property name="autoFillBackground">
-   <bool>false</bool>
-  </property>
   <property name="styleSheet">
-   <string notr="true">#MainWindow, QWidget, QMenu {
+   <string notr="true">QWidget, QMenu {
 	background: #141414;
 	color: white;
 }
