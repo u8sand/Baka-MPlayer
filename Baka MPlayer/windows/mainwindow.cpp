@@ -4,6 +4,7 @@
 #include <QMessageBox>
 #include <QFileDialog>
 #include <QDateTime>
+#include <QSplitter>
 
 MainWindow::MainWindow(QWidget *parent):
     QMainWindow(parent),
@@ -16,10 +17,10 @@ MainWindow::MainWindow(QWidget *parent):
     playlist = new PlaylistManager(ui->playlistWidget);
 
     // setup ui
-    splitter->moveSplitter(0.8 * splitter::size, 0);
-    splitter->setStretchFactor(0, 1); // variable size during resize (mpvFrame)
-    splitter->setStretchFactor(1, 0); // fixed size during resize (playlistWidget)
-    
+    ui->splitter->setSizes({ (int)((double)width()*0.70), (int)((double)width()*0.30) });
+    ui->splitter->setStretchFactor(0, 1); // variable size during resize (mpvFrame)
+    ui->splitter->setStretchFactor(1, 0); // fixed size during resize (playlistWidget)
+
     // mpv updates
     connect(mpv, SIGNAL(FileChanged(QString)),
             playlist, SIGNAL(SelectFile(QString url)));

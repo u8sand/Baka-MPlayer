@@ -29,6 +29,8 @@ HEADERS  += \
 FORMS    += \
     windows/mainwindow.ui
 
+CONFIG += c++11
+
 unix: CONFIG += link_pkgconfig
 unix: PKGCONFIG += mpv
 
