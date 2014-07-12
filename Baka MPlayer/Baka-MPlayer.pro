@@ -34,12 +34,20 @@ FORMS    += \
 
 CONFIG += c++11
 
-unix: CONFIG += link_pkgconfig
-unix: PKGCONFIG += mpv
-#unix: INCLUDEPATH += "/usr/include"
-#unix: LIBS += "/usr/lib"
-win32: INCLUDEPATH += "../res/include"
-win32: LIBS += -L"../res/lib" -lmpv
+unix {
+	CONFIG += link_pkgconfig
+	PKGCONFIG += mpv
+}
+
+win32 {
+	CONFIG += static
+	INCLUDEPATH += "../res/include"
+	LIBS += -L"../res/lib" -lmpv
+}
+
+static {
+	QTPLUGIN += qsvg
+}
 
 RESOURCES += \
     rsclist.qrc
