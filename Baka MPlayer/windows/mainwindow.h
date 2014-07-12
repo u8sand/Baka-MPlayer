@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+#include "locationdialog.h"
+
 #include "mpvhandler.h"
 #include "settingsmanager.h"
 #include "playlistmanager.h"
@@ -23,20 +25,12 @@ protected:
     inline void SetControls(bool enable);
 
 private slots:
-    void OpenFile();
-
     void SetTime(time_t time);
     void SetPlayState(Mpv::PlayState state);
-    void Seek(int position);
-
-    void HandleError(QString error);
-
-    // todo: convert the rest of these to signals
-    void on_rewindButton_clicked();
-    void on_previousButton_clicked();
-    void on_nextButton_clicked();
 private:
     Ui::MainWindow *ui;
+    LocationDialog *locationDialog;
+
     SettingsManager *settings;
     MpvHandler *mpv;
     PlaylistManager *playlist;
