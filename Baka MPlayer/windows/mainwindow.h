@@ -27,6 +27,16 @@ protected:
 private slots:
     void SetTime(time_t time);
     void SetPlayState(Mpv::PlayState state);
+    void SetSeekBar(int position);
+    void NewPlayer();
+    void OpenFile();
+    void OpenFileFromClipboard();
+    void OpenLastFile();
+    void SeekForward();
+    void SeekBackward();
+    void Rewind();
+
+    void HandleError(QString err);
 private:
     Ui::MainWindow *ui;
     LocationDialog *locationDialog;
