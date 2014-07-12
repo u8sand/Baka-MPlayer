@@ -1059,12 +1059,12 @@ QSlider::handle:horizontal {
   <customwidget>
    <class>CustomSlider</class>
    <extends>QSlider</extends>
-   <header>customslider.h</header>
+   <header>widgets/customslider.h</header>
   </customwidget>
   <customwidget>
    <class>PlayPauseButton</class>
    <extends>QPushButton</extends>
-   <header>playpausebutton.h</header>
+   <header>widgets/playpausebutton.h</header>
   </customwidget>
  </customwidgets>
  <resources>
