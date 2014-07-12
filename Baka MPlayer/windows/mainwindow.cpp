@@ -5,16 +5,20 @@
 #include <QFileDialog>
 #include <QDateTime>
 #include <QSplitter>
+#include <QClipboard>
 
 MainWindow::MainWindow(QWidget *parent):
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::MainWindow),
+    locationDialog(new LocationDialog)
 {
     ui->setupUi(this);
 
     settings = new SettingsManager();
     mpv = new MpvHandler(ui->mpvFrame->winId());
     playlist = new PlaylistManager(ui->playlistWidget);
+
+    // todo: clean this up--the lambdas are messy--find a better way.
 
     // setup ui
     ui->splitter->setSizes({ (int)((double)width()*0.70), (int)((double)width()*0.30) });
@@ -31,7 +35,11 @@ MainWindow::MainWindow(QWidget *parent):
     connect(mpv, SIGNAL(VolumeChanged(int)),
             ui->volumeSlider, SLOT(setValueNoSignal(int)));
     connect(mpv, SIGNAL(ErrorSignal(QString)),
-            this, SLOT(HandleError(QString)));
+            this, SLOT([this](QString err) { QMessageBox::warning(this, "Error", err); }));
+
+    // dialogs
+    connect(locationDialog, SIGNAL(Done(QString)),
+            this, SLOT([this](QString str) { if(url != "") mpv->OpenUrl(url); }));
 
     // playlist
     connect(playlist, SIGNAL(Play(QString)),
@@ -41,25 +49,47 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->volumeSlider, SIGNAL(valueChanged(int)),
             mpv, SLOT(AdjustVolume(int)));
     connect(ui->seekBar, SIGNAL(valueChanged(int)),
-            this, SLOT(Seek(int)));
+            this, SLOT([this](int position) { mpv->Seek(((double)position/ui->seekBar->maximum())*mpv->GetTotalTime()); }));
 
     // buttons
     connect(ui->openButton, SIGNAL(clicked()),
-            this, SLOT(OpenFile()));
+            this, SLOT([this] { mpv->OpenFile(QFileDialog::getOpenFileName(this, "Open file")); }));
     connect(ui->playButton, SIGNAL(clicked()),
             mpv, SLOT(PlayPause()));
     connect(ui->playlistButton, SIGNAL(clicked()),
             playlist, SLOT(ToggleVisibility()));
+    connect(ui->previousButton, SIGNAL(clicked()),
+            this, SLOT([this] { mpv->Seek(-10, true); }));
+    connect(ui->nextButton, SIGNAL(clicked()),
+            this, SLOT([this] { mpv->Seek(10, true); }));
+    connect(ui->rewindButton, SIGNAL(clicked()),
+            this, SLOT([this]
+            {
+                // if user presses rewind button twice within 3 seconds, stop video
+                if(mpv->GetTime() < 3)
+                    mpv->Stop();
+                else
+                {
+                    if(mpv->GetPlayState() == Mpv::Playing)
+                        mpv->Rewind();
+                    else
+                        mpv->Stop();
+                }
+            }));
 
     // file menu
 //    connect(ui->action_New_Player, SIGNAL(triggered()),
 //            this, SLOT(NewPlayer()));
     connect(ui->action_Open_File, SIGNAL(triggered()),
-            this, SLOT(OpenFile()));
-//    connect(ui->actionOpen_URL, SIGNAL(triggered()),
-//            this, SLOT(OpenURL()));
-//    connect(ui->actionOpen_Path_from_Clipboard, SIGNAL(triggered()),
-//            this, SLOT(OpenFileFromClipboard()));
+            this, SLOT([this] { mpv->OpenFile(QFileDialog::getOpenFileName(this, "Open file")); }));
+    connect(ui->actionOpen_URL, SIGNAL(triggered()),
+            locationDialog, SLOT(exec()));
+    connect(ui->actionOpen_Path_from_Clipboard, SIGNAL(triggered()),
+            this, SLOT(
+                [this]()
+                {
+                    mpv->OpenFile(QApplication::clipboard()->text());
+                }));
 //    connect(ui->actionOpen_Last_File, SIGNAL(triggered()),
 //            this, SLOT(OpenLast()));
     connect(ui->actionE_xit, SIGNAL(triggered()),
@@ -107,6 +137,7 @@ MainWindow::~MainWindow()
     delete playlist;
     delete mpv;
     delete settings;
+    delete locationDialog;
     delete ui;
 }
 
@@ -159,44 +190,4 @@ void MainWindow::SetPlayState(Mpv::PlayState playState)
         SetControls(false);
         break;
     }
-}
-
-void MainWindow::HandleError(QString err)
-{
-    QMessageBox::warning(this, "Error", err);
-}
-
-void MainWindow::OpenFile()
-{
-    QString filename = QFileDialog::getOpenFileName(this, "Open file");
-    mpv->OpenFile(filename);
-}
-
-void MainWindow::Seek(int position)
-{
-    mpv->Seek(((double)position/ui->seekBar->maximum())*mpv->GetTotalTime());
-}
-
-void MainWindow::on_rewindButton_clicked()
-{
-    // if user presses rewind button twice within 3 seconds, stop video
-    if(mpv->GetTime() < 3)
-        mpv->Stop();
-    else
-    {
-        if(mpv->GetPlayState() == Mpv::Playing)
-            mpv->Rewind();
-        else
-            mpv->Stop();
-    }
-}
-
-void MainWindow::on_previousButton_clicked()
-{
-    mpv->Seek(-10, true);
-}
-
-void MainWindow::on_nextButton_clicked()
-{
-    mpv->Seek(10, true);
 }

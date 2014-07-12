@@ -119,6 +119,19 @@ void MpvHandler::OpenFile(QString url/*, QString subFile = ""*/)
         emit ErrorSignal("mpv was not initialized");
 }
 
+void MpvHandler::OpenUrl(QString url/*, QString subFile = ""*/)
+{
+    // todo: open a url
+    if(mpv)
+    {
+//        externalSub = subFile;
+        const char *args[] = {"loadfile", url.toUtf8().data(), NULL};
+        mpv_command(mpv, args);
+    }
+    else
+        emit ErrorSignal("mpv was not initialized");
+}
+
 void MpvHandler::PlayPause(bool justPause)
 {
     if(mpv)

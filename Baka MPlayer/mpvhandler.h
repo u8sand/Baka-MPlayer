@@ -38,6 +38,7 @@ protected:
 
 public slots:
     void OpenFile(QString s);
+    void OpenUrl(QString s);
     void PlayPause(bool justPause = false);
     void Stop();
     void Rewind();

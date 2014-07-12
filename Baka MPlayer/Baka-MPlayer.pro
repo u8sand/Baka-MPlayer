@@ -16,7 +16,8 @@ SOURCES += main.cpp\
     mpvhandler.cpp \
     settingsmanager.cpp \
     windows/mainwindow.cpp \
-    playlistmanager.cpp
+    playlistmanager.cpp \
+    windows/locationdialog.cpp
 
 HEADERS  += \
     mpvhandler.h \
@@ -24,10 +25,12 @@ HEADERS  += \
     windows/mainwindow.h \
     widgets/customslider.h \
     playlistmanager.h \
-    widgets/playpausebutton.h
+    widgets/playpausebutton.h \
+    windows/locationdialog.h
 
 FORMS    += \
-    windows/mainwindow.ui
+    windows/mainwindow.ui \
+    windows/locationdialog.ui
 
 CONFIG += c++11
 
