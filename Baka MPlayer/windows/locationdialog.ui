@@ -104,6 +104,9 @@ QPushButton:pressed {
      </property>
      <item>
       <widget class="QPushButton" name="okButton">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
          <horstretch>0</horstretch>
@@ -151,6 +154,9 @@ QPushButton:pressed {
        <property name="text">
         <string>Paste</string>
        </property>
+       <property name="autoDefault">
+        <bool>false</bool>
+       </property>
       </widget>
      </item>
      <item>
@@ -170,6 +176,9 @@ QPushButton:pressed {
        <property name="text">
         <string>Copy</string>
        </property>
+       <property name="autoDefault">
+        <bool>false</bool>
+       </property>
       </widget>
      </item>
      <item>
@@ -188,6 +197,9 @@ QPushButton:pressed {
        </property>
        <property name="text">
         <string>Clear</string>
+       </property>
+       <property name="autoDefault">
+        <bool>false</bool>
        </property>
       </widget>
      </item>
@@ -220,6 +232,9 @@ QPushButton:pressed {
        </property>
        <property name="text">
         <string>Cancel</string>
+       </property>
+       <property name="autoDefault">
+        <bool>false</bool>
        </property>
       </widget>
      </item>

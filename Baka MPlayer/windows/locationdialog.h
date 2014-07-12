@@ -22,6 +22,8 @@ private slots:
     void on_clearButton_clicked();
     void on_cancelButton_clicked();
 
+    void on_urlEdit_textChanged(const QString &arg1);
+
 signals:
     void Done(QString url = "");
 

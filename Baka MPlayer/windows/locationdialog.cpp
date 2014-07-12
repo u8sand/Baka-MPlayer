@@ -2,6 +2,7 @@
 #include "ui_locationdialog.h"
 
 #include <QClipboard>
+#include <QRegExp>
 
 LocationDialog::LocationDialog(QWidget *parent) :
     QDialog(parent),
@@ -42,4 +43,24 @@ void LocationDialog::on_cancelButton_clicked()
 {
     emit Done();
     close();
+}
+
+void LocationDialog::on_urlEdit_textChanged(const QString &arg1)
+{
+    // todo: make more complex validation
+#ifdef Q_OS_WIN
+    QRegExp rx("^(http://.+\\.[a-z]+|C:/)", Qt::CaseInsensitive);
+#elif defined(Q_OS_LINUX) || defined(Q_OS_UNIX)
+    QRegExp rx("^(http://.+\\.[a-z]+|\\.{0,2}/)", Qt::CaseInsensitive);
+#endif
+    if(rx.indexIn(arg1) != -1)
+    {
+        ui->validEntryLabel->setPixmap(QPixmap(":/img/exists.svg"));
+        ui->okButton->setEnabled(true);
+    }
+    else
+    {
+        ui->validEntryLabel->setPixmap(QPixmap(":/img/not_exists.svg"));
+        ui->okButton->setEnabled(false);
+    }
 }
