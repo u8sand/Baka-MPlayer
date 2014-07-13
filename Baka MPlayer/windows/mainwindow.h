@@ -32,8 +32,6 @@ private slots:
     void OpenFile();
     void OpenFileFromClipboard();
     void OpenLastFile();
-    void SeekForward();
-    void SeekBackward();
     void Rewind();
 
     void HandleError(QString err);

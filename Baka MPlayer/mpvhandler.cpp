@@ -107,6 +107,14 @@ bool MpvHandler::event(QEvent *event)
     return QObject::event(event);
 }
 
+void MpvHandler::Open(QString s)
+{
+    // figure out if it's a file or a url
+    // if file: OpenFile(s);
+    // if url: OpenUrl(s);
+    OpenFile(s);
+}
+
 void MpvHandler::OpenFile(QString url/*, QString subFile = ""*/)
 {
     if(mpv)

@@ -37,11 +37,11 @@ MainWindow::MainWindow(QWidget *parent):
 
     // dialogs
     connect(locationDialog, SIGNAL(Done(QString)),
-            mpv, SLOT(OpenUrl(QString)));
+            mpv, SLOT(Open(QString)));
 
     // playlist
     connect(playlist, SIGNAL(Play(QString)),
-            mpv, SLOT(OpenFile(QString)));
+            mpv, SLOT(Open(QString)));
 
     // sliders
     connect(ui->volumeSlider, SIGNAL(valueChanged(int)),
@@ -57,9 +57,9 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->playlistButton, SIGNAL(clicked()),
             playlist, SLOT(ToggleVisibility()));
     connect(ui->previousButton, SIGNAL(clicked()),
-            this, SLOT(SeekBackward()));
+            playlist, SLOT(PlayPrevious()));
     connect(ui->nextButton, SIGNAL(clicked()),
-            this, SLOT(SeekForward()));
+            playlist, SLOT(PlayNext()));
     connect(ui->rewindButton, SIGNAL(clicked()),
             this, SLOT(Rewind()));
 
@@ -75,7 +75,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->actionOpen_Last_File, SIGNAL(triggered()),
             this, SLOT(OpenLastFile()));
     connect(ui->actionE_xit, SIGNAL(triggered()),
-            QCoreApplication::instance(), SLOT(quit()));
+            this, SLOT(close()));
 
     // playback menu
     connect(ui->action_Play, SIGNAL(triggered()),
@@ -183,9 +183,6 @@ void MainWindow::SetPlayState(Mpv::PlayState playState)
 
 void MainWindow::NewPlayer()
 {
-    // todo: File -> Exit() will quit all,
-    //  as will anything that calls QCoreApplication::quit();
-    //  use something else so that new windows can stay on other windows closed?
     (new MainWindow())->show();
 }
 
@@ -201,7 +198,7 @@ void MainWindow::OpenFileFromClipboard()
 
 void MainWindow::OpenLastFile()
 {
-    // open last file
+    // todo: open last file--comes from settings
 }
 
 void MainWindow::HandleError(QString err)
@@ -212,16 +209,6 @@ void MainWindow::HandleError(QString err)
 void MainWindow::SetSeekBar(int position)
 {
     mpv->Seek(((double)position/ui->seekBar->maximum())*mpv->GetTotalTime());
-}
-
-void MainWindow::SeekForward()
-{
-    mpv->Seek(10, true);
-}
-
-void MainWindow::SeekBackward()
-{
-    mpv->Seek(-10, true);
 }
 
 void MainWindow::Rewind()

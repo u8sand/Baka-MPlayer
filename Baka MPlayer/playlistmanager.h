@@ -15,17 +15,19 @@ public:
 public slots:
     void PlayIndex(QModelIndex index);
     void PlayNext();
+    void PlayPrevious();
 
     void SelectFile(QString url);
     void ToggleVisibility();
-    void AddFile(QString url);
-    void AddDirectory(QString path);
+    void AddUrl(QString url);
+    void AddFile(QString path);
 
 signals:
-    void Play(QString file);
+    void Play(QString url);
 
 private:
     QListWidget *playlist;
+    QString path;
 };
 
 #endif // PLAYLISTMANAGER_H
