@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="../rsclist.qrc">
-    <normaloff>:/img/icon.ico</normaloff>:/img/icon.ico</iconset>
+    <normaloff>:/img/logo.ico</normaloff>:/img/logo.ico</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget, QMenu {
@@ -436,7 +436,7 @@ QSlider::handle:horizontal {
           <number>5</number>
          </property>
          <property name="value">
-          <number>100</number>
+          <number>50</number>
          </property>
          <property name="tracking">
           <bool>false</bool>
@@ -510,7 +510,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>570</width>
-     <height>17</height>
+     <height>19</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
