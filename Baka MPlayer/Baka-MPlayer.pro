@@ -41,8 +41,8 @@ unix {
 
 win32 {
 	CONFIG += static
-	INCLUDEPATH += "../res/include"
-	LIBS += -L"../res/lib" -lmpv
+        INCLUDEPATH += "../etc/include"
+        LIBS += -L"../etc/lib" -lmpv
 }
 
 static {
