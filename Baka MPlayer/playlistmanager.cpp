@@ -15,24 +15,39 @@ void PlaylistManager::PlayNext()
 {
     if(playlist->count() > 0 &&
             playlist->currentRow() < playlist->count())
-        emit Play(path+playlist->item(playlist->currentRow()+1)->text());
+    {
+        playlist->setCurrentRow(playlist->currentRow()+1);
+        Play(path + playlist->currentItem()->text());
+    }
 }
 
 void PlaylistManager::PlayPrevious()
 {
     if(playlist->count() > 0 &&
             playlist->currentRow() > 1)
-        emit Play(path+playlist->item(playlist->currentRow()-1)->text());
+    {
+        playlist->setCurrentRow(playlist->currentRow()-1);
+        Play(path + playlist->currentItem()->text());
+    }
 }
 
 void PlaylistManager::PlayIndex(QModelIndex index)
 {
-    emit Play(path+playlist->item(index.row())->text());
+    Play(path + "/" + playlist->item(index.row())->text());
 }
 
-void PlaylistManager::SelectFile(QString url)
+void PlaylistManager::PlayItem(QListWidgetItem *item)
 {
-    // todo: select file
+    playlist->setCurrentItem(item);
+    Play(path + "/" + item->text());
+}
+
+void PlaylistManager::Play(QString url)
+{
+    if(file)
+        emit PlayFile(url);
+    else
+        emit PlayUrl(url);
 }
 
 void PlaylistManager::ToggleVisibility()
@@ -40,24 +55,13 @@ void PlaylistManager::ToggleVisibility()
     playlist->setVisible(!playlist->isVisible());
 }
 
-void PlaylistManager::AddUrl(QString url)
+void PlaylistManager::SelectFile(QString url)
 {
     playlist->clear();
 
-    path = ""; // todo: get path from url
-    playlist->addItem(url); // todo: get file name
-
-    playlist->setCurrentRow(1);
-    playlist->setVisible(false);
-
-    emit Play(url);
-}
-
-void PlaylistManager::AddFile(QString file)
-{
-    playlist->clear();
-
-    path = QFileInfo(file).absolutePath();
+    file = true;
+    QFileInfo fi(url);
+    path = fi.absolutePath() + "/";
     QDir root(path);
 
     QFileInfoList flist = root.entryInfoList({ "*.mkv", "*.mp4", "*.avi", "*.mp3" }, QDir::Files); // todo: pass more file-types (get from settings)
@@ -65,9 +69,21 @@ void PlaylistManager::AddFile(QString file)
     for(auto &i : flist)
         playlist->addItem(i.fileName());
 
-    playlist->setCurrentRow(1);
     if(playlist->count() > 1)
         playlist->setVisible(true);
-    playlist->setVisible(false);
-    emit Play(file);
+
+    PlayItem((QListWidgetItem*)*playlist->findItems(fi.fileName(), Qt::MatchExactly).begin());
+}
+
+void PlaylistManager::Select(QString url)
+{
+    // if file: SelectFile(url);
+    // else if url
+    playlist->clear();
+
+    file = false;
+    path = ""; // todo: get path from url
+    playlist->addItem(url); // todo: get basename
+
+    PlayItem(playlist->item(0));
 }

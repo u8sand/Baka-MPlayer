@@ -23,9 +23,11 @@ MainWindow::MainWindow(QWidget *parent):
     ui->splitter->setStretchFactor(0, 1); // variable size during resize (mpvFrame)
     ui->splitter->setStretchFactor(1, 0); // fixed size during resize (playlistWidget)
 
+    // todo: consistent naming: Fix up the whole different uses of Url and File
+
     // mpv updates
-    connect(mpv, SIGNAL(UrlChanged(QString)),
-            playlist, SLOT(SelectFile(QString)));
+//    connect(mpv, SIGNAL(UrlChanged(QString)),
+//            playlist, SLOT(Select(QString)));
     connect(mpv, SIGNAL(TimeChanged(time_t)),
             this, SLOT(SetTime(time_t)));
     connect(mpv, SIGNAL(PlayStateChanged(Mpv::PlayState)),
@@ -37,11 +39,13 @@ MainWindow::MainWindow(QWidget *parent):
 
     // dialogs
     connect(locationDialog, SIGNAL(Done(QString)),
-            mpv, SLOT(Open(QString)));
+            playlist, SLOT(Select(QString)));
 
     // playlist
-    connect(playlist, SIGNAL(Play(QString)),
-            mpv, SLOT(Open(QString)));
+    connect(playlist, SIGNAL(PlayFile(QString)),
+            mpv, SLOT(OpenFile(QString)));
+    connect(playlist, SIGNAL(PlayUrl(QString)),
+            mpv, SLOT(OpenUrl(QString)));
 
     // sliders
     connect(ui->volumeSlider, SIGNAL(valueChanged(int)),
@@ -110,11 +114,7 @@ MainWindow::MainWindow(QWidget *parent):
 
     // todo: more arguments, not as primitive, files vs directories, etc.
     QStringList args = QCoreApplication::arguments();
-    for(QStringList::iterator it = args.begin()+1; it != args.end(); ++it)
-    {
-        mpv->OpenFile(*it);
-        break;
-    }
+    if(args.count() > 1) playlist->Select(*(QCoreApplication::arguments().begin()+1));
 }
 
 MainWindow::~MainWindow()
@@ -176,7 +176,7 @@ void MainWindow::SetPlayState(Mpv::PlayState playState)
     case Mpv::Ended:
         SetTime(0);
         SetControls(false);
-        playlist->PlayNext();
+        //playlist->PlayNext();
         break;
     }
 }
@@ -188,12 +188,12 @@ void MainWindow::NewPlayer()
 
 void MainWindow::OpenFile()
 {
-    mpv->OpenFile(QFileDialog::getOpenFileName(this, "Open file"));
+    playlist->SelectFile(QFileDialog::getOpenFileName(this, "Open file"));
 }
 
 void MainWindow::OpenFileFromClipboard()
 {
-    mpv->OpenFile(QApplication::clipboard()->text());
+    playlist->Select(QApplication::clipboard()->text());
 }
 
 void MainWindow::OpenLastFile()

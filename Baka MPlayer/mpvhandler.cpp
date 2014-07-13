@@ -107,14 +107,6 @@ bool MpvHandler::event(QEvent *event)
     return QObject::event(event);
 }
 
-void MpvHandler::Open(QString s)
-{
-    // figure out if it's a file or a url
-    // if file: OpenFile(s);
-    // if url: OpenUrl(s);
-    OpenFile(s);
-}
-
 void MpvHandler::OpenFile(QString url/*, QString subFile = ""*/)
 {
     if(mpv)
@@ -129,15 +121,7 @@ void MpvHandler::OpenFile(QString url/*, QString subFile = ""*/)
 
 void MpvHandler::OpenUrl(QString url/*, QString subFile = ""*/)
 {
-    // todo: open a url
-    if(mpv)
-    {
-//        externalSub = subFile;
-        const char *args[] = {"loadfile", url.toUtf8().data(), NULL};
-        mpv_command(mpv, args);
-    }
-    else
-        emit ErrorSignal("mpv was not initialized");
+    // todo: openurl
 }
 
 void MpvHandler::PlayPause(bool justPause)
