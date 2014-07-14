@@ -23,10 +23,8 @@ MainWindow::MainWindow(QWidget *parent):
     ui->splitter->setStretchFactor(0, 1); // variable size during resize (mpvFrame)
     ui->splitter->setStretchFactor(1, 0); // fixed size during resize (playlistWidget)
 
-    // todo: consistent naming: Fix up the whole different uses of Url and File
-
     // mpv updates
-//    connect(mpv, SIGNAL(UrlChanged(QString)),
+//    connect(mpv, SIGNAL(FileChanged(QString)),
 //            playlist, SLOT(Select(QString)));
     connect(mpv, SIGNAL(TimeChanged(time_t)),
             this, SLOT(SetTime(time_t)));
@@ -39,13 +37,11 @@ MainWindow::MainWindow(QWidget *parent):
 
     // dialogs
     connect(locationDialog, SIGNAL(Done(QString)),
-            playlist, SLOT(Select(QString)));
+            playlist, SLOT(LoadFile(QString)));
 
     // playlist
     connect(playlist, SIGNAL(PlayFile(QString)),
             mpv, SLOT(OpenFile(QString)));
-    connect(playlist, SIGNAL(PlayUrl(QString)),
-            mpv, SLOT(OpenUrl(QString)));
 
     // sliders
     connect(ui->volumeSlider, SIGNAL(valueChanged(int)),
@@ -114,7 +110,7 @@ MainWindow::MainWindow(QWidget *parent):
 
     // todo: more arguments, not as primitive, files vs directories, etc.
     QStringList args = QCoreApplication::arguments();
-    if(args.count() > 1) playlist->Select(*(QCoreApplication::arguments().begin()+1));
+    if(args.count() > 1) playlist->LoadFile(*(QCoreApplication::arguments().begin()+1));
 }
 
 MainWindow::~MainWindow()
@@ -188,12 +184,12 @@ void MainWindow::NewPlayer()
 
 void MainWindow::OpenFile()
 {
-    playlist->SelectFile(QFileDialog::getOpenFileName(this, "Open file"));
+    playlist->LoadFile(QFileDialog::getOpenFileName(this, "Open file"));
 }
 
 void MainWindow::OpenFileFromClipboard()
 {
-    playlist->Select(QApplication::clipboard()->text());
+    playlist->LoadFile(QApplication::clipboard()->text());
 }
 
 void MainWindow::OpenLastFile()

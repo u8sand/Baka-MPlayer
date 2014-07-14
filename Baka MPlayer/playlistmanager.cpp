@@ -5,19 +5,22 @@
 PlaylistManager::PlaylistManager(QListWidget *_playlist, QObject *parent) :
     QObject(parent),
     playlist(_playlist),
+    index(0),
     path("")
 {
     connect(playlist, SIGNAL(doubleClicked(QModelIndex)),
             this, SLOT(PlayIndex(QModelIndex)));
 }
 
+// TODO: Check to make sure files exist and such
+
 void PlaylistManager::PlayNext()
 {
     if(playlist->count() > 0 &&
             playlist->currentRow() < playlist->count())
     {
-        playlist->setCurrentRow(playlist->currentRow()+1);
-        Play(path + playlist->currentItem()->text());
+        playlist->setCurrentRow(index++);
+        PlayFile(path + playlist->currentItem()->text());
     }
 }
 
@@ -26,28 +29,22 @@ void PlaylistManager::PlayPrevious()
     if(playlist->count() > 0 &&
             playlist->currentRow() > 1)
     {
-        playlist->setCurrentRow(playlist->currentRow()-1);
-        Play(path + playlist->currentItem()->text());
+        playlist->setCurrentRow(--index);
+        PlayFile(path + playlist->currentItem()->text());
     }
 }
 
-void PlaylistManager::PlayIndex(QModelIndex index)
+void PlaylistManager::PlayIndex(QModelIndex i)
 {
-    Play(path + "/" + playlist->item(index.row())->text());
+    index = i.row();
+    PlayFile(path + "/" + playlist->item(index)->text());
 }
 
-void PlaylistManager::PlayItem(QListWidgetItem *item)
+void PlaylistManager::PlayItem(QListWidgetItem *i)
 {
-    playlist->setCurrentItem(item);
-    Play(path + "/" + item->text());
-}
-
-void PlaylistManager::Play(QString url)
-{
-    if(file)
-        emit PlayFile(url);
-    else
-        emit PlayUrl(url);
+    playlist->setCurrentItem(i);
+    index = playlist->row(i);
+    PlayFile(path + "/" + i->text());
 }
 
 void PlaylistManager::ToggleVisibility()
@@ -55,12 +52,12 @@ void PlaylistManager::ToggleVisibility()
     playlist->setVisible(!playlist->isVisible());
 }
 
-void PlaylistManager::SelectFile(QString url)
+void PlaylistManager::LoadFile(QString f)
 {
     playlist->clear();
+    // todo: check for web urls--we won't use QDir on those
 
-    file = true;
-    QFileInfo fi(url);
+    QFileInfo fi(f);
     path = fi.absolutePath() + "/";
     QDir root(path);
 
@@ -72,18 +69,5 @@ void PlaylistManager::SelectFile(QString url)
     if(playlist->count() > 1)
         playlist->setVisible(true);
 
-    PlayItem((QListWidgetItem*)*playlist->findItems(fi.fileName(), Qt::MatchExactly).begin());
-}
-
-void PlaylistManager::Select(QString url)
-{
-    // if file: SelectFile(url);
-    // else if url
-    playlist->clear();
-
-    file = false;
-    path = ""; // todo: get path from url
-    playlist->addItem(url); // todo: get basename
-
-    PlayItem(playlist->item(0));
+    PlayItem((*playlist->findItems(fi.fileName(), Qt::MatchExactly).begin()));
 }
