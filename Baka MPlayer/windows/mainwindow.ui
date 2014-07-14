@@ -23,12 +23,28 @@
 	color: white;
 }
 
+QMenu {
+    border: 1px solid deepskyblue;
+	border-bottom-right-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+
 QMenuBar, QMenuBar::item {
 	background: #141414;
 	color: deepskyblue;
 	font-size: 11px;
 }
 
+QMenu::item:selected {
+     background: deepskyblue;
+	 color: black;
+ }
+
+QMenu::separator {
+	background: dimgray;
+	height: 1px;
+	margin: 3px 0;
+}
 
 
 QSlider::groove:horizontal {
