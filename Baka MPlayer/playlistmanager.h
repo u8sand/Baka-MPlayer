@@ -12,27 +12,22 @@ public:
     explicit PlaylistManager(QListWidget *playlist, QObject *parent = 0);
 
 public slots:
-    void PlayIndex(QModelIndex index);
-    void PlayItem(QListWidgetItem *item);
     void PlayNext();
     void PlayPrevious();
+    void PlayIndex(QModelIndex i);
+    void PlayItem(QListWidgetItem *i);
 
-    void SelectFile(QString path);
-    void Select(QString url);
+    void LoadFile(QString file);
 
     void ToggleVisibility();
 
-private slots:
-    void Play(QString url);
-
 signals:
-    void PlayFile(QString url);
-    void PlayUrl(QString url);
+    void PlayFile(QString file);
 
 private:
     QListWidget *playlist;
+    int index;
     QString path;
-    bool file;
 };
 
 #endif // PLAYLISTMANAGER_H
