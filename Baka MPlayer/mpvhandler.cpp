@@ -11,7 +11,7 @@ static void wakeup(void *ctx)
 MpvHandler::MpvHandler( int64_t wid, QObject *parent):
     QObject(parent),
     mpv(0),
-    url(""),
+    file(""),
     time(0),
     totalTime(0),
     volume(100),
@@ -74,7 +74,7 @@ bool MpvHandler::event(QEvent *event)
                         SetVolume((int)*(double*)prop->data);
                 if (strcmp(prop->name, "path") == 0)
                     if (prop->format == MPV_FORMAT_STRING)
-                        SetUrl(((std::string*)prop->data)->c_str());
+                        SetFile(((std::string*)prop->data)->c_str());
                 break;
             }
             case MPV_EVENT_IDLE:
@@ -107,21 +107,16 @@ bool MpvHandler::event(QEvent *event)
     return QObject::event(event);
 }
 
-void MpvHandler::OpenFile(QString url/*, QString subFile = ""*/)
+void MpvHandler::OpenFile(QString f/*, QString subFile = ""*/)
 {
     if(mpv)
     {
 //        externalSub = subFile;
-        const char *args[] = {"loadfile", url.toUtf8().data(), NULL};
+        const char *args[] = {"loadfile", f.toUtf8().data(), NULL};
         mpv_command(mpv, args);
     }
     else
         emit ErrorSignal("mpv was not initialized");
-}
-
-void MpvHandler::OpenUrl(QString url/*, QString subFile = ""*/)
-{
-    // todo: openurl
 }
 
 void MpvHandler::PlayPause(bool justPause)

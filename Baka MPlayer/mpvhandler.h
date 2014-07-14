@@ -28,7 +28,7 @@ public:
     explicit MpvHandler(int64_t wid, QObject *parent = 0);
     ~MpvHandler();
 
-    inline QString GetUrl() const { return url; }
+    inline QString GetFile() const { return file; }
     inline time_t GetTime() const { return time; }
     inline time_t GetTotalTime() const { return totalTime; }
     inline Mpv::PlayState GetPlayState() const { return playState; }
@@ -37,8 +37,7 @@ protected:
     virtual bool event(QEvent *event);
 
 public slots:
-    void OpenFile(QString s);
-    void OpenUrl(QString s);
+    void OpenFile(QString f);
     void PlayPause(bool justPause = false);
     void Stop();
     void Rewind();
@@ -46,14 +45,14 @@ public slots:
     void AdjustVolume(int level);
 
 private slots:
-    void SetUrl(QString s) { url = s; emit UrlChanged(s); }
+    void SetFile(QString f) { file = f; emit FileChanged(f); }
     void SetTime(time_t t) { time = t; emit TimeChanged(t); }
     void SetTotalTime(time_t t) { totalTime = t; emit TotalTimeChanged(t); }
     void SetVolume(int v) { volume = v; emit VolumeChanged(v); }
     void SetPlayState(Mpv::PlayState s) { playState = s; emit PlayStateChanged(s); }
 
 signals:
-    void UrlChanged(QString url);
+    void FileChanged(QString f);
     void TimeChanged(time_t t);
     void TotalTimeChanged(time_t t);
     void VolumeChanged(int level);
@@ -63,7 +62,7 @@ signals:
 private:
     mpv_handle *mpv;
 
-    QString url;
+    QString file;
     time_t time,
            totalTime;
     int volume;
