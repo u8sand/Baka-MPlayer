@@ -16,7 +16,7 @@ MainWindow::MainWindow(QWidget *parent):
 
     settings = new SettingsManager();
     mpv = new MpvHandler(ui->mpvFrame->winId());
-    playlist = new PlaylistManager(ui->playlistWidget);
+    playlist = new PlaylistManager(ui->playlistWidget, mpv);
 
     // setup ui
     ui->splitter->setSizes({ (int)((double)width()*0.70), (int)((double)width()*0.30) });
@@ -24,8 +24,6 @@ MainWindow::MainWindow(QWidget *parent):
     ui->splitter->setStretchFactor(1, 0); // fixed size during resize (playlistWidget)
 
     // mpv updates
-//    connect(mpv, SIGNAL(FileChanged(QString)),
-//            playlist, SLOT(Select(QString)));
     connect(mpv, SIGNAL(TimeChanged(time_t)),
             this, SLOT(SetTime(time_t)));
     connect(mpv, SIGNAL(PlayStateChanged(Mpv::PlayState)),
@@ -33,15 +31,22 @@ MainWindow::MainWindow(QWidget *parent):
     connect(mpv, SIGNAL(VolumeChanged(int)),
             ui->volumeSlider, SLOT(setValueNoSignal(int)));
     connect(mpv, SIGNAL(ErrorSignal(QString)),
-            this, SLOT(HandleError(QString err)));
+            this, SLOT(HandleError(QString)));
 
     // dialogs
     connect(locationDialog, SIGNAL(Done(QString)),
             playlist, SLOT(LoadFile(QString)));
 
     // playlist
-    connect(playlist, SIGNAL(PlayFile(QString)),
-            mpv, SLOT(OpenFile(QString)));
+//    connect(playlist, SIGNAL(PlayFile(QString)),
+//            mpv, SLOT(OpenFile(QString)));
+
+//    connect(ui->playlistWidget, SIGNAL(doubleClicked(QModelIndex)),
+//            playlist, SLOT(PlayIndex(QModelIndex)));
+//    connect(ui->playlistWidget, SIGNAL(activated(QModelIndex)),
+//            playlist, SLOT(PlayIndex(QModelIndex)));
+    connect(ui->playlistWidget, SIGNAL(clicked(QModelIndex)),
+            playlist, SLOT(PlayIndex(QModelIndex)));
 
     // sliders
     connect(ui->volumeSlider, SIGNAL(valueChanged(int)),
@@ -219,4 +224,14 @@ void MainWindow::Rewind()
         else
             mpv->Stop();
     }
+}
+
+void MainWindow::dragEnterEvent(QDragEnterEvent *event)
+{
+    // drag into window: accept if it's a video file
+}
+
+void MainWindow::dropEvent(QDropEvent *event)
+{
+    // drop into window: playlist->LoadFile
 }

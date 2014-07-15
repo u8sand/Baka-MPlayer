@@ -10,6 +10,9 @@
     <height>390</height>
    </rect>
   </property>
+  <property name="acceptDrops">
+   <bool>true</bool>
+  </property>
   <property name="windowTitle">
    <string>Baka MPlayer</string>
   </property>
@@ -526,7 +529,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>570</width>
-     <height>19</height>
+     <height>17</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
