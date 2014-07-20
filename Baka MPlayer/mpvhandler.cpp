@@ -8,7 +8,7 @@ static void wakeup(void *ctx)
     QCoreApplication::postEvent(mpvhandler, new QEvent(QEvent::User));
 }
 
-MpvHandler::MpvHandler( int64_t wid, QObject *parent):
+MpvHandler::MpvHandler(int64_t wid, QObject *parent):
     QObject(parent),
     mpv(0),
     file(""),

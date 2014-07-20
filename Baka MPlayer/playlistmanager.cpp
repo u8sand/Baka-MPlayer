@@ -47,11 +47,6 @@ void PlaylistManager::PlayItem(QListWidgetItem *i)
     PlayFile(path + "/" + i->text());
 }
 
-void PlaylistManager::ToggleVisibility()
-{
-    playlist->setVisible(!playlist->isVisible());
-}
-
 void PlaylistManager::LoadFile(QString f)
 {
     playlist->clear();
