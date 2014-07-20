@@ -220,3 +220,8 @@ void MainWindow::Rewind()
             mpv->Stop();
     }
 }
+
+void MainWindow::TogglePlaylistVisibility()
+{
+    ui->playlistWidget->setVisible(!ui->playlistWidget->isVisible());
+}

@@ -33,6 +33,7 @@ private slots:
     void OpenFileFromClipboard();
     void OpenLastFile();
     void Rewind();
+    void TogglePlaylistVisibility();
 
     void HandleError(QString err);
 private:
