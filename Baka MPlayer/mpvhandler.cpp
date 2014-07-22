@@ -2,13 +2,14 @@
 
 #include <QCoreApplication>
 #include <string>
+
 static void wakeup(void *ctx)
 {
     MpvHandler *mpvhandler = (MpvHandler*)ctx;
     QCoreApplication::postEvent(mpvhandler, new QEvent(QEvent::User));
 }
 
-MpvHandler::MpvHandler( int64_t wid, QObject *parent):
+MpvHandler::MpvHandler(int64_t wid, QObject *parent):
     QObject(parent),
     mpv(0),
     file(""),
@@ -90,7 +91,6 @@ bool MpvHandler::event(QEvent *event)
                 SetPlayState(Mpv::Paused);
                 break;
             case MPV_EVENT_END_FILE:
-                SetTime(0);
                 SetPlayState(Mpv::Ended);
                 SetPlayState(Mpv::Stopped);
                 break;

@@ -21,9 +21,14 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+public slots:
+    void HandleError(QString err);
+
 protected:
     inline void SetControls(bool enable);
 
+    virtual void dragEnterEvent(QDragEnterEvent *event);
+    virtual void dropEvent(QDropEvent *event);
 private slots:
     void SetTime(time_t time);
     void SetPlayState(Mpv::PlayState state);
@@ -34,7 +39,6 @@ private slots:
     void OpenLastFile();
     void Rewind();
 
-    void HandleError(QString err);
 private:
     Ui::MainWindow *ui;
     LocationDialog *locationDialog;
