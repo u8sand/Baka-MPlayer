@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>570</width>
-    <height>390</height>
+    <width>628</width>
+    <height>408</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Baka MPlayer</string>
+   <string>MainWindow</string>
   </property>
   <property name="windowIcon">
    <iconset resource="../rsclist.qrc">
@@ -21,15 +21,49 @@
    <string notr="true">QWidget, QMenu {
 	background: #141414;
 	color: white;
+	font-family: 	&quot;Lucida Sans Unicode&quot;;
 }
+
+/* QMenu */
 
 QMenuBar, QMenuBar::item {
-	background: #141414;
-	color: deepskyblue;
-	font-size: 11px;
+	background: #263238;
+	color: white;
 }
 
+QMenu {
+	background: #263238;
+    border: 1px solid dimgray;
+}
 
+QMenu::item:selected {
+     background: #cfd8dc;
+	 color: black;
+ }
+
+QMenu::item::disabled {
+	color: gray;
+}
+
+QMenu::separator {
+	background: dimgray;
+	height: 1px;
+	margin: 3px 0;
+}
+
+/* Playlist */
+
+#searchBox {
+	font-size: 14px;
+	border-bottom: 1px solid dodgerblue;
+	border-radius: 0px;
+}
+
+#indexLabel {
+	color: gray;
+}
+
+/* QSlider */
 
 QSlider::groove:horizontal {
 	background: gray;
@@ -50,206 +84,97 @@ QSlider::handle:horizontal {
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="mainLayout">
-    <property name="spacing">
-     <number>0</number>
+   <widget class="QFrame" name="mpvFrame">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>381</width>
+      <height>261</height>
+     </rect>
     </property>
-    <property name="leftMargin">
-     <number>0</number>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
     </property>
-    <property name="topMargin">
-     <number>0</number>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
     </property>
-    <property name="rightMargin">
-     <number>0</number>
+   </widget>
+   <widget class="QFrame" name="playlistFrame">
+    <property name="geometry">
+     <rect>
+      <x>396</x>
+      <y>10</y>
+      <width>191</width>
+      <height>261</height>
+     </rect>
     </property>
-    <property name="bottomMargin">
-     <number>0</number>
-    </property>
-    <item>
-     <widget class="QWidget" name="verticalWidget" native="true">
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <property name="leftMargin">
-        <number>0</number>
+    <layout class="QVBoxLayout" name="playlistLayout">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <property name="leftMargin">
+      <number>2</number>
+     </property>
+     <item>
+      <widget class="QLineEdit" name="searchBox">
+       <property name="placeholderText">
+        <string>Search</string>
        </property>
-       <property name="topMargin">
-        <number>0</number>
+       <property name="clearButtonEnabled">
+        <bool>true</bool>
        </property>
-       <property name="rightMargin">
-        <number>0</number>
-       </property>
-       <property name="bottomMargin">
-        <number>0</number>
-       </property>
-       <item>
-        <widget class="QSplitter" name="splitter">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="handleWidth">
-          <number>4</number>
-         </property>
-         <widget class="QFrame" name="mpvFrame">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
+      </widget>
+     </item>
+     <item>
+      <widget class="QFrame" name="listFrame">
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="indexLabel">
+          <property name="text">
+           <string>File 0 of 0</string>
           </property>
-          <property name="acceptDrops">
-           <bool>false</bool>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
           </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QListWidget" name="playlistWidget">
           <property name="frameShape">
            <enum>QFrame::NoFrame</enum>
           </property>
          </widget>
-         <widget class="QListWidget" name="playlistWidget">
-          <property name="frameShape">
-           <enum>QFrame::StyledPanel</enum>
-          </property>
-         </widget>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </item>
-    <item>
-     <widget class="QWidget" name="seekWidget" native="true">
-      <property name="maximumSize">
-       <size>
-        <width>16777215</width>
-        <height>14</height>
-       </size>
-      </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_2">
-       <property name="leftMargin">
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <property name="spacing">
         <number>2</number>
        </property>
-       <property name="topMargin">
-        <number>0</number>
-       </property>
-       <property name="rightMargin">
-        <number>2</number>
-       </property>
-       <property name="bottomMargin">
-        <number>0</number>
-       </property>
        <item>
-        <widget class="QLabel" name="durationLabel">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>50</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>0:00:00</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="CustomSlider" name="seekBar">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="acceptDrops">
-          <bool>false</bool>
-         </property>
-         <property name="maximum">
-          <number>1000000</number>
-         </property>
-         <property name="sliderPosition">
-          <number>0</number>
-         </property>
+        <spacer name="horizontalSpacer_2">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="remainingLabel">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="maximumSize">
+         <property name="sizeHint" stdset="0">
           <size>
-           <width>55</width>
-           <height>16777215</height>
+           <width>40</width>
+           <height>20</height>
           </size>
          </property>
-         <property name="text">
-          <string>-0:00:00</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
+        </spacer>
        </item>
-      </layout>
-     </widget>
-    </item>
-    <item>
-     <widget class="QWidget" name="controlsWidget" native="true">
-      <property name="maximumSize">
-       <size>
-        <width>16777215</width>
-        <height>38</height>
-       </size>
-      </property>
-      <layout class="QHBoxLayout" name="horizontalLayout">
-       <property name="leftMargin">
-        <number>12</number>
-       </property>
-       <property name="topMargin">
-        <number>0</number>
-       </property>
-       <property name="rightMargin">
-        <number>12</number>
-       </property>
-       <property name="bottomMargin">
-        <number>5</number>
-       </property>
        <item>
-        <widget class="QPushButton" name="openButton">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>16</width>
-           <height>16</height>
-          </size>
-         </property>
-         <property name="cursor">
-          <cursorShape>PointingHandCursor</cursorShape>
-         </property>
-         <property name="autoFillBackground">
-          <bool>false</bool>
-         </property>
+        <widget class="QPushButton" name="currentFileButton">
          <property name="icon">
           <iconset resource="../rsclist.qrc">
-           <normaloff>:/img/default_open.svg</normaloff>:/img/default_open.svg</iconset>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>16</width>
-           <height>16</height>
-          </size>
+           <normaloff>:/img/select_current.svg</normaloff>:/img/select_current.svg</iconset>
          </property>
          <property name="flat">
           <bool>true</bool>
@@ -257,13 +182,117 @@ QSlider::handle:horizontal {
         </widget>
        </item>
        <item>
+        <widget class="QPushButton" name="showAllButton">
+         <property name="icon">
+          <iconset resource="../rsclist.qrc">
+           <normaloff>:/img/show_all.svg</normaloff>:/img/show_all.svg</iconset>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="flat">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="refreshButton">
+         <property name="icon">
+          <iconset resource="../rsclist.qrc">
+           <normaloff>:/img/refresh_view.svg</normaloff>:/img/refresh_view.svg</iconset>
+         </property>
+         <property name="flat">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="horizontalLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>332</y>
+      <width>521</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <property name="leftMargin">
+      <number>12</number>
+     </property>
+     <property name="rightMargin">
+      <number>12</number>
+     </property>
+     <property name="bottomMargin">
+      <number>5</number>
+     </property>
+     <item>
+      <widget class="QPushButton" name="openButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16</width>
+         <height>16</height>
+        </size>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
+       <property name="icon">
+        <iconset resource="../rsclist.qrc">
+         <normaloff>:/img/default_open.svg</normaloff>:/img/default_open.svg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>16</width>
+         <height>16</height>
+        </size>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_4">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <property name="sizeConstraint">
+        <enum>QLayout::SetFixedSize</enum>
+       </property>
+       <item>
         <spacer name="horizontalSpacer">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
          <property name="sizeHint" stdset="0">
           <size>
-           <width>40</width>
+           <width>70</width>
            <height>20</height>
           </size>
          </property>
@@ -351,7 +380,7 @@ QSlider::handle:horizontal {
          <property name="maximumSize">
           <size>
            <width>28</width>
-           <height>16777215</height>
+           <height>30</height>
           </size>
          </property>
          <property name="cursor">
@@ -361,8 +390,8 @@ QSlider::handle:horizontal {
           <bool>false</bool>
          </property>
          <property name="icon">
-          <iconset>
-           <normaloff>../img/disabled_play.svg</normaloff>../img/disabled_play.svg</iconset>
+          <iconset resource="../rsclist.qrc">
+           <normaloff>:/img/disabled_play.svg</normaloff>:/img/disabled_play.svg</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -446,71 +475,149 @@ QSlider::handle:horizontal {
          </property>
         </widget>
        </item>
-       <item>
-        <spacer name="horizontalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <widget class="QPushButton" name="playlistButton">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>16</width>
-           <height>16</height>
-          </size>
-         </property>
-         <property name="cursor">
-          <cursorShape>PointingHandCursor</cursorShape>
-         </property>
-         <property name="autoFillBackground">
-          <bool>false</bool>
-         </property>
-         <property name="icon">
-          <iconset resource="../rsclist.qrc">
-           <normaloff>:/img/default_playlist.svg</normaloff>
-           <disabledoff>:/img/disabled_playlist.svg</disabledoff>
-           <disabledon>:/img/disabled_playlist.svg</disabledon>:/img/default_playlist.svg</iconset>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>16</width>
-           <height>16</height>
-          </size>
-         </property>
-         <property name="flat">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
       </layout>
-     </widget>
-    </item>
-   </layout>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_3">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="playlistButton">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16</width>
+         <height>16</height>
+        </size>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
+       <property name="icon">
+        <iconset resource="../rsclist.qrc">
+         <normaloff>:/img/default_playlist.svg</normaloff>
+         <disabledoff>:/img/disabled_playlist.svg</disabledoff>
+         <disabledon>:/img/disabled_playlist.svg</disabledon>:/img/default_playlist.svg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>16</width>
+         <height>16</height>
+        </size>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="horizontalLayoutWidget_3">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>290</y>
+      <width>521</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="durationLabel">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>50</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>0:00:00</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="CustomSlider" name="seekBar">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="acceptDrops">
+        <bool>false</bool>
+       </property>
+       <property name="maximum">
+        <number>1000000</number>
+       </property>
+       <property name="sliderPosition">
+        <number>0</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="remainingLabel">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>55</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>-0:00:00</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>570</width>
-     <height>19</height>
+     <width>628</width>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
@@ -526,45 +633,18 @@ QSlider::handle:horizontal {
     <addaction name="separator"/>
     <addaction name="actionShow_in_Folder"/>
     <addaction name="separator"/>
-    <addaction name="actionPl_ay_Next_File"/>
+    <addaction name="actionPlay_Next_File"/>
     <addaction name="actionPlay_Previous_File"/>
     <addaction name="separator"/>
-    <addaction name="actionE_xit"/>
+    <addaction name="actionE_xit_2"/>
    </widget>
-   <widget class="QMenu" name="menu_Playback">
+   <widget class="QMenu" name="menu_View">
     <property name="title">
-     <string>&amp;Playback</string>
+     <string>&amp;View</string>
     </property>
-    <widget class="QMenu" name="menuRepea_t">
+    <widget class="QMenu" name="menuFit_Window">
      <property name="title">
-      <string>Repea&amp;t</string>
-     </property>
-     <addaction name="action_Off"/>
-     <addaction name="separator"/>
-     <addaction name="action_Playlist"/>
-     <addaction name="action_This_File"/>
-    </widget>
-    <addaction name="action_Play"/>
-    <addaction name="action_Stop"/>
-    <addaction name="action_Rewind"/>
-    <addaction name="actionR_estart"/>
-    <addaction name="separator"/>
-    <addaction name="actionShu_ffle"/>
-    <addaction name="menuRepea_t"/>
-    <addaction name="actionStop_after_current"/>
-    <addaction name="separator"/>
-    <addaction name="action_Frame_Step"/>
-    <addaction name="actionFrame_Back_Step"/>
-    <addaction name="separator"/>
-    <addaction name="action_Jump_To_Time"/>
-   </widget>
-   <widget class="QMenu" name="menu_Media">
-    <property name="title">
-     <string>&amp;Media</string>
-    </property>
-    <widget class="QMenu" name="menu_Fit_Window">
-     <property name="title">
-      <string>&amp;Fit Window</string>
+      <string>Fit &amp;Window</string>
      </property>
      <addaction name="action_To_Current_Size"/>
      <addaction name="action50"/>
@@ -581,68 +661,75 @@ QSlider::handle:horizontal {
      <addaction name="actionForce_16_9"/>
      <addaction name="actionForce_2_35_1"/>
     </widget>
-    <widget class="QMenu" name="menuAudio_Tracks">
+    <widget class="QMenu" name="menuSubtitle_Track">
      <property name="title">
-      <string>Audio &amp;Tracks</string>
+      <string>Subtitle &amp;Track</string>
      </property>
+     <addaction name="action_Add_Subtitle_File"/>
+     <addaction name="separator"/>
      <addaction name="action_none"/>
     </widget>
-    <widget class="QMenu" name="menu_Chapters">
-     <property name="enabled">
-      <bool>false</bool>
+    <widget class="QMenu" name="menuFont_Si_ze">
+     <property name="title">
+      <string>Font Si&amp;ze</string>
      </property>
+     <addaction name="action_Size"/>
+     <addaction name="actionS_ize"/>
+     <addaction name="action_Reset_Size"/>
+    </widget>
+    <addaction name="action_Full_Screen"/>
+    <addaction name="actionTake_Snapshot"/>
+    <addaction name="separator"/>
+    <addaction name="menuFit_Window"/>
+    <addaction name="menuAspect_Ratio"/>
+    <addaction name="separator"/>
+    <addaction name="actionShow_Subtitles"/>
+    <addaction name="menuSubtitle_Track"/>
+    <addaction name="menuFont_Si_ze"/>
+    <addaction name="separator"/>
+    <addaction name="actionMedia_Info"/>
+   </widget>
+   <widget class="QMenu" name="menu_Playback">
+    <property name="title">
+     <string>&amp;Playback</string>
+    </property>
+    <widget class="QMenu" name="menuR_epeat">
+     <property name="title">
+      <string>R&amp;epeat</string>
+     </property>
+     <addaction name="action_Off"/>
+     <addaction name="separator"/>
+     <addaction name="action_Playlist"/>
+     <addaction name="action_This_File"/>
+    </widget>
+    <addaction name="action_Play"/>
+    <addaction name="action_Stop"/>
+    <addaction name="action_Restart"/>
+    <addaction name="separator"/>
+    <addaction name="actionSh_uffle"/>
+    <addaction name="menuR_epeat"/>
+    <addaction name="actionStop_after_Current"/>
+   </widget>
+   <widget class="QMenu" name="menu_Navigate">
+    <property name="title">
+     <string>&amp;Navigate</string>
+    </property>
+    <widget class="QMenu" name="menu_Chapters">
      <property name="title">
       <string>&amp;Chapters</string>
      </property>
      <addaction name="action_none_2"/>
     </widget>
-    <addaction name="actionFull_Screen"/>
-    <addaction name="menu_Fit_Window"/>
-    <addaction name="separator"/>
-    <addaction name="action_Previous_Chapter"/>
     <addaction name="action_Next_Chapter"/>
-    <addaction name="separator"/>
+    <addaction name="action_Previous_Chapter"/>
     <addaction name="menu_Chapters"/>
-    <addaction name="menuAspect_Ratio"/>
-    <addaction name="menuAudio_Tracks"/>
-   </widget>
-   <widget class="QMenu" name="menu_Subtitles">
-    <property name="title">
-     <string>&amp;Subtitles</string>
-    </property>
-    <widget class="QMenu" name="menuSubtitle_Track">
-     <property name="title">
-      <string>Subtitle &amp;Track</string>
-     </property>
-     <addaction name="action_none_3"/>
-    </widget>
-    <widget class="QMenu" name="menu_Font_Size">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="title">
-      <string>&amp;Font Size</string>
-     </property>
-     <addaction name="action_Increase"/>
-     <addaction name="action_Decrease"/>
-     <addaction name="action_Reset_Size"/>
-    </widget>
-    <addaction name="action_Show_Subtitles"/>
-    <addaction name="action_Load_Subtitle_File"/>
     <addaction name="separator"/>
-    <addaction name="menuSubtitle_Track"/>
-    <addaction name="menu_Font_Size"/>
-   </widget>
-   <widget class="QMenu" name="menuTools">
-    <property name="title">
-     <string>&amp;Tools</string>
-    </property>
-    <addaction name="action_Take_Snapshot"/>
-    <addaction name="actionShow_Command_Line"/>
+    <addaction name="action_Frame_Step"/>
+    <addaction name="actionFrame_Back_Step"/>
     <addaction name="separator"/>
-    <addaction name="actionMedia_Info"/>
+    <addaction name="action_Jump_to_Time"/>
    </widget>
-   <widget class="QMenu" name="menuOptions">
+   <widget class="QMenu" name="menu_Options">
     <property name="title">
      <string>&amp;Options</string>
     </property>
@@ -659,39 +746,35 @@ QSlider::handle:horizontal {
      <property name="title">
       <string>&amp;Tray Icon</string>
      </property>
-     <addaction name="action_Show_Icon_in_Tray"/>
+     <addaction name="action_Show_in_Tray"/>
      <addaction name="action_Hide_Popup"/>
     </widget>
-    <addaction name="action_Show_Playlist"/>
-    <addaction name="action_Hide_Album_Art"/>
-    <addaction name="action_Dim_Lights"/>
+    <addaction name="action_Show_Playlist_2"/>
+    <addaction name="action_Hide_Album_Art_2"/>
+    <addaction name="separator"/>
+    <addaction name="action_Dim_Lights_2"/>
+    <addaction name="actionShow_Command_Line_2"/>
     <addaction name="separator"/>
     <addaction name="menu_On_Top"/>
     <addaction name="menu_Tray_Icon"/>
    </widget>
-   <widget class="QMenu" name="menuHelp">
+   <widget class="QMenu" name="menu_Help">
     <property name="title">
      <string>&amp;Help</string>
     </property>
-    <addaction name="actionBaka_MPlayer_Help"/>
-    <addaction name="action_About_Baka_MPlayer"/>
+    <addaction name="actionOnline_Help"/>
+    <addaction name="action_Check_for_Updates"/>
+    <addaction name="separator"/>
+    <addaction name="actionAbout_Qt"/>
+    <addaction name="actionAbout_Baka_MPlayer"/>
    </widget>
    <addaction name="menu_File"/>
+   <addaction name="menu_View"/>
    <addaction name="menu_Playback"/>
-   <addaction name="menu_Media"/>
-   <addaction name="menu_Subtitles"/>
-   <addaction name="menuTools"/>
-   <addaction name="menuOptions"/>
-   <addaction name="menuHelp"/>
+   <addaction name="menu_Navigate"/>
+   <addaction name="menu_Options"/>
+   <addaction name="menu_Help"/>
   </widget>
-  <action name="action_Open_File">
-   <property name="text">
-    <string>&amp;Open File</string>
-   </property>
-   <property name="iconVisibleInMenu">
-    <bool>true</bool>
-   </property>
-  </action>
   <action name="actionE_xit">
    <property name="text">
     <string>E&amp;xit</string>
@@ -702,12 +785,20 @@ QSlider::handle:horizontal {
     <string>&amp;New Player</string>
    </property>
   </action>
+  <action name="action_Open_File">
+   <property name="text">
+    <string>&amp;Open File...</string>
+   </property>
+  </action>
   <action name="actionOpen_URL">
    <property name="text">
-    <string>Open &amp;URL</string>
+    <string>Open &amp;URL...</string>
    </property>
   </action>
   <action name="actionOpen_Path_from_Clipboard">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Open Path from &amp;Clipboard</string>
    </property>
@@ -728,12 +819,12 @@ QSlider::handle:horizontal {
     <string>Show in &amp;Folder</string>
    </property>
   </action>
-  <action name="actionPl_ay_Next_File">
+  <action name="actionPlay_Next_File">
    <property name="enabled">
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>Pl&amp;ay Next File</string>
+    <string>Play &amp;Next File</string>
    </property>
   </action>
   <action name="actionPlay_Previous_File">
@@ -742,6 +833,46 @@ QSlider::handle:horizontal {
    </property>
    <property name="text">
     <string>Play &amp;Previous File</string>
+   </property>
+  </action>
+  <action name="actionE_xit_2">
+   <property name="text">
+    <string>E&amp;xit</string>
+   </property>
+  </action>
+  <action name="action_Full_Screen">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>&amp;Full Screen</string>
+   </property>
+  </action>
+  <action name="actionTake_Snapshot">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Take &amp;Snapshot</string>
+   </property>
+  </action>
+  <action name="actionShow_Subtitles">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Show &amp;Subtitles</string>
+   </property>
+  </action>
+  <action name="actionMedia_Info">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Media &amp;Info</string>
    </property>
   </action>
   <action name="action_Play">
@@ -760,23 +891,15 @@ QSlider::handle:horizontal {
     <string>&amp;Stop</string>
    </property>
   </action>
-  <action name="action_Rewind">
+  <action name="action_Restart">
    <property name="enabled">
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>&amp;Rewind</string>
+    <string>&amp;Restart</string>
    </property>
   </action>
-  <action name="actionR_estart">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="text">
-    <string>R&amp;estart</string>
-   </property>
-  </action>
-  <action name="actionShu_ffle">
+  <action name="actionSh_uffle">
    <property name="checkable">
     <bool>true</bool>
    </property>
@@ -784,44 +907,58 @@ QSlider::handle:horizontal {
     <string>Sh&amp;uffle</string>
    </property>
   </action>
-  <action name="action_Off">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="checked">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>&amp;Off</string>
-   </property>
-  </action>
-  <action name="action_This_File">
+  <action name="actionStop_after_Current">
    <property name="checkable">
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>&amp;This File</string>
+    <string>Stop after &amp;Current</string>
    </property>
   </action>
-  <action name="action_Playlist">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
+  <action name="action_Show_Playlist">
    <property name="text">
-    <string>&amp;Playlist</string>
+    <string>&amp;Show Playlist</string>
    </property>
   </action>
-  <action name="actionStop_after_current">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
+  <action name="action_Hide_Album_Art">
    <property name="text">
-    <string>Stop after &amp;current</string>
+    <string>&amp;Hide Album Art</string>
    </property>
   </action>
-  <action name="action_Frame_Stop">
+  <action name="action_Dim_Lights">
    <property name="text">
-    <string>&amp;Frame Step</string>
+    <string>&amp;Dim Lights</string>
+   </property>
+  </action>
+  <action name="actionShow_Command_Line">
+   <property name="text">
+    <string>Show &amp;Command Line</string>
+   </property>
+  </action>
+  <action name="action_On_Top">
+   <property name="text">
+    <string>&amp;On Top</string>
+   </property>
+  </action>
+  <action name="action_Tray_Icon">
+   <property name="text">
+    <string>&amp;Tray Icon</string>
+   </property>
+  </action>
+  <action name="action_Next_Chapter">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>&amp;Next Chapter</string>
+   </property>
+  </action>
+  <action name="action_Previous_Chapter">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>&amp;Previous Chapter</string>
    </property>
   </action>
   <action name="action_Frame_Step">
@@ -840,177 +977,26 @@ QSlider::handle:horizontal {
     <string>Frame &amp;Back Step</string>
    </property>
   </action>
-  <action name="action_Jump_To_Time">
+  <action name="action_Jump_to_Time">
    <property name="enabled">
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>&amp;Jump To Time</string>
+    <string>&amp;Jump to Time...</string>
    </property>
   </action>
-  <action name="actionFull_Screen">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="text">
-    <string>Full &amp;Screen</string>
-   </property>
-  </action>
-  <action name="action_To_Current_Size">
-   <property name="text">
-    <string>To &amp;Current Size</string>
-   </property>
-  </action>
-  <action name="action50">
-   <property name="text">
-    <string>50%</string>
-   </property>
-  </action>
-  <action name="action75">
-   <property name="text">
-    <string>75%</string>
-   </property>
-  </action>
-  <action name="action100">
-   <property name="text">
-    <string>100%</string>
-   </property>
-  </action>
-  <action name="action200">
-   <property name="text">
-    <string>200%</string>
-   </property>
-  </action>
-  <action name="action_Previous_Chapter">
-   <property name="text">
-    <string>&amp;Previous Chapter</string>
-   </property>
-  </action>
-  <action name="action_Next_Chapter">
-   <property name="text">
-    <string>&amp;Next Chapter</string>
-   </property>
-  </action>
-  <action name="actionVolume">
-   <property name="text">
-    <string>Volume:</string>
-   </property>
-  </action>
-  <action name="action_Autodetect">
-   <property name="text">
-    <string>&amp;Autodetect</string>
-   </property>
-  </action>
-  <action name="actionForce_4_3">
-   <property name="text">
-    <string>Force &amp;4:3</string>
-   </property>
-  </action>
-  <action name="actionForce_16_9">
-   <property name="text">
-    <string>Force 16:&amp;9</string>
-   </property>
-  </action>
-  <action name="actionForce_2_35_1">
-   <property name="text">
-    <string>Force &amp;2.35:1</string>
-   </property>
-  </action>
-  <action name="action_none">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="text">
-    <string>[ none ]</string>
-   </property>
-  </action>
-  <action name="action_none_2">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="text">
-    <string>[ none ]</string>
-   </property>
-  </action>
-  <action name="action_Show_Subtitles">
+  <action name="action_Show_Playlist_2">
    <property name="checkable">
     <bool>true</bool>
    </property>
-   <property name="text">
-    <string>&amp;Show Subtitles</string>
-   </property>
-  </action>
-  <action name="action_Load_Subtitle_File">
-   <property name="text">
-    <string>&amp;Load Subtitle File</string>
-   </property>
-  </action>
-  <action name="action_none_3">
    <property name="enabled">
     <bool>false</bool>
-   </property>
-   <property name="text">
-    <string>[ none ]</string>
-   </property>
-  </action>
-  <action name="action_Increase">
-   <property name="text">
-    <string>&amp;Increase +</string>
-   </property>
-  </action>
-  <action name="action_Decrease">
-   <property name="text">
-    <string>&amp;Decrease -</string>
-   </property>
-  </action>
-  <action name="action_Reset_Size">
-   <property name="text">
-    <string>&amp;Reset Size</string>
-   </property>
-  </action>
-  <action name="action_Take_Snapshot">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="text">
-    <string>&amp;Take Snapshot</string>
-   </property>
-  </action>
-  <action name="actionShow_Command_Line">
-   <property name="text">
-    <string>Show &amp;Command Line</string>
-   </property>
-  </action>
-  <action name="actionMedia_Info">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="text">
-    <string>Media &amp;Info</string>
-   </property>
-  </action>
-  <action name="actionBaka_MPlayer_Help">
-   <property name="text">
-    <string>Baka MPlayer &amp;Help</string>
-   </property>
-  </action>
-  <action name="action_About_Baka_MPlayer">
-   <property name="text">
-    <string>&amp;About Baka MPlayer</string>
-   </property>
-  </action>
-  <action name="action_Show_Playlist">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="checked">
-    <bool>true</bool>
    </property>
    <property name="text">
     <string>&amp;Show Playlist</string>
    </property>
   </action>
-  <action name="action_Hide_Album_Art">
+  <action name="action_Hide_Album_Art_2">
    <property name="checkable">
     <bool>true</bool>
    </property>
@@ -1021,7 +1007,7 @@ QSlider::handle:horizontal {
     <string>&amp;Hide Album Art</string>
    </property>
   </action>
-  <action name="action_Dim_Lights">
+  <action name="action_Dim_Lights_2">
    <property name="checkable">
     <bool>true</bool>
    </property>
@@ -1029,27 +1015,222 @@ QSlider::handle:horizontal {
     <string>&amp;Dim Lights</string>
    </property>
   </action>
+  <action name="actionShow_Command_Line_2">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Show &amp;Command Line</string>
+   </property>
+  </action>
+  <action name="actionOnline_Help">
+   <property name="text">
+    <string>Online &amp;Help</string>
+   </property>
+  </action>
+  <action name="action_Check_for_Updates">
+   <property name="text">
+    <string>&amp;Check for Updates</string>
+   </property>
+  </action>
+  <action name="actionAbout_Qt">
+   <property name="text">
+    <string>About &amp;Qt</string>
+   </property>
+  </action>
+  <action name="actionAbout_Baka_MPlayer">
+   <property name="text">
+    <string>About &amp;Baka MPlayer</string>
+   </property>
+  </action>
+  <action name="action_To_Current_Size">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>To &amp;Current Size</string>
+   </property>
+  </action>
+  <action name="action50">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>50%</string>
+   </property>
+  </action>
+  <action name="action75">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>75%</string>
+   </property>
+  </action>
+  <action name="action100">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>100%</string>
+   </property>
+  </action>
+  <action name="action200">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>200%</string>
+   </property>
+  </action>
+  <action name="action_Auto_Detect">
+   <property name="text">
+    <string>&amp;Auto Detect</string>
+   </property>
+  </action>
+  <action name="action_Autodetect">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>&amp;Autodetect</string>
+   </property>
+  </action>
+  <action name="actionForce_4_3">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Force &amp;4:3</string>
+   </property>
+  </action>
+  <action name="actionForce_16_9">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Force 16:&amp;9</string>
+   </property>
+  </action>
+  <action name="actionForce_2_35_1">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Force &amp;2.35:1</string>
+   </property>
+  </action>
+  <action name="action_Add_Subtitle_File">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>&amp;Add Subtitle File...</string>
+   </property>
+  </action>
+  <action name="action_none">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>[ none ]</string>
+   </property>
+  </action>
+  <action name="action_Size">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>&amp;Size +</string>
+   </property>
+  </action>
+  <action name="actionS_ize">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>S&amp;ize -</string>
+   </property>
+  </action>
+  <action name="action_Reset_Size">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>&amp;Reset Size</string>
+   </property>
+  </action>
+  <action name="action_Off">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>&amp;Off</string>
+   </property>
+  </action>
+  <action name="action_Playlist">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>&amp;Playlist</string>
+   </property>
+  </action>
+  <action name="action_This_File">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>&amp;This File</string>
+   </property>
+  </action>
+  <action name="action_none_2">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>[ none ]</string>
+   </property>
+  </action>
   <action name="action_Always">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>&amp;Always</string>
    </property>
   </action>
   <action name="actionWhen_Playing">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>When &amp;Playing</string>
    </property>
   </action>
   <action name="action_Never">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>&amp;Never</string>
    </property>
   </action>
-  <action name="action_Show_Icon_in_Tray">
+  <action name="action_Show_in_Tray">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="text">
-    <string>&amp;Show Icon in Tray</string>
+    <string>&amp;Show in Tray</string>
    </property>
   </action>
   <action name="action_Hide_Popup">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>&amp;Hide Popup</string>
    </property>

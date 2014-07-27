@@ -2,6 +2,7 @@
 
 #include <QCoreApplication>
 #include <string>
+
 static void wakeup(void *ctx)
 {
     MpvHandler *mpvhandler = (MpvHandler*)ctx;
@@ -90,7 +91,6 @@ bool MpvHandler::event(QEvent *event)
                 SetPlayState(Mpv::Paused);
                 break;
             case MPV_EVENT_END_FILE:
-                SetTime(0);
                 SetPlayState(Mpv::Ended);
                 SetPlayState(Mpv::Stopped);
                 break;
