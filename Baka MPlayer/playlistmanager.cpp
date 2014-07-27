@@ -2,14 +2,13 @@
 
 #include <QDir>
 
-PlaylistManager::PlaylistManager(QListWidget *_playlist, QObject *parent) :
+PlaylistManager::PlaylistManager(QListWidget *_playlist, MpvHandler *_mpv, QObject *parent) :
     QObject(parent),
     playlist(_playlist),
+    mpv(_mpv),
     index(0),
     path("")
 {
-    connect(playlist, SIGNAL(doubleClicked(QModelIndex)),
-            this, SLOT(PlayIndex(QModelIndex)));
 }
 
 // TODO: Check to make sure files exist and such
@@ -17,10 +16,10 @@ PlaylistManager::PlaylistManager(QListWidget *_playlist, QObject *parent) :
 void PlaylistManager::PlayNext()
 {
     if(playlist->count() > 0 &&
-            playlist->currentRow() < playlist->count())
+            playlist->currentRow() < playlist->count()-1)
     {
-        playlist->setCurrentRow(index++);
-        PlayFile(path + playlist->currentItem()->text());
+        playlist->setCurrentRow(++index);
+        mpv->OpenFile(path + playlist->currentItem()->text());
     }
 }
 
@@ -30,21 +29,13 @@ void PlaylistManager::PlayPrevious()
             playlist->currentRow() > 1)
     {
         playlist->setCurrentRow(--index);
-        PlayFile(path + playlist->currentItem()->text());
+        mpv->OpenFile(path + playlist->currentItem()->text());
     }
 }
 
 void PlaylistManager::PlayIndex(QModelIndex i)
 {
-    index = i.row();
-    PlayFile(path + "/" + playlist->item(index)->text());
-}
-
-void PlaylistManager::PlayItem(QListWidgetItem *i)
-{
-    playlist->setCurrentItem(i);
-    index = playlist->row(i);
-    PlayFile(path + "/" + i->text());
+    mpv->OpenFile(path + playlist->item((index = i.row()))->text());
 }
 
 void PlaylistManager::LoadFile(QString f)
@@ -56,13 +47,22 @@ void PlaylistManager::LoadFile(QString f)
     path = fi.absolutePath() + "/";
     QDir root(path);
 
-    QFileInfoList flist = root.entryInfoList({ "*.mkv", "*.mp4", "*.avi", "*.mp3" }, QDir::Files); // todo: pass more file-types (get from settings)
+    QFileInfoList flist = root.entryInfoList({ "*.mkv", "*.mp4", "*.avi", "*.mp3", "*.ogm" }, QDir::Files); // todo: pass more file-types (get from settings)
     // todo: sort?
+    int n = 0;
     for(auto &i : flist)
+    {
+        if(i == fi)
+            index = n;
+        else
+            n++;
+
         playlist->addItem(i.fileName());
+    }
+    playlist->setCurrentRow(index);
 
     if(playlist->count() > 1)
         playlist->setVisible(true);
 
-    PlayItem((*playlist->findItems(fi.fileName(), Qt::MatchExactly).begin()));
+    mpv->OpenFile(f);
 }

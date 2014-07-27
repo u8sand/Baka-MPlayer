@@ -21,16 +21,16 @@
 }
 
 QLineEdit {
-	border: 2px solid gray;
-	border-radius: 6px;
+	border-bottom: 1px solid dodgerblue;
+	border-radius: 0px;
 }
 
 QPushButton {
-    background: black;
+    background: dodgerblue;
 	color: white;
-    border: 2px solid dodgerblue;
-    border-radius: 6px;
-    min-width: 90px;
+	border: 1px outset black;
+	border-radius: 2px;
+    min-width: 88px;
 	min-height: 25px;
 }
 
@@ -61,14 +61,14 @@ QPushButton:pressed {
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>Location:</string>
+      <widget class="QLineEdit" name="urlEdit">
+       <property name="placeholderText">
+        <string>Type location here</string>
+       </property>
+       <property name="clearButtonEnabled">
+        <bool>true</bool>
        </property>
       </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="urlEdit"/>
      </item>
      <item>
       <widget class="QLabel" name="typeLabel">
