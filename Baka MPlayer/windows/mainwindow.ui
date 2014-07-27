@@ -18,19 +18,26 @@
     <normaloff>:/img/logo.ico</normaloff>:/img/logo.ico</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">/* QMenu */
-
-QWidget, QMenu, QMenuBar, QMenuBar::item {
+   <string notr="true">QWidget, QMenu {
 	background: #141414;
+	color: white;
+	font-family: 	&quot;Lucida Sans Unicode&quot;;
+}
+
+/* QMenu */
+
+QMenuBar, QMenuBar::item {
+	background: #263238;
 	color: white;
 }
 
 QMenu {
+	background: #263238;
     border: 1px solid dimgray;
 }
 
 QMenu::item:selected {
-     background: #b2b2b2;
+     background: #cfd8dc;
 	 color: black;
  }
 
@@ -47,6 +54,7 @@ QMenu::separator {
 /* Playlist */
 
 #searchBox {
+	font-size: 14px;
 	border-bottom: 1px solid dodgerblue;
 	border-radius: 0px;
 }
@@ -609,7 +617,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>628</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
