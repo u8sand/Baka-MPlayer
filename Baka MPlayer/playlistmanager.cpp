@@ -38,11 +38,6 @@ void PlaylistManager::PlayIndex(QModelIndex i)
     mpv->OpenFile(path + playlist->item((index = i.row()))->text());
 }
 
-void PlaylistManager::ToggleVisibility()
-{
-    playlist->setVisible(!playlist->isVisible());
-}
-
 void PlaylistManager::LoadFile(QString f)
 {
     playlist->clear();

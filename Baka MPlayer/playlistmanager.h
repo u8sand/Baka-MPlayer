@@ -16,10 +16,7 @@ public slots:
     void PlayNext();
     void PlayPrevious();
     void PlayIndex(QModelIndex i);
-
     void LoadFile(QString file);
-
-    void ToggleVisibility();
 
 signals:
     void PlayFile(QString file);
