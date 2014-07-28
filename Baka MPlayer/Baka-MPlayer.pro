@@ -15,8 +15,8 @@ TEMPLATE = app
 SOURCES += main.cpp\
     mpvhandler.cpp \
     settingsmanager.cpp \
-    windows/mainwindow.cpp \
     playlistmanager.cpp \
+    windows/mainwindow.cpp \
     windows/locationdialog.cpp
 
 HEADERS  += \

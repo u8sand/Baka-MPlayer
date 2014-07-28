@@ -19,9 +19,9 @@ MainWindow::MainWindow(QWidget *parent):
     playlist = new PlaylistManager(ui->playlistWidget, mpv);
 
     // setup ui
-    ui->splitter->setSizes({ (int)((double)width()*0.70), (int)((double)width()*0.30) });
-    ui->splitter->setStretchFactor(0, 1); // variable size during resize (mpvFrame)
-    ui->splitter->setStretchFactor(1, 0); // fixed size during resize (playlistWidget)
+//    ui->splitter->setSizes({ (int)((double)width()*0.70), (int)((double)width()*0.30) });
+//    ui->splitter->setStretchFactor(0, 1); // variable size during resize (mpvFrame)
+//    ui->splitter->setStretchFactor(1, 0); // fixed size during resize (playlistWidget)
 
     // mpv updates
     connect(mpv, SIGNAL(TimeChanged(time_t)),
@@ -60,7 +60,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->playButton, SIGNAL(clicked()),
             mpv, SLOT(PlayPause()));
     connect(ui->playlistButton, SIGNAL(clicked()),
-            playlist, SLOT(ToggleVisibility()));
+            this, SLOT(TogglePlaylistVisibility()));
     connect(ui->previousButton, SIGNAL(clicked()),
             playlist, SLOT(PlayPrevious()));
     connect(ui->nextButton, SIGNAL(clicked()),
@@ -79,7 +79,7 @@ MainWindow::MainWindow(QWidget *parent):
             this, SLOT(OpenFileFromClipboard()));
     connect(ui->actionOpen_Last_File, SIGNAL(triggered()),
             this, SLOT(OpenLastFile()));
-    connect(ui->actionE_xit, SIGNAL(triggered()),
+    connect(ui->actionE_xit_2, SIGNAL(triggered()),
             this, SLOT(close()));
 
     // playback menu
@@ -87,8 +87,6 @@ MainWindow::MainWindow(QWidget *parent):
             mpv, SLOT(PlayPause()));
     connect(ui->action_Stop, SIGNAL(triggered()),
             mpv, SLOT(Stop()));
-    connect(ui->action_Rewind, SIGNAL(triggered()),
-            mpv, SLOT(Rewind()));
 //    connect(ui->actionR_estart, SIGNAL(triggered()),
 //            mpv, SLOT(Restart()));
 //    connect(ui->actionShu_ffle, SIGNAL(triggered()),
@@ -147,9 +145,8 @@ void MainWindow::SetControls(bool enable)
     // menubar
     ui->action_Play->setEnabled(enable);
     ui->action_Stop->setEnabled(enable);
-    ui->action_Rewind->setEnabled(enable);
-    ui->actionR_estart->setEnabled(enable);
-    ui->action_Jump_To_Time->setEnabled(enable);
+    ui->action_Restart->setEnabled(enable);
+    ui->action_Jump_to_Time->setEnabled(enable);
     ui->actionMedia_Info->setEnabled(enable);
     ui->action_Show_Playlist->setEnabled(enable);
 }
@@ -226,12 +223,17 @@ void MainWindow::Rewind()
     }
 }
 
-void MainWindow::dragEnterEvent(QDragEnterEvent *event)
+void MainWindow::TogglePlaylistVisibility()
 {
-    // drag into window: accept if it's a video file
+    ui->playlistFrame->setVisible(!ui->playlistFrame->isVisible());
 }
 
-void MainWindow::dropEvent(QDropEvent *event)
-{
-    // drop into window: playlist->LoadFile
-}
+//void MainWindow::dragEnterEvent(QDragEnterEvent *event)
+//{
+//    // drag into window: accept if it's a video file
+//}
+
+//void MainWindow::dropEvent(QDropEvent *event)
+//{
+//    // drop into window: playlist->LoadFile
+//}
