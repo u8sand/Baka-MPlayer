@@ -17,7 +17,7 @@
    <string notr="true">QWidget {
 	background: #141414;
 	color: whitesmoke;
-	font: 14px &quot;Open Sans&quot;;
+	font: 12px &quot;Open Sans&quot;;
 }
 
 QLineEdit {
@@ -35,7 +35,11 @@ QPushButton {
 }
 
 QPushButton:pressed {
-    background-color: dodgerblue;
+    background: dodgerblue;
+}
+
+QPushButton:disabled {
+    color: gray;
 }</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
