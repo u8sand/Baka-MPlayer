@@ -18,22 +18,17 @@
     <normaloff>:/img/logo.ico</normaloff>:/img/logo.ico</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">QWidget, QMenu {
+   <string notr="true">QWidget, QMenuBar, QMenuBar::item {
 	background: #141414;
 	color: whitesmoke;
-	font-family: 	&quot;Lucida Sans Unicode&quot;;
+	font-family: 	&quot;Open Sans&quot;;
 }
 
 /* QMenu */
 
-QMenuBar, QMenuBar::item {
-	background: #263238;
-	color: whitesmoke;
-}
-
 QMenu {
-	background: #263238;
-    border: 1px solid dimgray;
+	background: #212121;
+    border: 1px solid #424242;
 }
 
 QMenu::item:selected {
@@ -46,7 +41,7 @@ QMenu::item::disabled {
 }
 
 QMenu::separator {
-	background: dimgray;
+	background: #424242;
 	height: 1px;
 	margin: 3px 0;
 }
@@ -54,7 +49,7 @@ QMenu::separator {
 /* Playlist */
 
 #searchBox {
-	font-size: 14px;
+	font-size: 12px;
 	border-bottom: 1px solid dodgerblue;
 	border-radius: 0px;
 }
@@ -139,6 +134,12 @@ QSlider::handle:horizontal {
         </property>
         <item>
          <widget class="QLabel" name="indexLabel">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="toolTip">
+           <string>Click to play a file by index</string>
+          </property>
           <property name="text">
            <string>File 0 of 0</string>
           </property>
@@ -163,6 +164,26 @@ QSlider::handle:horizontal {
         <number>2</number>
        </property>
        <item>
+        <widget class="QPushButton" name="currentFileButton">
+         <property name="toolTip">
+          <string>Select the Current File</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../rsclist.qrc">
+           <normaloff>:/img/select_current.svg</normaloff>:/img/select_current.svg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>14</width>
+           <height>14</height>
+          </size>
+         </property>
+         <property name="flat">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
         <spacer name="horizontalSpacer_2">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
@@ -176,21 +197,19 @@ QSlider::handle:horizontal {
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="currentFileButton">
-         <property name="icon">
-          <iconset resource="../rsclist.qrc">
-           <normaloff>:/img/select_current.svg</normaloff>:/img/select_current.svg</iconset>
-         </property>
-         <property name="flat">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
         <widget class="QPushButton" name="showAllButton">
+         <property name="toolTip">
+          <string>Show All Files</string>
+         </property>
          <property name="icon">
           <iconset resource="../rsclist.qrc">
            <normaloff>:/img/show_all.svg</normaloff>:/img/show_all.svg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>14</width>
+           <height>14</height>
+          </size>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -202,9 +221,18 @@ QSlider::handle:horizontal {
        </item>
        <item>
         <widget class="QPushButton" name="refreshButton">
+         <property name="toolTip">
+          <string>Refresh Playlist</string>
+         </property>
          <property name="icon">
           <iconset resource="../rsclist.qrc">
            <normaloff>:/img/refresh_view.svg</normaloff>:/img/refresh_view.svg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>14</width>
+           <height>14</height>
+          </size>
          </property>
          <property name="flat">
           <bool>true</bool>
@@ -251,6 +279,9 @@ QSlider::handle:horizontal {
        <property name="cursor">
         <cursorShape>PointingHandCursor</cursorShape>
        </property>
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Left Click to Open File&lt;br&gt;Mouse Wheel Click to Jump&lt;br&gt;Right Click to Open URL&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="autoFillBackground">
         <bool>false</bool>
        </property>
@@ -285,6 +316,9 @@ QSlider::handle:horizontal {
        </property>
        <property name="cursor">
         <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="toolTip">
+        <string>Voice Command</string>
        </property>
        <property name="autoFillBackground">
         <bool>false</bool>
@@ -640,6 +674,9 @@ QSlider::handle:horizontal {
          <height>16777215</height>
         </size>
        </property>
+       <property name="toolTip">
+        <string>Click to change between total and remaining time</string>
+       </property>
        <property name="text">
         <string>-0:00:00</string>
        </property>
@@ -657,7 +694,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>628</width>
-     <height>22</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">

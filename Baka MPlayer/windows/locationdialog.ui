@@ -16,8 +16,8 @@
   <property name="styleSheet">
    <string notr="true">QWidget {
 	background: #141414;
-	color: white;
-	font: 14px &quot;Lucida Sans Unicode&quot;;
+	color: whitesmoke;
+	font: 14px &quot;Open Sans&quot;;
 }
 
 QLineEdit {
@@ -26,7 +26,7 @@ QLineEdit {
 }
 
 QPushButton {
-    background: dodgerblue;
+    background: #263238;
 	color: white;
 	border: 1px outset black;
 	border-radius: 2px;
@@ -63,7 +63,7 @@ QPushButton:pressed {
      <item>
       <widget class="QLineEdit" name="urlEdit">
        <property name="placeholderText">
-        <string>Type location here</string>
+        <string>Type URL or location here</string>
        </property>
        <property name="clearButtonEnabled">
         <bool>true</bool>
