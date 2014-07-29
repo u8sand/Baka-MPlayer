@@ -1,8 +1,9 @@
 <RCC>
   <qresource prefix="/">
+    <file>img/default_show_all.svg</file>
+    <file>img/enabled_show_all.svg</file>
     <file>img/refresh_view.svg</file>
     <file>img/select_current.svg</file>
-    <file>img/show_all.svg</file>
     <file>img/exists.svg</file>
     <file>img/disabled_mic.svg</file>
     <file>img/down_mic.svg</file>

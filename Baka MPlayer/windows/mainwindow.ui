@@ -212,7 +212,11 @@ QSlider::handle:horizontal {
             </property>
             <property name="icon">
              <iconset resource="../rsclist.qrc">
-              <normaloff>:/img/show_all.svg</normaloff>:/img/show_all.svg</iconset>
+              <normaloff>:/img/default_show_all.svg</normaloff>
+              <normalon>:/img/enabled_show_all.svg</normalon>
+              <disabledon>:/img/enabled_show_all.svg</disabledon>
+              <activeon>:/img/enabled_show_all.svg</activeon>
+              <selectedon>:/img/enabled_show_all.svg</selectedon>:/img/default_show_all.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
