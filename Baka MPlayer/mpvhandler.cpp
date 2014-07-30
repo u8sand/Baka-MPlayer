@@ -113,24 +113,11 @@ bool MpvHandler::event(QEvent *event)
     return QObject::event(event);
 }
 
-void MpvHandler::CloseFile()
-{
-    if(mpv)
-    {
-        const char *args[] = {"playlist_remove", "current", NULL};
-        mpv_command_async(mpv, 0, args);
-    }
-    else
-        emit ErrorSignal("mpv was not initialized");
-}
-
 void MpvHandler::OpenFile(QString f/*, QString subFile = ""*/)
 {
     if(mpv)
     {
 //        externalSub = subFile;
-        if(playState == Mpv::Playing || playState == Mpv::Started)
-            CloseFile();
         const char *args[] = {"loadfile", f.toUtf8().data(), NULL};
         mpv_command_async(mpv, 0, args);
     }

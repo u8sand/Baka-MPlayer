@@ -37,7 +37,6 @@ protected:
     virtual bool event(QEvent *event);
 
 public slots:
-    void CloseFile();
     void OpenFile(QString f);
     void PlayPause(bool justPause = false);
     void Stop();
