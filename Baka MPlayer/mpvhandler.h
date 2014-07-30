@@ -49,7 +49,7 @@ private slots:
     void SetTime(time_t t) { time = t; emit TimeChanged(t); }
     void SetTotalTime(time_t t) { totalTime = t; emit TotalTimeChanged(t); }
     void SetVolume(int v) { volume = v; emit VolumeChanged(v); }
-    void SetPlayState(Mpv::PlayState s) { playState = s; emit PlayStateChanged(s); }
+    void SetPlayState(Mpv::PlayState s) { if (playState == s) return; playState = s; emit PlayStateChanged(s); }
 
 signals:
     void FileChanged(QString f);
