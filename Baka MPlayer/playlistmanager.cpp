@@ -2,10 +2,9 @@
 
 #include <QDir>
 
-PlaylistManager::PlaylistManager(QListWidget *_playlist, MpvHandler *_mpv, QObject *parent) :
+PlaylistManager::PlaylistManager(QListWidget *_playlist, QObject *parent) :
     QObject(parent),
     playlist(_playlist),
-    mpv(_mpv),
     index(0),
     path("")
 {
@@ -19,7 +18,7 @@ void PlaylistManager::PlayNext()
             playlist->currentRow() < playlist->count()-1)
     {
         playlist->setCurrentRow(++index);
-        mpv->OpenFile(path + playlist->currentItem()->text());
+        emit PlayFile(path + playlist->currentItem()->text());
     }
 }
 
@@ -29,13 +28,13 @@ void PlaylistManager::PlayPrevious()
             playlist->currentRow() > 1)
     {
         playlist->setCurrentRow(--index);
-        mpv->OpenFile(path + playlist->currentItem()->text());
+        emit PlayFile(path + playlist->currentItem()->text());
     }
 }
 
 void PlaylistManager::PlayIndex(QModelIndex i)
 {
-    mpv->OpenFile(path + playlist->item((index = i.row()))->text());
+    emit PlayFile(path + playlist->item((index = i.row()))->text());
 }
 
 void PlaylistManager::LoadFile(QString f)
@@ -64,5 +63,5 @@ void PlaylistManager::LoadFile(QString f)
     if(playlist->count() > 1)
         playlist->setVisible(true);
 
-    mpv->OpenFile(f);
+    emit PlayFile(f);
 }

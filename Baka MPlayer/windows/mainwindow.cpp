@@ -15,13 +15,8 @@ MainWindow::MainWindow(QWidget *parent):
     ui->setupUi(this);
 
     settings = new SettingsManager();
+    playlist = new PlaylistManager(ui->playlistWidget);
     mpv = new MpvHandler(ui->mpvFrame->winId());
-    playlist = new PlaylistManager(ui->playlistWidget, mpv);
-
-    // setup ui
-//    ui->splitter->setSizes({ (int)((double)width()*0.70), (int)((double)width()*0.30) });
-//    ui->splitter->setStretchFactor(0, 1); // variable size during resize (mpvFrame)
-//    ui->splitter->setStretchFactor(1, 0); // fixed size during resize (playlistWidget)
 
     // mpv updates
     connect(mpv, SIGNAL(TimeChanged(time_t)),
@@ -38,13 +33,9 @@ MainWindow::MainWindow(QWidget *parent):
             playlist, SLOT(LoadFile(QString)));
 
     // playlist
-//    connect(playlist, SIGNAL(PlayFile(QString)),
-//            mpv, SLOT(OpenFile(QString)));
+    connect(playlist, SIGNAL(PlayFile(QString)),
+            mpv, SLOT(OpenFile(QString)), Qt::QueuedConnection);
 
-//    connect(ui->playlistWidget, SIGNAL(doubleClicked(QModelIndex)),
-//            playlist, SLOT(PlayIndex(QModelIndex)));
-//    connect(ui->playlistWidget, SIGNAL(activated(QModelIndex)),
-//            playlist, SLOT(PlayIndex(QModelIndex)));
     connect(ui->playlistWidget, SIGNAL(clicked(QModelIndex)),
             playlist, SLOT(PlayIndex(QModelIndex)));
 
