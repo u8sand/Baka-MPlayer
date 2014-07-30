@@ -37,6 +37,7 @@ protected:
     virtual bool event(QEvent *event);
 
 public slots:
+    void CloseFile();
     void OpenFile(QString f);
     void PlayPause(bool justPause = false);
     void Stop();
@@ -45,11 +46,11 @@ public slots:
     void AdjustVolume(int level);
 
 private slots:
-    void SetFile(QString f) { file = f; emit FileChanged(f); }
-    void SetTime(time_t t) { time = t; emit TimeChanged(t); }
-    void SetTotalTime(time_t t) { totalTime = t; emit TotalTimeChanged(t); }
-    void SetVolume(int v) { volume = v; emit VolumeChanged(v); }
-    void SetPlayState(Mpv::PlayState s) { if (playState == s) return; playState = s; emit PlayStateChanged(s); }
+    void SetFile(QString f);
+    void SetTime(time_t t);
+    void SetTotalTime(time_t t);
+    void SetVolume(int v);
+    void SetPlayState(Mpv::PlayState s);
 
 signals:
     void FileChanged(QString f);

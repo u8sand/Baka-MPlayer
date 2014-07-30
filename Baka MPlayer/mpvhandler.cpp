@@ -78,6 +78,8 @@ bool MpvHandler::event(QEvent *event)
                         SetFile(((std::string*)prop->data)->c_str());
                 break;
             }
+            case MPV_EVENT_FILE_LOADED: // essentially when i get this event it won't start
+                break;
             case MPV_EVENT_IDLE:
                 SetTime(0);
                 SetPlayState(Mpv::Idle);
@@ -97,6 +99,10 @@ bool MpvHandler::event(QEvent *event)
             case MPV_EVENT_SHUTDOWN:
                 QCoreApplication::quit();
                 break;
+            case MPV_EVENT_COMMAND_REPLY:
+                if(event->error != MPV_ERROR_SUCCESS)
+                    emit ErrorSignal(QString::number(event->error));
+                break;
             default:
                 // unhandled events
                 break;
@@ -107,13 +113,26 @@ bool MpvHandler::event(QEvent *event)
     return QObject::event(event);
 }
 
+void MpvHandler::CloseFile()
+{
+    if(mpv)
+    {
+        const char *args[] = {"playlist_remove", "current", NULL};
+        mpv_command_async(mpv, 0, args);
+    }
+    else
+        emit ErrorSignal("mpv was not initialized");
+}
+
 void MpvHandler::OpenFile(QString f/*, QString subFile = ""*/)
 {
     if(mpv)
     {
 //        externalSub = subFile;
+        if(playState == Mpv::Playing || playState == Mpv::Started)
+            CloseFile();
         const char *args[] = {"loadfile", f.toUtf8().data(), NULL};
-        mpv_command(mpv, args);
+        mpv_command_async(mpv, 0, args);
     }
     else
         emit ErrorSignal("mpv was not initialized");
@@ -168,7 +187,7 @@ void MpvHandler::Seek(int pos, bool relative)
                               QString::number(pos).toUtf8().data(),
                               relative ? "relative" : "absolute",
                               NULL};
-        mpv_command(mpv, args);
+        mpv_command_async(mpv, 0, args);
     }
     else
         emit ErrorSignal("mpv was not initialized");
@@ -187,3 +206,47 @@ void MpvHandler::AdjustVolume(int level)
         emit ErrorSignal("mpv was not initialized");
 }
 
+void MpvHandler::SetFile(QString f)
+{
+    if(file != f)
+    {
+        file = f;
+        emit FileChanged(f);
+    }
+}
+
+void MpvHandler::SetTime(time_t t)
+{
+    if(time != t)
+    {
+        time = t;
+        emit TimeChanged(t);
+    }
+}
+
+void MpvHandler::SetTotalTime(time_t t)
+{
+    if(totalTime != t)
+    {
+        totalTime = t;
+        emit TotalTimeChanged(t);
+    }
+}
+
+void MpvHandler::SetVolume(int v)
+{
+    if(volume != v)
+    {
+        volume = v;
+        emit VolumeChanged(v);
+    }
+}
+
+void MpvHandler::SetPlayState(Mpv::PlayState s)
+{
+    if (playState != s)
+    {
+        playState = s;
+        emit PlayStateChanged(s);
+    }
+}
