@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="/">
+    <file>img/logo.svg</file>
     <file>img/default_show_all.svg</file>
     <file>img/enabled_show_all.svg</file>
     <file>img/refresh_view.svg</file>
