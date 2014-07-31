@@ -30,16 +30,13 @@ QMenu {
 	background: #212121;
     border: 1px solid #424242;
 }
-
 QMenu::item:selected {
-     background: #cfd8dc;
+	background: #cfd8dc;
 	 color: black;
  }
-
 QMenu::item::disabled {
 	color: gray;
 }
-
 QMenu::separator {
 	background: #424242;
 	height: 1px;
@@ -57,7 +54,6 @@ QMenu::separator {
 	border-bottom: 1px solid dodgerblue;
 	border-radius: 0px;
 }
-
 #searchBox::item::alternate {
 	background: black;
 }
@@ -79,11 +75,9 @@ QSlider::groove:horizontal {
 	background: gray;
 	height: 1px;
 }
-
 QSlider::sub-page:horizontal {
 	background: dodgerblue;
 }
-
 QSlider::handle:horizontal {
 	background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
 					stop: 0 silver, stop: 1 darkgray);
@@ -95,41 +89,22 @@ QSlider::handle:horizontal {
 
 /* QScrollBar:vertical */
 
- QScrollBar:vertical {
-     border: 2px solid gray;
-     background: gray;
-     width: 15px;
-     margin: 22px 0 22px 0;
- }
- QScrollBar::handle:vertical {
-     background: white;
-     min-height: 20px;
- }
- QScrollBar::add-line:vertical {
-     border: 2px solid gray;
-     background: #32CC99;
-     height: 20px;
-     subcontrol-position: bottom;
-     subcontrol-origin: margin;
- }
-
- QScrollBar::sub-line:vertical {
-     border: 2px solid gray;
-     background: #32CC99;
-     height: 20px;
-     subcontrol-position: top;
-     subcontrol-origin: margin;
- }
- QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
-     border: 2px solid grey;
-     width: 3px;
-     height: 3px;
-     background: white;
- }
-
- QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
-     background: none;
- }</string>
+QScrollBar:vertical {
+	border: none;
+	width: 5px;
+}
+QScrollBar::handle:vertical {
+	background: gray;
+	border-radius: 2px;
+	min-height: 10px;
+}
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+	border: none;
+}
+QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical,
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+	background: transparent;
+}</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -215,7 +190,7 @@ QSlider::handle:horizontal {
         <item>
          <widget class="QLineEdit" name="searchBox">
           <property name="placeholderText">
-           <string>Search</string>
+           <string>Search Playlist</string>
           </property>
           <property name="clearButtonEnabled">
            <bool>true</bool>
@@ -235,6 +210,9 @@ QSlider::handle:horizontal {
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
+          </property>
+          <property name="margin">
+           <number>4</number>
           </property>
          </widget>
         </item>
@@ -348,6 +326,18 @@ QSlider::handle:horizontal {
        <property name="spacing">
         <number>0</number>
        </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
        <item>
         <widget class="QLabel" name="durationLabel">
          <property name="sizePolicy">
@@ -426,11 +416,14 @@ QSlider::handle:horizontal {
        <property name="leftMargin">
         <number>12</number>
        </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
        <property name="rightMargin">
         <number>12</number>
        </property>
        <property name="bottomMargin">
-        <number>5</number>
+        <number>11</number>
        </property>
        <item>
         <widget class="QPushButton" name="openButton">
@@ -787,13 +780,9 @@ QSlider::handle:horizontal {
      </widget>
     </item>
    </layout>
-   <zorder>mpvFrame</zorder>
-   <zorder>playlistFrame</zorder>
+   <zorder>splitter</zorder>
    <zorder>horizontalWidget_2</zorder>
    <zorder>horizontalWidget_3</zorder>
-   <zorder>outputTextEdit</zorder>
-   <zorder>seekBar</zorder>
-   <zorder>remainingLabel</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

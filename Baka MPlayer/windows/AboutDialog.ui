@@ -34,11 +34,9 @@ QPushButton {
     min-width: 88px;
 	min-height: 25px;
 }
-
 QPushButton:pressed {
     background: dodgerblue;
 }
-
 QPushButton:disabled {
     color: gray;
 }
@@ -56,11 +54,9 @@ QTabBar::tab {
     min-width: 100px;
     padding-bottom: 5px;
 }
-
 QTabBar::tab:selected {
     border-bottom: 1px solid dodgerblue;
 }
-
 QTabBar::tab:!selected {
 	color: silver;
     margin-bottom: 1px;
