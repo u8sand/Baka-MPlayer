@@ -124,7 +124,7 @@ QPushButton:disabled {
         </size>
        </property>
        <property name="text">
-        <string>OK</string>
+        <string>&amp;OK</string>
        </property>
       </widget>
      </item>
@@ -156,7 +156,7 @@ QPushButton:disabled {
         </size>
        </property>
        <property name="text">
-        <string>Paste</string>
+        <string>&amp;Paste</string>
        </property>
        <property name="autoDefault">
         <bool>false</bool>
@@ -178,7 +178,7 @@ QPushButton:disabled {
         </size>
        </property>
        <property name="text">
-        <string>Copy</string>
+        <string>&amp;Copy</string>
        </property>
        <property name="autoDefault">
         <bool>false</bool>
@@ -200,7 +200,7 @@ QPushButton:disabled {
         </size>
        </property>
        <property name="text">
-        <string>Clear</string>
+        <string>Clea&amp;r</string>
        </property>
        <property name="autoDefault">
         <bool>false</bool>
@@ -235,7 +235,7 @@ QPushButton:disabled {
         </size>
        </property>
        <property name="text">
-        <string>Cancel</string>
+        <string>Canc&amp;el</string>
        </property>
        <property name="autoDefault">
         <bool>false</bool>
