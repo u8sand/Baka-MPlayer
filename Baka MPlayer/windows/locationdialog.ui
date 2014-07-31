@@ -25,6 +25,8 @@ QLineEdit {
 	border-radius: 0px;
 }
 
+/* QPushButton */
+
 QPushButton {
     background: #263238;
 	color: white;
@@ -33,11 +35,9 @@ QPushButton {
     min-width: 88px;
 	min-height: 25px;
 }
-
 QPushButton:pressed {
     background: dodgerblue;
 }
-
 QPushButton:disabled {
     color: gray;
 }</string>
