@@ -15,17 +15,15 @@ public:
     explicit LocationDialog(QWidget *parent = 0);
     ~LocationDialog();
 
+    static QString getUrl(QWidget *parent = 0);
+
 private slots:
     void on_okButton_clicked();
     void on_pasteButton_clicked();
     void on_copyButton_clicked();
     void on_clearButton_clicked();
     void on_cancelButton_clicked();
-
     void on_urlEdit_textChanged(const QString &arg1);
-
-signals:
-    void Done(QString url = "");
 
 private:
     Ui::LocationDialog *ui;

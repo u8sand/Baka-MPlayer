@@ -16,10 +16,18 @@ LocationDialog::~LocationDialog()
     delete ui;
 }
 
+QString LocationDialog::getUrl(QWidget *parent)
+{
+    LocationDialog dialog(parent);
+    if(dialog.exec() == QDialog::Accepted)
+        return dialog.ui->urlEdit->text();
+    else
+        return QString();
+}
+
 void LocationDialog::on_okButton_clicked()
 {
-    emit Done(ui->urlEdit->text());
-    close();
+    this->accept();
 }
 
 void LocationDialog::on_pasteButton_clicked()
@@ -41,15 +49,14 @@ void LocationDialog::on_clearButton_clicked()
 
 void LocationDialog::on_cancelButton_clicked()
 {
-    emit Done();
-    close();
+    this->reject();
 }
 
 void LocationDialog::on_urlEdit_textChanged(const QString &arg1)
 {
     // todo: make more complex validation
 #ifdef Q_OS_WIN
-    QRegExp rx("^(http://.+\\.[a-z]+|C:/)", Qt::CaseInsensitive);
+    QRegExp rx("^(http://.+\\.[a-z]+|[a-z]:/)", Qt::CaseInsensitive);
 #elif defined(Q_OS_LINUX) || defined(Q_OS_UNIX)
     QRegExp rx("^(http://.+\\.[a-z]+|\\.{0,2}/)", Qt::CaseInsensitive);
 #endif

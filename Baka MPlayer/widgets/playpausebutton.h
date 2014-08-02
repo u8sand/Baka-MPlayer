@@ -1,7 +1,6 @@
 #ifndef PLAYPAUSEBUTTON_H
 #define PLAYPAUSEBUTTON_H
 
-
 #include <QPushButton>
 
 class PlayPauseButton : public QPushButton
