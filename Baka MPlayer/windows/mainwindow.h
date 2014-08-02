@@ -3,8 +3,6 @@
 
 #include <QMainWindow>
 
-#include "locationdialog.h"
-
 #include "mpvhandler.h"
 #include "settingsmanager.h"
 #include "playlistmanager.h"
@@ -45,6 +43,10 @@ private slots:
     void ShowInFolder();                            // opens explorer to current file's path
     void ToggleVoice();                             // toggles voice command engine
     void TogglePlaylist();                          // toggles playlist visibility
+    void OnlineHelp();                              // loads online help
+    void CheckForUpdates();                         // checks for program updates
+    void AboutQt();                                 // shows qt license information
+    void About();                                   // shows baka mplayer about dialog
 
 private:
     Ui::MainWindow *ui;

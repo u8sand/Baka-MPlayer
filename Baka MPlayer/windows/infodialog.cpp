@@ -6,9 +6,18 @@ InfoDialog::InfoDialog(QWidget *parent) :
     ui(new Ui::InfoDialog)
 {
     ui->setupUi(this);
+
+    connect(ui->closeButton, SIGNAL(clicked()),
+            this, SLOT(close()));
 }
 
 InfoDialog::~InfoDialog()
 {
     delete ui;
+}
+
+void InfoDialog::info(QWidget *parent)
+{
+    InfoDialog dialog(parent);
+    dialog.exec();
 }

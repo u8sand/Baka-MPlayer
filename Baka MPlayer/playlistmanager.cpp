@@ -72,3 +72,18 @@ void PlaylistManager::ToggleShuffle() // todo
 {
 
 }
+
+void PlaylistManager::SelectCurrent()
+{
+    playlist->setCurrentRow(index);
+}
+
+void PlaylistManager::ShowAll() // todo
+{
+
+}
+
+void PlaylistManager::Refresh() // todo
+{
+
+}

@@ -15,6 +15,7 @@ public:
     explicit InfoDialog(QWidget *parent = 0);
     ~InfoDialog();
 
+    static void info(QWidget *parent = 0);
 private:
     Ui::InfoDialog *ui;
 };

@@ -18,7 +18,8 @@ SOURCES += main.cpp\
     windows/mainwindow.cpp \
     windows/locationdialog.cpp \
     windows/infodialog.cpp \
-    windows/jumpdialog.cpp
+    windows/jumpdialog.cpp \
+    windows/aboutdialog.cpp
 
 HEADERS  += \
     mpvhandler.h \
@@ -30,13 +31,15 @@ HEADERS  += \
     windows/locationdialog.h \
     widgets/openbutton.h \
     windows/infodialog.h \
-    windows/jumpdialog.h
+    windows/jumpdialog.h \
+    windows/aboutdialog.h
 
 FORMS    += \
     windows/mainwindow.ui \
     windows/locationdialog.ui \
     windows/infodialog.ui \
-    windows/jumpdialog.ui
+    windows/jumpdialog.ui \
+    windows/aboutdialog.ui
 
 CONFIG += c++11
 
