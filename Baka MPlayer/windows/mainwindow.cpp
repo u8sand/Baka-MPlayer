@@ -1,12 +1,18 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include "locationdialog.h"
+#include "infodialog.h"
+#include "locationdialog.h"
+#include "aboutdialog.h"
+
 #include <QMessageBox>
 #include <QFileDialog>
 #include <QDateTime>
 #include <QSplitter>
 #include <QClipboard>
 #include <QMimeData>
+#include <QDesktopServices>
 
 MainWindow::MainWindow(SettingsManager *_settings, QWidget *parent):
     QMainWindow(parent),
@@ -34,6 +40,12 @@ MainWindow::MainWindow(SettingsManager *_settings, QWidget *parent):
             mpv, SLOT(OpenFile(QString)), Qt::QueuedConnection);        // mpv open file
     connect(ui->playlistWidget, SIGNAL(doubleClicked(QModelIndex)),     // playlist selection
             this, SLOT(PlayIndex(QModelIndex)));                        // play the selected file
+    connect(ui->currentFileButton, SIGNAL(clicked()),                   // current file button
+            playlist, SLOT(SelectCurrent()));                            // selects the current file in the playlist
+    connect(ui->showAllButton, SIGNAL(clicked()),                       // show all button
+            playlist, SLOT(ShowAll()));                                 // show all types file types in playlist
+    connect(ui->refreshButton, SIGNAL(clicked()),                       // refresh button
+            playlist, SLOT(Refresh()));                                 // refresh playlist files
                                                                         // sliders
     connect(ui->volumeSlider, SIGNAL(valueChanged(int)),                // volume slider changed
             mpv, SLOT(AdjustVolume(int)));                              // adjust volume accordingly
@@ -134,7 +146,7 @@ MainWindow::MainWindow(SettingsManager *_settings, QWidget *parent):
     connect(ui->actionAbout_Qt, SIGNAL(triggered()),                    // Help -> About Qt
             this, SLOT(AboutQt()));                                     // show about qt
     connect(ui->actionAbout_Baka_MPlayer, SIGNAL(triggered()),          // Help -> About Baka MPlayer
-            this, SLOT(About()));                                       // show about
+            this, SLOT(About()));                                       // show about dialog
 
     // todo: put baka mplayer options and such rather than just blindly treating all args as files
     for(auto arg = QCoreApplication::arguments().begin()+1; arg != QCoreApplication::arguments().end(); ++arg) // loop through arguments except first (executable name)
@@ -296,4 +308,24 @@ void MainWindow::ToggleVoice() // todo
 void MainWindow::TogglePlaylist()
 {
     ui->playlistFrame->setVisible(!ui->playlistFrame->isVisible());
+}
+
+void MainWindow::OnlineHelp()
+{
+    QDesktopServices::openUrl(QUrl("http://bakamplayer.u8sand.net/help"));
+}
+
+void MainWindow::CheckForUpdates() // todo
+{
+
+}
+
+void MainWindow::AboutQt() // todo
+{
+
+}
+
+void MainWindow::About()
+{
+    AboutDialog::about(this); // launch about dialog
 }

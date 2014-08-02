@@ -9,6 +9,11 @@ LocationDialog::LocationDialog(QWidget *parent) :
     ui(new Ui::LocationDialog)
 {
     ui->setupUi(this);
+
+    connect(ui->okButton, SIGNAL(clicked()),    // ok button clicked
+            this, SLOT(accept()));              // accept
+    connect(ui->cancelButton, SIGNAL(clicked()),// cancel button clicked
+            this, SLOT(reject()));              // reject
 }
 
 LocationDialog::~LocationDialog()
@@ -23,11 +28,6 @@ QString LocationDialog::getUrl(QWidget *parent)
         return dialog.ui->urlEdit->text();
     else
         return QString();
-}
-
-void LocationDialog::on_okButton_clicked()
-{
-    this->accept();
 }
 
 void LocationDialog::on_pasteButton_clicked()
@@ -45,11 +45,6 @@ void LocationDialog::on_copyButton_clicked()
 void LocationDialog::on_clearButton_clicked()
 {
     ui->urlEdit->setText("");
-}
-
-void LocationDialog::on_cancelButton_clicked()
-{
-    this->reject();
 }
 
 void LocationDialog::on_urlEdit_textChanged(const QString &arg1)
