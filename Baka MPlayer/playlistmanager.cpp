@@ -5,36 +5,33 @@
 PlaylistManager::PlaylistManager(QListWidget *_playlist, QObject *parent) :
     QObject(parent),
     playlist(_playlist),
-    index(0),
-    path("")
+    index(0)
 {
 }
 
-// TODO: Check to make sure files exist and such
+void PlaylistManager::PlayIndex(int i)
+{
+    if(index != i)
+    {
+        QString file = path+playlist->item((index = i))->text();
+        QFile f(file);
+        if(f.exists())
+            emit PlayFile(file);
+    }
+}
 
 void PlaylistManager::PlayNext()
 {
     if(playlist->count() > 0 &&
             playlist->currentRow() < playlist->count()-1)
-    {
-        playlist->setCurrentRow(++index);
-        emit PlayFile(path + playlist->currentItem()->text());
-    }
+        PlayIndex(++index);
 }
 
 void PlaylistManager::PlayPrevious()
 {
     if(playlist->count() > 0 &&
             playlist->currentRow() > 1)
-    {
-        playlist->setCurrentRow(--index);
-        emit PlayFile(path + playlist->currentItem()->text());
-    }
-}
-
-void PlaylistManager::PlayIndex(QModelIndex i)
-{
-    emit PlayFile(path + playlist->item((index = i.row()))->text());
+        PlayIndex(--index);
 }
 
 void PlaylistManager::LoadFile(QString f)
@@ -43,7 +40,7 @@ void PlaylistManager::LoadFile(QString f)
     // todo: check for web urls--we won't use QDir on those
 
     QFileInfo fi(f);
-    path = fi.absolutePath() + "/";
+    path = fi.absolutePath()+"/";
     QDir root(path);
 
     QFileInfoList flist = root.entryInfoList({ "*.mkv", "*.mp4", "*.avi", "*.mp3", "*.ogm" }, QDir::Files); // todo: pass more file-types (get from settings)
@@ -64,4 +61,14 @@ void PlaylistManager::LoadFile(QString f)
         playlist->setVisible(true);
 
     emit PlayFile(f);
+}
+
+void PlaylistManager::StopAfterCurrent() // todo
+{
+
+}
+
+void PlaylistManager::ToggleShuffle() // todo
+{
+
 }

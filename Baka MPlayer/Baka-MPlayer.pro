@@ -11,13 +11,14 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = Baka-MPlayer
 TEMPLATE = app
 
-
 SOURCES += main.cpp\
     mpvhandler.cpp \
     settingsmanager.cpp \
     playlistmanager.cpp \
     windows/mainwindow.cpp \
-    windows/locationdialog.cpp
+    windows/locationdialog.cpp \
+    windows/infodialog.cpp \
+    windows/jumpdialog.cpp
 
 HEADERS  += \
     mpvhandler.h \
@@ -26,21 +27,28 @@ HEADERS  += \
     widgets/customslider.h \
     playlistmanager.h \
     widgets/playpausebutton.h \
-    windows/locationdialog.h
+    windows/locationdialog.h \
+    widgets/openbutton.h \
+    windows/infodialog.h \
+    windows/jumpdialog.h
 
 FORMS    += \
     windows/mainwindow.ui \
-    windows/locationdialog.ui
+    windows/locationdialog.ui \
+    windows/infodialog.ui \
+    windows/jumpdialog.ui
 
 CONFIG += c++11
 
 unix {
-	CONFIG += link_pkgconfig
-	PKGCONFIG += mpv
+        DEFINES += 'SETTINGS_FILE=\\"~/.bakamplayer\\"'
+        CONFIG += link_pkgconfig
+        PKGCONFIG += mpv
 }
 
 win32 {
-	CONFIG += static
+        DEFINES += 'SETTINGS_FILE=\\"bakamplayer.ini\\"'
+        CONFIG += static
         INCLUDEPATH += "../etc/include"
         LIBS += -L"../etc/lib" -lmpv
 }

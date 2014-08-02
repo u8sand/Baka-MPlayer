@@ -426,7 +426,7 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
         <number>11</number>
        </property>
        <item>
-        <widget class="QPushButton" name="openButton">
+        <widget class="OpenButton" name="openButton">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -780,9 +780,9 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
      </widget>
     </item>
    </layout>
-   <zorder>splitter</zorder>
    <zorder>horizontalWidget_2</zorder>
    <zorder>horizontalWidget_3</zorder>
+   <zorder>splitter</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -790,7 +790,7 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
      <x>0</x>
      <y>0</y>
      <width>600</width>
-     <height>23</height>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
@@ -1427,6 +1427,11 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
    <class>PlayPauseButton</class>
    <extends>QPushButton</extends>
    <header>widgets/playpausebutton.h</header>
+  </customwidget>
+  <customwidget>
+   <class>OpenButton</class>
+   <extends>QPushButton</extends>
+   <header>widgets/openbutton.h</header>
   </customwidget>
  </customwidgets>
  <resources>
