@@ -41,11 +41,11 @@ MainWindow::MainWindow(SettingsManager *_settings, QWidget *parent):
     connect(ui->playlistWidget, SIGNAL(doubleClicked(QModelIndex)),     // playlist selection
             this, SLOT(PlayIndex(QModelIndex)));                        // play the selected file
     connect(ui->currentFileButton, SIGNAL(clicked()),                   // current file button
-            playlist, SLOT(SelectCurrent()));                            // selects the current file in the playlist
-    connect(ui->showAllButton, SIGNAL(clicked()),                       // show all button
-            playlist, SLOT(ShowAll()));                                 // show all types file types in playlist
+            playlist, SLOT(SelectCurrent()));                           // selects the current file in the playlist
+    connect(ui->showAllButton, SIGNAL(clicked(bool)),                   // show all button
+            playlist, SLOT(ShowAll(bool)));                             // show all types file types in playlist
     connect(ui->refreshButton, SIGNAL(clicked()),                       // refresh button
-            playlist, SLOT(Refresh()));                                 // refresh playlist files
+            this, SLOT(RefreshPlaylist()));                             // refresh playlist files
                                                                         // sliders
     connect(ui->volumeSlider, SIGNAL(valueChanged(int)),                // volume slider changed
             mpv, SLOT(AdjustVolume(int)));                              // adjust volume accordingly
@@ -98,7 +98,7 @@ MainWindow::MainWindow(SettingsManager *_settings, QWidget *parent):
     // todo: fit window menu
     // todo: aspect ratio menu
     connect(ui->actionShow_Subtitles, SIGNAL(triggered()),              // View -> Show Subtitles
-            mpv, SLOT(ToggleSubs()));                                     // mpv show subs
+            mpv, SLOT(ToggleSubs()));                                   // mpv show subs
     // todo: subtitle track menu
     // todo: font size menu
     connect(ui->actionMedia_Info, SIGNAL(triggered()),                  // View -> Media Info
@@ -113,8 +113,6 @@ MainWindow::MainWindow(SettingsManager *_settings, QWidget *parent):
     connect(ui->actionSh_uffle, SIGNAL(triggered()),                    // Playback -> Shuffle
             playlist, SLOT(Shuffle()));                                 // playlist shuffle
     // todo: repeat menu
-    connect(ui->actionStop_after_Current, SIGNAL(triggered()),          // Playback -> Stop After Current
-            playlist, SLOT(StopAfterCurrent()));                        // playlist stop after current
                                                                         // Navigate ->
     connect(ui->action_Next_Chapter, SIGNAL(triggered()),               // Navigate -> Next Chapter
             mpv, SLOT(NextChapter()));                                  // mpv next chapter
@@ -150,7 +148,7 @@ MainWindow::MainWindow(SettingsManager *_settings, QWidget *parent):
 
     // todo: put baka mplayer options and such rather than just blindly treating all args as files
     for(auto arg = QCoreApplication::arguments().begin()+1; arg != QCoreApplication::arguments().end(); ++arg) // loop through arguments except first (executable name)
-        playlist->LoadFile(*arg); // loadfile
+        playlist->LoadFile(*arg, ui->showAllButton->isChecked()); // loadfile
 }
 
 MainWindow::~MainWindow()
@@ -172,14 +170,14 @@ void MainWindow::dragEnterEvent(QDragEnterEvent *event)
         event->acceptProposedAction();
 }
 
-void MainWindow::dropEvent(QDropEvent *event)
+void MainWindow::dropEvent(QDropEvent *event) // todo
 {
     const QMimeData *mimeData = event->mimeData();
     if(mimeData->hasText()) // plain text
-        playlist->LoadFile(mimeData->text()); // load the text as a file
+        playlist->LoadFile(mimeData->text(), ui->showAllButton->isChecked()); // load the text as a file
     else if(mimeData->hasUrls()) // urls
         for(auto &url : mimeData->urls())
-            playlist->LoadFile(url.path()); // load the urls as files
+            playlist->LoadFile(url.path(), ui->showAllButton->isChecked()); // load the urls as files
 }
 
 void MainWindow::SetPlaybackControls(bool enable)
@@ -236,7 +234,8 @@ void MainWindow::SetPlayState(Mpv::PlayState playState)
     case Mpv::Ended:
         SetTime(0);
         SetPlaybackControls(false);
-        //playlist->PlayNext(); // todo: only if it ended by itself, detect if user ended it
+//        if(!ui->actionStop_after_Current->isChecked())
+//            playlist->PlayNext(); // todo: only if it ended by itself, detect if user ended it
         break;
     }
 }
@@ -267,12 +266,12 @@ void MainWindow::NewPlayer()
 
 void MainWindow::OpenFile()
 {
-    playlist->LoadFile(QFileDialog::getOpenFileName(this, "Open file"));
+    playlist->LoadFile(QFileDialog::getOpenFileName(this, "Open file"), ui->showAllButton->isChecked());
 }
 
 void MainWindow::OpenUrl() // todo
 {
-    playlist->LoadFile(LocationDialog::getUrl(this));
+    playlist->LoadFile(LocationDialog::getUrl(this), ui->showAllButton->isChecked());
 }
 
 void MainWindow::JumpToTime() // todo
@@ -287,17 +286,22 @@ void MainWindow::MediaInfo() // todo
 
 void MainWindow::OpenFileFromClipboard()
 {
-    playlist->LoadFile(QApplication::clipboard()->text());
+    playlist->LoadFile(QApplication::clipboard()->text(), ui->showAllButton->isChecked());
 }
 
 void MainWindow::OpenLastFile() // todo
 {
-//    playlist->LoadFile(settings->value("last-file"));
+//    playlist->LoadFile(settings->value("last-file"), ui->showAllButton->isChecked());
 }
 
 void MainWindow::ShowInFolder() // todo, see http://stackoverflow.com/questions/3490336/how-to-reveal-in-finder-or-show-in-explorer-with-qt
 {
-//    mpv->GetFile();
+    //    mpv->GetFile();
+}
+
+void MainWindow::PlayIndex(QModelIndex index)
+{
+    playlist->PlayIndex(index.row());
 }
 
 void MainWindow::ToggleVoice() // todo
@@ -308,6 +312,11 @@ void MainWindow::ToggleVoice() // todo
 void MainWindow::TogglePlaylist()
 {
     ui->playlistFrame->setVisible(!ui->playlistFrame->isVisible());
+}
+
+void MainWindow::RefreshPlaylist()
+{
+    playlist->ShowAll(ui->showAllButton->isChecked());
 }
 
 void MainWindow::OnlineHelp()

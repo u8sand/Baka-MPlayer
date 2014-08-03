@@ -1074,7 +1074,7 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
   </action>
   <action name="actionSh_uffle">
    <property name="checkable">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="text">
     <string>Sh&amp;uffle</string>
