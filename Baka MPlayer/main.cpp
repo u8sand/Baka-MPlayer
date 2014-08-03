@@ -1,6 +1,7 @@
 #include "windows/mainwindow.h"
-#include "settingsmanager.h"
+
 #include <QApplication>
+#include <QSettings>
 
 #ifdef Q_OS_WIN
 #include <QtPlugin>
@@ -11,7 +12,7 @@ Q_IMPORT_PLUGIN(qsvg)
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    SettingsManager settings(SETTINGS_FILE);
+    QSettings settings(SETTINGS_FILE, QSettings::IniFormat);
 
     MainWindow w(&settings);
     w.show();
