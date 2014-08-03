@@ -24,7 +24,7 @@ public slots:
 
 protected:
     virtual void dragEnterEvent(QDragEnterEvent *event);
-    virtual void dropEvent(QDropEvent *event);
+    virtual void dropEvent(QDropEvent *event);      // drop file into
 
     inline void SetPlaybackControls(bool enable);   // macro to enable/disable playback controls
 
@@ -41,8 +41,10 @@ private slots:
     void OpenFileFromClipboard();                   // opens file from cliboard text
     void OpenLastFile();                            // opens last open file (from settings)
     void ShowInFolder();                            // opens explorer to current file's path
+    void PlayIndex(QModelIndex index);              // plays the selected file in the playlist
     void ToggleVoice();                             // toggles voice command engine
     void TogglePlaylist();                          // toggles playlist visibility
+    void RefreshPlaylist();                         // refresh playlist
     void OnlineHelp();                              // loads online help
     void CheckForUpdates();                         // checks for program updates
     void AboutQt();                                 // shows qt license information
