@@ -1,20 +1,19 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-#include "locationdialog.h"
+#include "aboutdialog.h"
 #include "infodialog.h"
 #include "locationdialog.h"
-#include "aboutdialog.h"
+#include "jumpdialog.h"
 
-#include <QMessageBox>
-#include <QFileDialog>
-#include <QDateTime>
-#include <QSplitter>
 #include <QClipboard>
-#include <QMimeData>
+#include <QDateTime>
 #include <QDesktopServices>
-#include <QStyle>
 #include <QDesktopWidget>
+#include <QFileDialog>
+#include <QMessageBox>
+#include <QMimeData>
+#include <QStyle>
 
 MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
     QMainWindow(parent),
@@ -173,8 +172,8 @@ MainWindow::~MainWindow()
     // save settings
     settings->setValue("last-file", mpv->GetFile());
     settings->setValue("mpv/volume", mpv->GetVolume());
-    settings->setValue("window/width", this->width());
-    settings->setValue("window/height", this->height());
+    settings->setValue("window/width", normalGeometry().width());
+    settings->setValue("window/height", normalGeometry().height());
     settings->setValue("playlist/show-all", ui->showAllButton->isChecked());
 
     // cleanup
@@ -194,7 +193,7 @@ void MainWindow::dragEnterEvent(QDragEnterEvent *event)
         event->acceptProposedAction();
 }
 
-void MainWindow::dropEvent(QDropEvent *event) // todo
+void MainWindow::dropEvent(QDropEvent *event)
 {
     const QMimeData *mimeData = event->mimeData();
     if(mimeData->hasText()) // plain text
@@ -221,6 +220,7 @@ void MainWindow::SetPlaybackControls(bool enable)
     ui->action_Jump_to_Time->setEnabled(enable);
     ui->actionMedia_Info->setEnabled(enable);
     ui->action_Show_Playlist->setEnabled(enable);
+    ui->actionShow_in_Folder->setEnabled(enable);
 }
 
 void MainWindow::SetTime(time_t time)
@@ -300,9 +300,9 @@ void MainWindow::OpenUrl() // todo
     playlist->LoadFile(LocationDialog::getUrl(this), ui->showAllButton->isChecked());
 }
 
-void MainWindow::JumpToTime() // todo
+void MainWindow::JumpToTime()
 {
-//    mpv->Seek(JumpToTimeDialog::getTime(this));
+    mpv->Seek(JumpDialog::getTime(this));
 }
 
 void MainWindow::MediaInfo() // todo
@@ -315,14 +315,14 @@ void MainWindow::OpenFileFromClipboard()
     playlist->LoadFile(QApplication::clipboard()->text(), ui->showAllButton->isChecked());
 }
 
-void MainWindow::OpenLastFile() // todo
+void MainWindow::OpenLastFile()
 {
     playlist->LoadFile(settings->value("last-file", "").toString(), ui->showAllButton->isChecked());
 }
 
-void MainWindow::ShowInFolder() // todo, see http://stackoverflow.com/questions/3490336/how-to-reveal-in-finder-or-show-in-explorer-with-qt
+void MainWindow::ShowInFolder()
 {
-    //    mpv->GetFile();
+    QDesktopServices::openUrl("file:///"+QDir::toNativeSeparators(QFileInfo(mpv->GetFile()).absoluteDir().absolutePath()));
 }
 
 void MainWindow::PlayIndex(QModelIndex index)

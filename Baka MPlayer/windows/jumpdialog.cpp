@@ -13,7 +13,7 @@ JumpDialog::~JumpDialog()
     delete ui;
 }
 
-int JumpDialog::getTime(QWidget *parent)
+int JumpDialog::getTime(QWidget *parent) // todo
 {
     JumpDialog dialog(parent);
     dialog.exec();
