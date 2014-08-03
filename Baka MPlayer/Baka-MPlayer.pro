@@ -13,7 +13,6 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
     mpvhandler.cpp \
-    settingsmanager.cpp \
     playlistmanager.cpp \
     windows/mainwindow.cpp \
     windows/locationdialog.cpp \
@@ -23,7 +22,6 @@ SOURCES += main.cpp\
 
 HEADERS  += \
     mpvhandler.h \
-    settingsmanager.h \
     windows/mainwindow.h \
     widgets/customslider.h \
     playlistmanager.h \
@@ -44,7 +42,7 @@ FORMS    += \
 CONFIG += c++11
 
 unix {
-        DEFINES += 'SETTINGS_FILE=\\"~/.bakamplayer\\"'
+        DEFINES += 'SETTINGS_FILE=\\"bakamplayer.ini\\"'
         CONFIG += link_pkgconfig
         PKGCONFIG += mpv
 }

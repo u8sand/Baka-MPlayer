@@ -2,9 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QSettings>
 
 #include "mpvhandler.h"
-#include "settingsmanager.h"
 #include "playlistmanager.h"
 
 namespace Ui {
@@ -16,7 +16,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(SettingsManager *settings, QWidget *parent = 0);
+    explicit MainWindow(QSettings *settings, QWidget *parent = 0);
     ~MainWindow();
 
 public slots:
@@ -53,7 +53,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
 
-    SettingsManager *settings;
+    QSettings *settings;
 
     MpvHandler *mpv;
     PlaylistManager *playlist;

@@ -13,8 +13,10 @@
 #include <QClipboard>
 #include <QMimeData>
 #include <QDesktopServices>
+#include <QStyle>
+#include <QDesktopWidget>
 
-MainWindow::MainWindow(SettingsManager *_settings, QWidget *parent):
+MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
     QMainWindow(parent),
     ui(new Ui::MainWindow),
     settings(_settings)
@@ -146,6 +148,21 @@ MainWindow::MainWindow(SettingsManager *_settings, QWidget *parent):
     connect(ui->actionAbout_Baka_MPlayer, SIGNAL(triggered()),          // Help -> About Baka MPlayer
             this, SLOT(About()));                                       // show about dialog
 
+    // load settings
+    // set screen size and center screen in desktop
+    setGeometry(QStyle::alignedRect(Qt::LeftToRight,
+                                    Qt::AlignCenter,
+                                    QSize(settings->value("window/width", 600).toInt(),
+                                          settings->value("window/height", 430).toInt()),
+                                    qApp->desktop()->availableGeometry()));
+    // set show-all button
+    ui->showAllButton->setChecked(settings->value("playlist/show-all", false).toBool());
+    // set mpv volume, todo
+//    mpv->AdjustVolume(settings->value("mpv/volume", 100).toInt());
+
+    // enable open last file if there is a last-file
+    ui->actionOpen_Last_File->setEnabled(settings->value("last-file").toString()!="");
+
     // todo: put baka mplayer options and such rather than just blindly treating all args as files
     for(auto arg = QCoreApplication::arguments().begin()+1; arg != QCoreApplication::arguments().end(); ++arg) // loop through arguments except first (executable name)
         playlist->LoadFile(*arg, ui->showAllButton->isChecked()); // loadfile
@@ -153,6 +170,13 @@ MainWindow::MainWindow(SettingsManager *_settings, QWidget *parent):
 
 MainWindow::~MainWindow()
 {
+    // save settings
+    settings->setValue("last-file", mpv->GetFile());
+    settings->setValue("mpv/volume", mpv->GetVolume());
+    settings->setValue("window/width", this->width());
+    settings->setValue("window/height", this->height());
+    settings->setValue("playlist/show-all", ui->showAllButton->isChecked());
+
     // cleanup
     delete playlist;
     delete mpv;
@@ -234,6 +258,8 @@ void MainWindow::SetPlayState(Mpv::PlayState playState)
     case Mpv::Ended:
         SetTime(0);
         SetPlaybackControls(false);
+        settings->setValue("last-file", mpv->GetFile());
+        ui->actionOpen_Last_File->setEnabled(settings->value("last-file").toString()!="");
 //        if(!ui->actionStop_after_Current->isChecked())
 //            playlist->PlayNext(); // todo: only if it ended by itself, detect if user ended it
         break;
@@ -291,7 +317,7 @@ void MainWindow::OpenFileFromClipboard()
 
 void MainWindow::OpenLastFile() // todo
 {
-//    playlist->LoadFile(settings->value("last-file"), ui->showAllButton->isChecked());
+    playlist->LoadFile(settings->value("last-file", "").toString(), ui->showAllButton->isChecked());
 }
 
 void MainWindow::ShowInFolder() // todo, see http://stackoverflow.com/questions/3490336/how-to-reveal-in-finder-or-show-in-explorer-with-qt
@@ -329,9 +355,9 @@ void MainWindow::CheckForUpdates() // todo
 
 }
 
-void MainWindow::AboutQt() // todo
+void MainWindow::AboutQt()
 {
-
+    qApp->aboutQt();
 }
 
 void MainWindow::About()
