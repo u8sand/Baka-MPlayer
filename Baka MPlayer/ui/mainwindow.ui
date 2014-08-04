@@ -179,7 +179,7 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
         </property>
        </widget>
       </widget>
-      <widget class="QWidget" name="playlistLayout_2" native="true">
+      <widget class="QWidget" name="playlistLayoutWidget" native="true">
        <layout class="QVBoxLayout" name="playlistLayout">
         <property name="spacing">
          <number>0</number>

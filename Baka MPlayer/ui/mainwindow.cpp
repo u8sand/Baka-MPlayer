@@ -64,7 +64,7 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
     connect(ui->playButton, SIGNAL(clicked()),                          // clicked the playpause button
             mpv, SLOT(PlayPause()));                                    // mpv playpause
     connect(ui->playlistButton, SIGNAL(clicked(bool)),                  // clicked the playlist button
-            ui->playlistLayout_2, SLOT(setVisible(bool)));              // toggle playlist visibility
+            ui->playlistLayoutWidget, SLOT(setVisible(bool)));              // toggle playlist visibility
     connect(ui->previousButton, SIGNAL(clicked()),                      // clicked the previous button
             playlist, SLOT(PlayPrevious()));                            // play the previous entry in the playlist
     connect(ui->nextButton, SIGNAL(clicked()),                          // clicked the next button
@@ -163,7 +163,7 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
     ui->actionOpen_Last_File->setEnabled(settings->value("last-file", "").toString()!="");
     // set playlist visibility
     ui->playlistButton->setChecked(settings->value("playlist/visible", true).toBool());
-    ui->playlistLayout_2->setVisible(ui->playButton->isChecked());
+    ui->playlistLayoutWidget->setVisible(ui->playButton->isChecked());
     // set debugging output
     ui->actionShow_D_ebug_Output->setChecked(settings->value("debug/output", false).toBool());
     ui->outputTextEdit->setVisible(ui->actionShow_D_ebug_Output->isChecked());
