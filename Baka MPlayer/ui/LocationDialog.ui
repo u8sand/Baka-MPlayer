@@ -21,8 +21,10 @@
 }
 
 QLineEdit {
-	border-bottom: 1px solid dodgerblue;
-	border-radius: 0px;
+	background: #263238;
+	border: 1px outset black;
+	border-radius: 2px;
+	padding: 2px;
 }
 
 /* QPushButton */
