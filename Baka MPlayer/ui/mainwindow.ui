@@ -24,6 +24,10 @@
 	font-family: 	&quot;Open Sans&quot;;
 }
 
+QMenuBar::item:selected {
+	background: #424242;
+}
+
 /* QMenu */
 
 QMenu {
@@ -31,8 +35,7 @@ QMenu {
     border: 1px solid #424242;
 }
 QMenu::item:selected {
-	background: #cfd8dc;
-	 color: black;
+	background: dodgerblue;
  }
 QMenu::item::disabled {
 	color: gray;
@@ -46,7 +49,7 @@ QMenu::separator {
 /* Playlist */
 
 #searchBox, #indexLabel, #playlistWidget, #playlistControlLayout {
-	background: #263238;
+	background: #212121;
 }
 
 #searchBox {
