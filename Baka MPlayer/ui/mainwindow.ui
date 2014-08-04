@@ -90,24 +90,6 @@ QMenu::separator {
 	border-top: 1px solid #212121;
 }
 
-/* QSlider */
-
-QSlider::groove:horizontal {
-	background: gray;
-	height: 1px;
-}
-QSlider::sub-page:horizontal {
-	background: dodgerblue;
-}
-QSlider::handle:horizontal {
-	background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-					stop: 0 silver, stop: 1 darkgray);
-	border: 2px solid #202020;
-	border-radius: 7px;
-	margin: -7px 0;
-	width: 12px;
-}
-
 /* QScrollBar:vertical */
 
 QScrollBar:vertical {
@@ -384,6 +366,23 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
         <widget class="CustomSlider" name="seekBar">
          <property name="enabled">
           <bool>false</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QSlider::groove:horizontal {
+	background: gray;
+	height: 1px;
+}
+QSlider::sub-page:horizontal {
+	background: dodgerblue;
+}
+QSlider::handle:horizontal {
+	background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+					stop: 0 silver, stop: 1 darkgray);
+	border: 2px solid #202020;
+	border-radius: 7px;
+	margin: -7px 0;
+	width: 12px;
+}</string>
          </property>
          <property name="maximum">
           <number>1000000</number>
@@ -723,6 +722,23 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
              <width>100</width>
              <height>0</height>
             </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QSlider::groove:horizontal {
+	background: gray;
+	height: 1px;
+}
+QSlider::sub-page:horizontal {
+	background: dodgerblue;
+}
+QSlider::handle:horizontal {
+	background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+					stop: 0 silver, stop: 1 darkgray);
+	border: 2px solid #202020;
+	border-radius: 7px;
+	margin: -7px 0;
+	width: 12px;
+}</string>
            </property>
            <property name="maximum">
             <number>100</number>

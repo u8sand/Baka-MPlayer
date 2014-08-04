@@ -24,44 +24,6 @@
 	font-size: 26px;
 }
 
-/* QPushButton */
-
-QPushButton {
-    background: #263238;
-	color: white;
-	border: 1px outset black;
-	border-radius: 2px;
-    min-width: 88px;
-	min-height: 25px;
-}
-QPushButton:pressed {
-    background: dodgerblue;
-}
-QPushButton:disabled {
-    color: gray;
-}
-
-/* QTabWidget */
-
-QTabWidget::pane { /* The tab widget frame */
-    border-top: 1px solid gray;
-}
-
-/* Style the tab using the tab sub-control. Note that
-    it reads QTabBar _not_ QTabWidget */
-QTabBar::tab {
-    border-style: none;
-    min-width: 100px;
-    padding-bottom: 5px;
-}
-QTabBar::tab:selected {
-    border-bottom: 1px solid dodgerblue;
-}
-QTabBar::tab:!selected {
-	color: silver;
-    margin-bottom: 1px;
-}
-
 /* QScrollBar:vertical */
 
 QScrollBar:vertical {
@@ -84,6 +46,26 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
   <layout class="QVBoxLayout" name="verticalLayout_4">
    <item>
     <widget class="QTabWidget" name="tabWidget">
+     <property name="styleSheet">
+      <string notr="true">QTabWidget::pane { /* The tab widget frame */
+    border-top: 1px solid gray;
+}
+
+/* Style the tab using the tab sub-control. Note that
+    it reads QTabBar _not_ QTabWidget */
+QTabBar::tab {
+    border-style: none;
+    min-width: 100px;
+    padding-bottom: 5px;
+}
+QTabBar::tab:selected {
+    border-bottom: 1px solid dodgerblue;
+}
+QTabBar::tab:!selected {
+	color: silver;
+    margin-bottom: 1px;
+}</string>
+     </property>
      <property name="currentIndex">
       <number>0</number>
      </property>
@@ -266,6 +248,22 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</string
      </item>
      <item>
       <widget class="QPushButton" name="closeButton">
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background: #263238;
+	color: white;
+	border: 1px outset black;
+	border-radius: 2px;
+    min-width: 88px;
+	min-height: 25px;
+}
+QPushButton:pressed {
+    background: dodgerblue;
+}
+QPushButton:disabled {
+    color: gray;
+}</string>
+       </property>
        <property name="text">
         <string>&amp;Close</string>
        </property>
