@@ -252,7 +252,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</string
         <string notr="true">QPushButton {
     background: #263238;
 	color: white;
-	border: 1px outset black;
+	border: 1px solid dodgerblue;
 	border-radius: 2px;
     min-width: 88px;
 	min-height: 25px;
