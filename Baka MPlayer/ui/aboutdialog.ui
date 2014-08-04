@@ -60,6 +60,25 @@ QTabBar::tab:selected {
 QTabBar::tab:!selected {
 	color: silver;
     margin-bottom: 1px;
+}
+
+/* QScrollBar:vertical */
+
+QScrollBar:vertical {
+	border: none;
+	width: 5px;
+}
+QScrollBar::handle:vertical {
+	background: gray;
+	border-radius: 2px;
+	min-height: 10px;
+}
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+	border: none;
+}
+QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical,
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+	background: transparent;
 }</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_4">
