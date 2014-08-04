@@ -10,6 +10,9 @@
     <height>400</height>
    </rect>
   </property>
+  <property name="acceptDrops">
+   <bool>true</bool>
+  </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
@@ -159,6 +162,9 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
         </property>
        </widget>
        <widget class="QPlainTextEdit" name="outputTextEdit">
+        <property name="acceptDrops">
+         <bool>false</bool>
+        </property>
         <property name="frameShape">
          <enum>QFrame::NoFrame</enum>
         </property>
@@ -778,7 +784,7 @@ QSlider::handle:horizontal {
        <item>
         <widget class="QPushButton" name="playlistButton">
          <property name="enabled">
-          <bool>false</bool>
+          <bool>true</bool>
          </property>
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -809,6 +815,12 @@ QSlider::handle:horizontal {
            <width>16</width>
            <height>16</height>
           </size>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
          </property>
          <property name="flat">
           <bool>true</bool>
