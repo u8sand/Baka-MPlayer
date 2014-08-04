@@ -51,7 +51,7 @@ QMenu::separator {
 
 #searchBox {
 	font-size: 12px;
-	border: 1px outset black;
+	border: 1px solid black;
 	border-radius: 2px;
 	padding: 2px;
 	margin: 2px 5px;
@@ -59,15 +59,15 @@ QMenu::separator {
 
 #indexLabel {
 	color: gray;
-	border-left: 1px outset black;
-	border-right: 1px outset black;
-	border-top: 1px outset black;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	border-top: 1px solid black;
 	margin: 5px 5px 0px 5px;
 }
 
 #playlistWidget {
-	border-left: 1px outset black;
-	border-right: 1px outset black;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
 	border-radius: 0px;
 	margin: 0px 5px;
 }
@@ -77,9 +77,9 @@ QMenu::separator {
 }
 
 #playlistControlLayout {
-	border-left: 1px outset black;
-	border-right: 1px outset black;
-	border-bottom: 1px outset black;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	border-bottom: 1px solid black;
 	margin: 0px 5px 5px 5px;
 }
 
