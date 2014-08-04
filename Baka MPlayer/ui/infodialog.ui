@@ -20,23 +20,6 @@
 	font: 12px &quot;Open Sans&quot;;
 }
 
-/* QPushButton */
-
-QPushButton {
-    background: #263238;
-	color: white;
-	border: 1px outset black;
-	border-radius: 2px;
-    min-width: 88px;
-	min-height: 25px;
-}
-QPushButton:pressed {
-    background: dodgerblue;
-}
-QPushButton:disabled {
-    color: gray;
-}
-
 /* QScrollBar:vertical */
 
 QScrollBar:vertical {
@@ -77,6 +60,22 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
      </item>
      <item>
       <widget class="QPushButton" name="closeButton">
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background: #263238;
+	color: white;
+	border: 1px solid dodgerblue;
+	border-radius: 2px;
+    min-width: 88px;
+	min-height: 25px;
+}
+QPushButton:pressed {
+    background: dodgerblue;
+}
+QPushButton:disabled {
+    color: gray;
+}</string>
+       </property>
        <property name="text">
         <string>&amp;Close</string>
        </property>

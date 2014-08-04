@@ -24,26 +24,30 @@
 	font-size: 26px;
 }
 
-/* QPushButton */
+/* QScrollBar:vertical */
 
-QPushButton {
-    background: #263238;
-	color: white;
-	border: 1px outset black;
+QScrollBar:vertical {
+	border: none;
+	width: 5px;
+}
+QScrollBar::handle:vertical {
+	background: gray;
 	border-radius: 2px;
-    min-width: 88px;
-	min-height: 25px;
+	min-height: 10px;
 }
-QPushButton:pressed {
-    background: dodgerblue;
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+	border: none;
 }
-QPushButton:disabled {
-    color: gray;
-}
-
-/* QTabWidget */
-
-QTabWidget::pane { /* The tab widget frame */
+QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical,
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+	background: transparent;
+}</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_4">
+   <item>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="styleSheet">
+      <string notr="true">QTabWidget::pane { /* The tab widget frame */
     border-top: 1px solid gray;
 }
 
@@ -61,10 +65,7 @@ QTabBar::tab:!selected {
 	color: silver;
     margin-bottom: 1px;
 }</string>
-  </property>
-  <layout class="QVBoxLayout" name="verticalLayout_4">
-   <item>
-    <widget class="QTabWidget" name="tabWidget">
+     </property>
      <property name="currentIndex">
       <number>0</number>
      </property>
@@ -247,6 +248,22 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</string
      </item>
      <item>
       <widget class="QPushButton" name="closeButton">
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background: #263238;
+	color: white;
+	border: 1px solid dodgerblue;
+	border-radius: 2px;
+    min-width: 88px;
+	min-height: 25px;
+}
+QPushButton:pressed {
+    background: dodgerblue;
+}
+QPushButton:disabled {
+    color: gray;
+}</string>
+       </property>
        <property name="text">
         <string>&amp;Close</string>
        </property>

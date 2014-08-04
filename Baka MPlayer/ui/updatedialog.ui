@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>UpdateDialog</class>
+ <widget class="QDialog" name="UpdateDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>392</width>
+    <height>404</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Update Available</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget, QMenuBar, QMenuBar::item {
+	background: #141414;
+	color: whitesmoke;
+	font-family: 	&quot;Open Sans&quot;;
+}</string>
+  </property>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
