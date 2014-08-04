@@ -50,12 +50,9 @@ unix {
 win32 {
         DEFINES += 'SETTINGS_FILE=\\"bakamplayer.ini\\"'
         CONFIG += static
+				QTPLUGIN += qsvg
         INCLUDEPATH += "../etc/include"
         LIBS += -L"../etc/lib" -lmpv
-}
-
-static {
-	QTPLUGIN += qsvg
 }
 
 RESOURCES += \
