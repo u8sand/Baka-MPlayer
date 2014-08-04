@@ -14,10 +14,10 @@
    <string>Update Available</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QWidget, QMenuBar, QMenuBar::item {
+   <string notr="true">QWidget {
 	background: #141414;
 	color: whitesmoke;
-	font-family: 	&quot;Open Sans&quot;;
+	font: 12px &quot;Open Sans&quot;;
 }</string>
   </property>
  </widget>
