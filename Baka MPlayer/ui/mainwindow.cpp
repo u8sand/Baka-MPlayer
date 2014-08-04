@@ -63,8 +63,8 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
             this, SLOT(ToggleVoice()));                                 // toggle voice enabled
     connect(ui->playButton, SIGNAL(clicked()),                          // clicked the playpause button
             mpv, SLOT(PlayPause()));                                    // mpv playpause
-    connect(ui->playlistButton, SIGNAL(clicked()),                      // clicked the playlist button
-            this, SLOT(TogglePlaylist()));                              // toggle playlist visibility
+    connect(ui->playlistButton, SIGNAL(clicked(bool)),                  // clicked the playlist button
+            ui->playlistLayout_2, SLOT(setVisible(bool)));              // toggle playlist visibility
     connect(ui->previousButton, SIGNAL(clicked()),                      // clicked the previous button
             playlist, SLOT(PlayPrevious()));                            // play the previous entry in the playlist
     connect(ui->nextButton, SIGNAL(clicked()),                          // clicked the next button
@@ -127,14 +127,14 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
     connect(ui->action_Jump_to_Time, SIGNAL(triggered()),               // Navigate -> Jump to Time
             this, SLOT(JumpToTime()));                                  // jump-to-time dialog
                                                                         // Options ->
-    connect(ui->action_Show_Playlist_2, SIGNAL(triggered()),            // Options -> Show Playlist
-            this, SLOT(TogglePlaylist()));                              // toggle playlist
-    connect(ui->action_Hide_Album_Art_2, SIGNAL(triggered()),           // Options -> Hide Album Art
-            this, SLOT(ToggleAlbumArt()));                              // toggle album art
-    connect(ui->action_Dim_Lights_2, SIGNAL(triggered()),               // Options -> Dim Lights
-            this, SLOT(ToggleDimLights()));                             // toggle dim lights
-    connect(ui->actionShow_D_ebug_Output, SIGNAL(triggered()),          // Options -> Show Debug Output
-            this, SLOT(ToggleDebugOutput()));                           // toggle debug output
+    connect(ui->action_Show_Playlist_2, SIGNAL(triggered(bool)),        // Options -> Show Playlist
+            ui->playlistWidget, SLOT(setVisible(bool)));                // toggle playlist
+    connect(ui->action_Hide_Album_Art_2, SIGNAL(triggered(bool)),       // Options -> Hide Album Art
+            this, SLOT(ShowAlbumArt(bool)));                            // toggle album art
+    connect(ui->action_Dim_Lights_2, SIGNAL(triggered(bool)),           // Options -> Dim Lights
+            this, SLOT(DimLights(bool)));                               // toggle dim lights
+    connect(ui->actionShow_D_ebug_Output, SIGNAL(triggered(bool)),      // Options -> Show Debug Output
+            ui->outputTextEdit, SLOT(setVisible(bool)));                // toggle debug output
     // todo: on-top menu
     // todo: tray icon menu
                                                                         // Help ->
@@ -160,7 +160,13 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
 //    mpv->AdjustVolume(settings->value("mpv/volume", 100).toInt());
 
     // enable open last file if there is a last-file
-    ui->actionOpen_Last_File->setEnabled(settings->value("last-file").toString()!="");
+    ui->actionOpen_Last_File->setEnabled(settings->value("last-file", "").toString()!="");
+    // set playlist visibility
+    ui->playlistButton->setChecked(settings->value("playlist/visible", true).toBool());
+    ui->playlistLayout_2->setVisible(ui->playButton->isChecked());
+    // set debugging output
+    ui->actionShow_D_ebug_Output->setChecked(settings->value("debug/output", false).toBool());
+    ui->outputTextEdit->setVisible(ui->actionShow_D_ebug_Output->isChecked());
 
     // todo: put baka mplayer options and such rather than just blindly treating all args as files
     for(auto arg = QCoreApplication::arguments().begin()+1; arg != QCoreApplication::arguments().end(); ++arg) // loop through arguments except first (executable name)
@@ -175,6 +181,8 @@ MainWindow::~MainWindow()
     settings->setValue("window/width", normalGeometry().width());
     settings->setValue("window/height", normalGeometry().height());
     settings->setValue("playlist/show-all", ui->showAllButton->isChecked());
+    settings->setValue("playlist/visible", ui->playlistButton->isChecked());
+    settings->setValue("debug/output", ui->actionShow_D_ebug_Output->isChecked());
 
     // cleanup
     delete playlist;
@@ -212,14 +220,12 @@ void MainWindow::SetPlaybackControls(bool enable)
     ui->playButton->setEnabled(enable);
     ui->playButton->Update();
     ui->nextButton->setEnabled(enable);
-    ui->playlistButton->setEnabled(enable);
     // menubar
     ui->action_Play->setEnabled(enable);
     ui->action_Stop->setEnabled(enable);
     ui->action_Restart->setEnabled(enable);
     ui->action_Jump_to_Time->setEnabled(enable);
     ui->actionMedia_Info->setEnabled(enable);
-    ui->action_Show_Playlist->setEnabled(enable);
     ui->actionShow_in_Folder->setEnabled(enable);
 }
 
@@ -330,16 +336,6 @@ void MainWindow::PlayIndex(QModelIndex index)
     playlist->PlayIndex(index.row());
 }
 
-void MainWindow::ToggleVoice() // todo
-{
-//    voiceEngine->Toggle();
-}
-
-void MainWindow::TogglePlaylist()
-{
-    ui->playlistFrame->setVisible(!ui->playlistFrame->isVisible());
-}
-
 void MainWindow::RefreshPlaylist()
 {
     playlist->ShowAll(ui->showAllButton->isChecked());
@@ -363,4 +359,9 @@ void MainWindow::AboutQt()
 void MainWindow::About()
 {
     AboutDialog::about(this); // launch about dialog
+}
+
+void MainWindow::DimLights(bool dim)
+{
+
 }

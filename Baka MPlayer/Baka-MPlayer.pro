@@ -14,30 +14,30 @@ TEMPLATE = app
 SOURCES += main.cpp\
     mpvhandler.cpp \
     playlistmanager.cpp \
-    windows/mainwindow.cpp \
-    windows/locationdialog.cpp \
-    windows/infodialog.cpp \
-    windows/jumpdialog.cpp \
-    windows/aboutdialog.cpp
+    ui/mainwindow.cpp \
+    ui/locationdialog.cpp \
+    ui/infodialog.cpp \
+    ui/jumpdialog.cpp \
+    ui/aboutdialog.cpp
 
 HEADERS  += \
     mpvhandler.h \
-    windows/mainwindow.h \
+    ui/mainwindow.h \
     widgets/customslider.h \
     playlistmanager.h \
     widgets/playpausebutton.h \
-    windows/locationdialog.h \
+    ui/locationdialog.h \
     widgets/openbutton.h \
-    windows/infodialog.h \
-    windows/jumpdialog.h \
-    windows/aboutdialog.h
+    ui/infodialog.h \
+    ui/jumpdialog.h \
+    ui/aboutdialog.h
 
 FORMS    += \
-    windows/mainwindow.ui \
-    windows/locationdialog.ui \
-    windows/infodialog.ui \
-    windows/jumpdialog.ui \
-    windows/aboutdialog.ui
+    ui/mainwindow.ui \
+    ui/locationdialog.ui \
+    ui/infodialog.ui \
+    ui/jumpdialog.ui \
+    ui/aboutdialog.ui
 
 CONFIG += c++11
 
@@ -50,7 +50,7 @@ unix {
 win32 {
         DEFINES += 'SETTINGS_FILE=\\"bakamplayer.ini\\"'
         CONFIG += static
-				QTPLUGIN += qsvg
+        QTPLUGIN += qsvg
         INCLUDEPATH += "../etc/include"
         LIBS += -L"../etc/lib" -lmpv
 }
