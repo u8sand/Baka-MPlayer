@@ -8,8 +8,6 @@
 
 #include <mpv/client.h>
 
-#include <initializer_list>
-
 // Mpv::PlayState enum
 namespace Mpv
 {
@@ -68,23 +66,22 @@ private slots:
     void SetPlayState(Mpv::PlayState s);        // set playState, emit signal
 
 signals:
-    void FileChanged(QString f);
-    void TimeChanged(time_t t);
-    void TotalTimeChanged(time_t t);
-    void VolumeChanged(int l);
-    void PlayStateChanged(Mpv::PlayState s);
-    void ErrorSignal(QString e);
+    void FileChanged(QString f);                // triggered on file changed
+    void TimeChanged(time_t t);                 // triggered on time changed
+    void TotalTimeChanged(time_t t);            // triggered on totalTime changed
+    void VolumeChanged(int l);                  // triggered on volume changed
+    void PlayStateChanged(Mpv::PlayState s);    // triggered on playstate changed
+    void ErrorSignal(QString e);                // triggered when an error occurs
 
 private:
-    QSettings *settings; // settings
-    mpv_handle *mpv; // mpv client handle
+    QSettings *settings;                        // application-wide settings
+    mpv_handle *mpv;                            // mpv client handle
 
-    QString file;
-    time_t time,
-           totalTime;
-    int chapter,
-        volume;
-    Mpv::PlayState playState;
+    QString file;                               // the current file path
+    time_t time,                                // the current time-pos
+           totalTime;                           // the current total time
+    int volume;                                 // the current volume
+    Mpv::PlayState playState;                   // the current playstate
 };
 
 #endif // MPVHANDLER_H
