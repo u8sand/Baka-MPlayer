@@ -784,7 +784,7 @@ QSlider::handle:horizontal {
        <item>
         <widget class="QPushButton" name="playlistButton">
          <property name="enabled">
-          <bool>true</bool>
+          <bool>false</bool>
          </property>
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -817,7 +817,7 @@ QSlider::handle:horizontal {
           </size>
          </property>
          <property name="checkable">
-          <bool>true</bool>
+          <bool>false</bool>
          </property>
          <property name="checked">
           <bool>false</bool>
@@ -841,7 +841,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>580</width>
-     <height>23</height>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
@@ -1125,7 +1125,7 @@ QSlider::handle:horizontal {
   </action>
   <action name="actionSh_uffle">
    <property name="checkable">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="text">
     <string>Sh&amp;uffle</string>

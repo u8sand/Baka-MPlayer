@@ -18,7 +18,8 @@ SOURCES += main.cpp\
     ui/locationdialog.cpp \
     ui/infodialog.cpp \
     ui/jumpdialog.cpp \
-    ui/aboutdialog.cpp
+    ui/aboutdialog.cpp \
+    ui/updatedialog.cpp
 
 HEADERS  += \
     mpvhandler.h \
@@ -30,14 +31,16 @@ HEADERS  += \
     widgets/openbutton.h \
     ui/infodialog.h \
     ui/jumpdialog.h \
-    ui/aboutdialog.h
+    ui/aboutdialog.h \
+    ui/updatedialog.h
 
 FORMS    += \
     ui/mainwindow.ui \
     ui/locationdialog.ui \
     ui/infodialog.ui \
     ui/jumpdialog.ui \
-    ui/aboutdialog.ui
+    ui/aboutdialog.ui \
+    ui/updatedialog.ui
 
 CONFIG += c++11
 

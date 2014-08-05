@@ -43,11 +43,11 @@ private slots:
     void ShowInFolder();                            // opens explorer to current file's path
     void PlayIndex(QModelIndex index);              // plays the selected file in the playlist
     void RefreshPlaylist();                         // refresh playlist
+    void TogglePlaylist();                          // toggle playlist
     void OnlineHelp();                              // loads online help
     void CheckForUpdates();                         // checks for program updates
     void AboutQt();                                 // shows qt license information
     void About();                                   // shows baka mplayer about dialog
-    void DimLights(bool dim);                       // dim the lights
 
 private:
     Ui::MainWindow *ui;

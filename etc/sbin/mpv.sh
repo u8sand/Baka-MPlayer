@@ -20,13 +20,11 @@ mv mpv{,.x86_64}
 # compile i686
 cd mpv.i686
 DEST_OS=win32 TARGET=i686-w64-mingw32 ./waf configure --enable-libmpv-shared --enable-static-build --disable-client-api-examples
-# todo: patch waftools/syms.py with nm=i686-w64-mingw32-nm
 ./waf build
 cd ..
 
 # compile x86_64
 cd mpv.x86_64
 DEST_OS=win32 TARGET=x86_64-w64-mingw32 ./waf configure --enable-libmpv-shared --enable-static-build --disable-client-api-examples
-# todo: patch waftools/syms.py with nm=x86_64-w64-mingw32-nm
 ./waf build
 cd ..

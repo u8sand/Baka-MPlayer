@@ -61,18 +61,26 @@ void PlaylistManager::LoadFile(QString f, bool showAll)
         }
     }
     SelectCurrent();
-    // open up the playlist only if there is more than one item
-    if(list.size() > 1)
-        playlist->setVisible(true);
+    if(list.size() > 1) // open up the playlist only if there is more than one item
+        emit SetVisible(true);
     // play file
     emit PlayFile(f);
 }
 
-void PlaylistManager::Shuffle()
+void PlaylistManager::Shuffle(bool shuffle) // todo: pass the mainwindow shuffle setting so that this function get's called whenever loading the list
 {
-    playlist->clear();
-    std::random_shuffle(list.begin(), list.end());
-    playlist->addItems(list);
+    if(shuffle) // shuffle list
+    {
+        playlist->clear();
+        std::random_shuffle(list.begin(), list.end());
+        playlist->addItems(list);
+    }
+    else // sort list
+    {
+        playlist->clear();
+        std::sort(list.begin(), list.end());
+        playlist->addItems(list);
+    }
 }
 
 void PlaylistManager::SelectCurrent()

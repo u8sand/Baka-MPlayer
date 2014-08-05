@@ -21,6 +21,7 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
     settings(_settings)
 {
     ui->setupUi(this);
+    ui->playlistLayoutWidget->setVisible(false); // no playlist by default
 
     // initialize managers/handlers
     playlist = new PlaylistManager(ui->playlistWidget);
@@ -39,6 +40,8 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
                                                                         // playlist
     connect(playlist, SIGNAL(PlayFile(QString)),                        // playlist play signal
             mpv, SLOT(OpenFile(QString)), Qt::QueuedConnection);        // mpv open file
+    connect(playlist, SIGNAL(SetVisible(bool)),                         // playlist set visibility
+            ui->playlistLayoutWidget, SLOT(setVisible(bool)));          // set visibility of the playlist
     connect(ui->playlistWidget, SIGNAL(doubleClicked(QModelIndex)),     // playlist selection
             this, SLOT(PlayIndex(QModelIndex)));                        // play the selected file
     connect(ui->currentFileButton, SIGNAL(clicked()),                   // current file button
@@ -63,8 +66,8 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
             this, SLOT(ToggleVoice()));                                 // toggle voice enabled
     connect(ui->playButton, SIGNAL(clicked()),                          // clicked the playpause button
             mpv, SLOT(PlayPause()));                                    // mpv playpause
-    connect(ui->playlistButton, SIGNAL(clicked(bool)),                  // clicked the playlist button
-            ui->playlistLayoutWidget, SLOT(setVisible(bool)));              // toggle playlist visibility
+    connect(ui->playlistButton, SIGNAL(clicked()),                      // clicked the playlist button
+            this, SLOT(TogglePlaylist()));                              // toggle playlist visibility
     connect(ui->previousButton, SIGNAL(clicked()),                      // clicked the previous button
             playlist, SLOT(PlayPrevious()));                            // play the previous entry in the playlist
     connect(ui->nextButton, SIGNAL(clicked()),                          // clicked the next button
@@ -111,8 +114,8 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
             mpv, SLOT(Stop()));                                         // mpv stop
     connect(ui->action_Restart, SIGNAL(triggered()),                    // Playback -> Restart
             mpv, SLOT(Restart()));                                      // mpv restart
-    connect(ui->actionSh_uffle, SIGNAL(triggered()),                    // Playback -> Shuffle
-            playlist, SLOT(Shuffle()));                                 // playlist shuffle
+    connect(ui->actionSh_uffle, SIGNAL(triggered(bool)),                // Playback -> Shuffle
+            playlist, SLOT(Shuffle(bool)));                             // playlist shuffle
     // todo: repeat menu
                                                                         // Navigate ->
     connect(ui->action_Next_Chapter, SIGNAL(triggered()),               // Navigate -> Next Chapter
@@ -128,7 +131,7 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
             this, SLOT(JumpToTime()));                                  // jump-to-time dialog
                                                                         // Options ->
     connect(ui->action_Show_Playlist_2, SIGNAL(triggered(bool)),        // Options -> Show Playlist
-            ui->playlistWidget, SLOT(setVisible(bool)));                // toggle playlist
+            ui->playlistLayoutWidget, SLOT(setVisible(bool)));                             // toggle playlist visibility
     connect(ui->action_Hide_Album_Art_2, SIGNAL(triggered(bool)),       // Options -> Hide Album Art
             this, SLOT(ShowAlbumArt(bool)));                            // toggle album art
     connect(ui->action_Dim_Lights_2, SIGNAL(triggered(bool)),           // Options -> Dim Lights
@@ -161,9 +164,6 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
 
     // enable open last file if there is a last-file
     ui->actionOpen_Last_File->setEnabled(settings->value("last-file", "").toString()!="");
-    // set playlist visibility
-    ui->playlistButton->setChecked(settings->value("playlist/visible", true).toBool());
-    ui->playlistLayoutWidget->setVisible(ui->playButton->isChecked());
     // set debugging output
     ui->actionShow_D_ebug_Output->setChecked(settings->value("debug/output", false).toBool());
     ui->outputTextEdit->setVisible(ui->actionShow_D_ebug_Output->isChecked());
@@ -181,7 +181,6 @@ MainWindow::~MainWindow()
     settings->setValue("window/width", normalGeometry().width());
     settings->setValue("window/height", normalGeometry().height());
     settings->setValue("playlist/show-all", ui->showAllButton->isChecked());
-    settings->setValue("playlist/visible", ui->playlistButton->isChecked());
     settings->setValue("debug/output", ui->actionShow_D_ebug_Output->isChecked());
 
     // cleanup
@@ -195,13 +194,13 @@ void MainWindow::HandleError(QString err)
     QMessageBox::warning(this, "Error", err);
 }
 
-void MainWindow::dragEnterEvent(QDragEnterEvent *event)
+void MainWindow::dragEnterEvent(QDragEnterEvent *event) // todo: does this even work??
 {
     if(event->mimeData()->hasText() || event->mimeData()->hasUrls()) // plain text / url
         event->acceptProposedAction();
 }
 
-void MainWindow::dropEvent(QDropEvent *event)
+void MainWindow::dropEvent(QDropEvent *event) // todo: does this even work??
 {
     const QMimeData *mimeData = event->mimeData();
     if(mimeData->hasText()) // plain text
@@ -220,6 +219,7 @@ void MainWindow::SetPlaybackControls(bool enable)
     ui->playButton->setEnabled(enable);
     ui->playButton->Update();
     ui->nextButton->setEnabled(enable);
+    ui->playlistButton->setEnabled(enable);
     // menubar
     ui->action_Play->setEnabled(enable);
     ui->action_Stop->setEnabled(enable);
@@ -227,6 +227,7 @@ void MainWindow::SetPlaybackControls(bool enable)
     ui->action_Jump_to_Time->setEnabled(enable);
     ui->actionMedia_Info->setEnabled(enable);
     ui->actionShow_in_Folder->setEnabled(enable);
+    ui->action_Playlist->setEnabled(enable);
 }
 
 void MainWindow::SetTime(time_t time)
@@ -341,6 +342,11 @@ void MainWindow::RefreshPlaylist()
     playlist->ShowAll(ui->showAllButton->isChecked());
 }
 
+void MainWindow::TogglePlaylist()
+{
+    ui->playlistLayoutWidget->setVisible(!ui->playlistLayoutWidget->isVisible());
+}
+
 void MainWindow::OnlineHelp()
 {
     QDesktopServices::openUrl(QUrl("http://bakamplayer.u8sand.net/help"));
@@ -359,9 +365,4 @@ void MainWindow::AboutQt()
 void MainWindow::About()
 {
     AboutDialog::about(this); // launch about dialog
-}
-
-void MainWindow::DimLights(bool dim)
-{
-
 }

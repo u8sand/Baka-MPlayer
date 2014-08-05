@@ -30,7 +30,6 @@ MpvHandler::MpvHandler(int64_t wid, QObject *parent):
     mpv_observe_property(mpv, 0, "path", MPV_FORMAT_STRING);
     mpv_observe_property(mpv, 0, "time-pos", MPV_FORMAT_DOUBLE);
     mpv_observe_property(mpv, 0, "length", MPV_FORMAT_DOUBLE);
-    mpv_observe_property(mpv, 0, "chapter", MPV_FORMAT_DOUBLE);
     mpv_observe_property(mpv, 0, "volume", MPV_FORMAT_DOUBLE);
 
     mpv_set_wakeup_callback(mpv, wakeup, this);
@@ -61,11 +60,6 @@ time_t MpvHandler::GetTime() const
 time_t MpvHandler::GetTotalTime() const
 {
     return totalTime;
-}
-
-int MpvHandler::GetChapter() const
-{
-    return chapter;
 }
 
 int MpvHandler::GetVolume() const
@@ -101,9 +95,6 @@ bool MpvHandler::event(QEvent *event)
                 if (strcmp(prop->name, "length") == 0)
                     if (prop->format == MPV_FORMAT_DOUBLE)
                         SetTotalTime((time_t)*(double*)prop->data);
-                if (strcmp(prop->name, "chapter") == 0)
-                    if (prop->format == MPV_FORMAT_DOUBLE)
-                        SetChapter((int)*(double*)prop->data);
                 if (strcmp(prop->name, "volume") == 0)
                     if (prop->format == MPV_FORMAT_DOUBLE)
                         SetVolume((int)*(double*)prop->data);
@@ -183,18 +174,14 @@ void MpvHandler::Stop()
 
 void MpvHandler::NextChapter()
 {
-//    if(chapter < totalChapters)
-    const char *args[] = {"set", "chapter", QString::number(chapter+1).toUtf8().data(), NULL};
+    const char *args[] = {"add", "chapter", "1", NULL};
     AsyncCommand(args);
 }
 
 void MpvHandler::PreviousChapter()
 {
-    if(chapter > 0)
-    {
-        const char *args[] = {"set", "chapter", QString::number(chapter-1).toUtf8().data(), NULL};
-        AsyncCommand(args);
-    }
+    const char *args[] = {"add", "chapter", "-1", NULL};
+    AsyncCommand(args);
 }
 
 void MpvHandler::FrameStep()
@@ -268,15 +255,6 @@ void MpvHandler::SetTotalTime(time_t t)
     {
         totalTime = t;
         emit TotalTimeChanged(t);
-    }
-}
-
-void MpvHandler::SetChapter(int c)
-{
-    if(chapter != c)
-    {
-        chapter = c;
-        emit ChapterChanged(c);
     }
 }
 
