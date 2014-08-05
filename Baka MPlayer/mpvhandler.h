@@ -17,6 +17,7 @@ namespace Mpv
     {
         Idle,
         Started,
+        Loaded,
         Playing,
         Paused,
         Stopped,

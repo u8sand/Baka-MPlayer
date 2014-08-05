@@ -53,16 +53,16 @@ void PlaylistManager::LoadFile(QString f)
 
 void PlaylistManager::PlayIndex(int i)
 {
-    if(index >= 0 && index < list.size())
+    if(i >= 0 && i < list.size())
     {
         index = i;
+        emit IndexChanged(index);
 
         QFile f(path+list[index]);
         if(f.exists())
-            emit Play(path+list[index]);
+            emit Play(f.fileName());
         else
             emit Stop();
-        emit IndexChanged(index);
     }
     else
         Stop();

@@ -51,9 +51,9 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
             this, SLOT(HandleError(QString)));                          // output error message
                                                                         // playlist
     connect(playlist, SIGNAL(Play(QString)),                            // playlist play signal
-            mpv, SLOT(OpenFile(QString)));                              // mpv open file
+            mpv, SLOT(OpenFile(QString)), Qt::QueuedConnection);        // mpv open file
     connect(playlist, SIGNAL(Stop()),                                   // playlist stop signal
-            mpv, SLOT(Stop()));                                         // mpv stop
+            mpv, SLOT(Stop()), Qt::QueuedConnection);                   // mpv stop
     connect(playlist, SIGNAL(Show(bool)),                               // playlist set visibility
             ui->playlistLayoutWidget, SLOT(setVisible(bool)));          // set visibility of the playlist
     connect(playlist, SIGNAL(ListChanged(QStringList)),                 // playlist update list
@@ -63,7 +63,7 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
     connect(playlist, SIGNAL(ShuffleChanged(bool)),                     // playlist shuffle changed
             ui->actionSh_uffle, SLOT(setChecked(bool)));                // update the menu item
     connect(ui->refreshButton, SIGNAL(clicked()),                       // refresh button
-            playlist, SLOT(Refresh()));                             // refresh playlist files
+            playlist, SLOT(Refresh()));                                 // refresh playlist files
     connect(ui->actionSh_uffle, SIGNAL(triggered(bool)),                // shuffle action
             playlist, SLOT(Shuffle(bool)));                             // shuffle playlist
     connect(ui->showAllButton, SIGNAL(clicked(bool)),                   // show all button
@@ -76,7 +76,7 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
     connect(ui->volumeSlider, SIGNAL(valueChanged(int)),                // volume slider changed
             mpv, SLOT(AdjustVolume(int)));                              // adjust volume accordingly
     connect(ui->seekBar, SIGNAL(valueChanged(int)),                     // seek bar slider changed
-            this, SLOT(SetSeekBar(int)));                               // seek accordingly
+            this, SLOT(Seek(int)));                                     // seek accordingly
                                                                         // buttons
     connect(ui->openButton, SIGNAL(LeftClick()),                        // left-clicked the open button
             this, SLOT(OpenFile()));                                    // open-file dialog
@@ -250,7 +250,9 @@ void MainWindow::SetPlayState(Mpv::PlayState playState)
     // triggered when mpv playstate is changed so we can update controls accordingly
     switch(playState)
     {
-    case Mpv::Started:
+    case Mpv::Started: // ignore, use loaded--dispite it's name loaded comes after started
+        break;
+    case Mpv::Loaded:
         SetPlaybackControls(true);
         break;
     case Mpv::Playing:
@@ -264,15 +266,14 @@ void MainWindow::SetPlayState(Mpv::PlayState playState)
         break;
     case Mpv::Idle:
         SetTime(0);
-        SetPlaybackControls(false);
+        if(!ui->actionStop_after_Current->isChecked())
+            playlist->Next();
+        else
+            SetPlaybackControls(false);
         break;
     case Mpv::Ended:
-        SetTime(0);
-        SetPlaybackControls(false);
         settings->setValue("last-file", mpv->GetFile());
         ui->actionOpen_Last_File->setEnabled(settings->value("last-file").toString()!="");
-//        if(!ui->actionStop_after_Current->isChecked())
-//            playlist->PlayNext(); // todo: only if it ended by itself, detect if user ended it
         break;
     }
 }

@@ -85,6 +85,8 @@ bool MpvHandler::event(QEvent *event)
             mpv_event *event = mpv_wait_event(mpv, 0);
             if (event->event_id == MPV_EVENT_NONE)
                 break;
+            if(event->error < 0)
+                emit ErrorSignal(mpv_error_string(event->error));
             switch (event->event_id)
             {
             case MPV_EVENT_PROPERTY_CHANGE:
@@ -104,11 +106,12 @@ bool MpvHandler::event(QEvent *event)
                         SetVolume((int)*(double*)prop->data);
                 break;
             }
-//            case MPV_EVENT_FILE_LOADED: // essentially when i get this event it won't start
-//                break;
             case MPV_EVENT_IDLE:
                 SetTime(0);
                 SetPlayState(Mpv::Idle);
+                break;
+            case MPV_EVENT_FILE_LOADED:
+                SetPlayState(Mpv::Loaded);
                 break;
             case MPV_EVENT_START_FILE:
                 SetPlayState(Mpv::Started);
@@ -124,10 +127,6 @@ bool MpvHandler::event(QEvent *event)
                 break;
             case MPV_EVENT_SHUTDOWN:
                 QCoreApplication::quit();
-                break;
-            case MPV_EVENT_COMMAND_REPLY:
-                if(event->error < 0)
-                    emit ErrorSignal(mpv_error_string(event->error));
                 break;
             default: // unhandled events
                 break;
