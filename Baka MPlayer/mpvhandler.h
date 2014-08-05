@@ -1,8 +1,9 @@
 #ifndef MPVHANDLER_H
 #define MPVHANDLER_H
 
-#include <QMetaType>
 #include <QObject>
+#include <QMetaType>
+#include <QSettings>
 #include <QString>
 
 #include <mpv/client.h>
@@ -16,6 +17,7 @@ namespace Mpv
     {
         Idle,
         Started,
+        Loaded,
         Playing,
         Paused,
         Stopped,
@@ -29,7 +31,7 @@ class MpvHandler : public QObject
 {
     Q_OBJECT
 public:
-    explicit MpvHandler(int64_t wid, QObject *parent = 0);
+    explicit MpvHandler(QSettings *settings, int64_t wid, QObject *parent = 0);
     ~MpvHandler();
 
     QString GetFile() const;                    // return file
@@ -74,6 +76,7 @@ signals:
     void ErrorSignal(QString e);
 
 private:
+    QSettings *settings; // settings
     mpv_handle *mpv; // mpv client handle
 
     QString file;
