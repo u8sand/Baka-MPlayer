@@ -51,42 +51,23 @@ QMenu::separator {
 
 /* Playlist */
 
-#searchBox, #indexLabel, #playlistWidget, #playlistControlLayout {
-	background: #212121;
+#playlistLayoutWidget {
+	border-left: 1px solid #212121;
 }
 
 #searchBox {
 	font-size: 12px;
-	border: 1px solid black;
-	border-radius: 2px;
+	border-top: 1px solid #212121;
+	border-bottom: 1px solid #212121;
 	padding: 2px;
-	margin: 2px 5px;
 }
 
 #indexLabel {
 	color: gray;
-	border-left: 1px solid black;
-	border-right: 1px solid black;
-	border-top: 1px solid black;
-	margin: 5px 5px 0px 5px;
-}
-
-#playlistWidget {
-	border-left: 1px solid black;
-	border-right: 1px solid black;
-	border-radius: 0px;
-	margin: 0px 5px;
 }
 
 #playlistWidget::item::alternate {
 	background: black;
-}
-
-#playlistControlLayout {
-	border-left: 1px solid black;
-	border-right: 1px solid black;
-	border-bottom: 1px solid black;
-	margin: 0px 5px 5px 5px;
 }
 
 /* outputTextEdit */
@@ -237,6 +218,18 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
           <layout class="QHBoxLayout" name="horizontalLayout">
            <property name="spacing">
             <number>2</number>
+           </property>
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
            </property>
            <item>
             <widget class="QPushButton" name="currentFileButton">
@@ -841,7 +834,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>580</width>
-     <height>24</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
