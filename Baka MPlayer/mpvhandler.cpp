@@ -172,6 +172,12 @@ void MpvHandler::Stop()
     PlayPause(true);
 }
 
+void MpvHandler::SetChapter(char c)
+{
+    const char *args[] = {"set", "chapter", QString::number(c).toUtf8().data(), NULL};
+    AsyncCommand(args);
+}
+
 void MpvHandler::NextChapter()
 {
     const char *args[] = {"add", "chapter", "1", NULL};
