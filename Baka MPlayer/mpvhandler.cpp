@@ -9,15 +9,17 @@ static void wakeup(void *ctx)
     QCoreApplication::postEvent(mpvhandler, new QEvent(QEvent::User));
 }
 
-MpvHandler::MpvHandler(int64_t wid, QObject *parent):
+MpvHandler::MpvHandler(QSettings *_settings, int64_t wid, QObject *parent):
     QObject(parent),
+    settings(_settings),
     mpv(0),
     file(""),
     time(0),
     totalTime(0),
-    volume(100),
     playState(Mpv::Stopped)
 {
+    volume = settings->value("mpv/volume", 100).toInt();
+
     mpv = mpv_create();
     if(!mpv)
         throw "Could not create mpv object";
@@ -31,6 +33,8 @@ MpvHandler::MpvHandler(int64_t wid, QObject *parent):
     mpv_observe_property(mpv, 0, "time-pos", MPV_FORMAT_DOUBLE);
     mpv_observe_property(mpv, 0, "length", MPV_FORMAT_DOUBLE);
     mpv_observe_property(mpv, 0, "volume", MPV_FORMAT_DOUBLE);
+
+    mpv_set_property(mpv, "volume", MPV_FORMAT_DOUBLE, (double*)&volume);
 
     mpv_set_wakeup_callback(mpv, wakeup, this);
 
@@ -81,6 +85,8 @@ bool MpvHandler::event(QEvent *event)
             mpv_event *event = mpv_wait_event(mpv, 0);
             if (event->event_id == MPV_EVENT_NONE)
                 break;
+            if(event->error < 0)
+                emit ErrorSignal(mpv_error_string(event->error));
             switch (event->event_id)
             {
             case MPV_EVENT_PROPERTY_CHANGE:
@@ -100,11 +106,12 @@ bool MpvHandler::event(QEvent *event)
                         SetVolume((int)*(double*)prop->data);
                 break;
             }
-//            case MPV_EVENT_FILE_LOADED: // essentially when i get this event it won't start
-//                break;
             case MPV_EVENT_IDLE:
                 SetTime(0);
                 SetPlayState(Mpv::Idle);
+                break;
+            case MPV_EVENT_FILE_LOADED:
+                SetPlayState(Mpv::Loaded);
                 break;
             case MPV_EVENT_START_FILE:
                 SetPlayState(Mpv::Started);
@@ -120,10 +127,6 @@ bool MpvHandler::event(QEvent *event)
                 break;
             case MPV_EVENT_SHUTDOWN:
                 QCoreApplication::quit();
-                break;
-            case MPV_EVENT_COMMAND_REPLY:
-                if(event->error < 0)
-                    emit ErrorSignal(mpv_error_string(event->error));
                 break;
             default: // unhandled events
                 break;
