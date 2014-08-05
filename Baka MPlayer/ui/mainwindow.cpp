@@ -1,19 +1,21 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include <QCoreApplication>
+#include <QMessageBox>
+#include <QMimeData>
+#include <QDateTime>
+#include <QFileDialog>
+#include <QClipboard>
+#include <QDesktopServices>
+#include <QDir>
+#include <QFileInfo>
+#include <QDesktopWidget>
+
 #include "aboutdialog.h"
 #include "infodialog.h"
 #include "locationdialog.h"
 #include "jumpdialog.h"
-
-#include <QClipboard>
-#include <QDateTime>
-#include <QDesktopServices>
-#include <QDesktopWidget>
-#include <QFileDialog>
-#include <QMessageBox>
-#include <QMimeData>
-#include <QStyle>
 
 MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
     QMainWindow(parent),
@@ -22,6 +24,7 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
 {
     ui->setupUi(this);
     ui->playlistLayoutWidget->setVisible(false); // no playlist by default
+
     // load settings
     setGeometry(QStyle::alignedRect(Qt::LeftToRight,
                                     Qt::AlignCenter,
@@ -172,6 +175,7 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
     connect(ui->actionAbout_Baka_MPlayer, SIGNAL(triggered()),          // Help -> About Baka MPlayer
             this, SLOT(About()));                                       // show about dialog
 
+    // load arguments
     // todo: put baka mplayer options and such rather than just blindly treating all args as files
     for(auto arg = QCoreApplication::arguments().begin()+1; arg != QCoreApplication::arguments().end(); ++arg) // loop through arguments except first (executable name)
         playlist->LoadFile(*arg); // loadfile

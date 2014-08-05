@@ -1,7 +1,8 @@
 #include "mpvhandler.h"
 
 #include <QCoreApplication>
-#include <string>
+
+#include <string> // for strcmp
 
 static void wakeup(void *ctx)
 {

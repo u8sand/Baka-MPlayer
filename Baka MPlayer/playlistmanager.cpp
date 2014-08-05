@@ -1,8 +1,12 @@
 #include "playlistmanager.h"
 
 #include <QDir>
+#include <QFile>
+#include <QFileInfo>
+#include <QFileInfoList>
+#include <QRegExp>
 
-#include <algorithm>
+#include <algorithm> // for std::random_shuffle and std::sort
 
 PlaylistManager::PlaylistManager(QSettings *_settings, QObject *parent) :
     QObject(parent),
@@ -11,6 +15,31 @@ PlaylistManager::PlaylistManager(QSettings *_settings, QObject *parent) :
     shuffle = settings->value("playlist/shuffle", false).toBool();
     showAll = settings->value("playlist/show-all", false).toBool();
     index = 0;
+}
+
+QStringList PlaylistManager::GetList() const
+{
+    return list;
+}
+
+QString PlaylistManager::GetPath() const
+{
+    return path;
+}
+
+QString PlaylistManager::GetSuffix() const
+{
+    return suffix;
+}
+
+bool PlaylistManager::GetShuffle() const
+{
+    return shuffle;
+}
+
+bool PlaylistManager::GetShowAll() const
+{
+    return showAll;
 }
 
 int PlaylistManager::GetIndex() const
