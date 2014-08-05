@@ -5,7 +5,7 @@
 #include <QListWidget>
 #include <QString>
 
-class PlaylistManager : public QObject
+class PlaylistManager : public QObject // todo: re-think this entirely
 {
     Q_OBJECT
 public:
@@ -16,13 +16,14 @@ public slots:
     void PlayNext();                                    // plays the next file (++index)
     void PlayPrevious();                                // plays the previous file (--index)
     void LoadFile(QString file, bool showAll = false);  // loads the playlist given a file
-    void Shuffle();                                     // shuffle the playlist entries
+    void Shuffle(bool shuffle);                         // shuffle the playlist entries
     void SelectCurrent();                               // sets the playlist selection to the current playing file
     void Refresh(QString suffix = "");                  // refresh the playlist (look at the directory again and repopulate the playlist)
     void ShowAll(bool showAll);                         // change ShowAll state
 
 signals:
     void PlayFile(QString file);                        // playfile signal, gets forwarded to mpv->OpenFile
+    void SetVisible(bool visibile);                     // visibility signal, gets forwarded to mainwindow::SetPlaylist(bool)
 
 private:
     QStringList list;

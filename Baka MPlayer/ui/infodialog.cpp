@@ -16,7 +16,7 @@ InfoDialog::~InfoDialog()
     delete ui;
 }
 
-void InfoDialog::info(QWidget *parent)
+void InfoDialog::info(QWidget *parent) // todo
 {
     InfoDialog dialog(parent);
     dialog.exec();

@@ -35,7 +35,6 @@ public:
     QString GetFile() const;                    // return file
     time_t GetTime() const;                     // return time
     time_t GetTotalTime() const;                // return totalTime
-    int GetChapter() const;                     // return chapter
     int GetVolume() const;                      // return volume
     Mpv::PlayState GetPlayState() const;        // return playState
 
@@ -62,7 +61,6 @@ private slots:
     void SetFile(QString f);                    // set file, emit signal
     void SetTime(time_t t);                     // set time, emit signal
     void SetTotalTime(time_t t);                // set totalTime, emit signal
-    void SetChapter(int c);                     // set chapter, emit signal
     void SetVolume(int v);                      // set volume, emit signal
     void SetPlayState(Mpv::PlayState s);        // set playState, emit signal
 
@@ -70,7 +68,6 @@ signals:
     void FileChanged(QString f);
     void TimeChanged(time_t t);
     void TotalTimeChanged(time_t t);
-    void ChapterChanged(int c);
     void VolumeChanged(int l);
     void PlayStateChanged(Mpv::PlayState s);
     void ErrorSignal(QString e);
