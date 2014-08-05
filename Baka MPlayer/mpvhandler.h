@@ -1,8 +1,9 @@
 #ifndef MPVHANDLER_H
 #define MPVHANDLER_H
 
-#include <QMetaType>
 #include <QObject>
+#include <QMetaType>
+#include <QSettings>
 #include <QString>
 
 #include <mpv/client.h>
@@ -29,7 +30,7 @@ class MpvHandler : public QObject
 {
     Q_OBJECT
 public:
-    explicit MpvHandler(int64_t wid, QObject *parent = 0);
+    explicit MpvHandler(QSettings *settings, int64_t wid, QObject *parent = 0);
     ~MpvHandler();
 
     QString GetFile() const;                    // return file
@@ -47,6 +48,7 @@ public slots:
     void Seek(int pos, bool relative = false);  // seek to specific location
     void Restart();                             // seek to the beginning
     void Stop();                                // stop playback (and go to beginning)
+    void SetChaper(int chapter);                // seek to specified chapter
     void NextChapter();                         // seek to next chapter
     void PreviousChapter();                     // seek to previous chapter
     void FrameStep();                           // frame step
@@ -73,6 +75,7 @@ signals:
     void ErrorSignal(QString e);
 
 private:
+    QSettings *settings; // settings
     mpv_handle *mpv; // mpv client handle
 
     QString file;

@@ -9,15 +9,17 @@ static void wakeup(void *ctx)
     QCoreApplication::postEvent(mpvhandler, new QEvent(QEvent::User));
 }
 
-MpvHandler::MpvHandler(int64_t wid, QObject *parent):
+MpvHandler::MpvHandler(QSettings *_settings, int64_t wid, QObject *parent):
     QObject(parent),
+    settings(_settings),
     mpv(0),
     file(""),
     time(0),
     totalTime(0),
-    volume(100),
     playState(Mpv::Stopped)
 {
+    volume = settings->value("mpv/volume", 100).toInt();
+
     mpv = mpv_create();
     if(!mpv)
         throw "Could not create mpv object";
@@ -31,6 +33,8 @@ MpvHandler::MpvHandler(int64_t wid, QObject *parent):
     mpv_observe_property(mpv, 0, "time-pos", MPV_FORMAT_DOUBLE);
     mpv_observe_property(mpv, 0, "length", MPV_FORMAT_DOUBLE);
     mpv_observe_property(mpv, 0, "volume", MPV_FORMAT_DOUBLE);
+
+    mpv_set_property(mpv, "volume", MPV_FORMAT_DOUBLE, (double*)&volume);
 
     mpv_set_wakeup_callback(mpv, wakeup, this);
 
@@ -170,6 +174,12 @@ void MpvHandler::Stop()
 {
     Restart();
     PlayPause(true);
+}
+
+void MpvHandler::SetChaper(int c)
+{
+    const char *args[] = {"set", "chapter", QString::number(c).toUtf8().data(), NULL};
+    AsyncCommand(args);
 }
 
 void MpvHandler::NextChapter()
