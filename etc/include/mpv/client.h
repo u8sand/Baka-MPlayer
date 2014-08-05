@@ -158,12 +158,11 @@ extern "C" {
  * number is incremented. This affects only C part, and not properties and
  * options.
  *
- * The version number is often converted into a human readable form by writing
- * the major and minor version number in decimal. E.g.:
- *      version 0x001001FF
- *      becomes 16.511 (dec(0x0010) + "." + dec(0x01FF))
+ * You can use MPV_MAKE_VERSION() and compare the result with integer
+ * relational operators (<, >, <=, >=).
  */
-#define MPV_CLIENT_API_VERSION 0x00010001UL
+#define MPV_MAKE_VERSION(major, minor) (((major) << 16) | (minor) | 0UL)
+#define MPV_CLIENT_API_VERSION MPV_MAKE_VERSION(1, 3)
 
 /**
  * Return the MPV_CLIENT_API_VERSION the mpv source has been compiled with.
@@ -919,8 +918,10 @@ typedef enum mpv_event_id {
      */
     MPV_EVENT_UNPAUSE           = 13,
     /**
-     * Sent every time after a video frame is displayed (or in lower frequency
-     * if there is no video, or playback is paused).
+     * Sent every time after a video frame is displayed. Note that currently,
+     * this will be sent in lower frequency if there is no video, or playback
+     * is paused - but that will be removed in the future, and it will be
+     * restricted to video frames only.
      */
     MPV_EVENT_TICK              = 14,
     /**
@@ -935,8 +936,8 @@ typedef enum mpv_event_id {
     /**
      * Triggered by the script_message input command. The command uses the
      * first argument of the command as client name (see mpv_client_name()) to
-     * dispatch the message, and passes along the all arguments starting from
-     * the seconand argument as strings.
+     * dispatch the message, and passes along all arguments starting from the
+     * second argument as strings.
      * See also mpv_event and mpv_event_client_message.
      */
     MPV_EVENT_CLIENT_MESSAGE    = 16,
@@ -983,6 +984,7 @@ typedef enum mpv_event_id {
      * Happens when the current chapter changes.
      */
     MPV_EVENT_CHAPTER_CHANGE = 23
+    // Internal note: adjust INTERNAL_EVENT_BASE when adding new events.
 } mpv_event_id;
 
 /**
