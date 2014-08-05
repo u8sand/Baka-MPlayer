@@ -4,34 +4,21 @@
 
 #include <algorithm>
 
-PlaylistManager::PlaylistManager(QListWidget *_playlist, QObject *parent) :
+PlaylistManager::PlaylistManager(QSettings *_settings, QObject *parent) :
     QObject(parent),
-    playlist(_playlist),
-    index(0)
+    settings(_settings)
 {
+    shuffle = settings->value("playlist/shuffle", false).toBool();
+    showAll = settings->value("playlist/show-all", false).toBool();
+    index = 0;
 }
 
-void PlaylistManager::PlayIndex(int i)
+int PlaylistManager::GetIndex() const
 {
-    QString file = path+list[(index = i)];
-    QFile f(file);
-    if(f.exists())
-        emit PlayFile(file);
+    return index;
 }
 
-void PlaylistManager::PlayNext()
-{
-    if(list.size() > 0 && index < list.size()-1)
-        PlayIndex(++index);
-}
-
-void PlaylistManager::PlayPrevious()
-{
-    if(list.size() > 0 && index > 1)
-        PlayIndex(++index);
-}
-
-void PlaylistManager::LoadFile(QString f, bool showAll)
+void PlaylistManager::LoadFile(QString f)
 {
     QRegExp rx("^(http://.+\\.[a-z]+)", Qt::CaseInsensitive);
 
@@ -41,54 +28,82 @@ void PlaylistManager::LoadFile(QString f, bool showAll)
         index = 0;
         list.clear();
         list.push_back(f);
-        Refresh();
+        emit ListChanged(list);
     }
     else // local file
     {
-        QFileInfo fi(f);
-        if(path == fi.absolutePath() && // path is the same
-           (index = list.indexOf(fi.fileName())) != -1) // file exists in the list
-            PlayIndex(index);                           // play it
-        else // file doesn't exist in list
-        {
-            path = fi.absolutePath()+"/"; // get path
-            // populate list
-            if(showAll)
-                Refresh();
-            else
-                Refresh(fi.suffix());
-            index = list.indexOf(fi.fileName()); // get index
-        }
+     QFileInfo fi(f);
+     if(path == fi.absolutePath() && // path is the same
+        (index = list.indexOf(fi.fileName())) != -1) // file exists in the list
+         PlayIndex(index);                           // play it
+     else // file doesn't exist in list
+     {
+         path = fi.absolutePath()+"/"; // get path
+         suffix = fi.suffix();
+         Populate();
+         Sort();
+         emit ListChanged(list);
+         index = list.indexOf(fi.fileName()); // get index
+     }
     }
-    SelectCurrent();
     if(list.size() > 1) // open up the playlist only if there is more than one item
-        emit SetVisible(true);
-    // play file
-    emit PlayFile(f);
+        emit Show(true);
+    PlayIndex(index);
 }
 
-void PlaylistManager::Shuffle(bool shuffle) // todo: pass the mainwindow shuffle setting so that this function get's called whenever loading the list
+void PlaylistManager::PlayIndex(int i)
 {
-    if(shuffle) // shuffle list
+    if(index >= 0 && index < list.size())
     {
-        playlist->clear();
-        std::random_shuffle(list.begin(), list.end());
-        playlist->addItems(list);
+        index = i;
+
+        QFile f(path+list[index]);
+        if(f.exists())
+            emit Play(path+list[index]);
+        else
+            emit Stop();
+        emit IndexChanged(index);
     }
-    else // sort list
-    {
-        playlist->clear();
-        std::sort(list.begin(), list.end());
-        playlist->addItems(list);
-    }
+    else
+        Stop();
 }
 
-void PlaylistManager::SelectCurrent()
+void PlaylistManager::Next()
 {
-    playlist->setCurrentRow(index);
+    PlayIndex(index+1);
 }
 
-void PlaylistManager::Refresh(QString suffix)
+void PlaylistManager::Previous()
+{
+    PlayIndex(index-1);
+}
+
+void PlaylistManager::Refresh()
+{
+    shuffle = false;
+    emit ShuffleChanged(false);
+
+    Populate();
+    Sort();
+    emit ListChanged(list);
+}
+
+void PlaylistManager::Shuffle(bool s)
+{
+    shuffle = s;
+    Sort();
+    emit ListChanged(list);
+}
+
+void PlaylistManager::ShowAll(bool s) // todo: use current selection's suffix
+{
+    showAll = s;
+    Populate();
+    Sort();
+    emit ListChanged(list);
+}
+
+void PlaylistManager::Populate()
 {
     if(path != "")
     {
@@ -102,23 +117,12 @@ void PlaylistManager::Refresh(QString suffix)
         for(auto &i : flist)
             list.push_back(i.fileName()); // add files to the list
     }
-    playlist->clear();
-    playlist->addItems(list);
 }
 
-void PlaylistManager::ShowAll(bool showAll)
+void PlaylistManager::Sort()
 {
-    QString file = list[index];
-    if(showAll)
-        Refresh();
-    else
-    {
-        QFileInfo fi(file);
-        Refresh(fi.suffix());
-    }
-    if((index = list.indexOf(file)) == -1) // find new index
-    {
-        // not found: set to top of list
-        index = 0;
-    }
+    if(shuffle) // shuffle list
+        std::random_shuffle(list.begin(), list.end());
+    else        // sort list
+        std::sort(list.begin(), list.end());
 }

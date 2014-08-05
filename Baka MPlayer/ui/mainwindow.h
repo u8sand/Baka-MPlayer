@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QSettings>
+#include <QModelIndex>
 
 #include "mpvhandler.h"
 #include "playlistmanager.h"
@@ -41,13 +42,20 @@ private slots:
     void OpenFileFromClipboard();                   // opens file from cliboard text
     void OpenLastFile();                            // opens last open file (from settings)
     void ShowInFolder();                            // opens explorer to current file's path
+
+    void UpdatePlaylist(QStringList list);
+    void UpdatePlaylistIndex(int index);
+    void PlaylistSelectCurrent();
     void PlayIndex(QModelIndex index);              // plays the selected file in the playlist
-    void RefreshPlaylist();                         // refresh playlist
+
     void TogglePlaylist();                          // toggle playlist
     void OnlineHelp();                              // loads online help
     void CheckForUpdates();                         // checks for program updates
     void AboutQt();                                 // shows qt license information
     void About();                                   // shows baka mplayer about dialog
+
+
+//    void PlayIndex(QModelIndex index);
 
 private:
     Ui::MainWindow *ui;
