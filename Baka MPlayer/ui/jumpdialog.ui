@@ -15,14 +15,13 @@
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget {
-	background: #141414;
+	background: black;
 	color: whitesmoke;
 	font: 12px &quot;Open Sans&quot;;
 }
 
 #horizontalLayoutWidget {
 	background: #263238;
-	border: 1px solid black;
 	border-radius: 2px;
 }
 
@@ -174,14 +173,14 @@ QSpinBox::down-arrow {
      <property name="styleSheet">
       <string notr="true">QPushButton {
     background: #263238;
-	color: white;
-	border: 1px solid dodgerblue;
-	border-radius: 2px;
+    color: white;
+    border: 1px solid #607d8b;
+    border-radius: 2px;
     min-width: 88px;
-	min-height: 25px;
+    min-height: 25px;
 }
 QPushButton:pressed {
-    background: dodgerblue;
+    background: #607d8b;
 }
 QPushButton:disabled {
     color: gray;

@@ -15,7 +15,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget {
-	background: #141414;
+	background: black;
 	color: whitesmoke;
 	font: 12px &quot;Open Sans&quot;;
 }
@@ -78,7 +78,7 @@ QTabBar::tab {
     padding-bottom: 5px;
 }
 QTabBar::tab:selected {
-    border-bottom: 1px solid dodgerblue;
+    border-bottom: 1px solid #607d8b;
 }
 QTabBar::tab:!selected {
 	color: silver;
@@ -271,13 +271,13 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</string
         <string notr="true">QPushButton {
     background: #263238;
 	color: white;
-	border: 1px solid dodgerblue;
+	border: 1px solid #607d8b;
 	border-radius: 2px;
     min-width: 88px;
 	min-height: 25px;
 }
 QPushButton:pressed {
-    background: dodgerblue;
+    background: #607d8b;
 }
 QPushButton:disabled {
     color: gray;
