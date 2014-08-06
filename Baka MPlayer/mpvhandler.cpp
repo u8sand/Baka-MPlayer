@@ -148,7 +148,7 @@ void MpvHandler::OpenFile(QString f)
 {
     // this round-about-way fixes a major glitch. don't ask.
     const std::string str = f.toUtf8().constData();
-    const char *args[] = {"loadfile", str.c_str(), 0};
+    const char *args[] = {"loadfile", str.c_str(), NULL};
     AsyncCommand(args);
 }
 
@@ -247,7 +247,7 @@ void MpvHandler::ToggleSubs()
 void MpvHandler::AsyncCommand(const char *args[])
 {
     if(mpv)
-        mpv_command(mpv, args);
+        mpv_command_async(mpv, 0, args);
     else
         emit ErrorSignal("mpv was not initialized");
 }
