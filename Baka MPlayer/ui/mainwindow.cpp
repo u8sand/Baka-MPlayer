@@ -4,7 +4,7 @@
 #include <QCoreApplication>
 #include <QMessageBox>
 #include <QMimeData>
-#include <QDateTime>
+#include <QTime>
 #include <QFileDialog>
 #include <QClipboard>
 #include <QDesktopServices>
@@ -44,6 +44,8 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
 
     // setup signals & slots
                                                                         // mpv updates
+    connect(mpv, SIGNAL(FileChanged(QString)),                          // MPV_EVENT file changed
+            this, SLOT(SetTitle(QString)));                             // set window title
     connect(mpv, SIGNAL(TimeChanged(int)),                              // MPV_EVENT time-pos update
             this, SLOT(SetTime(int)));                                  // adjust time and slider accordingly
     connect(mpv, SIGNAL(PlayStateChanged(Mpv::PlayState)),              // MPV_EVENT playstate changes
@@ -89,8 +91,6 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
             this, SLOT(JumpToTime()));                                  // jump-to-time dialog
     connect(ui->openButton, SIGNAL(RightClick()),                       // right-clicked the open button
             this, SLOT(OpenUrl()));                                     // open-url dialog
-    connect(ui->voiceButton, SIGNAL(clicked()),                         // clicked voice button
-            this, SLOT(ToggleVoice()));                                 // toggle voice enabled
     connect(ui->playButton, SIGNAL(clicked()),                          // clicked the playpause button
             mpv, SLOT(PlayPause()));                                    // mpv playpause
     connect(ui->playlistButton, SIGNAL(clicked()),                      // clicked the playlist button
@@ -240,6 +240,14 @@ void MainWindow::SetPlaybackControls(bool enable)
     ui->action_Playlist->setEnabled(enable);
 }
 
+void MainWindow::SetTitle(QString title)
+{
+    if(title == "")
+        setWindowTitle("Baka MPlayer");
+    else
+        setWindowTitle(QFileInfo(title).fileName());
+}
+
 QString MainWindow::FormatTime(int _time)
 {
     QTime time = QTime::fromMSecsSinceStartOfDay(_time * 1000);
@@ -281,7 +289,6 @@ void MainWindow::SetPlayState(Mpv::PlayState playState)
         ui->action_Play->setText("&Play");
         break;
     case Mpv::Idle:
-//        SetTime(0);
         if(!ui->actionStop_after_Current->isChecked())
             playlist->Next();
         else

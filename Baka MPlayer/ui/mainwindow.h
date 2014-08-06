@@ -30,6 +30,7 @@ protected:
     inline void SetPlaybackControls(bool enable);   // macro to enable/disable playback controls
 
 private slots:
+    void SetTitle(QString title);                   // set the window title
     QString FormatTime(int time);                   // format the time the way we want to display it
     void SetTime(int time);                         // triggered by mpv, updates time labels and seekbar
     void SetPlayState(Mpv::PlayState state);        // triggered by mpv, updates controls based on changes of playstate
