@@ -3,7 +3,9 @@ Version 1.0
 
 ## Introduction
 
-Baka MPlayer is a free and open source, cross-platform, mpv based multimedia player. It's simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching anime. It also supports opening Youtube videos (through mpv), is portable, and has support for voice commands (in beta).
+Baka MPlayer is a free and open source, cross-platform, **mpv** based multimedia player.
+Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching anime.
+It's also portable and supports opening Youtube videos (through **mpv**).
 
 This manual seeks to cover all related topics.
 

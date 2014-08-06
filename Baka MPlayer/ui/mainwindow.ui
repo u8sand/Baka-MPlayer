@@ -372,42 +372,18 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
      </widget>
     </item>
     <item>
-     <widget class="QWidget" name="seekbarLayoutWidget" native="true">
+     <widget class="CustomSlider" name="seekBar">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_4">
-       <property name="spacing">
-        <number>0</number>
-       </property>
-       <property name="leftMargin">
-        <number>0</number>
-       </property>
-       <property name="topMargin">
-        <number>0</number>
-       </property>
-       <property name="rightMargin">
-        <number>0</number>
-       </property>
-       <property name="bottomMargin">
-        <number>0</number>
-       </property>
-       <item>
-        <widget class="CustomSlider" name="seekBar">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QSlider {
+      <property name="styleSheet">
+       <string notr="true">QSlider {
 	height: 5px;
 }
 QSlider::handle:horizontal {
@@ -420,16 +396,13 @@ QSlider::groove:horizontal {
 QSlider::sub-page:horizontal {
 	background: #607d8b;
 }</string>
-         </property>
-         <property name="maximum">
-          <number>1000000</number>
-         </property>
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-        </widget>
-       </item>
-      </layout>
+      </property>
+      <property name="maximum">
+       <number>1000000</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
      </widget>
     </item>
     <item>
@@ -808,8 +781,8 @@ QSlider::handle:horizontal {
     </item>
    </layout>
    <zorder>playbackLayoutWidget</zorder>
-   <zorder>seekbarLayoutWidget</zorder>
    <zorder>splitter</zorder>
+   <zorder>seekBar</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
