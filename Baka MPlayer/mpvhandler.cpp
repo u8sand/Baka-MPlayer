@@ -36,7 +36,11 @@ MpvHandler::MpvHandler(QSettings *_settings, int64_t wid, QObject *parent):
     mpv_observe_property(mpv, 0, "volume", MPV_FORMAT_DOUBLE);
 
     mpv_set_property(mpv, "volume", MPV_FORMAT_DOUBLE, (double*)&volume);
-    mpv_request_log_messages(mpv, "debug");
+
+    if(settings->value("debug/mpv", false).toBool())
+        mpv_request_log_messages(mpv, "debug");
+    else
+        mpv_request_log_messages(mpv, "no");
 
     mpv_set_wakeup_callback(mpv, wakeup, this);
 
@@ -147,8 +151,8 @@ bool MpvHandler::event(QEvent *event)
 void MpvHandler::OpenFile(QString f)
 {
     // this round-about-way fixes a major glitch. don't ask.
-    const std::string str = f.toUtf8().constData();
-    const char *args[] = {"loadfile", str.c_str(), NULL};
+    const std::string tmp = f.toUtf8().constData();
+    const char *args[] = {"loadfile", tmp.c_str(), NULL};
     AsyncCommand(args);
 }
 
@@ -169,8 +173,8 @@ void MpvHandler::PlayPause(bool justPause)
 void MpvHandler::Seek(int pos, bool relative)
 {
     // this round-about-way fixes a major glitch. don't ask.
-    const std::string str = QString::number(pos).toUtf8().constData();
-    const char *args[] = {"seek", str.c_str(), (relative ? "relative" : "absolute"), NULL};
+    const std::string tmp = QString::number(pos).toUtf8().constData();
+    const char *args[] = {"seek", tmp.c_str(), (relative ? "relative" : "absolute"), NULL};
     AsyncCommand(args);
 }
 
@@ -189,8 +193,8 @@ void MpvHandler::Stop()
 void MpvHandler::SetChapter(int c)
 {
     // this round-about-way fixes a major glitch. don't ask.
-    const std::string str = QString::number(c).toUtf8().constData();
-    const char *args[] = {"set", "chapter", str.c_str(), NULL};
+    const std::string tmp = QString::number(c).toUtf8().constData();
+    const char *args[] = {"set", "chapter", tmp.c_str(), NULL};
     AsyncCommand(args);
 }
 
@@ -221,8 +225,8 @@ void MpvHandler::FrameBackStep()
 void MpvHandler::AdjustVolume(int level)
 {
     // this round-about-way fixes a major glitch. don't ask.
-    const std::string str = QString::number(level).toUtf8().constData();
-    const char *args[] = {"set", "volume", str.c_str(), NULL};
+    const std::string tmp = QString::number(level).toUtf8().constData();
+    const char *args[] = {"set", "volume", tmp.c_str(), NULL};
     AsyncCommand(args);
 }
 
