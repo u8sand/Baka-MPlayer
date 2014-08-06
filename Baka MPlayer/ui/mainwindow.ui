@@ -81,9 +81,9 @@ QSplitter::handle {
 #playlistWidget::item {
 	alternate-background-color: #141414;
 }
- #playlistWidget::item:selected {
+#playlistWidget::item:selected {
     background: #607d8b;
- }
+}
 
 /* seekbarLayoutWidget */
 
