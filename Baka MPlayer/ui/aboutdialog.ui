@@ -41,6 +41,25 @@ QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
 QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical,
 QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
 	background: transparent;
+}
+
+/* QScrollBar:horizontal */
+
+QScrollBar:horizontal {
+	border: none;
+	height: 5px;
+}
+QScrollBar::handle:horizontal {
+	background: gray;
+	border-radius: 2px;
+	min-width: 10px;
+}
+QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {
+	border: none;
+}
+QScrollBar::left-arrow:horizontal, QScrollBar::right-arrow:horizontal,
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
+	background: transparent;
 }</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_4">
