@@ -22,7 +22,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget, QMenuBar, QMenuBar::item {
-	background: #141414;
+	background: black;
 	color: whitesmoke;
 	font-family: 	&quot;Open Sans&quot;;
 }
@@ -47,6 +47,12 @@ QMenu::separator {
 	background: #424242;
 	height: 1px;
 	margin: 3px 0;
+}
+
+/* QSplitter */
+
+QSplitter::handle {
+	background: black;
 }
 
 /* Playlist */
