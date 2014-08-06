@@ -62,12 +62,12 @@ QString MpvHandler::GetFile() const
     return file;
 }
 
-time_t MpvHandler::GetTime() const
+int MpvHandler::GetTime() const
 {
     return time;
 }
 
-time_t MpvHandler::GetTotalTime() const
+int MpvHandler::GetTotalTime() const
 {
     return totalTime;
 }
@@ -103,10 +103,10 @@ bool MpvHandler::event(QEvent *event)
                         SetFile(((std::string*)prop->data)->c_str());
                 if (strcmp(prop->name, "time-pos") == 0)
                     if (prop->format == MPV_FORMAT_DOUBLE)
-                        SetTime((time_t)*(double*)prop->data);
+                        SetTime((int)*(double*)prop->data);
                 if (strcmp(prop->name, "length") == 0)
                     if (prop->format == MPV_FORMAT_DOUBLE)
-                        SetTotalTime((time_t)*(double*)prop->data);
+                        SetTotalTime((int)*(double*)prop->data);
                 if (strcmp(prop->name, "volume") == 0)
                     if (prop->format == MPV_FORMAT_DOUBLE)
                         SetVolume((int)*(double*)prop->data);
@@ -265,7 +265,7 @@ void MpvHandler::SetFile(QString f)
     }
 }
 
-void MpvHandler::SetTime(time_t t)
+void MpvHandler::SetTime(int t)
 {
     if(time != t)
     {
@@ -274,7 +274,7 @@ void MpvHandler::SetTime(time_t t)
     }
 }
 
-void MpvHandler::SetTotalTime(time_t t)
+void MpvHandler::SetTotalTime(int t)
 {
     if(totalTime != t)
     {

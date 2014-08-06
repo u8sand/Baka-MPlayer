@@ -33,8 +33,8 @@ public:
     ~MpvHandler();
 
     QString GetFile() const;                    // return file
-    time_t GetTime() const;                     // return time
-    time_t GetTotalTime() const;                // return totalTime
+    int GetTime() const;                        // return time
+    int GetTotalTime() const;                   // return totalTime
     int GetVolume() const;                      // return volume
     Mpv::PlayState GetPlayState() const;        // return playState
 
@@ -60,15 +60,15 @@ public slots:
 private slots:
     void AsyncCommand(const char *args[]);      // execute async mpv command
     void SetFile(QString f);                    // set file, emit signal
-    void SetTime(time_t t);                     // set time, emit signal
-    void SetTotalTime(time_t t);                // set totalTime, emit signal
+    void SetTime(int t);                        // set time, emit signal
+    void SetTotalTime(int t);                   // set totalTime, emit signal
     void SetVolume(int v);                      // set volume, emit signal
     void SetPlayState(Mpv::PlayState s);        // set playState, emit signal
 
 signals:
     void FileChanged(QString f);                // triggered on file changed
-    void TimeChanged(time_t t);                 // triggered on time changed
-    void TotalTimeChanged(time_t t);            // triggered on totalTime changed
+    void TimeChanged(int t);                 // triggered on time changed
+    void TotalTimeChanged(int t);            // triggered on totalTime changed
     void VolumeChanged(int l);                  // triggered on volume changed
     void PlayStateChanged(Mpv::PlayState s);    // triggered on playstate changed
     void ErrorSignal(QString e);                // triggered when an error occurs
@@ -79,9 +79,9 @@ private:
     mpv_handle *mpv;                            // mpv client handle
 
     QString file;                               // the current file path
-    time_t time,                                // the current time-pos
-           totalTime;                           // the current total time
-    int volume;                                 // the current volume
+    int time,                                   // the current time-pos
+        totalTime,                              // the current total time
+        volume;                                 // the current volume
     Mpv::PlayState playState;                   // the current playstate
 };
 

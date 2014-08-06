@@ -44,8 +44,8 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
 
     // setup signals & slots
                                                                         // mpv updates
-    connect(mpv, SIGNAL(TimeChanged(time_t)),                           // MPV_EVENT time-pos update
-            this, SLOT(SetTime(time_t)));                               // adjust time and slider accordingly
+    connect(mpv, SIGNAL(TimeChanged(int)),                              // MPV_EVENT time-pos update
+            this, SLOT(SetTime(int)));                                  // adjust time and slider accordingly
     connect(mpv, SIGNAL(PlayStateChanged(Mpv::PlayState)),              // MPV_EVENT playstate changes
             this, SLOT(SetPlayState(Mpv::PlayState)));                  // adjust interface based on new play-state
     connect(mpv, SIGNAL(VolumeChanged(int)),                            // MPV_EVENT volume update
@@ -240,15 +240,25 @@ void MainWindow::SetPlaybackControls(bool enable)
     ui->action_Playlist->setEnabled(enable);
 }
 
-void MainWindow::SetTime(time_t time)
+QString MainWindow::FormatTime(int _time)
+{
+    QTime time = QTime::fromMSecsSinceStartOfDay(_time * 1000);
+    if(time.hour() > 0)
+        return time.toString("h:mm:ss");
+    if(time.minute() > 0)
+        return time.toString("mm:ss");
+    return time.toString("0:ss");
+}
+
+void MainWindow::SetTime(int time)
 {
     // set the seekBar's location with NoSignal function so that it doesn't trigger a seek
     // the formula is a simple ratio seekBar's max * time/totalTime
     ui->seekBar->setValueNoSignal(ui->seekBar->maximum()*((double)time/mpv->GetTotalTime()));
 
     // set duration and remaining labels, QDateTime takes care of formatting for us
-    ui->durationLabel->setText(QDateTime::fromTime_t(time).toUTC().toString("h:mm:ss"));
-    ui->remainingLabel->setText(QDateTime::fromTime_t(mpv->GetTotalTime()-time).toUTC().toString("-h:mm:ss"));
+    ui->durationLabel->setText(FormatTime(time));
+    ui->remainingLabel->setText("-"+FormatTime(mpv->GetTotalTime()-time));
 }
 
 void MainWindow::SetPlayState(Mpv::PlayState playState)
