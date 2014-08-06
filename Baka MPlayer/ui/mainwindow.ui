@@ -21,27 +21,33 @@
     <normaloff>:/img/logo.ico</normaloff>:/img/logo.ico</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">QWidget, QMenuBar, QMenuBar::item {
+   <string notr="true">QWidget {
+	font-family: &quot;Open Sans&quot;;
 	background: black;
 	color: whitesmoke;
-	font-family: 	&quot;Open Sans&quot;;
 }
 
+/* QMenuBar and stuff */
+
+QMenuBar, QMenuBar::item {
+	background: black;
+}
 QMenuBar::item:selected {
 	background: #424242;
 }
-
-/* QMenu */
 
 QMenu {
 	background: #212121;
     border: 1px solid #424242;
 }
 QMenu::item:selected {
-	background: dodgerblue;
+	background: #607d8b;
  }
 QMenu::item::disabled {
 	color: gray;
+}
+QMenu::item::disabled:selected {
+	color: black;
 }
 QMenu::separator {
 	background: #424242;
@@ -73,7 +79,7 @@ QSplitter::handle {
 }
 
 #playlistWidget::item::alternate {
-	background: black;
+	background: #141414;
 }
 
 /* outputTextEdit */
@@ -81,6 +87,20 @@ QSplitter::handle {
 #outputTextEdit {
 	font: 12px &quot;Courier New&quot;, monospace;
 	border-top: 1px solid #212121;
+}
+
+/* seekbarLayoutWidget */
+
+#seekbarLayoutWidget {
+	padding-top: 10px;
+	border-top: 1px solid #212121;
+}
+
+/* time labels */
+
+#seperatorLabel,
+#remainingLabel {
+	color: gray;
 }
 
 /* QScrollBar:vertical */
@@ -344,7 +364,7 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
      </widget>
     </item>
     <item>
-     <widget class="QWidget" name="horizontalWidget_3" native="true">
+     <widget class="QWidget" name="seekbarLayoutWidget" native="true">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
         <horstretch>0</horstretch>
@@ -368,82 +388,36 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
         <number>0</number>
        </property>
        <item>
-        <widget class="QLabel" name="durationLabel">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>50</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>0:00:00</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item>
         <widget class="CustomSlider" name="seekBar">
          <property name="enabled">
           <bool>false</bool>
          </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="styleSheet">
-          <string notr="true">QSlider::groove:horizontal {
-	background: gray;
-	height: 1px;
-}
-QSlider::sub-page:horizontal {
-	background: dodgerblue;
+          <string notr="true">QSlider {
+	height: 5px;
 }
 QSlider::handle:horizontal {
-	background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-					stop: 0 silver, stop: 1 darkgray);
-	border: 2px solid #202020;
-	border-radius: 7px;
-	margin: -7px 0;
+	background: gray;
 	width: 12px;
+}
+QSlider::groove:horizontal {
+	background: #141414;
+}
+QSlider::sub-page:horizontal {
+	background: #607d8b;
 }</string>
          </property>
          <property name="maximum">
           <number>1000000</number>
          </property>
-         <property name="sliderPosition">
-          <number>0</number>
-         </property>
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="remainingLabel">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>55</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="toolTip">
-          <string>Click to change between total and remaining time</string>
-         </property>
-         <property name="text">
-          <string>-0:00:00</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
          </property>
         </widget>
        </item>
@@ -451,7 +425,7 @@ QSlider::handle:horizontal {
      </widget>
     </item>
     <item>
-     <widget class="QWidget" name="horizontalWidget_2" native="true">
+     <widget class="QWidget" name="playbackLayoutWidget" native="true">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
         <horstretch>0</horstretch>
@@ -466,13 +440,13 @@ QSlider::handle:horizontal {
         <number>14</number>
        </property>
        <property name="topMargin">
-        <number>0</number>
+        <number>6</number>
        </property>
        <property name="rightMargin">
         <number>14</number>
        </property>
        <property name="bottomMargin">
-        <number>10</number>
+        <number>6</number>
        </property>
        <item>
         <widget class="OpenButton" name="openButton">
@@ -510,37 +484,44 @@ QSlider::handle:horizontal {
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="voiceButton">
+        <widget class="QLabel" name="durationLabel">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
-         <property name="maximumSize">
-          <size>
-           <width>16</width>
-           <height>16</height>
-          </size>
+         <property name="text">
+          <string>0:00:00</string>
          </property>
-         <property name="cursor">
-          <cursorShape>PointingHandCursor</cursorShape>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="seperatorLabel">
+         <property name="text">
+          <string>/</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="remainingLabel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
          </property>
          <property name="toolTip">
-          <string>Voice Command</string>
+          <string>Click to change between total and remaining time</string>
          </property>
-         <property name="icon">
-          <iconset resource="../rsclist.qrc">
-           <normaloff>:/img/disabled_mic.svg</normaloff>:/img/disabled_mic.svg</iconset>
+         <property name="text">
+          <string>-0:00:00</string>
          </property>
-         <property name="iconSize">
-          <size>
-           <width>16</width>
-           <height>16</height>
-          </size>
-         </property>
-         <property name="flat">
-          <bool>true</bool>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
        </item>
@@ -562,22 +543,6 @@ QSlider::handle:horizontal {
          <property name="spacing">
           <number>8</number>
          </property>
-         <item>
-          <spacer name="horizontalSpacer">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeType">
-            <enum>QSizePolicy::Fixed</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
          <item>
           <widget class="QPushButton" name="rewindButton">
            <property name="enabled">
@@ -744,7 +709,7 @@ QSlider::handle:horizontal {
 	height: 1px;
 }
 QSlider::sub-page:horizontal {
-	background: dodgerblue;
+	background: #607d8b;
 }
 QSlider::handle:horizontal {
 	background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
@@ -834,8 +799,8 @@ QSlider::handle:horizontal {
      </widget>
     </item>
    </layout>
-   <zorder>horizontalWidget_2</zorder>
-   <zorder>horizontalWidget_3</zorder>
+   <zorder>playbackLayoutWidget</zorder>
+   <zorder>seekbarLayoutWidget</zorder>
    <zorder>splitter</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
