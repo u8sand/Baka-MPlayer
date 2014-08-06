@@ -52,6 +52,8 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
             ui->volumeSlider, SLOT(setValueNoSignal(int)));             // update the volume slider without triggering it's value changed signal
     connect(mpv, SIGNAL(ErrorSignal(QString)),                          // mpv error occured
             this, SLOT(HandleError(QString)));                          // output error message
+    connect(mpv, SIGNAL(DebugSignal(QString)),                          // mpv debug message received
+            this, SLOT(Debug(QString)));                                // output to outputTextEdit
                                                                         // playlist
     connect(playlist, SIGNAL(Play(QString)),                            // playlist play signal
             mpv, SLOT(OpenFile(QString)), Qt::QueuedConnection);        // mpv open file
@@ -269,7 +271,7 @@ void MainWindow::SetPlayState(Mpv::PlayState playState)
         ui->action_Play->setText("&Play");
         break;
     case Mpv::Idle:
-        SetTime(0);
+//        SetTime(0);
         if(!ui->actionStop_after_Current->isChecked())
             playlist->Next();
         else
@@ -385,4 +387,9 @@ void MainWindow::AboutQt()
 void MainWindow::About()
 {
     AboutDialog::about(this); // launch about dialog
+}
+
+void MainWindow::Debug(QString msg)
+{
+    ui->outputTextEdit->appendPlainText(msg);
 }

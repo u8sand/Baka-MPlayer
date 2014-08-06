@@ -36,6 +36,7 @@ MpvHandler::MpvHandler(QSettings *_settings, int64_t wid, QObject *parent):
     mpv_observe_property(mpv, 0, "volume", MPV_FORMAT_DOUBLE);
 
     mpv_set_property(mpv, "volume", MPV_FORMAT_DOUBLE, (double*)&volume);
+    mpv_request_log_messages(mpv, "debug");
 
     mpv_set_wakeup_callback(mpv, wakeup, this);
 
@@ -129,6 +130,9 @@ bool MpvHandler::event(QEvent *event)
             case MPV_EVENT_SHUTDOWN:
                 QCoreApplication::quit();
                 break;
+            case MPV_EVENT_LOG_MESSAGE:
+                emit DebugSignal(QString(((mpv_event_log_message*)event->data)->text));
+                break;
             default: // unhandled events
                 break;
             }
@@ -138,9 +142,13 @@ bool MpvHandler::event(QEvent *event)
     return QObject::event(event);
 }
 
+// NOTICE: Never directly pass a QString into the array. Don't ask, just don't.
+
 void MpvHandler::OpenFile(QString f)
 {
-    const char *args[] = {"loadfile", f.toUtf8().data(), NULL};
+    // this round-about-way fixes a major glitch. don't ask.
+    const std::string str = f.toUtf8().constData();
+    const char *args[] = {"loadfile", str.c_str(), 0};
     AsyncCommand(args);
 }
 
@@ -160,7 +168,9 @@ void MpvHandler::PlayPause(bool justPause)
 
 void MpvHandler::Seek(int pos, bool relative)
 {
-    const char *args[] = {"seek", QString::number(pos).toUtf8().data(), (relative ? "relative" : "absolute"), NULL};
+    // this round-about-way fixes a major glitch. don't ask.
+    const std::string str = QString::number(pos).toUtf8().constData();
+    const char *args[] = {"seek", str.c_str(), (relative ? "relative" : "absolute"), NULL};
     AsyncCommand(args);
 }
 
@@ -176,9 +186,11 @@ void MpvHandler::Stop()
     PlayPause(true);
 }
 
-void MpvHandler::SetChapter(char c)
+void MpvHandler::SetChapter(int c)
 {
-    const char *args[] = {"set", "chapter", QString::number(c).toUtf8().data(), NULL};
+    // this round-about-way fixes a major glitch. don't ask.
+    const std::string str = QString::number(c).toUtf8().constData();
+    const char *args[] = {"set", "chapter", str.c_str(), NULL};
     AsyncCommand(args);
 }
 
@@ -208,7 +220,9 @@ void MpvHandler::FrameBackStep()
 
 void MpvHandler::AdjustVolume(int level)
 {
-    const char *args[] = {"set", "volume", QString::number(level).toUtf8().data(), NULL};
+    // this round-about-way fixes a major glitch. don't ask.
+    const std::string str = QString::number(level).toUtf8().constData();
+    const char *args[] = {"set", "volume", str.c_str(), NULL};
     AsyncCommand(args);
 }
 
@@ -232,11 +246,8 @@ void MpvHandler::ToggleSubs()
 
 void MpvHandler::AsyncCommand(const char *args[])
 {
-    // this could make things even nicer if qt had initializer_list support...
-    // eg. AsyncCommand({"cycle", "fullscreen", NULL});
-
     if(mpv)
-        mpv_command_async(mpv, 0, args);
+        mpv_command(mpv, args);
     else
         emit ErrorSignal("mpv was not initialized");
 }

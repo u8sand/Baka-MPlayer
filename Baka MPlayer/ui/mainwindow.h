@@ -52,6 +52,8 @@ private slots:
     void AboutQt();                                 // shows qt license information
     void About();                                   // shows baka mplayer about dialog
 
+    void Debug(QString msg);                        // outputs debugging messages
+
 private:
     Ui::MainWindow *ui;
 
