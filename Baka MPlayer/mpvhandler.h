@@ -47,7 +47,7 @@ public slots:
     void Seek(int pos, bool relative = false);  // seek to specific location
     void Restart();                             // seek to the beginning
     void Stop();                                // stop playback (and go to beginning)
-    void SetChapter(char chapter);              // seek to the specified chapter
+    void SetChapter(int chapter);               // seek to the specified chapter
     void NextChapter();                         // seek to next chapter
     void PreviousChapter();                     // seek to previous chapter
     void FrameStep();                           // frame step
@@ -72,6 +72,7 @@ signals:
     void VolumeChanged(int l);                  // triggered on volume changed
     void PlayStateChanged(Mpv::PlayState s);    // triggered on playstate changed
     void ErrorSignal(QString e);                // triggered when an error occurs
+    void DebugSignal(QString d);                // triggered when an mpv log message is send
 
 private:
     QSettings *settings;                        // application-wide settings

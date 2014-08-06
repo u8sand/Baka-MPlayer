@@ -67,7 +67,7 @@ void PlaylistManager::LoadFile(QString f)
          PlayIndex(index);                           // play it
      else // file doesn't exist in list
      {
-         path = fi.absolutePath()+"/"; // get path
+         path = QString(fi.absolutePath()+"/"); // get path
          suffix = fi.suffix();
          Populate();
          Sort();
@@ -87,9 +87,9 @@ void PlaylistManager::PlayIndex(int i)
         index = i;
         emit IndexChanged(index);
 
-        QFile f(path+list[index]);
+        QFile f(QString(path+list[index]));
         if(f.exists())
-            emit Play(f.fileName());
+            emit Play(QString(path+list[index]));
         else
             emit Stop();
     }
@@ -142,7 +142,7 @@ void PlaylistManager::Populate()
         if(suffix == "")
             flist = root.entryInfoList({"*.mkv", "*.mp4", "*.avi", "*.mp3", "*.ogm"}, QDir::Files); // todo: pass more file-types (get from settings)
         else
-            flist = root.entryInfoList({"*."+suffix}, QDir::Files);
+            flist = root.entryInfoList({QString("*.").append(suffix)}, QDir::Files);
         for(auto &i : flist)
             list.push_back(i.fileName()); // add files to the list
     }
