@@ -77,6 +77,13 @@ int MpvHandler::GetVolume() const
     return volume;
 }
 
+mpv_node_list MpvHandler::GetMetaData()
+{
+    mpv_node_list metadata;
+    mpv_get_property(mpv, "metadata", MPV_FORMAT_NODE_MAP, &metadata);
+    return metadata;
+}
+
 Mpv::PlayState MpvHandler::GetPlayState() const
 {
     return playState;
@@ -147,13 +154,10 @@ bool MpvHandler::event(QEvent *event)
     return QObject::event(event);
 }
 
-// NOTICE: Never directly pass a QString into the array. Don't ask, just don't.
-
 void MpvHandler::OpenFile(QString f)
 {
-    // this round-about-way fixes a major glitch. don't ask.
-    const std::string tmp = f.toUtf8().constData();
-    const char *args[] = {"loadfile", tmp.c_str(), NULL};
+    const QByteArray tmp = f.toUtf8();
+    const char *args[] = {"loadfile", tmp.constData(), NULL};
     AsyncCommand(args);
 }
 
@@ -173,9 +177,8 @@ void MpvHandler::PlayPause(bool justPause)
 
 void MpvHandler::Seek(int pos, bool relative)
 {
-    // this round-about-way fixes a major glitch. don't ask.
-    const std::string tmp = QString::number(pos).toUtf8().constData();
-    const char *args[] = {"seek", tmp.c_str(), (relative ? "relative" : "absolute"), NULL};
+    const QByteArray tmp = QString::number(pos).toUtf8();
+    const char *args[] = {"seek", tmp.constData(), (relative ? "relative" : "absolute"), NULL};
     AsyncCommand(args);
 }
 
@@ -193,9 +196,8 @@ void MpvHandler::Stop()
 
 void MpvHandler::SetChapter(int c)
 {
-    // this round-about-way fixes a major glitch. don't ask.
-    const std::string tmp = QString::number(c).toUtf8().constData();
-    const char *args[] = {"set", "chapter", tmp.c_str(), NULL};
+    const QByteArray tmp = QString::number(c).toUtf8();
+    const char *args[] = {"set", "chapter", tmp.constData(), NULL};
     AsyncCommand(args);
 }
 
@@ -225,9 +227,8 @@ void MpvHandler::FrameBackStep()
 
 void MpvHandler::AdjustVolume(int level)
 {
-    // this round-about-way fixes a major glitch. don't ask.
-    const std::string tmp = QString::number(level).toUtf8().constData();
-    const char *args[] = {"set", "volume", tmp.c_str(), NULL};
+    const QByteArray tmp = QString::number(level).toUtf8();
+    const char *args[] = {"set", "volume", tmp.constData(), NULL};
     AsyncCommand(args);
 }
 
