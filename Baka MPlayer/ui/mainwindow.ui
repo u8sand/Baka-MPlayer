@@ -78,16 +78,12 @@ QSplitter::handle {
 	color: gray;
 }
 
-#playlistWidget::item::alternate {
-	background: #141414;
+#playlistWidget::item {
+	alternate-background-color: #141414;
 }
-
-/* outputTextEdit */
-
-#outputTextEdit {
-	font: 12px &quot;Courier New&quot;, monospace;
-	border-top: 1px solid #212121;
-}
+ #playlistWidget::item:selected {
+    background: #607d8b;
+ }
 
 /* seekbarLayoutWidget */
 
@@ -191,6 +187,12 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
         <property name="acceptDrops">
          <bool>false</bool>
         </property>
+        <property name="styleSheet">
+         <string notr="true">#outputTextEdit {
+	font: 12px &quot;Courier New&quot;, monospace;
+	border-top: 1px solid #212121;
+}</string>
+        </property>
         <property name="frameShape">
          <enum>QFrame::NoFrame</enum>
         </property>
@@ -255,6 +257,9 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
          <widget class="QListWidget" name="playlistWidget">
           <property name="frameShape">
            <enum>QFrame::NoFrame</enum>
+          </property>
+          <property name="alternatingRowColors">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
