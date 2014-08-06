@@ -43,6 +43,7 @@ Copy the resulting executable (Baka MPlayer) wherever you like; (eg. `sudo cp "B
 	
 	[debug]                 # Debug-specific options
 	output=(true|false)     # Debugging output window
+	mpv=(true|false)				# Mpv debug messages
 
 	[mpv]                   # mpv-specific options
 	volume=(100|[0-9]{1,2}) # mpv volume
