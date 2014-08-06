@@ -434,17 +434,20 @@ QSlider::handle:horizontal {
        </sizepolicy>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <property name="spacing">
+        <number>8</number>
+       </property>
        <property name="leftMargin">
-        <number>12</number>
+        <number>14</number>
        </property>
        <property name="topMargin">
         <number>0</number>
        </property>
        <property name="rightMargin">
-        <number>12</number>
+        <number>14</number>
        </property>
        <property name="bottomMargin">
-        <number>11</number>
+        <number>10</number>
        </property>
        <item>
         <widget class="OpenButton" name="openButton">
@@ -465,9 +468,6 @@ QSlider::handle:horizontal {
          </property>
          <property name="toolTip">
           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Left Click to Open File&lt;br&gt;Mouse Wheel Click to Jump&lt;br&gt;Right Click to Open URL&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-         </property>
-         <property name="autoFillBackground">
-          <bool>false</bool>
          </property>
          <property name="icon">
           <iconset resource="../rsclist.qrc">
@@ -504,9 +504,6 @@ QSlider::handle:horizontal {
          <property name="toolTip">
           <string>Voice Command</string>
          </property>
-         <property name="autoFillBackground">
-          <bool>false</bool>
-         </property>
          <property name="icon">
           <iconset resource="../rsclist.qrc">
            <normaloff>:/img/disabled_mic.svg</normaloff>:/img/disabled_mic.svg</iconset>
@@ -537,6 +534,9 @@ QSlider::handle:horizontal {
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <property name="spacing">
+          <number>8</number>
+         </property>
          <item>
           <spacer name="horizontalSpacer">
            <property name="orientation">
@@ -547,7 +547,7 @@ QSlider::handle:horizontal {
            </property>
            <property name="sizeHint" stdset="0">
             <size>
-             <width>50</width>
+             <width>40</width>
              <height>20</height>
             </size>
            </property>
@@ -572,9 +572,6 @@ QSlider::handle:horizontal {
            </property>
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
-           </property>
-           <property name="autoFillBackground">
-            <bool>false</bool>
            </property>
            <property name="icon">
             <iconset resource="../rsclist.qrc">
@@ -613,9 +610,6 @@ QSlider::handle:horizontal {
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
-           <property name="autoFillBackground">
-            <bool>false</bool>
-           </property>
            <property name="icon">
             <iconset resource="../rsclist.qrc">
              <normaloff>:/img/default_previous.svg</normaloff>
@@ -653,9 +647,6 @@ QSlider::handle:horizontal {
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
-           <property name="autoFillBackground">
-            <bool>false</bool>
-           </property>
            <property name="icon">
             <iconset resource="../rsclist.qrc">
              <normaloff>:/img/disabled_play.svg</normaloff>:/img/disabled_play.svg</iconset>
@@ -690,9 +681,6 @@ QSlider::handle:horizontal {
            </property>
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
-           </property>
-           <property name="autoFillBackground">
-            <bool>false</bool>
            </property>
            <property name="icon">
             <iconset resource="../rsclist.qrc">
@@ -793,9 +781,6 @@ QSlider::handle:horizontal {
          </property>
          <property name="cursor">
           <cursorShape>PointingHandCursor</cursorShape>
-         </property>
-         <property name="autoFillBackground">
-          <bool>false</bool>
          </property>
          <property name="icon">
           <iconset resource="../rsclist.qrc">
