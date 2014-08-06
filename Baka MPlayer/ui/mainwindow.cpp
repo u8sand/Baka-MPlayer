@@ -342,7 +342,7 @@ void MainWindow::JumpToTime()
 
 void MainWindow::MediaInfo() // todo
 {
-//    MediaInfoDialog::show(this, mpv->MediaInfo());
+    InfoDialog::info(mpv->GetMetaData(), this);
 }
 
 void MainWindow::OpenFileFromClipboard()
