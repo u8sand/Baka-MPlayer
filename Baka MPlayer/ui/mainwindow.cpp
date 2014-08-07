@@ -48,6 +48,8 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
             this, SLOT(SetTitle(QString)));                             // set window title
     connect(mpv, SIGNAL(TimeChanged(int)),                              // MPV_EVENT time-pos update
             this, SLOT(SetTime(int)));                                  // adjust time and slider accordingly
+    connect(mpv, SIGNAL(TotalTimeChanged(int)),                         // MPV_EVENT total time changed
+            ui->seekBar, SLOT(setTracking(int)));                       // send the value to the seekbar so it can give track
     connect(mpv, SIGNAL(PlayStateChanged(Mpv::PlayState)),              // MPV_EVENT playstate changes
             this, SLOT(SetPlayState(Mpv::PlayState)));                  // adjust interface based on new play-state
     connect(mpv, SIGNAL(VolumeChanged(int)),                            // MPV_EVENT volume update
@@ -337,7 +339,9 @@ void MainWindow::OpenUrl() // todo
 
 void MainWindow::JumpToTime()
 {
-    mpv->Seek(JumpDialog::getTime(this));
+    int time = JumpDialog::getTime(mpv->GetTotalTime(),this);
+    if(time >= 0)
+        mpv->Seek(time);
 }
 
 void MainWindow::MediaInfo() // todo
