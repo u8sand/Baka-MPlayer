@@ -179,7 +179,7 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
          </sizepolicy>
         </property>
         <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
+         <enum>QFrame::NoFrame</enum>
         </property>
         <property name="frameShadow">
          <enum>QFrame::Raised</enum>
@@ -561,7 +561,7 @@ QSlider::sub-page:horizontal {
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="previousButton">
+          <widget class="IndexButton" name="previousButton">
            <property name="enabled">
             <bool>false</bool>
            </property>
@@ -633,7 +633,7 @@ QSlider::sub-page:horizontal {
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="nextButton">
+          <widget class="IndexButton" name="nextButton">
            <property name="enabled">
             <bool>false</bool>
            </property>
@@ -789,7 +789,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>580</width>
-     <height>23</height>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
@@ -1431,6 +1431,11 @@ QSlider::handle:horizontal {
    <class>OpenButton</class>
    <extends>QPushButton</extends>
    <header>widgets/openbutton.h</header>
+  </customwidget>
+  <customwidget>
+   <class>IndexButton</class>
+   <extends>QPushButton</extends>
+   <header>widgets/indexbutton.h</header>
   </customwidget>
  </customwidgets>
  <resources>
