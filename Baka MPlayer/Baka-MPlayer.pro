@@ -22,7 +22,8 @@ SOURCES += main.cpp\
     ui/infodialog.cpp \
     ui/jumpdialog.cpp \
     ui/aboutdialog.cpp \
-    ui/updatedialog.cpp
+    ui/updatedialog.cpp \
+    widgets/indexbutton.cpp
 
 HEADERS  += \
     mpvhandler.h \
@@ -35,7 +36,8 @@ HEADERS  += \
     ui/infodialog.h \
     ui/jumpdialog.h \
     ui/aboutdialog.h \
-    ui/updatedialog.h
+    ui/updatedialog.h \
+    widgets/indexbutton.h
 
 FORMS    += \
     ui/mainwindow.ui \

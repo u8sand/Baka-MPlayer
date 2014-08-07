@@ -2,8 +2,6 @@
 
 #include <QCoreApplication>
 
-#include <string> // for strcmp
-
 static void wakeup(void *ctx)
 {
     MpvHandler *mpvhandler = (MpvHandler*)ctx;
@@ -30,7 +28,7 @@ MpvHandler::MpvHandler(QSettings *_settings, int64_t wid, QObject *parent):
     mpv_set_option_string(mpv, "input-default-bindings", "yes"); // mpv default key bindings
     // customize mpv keybindings and seek values etc...
 
-    mpv_observe_property(mpv, 0, "path", MPV_FORMAT_STRING);
+    mpv_observe_property(mpv, 0, "media-title", MPV_FORMAT_STRING);
     mpv_observe_property(mpv, 0, "time-pos", MPV_FORMAT_DOUBLE);
     mpv_observe_property(mpv, 0, "length", MPV_FORMAT_DOUBLE);
     mpv_observe_property(mpv, 0, "volume", MPV_FORMAT_DOUBLE);
@@ -105,16 +103,16 @@ bool MpvHandler::event(QEvent *event)
             case MPV_EVENT_PROPERTY_CHANGE:
             {
                 mpv_event_property *prop = (mpv_event_property*)event->data;
-                if (strcmp(prop->name, "path") == 0)
+                if(QString(prop->name) == "path")
                     if (prop->format == MPV_FORMAT_STRING)
-                        SetFile(((std::string*)prop->data)->c_str());
-                if (strcmp(prop->name, "time-pos") == 0)
+                        SetFile(QString((char*)prop->data));
+                if(QString(prop->name) == "time-pos")
                     if (prop->format == MPV_FORMAT_DOUBLE)
                         SetTime((int)*(double*)prop->data);
-                if (strcmp(prop->name, "length") == 0)
+                if(QString(prop->name) == "length")
                     if (prop->format == MPV_FORMAT_DOUBLE)
                         SetTotalTime((int)*(double*)prop->data);
-                if (strcmp(prop->name, "volume") == 0)
+                if(QString(prop->name) =="volume")
                     if (prop->format == MPV_FORMAT_DOUBLE)
                         SetVolume((int)*(double*)prop->data);
                 break;
