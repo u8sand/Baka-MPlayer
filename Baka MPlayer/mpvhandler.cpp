@@ -2,6 +2,8 @@
 
 #include <QCoreApplication>
 
+#include <string>
+
 static void wakeup(void *ctx)
 {
     MpvHandler *mpvhandler = (MpvHandler*)ctx;
@@ -103,9 +105,9 @@ bool MpvHandler::event(QEvent *event)
             case MPV_EVENT_PROPERTY_CHANGE:
             {
                 mpv_event_property *prop = (mpv_event_property*)event->data;
-                if(QString(prop->name) == "path")
+                if(QString(prop->name) == "media-title")
                     if (prop->format == MPV_FORMAT_STRING)
-                        SetFile(QString((char*)prop->data));
+                        SetFile(((std::string*)prop->data)->c_str());
                 if(QString(prop->name) == "time-pos")
                     if (prop->format == MPV_FORMAT_DOUBLE)
                         SetTime((int)*(double*)prop->data);

@@ -17,13 +17,13 @@ SOURCES += main.cpp\
     widgets/customslider.cpp \
     widgets/openbutton.cpp \
     widgets/playpausebutton.cpp \
+    widgets/indexbutton.cpp \
     ui/mainwindow.cpp \
     ui/locationdialog.cpp \
     ui/infodialog.cpp \
     ui/jumpdialog.cpp \
     ui/aboutdialog.cpp \
-    ui/updatedialog.cpp \
-    widgets/indexbutton.cpp
+    ui/updatedialog.cpp
 
 HEADERS  += \
     mpvhandler.h \
@@ -31,13 +31,13 @@ HEADERS  += \
     widgets/customslider.h \
     widgets/openbutton.h \
     widgets/playpausebutton.h \
+    widgets/indexbutton.h \
     ui/mainwindow.h \
     ui/locationdialog.h \
     ui/infodialog.h \
     ui/jumpdialog.h \
     ui/aboutdialog.h \
-    ui/updatedialog.h \
-    widgets/indexbutton.h
+    ui/updatedialog.h
 
 FORMS    += \
     ui/mainwindow.ui \
