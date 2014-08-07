@@ -14,6 +14,9 @@ TEMPLATE = app
 SOURCES += main.cpp\
     mpvhandler.cpp \
     playlistmanager.cpp \
+    widgets/customslider.cpp \
+    widgets/openbutton.cpp \
+    widgets/playpausebutton.cpp \
     ui/mainwindow.cpp \
     ui/locationdialog.cpp \
     ui/infodialog.cpp \
@@ -23,12 +26,12 @@ SOURCES += main.cpp\
 
 HEADERS  += \
     mpvhandler.h \
-    ui/mainwindow.h \
-    widgets/customslider.h \
     playlistmanager.h \
-    widgets/playpausebutton.h \
-    ui/locationdialog.h \
+    widgets/customslider.h \
     widgets/openbutton.h \
+    widgets/playpausebutton.h \
+    ui/mainwindow.h \
+    ui/locationdialog.h \
     ui/infodialog.h \
     ui/jumpdialog.h \
     ui/aboutdialog.h \
