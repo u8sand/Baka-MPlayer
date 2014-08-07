@@ -21,9 +21,16 @@ JumpDialog::JumpDialog(int _maxTime, QWidget *parent) :
     if(maxTime > 3600)
         ui->hourBox->setFocus();
     else if(maxTime > 60)
+    {
+        ui->hourBox->setEnabled(false);
         ui->minBox->setFocus();
+    }
     else
+    {
+        ui->hourBox->setEnabled(false);
+        ui->minBox->setEnabled(false);
         ui->secBox->setFocus();
+    }
 }
 
 JumpDialog::~JumpDialog()

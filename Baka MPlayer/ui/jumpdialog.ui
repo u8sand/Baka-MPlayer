@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>330</width>
+    <width>334</width>
     <height>45</height>
    </rect>
   </property>
@@ -56,7 +56,7 @@ QSpinBox::down-arrow {
       </size>
      </property>
      <property name="pixmap">
-      <pixmap resource="../rsclist.qrc">:/img/not_exists.svg</pixmap>
+      <pixmap resource="../rsclist.qrc">:/img/exists.svg</pixmap>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -156,7 +156,7 @@ QSpinBox::down-arrow {
    <item>
     <widget class="QPushButton" name="okButton">
      <property name="enabled">
-      <bool>false</bool>
+      <bool>true</bool>
      </property>
      <property name="sizePolicy">
       <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
