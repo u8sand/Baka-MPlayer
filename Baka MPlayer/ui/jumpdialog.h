@@ -12,13 +12,19 @@ class JumpDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit JumpDialog(QWidget *parent = 0);
+    explicit JumpDialog(int maxTime, QWidget *parent = 0);
     ~JumpDialog();
 
-    static int getTime(QWidget *parent = 0);
+    static int getTime(int maxTime, QWidget *parent = 0);
+
+private slots:
+    void validate();
 
 private:
     Ui::JumpDialog *ui;
+
+    int time,
+        maxTime;
 };
 
 #endif // JUMPDIALOG_H
