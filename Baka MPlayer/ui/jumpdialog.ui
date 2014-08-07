@@ -173,11 +173,14 @@ QSpinBox::down-arrow {
      <property name="styleSheet">
       <string notr="true">QPushButton {
     background: #263238;
-    color: white;
-    border: 1px solid #607d8b;
-    border-radius: 2px;
+	color: white;
+	border: 1px solid black;
+	border-radius: 2px;
     min-width: 88px;
-    min-height: 25px;
+	min-height: 25px;
+}
+QPushButton:default {
+	border: 1px solid #607d8b;
 }
 QPushButton:pressed {
     background: #607d8b;
@@ -188,6 +191,9 @@ QPushButton:disabled {
      </property>
      <property name="text">
       <string>&amp;OK</string>
+     </property>
+     <property name="default">
+      <bool>true</bool>
      </property>
     </widget>
    </item>
