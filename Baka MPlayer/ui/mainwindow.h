@@ -39,6 +39,7 @@ private slots:
     void NewPlayer();                               // creates a new MainWindow
     void OpenFile();                                // open file dialog
     void OpenUrl();                                 // open url dialog
+    void FullScreen();                              // makes window fullscreen
     void JumpToTime();                              // jump to time dialog
     void MediaInfo();                               // media info dialog
     void OpenFileFromClipboard();                   // opens file from cliboard text
@@ -50,12 +51,11 @@ private slots:
     void PlaylistSelectCurrent();                   // selects the current playlist index
     void PlayIndex(QModelIndex index);              // plays the selected file in the playlist
     void TogglePlaylist();                          // toggle playlist
+    void Debug(QString msg);                        // outputs debugging messages
     void OnlineHelp();                              // loads online help
     void CheckForUpdates();                         // checks for program updates
     void AboutQt();                                 // shows qt license information
     void About();                                   // shows baka mplayer about dialog
-
-    void Debug(QString msg);                        // outputs debugging messages
 
 private:
     Ui::MainWindow *ui;
