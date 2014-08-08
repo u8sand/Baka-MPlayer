@@ -280,6 +280,8 @@ void MainWindow::SetPlayState(Mpv::PlayState playState)
         break;
     case Mpv::Loaded:
         SetPlaybackControls(true);
+        ui->nextButton->setIndex(playlist->GetIndex()+2); // starting at 1 instead of at 0 like actual index
+        ui->previousButton->setIndex(-playlist->GetIndex()); // we use a negative index value for the left button
         break;
     case Mpv::Playing:
         ui->playButton->SetPlay(false);

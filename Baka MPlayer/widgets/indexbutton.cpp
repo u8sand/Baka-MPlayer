@@ -9,7 +9,7 @@
 
 IndexButton::IndexButton(QWidget *parent) :
     QPushButton(parent),
-    index(0)
+    index(1)
 {
 }
 
@@ -20,25 +20,30 @@ int IndexButton::getIndex() const
 
 void IndexButton::setIndex(int _index)
 {
-    if(index >= 0)
+    if(index != 0)
     {
         index = _index;
-        setMouseTracking(index >= 1000);
+        setMouseTracking(abs(index) >= 1000);
+        repaint(this->rect());
     }
 }
 
 void IndexButton::paintEvent(QPaintEvent *event)
 {
-    if(index > 0 && index < 1000)
+    QPushButton::paintEvent(event);
+
+    if(index != 0 && abs(index) < 1000)
     {
         QRect region = event->rect();
         QPainter painter(this);
-        QFont font("Open Sans", 5, QFont::Bold);
-        painter.setPen(QColor(255,255,255));
+        QFont font("Open Sans", 6);
+        painter.setPen(QColor(0,0,0));
         painter.setFont(font);
-        painter.drawText(region.center()+QPoint(0,3), QString::number(index));
+        if(index > 0)   // next button
+            painter.drawText(region.adjusted(-3, -1, -3, -1), Qt::AlignCenter, QString::number(index));
+        else            // previous button
+            painter.drawText(region.adjusted(3, -1, 3, -1), Qt::AlignCenter, QString::number(-index));
     }
-    QPushButton::paintEvent(event);
 }
 
 void IndexButton::mouseMoveEvent(QMouseEvent *event)
@@ -46,7 +51,7 @@ void IndexButton::mouseMoveEvent(QMouseEvent *event)
     if(index > 0)
     {
         QToolTip::showText(event->globalPos(),
-                           QString::number(index),
+                           QString::number(abs(index)),
                            this, rect());
     }
     QPushButton::mouseMoveEvent(event);
