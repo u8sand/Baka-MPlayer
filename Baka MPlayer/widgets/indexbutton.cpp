@@ -9,7 +9,7 @@
 
 IndexButton::IndexButton(QWidget *parent) :
     QPushButton(parent),
-    index(1)
+    index(0)
 {
 }
 
@@ -20,7 +20,7 @@ int IndexButton::getIndex() const
 
 void IndexButton::setIndex(int _index)
 {
-    if(index != 0)
+    if(_index != 0)
     {
         index = _index;
         setMouseTracking(abs(index) >= 1000);
@@ -31,14 +31,12 @@ void IndexButton::setIndex(int _index)
 void IndexButton::paintEvent(QPaintEvent *event)
 {
     QPushButton::paintEvent(event);
-
-    if(index != 0 && abs(index) < 1000)
+    if(isEnabled() && index != 0 && abs(index) < 1000)
     {
         QRect region = event->rect();
         QPainter painter(this);
-        QFont font("Open Sans", 6);
         painter.setPen(QColor(0,0,0));
-        painter.setFont(font);
+        painter.setFont(QFont("Open Sans", 6));
         if(index > 0)   // next button
             painter.drawText(region.adjusted(-3, -1, -3, -1), Qt::AlignCenter, QString::number(index));
         else            // previous button
@@ -48,7 +46,7 @@ void IndexButton::paintEvent(QPaintEvent *event)
 
 void IndexButton::mouseMoveEvent(QMouseEvent *event)
 {
-    if(index > 0)
+    if(isEnabled() && index > 0)
     {
         QToolTip::showText(event->globalPos(),
                            QString::number(abs(index)),

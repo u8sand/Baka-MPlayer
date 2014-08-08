@@ -81,6 +81,8 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
             this, SLOT(PlayIndex(QModelIndex)));                        // play the selected file
     connect(ui->currentFileButton, SIGNAL(clicked()),                   // current file button
             this, SLOT(PlaylistSelectCurrent()));                       // selects the current file in the playlist
+    connect(ui->playlistWidget, SIGNAL(currentRowChanged(int)),         // playlist selection changed
+            this, SLOT(UpdatePlaylistSelectionIndex(int)));             // update the indexLabel message
                                                                         // sliders
     connect(ui->volumeSlider, SIGNAL(valueChanged(int)),                // volume slider changed
             mpv, SLOT(AdjustVolume(int)));                              // adjust volume accordingly
@@ -227,11 +229,28 @@ void MainWindow::SetPlaybackControls(bool enable)
     ui->seekBar->setEnabled(enable);
     // playback controls
     ui->rewindButton->setEnabled(enable);
-    ui->previousButton->setEnabled(enable);
+    ui->playlistButton->setEnabled(enable);
     ui->playButton->setEnabled(enable);
     ui->playButton->Update();
-    ui->nextButton->setEnabled(enable);
-    ui->playlistButton->setEnabled(enable);
+
+    // next button
+    if(enable && playlist->GetIndex()+1 < ui->playlistWidget->count()) // not the last entry
+    {
+        ui->nextButton->setEnabled(true);
+        ui->nextButton->setIndex(playlist->GetIndex()+2); // starting at 1 instead of at 0 like actual index
+    }
+    else
+        ui->nextButton->setEnabled(false);
+
+    // previous button
+    if(enable && playlist->GetIndex()-1 >= 0) // not the first entry
+    {
+        ui->previousButton->setEnabled(true);
+        ui->previousButton->setIndex(-playlist->GetIndex()); // we use a negative index value for the left button
+    }
+    else
+        ui->previousButton->setEnabled(false);
+
     // menubar
     ui->action_Play->setEnabled(enable);
     ui->action_Stop->setEnabled(enable);
@@ -280,8 +299,8 @@ void MainWindow::SetPlayState(Mpv::PlayState playState)
         break;
     case Mpv::Loaded:
         SetPlaybackControls(true);
-        ui->nextButton->setIndex(playlist->GetIndex()+2); // starting at 1 instead of at 0 like actual index
-        ui->previousButton->setIndex(-playlist->GetIndex()); // we use a negative index value for the left button
+
+
         break;
     case Mpv::Playing:
         ui->playButton->SetPlay(false);
@@ -375,6 +394,11 @@ void MainWindow::UpdatePlaylist(QStringList list)
 void MainWindow::UpdatePlaylistIndex(int index)
 {
     ui->playlistWidget->setCurrentRow(index);
+}
+
+void MainWindow::UpdatePlaylistSelectionIndex(int index)
+{
+    ui->indexLabel->setText("File "+QString::number(index)+" of "+QString::number(ui->playlistWidget->count()));
 }
 
 void MainWindow::PlaylistSelectCurrent()
