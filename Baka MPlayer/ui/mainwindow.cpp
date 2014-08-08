@@ -238,18 +238,26 @@ void MainWindow::SetPlaybackControls(bool enable)
     {
         ui->nextButton->setEnabled(true);
         ui->nextButton->setIndex(playlist->GetIndex()+2); // starting at 1 instead of at 0 like actual index
+        ui->actionPlay_Next_File->setEnabled(true);
     }
     else
+    {
         ui->nextButton->setEnabled(false);
+        ui->actionPlay_Next_File->setEnabled(false);
+    }
 
     // previous button
     if(enable && playlist->GetIndex()-1 >= 0) // not the first entry
     {
         ui->previousButton->setEnabled(true);
         ui->previousButton->setIndex(-playlist->GetIndex()); // we use a negative index value for the left button
+        ui->actionPlay_Previous_File->setEnabled(true);
     }
     else
+    {
         ui->previousButton->setEnabled(false);
+        ui->actionPlay_Previous_File->setEnabled(false);
+    }
 
     // menubar
     ui->action_Play->setEnabled(enable);
@@ -398,7 +406,7 @@ void MainWindow::UpdatePlaylistIndex(int index)
 
 void MainWindow::UpdatePlaylistSelectionIndex(int index)
 {
-    ui->indexLabel->setText("File "+QString::number(index)+" of "+QString::number(ui->playlistWidget->count()));
+    ui->indexLabel->setText("File "+QString::number(index+1)+" of "+QString::number(ui->playlistWidget->count()));
 }
 
 void MainWindow::PlaylistSelectCurrent()
