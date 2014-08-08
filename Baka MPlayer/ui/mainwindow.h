@@ -46,6 +46,7 @@ private slots:
     void ShowInFolder();                            // opens explorer to current file's path
     void UpdatePlaylist(QStringList list);          // updates the playlistWidget with the new playlist
     void UpdatePlaylistIndex(int index);            // updates the playlistWidget selection
+    void UpdatePlaylistSelectionIndex(int index);   // updates the indexLabel of the playlist
     void PlaylistSelectCurrent();                   // selects the current playlist index
     void PlayIndex(QModelIndex index);              // plays the selected file in the playlist
     void TogglePlaylist();                          // toggle playlist
