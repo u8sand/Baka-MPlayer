@@ -127,7 +127,7 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
             this, SLOT(close()));                                       // close this window
                                                                         // View ->
     connect(ui->action_Full_Screen, SIGNAL(triggered()),                // View -> Full Screen
-            mpv, SLOT(FullScreen()));                                   // mpv full screen
+            this, SLOT(FullScreen()));                                  // full screen window
     connect(ui->actionTake_Snapshot, SIGNAL(triggered()),               // View -> Take Snapshot
             mpv, SLOT(Snapshot()));                                     // mpv snapshot
     // todo: fit window menu
@@ -267,6 +267,7 @@ void MainWindow::SetPlaybackControls(bool enable)
     ui->actionMedia_Info->setEnabled(enable);
     ui->actionShow_in_Folder->setEnabled(enable);
     ui->action_Playlist->setEnabled(enable);
+    ui->action_Full_Screen->setEnabled(enable);
 }
 
 void MainWindow::SetTitle(QString title)
@@ -366,6 +367,24 @@ void MainWindow::OpenUrl() // todo
     playlist->LoadFile(LocationDialog::getUrl(this));
 }
 
+void MainWindow::FullScreen() // todo: make nicer
+{
+    static Qt::WindowStates state, frame_state;
+    if(windowState() & Qt::WindowFullScreen)
+    {
+        setWindowState(state);
+        ui->mpvFrame->setWindowState(frame_state);
+    }
+    else
+    {
+        state = windowState();
+        frame_state = ui->mpvFrame->windowState();
+
+        showFullScreen();
+        ui->mpvFrame->showFullScreen();
+    }
+}
+
 void MainWindow::JumpToTime()
 {
     int time = JumpDialog::getTime(mpv->GetTotalTime(),this);
@@ -424,6 +443,11 @@ void MainWindow::TogglePlaylist()
     ui->playlistLayoutWidget->setVisible(!ui->playlistLayoutWidget->isVisible());
 }
 
+void MainWindow::Debug(QString msg)
+{
+    ui->outputTextEdit->appendPlainText(msg);
+}
+
 void MainWindow::OnlineHelp()
 {
     QDesktopServices::openUrl(QUrl("http://bakamplayer.u8sand.net/help"));
@@ -442,9 +466,4 @@ void MainWindow::AboutQt()
 void MainWindow::About()
 {
     AboutDialog::about(this); // launch about dialog
-}
-
-void MainWindow::Debug(QString msg)
-{
-    ui->outputTextEdit->appendPlainText(msg);
 }

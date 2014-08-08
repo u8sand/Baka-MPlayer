@@ -27,7 +27,7 @@ MpvHandler::MpvHandler(QSettings *_settings, int64_t wid, QObject *parent):
 
     mpv_set_option(mpv, "wid", MPV_FORMAT_INT64, &wid);
 
-    mpv_set_option_string(mpv, "input-default-bindings", "yes"); // mpv default key bindings
+    mpv_set_option_string(mpv, "input-default-bindings", "no"); // mpv default key bindings
     // customize mpv keybindings and seek values etc...
 
     mpv_observe_property(mpv, 0, "media-title", MPV_FORMAT_STRING);

@@ -10,6 +10,9 @@
     <height>400</height>
    </rect>
   </property>
+  <property name="focusPolicy">
+   <enum>Qt::NoFocus</enum>
+  </property>
   <property name="acceptDrops">
    <bool>true</bool>
   </property>
@@ -178,6 +181,9 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
           <verstretch>1</verstretch>
          </sizepolicy>
         </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
         <property name="frameShape">
          <enum>QFrame::NoFrame</enum>
         </property>
@@ -228,6 +234,9 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
         </property>
         <item>
          <widget class="QLineEdit" name="searchBox">
+          <property name="focusPolicy">
+           <enum>Qt::TabFocus</enum>
+          </property>
           <property name="placeholderText">
            <string>Search Playlist</string>
           </property>
@@ -285,6 +294,9 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
            </property>
            <item>
             <widget class="QPushButton" name="currentFileButton">
+             <property name="focusPolicy">
+              <enum>Qt::NoFocus</enum>
+             </property>
              <property name="toolTip">
               <string>Select the Current File</string>
              </property>
@@ -318,6 +330,9 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
            </item>
            <item>
             <widget class="QPushButton" name="showAllButton">
+             <property name="focusPolicy">
+              <enum>Qt::NoFocus</enum>
+             </property>
              <property name="toolTip">
               <string>Show All Files</string>
              </property>
@@ -345,6 +360,9 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
            </item>
            <item>
             <widget class="QPushButton" name="refreshButton">
+             <property name="focusPolicy">
+              <enum>Qt::NoFocus</enum>
+             </property>
              <property name="toolTip">
               <string>Refresh Playlist</string>
              </property>
@@ -380,6 +398,9 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
       </property>
       <property name="styleSheet">
        <string notr="true">QSlider {
@@ -444,6 +465,9 @@ QSlider::sub-page:horizontal {
          </property>
          <property name="cursor">
           <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
          </property>
          <property name="toolTip">
           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Left Click to Open File&lt;br&gt;Mouse Wheel Click to Jump&lt;br&gt;Right Click to Open URL&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -543,6 +567,9 @@ QSlider::sub-page:horizontal {
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
            <property name="icon">
             <iconset resource="../rsclist.qrc">
              <normaloff>:/img/default_reverse.svg</normaloff>
@@ -579,6 +606,9 @@ QSlider::sub-page:horizontal {
            </property>
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
            </property>
            <property name="icon">
             <iconset resource="../rsclist.qrc">
@@ -617,6 +647,9 @@ QSlider::sub-page:horizontal {
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
            <property name="icon">
             <iconset resource="../rsclist.qrc">
              <normaloff>:/img/disabled_play.svg</normaloff>:/img/disabled_play.svg</iconset>
@@ -652,6 +685,9 @@ QSlider::sub-page:horizontal {
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
            <property name="icon">
             <iconset resource="../rsclist.qrc">
              <normaloff>:/img/default_next.svg</normaloff>
@@ -682,6 +718,9 @@ QSlider::sub-page:horizontal {
              <width>100</width>
              <height>0</height>
             </size>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
            </property>
            <property name="styleSheet">
             <string notr="true">QSlider::groove:horizontal {
@@ -751,6 +790,9 @@ QSlider::handle:horizontal {
          </property>
          <property name="cursor">
           <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
          </property>
          <property name="icon">
           <iconset resource="../rsclist.qrc">
@@ -1018,6 +1060,9 @@ QSlider::handle:horizontal {
    </property>
    <property name="text">
     <string>&amp;Full Screen</string>
+   </property>
+   <property name="shortcutContext">
+    <enum>Qt::WindowShortcut</enum>
    </property>
   </action>
   <action name="actionTake_Snapshot">
