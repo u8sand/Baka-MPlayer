@@ -37,7 +37,6 @@ public:
     int GetTotalTime() const;                   // return totalTime
     int GetVolume() const;                      // return volume
     Mpv::PlayState GetPlayState() const;        // return playState
-    mpv_node_list GetMetaData();                // return metadata
 
 protected:
     virtual bool event(QEvent *event);          // QObject event function

@@ -18,6 +18,7 @@ SOURCES += main.cpp\
     widgets/openbutton.cpp \
     widgets/playpausebutton.cpp \
     widgets/indexbutton.cpp \
+    widgets/customlistwidget.cpp \
     ui/mainwindow.cpp \
     ui/locationdialog.cpp \
     ui/infodialog.cpp \
@@ -32,6 +33,7 @@ HEADERS  += \
     widgets/openbutton.h \
     widgets/playpausebutton.h \
     widgets/indexbutton.h \
+    widgets/customlistwidget.h \
     ui/mainwindow.h \
     ui/locationdialog.h \
     ui/infodialog.h \

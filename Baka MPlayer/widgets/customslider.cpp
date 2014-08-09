@@ -30,11 +30,11 @@ void CustomSlider::setValueNoSignal(int value)
 QString CustomSlider::formatTrackingTime(int _time)
 {
     QTime time = QTime::fromMSecsSinceStartOfDay((int)(((double)_time/maximum())*totalTime) * 1000);
-    if(time.hour() > 0)
+    if(totalTime >= 3600)           // hours
         return time.toString("h:mm:ss");
-    if(time.minute() > 0)
+    if(totalTime >= 60)             // minutes
         return time.toString("mm:ss");
-    return time.toString("0:ss");
+    return time.toString("0:ss");   // seconds
 }
 
 void CustomSlider::mouseMoveEvent(QMouseEvent* event)

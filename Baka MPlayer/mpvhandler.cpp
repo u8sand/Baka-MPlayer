@@ -26,9 +26,7 @@ MpvHandler::MpvHandler(QSettings *_settings, int64_t wid, QObject *parent):
         throw "Could not create mpv object";
 
     mpv_set_option(mpv, "wid", MPV_FORMAT_INT64, &wid);
-
-    mpv_set_option_string(mpv, "input-default-bindings", "no"); // mpv default key bindings
-    // customize mpv keybindings and seek values etc...
+    mpv_set_option_string(mpv, "input-default-bindings", "no");
 
     mpv_observe_property(mpv, 0, "media-title", MPV_FORMAT_STRING);
     mpv_observe_property(mpv, 0, "time-pos", MPV_FORMAT_DOUBLE);
@@ -75,13 +73,6 @@ int MpvHandler::GetTotalTime() const
 int MpvHandler::GetVolume() const
 {
     return volume;
-}
-
-mpv_node_list MpvHandler::GetMetaData()
-{
-    mpv_node_list metadata;
-    mpv_get_property(mpv, "metadata", MPV_FORMAT_NODE_MAP, &metadata);
-    return metadata;
 }
 
 Mpv::PlayState MpvHandler::GetPlayState() const
