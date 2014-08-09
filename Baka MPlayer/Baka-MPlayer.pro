@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -24,7 +24,8 @@ SOURCES += main.cpp\
     ui/infodialog.cpp \
     ui/jumpdialog.cpp \
     ui/aboutdialog.cpp \
-    ui/updatedialog.cpp
+    ui/updatedialog.cpp \
+    updatemanager.cpp
 
 HEADERS  += \
     mpvhandler.h \
@@ -39,7 +40,8 @@ HEADERS  += \
     ui/infodialog.h \
     ui/jumpdialog.h \
     ui/aboutdialog.h \
-    ui/updatedialog.h
+    ui/updatedialog.h \
+    updatemanager.h
 
 FORMS    += \
     ui/mainwindow.ui \
