@@ -192,6 +192,9 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
         </property>
        </widget>
        <widget class="QPlainTextEdit" name="outputTextEdit">
+        <property name="contextMenuPolicy">
+         <enum>Qt::PreventContextMenu</enum>
+        </property>
         <property name="acceptDrops">
          <bool>false</bool>
         </property>
@@ -235,7 +238,7 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
         <item>
          <widget class="QLineEdit" name="searchBox">
           <property name="focusPolicy">
-           <enum>Qt::TabFocus</enum>
+           <enum>Qt::ClickFocus</enum>
           </property>
           <property name="placeholderText">
            <string>Search Playlist</string>
@@ -265,7 +268,10 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
          </widget>
         </item>
         <item>
-         <widget class="QListWidget" name="playlistWidget">
+         <widget class="CustomListWidget" name="playlistWidget">
+          <property name="contextMenuPolicy">
+           <enum>Qt::DefaultContextMenu</enum>
+          </property>
           <property name="frameShape">
            <enum>QFrame::NoFrame</enum>
           </property>
@@ -1481,6 +1487,11 @@ QSlider::handle:horizontal {
    <class>IndexButton</class>
    <extends>QPushButton</extends>
    <header>widgets/indexbutton.h</header>
+  </customwidget>
+  <customwidget>
+   <class>CustomListWidget</class>
+   <extends>QListWidget</extends>
+   <header>widgets/customlistwidget.h</header>
   </customwidget>
  </customwidgets>
  <resources>

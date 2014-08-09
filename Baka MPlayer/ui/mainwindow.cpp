@@ -281,11 +281,11 @@ void MainWindow::SetTitle(QString title)
 QString MainWindow::FormatTime(int _time)
 {
     QTime time = QTime::fromMSecsSinceStartOfDay(_time * 1000);
-    if(time.hour() > 0)
+    if(mpv->GetTotalTime() >= 3600) // hours
         return time.toString("h:mm:ss");
-    if(time.minute() > 0)
+    if(mpv->GetTotalTime() >= 60)   // minutes
         return time.toString("mm:ss");
-    return time.toString("0:ss");
+    return time.toString("0:ss");   // seconds
 }
 
 void MainWindow::SetTime(int time)
@@ -308,8 +308,7 @@ void MainWindow::SetPlayState(Mpv::PlayState playState)
         break;
     case Mpv::Loaded:
         SetPlaybackControls(true);
-
-
+        mpv->PlayPause();
         break;
     case Mpv::Playing:
         ui->playButton->SetPlay(false);
@@ -394,7 +393,7 @@ void MainWindow::JumpToTime()
 
 void MainWindow::MediaInfo() // todo
 {
-    InfoDialog::info(mpv->GetMetaData(), this);
+//    InfoDialog::info(mpv->GetMetaData(), this);
 }
 
 void MainWindow::OpenFileFromClipboard()
