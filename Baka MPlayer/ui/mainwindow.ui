@@ -187,9 +187,6 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
         <property name="frameShape">
          <enum>QFrame::NoFrame</enum>
         </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
-        </property>
        </widget>
        <widget class="QPlainTextEdit" name="outputTextEdit">
         <property name="contextMenuPolicy">
@@ -524,6 +521,9 @@ QSlider::sub-page:horizontal {
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
          <property name="toolTip">
           <string>Click to change between total and remaining time</string>
          </property>
@@ -837,7 +837,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>580</width>
-     <height>24</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
