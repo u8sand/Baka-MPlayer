@@ -10,7 +10,7 @@ CustomListWidget::CustomListWidget(QWidget *parent) :
 {
     menu = new QMenu(this);
 
-    QAction *rfpa = menu->addAction("R&emove from playlist"),
+    QAction *rfpa = menu->addAction("R&emove from Playlist"),
             *dfda = menu->addAction("&Delete from Disk");
     menu->addSeparator();
     QAction *ra   = menu->addAction("&Refresh");
