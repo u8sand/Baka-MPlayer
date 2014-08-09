@@ -2,6 +2,7 @@
 #define UPDATEMANAGER_H
 
 #include <QObject>
+#include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QMap>
 #include <QString>
@@ -14,16 +15,18 @@ public:
 
 public slots:
     void CheckForUpdates();
+    void DownloadUpdate();
 
 protected slots:
-    void reply(QNetworkReply *reply);
+    void CheckForUpdatesReply(QNetworkReply *reply);
+    void DoanloadUpdateReply(QNetworkReply *reply);
 
 signals:
     void Update(QMap<QString> info);
     void ErrorSignal(QString err);
 
 private:
-
+    QNetworkAccessManager *manager;
 };
 
 #endif // UPDATEMANAGER_H
