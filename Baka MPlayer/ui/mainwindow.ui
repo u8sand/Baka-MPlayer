@@ -1450,6 +1450,9 @@ QSlider::handle:horizontal {
    <property name="text">
     <string>&amp;Size +</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl++</string>
+   </property>
   </action>
   <action name="actionS_ize">
    <property name="enabled">
@@ -1457,6 +1460,9 @@ QSlider::handle:horizontal {
    </property>
    <property name="text">
     <string>S&amp;ize -</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+-</string>
    </property>
   </action>
   <action name="action_Reset_Size">
