@@ -921,6 +921,10 @@ QSlider::handle:horizontal {
      <property name="title">
       <string>R&amp;epeat</string>
      </property>
+     <property name="icon">
+      <iconset resource="../rsclist.qrc">
+       <normaloff>:/img/repeat.svg</normaloff>:/img/repeat.svg</iconset>
+     </property>
      <addaction name="action_Off"/>
      <addaction name="separator"/>
      <addaction name="action_Playlist"/>
@@ -1174,6 +1178,10 @@ QSlider::handle:horizontal {
   <action name="actionSh_uffle">
    <property name="checkable">
     <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../rsclist.qrc">
+     <normaloff>:/img/shuffle.svg</normaloff>:/img/shuffle.svg</iconset>
    </property>
    <property name="text">
     <string>Sh&amp;uffle</string>

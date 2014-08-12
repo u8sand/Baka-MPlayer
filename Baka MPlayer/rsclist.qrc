@@ -1,5 +1,7 @@
 <RCC>
   <qresource prefix="/">
+    <file>img/repeat.svg</file>
+    <file>img/shuffle.svg</file>
     <file>img/logo.svg</file>
     <file>img/logo.ico</file>
     <file>img/up-arrow.svg</file>
