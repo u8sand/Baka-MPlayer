@@ -77,10 +77,6 @@ QSplitter::handle {
 	padding: 2px;
 }
 
-#indexLabel {
-	color: gray;
-}
-
 #playlistWidget::item {
 	alternate-background-color: #141414;
 }
