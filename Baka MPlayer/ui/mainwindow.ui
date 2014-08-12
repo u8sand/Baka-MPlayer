@@ -99,9 +99,13 @@ QListView::item:selected {
 }
 
 /* time labels */
+#durationLabel {
+	font-size: 12px;
+}
 #seperatorLabel,
 #remainingLabel {
 	color: gray;
+	font-size: 12px;
 }
 
 /* QScrollBar:vertical */
