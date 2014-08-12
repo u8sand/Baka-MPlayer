@@ -662,8 +662,8 @@ QSlider::sub-page:horizontal {
            </property>
            <property name="iconSize">
             <size>
-             <width>24</width>
-             <height>32</height>
+             <width>23</width>
+             <height>30</height>
             </size>
            </property>
            <property name="flat">
