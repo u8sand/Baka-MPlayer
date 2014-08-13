@@ -32,6 +32,11 @@ QString PlaylistManager::GetSuffix() const
     return suffix;
 }
 
+QString PlaylistManager::GetCurrentFile() const
+{
+    return path+list[index];
+}
+
 bool PlaylistManager::GetShuffle() const
 {
     return shuffle;
@@ -49,6 +54,8 @@ int PlaylistManager::GetIndex() const
 
 void PlaylistManager::LoadFile(QString f)
 {
+    if(f == "") return; // ignore empty file
+
     QRegExp rx("^(https?://.+\\.[a-z]+)", Qt::CaseInsensitive);
 
     if(rx.indexIn(f) != -1) // web url
