@@ -46,6 +46,9 @@ QMenu {
 QMenu::item:selected {
 	background: #607d8b;
  }
+QMenu::item:checked {
+	/* distinguish check state for menu item's with images */
+}
 QMenu::item::disabled {
 	color: gray;
 }
@@ -1534,6 +1537,9 @@ QSlider::handle:horizontal {
   </action>
   <action name="action_Never">
    <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
     <bool>true</bool>
    </property>
    <property name="text">
