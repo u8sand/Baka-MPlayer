@@ -2,6 +2,8 @@
 
 #include <QTime>
 #include <QToolTip>
+#include <QPainter>
+#include <QRect>
 
 CustomSlider::CustomSlider(QWidget *parent):
     QSlider(parent),
@@ -25,6 +27,13 @@ void CustomSlider::setValueNoSignal(int value)
     this->blockSignals(true);
     this->setValue(value);
     this->blockSignals(false);
+}
+
+void CustomSlider::setTicks(QList<int> values)
+{
+    ticks.clear();
+    for(auto &tick : values)
+        ticks.push_back((int)(((double)tick/totalTime)*maximum())); // convert each value to actual ticks
 }
 
 QString CustomSlider::formatTrackingTime(int _time)
@@ -65,11 +74,35 @@ void CustomSlider::mousePressEvent(QMouseEvent *event)
   if (event->button() == Qt::LeftButton)
   {
       if (orientation() == Qt::Vertical)
-          setValue(minimum() + ((maximum()-minimum()) * (height()-event->y())) / height()) ;
+          setValue(minimum() + ((maximum()-minimum()) * (height()-event->y())) / height());
       else
-          setValue(minimum() + ((maximum()-minimum()) * event->x()) / width()) ;
+          setValue(minimum() + ((maximum()-minimum()) * event->x()) / width());
 
       event->accept();
   }
   QSlider::mousePressEvent(event);
+}
+
+void CustomSlider::paintEvent(QPaintEvent *event)
+{
+    QSlider::paintEvent(event);
+    if(isEnabled() && ticks.length() > 0)
+    {
+        QRect region = event->rect();
+        QPainter painter(this);
+        painter.setPen(QColor(255,255,255));
+        for(auto &tick : ticks)
+        {
+            if(orientation() == Qt::Vertical)
+            {
+                int y = height() - (tick-minimum())*height()/(maximum()-minimum()); // the inverse of above
+                painter.drawLine(region.left(), y, region.right(), y);
+            }
+            else
+            {
+                int x = (tick-minimum())*width()/(maximum()-minimum()); // the inverse of above
+                painter.drawLine(x, region.top(), x, region.bottom());
+            }
+        }
+    }
 }
