@@ -51,9 +51,9 @@ void LocationDialog::on_urlEdit_textChanged(const QString &arg1)
 {
     // todo: make more complex validation
 #ifdef Q_OS_WIN
-    QRegExp rx("^(http://.+\\.[a-z]+|[a-z]:/)", Qt::CaseInsensitive);
+    QRegExp rx("^(https?://.+\\.[a-z]+|[a-z]:/)", Qt::CaseInsensitive);
 #elif defined(Q_OS_LINUX) || defined(Q_OS_UNIX)
-    QRegExp rx("^(http://.+\\.[a-z]+|\\.{0,2}/)", Qt::CaseInsensitive);
+    QRegExp rx("^(https?://.+\\.[a-z]+|\\.{0,2}/)", Qt::CaseInsensitive);
 #endif
     if(rx.indexIn(arg1) != -1)
     {

@@ -49,7 +49,7 @@ int PlaylistManager::GetIndex() const
 
 void PlaylistManager::LoadFile(QString f)
 {
-    QRegExp rx("^(http://.+\\.[a-z]+)", Qt::CaseInsensitive);
+    QRegExp rx("^(https?://.+\\.[a-z]+)", Qt::CaseInsensitive);
 
     if(rx.indexIn(f) != -1) // web url
     {
