@@ -6,7 +6,7 @@
 
 QT       += core gui network
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 5): QT += widgets
 
 TARGET = Baka-MPlayer
 TEMPLATE = app
@@ -14,6 +14,7 @@ TEMPLATE = app
 SOURCES += main.cpp\
     mpvhandler.cpp \
     playlistmanager.cpp \
+    updatemanager.cpp \
     widgets/customslider.cpp \
     widgets/openbutton.cpp \
     widgets/playpausebutton.cpp \
@@ -24,12 +25,12 @@ SOURCES += main.cpp\
     ui/infodialog.cpp \
     ui/jumpdialog.cpp \
     ui/aboutdialog.cpp \
-    ui/updatedialog.cpp \
-    updatemanager.cpp
+    ui/updatedialog.cpp
 
 HEADERS  += \
     mpvhandler.h \
     playlistmanager.h \
+    updatemanager.h \
     widgets/customslider.h \
     widgets/openbutton.h \
     widgets/playpausebutton.h \
@@ -40,8 +41,7 @@ HEADERS  += \
     ui/infodialog.h \
     ui/jumpdialog.h \
     ui/aboutdialog.h \
-    ui/updatedialog.h \
-    updatemanager.h
+    ui/updatedialog.h
 
 FORMS    += \
     ui/mainwindow.ui \
