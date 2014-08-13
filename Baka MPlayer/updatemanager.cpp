@@ -1,6 +1,8 @@
 #include "updatemanager.h"
 
 #include <QNetworkRequest>
+#include <QList>
+#include <QByteArray>
 #include <QUrl>
 #include <QStringList>
 #include <QFile>
@@ -36,13 +38,13 @@ void UpdateManager::CheckForUpdatesReply(QNetworkReply *reply)
         emit ErrorSignal("UpdateManager: "+reply->errorString());
     else
     {
-        QMap<QString> info;
-        QStringList lines = reply->readAll().split('\n');
-        QStringList pair;
+        QMap<QString, QString> info;
+        QList<QByteArray> lines = reply->readAll().split('\n');
+        QList<QByteArray> pair;
         for(auto line : lines)
         {
             pair = line.split('=');
-            info[pair[0]] = pair[1].replace('\r','\n'); // for multi-line info use \r's instead of \n's
+            info[QString(pair[0])] = QString(pair[1].replace('\r','\n')); // for multi-line info use \r's instead of \n's
         }
         emit Update(info);
     }

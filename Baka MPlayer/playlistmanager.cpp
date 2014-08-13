@@ -87,11 +87,16 @@ void PlaylistManager::PlayIndex(int i)
         index = i;
         emit IndexChanged(index);
 
-        QFile f(QString(path+list[index]));
-        if(f.exists())
-            emit Play(QString(path+list[index]));
+        if(path == "") // web url
+            emit Play(QString(list[index]));
         else
-            emit Stop();
+        {
+            QFile f(QString(path+list[index]));
+            if(f.exists())
+                emit Play(QString(path+list[index]));
+            else
+                emit Stop();
+        }
     }
     else
         Stop();
