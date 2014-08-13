@@ -31,7 +31,6 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
                                     QSize(settings->value("window/width", 600).toInt(),
                                           settings->value("window/height", 430).toInt()),
                                     qApp->desktop()->availableGeometry()));
-    ui->actionSh_uffle->setChecked(settings->value("playlist/shuffle", false).toBool());
     ui->showAllButton->setChecked(settings->value("playlist/show-all", false).toBool());
     ui->volumeSlider->setValue(settings->value("mpv/volume", 100).toInt());
     ui->actionOpen_Last_File->setEnabled(settings->value("last-file", "").toString()!="");
