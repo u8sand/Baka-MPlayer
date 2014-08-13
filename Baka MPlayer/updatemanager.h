@@ -22,7 +22,7 @@ protected slots:
     void DoanloadUpdateReply(QNetworkReply *reply);
 
 signals:
-    void Update(QMap<QString> info);
+    void Update(QMap<QString, QString> info);
     void ErrorSignal(QString err);
 
 private:
