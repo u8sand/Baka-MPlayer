@@ -26,7 +26,6 @@ MpvHandler::MpvHandler(QSettings *_settings, int64_t wid, QObject *parent):
         throw "Could not create mpv object";
 
     mpv_set_option(mpv, "wid", MPV_FORMAT_INT64, &wid);
-    mpv_set_option_string(mpv, "input-default-bindings", "no");
 
     mpv_observe_property(mpv, 0, "media-title", MPV_FORMAT_STRING);
     mpv_observe_property(mpv, 0, "time-pos", MPV_FORMAT_DOUBLE);
