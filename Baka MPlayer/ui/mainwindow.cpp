@@ -408,7 +408,7 @@ void MainWindow::OpenLastFile()
 
 void MainWindow::ShowInFolder()
 {
-    QDesktopServices::openUrl("file:///"+QDir::toNativeSeparators(QFileInfo(mpv->GetFile()).absoluteDir().absolutePath()));
+    QDesktopServices::openUrl("file:///"+QDir::toNativeSeparators(playlist->GetCurrentFile()));
 }
 
 void MainWindow::UpdatePlaylist(QStringList list)

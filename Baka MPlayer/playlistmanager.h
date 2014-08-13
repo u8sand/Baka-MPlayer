@@ -15,6 +15,7 @@ public:
     QStringList GetList() const;        // return playlist
     QString GetPath() const;            // return path
     QString GetSuffix() const;          // return suffix
+    QString GetCurrentFile() const;     // returns the current file full path
     bool GetShuffle() const;            // return shuffle
     bool GetShowAll() const;            // return showAll
     int GetIndex() const;               // return index
