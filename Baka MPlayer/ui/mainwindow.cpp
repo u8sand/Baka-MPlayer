@@ -63,6 +63,8 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
             mpv, SLOT(OpenFile(QString)), Qt::QueuedConnection);        // mpv open file
     connect(playlist, SIGNAL(Stop()),                                   // playlist stop signal
             mpv, SLOT(Stop()), Qt::QueuedConnection);                   // mpv stop
+    connect(playlist, SIGNAL(Search(QString)),                          // playlist search
+            ui->searchBox, SLOT(setText(QString)));                     // set the text of the searchbox
     connect(playlist, SIGNAL(Show(bool)),                               // playlist set visibility
             ui->playlistLayoutWidget, SLOT(setVisible(bool)));          // set visibility of the playlist
     connect(playlist, SIGNAL(ListChanged(QStringList)),                 // playlist update list
@@ -83,6 +85,8 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
             this, SLOT(PlaylistSelectCurrent()));                       // selects the current file in the playlist
     connect(ui->playlistWidget, SIGNAL(currentRowChanged(int)),         // playlist selection changed
             this, SLOT(UpdatePlaylistSelectionIndex(int)));             // update the indexLabel message
+    connect(ui->searchBox, SIGNAL(textChanged(QString)),                // playlist search
+            playlist, SLOT(SearchPlaylist(QString)));                   // narrow down playlist
                                                                         // sliders
     connect(ui->volumeSlider, SIGNAL(valueChanged(int)),                // volume slider changed
             mpv, SLOT(AdjustVolume(int)));                              // adjust volume accordingly
@@ -190,7 +194,6 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
 MainWindow::~MainWindow()
 {
     // save settings
-    settings->setValue("last-file", mpv->GetFile());
     settings->setValue("mpv/volume", mpv->GetVolume());
     settings->setValue("window/width", normalGeometry().width());
     settings->setValue("window/height", normalGeometry().height());
@@ -408,7 +411,7 @@ void MainWindow::OpenLastFile()
 
 void MainWindow::ShowInFolder()
 {
-    QDesktopServices::openUrl("file:///"+QDir::toNativeSeparators(playlist->GetCurrentFile()));
+    QDesktopServices::openUrl("file:///"+QDir::toNativeSeparators(playlist->GetPath()));
 }
 
 void MainWindow::UpdatePlaylist(QStringList list)

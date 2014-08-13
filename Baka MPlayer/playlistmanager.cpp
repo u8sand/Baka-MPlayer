@@ -95,12 +95,18 @@ void PlaylistManager::PlayIndex(int i)
         emit IndexChanged(index);
 
         if(path == "") // web url
+        {
+            settings->setValue("last-file", list[index]);
             emit Play(QString(list[index]));
+        }
         else
         {
             QFile f(QString(path+list[index]));
             if(f.exists())
+            {
+                settings->setValue("last-file", path+list[index]);
                 emit Play(QString(path+list[index]));
+            }
             else
                 emit Stop();
         }
@@ -119,6 +125,15 @@ void PlaylistManager::Previous()
     PlayIndex(index-1);
 }
 
+void PlaylistManager::SearchPlaylist(QString s)
+{
+    QStringList tmplist;
+    for(QStringList::iterator item = list.begin(); item != list.end(); ++item)
+        if(item->contains(s, Qt::CaseInsensitive))
+            tmplist.push_back(*item);
+    emit ListChanged(tmplist);
+}
+
 void PlaylistManager::Refresh()
 {
     shuffle = false;
@@ -127,6 +142,7 @@ void PlaylistManager::Refresh()
     Populate();
     Sort();
     emit ListChanged(list);
+    emit Search("");
 }
 
 void PlaylistManager::Shuffle(bool s)
@@ -142,6 +158,7 @@ void PlaylistManager::ShowAll(bool s) // todo: use current selection's suffix
     Populate();
     Sort();
     emit ListChanged(list);
+    emit Search("");
 }
 
 void PlaylistManager::Populate()
