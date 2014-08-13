@@ -25,6 +25,7 @@ public slots:
     void PlayIndex(int i);              // play a specific index (eg. double click index on playlist widget)
     void Next();                        // play the next file in the playlist
     void Previous();                    // play the previous file in the playlist
+    void SearchPlaylist(QString s);     // search through playlist
     void Refresh();                     // refresh the playlist (look again at the directory)
     void Shuffle(bool s);               // shuffle the playlist (resort)
     void ShowAll(bool s);               // show all--show files based on extension
@@ -36,6 +37,7 @@ private slots:
 signals:
     void Play(QString f);               // signal to play a file with mpv
     void Stop();                        // signal to stop playback
+    void Search(QString s);             // signal to modify search textbox
     void Show(bool v);                  // signal to show/hide playlist widget
     void ListChanged(QStringList l);    // signal to update the playlist
     void IndexChanged(int i);           // signal to change the playlist selection
