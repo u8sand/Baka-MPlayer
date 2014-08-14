@@ -290,10 +290,31 @@ void MpvHandler::Stop()
     PlayPause(true);
 }
 
+void MpvHandler::SetVid(int vid)
+{
+    const QByteArray tmp = QString::number(vid).toUtf8();
+    const char *args[] = {"set", "vid", tmp.constData(), NULL};
+    AsyncCommand(args);
+}
+
+void MpvHandler::SetAid(int aid)
+{
+    const QByteArray tmp = QString::number(aid).toUtf8();
+    const char *args[] = {"set", "aid", tmp.constData(), NULL};
+    AsyncCommand(args);
+}
+
 void MpvHandler::SetSid(int sid)
 {
     const QByteArray tmp = QString::number(sid).toUtf8();
     const char *args[] = {"set", "sid", tmp.constData(), NULL};
+    AsyncCommand(args);
+}
+
+void MpvHandler::SubAdd(QString f)
+{
+    const QByteArray tmp = f.toUtf8();
+    const char *args[] = {"sub_add", tmp.constData(), NULL};
     AsyncCommand(args);
 }
 
