@@ -7,6 +7,7 @@
 
 CustomSlider::CustomSlider(QWidget *parent):
     QSlider(parent),
+    tickReady(false),
     totalTime(0)
 {
 }
@@ -16,6 +17,15 @@ void CustomSlider::setTracking(int _totalTime)
     if(_totalTime != 0)
     {
         totalTime = _totalTime;
+        // now that we've got totalTime, calculate the tick locations
+        // we need to do this because totalTime is obtained after the LOADED event is fired--we need totalTime for calculations
+        for(auto &tick : ticks)
+            tick = (int)(((double)tick/totalTime)*maximum());
+        if(ticks.length() > 0)
+        {
+            tickReady = true; // ticks are ready to be displayed
+            repaint(rect());
+        }
         setMouseTracking(true);
     }
     else
@@ -31,9 +41,8 @@ void CustomSlider::setValueNoSignal(int value)
 
 void CustomSlider::setTicks(QList<int> values)
 {
-    ticks.clear();
-    for(auto &tick : values)
-        ticks.push_back((int)(((double)tick/totalTime)*maximum())); // convert each value to actual ticks
+    ticks = values; // just set the values
+    tickReady = false; // ticks need to be converted when totalTime is obtained
 }
 
 QString CustomSlider::formatTrackingTime(int _time)
@@ -86,7 +95,7 @@ void CustomSlider::mousePressEvent(QMouseEvent *event)
 void CustomSlider::paintEvent(QPaintEvent *event)
 {
     QSlider::paintEvent(event);
-    if(isEnabled() && ticks.length() > 0)
+    if(isEnabled() && tickReady)
     {
         QRect region = event->rect();
         QPainter painter(this);
