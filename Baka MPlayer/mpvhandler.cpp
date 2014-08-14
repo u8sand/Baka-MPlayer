@@ -82,17 +82,32 @@ Mpv::PlayState MpvHandler::GetPlayState() const
 QList<Mpv::Chapter> MpvHandler::GetChapters()
 {
     // todo: asyncronously
-    // isn't there a better way to get chapter-list??, mpv_node_list
     QList<Mpv::Chapter> chapters;
-    int count;
-    mpv_get_property(mpv, "chapter-list/count", MPV_FORMAT_NODE, &count);
-    for(int i = 0; i < count; i++)
+    mpv_node node;
+    mpv_get_property(mpv, "chapter-list", MPV_FORMAT_NODE, &node);
+    if(node.format == MPV_FORMAT_NODE_ARRAY)
     {
-        double time;
-        char *title;
-        mpv_get_property(mpv, "chapter-list/"+QByteArray::number(i)+"/title", MPV_FORMAT_STRING, &title);
-        mpv_get_property(mpv, "chapter-list/"+QByteArray::number(i)+"/time", MPV_FORMAT_DOUBLE, &time);
-        chapters.push_back({QString(title), (int)time});
+        for(int i = 0; i < node.u.list->num; i++)
+        {
+            if(node.u.list->values[i].format == MPV_FORMAT_NODE_MAP)
+            {
+                Mpv::Chapter ch;
+                for(int n = 0; n < node.u.list->values[i].u.list->num; n++)
+                {
+                    if(QString(node.u.list->values[i].u.list->keys[n]) == "title")
+                    {
+                        if(node.u.list->values[i].u.list->values[n].format == MPV_FORMAT_STRING)
+                            ch.title = node.u.list->values[i].u.list->values[n].u.string;
+                    }
+                    else if(QString(node.u.list->values[i].u.list->keys[n]) == "time")
+                    {
+                        if(node.u.list->values[i].u.list->values[n].format == MPV_FORMAT_DOUBLE)
+                            ch.time = (int)node.u.list->values[i].u.list->values[n].u.double_;
+                    }
+                }
+                chapters.push_back(ch);
+            }
+        }
     }
     return chapters;
 }
