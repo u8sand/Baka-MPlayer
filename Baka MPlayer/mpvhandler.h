@@ -26,9 +26,23 @@ namespace Mpv
         QString title;
         int time;
     };
+    struct Track
+    {
+        int id;
+        QString type;
+        int src_id;
+        QString title;
+        QString lang;
+        unsigned albumart : 1,
+                 _default : 1,
+                 external : 1;
+        QString external_filename;
+        QString codec;
+    };
 }
 Q_DECLARE_METATYPE(Mpv::PlayState) // so we can pass it with signals & slots
 Q_DECLARE_METATYPE(Mpv::Chapter)
+Q_DECLARE_METATYPE(Mpv::Track)
 
 class MpvHandler : public QObject
 {
@@ -44,6 +58,7 @@ public:
     Mpv::PlayState GetPlayState() const;        // return playState
 
     QList<Mpv::Chapter> GetChapters();          // return chapters
+    QList<Mpv::Track> GetTracks();              // return tracks
 
 protected:
     virtual bool event(QEvent *event);          // QObject event function

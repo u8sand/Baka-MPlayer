@@ -97,6 +97,18 @@ QList<Mpv::Chapter> MpvHandler::GetChapters()
     return chapters;
 }
 
+QList<Mpv::Track> MpvHandler::GetTracks()
+{
+    QList<Mpv::Track> tracks;
+    int count;
+    mpv_get_property(mpv, "track-list/count", MPV_FORMAT_NODE, &count);
+    for(int i = 0; i < count; i++)
+    {
+        // todo
+    }
+    return tracks;
+}
+
 bool MpvHandler::event(QEvent *event)
 {
     if(event->type() == QEvent::User)
