@@ -26,6 +26,7 @@ protected:
 
 private:
     QList<int> ticks;
+    bool tickReady;
     int totalTime;
 };
 

@@ -79,6 +79,24 @@ Mpv::PlayState MpvHandler::GetPlayState() const
     return playState;
 }
 
+QList<Mpv::Chapter> MpvHandler::GetChapters()
+{
+    // todo: asyncronously
+    // isn't there a better way to get chapter-list??, mpv_node_list
+    QList<Mpv::Chapter> chapters;
+    int count;
+    mpv_get_property(mpv, "chapter-list/count", MPV_FORMAT_NODE, &count);
+    for(int i = 0; i < count; i++)
+    {
+        double time;
+        char *title;
+        mpv_get_property(mpv, "chapter-list/"+QByteArray::number(i)+"/title", MPV_FORMAT_STRING, &title);
+        mpv_get_property(mpv, "chapter-list/"+QByteArray::number(i)+"/time", MPV_FORMAT_DOUBLE, &time);
+        chapters.push_back({QString(title), (int)time});
+    }
+    return chapters;
+}
+
 bool MpvHandler::event(QEvent *event)
 {
     if(event->type() == QEvent::User)

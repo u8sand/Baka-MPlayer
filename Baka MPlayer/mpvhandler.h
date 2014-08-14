@@ -21,9 +21,14 @@ namespace Mpv
         Stopped,
         Ended
     };
+    struct Chapter
+    {
+        QString title;
+        int time;
+    };
 }
 Q_DECLARE_METATYPE(Mpv::PlayState) // so we can pass it with signals & slots
-
+Q_DECLARE_METATYPE(Mpv::Chapter)
 
 class MpvHandler : public QObject
 {
@@ -37,6 +42,8 @@ public:
     int GetTotalTime() const;                   // return totalTime
     int GetVolume() const;                      // return volume
     Mpv::PlayState GetPlayState() const;        // return playState
+
+    QList<Mpv::Chapter> GetChapters();          // return chapters
 
 protected:
     virtual bool event(QEvent *event);          // QObject event function

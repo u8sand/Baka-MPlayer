@@ -11,6 +11,8 @@
 #include <QDir>
 #include <QFileInfo>
 #include <QDesktopWidget>
+#include <QSignalMapper>
+#include <QAction>
 
 #include "aboutdialog.h"
 #include "infodialog.h"
@@ -309,9 +311,29 @@ void MainWindow::SetPlayState(Mpv::PlayState playState)
     case Mpv::Started: // ignore, use loaded--dispite it's name loaded comes after started
         break;
     case Mpv::Loaded:
+    {
         SetPlaybackControls(true);
         mpv->PlayPause();
+        // deal with chapters
+        QList<Mpv::Chapter> chapters = mpv->GetChapters();
+        QList<int> ticks;
+        QSignalMapper *signalMapper = new QSignalMapper(this);
+        ui->menu_Chapters->clear();
+        for(auto &ch : chapters)
+        {
+            QAction *action = ui->menu_Chapters->addAction(ch.title);
+            signalMapper->setMapping(action, ch.time);
+            connect(action, SIGNAL(triggered()),
+                    signalMapper, SLOT(map()));
+            ticks.push_back(ch.time);
+        }
+        connect(signalMapper, SIGNAL(mapped(int)),
+                mpv, SLOT(Seek(int)));
+        if(ui->menu_Chapters->actions().count() == 0)
+            ui->menu_Chapters->addAction("[none]");
+        ui->seekBar->setTicks(ticks);
         break;
+    }
     case Mpv::Playing:
         ui->playButton->SetPlay(false);
         ui->action_Play->setText("&Pause");
