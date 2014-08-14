@@ -139,7 +139,7 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
     // todo: aspect ratio menu
     connect(ui->actionShow_Subtitles, SIGNAL(triggered()),              // View -> Show Subtitles
             mpv, SLOT(ToggleSubs()));                                   // mpv show subs
-    // todo: subtitle track menu
+                                                                        // subtitle track menu
     // todo: font size menu
     connect(ui->actionMedia_Info, SIGNAL(triggered()),                  // View -> Media Info
             this, SLOT(MediaInfo()));                                   // show media info dialog
@@ -158,7 +158,7 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
             mpv, SLOT(NextChapter()));                                  // mpv next chapter
     connect(ui->action_Previous_Chapter, SIGNAL(triggered()),           // Navigate -> Previous Chapter
             mpv, SLOT(PreviousChapter()));                              // mpv previous chapter
-    // todo: chapters menu
+                                                                        // chapters menu
     connect(ui->action_Frame_Step, SIGNAL(triggered()),                 // Navigate -> Frame Step
             mpv, SLOT(FrameStep()));                                    // mpv frame step
     connect(ui->actionFrame_Back_Step, SIGNAL(triggered()),             // Navigate -> Frame Back Step
@@ -314,6 +314,8 @@ void MainWindow::SetPlayState(Mpv::PlayState playState)
     {
         SetPlaybackControls(true);
         mpv->PlayPause();
+        // todo: clean this up, use a function to remove repetition
+
         // deal with chapters
         QList<Mpv::Chapter> chapters = mpv->GetChapters();
         QList<int> ticks;
@@ -332,6 +334,25 @@ void MainWindow::SetPlayState(Mpv::PlayState playState)
         if(ui->menu_Chapters->actions().count() == 0)
             ui->menu_Chapters->addAction("[none]")->setEnabled(false);
         ui->seekBar->setTicks(ticks);
+
+        // deal with subtitles
+        signalMapper = new QSignalMapper(this);
+        QList<Mpv::Track> tracks = mpv->GetTracks();
+        ui->menuSubtitle_Track->clear();
+        for(auto &track : tracks)
+        {
+            if(track.type == "sub")
+            {
+                QAction *action = ui->menuSubtitle_Track->addAction(track.title+" ["+track.lang+"]");
+                signalMapper->setMapping(action, track.id);
+                connect(action, SIGNAL(triggered()),
+                        signalMapper, SLOT(map()));
+            }
+        }
+        if(ui->menuSubtitle_Track->actions().count() == 0)
+            ui->menuSubtitle_Track->addAction("[none]")->setEnabled(false);
+        connect(signalMapper, SIGNAL(mapped(int)),
+                mpv, SLOT(SetSid(int)));
         break;
     }
     case Mpv::Playing:

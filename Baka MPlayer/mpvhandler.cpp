@@ -114,12 +114,73 @@ QList<Mpv::Chapter> MpvHandler::GetChapters()
 
 QList<Mpv::Track> MpvHandler::GetTracks()
 {
+    // todo: asyncronously
     QList<Mpv::Track> tracks;
-    int count;
-    mpv_get_property(mpv, "track-list/count", MPV_FORMAT_NODE, &count);
-    for(int i = 0; i < count; i++)
+    mpv_node node;
+    mpv_get_property(mpv, "track-list", MPV_FORMAT_NODE, &node);
+    if(node.format == MPV_FORMAT_NODE_ARRAY)
     {
-        // todo
+        for(int i = 0; i < node.u.list->num; i++)
+        {
+            if(node.u.list->values[i].format == MPV_FORMAT_NODE_MAP)
+            {
+                Mpv::Track track;
+                for(int n = 0; n < node.u.list->values[i].u.list->num; n++)
+                {
+                    if(QString(node.u.list->values[i].u.list->keys[n]) == "id")
+                    {
+                        if(node.u.list->values[i].u.list->values[n].format == MPV_FORMAT_INT64)
+                            track.id = node.u.list->values[i].u.list->values[n].u.int64;
+                    }
+                    else if(QString(node.u.list->values[i].u.list->keys[n]) == "type")
+                    {
+                        if(node.u.list->values[i].u.list->values[n].format == MPV_FORMAT_STRING)
+                            track.type = node.u.list->values[i].u.list->values[n].u.string;
+                    }
+                    else if(QString(node.u.list->values[i].u.list->keys[n]) == "src-id")
+                    {
+                        if(node.u.list->values[i].u.list->values[n].format == MPV_FORMAT_INT64)
+                            track.src_id = node.u.list->values[i].u.list->values[n].u.int64;
+                    }
+                    else if(QString(node.u.list->values[i].u.list->keys[n]) == "title")
+                    {
+                        if(node.u.list->values[i].u.list->values[n].format == MPV_FORMAT_STRING)
+                            track.title = node.u.list->values[i].u.list->values[n].u.string;
+                    }
+                    else if(QString(node.u.list->values[i].u.list->keys[n]) == "lang")
+                    {
+                        if(node.u.list->values[i].u.list->values[n].format == MPV_FORMAT_STRING)
+                            track.lang = node.u.list->values[i].u.list->values[n].u.string;
+                    }
+                    else if(QString(node.u.list->values[i].u.list->keys[n]) == "albumart")
+                    {
+                        if(node.u.list->values[i].u.list->values[n].format == MPV_FORMAT_FLAG)
+                            track.albumart = node.u.list->values[i].u.list->values[n].u.flag;
+                    }
+                    else if(QString(node.u.list->values[i].u.list->keys[n]) == "default")
+                    {
+                        if(node.u.list->values[i].u.list->values[n].format == MPV_FORMAT_FLAG)
+                            track._default = node.u.list->values[i].u.list->values[n].u.flag;
+                    }
+                    else if(QString(node.u.list->values[i].u.list->keys[n]) == "external")
+                    {
+                        if(node.u.list->values[i].u.list->values[n].format == MPV_FORMAT_FLAG)
+                            track.external = node.u.list->values[i].u.list->values[n].u.flag;
+                    }
+                    else if(QString(node.u.list->values[i].u.list->keys[n]) == "external-filename")
+                    {
+                        if(node.u.list->values[i].u.list->values[n].format == MPV_FORMAT_STRING)
+                            track.external_filename = node.u.list->values[i].u.list->values[n].u.string;
+                    }
+                    else if(QString(node.u.list->values[i].u.list->keys[n]) == "codec")
+                    {
+                        if(node.u.list->values[i].u.list->values[n].format == MPV_FORMAT_STRING)
+                            track.codec = node.u.list->values[i].u.list->values[n].u.string;
+                    }
+                }
+                tracks.push_back(track);
+            }
+        }
     }
     return tracks;
 }
@@ -227,6 +288,13 @@ void MpvHandler::Stop()
 {
     Restart();
     PlayPause(true);
+}
+
+void MpvHandler::SetSid(int sid)
+{
+    const QByteArray tmp = QString::number(sid).toUtf8();
+    const char *args[] = {"set", "sid", tmp.constData(), NULL};
+    AsyncCommand(args);
 }
 
 void MpvHandler::SetChapter(int c)
