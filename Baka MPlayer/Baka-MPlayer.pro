@@ -20,6 +20,7 @@ SOURCES += main.cpp\
     widgets/playpausebutton.cpp \
     widgets/indexbutton.cpp \
     widgets/customlistwidget.cpp \
+    widgets/seekbar.cpp \
     ui/mainwindow.cpp \
     ui/locationdialog.cpp \
     ui/infodialog.cpp \
@@ -36,6 +37,7 @@ HEADERS  += \
     widgets/playpausebutton.h \
     widgets/indexbutton.h \
     widgets/customlistwidget.h \
+    widgets/seekbar.h \
     ui/mainwindow.h \
     ui/locationdialog.h \
     ui/infodialog.h \

@@ -330,7 +330,7 @@ void MainWindow::SetPlayState(Mpv::PlayState playState)
         connect(signalMapper, SIGNAL(mapped(int)),
                 mpv, SLOT(Seek(int)));
         if(ui->menu_Chapters->actions().count() == 0)
-            ui->menu_Chapters->addAction("[none]");
+            ui->menu_Chapters->addAction("[none]")->setEnabled(false);
         ui->seekBar->setTicks(ticks);
         break;
     }
