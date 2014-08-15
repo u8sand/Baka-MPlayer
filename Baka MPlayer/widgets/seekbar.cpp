@@ -78,7 +78,7 @@ void SeekBar::paintEvent(QPaintEvent *event)
     {
         QRect region = event->rect();
         QPainter painter(this);
-        painter.setPen(QColor(255,255,255));
+        painter.setPen(QColor(190,190,190));
         for(auto &tick : ticks)
         {
 //            if(orientation() == Qt::Vertical)
