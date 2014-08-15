@@ -263,6 +263,10 @@ void MainWindow::SetPlaybackControls(bool enable)
         ui->actionPlay_Previous_File->setEnabled(false);
     }
 
+    // todo: same thing as above, disable if first/last entry
+    ui->action_Next_Chapter->setEnabled(enable);
+    ui->action_Previous_Chapter->setEnabled(enable);
+
     // menubar
     ui->action_Play->setEnabled(enable);
     ui->action_Stop->setEnabled(enable);
@@ -320,11 +324,16 @@ void MainWindow::SetPlayState(Mpv::PlayState playState)
         QList<Mpv::Chapter> chapters = mpv->GetChapters();
         QList<int> ticks;
         QSignalMapper *signalMapper = new QSignalMapper(this);
-        int n = 0;
+        int n = 1;
         ui->menu_Chapters->clear();
         for(auto &ch : chapters)
         {
-            QAction *action = ui->menu_Chapters->addAction(QString::number(n++)+": "+ch.title);
+            QAction *action;
+            if(n <= 9)
+                action = ui->menu_Chapters->addAction(QString::number(n)+": "+ch.title, NULL, NULL, QKeySequence("Ctrl+"+QString::number(n)));
+            else
+                action = ui->menu_Chapters->addAction(QString::number(n)+": "+ch.title);
+            n++;
             signalMapper->setMapping(action, ch.time);
             connect(action, SIGNAL(triggered()),
                     signalMapper, SLOT(map()));
