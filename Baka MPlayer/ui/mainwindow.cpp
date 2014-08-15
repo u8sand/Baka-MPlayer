@@ -320,10 +320,11 @@ void MainWindow::SetPlayState(Mpv::PlayState playState)
         QList<Mpv::Chapter> chapters = mpv->GetChapters();
         QList<int> ticks;
         QSignalMapper *signalMapper = new QSignalMapper(this);
+        int n = 0;
         ui->menu_Chapters->clear();
         for(auto &ch : chapters)
         {
-            QAction *action = ui->menu_Chapters->addAction(ch.title);
+            QAction *action = ui->menu_Chapters->addAction(QString::number(n++)+": "+ch.title);
             signalMapper->setMapping(action, ch.time);
             connect(action, SIGNAL(triggered()),
                     signalMapper, SLOT(map()));
