@@ -330,7 +330,6 @@ void MainWindow::SetPlayState(Mpv::PlayState playState)
                     signalMapper, SLOT(map()));
             ticks.push_back(ch.time);
         }
-        for(int i = 0
         connect(signalMapper, SIGNAL(mapped(int)),
                 mpv, SLOT(Seek(int)));
         if(ui->menu_Chapters->actions().count() == 0)
@@ -345,7 +344,7 @@ void MainWindow::SetPlayState(Mpv::PlayState playState)
         {
             if(track.type == "sub")
             {
-                QAction *action = ui->menuSubtitle_Track->addAction(sub.id+": "+sub.name+" ("+sub.lang+")");
+                QAction *action = ui->menuSubtitle_Track->addAction(QString::number(track.id)+": "+track.title+" ("+track.lang+")");
                 signalMapper->setMapping(action, track.id);
                 connect(action, SIGNAL(triggered()),
                         signalMapper, SLOT(map()));
