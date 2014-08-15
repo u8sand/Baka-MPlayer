@@ -316,7 +316,7 @@ void MainWindow::SetPlayState(Mpv::PlayState playState)
         mpv->PlayPause();
         // todo: clean this up, use a function to remove repetition
 
-        // deal with chapters
+        // load chapter list into menus
         QList<Mpv::Chapter> chapters = mpv->GetChapters();
         QList<int> ticks;
         QSignalMapper *signalMapper = new QSignalMapper(this);
@@ -329,13 +329,14 @@ void MainWindow::SetPlayState(Mpv::PlayState playState)
                     signalMapper, SLOT(map()));
             ticks.push_back(ch.time);
         }
+        for(int i = 0
         connect(signalMapper, SIGNAL(mapped(int)),
                 mpv, SLOT(Seek(int)));
         if(ui->menu_Chapters->actions().count() == 0)
-            ui->menu_Chapters->addAction("[none]")->setEnabled(false);
+            ui->menu_Chapters->addAction("[ none ]")->setEnabled(false);
         ui->seekBar->setTicks(ticks);
 
-        // deal with subtitles
+        // load subtitle list into menus
         signalMapper = new QSignalMapper(this);
         QList<Mpv::Track> tracks = mpv->GetTracks();
         ui->menuSubtitle_Track->clear();
@@ -343,14 +344,14 @@ void MainWindow::SetPlayState(Mpv::PlayState playState)
         {
             if(track.type == "sub")
             {
-                QAction *action = ui->menuSubtitle_Track->addAction(track.title+" ["+track.lang+"]");
+                QAction *action = ui->menuSubtitle_Track->addAction(sub.id+": "+sub.name+" ("+sub.lang+")");
                 signalMapper->setMapping(action, track.id);
                 connect(action, SIGNAL(triggered()),
                         signalMapper, SLOT(map()));
             }
         }
         if(ui->menuSubtitle_Track->actions().count() == 0)
-            ui->menuSubtitle_Track->addAction("[none]")->setEnabled(false);
+            ui->menuSubtitle_Track->addAction("[ none ]")->setEnabled(false);
         connect(signalMapper, SIGNAL(mapped(int)),
                 mpv, SLOT(SetSid(int)));
         break;
