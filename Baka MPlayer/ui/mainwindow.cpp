@@ -312,7 +312,7 @@ void MainWindow::SetPlayState(Mpv::PlayState playState)
     // triggered when mpv playstate is changed so we can update controls accordingly
     switch(playState)
     {
-    case Mpv::Started: // ignore, use loaded--dispite it's name loaded comes after started
+    case Mpv::Started: // ignore, use loaded--despite it's name loaded comes after started
         break;
     case Mpv::Loaded:
     {
