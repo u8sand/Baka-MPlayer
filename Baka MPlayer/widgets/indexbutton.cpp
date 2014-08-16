@@ -36,7 +36,7 @@ void IndexButton::paintEvent(QPaintEvent *event)
         QRect region = event->rect();
         QPainter painter(this);
         painter.setPen(QColor(0,0,0));
-        painter.setFont(QFont("Open Sans", 6));
+        painter.setFont(QFont("Noto Sans", 6));
         if(index > 0)   // next button
             painter.drawText(region.adjusted(-3, -1, -3, -1), Qt::AlignCenter, QString::number(index));
         else            // previous button
