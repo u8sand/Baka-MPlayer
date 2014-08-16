@@ -15,7 +15,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget {
-	font: 12px &quot;Open Sans&quot;, &quot;FreeSans&quot;;
+	font: 12px &quot;Noto Sans&quot;, &quot;FreeSans&quot;;
 	background: black;
 	color: whitesmoke;
 }</string>
