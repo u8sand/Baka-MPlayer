@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>502</width>
-    <height>128</height>
+    <width>480</width>
+    <height>100</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,59 +20,118 @@
 	color: whitesmoke;
 }</string>
   </property>
-  <widget class="QLineEdit" name="inputLineEdit">
-   <property name="geometry">
-    <rect>
-     <x>80</x>
-     <y>80</y>
-     <width>181</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QLineEdit {
+  <layout class="QHBoxLayout" name="horizontalLayout_2">
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="pixmap">
+        <pixmap resource="../rsclist.qrc">:/img/information.svg</pixmap>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="verticalSpacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="messageLabel">
+       <property name="styleSheet">
+        <string notr="true">#messageLabel {
+	font-size: 14px;
+}</string>
+       </property>
+       <property name="text">
+        <string>Please enter a value:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QWidget" name="horizontalWidget" native="true">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>2</number>
+        </property>
+        <item>
+         <widget class="QLineEdit" name="inputLineEdit">
+          <property name="styleSheet">
+           <string notr="true">QLineEdit {
 	background: #263238;
 	border: 1px solid black;
 	border-radius: 2px;
 	padding: 2px;
 }</string>
-   </property>
-   <property name="clearButtonEnabled">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="okButton">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="geometry">
-    <rect>
-     <x>280</x>
-     <y>80</y>
-     <width>90</width>
-     <height>27</height>
-    </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>16777215</width>
-     <height>25</height>
-    </size>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton {
+          </property>
+          <property name="clearButtonEnabled">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="okButton">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>25</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
     background: #263238;
 	color: white;
 	border: 1px solid black;
 	border-radius: 2px;
-    min-width: 88px;
-	min-height: 25px;
+    min-width: 86px;
+	min-height: 23px;
 }
 QPushButton:default {
 	border: 1px solid #607d8b;
@@ -83,43 +142,37 @@ QPushButton:pressed {
 QPushButton:disabled {
     color: gray;
 }</string>
-   </property>
-   <property name="text">
-    <string>&amp;OK</string>
-   </property>
-   <property name="default">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="cancelButton">
-   <property name="geometry">
-    <rect>
-     <x>380</x>
-     <y>80</y>
-     <width>90</width>
-     <height>27</height>
-    </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>16777215</width>
-     <height>25</height>
-    </size>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton {
+          </property>
+          <property name="text">
+           <string>&amp;OK</string>
+          </property>
+          <property name="default">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="cancelButton">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>25</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
     background: #263238;
 	color: white;
 	border: 1px solid black;
 	border-radius: 2px;
-    min-width: 88px;
-	min-height: 25px;
+    min-width: 86px;
+	min-height: 23px;
 }
 QPushButton:default {
 	border: 1px solid #607d8b;
@@ -130,43 +183,21 @@ QPushButton:pressed {
 QPushButton:disabled {
     color: gray;
 }</string>
-   </property>
-   <property name="text">
-    <string>&amp;Cancel</string>
-   </property>
-   <property name="autoDefault">
-    <bool>false</bool>
-   </property>
-  </widget>
-  <widget class="QLabel" name="messageLabel">
-   <property name="geometry">
-    <rect>
-     <x>70</x>
-     <y>20</y>
-     <width>401</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>TextLabel</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>20</y>
-     <width>51</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>TextLabel</string>
-   </property>
-  </widget>
+          </property>
+          <property name="text">
+           <string>&amp;Cancel</string>
+          </property>
+          <property name="autoDefault">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
  </widget>
  <resources>
   <include location="../rsclist.qrc"/>
