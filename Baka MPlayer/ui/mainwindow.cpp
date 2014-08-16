@@ -125,9 +125,9 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
     connect(ui->actionShow_in_Folder, SIGNAL(triggered()),              // File -> Show in Folder
             this, SLOT(ShowInFolder()));                                // open file explorer to file location
     connect(ui->actionPlay_Next_File, SIGNAL(triggered()),              // File -> Play Next File
-            playlist, SLOT(PlayNext()));                                // play the next entry in the playlist
+            playlist, SLOT(Next()));                                    // play the next entry in the playlist
     connect(ui->actionPlay_Previous_File, SIGNAL(triggered()),          // File -> Play Previous File
-            playlist, SLOT(PlayPrevious()));                            // play the previous entry in the playlist
+            playlist, SLOT(Previous()));                                // play the previous entry in the playlist
     connect(ui->actionE_xit_2, SIGNAL(triggered()),                     // File -> Exit
             this, SLOT(close()));                                       // close this window
                                                                         // View ->
