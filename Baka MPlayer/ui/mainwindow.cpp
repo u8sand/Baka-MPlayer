@@ -25,7 +25,7 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
     settings(_settings)
 {
     ui->setupUi(this);
-    ui->playlistLayoutWidget->setVisible(false); // no playlist by default
+    ui->playlistLayoutWidget->setVisible(false); // hide playlist by default
 
     // load settings
     setGeometry(QStyle::alignedRect(Qt::LeftToRight,
@@ -35,7 +35,8 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
                                     qApp->desktop()->availableGeometry()));
     ui->showAllButton->setChecked(settings->value("playlist/show-all", false).toBool());
     ui->volumeSlider->setValue(settings->value("mpv/volume", 100).toInt());
-    ui->actionOpen_Last_File->setEnabled(settings->value("last-file", "").toString()!="");
+    QFile f(settings->value("last-file", "").toString());
+    ui->actionOpen_Last_File->setEnabled(f.exists());
     ui->actionShow_D_ebug_Output->setChecked(settings->value("debug/output", false).toBool());
     ui->outputTextEdit->setVisible(settings->value("debug/output", false).toBool());
 

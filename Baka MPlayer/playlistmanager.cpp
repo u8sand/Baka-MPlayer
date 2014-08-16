@@ -67,19 +67,19 @@ void PlaylistManager::LoadFile(QString f)
     }
     else // local file
     {
-     QFileInfo fi(f);
-     if(path == fi.absolutePath() && // path is the same
-        (index = list.indexOf(fi.fileName())) != -1) // file exists in the list
-         PlayIndex(index);                           // play it
-     else // file doesn't exist in list
-     {
-         path = QString(fi.absolutePath()+"/"); // get path
-         suffix = fi.suffix();
-         Populate();
-         Sort();
-         emit ListChanged(list);
-         index = list.indexOf(fi.fileName()); // get index
-     }
+        QFileInfo fi(f);
+        if(path == fi.absolutePath() && // path is the same
+          (index = list.indexOf(fi.fileName())) != -1) // file exists in the list
+            PlayIndex(index);                          // play it
+        else // file doesn't exist in list
+        {
+            path = QString(fi.absolutePath()+"/"); // get path
+            suffix = fi.suffix();
+            Populate();
+            Sort();
+            emit ListChanged(list);
+            index = list.indexOf(fi.fileName()); // get index
+        }
     }
     if(list.size() > 1) // open up the playlist only if there is more than one item
         emit Show(true);
