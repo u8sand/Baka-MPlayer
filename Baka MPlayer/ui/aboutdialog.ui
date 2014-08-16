@@ -15,7 +15,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget {
-	font: 12px &quot;Open Sans&quot;, &quot;FreeSans&quot;;
+	font: 12px &quot;Noto Sans&quot;, &quot;FreeSans&quot;;
 	background: black;
 	color: whitesmoke;
 }
@@ -192,11 +192,11 @@ QTabBar::tab:!selected {
           <bool>true</bool>
          </property>
          <property name="plainText">
-          <string>mpv - video player based on MPlayer/mplayer2
+          <string>(lib)mpv - video player based on MPlayer/mplayer2
 GPLv2 &lt;mpv.io&gt;
 
-Open Sans - a humanist sans serif typeface
-Apache License, version 2.0 &lt;Steve Matteson&gt;
+Noto Sans -  font family with many supported characters
+Apache License, version 2.0 &lt;Google&gt;
 
 Headphone icon
 Public Domain &lt;Michael Martin-Smucker&gt;</string>

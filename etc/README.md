@@ -4,13 +4,15 @@ Here we will store various resources important for the project.
 
 `/doc` - Baka MPlayer documentation
 
-`/logo` - Baka MPlayer logo  
-
-`/lib` - Library dependencies
-- `libmpv.{i686,x86_64}.dll` - libmpv compiled for i686 and x86_64 windows environment with mingw-w64  
+`/font` - Noto Sans font (Baka MPlayer uses this font)
 
 `/include` - Include dependencies (library headers)
-- `mpv/client.h` - libmpv header file  
+- `mpv/client.h` - libmpv header file
+
+`/lib` - Library dependencies
+- `libmpv.{i686,x86_64}.dll` - libmpv compiled for i686 and x86_64 windows environment with mingw-w64
+
+`/logo` - Baka MPlayer logo
 
 `/sbin` - Useful scripts for project
 - `mxe.sh` - Build mxe mingw-w64 toolchain for compilation for windows on linux
