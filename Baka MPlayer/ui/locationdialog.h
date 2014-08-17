@@ -18,10 +18,11 @@ public:
     static QString getUrl(QWidget *parent = 0);
 
 private slots:
+    void validate(QString input);
+
     void on_pasteButton_clicked();
     void on_copyButton_clicked();
     void on_clearButton_clicked();
-    void on_urlEdit_textChanged(const QString &arg1);
 
 private:
     Ui::LocationDialog *ui;

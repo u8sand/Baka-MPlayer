@@ -19,6 +19,7 @@ public:
     bool GetShuffle() const;            // return shuffle
     bool GetShowAll() const;            // return showAll
     int GetIndex() const;               // return index
+    int GetMax() const;                 // return maxium index
 
 public slots:
     void LoadFile(QString file);        // frontend for opening a file, populating the playlist etc.

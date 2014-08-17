@@ -27,7 +27,6 @@ private:
     QList<int> ticks;
     bool tickReady;
     int totalTime;
-
 };
 
 #endif // SEEKBAR_H

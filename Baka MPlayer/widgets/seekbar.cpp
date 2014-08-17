@@ -63,6 +63,7 @@ void SeekBar::mouseMoveEvent(QMouseEvent* event)
 //        }
 //        else // we're always horizontal, extra code not needed
 //        {
+            // todo: make the tooltip stay directly above the slider
             QToolTip::showText(event->globalPos(),
                                formatTrackingTime(minimum() + ((maximum()-minimum()) * event->x()) / width()),
                                this, rect());

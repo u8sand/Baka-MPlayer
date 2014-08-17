@@ -51,6 +51,11 @@ int PlaylistManager::GetIndex() const
     return index;
 }
 
+int PlaylistManager::GetMax() const
+{
+    return list.length();
+}
+
 void PlaylistManager::LoadFile(QString f)
 {
     if(f == "") return; // ignore empty file

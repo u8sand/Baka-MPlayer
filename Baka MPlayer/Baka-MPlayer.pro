@@ -21,12 +21,14 @@ SOURCES += main.cpp\
     widgets/indexbutton.cpp \
     widgets/customlistwidget.cpp \
     widgets/seekbar.cpp \
+    widgets/customlabel.cpp \
     ui/mainwindow.cpp \
     ui/locationdialog.cpp \
     ui/infodialog.cpp \
     ui/jumpdialog.cpp \
     ui/aboutdialog.cpp \
-    ui/updatedialog.cpp
+    ui/updatedialog.cpp \
+    ui/inputdialog.cpp
 
 HEADERS  += \
     mpvhandler.h \
@@ -38,12 +40,14 @@ HEADERS  += \
     widgets/indexbutton.h \
     widgets/customlistwidget.h \
     widgets/seekbar.h \
+    widgets/customlabel.h \
     ui/mainwindow.h \
     ui/locationdialog.h \
     ui/infodialog.h \
     ui/jumpdialog.h \
     ui/aboutdialog.h \
-    ui/updatedialog.h
+    ui/updatedialog.h \
+    ui/inputdialog.h
 
 FORMS    += \
     ui/mainwindow.ui \
@@ -51,7 +55,8 @@ FORMS    += \
     ui/infodialog.ui \
     ui/jumpdialog.ui \
     ui/aboutdialog.ui \
-    ui/updatedialog.ui
+    ui/updatedialog.ui \
+    ui/inputdialog.ui
 
 CONFIG += c++11
 

@@ -14,6 +14,8 @@ LocationDialog::LocationDialog(QWidget *parent) :
             this, SLOT(accept()));              // accept
     connect(ui->cancelButton, SIGNAL(clicked()),// cancel button clicked
             this, SLOT(reject()));              // reject
+    connect(ui->urlEdit, SIGNAL(textChanged(QString)),
+            this, SLOT(validate()));
 }
 
 LocationDialog::~LocationDialog()
@@ -47,7 +49,7 @@ void LocationDialog::on_clearButton_clicked()
     ui->urlEdit->setText("");
 }
 
-void LocationDialog::on_urlEdit_textChanged(const QString &arg1)
+void LocationDialog::validate(QString input)
 {
     // todo: make more complex validation
 #ifdef Q_OS_WIN
@@ -55,7 +57,7 @@ void LocationDialog::on_urlEdit_textChanged(const QString &arg1)
 #elif defined(Q_OS_LINUX) || defined(Q_OS_UNIX)
     QRegExp rx("^(https?://.+\\.[a-z]+|\\.{0,2}/)", Qt::CaseInsensitive);
 #endif
-    if(rx.indexIn(arg1) != -1)
+    if(rx.indexIn(input) != -1)
     {
         ui->validEntryLabel->setPixmap(QPixmap(":/img/exists.svg"));
         ui->okButton->setEnabled(true);

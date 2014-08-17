@@ -51,6 +51,7 @@ private slots:
     void PlaylistSelectCurrent();                   // selects the current playlist index
     void PlayIndex(QModelIndex index);              // plays the selected file in the playlist
     void TogglePlaylist();                          // toggle playlist
+    void GetPlaylistIndex();                        // selects the file index to play
     void Debug(QString msg);                        // outputs debugging messages
     void OnlineHelp();                              // loads online help
     void CheckForUpdates();                         // checks for program updates

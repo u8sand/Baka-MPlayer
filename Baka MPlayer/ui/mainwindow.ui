@@ -249,7 +249,7 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="indexLabel">
+         <widget class="CustomLabel" name="indexLabel">
           <property name="cursor">
            <cursorShape>PointingHandCursor</cursorShape>
           </property>
@@ -840,7 +840,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>580</width>
-     <height>23</height>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
@@ -1604,6 +1604,11 @@ QSlider::handle:horizontal {
    <class>SeekBar</class>
    <extends>QSlider</extends>
    <header>widgets/seekbar.h</header>
+  </customwidget>
+  <customwidget>
+   <class>CustomLabel</class>
+   <extends>QLabel</extends>
+   <header>widgets/customlabel.h</header>
   </customwidget>
  </customwidgets>
  <resources>
