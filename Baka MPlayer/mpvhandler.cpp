@@ -357,6 +357,13 @@ void MpvHandler::FrameBackStep()
     AsyncCommand(args);
 }
 
+void MpvHandler::AddVolume(int level)
+{
+    const QByteArray tmp = QString::number(level).toUtf8();
+    const char *args[] = {"add", "volume", tmp.constData(), NULL};
+    AsyncCommand(args);
+}
+
 void MpvHandler::AdjustVolume(int level)
 {
     const QByteArray tmp = QString::number(level).toUtf8();
@@ -379,6 +386,20 @@ void MpvHandler::ToggleFullscreen()
 void MpvHandler::ToggleSubs()
 {
     const char *args[] = {"cycle", "sub-visibility", NULL};
+    AsyncCommand(args);
+}
+
+void MpvHandler::AddSubScale(double scale)
+{
+    const QByteArray tmp = QString::number(scale).toUtf8();
+    const char *args[] = {"add", "sub-scale", tmp.constData(), NULL};
+    AsyncCommand(args);
+}
+
+void MpvHandler::SetSubScale(double scale)
+{
+    const QByteArray tmp = QString::number(scale).toUtf8();
+    const char *args[] = {"set", "sub-scale", tmp.constData(), NULL};
     AsyncCommand(args);
 }
 

@@ -633,16 +633,19 @@ void MainWindow::SetAspectRatio(QString spec) // todo
     }
 }
 
-void MainWindow::IncreaseFontSize() // todo
+void MainWindow::IncreaseFontSize()
 {
+    mpv->AddSubScale(.02);
 }
 
-void MainWindow::DecreaseFontSize() // todo
+void MainWindow::DecreaseFontSize()
 {
+    mpv->AddSubScale(-.02);
 }
 
-void MainWindow::ResetFontSize() // todo
+void MainWindow::ResetFontSize()
 {
+    mpv->SetSubScale(1);
 }
 
 void MainWindow::DimLights(bool dim) // todo: make sure the dim window can't get focus
@@ -658,10 +661,10 @@ void MainWindow::DimLights(bool dim) // todo: make sure the dim window can't get
 
 void MainWindow::IncreaseVolume()
 {
-    mpv->AdjustVolume(mpv->GetVolume()+5);
+    mpv->AddVolume(5);
 }
 
 void MainWindow::DecreaseVolume()
 {
-    mpv->AdjustVolume(mpv->GetVolume()-5);
+    mpv->AddVolume(-5);
 }
