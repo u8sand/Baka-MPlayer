@@ -28,7 +28,8 @@ SOURCES += main.cpp\
     ui/jumpdialog.cpp \
     ui/aboutdialog.cpp \
     ui/updatedialog.cpp \
-    ui/inputdialog.cpp
+    ui/inputdialog.cpp \
+    ui/lightdialog.cpp
 
 HEADERS  += \
     mpvhandler.h \
@@ -47,7 +48,8 @@ HEADERS  += \
     ui/jumpdialog.h \
     ui/aboutdialog.h \
     ui/updatedialog.h \
-    ui/inputdialog.h
+    ui/inputdialog.h \
+    ui/lightdialog.h
 
 FORMS    += \
     ui/mainwindow.ui \
