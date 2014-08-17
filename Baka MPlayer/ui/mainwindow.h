@@ -40,7 +40,7 @@ private slots:
     void NewPlayer();                               // creates a new MainWindow
     void OpenFile();                                // open file dialog
     void OpenUrl();                                 // open url dialog
-    void FullScreen();                              // makes window fullscreen
+    void FullScreen(bool fs);                       // makes window fullscreen
     void BossMode();                                // run away from the boss
     void JumpToTime();                              // jump to time dialog
     void MediaInfo();                               // media info dialog

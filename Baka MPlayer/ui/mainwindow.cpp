@@ -137,8 +137,8 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
     connect(ui->actionE_xit_2, SIGNAL(triggered()),                     // File -> Exit
             this, SLOT(close()));                                       // close this window
                                                                         // View ->
-    connect(ui->action_Full_Screen, SIGNAL(triggered()),                // View -> Full Screen
-            this, SLOT(FullScreen()));                                  // full screen window
+    connect(ui->action_Full_Screen, SIGNAL(triggered(bool)),            // View -> Full Screen
+            this, SLOT(FullScreen(bool)));                              // full screen window
     connect(ui->actionTake_Snapshot, SIGNAL(triggered()),               // View -> Take Snapshot
             mpv, SLOT(Snapshot()));                                     // mpv snapshot
     QSignalMapper *fitWindowMap = new QSignalMapper(this);              // View -> FitWindow ->
@@ -483,16 +483,16 @@ void MainWindow::OpenUrl()
     playlist->LoadFile(LocationDialog::getUrl(this));
 }
 
-void MainWindow::FullScreen()
+void MainWindow::FullScreen(bool fs)
 {
     static Qt::WindowStates state;
-    if(isFullScreen())
-        setWindowState(state);
-    else
+    if(fs)
     {
         state = windowState();
         setWindowState(Qt::WindowFullScreen);
     }
+    else
+        setWindowState(state);
 }
 
 void MainWindow::BossMode()
