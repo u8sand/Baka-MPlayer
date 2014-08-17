@@ -78,10 +78,13 @@ public slots:
     void PreviousChapter();                     // seek to previous chapter
     void FrameStep();                           // frame step
     void FrameBackStep();                       // frame back step
+    void AddVolume(int level);
     void AdjustVolume(int level);               // adjust the media volume
     void Snapshot(bool withSubs = false);       // take a snapshot
     void ToggleFullscreen();                    // toggle fullscreen
     void ToggleSubs();                          // toggle subtitles
+    void AddSubScale(double scale);
+    void SetSubScale(double scale);
 
 private slots:
     void AsyncCommand(const char *args[]);      // execute async mpv command
