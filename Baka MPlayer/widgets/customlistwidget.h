@@ -23,7 +23,6 @@ signals:
 
 private:
     QMenu *menu;
-
 };
 
 #endif // CUSTOMLISTWIDGET_H

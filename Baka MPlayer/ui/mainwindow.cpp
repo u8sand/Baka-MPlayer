@@ -18,6 +18,7 @@
 #include "infodialog.h"
 #include "locationdialog.h"
 #include "jumpdialog.h"
+#include "inputdialog.h"
 
 MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
     QMainWindow(parent),
@@ -75,6 +76,8 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
             this, SLOT(UpdatePlaylistIndex(int)));                      // update the playlistWidget selection
     connect(playlist, SIGNAL(ShuffleChanged(bool)),                     // playlist shuffle changed
             ui->actionSh_uffle, SLOT(setChecked(bool)));                // update the menu item
+    connect(ui->indexLabel, SIGNAL(clicked()),                          // when indexLabel is clicked
+            this, SLOT(GetPlaylistIndex()));                            // get the user input for the playlist index
     connect(ui->refreshButton, SIGNAL(clicked()),                       // refresh button
             playlist, SLOT(Refresh()));                                 // refresh playlist files
     connect(ui->actionSh_uffle, SIGNAL(triggered(bool)),                // shuffle action
@@ -496,6 +499,13 @@ void MainWindow::PlayIndex(QModelIndex index)
 void MainWindow::TogglePlaylist()
 {
     ui->playlistLayoutWidget->setVisible(!ui->playlistLayoutWidget->isVisible());
+}
+
+void MainWindow::GetPlaylistIndex()
+{
+    int index = InputDialog::getIndex(playlist->GetMax());
+    if(index != 0)
+        playlist->PlayIndex(index-1); // user index will be 1 greater than actual
 }
 
 void MainWindow::Debug(QString msg)

@@ -17,7 +17,6 @@ signals:
     void LeftClick();
     void MiddleClick();
     void RightClick();
-
 };
 
 #endif // OPENBUTTON_H
