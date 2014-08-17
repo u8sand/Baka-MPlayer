@@ -49,12 +49,8 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
 
     // setup signals & slots
                                                                         // mpv updates
-    connect(mpv, SIGNAL(FileChanged(QString)),                          // MPV_EVENT file changed
-            this, SLOT(SetTitle(QString)));                             // set window title
     connect(mpv, SIGNAL(TimeChanged(int)),                              // MPV_EVENT time-pos update
             this, SLOT(SetTime(int)));                                  // adjust time and slider accordingly
-    connect(mpv, SIGNAL(TotalTimeChanged(int)),                         // MPV_EVENT total time changed
-            ui->seekBar, SLOT(setTracking(int)));                       // send the value to the seekbar so it can give track
     connect(mpv, SIGNAL(PlayStateChanged(Mpv::PlayState)),              // MPV_EVENT playstate changes
             this, SLOT(SetPlayState(Mpv::PlayState)));                  // adjust interface based on new play-state
     connect(mpv, SIGNAL(VolumeChanged(int)),                            // MPV_EVENT volume update
@@ -337,20 +333,12 @@ void MainWindow::SetPlaybackControls(bool enable)
     ui->menuAspect_Ratio->setEnabled(enable);
 }
 
-void MainWindow::SetTitle(QString title)
-{
-    if(title == "")
-        setWindowTitle("Baka MPlayer");
-    else
-        setWindowTitle(QFileInfo(title).fileName());
-}
-
 QString MainWindow::FormatTime(int _time)
 {
     QTime time = QTime::fromMSecsSinceStartOfDay(_time * 1000);
-    if(mpv->GetTotalTime() >= 3600) // hours
+    if(mpv->GetFileInfo().length >= 3600) // hours
         return time.toString("h:mm:ss");
-    if(mpv->GetTotalTime() >= 60)   // minutes
+    if(mpv->GetFileInfo().length >= 60)   // minutes
         return time.toString("mm:ss");
     return time.toString("0:ss");   // seconds
 }
@@ -359,11 +347,11 @@ void MainWindow::SetTime(int time)
 {
     // set the seekBar's location with NoSignal function so that it doesn't trigger a seek
     // the formula is a simple ratio seekBar's max * time/totalTime
-    ui->seekBar->setValueNoSignal(ui->seekBar->maximum()*((double)time/mpv->GetTotalTime()));
+    ui->seekBar->setValueNoSignal(ui->seekBar->maximum()*((double)time/mpv->GetFileInfo().length));
 
     // set duration and remaining labels, QDateTime takes care of formatting for us
     ui->durationLabel->setText(FormatTime(time));
-    ui->remainingLabel->setText("-"+FormatTime(mpv->GetTotalTime()-time));
+    ui->remainingLabel->setText("-"+FormatTime(mpv->GetFileInfo().length-time));
 }
 
 void MainWindow::SetPlayState(Mpv::PlayState playState)
@@ -371,21 +359,17 @@ void MainWindow::SetPlayState(Mpv::PlayState playState)
     // triggered when mpv playstate is changed so we can update controls accordingly
     switch(playState)
     {
-    case Mpv::Started: // ignore, use loaded--despite it's name loaded comes after started
+    case Mpv::Loaded: // todo: show the user we are loading their file
         break;
-    case Mpv::Loaded:
+    case Mpv::Started:
     {
-        SetPlaybackControls(true);
-        mpv->PlayPause();
-        // todo: clean this up, use a function to remove repetition
-
+        const Mpv::FileInfo &fi = mpv->GetFileInfo();
         // load chapter list into menus
-        QList<Mpv::Chapter> chapters = mpv->GetChapters();
         QList<int> ticks;
         QSignalMapper *signalMapper = new QSignalMapper(this);
         int n = 1;
         ui->menu_Chapters->clear();
-        for(auto &ch : chapters)
+        for(auto &ch : fi.chapters)
         {
             QAction *action;
             if(n <= 9)
@@ -406,10 +390,9 @@ void MainWindow::SetPlayState(Mpv::PlayState playState)
 
         // load subtitle list into menus
         signalMapper = new QSignalMapper(this);
-        QList<Mpv::Track> tracks = mpv->GetTracks();
         ui->menuSubtitle_Track->clear();
         ui->menuSubtitle_Track->addAction(ui->action_Add_Subtitle_File);
-        for(auto &track : tracks)
+        for(auto &track : fi.tracks)
         {
             if(track.type == "sub")
             {
@@ -424,8 +407,11 @@ void MainWindow::SetPlayState(Mpv::PlayState playState)
         connect(signalMapper, SIGNAL(mapped(int)),
                 mpv, SLOT(SetSid(int)));
 
-        ui->mpvFrame->setFocusPolicy(Qt::NoFocus);
-        break;
+
+        setWindowTitle(fi.media_title);
+        ui->seekBar->setTracking(fi.length);
+        SetPlaybackControls(true);
+        mpv->Play();
     }
     case Mpv::Playing:
         ui->playButton->SetPlay(false);
@@ -440,10 +426,14 @@ void MainWindow::SetPlayState(Mpv::PlayState playState)
         if(!ui->actionStop_after_Current->isChecked())
             playlist->Next();
         else
+        {
+            setWindowTitle("Baka MPlayer");
+            ui->seekBar->setTracking(0);
             SetPlaybackControls(false);
+        }
         break;
     case Mpv::Ended:
-        settings->setValue("last-file", mpv->GetFile());
+        settings->setValue("last-file", mpv->GetFileInfo().media_title);
         ui->actionOpen_Last_File->setEnabled(settings->value("last-file").toString()!="");
         break;
     }
@@ -451,7 +441,7 @@ void MainWindow::SetPlayState(Mpv::PlayState playState)
 
 void MainWindow::Seek(int position)
 {
-    mpv->Seek(((double)position/ui->seekBar->maximum())*mpv->GetTotalTime());
+    mpv->Seek(((double)position/ui->seekBar->maximum())*mpv->GetFileInfo().length);
 }
 
 void MainWindow::Rewind()
@@ -502,7 +492,7 @@ void MainWindow::BossMode()
 
 void MainWindow::JumpToTime()
 {
-    int time = JumpDialog::getTime(mpv->GetTotalTime(),this);
+    int time = JumpDialog::getTime(mpv->GetFileInfo().length,this);
     if(time >= 0)
         mpv->Seek(time);
 }
