@@ -672,9 +672,6 @@ QSlider::sub-page:horizontal {
            <property name="shortcut">
             <string>Space</string>
            </property>
-           <property name="checkable">
-            <bool>false</bool>
-           </property>
            <property name="flat">
             <bool>true</bool>
            </property>
@@ -821,9 +818,6 @@ QSlider::handle:horizontal {
            <height>16</height>
           </size>
          </property>
-         <property name="checkable">
-          <bool>false</bool>
-         </property>
          <property name="checked">
           <bool>false</bool>
          </property>
@@ -846,7 +840,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>580</width>
-     <height>24</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
