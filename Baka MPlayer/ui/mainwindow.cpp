@@ -140,12 +140,52 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
             this, SLOT(FullScreen()));                                  // full screen window
     connect(ui->actionTake_Snapshot, SIGNAL(triggered()),               // View -> Take Snapshot
             mpv, SLOT(Snapshot()));                                     // mpv snapshot
-    // todo: fit window menu
-    // todo: aspect ratio menu
+    QSignalMapper *fitWindowMap = new QSignalMapper(this);              // View -> FitWindow ->
+    fitWindowMap->setMapping(ui->action_To_Current_Size, 0);            // View -> FitWindow -> To Current Size
+    fitWindowMap->setMapping(ui->action50, 50);                         // View -> FitWindow -> 50%
+    fitWindowMap->setMapping(ui->action75, 75);                         // View -> FitWindow -> 75%
+    fitWindowMap->setMapping(ui->action100, 100);                       // View -> FitWindow -> 100%
+    fitWindowMap->setMapping(ui->action200, 200);                       // View -> FitWindow -> 200%
+    connect(ui->action_To_Current_Size, SIGNAL(triggered()),
+            fitWindowMap, SLOT(map()));
+    connect(ui->action50, SIGNAL(triggered()),
+            fitWindowMap, SLOT(map()));
+    connect(ui->action75, SIGNAL(triggered()),
+            fitWindowMap, SLOT(map()));
+    connect(ui->action100, SIGNAL(triggered()),
+            fitWindowMap, SLOT(map()));
+    connect(ui->action200, SIGNAL(triggered()),
+            fitWindowMap, SLOT(map()));
+    connect(fitWindowMap, SIGNAL(mapped(int)),
+            this, SLOT(FitWindow(int)));                                // fit the window to the appropriate percentage
+    QSignalMapper *aspectMap = new QSignalMapper(this);                 // View -> Aspect Ratio ->
+    aspectMap->setMapping(ui->action_Autodetect, "auto");               // View -> Aspect Ratio -> Auto Detect
+    aspectMap->setMapping(ui->actionForce_4_3, "4:3");                  // View -> Aspect Ratio -> 4:3
+    aspectMap->setMapping(ui->actionForce_2_35_1, "2.35:1");            // View -> Aspect Ratio -> 2.35:1
+    aspectMap->setMapping(ui->actionForce_16_9, "16:9");                // View -> Aspect Ratio -> 16:9
+    connect(ui->action_Autodetect, SIGNAL(triggered()),
+            aspectMap, SLOT(map()));
+    connect(ui->actionForce_4_3, SIGNAL(triggered()),
+            aspectMap, SLOT(map()));
+    connect(ui->actionForce_2_35_1, SIGNAL(triggered()),
+            aspectMap, SLOT(map()));
+    connect(ui->actionForce_16_9, SIGNAL(triggered()),
+            aspectMap, SLOT(map()));
+    connect(aspectMap, SIGNAL(mapped(QString)),
+            this, SLOT(SetAspectRatio(QString)));                       // set the aspect ratio to the appropriate ratio
     connect(ui->actionShow_Subtitles, SIGNAL(triggered()),              // View -> Show Subtitles
             mpv, SLOT(ToggleSubs()));                                   // mpv show subs
+    connect(ui->action_Add_Subtitle_File, SIGNAL(triggered()),          // add a new subtitle file
+            this, SLOT(AddSubtitleTrack()));                            // get the file and add
                                                                         // subtitle track menu
-    // todo: font size menu
+                                                                        // View -> Font Size ->
+    connect(ui->actionS_ize, SIGNAL(triggered()),                       // View -> Font Size -> Size +
+            this, SLOT(IncreaseFontSize()));                            // increase the font size
+    connect(ui->action_Size, SIGNAL(triggered()),                       // View -> Font Size -> Size -
+            this, SLOT(DecreaseFontSize()));                            // decrease the font size
+    connect(ui->action_Reset_Size, SIGNAL(triggered()),                 // View -> Font Size -> Reset Size
+            this, SLOT(ResetFontSize()));                               // reset the font size
+
     connect(ui->actionMedia_Info, SIGNAL(triggered()),                  // View -> Media Info
             this, SLOT(MediaInfo()));                                   // show media info dialog
                                                                         // Playback ->
@@ -287,6 +327,9 @@ void MainWindow::SetPlaybackControls(bool enable)
     ui->action_Playlist->setEnabled(enable);
     ui->action_Full_Screen->setEnabled(enable);
     ui->actionTake_Snapshot->setEnabled(enable);
+    ui->action_Add_Subtitle_File->setEnabled(enable);
+    ui->menuFit_Window->setEnabled(enable);
+    ui->menuAspect_Ratio->setEnabled(enable);
 }
 
 void MainWindow::SetTitle(QString title)
@@ -360,6 +403,7 @@ void MainWindow::SetPlayState(Mpv::PlayState playState)
         signalMapper = new QSignalMapper(this);
         QList<Mpv::Track> tracks = mpv->GetTracks();
         ui->menuSubtitle_Track->clear();
+        ui->menuSubtitle_Track->addAction(ui->action_Add_Subtitle_File);
         for(auto &track : tracks)
         {
             if(track.type == "sub")
@@ -549,4 +593,49 @@ void MainWindow::SeekForward()
 void MainWindow::SeekBack()
 {
     mpv->Seek(-5, true);
+}
+
+void MainWindow::AddSubtitleTrack()
+{
+    QString trackFile = QFileDialog::getOpenFileName(this, "Open subtitle file", playlist->GetPath(), "*.srt"); // todo: add more formats
+    mpv->AddSub(trackFile);
+    // todo: add track to tracklist
+    // todo: select this track? it's not auto selected
+}
+
+void MainWindow::FitWindow(int percent) // todo
+{
+    if(percent == 0) // to current window
+        ;
+    else // to percent
+    {
+    }
+}
+
+void MainWindow::SetAspectRatio(QString spec) // todo
+{
+    if(spec == "auto")
+    {
+    }
+    else if(spec == "4:3")
+    {
+    }
+    else if(spec == "2.35:1")
+    {
+    }
+    else if(spec == "16:9")
+    {
+    }
+}
+
+void MainWindow::IncreaseFontSize() // todo
+{
+}
+
+void MainWindow::DecreaseFontSize() // todo
+{
+}
+
+void MainWindow::ResetFontSize() // todo
+{
 }

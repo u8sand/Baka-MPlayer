@@ -319,7 +319,7 @@ void MpvHandler::SetSid(int sid)
     AsyncCommand(args);
 }
 
-void MpvHandler::SubAdd(QString f)
+void MpvHandler::AddSub(QString f)
 {
     const QByteArray tmp = f.toUtf8();
     const char *args[] = {"sub_add", tmp.constData(), NULL};
