@@ -72,7 +72,7 @@ public slots:
     void SetVid(int vid);                       // set the video track
     void SetAid(int aid);                       // set the audio track
     void SetSid(int sid);                       // set the subtitle track
-    void SubAdd(QString f);                     // add an external subtitle track
+    void AddSub(QString f);                     // add an external subtitle track
     void SetChapter(int chapter);               // seek to the specified chapter
     void NextChapter();                         // seek to next chapter
     void PreviousChapter();                     // seek to previous chapter
