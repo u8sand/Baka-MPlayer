@@ -8,6 +8,7 @@
 
 #include "mpvhandler.h"
 #include "playlistmanager.h"
+#include "lightdialog.h"
 
 namespace Ui {
 class MainWindow;
@@ -66,6 +67,9 @@ private slots:
     void IncreaseFontSize();                        // increase the subtitle font size
     void DecreaseFontSize();                        // decrease the subtitle font size
     void ResetFontSize();                           // reset the subtitle font size
+    void DimLights(bool dim);
+    void IncreaseVolume();
+    void DecreaseVolume();
 
 private:
     Ui::MainWindow *ui;
@@ -74,6 +78,8 @@ private:
 
     MpvHandler *mpv;
     PlaylistManager *playlist;
+
+    LightDialog *light;
 };
 
 #endif // MAINWINDOW_H

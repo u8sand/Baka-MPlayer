@@ -45,6 +45,7 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
     // initialize managers/handlers
     mpv = new MpvHandler(settings, ui->mpvFrame->winId());
     playlist = new PlaylistManager(settings);
+    light = new LightDialog();
 
     // setup signals & slots
                                                                         // mpv updates
@@ -198,6 +199,10 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
     connect(ui->actionSh_uffle, SIGNAL(triggered(bool)),                // Playback -> Shuffle
             playlist, SLOT(Shuffle(bool)));                             // playlist shuffle
     // todo: repeat menu
+    connect(ui->action_Increase_Volume, SIGNAL(triggered()),            // Playback -> Increase Volume
+            this, SLOT(IncreaseVolume()));                              // increase mpv volume by 5
+    connect(ui->action_Decrease_Volume, SIGNAL(triggered()),            // Playback -> Decrease Volume
+            this, SLOT(DecreaseVolume()));                              // decrease mpv volume by 5
                                                                         // Navigate ->
     connect(ui->action_Next_Chapter, SIGNAL(triggered()),               // Navigate -> Next Chapter
             mpv, SLOT(NextChapter()));                                  // mpv next chapter
@@ -638,4 +643,25 @@ void MainWindow::DecreaseFontSize() // todo
 
 void MainWindow::ResetFontSize() // todo
 {
+}
+
+void MainWindow::DimLights(bool dim) // todo: make sure the dim window can't get focus
+{
+    if(dim)
+        light->show();
+    else
+        light->close();
+    activateWindow();
+    raise();
+    setFocus();
+}
+
+void MainWindow::IncreaseVolume()
+{
+    mpv->AdjustVolume(mpv->GetVolume()+5);
+}
+
+void MainWindow::DecreaseVolume()
+{
+    mpv->AdjustVolume(mpv->GetVolume()-5);
 }
