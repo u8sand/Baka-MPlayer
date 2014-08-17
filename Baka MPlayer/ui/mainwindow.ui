@@ -942,6 +942,9 @@ QSlider::handle:horizontal {
     <addaction name="actionSh_uffle"/>
     <addaction name="menuR_epeat"/>
     <addaction name="actionStop_after_Current"/>
+    <addaction name="separator"/>
+    <addaction name="action_Increase_Volume"/>
+    <addaction name="action_Decrease_Volume"/>
    </widget>
    <widget class="QMenu" name="menu_Navigate">
     <property name="title">
@@ -1577,6 +1580,22 @@ QSlider::handle:horizontal {
    </property>
    <property name="shortcut">
     <string>Ctrl+E</string>
+   </property>
+  </action>
+  <action name="action_Increase_Volume">
+   <property name="text">
+    <string>&amp;Increase Volume</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Up</string>
+   </property>
+  </action>
+  <action name="action_Decrease_Volume">
+   <property name="text">
+    <string>&amp;Decrease Volume</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Down</string>
    </property>
   </action>
  </widget>
