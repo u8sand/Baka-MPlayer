@@ -40,6 +40,7 @@ private slots:
     void OpenFile();                                // open file dialog
     void OpenUrl();                                 // open url dialog
     void FullScreen();                              // makes window fullscreen
+    void BossMode();                                // run away from the boss
     void JumpToTime();                              // jump to time dialog
     void MediaInfo();                               // media info dialog
     void OpenFileFromClipboard();                   // opens file from cliboard text
@@ -59,7 +60,6 @@ private slots:
     void About();                                   // shows baka mplayer about dialog
     void SeekForward();                             // seek +5
     void SeekBack();                                // seek -5
-    void BossMode();                                // run away from the boss
 
 private:
     Ui::MainWindow *ui;
