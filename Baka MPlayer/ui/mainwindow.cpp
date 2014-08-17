@@ -286,6 +286,7 @@ void MainWindow::SetPlaybackControls(bool enable)
     ui->actionShow_in_Folder->setEnabled(enable);
     ui->action_Playlist->setEnabled(enable);
     ui->action_Full_Screen->setEnabled(enable);
+    ui->actionTake_Snapshot->setEnabled(enable);
 }
 
 void MainWindow::SetTitle(QString title)
@@ -428,27 +429,26 @@ void MainWindow::OpenFile()
     playlist->LoadFile(QFileDialog::getOpenFileName(this, "Open file"));
 }
 
-void MainWindow::OpenUrl() // todo
+void MainWindow::OpenUrl()
 {
     playlist->LoadFile(LocationDialog::getUrl(this));
 }
 
-void MainWindow::FullScreen() // todo: make nicer
+void MainWindow::FullScreen()
 {
-    static Qt::WindowStates state, frame_state;
-    if(windowState() & Qt::WindowFullScreen)
-    {
+    static Qt::WindowStates state;
+    if(isFullScreen())
         setWindowState(state);
-        ui->mpvFrame->setWindowState(frame_state);
-    }
     else
     {
         state = windowState();
-        frame_state = ui->mpvFrame->windowState();
-
-        showFullScreen();
-        ui->mpvFrame->showFullScreen();
+        setWindowState(Qt::WindowFullScreen);
     }
+}
+
+void MainWindow::BossMode()
+{
+    setWindowState(windowState() | Qt::WindowMinimized);
 }
 
 void MainWindow::JumpToTime()
@@ -549,9 +549,4 @@ void MainWindow::SeekForward()
 void MainWindow::SeekBack()
 {
     mpv->Seek(-5, true);
-}
-
-void MainWindow::BossMode()
-{
-    setWindowState(windowState() | Qt::WindowMinimized);
 }
