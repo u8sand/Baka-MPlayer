@@ -39,10 +39,18 @@ namespace Mpv
         QString external_filename;
         QString codec;
     };
+    struct FileInfo
+    {
+        QString media_title;
+        int length;
+        QList<Track> tracks; // audio, video, and subs
+        QList<Chapter> chapters;
+    };
 }
 Q_DECLARE_METATYPE(Mpv::PlayState) // so we can pass it with signals & slots
 Q_DECLARE_METATYPE(Mpv::Chapter)
 Q_DECLARE_METATYPE(Mpv::Track)
+Q_DECLARE_METATYPE(Mpv::FileInfo)
 
 class MpvHandler : public QObject
 {
@@ -51,21 +59,19 @@ public:
     explicit MpvHandler(QSettings *settings, int64_t wid, QObject *parent = 0);
     ~MpvHandler();
 
-    QString GetFile() const;                    // return file
+    const Mpv::FileInfo &GetFileInfo() const;   // return file info
     int GetTime() const;                        // return time
-    int GetTotalTime() const;                   // return totalTime
     int GetVolume() const;                      // return volume
     Mpv::PlayState GetPlayState() const;        // return playState
-
-    QList<Mpv::Chapter> GetChapters();          // return chapters
-    QList<Mpv::Track> GetTracks();              // return tracks
 
 protected:
     virtual bool event(QEvent *event);          // QObject event function
 
 public slots:
     void OpenFile(QString f);                   // open the file for mpv playing
-    void PlayPause(bool justPause = false);     // toggle pause/unpause state
+    void Play();
+    void Pause();
+    void PlayPause();                           // toggle pause/unpause state
     void Seek(int pos, bool relative = false);  // seek to specific location
     void Restart();                             // seek to the beginning
     void Stop();                                // stop playback (and go to beginning)
@@ -88,16 +94,16 @@ public slots:
 
 private slots:
     void AsyncCommand(const char *args[]);      // execute async mpv command
-    void SetFile(QString f);                    // set file, emit signal
+    void LoadFileInfo();                        // load all the required file information
+    void LoadTracks();
+    void LoadChapters();
+
     void SetTime(int t);                        // set time, emit signal
-    void SetTotalTime(int t);                   // set totalTime, emit signal
     void SetVolume(int v);                      // set volume, emit signal
     void SetPlayState(Mpv::PlayState s);        // set playState, emit signal
 
 signals:
-    void FileChanged(QString f);                // triggered on file changed
-    void TimeChanged(int t);                 // triggered on time changed
-    void TotalTimeChanged(int t);            // triggered on totalTime changed
+    void TimeChanged(int t);                    // triggered on time changed
     void VolumeChanged(int l);                  // triggered on volume changed
     void PlayStateChanged(Mpv::PlayState s);    // triggered on playstate changed
     void ErrorSignal(QString e);                // triggered when an error occurs
@@ -107,9 +113,8 @@ private:
     QSettings *settings;                        // application-wide settings
     mpv_handle *mpv;                            // mpv client handle
 
-    QString file;                               // the current file path
+    Mpv::FileInfo fileInfo;                     // the current file information
     int time,                                   // the current time-pos
-        totalTime,                              // the current total time
         volume;                                 // the current volume
     Mpv::PlayState playState;                   // the current playstate
 };
