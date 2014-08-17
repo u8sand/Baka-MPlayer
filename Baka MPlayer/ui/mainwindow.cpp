@@ -13,6 +13,7 @@
 #include <QDesktopWidget>
 #include <QSignalMapper>
 #include <QAction>
+#include <QShortcut>
 
 #include "aboutdialog.h"
 #include "infodialog.h"
@@ -189,6 +190,11 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
             this, SLOT(AboutQt()));                                     // show about qt
     connect(ui->actionAbout_Baka_MPlayer, SIGNAL(triggered()),          // Help -> About Baka MPlayer
             this, SLOT(About()));                                       // show about dialog
+
+    // keyboard shortcuts
+    new QShortcut(QKeySequence("Right"), this, SLOT(SeekForward()));
+    new QShortcut(QKeySequence("Left"), this, SLOT(SeekBack()));
+    new QShortcut(QKeySequence("Esc"), this, SLOT(BossMode()));
 
     // load arguments
     // todo: put baka mplayer options and such rather than just blindly treating all args as files
@@ -367,6 +373,8 @@ void MainWindow::SetPlayState(Mpv::PlayState playState)
             ui->menuSubtitle_Track->addAction("[ none ]")->setEnabled(false);
         connect(signalMapper, SIGNAL(mapped(int)),
                 mpv, SLOT(SetSid(int)));
+
+        ui->mpvFrame->setFocusPolicy(Qt::NoFocus);
         break;
     }
     case Mpv::Playing:
@@ -531,4 +539,19 @@ void MainWindow::AboutQt()
 void MainWindow::About()
 {
     AboutDialog::about(this); // launch about dialog
+}
+
+void MainWindow::SeekForward()
+{
+    mpv->Seek(5, true);
+}
+
+void MainWindow::SeekBack()
+{
+    mpv->Seek(-5, true);
+}
+
+void MainWindow::BossMode()
+{
+    setWindowState(windowState() | Qt::WindowMinimized);
 }

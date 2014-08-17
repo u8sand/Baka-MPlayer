@@ -669,6 +669,12 @@ QSlider::sub-page:horizontal {
              <height>30</height>
             </size>
            </property>
+           <property name="shortcut">
+            <string>Space</string>
+           </property>
+           <property name="checkable">
+            <bool>false</bool>
+           </property>
            <property name="flat">
             <bool>true</bool>
            </property>

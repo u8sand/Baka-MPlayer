@@ -274,8 +274,16 @@ void MpvHandler::PlayPause(bool justPause)
 void MpvHandler::Seek(int pos, bool relative)
 {
     const QByteArray tmp = QString::number(pos).toUtf8();
-    const char *args[] = {"seek", tmp.constData(), (relative ? "relative" : "absolute"), NULL};
-    AsyncCommand(args);
+    if(relative)
+    {
+        const char *args[] = {"seek", tmp.constData(), NULL};
+        AsyncCommand(args);
+    }
+    else
+    {
+        const char *args[] = {"seek", tmp.constData(), "absolute", NULL};
+        AsyncCommand(args);
+    }
 }
 
 void MpvHandler::Restart()

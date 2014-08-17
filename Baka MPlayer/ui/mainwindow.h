@@ -57,6 +57,9 @@ private slots:
     void CheckForUpdates();                         // checks for program updates
     void AboutQt();                                 // shows qt license information
     void About();                                   // shows baka mplayer about dialog
+    void SeekForward();                             // seek +5
+    void SeekBack();                                // seek -5
+    void BossMode();                                // run away from the boss
 
 private:
     Ui::MainWindow *ui;
