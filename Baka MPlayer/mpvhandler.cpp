@@ -95,6 +95,7 @@ bool MpvHandler::event(QEvent *event)
                 break;
             }
             case MPV_EVENT_IDLE:
+                fileInfo.length = 0;
                 SetTime(0);
                 SetPlayState(Mpv::Idle);
                 break;

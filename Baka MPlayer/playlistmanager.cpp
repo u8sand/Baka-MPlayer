@@ -116,12 +116,15 @@ void PlaylistManager::PlayIndex(int i)
         }
     }
     else
-        Stop();
+        emit Stop();
 }
 
-void PlaylistManager::Next()
+bool PlaylistManager::Next()
 {
+    if(index+1 >= list.size())
+        return false;
     PlayIndex(index+1);
+    return true;
 }
 
 void PlaylistManager::Previous()

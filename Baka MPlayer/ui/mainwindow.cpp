@@ -106,7 +106,7 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
     connect(ui->openButton, SIGNAL(RightClick()),                       // right-clicked the open button
             this, SLOT(OpenUrl()));                                     // open-url dialog
     connect(ui->playButton, SIGNAL(clicked()),                          // clicked the playpause button
-            mpv, SLOT(PlayPause()));                                    // mpv playpause
+            this, SLOT(PlayPause()));                                   // mpv playpause
     connect(ui->playlistButton, SIGNAL(clicked()),                      // clicked the playlist button
             this, SLOT(TogglePlaylist()));                              // toggle playlist visibility
     connect(ui->previousButton, SIGNAL(clicked()),                      // clicked the previous button
@@ -298,8 +298,6 @@ void MainWindow::SetPlaybackControls(bool enable)
     // playback controls
     ui->rewindButton->setEnabled(enable);
     ui->playlistButton->setEnabled(enable);
-    ui->playButton->setEnabled(enable);
-    ui->playButton->Update();
 
     // next button
     if(enable && playlist->GetIndex()+1 < ui->playlistWidget->count()) // not the last entry
@@ -424,6 +422,11 @@ void MainWindow::SetPlayState(Mpv::PlayState playState)
         setWindowTitle(fi.media_title);
         ui->seekBar->setTracking(fi.length);
         SetPlaybackControls(true);
+        if(!ui->playButton->isEnabled()) // will only happen the first time a file is loaded.
+        {
+            ui->playButton->setEnabled(true);
+            ui->playButton->Update();
+        }
         mpv->Play();
     }
     case Mpv::Playing:
@@ -446,13 +449,12 @@ void MainWindow::SetPlayState(Mpv::PlayState playState)
         }
         break;
     case Mpv::Idle:
-        if(!ui->actionStop_after_Current->isChecked())
-            playlist->Next();
-        else
+        if(ui->actionStop_after_Current->isChecked() || !playlist->Next())
         {
             setWindowTitle("Baka MPlayer");
-            ui->seekBar->setTracking(0);
             SetPlaybackControls(false);
+            ui->seekBar->setTracking(0);
+            SetTime(0);
         }
         break;
     case Mpv::Ended:
@@ -460,6 +462,14 @@ void MainWindow::SetPlayState(Mpv::PlayState playState)
         ui->actionOpen_Last_File->setEnabled(settings->value("last-file").toString()!="");
         break;
     }
+}
+
+void MainWindow::PlayPause()
+{
+    if(mpv->GetPlayState() == Mpv::Idle) // if idle, play plays the selected playlist file
+        playlist->PlayIndex(ui->playlistWidget->currentRow());
+    else
+        mpv->PlayPause();
 }
 
 void MainWindow::Seek(int position)

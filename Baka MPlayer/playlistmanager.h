@@ -24,7 +24,7 @@ public:
 public slots:
     void LoadFile(QString file);        // frontend for opening a file, populating the playlist etc.
     void PlayIndex(int i);              // play a specific index (eg. double click index on playlist widget)
-    void Next();                        // play the next file in the playlist
+    bool Next();                        // play the next file in the playlist
     void Previous();                    // play the previous file in the playlist
     void SearchPlaylist(QString s);     // search through playlist
     void Refresh();                     // refresh the playlist (look again at the directory)

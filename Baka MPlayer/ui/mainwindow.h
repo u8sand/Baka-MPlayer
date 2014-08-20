@@ -36,6 +36,7 @@ private slots:
     void SetTime(int time);                         // triggered by mpv, updates time labels and seekbar
     void SetPlayState(Mpv::PlayState state);        // triggered by mpv, updates controls based on changes of playstate
     void Seek(int position);                        // converts seekbar location to mpv->Seek command
+    void PlayPause();                               // mpv playpause
     void Rewind();                                  // rewind macro, goes back to beginning or stops playback
     void NewPlayer();                               // creates a new MainWindow
     void OpenFile();                                // open file dialog
