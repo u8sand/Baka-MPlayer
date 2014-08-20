@@ -14,6 +14,7 @@
 #include <QSignalMapper>
 #include <QAction>
 #include <QShortcut>
+#include <QIcon>
 
 #include "aboutdialog.h"
 #include "infodialog.h"
@@ -24,10 +25,12 @@
 MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
     QMainWindow(parent),
     ui(new Ui::MainWindow),
+    trayIcon(new QSystemTrayIcon(QIcon(":/img/logo.svg"), this)),
     settings(_settings)
 {
     ui->setupUi(this);
     ui->playlistLayoutWidget->setVisible(false); // hide playlist by default
+    // todo: tray icon menu/tooltip
 
     // load settings
     setGeometry(QStyle::alignedRect(Qt::LeftToRight,
@@ -220,8 +223,18 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
             this, SLOT(DimLights(bool)));                               // toggle dim lights
     connect(ui->actionShow_D_ebug_Output, SIGNAL(triggered(bool)),      // Options -> Show Debug Output
             ui->outputTextEdit, SLOT(setVisible(bool)));                // toggle debug output
-    // todo: on-top menu
-    // todo: tray icon menu
+                                                                        // Options -> On Top ->
+    connect(ui->action_Always, SIGNAL(triggered(bool)),                 // Options -> On Top -> Always
+            this, SLOT(AlwaysOnTop(bool)));                             // enable/disable
+    connect(ui->actionWhen_Playing, SIGNAL(triggered(bool)),            // Options -> On Top -> When Playing
+            this, SLOT(AlwaysOnTopWhenPlaying(bool)));                  // if playing, enable
+    connect(ui->action_Never, SIGNAL(triggered(bool)),                  // Options -> On Top -> Never
+            this, SLOT(NeverOnTop(bool)));                              // disable always/when playing
+                                                                        // Options -> Tray Icon ->
+    connect(ui->action_Show_in_Tray, SIGNAL(triggered(bool)),           // Options -> Tray Icon -> Show In Tray
+            this, SLOT(ShowInTray(bool)));
+    connect(ui->action_Hide_Popup, SIGNAL(triggered(bool)),             // Options -> Tray Icon -> Hide Popup
+            this, SLOT(HidePoppup(bool)));
                                                                         // Help ->
     connect(ui->actionOnline_Help, SIGNAL(triggered()),                 // Help -> Online Help
             this, SLOT(OnlineHelp()));                                  // open online help
@@ -416,11 +429,21 @@ void MainWindow::SetPlayState(Mpv::PlayState playState)
     case Mpv::Playing:
         ui->playButton->SetPlay(false);
         ui->action_Play->setText("&Pause");
+        if(ui->actionWhen_Playing->isChecked())
+        {
+            setWindowFlags(windowFlags() | Qt::WindowStaysOnTopHint);
+            show();
+        }
         break;
     case Mpv::Paused:
     case Mpv::Stopped:
         ui->playButton->SetPlay(true);
         ui->action_Play->setText("&Play");
+        if(ui->actionWhen_Playing->isChecked())
+        {
+            setWindowFlags(windowFlags() ^ Qt::WindowStaysOnTopHint);
+            show();
+        }
         break;
     case Mpv::Idle:
         if(!ui->actionStop_after_Current->isChecked())
@@ -657,4 +680,60 @@ void MainWindow::IncreaseVolume()
 void MainWindow::DecreaseVolume()
 {
     mpv->AddVolume(-5);
+}
+
+void MainWindow::AlwaysOnTop(bool ontop)
+{
+    ui->actionWhen_Playing->setChecked(false);
+    ui->action_Never->setChecked(false);
+    if(ontop)
+    {
+        setWindowFlags(windowFlags() | Qt::WindowStaysOnTopHint);
+        show();
+    }
+    else
+    {
+        setWindowFlags(windowFlags() ^ Qt::WindowStaysOnTopHint);
+        show();
+    }
+}
+
+void MainWindow::AlwaysOnTopWhenPlaying(bool ontop)
+{
+    if(ontop)
+    {
+        ui->action_Always->setChecked(false);
+        ui->action_Never->setChecked(false);
+        if(mpv->GetPlayState() == Mpv::Playing)
+        {
+            setWindowFlags(windowFlags() | Qt::WindowStaysOnTopHint);
+            show();
+        }
+    }
+    else
+    {
+        setWindowFlags(windowFlags() ^ Qt::WindowStaysOnTopHint);
+        show();
+    }
+}
+
+void MainWindow::NeverOnTop(bool ontop)
+{
+    if(ontop)
+    {
+        ui->actionWhen_Playing->setChecked(false);
+        ui->action_Always->setChecked(false);
+        setWindowFlags(windowFlags() ^ Qt::WindowStaysOnTopHint);
+        show();
+    }
+}
+
+void MainWindow::ShowInTray(bool show)
+{
+    trayIcon->setVisible(show);
+}
+
+void MainWindow::HidePoppup(bool hide) // todo
+{
+
 }
