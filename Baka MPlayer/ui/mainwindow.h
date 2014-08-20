@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QSystemTrayIcon>
 #include <QSettings>
 #include <QModelIndex>
 #include <QStringList>
@@ -69,9 +70,16 @@ private slots:
     void DimLights(bool dim);
     void IncreaseVolume();
     void DecreaseVolume();
+    void AlwaysOnTop(bool ontop);
+    void AlwaysOnTopWhenPlaying(bool ontop);
+    void NeverOnTop(bool ontop);
+    void ShowInTray(bool show);
+    void HidePoppup(bool hide);
 
 private:
     Ui::MainWindow *ui;
+    QSystemTrayIcon *trayIcon;
+    QMenu *trayIconMenu;
 
     QSettings *settings;
 
