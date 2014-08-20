@@ -12,8 +12,14 @@ It's also portable and supports opening Youtube videos (through **libmpv**).
 
 ## Compilation
 
-* Qt5 Creator
-* mpv-git (compiled libmpv and pkg-config support)
+* Qt5
+* mpv (compiled libmpv and pkg-config support)
+
+If everything is in the right place (qt libs, mpv, etc..) compilation is simple:
+
+	$ ./make.sh
+
+This will build in the build/ directory.
 
 ## Bug reports
 
