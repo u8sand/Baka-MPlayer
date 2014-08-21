@@ -71,11 +71,15 @@ private slots:
     void DimLights(bool dim);
     void IncreaseVolume();
     void DecreaseVolume();
+    void ShowInTray(bool show);
+    void HidePopup(bool hide);
+
+#ifdef Q_OS_WIN
+    void SetAlwaysOnTop(bool ontop);
     void AlwaysOnTop(bool ontop);
     void AlwaysOnTopWhenPlaying(bool ontop);
     void NeverOnTop(bool ontop);
-    void ShowInTray(bool show);
-    void HidePoppup(bool hide);
+#endif
 
 private:
     Ui::MainWindow *ui;
