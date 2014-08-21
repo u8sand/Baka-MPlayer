@@ -713,11 +713,26 @@ void MainWindow::HidePopup(bool hide) // todo
 void MainWindow::SetAlwaysOnTop(bool ontop)
 {
     // maybe in the future, Linux X specific code that way we could enable it for both platforms
-#ifdef Q_OS_WIN
+#if defined(Q_OS_WIN)
     SetWindowPos((HWND)winId(),
                  ontop ? HWND_TOPMOST : HWND_NOTOPMOST,
                  0, 0, 0, 0,
                  SWP_NOSIZE | SWP_NOMOVE | SWP_SHOWWINDOW);
+//#elif defined(Q_OS_LINUX) // though this code should work, I'm not sure how to implement it yet
+//    XClientMessageEvent xclient;
+//    memset(&xclient, 0, sizeof(xclient));
+//    xclient.type = ClientMessage;
+//    xclient.window = window;
+//    xclient.message_type = "_NET_WM_STATE";
+//    xclient.format = 32;
+//    xclient.data.l[0] = ontop? 1 : 0;
+//    xclient.data.l[1] = "_NET_WM_STATE_ABOVE"; // _NET_WM_STATE_BELOW
+//    xclient.data.l[2] = 0;
+//    xclient.data.l[3] = 0;
+//    xclient.data.l[4] = 0;
+//    XSendEvent (window, NULL, false,
+//        SubstructureRedirectMask | SubstructureNotifyMask,
+//        (XEvent*)&xclient);
 #else // qt code
     if(ontop)
         setWindowFlags(windowFlags() | Qt::WindowStaysOnTopHint);
