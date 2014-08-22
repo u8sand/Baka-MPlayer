@@ -3,7 +3,7 @@
 
 #include <QDialog>
 
-//#include <mpv/client.h>
+#include "mpvhandler.h"
 
 namespace Ui {
 class InfoDialog;
@@ -14,12 +14,13 @@ class InfoDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit InfoDialog(QWidget *parent = 0);
+    explicit InfoDialog(const Mpv::FileInfo &fileInfo, QWidget *parent = 0);
     ~InfoDialog();
 
-    static void info(/*const mpv_node_list metadata, */QWidget *parent = 0);
+    static void info(const Mpv::FileInfo &fileInfo, QWidget *parent = 0);
 private:
     Ui::InfoDialog *ui;
+    const Mpv::FileInfo &fileInfo;
 };
 
 #endif // INFODIALOG_H

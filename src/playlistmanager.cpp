@@ -59,7 +59,7 @@ int PlaylistManager::GetMax() const
 
 void PlaylistManager::LoadFile(QString f)
 {
-    if(f == "") return; // ignore empty file
+    if(f.length() == 0) return; // ignore empty file name
 
     QRegExp rx("^(https?://.+\\.[a-z]+)", Qt::CaseInsensitive);
 
