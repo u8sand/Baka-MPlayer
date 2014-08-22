@@ -2,6 +2,7 @@
 #define ABOUTDIALOG_H
 
 #include <QDialog>
+#include <QString>
 
 namespace Ui {
 class AboutDialog;
@@ -12,10 +13,10 @@ class AboutDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit AboutDialog(QWidget *parent = 0);
+    explicit AboutDialog(QString version, QWidget *parent = 0);
     ~AboutDialog();
 
-    static void about(QWidget *parent = 0);
+    static void about(QString version, QWidget *parent = 0);
 
 private:
     Ui::AboutDialog *ui;

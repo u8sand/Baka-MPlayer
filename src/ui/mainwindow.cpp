@@ -618,7 +618,7 @@ void MainWindow::AboutQt()
 
 void MainWindow::About()
 {
-    AboutDialog::about(this); // launch about dialog
+    AboutDialog::about(BAKA_MPLAYER_VERSION, this); // launch about dialog
 }
 
 void MainWindow::SeekForward()
