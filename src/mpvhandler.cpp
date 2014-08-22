@@ -18,6 +18,7 @@ MpvHandler::MpvHandler(QSettings *_settings, int64_t wid, QObject *parent):
     playState(Mpv::Stopped)
 {
     volume = settings->value("mpv/volume", 100).toInt();
+    double speed = settings->value("mpv/speed", 1).toInt();
 
     mpv = mpv_create();
     if(!mpv)
@@ -28,7 +29,9 @@ MpvHandler::MpvHandler(QSettings *_settings, int64_t wid, QObject *parent):
     mpv_observe_property(mpv, 0, "time-pos", MPV_FORMAT_DOUBLE);
     mpv_observe_property(mpv, 0, "volume", MPV_FORMAT_DOUBLE);
 
-    mpv_set_property(mpv, "volume", MPV_FORMAT_DOUBLE, (double*)&volume);
+//    mpv_set_option(mpv, "volume", MPV_FORMAT_DOUBLE, (double*)&volume);
+    mpv_set_option(mpv, "speed", MPV_FORMAT_DOUBLE, &speed);
+    mpv_set_option_string(mpv, "af", "scaletempo");
 
     if(settings->value("debug/mpv", false).toBool())
         mpv_request_log_messages(mpv, "debug");
@@ -105,6 +108,7 @@ bool MpvHandler::event(QEvent *event)
                 break;
             case MPV_EVENT_FILE_LOADED:
                 LoadFileInfo();
+                AdjustVolume(volume);
                 SetPlayState(Mpv::Started);
             case MPV_EVENT_UNPAUSE:
                 SetPlayState(Mpv::Playing);
