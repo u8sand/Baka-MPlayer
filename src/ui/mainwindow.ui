@@ -416,11 +416,11 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
       </property>
       <property name="styleSheet">
        <string notr="true">QSlider {
-	height: 5px;
+	height: 8px;
 }
 QSlider::handle:horizontal {
 	background: #455a64;
-	width: 12px;
+	width: 15px;
 }
 QSlider::groove:horizontal {
 	background: #141414;
