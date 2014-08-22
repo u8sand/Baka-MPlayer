@@ -29,7 +29,9 @@
 MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-    settings(_settings)
+    settings(_settings),
+    dragging(false),
+    lastMousePos(QPoint())
 {
     ui->setupUi(this);
     trayIcon = new QSystemTrayIcon(this);
@@ -301,6 +303,32 @@ void MainWindow::dropEvent(QDropEvent *event) // todo: does this even work??
     else if(mimeData->hasUrls()) // urls
         for(auto &url : mimeData->urls())
             playlist->LoadFile(url.path()); // load the urls as files
+}
+
+void MainWindow::mousePressEvent(QMouseEvent *event)
+{
+    dragging = true;
+    lastMousePos = event->pos();
+    QMainWindow::mousePressEvent(event);
+}
+
+void MainWindow::mouseReleaseEvent(QMouseEvent *event)
+{
+    dragging = false;
+    QMainWindow::mouseReleaseEvent(event);
+}
+
+void MainWindow::mouseMoveEvent(QMouseEvent *event)
+{
+    if(dragging)
+    {
+        pos() += lastMousePos-event->pos();
+        lastMousePos = event->pos();
+        event->accept();
+    }
+    else
+        event->ignore();
+    QMainWindow::mouseMoveEvent(event);
 }
 
 void MainWindow::SetPlaybackControls(bool enable)
