@@ -345,17 +345,18 @@ void MainWindow::SetPlaybackControls(bool enable)
     ui->action_Add_Subtitle_File->setEnabled(enable);
     ui->menuFit_Window->setEnabled(enable);
     ui->menuAspect_Ratio->setEnabled(enable);
-    // next chapter
-    if(enable && (mpv->GetFileInfo().chapters.length() > 0 && mpv->GetTime() < mpv->GetFileInfo().chapters.end()->time)) // before the last chapter
-        ui->action_Next_Chapter->setEnabled(true);
-    else
-        ui->action_Next_Chapter->setEnabled(false);
-    // previous chapter
-    if(enable && (mpv->GetFileInfo().chapters.length() > 0 && mpv->GetTime() > mpv->GetFileInfo().chapters.begin()->time)) // after the first chapter
-        ui->action_Previous_Chapter->setEnabled(true);
-    else
-        ui->action_Previous_Chapter->setEnabled(false);
     ui->menuSubtitle_Track->setEnabled(enable);
+
+    if(enable && mpv->GetFileInfo().chapters.length() > 0) // only enable chapters if there are chapters
+    {
+        ui->action_Next_Chapter->setEnabled(true);
+        ui->action_Previous_Chapter->setEnabled(true);
+    }
+    else
+    {
+        ui->action_Next_Chapter->setEnabled(false);
+        ui->action_Previous_Chapter->setEnabled(false);
+    }
 }
 
 QString MainWindow::FormatTime(int _time)
@@ -377,6 +378,13 @@ void MainWindow::SetTime(int time)
     // set duration and remaining labels, QDateTime takes care of formatting for us
     ui->durationLabel->setText(FormatTime(time));
     ui->remainingLabel->setText("-"+FormatTime(mpv->GetFileInfo().length-time));
+
+    // update next/previous chapter's enabled status
+    if(mpv->GetFileInfo().chapters.length() > 0)
+    {
+        ui->action_Next_Chapter->setEnabled(time < mpv->GetFileInfo().chapters.last().time);
+        ui->action_Previous_Chapter->setEnabled(time > mpv->GetFileInfo().chapters.first().time);
+    }
 }
 
 void MainWindow::SetPlayState(Mpv::PlayState playState)
@@ -435,13 +443,13 @@ void MainWindow::SetPlayState(Mpv::PlayState playState)
 
         setWindowTitle(fi.media_title);
         ui->seekBar->setTracking(fi.length);
-        SetPlaybackControls(true);
         if(!ui->playButton->isEnabled()) // will only happen the first time a file is loaded.
         {
             ui->playButton->setEnabled(true);
             ui->playButton->Update();
         }
         mpv->Play();
+        SetPlaybackControls(true);
     }
     case Mpv::Playing:
         ui->playButton->SetPlay(false);
