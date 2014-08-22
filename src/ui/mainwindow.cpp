@@ -29,12 +29,12 @@
 MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-    trayIcon(new QSystemTrayIcon(QIcon(":/img/logo.svg"), this)),
     settings(_settings)
 {
     ui->setupUi(this);
-
-    // todo: tray icon menu/tooltip
+    trayIcon = new QSystemTrayIcon(this);
+    trayIcon->setIcon(qApp->windowIcon());
+    // todo: tray menu/tooltip
 
 #if defined(Q_OS_LINUX) || defined(Q_OS_UNIX) // linux has native support for on top already, this feature is unnecessary
     ui->menu_Options->removeAction(ui->menu_On_Top->menuAction()); // remove the On Top menu
@@ -260,9 +260,10 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
     new QShortcut(QKeySequence("Left"), this, SLOT(SeekBack()));
     new QShortcut(QKeySequence("Esc"), this, SLOT(BossMode()));
 
-    // load arguments
-    // todo: put baka mplayer options and such rather than just blindly treating all args as files
-    for(auto arg = QCoreApplication::arguments().begin()+1; arg != QCoreApplication::arguments().end(); ++arg) // loop through arguments except first (executable name)
+    // load arguments (we'll just load the first argument for now as a file)
+    QStringList args = QCoreApplication::arguments();
+    QStringList::iterator arg = args.begin();
+    if(++arg != args.end()) // does the next argument exist?
         playlist->LoadFile(*arg); // loadfile
 }
 
@@ -540,6 +541,7 @@ void MainWindow::FullScreen(bool fs)
 
 void MainWindow::BossMode()
 {
+    mpv->Pause();
     setWindowState(windowState() | Qt::WindowMinimized);
 }
 
@@ -552,7 +554,7 @@ void MainWindow::JumpToTime()
 
 void MainWindow::MediaInfo() // todo
 {
-//    InfoDialog::info(mpv->GetMetaData(), this);
+    InfoDialog::info(mpv->GetFileInfo(), this);
 }
 
 void MainWindow::OpenFileFromClipboard()
@@ -583,7 +585,10 @@ void MainWindow::UpdatePlaylistIndex(int index)
 
 void MainWindow::UpdatePlaylistSelectionIndex(int index)
 {
-    ui->indexLabel->setText("File "+QString::number(index+1)+" of "+QString::number(ui->playlistWidget->count()));
+    if(index == -1) // no selection
+        ui->indexLabel->setText("File - of "+QString::number(ui->playlistWidget->count()));
+    else
+        ui->indexLabel->setText("File "+QString::number(index+1)+" of "+QString::number(ui->playlistWidget->count()));
 }
 
 void MainWindow::PlaylistSelectCurrent()
@@ -621,7 +626,7 @@ void MainWindow::TogglePlaylist()
 void MainWindow::GetPlaylistIndex()
 {
     int index = InputDialog::getIndex(playlist->GetMax());
-    if(index != 0)
+    if(index > 0)
         playlist->PlayIndex(index-1); // user index will be 1 greater than actual
 }
 
