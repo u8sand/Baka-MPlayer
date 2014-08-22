@@ -33,7 +33,7 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
     settings(_settings)
 {
     ui->setupUi(this);
-    ui->playlistLayoutWidget->setVisible(false); // hide playlist by default
+
     // todo: tray icon menu/tooltip
 
 #if defined(Q_OS_LINUX) || defined(Q_OS_UNIX) // linux has native support for on top already, this feature is unnecessary
@@ -78,7 +78,7 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
     connect(playlist, SIGNAL(Search(QString)),                          // playlist search
             ui->searchBox, SLOT(setText(QString)));                     // set the text of the searchbox
     connect(playlist, SIGNAL(Show(bool)),                               // playlist set visibility
-            ui->playlistLayoutWidget, SLOT(setVisible(bool)));          // set visibility of the playlist
+            this, SLOT(SetPlaylist(bool)));                             // set visibility of the playlist
     connect(playlist, SIGNAL(ListChanged(QStringList)),                 // playlist update list
             this, SLOT(UpdatePlaylist(QStringList)));                   // update the playlistWidget
     connect(playlist, SIGNAL(IndexChanged(int)),                        // playlist update index
@@ -150,10 +150,10 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
             mpv, SLOT(Snapshot()));                                     // mpv snapshot
     QSignalMapper *fitWindowMap = new QSignalMapper(this);              // View -> FitWindow ->
     fitWindowMap->setMapping(ui->action_To_Current_Size, 0);            // View -> FitWindow -> To Current Size
-    fitWindowMap->setMapping(ui->action50, 50);                         // View -> FitWindow -> 50%
-    fitWindowMap->setMapping(ui->action75, 75);                         // View -> FitWindow -> 75%
-    fitWindowMap->setMapping(ui->action100, 100);                       // View -> FitWindow -> 100%
-    fitWindowMap->setMapping(ui->action200, 200);                       // View -> FitWindow -> 200%
+    fitWindowMap->setMapping(ui->action50, .5);                         // View -> FitWindow -> 50%
+    fitWindowMap->setMapping(ui->action75, .75);                        // View -> FitWindow -> 75%
+    fitWindowMap->setMapping(ui->action100, 1);                         // View -> FitWindow -> 100%
+    fitWindowMap->setMapping(ui->action200, 2);                         // View -> FitWindow -> 200%
     connect(ui->action_To_Current_Size, SIGNAL(triggered()),
             fitWindowMap, SLOT(map()));
     connect(ui->action50, SIGNAL(triggered()),
@@ -167,10 +167,10 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
     connect(fitWindowMap, SIGNAL(mapped(int)),
             this, SLOT(FitWindow(int)));                                // fit the window to the appropriate percentage
     QSignalMapper *aspectMap = new QSignalMapper(this);                 // View -> Aspect Ratio ->
-    aspectMap->setMapping(ui->action_Autodetect, "auto");               // View -> Aspect Ratio -> Auto Detect
-    aspectMap->setMapping(ui->actionForce_4_3, "4:3");                  // View -> Aspect Ratio -> 4:3
-    aspectMap->setMapping(ui->actionForce_2_35_1, "2.35:1");            // View -> Aspect Ratio -> 2.35:1
-    aspectMap->setMapping(ui->actionForce_16_9, "16:9");                // View -> Aspect Ratio -> 16:9
+    aspectMap->setMapping(ui->action_Autodetect, 0);                    // View -> Aspect Ratio -> Auto Detect
+    aspectMap->setMapping(ui->actionForce_4_3, 4/3);                    // View -> Aspect Ratio -> 4:3
+    aspectMap->setMapping(ui->actionForce_2_35_1, 2.35/1);              // View -> Aspect Ratio -> 2.35:1
+    aspectMap->setMapping(ui->actionForce_16_9, 16/9);                  // View -> Aspect Ratio -> 16:9
     connect(ui->action_Autodetect, SIGNAL(triggered()),
             aspectMap, SLOT(map()));
     connect(ui->actionForce_4_3, SIGNAL(triggered()),
@@ -224,7 +224,7 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
             this, SLOT(JumpToTime()));                                  // jump-to-time dialog
                                                                         // Options ->
     connect(ui->action_Show_Playlist_2, SIGNAL(triggered(bool)),        // Options -> Show Playlist
-            ui->playlistLayoutWidget, SLOT(setVisible(bool)));                             // toggle playlist visibility
+            this, SLOT(SetPlaylist(bool)));                             // toggle playlist visibility
     connect(ui->action_Hide_Album_Art_2, SIGNAL(triggered(bool)),       // Options -> Hide Album Art
             this, SLOT(ShowAlbumArt(bool)));                            // toggle album art
     connect(ui->action_Dim_Lights_2, SIGNAL(triggered(bool)),           // Options -> Dim Lights
@@ -304,12 +304,11 @@ void MainWindow::dropEvent(QDropEvent *event) // todo: does this even work??
 
 void MainWindow::SetPlaybackControls(bool enable)
 {
-    ui->seekBar->setEnabled(enable);
     // playback controls
+    ui->seekBar->setEnabled(enable);
     ui->rewindButton->setEnabled(enable);
     ui->playlistButton->setEnabled(enable);
-
-    // next button
+    // next file
     if(enable && playlist->GetIndex()+1 < ui->playlistWidget->count()) // not the last entry
     {
         ui->nextButton->setEnabled(true);
@@ -321,8 +320,7 @@ void MainWindow::SetPlaybackControls(bool enable)
         ui->nextButton->setEnabled(false);
         ui->actionPlay_Next_File->setEnabled(false);
     }
-
-    // previous button
+    // previous file
     if(enable && playlist->GetIndex()-1 >= 0) // not the first entry
     {
         ui->previousButton->setEnabled(true);
@@ -334,11 +332,6 @@ void MainWindow::SetPlaybackControls(bool enable)
         ui->previousButton->setEnabled(false);
         ui->actionPlay_Previous_File->setEnabled(false);
     }
-
-    // todo: same thing as above, disable if first/last entry
-    ui->action_Next_Chapter->setEnabled(enable);
-    ui->action_Previous_Chapter->setEnabled(enable);
-
     // menubar
     ui->action_Play->setEnabled(enable);
     ui->action_Stop->setEnabled(enable);
@@ -352,6 +345,17 @@ void MainWindow::SetPlaybackControls(bool enable)
     ui->action_Add_Subtitle_File->setEnabled(enable);
     ui->menuFit_Window->setEnabled(enable);
     ui->menuAspect_Ratio->setEnabled(enable);
+    // next chapter
+    if(enable && (mpv->GetFileInfo().chapters.length() > 0 && mpv->GetTime() < mpv->GetFileInfo().chapters.end()->time)) // before the last chapter
+        ui->action_Next_Chapter->setEnabled(true);
+    else
+        ui->action_Next_Chapter->setEnabled(false);
+    // previous chapter
+    if(enable && (mpv->GetFileInfo().chapters.length() > 0 && mpv->GetTime() > mpv->GetFileInfo().chapters.begin()->time)) // after the first chapter
+        ui->action_Previous_Chapter->setEnabled(true);
+    else
+        ui->action_Previous_Chapter->setEnabled(false);
+    ui->menuSubtitle_Track->setEnabled(enable);
 }
 
 QString MainWindow::FormatTime(int _time)
@@ -584,9 +588,26 @@ void MainWindow::PlayIndex(QModelIndex index)
     playlist->PlayIndex(index.row());
 }
 
+void MainWindow::SetPlaylist(bool visible) // todo: make this work if it's hidden by default
+{
+    static QList<int> sizes;
+    if(!visible)
+    {
+        sizes = ui->splitter->sizes();
+        ui->splitter->setSizes({sizes[0]+sizes[1], 0});
+    }
+    else
+        ui->splitter->setSizes(sizes);
+
+    ui->action_Playlist->setChecked(visible);
+}
+
 void MainWindow::TogglePlaylist()
 {
-    ui->playlistLayoutWidget->setVisible(!ui->playlistLayoutWidget->isVisible());
+    if(ui->splitter->sizes()[1] == 0) // playlist is not visible
+        SetPlaylist(true);
+    else
+        SetPlaylist(false);
 }
 
 void MainWindow::GetPlaylistIndex()
@@ -639,27 +660,28 @@ void MainWindow::AddSubtitleTrack()
     // todo: select this track? it's not auto selected
 }
 
-void MainWindow::FitWindow(int percent) // todo
+void MainWindow::FitWindow(double scale) // todo
 {
-    if(percent == 0) // to current window
-        ;
-    else // to percent
+    if(isFullScreen())
+        return;
+
+    if(scale == 0) // current window
+    {
+    }
+    else
     {
     }
 }
 
-void MainWindow::SetAspectRatio(QString spec) // todo
+void MainWindow::SetAspectRatio(double ratio) // todo
 {
-    if(spec == "auto")
+    if(isFullScreen())
+        return;
+
+    if(ratio == 0) // autodetect
     {
     }
-    else if(spec == "4:3")
-    {
-    }
-    else if(spec == "2.35:1")
-    {
-    }
-    else if(spec == "16:9")
+    else
     {
     }
 }
