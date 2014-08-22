@@ -411,6 +411,15 @@ void MpvHandler::LoadChapters()
     }
 }
 
+void MpvHandler::LoadVideoParams()
+{
+    mpv_get_property(mpv, "width", MPV_FORMAT_INT64, &fileInfo.video_params.width);
+    mpv_get_property(mpv, "height", MPV_FORMAT_INT64, &fileInfo.video_params.height);
+    mpv_get_property(mpv, "dwidth", MPV_FORMAT_INT64, &fileInfo.video_params.dwidth);
+    mpv_get_property(mpv, "dheight", MPV_FORMAT_INT64, &fileInfo.video_params.dheight);
+    mpv_get_property(mpv, "video-aspect", MPV_FORMAT_INT64, &fileInfo.video_params.aspect);
+}
+
 void MpvHandler::SetTime(int t)
 {
     if(time != t)

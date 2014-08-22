@@ -39,10 +39,20 @@ namespace Mpv
         QString external_filename;
         QString codec;
     };
+    struct VideoParams
+    {
+        int width,
+            height,
+            dwidth,
+            dheight;
+        double aspect;
+    };
+
     struct FileInfo
     {
         QString media_title;
         int length;
+        VideoParams video_params;
         QList<Track> tracks; // audio, video, and subs
         QList<Chapter> chapters;
     };
@@ -50,6 +60,7 @@ namespace Mpv
 Q_DECLARE_METATYPE(Mpv::PlayState) // so we can pass it with signals & slots
 Q_DECLARE_METATYPE(Mpv::Chapter)
 Q_DECLARE_METATYPE(Mpv::Track)
+Q_DECLARE_METATYPE(Mpv::VideoParams)
 Q_DECLARE_METATYPE(Mpv::FileInfo)
 
 class MpvHandler : public QObject
@@ -97,6 +108,7 @@ private slots:
     void LoadFileInfo();                        // load all the required file information
     void LoadTracks();
     void LoadChapters();
+    void LoadVideoParams();
 
     void SetTime(int t);                        // set time, emit signal
     void SetVolume(int v);                      // set volume, emit signal
