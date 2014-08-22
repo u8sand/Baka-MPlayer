@@ -13,6 +13,7 @@ PlaylistManager::PlaylistManager(QSettings *_settings, QObject *parent) :
     settings(_settings)
 {
     showAll = settings->value("playlist/show-all", false).toBool();
+    shuffle = false;
     index = 0;
 }
 
