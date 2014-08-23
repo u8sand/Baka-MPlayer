@@ -35,6 +35,7 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
     trayIcon = new QSystemTrayIcon(this);
     trayIcon->setIcon(qApp->windowIcon());
     // todo: tray menu/tooltip
+    SetPlaylist(false);
 
 #if defined(Q_OS_LINUX) || defined(Q_OS_UNIX) // linux has native support for on top already, this feature is unnecessary
     ui->menu_Options->removeAction(ui->menu_On_Top->menuAction()); // remove the On Top menu
@@ -54,8 +55,8 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
     ui->outputTextEdit->setVisible(settings->value("debug/output", false).toBool());
 
     // initialize managers/handlers
-    mpv = new MpvHandler(settings, ui->mpvFrame->winId());
-    playlist = new PlaylistManager(settings);
+    mpv = new MpvHandler(settings, ui->mpvFrame->winId(), this);
+    playlist = new PlaylistManager(settings, this);
     light = new LightDialog();
 
     // setup signals & slots
@@ -601,12 +602,16 @@ void MainWindow::PlayIndex(QModelIndex index)
     playlist->PlayIndex(index.row());
 }
 
-void MainWindow::SetPlaylist(bool visible) // todo: make this work if it's hidden by default
+void MainWindow::SetPlaylist(bool visible)
 {
     static QList<int> sizes;
+    if(sizes.length() == 0) // initialize sizes
+        sizes = {2, 1};     // todo: use better sizes
+
     if(!visible)
     {
-        sizes = ui->splitter->sizes();
+        if(ui->splitter->sizes()[1] > 0)
+            sizes = ui->splitter->sizes();
         ui->splitter->setSizes({sizes[0]+sizes[1], 0});
     }
     else
