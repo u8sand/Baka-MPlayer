@@ -811,10 +811,8 @@ void MainWindow::ShowInTray(bool show)
     trayIcon->setVisible(show);
 }
 
-void MainWindow::HidePopup(bool hide) // todo: make this work
+void MainWindow::HidePopup(bool hide) // todo
 {
-    // this doesn't actually collapse the frame, I suspect we'll need an outer container
-    ui->mpvFrame->setVisible(hide);
 }
 
 #ifdef Q_OS_WIN
