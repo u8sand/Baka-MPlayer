@@ -400,6 +400,8 @@ void MainWindow::SetPlaybackControls(bool enable)
     ui->menuFit_Window->setEnabled(enable);
     ui->menuAspect_Ratio->setEnabled(enable);
     ui->menuSubtitle_Track->setEnabled(enable);
+    if(!enable)
+        ui->action_Hide_Album_Art_2->setEnabled(false);
 
     if(enable && mpv->GetFileInfo().chapters.length() > 0) // only enable chapters if there are chapters
     {
@@ -487,6 +489,11 @@ void MainWindow::SetPlayState(Mpv::PlayState playState)
                 signalMapper->setMapping(action, track.id);
                 connect(action, SIGNAL(triggered()),
                         signalMapper, SLOT(map()));
+            }
+            else if(track.type == "video" && // video track
+                    track.albumart)          // is album art
+            {
+                ui->action_Hide_Album_Art_2->setEnabled(true);
             }
         }
         if(ui->menuSubtitle_Track->actions().count() == 0)
@@ -582,10 +589,8 @@ void MainWindow::OpenUrl()
 
 void MainWindow::FullScreen(bool fs)
 {
-//    static Qt::WindowStates state;
     if(fs)
     {
-//        state = windowState();
         setWindowState(windowState() | Qt::WindowFullScreen);
         ui->menubar->setVisible(false);
         SetPlaylist(false);
@@ -593,8 +598,9 @@ void MainWindow::FullScreen(bool fs)
     }
     else
     {
-        setWindowState(windowState() ^ Qt::WindowFullScreen);
+        setWindowState(windowState() & ~Qt::WindowFullScreen);
         ui->menubar->setVisible(true);
+        ui->seekBar->setVisible(true);
         ui->playbackLayoutWidget->setVisible(true);
         setMouseTracking(false); // stop registering mouse move event
     }
@@ -805,8 +811,10 @@ void MainWindow::ShowInTray(bool show)
     trayIcon->setVisible(show);
 }
 
-void MainWindow::HidePopup(bool hide) // todo
+void MainWindow::HidePopup(bool hide) // todo: make this work
 {
+    // this doesn't actually collapse the frame, I suspect we'll need an outer container
+    ui->mpvFrame->setVisible(hide);
 }
 
 #ifdef Q_OS_WIN
@@ -837,7 +845,7 @@ void MainWindow::SetAlwaysOnTop(bool ontop)
     if(ontop)
         setWindowFlags(windowFlags() | Qt::WindowStaysOnTopHint);
     else
-        setWindowFlags(windowFlags() ^ Qt::WindowStaysOnTopHint);
+        setWindowFlags(windowFlags() & ~Qt::WindowStaysOnTopHint);
     show();
 #endif
 }
