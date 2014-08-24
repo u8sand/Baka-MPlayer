@@ -30,7 +30,8 @@ SOURCES += main.cpp\
     ui/aboutdialog.cpp \
     ui/updatedialog.cpp \
     ui/inputdialog.cpp \
-    ui/lightdialog.cpp
+    ui/lightdialog.cpp \
+    widgets/customsplitter.cpp
 
 HEADERS  += \
     mpvhandler.h \
@@ -50,7 +51,8 @@ HEADERS  += \
     ui/aboutdialog.h \
     ui/updatedialog.h \
     ui/inputdialog.h \
-    ui/lightdialog.h
+    ui/lightdialog.h \
+    widgets/customsplitter.h
 
 FORMS    += \
     ui/mainwindow.ui \

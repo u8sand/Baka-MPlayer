@@ -30,10 +30,10 @@ public slots:
 protected:
     void dragEnterEvent(QDragEnterEvent *event);    // drag file into
     void dropEvent(QDropEvent *event);              // drop file into
-    void mousePressEvent(QMouseEvent *event);
-    void mouseReleaseEvent(QMouseEvent *event);
-    void mouseMoveEvent(QMouseEvent *event);
-    void mouseDoubleClickEvent(QMouseEvent *event);
+    void mousePressEvent(QMouseEvent *event);       // pressed mouse down
+    void mouseReleaseEvent(QMouseEvent *event);     // released mouse up
+    void mouseMoveEvent(QMouseEvent *event);        // moved mouse on the form
+    void mouseDoubleClickEvent(QMouseEvent *event); // double clicked the form
 
     inline void SetPlaybackControls(bool enable);   // macro to enable/disable playback controls
 
@@ -62,6 +62,7 @@ private slots:
     void SetPlaylist(bool visible);                 // sets the playlist visibility
     void TogglePlaylist();                          // toggle playlist
     void GetPlaylistIndex();                        // selects the file index to play
+    void HideAlbumArt(bool show);                   // sets album art visibility (mpvFrame)
     void Debug(QString msg);                        // outputs debugging messages
     void OnlineHelp();                              // loads online help
     void CheckForUpdates();                         // checks for program updates
@@ -75,11 +76,11 @@ private slots:
     void IncreaseFontSize();                        // increase the subtitle font size
     void DecreaseFontSize();                        // decrease the subtitle font size
     void ResetFontSize();                           // reset the subtitle font size
-    void DimLights(bool dim);
-    void IncreaseVolume();
-    void DecreaseVolume();
-    void ShowInTray(bool show);
-    void HidePopup(bool hide);
+    void DimLights(bool dim);                       // grays out the rest of the screen with LightDialog
+    void IncreaseVolume();                          // increases the volume by a set amount
+    void DecreaseVolume();                          // decreases the volume by a set amount
+    void ShowInTray(bool show);                     // sets visibility of tray icon
+    void HidePopup(bool hide);                      // enables/disables the tray popups
 
 #ifdef Q_OS_WIN
     void SetAlwaysOnTop(bool ontop);
@@ -90,16 +91,13 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    QSystemTrayIcon *trayIcon;
-    QMenu *trayIconMenu;
-
     QSettings *settings;
-
     MpvHandler *mpv;
     PlaylistManager *playlist;
 
+    QSystemTrayIcon *trayIcon;
+    QMenu *trayIconMenu;
     LightDialog *light;
-
     bool dragging;
     QPoint lastMousePos;
 };
