@@ -30,16 +30,15 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
     QMainWindow(parent),
     ui(new Ui::MainWindow),
     settings(_settings),
+    // note: trayIcon does not work in my environment--known qt bug
+    // see: https://bugreports.qt-project.org/browse/QTBUG-34364
+    trayIcon(new QSystemTrayIcon(qApp->windowIcon(), this)),
+    // todo: tray menu/tooltip
     dragging(false),
     lastMousePos(QPoint())
 {
     ui->setupUi(this);
 
-    // note: trayIcon does not work in my environment--known qt bug
-    // see: https://bugreports.qt-project.org/browse/QTBUG-34364
-    trayIcon = new QSystemTrayIcon(this);
-    trayIcon->setIcon(qApp->windowIcon());
-    // todo: tray menu/tooltip
     SetPlaylist(false);
 
 #if defined(Q_OS_LINUX) || defined(Q_OS_UNIX) // linux has native support for on top already, this feature is unnecessary
@@ -232,7 +231,7 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
     connect(ui->action_Show_Playlist_2, SIGNAL(triggered(bool)),        // Options -> Show Playlist
             this, SLOT(SetPlaylist(bool)));                             // toggle playlist visibility
     connect(ui->action_Hide_Album_Art_2, SIGNAL(triggered(bool)),       // Options -> Hide Album Art
-            this, SLOT(ShowAlbumArt(bool)));                            // toggle album art
+            this, SLOT(HideAlbumArt(bool)));                            // toggle album art
     connect(ui->action_Dim_Lights_2, SIGNAL(triggered(bool)),           // Options -> Dim Lights
             this, SLOT(DimLights(bool)));                               // toggle dim lights
     connect(ui->actionShow_D_ebug_Output, SIGNAL(triggered(bool)),      // Options -> Show Debug Output
@@ -670,25 +669,31 @@ void MainWindow::PlayIndex(QModelIndex index)
 
 void MainWindow::SetPlaylist(bool visible)
 {
-    static QList<int> sizes;
-    if(sizes.length() == 0) // initialize sizes
-        sizes = {2, 1};     // todo: use better sizes
-
-    if(!visible)
+    if(visible)
     {
-        if(ui->splitter->sizes()[1] > 0)
-            sizes = ui->splitter->sizes();
-        ui->splitter->setSizes({sizes[0]+sizes[1], 0});
+        ui->splitter->SetCollapse(false, 1);
+        if(ui->splitter->isCollapsed(0))
+        {
+            blockSignals(true);
+            ui->action_Hide_Album_Art_2->setChecked(true);
+            blockSignals(false);
+        }
     }
     else
-        ui->splitter->setSizes(sizes);
-
+    {
+        ui->splitter->SetCollapse(true, 1); // collapse the playlist
+        blockSignals(true);
+        ui->action_Hide_Album_Art_2->setChecked(false);
+        blockSignals(false);
+    }
+    blockSignals(true);
     ui->action_Playlist->setChecked(visible);
+    blockSignals(false);
 }
 
 void MainWindow::TogglePlaylist()
 {
-    if(ui->splitter->sizes()[1] == 0) // playlist is not visible
+    if(ui->splitter->isCollapsed(1)) // playlist is not visible
         SetPlaylist(true);
     else
         SetPlaylist(false);
@@ -699,6 +704,27 @@ void MainWindow::GetPlaylistIndex()
     int index = InputDialog::getIndex(playlist->GetMax());
     if(index > 0)
         playlist->PlayIndex(index-1); // user index will be 1 greater than actual
+}
+
+void MainWindow::HideAlbumArt(bool hide)
+{
+    if(hide)
+    {
+        ui->splitter->SetCollapse(true, 0); // collapse the video
+        blockSignals(true);
+        ui->action_Playlist->setChecked(true);
+        blockSignals(false);
+    }
+    else
+    {
+        ui->splitter->SetCollapse(false, 0);
+        if(ui->splitter->isCollapsed(1))
+        {
+            blockSignals(true);
+            ui->action_Playlist->setChecked(false);
+            blockSignals(false);
+        }
+    }
 }
 
 void MainWindow::Debug(QString msg)
@@ -811,10 +837,8 @@ void MainWindow::ShowInTray(bool show)
     trayIcon->setVisible(show);
 }
 
-void MainWindow::HidePopup(bool hide) // todo: make this work
+void MainWindow::HidePopup(bool hide) // todo
 {
-    // this doesn't actually collapse the frame, I suspect we'll need an outer container
-    ui->mpvFrame->setVisible(hide);
 }
 
 #ifdef Q_OS_WIN
