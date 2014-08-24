@@ -34,6 +34,9 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
     lastMousePos(QPoint())
 {
     ui->setupUi(this);
+
+    // note: trayIcon does not work in my environment--known qt bug
+    // see: https://bugreports.qt-project.org/browse/QTBUG-34364
     trayIcon = new QSystemTrayIcon(this);
     trayIcon->setIcon(qApp->windowIcon());
     // todo: tray menu/tooltip
@@ -321,15 +324,36 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *event)
 
 void MainWindow::mouseMoveEvent(QMouseEvent *event)
 {
+    // note: this will work completely when mpv stops steeling focus
+    // todo: fix mouse tracking when not clicking
+    static QRect playbackRect;
     if(dragging)
     {
-        pos() += lastMousePos-event->pos();
-        lastMousePos = event->pos();
+        move(pos()+event->pos()-lastMousePos);
         event->accept();
     }
-    else
-        event->ignore();
+    else if(!ui->playbackLayoutWidget->isVisible() &&
+            playbackRect.contains(event->pos()))
+    {
+        ui->playbackLayoutWidget->setVisible(true);
+        ui->seekBar->setVisible(true);
+    }
+    else if(isFullScreen() &&
+            ui->playbackLayoutWidget->isVisible() &&
+            !ui->playbackLayoutWidget->geometry().contains(event->pos()))
+    {
+        playbackRect = ui->playbackLayoutWidget->geometry();
+        ui->playbackLayoutWidget->setVisible(false);
+        ui->seekBar->setVisible(false);
+    }
     QMainWindow::mouseMoveEvent(event);
+}
+
+void MainWindow::mouseDoubleClickEvent(QMouseEvent *event)
+{
+    FullScreen(!isFullScreen());
+    event->accept();
+    QMainWindow::mouseDoubleClickEvent(event);
 }
 
 void MainWindow::SetPlaybackControls(bool enable)
@@ -558,14 +582,22 @@ void MainWindow::OpenUrl()
 
 void MainWindow::FullScreen(bool fs)
 {
-    static Qt::WindowStates state;
+//    static Qt::WindowStates state;
     if(fs)
     {
-        state = windowState();
-        setWindowState(Qt::WindowFullScreen);
+//        state = windowState();
+        setWindowState(windowState() | Qt::WindowFullScreen);
+        ui->menubar->setVisible(false);
+        SetPlaylist(false);
+        setMouseTracking(true); // register mouse move event
     }
     else
-        setWindowState(state);
+    {
+        setWindowState(windowState() ^ Qt::WindowFullScreen);
+        ui->menubar->setVisible(true);
+        ui->playbackLayoutWidget->setVisible(true);
+        setMouseTracking(false); // stop registering mouse move event
+    }
 }
 
 void MainWindow::BossMode()

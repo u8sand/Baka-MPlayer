@@ -33,6 +33,7 @@ protected:
     void mousePressEvent(QMouseEvent *event);
     void mouseReleaseEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
+    void mouseDoubleClickEvent(QMouseEvent *event);
 
     inline void SetPlaybackControls(bool enable);   // macro to enable/disable playback controls
 
