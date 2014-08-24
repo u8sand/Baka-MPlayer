@@ -43,6 +43,7 @@ SOURCES += main.cpp\
     widgets/customlistwidget.cpp \
     widgets/seekbar.cpp \
     widgets/customlabel.cpp \
+    widgets/customsplitter.cpp \
     ui/mainwindow.cpp \
     ui/locationdialog.cpp \
     ui/infodialog.cpp \
@@ -50,8 +51,7 @@ SOURCES += main.cpp\
     ui/aboutdialog.cpp \
     ui/updatedialog.cpp \
     ui/inputdialog.cpp \
-    ui/lightdialog.cpp \
-    widgets/customsplitter.cpp
+    ui/lightdialog.cpp
 
 HEADERS  += \
     mpvhandler.h \
@@ -64,6 +64,7 @@ HEADERS  += \
     widgets/customlistwidget.h \
     widgets/seekbar.h \
     widgets/customlabel.h \
+    widgets/customsplitter.h \
     ui/mainwindow.h \
     ui/locationdialog.h \
     ui/infodialog.h \
@@ -71,8 +72,7 @@ HEADERS  += \
     ui/aboutdialog.h \
     ui/updatedialog.h \
     ui/inputdialog.h \
-    ui/lightdialog.h \
-    widgets/customsplitter.h
+    ui/lightdialog.h
 
 FORMS    += \
     ui/mainwindow.ui \

@@ -38,7 +38,6 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
     lastMousePos(QPoint())
 {
     ui->setupUi(this);
-
     SetPlaylist(false);
 
 #if defined(Q_OS_LINUX) || defined(Q_OS_UNIX) // linux has native support for on top already, this feature is unnecessary
@@ -111,6 +110,9 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
             mpv, SLOT(AdjustVolume(int)));                              // adjust volume accordingly
     connect(ui->seekBar, SIGNAL(valueChanged(int)),                     // seek bar slider changed
             this, SLOT(Seek(int)));                                     // seek accordingly
+                                                                        // splitters
+    connect(ui->splitter, SIGNAL(positionChanged(int)),                 // the splitter position changed
+            this, SLOT(SplitterChanged(int)));                          // update gui
                                                                         // buttons
     connect(ui->openButton, SIGNAL(LeftClick()),                        // left-clicked the open button
             this, SLOT(OpenFile()));                                    // open-file dialog
@@ -669,31 +671,21 @@ void MainWindow::PlayIndex(QModelIndex index)
 
 void MainWindow::SetPlaylist(bool visible)
 {
+    if(!ui->splitter->normalPosition())
+        ui->splitter->setNormalPosition(ui->splitter->max()*3.0/4); // set the default splitter position
     if(visible)
-    {
-        ui->splitter->SetCollapse(false, 1);
-        if(ui->splitter->isCollapsed(0))
-        {
-            blockSignals(true);
-            ui->action_Hide_Album_Art_2->setChecked(true);
-            blockSignals(false);
-        }
-    }
+        ui->splitter->setPosition(ui->splitter->normalPosition()); // bring splitter position to normal
     else
     {
-        ui->splitter->SetCollapse(true, 1); // collapse the playlist
-        blockSignals(true);
-        ui->action_Hide_Album_Art_2->setChecked(false);
-        blockSignals(false);
+        if(ui->splitter->position() != ui->splitter->max() && ui->splitter->position() != 0)
+            ui->splitter->setNormalPosition(ui->splitter->position()); // save splitter position as the normal position
+        ui->splitter->setPosition(ui->splitter->max()); // set splitter position to right-most
     }
-    blockSignals(true);
-    ui->action_Playlist->setChecked(visible);
-    blockSignals(false);
 }
 
 void MainWindow::TogglePlaylist()
 {
-    if(ui->splitter->isCollapsed(1)) // playlist is not visible
+    if(ui->splitter->position() == ui->splitter->max()) // splitter is right-most (playlist not visible)
         SetPlaylist(true);
     else
         SetPlaylist(false);
@@ -710,20 +702,30 @@ void MainWindow::HideAlbumArt(bool hide)
 {
     if(hide)
     {
-        ui->splitter->SetCollapse(true, 0); // collapse the video
-        blockSignals(true);
-        ui->action_Playlist->setChecked(true);
-        blockSignals(false);
+        if(ui->splitter->position() != ui->splitter->max() && ui->splitter->position() != 0)
+            ui->splitter->setNormalPosition(ui->splitter->position()); // save splitter position as the normal position
+        ui->splitter->setPosition(0); // bring the splitter position to the left-most
     }
     else
+        ui->splitter->setPosition(ui->splitter->normalPosition()); // bring the splitter to normal position
+}
+
+void MainWindow::SplitterChanged(int pos)
+{
+    if(pos == ui->splitter->max()) // right-most, playlist is hidden
     {
-        ui->splitter->SetCollapse(false, 0);
-        if(ui->splitter->isCollapsed(1))
-        {
-            blockSignals(true);
-            ui->action_Playlist->setChecked(false);
-            blockSignals(false);
-        }
+        ui->action_Playlist->setChecked(false);
+        ui->action_Hide_Album_Art_2->setChecked(false);
+    }
+    else if(pos == 0) // left-most, album art is hidden, playlist is visible
+    {
+        ui->action_Playlist->setChecked(true);
+        ui->action_Hide_Album_Art_2->setChecked(true);
+    }
+    else // in the middle, album art is visible, playlist is visible
+    {
+        ui->action_Playlist->setChecked(true);
+        ui->action_Hide_Album_Art_2->setChecked(false);
     }
 }
 

@@ -9,22 +9,22 @@ class CustomSplitter : public QSplitter
 public:
     explicit CustomSplitter(QWidget *parent = 0);
 
-    QList<int> normalSize();
-    bool isCollapsed(int which);
+    int position() const;
+    int normalPosition() const;
+    int max() const;
 
 public slots:
-    void SetCollapse(bool collapse, int which = -1);
-    void setSizes(const QList<int> &list);
+    void setPosition(int pos);
+    void setNormalPosition(int pos);
 
-private slots:
-    void UpdateSize();
+protected slots:
+    void convertSignal(int pos, int index);
 
 signals:
-    void sizesChanged();
+    void positionChanged(int pos);
 
 private:
-    int size[2];
-    bool collapsed[2];
+    int normalPos;
 };
 
 #endif // CUSTOMSPLITTER_H
