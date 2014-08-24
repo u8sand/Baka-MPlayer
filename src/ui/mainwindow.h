@@ -63,6 +63,7 @@ private slots:
     void TogglePlaylist();                          // toggle playlist
     void GetPlaylistIndex();                        // selects the file index to play
     void HideAlbumArt(bool show);                   // sets album art visibility (mpvFrame)
+    void SplitterChanged(int pos);                  // updates gui when splitter changes
     void Debug(QString msg);                        // outputs debugging messages
     void OnlineHelp();                              // loads online help
     void CheckForUpdates();                         // checks for program updates
