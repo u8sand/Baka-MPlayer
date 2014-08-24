@@ -6,6 +6,8 @@
 #include <QSettings>
 #include <QModelIndex>
 #include <QStringList>
+#include <QMouseEvent>
+#include <QPoint>
 
 #include "mpvhandler.h"
 #include "playlistmanager.h"
@@ -26,8 +28,11 @@ public slots:
     void HandleError(QString err);                  // triggered by any aspect to display an error message
 
 protected:
-    virtual void dragEnterEvent(QDragEnterEvent *event);
-    virtual void dropEvent(QDropEvent *event);      // drop file into
+    void dragEnterEvent(QDragEnterEvent *event);    // drag file into
+    void dropEvent(QDropEvent *event);              // drop file into
+    void mousePressEvent(QMouseEvent *event);
+    void mouseReleaseEvent(QMouseEvent *event);
+    void mouseMoveEvent(QMouseEvent *event);
 
     inline void SetPlaybackControls(bool enable);   // macro to enable/disable playback controls
 
@@ -93,6 +98,9 @@ private:
     PlaylistManager *playlist;
 
     LightDialog *light;
+
+    bool dragging;
+    QPoint lastMousePos;
 };
 
 #endif // MAINWINDOW_H
