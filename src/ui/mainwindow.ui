@@ -10,8 +10,11 @@
     <height>400</height>
    </rect>
   </property>
+  <property name="mouseTracking">
+   <bool>true</bool>
+  </property>
   <property name="focusPolicy">
-   <enum>Qt::NoFocus</enum>
+   <enum>Qt::StrongFocus</enum>
   </property>
   <property name="acceptDrops">
    <bool>true</bool>
@@ -184,6 +187,9 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
           <verstretch>1</verstretch>
          </sizepolicy>
         </property>
+        <property name="mouseTracking">
+         <bool>false</bool>
+        </property>
         <property name="focusPolicy">
          <enum>Qt::NoFocus</enum>
         </property>
@@ -243,6 +249,9 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
         </property>
         <item>
          <widget class="QLineEdit" name="searchBox">
+          <property name="mouseTracking">
+           <bool>false</bool>
+          </property>
           <property name="focusPolicy">
            <enum>Qt::ClickFocus</enum>
           </property>
@@ -275,6 +284,9 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
         </item>
         <item>
          <widget class="CustomListWidget" name="playlistWidget">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="contextMenuPolicy">
            <enum>Qt::DefaultContextMenu</enum>
           </property>
@@ -444,6 +456,9 @@ QSlider::sub-page:horizontal {
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
+      </property>
+      <property name="mouseTracking">
+       <bool>false</bool>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_3">
        <property name="spacing">
@@ -908,7 +923,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>580</width>
-     <height>23</height>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
