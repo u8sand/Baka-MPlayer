@@ -25,6 +25,8 @@ MpvHandler::MpvHandler(QSettings *_settings, int64_t wid, QObject *parent):
         throw "Could not create mpv object";
 
     mpv_set_option(mpv, "wid", MPV_FORMAT_INT64, &wid);
+    mpv_set_option_string(mpv, "input-cursor", "no");
+    mpv_set_option_string(mpv, "cursor-autohide", "no");
 
     mpv_observe_property(mpv, 0, "time-pos", MPV_FORMAT_DOUBLE);
     mpv_observe_property(mpv, 0, "volume", MPV_FORMAT_DOUBLE);
