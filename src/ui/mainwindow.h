@@ -25,6 +25,7 @@ public:
     ~MainWindow();
 
 public slots:
+    void Load(QString file);                        // load a file
     void HandleError(QString err);                  // triggered by any aspect to display an error message
 
 protected:
@@ -101,6 +102,7 @@ private:
     LightDialog *light;
     bool dragging;
     QPoint lastMousePos;
+    bool init;
 };
 
 #endif // MAINWINDOW_H

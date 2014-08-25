@@ -13,7 +13,6 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    // todo: figure out how we want to deal with configuration on windows
 #if Q_OS_WIN
     // saves to $(application directory)\${SETTINGS_FILE}.ini
     QSettings settings(QApplication::applicationDirPath()+"\\"+SETTINGS_FILE, QSettings::IniFormat);
@@ -26,6 +25,12 @@ int main(int argc, char *argv[])
 
     MainWindow w(&settings);
     w.show();
+
+    // parse command line
+    QStringList args = QApplication::arguments();
+    QStringList::iterator arg = args.begin();
+    if(++arg != args.end())
+        w.Load(*arg);
 
     return a.exec();
 }
