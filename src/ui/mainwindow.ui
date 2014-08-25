@@ -923,7 +923,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>580</width>
-     <height>24</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
@@ -1437,7 +1437,7 @@ QSlider::handle:horizontal {
   </action>
   <action name="action_To_Current_Size">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="text">
     <string>To &amp;Current Size</string>
@@ -1448,7 +1448,7 @@ QSlider::handle:horizontal {
   </action>
   <action name="action50">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="text">
     <string>50%</string>
@@ -1459,7 +1459,7 @@ QSlider::handle:horizontal {
   </action>
   <action name="action75">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="text">
     <string>75%</string>
@@ -1470,7 +1470,7 @@ QSlider::handle:horizontal {
   </action>
   <action name="action100">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="text">
     <string>100%</string>
@@ -1481,7 +1481,7 @@ QSlider::handle:horizontal {
   </action>
   <action name="action200">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="text">
     <string>200%</string>
