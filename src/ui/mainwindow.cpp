@@ -25,6 +25,7 @@
 #include "locationdialog.h"
 #include "jumpdialog.h"
 #include "inputdialog.h"
+#include "updatedialog.h"
 
 MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
     QMainWindow(parent),
@@ -34,6 +35,7 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
     // see: https://bugreports.qt-project.org/browse/QTBUG-34364
     trayIcon(new QSystemTrayIcon(qApp->windowIcon(), this)),
     // todo: tray menu/tooltip
+    light(new LightDialog()),
     dragging(false),
     lastMousePos(QPoint()),
     init(false)
@@ -61,7 +63,7 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
     // initialize managers/handlers
     mpv = new MpvHandler(settings, ui->mpvFrame->winId(), this);
     playlist = new PlaylistManager(settings, this);
-    light = new LightDialog();
+    update = new UpdateManager();
 
     // setup signals & slots
                                                                         // mpv updates
@@ -154,8 +156,10 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
                                                                         // View ->
     connect(ui->action_Full_Screen, SIGNAL(triggered(bool)),            // View -> Full Screen
             this, SLOT(FullScreen(bool)));                              // full screen window
-    connect(ui->actionTake_Snapshot, SIGNAL(triggered()),               // View -> Take Snapshot
-            mpv, SLOT(Snapshot()));                                     // mpv snapshot
+    connect(ui->actionWith_Subtitles, SIGNAL(triggered()),              // View -> Take Snapshot -> With Subtitles
+            this, SLOT(SnapshotWithSubs()));                             // mpv snapshot with subtitles
+    connect(ui->actionWith_Subtitles, SIGNAL(triggered()),              // View -> Take Snapshot -> With Subtitles
+            this, SLOT(SnapshotWithoutSubs()));                          // mpv snapshot without subtitles
     QSignalMapper *fitWindowMap = new QSignalMapper(this);              // View -> FitWindow ->
     fitWindowMap->setMapping(ui->action_To_Current_Size, 100);          // View -> FitWindow -> To Current Size
     fitWindowMap->setMapping(ui->action50, 50);                         // View -> FitWindow -> 50%
@@ -396,7 +400,7 @@ void MainWindow::SetPlaybackControls(bool enable)
     ui->actionShow_in_Folder->setEnabled(enable);
 //    ui->action_Playlist->setEnabled(enable);
     ui->action_Full_Screen->setEnabled(enable);
-    ui->actionTake_Snapshot->setEnabled(enable);
+    ui->menuTake_Snapshot->setEnabled(enable);
     ui->action_Add_Subtitle_File->setEnabled(enable);
     ui->menuFit_Window->setEnabled(enable);
     ui->menuAspect_Ratio->setEnabled(enable);
@@ -742,9 +746,12 @@ void MainWindow::OnlineHelp()
     QDesktopServices::openUrl(QUrl("http://bakamplayer.u8sand.net/help"));
 }
 
-void MainWindow::CheckForUpdates() // todo
+void MainWindow::CheckForUpdates()
 {
-
+    if(UpdateDialog::update(update, this) == QDialog::Accepted)
+    {
+        // todo: close and finish update (overwrite self and restart)
+    }
 }
 
 void MainWindow::AboutQt()
@@ -818,8 +825,8 @@ void MainWindow::SetAspectRatio(double ratio)
         h = ui->mpvFrame->height();
         w = h*ratio;
     }
-    int x = (ui->mpvFrame->width()-w)>>2;
-    int y = (ui->mpvFrame->height()-h)>>2;
+//    int x = (ui->mpvFrame->width()-w)>>2;
+//    int y = (ui->mpvFrame->height()-h)>>2;
 //    mplayerPanel.SetBounds(x, y, width, height);
 }
 
@@ -864,8 +871,18 @@ void MainWindow::ShowInTray(bool show)
     trayIcon->setVisible(show);
 }
 
-void MainWindow::HidePopup(bool hide) // todo
+void MainWindow::HidePopup(bool/* hide*/) // todo
 {
+}
+
+void MainWindow::SnapshotWithSubs() // todo
+{
+
+}
+
+void MainWindow::SnapshotWithoutSubs() // todo
+{
+
 }
 
 #ifdef Q_OS_WIN

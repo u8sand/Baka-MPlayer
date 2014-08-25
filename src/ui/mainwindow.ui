@@ -923,7 +923,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>580</width>
-     <height>23</height>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
@@ -1432,9 +1432,6 @@ QSlider::handle:horizontal {
    </property>
   </action>
   <action name="action_To_Current_Size">
-   <property name="enabled">
-    <bool>true</bool>
-   </property>
    <property name="text">
     <string>To &amp;Current Size</string>
    </property>
@@ -1443,9 +1440,6 @@ QSlider::handle:horizontal {
    </property>
   </action>
   <action name="action50">
-   <property name="enabled">
-    <bool>true</bool>
-   </property>
    <property name="text">
     <string>50%</string>
    </property>
@@ -1454,9 +1448,6 @@ QSlider::handle:horizontal {
    </property>
   </action>
   <action name="action75">
-   <property name="enabled">
-    <bool>true</bool>
-   </property>
    <property name="text">
     <string>75%</string>
    </property>
@@ -1465,9 +1456,6 @@ QSlider::handle:horizontal {
    </property>
   </action>
   <action name="action100">
-   <property name="enabled">
-    <bool>true</bool>
-   </property>
    <property name="text">
     <string>100%</string>
    </property>
@@ -1476,9 +1464,6 @@ QSlider::handle:horizontal {
    </property>
   </action>
   <action name="action200">
-   <property name="enabled">
-    <bool>true</bool>
-   </property>
    <property name="text">
     <string>200%</string>
    </property>
@@ -1492,33 +1477,21 @@ QSlider::handle:horizontal {
    </property>
   </action>
   <action name="action_Autodetect">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
    <property name="text">
     <string>&amp;Autodetect</string>
    </property>
   </action>
   <action name="actionForce_4_3">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
    <property name="text">
     <string>Force &amp;4:3</string>
    </property>
   </action>
   <action name="actionForce_16_9">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
    <property name="text">
     <string>Force 16:&amp;9</string>
    </property>
   </action>
   <action name="actionForce_2_35_1">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
    <property name="text">
     <string>Force &amp;2.35:1</string>
    </property>

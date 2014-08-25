@@ -11,6 +11,7 @@
 
 #include "mpvhandler.h"
 #include "playlistmanager.h"
+#include "updatemanager.h"
 #include "lightdialog.h"
 
 namespace Ui {
@@ -83,6 +84,8 @@ private slots:
     void DecreaseVolume();                          // decreases the volume by a set amount
     void ShowInTray(bool show);                     // sets visibility of tray icon
     void HidePopup(bool hide);                      // enables/disables the tray popups
+    void SnapshotWithSubs();                        // takes a snapshot with subs
+    void SnapshotWithoutSubs();                     // takes a snapshot without subs
 
 #ifdef Q_OS_WIN
     void SetAlwaysOnTop(bool ontop);
@@ -96,6 +99,7 @@ private:
     QSettings *settings;
     MpvHandler *mpv;
     PlaylistManager *playlist;
+    UpdateManager *update;
 
     QSystemTrayIcon *trayIcon;
     QMenu *trayIconMenu;
