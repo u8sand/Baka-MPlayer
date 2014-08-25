@@ -35,7 +35,8 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
     trayIcon(new QSystemTrayIcon(qApp->windowIcon(), this)),
     // todo: tray menu/tooltip
     dragging(false),
-    lastMousePos(QPoint())
+    lastMousePos(QPoint()),
+    init(false)
 {
     ui->setupUi(this);
     SetPlaylist(false);
@@ -266,12 +267,6 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
     new QShortcut(QKeySequence("Right"), this, SLOT(SeekForward()));
     new QShortcut(QKeySequence("Left"), this, SLOT(SeekBack()));
     new QShortcut(QKeySequence("Esc"), this, SLOT(BossMode()));
-
-    // load arguments (we'll just load the first argument for now as a file)
-    QStringList args = QCoreApplication::arguments();
-    QStringList::iterator arg = args.begin();
-    if(++arg != args.end()) // does the next argument exist?
-        playlist->LoadFile(*arg); // loadfile
 }
 
 MainWindow::~MainWindow()
@@ -287,6 +282,11 @@ MainWindow::~MainWindow()
     delete playlist;
     delete mpv;
     delete ui;
+}
+
+void MainWindow::Load(QString file)
+{
+    playlist->LoadFile(file); // loadfile
 }
 
 void MainWindow::HandleError(QString err)
@@ -362,7 +362,7 @@ void MainWindow::SetPlaybackControls(bool enable)
     // playback controls
     ui->seekBar->setEnabled(enable);
     ui->rewindButton->setEnabled(enable);
-    ui->playlistButton->setEnabled(enable);
+//    ui->playlistButton->setEnabled(enable);
     // next file
     if(enable && playlist->GetIndex()+1 < ui->playlistWidget->count()) // not the last entry
     {
@@ -394,7 +394,7 @@ void MainWindow::SetPlaybackControls(bool enable)
     ui->action_Jump_to_Time->setEnabled(enable);
     ui->actionMedia_Info->setEnabled(enable);
     ui->actionShow_in_Folder->setEnabled(enable);
-    ui->action_Playlist->setEnabled(enable);
+//    ui->action_Playlist->setEnabled(enable);
     ui->action_Full_Screen->setEnabled(enable);
     ui->actionTake_Snapshot->setEnabled(enable);
     ui->action_Add_Subtitle_File->setEnabled(enable);
@@ -505,10 +505,13 @@ void MainWindow::SetPlayState(Mpv::PlayState playState)
 
         setWindowTitle(fi.media_title);
         ui->seekBar->setTracking(fi.length);
-        if(!ui->playButton->isEnabled()) // will only happen the first time a file is loaded.
+        if(!init) // will only happen the first time a file is loaded.
         {
             ui->playButton->setEnabled(true);
             ui->playButton->Update();
+            ui->action_Playlist->setEnabled(true);
+            ui->playlistButton->setEnabled(true);
+            init = true;
         }
         mpv->Play();
         SetPlaybackControls(true);
@@ -531,7 +534,7 @@ void MainWindow::SetPlayState(Mpv::PlayState playState)
 #endif
         break;
     case Mpv::Idle:
-        if(ui->actionStop_after_Current->isChecked() || !playlist->Next())
+        if(init && (ui->actionStop_after_Current->isChecked() || !playlist->Next()))
         {
             setWindowTitle("Baka MPlayer");
             SetPlaybackControls(false);
