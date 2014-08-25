@@ -14,6 +14,7 @@
 #include <QSignalMapper>
 #include <QAction>
 #include <QShortcut>
+#include <QProcess>
 #include <QIcon>
 
 #ifdef Q_OS_WIN
@@ -582,7 +583,8 @@ void MainWindow::Rewind()
 
 void MainWindow::NewPlayer()
 {
-    (new MainWindow(settings))->show();
+    QProcess *p = new QProcess(0);
+    p->startDetached(QApplication::applicationFilePath());
 }
 
 void MainWindow::OpenFile()
