@@ -156,11 +156,11 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
     connect(ui->actionTake_Snapshot, SIGNAL(triggered()),               // View -> Take Snapshot
             mpv, SLOT(Snapshot()));                                     // mpv snapshot
     QSignalMapper *fitWindowMap = new QSignalMapper(this);              // View -> FitWindow ->
-    fitWindowMap->setMapping(ui->action_To_Current_Size, 0);            // View -> FitWindow -> To Current Size
-    fitWindowMap->setMapping(ui->action50, .5);                         // View -> FitWindow -> 50%
-    fitWindowMap->setMapping(ui->action75, .75);                        // View -> FitWindow -> 75%
-    fitWindowMap->setMapping(ui->action100, 1);                         // View -> FitWindow -> 100%
-    fitWindowMap->setMapping(ui->action200, 2);                         // View -> FitWindow -> 200%
+    fitWindowMap->setMapping(ui->action_To_Current_Size, 100);          // View -> FitWindow -> To Current Size
+    fitWindowMap->setMapping(ui->action50, 50);                         // View -> FitWindow -> 50%
+    fitWindowMap->setMapping(ui->action75, 75);                         // View -> FitWindow -> 75%
+    fitWindowMap->setMapping(ui->action100, 100);                       // View -> FitWindow -> 100%
+    fitWindowMap->setMapping(ui->action200, 200);                       // View -> FitWindow -> 200%
     connect(ui->action_To_Current_Size, SIGNAL(triggered()),
             fitWindowMap, SLOT(map()));
     connect(ui->action50, SIGNAL(triggered()),
@@ -772,30 +772,52 @@ void MainWindow::AddSubtitleTrack()
     // todo: select this track? it's not auto selected
 }
 
-void MainWindow::FitWindow(double scale) // todo
+void MainWindow::FitWindow(int percent)
 {
-    if(isFullScreen())
+    if(isFullScreen()) // todo: disable option when going fullscreen
         return;
 
-    if(scale == 0) // current window
-    {
-    }
-    else
-    {
-    }
+    double scale = percent/100.0;
+
+    // todo: center in existing area rather than desktop area
+    // probably change the last line to this->geometry()
+    setGeometry(QStyle::alignedRect(Qt::LeftToRight,
+                                    Qt::AlignCenter,
+                                    QSize(/* width */
+                                          mpv->GetFileInfo().video_params.width*scale +
+                                          ui->seekBar->width() +
+                                          ui->playlistLayoutWidget->width(),
+                                          /* height */
+                                          mpv->GetFileInfo().video_params.height*scale +
+                                                          ui->menubar->height() +
+                                                          ui->outputTextEdit->height() +
+                                                          ui->seekBar->height() +
+                                                          ui->playbackLayoutWidget->height()),
+                                    qApp->desktop()->availableGeometry()));
 }
 
-void MainWindow::SetAspectRatio(double ratio) // todo
+void MainWindow::SetAspectRatio(double ratio)
 {
-    if(isFullScreen())
+    if(isFullScreen()) // todo: disable option when going fullscreen
         return;
 
+    double cR = ui->mpvFrame->width() / ui->mpvFrame->height();
     if(ratio == 0) // autodetect
+        ratio = mpv->GetFileInfo().video_params.width / mpv->GetFileInfo().video_params.height;
+    int w, h;
+    if(cR < ratio)
     {
+        w = ui->mpvFrame->width();
+        h = w/ratio;
     }
     else
     {
+        h = ui->mpvFrame->height();
+        w = h*ratio;
     }
+    int x = (ui->mpvFrame->width()-w)>>2;
+    int y = (ui->mpvFrame->height()-h)>>2;
+//    mplayerPanel.SetBounds(x, y, width, height);
 }
 
 void MainWindow::IncreaseFontSize()
