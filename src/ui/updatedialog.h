@@ -3,6 +3,8 @@
 
 #include <QDialog>
 
+#include "updatemanager.h"
+
 namespace Ui {
 class UpdateDialog;
 }
@@ -12,13 +14,17 @@ class UpdateDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit UpdateDialog(QWidget *parent = 0);
+    explicit UpdateDialog(UpdateManager *updateManager, QWidget *parent = 0);
     ~UpdateDialog();
 
-    static void update(QWidget *parent = 0);
+    static int update(UpdateManager *updateManager, QWidget *parent = 0);
+
+protected slots:
+    void Download();
 
 private:
     Ui::UpdateDialog *ui;
+    UpdateManager *updateManager;
 };
 
 #endif // UPDATEDIALOG_H
