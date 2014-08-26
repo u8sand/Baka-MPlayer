@@ -313,6 +313,7 @@ void MpvHandler::LoadFileInfo()
 
     LoadTracks();
     LoadChapters();
+    LoadVideoParams();
 }
 
 void MpvHandler::LoadTracks()

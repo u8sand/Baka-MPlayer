@@ -158,11 +158,11 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
     connect(ui->action_Full_Screen, SIGNAL(triggered(bool)),            // View -> Full Screen
             this, SLOT(FullScreen(bool)));                              // full screen window
     connect(ui->actionWith_Subtitles, SIGNAL(triggered()),              // View -> Take Snapshot -> With Subtitles
-            this, SLOT(SnapshotWithSubs()));                             // mpv snapshot with subtitles
+            this, SLOT(SnapshotWithSubs()));                            // mpv snapshot with subtitles
     connect(ui->actionWith_Subtitles, SIGNAL(triggered()),              // View -> Take Snapshot -> With Subtitles
-            this, SLOT(SnapshotWithoutSubs()));                          // mpv snapshot without subtitles
+            this, SLOT(SnapshotWithoutSubs()));                         // mpv snapshot without subtitles
     QSignalMapper *fitWindowMap = new QSignalMapper(this);              // View -> FitWindow ->
-    fitWindowMap->setMapping(ui->action_To_Current_Size, 100);          // View -> FitWindow -> To Current Size
+    fitWindowMap->setMapping(ui->action_To_Current_Size, 0);            // View -> FitWindow -> To Current Size
     fitWindowMap->setMapping(ui->action50, 50);                         // View -> FitWindow -> 50%
     fitWindowMap->setMapping(ui->action75, 75);                         // View -> FitWindow -> 75%
     fitWindowMap->setMapping(ui->action100, 100);                       // View -> FitWindow -> 100%
@@ -516,6 +516,7 @@ void MainWindow::SetPlayState(Mpv::PlayState playState)
             ui->playlistButton->setEnabled(true);
             init = true;
         }
+        FitWindow(100);
         mpv->Play();
         SetPlaybackControls(true);
     }
@@ -787,19 +788,32 @@ void MainWindow::FitWindow(int percent)
     if(isFullScreen()) // todo: disable option when going fullscreen
         return;
 
-    double scale = percent/100.0;
+    const Mpv::VideoParams &params = mpv->GetFileInfo().video_params;
 
-    // todo: use mpv video width/height
-    int cW = ui->mpvFrame->width(), // current width of video
-        cH = ui->mpvFrame->height(), // current height of video
-        nW = cW*scale, // new width of video
-        nH = cH*scale; // new height of video
-    QRect c = geometry(); // current geometry of window
+    QRect cG = geometry(), // current geometry of window
+          dG = qApp->desktop()->geometry(); // desktop geometry
+    int w, h;
+
+    if(percent == 0) // fit to window
+    {
+        // todo
+    }
+    else
+    {
+        double scale = percent/100.0;
+
+        w = params.width*scale + cG.width() - ui->mpvFrame->width(); // new width of the client
+        h = params.height*scale + cG.height() - ui->mpvFrame->height(); // height of the client
+    }
+
+
+    if(w > dG.width()) w = dG.width();
+    if(h > dG.height()) h = dG.height();
 
     setGeometry(QStyle::alignedRect(Qt::LeftToRight,
                                     Qt::AlignCenter,
-                                    QSize(nW+(c.width()-cW), nH+(c.height()-cH)),
-                                    c)); // set window position
+                                    QSize(w, h),
+                                    cG)); // set window position
 }
 
 void MainWindow::SetAspectRatio(double ratio)
