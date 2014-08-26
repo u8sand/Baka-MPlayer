@@ -1137,9 +1137,6 @@ QSlider::handle:horizontal {
    </property>
   </action>
   <action name="actionOpen_Path_from_Clipboard">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
    <property name="text">
     <string>Open Path from &amp;Clipboard</string>
    </property>
