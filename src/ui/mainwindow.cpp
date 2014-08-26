@@ -367,7 +367,6 @@ void MainWindow::SetPlaybackControls(bool enable)
     // playback controls
     ui->seekBar->setEnabled(enable);
     ui->rewindButton->setEnabled(enable);
-//    ui->playlistButton->setEnabled(enable);
     // next file
     if(enable && playlist->GetIndex()+1 < ui->playlistWidget->count()) // not the last entry
     {
@@ -393,13 +392,11 @@ void MainWindow::SetPlaybackControls(bool enable)
         ui->actionPlay_Previous_File->setEnabled(false);
     }
     // menubar
-    ui->action_Play->setEnabled(enable);
     ui->action_Stop->setEnabled(enable);
     ui->action_Restart->setEnabled(enable);
     ui->action_Jump_to_Time->setEnabled(enable);
     ui->actionMedia_Info->setEnabled(enable);
     ui->actionShow_in_Folder->setEnabled(enable);
-//    ui->action_Playlist->setEnabled(enable);
     ui->action_Full_Screen->setEnabled(enable);
     ui->menuTake_Snapshot->setEnabled(enable);
     ui->action_Add_Subtitle_File->setEnabled(enable);
@@ -512,6 +509,7 @@ void MainWindow::SetPlayState(Mpv::PlayState playState)
         ui->seekBar->setTracking(fi.length);
         if(!init) // will only happen the first time a file is loaded.
         {
+            ui->action_Play->setEnabled(true);
             ui->playButton->setEnabled(true);
             ui->playButton->Update();
             ui->action_Playlist->setEnabled(true);
@@ -791,21 +789,17 @@ void MainWindow::FitWindow(int percent)
 
     double scale = percent/100.0;
 
-    // todo: center in existing area rather than desktop area
-    // probably change the last line to this->geometry()
+    // todo: use mpv video width/height
+    int cW = ui->mpvFrame->width(), // current width of video
+        cH = ui->mpvFrame->height(), // current height of video
+        nW = cW*scale, // new width of video
+        nH = cH*scale; // new height of video
+    QRect c = geometry(); // current geometry of window
+
     setGeometry(QStyle::alignedRect(Qt::LeftToRight,
                                     Qt::AlignCenter,
-                                    QSize(/* width */
-                                          mpv->GetFileInfo().video_params.width*scale +
-                                          ui->seekBar->width() +
-                                          ui->playlistLayoutWidget->width(),
-                                          /* height */
-                                          mpv->GetFileInfo().video_params.height*scale +
-                                                          ui->menubar->height() +
-                                                          ui->outputTextEdit->height() +
-                                                          ui->seekBar->height() +
-                                                          ui->playbackLayoutWidget->height()),
-                                    qApp->desktop()->availableGeometry()));
+                                    QSize(nW+(c.width()-cW), nH+(c.height()-cH)),
+                                    c)); // set window position
 }
 
 void MainWindow::SetAspectRatio(double ratio)
