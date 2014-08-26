@@ -789,31 +789,47 @@ void MainWindow::FitWindow(int percent)
         return;
 
     const Mpv::VideoParams &params = mpv->GetFileInfo().video_params;
-
-    QRect cG = geometry(), // current geometry of window
+    QRect fG = ui->mpvFrame->geometry(), // frame geometry
+          cG = geometry(), // current geometry of window
           dG = qApp->desktop()->geometry(); // desktop geometry
     int w, h;
 
+    // get width and height of new display
     if(percent == 0) // fit to window
     {
-        // todo
+        double a = (double)params.width/params.height; // original proportions
+
+        if((double)fG.width()/fG.height() > a) // width > what it's supposed to be
+        {
+            h = fG.height();
+            w = a*h;
+        }
+        else // height > what it's supposed to be
+        {
+            w = fG.width();
+            h = w/a;
+        }
     }
     else
     {
         double scale = percent/100.0;
-
-        w = params.width*scale + cG.width() - ui->mpvFrame->width(); // new width of the client
-        h = params.height*scale + cG.height() - ui->mpvFrame->height(); // height of the client
+        w = params.width*scale;
+        h = params.height*scale;
     }
 
+    // add the size of the things not in the frame
+    w += cG.width() - fG.width();
+    h += cG.height() - fG.height();
 
+    // restrict size to desktop
     if(w > dG.width()) w = dG.width();
     if(h > dG.height()) h = dG.height();
 
+    // set window position
     setGeometry(QStyle::alignedRect(Qt::LeftToRight,
                                     Qt::AlignCenter,
                                     QSize(w, h),
-                                    cG)); // set window position
+                                    cG));
 }
 
 void MainWindow::SetAspectRatio(double ratio)
