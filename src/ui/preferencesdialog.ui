@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PreferencesDialog</class>
+ <widget class="QDialog" name="PreferencesDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>230</width>
+    <height>295</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Preferences</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+	font: 12px &quot;Noto Sans&quot;, &quot;FreeSans&quot;;
+	background: black;
+	color: whitesmoke;
+}
+
+/* QScrollBar:vertical */
+
+QScrollBar:vertical {
+	border: none;
+	width: 5px;
+}
+QScrollBar::handle:vertical {
+	background: gray;
+	border-radius: 2px;
+	min-height: 10px;
+}
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+	border: none;
+}
+QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical,
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+	background: transparent;
+}
+
+/* QScrollBar:horizontal */
+
+QScrollBar:horizontal {
+	border: none;
+	height: 5px;
+}
+QScrollBar::handle:horizontal {
+	background: gray;
+	border-radius: 2px;
+	min-width: 10px;
+}
+QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {
+	border: none;
+}
+QScrollBar::left-arrow:horizontal, QScrollBar::right-arrow:horizontal,
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
+	background: transparent;
+}</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_5">
+   <item>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="styleSheet">
+      <string notr="true">QTabWidget::pane { /* The tab widget frame */
+    border-top: 1px solid gray;
+	padding: 5px 0px;
+}
+
+/* Style the tab using the tab sub-control. Note that
+    it reads QTabBar _not_ QTabWidget */
+QTabBar::tab {
+    border-style: none;
+    min-width: 100px;
+    padding-bottom: 5px;
+}
+QTabBar::tab:selected {
+    border-bottom: 1px solid #607d8b;
+}
+QTabBar::tab:!selected {
+	color: silver;
+    margin-bottom: 1px;
+}</string>
+     </property>
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tab">
+      <attribute name="title">
+       <string>Player</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <property name="leftMargin">
+        <number>5</number>
+       </property>
+       <property name="topMargin">
+        <number>5</number>
+       </property>
+       <property name="rightMargin">
+        <number>5</number>
+       </property>
+       <property name="bottomMargin">
+        <number>5</number>
+       </property>
+       <item>
+        <widget class="QGroupBox" name="groupBox">
+         <property name="title">
+          <string>On Top</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <widget class="QRadioButton" name="alwaysRadioButton">
+            <property name="text">
+             <string>&amp;Always</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="playingRadioButton">
+            <property name="text">
+             <string>&amp;When Playing</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="neverRadioButton">
+            <property name="text">
+             <string>&amp;Never</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_2">
+         <property name="title">
+          <string>Tray Icon</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <widget class="QCheckBox" name="hidePopupCheckBox">
+            <property name="text">
+             <string>&amp;Hide Popup</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_2">
+      <attribute name="title">
+       <string>Video</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <property name="leftMargin">
+        <number>5</number>
+       </property>
+       <property name="topMargin">
+        <number>5</number>
+       </property>
+       <property name="rightMargin">
+        <number>5</number>
+       </property>
+       <property name="bottomMargin">
+        <number>5</number>
+       </property>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QCheckBox" name="autoFitCheckBox">
+           <property name="text">
+            <string>Auto-Fit Window:</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboBox">
+           <property name="currentIndex">
+            <number>2</number>
+           </property>
+           <item>
+            <property name="text">
+             <string>50%</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>75%</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>100%</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>200%</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_3">
+         <property name="title">
+          <string>Screenshot</string>
+         </property>
+         <layout class="QFormLayout" name="formLayout">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>File Format:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QComboBox" name="formatComboBox">
+            <item>
+             <property name="text">
+              <string>jpg</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>png</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>tga</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="2" column="0" colspan="2">
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>File Name Template:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0" colspan="2">
+           <widget class="QLabel" name="label_3">
+            <property name="text">
+             <string>Default Save Location:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0" colspan="2">
+           <widget class="QLineEdit" name="templateLineEdit">
+            <property name="styleSheet">
+             <string notr="true">QLineEdit {
+	background: #263238;
+	border: 1px solid black;
+	border-radius: 2px;
+	padding: 2px;
+}</string>
+            </property>
+            <property name="text">
+             <string>screenshot%#04n</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0" colspan="2">
+           <widget class="QPushButton" name="changeButton">
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+    background: #263238;
+	color: white;
+	border: 1px solid black;
+	border-radius: 2px;
+    min-width: 88px;
+	min-height: 25px;
+}
+QPushButton:default {
+	border: 1px solid #607d8b;
+}
+QPushButton:pressed {
+    background: #607d8b;
+}
+QPushButton:disabled {
+    color: gray;
+}</string>
+            </property>
+            <property name="text">
+             <string>&amp;Change</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="closeButton">
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background: #263238;
+	color: white;
+	border: 1px solid black;
+	border-radius: 2px;
+    min-width: 88px;
+	min-height: 25px;
+}
+QPushButton:default {
+	border: 1px solid #607d8b;
+}
+QPushButton:pressed {
+    background: #607d8b;
+}
+QPushButton:disabled {
+    color: gray;
+}</string>
+       </property>
+       <property name="text">
+        <string>&amp;Close</string>
+       </property>
+       <property name="default">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="../rsclist.qrc"/>
+ </resources>
+ <connections/>
+</ui>
