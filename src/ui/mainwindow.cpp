@@ -317,14 +317,18 @@ void MainWindow::dropEvent(QDropEvent *event) // todo: does this even work??
 
 void MainWindow::mousePressEvent(QMouseEvent *event)
 {
-    dragging = true;
-    lastMousePos = event->pos();
+    if(!isFullScreen())
+    {
+        dragging = true;
+        lastMousePos = event->pos();
+    }
     QMainWindow::mousePressEvent(event);
 }
 
 void MainWindow::mouseReleaseEvent(QMouseEvent *event)
 {
-    dragging = false;
+    if(!isFullScreen())
+        dragging = false;
     QMainWindow::mouseReleaseEvent(event);
 }
 
