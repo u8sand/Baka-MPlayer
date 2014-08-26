@@ -105,6 +105,7 @@ public slots:
 
 private slots:
     void AsyncCommand(const char *args[]);      // execute async mpv command
+
     void LoadFileInfo();                        // load all the required file information
     void LoadTracks();
     void LoadChapters();
