@@ -369,8 +369,6 @@ QPushButton:disabled {
    </item>
   </layout>
  </widget>
- <resources>
-  <include location="../rsclist.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
