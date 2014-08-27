@@ -51,7 +51,8 @@ SOURCES += main.cpp\
     ui/aboutdialog.cpp \
     ui/updatedialog.cpp \
     ui/inputdialog.cpp \
-    ui/lightdialog.cpp
+    ui/lightdialog.cpp \
+    ui/preferencesdialog.cpp
 
 HEADERS  += \
     mpvhandler.h \
@@ -72,7 +73,8 @@ HEADERS  += \
     ui/aboutdialog.h \
     ui/updatedialog.h \
     ui/inputdialog.h \
-    ui/lightdialog.h
+    ui/lightdialog.h \
+    ui/preferencesdialog.h
 
 FORMS    += \
     ui/mainwindow.ui \
@@ -81,7 +83,8 @@ FORMS    += \
     ui/jumpdialog.ui \
     ui/aboutdialog.ui \
     ui/updatedialog.ui \
-    ui/inputdialog.ui
+    ui/inputdialog.ui \
+    ui/preferencesdialog.ui
 
 RESOURCES += \
     rsclist.qrc

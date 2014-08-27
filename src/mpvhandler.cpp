@@ -262,7 +262,7 @@ void MpvHandler::AdjustVolume(int level)
     AsyncCommand(args);
 }
 
-void MpvHandler::Snapshot(bool withSubs)
+void MpvHandler::Screenshot(bool withSubs)
 {
     const char *args[] = {"screenshot", (withSubs ? "subtitles" : "window"), NULL};
     AsyncCommand(args);

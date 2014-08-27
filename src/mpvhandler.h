@@ -97,7 +97,7 @@ public slots:
     void FrameBackStep();                       // frame back step
     void AddVolume(int level);
     void AdjustVolume(int level);               // adjust the media volume
-    void Snapshot(bool withSubs = false);       // take a snapshot
+    void Screenshot(bool withSubs = false);     // take a screenshot
     void ToggleFullscreen();                    // toggle fullscreen
     void ToggleSubs();                          // toggle subtitles
     void AddSubScale(double scale);

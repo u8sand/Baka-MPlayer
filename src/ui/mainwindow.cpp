@@ -27,6 +27,7 @@
 #include "jumpdialog.h"
 #include "inputdialog.h"
 #include "updatedialog.h"
+#include "preferencesdialog.h"
 
 MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
     QMainWindow(parent),
@@ -43,10 +44,6 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
 {
     ui->setupUi(this);
     SetPlaylist(false);
-
-#if defined(Q_OS_LINUX) || defined(Q_OS_UNIX) // linux has native support for on top already, this feature is unnecessary
-    ui->menu_Options->removeAction(ui->menu_On_Top->menuAction()); // remove the On Top menu
-#endif
 
     // load settings
     setGeometry(QStyle::alignedRect(Qt::LeftToRight,
@@ -157,10 +154,10 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
                                                                         // View ->
     connect(ui->action_Full_Screen, SIGNAL(triggered(bool)),            // View -> Full Screen
             this, SLOT(FullScreen(bool)));                              // full screen window
-    connect(ui->actionWith_Subtitles, SIGNAL(triggered()),              // View -> Take Snapshot -> With Subtitles
-            this, SLOT(SnapshotWithSubs()));                            // mpv snapshot with subtitles
-    connect(ui->actionWith_Subtitles, SIGNAL(triggered()),              // View -> Take Snapshot -> With Subtitles
-            this, SLOT(SnapshotWithoutSubs()));                         // mpv snapshot without subtitles
+    connect(ui->actionWith_Subtitles, SIGNAL(triggered()),              // View -> Take Screenshot -> With Subtitles
+            this, SLOT(ScreenshotWithSubs()));                          // mpv screenshot with subtitles
+    connect(ui->actionWith_Subtitles, SIGNAL(triggered()),              // View -> Take Screenshot -> With Subtitles
+            this, SLOT(ScreenshotWithoutSubs()));                       // mpv screenshot without subtitles
     QSignalMapper *fitWindowMap = new QSignalMapper(this);              // View -> FitWindow ->
     fitWindowMap->setMapping(ui->action_To_Current_Size, 0);            // View -> FitWindow -> To Current Size
     fitWindowMap->setMapping(ui->action50, 50);                         // View -> FitWindow -> 50%
@@ -235,29 +232,17 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
             mpv, SLOT(FrameBackStep()));                                // mpv frame back step
     connect(ui->action_Jump_to_Time, SIGNAL(triggered()),               // Navigate -> Jump to Time
             this, SLOT(JumpToTime()));                                  // jump-to-time dialog
-                                                                        // Options ->
-    connect(ui->action_Show_Playlist_2, SIGNAL(triggered(bool)),        // Options -> Show Playlist
+                                                                        // Settings ->
+    connect(ui->action_Show_Playlist_2, SIGNAL(triggered(bool)),        // Settings -> Show Playlist
             this, SLOT(SetPlaylist(bool)));                             // toggle playlist visibility
-    connect(ui->action_Hide_Album_Art_2, SIGNAL(triggered(bool)),       // Options -> Hide Album Art
+    connect(ui->action_Hide_Album_Art_2, SIGNAL(triggered(bool)),       // Settings -> Hide Album Art
             this, SLOT(HideAlbumArt(bool)));                            // toggle album art
-    connect(ui->action_Dim_Lights_2, SIGNAL(triggered(bool)),           // Options -> Dim Lights
+    connect(ui->action_Dim_Lights_2, SIGNAL(triggered(bool)),           // Settings -> Dim Lights
             this, SLOT(DimLights(bool)));                               // toggle dim lights
-    connect(ui->actionShow_D_ebug_Output, SIGNAL(triggered(bool)),      // Options -> Show Debug Output
+    connect(ui->actionShow_D_ebug_Output, SIGNAL(triggered(bool)),      // Settings -> Show Debug Output
             ui->outputTextEdit, SLOT(setVisible(bool)));                // toggle debug output
-#ifdef Q_OS_WIN
-                                                                        // Options -> On Top ->
-    connect(ui->action_Always, SIGNAL(triggered(bool)),                 // Options -> On Top -> Always
-            this, SLOT(AlwaysOnTop(bool)));                             // enable/disable
-    connect(ui->actionWhen_Playing, SIGNAL(triggered(bool)),            // Options -> On Top -> When Playing
-            this, SLOT(AlwaysOnTopWhenPlaying(bool)));                  // if playing, enable
-    connect(ui->action_Never, SIGNAL(triggered(bool)),                  // Options -> On Top -> Never
-            this, SLOT(NeverOnTop(bool)));                              // disable always/when playing
-#endif
-                                                                        // Options -> Tray Icon ->
-    connect(ui->action_Show_in_Tray, SIGNAL(triggered(bool)),           // Options -> Tray Icon -> Show In Tray
-            this, SLOT(ShowInTray(bool)));
-    connect(ui->action_Hide_Popup, SIGNAL(triggered(bool)),             // Options -> Tray Icon -> Hide Popup
-            this, SLOT(HidePopup(bool)));
+    connect(ui->action_Preferences, SIGNAL(triggered()),                // Settings -> Preferences...
+            this, SLOT(Preferences()));                                 // open preferences dialog
                                                                         // Help ->
     connect(ui->actionOnline_Help, SIGNAL(triggered()),                 // Help -> Online Help
             this, SLOT(OnlineHelp()));                                  // open online help
@@ -402,7 +387,7 @@ void MainWindow::SetPlaybackControls(bool enable)
     ui->actionMedia_Info->setEnabled(enable);
     ui->actionShow_in_Folder->setEnabled(enable);
     ui->action_Full_Screen->setEnabled(enable);
-    ui->menuTake_Snapshot->setEnabled(enable);
+    ui->menuTake_Screenshot->setEnabled(enable);
     ui->action_Add_Subtitle_File->setEnabled(enable);
     ui->menuFit_Window->setEnabled(enable);
     ui->menuAspect_Ratio->setEnabled(enable);
@@ -905,12 +890,12 @@ void MainWindow::HidePopup(bool/* hide*/) // todo
 {
 }
 
-void MainWindow::SnapshotWithSubs() // todo
+void MainWindow::ScreenshotWithSubs() // todo
 {
 
 }
 
-void MainWindow::SnapshotWithoutSubs() // todo
+void MainWindow::ScreenshotWithoutSubs() // todo
 {
 
 }
@@ -978,3 +963,10 @@ void MainWindow::NeverOnTop(bool ontop)
     }
 }
 #endif
+
+void MainWindow::Preferences()
+{
+    PreferencesDialog::showPreferences(settings, this);
+    // todo: update dialog accordingly to take care of preferences
+    // todo: have signals/slots for settings modifications
+}
