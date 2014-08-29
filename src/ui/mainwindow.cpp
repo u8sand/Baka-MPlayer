@@ -16,6 +16,7 @@
 #include <QShortcut>
 #include <QProcess>
 #include <QIcon>
+#include <QWindow>
 
 #ifdef Q_OS_WIN
 #include <windows.h>
@@ -252,6 +253,16 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
             this, SLOT(AboutQt()));                                     // show about qt
     connect(ui->actionAbout_Baka_MPlayer, SIGNAL(triggered()),          // Help -> About Baka MPlayer
             this, SLOT(About()));                                       // show about dialog
+
+    connect(qApp, &QApplication::focusWindowChanged,
+            [=](QWindow *focusWindow)
+            {
+                if(focusWindow != this->windowHandle() && light->isVisible())
+                {
+                    light->setVisible(false); // remove dimlights
+                    ui->action_Dim_Lights_2->setChecked(false); // uncheck lights
+                }
+            });
 
     // keyboard shortcuts
     new QShortcut(QKeySequence("Right"), this, SLOT(SeekForward()));
@@ -592,6 +603,11 @@ void MainWindow::FullScreen(bool fs)
 {
     if(fs)
     {
+        if(light->isVisible())
+        {
+            light->setVisible(false);
+            ui->action_Dim_Lights_2->setChecked(false);
+        }
         setWindowState(windowState() | Qt::WindowFullScreen);
         ui->menubar->setVisible(false);
         SetPlaylist(false);
