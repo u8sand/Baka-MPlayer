@@ -177,10 +177,10 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
     connect(fitWindowMap, SIGNAL(mapped(int)),
             this, SLOT(FitWindow(int)));                                // fit the window to the appropriate percentage
     QSignalMapper *aspectMap = new QSignalMapper(this);                 // View -> Aspect Ratio ->
-    aspectMap->setMapping(ui->action_Autodetect, 0);                    // View -> Aspect Ratio -> Auto Detect
-    aspectMap->setMapping(ui->actionForce_4_3, 4/3);                    // View -> Aspect Ratio -> 4:3
-    aspectMap->setMapping(ui->actionForce_2_35_1, 2.35/1);              // View -> Aspect Ratio -> 2.35:1
-    aspectMap->setMapping(ui->actionForce_16_9, 16/9);                  // View -> Aspect Ratio -> 16:9
+    aspectMap->setMapping(ui->action_Autodetect, "-1");                 // View -> Aspect Ratio -> Auto Detect
+    aspectMap->setMapping(ui->actionForce_4_3, "4:3");                  // View -> Aspect Ratio -> 4:3
+    aspectMap->setMapping(ui->actionForce_2_35_1, "2.35:1");            // View -> Aspect Ratio -> 2.35:1
+    aspectMap->setMapping(ui->actionForce_16_9, "16/9");                // View -> Aspect Ratio -> 16:9
     connect(ui->action_Autodetect, SIGNAL(triggered()),
             aspectMap, SLOT(map()));
     connect(ui->actionForce_4_3, SIGNAL(triggered()),
@@ -346,8 +346,11 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
 
 void MainWindow::mouseDoubleClickEvent(QMouseEvent *event)
 {
-    FullScreen(!isFullScreen());
-    event->accept();
+    if(ui->mpvFrame->geometry().contains(event->pos())) // if mouse is in the mpvFrame
+    {
+        FullScreen(!isFullScreen());
+        event->accept();
+    }
     QMainWindow::mouseDoubleClickEvent(event);
 }
 
@@ -774,20 +777,27 @@ void MainWindow::AddSubtitleTrack()
 
 void MainWindow::FitWindow(int percent)
 {
-    if(isFullScreen()) // todo: disable option when going fullscreen
+    if(isFullScreen())
         return;
+    if(isMaximized())
+        setWindowFlags(windowFlags() & ~Qt::WindowMaximized);
 
+    mpv->LoadVideoParams();
     const Mpv::VideoParams &params = mpv->GetFileInfo().video_params;
     QRect fG = ui->mpvFrame->geometry(), // frame geometry
           cG = geometry(), // current geometry of window
           dG = qApp->desktop()->geometry(); // desktop geometry
     int w, h;
+    double a;
+
+    if(params.dwidth == 0 || params.dheight == 0) // dwidth/height are 0 on load
+        a = (double)params.width/params.height; // use video width and height for aspect ratio
+    else
+        a = (double)params.dwidth/params.dheight; // use display geometry for aspect ratio
 
     // get width and height of new display
     if(percent == 0) // fit to window
     {
-        double a = (double)params.width/params.height; // original proportions
-
         if((double)fG.width()/fG.height() > a) // width > what it's supposed to be
         {
             h = fG.height();
@@ -803,7 +813,7 @@ void MainWindow::FitWindow(int percent)
     {
         double scale = percent/100.0;
         w = params.width*scale;
-        h = params.height*scale;
+        h = (params.width/a)*scale; // get height from aspect ratio
     }
 
     // add the size of the things not in the frame
@@ -821,28 +831,12 @@ void MainWindow::FitWindow(int percent)
                                     cG));
 }
 
-void MainWindow::SetAspectRatio(double ratio)
+void MainWindow::SetAspectRatio(QString aspect)
 {
-    if(isFullScreen()) // todo: disable option when going fullscreen
+    if(isFullScreen())
         return;
-
-    double cR = ui->mpvFrame->width() / ui->mpvFrame->height();
-    if(ratio == 0) // autodetect
-        ratio = mpv->GetFileInfo().video_params.width / mpv->GetFileInfo().video_params.height;
-    int w, h;
-    if(cR < ratio)
-    {
-        w = ui->mpvFrame->width();
-        h = w/ratio;
-    }
-    else
-    {
-        h = ui->mpvFrame->height();
-        w = h*ratio;
-    }
-//    int x = (ui->mpvFrame->width()-w)>>2;
-//    int y = (ui->mpvFrame->height()-h)>>2;
-//    mplayerPanel.SetBounds(x, y, width, height);
+    mpv->SetAspect(aspect);
+    FitWindow(0);
 }
 
 void MainWindow::IncreaseFontSize()
