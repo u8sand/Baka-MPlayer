@@ -787,10 +787,11 @@ void MainWindow::FitWindow(int percent)
     const Mpv::VideoParams &params = mpv->GetFileInfo().video_params;
     QRect fG = ui->mpvFrame->geometry(), // frame geometry
           cG = geometry(), // current geometry of window
-          dG = qApp->desktop()->geometry(); // desktop geometry
+          dG = qApp->desktop()->availableGeometry(); // desktop geometry
     int w, h;
     double a;
 
+    // get aspect ratio
     if(params.dwidth == 0 || params.dheight == 0) // dwidth/height are 0 on load
         a = (double)params.width/params.height; // use video width and height for aspect ratio
     else
@@ -799,31 +800,39 @@ void MainWindow::FitWindow(int percent)
     // get width and height of new display
     if(percent == 0) // fit to window
     {
-        if((double)fG.width()/fG.height() > a) // width > what it's supposed to be
-        {
-            h = fG.height();
-            w = a*h;
-        }
-        else // height > what it's supposed to be
-        {
-            w = fG.width();
-            h = w/a;
-        }
+        w = fG.width();
+        h = fG.height();
     }
     else
     {
         double scale = percent/100.0;
         w = params.width*scale;
         h = (params.width/a)*scale; // get height from aspect ratio
+
+        // bigger than desktop geometry correction
+        // todo: explain how this works, I came up with the algorithm and
+        // simplified but intuitively it's hard to understand
+        if(w + (frameGeometry().width() - fG.width()) > dG.width())
+        {
+            w = dG.width() - frameGeometry().width() + fG.width();
+            h = w/a;
+        }
+        if(h + (frameGeometry().height() - fG.height()) > dG.height())
+        {
+            h = dG.height() - frameGeometry().height() + fG.height();
+            w = a*h;
+        }
     }
+
+    // autofit algorithm
+    if((double)w/h > a) // width > what it's supposed to be
+        w = a*h;
+    else                // height > what it's supposed to be
+        h = w/a;
 
     // add the size of the things not in the frame
     w += cG.width() - fG.width();
     h += cG.height() - fG.height();
-
-    // restrict size to desktop
-    if(w > dG.width()) w = dG.width();
-    if(h > dG.height()) h = dG.height();
 
     // set window position
     setGeometry(QStyle::alignedRect(Qt::LeftToRight,
