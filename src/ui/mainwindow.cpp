@@ -770,7 +770,8 @@ void MainWindow::SeekBack()
 void MainWindow::AddSubtitleTrack()
 {
     QString trackFile = QFileDialog::getOpenFileName(this, "Open subtitle file", playlist->GetPath(), "*.srt"); // todo: add more formats
-    mpv->AddSub(trackFile);
+    if(trackFile != "")
+        mpv->AddSub(trackFile);
     // todo: add track to tracklist
     // todo: select this track? it's not auto selected
 }
@@ -828,7 +829,7 @@ void MainWindow::FitWindow(int percent)
     setGeometry(QStyle::alignedRect(Qt::LeftToRight,
                                     Qt::AlignCenter,
                                     QSize(w, h),
-                                    cG));
+                                    dG));
 }
 
 void MainWindow::SetAspectRatio(QString aspect)
