@@ -89,6 +89,7 @@ public slots:
     void SetVid(int vid);                       // set the video track
     void SetAid(int aid);                       // set the audio track
     void SetSid(int sid);                       // set the subtitle track
+    void SetAspect(QString aspect);             // set the aspect ratio
     void AddSub(QString f);                     // add an external subtitle track
     void SetChapter(int chapter);               // seek to the specified chapter
     void NextChapter();                         // seek to next chapter
@@ -103,13 +104,13 @@ public slots:
     void AddSubScale(double scale);
     void SetSubScale(double scale);
 
-private slots:
-    void AsyncCommand(const char *args[]);      // execute async mpv command
-
     void LoadFileInfo();                        // load all the required file information
     void LoadTracks();
     void LoadChapters();
     void LoadVideoParams();
+private slots:
+    void AsyncCommand(const char *args[]);      // execute async mpv command
+
 
     void SetTime(int t);                        // set time, emit signal
     void SetVolume(int v);                      // set volume, emit signal

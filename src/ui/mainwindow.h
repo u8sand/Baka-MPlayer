@@ -75,7 +75,7 @@ private slots:
     void SeekBack();                                // seek -5
     void AddSubtitleTrack();                        // add a new external subtitle track
     void FitWindow(int percent);                    // fit the window the the specified percent
-    void SetAspectRatio(double ratio);              // set the aspect ratio to specified proportions
+    void SetAspectRatio(QString aspect);            // set the aspect ratio to specified proportions
     void IncreaseFontSize();                        // increase the subtitle font size
     void DecreaseFontSize();                        // decrease the subtitle font size
     void ResetFontSize();                           // reset the subtitle font size

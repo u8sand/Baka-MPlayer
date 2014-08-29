@@ -210,6 +210,13 @@ void MpvHandler::SetSid(int sid)
     AsyncCommand(args);
 }
 
+void MpvHandler::SetAspect(QString aspect)
+{
+    const QByteArray tmp = aspect.toUtf8();
+    const char *args[] = {"set", "video-aspect", tmp.constData(), NULL};
+    AsyncCommand(args);
+}
+
 void MpvHandler::AddSub(QString f)
 {
     const QByteArray tmp = f.toUtf8();
