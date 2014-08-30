@@ -47,7 +47,7 @@ QMenu {
     border: 1px solid #424242;
 }
 QMenu::item:selected {
-	background: #607d8b;
+	background: #008098;
  }
 QMenu::item:checked {
 	/* distinguish check state for menu item's with images */
@@ -90,7 +90,7 @@ QListView::item:alternate {
     background: #141414;
 }
 QListView::item:selected {
-	background: #607d8b;
+	background: #008098;
 }
 
 /* seekbarLayoutWidget */
@@ -438,7 +438,7 @@ QSlider::groove:horizontal {
 	background: #141414;
 }
 QSlider::sub-page:horizontal {
-	background: #607d8b;
+	background: #008098;
 }</string>
       </property>
       <property name="maximum">
@@ -807,7 +807,7 @@ QSlider::sub-page:horizontal {
 	height: 1px;
 }
 QSlider::sub-page:horizontal {
-	background: #607d8b;
+	background: #008098;
 }
 QSlider::handle:horizontal {
 	background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
