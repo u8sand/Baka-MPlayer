@@ -591,7 +591,7 @@ void MainWindow::NewPlayer()
 
 void MainWindow::OpenFile()
 {
-    playlist->LoadFile(QFileDialog::getOpenFileName(this, "Open file"));
+    playlist->LoadFile(QFileDialog::getOpenFileName(this, "Open File"));
 }
 
 void MainWindow::OpenUrl()
@@ -785,7 +785,7 @@ void MainWindow::SeekBack()
 
 void MainWindow::AddSubtitleTrack()
 {
-    QString trackFile = QFileDialog::getOpenFileName(this, "Open subtitle file", playlist->GetPath(), "*.srt"); // todo: add more formats
+    QString trackFile = QFileDialog::getOpenFileName(this, "Open Subtitle File", playlist->GetPath(), "*.sub *.srt *.ass *.ssa"); // todo: add more formats
     if(trackFile != "")
         mpv->AddSub(trackFile);
     // todo: add track to tracklist
