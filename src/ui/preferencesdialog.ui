@@ -75,7 +75,7 @@ QTabBar::tab {
     padding-bottom: 5px;
 }
 QTabBar::tab:selected {
-    border-bottom: 1px solid #607d8b;
+    border-bottom: 1px solid #008098;
 }
 QTabBar::tab:!selected {
 	color: silver;
