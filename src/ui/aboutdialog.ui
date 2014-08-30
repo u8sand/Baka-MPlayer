@@ -79,7 +79,7 @@ QTabBar::tab {
     padding-bottom: 5px;
 }
 QTabBar::tab:selected {
-    border-bottom: 1px solid #607d8b;
+    border-bottom: 1px solid #008098;
 }
 QTabBar::tab:!selected {
 	color: silver;
@@ -281,10 +281,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</string
 	min-height: 25px;
 }
 QPushButton:default {
-	border: 1px solid #607d8b;
+	border: 1px solid #008098;
 }
 QPushButton:pressed {
-    background: #607d8b;
+    background: #008098;
 }
 QPushButton:disabled {
     color: gray;

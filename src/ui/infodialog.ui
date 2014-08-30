@@ -93,10 +93,10 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
 	min-height: 25px;
 }
 QPushButton:default {
-	border: 1px solid #607d8b;
+	border: 1px solid #008098;
 }
 QPushButton:pressed {
-    background: #607d8b;
+    background: #008098;
 }
 QPushButton:disabled {
     color: gray;
