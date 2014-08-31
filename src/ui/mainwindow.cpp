@@ -638,8 +638,13 @@ void MainWindow::FullScreen(bool fs)
 
 void MainWindow::BossMode()
 {
-    mpv->Pause();
-    setWindowState(windowState() | Qt::WindowMinimized);
+    if(isFullScreen()) // in fullscreen mode, escape will make it not fullscreen
+        setWindowState(windowState() & ~Qt::WindowFullScreen);
+    else
+    {
+        mpv->Pause();
+        setWindowState(windowState() | Qt::WindowMinimized);
+    }
 }
 
 void MainWindow::JumpToTime()
