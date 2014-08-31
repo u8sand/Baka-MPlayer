@@ -268,6 +268,8 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
     new QShortcut(QKeySequence("Right"), this, SLOT(SeekForward()));
     new QShortcut(QKeySequence("Left"), this, SLOT(SeekBack()));
     new QShortcut(QKeySequence("Esc"), this, SLOT(BossMode()));
+
+    ui->mpvFrame->installEventFilter(this);
 }
 
 MainWindow::~MainWindow()
@@ -353,6 +355,17 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
         ui->seekBar->setVisible(false);
     }
     QMainWindow::mouseMoveEvent(event);
+}
+
+bool MainWindow::eventFilter(QObject *obj, QEvent *event)
+{
+    if(obj == ui->mpvFrame && event->type() == QEvent::MouseMove)
+    {
+        QMouseEvent *mouseEvent = static_cast<QMouseEvent*>(event);
+        if(!dragging)
+            mouseMoveEvent(mouseEvent);
+    }
+    return false;
 }
 
 void MainWindow::mouseDoubleClickEvent(QMouseEvent *event)

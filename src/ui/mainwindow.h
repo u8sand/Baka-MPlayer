@@ -7,6 +7,7 @@
 #include <QModelIndex>
 #include <QStringList>
 #include <QMouseEvent>
+#include <QEvent>
 #include <QPoint>
 
 #include "mpvhandler.h"
@@ -36,6 +37,7 @@ protected:
     void mouseReleaseEvent(QMouseEvent *event);     // released mouse up
     void mouseMoveEvent(QMouseEvent *event);        // moved mouse on the form
     void mouseDoubleClickEvent(QMouseEvent *event); // double clicked the form
+    bool eventFilter(QObject *obj, QEvent *event);
 
     inline void SetPlaybackControls(bool enable);   // macro to enable/disable playback controls
 
