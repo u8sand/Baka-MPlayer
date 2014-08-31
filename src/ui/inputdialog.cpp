@@ -3,12 +3,14 @@
 
 #include <QString>
 
-InputDialog::InputDialog(int _max, QDialog *parent) :
+InputDialog::InputDialog(QString prompt, QString title, const std::function<bool (QString)> &_validation, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::InputDialog),
-    max(_max)
+    validation(_validation)
 {
     ui->setupUi(this);
+    setWindowTitle(title);
+    ui->messageLabel->setText(prompt);
 
     connect(ui->okButton, SIGNAL(clicked()),
             this, SLOT(accept()));
@@ -23,17 +25,16 @@ InputDialog::~InputDialog()
     delete ui;
 }
 
-int InputDialog::getIndex(int max, QDialog *parent)
+QString InputDialog::getInput(QString prompt, QString title, const std::function<bool (QString)> &validation, QWidget *parent)
 {
-    InputDialog dialog(max, parent);
+    InputDialog dialog(prompt, title, validation, parent);
     if(dialog.exec() == QDialog::Accepted)
-        return dialog.ui->inputLineEdit->text().toInt();
+        return dialog.ui->inputLineEdit->text();
     else
-        return 0;
+        return "";
 }
 
 void InputDialog::validate(QString input)
 {
-    int num = input.toInt();
-    ui->okButton->setEnabled(!(num > max || num < 1));
+    ui->okButton->setEnabled(input != "" && validation(input));
 }

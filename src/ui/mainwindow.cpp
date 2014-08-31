@@ -727,9 +727,18 @@ void MainWindow::TogglePlaylist()
 
 void MainWindow::GetPlaylistIndex()
 {
-    int index = InputDialog::getIndex(playlist->GetMax());
-    if(index > 0)
-        playlist->PlayIndex(index-1); // user index will be 1 greater than actual
+    QString res = InputDialog::getInput("Enter the file number you want to play:\nNote: Value must be between 1 - "+QString::number(playlist->GetMax()),
+                                        "Enter File Number",
+                                        [this](QString input)
+                                        {
+                                            int in = input.toInt();
+                                            if(in >= 1 && in <= playlist->GetMax())
+                                                return true;
+                                            return false;
+                                        },
+                                        this);
+    if(res != "")
+        playlist->PlayIndex(res.toInt()-1); // user index will be 1 greater than actual
 }
 
 void MainWindow::HideAlbumArt(bool hide)
