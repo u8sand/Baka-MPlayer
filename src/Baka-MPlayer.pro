@@ -33,7 +33,6 @@ win32 {
 }
 
 SOURCES += main.cpp\
-    settingsmanager.cpp \
     mpvhandler.cpp \
     updatemanager.cpp \
     widgets/customslider.cpp \
@@ -54,7 +53,6 @@ SOURCES += main.cpp\
     ui/preferencesdialog.cpp
 
 HEADERS  += \
-    settingsmanager.h \
     mpvtypes.h \
     mpvhandler.h \
     updatemanager.h \

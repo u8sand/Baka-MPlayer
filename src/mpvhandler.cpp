@@ -28,7 +28,6 @@ MpvHandler::MpvHandler(int64_t wid, QObject *parent):
     mpv_set_option(mpv, "wid", MPV_FORMAT_INT64, &wid);
     mpv_set_option_string(mpv, "input-cursor", "no");   // no mouse handling
     mpv_set_option_string(mpv, "af", "scaletempo");     // make sure audio tempo is scaled (when speed is changing)
-    // todo: mpv_set_option_string(mpv, "cursor-autohide", fs ? "500" : "no");
     mpv_set_option_string(mpv, "cursor-autohide", "no");
 
     // get updates when these properties change
@@ -159,7 +158,10 @@ void MpvHandler::PlayIndex(int i)
         {
             QFile f(getFile());
             if(f.exists())
+            {
                 OpenFile(getFile());
+                Play();
+            }
             else
                 Stop();
         }
@@ -373,6 +375,18 @@ void MpvHandler::SetSubScale(double scale)
     const QByteArray tmp = QString::number(scale).toUtf8();
     const char *args[] = {"set", "sub-scale", tmp.constData(), NULL};
     AsyncCommand(args);
+}
+
+void MpvHandler::Debug(bool b)
+{
+    if(mpv)
+        mpv_request_log_messages(mpv, b ? "debug" : "no");
+}
+
+void MpvHandler::CursorAutoHide(bool b)
+{
+    if(mpv)
+        mpv_set_option_string(mpv, "cursor-autohide", b?"yes":"no");
 }
 
 void MpvHandler::AsyncCommand(const char *args[])
