@@ -114,7 +114,6 @@ bool MpvHandler::event(QEvent *event)
     return QObject::event(event);
 }
 
-
 void MpvHandler::LoadFile(QString f)
 {
     if(f == "") return; // ignore empty file name

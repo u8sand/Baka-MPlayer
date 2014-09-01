@@ -26,8 +26,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-    int getAutoFit();
-
+    int getAutoFit() { return autoFit; }
 
     void Load(QString f);
 

@@ -35,7 +35,7 @@ void UpdateManager::DownloadUpdate()
 void UpdateManager::CheckForUpdatesReply(QNetworkReply *reply)
 {
     if(reply->error())
-        emit ErrorSignal("UpdateManager: "+reply->errorString());
+        emit errorSignal("UpdateManager: "+reply->errorString());
     else
     {
         QMap<QString, QString> info;
@@ -54,7 +54,7 @@ void UpdateManager::CheckForUpdatesReply(QNetworkReply *reply)
 void UpdateManager::DoanloadUpdateReply(QNetworkReply *reply)
 {
     if(reply->error())
-        emit ErrorSignal("UpdateManager: "+reply->errorString());
+        emit errorSignal("UpdateManager: "+reply->errorString());
     else
     {
         // todo: progress bar
