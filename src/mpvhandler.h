@@ -126,9 +126,9 @@ public slots:
     void setPlaylistVisible(bool b)         { emit playlistVisibleChanged(playlistVisible = b); }
 
 signals:
-    void playStateChanged(const Mpv::PlayState&);
     void playlistChanged(const QStringList&);
-    void fileInfoChanged(Mpv::FileInfo);
+    void fileInfoChanged(const Mpv::FileInfo&);
+    void playStateChanged(Mpv::PlayState);
     void fileChanged(QString);
     void lastFileChanged(QString);
     void screenshotFormatChanged(QString);

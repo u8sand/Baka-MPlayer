@@ -276,7 +276,7 @@ MainWindow::MainWindow(QWidget *parent):
             });
 
     connect(mpv, &MpvHandler::playlistChanged,
-            [=](QStringList list)
+            [=](const QStringList &list)
             {
                 ui->playlistWidget->clear();
                 ui->playlistWidget->addItems(list);
@@ -416,7 +416,7 @@ MainWindow::MainWindow(QWidget *parent):
             });
 
     connect(ui->playlistWidget, &CustomListWidget::doubleClicked,       // Playlist: Item double clicked
-            [=](QModelIndex i)
+            [=](const QModelIndex &i)
             {
                 mpv->PlayIndex(i.row());
             });
@@ -676,7 +676,10 @@ MainWindow::MainWindow(QWidget *parent):
             });
                                                                         // Settings ->
     connect(ui->action_Show_Playlist_2, &QAction::triggered,            // Settings -> Show Playlist
-            this, &MainWindow::SetPlaylist);
+            [=](bool b)
+            {
+                SetPlaylist(b);
+            });
 
     connect(ui->action_Hide_Album_Art_2, &QAction::triggered,           // Settings -> Hide Album Art
             [=](bool b)
@@ -692,7 +695,10 @@ MainWindow::MainWindow(QWidget *parent):
             });
 
     connect(ui->action_Dim_Lights_2, &QAction::triggered,               // Settings -> Dim Lights
-            this, &MainWindow::DimLights);
+            [=](bool b)
+            {
+                DimLights(b);
+            });
 
     connect(ui->actionShow_D_ebug_Output, &QAction::triggered,          // Settings -> Show Debug Output
             [=](bool b)
@@ -738,8 +744,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(qApp, &QApplication::focusWindowChanged,
             [=](QWindow *focusWindow)
             {
-                if(focusWindow == 0 && // out of programs jurisdiction
-                   light->isVisible()) // dimlights is on
+                if(focusWindow == 0 && light->isVisible())
                 {
                     light->setVisible(false); // remove dimlights
                     ui->action_Dim_Lights_2->setChecked(false); // uncheck lights
@@ -751,6 +756,7 @@ MainWindow::MainWindow(QWidget *parent):
             {
                 QMessageBox::warning(this, "Mpv Error", err);
             });
+
     connect(mpv, &MpvHandler::debugSignal,
             [=](QString msg)
             {
@@ -1083,7 +1089,6 @@ void MainWindow::SetAspectRatio(QString aspect)
     if(isFullScreen())
         return;
     mpv->SetAspect(aspect);
-    FitWindow(0);
 }
 
 void MainWindow::DimLights(bool dim) // todo: make sure the dim window can't get focus
@@ -1160,5 +1165,3 @@ void MainWindow::NeverOnTop(bool ontop)
     }
 }
 #endif
-
-int MainWindow::getAutoFit() { return autoFit; }
