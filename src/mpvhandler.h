@@ -56,6 +56,9 @@ public slots:
     void AddSubScale(double scale);
     void SetSubScale(double scale);
 
+    void Debug(bool b);
+    void CursorAutoHide(bool b);
+
     void LoadFileInfo();                        // load all the required file information
     void LoadTracks();
     void LoadChapters();
@@ -94,7 +97,7 @@ public:
     const Mpv::FileInfo &getFileInfo()      { return fileInfo; }
     const QStringList &getPlaylist()        { return playlist; }
     Mpv::PlayState getPlayState()           { return playState; }
-    QString getFile()                       { return playlist[index]; }
+    QString getFile()                       { return path+playlist[index]; }
     QString getLastFile()                   { return lastFile; }
     QString getScreenshotFormat()           { return screenshotFormat; }
     QString getScreenshotTemplate()         { return screenshotTemplate; }

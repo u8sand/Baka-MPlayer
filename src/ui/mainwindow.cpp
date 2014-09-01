@@ -40,32 +40,62 @@ MainWindow::MainWindow(QWidget *parent):
     ui->setupUi(this);
 
     // initialize managers/handlers
-    settings = new SettingsManager();
+#if Q_OS_WIN // saves to $(application directory)\${SETTINGS_FILE}.ini
+    settings = new QSettings(QApplication::applicationDirPath()+"\\"+SETTINGS_FILE, QSettings::IniFormat,this);
+#else // saves to  ~/.config/${SETTINGS_FILE}.ini on linux
+    settings = new QSettings(QSettings::IniFormat, QSettings::UserScope, SETTINGS_FILE, QString(), this);
+#endif
     mpv = new MpvHandler(ui->mpvFrame->winId(), this);
     update = new UpdateManager(this);
 
-    // setup mainwindow
-
+    // initialize other ui elements
     // note: trayIcon does not work in my environment--known qt bug
     // see: https://bugreports.qt-project.org/browse/QTBUG-34364
     // todo: tray menu/tooltip
-    trayIcon = new QSystemTrayIcon(qApp->windowIcon(), this);
+    sysTrayIcon = new QSystemTrayIcon(qApp->windowIcon(), this);
     light = new LightDialog();
-
-    // set window geometry from settings
-    setGeometry(QStyle::alignedRect(Qt::LeftToRight,
-                                    Qt::AlignCenter,
-                                    QSize(settings->value("window/width").toInt(),
-                                          settings->value("window/height").toInt()),
-                                    qApp->desktop()->availableGeometry()));
-    // todo: other settings
-    // onTop, autoFit, trayIcon, hidePopup, common/debug
-    // setup mpvhandler
-    // setup updatemanager
-    // todo
-
+    ui->mpvFrame->installEventFilter(this);
 
     // setup signals & slots
+
+    // mainwindow
+
+//#ifdef Q_WIN_OS
+//    connect(this, &MainWindow::onTopChanged,
+//            [=](QString onTop)
+//            {
+//                if(onTop == "never")
+//                    AlwaysOnTop(true);
+//                else if(trayIcon == "always")
+//                    AlwaysOnTop(false);
+//            });
+//#endif
+
+//    connect(this, &MainWindow::autoFitChanged,
+//            [=](int i)
+//            {
+//            });
+
+//    connect(this, &MainWindow::trayIconChanged,
+//            [=](bool b)
+//            {
+//                trayIcon->setVisible(b);
+//            });
+
+//    connect(this, &MainWindow::hidePopupChanged,
+//            [=](bool b)
+//    {
+//    });
+
+    connect(this, &MainWindow::debugChanged,
+            [=](bool b)
+            {
+                mpv->Debug(b);
+                ui->actionShow_D_ebug_Output->setChecked(b);
+                ui->outputTextEdit->setVisible(b);
+            });
+
+    // mpv
 
     connect(mpv, &MpvHandler::volumeChanged,
             [=](int volume)
@@ -234,35 +264,6 @@ MainWindow::MainWindow(QWidget *parent):
                 ui->actionSh_uffle->setChecked(b);
             });
 
-//#ifdef Q_WIN_OS
-//    connect(data, &DataManager::windowOnTopChanged,
-//            [=](QString onTop)
-//            {
-//                if(onTop == "never")
-//                    AlwaysOnTop(true);
-//                else if(trayIcon == "always")
-//                    AlwaysOnTop(false);
-//            });
-//#endif
-
-//    connect(data, &DataManager::windowTrayIconChanged,
-//            [=](QObject *sender, bool b)
-//            {
-//                if(sender != this)
-//                    trayIcon->setVisible(b);
-//            });
-
-//    connect(data, &DataManager::windowDebugOutputChanged,
-//            [=](QObject *sender, bool b)
-//            {
-//                if(sender != this)
-//                {
-//                    ui->actionShow_D_ebug_Output->setChecked(b);
-//                    ui->outputTextEdit->setVisible(b);
-//                }
-//            });
-
-
     connect(mpv, &MpvHandler::searchChanged,
             [=](QString s)
             {
@@ -283,6 +284,23 @@ MainWindow::MainWindow(QWidget *parent):
             });
 
 
+    connect(mpv, &MpvHandler::errorSignal,
+            [=](QString err)
+            {
+                QMessageBox::warning(this, "Mpv Error", err);
+            });
+
+    connect(mpv, &MpvHandler::debugSignal,
+            [=](QString msg)
+            {
+                ui->outputTextEdit->appendPlainText(msg);
+            });
+
+    // update manager
+
+    // todo
+
+    // ui
 
     connect(ui->seekBar, &SeekBar::valueChanged,                        // Playback: Seekbar clicked
             [=](int i)
@@ -740,6 +758,7 @@ MainWindow::MainWindow(QWidget *parent):
                 AboutDialog::about(BAKA_MPLAYER_VERSION, this); // launch about dialog
             });
 
+    // qApp
 
     connect(qApp, &QApplication::focusWindowChanged,
             [=](QWindow *focusWindow)
@@ -751,19 +770,8 @@ MainWindow::MainWindow(QWidget *parent):
                 }
             });
 
-    connect(mpv, &MpvHandler::errorSignal,
-            [=](QString err)
-            {
-                QMessageBox::warning(this, "Mpv Error", err);
-            });
-
-    connect(mpv, &MpvHandler::debugSignal,
-            [=](QString msg)
-            {
-                ui->outputTextEdit->appendPlainText(msg);
-            });
-
     // keyboard shortcuts
+
     QAction *shortcut;
 
     shortcut = new QAction(this);
@@ -799,23 +807,61 @@ MainWindow::MainWindow(QWidget *parent):
             });
     addAction(shortcut);
 
-    ui->mpvFrame->installEventFilter(this);
+    LoadSettings();
 }
 
 MainWindow::~MainWindow()
 {
-    // save settings
-    settings->setValue("mpv/volume", mpv->getVolume());
-    settings->setValue("window/width", normalGeometry().width());
-    settings->setValue("window/height", normalGeometry().height());
-    settings->setValue("playlist/show-all", ui->showAllButton->isChecked());
-    settings->setValue("debug/output", ui->actionShow_D_ebug_Output->isChecked());
+    SaveSettings();
 
     // cleanup
     delete update;
     delete mpv;
     delete settings;
     delete ui;
+}
+
+void MainWindow::LoadSettings()
+{
+    // window
+    setGeometry(QStyle::alignedRect(Qt::LeftToRight,
+                                    Qt::AlignCenter,
+                                    QSize(settings->value("window/width", 600).toInt(),
+                                          settings->value("window/height", 430).toInt()),
+                                    qApp->desktop()->availableGeometry()));
+    setOnTop(settings->value("window/onTop", "never").toString());
+    setAutoFit(settings->value("window/autoFit", 100).toInt());
+    setTrayIcon(settings->value("window/trayIcon", false).toBool());
+    setHidePopup(settings->value("window/hidePopup", false).toBool());
+    // mpv
+    mpv->setLastFile(settings->value("mpv/lastFile", "").toString());
+    mpv->setShowAll(settings->value("mpv/showAll", false).toBool());
+    mpv->setScreenshotFormat(settings->value("mpv/screenshotFormat", "png").toString());
+    mpv->setScreenshotTemplate(settings->value("mpv/screenshotTemplate", "screenshot%#04n").toString());
+    mpv->setSpeed(settings->value("mpv/speed", 1.0).toDouble());
+    mpv->setVolume(settings->value("mpv/volume", 100).toInt());
+    // common
+    setDebug(settings->value("common/debug", false).toBool());
+}
+
+void MainWindow::SaveSettings()
+{
+    // window
+    settings->setValue("window/width", normalGeometry().width());
+    settings->setValue("window/height", normalGeometry().height());
+    settings->setValue("window/onTop", getOnTop());
+    settings->setValue("window/autoFit", getAutoFit());
+    settings->setValue("window/trayIcon", getTrayIcon());
+    settings->setValue("window/hidePopup", getHidePopup());
+    // mpv
+    settings->setValue("mpv/lastFile", mpv->getLastFile());
+    settings->setValue("mpv/showAll", mpv->getShowAll());
+    settings->setValue("mpv/screenshotFormat", mpv->getScreenshotFormat());
+    settings->setValue("mpv/screenshotTemplate", mpv->getScreenshotTemplate());
+    settings->setValue("mpv/speed", mpv->getSpeed());
+    settings->setValue("mpv/volume", mpv->getVolume());
+    // common
+    settings->setValue("debug/output", getDebug());
 }
 
 void MainWindow::Load(QString file)
@@ -885,11 +931,10 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
 
 bool MainWindow::eventFilter(QObject *obj, QEvent *event)
 {
-    if(obj == ui->mpvFrame && event->type() == QEvent::MouseMove)
+    if(obj == ui->mpvFrame && event->type() == QEvent::MouseMove && isFullScreen())
     {
         QMouseEvent *mouseEvent = static_cast<QMouseEvent*>(event);
-        if(!dragging)
-            mouseMoveEvent(mouseEvent);
+        mouseMoveEvent(mouseEvent);
     }
     return false;
 }
@@ -1013,9 +1058,6 @@ void MainWindow::SetPlaylist(bool visible)
             ui->splitter->setNormalPosition(ui->splitter->position()); // save splitter position as the normal position
         ui->splitter->setPosition(ui->splitter->max()); // set splitter position to right-most
     }
-    mpv->blockSignals(true);
-    mpv->setPlaylistVisible(visible);
-    mpv->blockSignals(false);
 }
 
 void MainWindow::FitWindow(int percent)

@@ -10,7 +10,6 @@
 #include <QEvent>
 #include <QPoint>
 
-#include "settingsmanager.h"
 #include "mpvhandler.h"
 #include "updatemanager.h"
 #include "lightdialog.h"
@@ -26,11 +25,12 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-    int getAutoFit() { return autoFit; }
-
     void Load(QString f);
 
 protected:
+    void LoadSettings();
+    void SaveSettings();
+
     void dragEnterEvent(QDragEnterEvent *event);    // drag file into
     void dropEvent(QDropEvent *event);              // drop file into
     void mousePressEvent(QMouseEvent *event);       // pressed mouse down
@@ -58,19 +58,43 @@ private slots:
 #endif
 
 private:
-    Ui::MainWindow *ui;
-    SettingsManager *settings;
-    MpvHandler *mpv;
-    UpdateManager *update;
+    Ui::MainWindow  *ui;
+    QSettings       *settings;
+    MpvHandler      *mpv;
+    UpdateManager   *update;
 
-    QPoint lastMousePos;
-    bool dragging,
-         init,
-         autoFit;
+    QPoint          lastMousePos;
+    bool            dragging,
+                    init;
 
-    QSystemTrayIcon *trayIcon;
-    QMenu *trayIconMenu;
-    LightDialog *light;
+    QSystemTrayIcon *sysTrayIcon;
+    QMenu           *trayIconMenu;
+    LightDialog     *light;
+
+    // variables
+    QString onTop;
+    int autoFit;
+    bool trayIcon,
+         hidePopup,
+         debug;
+public:
+    QString getOnTop()          { return onTop; }
+    int getAutoFit()            { return autoFit; }
+    bool getTrayIcon()          { return trayIcon; }
+    bool getHidePopup()         { return hidePopup; }
+    bool getDebug()             { return debug; }
+public slots:
+    void setOnTop(QString s)    { emit onTopChanged(onTop = s); }
+    void setAutoFit(int b)      { emit autoFitChanged(autoFit = b); }
+    void setTrayIcon(bool b)    { emit trayIconChanged(trayIcon = b); }
+    void setHidePopup(bool b)   { emit hidePopupChanged(hidePopup = b); }
+    void setDebug(bool b)       { emit debugChanged(debug = b); }
+signals:
+    void onTopChanged(QString);
+    void autoFitChanged(int);
+    void trayIconChanged(bool);
+    void hidePopupChanged(bool);
+    void debugChanged(bool);
 };
 
 #endif // MAINWINDOW_H
