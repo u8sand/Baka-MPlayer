@@ -16,7 +16,7 @@ PreferencesDialog::PreferencesDialog(QSettings *_settings, QWidget *parent) :
             this, SLOT(close()));
 
     // populate existing preferences
-    QString ontop = settings->value("window/ontop").toString();
+    QString ontop = settings->value("window/onTop").toString();
     if(ontop == "never")
         ui->neverRadioButton->setChecked(true);
     else if(ontop == "playing")
@@ -24,34 +24,76 @@ PreferencesDialog::PreferencesDialog(QSettings *_settings, QWidget *parent) :
     else if(ontop == "always")
         ui->alwaysRadioButton->setChecked(true);
     ui->groupBox_2->setChecked(settings->value("window/trayIcon").toBool());
-    ui->hidePopupCheckBox->setChecked(settings->value("window/hidepopup").toBool());
-    int autofit = settings->value("window/autofit").toInt();
+    ui->hidePopupCheckBox->setChecked(settings->value("window/hidePopup").toBool());
+    int autofit = settings->value("window/autoFit").toInt();
     ui->autoFitCheckBox->setChecked((bool)autofit);
     ui->comboBox->setCurrentText(QString::number(autofit)+"%");
-    ui->formatComboBox->setCurrentText(settings->value("mpv/screenshot_format").toString());
-    ui->templateLineEdit->setText(settings->value("mpv/screenshot_template").toString());
+    ui->formatComboBox->setCurrentText(settings->value("mpv/screenshotFormat").toString());
+    ui->templateLineEdit->setText(settings->value("mpv/screenshotTemplate").toString());
 
-    // todo: setup combo boxes
-    // todo: propigate changes instantaniously?
+    // propigate changes to data
+    connect(ui->neverRadioButton, &QRadioButton::clicked,
+            [=]()
+            {
+                settings->setValue("window/onTop", "never");
+            });
+    connect(ui->playingRadioButton, &QRadioButton::clicked,
+            [=]()
+            {
+                settings->setValue("window/onTop", "playing");
+            });
+    connect(ui->alwaysRadioButton, &QRadioButton::clicked,
+            [=]()
+            {
+                settings->setValue("window/onTop", "always");
+            });
+    connect(ui->groupBox_2, &QGroupBox::clicked,
+            [=](bool b)
+            {
+                settings->setValue("window/trayIcon", b);
+            });
+    connect(ui->hidePopupCheckBox, &QCheckBox::clicked,
+            [=](bool b)
+            {
+                settings->setValue("window/hidePopup", b);
+            });
+    connect(ui->comboBox, &QComboBox::currentTextChanged,
+            [=](QString s)
+            {
+                s.chop(1);
+                settings->setValue("window/autoFit", s.toInt());
+            });
+    connect(ui->autoFitCheckBox, &QCheckBox::clicked,
+            [=](bool b)
+            {
+                if(!b)
+                {
+                    ui->comboBox->setEnabled(false);
+                    settings->setValue("window/autoFit", 0);
+                }
+                else
+                {
+                    ui->comboBox->setEnabled(true);
+                    QString autofit = ui->comboBox->currentText();
+                    autofit.chop(1);
+                    settings->setValue("window/autoFit", autofit.toInt());
+                }
+            });
+    connect(ui->formatComboBox, &QComboBox::currentTextChanged,
+            [=](QString s)
+            {
+                settings->setValue("mpv/screenshotFormat", s);
+            });
+    connect(ui->templateLineEdit, &QLineEdit::textChanged,
+            [=](QString s)
+            {
+                // todo: template should be prefixed with directory
+                settings->setValue("mpv/screenshotTemplate", s);
+            });
 }
 
 PreferencesDialog::~PreferencesDialog()
 {
-    // save preferences
-    if(ui->neverRadioButton->isChecked())
-        settings->setValue("window/ontop", "never");
-    else if(ui->playingRadioButton->isChecked())
-        settings->setValue("window/ontop", "playing");
-    else if(ui->alwaysRadioButton->isChecked())
-        settings->setValue("window/ontop", "always");
-    settings->setValue("window/trayicon", ui->groupBox_2->isChecked());
-    settings->setValue("window/hidepopup", ui->hidePopupCheckBox->isChecked());
-    QString autofit = ui->comboBox->currentText();
-    autofit.chop(1); // remove the '%'
-    settings->setValue("window/autofit", ui->autoFitCheckBox->isChecked() ? autofit.toInt() : 0);
-    settings->setValue("mpv/screenshot_format", ui->formatComboBox->currentText());
-    settings->setValue("mpv/screenshot_template", ui->templateLineEdit->text());
-
     delete ui;
 }
 
@@ -63,7 +105,8 @@ void PreferencesDialog::showPreferences(QSettings *settings, QWidget *parent)
 
 void PreferencesDialog::ChangeScreenshotLocation()
 {
-    QString dir = QFileDialog::getExistingDirectory(this, "Choose screenshot directory", settings->value("mpv/screenshot_dir").toString());
+    // todo: template should be prefixed with directory
+    QString dir = QFileDialog::getExistingDirectory(this, "Choose screenshot directory", settings->value("mpv/screenshotDir").toString());
     if(dir.length() > 0)
-        settings->setValue("mpv/screenshot_dir", dir);
+        settings->setValue("mpv/screenshotDir", dir);
 }

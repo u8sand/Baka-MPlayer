@@ -705,7 +705,7 @@ QSlider::sub-page:horizontal {
           </widget>
          </item>
          <item>
-          <widget class="PlayPauseButton" name="playButton">
+          <widget class="QPushButton" name="playButton">
            <property name="enabled">
             <bool>false</bool>
            </property>
@@ -1661,11 +1661,6 @@ QSlider::handle:horizontal {
    <class>CustomSlider</class>
    <extends>QSlider</extends>
    <header>widgets/customslider.h</header>
-  </customwidget>
-  <customwidget>
-   <class>PlayPauseButton</class>
-   <extends>QPushButton</extends>
-   <header>widgets/playpausebutton.h</header>
   </customwidget>
   <customwidget>
    <class>OpenButton</class>

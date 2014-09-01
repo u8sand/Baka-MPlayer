@@ -33,12 +33,11 @@ win32 {
 }
 
 SOURCES += main.cpp\
+    settingsmanager.cpp \
     mpvhandler.cpp \
-    playlistmanager.cpp \
     updatemanager.cpp \
     widgets/customslider.cpp \
     widgets/openbutton.cpp \
-    widgets/playpausebutton.cpp \
     widgets/indexbutton.cpp \
     widgets/customlistwidget.cpp \
     widgets/seekbar.cpp \
@@ -55,12 +54,12 @@ SOURCES += main.cpp\
     ui/preferencesdialog.cpp
 
 HEADERS  += \
+    settingsmanager.h \
+    mpvtypes.h \
     mpvhandler.h \
-    playlistmanager.h \
     updatemanager.h \
     widgets/customslider.h \
     widgets/openbutton.h \
-    widgets/playpausebutton.h \
     widgets/indexbutton.h \
     widgets/customlistwidget.h \
     widgets/seekbar.h \
