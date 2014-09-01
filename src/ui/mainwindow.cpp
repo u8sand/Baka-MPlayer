@@ -257,7 +257,7 @@ MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
     connect(qApp, &QApplication::focusWindowChanged,
             [=](QWindow *focusWindow)
             {
-                if(focusWindow != this->windowHandle() && light->isVisible())
+                if(focusWindow == 0 && light->isVisible())
                 {
                     light->setVisible(false); // remove dimlights
                     ui->action_Dim_Lights_2->setChecked(false); // uncheck lights
