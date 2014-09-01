@@ -10,8 +10,8 @@
 #include <QEvent>
 #include <QPoint>
 
+#include "settingsmanager.h"
 #include "mpvhandler.h"
-#include "playlistmanager.h"
 #include "updatemanager.h"
 #include "lightdialog.h"
 
@@ -23,12 +23,13 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 public:
-    explicit MainWindow(QSettings *settings, QWidget *parent = 0);
+    explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-public slots:
-    void Load(QString file);                        // load a file
-    void HandleError(QString err);                  // triggered by any aspect to display an error message
+    int getAutoFit();
+
+
+    void Load(QString f);
 
 protected:
     void dragEnterEvent(QDragEnterEvent *event);    // drag file into
@@ -37,58 +38,18 @@ protected:
     void mouseReleaseEvent(QMouseEvent *event);     // released mouse up
     void mouseMoveEvent(QMouseEvent *event);        // moved mouse on the form
     void mouseDoubleClickEvent(QMouseEvent *event); // double clicked the form
-    bool eventFilter(QObject *obj, QEvent *event);
+    bool eventFilter(QObject *obj, QEvent *event);  // event filter (get mouse move events from mpvFrame)
 
-    inline void SetPlaybackControls(bool enable);   // macro to enable/disable playback controls
+    void SetPlaybackControls(bool enable);          // macro to enable/disable playback controls
+    QString FormatTime(int time);                   // format the time the way we want to display it
 
 private slots:
-    QString FormatTime(int time);                   // format the time the way we want to display it
-    void SetTime(int time);                         // triggered by mpv, updates time labels and seekbar
-    void SetPlayState(Mpv::PlayState state);        // triggered by mpv, updates controls based on changes of playstate
-    void Seek(int position);                        // converts seekbar location to mpv->Seek command
-    void PlayPause();                               // mpv playpause
-    void Rewind();                                  // rewind macro, goes back to beginning or stops playback
-    void NewPlayer();                               // creates a new MainWindow
-    void OpenFile();                                // open file dialog
-    void OpenUrl();                                 // open url dialog
+
     void FullScreen(bool fs);                       // makes window fullscreen
-    void BossMode();                                // run away from the boss
-    void JumpToTime();                              // jump to time dialog
-    void MediaInfo();                               // media info dialog
-    void OpenFileFromClipboard();                   // opens file from cliboard text
-    void OpenLastFile();                            // opens last open file (from settings)
-    void ShowInFolder();                            // opens explorer to current file's path
-    void UpdatePlaylist(QStringList list);          // updates the playlistWidget with the new playlist
-    void UpdatePlaylistIndex(int index);            // updates the playlistWidget selection
-    void UpdatePlaylistSelectionIndex(int index);   // updates the indexLabel of the playlist
-    void PlaylistSelectCurrent();                   // selects the current playlist index
-    void PlayIndex(QModelIndex index);              // plays the selected file in the playlist
     void SetPlaylist(bool visible);                 // sets the playlist visibility
-    void TogglePlaylist();                          // toggle playlist
-    void GetPlaylistIndex();                        // selects the file index to play
-    void HideAlbumArt(bool show);                   // sets album art visibility (mpvFrame)
-    void SplitterChanged(int pos);                  // updates gui when splitter changes
-    void Debug(QString msg);                        // outputs debugging messages
-    void OnlineHelp();                              // loads online help
-    void CheckForUpdates();                         // checks for program updates
-    void AboutQt();                                 // shows qt license information
-    void About();                                   // shows baka mplayer about dialog
-    void SeekForward();                             // seek +5
-    void SeekBack();                                // seek -5
-    void AddSubtitleTrack();                        // add a new external subtitle track
     void FitWindow(int percent);                    // fit the window the the specified percent
     void SetAspectRatio(QString aspect);            // set the aspect ratio to specified proportions
-    void IncreaseFontSize();                        // increase the subtitle font size
-    void DecreaseFontSize();                        // decrease the subtitle font size
-    void ResetFontSize();                           // reset the subtitle font size
     void DimLights(bool dim);                       // grays out the rest of the screen with LightDialog
-    void IncreaseVolume();                          // increases the volume by a set amount
-    void DecreaseVolume();                          // decreases the volume by a set amount
-    void ShowInTray(bool show);                     // sets visibility of tray icon
-    void HidePopup(bool hide);                      // enables/disables the tray popups
-    void ScreenshotWithSubs();                      // takes a screenshot with subs
-    void ScreenshotWithoutSubs();                   // takes a screenshot without subs
-    void Preferences();                             // displays the preferences dialog
 
 #ifdef Q_OS_WIN
     void SetAlwaysOnTop(bool ontop);
@@ -99,17 +60,18 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    QSettings *settings;
+    SettingsManager *settings;
     MpvHandler *mpv;
-    PlaylistManager *playlist;
     UpdateManager *update;
+
+    QPoint lastMousePos;
+    bool dragging,
+         init,
+         autoFit;
 
     QSystemTrayIcon *trayIcon;
     QMenu *trayIconMenu;
     LightDialog *light;
-    bool dragging;
-    QPoint lastMousePos;
-    bool init;
 };
 
 #endif // MAINWINDOW_H
