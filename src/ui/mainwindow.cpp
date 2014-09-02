@@ -153,7 +153,15 @@ MainWindow::MainWindow(QWidget *parent):
                         }
                     }
                     if(ui->menuSubtitle_Track->actions().count() == 0)
-                        ui->menuSubtitle_Track->addAction("[ none ]")->setEnabled(false);
+                    {
+                        ui->menuSubtitle_Track->setEnabled(false);
+                        ui->menuFont_Si_ze->setEnabled(false);
+                    }
+                    else
+                    {
+                        ui->menuSubtitle_Track->setEnabled(true);
+                        ui->menuFont_Si_ze->setEnabled(true);
+                    }
                     connect(signalMapper, SIGNAL(mapped(int)),
                             mpv, SLOT(SetSid(int)));
 
@@ -1029,9 +1037,12 @@ void MainWindow::SetPlaybackControls(bool enable)
     ui->action_Add_Subtitle_File->setEnabled(enable);
     ui->menuFit_Window->setEnabled(enable);
     ui->menuAspect_Ratio->setEnabled(enable);
-    ui->menuSubtitle_Track->setEnabled(enable);
     if(!enable)
+    {
         ui->action_Hide_Album_Art_2->setEnabled(false);
+        ui->menuSubtitle_Track->setEnabled(false);
+        ui->menuFont_Si_ze->setEnabled(false);
+    }
 
     if(enable && mpv->getFileInfo().chapters.length() > 0) // only enable chapters if there are chapters
     {
