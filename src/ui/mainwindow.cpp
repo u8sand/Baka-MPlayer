@@ -37,7 +37,9 @@ MainWindow::MainWindow(QWidget *parent):
     dragging(false),
     init(false)
 {
+    light = new LightDialog(); // lightdialog must be initialized before ui is setup
     ui->setupUi(this);
+    addActions(ui->menubar->actions()); // makes menubar shortcuts work even when menubar is hidden
 
     // initialize managers/handlers
 #if Q_OS_WIN // saves to $(application directory)\${SETTINGS_FILE}.ini
@@ -53,8 +55,7 @@ MainWindow::MainWindow(QWidget *parent):
     // see: https://bugreports.qt-project.org/browse/QTBUG-34364
     // todo: tray menu/tooltip
     sysTrayIcon = new QSystemTrayIcon(qApp->windowIcon(), this);
-    light = new LightDialog();
-    ui->mpvFrame->installEventFilter(this);
+    ui->mpvFrame->installEventFilter(this); // capture events on mpvFrame in the eventFilter function
 
     // setup signals & slots
 
@@ -283,7 +284,6 @@ MainWindow::MainWindow(QWidget *parent):
                 ui->playlistWidget->addItems(list);
             });
 
-
     connect(mpv, &MpvHandler::errorSignal,
             [=](QString err)
             {
@@ -298,7 +298,7 @@ MainWindow::MainWindow(QWidget *parent):
 
     // update manager
 
-    // todo
+
 
     // ui
 
@@ -329,47 +329,33 @@ MainWindow::MainWindow(QWidget *parent):
             });
 
     connect(ui->rewindButton, &QPushButton::clicked,                    // Playback: Rewind button
-            [=] // todo: put this functionality in mpv?
+            [=]
             {
-                // if user presses rewind button twice within 3 seconds, stop video
-                if(mpv->getTime() < 3)
-                {
-                    mpv->Stop();
-                }
-                else
-                {
-                    if(mpv->getPlayState() == Mpv::Playing)
-                        mpv->Restart();
-                    else
-                        mpv->Stop();
-                }
+                mpv->Rewind();
             });
 
     connect(ui->previousButton, &IndexButton::clicked,                  // Playback: Previous button
             [=]
             {
-                mpv->PreviousFile(); // todo
+                mpv->PreviousFile();
             });
 
     connect(ui->playButton, &QPushButton::clicked,                      // Playback: Play/pause button
-            [=] // todo: put this functionality in mpv
+            [=]
             {
-                if(mpv->getPlayState() == Mpv::Idle) // if idle, play plays the selected playlist file
-                    mpv->PlayIndex(ui->playlistWidget->currentRow());
-                else
-                    mpv->PlayPause();
+                mpv->PlayPause(ui->playlistWidget->currentRow());
             });
 
     connect(ui->nextButton, &IndexButton::clicked,                      // Playback: Next button
             [=]
             {
-                mpv->NextFile(); // todo
+                mpv->NextFile();
             });
 
     connect(ui->volumeSlider, &CustomSlider::valueChanged,              // Playback: Volume slider adjusted
             [=](int i)
             {
-                mpv->setVolume(i);
+                mpv->Volume(i);
             });
 
     connect(ui->playlistButton, &QPushButton::clicked,                  // Playback: Clicked the playlist button
@@ -404,7 +390,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->searchBox, &QLineEdit::textChanged,                     // Playlist: Search box
             [=](QString s)
             {
-                mpv->setSearch(s);
+                mpv->Search(s);
             });
 
     connect(ui->indexLabel, &CustomLabel::clicked,                      // Playlist: Clicked the indexLabel
@@ -448,7 +434,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->showAllButton, &QPushButton::clicked,                   // Playlist: Show All button
             [=](bool b)
             {
-                mpv->setShowAll(b);
+                mpv->ShowAll(b);
             });
 
     connect(ui->refreshButton, &QPushButton::clicked,                   // Playlist: Refresh playlist button
@@ -522,40 +508,40 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->actionWith_Subtitles, &QAction::triggered,              // View -> Take Screenshot -> With Subtitles
             [=]
             {
-                // todo:
+                mpv->Screenshot(true);
             });
 
-    connect(ui->actionWith_Subtitles, &QAction::triggered,              // View -> Take Screenshot -> With Subtitles
+    connect(ui->actionWithout_Subtitles, &QAction::triggered,           // View -> Take Screenshot -> Without Subtitles
             [=]
             {
-                // todo:
+                mpv->Screenshot(false);
             });
                                                                         // View -> Fit Window ->
-    connect(ui->action_To_Current_Size, &QAction::triggered,             // View -> Fit Window -> To Current Size
+    connect(ui->action_To_Current_Size, &QAction::triggered,            // View -> Fit Window -> To Current Size
             [=]
             {
                 FitWindow(0);
             });
 
-    connect(ui->action50, &QAction::triggered,                           // View -> Fit Window -> 50%
+    connect(ui->action50, &QAction::triggered,                          // View -> Fit Window -> 50%
             [=]
             {
                 FitWindow(50);
             });
 
-    connect(ui->action75, &QAction::triggered,                           // View -> Fit Window -> 75%
+    connect(ui->action75, &QAction::triggered,                          // View -> Fit Window -> 75%
             [=]
             {
                 FitWindow(75);
             });
 
-    connect(ui->action100, &QAction::triggered,                           // View -> Fit Window -> 100%
+    connect(ui->action100, &QAction::triggered,                         // View -> Fit Window -> 100%
             [=]
             {
                 FitWindow(100);
             });
 
-    connect(ui->action200, &QAction::triggered,                           // View -> Fit Window -> 200%
+    connect(ui->action200, &QAction::triggered,                         // View -> Fit Window -> 200%
             [=]
             {
                 FitWindow(200);
@@ -628,7 +614,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->action_Play, &QAction::triggered,                       // Playback -> (Play|Pause)
             [=]
             {
-                mpv->PlayPause();
+                mpv->PlayPause(ui->playlistWidget->currentRow());
             });
 
     connect(ui->action_Stop, &QAction::triggered,                       // Playback -> Stop
@@ -652,13 +638,13 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->action_Increase_Volume, &QAction::triggered,            // Playback -> Increase Volume
             [=]
             {
-                mpv->AddVolume(5);
+                mpv->Volume(mpv->getVolume()+5);
             });
 
     connect(ui->action_Decrease_Volume, &QAction::triggered,            // Playback -> Decrease Volume
             [=]
             {
-                mpv->AddVolume(-5);
+                mpv->Volume(mpv->getVolume()-5);
             });
                                                                         // Navigate ->
     connect(ui->action_Next_Chapter, &QAction::triggered,               // Navigate -> Next Chapter
@@ -721,14 +707,15 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->actionShow_D_ebug_Output, &QAction::triggered,          // Settings -> Show Debug Output
             [=](bool b)
             {
-                mpv->setDebug(b);
+                mpv->Debug(b);
             });
 
     connect(ui->action_Preferences, &QAction::triggered,                // Settings -> Preferences...
             [=]
             {
+                SaveSettings();
                 PreferencesDialog::showPreferences(settings, this);
-                // todo: have signals/slots for settings modifications
+                LoadSettings();
             });
                                                                         // Help ->
     connect(ui->actionOnline_Help, &QAction::triggered,                 // Help -> Online Help
@@ -766,7 +753,7 @@ MainWindow::MainWindow(QWidget *parent):
                 if(focusWindow == 0 && light->isVisible())
                 {
                     light->setVisible(false); // remove dimlights
-                    ui->action_Dim_Lights_2->setChecked(false); // uncheck lights
+                    ui->action_Dim_Lights_2->setChecked(false); // uncheck dimlights
                 }
             });
 
@@ -808,6 +795,7 @@ MainWindow::MainWindow(QWidget *parent):
     addAction(shortcut);
 
     LoadSettings();
+    SetPlaylist(false);
 }
 
 MainWindow::~MainWindow()
@@ -833,6 +821,7 @@ void MainWindow::LoadSettings()
     setAutoFit(settings->value("window/autoFit", 100).toInt());
     setTrayIcon(settings->value("window/trayIcon", false).toBool());
     setHidePopup(settings->value("window/hidePopup", false).toBool());
+    ui->splitter->setNormalPosition(settings->value("window/splitter",(int)(ui->splitter->max()*3.0/4.0)).toInt());
     // mpv
     mpv->setLastFile(settings->value("mpv/lastFile", "").toString());
     mpv->setShowAll(settings->value("mpv/showAll", false).toBool());
@@ -853,6 +842,9 @@ void MainWindow::SaveSettings()
     settings->setValue("window/autoFit", getAutoFit());
     settings->setValue("window/trayIcon", getTrayIcon());
     settings->setValue("window/hidePopup", getHidePopup());
+    settings->setValue("window/splitter", ui->splitter->position() == ui->splitter->max() ?
+                                            ui->splitter->normalPosition() :
+                                            ui->splitter->position());
     // mpv
     settings->setValue("mpv/lastFile", mpv->getLastFile());
     settings->setValue("mpv/showAll", mpv->getShowAll());
@@ -1048,8 +1040,6 @@ void MainWindow::FullScreen(bool fs)
 
 void MainWindow::SetPlaylist(bool visible)
 {
-    if(!ui->splitter->normalPosition())
-        ui->splitter->setNormalPosition(ui->splitter->max()*3.0/4); // set the default splitter position
     if(visible)
         ui->splitter->setPosition(ui->splitter->normalPosition()); // bring splitter position to normal
     else
@@ -1133,7 +1123,7 @@ void MainWindow::SetAspectRatio(QString aspect)
     mpv->SetAspect(aspect);
 }
 
-void MainWindow::DimLights(bool dim) // todo: make sure the dim window can't get focus
+void MainWindow::DimLights(bool dim)
 {
     if(dim)
         light->show();
