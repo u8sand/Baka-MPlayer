@@ -958,12 +958,15 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
         ui->seekBar->setVisible(true);
     }
     else if(isFullScreen() &&
-            ui->playbackLayoutWidget->isVisible() &&
-            !ui->playbackLayoutWidget->geometry().contains(event->pos()))
+            ui->playbackLayoutWidget->isVisible())
     {
         playbackRect = ui->playbackLayoutWidget->geometry();
-        ui->playbackLayoutWidget->setVisible(false);
-        ui->seekBar->setVisible(false);
+        playbackRect.setTop(playbackRect.top()-20);
+        if(!playbackRect.contains(event->pos()))
+        {
+            ui->playbackLayoutWidget->setVisible(false);
+            ui->seekBar->setVisible(false);
+        }
     }
     QMainWindow::mouseMoveEvent(event);
 }
