@@ -347,7 +347,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->openButton, &OpenButton::RightClick,                    // Playback: Open button (right click)
             [=]
             {
-                mpv->LoadFile(LocationDialog::getUrl(this));
+                mpv->LoadFile(LocationDialog::getUrl(mpv->getPath(), this));
             });
 
     connect(ui->remainingLabel, &CustomLabel::clicked,
@@ -494,7 +494,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->actionOpen_URL, &QAction::triggered,                    // File -> Open URL
             [=]
             {
-                mpv->LoadFile(LocationDialog::getUrl(this));
+                mpv->LoadFile(LocationDialog::getUrl(mpv->getPath(), this));
             });
 
     connect(ui->actionOpen_Path_from_Clipboard, &QAction::triggered,    // File -> Open Path from Clipboard

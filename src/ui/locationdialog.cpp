@@ -4,7 +4,7 @@
 #include <QClipboard>
 #include <QRegExp>
 
-LocationDialog::LocationDialog(QWidget *parent) :
+LocationDialog::LocationDialog(QString path, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::LocationDialog)
 {
@@ -16,6 +16,8 @@ LocationDialog::LocationDialog(QWidget *parent) :
             this, SLOT(reject()));              // reject
     connect(ui->urlEdit, SIGNAL(textChanged(QString)),
             this, SLOT(validate(QString)));
+
+    ui->urlEdit->setText(path);
 }
 
 LocationDialog::~LocationDialog()
@@ -23,9 +25,9 @@ LocationDialog::~LocationDialog()
     delete ui;
 }
 
-QString LocationDialog::getUrl(QWidget *parent)
+QString LocationDialog::getUrl(QString path, QWidget *parent)
 {
-    LocationDialog dialog(parent);
+    LocationDialog dialog(path, parent);
     if(dialog.exec() == QDialog::Accepted)
         return dialog.ui->urlEdit->text();
     else
