@@ -23,7 +23,7 @@ protected slots:
 
 signals:
     void Update(QMap<QString, QString> info);
-    void ErrorSignal(QString err);
+    void errorSignal(QString err);
 
 private:
     QNetworkAccessManager *manager;

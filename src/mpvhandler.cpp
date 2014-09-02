@@ -1,8 +1,13 @@
 #include "mpvhandler.h"
 
 #include <QCoreApplication>
+#include <QDir>
+#include <QFile>
+#include <QFileInfo>
+#include <QFileInfoList>
+#include <QRegExp>
 
-#include <string>
+#include <algorithm> // for std::random_shuffle and std::sort
 
 static void wakeup(void *ctx)
 {
@@ -10,38 +15,29 @@ static void wakeup(void *ctx)
     QCoreApplication::postEvent(mpvhandler, new QEvent(QEvent::User));
 }
 
-MpvHandler::MpvHandler(QSettings *_settings, int64_t wid, QObject *parent):
+MpvHandler::MpvHandler(int64_t wid, QObject *parent):
     QObject(parent),
-    settings(_settings),
-    mpv(0),
-    time(0),
-    playState(Mpv::Stopped)
+    mpv(0)
 {
-    volume = settings->value("mpv/volume", 100).toInt();
-    double speed = settings->value("mpv/speed", 1).toInt();
-
+    // create mpv
     mpv = mpv_create();
     if(!mpv)
         throw "Could not create mpv object";
 
+    // set mpv options
     mpv_set_option(mpv, "wid", MPV_FORMAT_INT64, &wid);
-    mpv_set_option_string(mpv, "input-cursor", "no");
+    mpv_set_option_string(mpv, "input-cursor", "no");   // no mouse handling
+    mpv_set_option_string(mpv, "af", "scaletempo");     // make sure audio tempo is scaled (when speed is changing)
     mpv_set_option_string(mpv, "cursor-autohide", "no");
 
+    // get updates when these properties change
     mpv_observe_property(mpv, 0, "time-pos", MPV_FORMAT_DOUBLE);
     mpv_observe_property(mpv, 0, "volume", MPV_FORMAT_DOUBLE);
 
-//    mpv_set_option(mpv, "volume", MPV_FORMAT_DOUBLE, (double*)&volume);
-    mpv_set_option(mpv, "speed", MPV_FORMAT_DOUBLE, &speed);
-    mpv_set_option_string(mpv, "af", "scaletempo");
-
-    if(settings->value("debug/mpv", false).toBool())
-        mpv_request_log_messages(mpv, "debug");
-    else
-        mpv_request_log_messages(mpv, "no");
-
+    // setup callback event handling
     mpv_set_wakeup_callback(mpv, wakeup, this);
 
+    // initialize mpv
     if(mpv_initialize(mpv) < 0)
         throw "Could not initialize mpv";
 }
@@ -55,26 +51,6 @@ MpvHandler::~MpvHandler()
     }
 }
 
-const Mpv::FileInfo &MpvHandler::GetFileInfo() const
-{
-    return fileInfo;
-}
-
-int MpvHandler::GetTime() const
-{
-    return time;
-}
-
-int MpvHandler::GetVolume() const
-{
-    return volume;
-}
-
-Mpv::PlayState MpvHandler::GetPlayState() const
-{
-    return playState;
-}
-
 bool MpvHandler::event(QEvent *event)
 {
     if(event->type() == QEvent::User)
@@ -85,7 +61,7 @@ bool MpvHandler::event(QEvent *event)
             if (event->event_id == MPV_EVENT_NONE)
                 break;
             if(event->error < 0)
-                emit ErrorSignal(mpv_error_string(event->error));
+                emit errorSignal(mpv_error_string(event->error));
             switch (event->event_id)
             {
             case MPV_EVENT_PROPERTY_CHANGE:
@@ -93,40 +69,40 @@ bool MpvHandler::event(QEvent *event)
                 mpv_event_property *prop = (mpv_event_property*)event->data;
                 if(QString(prop->name) == "time-pos")
                     if (prop->format == MPV_FORMAT_DOUBLE)
-                        SetTime((int)*(double*)prop->data);
+                        setTime((int)*(double*)prop->data);
                 if(QString(prop->name) =="volume")
                     if (prop->format == MPV_FORMAT_DOUBLE)
-                        SetVolume((int)*(double*)prop->data);
+                        setVolume((int)*(double*)prop->data);
                 break;
             }
             case MPV_EVENT_IDLE:
                 fileInfo.length = 0;
-                SetTime(0);
-                SetPlayState(Mpv::Idle);
+                setTime(0);
+                setPlayState(Mpv::Idle);
                 break;
                 // these two look like they're reversed but they aren't. the names are misleading.
             case MPV_EVENT_START_FILE:
-                SetPlayState(Mpv::Loaded);
+                setPlayState(Mpv::Loaded);
                 break;
             case MPV_EVENT_FILE_LOADED:
                 LoadFileInfo();
-                AdjustVolume(volume);
-                SetPlayState(Mpv::Started);
+                setPlayState(Mpv::Started);
+                Volume(volume);
             case MPV_EVENT_UNPAUSE:
-                SetPlayState(Mpv::Playing);
+                setPlayState(Mpv::Playing);
                 break;
             case MPV_EVENT_PAUSE:
-                SetPlayState(Mpv::Paused);
+                setPlayState(Mpv::Paused);
                 break;
             case MPV_EVENT_END_FILE:
-                SetPlayState(Mpv::Ended);
-                SetPlayState(Mpv::Stopped);
+                setPlayState(Mpv::Ended);
+                setPlayState(Mpv::Stopped);
                 break;
             case MPV_EVENT_SHUTDOWN:
                 QCoreApplication::quit();
                 break;
             case MPV_EVENT_LOG_MESSAGE:
-                emit DebugSignal(QString(((mpv_event_log_message*)event->data)->text));
+                emit debugSignal(QString(((mpv_event_log_message*)event->data)->text));
                 break;
             default: // unhandled events
                 break;
@@ -135,6 +111,139 @@ bool MpvHandler::event(QEvent *event)
         return true;
     }
     return QObject::event(event);
+}
+
+void MpvHandler::LoadFile(QString f)
+{
+    if(f == "") return; // ignore empty file name
+
+    int i;
+    QRegExp rx("^(https?://.+\\.[a-z]+)", Qt::CaseInsensitive);
+
+    if(rx.indexIn(f) != -1) // web url
+    {
+        i = 0;
+        path = "";
+        playlist.clear();
+        playlist.push_back(f);
+        emit playlistChanged(playlist);
+    }
+    else // local file
+    {
+        QFileInfo fi(f);
+        if(path != fi.absolutePath() || // path is the same
+          (i = playlist.indexOf(fi.fileName())) != -1) // file doesn't exists in the list
+        {
+            path = QString(fi.absolutePath()+"/"); // get path
+            suffix = fi.suffix();
+            Populate();
+            Sort();
+            emit playlistChanged(playlist);
+            i = playlist.indexOf(fi.fileName()); // get index
+        }
+    }
+    if(playlist.size() > 1) // open up the playlist only if there is more than one item
+        setPlaylistVisible(true);
+    PlayIndex(i);
+}
+
+void MpvHandler::PlayIndex(int i)
+{
+    if(i >= 0 && i < playlist.size())
+    {
+        setIndex(i);
+        if(path == "") // web url
+        {
+            if(getFile() != "")
+                setLastFile(getFile());
+            setFile(playlist[i]);
+            OpenFile(file);
+        }
+        else
+        {
+            QFile f(path+playlist[i]);
+            if(f.exists())
+            {
+                if(getFile() != "")
+                    setLastFile(getFile());
+                setFile(path+playlist[i]);
+                OpenFile(file);
+                Play();
+            }
+            else
+                Stop();
+        }
+    }
+    else // out of bounds
+        Stop();
+}
+
+void MpvHandler::NextFile()
+{
+    PlayIndex(index+1);
+}
+
+void MpvHandler::PreviousFile()
+{
+    PlayIndex(index-1);
+}
+
+void MpvHandler::Populate()
+{
+    if(path != "")
+    {
+        playlist.clear(); // clear existing list
+        QDir root(path);
+        QFileInfoList flist;
+        if(suffix == "")
+            flist = root.entryInfoList(Mpv::media_filetypes, QDir::Files);
+        else
+            flist = root.entryInfoList({QString("*.").append(suffix)}, QDir::Files);
+        for(auto &i : flist)
+            playlist.push_back(i.fileName()); // add files to the list
+    }
+}
+
+void MpvHandler::Refresh()
+{
+    setShuffle(false);
+    setSearch("");
+    Populate();
+    Sort();
+    emit playlistChanged(playlist);
+}
+
+void MpvHandler::Sort()
+{
+    if(shuffle) // shuffle list
+        std::random_shuffle(playlist.begin(), playlist.end());
+    else        // sort list
+        std::sort(playlist.begin(), playlist.end());
+}
+
+void MpvHandler::Search(QString s)
+{
+    QStringList tmplist;
+    for(QStringList::iterator item = playlist.begin(); item != playlist.end(); ++item)
+        if(item->contains(s, Qt::CaseInsensitive))
+            tmplist.push_back(*item);
+    emit playlistChanged(tmplist);
+}
+
+void MpvHandler::Shuffle(bool b)
+{
+    setShuffle(b);
+    Sort();
+    emit playlistChanged(playlist);
+}
+
+void MpvHandler::ShowAll(bool b) // todo: use current selection's suffix
+{
+    showAll = b;
+    Populate();
+    Sort();
+    emit playlistChanged(playlist);
+    setSearch("");
 }
 
 void MpvHandler::OpenFile(QString f)
@@ -156,10 +265,15 @@ void MpvHandler::Pause()
     AsyncCommand(args);
 }
 
-void MpvHandler::PlayPause()
+void MpvHandler::PlayPause(int i)
 {
-    const char *args[] = {"cycle", "pause", NULL};
-    AsyncCommand(args);
+    if(playState == Mpv::Idle) // if idle, play plays the selected playlist file
+        PlayIndex(i);
+    else
+    {
+        const char *args[] = {"cycle", "pause", NULL};
+        AsyncCommand(args);
+    }
 }
 
 void MpvHandler::Seek(int pos, bool relative)
@@ -179,8 +293,24 @@ void MpvHandler::Seek(int pos, bool relative)
 
 void MpvHandler::Restart()
 {
-    const char *args[] = {"seek", "0", "absolute", NULL};
-    AsyncCommand(args);
+    Seek(0);
+    Play();
+}
+
+void MpvHandler::Rewind()
+{
+    // if user presses rewind button twice within 3 seconds, stop video
+    if(time < 3)
+    {
+        Stop();
+    }
+    else
+    {
+        if(playState == Mpv::Playing)
+            Restart();
+        else
+            Stop();
+    }
 }
 
 void MpvHandler::Stop()
@@ -255,18 +385,19 @@ void MpvHandler::FrameBackStep()
     AsyncCommand(args);
 }
 
-void MpvHandler::AddVolume(int level)
+void MpvHandler::Volume(int level)
 {
-    const QByteArray tmp = QString::number(level).toUtf8();
-    const char *args[] = {"add", "volume", tmp.constData(), NULL};
-    AsyncCommand(args);
-}
+    if(level > 100) level = 100;
+    else if(level < 0) level = 0;
 
-void MpvHandler::AdjustVolume(int level)
-{
-    const QByteArray tmp = QString::number(level).toUtf8();
-    const char *args[] = {"set", "volume", tmp.constData(), NULL};
-    AsyncCommand(args);
+    if(playState == Mpv::Idle)
+        setVolume(level);
+    else
+    {
+        const QByteArray tmp = QString::number(level).toUtf8();
+        const char *args[] = {"set", "volume", tmp.constData(), NULL};
+        AsyncCommand(args);
+    }
 }
 
 void MpvHandler::Screenshot(bool withSubs)
@@ -275,15 +406,9 @@ void MpvHandler::Screenshot(bool withSubs)
     AsyncCommand(args);
 }
 
-void MpvHandler::ToggleFullscreen()
+void MpvHandler::SetSubs(bool b)
 {
-    const char *args[] = {"cycle", "fullscreen", NULL};
-    AsyncCommand(args);
-}
-
-void MpvHandler::ToggleSubs()
-{
-    const char *args[] = {"cycle", "sub-visibility", NULL};
+    const char *args[] = {"set", "sub-visibility", b?"1":"0", NULL};
     AsyncCommand(args);
 }
 
@@ -301,12 +426,27 @@ void MpvHandler::SetSubScale(double scale)
     AsyncCommand(args);
 }
 
+void MpvHandler::Debug(bool b)
+{
+    if(mpv)
+    {
+        mpv_request_log_messages(mpv, b ? "debug" : "no");
+        setDebug(b);
+    }
+}
+
+void MpvHandler::CursorAutoHide(bool b)
+{
+    if(mpv)
+        mpv_set_option_string(mpv, "cursor-autohide", b?"yes":"no");
+}
+
 void MpvHandler::AsyncCommand(const char *args[])
 {
     if(mpv)
         mpv_command_async(mpv, 0, args);
     else
-        emit ErrorSignal("mpv was not initialized");
+        emit errorSignal("mpv was not initialized");
 }
 
 void MpvHandler::LoadFileInfo()
@@ -321,6 +461,8 @@ void MpvHandler::LoadFileInfo()
     LoadTracks();
     LoadChapters();
     LoadVideoParams();
+
+    emit fileInfoChanged(fileInfo);
 }
 
 void MpvHandler::LoadTracks()
@@ -432,31 +574,4 @@ void MpvHandler::LoadVideoParams()
     mpv_get_property(mpv, "dwidth", MPV_FORMAT_INT64, &fileInfo.video_params.dwidth);
     mpv_get_property(mpv, "dheight", MPV_FORMAT_INT64, &fileInfo.video_params.dheight);
     mpv_get_property(mpv, "video-aspect", MPV_FORMAT_INT64, &fileInfo.video_params.aspect);
-}
-
-void MpvHandler::SetTime(int t)
-{
-    if(time != t)
-    {
-        time = t;
-        emit TimeChanged(t);
-    }
-}
-
-void MpvHandler::SetVolume(int v)
-{
-    if(volume != v)
-    {
-        volume = v;
-        emit VolumeChanged(v);
-    }
-}
-
-void MpvHandler::SetPlayState(Mpv::PlayState s)
-{
-    if (playState != s)
-    {
-        playState = s;
-        emit PlayStateChanged(s);
-    }
 }

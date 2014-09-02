@@ -30,271 +30,857 @@
 #include "updatedialog.h"
 #include "preferencesdialog.h"
 
-MainWindow::MainWindow(QSettings *_settings, QWidget *parent):
+MainWindow::MainWindow(QWidget *parent):
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-    settings(_settings),
-    // note: trayIcon does not work in my environment--known qt bug
-    // see: https://bugreports.qt-project.org/browse/QTBUG-34364
-    trayIcon(new QSystemTrayIcon(qApp->windowIcon(), this)),
-    // todo: tray menu/tooltip
-    light(new LightDialog()),
-    dragging(false),
     lastMousePos(QPoint()),
+    dragging(false),
     init(false)
 {
+    light = new LightDialog(); // lightdialog must be initialized before ui is setup
     ui->setupUi(this);
-    SetPlaylist(false);
+    addActions(ui->menubar->actions()); // makes menubar shortcuts work even when menubar is hidden
 
-    // load settings
+    // initialize managers/handlers
+#if Q_OS_WIN // saves to $(application directory)\${SETTINGS_FILE}.ini
+    settings = new QSettings(QApplication::applicationDirPath()+"\\"+SETTINGS_FILE, QSettings::IniFormat,this);
+#else // saves to  ~/.config/${SETTINGS_FILE}.ini on linux
+    settings = new QSettings(QSettings::IniFormat, QSettings::UserScope, SETTINGS_FILE, QString(), this);
+#endif
+    mpv = new MpvHandler(ui->mpvFrame->winId(), this);
+    update = new UpdateManager(this);
+
+    // initialize other ui elements
+    // note: trayIcon does not work in my environment--known qt bug
+    // see: https://bugreports.qt-project.org/browse/QTBUG-34364
+    // todo: tray menu/tooltip
+    sysTrayIcon = new QSystemTrayIcon(qApp->windowIcon(), this);
+    ui->mpvFrame->installEventFilter(this); // capture events on mpvFrame in the eventFilter function
+
+    // setup signals & slots
+
+    // mainwindow
+
+//#ifdef Q_WIN_OS
+//    connect(this, &MainWindow::onTopChanged,
+//            [=](QString onTop)
+//            {
+//                if(onTop == "never")
+//                    AlwaysOnTop(true);
+//                else if(trayIcon == "always")
+//                    AlwaysOnTop(false);
+//            });
+//#endif
+
+//    connect(this, &MainWindow::autoFitChanged,
+//            [=](int i)
+//            {
+//            });
+
+//    connect(this, &MainWindow::trayIconChanged,
+//            [=](bool b)
+//            {
+//                trayIcon->setVisible(b);
+//            });
+
+//    connect(this, &MainWindow::hidePopupChanged,
+//            [=](bool b)
+//    {
+//    });
+
+    connect(this, &MainWindow::debugChanged,
+            [=](bool b)
+            {
+                mpv->Debug(b);
+                ui->actionShow_D_ebug_Output->setChecked(b);
+                ui->outputTextEdit->setVisible(b);
+            });
+
+    // mpv
+
+    connect(mpv, &MpvHandler::volumeChanged,
+            [=](int volume)
+            {
+                ui->volumeSlider->setValueNoSignal(volume);
+            });
+
+    connect(mpv, &MpvHandler::fileInfoChanged,
+            [=](const Mpv::FileInfo &i) // todo: cleanup
+            {
+                if(mpv->getPlayState() != Mpv::Idle)
+                {
+                    // load chapter list into menus
+                    QList<int> ticks;
+                    QSignalMapper *signalMapper = new QSignalMapper(this);
+                    int n = 1;
+                    ui->menu_Chapters->clear();
+                    for(auto &ch : i.chapters)
+                    {
+                        QAction *action;
+                        if(n <= 9)
+                            action = ui->menu_Chapters->addAction(QString::number(n)+": "+ch.title, NULL, NULL, QKeySequence("Ctrl+"+QString::number(n)));
+                        else
+                            action = ui->menu_Chapters->addAction(QString::number(n)+": "+ch.title);
+                        n++;
+                        signalMapper->setMapping(action, ch.time);
+                        connect(action, SIGNAL(triggered()),
+                                signalMapper, SLOT(map()));
+                        ticks.push_back(ch.time);
+                    }
+                    connect(signalMapper, SIGNAL(mapped(int)),
+                            mpv, SLOT(Seek(int)));
+                    if(ui->menu_Chapters->actions().count() == 0)
+                        ui->menu_Chapters->addAction("[ none ]")->setEnabled(false);
+                    ui->seekBar->setTicks(ticks);
+
+                    // load subtitle list into menus
+                    signalMapper = new QSignalMapper(this);
+                    ui->menuSubtitle_Track->clear();
+                    ui->menuSubtitle_Track->addAction(ui->action_Add_Subtitle_File);
+                    for(auto &track : i.tracks)
+                    {
+                        if(track.type == "sub")
+                        {
+                            QAction *action = ui->menuSubtitle_Track->addAction(QString::number(track.id)+": "+track.title+" ("+track.lang+")");
+                            signalMapper->setMapping(action, track.id);
+                            connect(action, SIGNAL(triggered()),
+                                    signalMapper, SLOT(map()));
+                        }
+                        else if(track.type == "video" && // video track
+                                track.albumart)          // is album art
+                        {
+                            ui->action_Hide_Album_Art_2->setEnabled(true);
+                        }
+                    }
+                    if(ui->menuSubtitle_Track->actions().count() == 0)
+                        ui->menuSubtitle_Track->addAction("[ none ]")->setEnabled(false);
+                    connect(signalMapper, SIGNAL(mapped(int)),
+                            mpv, SLOT(SetSid(int)));
+
+                    setWindowTitle(i.media_title);
+                    ui->seekBar->setTracking(i.length);
+                }
+            });
+
+    connect(mpv, &MpvHandler::playStateChanged,
+            [=](Mpv::PlayState playState)
+            {
+                switch(playState)
+                {
+                case Mpv::Loaded: // todo: show the user we are loading their file
+                    break;
+
+                case Mpv::Started: // todo: fix initial load with fitWindow
+                    mpv->LoadFileInfo();
+                    if(!init) // will only happen the first time a file is loaded.
+                    {
+                        ui->action_Play->setEnabled(true);
+                        ui->playButton->setEnabled(true);
+                        init = true;
+                    }
+                    if(getAutoFit())
+                        FitWindow(getAutoFit());
+                    SetPlaybackControls(true);
+                    mpv->Play();
+                case Mpv::Playing:
+                    ui->playButton->setIcon(QIcon(":/img/default_pause.svg"));
+                    ui->action_Play->setText("&Pause");
+            #ifdef Q_OS_WIN
+                    if(onTop == "playing")
+                        SetAlwaysOnTop(true);
+            #endif
+                    break;
+
+                case Mpv::Paused:
+                case Mpv::Stopped:
+                    ui->playButton->setIcon(QIcon(":/img/default_play.svg"));
+                    ui->action_Play->setText("&Play");
+            #ifdef Q_OS_WIN
+                    if(ui->actionWhen_Playing->isChecked())
+                        SetAlwaysOnTop(false);
+            #endif
+                    break;
+
+                case Mpv::Idle:
+                    if(init && (mpv->getIndex() > mpv->getMaxIndex() ||
+                                ui->actionStop_after_Current->isChecked()))
+                    {
+                        setWindowTitle("Baka MPlayer");
+                        SetPlaybackControls(false);
+                        ui->seekBar->setTracking(0);
+                        ui->actionStop_after_Current->setChecked(false);
+                    }
+                    break;
+
+                case Mpv::Ended:
+                    break;
+                }
+            });
+
+    connect(mpv, &MpvHandler::timeChanged,
+            [=](int i)
+            {
+                const Mpv::FileInfo &fi = mpv->getFileInfo();
+                // set the seekBar's location with NoSignal function so that it doesn't trigger a seek
+                // the formula is a simple ratio seekBar's max * time/totalTime
+                ui->seekBar->setValueNoSignal(ui->seekBar->maximum()*((double)i/fi.length));
+
+                // set duration and remaining labels, QDateTime takes care of formatting for us
+                ui->durationLabel->setText(FormatTime(i));
+                ui->remainingLabel->setText("-"+FormatTime(fi.length-i));
+
+                // set next/previous chapter's enabled state
+                if(fi.chapters.length() > 0)
+                {
+                    ui->action_Next_Chapter->setEnabled(i < fi.chapters.last().time);
+                    ui->action_Previous_Chapter->setEnabled(i > fi.chapters.first().time);
+                }
+            });
+
+    connect(mpv, &MpvHandler::lastFileChanged,
+            [=](QString f)
+            {
+                ui->actionOpen_Last_File->setEnabled(f != "");
+            });
+
+    connect(mpv, &MpvHandler::indexChanged,
+            [=](int index)
+            {
+                ui->playlistWidget->setCurrentRow(index);
+            });
+
+    connect(mpv, &MpvHandler::showAllChanged,
+            [=](bool b)
+            {
+                ui->showAllButton->setChecked(b);
+            });
+
+    connect(mpv, &MpvHandler::shuffleChanged,
+            [=](bool b)
+            {
+                ui->actionSh_uffle->setChecked(b);
+            });
+
+    connect(mpv, &MpvHandler::searchChanged,
+            [=](QString s)
+            {
+                ui->searchBox->setText(s);
+            });
+
+    connect(mpv, &MpvHandler::playlistVisibleChanged,
+            [=](bool b)
+            {
+                SetPlaylist(b);
+            });
+
+    connect(mpv, &MpvHandler::playlistChanged,
+            [=](const QStringList &list)
+            {
+                ui->playlistWidget->clear();
+                ui->playlistWidget->addItems(list);
+
+                if(list.length() > 1)
+                {
+                    ui->actionSh_uffle->setEnabled(true);
+                    ui->playlistButton->setEnabled(true);
+                    ui->action_Playlist->setEnabled(true);
+                    ui->splitter->setEnabled(true);
+                    ui->actionStop_after_Current->setEnabled(true);
+                }
+                else
+                {
+                    ui->actionSh_uffle->setEnabled(false);
+                    ui->playlistButton->setEnabled(false);
+                    ui->action_Playlist->setEnabled(false);
+                    ui->splitter->setEnabled(false);
+                    ui->actionStop_after_Current->setEnabled(false);
+                }
+
+                if(list.length() > 0)
+                    ui->menuR_epeat->setEnabled(true);
+                else
+                    ui->menuR_epeat->setEnabled(false);
+            });
+
+    connect(mpv, &MpvHandler::errorSignal,
+            [=](QString err)
+            {
+                QMessageBox::warning(this, "Mpv Error", err);
+            });
+
+    connect(mpv, &MpvHandler::debugSignal,
+            [=](QString msg)
+            {
+                ui->outputTextEdit->appendPlainText(msg);
+            });
+
+    // update manager
+
+
+
+    // ui
+
+    connect(ui->seekBar, &SeekBar::valueChanged,                        // Playback: Seekbar clicked
+            [=](int i)
+            {
+                mpv->Seek(((double)i/ui->seekBar->maximum())*mpv->getFileInfo().length);
+            });
+
+    connect(ui->openButton, &OpenButton::LeftClick,                     // Playback: Open button (left click)
+            [=]
+            {
+                mpv->LoadFile(QFileDialog::getOpenFileName(this, "Open File"));
+            });
+
+    connect(ui->openButton, &OpenButton::MiddleClick,                   // Playback: Open button (middle click)
+            [=]
+            {
+                int time = JumpDialog::getTime(mpv->getFileInfo().length,this);
+                if(time >= 0)
+                    mpv->Seek(time);
+            });
+
+    connect(ui->openButton, &OpenButton::RightClick,                    // Playback: Open button (right click)
+            [=]
+            {
+                mpv->LoadFile(LocationDialog::getUrl(this));
+            });
+
+    connect(ui->rewindButton, &QPushButton::clicked,                    // Playback: Rewind button
+            [=]
+            {
+                mpv->Rewind();
+            });
+
+    connect(ui->previousButton, &IndexButton::clicked,                  // Playback: Previous button
+            [=]
+            {
+                mpv->PreviousFile();
+            });
+
+    connect(ui->playButton, &QPushButton::clicked,                      // Playback: Play/pause button
+            [=]
+            {
+                mpv->PlayPause(ui->playlistWidget->currentRow());
+            });
+
+    connect(ui->nextButton, &IndexButton::clicked,                      // Playback: Next button
+            [=]
+            {
+                mpv->NextFile();
+            });
+
+    connect(ui->volumeSlider, &CustomSlider::valueChanged,              // Playback: Volume slider adjusted
+            [=](int i)
+            {
+                mpv->Volume(i);
+            });
+
+    connect(ui->playlistButton, &QPushButton::clicked,                  // Playback: Clicked the playlist button
+            [=]
+            {
+                if(ui->splitter->position() == ui->splitter->max()) // splitter is right-most (playlist not visible)
+                    SetPlaylist(true);
+                else
+                    SetPlaylist(false);
+            });
+
+    connect(ui->splitter, &CustomSplitter::positionChanged,             // Splitter position changed
+            [=](int i)
+            {
+                if(i == ui->splitter->max()) // right-most, playlist is hidden
+                {
+                    ui->action_Playlist->setChecked(false);
+                    ui->action_Hide_Album_Art_2->setChecked(false);
+                }
+                else if(i == 0) // left-most, album art is hidden, playlist is visible
+                {
+                    ui->action_Playlist->setChecked(true);
+                    ui->action_Hide_Album_Art_2->setChecked(true);
+                }
+                else // in the middle, album art is visible, playlist is visible
+                {
+                    ui->action_Playlist->setChecked(true);
+                    ui->action_Hide_Album_Art_2->setChecked(false);
+                }
+            });
+
+    connect(ui->searchBox, &QLineEdit::textChanged,                     // Playlist: Search box
+            [=](QString s)
+            {
+                mpv->Search(s);
+            });
+
+    connect(ui->indexLabel, &CustomLabel::clicked,                      // Playlist: Clicked the indexLabel
+            [=]
+            {
+                QString res = InputDialog::getInput("Enter the file number you want to play:\nNote: Value must be between 1 - "+QString::number(mpv->getMaxIndex()),
+                                                    "Enter File Number",
+                                                    [this](QString input)
+                                                    {
+                                                        int in = input.toInt();
+                                                        if(in >= 1 && in <= mpv->getMaxIndex())
+                                                            return true;
+                                                        return false;
+                                                    },
+                                                    this);
+                if(res != "")
+                    mpv->PlayIndex(res.toInt()-1); // user index will be 1 greater than actual
+            });
+
+    connect(ui->playlistWidget, &CustomListWidget::currentRowChanged,   // Playlist: Playlist selection changed
+            [=](int i)
+            {
+                if(i == -1) // no selection
+                    ui->indexLabel->setText("File - of "+QString::number(ui->playlistWidget->count()));
+                else
+                    ui->indexLabel->setText("File "+QString::number(i+1)+" of "+QString::number(ui->playlistWidget->count()));
+            });
+
+    connect(ui->playlistWidget, &CustomListWidget::doubleClicked,       // Playlist: Item double clicked
+            [=](const QModelIndex &i)
+            {
+                mpv->PlayIndex(i.row());
+            });
+
+    connect(ui->currentFileButton, &QPushButton::clicked,               // Playlist: Select current file button
+            [=]
+            {
+                ui->playlistWidget->setCurrentRow(mpv->getIndex());
+            });
+
+    connect(ui->showAllButton, &QPushButton::clicked,                   // Playlist: Show All button
+            [=](bool b)
+            {
+                mpv->ShowAll(b);
+            });
+
+    connect(ui->refreshButton, &QPushButton::clicked,                   // Playlist: Refresh playlist button
+            [=]
+            {
+                mpv->Refresh();
+            });
+
+                                                                        // File ->
+    connect(ui->action_New_Player, &QAction::triggered,                 // File -> New Player
+            [=]
+            {
+                QProcess *p = new QProcess(0);
+                p->startDetached(QApplication::applicationFilePath());
+            });
+
+    connect(ui->action_Open_File, &QAction::triggered,                  // File -> Open File
+            [=]
+            {
+                mpv->LoadFile(QFileDialog::getOpenFileName(this, "Open File"));
+            });
+
+    connect(ui->actionOpen_URL, &QAction::triggered,                    // File -> Open URL
+            [=]
+            {
+                mpv->LoadFile(LocationDialog::getUrl(this));
+            });
+
+    connect(ui->actionOpen_Path_from_Clipboard, &QAction::triggered,    // File -> Open Path from Clipboard
+            [=]
+            {
+                mpv->LoadFile(QApplication::clipboard()->text());
+            });
+
+    connect(ui->actionOpen_Last_File, &QAction::triggered,              // File -> Open Last File
+            [=]
+            {
+                mpv->LoadFile(mpv->getLastFile());
+            });
+
+    connect(ui->actionShow_in_Folder, &QAction::triggered,              // File -> Show in Folder
+            [=]
+            {
+                QDesktopServices::openUrl("file:///"+QDir::toNativeSeparators(mpv->getPath()));
+            });
+
+    connect(ui->actionPlay_Next_File, &QAction::triggered,              // File -> Play Next File
+            [=]
+            {
+                mpv->NextFile();
+            });
+
+    connect(ui->actionPlay_Previous_File, &QAction::triggered,          // File -> Play Previous File
+            [=]
+            {
+                mpv->PreviousFile();
+            });
+
+    connect(ui->actionE_xit_2, &QAction::triggered,                     // File -> Exit
+            [=]
+            {
+                close();
+            });
+                                                                        // View ->
+    connect(ui->action_Full_Screen, &QAction::triggered,                // View -> Full Screen
+            [=]
+            {
+                FullScreen(true);
+            });
+
+    connect(ui->actionWith_Subtitles, &QAction::triggered,              // View -> Take Screenshot -> With Subtitles
+            [=]
+            {
+                mpv->Screenshot(true);
+            });
+
+    connect(ui->actionWithout_Subtitles, &QAction::triggered,           // View -> Take Screenshot -> Without Subtitles
+            [=]
+            {
+                mpv->Screenshot(false);
+            });
+                                                                        // View -> Fit Window ->
+    connect(ui->action_To_Current_Size, &QAction::triggered,            // View -> Fit Window -> To Current Size
+            [=]
+            {
+                FitWindow(0);
+            });
+
+    connect(ui->action50, &QAction::triggered,                          // View -> Fit Window -> 50%
+            [=]
+            {
+                FitWindow(50);
+            });
+
+    connect(ui->action75, &QAction::triggered,                          // View -> Fit Window -> 75%
+            [=]
+            {
+                FitWindow(75);
+            });
+
+    connect(ui->action100, &QAction::triggered,                         // View -> Fit Window -> 100%
+            [=]
+            {
+                FitWindow(100);
+            });
+
+    connect(ui->action200, &QAction::triggered,                         // View -> Fit Window -> 200%
+            [=]
+            {
+                FitWindow(200);
+            });
+                                                                        // View -> Aspect Ratio ->
+    connect(ui->action_Autodetect, &QAction::triggered,                 // View -> Aspect Ratio -> Auto Detect
+            [=]
+            {
+                SetAspectRatio("-1");
+            });
+
+    connect(ui->actionForce_4_3, &QAction::triggered,                   // View -> Aspect Ratio -> 4:3
+            [=]
+            {
+                SetAspectRatio("4:3");
+            });
+
+    connect(ui->actionForce_2_35_1, &QAction::triggered,                // View -> Aspect Ratio -> 2.35:1
+            [=]
+            {
+                SetAspectRatio("2_35:1");
+            });
+
+    connect(ui->actionForce_16_9, &QAction::triggered,                  // View -> Aspect Ratio -> 16:9
+            [=]
+            {
+                SetAspectRatio("16:9");
+            });
+
+    connect(ui->actionShow_Subtitles, &QAction::triggered,              // View -> Show Subtitles
+            [=](bool b)
+            {
+                mpv->SetSubs(b);
+            });
+
+    connect(ui->action_Add_Subtitle_File, &QAction::triggered,          //  View -> Subtitle Track -> Add Subtitle File...
+            [=]
+            {
+                QString trackFile = QFileDialog::getOpenFileName(this, "Open Subtitle File", mpv->getPath(), "*.sub *.srt *.ass *.ssa"); // todo: add more formats
+                if(trackFile != "")
+                    mpv->AddSub(trackFile);
+                // todo: add track to tracklist
+                // todo: select this track
+            });
+                                                                        // View -> Font Size ->
+    connect(ui->actionS_ize, &QAction::triggered,                       // View -> Font Size -> Size +
+            [=]
+            {
+                mpv->AddSubScale(.02);
+            });
+
+    connect(ui->action_Size, &QAction::triggered,                       // View -> Font Size -> Size -
+            [=]
+            {
+                mpv->AddSubScale(-.02);
+            });
+
+    connect(ui->action_Reset_Size, &QAction::triggered,                 // View -> Font Size -> Reset Size
+            [=]
+            {
+                mpv->SetSubScale(1);
+            });
+
+    connect(ui->actionMedia_Info, &QAction::triggered,                  // View -> Media Info
+            [=]
+            {
+                InfoDialog::info(mpv->getFileInfo(), this);
+            });
+                                                                        // Playback ->
+    connect(ui->action_Play, &QAction::triggered,                       // Playback -> (Play|Pause)
+            [=]
+            {
+                mpv->PlayPause(ui->playlistWidget->currentRow());
+            });
+
+    connect(ui->action_Stop, &QAction::triggered,                       // Playback -> Stop
+            [=]
+            {
+                mpv->Stop();
+            });
+
+    connect(ui->action_Restart, &QAction::triggered,                    // Playback -> Restart
+            [=]
+            {
+                mpv->Restart();
+            });
+
+    connect(ui->actionSh_uffle, &QAction::triggered,                    // Playback -> Shuffle
+            [=](bool b)
+            {
+                mpv->Shuffle(b);
+            });
+    // todo: repeat menu
+    connect(ui->action_Increase_Volume, &QAction::triggered,            // Playback -> Increase Volume
+            [=]
+            {
+                mpv->Volume(mpv->getVolume()+5);
+            });
+
+    connect(ui->action_Decrease_Volume, &QAction::triggered,            // Playback -> Decrease Volume
+            [=]
+            {
+                mpv->Volume(mpv->getVolume()-5);
+            });
+                                                                        // Navigate ->
+    connect(ui->action_Next_Chapter, &QAction::triggered,               // Navigate -> Next Chapter
+            [=]
+            {
+                mpv->NextChapter();
+            });
+
+    connect(ui->action_Previous_Chapter, &QAction::triggered,           // Navigate -> Previous Chapter
+            [=]
+            {
+                mpv->PreviousChapter();
+            });
+
+    connect(ui->action_Frame_Step, &QAction::triggered,                 // Navigate -> Frame Step
+            [=]
+            {
+                mpv->FrameStep();
+            });
+
+    connect(ui->actionFrame_Back_Step, &QAction::triggered,             // Navigate -> Frame Back Step
+            [=]
+            {
+                mpv->FrameBackStep();
+            });
+
+    connect(ui->action_Jump_to_Time, &QAction::triggered,               // Navigate -> Jump to Time
+            [=]
+            {
+                int time = JumpDialog::getTime(mpv->getFileInfo().length,this);
+                if(time >= 0)
+                    mpv->Seek(time);
+            });
+                                                                        // Settings ->
+    connect(ui->action_Show_Playlist_2, &QAction::triggered,            // Settings -> Show Playlist
+            [=](bool b)
+            {
+                SetPlaylist(b);
+            });
+
+    connect(ui->action_Hide_Album_Art_2, &QAction::triggered,           // Settings -> Hide Album Art
+            [=](bool b)
+            {
+                if(b)
+                {
+                    if(ui->splitter->position() != ui->splitter->max() && ui->splitter->position() != 0)
+                        ui->splitter->setNormalPosition(ui->splitter->position()); // save splitter position as the normal position
+                    ui->splitter->setPosition(0); // bring the splitter position to the left-most
+                }
+                else
+                    ui->splitter->setPosition(ui->splitter->normalPosition()); // bring the splitter to normal position
+            });
+
+    connect(ui->action_Dim_Lights_2, &QAction::triggered,               // Settings -> Dim Lights
+            [=](bool b)
+            {
+                DimLights(b);
+            });
+
+    connect(ui->actionShow_D_ebug_Output, &QAction::triggered,          // Settings -> Show Debug Output
+            [=](bool b)
+            {
+                mpv->Debug(b);
+            });
+
+    connect(ui->action_Preferences, &QAction::triggered,                // Settings -> Preferences...
+            [=]
+            {
+                SaveSettings();
+                PreferencesDialog::showPreferences(settings, this);
+                LoadSettings();
+            });
+                                                                        // Help ->
+    connect(ui->actionOnline_Help, &QAction::triggered,                 // Help -> Online Help
+            [=]
+            {
+                QDesktopServices::openUrl(QUrl("http://bakamplayer.u8sand.net/help"));
+            });
+
+    connect(ui->action_Check_for_Updates, &QAction::triggered,          // Help -> Check for Updates
+            [=]
+            {
+                if(UpdateDialog::update(update, this) == QDialog::Accepted)
+                {
+                    // todo: close and finish update (overwrite self and restart)
+                }
+            });
+
+    connect(ui->actionAbout_Qt, &QAction::triggered,                    // Help -> About Qt
+            [=]
+            {
+                qApp->aboutQt();
+            });
+
+    connect(ui->actionAbout_Baka_MPlayer, &QAction::triggered,          // Help -> About Baka MPlayer
+            [=]
+            {
+                AboutDialog::about(BAKA_MPLAYER_VERSION, this); // launch about dialog
+            });
+
+    // qApp
+
+    connect(qApp, &QApplication::focusWindowChanged,
+            [=](QWindow *focusWindow)
+            {
+                // note: focusWindow will be 0 if anything is clicked outside of our program which is useful
+                // the only other problem is that when dragging by the top handle
+                // it will be 0 resulting in lights going off, this is a side effect
+                // which will have to stay for now.
+                if(focusWindow == 0 && light->isVisible())
+                {
+                    light->setVisible(false); // remove dimlights
+                    ui->action_Dim_Lights_2->setChecked(false); // uncheck dimlights
+                }
+            });
+
+    // keyboard shortcuts
+
+    QAction *shortcut;
+
+    shortcut = new QAction(this);
+    shortcut->setShortcut(QKeySequence("Right"));
+    connect(shortcut, &QAction::triggered,
+            [=]
+            {
+                mpv->Seek(5, true);
+            });
+    addAction(shortcut);
+
+    shortcut = new QAction(this);
+    shortcut->setShortcut(QKeySequence("Left"));
+    connect(shortcut, &QAction::triggered,
+            [=]
+            {
+                mpv->Seek(-5, true);
+            });
+    addAction(shortcut);
+
+    shortcut = new QAction(this);
+    shortcut->setShortcut(QKeySequence("Esc"));
+    connect(shortcut, &QAction::triggered,
+            [=]
+            {
+                if(isFullScreen()) // in fullscreen mode, escape will exit fullscreen
+                    FullScreen(false);
+                else
+                {
+                    mpv->Pause();
+                    setWindowState(windowState() | Qt::WindowMinimized);
+                }
+            });
+    addAction(shortcut);
+
+    LoadSettings();
+    SetPlaylist(false);
+}
+
+MainWindow::~MainWindow()
+{
+    SaveSettings();
+
+    // cleanup
+    delete update;
+    delete mpv;
+    delete settings;
+    delete ui;
+}
+
+void MainWindow::LoadSettings()
+{
+    // window
     setGeometry(QStyle::alignedRect(Qt::LeftToRight,
                                     Qt::AlignCenter,
                                     QSize(settings->value("window/width", 600).toInt(),
                                           settings->value("window/height", 430).toInt()),
                                     qApp->desktop()->availableGeometry()));
-    ui->showAllButton->setChecked(settings->value("playlist/show-all", false).toBool());
-    ui->volumeSlider->setValue(settings->value("mpv/volume", 100).toInt());
-    QFile f(settings->value("last-file", "").toString());
-    ui->actionOpen_Last_File->setEnabled(f.exists());
-    ui->actionShow_D_ebug_Output->setChecked(settings->value("debug/output", false).toBool());
-    ui->outputTextEdit->setVisible(settings->value("debug/output", false).toBool());
-
-    // initialize managers/handlers
-    mpv = new MpvHandler(settings, ui->mpvFrame->winId(), this);
-    playlist = new PlaylistManager(settings, this);
-    update = new UpdateManager();
-
-    // setup signals & slots
-                                                                        // mpv updates
-    connect(mpv, SIGNAL(TimeChanged(int)),                              // MPV_EVENT time-pos update
-            this, SLOT(SetTime(int)));                                  // adjust time and slider accordingly
-    connect(mpv, SIGNAL(PlayStateChanged(Mpv::PlayState)),              // MPV_EVENT playstate changes
-            this, SLOT(SetPlayState(Mpv::PlayState)));                  // adjust interface based on new play-state
-    connect(mpv, SIGNAL(VolumeChanged(int)),                            // MPV_EVENT volume update
-            ui->volumeSlider, SLOT(setValueNoSignal(int)));             // update the volume slider without triggering it's value changed signal
-    connect(mpv, SIGNAL(ErrorSignal(QString)),                          // mpv error occured
-            this, SLOT(HandleError(QString)));                          // output error message
-    connect(mpv, SIGNAL(DebugSignal(QString)),                          // mpv debug message received
-            this, SLOT(Debug(QString)));                                // output to outputTextEdit
-                                                                        // playlist
-    connect(playlist, SIGNAL(Play(QString)),                            // playlist play signal
-            mpv, SLOT(OpenFile(QString)), Qt::QueuedConnection);        // mpv open file
-    connect(playlist, SIGNAL(Stop()),                                   // playlist stop signal
-            mpv, SLOT(Stop()), Qt::QueuedConnection);                   // mpv stop
-    connect(playlist, SIGNAL(Search(QString)),                          // playlist search
-            ui->searchBox, SLOT(setText(QString)));                     // set the text of the searchbox
-    connect(playlist, SIGNAL(Show(bool)),                               // playlist set visibility
-            this, SLOT(SetPlaylist(bool)));                             // set visibility of the playlist
-    connect(playlist, SIGNAL(ListChanged(QStringList)),                 // playlist update list
-            this, SLOT(UpdatePlaylist(QStringList)));                   // update the playlistWidget
-    connect(playlist, SIGNAL(IndexChanged(int)),                        // playlist update index
-            this, SLOT(UpdatePlaylistIndex(int)));                      // update the playlistWidget selection
-    connect(playlist, SIGNAL(ShuffleChanged(bool)),                     // playlist shuffle changed
-            ui->actionSh_uffle, SLOT(setChecked(bool)));                // update the menu item
-    connect(ui->indexLabel, SIGNAL(clicked()),                          // when indexLabel is clicked
-            this, SLOT(GetPlaylistIndex()));                            // get the user input for the playlist index
-    connect(ui->refreshButton, SIGNAL(clicked()),                       // refresh button
-            playlist, SLOT(Refresh()));                                 // refresh playlist files
-    connect(ui->actionSh_uffle, SIGNAL(triggered(bool)),                // shuffle action
-            playlist, SLOT(Shuffle(bool)));                             // shuffle playlist
-    connect(ui->showAllButton, SIGNAL(clicked(bool)),                   // show all button
-            playlist, SLOT(ShowAll(bool)));                             // show all types file types in playlist
-    connect(ui->playlistWidget, SIGNAL(doubleClicked(QModelIndex)),     // playlist selection
-            this, SLOT(PlayIndex(QModelIndex)));                        // play the selected file
-    connect(ui->currentFileButton, SIGNAL(clicked()),                   // current file button
-            this, SLOT(PlaylistSelectCurrent()));                       // selects the current file in the playlist
-    connect(ui->playlistWidget, SIGNAL(currentRowChanged(int)),         // playlist selection changed
-            this, SLOT(UpdatePlaylistSelectionIndex(int)));             // update the indexLabel message
-    connect(ui->searchBox, SIGNAL(textChanged(QString)),                // playlist search
-            playlist, SLOT(SearchPlaylist(QString)));                   // narrow down playlist
-                                                                        // sliders
-    connect(ui->volumeSlider, SIGNAL(valueChanged(int)),                // volume slider changed
-            mpv, SLOT(AdjustVolume(int)));                              // adjust volume accordingly
-    connect(ui->seekBar, SIGNAL(valueChanged(int)),                     // seek bar slider changed
-            this, SLOT(Seek(int)));                                     // seek accordingly
-                                                                        // splitters
-    connect(ui->splitter, SIGNAL(positionChanged(int)),                 // the splitter position changed
-            this, SLOT(SplitterChanged(int)));                          // update gui
-                                                                        // buttons
-    connect(ui->openButton, SIGNAL(LeftClick()),                        // left-clicked the open button
-            this, SLOT(OpenFile()));                                    // open-file dialog
-    connect(ui->openButton, SIGNAL(MiddleClick()),                      // middle-clicked the open button
-            this, SLOT(JumpToTime()));                                  // jump-to-time dialog
-    connect(ui->openButton, SIGNAL(RightClick()),                       // right-clicked the open button
-            this, SLOT(OpenUrl()));                                     // open-url dialog
-    connect(ui->playButton, SIGNAL(clicked()),                          // clicked the playpause button
-            this, SLOT(PlayPause()));                                   // mpv playpause
-    connect(ui->playlistButton, SIGNAL(clicked()),                      // clicked the playlist button
-            this, SLOT(TogglePlaylist()));                              // toggle playlist visibility
-    connect(ui->previousButton, SIGNAL(clicked()),                      // clicked the previous button
-            playlist, SLOT(Previous()));                                // play the previous entry in the playlist
-    connect(ui->nextButton, SIGNAL(clicked()),                          // clicked the next button
-            playlist, SLOT(Next()));                                    // play the next entry in the playlist
-    connect(ui->rewindButton, SIGNAL(clicked()),                        // clicked the rewind button
-            this, SLOT(Rewind()));                                      // rewind the video
-                                                                        // menu
-                                                                        // File ->
-    connect(ui->action_New_Player, SIGNAL(triggered()),                 // File -> New Player
-            this, SLOT(NewPlayer()));                                   // create a new MainWindow
-    connect(ui->action_Open_File, SIGNAL(triggered()),                  // File -> Open File
-            this, SLOT(OpenFile()));                                    // open-file dialog
-    connect(ui->actionOpen_URL, SIGNAL(triggered()),                    // File -> Open URL
-            this, SLOT(OpenUrl()));                                     // open-url dialog
-    connect(ui->actionOpen_Path_from_Clipboard, SIGNAL(triggered()),    // File -> Open Path from Clipboard
-            this, SLOT(OpenFileFromClipboard()));                       // open file from clipboard
-    connect(ui->actionOpen_Last_File, SIGNAL(triggered()),              // File -> Open Last File
-            this, SLOT(OpenLastFile()));                                // reopen the last file opened (saved in settings)
-    connect(ui->actionShow_in_Folder, SIGNAL(triggered()),              // File -> Show in Folder
-            this, SLOT(ShowInFolder()));                                // open file explorer to file location
-    connect(ui->actionPlay_Next_File, SIGNAL(triggered()),              // File -> Play Next File
-            playlist, SLOT(Next()));                                    // play the next entry in the playlist
-    connect(ui->actionPlay_Previous_File, SIGNAL(triggered()),          // File -> Play Previous File
-            playlist, SLOT(Previous()));                                // play the previous entry in the playlist
-    connect(ui->actionE_xit_2, SIGNAL(triggered()),                     // File -> Exit
-            this, SLOT(close()));                                       // close this window
-                                                                        // View ->
-    connect(ui->action_Full_Screen, SIGNAL(triggered(bool)),            // View -> Full Screen
-            this, SLOT(FullScreen(bool)));                              // full screen window
-    connect(ui->actionWith_Subtitles, SIGNAL(triggered()),              // View -> Take Screenshot -> With Subtitles
-            this, SLOT(ScreenshotWithSubs()));                          // mpv screenshot with subtitles
-    connect(ui->actionWith_Subtitles, SIGNAL(triggered()),              // View -> Take Screenshot -> With Subtitles
-            this, SLOT(ScreenshotWithoutSubs()));                       // mpv screenshot without subtitles
-    QSignalMapper *fitWindowMap = new QSignalMapper(this);              // View -> FitWindow ->
-    fitWindowMap->setMapping(ui->action_To_Current_Size, 0);            // View -> FitWindow -> To Current Size
-    fitWindowMap->setMapping(ui->action50, 50);                         // View -> FitWindow -> 50%
-    fitWindowMap->setMapping(ui->action75, 75);                         // View -> FitWindow -> 75%
-    fitWindowMap->setMapping(ui->action100, 100);                       // View -> FitWindow -> 100%
-    fitWindowMap->setMapping(ui->action200, 200);                       // View -> FitWindow -> 200%
-    connect(ui->action_To_Current_Size, SIGNAL(triggered()),
-            fitWindowMap, SLOT(map()));
-    connect(ui->action50, SIGNAL(triggered()),
-            fitWindowMap, SLOT(map()));
-    connect(ui->action75, SIGNAL(triggered()),
-            fitWindowMap, SLOT(map()));
-    connect(ui->action100, SIGNAL(triggered()),
-            fitWindowMap, SLOT(map()));
-    connect(ui->action200, SIGNAL(triggered()),
-            fitWindowMap, SLOT(map()));
-    connect(fitWindowMap, SIGNAL(mapped(int)),
-            this, SLOT(FitWindow(int)));                                // fit the window to the appropriate percentage
-    QSignalMapper *aspectMap = new QSignalMapper(this);                 // View -> Aspect Ratio ->
-    aspectMap->setMapping(ui->action_Autodetect, "-1");                 // View -> Aspect Ratio -> Auto Detect
-    aspectMap->setMapping(ui->actionForce_4_3, "4:3");                  // View -> Aspect Ratio -> 4:3
-    aspectMap->setMapping(ui->actionForce_2_35_1, "2.35:1");            // View -> Aspect Ratio -> 2.35:1
-    aspectMap->setMapping(ui->actionForce_16_9, "16/9");                // View -> Aspect Ratio -> 16:9
-    connect(ui->action_Autodetect, SIGNAL(triggered()),
-            aspectMap, SLOT(map()));
-    connect(ui->actionForce_4_3, SIGNAL(triggered()),
-            aspectMap, SLOT(map()));
-    connect(ui->actionForce_2_35_1, SIGNAL(triggered()),
-            aspectMap, SLOT(map()));
-    connect(ui->actionForce_16_9, SIGNAL(triggered()),
-            aspectMap, SLOT(map()));
-    connect(aspectMap, SIGNAL(mapped(QString)),
-            this, SLOT(SetAspectRatio(QString)));                       // set the aspect ratio to the appropriate ratio
-    connect(ui->actionShow_Subtitles, SIGNAL(triggered()),              // View -> Show Subtitles
-            mpv, SLOT(ToggleSubs()));                                   // mpv show subs
-    connect(ui->action_Add_Subtitle_File, SIGNAL(triggered()),          // add a new subtitle file
-            this, SLOT(AddSubtitleTrack()));                            // get the file and add
-                                                                        // subtitle track menu
-                                                                        // View -> Font Size ->
-    connect(ui->actionS_ize, SIGNAL(triggered()),                       // View -> Font Size -> Size +
-            this, SLOT(IncreaseFontSize()));                            // increase the font size
-    connect(ui->action_Size, SIGNAL(triggered()),                       // View -> Font Size -> Size -
-            this, SLOT(DecreaseFontSize()));                            // decrease the font size
-    connect(ui->action_Reset_Size, SIGNAL(triggered()),                 // View -> Font Size -> Reset Size
-            this, SLOT(ResetFontSize()));                               // reset the font size
-
-    connect(ui->actionMedia_Info, SIGNAL(triggered()),                  // View -> Media Info
-            this, SLOT(MediaInfo()));                                   // show media info dialog
-                                                                        // Playback ->
-    connect(ui->action_Play, SIGNAL(triggered()),                       // Playback -> (Play|Pause)
-            mpv, SLOT(PlayPause()));                                    // mpv playpause
-    connect(ui->action_Stop, SIGNAL(triggered()),                       // Playback -> Stop
-            mpv, SLOT(Stop()));                                         // mpv stop
-    connect(ui->action_Restart, SIGNAL(triggered()),                    // Playback -> Restart
-            mpv, SLOT(Restart()));                                      // mpv restart
-    connect(ui->actionSh_uffle, SIGNAL(triggered(bool)),                // Playback -> Shuffle
-            playlist, SLOT(Shuffle(bool)));                             // playlist shuffle
-    // todo: repeat menu
-    connect(ui->action_Increase_Volume, SIGNAL(triggered()),            // Playback -> Increase Volume
-            this, SLOT(IncreaseVolume()));                              // increase mpv volume by 5
-    connect(ui->action_Decrease_Volume, SIGNAL(triggered()),            // Playback -> Decrease Volume
-            this, SLOT(DecreaseVolume()));                              // decrease mpv volume by 5
-                                                                        // Navigate ->
-    connect(ui->action_Next_Chapter, SIGNAL(triggered()),               // Navigate -> Next Chapter
-            mpv, SLOT(NextChapter()));                                  // mpv next chapter
-    connect(ui->action_Previous_Chapter, SIGNAL(triggered()),           // Navigate -> Previous Chapter
-            mpv, SLOT(PreviousChapter()));                              // mpv previous chapter
-                                                                        // chapters menu
-    connect(ui->action_Frame_Step, SIGNAL(triggered()),                 // Navigate -> Frame Step
-            mpv, SLOT(FrameStep()));                                    // mpv frame step
-    connect(ui->actionFrame_Back_Step, SIGNAL(triggered()),             // Navigate -> Frame Back Step
-            mpv, SLOT(FrameBackStep()));                                // mpv frame back step
-    connect(ui->action_Jump_to_Time, SIGNAL(triggered()),               // Navigate -> Jump to Time
-            this, SLOT(JumpToTime()));                                  // jump-to-time dialog
-                                                                        // Settings ->
-    connect(ui->action_Show_Playlist_2, SIGNAL(triggered(bool)),        // Settings -> Show Playlist
-            this, SLOT(SetPlaylist(bool)));                             // toggle playlist visibility
-    connect(ui->action_Hide_Album_Art_2, SIGNAL(triggered(bool)),       // Settings -> Hide Album Art
-            this, SLOT(HideAlbumArt(bool)));                            // toggle album art
-    connect(ui->action_Dim_Lights_2, SIGNAL(triggered(bool)),           // Settings -> Dim Lights
-            this, SLOT(DimLights(bool)));                               // toggle dim lights
-    connect(ui->actionShow_D_ebug_Output, SIGNAL(triggered(bool)),      // Settings -> Show Debug Output
-            ui->outputTextEdit, SLOT(setVisible(bool)));                // toggle debug output
-    connect(ui->action_Preferences, SIGNAL(triggered()),                // Settings -> Preferences...
-            this, SLOT(Preferences()));                                 // open preferences dialog
-                                                                        // Help ->
-    connect(ui->actionOnline_Help, SIGNAL(triggered()),                 // Help -> Online Help
-            this, SLOT(OnlineHelp()));                                  // open online help
-    connect(ui->action_Check_for_Updates, SIGNAL(triggered()),          // Help -> Check for Updates
-            this, SLOT(CheckForUpdates()));                             // check for updates
-    connect(ui->actionAbout_Qt, SIGNAL(triggered()),                    // Help -> About Qt
-            this, SLOT(AboutQt()));                                     // show about qt
-    connect(ui->actionAbout_Baka_MPlayer, SIGNAL(triggered()),          // Help -> About Baka MPlayer
-            this, SLOT(About()));                                       // show about dialog
-
-    connect(qApp, &QApplication::focusWindowChanged,
-            [=](QWindow *focusWindow)
-            {
-                if(focusWindow == 0 && light->isVisible())
-                {
-                    light->setVisible(false); // remove dimlights
-                    ui->action_Dim_Lights_2->setChecked(false); // uncheck lights
-                }
-            });
-
-    // keyboard shortcuts
-    new QShortcut(QKeySequence("Right"), this, SLOT(SeekForward()));
-    new QShortcut(QKeySequence("Left"), this, SLOT(SeekBack()));
-    new QShortcut(QKeySequence("Esc"), this, SLOT(BossMode()));
-
-    ui->mpvFrame->installEventFilter(this);
+    setOnTop(settings->value("window/onTop", "never").toString());
+    setAutoFit(settings->value("window/autoFit", 100).toInt());
+    setTrayIcon(settings->value("window/trayIcon", false).toBool());
+    setHidePopup(settings->value("window/hidePopup", false).toBool());
+    ui->splitter->setNormalPosition(settings->value("window/splitter",(int)(ui->splitter->max()*3.0/4.0)).toInt());
+    // mpv
+    mpv->setLastFile(settings->value("mpv/lastFile", "").toString());
+    mpv->setShowAll(settings->value("mpv/showAll", false).toBool());
+    mpv->setScreenshotFormat(settings->value("mpv/screenshotFormat", "png").toString());
+    mpv->setScreenshotTemplate(settings->value("mpv/screenshotTemplate", "screenshot%#04n").toString());
+    mpv->setSpeed(settings->value("mpv/speed", 1.0).toDouble());
+    mpv->setVolume(settings->value("mpv/volume", 100).toInt());
+    // common
+    setDebug(settings->value("common/debug", false).toBool());
 }
 
-MainWindow::~MainWindow()
+void MainWindow::SaveSettings()
 {
-    // save settings
-    settings->setValue("mpv/volume", mpv->GetVolume());
+    // window
     settings->setValue("window/width", normalGeometry().width());
     settings->setValue("window/height", normalGeometry().height());
-    settings->setValue("playlist/show-all", ui->showAllButton->isChecked());
-    settings->setValue("debug/output", ui->actionShow_D_ebug_Output->isChecked());
-
-    // cleanup
-    delete playlist;
-    delete mpv;
-    delete ui;
+    settings->setValue("window/onTop", getOnTop());
+    settings->setValue("window/autoFit", getAutoFit());
+    settings->setValue("window/trayIcon", getTrayIcon());
+    settings->setValue("window/hidePopup", getHidePopup());
+    settings->setValue("window/splitter", ui->splitter->position() == ui->splitter->max() ?
+                                            ui->splitter->normalPosition() :
+                                            ui->splitter->position());
+    // mpv
+    settings->setValue("mpv/lastFile", mpv->getLastFile());
+    settings->setValue("mpv/showAll", mpv->getShowAll());
+    settings->setValue("mpv/screenshotFormat", mpv->getScreenshotFormat());
+    settings->setValue("mpv/screenshotTemplate", mpv->getScreenshotTemplate());
+    settings->setValue("mpv/speed", mpv->getSpeed());
+    settings->setValue("mpv/volume", mpv->getVolume());
+    // common
+    settings->setValue("debug/output", getDebug());
 }
 
 void MainWindow::Load(QString file)
 {
-    playlist->LoadFile(file); // loadfile
-}
-
-void MainWindow::HandleError(QString err)
-{
-    QMessageBox::warning(this, "Error", err);
+    mpv->LoadFile(file);
 }
 
 void MainWindow::dragEnterEvent(QDragEnterEvent *event) // todo: does this even work??
@@ -307,10 +893,10 @@ void MainWindow::dropEvent(QDropEvent *event) // todo: does this even work??
 {
     const QMimeData *mimeData = event->mimeData();
     if(mimeData->hasText()) // plain text
-        playlist->LoadFile(mimeData->text()); // load the text as a file
+        mpv->LoadFile(mimeData->text()); // load the text as a file
     else if(mimeData->hasUrls()) // urls
         for(auto &url : mimeData->urls())
-            playlist->LoadFile(url.path()); // load the urls as files
+            mpv->LoadFile(url.path()); // load the urls as files
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *event)
@@ -359,11 +945,10 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
 
 bool MainWindow::eventFilter(QObject *obj, QEvent *event)
 {
-    if(obj == ui->mpvFrame && event->type() == QEvent::MouseMove)
+    if(obj == ui->mpvFrame && event->type() == QEvent::MouseMove && isFullScreen())
     {
         QMouseEvent *mouseEvent = static_cast<QMouseEvent*>(event);
-        if(!dragging)
-            mouseMoveEvent(mouseEvent);
+        mouseMoveEvent(mouseEvent);
     }
     return false;
 }
@@ -384,10 +969,10 @@ void MainWindow::SetPlaybackControls(bool enable)
     ui->seekBar->setEnabled(enable);
     ui->rewindButton->setEnabled(enable);
     // next file
-    if(enable && playlist->GetIndex()+1 < ui->playlistWidget->count()) // not the last entry
+    if(enable && mpv->getIndex()+1 < ui->playlistWidget->count()) // not the last entry
     {
         ui->nextButton->setEnabled(true);
-        ui->nextButton->setIndex(playlist->GetIndex()+2); // starting at 1 instead of at 0 like actual index
+        ui->nextButton->setIndex(mpv->getIndex()+2); // starting at 1 instead of at 0 like actual index
         ui->actionPlay_Next_File->setEnabled(true);
     }
     else
@@ -396,10 +981,10 @@ void MainWindow::SetPlaybackControls(bool enable)
         ui->actionPlay_Next_File->setEnabled(false);
     }
     // previous file
-    if(enable && playlist->GetIndex()-1 >= 0) // not the first entry
+    if(enable && mpv->getIndex()-1 >= 0) // not the first entry
     {
         ui->previousButton->setEnabled(true);
-        ui->previousButton->setIndex(-playlist->GetIndex()); // we use a negative index value for the left button
+        ui->previousButton->setIndex(-mpv->getIndex()); // we use a negative index value for the left button
         ui->actionPlay_Previous_File->setEnabled(true);
     }
     else
@@ -410,6 +995,8 @@ void MainWindow::SetPlaybackControls(bool enable)
     // menubar
     ui->action_Stop->setEnabled(enable);
     ui->action_Restart->setEnabled(enable);
+    ui->action_Frame_Step->setEnabled(enable);
+    ui->actionFrame_Back_Step->setEnabled(enable);
     ui->action_Jump_to_Time->setEnabled(enable);
     ui->actionMedia_Info->setEnabled(enable);
     ui->actionShow_in_Folder->setEnabled(enable);
@@ -422,13 +1009,15 @@ void MainWindow::SetPlaybackControls(bool enable)
     if(!enable)
         ui->action_Hide_Album_Art_2->setEnabled(false);
 
-    if(enable && mpv->GetFileInfo().chapters.length() > 0) // only enable chapters if there are chapters
+    if(enable && mpv->getFileInfo().chapters.length() > 0) // only enable chapters if there are chapters
     {
+        ui->menu_Chapters->setEnabled(true);
         ui->action_Next_Chapter->setEnabled(true);
         ui->action_Previous_Chapter->setEnabled(true);
     }
     else
     {
+        ui->menu_Chapters->setEnabled(false);
         ui->action_Next_Chapter->setEnabled(false);
         ui->action_Previous_Chapter->setEnabled(false);
     }
@@ -436,180 +1025,13 @@ void MainWindow::SetPlaybackControls(bool enable)
 
 QString MainWindow::FormatTime(int _time)
 {
+    const Mpv::FileInfo &fi = mpv->getFileInfo();
     QTime time = QTime::fromMSecsSinceStartOfDay(_time * 1000);
-    if(mpv->GetFileInfo().length >= 3600) // hours
+    if(fi.length >= 3600) // hours
         return time.toString("h:mm:ss");
-    if(mpv->GetFileInfo().length >= 60)   // minutes
+    if(fi.length >= 60)   // minutes
         return time.toString("mm:ss");
     return time.toString("0:ss");   // seconds
-}
-
-void MainWindow::SetTime(int time)
-{
-    // set the seekBar's location with NoSignal function so that it doesn't trigger a seek
-    // the formula is a simple ratio seekBar's max * time/totalTime
-    ui->seekBar->setValueNoSignal(ui->seekBar->maximum()*((double)time/mpv->GetFileInfo().length));
-
-    // set duration and remaining labels, QDateTime takes care of formatting for us
-    ui->durationLabel->setText(FormatTime(time));
-    ui->remainingLabel->setText("-"+FormatTime(mpv->GetFileInfo().length-time));
-
-    // update next/previous chapter's enabled status
-    if(mpv->GetFileInfo().chapters.length() > 0)
-    {
-        ui->action_Next_Chapter->setEnabled(time < mpv->GetFileInfo().chapters.last().time);
-        ui->action_Previous_Chapter->setEnabled(time > mpv->GetFileInfo().chapters.first().time);
-    }
-}
-
-void MainWindow::SetPlayState(Mpv::PlayState playState)
-{
-    // triggered when mpv playstate is changed so we can update controls accordingly
-    switch(playState)
-    {
-    case Mpv::Loaded: // todo: show the user we are loading their file
-        break;
-    case Mpv::Started:
-    {
-        const Mpv::FileInfo &fi = mpv->GetFileInfo();
-        // load chapter list into menus
-        QList<int> ticks;
-        QSignalMapper *signalMapper = new QSignalMapper(this);
-        int n = 1;
-        ui->menu_Chapters->clear();
-        for(auto &ch : fi.chapters)
-        {
-            QAction *action;
-            if(n <= 9)
-                action = ui->menu_Chapters->addAction(QString::number(n)+": "+ch.title, NULL, NULL, QKeySequence("Ctrl+"+QString::number(n)));
-            else
-                action = ui->menu_Chapters->addAction(QString::number(n)+": "+ch.title);
-            n++;
-            signalMapper->setMapping(action, ch.time);
-            connect(action, SIGNAL(triggered()),
-                    signalMapper, SLOT(map()));
-            ticks.push_back(ch.time);
-        }
-        connect(signalMapper, SIGNAL(mapped(int)),
-                mpv, SLOT(Seek(int)));
-        if(ui->menu_Chapters->actions().count() == 0)
-            ui->menu_Chapters->addAction("[ none ]")->setEnabled(false);
-        ui->seekBar->setTicks(ticks);
-
-        // load subtitle list into menus
-        signalMapper = new QSignalMapper(this);
-        ui->menuSubtitle_Track->clear();
-        ui->menuSubtitle_Track->addAction(ui->action_Add_Subtitle_File);
-        for(auto &track : fi.tracks)
-        {
-            if(track.type == "sub")
-            {
-                QAction *action = ui->menuSubtitle_Track->addAction(QString::number(track.id)+": "+track.title+" ("+track.lang+")");
-                signalMapper->setMapping(action, track.id);
-                connect(action, SIGNAL(triggered()),
-                        signalMapper, SLOT(map()));
-            }
-            else if(track.type == "video" && // video track
-                    track.albumart)          // is album art
-            {
-                ui->action_Hide_Album_Art_2->setEnabled(true);
-            }
-        }
-        if(ui->menuSubtitle_Track->actions().count() == 0)
-            ui->menuSubtitle_Track->addAction("[ none ]")->setEnabled(false);
-        connect(signalMapper, SIGNAL(mapped(int)),
-                mpv, SLOT(SetSid(int)));
-
-
-        setWindowTitle(fi.media_title);
-        ui->seekBar->setTracking(fi.length);
-        if(!init) // will only happen the first time a file is loaded.
-        {
-            ui->action_Play->setEnabled(true);
-            ui->playButton->setEnabled(true);
-            ui->playButton->Update();
-            ui->action_Playlist->setEnabled(true);
-            ui->playlistButton->setEnabled(true);
-            init = true;
-        }
-        FitWindow(100);
-        mpv->Play();
-        SetPlaybackControls(true);
-    }
-    case Mpv::Playing:
-        ui->playButton->SetPlay(false);
-        ui->action_Play->setText("&Pause");
-#ifdef Q_OS_WIN
-        if(ui->actionWhen_Playing->isChecked())
-            SetAlwaysOnTop(true);
-#endif
-        break;
-    case Mpv::Paused:
-    case Mpv::Stopped:
-        ui->playButton->SetPlay(true);
-        ui->action_Play->setText("&Play");
-#ifdef Q_OS_WIN
-        if(ui->actionWhen_Playing->isChecked())
-            SetAlwaysOnTop(false);
-#endif
-        break;
-    case Mpv::Idle:
-        if(init && (ui->actionStop_after_Current->isChecked() || !playlist->Next()))
-        {
-            setWindowTitle("Baka MPlayer");
-            SetPlaybackControls(false);
-            ui->seekBar->setTracking(0);
-            SetTime(0);
-        }
-        break;
-    case Mpv::Ended:
-        settings->setValue("last-file", mpv->GetFileInfo().media_title);
-        ui->actionOpen_Last_File->setEnabled(settings->value("last-file").toString()!="");
-        break;
-    }
-}
-
-void MainWindow::PlayPause()
-{
-    if(mpv->GetPlayState() == Mpv::Idle) // if idle, play plays the selected playlist file
-        playlist->PlayIndex(ui->playlistWidget->currentRow());
-    else
-        mpv->PlayPause();
-}
-
-void MainWindow::Seek(int position)
-{
-    mpv->Seek(((double)position/ui->seekBar->maximum())*mpv->GetFileInfo().length);
-}
-
-void MainWindow::Rewind()
-{
-    // if user presses rewind button twice within 3 seconds, stop video
-    if(mpv->GetTime() < 3)
-        mpv->Stop();
-    else
-    {
-        if(mpv->GetPlayState() == Mpv::Playing)
-            mpv->Restart();
-        else
-            mpv->Stop();
-    }
-}
-
-void MainWindow::NewPlayer()
-{
-    QProcess *p = new QProcess(0);
-    p->startDetached(QApplication::applicationFilePath());
-}
-
-void MainWindow::OpenFile()
-{
-    playlist->LoadFile(QFileDialog::getOpenFileName(this, "Open File"));
-}
-
-void MainWindow::OpenUrl()
-{
-    playlist->LoadFile(LocationDialog::getUrl(this));
 }
 
 void MainWindow::FullScreen(bool fs)
@@ -625,6 +1047,12 @@ void MainWindow::FullScreen(bool fs)
         ui->menubar->setVisible(false);
         SetPlaylist(false);
         setMouseTracking(true); // register mouse move event
+
+        // post a mouseMoveEvent (in case user doesn't actually move the mouse when entering fs)
+        QMouseEvent *event = new QMouseEvent(QMouseEvent::MouseMove,
+                                             QCursor::pos(),
+                                             Qt::NoButton,Qt::NoButton,Qt::NoModifier);
+        QCoreApplication::postEvent(this, event);
     }
     else
     {
@@ -636,77 +1064,10 @@ void MainWindow::FullScreen(bool fs)
     }
 }
 
-void MainWindow::BossMode()
-{
-    if(isFullScreen()) // in fullscreen mode, escape will make it not fullscreen
-        setWindowState(windowState() & ~Qt::WindowFullScreen);
-    else
-    {
-        mpv->Pause();
-        setWindowState(windowState() | Qt::WindowMinimized);
-    }
-}
-
-void MainWindow::JumpToTime()
-{
-    int time = JumpDialog::getTime(mpv->GetFileInfo().length,this);
-    if(time >= 0)
-        mpv->Seek(time);
-}
-
-void MainWindow::MediaInfo() // todo
-{
-    InfoDialog::info(mpv->GetFileInfo(), this);
-}
-
-void MainWindow::OpenFileFromClipboard()
-{
-    playlist->LoadFile(QApplication::clipboard()->text());
-}
-
-void MainWindow::OpenLastFile()
-{
-    playlist->LoadFile(settings->value("last-file", "").toString());
-}
-
-void MainWindow::ShowInFolder()
-{
-    QDesktopServices::openUrl("file:///"+QDir::toNativeSeparators(playlist->GetPath()));
-}
-
-void MainWindow::UpdatePlaylist(QStringList list)
-{
-    ui->playlistWidget->clear();
-    ui->playlistWidget->addItems(list);
-}
-
-void MainWindow::UpdatePlaylistIndex(int index)
-{
-    ui->playlistWidget->setCurrentRow(index);
-}
-
-void MainWindow::UpdatePlaylistSelectionIndex(int index)
-{
-    if(index == -1) // no selection
-        ui->indexLabel->setText("File - of "+QString::number(ui->playlistWidget->count()));
-    else
-        ui->indexLabel->setText("File "+QString::number(index+1)+" of "+QString::number(ui->playlistWidget->count()));
-}
-
-void MainWindow::PlaylistSelectCurrent()
-{
-    ui->playlistWidget->setCurrentRow(playlist->GetIndex());
-}
-
-void MainWindow::PlayIndex(QModelIndex index)
-{
-    playlist->PlayIndex(index.row());
-}
-
 void MainWindow::SetPlaylist(bool visible)
 {
     if(!ui->splitter->normalPosition())
-        ui->splitter->setNormalPosition(ui->splitter->max()*3.0/4); // set the default splitter position
+        ui->splitter->setPosition(ui->splitter->max()*3.0/4);
     if(visible)
         ui->splitter->setPosition(ui->splitter->normalPosition()); // bring splitter position to normal
     else
@@ -717,108 +1078,6 @@ void MainWindow::SetPlaylist(bool visible)
     }
 }
 
-void MainWindow::TogglePlaylist()
-{
-    if(ui->splitter->position() == ui->splitter->max()) // splitter is right-most (playlist not visible)
-        SetPlaylist(true);
-    else
-        SetPlaylist(false);
-}
-
-void MainWindow::GetPlaylistIndex()
-{
-    QString res = InputDialog::getInput("Enter the file number you want to play:\nNote: Value must be between 1 - "+QString::number(playlist->GetMax()),
-                                        "Enter File Number",
-                                        [this](QString input)
-                                        {
-                                            int in = input.toInt();
-                                            if(in >= 1 && in <= playlist->GetMax())
-                                                return true;
-                                            return false;
-                                        },
-                                        this);
-    if(res != "")
-        playlist->PlayIndex(res.toInt()-1); // user index will be 1 greater than actual
-}
-
-void MainWindow::HideAlbumArt(bool hide)
-{
-    if(hide)
-    {
-        if(ui->splitter->position() != ui->splitter->max() && ui->splitter->position() != 0)
-            ui->splitter->setNormalPosition(ui->splitter->position()); // save splitter position as the normal position
-        ui->splitter->setPosition(0); // bring the splitter position to the left-most
-    }
-    else
-        ui->splitter->setPosition(ui->splitter->normalPosition()); // bring the splitter to normal position
-}
-
-void MainWindow::SplitterChanged(int pos)
-{
-    if(pos == ui->splitter->max()) // right-most, playlist is hidden
-    {
-        ui->action_Playlist->setChecked(false);
-        ui->action_Hide_Album_Art_2->setChecked(false);
-    }
-    else if(pos == 0) // left-most, album art is hidden, playlist is visible
-    {
-        ui->action_Playlist->setChecked(true);
-        ui->action_Hide_Album_Art_2->setChecked(true);
-    }
-    else // in the middle, album art is visible, playlist is visible
-    {
-        ui->action_Playlist->setChecked(true);
-        ui->action_Hide_Album_Art_2->setChecked(false);
-    }
-}
-
-void MainWindow::Debug(QString msg)
-{
-    ui->outputTextEdit->appendPlainText(msg);
-}
-
-void MainWindow::OnlineHelp()
-{
-    QDesktopServices::openUrl(QUrl("http://bakamplayer.u8sand.net/help"));
-}
-
-void MainWindow::CheckForUpdates()
-{
-    if(UpdateDialog::update(update, this) == QDialog::Accepted)
-    {
-        // todo: close and finish update (overwrite self and restart)
-    }
-}
-
-void MainWindow::AboutQt()
-{
-    qApp->aboutQt();
-}
-
-void MainWindow::About()
-{
-    AboutDialog::about(BAKA_MPLAYER_VERSION, this); // launch about dialog
-}
-
-void MainWindow::SeekForward()
-{
-    mpv->Seek(5, true);
-}
-
-void MainWindow::SeekBack()
-{
-    mpv->Seek(-5, true);
-}
-
-void MainWindow::AddSubtitleTrack()
-{
-    QString trackFile = QFileDialog::getOpenFileName(this, "Open Subtitle File", playlist->GetPath(), "*.sub *.srt *.ass *.ssa"); // todo: add more formats
-    if(trackFile != "")
-        mpv->AddSub(trackFile);
-    // todo: add track to tracklist
-    // todo: select this track? it's not auto selected
-}
-
 void MainWindow::FitWindow(int percent)
 {
     if(isFullScreen())
@@ -826,8 +1085,9 @@ void MainWindow::FitWindow(int percent)
     if(isMaximized())
         setWindowFlags(windowFlags() & ~Qt::WindowMaximized);
 
-    mpv->LoadVideoParams();
-    const Mpv::VideoParams &params = mpv->GetFileInfo().video_params;
+    // todo: refresh video_params
+    //mpv->LoadVideoParams();
+    const Mpv::VideoParams &params = mpv->getFileInfo().video_params;
     QRect fG = ui->mpvFrame->geometry(), // frame geometry
           cG = geometry(), // current geometry of window
           dG = qApp->desktop()->availableGeometry(); // desktop geometry
@@ -889,25 +1149,9 @@ void MainWindow::SetAspectRatio(QString aspect)
     if(isFullScreen())
         return;
     mpv->SetAspect(aspect);
-    FitWindow(0);
 }
 
-void MainWindow::IncreaseFontSize()
-{
-    mpv->AddSubScale(.02);
-}
-
-void MainWindow::DecreaseFontSize()
-{
-    mpv->AddSubScale(-.02);
-}
-
-void MainWindow::ResetFontSize()
-{
-    mpv->SetSubScale(1);
-}
-
-void MainWindow::DimLights(bool dim) // todo: make sure the dim window can't get focus
+void MainWindow::DimLights(bool dim)
 {
     if(dim)
         light->show();
@@ -916,35 +1160,6 @@ void MainWindow::DimLights(bool dim) // todo: make sure the dim window can't get
     activateWindow();
     raise();
     setFocus();
-}
-
-void MainWindow::IncreaseVolume()
-{
-    mpv->AddVolume(5);
-}
-
-void MainWindow::DecreaseVolume()
-{
-    mpv->AddVolume(-5);
-}
-
-void MainWindow::ShowInTray(bool show)
-{
-    trayIcon->setVisible(show);
-}
-
-void MainWindow::HidePopup(bool/* hide*/) // todo
-{
-}
-
-void MainWindow::ScreenshotWithSubs() // todo
-{
-
-}
-
-void MainWindow::ScreenshotWithoutSubs() // todo
-{
-
 }
 
 #ifdef Q_OS_WIN
@@ -1010,10 +1225,3 @@ void MainWindow::NeverOnTop(bool ontop)
     }
 }
 #endif
-
-void MainWindow::Preferences()
-{
-    PreferencesDialog::showPreferences(settings, this);
-    // todo: update dialog accordingly to take care of preferences
-    // todo: have signals/slots for settings modifications
-}
