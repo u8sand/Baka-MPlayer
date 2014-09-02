@@ -36,7 +36,21 @@ If your distribution does not provide a package--you must compile baka mplayer f
 	
 Copy the resulting executable (build/Baka MPlayer) wherever you like; (eg. `sudo cp "build/Baka MPlayer" /usr/bin/bakamplayer`) your configuration file will be written to `bakamplayer.ini`
 
+
+## Portability
+
+Baka MPlayer is made to be cross-platform and portable--simple to put on your usb and use anywhere to play those video formats that no one else seems to be able to play. Though the linux version only works on the distribution it was compiled for, the windows version is compiled with mingw and should work in both all windows versions and on linux with wine.
+
+Configuration files on the windows version are saved with the executable in an ini file `bakamplayer.ini`. On the linux version they are saved in the qt location `~/.config/bakamplayer.ini`
+
+
 ## Hotkeys
+
+Most hotkeys are labeled on the file menu. Other hotkeys are described here.
+
+	Left          Seek backwards 5 seconds
+	Right         Seek forwards 5 seconds
+	Esc           Exit fullscreen mode or Boss Key (pause and minimize)
 
 
 ## Settings
@@ -65,5 +79,4 @@ Copy the resulting executable (build/Baka MPlayer) wherever you like; (eg. `sudo
 
 	[common]                # Common Options
 	debug=                  # debugging enabled (output box)
-	
 	
