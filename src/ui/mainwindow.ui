@@ -740,9 +740,6 @@ QSlider::sub-page:horizontal {
              <height>30</height>
             </size>
            </property>
-           <property name="shortcut">
-            <string>Space</string>
-           </property>
            <property name="flat">
             <bool>true</bool>
            </property>
@@ -1228,6 +1225,9 @@ QSlider::handle:horizontal {
    </property>
    <property name="text">
     <string>&amp;Play</string>
+   </property>
+   <property name="shortcut">
+    <string>Space</string>
    </property>
   </action>
   <action name="action_Stop">
