@@ -159,6 +159,9 @@ MainWindow::MainWindow(QWidget *parent):
 
                     setWindowTitle(i.media_title);
                     ui->seekBar->setTracking(i.length);
+
+                    if(!remaining)
+                        ui->remainingLabel->setText(FormatTime(i.length));
                 }
             });
 
@@ -227,7 +230,8 @@ MainWindow::MainWindow(QWidget *parent):
 
                 // set duration and remaining labels, QDateTime takes care of formatting for us
                 ui->durationLabel->setText(FormatTime(i));
-                ui->remainingLabel->setText("-"+FormatTime(fi.length-i));
+                if(remaining)
+                    ui->remainingLabel->setText("-"+FormatTime(fi.length-i));
 
                 // set next/previous chapter's enabled state
                 if(fi.chapters.length() > 0)
@@ -344,6 +348,18 @@ MainWindow::MainWindow(QWidget *parent):
             [=]
             {
                 mpv->LoadFile(LocationDialog::getUrl(this));
+            });
+
+    connect(ui->remainingLabel, &CustomLabel::clicked,
+            [=]
+            {
+                if(remaining)
+                {
+                    setRemaining(false);
+                    ui->remainingLabel->setText(FormatTime(mpv->getFileInfo().length));
+                }
+                else
+                    setRemaining(true);
             });
 
     connect(ui->rewindButton, &QPushButton::clicked,                    // Playback: Rewind button
@@ -843,6 +859,7 @@ void MainWindow::LoadSettings()
     setAutoFit(settings->value("window/autoFit", 100).toInt());
     setTrayIcon(settings->value("window/trayIcon", false).toBool());
     setHidePopup(settings->value("window/hidePopup", false).toBool());
+    setRemaining(settings->value("window/remaining", true).toBool());
     ui->splitter->setNormalPosition(settings->value("window/splitter",(int)(ui->splitter->max()*3.0/4.0)).toInt());
     // mpv
     mpv->setLastFile(settings->value("mpv/lastFile", "").toString());
@@ -864,6 +881,7 @@ void MainWindow::SaveSettings()
     settings->setValue("window/autoFit", getAutoFit());
     settings->setValue("window/trayIcon", getTrayIcon());
     settings->setValue("window/hidePopup", getHidePopup());
+    settings->setValue("window/remaining", getRemaining());
     settings->setValue("window/splitter", ui->splitter->position() == ui->splitter->max() ?
                                             ui->splitter->normalPosition() :
                                             ui->splitter->position());

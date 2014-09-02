@@ -71,29 +71,34 @@ private:
     QMenu           *trayIconMenu;
     LightDialog     *light;
 
+    // todo: when possible, use variables that are already avialable instead of these
     // variables
     QString onTop;
     int autoFit;
     bool trayIcon,
          hidePopup,
+         remaining,
          debug;
 public:
     QString getOnTop()          { return onTop; }
     int getAutoFit()            { return autoFit; }
     bool getTrayIcon()          { return trayIcon; }
     bool getHidePopup()         { return hidePopup; }
+    bool getRemaining()         { return remaining; }
     bool getDebug()             { return debug; }
 public slots:
     void setOnTop(QString s)    { emit onTopChanged(onTop = s); }
     void setAutoFit(int b)      { emit autoFitChanged(autoFit = b); }
     void setTrayIcon(bool b)    { emit trayIconChanged(trayIcon = b); }
     void setHidePopup(bool b)   { emit hidePopupChanged(hidePopup = b); }
+    void setRemaining(bool b)   { emit remainingChanged(remaining = b); }
     void setDebug(bool b)       { emit debugChanged(debug = b); }
 signals:
     void onTopChanged(QString);
     void autoFitChanged(int);
     void trayIconChanged(bool);
     void hidePopupChanged(bool);
+    void remainingChanged(bool b);
     void debugChanged(bool);
 };
 
