@@ -542,12 +542,16 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->actionWith_Subtitles, &QAction::triggered,              // View -> Take Screenshot -> With Subtitles
             [=]
             {
+                if(mpv->getScreenshotDir() == "" && !SetScreenshotDir())
+                    return;
                 mpv->Screenshot(true);
             });
 
     connect(ui->actionWithout_Subtitles, &QAction::triggered,           // View -> Take Screenshot -> Without Subtitles
             [=]
             {
+                if(mpv->getScreenshotDir() == "" && !SetScreenshotDir())
+                    return;
                 mpv->Screenshot(false);
             });
                                                                         // View -> Fit Window ->
@@ -866,6 +870,7 @@ void MainWindow::LoadSettings()
     mpv->setShowAll(settings->value("mpv/showAll", false).toBool());
     mpv->setScreenshotFormat(settings->value("mpv/screenshotFormat", "png").toString());
     mpv->setScreenshotTemplate(settings->value("mpv/screenshotTemplate", "screenshot%#04n").toString());
+    mpv->setScreenshotDir(settings->value("mpv/screenshotDir", "").toString());
     mpv->setSpeed(settings->value("mpv/speed", 1.0).toDouble());
     mpv->setVolume(settings->value("mpv/volume", 100).toInt());
     // common
@@ -890,6 +895,7 @@ void MainWindow::SaveSettings()
     settings->setValue("mpv/showAll", mpv->getShowAll());
     settings->setValue("mpv/screenshotFormat", mpv->getScreenshotFormat());
     settings->setValue("mpv/screenshotTemplate", mpv->getScreenshotTemplate());
+    settings->setValue("mpv/screenshotDir", mpv->getScreenshotDir());
     settings->setValue("mpv/speed", mpv->getSpeed());
     settings->setValue("mpv/volume", mpv->getVolume());
     // common
@@ -1179,6 +1185,20 @@ void MainWindow::DimLights(bool dim)
     raise();
     setFocus();
 }
+
+bool MainWindow::SetScreenshotDir()
+{
+    QMessageBox::information(this, "Take Screenshot",
+                             "Choose the default location where you would like to save your screenshots. Also by default, we will save your screenshots as a jpg file. If you'd like to change any of these settings, it is under Preferences.");
+    QString dir = QFileDialog::getExistingDirectory(this, "Screenshot Directory");
+    if(dir != "")
+    {
+        mpv->setScreenshotDir(dir);
+        return true;
+    }
+    return false;
+}
+
 
 #ifdef Q_OS_WIN
 void MainWindow::SetAlwaysOnTop(bool ontop)

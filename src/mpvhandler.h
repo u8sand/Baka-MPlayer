@@ -53,6 +53,7 @@ public slots:
     void FrameStep();                           // frame step
     void FrameBackStep();                       // frame back step
     void Volume(int level);                     // adjust the media volume
+    // todo: a way to set screenshot settings (dir/template/format)
     void Screenshot(bool withSubs = false);     // take a screenshot
     void SetSubs(bool b);                       // set subtitle visibility
     void AddSubScale(double scale);
@@ -84,6 +85,7 @@ private:
                 lastFile,
                 screenshotFormat,
                 screenshotTemplate,
+                screenshotDir,
                 search,
                 path,
                 suffix;
@@ -104,6 +106,7 @@ public:
     QString getLastFile()                   { return lastFile; }
     QString getScreenshotFormat()           { return screenshotFormat; }
     QString getScreenshotTemplate()         { return screenshotTemplate; }
+    QString getScreenshotDir()         { return screenshotDir; }
     QString getSearch()                     { return search; }
     QString getPath()                       { return path; }
     double getSpeed()                       { return speed; }
@@ -122,6 +125,7 @@ public slots:
     void setLastFile(QString s)             { emit lastFileChanged(lastFile = s); }
     void setScreenshotFormat(QString s)     { emit screenshotFormatChanged(screenshotFormat = s); }
     void setScreenshotTemplate(QString s)   { emit screenshotTemplateChanged(screenshotTemplate = s); }
+    void setScreenshotDir(QString s)        { emit screenshotDirChanged(screenshotDir = s); }
     void setSearch(QString s)               { emit searchChanged(search = s); }
     void setSpeed(double d)                 { emit speedChanged(speed = d); }
     void setTime(int i)                     { emit timeChanged(time = i); }
@@ -140,6 +144,7 @@ signals:
     void lastFileChanged(QString);
     void screenshotFormatChanged(QString);
     void screenshotTemplateChanged(QString);
+    void screenshotDirChanged(QString);
     void searchChanged(QString);
     void speedChanged(double);
     void timeChanged(int);
