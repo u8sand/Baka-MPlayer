@@ -230,6 +230,13 @@ void MpvHandler::Search(QString s)
     emit playlistChanged(tmplist);
 }
 
+void MpvHandler::Shuffle(bool b)
+{
+    setShuffle(b);
+    Sort();
+    emit playlistChanged(playlist);
+}
+
 void MpvHandler::ShowAll(bool b) // todo: use current selection's suffix
 {
     showAll = b;
@@ -286,8 +293,8 @@ void MpvHandler::Seek(int pos, bool relative)
 
 void MpvHandler::Restart()
 {
-    const char *args[] = {"seek", "0", "absolute", NULL};
-    AsyncCommand(args);
+    Seek(0);
+    Play();
 }
 
 void MpvHandler::Rewind()

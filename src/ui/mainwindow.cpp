@@ -176,8 +176,6 @@ MainWindow::MainWindow(QWidget *parent):
                     {
                         ui->action_Play->setEnabled(true);
                         ui->playButton->setEnabled(true);
-                        ui->action_Playlist->setEnabled(true);
-                        ui->playlistButton->setEnabled(true);
                         init = true;
                     }
                     if(getAutoFit())
@@ -204,13 +202,13 @@ MainWindow::MainWindow(QWidget *parent):
                     break;
 
                 case Mpv::Idle:
-                    if(init && (ui->actionStop_after_Current->isChecked() ||
-                                mpv->getIndex() > mpv->getMaxIndex()))
+                    if(init && (mpv->getIndex() > mpv->getMaxIndex() ||
+                                ui->actionStop_after_Current->isChecked()))
                     {
                         setWindowTitle("Baka MPlayer");
                         SetPlaybackControls(false);
                         ui->seekBar->setTracking(0);
-//                        SetTime(0);
+                        ui->actionStop_after_Current->setChecked(false);
                     }
                     break;
 
@@ -280,6 +278,28 @@ MainWindow::MainWindow(QWidget *parent):
             {
                 ui->playlistWidget->clear();
                 ui->playlistWidget->addItems(list);
+
+                if(list.length() > 1)
+                {
+                    ui->actionSh_uffle->setEnabled(true);
+                    ui->playlistButton->setEnabled(true);
+                    ui->action_Playlist->setEnabled(true);
+                    ui->splitter->setEnabled(true);
+                    ui->actionStop_after_Current->setEnabled(true);
+                }
+                else
+                {
+                    ui->actionSh_uffle->setEnabled(false);
+                    ui->playlistButton->setEnabled(false);
+                    ui->action_Playlist->setEnabled(false);
+                    ui->splitter->setEnabled(false);
+                    ui->actionStop_after_Current->setEnabled(false);
+                }
+
+                if(list.length() > 0)
+                    ui->menuR_epeat->setEnabled(true);
+                else
+                    ui->menuR_epeat->setEnabled(false);
             });
 
     connect(mpv, &MpvHandler::errorSignal,
@@ -630,7 +650,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->actionSh_uffle, &QAction::triggered,                    // Playback -> Shuffle
             [=](bool b)
             {
-                mpv->setShuffle(b);
+                mpv->Shuffle(b);
             });
     // todo: repeat menu
     connect(ui->action_Increase_Volume, &QAction::triggered,            // Playback -> Increase Volume
@@ -975,6 +995,8 @@ void MainWindow::SetPlaybackControls(bool enable)
     // menubar
     ui->action_Stop->setEnabled(enable);
     ui->action_Restart->setEnabled(enable);
+    ui->action_Frame_Step->setEnabled(enable);
+    ui->actionFrame_Back_Step->setEnabled(enable);
     ui->action_Jump_to_Time->setEnabled(enable);
     ui->actionMedia_Info->setEnabled(enable);
     ui->actionShow_in_Folder->setEnabled(enable);
@@ -989,11 +1011,13 @@ void MainWindow::SetPlaybackControls(bool enable)
 
     if(enable && mpv->getFileInfo().chapters.length() > 0) // only enable chapters if there are chapters
     {
+        ui->menu_Chapters->setEnabled(true);
         ui->action_Next_Chapter->setEnabled(true);
         ui->action_Previous_Chapter->setEnabled(true);
     }
     else
     {
+        ui->menu_Chapters->setEnabled(false);
         ui->action_Next_Chapter->setEnabled(false);
         ui->action_Previous_Chapter->setEnabled(false);
     }
