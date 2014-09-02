@@ -86,8 +86,8 @@ bool MpvHandler::event(QEvent *event)
                 break;
             case MPV_EVENT_FILE_LOADED:
                 LoadFileInfo();
-                AdjustVolume(volume);
                 setPlayState(Mpv::Started);
+                Volume(volume);
             case MPV_EVENT_UNPAUSE:
                 setPlayState(Mpv::Playing);
                 break;
@@ -188,7 +188,7 @@ void MpvHandler::Populate()
         QDir root(path);
         QFileInfoList flist;
         if(suffix == "")
-            flist = root.entryInfoList({"*.mkv", "*.mp4", "*.avi", "*.mp3", "*.ogm"}, QDir::Files); // todo: pass more file-types (get from settings)
+            flist = root.entryInfoList({"*.mkv","*.mp4","*.avi","*.mp3","*.ogm"}, QDir::Files);
         else
             flist = root.entryInfoList({QString("*.").append(suffix)}, QDir::Files);
         for(auto &i : flist)
@@ -213,6 +213,24 @@ void MpvHandler::Sort()
         std::sort(playlist.begin(), playlist.end());
 }
 
+void MpvHandler::Search(QString s)
+{
+    QStringList tmplist;
+    for(QStringList::iterator item = playlist.begin(); item != playlist.end(); ++item)
+        if(item->contains(s, Qt::CaseInsensitive))
+            tmplist.push_back(*item);
+    emit playlistChanged(tmplist);
+}
+
+void MpvHandler::ShowAll(bool b) // todo: use current selection's suffix
+{
+    showAll = b;
+    Populate();
+    Sort();
+    emit playlistChanged(playlist);
+    setSearch("");
+}
+
 void MpvHandler::OpenFile(QString f)
 {
     const QByteArray tmp = f.toUtf8();
@@ -232,10 +250,15 @@ void MpvHandler::Pause()
     AsyncCommand(args);
 }
 
-void MpvHandler::PlayPause()
+void MpvHandler::PlayPause(int i)
 {
-    const char *args[] = {"cycle", "pause", NULL};
-    AsyncCommand(args);
+    if(playState == Mpv::Idle) // if idle, play plays the selected playlist file
+        PlayIndex(i);
+    else
+    {
+        const char *args[] = {"cycle", "pause", NULL};
+        AsyncCommand(args);
+    }
 }
 
 void MpvHandler::Seek(int pos, bool relative)
@@ -257,6 +280,22 @@ void MpvHandler::Restart()
 {
     const char *args[] = {"seek", "0", "absolute", NULL};
     AsyncCommand(args);
+}
+
+void MpvHandler::Rewind()
+{
+    // if user presses rewind button twice within 3 seconds, stop video
+    if(time < 3)
+    {
+        Stop();
+    }
+    else
+    {
+        if(playState == Mpv::Playing)
+            Restart();
+        else
+            Stop();
+    }
 }
 
 void MpvHandler::Stop()
@@ -331,29 +370,24 @@ void MpvHandler::FrameBackStep()
     AsyncCommand(args);
 }
 
-void MpvHandler::AddVolume(int level)
+void MpvHandler::Volume(int level)
 {
-    const QByteArray tmp = QString::number(level).toUtf8();
-    const char *args[] = {"add", "volume", tmp.constData(), NULL};
-    AsyncCommand(args);
-}
+    if(level > 100) level = 100;
+    else if(level < 0) level = 0;
 
-void MpvHandler::AdjustVolume(int level)
-{
-    const QByteArray tmp = QString::number(level).toUtf8();
-    const char *args[] = {"set", "volume", tmp.constData(), NULL};
-    AsyncCommand(args);
+    if(playState == Mpv::Idle)
+        setVolume(level);
+    else
+    {
+        const QByteArray tmp = QString::number(level).toUtf8();
+        const char *args[] = {"set", "volume", tmp.constData(), NULL};
+        AsyncCommand(args);
+    }
 }
 
 void MpvHandler::Screenshot(bool withSubs)
 {
     const char *args[] = {"screenshot", (withSubs ? "subtitles" : "window"), NULL};
-    AsyncCommand(args);
-}
-
-void MpvHandler::ToggleFullscreen()
-{
-    const char *args[] = {"cycle", "fullscreen", NULL};
     AsyncCommand(args);
 }
 
@@ -380,7 +414,10 @@ void MpvHandler::SetSubScale(double scale)
 void MpvHandler::Debug(bool b)
 {
     if(mpv)
+    {
         mpv_request_log_messages(mpv, b ? "debug" : "no");
+        setDebug(b);
+    }
 }
 
 void MpvHandler::CursorAutoHide(bool b)

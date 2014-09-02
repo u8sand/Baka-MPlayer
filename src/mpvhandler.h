@@ -23,20 +23,23 @@ protected:
     virtual bool event(QEvent *event);          // QObject event function
 
 public slots:
-    void LoadFile(QString f);
-    void PlayIndex(int i);
+    void LoadFile(QString);
+    void PlayIndex(int);
     void NextFile();
     void PreviousFile();
     void Populate();
     void Refresh();
     void Sort();
+    void Search(QString);
+    void ShowAll(bool);
 
     void OpenFile(QString f);                   // open the file for mpv playing
     void Play();
     void Pause();
-    void PlayPause();                           // toggle pause/unpause state
+    void PlayPause(int i);                      // toggle pause/unpause state
     void Seek(int pos, bool relative = false);  // seek to specific location
     void Restart();                             // seek to the beginning
+    void Rewind();
     void Stop();                                // stop playback (and go to beginning)
     void SetVid(int vid);                       // set the video track
     void SetAid(int aid);                       // set the audio track
@@ -48,10 +51,8 @@ public slots:
     void PreviousChapter();                     // seek to previous chapter
     void FrameStep();                           // frame step
     void FrameBackStep();                       // frame back step
-    void AddVolume(int level);
-    void AdjustVolume(int level);               // adjust the media volume
+    void Volume(int level);                     // adjust the media volume
     void Screenshot(bool withSubs = false);     // take a screenshot
-    void ToggleFullscreen();                    // toggle fullscreen
     void SetSubs(bool b);                       // set subtitle visibility
     void AddSubScale(double scale);
     void SetSubScale(double scale);
