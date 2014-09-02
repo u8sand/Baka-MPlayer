@@ -79,7 +79,8 @@ private:
     Mpv::PlayState playState = Mpv::Idle;
     QStringList playlist;
     Mpv::FileInfo fileInfo = {QString(), 0, {0, 0, 0, 0, 0}, QList<Mpv::Track>(), QList<Mpv::Chapter>()};
-    QString     lastFile,
+    QString     file,
+                lastFile,
                 screenshotFormat,
                 screenshotTemplate,
                 search,
@@ -98,7 +99,7 @@ public:
     const Mpv::FileInfo &getFileInfo()      { return fileInfo; }
     const QStringList &getPlaylist()        { return playlist; }
     Mpv::PlayState getPlayState()           { return playState; }
-    QString getFile()                       { return path+playlist[index]; }
+    QString getFile()                       { return file; }
     QString getLastFile()                   { return lastFile; }
     QString getScreenshotFormat()           { return screenshotFormat; }
     QString getScreenshotTemplate()         { return screenshotTemplate; }
@@ -116,6 +117,7 @@ public:
 
 public slots:
     void setPlayState(Mpv::PlayState s)     { emit playStateChanged(playState = s); }
+    void setFile(QString s)                 { emit fileChanged(file = s); }
     void setLastFile(QString s)             { emit lastFileChanged(lastFile = s); }
     void setScreenshotFormat(QString s)     { emit screenshotFormatChanged(screenshotFormat = s); }
     void setScreenshotTemplate(QString s)   { emit screenshotTemplateChanged(screenshotTemplate = s); }

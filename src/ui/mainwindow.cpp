@@ -184,7 +184,6 @@ MainWindow::MainWindow(QWidget *parent):
                         FitWindow(getAutoFit());
                     SetPlaybackControls(true);
                     mpv->Play();
-
                 case Mpv::Playing:
                     ui->playButton->setIcon(QIcon(":/img/default_pause.svg"));
                     ui->action_Play->setText("&Pause");
@@ -216,7 +215,6 @@ MainWindow::MainWindow(QWidget *parent):
                     break;
 
                 case Mpv::Ended:
-                    //mpv->setLastFile(mpv->file());
                     break;
                 }
             });
@@ -271,7 +269,7 @@ MainWindow::MainWindow(QWidget *parent):
                 ui->searchBox->setText(s);
             });
 
-    connect(mpv, &MpvHandler::playlistVisibleChanged, // todo: actionMenu checks
+    connect(mpv, &MpvHandler::playlistVisibleChanged,
             [=](bool b)
             {
                 SetPlaylist(b);
@@ -500,9 +498,9 @@ MainWindow::MainWindow(QWidget *parent):
             });
                                                                         // View ->
     connect(ui->action_Full_Screen, &QAction::triggered,                // View -> Full Screen
-            [=](bool b)
+            [=]
             {
-                FullScreen(b);
+                FullScreen(true);
             });
 
     connect(ui->actionWith_Subtitles, &QAction::triggered,              // View -> Take Screenshot -> With Subtitles
@@ -750,6 +748,10 @@ MainWindow::MainWindow(QWidget *parent):
     connect(qApp, &QApplication::focusWindowChanged,
             [=](QWindow *focusWindow)
             {
+                // note: focusWindow will be 0 if anything is clicked outside of our program which is useful
+                // the only other problem is that when dragging by the top handle
+                // it will be 0 resulting in lights going off, this is a side effect
+                // which will have to stay for now.
                 if(focusWindow == 0 && light->isVisible())
                 {
                     light->setVisible(false); // remove dimlights
@@ -1040,6 +1042,8 @@ void MainWindow::FullScreen(bool fs)
 
 void MainWindow::SetPlaylist(bool visible)
 {
+    if(!ui->splitter->normalPosition())
+        ui->splitter->setPosition(ui->splitter->max()*3.0/4);
     if(visible)
         ui->splitter->setPosition(ui->splitter->normalPosition()); // bring splitter position to normal
     else
