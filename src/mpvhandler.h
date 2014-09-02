@@ -31,6 +31,7 @@ public slots:
     void Refresh();
     void Sort();
     void Search(QString);
+    void Shuffle(bool);
     void ShowAll(bool);
 
     void OpenFile(QString f);                   // open the file for mpv playing
