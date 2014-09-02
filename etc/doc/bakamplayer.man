@@ -1,0 +1,29 @@
+.TH bakamplayer 1
+.SH NAME
+bakamplayer - A free and open source, cross-platform, \fBlibmpv\fP based multimedia player.
+
+.SH SYNOPSIS
+\fBbakamplayer\fP [file|URL]
+
+.SH DESCRIPTION
+\fBBaka-MPlayer\fP is a free and open source, cross-platform, \fBlibmpv\fP based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching anime. It's also portable and supports opening Youtube videos (through \fBlibmpv\fP).
+.PP
+\fBBaka-MPlayer\fP is a graphical front-end to \fBmpv\fP. It is mostly self-explanitory and has little need for a manual.
+
+.SH EXAMPLES
+.nf
+\fBbakamplayer\fP
+\fBbakamplayer\fP myvideo.mkv
+\fBbakamplayer\fP http://youtube.com/?v=supercowpowers
+
+.SH SEE ALSO
+\fBmpv\fP
+
+.SH BUGS
+Please use the issues tracker provided by GitHub to send us bug reports or feature requests. (https://github.com/u8sand/Baka-MPlayer/issues)
+
+.SH AUTHORS
+\fBBaka-MPlayer\fP was written by \fBu8sand\fP <u8sand@gmail.com> and \fBgodly-devotion\fP <>.
+
+.SH COPYRIGHT
+GPLv2+

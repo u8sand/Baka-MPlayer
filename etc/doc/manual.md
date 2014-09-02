@@ -13,12 +13,18 @@ This manual seeks to cover all related topics.
 
 ### Windows
 
+#### Official Releases
+
 Download archive with the binary for your system (64 bit or 32 bit) from
 http://bakamplayer.u8sand.net/downloads.php
 
 The downloaded file is a simple `.zip` file; extract it wherever you like--it works as a stand-alone executable. It's configuration will be written as `bakamplayer.ini`
 
 To treat it as the rest of your programs--extract it to `C:/Program Files/Baka MPlayer/` then make a shortcut on your desktop.
+
+#### Development Release
+
+See linux instructions. If compilation goes successfully you'll have built `Baka-MPlayer.exe`.
 
 ### Linux
 
@@ -36,24 +42,28 @@ Copy the resulting executable (build/Baka MPlayer) wherever you like; (eg. `sudo
 ## Settings
 
 	# Format: [category] key=value
-	# Below are the keys and regexes for their accepted values
-	#  comments specify setting details
+	# Below are the keys and comments specify setting details
 	
-	[General]               # Other options
-	last-file=.*            # The full path of the last file opened
+	[mpv]                   # Mpv Related Options
+	last-file=              # The full path of the last file opened
+	screenshotDir=          # The directory where screenshots will be saved
+	screenshotTemplate=     # The template of screenshot files see mpv's man
+	screenshotFormat=       # The screenshot file format see mpv's man
+	showAll=                # Should we load files of different extensions
+	speed=                  # Playback speed (supports decimals)
+	volume=                 # the volume from 0-100.
 	
-	[debug]                 # Debug-specific options
-	output=(true|false)     # Debugging output window
-	mpv=(true|false)				# Mpv debug messages
+	[window]                # Window Related Options
+	width=                  # width of the window
+	height=                 # height of the window
+	autoFit=                # autoFit percentage (0 = no autofit)
+	hidePopup=              # hide tray icon notifications
+	onTop=                  # on top setting (always, never, or playing)
+	remaining=              # display remaining time or duration time label
+	splitter=               # the normal splitter position (playlist size)
+	trayIcon=               # should we display the trayIcon
 
-	[mpv]                   # mpv-specific options
-	volume=(100|[0-9]{1,2}) # mpv volume
+	[common]                # Common Options
+	debug=                  # debugging enabled (output box)
 	
-	[playlist]              # playlist-specific options
-	shuffle=(true|false)    # Shuffle playlist option
-	show-all=(true|false)   # Show-all option (not extension specific)
-	
-	[window]                # window-specific options
-	width=[0-9]+            # The width in pixels of the window
-	height=[0-9]+           # The height in pixels of the window
 	
