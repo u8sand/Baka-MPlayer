@@ -3,7 +3,6 @@
 LightDialog::LightDialog(QWidget *parent) :
     QDialog(parent)
 {
-    // yes, the order here is strange. it doesn't work any other way.
     setWindowState(Qt::WindowFullScreen);
     setAttribute(Qt::WA_TranslucentBackground);
     setWindowOpacity(.6);

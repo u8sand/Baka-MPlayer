@@ -11,6 +11,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = Baka-MPlayer
 DEFINES += 'BAKA_MPLAYER_VERSION=\\"1.9.8\\"' \
            'SETTINGS_FILE=\\"bakamplayer\\"'
+
 TEMPLATE = app
 CONFIG += c++11
 
@@ -34,11 +35,9 @@ win32 {
 
 SOURCES += main.cpp\
     mpvhandler.cpp \
-    playlistmanager.cpp \
     updatemanager.cpp \
     widgets/customslider.cpp \
     widgets/openbutton.cpp \
-    widgets/playpausebutton.cpp \
     widgets/indexbutton.cpp \
     widgets/customlistwidget.cpp \
     widgets/seekbar.cpp \
@@ -55,12 +54,11 @@ SOURCES += main.cpp\
     ui/preferencesdialog.cpp
 
 HEADERS  += \
+    mpvtypes.h \
     mpvhandler.h \
-    playlistmanager.h \
     updatemanager.h \
     widgets/customslider.h \
     widgets/openbutton.h \
-    widgets/playpausebutton.h \
     widgets/indexbutton.h \
     widgets/customlistwidget.h \
     widgets/seekbar.h \

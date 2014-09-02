@@ -15,7 +15,7 @@ LocationDialog::LocationDialog(QWidget *parent) :
     connect(ui->cancelButton, SIGNAL(clicked()),// cancel button clicked
             this, SLOT(reject()));              // reject
     connect(ui->urlEdit, SIGNAL(textChanged(QString)),
-            this, SLOT(validate()));
+            this, SLOT(validate(QString)));
 }
 
 LocationDialog::~LocationDialog()
@@ -51,7 +51,6 @@ void LocationDialog::on_clearButton_clicked()
 
 void LocationDialog::validate(QString input)
 {
-    // todo: make more complex validation
 #ifdef Q_OS_WIN
     QRegExp rx("^(https?://.+\\.[a-z]+|[a-z]:/)", Qt::CaseInsensitive);
 #elif defined(Q_OS_LINUX) || defined(Q_OS_UNIX)
