@@ -153,13 +153,21 @@ void MpvHandler::PlayIndex(int i)
     {
         setIndex(i);
         if(path == "") // web url
-            OpenFile(getFile());
+        {
+            if(getFile() != "")
+                setLastFile(getFile());
+            setFile(playlist[i]);
+            OpenFile(file);
+        }
         else
         {
-            QFile f(getFile());
+            QFile f(path+playlist[i]);
             if(f.exists())
             {
-                OpenFile(getFile());
+                if(getFile() != "")
+                    setLastFile(getFile());
+                setFile(path+playlist[i]);
+                OpenFile(file);
                 Play();
             }
             else
@@ -188,7 +196,7 @@ void MpvHandler::Populate()
         QDir root(path);
         QFileInfoList flist;
         if(suffix == "")
-            flist = root.entryInfoList({"*.mkv","*.mp4","*.avi","*.mp3","*.ogm"}, QDir::Files);
+            flist = root.entryInfoList(Mpv::media_filetypes, QDir::Files);
         else
             flist = root.entryInfoList({QString("*.").append(suffix)}, QDir::Files);
         for(auto &i : flist)
@@ -446,6 +454,8 @@ void MpvHandler::LoadFileInfo()
     LoadTracks();
     LoadChapters();
     LoadVideoParams();
+
+    emit fileInfoChanged(fileInfo);
 }
 
 void MpvHandler::LoadTracks()
