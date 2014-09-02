@@ -49,6 +49,7 @@ private slots:
     void FitWindow(int percent);                    // fit the window the the specified percent
     void SetAspectRatio(QString aspect);            // set the aspect ratio to specified proportions
     void DimLights(bool dim);                       // grays out the rest of the screen with LightDialog
+    bool SetScreenshotDir();
 
 #ifdef Q_OS_WIN
     void SetAlwaysOnTop(bool ontop);

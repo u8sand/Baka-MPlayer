@@ -33,17 +33,17 @@ PreferencesDialog::PreferencesDialog(QSettings *_settings, QWidget *parent) :
 
     // propigate changes to data
     connect(ui->neverRadioButton, &QRadioButton::clicked,
-            [=]()
+            [=]
             {
                 settings->setValue("window/onTop", "never");
             });
     connect(ui->playingRadioButton, &QRadioButton::clicked,
-            [=]()
+            [=]
             {
                 settings->setValue("window/onTop", "playing");
             });
     connect(ui->alwaysRadioButton, &QRadioButton::clicked,
-            [=]()
+            [=]
             {
                 settings->setValue("window/onTop", "always");
             });
@@ -87,7 +87,6 @@ PreferencesDialog::PreferencesDialog(QSettings *_settings, QWidget *parent) :
     connect(ui->templateLineEdit, &QLineEdit::textChanged,
             [=](QString s)
             {
-                // todo: template should be prefixed with directory
                 settings->setValue("mpv/screenshotTemplate", s);
             });
 }
@@ -105,7 +104,6 @@ void PreferencesDialog::showPreferences(QSettings *settings, QWidget *parent)
 
 void PreferencesDialog::ChangeScreenshotLocation()
 {
-    // todo: template should be prefixed with directory
     QString dir = QFileDialog::getExistingDirectory(this, "Choose screenshot directory", settings->value("mpv/screenshotDir").toString());
     if(dir.length() > 0)
         settings->setValue("mpv/screenshotDir", dir);

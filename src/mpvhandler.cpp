@@ -406,7 +406,7 @@ void MpvHandler::Volume(int level)
 
 void MpvHandler::Screenshot(bool withSubs)
 {
-    const char *args[] = {"screenshot", (withSubs ? "subtitles" : "window"), NULL};
+    const char *args[] = {"screenshot", (withSubs ? "subtitles" : "video"), NULL};
     AsyncCommand(args);
 }
 
