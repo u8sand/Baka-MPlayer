@@ -48,9 +48,13 @@ Configuration files on the windows version are saved with the executable in an i
 
 Most hotkeys are labeled on the file menu. Other hotkeys are described here.
 
-	Left          Seek backwards 5 seconds
-	Right         Seek forwards 5 seconds
-	Esc           Exit fullscreen mode or Boss Key (pause and minimize)
+	Left                    Seek backwards 5 seconds
+	Right                   Seek forwards 5 seconds
+	Esc                     Exit fullscreen mode or Boss Key (pause and minimize)
+	MediaPlay               Triggers Play/Pause
+	MediaStop               Triggers Stop
+	MediaNext               Triggers Play Next File
+	MediaPrevious           Triggers Play Previous File
 
 
 ## Settings
@@ -64,7 +68,7 @@ Most hotkeys are labeled on the file menu. Other hotkeys are described here.
 	screenshotTemplate=     # The template of screenshot files see mpv's man
 	screenshotFormat=       # The screenshot file format see mpv's man
 	showAll=                # Should we load files of different extensions
-	speed=                  # Playback speed (supports decimals)
+	speed=                  # Playback speed multiplier (supports decimals)
 	volume=                 # the volume from 0-100.
 	
 	[window]                # Window Related Options

@@ -13,7 +13,8 @@ DEFINES += 'BAKA_MPLAYER_VERSION=\\"1.9.8\\"' \
            'SETTINGS_FILE=\\"bakamplayer\\"'
 
 TEMPLATE = app
-CONFIG += c++11
+CONFIG += c++11 link_pkgconfig
+PKGCONFIG += mpv
 
 DESTDIR = build/
 OBJECTS_DIR = $${DESTDIR}/obj
@@ -21,16 +22,9 @@ MOC_DIR = $${DESTDIR}/moc
 RCC_DIR = $${DESTDIR}/rcc
 UI_DIR = $${DESTDIR}/ui
 
-unix {
-        CONFIG += link_pkgconfig
-        PKGCONFIG += mpv
-}
-
 win32 {
         CONFIG += static
         QTPLUGIN += qsvg
-        INCLUDEPATH += "../etc/include"
-        LIBS += -L"../etc/lib" -lmpv
 }
 
 SOURCES += main.cpp\
