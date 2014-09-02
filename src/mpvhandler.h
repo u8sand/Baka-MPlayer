@@ -4,13 +4,11 @@
 #include <QObject>
 #include <QString>
 #include <QStringList>
+#include <QSettings>
 
 #include <mpv/client.h>
 
 #include "mpvtypes.h"
-
-#define VARIABLE(t, n) \
-    public: t get
 
 class MpvHandler : public QObject
 {
@@ -19,63 +17,136 @@ public:
     explicit MpvHandler(int64_t wid, QObject *parent = 0);
     ~MpvHandler();
 
+    const Mpv::FileInfo &getFileInfo()      { return fileInfo; }
+    const QStringList &getPlaylist()        { return playlist; }
+    Mpv::PlayState getPlayState()           { return playState; }
+    QString getFile()                       { return file; }
+    QString getLastFile()                   { return lastFile; }
+    QString getScreenshotFormat()           { return screenshotFormat; }
+    QString getScreenshotTemplate()         { return screenshotTemplate; }
+    QString getScreenshotDir()              { return screenshotDir; }
+    QString getSearch()                     { return search; }
+    QString getPath()                       { return path; }
+    double getSpeed()                       { return speed; }
+    int getTime()                           { return time; }
+    int getVolume()                         { return volume; }
+    int getIndex()                          { return index; }
+    int getMaxIndex()                       { return playlist.size()-1; }
+    bool getDebug()                         { return debug; }
+    bool getShowAll()                       { return showAll; }
+    bool getShuffle()                       { return shuffle; }
+    bool getPlaylistVisible()               { return playlistVisible; }
+    bool getSubtitleVisibility()            { return subtitleVisibility; }
+
 protected:
-    virtual bool event(QEvent *event);          // QObject event function
+    virtual bool event(QEvent *event);
 
 public slots:
+    void LoadSettings(QSettings*);
+    void SaveSettings(QSettings*);
+
     void LoadFile(QString);
+
     void PlayIndex(int);
     void NextFile();
     void PreviousFile();
-    void Populate();
-    void Refresh();
-    void Sort();
-    void Search(QString);
-    void Shuffle(bool);
-    void ShowAll(bool);
 
-    void OpenFile(QString f);                   // open the file for mpv playing
+    void RefreshPlaylist();
+    void SearchPlaylist(QString);
+    void ShufflePlaylist(bool);
+    void ShowAllPlaylist(bool);
+
     void Play();
     void Pause();
-    void PlayPause(int i);                      // toggle pause/unpause state
-    void Seek(int pos, bool relative = false);  // seek to specific location
-    void Restart();                             // seek to the beginning
+    void Stop();
+    void PlayPause(int indexIfStopped);
+    void Restart();
     void Rewind();
-    void Stop();                                // stop playback (and go to beginning)
-    void SetVid(int vid);                       // set the video track
-    void SetAid(int aid);                       // set the audio track
-    void SetSid(int sid);                       // set the subtitle track
-    void SetAspect(QString aspect);             // set the aspect ratio
-    void AddSub(QString f);                     // add an external subtitle track
-    void SetChapter(int chapter);               // seek to the specified chapter
-    void NextChapter();                         // seek to next chapter
-    void PreviousChapter();                     // seek to previous chapter
-    void FrameStep();                           // frame step
-    void FrameBackStep();                       // frame back step
-    void Volume(int level);                     // adjust the media volume
-    // todo: a way to set screenshot settings (dir/template/format)
-    void Screenshot(bool withSubs = false);     // take a screenshot
-    void SetSubs(bool b);                       // set subtitle visibility
-    void AddSubScale(double scale);
-    void SetSubScale(double scale);
+
+    void Seek(int pos, bool relative = false);
+    void FrameStep();
+    void FrameBackStep();
+
+    void Chapter(int chapter);
+    void NextChapter();
+    void PreviousChapter();
+
+    void Volume(int level);
+    void Speed(double);
+    void Aspect(QString aspect);
+    void Vid(int vid);
+    void Aid(int aid);
+    void Sid(int sid);
+
+    void Screenshot(bool withSubs = false);
+
+    void ScreenshotFormat(QString);
+    void ScreenshotTemplate(QString);
+    void ScreenshotDirectory(QString);
+
+    void AddSubtitleTrack(QString file);
+    void ShowSubtitles(bool);
+    void SubtitleScale(double scale, bool relative = false);
 
     void Debug(bool b);
-    void CursorAutoHide(bool b);
 
-    void LoadFileInfo();                        // load all the required file information
+    void LoadFileInfo();
     void LoadTracks();
     void LoadChapters();
     void LoadVideoParams();
 
+protected slots:
+    void OpenFile(QString f);
+    void PopulatePlaylist();
+    void SortPlaylist();
+
+    void AsyncCommand(const char *args[]);
+
 private slots:
-    void AsyncCommand(const char *args[]);      // execute async mpv command
+    void setPlaylist()                      { emit playlistChanged(playlist); }
+    void setFileInfo()                      { emit fileInfoChanged(fileInfo); }
+    void setPlayState(Mpv::PlayState s)     { emit playStateChanged(playState = s); }
+    void setFile(QString s)                 { emit fileChanged(file = s); }
+    void setLastFile(QString s)             { emit lastFileChanged(lastFile = s); }
+    void setScreenshotFormat(QString s)     { emit screenshotFormatChanged(screenshotFormat = s); }
+    void setScreenshotTemplate(QString s)   { emit screenshotTemplateChanged(screenshotTemplate = s); }
+    void setScreenshotDir(QString s)        { emit screenshotDirChanged(screenshotDir = s); }
+    void setSearch(QString s)               { emit searchChanged(search = s); }
+    void setSpeed(double d)                 { emit speedChanged(speed = d); }
+    void setTime(int i)                     { emit timeChanged(time = i); }
+    void setVolume(int i)                   { emit volumeChanged(volume = i); }
+    void setIndex(int i)                    { emit indexChanged(index = i); }
+    void setDebug(bool b)                   { emit debugChanged(debug = b); }
+    void setShowAll(bool b)                 { emit showAllChanged(showAll = b); }
+    void setShuffle(bool b)                 { emit shuffleChanged(shuffle = b); }
+    void setPlaylistVisible(bool b)         { emit playlistVisibleChanged(playlistVisible = b); }
+    void setSubtitleVisibility(bool b)      { emit subtitleVisibilityChanged(subtitleVisibility = b); }
 
 signals:
-    void errorSignal(QString e);                // triggered when an error occurs
-    void debugSignal(QString d);                // triggered when an mpv log message is send
+    void playlistChanged(const QStringList&);
+    void fileInfoChanged(const Mpv::FileInfo&);
+    void playStateChanged(Mpv::PlayState);
+    void fileChanged(QString);
+    void lastFileChanged(QString);
+    void screenshotFormatChanged(QString);
+    void screenshotTemplateChanged(QString);
+    void screenshotDirChanged(QString);
+    void searchChanged(QString);
+    void speedChanged(double);
+    void timeChanged(int);
+    void volumeChanged(int);
+    void indexChanged(int);
+    void debugChanged(bool);
+    void showAllChanged(bool);
+    void shuffleChanged(bool);
+    void playlistVisibleChanged(bool);
+    void subtitleVisibilityChanged(bool);
+
+    void errorSignal(QString e);
+    void debugSignal(QString d);
 
 private:
-    mpv_handle *mpv;                            // mpv client handle
+    mpv_handle *mpv;
 
     // variables
     Mpv::PlayState playState = Mpv::Idle;
@@ -96,64 +167,8 @@ private:
     bool        debug = false,
                 showAll = false,
                 shuffle = false,
-                playlistVisible = false;
-
-public:
-    const Mpv::FileInfo &getFileInfo()      { return fileInfo; }
-    const QStringList &getPlaylist()        { return playlist; }
-    Mpv::PlayState getPlayState()           { return playState; }
-    QString getFile()                       { return file; }
-    QString getLastFile()                   { return lastFile; }
-    QString getScreenshotFormat()           { return screenshotFormat; }
-    QString getScreenshotTemplate()         { return screenshotTemplate; }
-    QString getScreenshotDir()         { return screenshotDir; }
-    QString getSearch()                     { return search; }
-    QString getPath()                       { return path; }
-    double getSpeed()                       { return speed; }
-    int getTime()                           { return time; }
-    int getVolume()                         { return volume; }
-    int getIndex()                          { return index; }
-    int getMaxIndex()                       { return playlist.size()-1; }
-    bool getDebug()                         { return debug; }
-    bool getShowAll()                       { return showAll; }
-    bool getShuffle()                       { return shuffle; }
-    bool getPlaylistVisible()               { return playlistVisible; }
-
-public slots:
-    void setPlayState(Mpv::PlayState s)     { emit playStateChanged(playState = s); }
-    void setFile(QString s)                 { emit fileChanged(file = s); }
-    void setLastFile(QString s)             { emit lastFileChanged(lastFile = s); }
-    void setScreenshotFormat(QString s)     { emit screenshotFormatChanged(screenshotFormat = s); }
-    void setScreenshotTemplate(QString s)   { emit screenshotTemplateChanged(screenshotTemplate = s); }
-    void setScreenshotDir(QString s)        { emit screenshotDirChanged(screenshotDir = s); }
-    void setSearch(QString s)               { emit searchChanged(search = s); }
-    void setSpeed(double d)                 { emit speedChanged(speed = d); }
-    void setTime(int i)                     { emit timeChanged(time = i); }
-    void setVolume(int i)                   { emit volumeChanged(volume = i); }
-    void setIndex(int i)                    { emit indexChanged(index = i); }
-    void setDebug(bool b)                   { emit debugChanged(debug = b); }
-    void setShowAll(bool b)                 { emit showAllChanged(showAll = b); }
-    void setShuffle(bool b)                 { emit shuffleChanged(shuffle = b); }
-    void setPlaylistVisible(bool b)         { emit playlistVisibleChanged(playlistVisible = b); }
-
-signals:
-    void playlistChanged(const QStringList&);
-    void fileInfoChanged(const Mpv::FileInfo&);
-    void playStateChanged(Mpv::PlayState);
-    void fileChanged(QString);
-    void lastFileChanged(QString);
-    void screenshotFormatChanged(QString);
-    void screenshotTemplateChanged(QString);
-    void screenshotDirChanged(QString);
-    void searchChanged(QString);
-    void speedChanged(double);
-    void timeChanged(int);
-    void volumeChanged(int);
-    void indexChanged(int);
-    void debugChanged(bool);
-    void showAllChanged(bool);
-    void shuffleChanged(bool);
-    void playlistVisibleChanged(bool);
+                playlistVisible = false,
+                subtitleVisibility = true;
 };
 
 #endif // MPVHANDLER_H

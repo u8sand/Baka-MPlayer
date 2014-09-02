@@ -27,12 +27,14 @@ MpvHandler::MpvHandler(int64_t wid, QObject *parent):
     // set mpv options
     mpv_set_option(mpv, "wid", MPV_FORMAT_INT64, &wid);
     mpv_set_option_string(mpv, "input-cursor", "no");   // no mouse handling
+    mpv_set_option_string(mpv, "cursor-autohide", "no");// we'll handle hiding the cursor
     mpv_set_option_string(mpv, "af", "scaletempo");     // make sure audio tempo is scaled (when speed is changing)
-    mpv_set_option_string(mpv, "cursor-autohide", "no");
 
     // get updates when these properties change
     mpv_observe_property(mpv, 0, "time-pos", MPV_FORMAT_DOUBLE);
     mpv_observe_property(mpv, 0, "volume", MPV_FORMAT_DOUBLE);
+    mpv_observe_property(mpv, 0, "sub-visibility", MPV_FORMAT_FLAG);
+    // todo: observe tracklist
 
     // setup callback event handling
     mpv_set_wakeup_callback(mpv, wakeup, this);
@@ -70,9 +72,12 @@ bool MpvHandler::event(QEvent *event)
                 if(QString(prop->name) == "time-pos")
                     if (prop->format == MPV_FORMAT_DOUBLE)
                         setTime((int)*(double*)prop->data);
-                if(QString(prop->name) =="volume")
+                if(QString(prop->name) == "volume")
                     if (prop->format == MPV_FORMAT_DOUBLE)
                         setVolume((int)*(double*)prop->data);
+                if(QString(prop->name) == "sub-visibility")
+                    if (prop->format == MPV_FORMAT_FLAG)
+                        setSubtitleVisibility((bool)*(unsigned*)prop->data);
                 break;
             }
             case MPV_EVENT_IDLE:
@@ -87,7 +92,9 @@ bool MpvHandler::event(QEvent *event)
             case MPV_EVENT_FILE_LOADED:
                 LoadFileInfo();
                 setPlayState(Mpv::Started);
+                // set properties
                 Volume(volume);
+                Speed(speed);
             case MPV_EVENT_UNPAUSE:
                 setPlayState(Mpv::Playing);
                 break;
@@ -95,7 +102,6 @@ bool MpvHandler::event(QEvent *event)
                 setPlayState(Mpv::Paused);
                 break;
             case MPV_EVENT_END_FILE:
-                setPlayState(Mpv::Ended);
                 setPlayState(Mpv::Stopped);
                 break;
             case MPV_EVENT_SHUTDOWN:
@@ -113,6 +119,29 @@ bool MpvHandler::event(QEvent *event)
     return QObject::event(event);
 }
 
+void MpvHandler::LoadSettings(QSettings *settings)
+{
+    setLastFile(settings->value("mpv/lastFile", "").toString());
+    ShowAllPlaylist(settings->value("mpv/showAll", false).toBool());
+    ScreenshotFormat(settings->value("mpv/screenshotFormat", "png").toString());
+    ScreenshotTemplate(settings->value("mpv/screenshotTemplate", "screenshot%#04n").toString());
+    ScreenshotDirectory(settings->value("mpv/screenshotDir", "").toString());
+    Speed(settings->value("mpv/speed", 1.0).toDouble());
+    Volume(settings->value("mpv/volume", 100).toInt());
+    Debug(settings->value("common/debug", false).toBool());
+}
+
+void MpvHandler::SaveSettings(QSettings *settings)
+{
+    settings->setValue("mpv/lastFile", lastFile);
+    settings->setValue("mpv/showAll", showAll);
+    settings->setValue("mpv/screenshotFormat", screenshotFormat);
+    settings->setValue("mpv/screenshotTemplate", screenshotTemplate);
+    settings->setValue("mpv/screenshotDir", screenshotDir);
+    settings->setValue("mpv/speed", speed);
+    settings->setValue("mpv/volume", volume);
+}
+
 void MpvHandler::LoadFile(QString f)
 {
     if(f == "") return; // ignore empty file name
@@ -126,7 +155,7 @@ void MpvHandler::LoadFile(QString f)
         path = "";
         playlist.clear();
         playlist.push_back(f);
-        emit playlistChanged(playlist);
+        setPlaylist();
     }
     else // local file
     {
@@ -136,9 +165,9 @@ void MpvHandler::LoadFile(QString f)
         {
             path = QString(fi.absolutePath()+"/"); // get path
             suffix = fi.suffix();
-            Populate();
-            Sort();
-            emit playlistChanged(playlist);
+            PopulatePlaylist();
+            SortPlaylist();
+            setPlaylist();
             i = playlist.indexOf(fi.fileName()); // get index
         }
     }
@@ -151,13 +180,11 @@ void MpvHandler::PlayIndex(int i)
 {
     if(i >= 0 && i < playlist.size())
     {
-        setIndex(i);
         if(path == "") // web url
         {
             if(getFile() != "")
                 setLastFile(getFile());
-            setFile(playlist[i]);
-            OpenFile(file);
+            OpenFile(playlist[i]);
         }
         else
         {
@@ -166,16 +193,22 @@ void MpvHandler::PlayIndex(int i)
             {
                 if(getFile() != "")
                     setLastFile(getFile());
-                setFile(path+playlist[i]);
-                OpenFile(file);
+                OpenFile(path+playlist[i]);
                 Play();
             }
             else
                 Stop();
         }
+        setIndex(i);
     }
     else // out of bounds
+    {
         Stop();
+        if(i < 0)
+            setIndex(0);
+        else
+            setIndex(playlist.size()-1);
+    }
 }
 
 void MpvHandler::NextFile()
@@ -188,40 +221,16 @@ void MpvHandler::PreviousFile()
     PlayIndex(index-1);
 }
 
-void MpvHandler::Populate()
-{
-    if(path != "")
-    {
-        playlist.clear(); // clear existing list
-        QDir root(path);
-        QFileInfoList flist;
-        if(suffix == "")
-            flist = root.entryInfoList(Mpv::media_filetypes, QDir::Files);
-        else
-            flist = root.entryInfoList({QString("*.").append(suffix)}, QDir::Files);
-        for(auto &i : flist)
-            playlist.push_back(i.fileName()); // add files to the list
-    }
-}
-
-void MpvHandler::Refresh()
+void MpvHandler::RefreshPlaylist()
 {
     setShuffle(false);
     setSearch("");
-    Populate();
-    Sort();
-    emit playlistChanged(playlist);
+    PopulatePlaylist();
+    SortPlaylist();
+    setPlaylist();
 }
 
-void MpvHandler::Sort()
-{
-    if(shuffle) // shuffle list
-        std::random_shuffle(playlist.begin(), playlist.end());
-    else        // sort list
-        std::sort(playlist.begin(), playlist.end());
-}
-
-void MpvHandler::Search(QString s)
+void MpvHandler::SearchPlaylist(QString s)
 {
     QStringList tmplist;
     for(QStringList::iterator item = playlist.begin(); item != playlist.end(); ++item)
@@ -230,31 +239,24 @@ void MpvHandler::Search(QString s)
     emit playlistChanged(tmplist);
 }
 
-void MpvHandler::Shuffle(bool b)
+void MpvHandler::ShufflePlaylist(bool b)
 {
     setShuffle(b);
-    Sort();
-    emit playlistChanged(playlist);
+    SortPlaylist();
+    setPlaylist();
 }
 
-void MpvHandler::ShowAll(bool b)
+void MpvHandler::ShowAllPlaylist(bool b)
 {
     showAll = b;
     if(!b)
         suffix = QFileInfo(getFile()).suffix();
     else
         suffix = "";
-    Populate();
-    Sort();
-    emit playlistChanged(playlist);
+    PopulatePlaylist();
+    SortPlaylist();
+    setPlaylist();
     setSearch("");
-}
-
-void MpvHandler::OpenFile(QString f)
-{
-    const QByteArray tmp = f.toUtf8();
-    const char *args[] = {"loadfile", tmp.constData(), NULL};
-    AsyncCommand(args);
 }
 
 void MpvHandler::Play()
@@ -269,28 +271,19 @@ void MpvHandler::Pause()
     AsyncCommand(args);
 }
 
-void MpvHandler::PlayPause(int i)
+void MpvHandler::Stop()
+{
+    Restart();
+    Pause();
+}
+
+void MpvHandler::PlayPause(int indexIfStopped)
 {
     if(playState == Mpv::Idle) // if idle, play plays the selected playlist file
-        PlayIndex(i);
+        PlayIndex(indexIfStopped);
     else
     {
         const char *args[] = {"cycle", "pause", NULL};
-        AsyncCommand(args);
-    }
-}
-
-void MpvHandler::Seek(int pos, bool relative)
-{
-    const QByteArray tmp = QString::number(pos).toUtf8();
-    if(relative)
-    {
-        const char *args[] = {"seek", tmp.constData(), NULL};
-        AsyncCommand(args);
-    }
-    else
-    {
-        const char *args[] = {"seek", tmp.constData(), "absolute", NULL};
         AsyncCommand(args);
     }
 }
@@ -317,48 +310,34 @@ void MpvHandler::Rewind()
     }
 }
 
-void MpvHandler::Stop()
+void MpvHandler::Seek(int pos, bool relative)
 {
-    Restart();
-    Pause();
+    const QByteArray tmp = QString::number(pos).toUtf8();
+    if(relative)
+    {
+        const char *args[] = {"seek", tmp.constData(), NULL};
+        AsyncCommand(args);
+    }
+    else
+    {
+        const char *args[] = {"seek", tmp.constData(), "absolute", NULL};
+        AsyncCommand(args);
+    }
 }
 
-void MpvHandler::SetVid(int vid)
+void MpvHandler::FrameStep()
 {
-    const QByteArray tmp = QString::number(vid).toUtf8();
-    const char *args[] = {"set", "vid", tmp.constData(), NULL};
+    const char *args[] = {"frame_step", NULL};
     AsyncCommand(args);
 }
 
-void MpvHandler::SetAid(int aid)
+void MpvHandler::FrameBackStep()
 {
-    const QByteArray tmp = QString::number(aid).toUtf8();
-    const char *args[] = {"set", "aid", tmp.constData(), NULL};
+    const char *args[] = {"frame_back_step", NULL};
     AsyncCommand(args);
 }
 
-void MpvHandler::SetSid(int sid)
-{
-    const QByteArray tmp = QString::number(sid).toUtf8();
-    const char *args[] = {"set", "sid", tmp.constData(), NULL};
-    AsyncCommand(args);
-}
-
-void MpvHandler::SetAspect(QString aspect)
-{
-    const QByteArray tmp = aspect.toUtf8();
-    const char *args[] = {"set", "video-aspect", tmp.constData(), NULL};
-    AsyncCommand(args);
-}
-
-void MpvHandler::AddSub(QString f)
-{
-    const QByteArray tmp = f.toUtf8();
-    const char *args[] = {"sub_add", tmp.constData(), NULL};
-    AsyncCommand(args);
-}
-
-void MpvHandler::SetChapter(int c)
+void MpvHandler::Chapter(int c)
 {
     const QByteArray tmp = QString::number(c).toUtf8();
     const char *args[] = {"set", "chapter", tmp.constData(), NULL};
@@ -377,31 +356,60 @@ void MpvHandler::PreviousChapter()
     AsyncCommand(args);
 }
 
-void MpvHandler::FrameStep()
-{
-    const char *args[] = {"frame_step", NULL};
-    AsyncCommand(args);
-}
-
-void MpvHandler::FrameBackStep()
-{
-    const char *args[] = {"frame_back_step", NULL};
-    AsyncCommand(args);
-}
-
 void MpvHandler::Volume(int level)
 {
     if(level > 100) level = 100;
     else if(level < 0) level = 0;
 
-    if(playState == Mpv::Idle)
-        setVolume(level);
-    else
+    if(playState > 0)
     {
         const QByteArray tmp = QString::number(level).toUtf8();
         const char *args[] = {"set", "volume", tmp.constData(), NULL};
         AsyncCommand(args);
     }
+    else
+        setVolume(level);
+}
+
+void MpvHandler::Speed(double d)
+{
+    if(playState > 0)
+    {
+        const QByteArray tmp = QString::number(d).toUtf8();
+        const char *args[] = {"set", "speed", tmp.constData(), NULL};
+        AsyncCommand(args);
+    }
+    else
+        setSpeed(d);
+}
+
+void MpvHandler::Aspect(QString aspect)
+{
+    const QByteArray tmp = aspect.toUtf8();
+    const char *args[] = {"set", "video-aspect", tmp.constData(), NULL};
+    AsyncCommand(args);
+}
+
+
+void MpvHandler::Vid(int vid)
+{
+    const QByteArray tmp = QString::number(vid).toUtf8();
+    const char *args[] = {"set", "vid", tmp.constData(), NULL};
+    AsyncCommand(args);
+}
+
+void MpvHandler::Aid(int aid)
+{
+    const QByteArray tmp = QString::number(aid).toUtf8();
+    const char *args[] = {"set", "aid", tmp.constData(), NULL};
+    AsyncCommand(args);
+}
+
+void MpvHandler::Sid(int sid)
+{
+    const QByteArray tmp = QString::number(sid).toUtf8();
+    const char *args[] = {"set", "sid", tmp.constData(), NULL};
+    AsyncCommand(args);
 }
 
 void MpvHandler::Screenshot(bool withSubs)
@@ -410,23 +418,57 @@ void MpvHandler::Screenshot(bool withSubs)
     AsyncCommand(args);
 }
 
-void MpvHandler::SetSubs(bool b)
+void MpvHandler::ScreenshotFormat(QString s)
 {
-    const char *args[] = {"set", "sub-visibility", b?"1":"0", NULL};
+    if(mpv)
+    {
+        const QByteArray tmp = s.toUtf8();
+        mpv_set_option_string(mpv, "screenshot-format", tmp.data());
+    }
+    setScreenshotFormat(s);
+}
+
+void MpvHandler::ScreenshotTemplate(QString s)
+{
+    if(mpv)
+    {
+        s = screenshotDir+s;
+        const QByteArray tmp = s.toUtf8();
+        mpv_set_option_string(mpv, "screenshot-template", tmp.data());
+    }
+    setScreenshotTemplate(s);
+}
+
+void MpvHandler::ScreenshotDirectory(QString s)
+{
+    if(mpv)
+    {
+        s += screenshotTemplate;
+        const QByteArray tmp = s.toUtf8();
+        mpv_set_option_string(mpv, "screenshot-template", tmp.data());
+    }
+    setScreenshotDir(s);
+}
+
+void MpvHandler::AddSubtitleTrack(QString f)
+{
+    const QByteArray tmp = f.toUtf8();
+    const char *args[] = {"sub_add", tmp.constData(), NULL};
+    AsyncCommand(args);
+    // todo: add track to tracklist
+    // todo: select this track
+}
+
+void MpvHandler::ShowSubtitles(bool b)
+{
+    const char *args[] = {"set", "sub-visibility", b?"yes":"no", NULL};
     AsyncCommand(args);
 }
 
-void MpvHandler::AddSubScale(double scale)
+void MpvHandler::SubtitleScale(double scale, bool relative)
 {
     const QByteArray tmp = QString::number(scale).toUtf8();
-    const char *args[] = {"add", "sub-scale", tmp.constData(), NULL};
-    AsyncCommand(args);
-}
-
-void MpvHandler::SetSubScale(double scale)
-{
-    const QByteArray tmp = QString::number(scale).toUtf8();
-    const char *args[] = {"set", "sub-scale", tmp.constData(), NULL};
+    const char *args[] = {relative?"add":"set", "sub-scale", tmp.constData(), NULL};
     AsyncCommand(args);
 }
 
@@ -437,20 +479,6 @@ void MpvHandler::Debug(bool b)
         mpv_request_log_messages(mpv, b ? "debug" : "no");
         setDebug(b);
     }
-}
-
-void MpvHandler::CursorAutoHide(bool b)
-{
-    if(mpv)
-        mpv_set_option_string(mpv, "cursor-autohide", b?"yes":"no");
-}
-
-void MpvHandler::AsyncCommand(const char *args[])
-{
-    if(mpv)
-        mpv_command_async(mpv, 0, args);
-    else
-        emit errorSignal("mpv was not initialized");
 }
 
 void MpvHandler::LoadFileInfo()
@@ -578,4 +606,44 @@ void MpvHandler::LoadVideoParams()
     mpv_get_property(mpv, "dwidth", MPV_FORMAT_INT64, &fileInfo.video_params.dwidth);
     mpv_get_property(mpv, "dheight", MPV_FORMAT_INT64, &fileInfo.video_params.dheight);
     mpv_get_property(mpv, "video-aspect", MPV_FORMAT_INT64, &fileInfo.video_params.aspect);
+}
+
+void MpvHandler::OpenFile(QString f)
+{
+    const QByteArray tmp = f.toUtf8();
+    const char *args[] = {"loadfile", tmp.constData(), NULL};
+    AsyncCommand(args);
+    setFile(f);
+}
+
+void MpvHandler::PopulatePlaylist()
+{
+    if(path != "")
+    {
+        playlist.clear(); // clear existing list
+        QDir root(path);
+        QFileInfoList flist;
+        if(suffix == "")
+            flist = root.entryInfoList(Mpv::media_filetypes, QDir::Files);
+        else
+            flist = root.entryInfoList({QString("*.").append(suffix)}, QDir::Files);
+        for(auto &i : flist)
+            playlist.push_back(i.fileName()); // add files to the list
+    }
+}
+
+void MpvHandler::SortPlaylist()
+{
+    if(shuffle) // shuffle list
+        std::random_shuffle(playlist.begin(), playlist.end());
+    else        // sort list
+        std::sort(playlist.begin(), playlist.end());
+}
+
+void MpvHandler::AsyncCommand(const char *args[])
+{
+    if(mpv)
+        mpv_command_async(mpv, 0, args);
+    else
+        emit errorSignal("mpv was not initialized");
 }
