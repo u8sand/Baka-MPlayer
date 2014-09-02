@@ -237,9 +237,13 @@ void MpvHandler::Shuffle(bool b)
     emit playlistChanged(playlist);
 }
 
-void MpvHandler::ShowAll(bool b) // todo: use current selection's suffix
+void MpvHandler::ShowAll(bool b)
 {
     showAll = b;
+    if(!b)
+        suffix = QFileInfo(getFile()).suffix();
+    else
+        suffix = "";
     Populate();
     Sort();
     emit playlistChanged(playlist);
