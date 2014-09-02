@@ -851,6 +851,16 @@ MainWindow::MainWindow(QWidget *parent):
             });
     addAction(shortcut);
 
+
+    // add multimedia shortcuts
+    ui->action_Play->setShortcuts({ui->action_Play->shortcut(), QKeySequence(Qt::Key_MediaPlay)});
+    ui->action_Stop->setShortcuts({ui->action_Stop->shortcut(), QKeySequence(Qt::Key_MediaStop)});
+    ui->actionPlay_Next_File->setShortcuts({ui->actionPlay_Next_File->shortcut(), QKeySequence(Qt::Key_MediaNext)});
+    ui->actionPlay_Previous_File->setShortcuts({ui->actionPlay_Previous_File->shortcut(), QKeySequence(Qt::Key_MediaPrevious)});
+    // todo: volume up/down
+//    ui->action_Increase_Volume->setShortcuts();
+//    ui->action_Decrease_Volume->setShortcuts();
+
     LoadSettings();
 }
 
