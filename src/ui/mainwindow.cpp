@@ -18,6 +18,10 @@
 #include <QIcon>
 #include <QWindow>
 
+#ifdef Q_WS_X11
+#include <QX11Info>
+#endif
+
 #ifdef Q_OS_WIN
 #include <windows.h>
 #endif
@@ -37,10 +41,20 @@ MainWindow::MainWindow(QWidget *parent):
     dragging(false),
     init(false)
 {
+#ifdef Q_WS_X11 // if on x11, dim lights requies a compositing manager, disable it if there is none
+    if(QX11Info::isCompositingManagerRunning())
+        light = new LightDialog(); // lightdialog must be initialized before ui is setup
+    else
+        light = 0;
+    ui->setupUi(this);
+    ui->action_Dim_Lights_2->setEnabled(light); // if light is null, disable the option
+#else
     light = new LightDialog(); // lightdialog must be initialized before ui is setup
     ui->setupUi(this);
+#endif
     SetPlaylist(false);
     addActions(ui->menubar->actions()); // makes menubar shortcuts work even when menubar is hidden
+
 
     // initialize managers/handlers
 #if Q_OS_WIN // saves to $(application directory)\${SETTINGS_FILE}.ini
