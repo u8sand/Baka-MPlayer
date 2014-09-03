@@ -19,9 +19,9 @@ It's also portable and supports opening Youtube videos (through **libmpv**).
 Download archive with the binary for your system (64 bit or 32 bit) from
 http://bakamplayer.u8sand.net/downloads.php
 
-The downloaded file is a simple `.zip` file; extract it wherever you like--it works as a stand-alone executable. It's configuration will be written as `bakamplayer.ini`
+The downloaded file will be a `.7zip` file. You can use either 7zip or WinRAR to extract the files wherever you like--it works as a stand-alone executable. It's configuration file will be named `bakamplayer.ini`.
 
-To treat it as the rest of your programs--extract it to `C:/Program Files/Baka MPlayer/` then make a shortcut on your desktop.
+To treat it as a standard Windows program--extract it to `C:/Program Files/Baka MPlayer/` then make a shortcut on your desktop.
 
 #### Development Release
 
@@ -35,7 +35,7 @@ If your distribution does not provide a package--you must compile baka mplayer f
 	cd "Baka-MPlayer"
 	./make.sh
 	
-Copy the resulting executable (build/Baka MPlayer) wherever you like; (eg. `sudo cp "build/Baka MPlayer" /usr/bin/bakamplayer`) your configuration file will be written to `bakamplayer.ini`
+Copy the resulting executable (build/Baka MPlayer) wherever you like; (eg. `sudo cp "build/Baka MPlayer" /usr/bin/bakamplayer`) your configuration file will be written to `bakamplayer.ini`.
 
 ## Bug reports
 
