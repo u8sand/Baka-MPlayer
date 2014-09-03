@@ -2,7 +2,7 @@
 
 ## Note
 
-This is in pre-alpha stage, don't download expecting anything to work until this message is no longer there.
+This program is in its alpha stages. Until this notice is removed, expect bugs.
 
 ## Overview
 
