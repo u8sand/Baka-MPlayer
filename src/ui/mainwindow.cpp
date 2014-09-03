@@ -927,20 +927,29 @@ void MainWindow::Load(QString file)
     mpv->LoadFile(file);
 }
 
-void MainWindow::dragEnterEvent(QDragEnterEvent *event) // todo: does this even work??
+void MainWindow::dragEnterEvent(QDragEnterEvent *event)
 {
-    if(event->mimeData()->hasText() || event->mimeData()->hasUrls()) // plain text / url
+    if(event->mimeData()->hasUrls() || event->mimeData()->hasText()) // url / text
         event->acceptProposedAction();
 }
 
-void MainWindow::dropEvent(QDropEvent *event) // todo: does this even work??
+void MainWindow::dropEvent(QDropEvent *event)
 {
     const QMimeData *mimeData = event->mimeData();
-    if(mimeData->hasText()) // plain text
-        mpv->LoadFile(mimeData->text()); // load the text as a file
-    else if(mimeData->hasUrls()) // urls
-        for(auto &url : mimeData->urls())
-            mpv->LoadFile(url.path()); // load the urls as files
+    if(mimeData->hasUrls()) // urls
+    {
+        for(QUrl &url : mimeData->urls())
+        {
+            if(url.isLocalFile())
+                mpv->LoadFile(url.toLocalFile());
+            else
+                mpv->LoadFile(url.url());
+        }
+    }
+    else if(mimeData->hasText()) // text
+    {
+        mpv->LoadFile(mimeData->text());
+    }
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *event)
