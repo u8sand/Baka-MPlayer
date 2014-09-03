@@ -23,7 +23,7 @@ bakamplayer - A free and open source, cross-platform, \fBlibmpv\fP based multime
 Please use the issues tracker provided by GitHub to send us bug reports or feature requests. (https://github.com/u8sand/Baka-MPlayer/issues)
 
 .SH AUTHORS
-\fBBaka-MPlayer\fP was written by \fBu8sand\fP <u8sand@gmail.com> and \fBgodly-devotion\fP <>.
+\fBBaka-MPlayer\fP was written by \fBu8sand\fP <u8sand@gmail.com> and \fBgodly-devotion\fP <azian.otaku@live.com>.
 
 .SH COPYRIGHT
 GPLv2+
