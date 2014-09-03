@@ -218,8 +218,11 @@ MainWindow::MainWindow(QWidget *parent):
                         ui->playButton->setEnabled(true);
                         init = true;
                     }
-                    if(autoFit)
+                    if(pathChanged && autoFit)
+                    {
                         FitWindow(autoFit);
+                        pathChanged = false;
+                    }
                     SetPlaybackControls(true);
                     mpv->Play();
                 case Mpv::Playing:
@@ -254,16 +257,22 @@ MainWindow::MainWindow(QWidget *parent):
                 }
             });
 
-    connect(mpv, &MpvHandler::searchChanged,
-            [=](QString s)
+    connect(mpv, &MpvHandler::pathChanged,
+            [=]()
             {
-                ui->searchBox->setText(s);
+                pathChanged = true;
             });
 
     connect(mpv, &MpvHandler::lastFileChanged,
             [=](QString f)
             {
                 ui->actionOpen_Last_File->setEnabled(f != "");
+            });
+
+    connect(mpv, &MpvHandler::searchChanged,
+            [=](QString s)
+            {
+                ui->searchBox->setText(s);
             });
 
     connect(mpv, &MpvHandler::timeChanged,
