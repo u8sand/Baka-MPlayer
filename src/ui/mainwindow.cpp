@@ -1004,7 +1004,10 @@ void MainWindow::mouseDoubleClickEvent(QMouseEvent *event)
 {
     if(ui->mpvFrame->geometry().contains(event->pos())) // if mouse is in the mpvFrame
     {
-        FullScreen(!isFullScreen());
+        if(!isFullScreen() && ui->action_Full_Screen->isEnabled()) // don't allow people to go full screen if they shouldn't be able to
+            FullScreen(true);
+        else // they can leave fullscreen even if it's disabled (eg. video ends while in full screen)
+            FullScreen(false);
         event->accept();
     }
     QMainWindow::mouseDoubleClickEvent(event);
