@@ -66,6 +66,7 @@ private:
 
     QPoint          lastMousePos;
     bool            dragging,
+                    pathChanged,
                     init;
 
     QSystemTrayIcon *sysTrayIcon;

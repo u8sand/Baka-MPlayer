@@ -7,6 +7,7 @@
 #include <QMap>
 #include <QString>
 
+// todo
 class UpdateManager : public QObject
 {
     Q_OBJECT
@@ -17,16 +18,11 @@ public slots:
     void CheckForUpdates();
     void DownloadUpdate();
 
-protected slots:
-    void CheckForUpdatesReply(QNetworkReply *reply);
-    void DoanloadUpdateReply(QNetworkReply *reply);
-
 signals:
     void Update(QMap<QString, QString> info);
     void errorSignal(QString err);
 
 private:
-    QNetworkAccessManager *manager;
 };
 
 #endif // UPDATEMANAGER_H

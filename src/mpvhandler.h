@@ -21,12 +21,12 @@ public:
     const QStringList &getPlaylist()        { return playlist; }
     Mpv::PlayState getPlayState()           { return playState; }
     QString getFile()                       { return file; }
+    QString getPath()                       { return path; }
     QString getLastFile()                   { return lastFile; }
     QString getScreenshotFormat()           { return screenshotFormat; }
     QString getScreenshotTemplate()         { return screenshotTemplate; }
     QString getScreenshotDir()              { return screenshotDir; }
     QString getSearch()                     { return search; }
-    QString getPath()                       { return path; }
     double getSpeed()                       { return speed; }
     int getTime()                           { return time; }
     int getVolume()                         { return volume; }
@@ -107,6 +107,7 @@ private slots:
     void setFileInfo()                      { emit fileInfoChanged(fileInfo); }
     void setPlayState(Mpv::PlayState s)     { emit playStateChanged(playState = s); }
     void setFile(QString s)                 { emit fileChanged(file = s); }
+    void setPath(QString s)                 { emit pathChanged(path = s); }
     void setLastFile(QString s)             { emit lastFileChanged(lastFile = s); }
     void setScreenshotFormat(QString s)     { emit screenshotFormatChanged(screenshotFormat = s); }
     void setScreenshotTemplate(QString s)   { emit screenshotTemplateChanged(screenshotTemplate = s); }
@@ -127,6 +128,7 @@ signals:
     void fileInfoChanged(const Mpv::FileInfo&);
     void playStateChanged(Mpv::PlayState);
     void fileChanged(QString);
+    void pathChanged(QString);
     void lastFileChanged(QString);
     void screenshotFormatChanged(QString);
     void screenshotTemplateChanged(QString);
@@ -153,12 +155,12 @@ private:
     QStringList playlist;
     Mpv::FileInfo fileInfo = {QString(), 0, {0, 0, 0, 0, 0}, QList<Mpv::Track>(), QList<Mpv::Chapter>()};
     QString     file,
+                path,
                 lastFile,
                 screenshotFormat,
                 screenshotTemplate,
                 screenshotDir,
                 search,
-                path,
                 suffix;
     double      speed = 1;
     int         time = 0,

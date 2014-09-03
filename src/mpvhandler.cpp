@@ -152,7 +152,7 @@ void MpvHandler::LoadFile(QString f)
     if(rx.indexIn(f) != -1) // web url
     {
         i = 0;
-        path = "";
+        setPath("");
         playlist.clear();
         playlist.push_back(f);
         setPlaylist();
@@ -160,10 +160,10 @@ void MpvHandler::LoadFile(QString f)
     else // local file
     {
         QFileInfo fi(f);
-        if(path != fi.absolutePath() || // path is the same
-          (i = playlist.indexOf(fi.fileName())) != -1) // file doesn't exists in the list
+        if(path != QString(fi.absolutePath()+"/") || // path is the same
+          (i = playlist.indexOf(fi.fileName())) == -1) // file doesn't exists in the list
         {
-            path = QString(fi.absolutePath()+"/"); // get path
+            setPath(QString(fi.absolutePath()+"/")); // set new path
             suffix = fi.suffix();
             PopulatePlaylist();
             SortPlaylist();

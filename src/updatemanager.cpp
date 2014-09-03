@@ -14,59 +14,51 @@ UpdateManager::UpdateManager(QObject *parent) :
 
 void UpdateManager::CheckForUpdates()
 {
-    manager = new QNetworkAccessManager(this);
-
-    connect(manager, SIGNAL(finished(QNetworkReply*)),
-            this, SLOT(CheckForUpdatesReply(QNetworkReply*)));
-
+    QNetworkAccessManager *manager = new QNetworkAccessManager(this);
+    connect(manager, &QNetworkAccessManager::finished,
+            [=](QNetworkReply *reply)
+            {
+                if(reply->error())
+                    emit errorSignal("UpdateManager: "+reply->errorString());
+                else
+                {
+                    QMap<QString, QString> info;
+                    QList<QByteArray> lines = reply->readAll().split('\n');
+                    QList<QByteArray> pair;
+                    for(auto line : lines)
+                    {
+                        pair = line.split('=');
+                        info[QString(pair[0])] = QString(pair[1].replace('\r','\n')); // for multi-line info use \r's instead of \n's
+                    }
+                    emit Update(info);
+                }
+                reply->deleteLater();
+            });
     manager->get(QNetworkRequest(QUrl("http://bakamplayer.u8sand.net/version")));
 }
 
 void UpdateManager::DownloadUpdate()
 {
-    manager = new QNetworkAccessManager(this);
-
-    connect(manager, SIGNAL(finished(QNetworkReply*)),
-            this, SLOT(DownloadUpdateReply(QNetworkReply*)));
-
+    QNetworkAccessManager *manager = new QNetworkAccessManager(this);
+    connect(manager, &QNetworkAccessManager::finished,
+            [=](QNetworkReply *reply)
+            {
+                if(reply->error())
+                    emit errorSignal("UpdateManager: "+reply->errorString());
+                else
+                {
+                    // todo: progress bar
+                    // todo: compression
+                    QFile *file = new QFile("Baka MPlayer.exe");
+                    if(file->open(QFile::Truncate))
+                    {
+                        file->write(reply->readAll());
+                        file->flush();
+                        file->close();
+                    }
+                    delete file;
+                }
+                reply->deleteLater();
+            });
     manager->get(QNetworkRequest(QUrl("http://bakamplayer.u8sand.net/Baka MPlayer.exe")));
-}
-
-void UpdateManager::CheckForUpdatesReply(QNetworkReply *reply)
-{
-    if(reply->error())
-        emit errorSignal("UpdateManager: "+reply->errorString());
-    else
-    {
-        QMap<QString, QString> info;
-        QList<QByteArray> lines = reply->readAll().split('\n');
-        QList<QByteArray> pair;
-        for(auto line : lines)
-        {
-            pair = line.split('=');
-            info[QString(pair[0])] = QString(pair[1].replace('\r','\n')); // for multi-line info use \r's instead of \n's
-        }
-        emit Update(info);
-    }
-    reply->deleteLater();
-}
-
-void UpdateManager::DoanloadUpdateReply(QNetworkReply *reply)
-{
-    if(reply->error())
-        emit errorSignal("UpdateManager: "+reply->errorString());
-    else
-    {
-        // todo: progress bar
-        // todo: compression
-        QFile *file = new QFile("Baka MPlayer.exe");
-        if(file->open(QFile::Truncate))
-        {
-            file->write(reply->readAll());
-            file->flush();
-            file->close();
-        }
-        delete file;
-    }
-    reply->deleteLater();
 }
