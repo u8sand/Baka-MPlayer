@@ -45,7 +45,8 @@ protected:
 private slots:
 
     void FullScreen(bool fs);                       // makes window fullscreen
-    void SetPlaylist(bool visible);                 // sets the playlist visibility
+    void ShowPlaylist(bool visible);                // sets the playlist visibility
+    void HideAlbumArt(bool hide);                   // hides the album art
     void FitWindow(int percent);                    // fit the window the the specified percent
     void SetAspectRatio(QString aspect);            // set the aspect ratio to specified proportions
     void DimLights(bool dim);                       // grays out the rest of the screen with LightDialog
@@ -65,7 +66,9 @@ private:
     UpdateManager   *update;
 
     QPoint          lastMousePos;
-    bool            dragging,
+    QSize           lastSize;
+    bool            move,
+                    resize,
                     pathChanged,
                     init;
 

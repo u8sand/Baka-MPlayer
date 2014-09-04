@@ -90,11 +90,9 @@ bool MpvHandler::event(QEvent *event)
                 setPlayState(Mpv::Loaded);
                 break;
             case MPV_EVENT_FILE_LOADED:
-                LoadFileInfo();
                 setPlayState(Mpv::Started);
-                // set properties
-                Volume(volume);
-                Speed(speed);
+                LoadFileInfo();
+                SetProperties();
             case MPV_EVENT_UNPAUSE:
                 setPlayState(Mpv::Playing);
                 break;
@@ -173,6 +171,8 @@ void MpvHandler::LoadFile(QString f)
     }
     if(playlist.size() > 1) // open up the playlist only if there is more than one item
         setPlaylistVisible(true);
+    else // close it otherwise
+        setPlaylistVisible(false);
     PlayIndex(i);
 }
 
@@ -638,6 +638,12 @@ void MpvHandler::SortPlaylist()
         std::random_shuffle(playlist.begin(), playlist.end());
     else        // sort list
         std::sort(playlist.begin(), playlist.end());
+}
+
+void MpvHandler::SetProperties()
+{
+    Volume(volume);
+    Speed(speed);
 }
 
 void MpvHandler::AsyncCommand(const char *args[])

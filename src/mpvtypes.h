@@ -16,10 +16,10 @@ namespace Mpv
     {
         // this number scheme is set so we know all playStates greater than 0 mean the video is in play
         Idle = -1,
-        Started = 0,
-        Loaded = 1,
-        Playing = 2,
-        Paused = 3,
+        Started = 1,
+        Loaded = 2,
+        Playing = 3,
+        Paused = 4,
         Stopped = -2
     };
     struct Chapter

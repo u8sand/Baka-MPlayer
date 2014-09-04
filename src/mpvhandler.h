@@ -90,15 +90,15 @@ public slots:
 
     void Debug(bool b);
 
-    void LoadFileInfo();
     void LoadTracks();
     void LoadChapters();
     void LoadVideoParams();
-
 protected slots:
     void OpenFile(QString f);
     void PopulatePlaylist();
     void SortPlaylist();
+    void LoadFileInfo();
+    void SetProperties();
 
     void AsyncCommand(const char *args[]);
 

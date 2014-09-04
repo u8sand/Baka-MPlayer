@@ -18,9 +18,6 @@ public slots:
     void setPosition(int pos);
     void setNormalPosition(int pos);
 
-protected slots:
-    void convertSignal(int pos, int index);
-
 signals:
     void positionChanged(int pos);
 
