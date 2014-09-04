@@ -4,13 +4,16 @@ CustomSplitter::CustomSplitter(QWidget *parent) :
     QSplitter(parent),
     normalPos(0)
 {
-    connect(this, SIGNAL(splitterMoved(int,int)),
-            this, SLOT(convertSignal(int,int)));
+    connect(this, &CustomSplitter::splitterMoved,
+            [=](int pos)
+            {
+                emit positionChanged(pos);
+            });
 }
 
 int CustomSplitter::position() const
 {
-    return sizes()[0];
+    return sizes()[1];
 }
 
 int CustomSplitter::normalPosition() const
@@ -20,23 +23,17 @@ int CustomSplitter::normalPosition() const
 
 int CustomSplitter::max() const
 {
-    QList<int> s = sizes();
+    const QList<int> s = sizes();
     return s[0]+s[1];
 }
 
 void CustomSplitter::setPosition(int pos)
 {
-    QList<int> s = sizes();
-    setSizes({pos, s[0]+s[1]-pos});
+    setSizes({max()-pos, pos});
     emit positionChanged(pos);
 }
 
 void CustomSplitter::setNormalPosition(int pos)
 {
     normalPos = pos;
-}
-
-void CustomSplitter::convertSignal(int pos, int)
-{
-    emit positionChanged(pos);
 }

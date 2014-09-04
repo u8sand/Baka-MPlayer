@@ -38,7 +38,9 @@ MainWindow::MainWindow(QWidget *parent):
     QMainWindow(parent),
     ui(new Ui::MainWindow),
     lastMousePos(QPoint()),
-    dragging(false),
+    lastSize(QSize()),
+    move(false),
+    resize(false),
     init(false)
 {
 #ifdef Q_WS_X11 // if on x11, dim lights requies a compositing manager, disable it if there is none
@@ -52,7 +54,7 @@ MainWindow::MainWindow(QWidget *parent):
     light = new LightDialog(); // lightdialog must be initialized before ui is setup
     ui->setupUi(this);
 #endif
-    SetPlaylist(false);
+    ShowPlaylist(false);
     addActions(ui->menubar->actions()); // makes menubar shortcuts work even when menubar is hidden
 
 
@@ -225,7 +227,6 @@ MainWindow::MainWindow(QWidget *parent):
                     break;
 
                 case Mpv::Started: // todo: fix initial load with fitWindow
-                    mpv->LoadFileInfo();
                     if(!init) // will only happen the first time a file is loaded.
                     {
                         ui->action_Play->setEnabled(true);
@@ -337,7 +338,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(mpv, &MpvHandler::playlistVisibleChanged,
             [=](bool b)
             {
-                SetPlaylist(b);
+                ShowPlaylist(b);
             });
 
     connect(mpv, &MpvHandler::subtitleVisibilityChanged,
@@ -435,21 +436,20 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->playlistButton, &QPushButton::clicked,                  // Playback: Clicked the playlist button
             [=]
             {
-                if(ui->splitter->position() == ui->splitter->max()) // splitter is right-most (playlist not visible)
-                    SetPlaylist(true);
-                else
-                    SetPlaylist(false);
+                // if the position is 0, playlist is hidden so show it
+                ShowPlaylist(!ui->splitter->position());
             });
 
     connect(ui->splitter, &CustomSplitter::positionChanged,             // Splitter position changed
             [=](int i)
             {
-                if(i == ui->splitter->max()) // right-most, playlist is hidden
+                blockSignals(true);
+                if(i == 0) // right-most, playlist is hidden
                 {
                     ui->action_Playlist->setChecked(false);
                     ui->action_Hide_Album_Art_2->setChecked(false);
                 }
-                else if(i == 0) // left-most, album art is hidden, playlist is visible
+                else if(i == ui->splitter->max()) // left-most, album art is hidden, playlist is visible
                 {
                     ui->action_Playlist->setChecked(true);
                     ui->action_Hide_Album_Art_2->setChecked(true);
@@ -459,6 +459,7 @@ MainWindow::MainWindow(QWidget *parent):
                     ui->action_Playlist->setChecked(true);
                     ui->action_Hide_Album_Art_2->setChecked(false);
                 }
+                blockSignals(false);
             });
 
     connect(ui->searchBox, &QLineEdit::textChanged,                     // Playlist: Search box
@@ -758,20 +759,13 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->action_Show_Playlist_2, &QAction::triggered,            // Settings -> Show Playlist
             [=](bool b)
             {
-                SetPlaylist(b);
+                ShowPlaylist(b);
             });
 
     connect(ui->action_Hide_Album_Art_2, &QAction::triggered,           // Settings -> Hide Album Art
             [=](bool b)
             {
-                if(b)
-                {
-                    if(ui->splitter->position() != ui->splitter->max() && ui->splitter->position() != 0)
-                        ui->splitter->setNormalPosition(ui->splitter->position()); // save splitter position as the normal position
-                    ui->splitter->setPosition(0); // bring the splitter position to the left-most
-                }
-                else
-                    ui->splitter->setPosition(ui->splitter->normalPosition()); // bring the splitter to normal position
+                HideAlbumArt(b);
             });
 
     connect(ui->action_Dim_Lights_2, &QAction::triggered,               // Settings -> Dim Lights
@@ -783,7 +777,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->actionShow_D_ebug_Output, &QAction::triggered,          // Settings -> Show Debug Output
             [=](bool b)
             {
-                mpv->Debug(b);
+                setDebug(b);
             });
 
     connect(ui->action_Preferences, &QAction::triggered,                // Settings -> Preferences...
@@ -910,7 +904,7 @@ void MainWindow::LoadSettings()
     setTrayIcon(settings->value("window/trayIcon", false).toBool());
     setHidePopup(settings->value("window/hidePopup", false).toBool());
     setRemaining(settings->value("window/remaining", true).toBool());
-    ui->splitter->setNormalPosition(settings->value("window/splitter",(int)(ui->splitter->max()*3.0/4.0)).toInt());
+    ui->splitter->setNormalPosition(settings->value("window/splitter",(int)(ui->splitter->max()*1.0/8.0)).toInt());
     setDebug(settings->value("common/debug", false).toBool());
 
     mpv->LoadSettings(settings);
@@ -928,7 +922,8 @@ void MainWindow::SaveSettings()
     settings->setValue("window/trayIcon", getTrayIcon());
     settings->setValue("window/hidePopup", getHidePopup());
     settings->setValue("window/remaining", getRemaining());
-    settings->setValue("window/splitter", ui->splitter->position() == ui->splitter->max() ?
+    settings->setValue("window/splitter", (ui->splitter->position() == 0 ||
+                                           ui->splitter->position() == ui->splitter->max()) ?
                                             ui->splitter->normalPosition() :
                                             ui->splitter->position());
     // mpv
@@ -961,16 +956,20 @@ void MainWindow::dropEvent(QDropEvent *event)
         }
     }
     else if(mimeData->hasText()) // text
-    {
         mpv->LoadFile(mimeData->text());
-    }
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *event)
 {
     if(!isFullScreen())
     {
-        dragging = true;
+        if(event->button() == Qt::LeftButton)
+            move = true;
+        else if(event->button() == Qt::RightButton)
+        {
+            resize = true;
+            lastSize = size();
+        }
         lastMousePos = event->pos();
     }
     QMainWindow::mousePressEvent(event);
@@ -979,7 +978,10 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
 void MainWindow::mouseReleaseEvent(QMouseEvent *event)
 {
     if(!isFullScreen())
-        dragging = false;
+    {
+        move = false;
+        resize = false;
+    }
     QMainWindow::mouseReleaseEvent(event);
 }
 
@@ -988,9 +990,15 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
     // note: this will work completely when mpv stops steeling focus
     // todo: fix mouse tracking when not clicking
     static QRect playbackRect;
-    if(dragging)
+    if(move)
     {
-        move(pos()+event->pos()-lastMousePos);
+        QMainWindow::move(pos()+event->pos()-lastMousePos);
+        event->accept();
+    }
+    else if(resize)
+    {
+        QPoint deltaP = event->pos()-lastMousePos;
+        QMainWindow::resize(lastSize+QSize(deltaP.x(),deltaP.y()));
         event->accept();
     }
     else if(!ui->playbackLayoutWidget->isVisible() &&
@@ -1121,7 +1129,7 @@ void MainWindow::FullScreen(bool fs)
         }
         setWindowState(windowState() | Qt::WindowFullScreen);
         ui->menubar->setVisible(false);
-        SetPlaylist(false);
+        ShowPlaylist(false);
         setMouseTracking(true); // register mouse move event
 
         // post a mouseMoveEvent (in case user doesn't actually move the mouse when entering fs)
@@ -1140,18 +1148,30 @@ void MainWindow::FullScreen(bool fs)
     }
 }
 
-void MainWindow::SetPlaylist(bool visible)
+void MainWindow::ShowPlaylist(bool visible)
 {
     if(!ui->splitter->normalPosition())
-        ui->splitter->setPosition(ui->splitter->max()*3.0/4);
+        ui->splitter->setPosition(ui->splitter->max()*1.0/8);
     if(visible)
         ui->splitter->setPosition(ui->splitter->normalPosition()); // bring splitter position to normal
     else
     {
         if(ui->splitter->position() != ui->splitter->max() && ui->splitter->position() != 0)
-            ui->splitter->setNormalPosition(ui->splitter->position()); // save splitter position as the normal position
-        ui->splitter->setPosition(ui->splitter->max()); // set splitter position to right-most
+            ui->splitter->setNormalPosition(ui->splitter->position()); // save current splitter position as the normal position
+        ui->splitter->setPosition(0); // set splitter position to right-most
     }
+}
+
+void MainWindow::HideAlbumArt(bool hide)
+{
+    if(hide)
+    {
+        if(ui->splitter->position() != ui->splitter->max() && ui->splitter->position() != 0)
+            ui->splitter->setNormalPosition(ui->splitter->position()); // save splitter position as the normal position
+        ui->splitter->setPosition(ui->splitter->max()); // bring the splitter position to the left-most
+    }
+    else
+        ui->splitter->setPosition(ui->splitter->normalPosition()); // bring the splitter to normal position
 }
 
 void MainWindow::FitWindow(int percent)
