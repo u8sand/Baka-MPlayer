@@ -121,7 +121,7 @@ void MpvHandler::LoadSettings(QSettings *settings)
 {
     setLastFile(settings->value("mpv/lastFile", "").toString());
     ShowAllPlaylist(settings->value("mpv/showAll", false).toBool());
-    ScreenshotFormat(settings->value("mpv/screenshotFormat", "png").toString());
+    ScreenshotFormat(settings->value("mpv/screenshotFormat", "jpg").toString());
     ScreenshotTemplate(settings->value("mpv/screenshotTemplate", "screenshot%#04n").toString());
     ScreenshotDirectory(settings->value("mpv/screenshotDir", "").toString());
     Speed(settings->value("mpv/speed", 1.0).toDouble());
@@ -131,7 +131,10 @@ void MpvHandler::LoadSettings(QSettings *settings)
 
 void MpvHandler::SaveSettings(QSettings *settings)
 {
-    settings->setValue("mpv/lastFile", lastFile);
+    if(file != "")
+        settings->setValue("mpv/lastFile", file);
+    else
+        settings->setValue("mpv/lastFile", lastFile);
     settings->setValue("mpv/showAll", showAll);
     settings->setValue("mpv/screenshotFormat", screenshotFormat);
     settings->setValue("mpv/screenshotTemplate", screenshotTemplate);

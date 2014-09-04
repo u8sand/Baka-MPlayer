@@ -901,7 +901,7 @@ void MainWindow::LoadSettings()
     setTrayIcon(settings->value("window/trayIcon", false).toBool());
     setHidePopup(settings->value("window/hidePopup", false).toBool());
     setRemaining(settings->value("window/remaining", true).toBool());
-    ui->splitter->setNormalPosition(settings->value("window/splitter",(int)(ui->splitter->max()*1.0/8.0)).toInt());
+    ui->splitter->setNormalPosition(settings->value("window/splitter",0).toInt());
     setDebug(settings->value("common/debug", false).toBool());
 
     mpv->LoadSettings(settings);
@@ -1136,6 +1136,8 @@ void MainWindow::FullScreen(bool fs)
 
 void MainWindow::ShowPlaylist(bool visible)
 {
+    if(!ui->splitter->normalPosition()) ui->splitter->setNormalPosition(ui->splitter->max()*1.0/8); // default normal position: must be done here because in constructor max is 0
+
     if(visible)
         ui->splitter->setPosition(ui->splitter->normalPosition()); // bring splitter position to normal
     else
