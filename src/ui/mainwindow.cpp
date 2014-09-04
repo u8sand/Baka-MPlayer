@@ -41,7 +41,7 @@ MainWindow::MainWindow(QWidget *parent):
     move(false),
     init(false)
 {
-#ifdef Q_WS_X11 // if on x11, dim lights requies a compositing manager, disable it if there is none
+#ifdef Q_WS_X11 // if on x11, dim lights requies a compositing manager, make light NULL if there is none
     if(QX11Info::isCompositingManagerRunning())
         light = new LightDialog(); // lightdialog must be initialized before ui is setup
     else
@@ -874,6 +874,12 @@ MainWindow::MainWindow(QWidget *parent):
 //    ui->action_Increase_Volume->setShortcuts();
 //    ui->action_Decrease_Volume->setShortcuts();
 
+    // set window geometry from settings: leave this out of settings so that preference dialog doesn't center/resize the window
+    setGeometry(QStyle::alignedRect(Qt::LeftToRight,
+                                    Qt::AlignCenter,
+                                    QSize(settings->value("window/width", 600).toInt(),
+                                          settings->value("window/height", 430).toInt()),
+                                    qApp->desktop()->availableGeometry()));
     LoadSettings();
 }
 
@@ -890,11 +896,6 @@ MainWindow::~MainWindow()
 
 void MainWindow::LoadSettings()
 {
-    setGeometry(QStyle::alignedRect(Qt::LeftToRight,
-                                    Qt::AlignCenter,
-                                    QSize(settings->value("window/width", 600).toInt(),
-                                          settings->value("window/height", 430).toInt()),
-                                    qApp->desktop()->availableGeometry()));
     setOnTop(settings->value("window/onTop", "never").toString());
     setAutoFit(settings->value("window/autoFit", 100).toInt());
     setTrayIcon(settings->value("window/trayIcon", false).toBool());
@@ -1232,7 +1233,7 @@ void MainWindow::SetAspectRatio(QString aspect)
 void MainWindow::DimLights(bool dim)
 {
 #ifdef Q_WS_X11
-    if(dim && !light)
+    if(dim && !light) // if light is NULL (composition manager not found)
     {
         QMessageBox::information(this, "Dim Lights", "Dim lights feature requires desktop composition to be enabled. This can be done through Window Manager Desktop.");
         ui->action_Dim_Lights_2->setChecked(false);
