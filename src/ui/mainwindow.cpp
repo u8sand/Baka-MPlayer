@@ -38,9 +38,7 @@ MainWindow::MainWindow(QWidget *parent):
     QMainWindow(parent),
     ui(new Ui::MainWindow),
     lastMousePos(QPoint()),
-    lastSize(QSize()),
     move(false),
-    resize(false),
     init(false)
 {
 #ifdef Q_WS_X11 // if on x11, dim lights requies a compositing manager, disable it if there is none
@@ -48,12 +46,10 @@ MainWindow::MainWindow(QWidget *parent):
         light = new LightDialog(); // lightdialog must be initialized before ui is setup
     else
         light = 0;
-    ui->setupUi(this);
-    ui->action_Dim_Lights_2->setEnabled(light); // if light is null, disable the option
 #else
     light = new LightDialog(); // lightdialog must be initialized before ui is setup
-    ui->setupUi(this);
 #endif
+    ui->setupUi(this);
     ShowPlaylist(false);
     addActions(ui->menubar->actions()); // makes menubar shortcuts work even when menubar is hidden
 
@@ -446,17 +442,17 @@ MainWindow::MainWindow(QWidget *parent):
                 blockSignals(true);
                 if(i == 0) // right-most, playlist is hidden
                 {
-                    ui->action_Playlist->setChecked(false);
+                    ui->action_Show_Playlist_2->setChecked(false);
                     ui->action_Hide_Album_Art_2->setChecked(false);
                 }
                 else if(i == ui->splitter->max()) // left-most, album art is hidden, playlist is visible
                 {
-                    ui->action_Playlist->setChecked(true);
+                    ui->action_Show_Playlist_2->setChecked(true);
                     ui->action_Hide_Album_Art_2->setChecked(true);
                 }
                 else // in the middle, album art is visible, playlist is visible
                 {
-                    ui->action_Playlist->setChecked(true);
+                    ui->action_Show_Playlist_2->setChecked(true);
                     ui->action_Hide_Album_Art_2->setChecked(false);
                 }
                 blockSignals(false);
@@ -964,24 +960,19 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
     if(!isFullScreen())
     {
         if(event->button() == Qt::LeftButton)
-            move = true;
-        else if(event->button() == Qt::RightButton)
         {
-            resize = true;
-            lastSize = size();
+            move = true;
+            lastMousePos = event->pos();
         }
-        lastMousePos = event->pos();
+        else if(event->button() == Qt::RightButton && mpv->getPlayState() > 0) // if playing
+            mpv->PlayPause(ui->playlistWidget->currentRow());
     }
     QMainWindow::mousePressEvent(event);
 }
 
 void MainWindow::mouseReleaseEvent(QMouseEvent *event)
 {
-    if(!isFullScreen())
-    {
-        move = false;
-        resize = false;
-    }
+    move = false;
     QMainWindow::mouseReleaseEvent(event);
 }
 
@@ -993,12 +984,6 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
     if(move)
     {
         QMainWindow::move(pos()+event->pos()-lastMousePos);
-        event->accept();
-    }
-    else if(resize)
-    {
-        QPoint deltaP = event->pos()-lastMousePos;
-        QMainWindow::resize(lastSize+QSize(deltaP.x(),deltaP.y()));
         event->accept();
     }
     else if(!ui->playbackLayoutWidget->isVisible() &&
@@ -1150,8 +1135,6 @@ void MainWindow::FullScreen(bool fs)
 
 void MainWindow::ShowPlaylist(bool visible)
 {
-    if(!ui->splitter->normalPosition())
-        ui->splitter->setPosition(ui->splitter->max()*1.0/8);
     if(visible)
         ui->splitter->setPosition(ui->splitter->normalPosition()); // bring splitter position to normal
     else
@@ -1248,6 +1231,14 @@ void MainWindow::SetAspectRatio(QString aspect)
 
 void MainWindow::DimLights(bool dim)
 {
+#ifdef Q_WS_X11
+    if(dim && !light)
+    {
+        QMessageBox::information(this, "Dim Lights", "Dim lights feature requires desktop composition to be enabled. This can be done through Window Manager Desktop.");
+        ui->action_Dim_Lights_2->setChecked(false);
+        return;
+    }
+#endif
     if(dim)
         light->show();
     else

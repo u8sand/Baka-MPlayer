@@ -66,9 +66,7 @@ private:
     UpdateManager   *update;
 
     QPoint          lastMousePos;
-    QSize           lastSize;
     bool            move,
-                    resize,
                     pathChanged,
                     init;
 
