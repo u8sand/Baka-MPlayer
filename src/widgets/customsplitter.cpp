@@ -5,9 +5,10 @@ CustomSplitter::CustomSplitter(QWidget *parent) :
     normalPos(0)
 {
     connect(this, &CustomSplitter::splitterMoved,
-            [=](int pos)
+            [=](int pos, int index)
             {
-                emit positionChanged(pos);
+                if(index == 1)
+                    emit positionChanged(max()-pos);
             });
 }
 
