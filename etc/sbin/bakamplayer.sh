@@ -14,7 +14,7 @@ cp Baka-MPlayer{,.i686} -r
 mv Baka-MPlayer{,.x86_64}
 
 # compile i686
-cd "Baka-MPlayer.i68/Baka MPlayer"
+cd "Baka-MPlayer.i686/Baka MPlayer"
 i686-w64-mingw32-qmake-qt5 .
 make
 cd ..
