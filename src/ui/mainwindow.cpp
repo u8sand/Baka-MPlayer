@@ -18,11 +18,9 @@
 #include <QIcon>
 #include <QWindow>
 
-#ifdef Q_WS_X11
-#include <QX11Info>
-#endif
-
-#ifdef Q_OS_WIN
+#if defined(Q_OS_UNIX) || defined(Q_OS_LINUX)
+//#include <QX11Info>
+#else
 #include <windows.h>
 #endif
 
@@ -41,14 +39,14 @@ MainWindow::MainWindow(QWidget *parent):
     move(false),
     init(false)
 {
-#ifdef Q_WS_X11 // if on x11, dim lights requies a compositing manager, make light NULL if there is none
-    if(QX11Info::isCompositingManagerRunning())
-        light = new LightDialog(); // lightdialog must be initialized before ui is setup
-    else
-        light = 0;
-#else
+//#if defined(Q_OS_LINUX) || defined(Q_OS_UNIX) // if on x11, dim lights requies a compositing manager, make light NULL if there is none
+//    if(QX11Info::isCompositingManagerRunning())
+//        light = new LightDialog(); // lightdialog must be initialized before ui is setup
+//    else
+//        light = 0;
+//#else
     light = new LightDialog(); // lightdialog must be initialized before ui is setup
-#endif
+//#endif
     ui->setupUi(this);
     ShowPlaylist(false);
     addActions(ui->menubar->actions()); // makes menubar shortcuts work even when menubar is hidden
@@ -168,8 +166,26 @@ MainWindow::MainWindow(QWidget *parent):
                 {
                     QAction *action = ui->menuSubtitle_Track->addAction(QString::number(track.id)+": "+track.title+" ("+track.lang+")");
                     signalMapper->setMapping(action, track.id);
-                    connect(action, SIGNAL(triggered()),
-                            signalMapper, SLOT(map()));
+
+                    connect(action, &QAction::triggered,
+                            [=]
+                            {
+                                // basically, if you uncheck the selected subtitle id, we hide subtitles
+                                // when you check a subtitle id, we make sure subtitles are showing and set it
+                                if(mpv->getSid() == track.id)
+                                {
+                                    if(mpv->getSubtitleVisibility())
+                                    {
+                                        mpv->ShowSubtitles(false);
+                                        return;
+                                    }
+                                    else
+                                        mpv->ShowSubtitles(true);
+                                }
+                                else if(!mpv->getSubtitleVisibility())
+                                    mpv->ShowSubtitles(true);
+                                mpv->Sid(track.id);
+                            });
                 }
                 else if(track.type == "video" && // video track
                         track.albumart)          // is album art
@@ -177,8 +193,6 @@ MainWindow::MainWindow(QWidget *parent):
                     ui->action_Hide_Album_Art_2->setEnabled(true);
                 }
             }
-            connect(signalMapper, SIGNAL(mapped(int)),
-                    mpv, SLOT(SetSid(int)));
 
             if(ui->menuSubtitle_Track->actions().count() == 1)
             {
@@ -351,7 +365,17 @@ MainWindow::MainWindow(QWidget *parent):
     connect(mpv, &MpvHandler::sidChanged,
             [=](int sid)
             {
-                // select the chapter with sid
+                QList<QAction*> actions = ui->menuSubtitle_Track->actions();
+                for(auto &action : actions)
+                {
+                    if(action->text().startsWith(QString::number(sid)))
+                    {
+                        action->setCheckable(true);
+                        action->setChecked(true);
+                    }
+                    else
+                        action->setChecked(false);
+                }
             });
 
     connect(mpv, &MpvHandler::showAllChanged,
@@ -547,6 +571,16 @@ MainWindow::MainWindow(QWidget *parent):
             [=]
             {
                 mpv->RefreshPlaylist();
+            });
+
+    connect(ui->playlistWidget, &CustomListWidget::indexesMoved,
+            [=](const QModelIndexList &indexList)
+            {
+                // todo
+                QList<int> indexes;
+                for(auto &index : indexList)
+                    indexes.push_back(index.row());
+                mpv->UpdatePlaylistOrder(indexes);
             });
 
                                                                         // File ->
@@ -1258,14 +1292,14 @@ void MainWindow::SetAspectRatio(QString aspect)
 
 void MainWindow::DimLights(bool dim)
 {
-#ifdef Q_WS_X11
-    if(dim && !light) // if light is NULL (composition manager not found)
-    {
-        QMessageBox::information(this, "Dim Lights", "Dim lights feature requires desktop composition to be enabled. This can be done through Window Manager Desktop.");
-        ui->action_Dim_Lights_2->setChecked(false);
-        return;
-    }
-#endif
+//#if defined(Q_OS_LINUX) || defined(Q_OS_UNIX)
+//    if(dim && !light) // if light is NULL (composition manager not found)
+//    {
+//        QMessageBox::information(this, "Dim Lights", "Dim lights feature requires desktop composition to be enabled. This can be done through Window Manager Desktop.");
+//        ui->action_Dim_Lights_2->setChecked(false);
+//        return;
+//    }
+//#endif
     if(dim)
         light->show();
     else
