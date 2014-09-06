@@ -236,7 +236,7 @@ void MpvHandler::PreviousFile()
     PlayIndex(index-1);
 }
 
-void MpvHandler::UpdatePlaylistOrder(QList<int> indexes)
+void MpvHandler::RearrangePlaylist(QList<int> indexes)
 {
     int n = 0;
     for(QList<int>::iterator i = indexes.begin(); i != indexes.end(); i++, n++)

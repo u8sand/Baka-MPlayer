@@ -39,6 +39,8 @@ MainWindow::MainWindow(QWidget *parent):
     move(false),
     init(false)
 {
+    QAction *action;
+
 //#if defined(Q_OS_LINUX) || defined(Q_OS_UNIX) // if on x11, dim lights requies a compositing manager, make light NULL if there is none
 //    if(QX11Info::isCompositingManagerRunning())
 //        light = new LightDialog(); // lightdialog must be initialized before ui is setup
@@ -446,7 +448,7 @@ MainWindow::MainWindow(QWidget *parent):
                 mpv->LoadFile(LocationDialog::getUrl(mpv->getFile(), this));
             });
 
-    connect(ui->remainingLabel, &CustomLabel::clicked,
+    connect(ui->remainingLabel, &CustomLabel::clicked,                  // Playback: Remaining Label
             [=]
             {
                 if(remaining)
@@ -573,14 +575,40 @@ MainWindow::MainWindow(QWidget *parent):
                 mpv->RefreshPlaylist();
             });
 
-    connect(ui->playlistWidget, &CustomListWidget::indexesMoved,
+    action = new QAction("R&emove from Playlist", ui->playlistWidget);  // Playlist: Remove from playlist (right-click)
+    connect(action, &QAction::triggered,
+            [=]
+            {
+                ui->playlistWidget->takeItem(ui->playlistWidget->currentRow());
+            });
+    ui->playlistWidget->addAction(action);
+
+    action = new QAction("&Delete from Disk", ui->playlistWidget);      // Playlist: Delete from Disk (right-click)
+    connect(action, &QAction::triggered,
+            [=]
+            {
+                QListWidgetItem *item = ui->playlistWidget->takeItem(ui->playlistWidget->currentRow());
+                QFile f(mpv->getPath()+item->text());
+                f.remove();
+            });
+    ui->playlistWidget->addAction(action);
+
+    action = new QAction("&Refresh", ui->playlistWidget);               // Playlist: Refresh (right-click)
+    connect(action, &QAction::triggered,
+            [=]
+            {
+                mpv->RefreshPlaylist();
+            });
+    ui->playlistWidget->addAction(action);
+
+    connect(ui->playlistWidget, &CustomListWidget::indexesMoved,        // Playlist: Re-arrange
             [=](const QModelIndexList &indexList)
             {
                 // todo
                 QList<int> indexes;
                 for(auto &index : indexList)
                     indexes.push_back(index.row());
-                mpv->UpdatePlaylistOrder(indexes);
+                mpv->RearrangePlaylist(indexes);
             });
 
                                                                         // File ->
@@ -897,30 +925,27 @@ MainWindow::MainWindow(QWidget *parent):
             });
 
     // keyboard shortcuts
-
-    QAction *shortcut;
-
-    shortcut = new QAction(this);
-    shortcut->setShortcut(QKeySequence("Right"));
-    connect(shortcut, &QAction::triggered,
+    action = new QAction(this);
+    action->setShortcut(QKeySequence("Right"));
+    connect(action, &QAction::triggered,
             [=]
             {
                 mpv->Seek(5, true);
             });
-    addAction(shortcut);
+    addAction(action);
 
-    shortcut = new QAction(this);
-    shortcut->setShortcut(QKeySequence("Left"));
-    connect(shortcut, &QAction::triggered,
+    action = new QAction(this);
+    action->setShortcut(QKeySequence("Left"));
+    connect(action, &QAction::triggered,
             [=]
             {
                 mpv->Seek(-5, true);
             });
-    addAction(shortcut);
+    addAction(action);
 
-    shortcut = new QAction(this);
-    shortcut->setShortcut(QKeySequence("Esc"));
-    connect(shortcut, &QAction::triggered,
+    action = new QAction(this);
+    action->setShortcut(QKeySequence("Esc"));
+    connect(action, &QAction::triggered,
             [=]
             {
                 if(isFullScreen()) // in fullscreen mode, escape will exit fullscreen
@@ -931,7 +956,7 @@ MainWindow::MainWindow(QWidget *parent):
                     setWindowState(windowState() | Qt::WindowMinimized);
                 }
             });
-    addAction(shortcut);
+    addAction(action);
 
 
     // add multimedia shortcuts

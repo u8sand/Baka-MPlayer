@@ -54,7 +54,7 @@ public slots:
     void NextFile();
     void PreviousFile();
 
-    void UpdatePlaylistOrder(QList<int>);
+    void RearrangePlaylist(QList<int>);
     void RefreshPlaylist();
     void SearchPlaylist(QString);
     void ShufflePlaylist(bool);

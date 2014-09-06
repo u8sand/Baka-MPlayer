@@ -14,13 +14,6 @@ public:
 protected:
     void contextMenuEvent(QContextMenuEvent *event);
 
-protected slots:
-    void removeFromPlaylist();
-    void deleteFromDisk();
-
-signals:
-    void Refresh();
-
 private:
     QMenu *menu;
 };
