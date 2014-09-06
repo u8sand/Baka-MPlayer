@@ -33,6 +33,7 @@ MpvHandler::MpvHandler(int64_t wid, QObject *parent):
     // get updates when these properties change
     mpv_observe_property(mpv, 0, "time-pos", MPV_FORMAT_DOUBLE);
     mpv_observe_property(mpv, 0, "volume", MPV_FORMAT_DOUBLE);
+    mpv_observe_property(mpv, 0, "sid", MPV_FORMAT_INT64);
     mpv_observe_property(mpv, 0, "sub-visibility", MPV_FORMAT_FLAG);
     // todo: observe tracklist
 
@@ -70,14 +71,25 @@ bool MpvHandler::event(QEvent *event)
             {
                 mpv_event_property *prop = (mpv_event_property*)event->data;
                 if(QString(prop->name) == "time-pos")
-                    if (prop->format == MPV_FORMAT_DOUBLE)
+                {
+                    if(prop->format == MPV_FORMAT_DOUBLE)
                         setTime((int)*(double*)prop->data);
-                if(QString(prop->name) == "volume")
-                    if (prop->format == MPV_FORMAT_DOUBLE)
+                }
+                else if(QString(prop->name) == "volume")
+                {
+                    if(prop->format == MPV_FORMAT_DOUBLE)
                         setVolume((int)*(double*)prop->data);
-                if(QString(prop->name) == "sub-visibility")
-                    if (prop->format == MPV_FORMAT_FLAG)
+                }
+                else if(QString(prop->name) == "sid")
+                {
+                    if(prop->format == MPV_FORMAT_INT64)
+                        setSid(*(int*)prop->data);
+                }
+                else if(QString(prop->name) == "sub-visibility")
+                {
+                    if(prop->format == MPV_FORMAT_FLAG)
                         setSubtitleVisibility((bool)*(unsigned*)prop->data);
+                }
                 break;
             }
             case MPV_EVENT_IDLE:
@@ -457,9 +469,8 @@ void MpvHandler::AddSubtitleTrack(QString f)
 {
     const QByteArray tmp = f.toUtf8();
     const char *args[] = {"sub_add", tmp.constData(), NULL};
-    AsyncCommand(args);
-    // todo: add track to tracklist
-    // todo: select this track
+    Command(args);
+    LoadTracks(); // reload track list
 }
 
 void MpvHandler::ShowSubtitles(bool b)
@@ -493,11 +504,11 @@ void MpvHandler::LoadFileInfo()
     mpv_get_property(mpv, "length", MPV_FORMAT_DOUBLE, &len);
     fileInfo.length = (int)len;
 
+    emit fileInfoChanged(fileInfo);
+
     LoadTracks();
     LoadChapters();
     LoadVideoParams();
-
-    emit fileInfoChanged(fileInfo);
 }
 
 void MpvHandler::LoadTracks()
@@ -569,6 +580,8 @@ void MpvHandler::LoadTracks()
             }
         }
     }
+
+    emit trackListChanged(fileInfo.tracks);
 }
 
 void MpvHandler::LoadChapters()
@@ -600,6 +613,8 @@ void MpvHandler::LoadChapters()
             }
         }
     }
+
+    emit chaptersChanged(fileInfo.chapters);
 }
 
 void MpvHandler::LoadVideoParams()
@@ -609,6 +624,8 @@ void MpvHandler::LoadVideoParams()
     mpv_get_property(mpv, "dwidth", MPV_FORMAT_INT64, &fileInfo.video_params.dwidth);
     mpv_get_property(mpv, "dheight", MPV_FORMAT_INT64, &fileInfo.video_params.dheight);
     mpv_get_property(mpv, "video-aspect", MPV_FORMAT_INT64, &fileInfo.video_params.aspect);
+
+    emit videoParamsChanged(fileInfo.video_params);
 }
 
 void MpvHandler::OpenFile(QString f)
@@ -653,6 +670,14 @@ void MpvHandler::AsyncCommand(const char *args[])
 {
     if(mpv)
         mpv_command_async(mpv, 0, args);
+    else
+        emit errorSignal("mpv was not initialized");
+}
+
+void MpvHandler::Command(const char *args[])
+{
+    if(mpv)
+        mpv_command(mpv, args);
     else
         emit errorSignal("mpv was not initialized");
 }

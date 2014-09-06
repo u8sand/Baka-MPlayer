@@ -32,6 +32,9 @@ public:
     int getVolume()                         { return volume; }
     int getIndex()                          { return index; }
     int getMaxIndex()                       { return playlist.size()-1; }
+    int getVid()                            { return vid; }
+    int getAid()                            { return aid; }
+    int getSid()                            { return sid; }
     bool getDebug()                         { return debug; }
     bool getShowAll()                       { return showAll; }
     bool getShuffle()                       { return shuffle; }
@@ -101,6 +104,7 @@ protected slots:
     void SetProperties();
 
     void AsyncCommand(const char *args[]);
+    void Command(const char *args[]);
 
 private slots:
     void setPlaylist()                      { emit playlistChanged(playlist); }
@@ -117,6 +121,9 @@ private slots:
     void setTime(int i)                     { emit timeChanged(time = i); }
     void setVolume(int i)                   { emit volumeChanged(volume = i); }
     void setIndex(int i)                    { emit indexChanged(index = i); }
+    void setVid(int i)                      { emit vidChanged(vid = i); }
+    void setAid(int i)                      { emit aidChanged(aid = i); }
+    void setSid(int i)                      { emit sidChanged(sid = i); }
     void setDebug(bool b)                   { emit debugChanged(debug = b); }
     void setShowAll(bool b)                 { emit showAllChanged(showAll = b); }
     void setShuffle(bool b)                 { emit shuffleChanged(shuffle = b); }
@@ -126,6 +133,9 @@ private slots:
 signals:
     void playlistChanged(const QStringList&);
     void fileInfoChanged(const Mpv::FileInfo&);
+    void trackListChanged(const QList<Mpv::Track>&);
+    void chaptersChanged(const QList<Mpv::Chapter>&);
+    void videoParamsChanged(const Mpv::VideoParams&);
     void playStateChanged(Mpv::PlayState);
     void fileChanged(QString);
     void pathChanged(QString);
@@ -138,6 +148,9 @@ signals:
     void timeChanged(int);
     void volumeChanged(int);
     void indexChanged(int);
+    void vidChanged(int);
+    void aidChanged(int);
+    void sidChanged(int);
     void debugChanged(bool);
     void showAllChanged(bool);
     void shuffleChanged(bool);
@@ -165,7 +178,10 @@ private:
     double      speed = 1;
     int         time = 0,
                 volume = 100,
-                index = 0;
+                index = 0,
+                vid,
+                aid,
+                sid;
     bool        debug = false,
                 showAll = false,
                 shuffle = false,
