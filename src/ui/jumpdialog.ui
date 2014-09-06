@@ -25,6 +25,8 @@
 	border-radius: 2px;
 }
 
+/* QSpinBox */
+
 QSpinBox {
 	background: #263238;
 }
