@@ -187,6 +187,20 @@ QTabBar::tab:!selected {
          </item>
          <item>
           <widget class="QComboBox" name="comboBox">
+           <property name="styleSheet">
+            <string notr="true">QComboBox {
+	background: #263238;
+	border: 1px solid black;
+	border-radius: 2px;
+	padding: 2px;
+}
+QComboBox::drop-down {
+    border: none;
+}
+QComboBox::down-arrow {
+	image: url(:/img/down-arrow.svg);
+}</string>
+           </property>
            <property name="currentIndex">
             <number>2</number>
            </property>
@@ -229,6 +243,20 @@ QTabBar::tab:!selected {
           </item>
           <item row="0" column="1">
            <widget class="QComboBox" name="formatComboBox">
+            <property name="styleSheet">
+             <string notr="true">QComboBox {
+	background: #263238;
+	border: 1px solid black;
+	border-radius: 2px;
+	padding: 2px;
+}
+QComboBox::drop-down {
+    border: none;
+}
+QComboBox::down-arrow {
+	image: url(:/img/down-arrow.svg);
+}</string>
+            </property>
             <item>
              <property name="text">
               <string>jpg</string>
@@ -369,6 +397,8 @@ QPushButton:disabled {
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../rsclist.qrc"/>
+ </resources>
  <connections/>
 </ui>
