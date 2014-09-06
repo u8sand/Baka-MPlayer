@@ -504,11 +504,11 @@ void MpvHandler::LoadFileInfo()
     mpv_get_property(mpv, "length", MPV_FORMAT_DOUBLE, &len);
     fileInfo.length = (int)len;
 
-    emit fileInfoChanged(fileInfo);
-
     LoadTracks();
     LoadChapters();
     LoadVideoParams();
+
+    emit fileInfoChanged(fileInfo);
 }
 
 void MpvHandler::LoadTracks()

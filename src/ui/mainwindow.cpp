@@ -157,76 +157,85 @@ MainWindow::MainWindow(QWidget *parent):
     connect(mpv, &MpvHandler::trackListChanged,
             [=](const QList<Mpv::Track> &trackList)
     {
-        QSignalMapper *signalMapper = new QSignalMapper(this);
-        ui->menuSubtitle_Track->clear();
-        ui->menuSubtitle_Track->addAction(ui->action_Add_Subtitle_File);
-        for(auto &track : trackList)
+        if(mpv->getPlayState() > 0)
         {
-            if(track.type == "sub")
+            QSignalMapper *signalMapper = new QSignalMapper(this);
+            ui->menuSubtitle_Track->clear();
+            ui->menuSubtitle_Track->addAction(ui->action_Add_Subtitle_File);
+            for(auto &track : trackList)
             {
-                QAction *action = ui->menuSubtitle_Track->addAction(QString::number(track.id)+": "+track.title+" ("+track.lang+")");
-                signalMapper->setMapping(action, track.id);
-                connect(action, SIGNAL(triggered()),
-                        signalMapper, SLOT(map()));
+                if(track.type == "sub")
+                {
+                    QAction *action = ui->menuSubtitle_Track->addAction(QString::number(track.id)+": "+track.title+" ("+track.lang+")");
+                    signalMapper->setMapping(action, track.id);
+                    connect(action, SIGNAL(triggered()),
+                            signalMapper, SLOT(map()));
+                }
+                else if(track.type == "video" && // video track
+                        track.albumart)          // is album art
+                {
+                    ui->action_Hide_Album_Art_2->setEnabled(true);
+                }
             }
-            else if(track.type == "video" && // video track
-                    track.albumart)          // is album art
-            {
-                ui->action_Hide_Album_Art_2->setEnabled(true);
-            }
-        }
-        if(ui->menuSubtitle_Track->actions().count() == 1)
-        {
-            ui->menuSubtitle_Track->setEnabled(false);
-            ui->menuFont_Si_ze->setEnabled(false);
-            ui->actionShow_Subtitles->setEnabled(false);
-        }
-        else
-        {
-            ui->menuSubtitle_Track->setEnabled(true);
-            ui->menuFont_Si_ze->setEnabled(true);
-            ui->actionShow_Subtitles->setEnabled(true);
-            ui->actionShow_Subtitles->setChecked(mpv->getSubtitleVisibility());
+            connect(signalMapper, SIGNAL(mapped(int)),
+                    mpv, SLOT(SetSid(int)));
 
+            if(ui->menuSubtitle_Track->actions().count() == 1)
+            {
+                ui->menuSubtitle_Track->setEnabled(false);
+                ui->menuFont_Si_ze->setEnabled(false);
+                ui->actionShow_Subtitles->setEnabled(false);
+            }
+            else
+            {
+                ui->menuSubtitle_Track->setEnabled(true);
+                ui->menuFont_Si_ze->setEnabled(true);
+                ui->actionShow_Subtitles->setEnabled(true);
+                ui->actionShow_Subtitles->setChecked(mpv->getSubtitleVisibility());
+
+            }
         }
-        connect(signalMapper, SIGNAL(mapped(int)),
-                mpv, SLOT(SetSid(int)));
     });
 
     connect(mpv, &MpvHandler::chaptersChanged,
             [=](const QList<Mpv::Chapter> &chapters)
     {
-        QList<int> ticks;
-        QSignalMapper *signalMapper = new QSignalMapper(this);
-        int n = 1;
-        ui->menu_Chapters->clear();
-        for(auto &ch : chapters)
+        if(mpv->getPlayState() > 0)
         {
-            QAction *action;
-            if(n <= 9)
-                action = ui->menu_Chapters->addAction(QString::number(n)+": "+ch.title, NULL, NULL, QKeySequence("Ctrl+"+QString::number(n)));
+            QList<int> ticks;
+            QSignalMapper *signalMapper = new QSignalMapper(this);
+            int n = 1;
+            ui->menu_Chapters->clear();
+            for(auto &ch : chapters)
+            {
+                QAction *action;
+                if(n <= 9)
+                    action = ui->menu_Chapters->addAction(QString::number(n)+": "+ch.title, NULL, NULL, QKeySequence("Ctrl+"+QString::number(n)));
+                else
+                    action = ui->menu_Chapters->addAction(QString::number(n)+": "+ch.title);
+                n++;
+                signalMapper->setMapping(action, ch.time);
+                connect(action, SIGNAL(triggered()),
+                        signalMapper, SLOT(map()));
+                ticks.push_back(ch.time);
+            }
+            connect(signalMapper, SIGNAL(mapped(int)),
+                    mpv, SLOT(Seek(int)));
+
+            if(ui->menu_Chapters->actions().count() == 0)
+            {
+                ui->menu_Chapters->setEnabled(false);
+                ui->action_Next_Chapter->setEnabled(false);
+                ui->action_Previous_Chapter->setEnabled(false);
+            }
             else
-                action = ui->menu_Chapters->addAction(QString::number(n)+": "+ch.title);
-            n++;
-            signalMapper->setMapping(action, ch.time);
-            connect(action, SIGNAL(triggered()),
-                    signalMapper, SLOT(map()));
-            ticks.push_back(ch.time);
-        }
-        connect(signalMapper, SIGNAL(mapped(int)),
-                mpv, SLOT(Seek(int)));
-        ui->seekBar->setTicks(ticks);
-        if(ui->menu_Chapters->actions().count() == 0)
-        {
-            ui->menu_Chapters->setEnabled(false);
-            ui->action_Next_Chapter->setEnabled(false);
-            ui->action_Previous_Chapter->setEnabled(false);
-        }
-        else
-        {
-            ui->menu_Chapters->setEnabled(true);
-            ui->action_Next_Chapter->setEnabled(true);
-            ui->action_Previous_Chapter->setEnabled(true);
+            {
+                ui->menu_Chapters->setEnabled(true);
+                ui->action_Next_Chapter->setEnabled(true);
+                ui->action_Previous_Chapter->setEnabled(true);
+            }
+
+            ui->seekBar->setTicks(ticks);
         }
     });
 
