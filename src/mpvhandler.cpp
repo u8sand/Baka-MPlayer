@@ -294,7 +294,7 @@ void MpvHandler::Stop()
 
 void MpvHandler::PlayPause(int indexIfStopped)
 {
-    if(playState == Mpv::Idle) // if idle, play plays the selected playlist file
+    if(playState < 0) // not playing, play plays the selected playlist file
         PlayIndex(indexIfStopped);
     else
     {

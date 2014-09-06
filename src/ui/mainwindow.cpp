@@ -283,7 +283,7 @@ MainWindow::MainWindow(QWidget *parent):
                 case Mpv::Idle:
                     if(init)
                     {
-                        if(mpv->getIndex() > mpv->getMaxIndex() || ui->actionStop_after_Current->isChecked())
+                        if(mpv->getIndex() >= mpv->getMaxIndex() || ui->actionStop_after_Current->isChecked())
                         {
                             setWindowTitle("Baka MPlayer");
                             SetPlaybackControls(false);
@@ -502,12 +502,12 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->indexLabel, &CustomLabel::clicked,                      // Playlist: Clicked the indexLabel
             [=]
             {
-                QString res = InputDialog::getInput("Enter the file number you want to play:\nNote: Value must be between 1 - "+QString::number(mpv->getMaxIndex()),
+                QString res = InputDialog::getInput("Enter the file number you want to play:\nNote: Value must be from 1 - "+QString::number(mpv->getMaxIndex()+1),
                                                     "Enter File Number",
                                                     [this](QString input)
                                                     {
                                                         int in = input.toInt();
-                                                        if(in >= 1 && in <= mpv->getMaxIndex())
+                                                        if(in >= 1 && in <= mpv->getMaxIndex()+1)
                                                             return true;
                                                         return false;
                                                     },
