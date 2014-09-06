@@ -256,13 +256,17 @@ MainWindow::MainWindow(QWidget *parent):
                     break;
 
                 case Mpv::Idle:
-                    if(init && (mpv->getIndex() > mpv->getMaxIndex() ||
-                                ui->actionStop_after_Current->isChecked()))
+                    if(init)
                     {
-                        setWindowTitle("Baka MPlayer");
-                        SetPlaybackControls(false);
-                        ui->seekBar->setTracking(0);
-                        ui->actionStop_after_Current->setChecked(false);
+                        if(mpv->getIndex() > mpv->getMaxIndex() || ui->actionStop_after_Current->isChecked())
+                        {
+                            setWindowTitle("Baka MPlayer");
+                            SetPlaybackControls(false);
+                            ui->seekBar->setTracking(0);
+                            ui->actionStop_after_Current->setChecked(false);
+                        }
+                        else
+                            mpv->NextFile();
                     }
                     break;
                 }
