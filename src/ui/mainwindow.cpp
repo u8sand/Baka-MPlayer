@@ -1113,19 +1113,6 @@ void MainWindow::SetPlaybackControls(bool enable)
         ui->menuSubtitle_Track->setEnabled(false);
         ui->menuFont_Si_ze->setEnabled(false);
     }
-
-    if(enable && mpv->getFileInfo().chapters.length() > 0) // only enable chapters if there are chapters
-    {
-        ui->menu_Chapters->setEnabled(true);
-        ui->action_Next_Chapter->setEnabled(true);
-        ui->action_Previous_Chapter->setEnabled(true);
-    }
-    else
-    {
-        ui->menu_Chapters->setEnabled(false);
-        ui->action_Next_Chapter->setEnabled(false);
-        ui->action_Previous_Chapter->setEnabled(false);
-    }
 }
 
 QString MainWindow::FormatTime(int _time)
@@ -1211,6 +1198,8 @@ void MainWindow::FitWindow(int percent)
     double a;
 
     // get aspect ratio
+    if(params.width == 0 || params.height == 0) // width/height are 0 when there is no output
+    	return;
     if(params.dwidth == 0 || params.dheight == 0) // dwidth/height are 0 on load
         a = (double)params.width/params.height; // use video width and height for aspect ratio
     else
