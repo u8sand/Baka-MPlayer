@@ -10,7 +10,7 @@ depends=('mpv' 'qt5-base')
 makedepends=('git' 'make')
 conflicts=('bakamplayer')
 provides=('bakamplayer')
-source=("$pkgname"::'git://github.com/u8sand/Baka-MPlayer.git')
+source=("$pkgname"::'git://github.com/u8sand/Baka-MPlayer.git#branch=release')
 md5sums=('SKIP')
 
 build() {
