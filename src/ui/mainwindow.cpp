@@ -442,7 +442,24 @@ MainWindow::MainWindow(QWidget *parent):
 
     // update manager
 
+    /* automatic updating support
+    connect(update, &UpdateManager::Update,
+            [=](QMap<QString, QString> info)
+            {
+                if(info["version"] != BAKA_MPLAYER_VERSION)
+                    update->DownloadUpdate();
+            });
 
+    connect(update, &UpdateManager::Downloaded,
+            [=](int percent)
+            {
+                if(percent == 100)
+                {
+                    // prepare for update
+                }
+                // show progress as status message?
+            });
+    */
 
     // ui
 

@@ -20,6 +20,8 @@ public slots:
 
 signals:
     void Update(QMap<QString, QString> info);
+    void Downloaded(int);
+
     void errorSignal(QString err);
 
 private:
