@@ -74,7 +74,6 @@ private:
     QMenu           *trayIconMenu;
     LightDialog     *light;
 
-    // todo: when possible, use variables that are already avialable instead of these
     // variables
     QString onTop;
     int autoFit;

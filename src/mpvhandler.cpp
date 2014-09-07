@@ -35,7 +35,6 @@ MpvHandler::MpvHandler(int64_t wid, QObject *parent):
     mpv_observe_property(mpv, 0, "volume", MPV_FORMAT_DOUBLE);
     mpv_observe_property(mpv, 0, "sid", MPV_FORMAT_INT64);
     mpv_observe_property(mpv, 0, "sub-visibility", MPV_FORMAT_FLAG);
-    // todo: observe tracklist
 
     // setup callback event handling
     mpv_set_wakeup_callback(mpv, wakeup, this);

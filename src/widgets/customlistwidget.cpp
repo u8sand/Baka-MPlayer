@@ -7,7 +7,7 @@ CustomListWidget::CustomListWidget(QWidget *parent) :
 {
 }
 
-void CustomListWidget::contextMenuEvent(QContextMenuEvent *event) // todo
+void CustomListWidget::contextMenuEvent(QContextMenuEvent *event)
 {
     QListWidgetItem *item = itemAt(event->pos());
     if(item)

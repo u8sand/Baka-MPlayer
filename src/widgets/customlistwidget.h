@@ -13,9 +13,6 @@ public:
 
 protected:
     void contextMenuEvent(QContextMenuEvent *event);
-
-private:
-    QMenu *menu;
 };
 
 #endif // CUSTOMLISTWIDGET_H

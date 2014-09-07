@@ -263,7 +263,7 @@ MainWindow::MainWindow(QWidget *parent):
                 case Mpv::Loaded: // todo: show the user we are loading their file?
                     break;
 
-                case Mpv::Started: // todo: fix initial load with fitWindow
+                case Mpv::Started:
                     if(!init) // will only happen the first time a file is loaded.
                     {
                         ui->action_Play->setEnabled(true);
@@ -299,12 +299,20 @@ MainWindow::MainWindow(QWidget *parent):
                 case Mpv::Idle:
                     if(init)
                     {
-                        if(mpv->getIndex() >= mpv->getMaxIndex() || ui->actionStop_after_Current->isChecked())
+                        if(ui->action_This_File->isChecked())
+                            mpv->PlayIndex(mpv->getIndex()); // restart file
+                        else if(mpv->getIndex() >= mpv->getMaxIndex() ||
+                           ui->actionStop_after_Current->isChecked())
                         {
-                            setWindowTitle("Baka MPlayer");
-                            SetPlaybackControls(false);
-                            ui->seekBar->setTracking(0);
-                            ui->actionStop_after_Current->setChecked(false);
+                            if(ui->action_Playlist->isChecked())
+                                mpv->PlayIndex(0); // restart playlist
+                            else
+                            {
+                                setWindowTitle("Baka MPlayer");
+                                SetPlaybackControls(false);
+                                ui->seekBar->setTracking(0);
+                                ui->actionStop_after_Current->setChecked(false);
+                            }
                         }
                         else
                             mpv->NextFile();
@@ -431,7 +439,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->openButton, &OpenButton::LeftClick,                     // Playback: Open button (left click)
             [=]
             {
-                mpv->LoadFile(QFileDialog::getOpenFileName(this, "Open File"));
+                mpv->LoadFile(QFileDialog::getOpenFileName(this, "Open File", mpv->getPath(), Mpv::media_filetypes.join(" ")));
             });
 
     connect(ui->openButton, &OpenButton::MiddleClick,                   // Playback: Open button (middle click)
@@ -601,10 +609,9 @@ MainWindow::MainWindow(QWidget *parent):
             });
     ui->playlistWidget->addAction(action);
 
-    connect(ui->playlistWidget, &CustomListWidget::indexesMoved,        // Playlist: Re-arrange
+    connect(ui->playlistWidget, &CustomListWidget::indexesMoved,        // Playlist: Re-arrange [todo]
             [=](const QModelIndexList &indexList)
             {
-                // todo
                 QList<int> indexes;
                 for(auto &index : indexList)
                     indexes.push_back(index.row());
@@ -622,7 +629,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->action_Open_File, &QAction::triggered,                  // File -> Open File
             [=]
             {
-                mpv->LoadFile(QFileDialog::getOpenFileName(this, "Open File"));
+                mpv->LoadFile(QFileDialog::getOpenFileName(this, "Open File", mpv->getPath(), Mpv::media_filetypes.join(" ")));
             });
 
     connect(ui->actionOpen_URL, &QAction::triggered,                    // File -> Open URL
@@ -752,7 +759,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->action_Add_Subtitle_File, &QAction::triggered,          //  View -> Subtitle Track -> Add Subtitle File...
             [=]
             {
-                QString trackFile = QFileDialog::getOpenFileName(this, "Open Subtitle File", mpv->getPath(), "*.sub *.srt *.ass *.ssa"); // todo: add more formats
+                QString trackFile = QFileDialog::getOpenFileName(this, "Open Subtitle File", mpv->getPath(), Mpv::subtitle_filetypes.join(" "));
                 if(trackFile != "")
                     mpv->AddSubtitleTrack(trackFile);
             });
@@ -804,7 +811,37 @@ MainWindow::MainWindow(QWidget *parent):
             {
                 mpv->ShufflePlaylist(b);
             });
-    // todo: repeat menu
+                                                                        // Playback -> Repeat
+    connect(ui->action_Off, &QAction::triggered,                        // Playback -> Repeat -> Off
+            [=](bool b)
+            {
+                if(b)
+                {
+                    ui->action_This_File->setChecked(false);
+                    ui->action_Playlist->setChecked(false);
+                }
+            });
+
+    connect(ui->action_This_File, &QAction::triggered,                  // Playback -> Repeat -> This File
+            [=](bool b)
+            {
+                if(b)
+                {
+                    ui->action_Off->setChecked(false);
+                    ui->action_Playlist->setChecked(false);
+                }
+            });
+
+    connect(ui->action_Playlist, &QAction::triggered,                   // Playback -> Repeat -> Playlist
+            [=](bool b)
+            {
+                if(b)
+                {
+                    ui->action_Off->setChecked(false);
+                    ui->action_This_File->setChecked(false);
+                }
+            });
+
     connect(ui->action_Increase_Volume, &QAction::triggered,            // Playback -> Increase Volume
             [=]
             {
@@ -964,7 +1001,6 @@ MainWindow::MainWindow(QWidget *parent):
     ui->action_Stop->setShortcuts({ui->action_Stop->shortcut(), QKeySequence(Qt::Key_MediaStop)});
     ui->actionPlay_Next_File->setShortcuts({ui->actionPlay_Next_File->shortcut(), QKeySequence(Qt::Key_MediaNext)});
     ui->actionPlay_Previous_File->setShortcuts({ui->actionPlay_Previous_File->shortcut(), QKeySequence(Qt::Key_MediaPrevious)});
-    // todo: volume up/down
 //    ui->action_Increase_Volume->setShortcuts();
 //    ui->action_Decrease_Volume->setShortcuts();
 
@@ -1073,8 +1109,6 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *event)
 
 void MainWindow::mouseMoveEvent(QMouseEvent *event)
 {
-    // note: this will work completely when mpv stops steeling focus
-    // todo: fix mouse tracking when not clicking
     static QRect playbackRect;
     if(move)
     {

@@ -9,9 +9,13 @@ UpdateDialog::UpdateDialog(UpdateManager *_updateManager, QWidget *parent) :
     ui->setupUi(this);
 
     // todo: populate update information
+//    updateManager->CheckForUpdates();
 
-    connect(ui->downloadButton, SIGNAL(clicked()),
-            this, SLOT(download()));
+    connect(ui->downloadButton, &QPushButton::clicked,
+            [=]
+    {
+        // todo: download, when downloading is done: accept()
+    });
     connect(ui->cancelButton, SIGNAL(clicked()),
             this, SLOT(reject()));
 }
@@ -25,9 +29,4 @@ int UpdateDialog::update(UpdateManager *updateManager, QWidget *parent)
 {
     UpdateDialog dialog(updateManager, parent);
     return dialog.exec();
-}
-
-void UpdateDialog::Download() // todo: when downloading is done: accept()
-{
-
 }

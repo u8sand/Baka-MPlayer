@@ -9,7 +9,6 @@ class CustomSplitter : public QSplitter
 public:
     explicit CustomSplitter(QWidget *parent = 0);
 
-    // todo: use position from the right side of the form
     int position() const;
     int normalPosition() const;
     int max() const;

@@ -11,7 +11,7 @@ InfoDialog::InfoDialog(const Mpv::FileInfo &_fileInfo, QWidget *parent) :
     connect(ui->closeButton, SIGNAL(clicked()),
             this, SLOT(close()));
 
-    // setup dialog: todo, make this neater and more informative
+    // todo: need to organize the information in a better way (like using columns)
     ui->infoList->addItem("media-title = "+fileInfo.media_title);
     ui->infoList->addItem("length = "+QString::number(fileInfo.length));
     ui->infoList->addItem("width = "+QString::number(fileInfo.video_params.width));

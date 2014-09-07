@@ -19,9 +19,6 @@ public:
 
     static int update(UpdateManager *updateManager, QWidget *parent = 0);
 
-protected slots:
-    void Download();
-
 private:
     Ui::UpdateDialog *ui;
     UpdateManager *updateManager;
