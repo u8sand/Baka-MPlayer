@@ -14,14 +14,13 @@ class UpdateDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit UpdateDialog(UpdateManager *updateManager, QWidget *parent = 0);
+    explicit UpdateDialog(UpdateManager *update, QWidget *parent = 0);
     ~UpdateDialog();
 
-    static int update(UpdateManager *updateManager, QWidget *parent = 0);
+    static int update(UpdateManager *update, QWidget *parent = 0);
 
 private:
     Ui::UpdateDialog *ui;
-    UpdateManager *update;
 };
 
 #endif // UPDATEDIALOG_H

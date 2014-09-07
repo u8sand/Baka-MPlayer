@@ -55,7 +55,7 @@ MainWindow::MainWindow(QWidget *parent):
 
 
     // initialize managers/handlers
-#if Q_OS_WIN // saves to $(application directory)\${SETTINGS_FILE}.ini
+#if defined(Q_OS_WIN) // saves to $(application directory)\${SETTINGS_FILE}.ini
     settings = new QSettings(QApplication::applicationDirPath()+"\\"+SETTINGS_FILE, QSettings::IniFormat,this);
 #else // saves to  ~/.config/${SETTINGS_FILE}.ini on linux
     settings = new QSettings(QSettings::IniFormat, QSettings::UserScope, SETTINGS_FILE, QString(), this);
@@ -620,15 +620,14 @@ MainWindow::MainWindow(QWidget *parent):
                 mpv->RefreshPlaylist();
             });
 
-    action = new QAction("R&emove from Playlist", ui->playlistWidget);  // Playlist: Remove from playlist (right-click)
+    action = ui->playlistWidget->addAction("R&emove from Playlist");    // Playlist: Remove from playlist (right-click)
     connect(action, &QAction::triggered,
             [=]
             {
                 ui->playlistWidget->takeItem(ui->playlistWidget->currentRow());
             });
-    ui->playlistWidget->addAction(action);
 
-    action = new QAction("&Delete from Disk", ui->playlistWidget);      // Playlist: Delete from Disk (right-click)
+    action = ui->playlistWidget->addAction("&Delete from Disk");        // Playlist: Delete from Disk (right-click)
     connect(action, &QAction::triggered,
             [=]
             {
@@ -636,15 +635,13 @@ MainWindow::MainWindow(QWidget *parent):
                 QFile f(mpv->getPath()+item->text());
                 f.remove();
             });
-    ui->playlistWidget->addAction(action);
 
-    action = new QAction("&Refresh", ui->playlistWidget);               // Playlist: Refresh (right-click)
+    action = ui->playlistWidget->addAction("&Refresh");                 // Playlist: Refresh (right-click)
     connect(action, &QAction::triggered,
             [=]
             {
                 mpv->RefreshPlaylist();
             });
-    ui->playlistWidget->addAction(action);
 
     connect(ui->playlistWidget, &CustomListWidget::reordered,           // Playlist: Re-arrange
             [=](int old_index, int new_index)

@@ -37,6 +37,7 @@ void UpdateManager::CheckForUpdates()
     manager->get(QNetworkRequest(QUrl("http://bakamplayer.u8sand.net/version")));
 }
 
+#if defined(Q_WIN_OS)
 void UpdateManager::DownloadUpdate()
 {
     QNetworkAccessManager *manager = new QNetworkAccessManager(this);
@@ -62,3 +63,4 @@ void UpdateManager::DownloadUpdate()
             });
     manager->get(QNetworkRequest(QUrl("http://bakamplayer.u8sand.net/Baka MPlayer.exe")));
 }
+#endif

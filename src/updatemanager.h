@@ -16,11 +16,14 @@ public:
 
 public slots:
     void CheckForUpdates();
+#if defined(Q_WIN_OS)
     void DownloadUpdate();
-
 signals:
-    void Update(QMap<QString, QString> info);
     void Downloaded(int);
+#else
+signals:
+#endif
+    void Update(QMap<QString, QString> info);
 
     void errorSignal(QString err);
 

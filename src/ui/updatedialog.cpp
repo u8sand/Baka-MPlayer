@@ -1,14 +1,16 @@
 #include "updatedialog.h"
 #include "ui_updatedialog.h"
 
-UpdateDialog::UpdateDialog(UpdateManager *_update, QWidget *parent) :
+UpdateDialog::UpdateDialog(UpdateManager *updateManager, QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::UpdateDialog),
-    update(_update)
+    ui(new Ui::UpdateDialog)
 {
     ui->setupUi(this);
+#if defined(Q_OS_UNIX) || defined(Q_OS_LINUX)
+    ui->downloadButton->setEnabled(false); // no update support on unix/linux, we just show if one is available
+#endif
 
-    connect(update, &UpdateManager::UpdateAvailable,
+    connect(updateManager, &UpdateManager::Update,
             [=](QMap<QString, QString> info)
             {
                 ui->versionLabel->setText(info["version"]+" released "+info["date"]);
@@ -20,14 +22,14 @@ UpdateDialog::UpdateDialog(UpdateManager *_update, QWidget *parent) :
                 }
 
             });
-
+#if defined(Q_OS_WIN)
     connect(ui->downloadButton, &QPushButton::clicked,
             [=]
             {
                 update->DownloadUpdate();
             });
 
-    connect(update, &UpdateManager::Downloaded,
+    connect(updateManager, &UpdateManager::Downloaded,
             [=](int percent)
             {
                 if(percent == 100)
@@ -37,12 +39,11 @@ UpdateDialog::UpdateDialog(UpdateManager *_update, QWidget *parent) :
                     // update progress bar with percent
                 }
             });
-
+#endif
     connect(ui->cancelButton, SIGNAL(clicked()),
             this, SLOT(reject()));
 
-
-    update->CheckForUpdates();
+    updateManager->CheckForUpdates();
 }
 
 UpdateDialog::~UpdateDialog()
