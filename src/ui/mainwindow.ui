@@ -978,6 +978,9 @@ QSlider::handle:horizontal {
      <addaction name="actionForce_2_35_1"/>
     </widget>
     <widget class="QMenu" name="menuSubtitle_Track">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="title">
       <string>Subtitle &amp;Track</string>
      </property>
@@ -1051,6 +1054,9 @@ QSlider::handle:horizontal {
      <string>&amp;Navigate</string>
     </property>
     <widget class="QMenu" name="menu_Chapters">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="title">
       <string>&amp;Chapters</string>
      </property>
@@ -1497,7 +1503,7 @@ QSlider::handle:horizontal {
   </action>
   <action name="action_Add_Subtitle_File">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="text">
     <string>&amp;Add Subtitle File...</string>

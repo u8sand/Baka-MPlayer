@@ -159,16 +159,16 @@ MainWindow::MainWindow(QWidget *parent):
     {
         if(mpv->getPlayState() > 0)
         {
-            QSignalMapper *signalMapper = new QSignalMapper(this);
+            QAction *action;
+            bool video = false;
+
             ui->menuSubtitle_Track->clear();
             ui->menuSubtitle_Track->addAction(ui->action_Add_Subtitle_File);
             for(auto &track : trackList)
             {
                 if(track.type == "sub")
                 {
-                    QAction *action = ui->menuSubtitle_Track->addAction(QString::number(track.id)+": "+track.title+" ("+track.lang+")");
-                    signalMapper->setMapping(action, track.id);
-
+                    action = ui->menuSubtitle_Track->addAction(QString::number(track.id)+": "+track.title+" ("+track.lang+")");
                     connect(action, &QAction::triggered,
                             [=]
                             {
@@ -189,26 +189,42 @@ MainWindow::MainWindow(QWidget *parent):
                                 mpv->Sid(track.id);
                             });
                 }
-                else if(track.type == "video" && // video track
-                        track.albumart)          // is album art
+                else if(track.type == "video") // video track
                 {
-                    ui->action_Hide_Album_Art_2->setEnabled(true);
+                    if(track.albumart) // is album art
+                    {
+                        ui->action_Hide_Album_Art_2->setEnabled(true);
+                    }
+                    else
+                        video = true;
                 }
             }
-
-            if(ui->menuSubtitle_Track->actions().count() == 1)
+            if(video)
+            {
+                ui->menuSubtitle_Track->setEnabled(true);
+                if(ui->menuSubtitle_Track->actions().count() > 1)
+                {
+                    ui->menuFont_Si_ze->setEnabled(true);
+                    ui->actionShow_Subtitles->setEnabled(true);
+                    ui->actionShow_Subtitles->setChecked(mpv->getSubtitleVisibility());
+                }
+                else
+                {
+                    ui->menuFont_Si_ze->setEnabled(false);
+                    ui->actionShow_Subtitles->setEnabled(false);
+                }
+                ui->menuTake_Screenshot->setEnabled(true);
+                ui->menuFit_Window->setEnabled(true);
+                ui->menuAspect_Ratio->setEnabled(true);
+            }
+            else
             {
                 ui->menuSubtitle_Track->setEnabled(false);
                 ui->menuFont_Si_ze->setEnabled(false);
                 ui->actionShow_Subtitles->setEnabled(false);
-            }
-            else
-            {
-                ui->menuSubtitle_Track->setEnabled(true);
-                ui->menuFont_Si_ze->setEnabled(true);
-                ui->actionShow_Subtitles->setEnabled(true);
-                ui->actionShow_Subtitles->setChecked(mpv->getSubtitleVisibility());
-
+                ui->menuTake_Screenshot->setEnabled(false);
+                ui->menuFit_Window->setEnabled(ui->action_Hide_Album_Art_2->isEnabled());
+                ui->menuAspect_Ratio->setEnabled(false);
             }
         }
     });
@@ -773,13 +789,13 @@ MainWindow::MainWindow(QWidget *parent):
                     mpv->AddSubtitleTrack(trackFile);
             });
                                                                         // View -> Font Size ->
-    connect(ui->actionS_ize, &QAction::triggered,                       // View -> Font Size -> Size +
+    connect(ui->action_Size, &QAction::triggered,                       // View -> Font Size -> Size +
             [=]
             {
                 mpv->SubtitleScale(.02, true);
             });
 
-    connect(ui->action_Size, &QAction::triggered,                       // View -> Font Size -> Size -
+    connect(ui->actionS_ize, &QAction::triggered,                       // View -> Font Size -> Size -
             [=]
             {
                 mpv->SubtitleScale(-.02, true);
@@ -1205,10 +1221,6 @@ void MainWindow::SetPlaybackControls(bool enable)
     ui->actionMedia_Info->setEnabled(enable);
     ui->actionShow_in_Folder->setEnabled(enable);
     ui->action_Full_Screen->setEnabled(enable);
-    ui->menuTake_Screenshot->setEnabled(enable);
-    ui->action_Add_Subtitle_File->setEnabled(enable);
-    ui->menuFit_Window->setEnabled(enable);
-    ui->menuAspect_Ratio->setEnabled(enable);
     if(!enable)
     {
         ui->action_Hide_Album_Art_2->setEnabled(false);
@@ -1226,6 +1238,19 @@ QString MainWindow::FormatTime(int _time)
     if(fi.length >= 60)   // minutes
         return time.toString("mm:ss");
     return time.toString("0:ss");   // seconds
+}
+
+bool MainWindow::SetScreenshotDir()
+{
+    QMessageBox::information(this, "Take Screenshot",
+                             "Choose the default location where you would like to save your screenshots. Also by default, we will save your screenshots as a jpg file. If you'd like to change any of these settings, it is under Preferences.");
+    QString dir = QFileDialog::getExistingDirectory(this, "Screenshot Directory");
+    if(dir != "")
+    {
+        mpv->ScreenshotDirectory(dir);
+        return true;
+    }
+    return false;
 }
 
 void MainWindow::FullScreen(bool fs)
@@ -1376,20 +1401,6 @@ void MainWindow::DimLights(bool dim)
     raise();
     setFocus();
 }
-
-bool MainWindow::SetScreenshotDir()
-{
-    QMessageBox::information(this, "Take Screenshot",
-                             "Choose the default location where you would like to save your screenshots. Also by default, we will save your screenshots as a jpg file. If you'd like to change any of these settings, it is under Preferences.");
-    QString dir = QFileDialog::getExistingDirectory(this, "Screenshot Directory");
-    if(dir != "")
-    {
-        mpv->ScreenshotDirectory(dir);
-        return true;
-    }
-    return false;
-}
-
 
 #ifdef Q_OS_WIN
 void MainWindow::SetAlwaysOnTop(bool ontop)
