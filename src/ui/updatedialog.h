@@ -21,7 +21,7 @@ public:
 
 private:
     Ui::UpdateDialog *ui;
-    UpdateManager *updateManager;
+    UpdateManager *update;
 };
 
 #endif // UPDATEDIALOG_H
