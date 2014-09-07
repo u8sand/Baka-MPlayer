@@ -451,8 +451,7 @@ void MpvHandler::ScreenshotTemplate(QString s)
 {
     if(mpv)
     {
-        s = screenshotDir+s;
-        const QByteArray tmp = s.toUtf8();
+        const QByteArray tmp = (screenshotDir+"/"+s).toUtf8();
         mpv_set_option_string(mpv, "screenshot-template", tmp.data());
     }
     setScreenshotTemplate(s);
@@ -462,8 +461,7 @@ void MpvHandler::ScreenshotDirectory(QString s)
 {
     if(mpv)
     {
-        s += screenshotTemplate;
-        const QByteArray tmp = s.toUtf8();
+        const QByteArray tmp = (s+"/"+screenshotTemplate).toUtf8();
         mpv_set_option_string(mpv, "screenshot-template", tmp.data());
     }
     setScreenshotDir(s);
