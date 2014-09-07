@@ -13,12 +13,6 @@ provides=('bakamplayer')
 source=("$pkgname"::'git://github.com/u8sand/Baka-MPlayer.git')
 md5sums=('SKIP')
 
-pkgver() {
-  cd "$srcdir/$pkgname"
-  # Use the tag of the last commit
-  git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
-}
-
 build() {
   cd "$srcdir/$pkgname"
 	./make.sh
