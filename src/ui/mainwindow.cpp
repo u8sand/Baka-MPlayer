@@ -439,7 +439,11 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->openButton, &OpenButton::LeftClick,                     // Playback: Open button (left click)
             [=]
             {
-                mpv->LoadFile(QFileDialog::getOpenFileName(this, "Open File", mpv->getPath(), Mpv::media_filetypes.join(" ")));
+                mpv->LoadFile(QFileDialog::getOpenFileName(this,
+                               "Open File",mpv->getPath(),
+                               "Media Files ("+Mpv::media_filetypes.join(" ")+");;"+
+                               "Video Files ("+Mpv::video_filetypes.join(" ")+");;"+
+                               "Audio Files ("+Mpv::audio_filetypes.join(" ")+")"));
             });
 
     connect(ui->openButton, &OpenButton::MiddleClick,                   // Playback: Open button (middle click)
@@ -629,7 +633,11 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->action_Open_File, &QAction::triggered,                  // File -> Open File
             [=]
             {
-                mpv->LoadFile(QFileDialog::getOpenFileName(this, "Open File", mpv->getPath(), Mpv::media_filetypes.join(" ")));
+                mpv->LoadFile(QFileDialog::getOpenFileName(this,
+                              "Open File",mpv->getPath(),
+                              "Media Files ("+Mpv::media_filetypes.join(" ")+");;"+
+                              "Video Files ("+Mpv::video_filetypes.join(" ")+");;"+
+                              "Audio Files ("+Mpv::audio_filetypes.join(" ")+")"));
             });
 
     connect(ui->actionOpen_URL, &QAction::triggered,                    // File -> Open URL
@@ -759,7 +767,8 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->action_Add_Subtitle_File, &QAction::triggered,          //  View -> Subtitle Track -> Add Subtitle File...
             [=]
             {
-                QString trackFile = QFileDialog::getOpenFileName(this, "Open Subtitle File", mpv->getPath(), Mpv::subtitle_filetypes.join(" "));
+                QString trackFile = QFileDialog::getOpenFileName(this, "Open Subtitle File", mpv->getPath(),
+                                                                  "Subtitle Files ("+Mpv::subtitle_filetypes.join(" ")+")");
                 if(trackFile != "")
                     mpv->AddSubtitleTrack(trackFile);
             });
