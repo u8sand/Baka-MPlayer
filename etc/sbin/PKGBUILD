@@ -22,13 +22,13 @@ pkgver() {
 build() {
   cd "$srcdir/$pkgname"
 	./make.sh
-	gzip -c etc/doc/bakamplayer.1.man > etc/doc/bakamplayer.1.gz
+	gzip -c etc/doc/bakamplayer.man > etc/doc/bakamplayer.1.gz
 }
 
 package() {
   cd "$srcdir/$pkgname"
 	install -D "build/Baka-MPlayer" "$pkgdir/usr/bin/bakamplayer"
-	install -D "etc/doc/manual.md" "$pkgdir/usr/share/doc/bakamplayer"
-	install -D "etc/doc/bakamplayer.1.gz" "$pkgdir/usr/share/man/man1/"
-	install -D "LICENSE" "$pkgdir/usr/share/licenses/bakamplayer"
+	install -D "etc/doc/manual.md" "$pkgdir/usr/share/doc/bakamplayer/manual.md"
+	install -D "etc/doc/bakamplayer.1.gz" "$pkgdir/usr/share/man/man1/bakamplayer.1.gz"
+	install -D "LICENSE" "$pkgdir/usr/share/licenses/bakamplayer/LICENSE"
 }
