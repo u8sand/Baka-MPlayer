@@ -235,14 +235,9 @@ void MpvHandler::PreviousFile()
     PlayIndex(index-1);
 }
 
-void MpvHandler::RearrangePlaylist(QList<int> indexes)
+void MpvHandler::ReorderPlaylist(int old_index, int new_index)
 {
-    int n = 0;
-    for(QList<int>::iterator i = indexes.begin(); i != indexes.end(); i++, n++)
-    {
-        if(n != *i)
-            playlist[n].swap(playlist[*i]);
-    }
+    playlist.swap(old_index, new_index);
 }
 
 void MpvHandler::RefreshPlaylist()

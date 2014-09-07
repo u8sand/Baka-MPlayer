@@ -13,6 +13,9 @@ public:
 
 protected:
     void contextMenuEvent(QContextMenuEvent *event);
+
+signals:
+    void reordered(int old_index, int new_index); // todo
 };
 
 #endif // CUSTOMLISTWIDGET_H

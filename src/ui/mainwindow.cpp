@@ -629,13 +629,10 @@ MainWindow::MainWindow(QWidget *parent):
             });
     ui->playlistWidget->addAction(action);
 
-    connect(ui->playlistWidget, &CustomListWidget::indexesMoved,        // Playlist: Re-arrange [todo]
-            [=](const QModelIndexList &indexList)
+    connect(ui->playlistWidget, &CustomListWidget::reordered,           // Playlist: Re-arrange
+            [=](int old_index, int new_index)
             {
-                QList<int> indexes;
-                for(auto &index : indexList)
-                    indexes.push_back(index.row());
-                mpv->RearrangePlaylist(indexes);
+                mpv->ReorderPlaylist(old_index, new_index);
             });
 
                                                                         // File ->
