@@ -31,7 +31,7 @@ See Linux instructions. If compilation goes successfully you'll have built `Baka
 
 If your distribution does not provide a package--you must compile baka mplayer for your system. This requires libmpv (see https://github.com/mpv-player/mpv), qt5 (https://qt-project.org/), pkg-config, make, gcc, and git.
 
-	git clone -b release https://github.com/u8sand/Baka-MPlayer.git
+	git clone https://github.com/u8sand/Baka-MPlayer.git
 	cd "Baka-MPlayer"
 	./make.sh
 	
