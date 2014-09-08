@@ -13,7 +13,7 @@
 
 #include "mpvhandler.h"
 #include "updatemanager.h"
-#include "lightdialog.h"
+#include "dimdialog.h"
 
 namespace Ui {
 class MainWindow;
@@ -51,7 +51,7 @@ private slots:
     void HideAlbumArt(bool hide);                   // hides the album art
     void FitWindow(int percent);                    // fit the window the the specified percent
     void SetAspectRatio(QString aspect);            // set the aspect ratio to specified proportions
-    void DimLights(bool dim);                       // grays out the rest of the screen with LightDialog
+    void DimDesktop(bool dim);                      // grays out the rest of the screen with LightDialog
     void AlwaysOnTop(bool ontop);
 
 private:
@@ -68,7 +68,7 @@ private:
 
     QSystemTrayIcon *sysTrayIcon;
     QMenu           *trayIconMenu;
-    LightDialog     *light;
+    DimDialog       *dimDialog;
 
     // variables
     QString onTop;
