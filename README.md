@@ -15,12 +15,7 @@ Its simple design reflects the idea for an uncluttered, simple, and enjoyable en
 
 #### Official Releases
 
-Download archive with the binary for your system (64 bit or 32 bit) from
-http://bakamplayer.u8sand.net/downloads.php
-
-The downloaded file will be a `.7zip` file. You can use either 7zip or WinRAR to extract the files wherever you like--it works as a stand-alone executable and does not need to be installed (you can carry it on a USB drive). It's configuration file will be named `bakamplayer.ini`.
-
-To treat it as a standard Windows program--extract it to `C:/Program Files/Baka MPlayer/` then make a shortcut on your desktop.
+The official Windows builds will be available soon.
 
 #### Development Release
 
