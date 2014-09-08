@@ -45,14 +45,14 @@ MainWindow::MainWindow(QWidget *parent):
 {
     QAction *action;
 
-#if defined(Q_OS_LINUX) || defined(Q_OS_UNIX) // if on x11, dim lights requies a compositing manager, make light NULL if there is none
+#if defined(Q_OS_LINUX) || defined(Q_OS_UNIX) // if on x11, dim desktop requires a compositing manager, make dimDialog NULL if there is none
     Atom a = XInternAtom(QX11Info::display(), "_NET_WM_CM_S0", false);
-    if(a && XGetSelectionOwner(QX11Info::display(), a)) // QX11Info::isCompositingManagerRunning()
-        light = new LightDialog(); // lightdialog must be initialized before ui is setup
+    if(a && XGetSelectionOwner(QX11Info::display(), a)) // hack for QX11Info::isCompositingManagerRunning()
+        dimDialog = new DimDialog(); // dimdialog must be initialized before ui is setup
     else
-        light = 0;
+        dimDialog = 0;
 #else
-    light = new LightDialog(); // lightdialog must be initialized before ui is setup
+    dimdialog = new DimDialog(); // dimdialog must be initialized before ui is setup
 #endif
     ui->setupUi(this);
     ShowPlaylist(false);
@@ -946,10 +946,10 @@ MainWindow::MainWindow(QWidget *parent):
                 HideAlbumArt(b);
             });
 
-    connect(ui->action_Dim_Lights_2, &QAction::triggered,               // Settings -> Dim Lights
+    connect(ui->action_Dim_Desktop, &QAction::triggered,               // Settings -> Dim Lights
             [=](bool b)
             {
-                DimLights(b);
+                DimDesktop(b);
             });
 
     connect(ui->actionShow_D_ebug_Output, &QAction::triggered,          // Settings -> Show Debug Output
@@ -1000,12 +1000,12 @@ MainWindow::MainWindow(QWidget *parent):
             {
                 // note: focusWindow will be 0 if anything is clicked outside of our program which is useful
                 // the only other problem is that when dragging by the top handle
-                // it will be 0 resulting in lights going off, this is a side effect
+                // it will be 0 thus reverting dim desktop, this is a side effect
                 // which will have to stay for now.
-                if(focusWindow == 0 && light->isVisible())
+                if(focusWindow == 0 && dimdialog->isVisible())
                 {
-                    light->setVisible(false); // remove dimlights
-                    ui->action_Dim_Lights_2->setChecked(false); // uncheck dimlights
+                    dimdialog->setVisible(false); // remove dim desktop
+                    ui->action_Dim_Desktop->setChecked(false); // uncheck dim desktop
                 }
             });
 
@@ -1291,10 +1291,10 @@ void MainWindow::FullScreen(bool fs)
 {
     if(fs)
     {
-        if(light->isVisible())
+        if(dimdialog->isVisible())
         {
-            light->setVisible(false);
-            ui->action_Dim_Lights_2->setChecked(false);
+            dimdialog->setVisible(false);
+            ui->action_Dim_Desktop->setChecked(false);
         }
         setWindowState(windowState() | Qt::WindowFullScreen);
         ui->menubar->setVisible(false);
@@ -1418,20 +1418,20 @@ void MainWindow::SetAspectRatio(QString aspect)
     mpv->Aspect(aspect);
 }
 
-void MainWindow::DimLights(bool dim)
+void MainWindow::DimDesktop(bool dim)
 {
 #if defined(Q_OS_LINUX) || defined(Q_OS_UNIX)
-    if(dim && !light) // if light is NULL (composition manager not found)
+    if(dim && !dimdialog) // dimdialog is NULL if desktop compositor is disabled or missing
     {
-        QMessageBox::information(this, "Dim Lights", "Dim lights feature requires desktop composition to be enabled. This can be done through Window Manager Desktop.");
-        ui->action_Dim_Lights_2->setChecked(false);
+        QMessageBox::information(this, "Dim Desktop", "In order to Dim Desktop, the desktop compositor has to be enabled. This can be done through Window Manager Desktop.");
+        ui->action_Dim_Desktop->setChecked(false);
         return;
     }
 #endif
     if(dim)
-        light->show();
+        dimdialog->show();
     else
-        light->close();
+        dimdialog->close();
     activateWindow();
     raise();
     setFocus();

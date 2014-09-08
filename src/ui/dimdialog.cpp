@@ -1,6 +1,6 @@
-#include "lightdialog.h"
+#include "dimdialog.h"
 
-LightDialog::LightDialog(QWidget *parent) :
+DimDialog::DimDialog(QWidget *parent) :
     QDialog(parent)
 {
     setWindowState(Qt::WindowFullScreen);

@@ -927,7 +927,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>580</width>
-     <height>24</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
@@ -1078,7 +1078,7 @@ QSlider::handle:horizontal {
     <addaction name="action_Show_Playlist_2"/>
     <addaction name="action_Hide_Album_Art_2"/>
     <addaction name="separator"/>
-    <addaction name="action_Dim_Lights_2"/>
+    <addaction name="action_Dim_Desktop"/>
     <addaction name="actionShow_D_ebug_Output"/>
     <addaction name="separator"/>
     <addaction name="action_Preferences"/>
@@ -1394,12 +1394,12 @@ QSlider::handle:horizontal {
     <string>&amp;Hide Album Art</string>
    </property>
   </action>
-  <action name="action_Dim_Lights_2">
+  <action name="action_Dim_Desktop">
    <property name="checkable">
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>&amp;Dim Lights</string>
+    <string>&amp;Dim Desktop</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+D</string>

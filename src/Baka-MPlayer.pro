@@ -49,7 +49,7 @@ SOURCES += main.cpp\
     ui/aboutdialog.cpp \
     ui/updatedialog.cpp \
     ui/inputdialog.cpp \
-    ui/lightdialog.cpp \
+    ui/dimdialog.cpp \
     ui/preferencesdialog.cpp
 
 HEADERS  += \
@@ -70,7 +70,7 @@ HEADERS  += \
     ui/aboutdialog.h \
     ui/updatedialog.h \
     ui/inputdialog.h \
-    ui/lightdialog.h \
+    ui/dimdialog.h \
     ui/preferencesdialog.h
 
 FORMS    += \
