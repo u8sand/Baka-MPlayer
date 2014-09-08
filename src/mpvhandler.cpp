@@ -449,11 +449,11 @@ void MpvHandler::ScreenshotFormat(QString s)
 
 void MpvHandler::ScreenshotTemplate(QString s)
 {
-    if(mpv)
-    {
-        const QByteArray tmp = (screenshotDir+"/"+s).toUtf8();
-        mpv_set_option_string(mpv, "screenshot-template", tmp.data());
-    }
+//    if(mpv)
+//    {
+//        const QByteArray tmp = (screenshotDir+"/"+s).toUtf8();
+//        mpv_set_option_string(mpv, "screenshot-template", tmp.data());
+//    }
     setScreenshotTemplate(s);
 }
 

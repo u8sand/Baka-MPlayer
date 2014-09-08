@@ -7,7 +7,7 @@ UpdateDialog::UpdateDialog(UpdateManager *updateManager, QWidget *parent) :
 {
     ui->setupUi(this);
 #if defined(Q_OS_UNIX) || defined(Q_OS_LINUX)
-    ui->downloadButton->setEnabled(false); // no update support on unix/linux, we just show if one is available
+    ui->updateButton->setVisible(false); // no update support on unix/linux, we just show if one is available
 #endif
 
     connect(updateManager, &UpdateManager::Update,
@@ -17,13 +17,13 @@ UpdateDialog::UpdateDialog(UpdateManager *updateManager, QWidget *parent) :
                 ui->plainTextEdit->setPlainText(info["bugfixes"]);
                 if(info["version"] == BAKA_MPLAYER_VERSION)
                 {
-                    ui->downloadButton->setEnabled(false);
+                    ui->updateButton->setEnabled(false);
                     ui->updateLabel->setText("You have the latest version!");
                 }
 
             });
 #if defined(Q_OS_WIN)
-    connect(ui->downloadButton, &QPushButton::clicked,
+    connect(ui->updateButton, &QPushButton::clicked,
             [=]
             {
                 update->DownloadUpdate();
