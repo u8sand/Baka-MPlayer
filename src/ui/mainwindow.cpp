@@ -37,7 +37,8 @@ MainWindow::MainWindow(QWidget *parent):
     ui(new Ui::MainWindow),
     lastMousePos(QPoint()),
     move(false),
-    init(false)
+    init(false),
+    autohide(new QTimer(this))
 {
     QAction *action;
 
@@ -107,6 +108,13 @@ MainWindow::MainWindow(QWidget *parent):
                 mpv->Debug(b);
                 ui->actionShow_D_ebug_Output->setChecked(b);
                 ui->outputTextEdit->setVisible(b);
+            });
+
+    connect(autohide, &QTimer::timeout, // cursor autohide
+            [=]
+            {
+                setCursor(QCursor(Qt::BlankCursor));
+                autohide->stop();
             });
 
     // mpv
@@ -1146,26 +1154,37 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *event)
 void MainWindow::mouseMoveEvent(QMouseEvent *event)
 {
     static QRect playbackRect;
+
     if(move)
     {
         QMainWindow::move(pos()+event->pos()-lastMousePos);
         event->accept();
     }
-    else if(!ui->playbackLayoutWidget->isVisible() &&
-            playbackRect.contains(event->pos()))
+    else if(isFullScreen())
     {
-        ui->playbackLayoutWidget->setVisible(true);
-        ui->seekBar->setVisible(true);
-    }
-    else if(isFullScreen() &&
-            ui->playbackLayoutWidget->isVisible())
-    {
-        playbackRect = ui->playbackLayoutWidget->geometry();
-        playbackRect.setTop(playbackRect.top()-20);
-        if(!playbackRect.contains(event->pos()))
+        setCursor(QCursor(Qt::ArrowCursor)); // show the cursor
+        autohide->stop();
+
+        if(!ui->playbackLayoutWidget->isVisible())
         {
-            ui->playbackLayoutWidget->setVisible(false);
-            ui->seekBar->setVisible(false);
+            if(playbackRect.contains(event->pos()))
+            {
+                ui->playbackLayoutWidget->setVisible(true);
+                ui->seekBar->setVisible(true);
+            }
+            else
+                autohide->start(500);
+        }
+        else
+        {
+            playbackRect = ui->playbackLayoutWidget->geometry();
+            playbackRect.setTop(playbackRect.top()-20);
+            if(!playbackRect.contains(event->pos()))
+            {
+                ui->playbackLayoutWidget->setVisible(false);
+                ui->seekBar->setVisible(false);
+                autohide->start(500);
+            }
         }
     }
     QMainWindow::mouseMoveEvent(event);
@@ -1291,6 +1310,7 @@ void MainWindow::FullScreen(bool fs)
         ui->seekBar->setVisible(true);
         ui->playbackLayoutWidget->setVisible(true);
         setMouseTracking(false); // stop registering mouse move event
+        setCursor(QCursor(Qt::ArrowCursor)); // show cursor
     }
 }
 

@@ -9,6 +9,7 @@
 #include <QMouseEvent>
 #include <QEvent>
 #include <QPoint>
+#include <QTimer>
 
 #include "mpvhandler.h"
 #include "updatemanager.h"
@@ -69,6 +70,7 @@ private:
     bool            move,
                     pathChanged,
                     init;
+    QTimer          *autohide;
 
     QSystemTrayIcon *sysTrayIcon;
     QMenu           *trayIconMenu;

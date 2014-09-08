@@ -27,7 +27,7 @@ MpvHandler::MpvHandler(int64_t wid, QObject *parent):
     // set mpv options
     mpv_set_option(mpv, "wid", MPV_FORMAT_INT64, &wid);
     mpv_set_option_string(mpv, "input-cursor", "no");   // no mouse handling
-    mpv_set_option_string(mpv, "cursor-autohide", "no");// we'll handle hiding the cursor
+    mpv_set_option_string(mpv, "cursor-autohide", "no");// no cursor-autohide, we handle that
     mpv_set_option_string(mpv, "af", "scaletempo");     // make sure audio tempo is scaled (when speed is changing)
 
     // get updates when these properties change
