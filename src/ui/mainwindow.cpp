@@ -20,6 +20,9 @@
 
 #if defined(Q_OS_UNIX) || defined(Q_OS_LINUX)
 #include <QX11Info>
+#include <X11/Xlib.h>
+//#include <X11/Xatom.h>
+//#include <X11/Xutil.h>
 #else
 #include <windows.h>
 #endif
@@ -43,11 +46,11 @@ MainWindow::MainWindow(QWidget *parent):
     QAction *action;
 
 #if defined(Q_OS_LINUX) || defined(Q_OS_UNIX) // if on x11, dim lights requies a compositing manager, make light NULL if there is none
-    // todo:
-//    if(QX11Info::isCompositingManagerRunning())
+    Atom a = XInternAtom(QX11Info::display(), "_NET_WM_CM_S0", false);
+    if(a && XGetSelectionOwner(QX11Info::display(), a)) // QX11Info::isCompositingManagerRunning()
         light = new LightDialog(); // lightdialog must be initialized before ui is setup
-//    else
-//        light = 0;
+    else
+        light = 0;
 #else
     light = new LightDialog(); // lightdialog must be initialized before ui is setup
 #endif

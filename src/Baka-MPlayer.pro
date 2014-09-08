@@ -24,6 +24,7 @@ UI_DIR = $${DESTDIR}/ui
 
 unix {
     QT += x11extras
+    PKGCONFIG += x11
 }
 
 win32 {
