@@ -8,10 +8,15 @@ arch=('x86_64' 'i686')
 license=('GPLv2')
 depends=('mpv' 'qt5-base')
 makedepends=('git' 'make')
-conflicts=('bakamplayer')
-provides=('bakamplayer')
+conflicts=('bakamplayer' 'baka-mplayer')
+provides=('baka-mplayer')
 source=("$pkgname"::'git://github.com/u8sand/Baka-MPlayer.git#branch=release')
 md5sums=('SKIP')
+
+pkgver() {
+	cd "$srcdir/$pkgname"
+	echo $(git describe --tag | sed 's#-#_#g;s#v##')
+}
 
 build() {
   cd "$srcdir/$pkgname"
