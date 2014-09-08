@@ -26,7 +26,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-    void Load(QString f);
+    void Load(QString f = QString());
 
 protected:
     void LoadSettings();
@@ -52,13 +52,7 @@ private slots:
     void FitWindow(int percent);                    // fit the window the the specified percent
     void SetAspectRatio(QString aspect);            // set the aspect ratio to specified proportions
     void DimLights(bool dim);                       // grays out the rest of the screen with LightDialog
-
-#ifdef Q_OS_WIN
-    void SetAlwaysOnTop(bool ontop);
     void AlwaysOnTop(bool ontop);
-    void AlwaysOnTopWhenPlaying(bool ontop);
-    void NeverOnTop(bool ontop);
-#endif
 
 private:
     Ui::MainWindow  *ui;

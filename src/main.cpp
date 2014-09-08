@@ -19,6 +19,8 @@ int main(int argc, char *argv[])
     QStringList::iterator arg = args.begin();
     if(++arg != args.end())
         w.Load(*arg);
+    else
+        w.Load();
 
     return a.exec();
 }

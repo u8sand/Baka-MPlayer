@@ -21,8 +21,6 @@
 #if defined(Q_OS_UNIX) || defined(Q_OS_LINUX)
 #include <QX11Info>
 #include <X11/Xlib.h>
-//#include <X11/Xatom.h>
-//#include <X11/Xutil.h>
 #else
 #include <windows.h>
 #endif
@@ -78,17 +76,16 @@ MainWindow::MainWindow(QWidget *parent):
     // setup signals & slots
 
     // mainwindow
-
-//#ifdef Q_WIN_OS
-//    connect(this, &MainWindow::onTopChanged,
-//            [=](QString onTop)
-//            {
-//                if(onTop == "never")
-//                    AlwaysOnTop(true);
-//                else if(trayIcon == "always")
-//                    AlwaysOnTop(false);
-//            });
-//#endif
+    connect(this, &MainWindow::onTopChanged,
+            [=](QString onTop)
+            {
+                if(onTop == "never")
+                    AlwaysOnTop(false);
+                else if(onTop == "always")
+                    AlwaysOnTop(true);
+                else if(onTop == "playing" && mpv->getPlayState() > 0)
+                    AlwaysOnTop(true);
+            });
 
 //    connect(this, &MainWindow::autoFitChanged,
 //            [=](int i)
@@ -308,20 +305,16 @@ MainWindow::MainWindow(QWidget *parent):
                 case Mpv::Playing:
                     ui->playButton->setIcon(QIcon(":/img/default_pause.svg"));
                     ui->action_Play->setText("&Pause");
-            #ifdef Q_OS_WIN
                     if(onTop == "playing")
-                        SetAlwaysOnTop(true);
-            #endif
+                        AlwaysOnTop(true);
                     break;
 
                 case Mpv::Paused:
                 case Mpv::Stopped:
                     ui->playButton->setIcon(QIcon(":/img/default_play.svg"));
                     ui->action_Play->setText("&Play");
-            #ifdef Q_OS_WIN
                     if(ui->actionWhen_Playing->isChecked())
-                        SetAlwaysOnTop(false);
-            #endif
+                        AlwaysOnTop(false);
                     break;
 
                 case Mpv::Idle:
@@ -1058,7 +1051,6 @@ MainWindow::MainWindow(QWidget *parent):
                                     QSize(settings->value("window/width", 600).toInt(),
                                           settings->value("window/height", 430).toInt()),
                                     qApp->desktop()->availableGeometry()));
-    LoadSettings();
 }
 
 MainWindow::~MainWindow()
@@ -1079,7 +1071,7 @@ void MainWindow::LoadSettings()
     setTrayIcon(settings->value("window/trayIcon", false).toBool());
     setHidePopup(settings->value("window/hidePopup", false).toBool());
     setRemaining(settings->value("window/remaining", true).toBool());
-    ui->splitter->setNormalPosition(settings->value("window/splitter",0).toInt());
+    ui->splitter->setNormalPosition(settings->value("window/splitter", ui->splitter->max()*1.0/8).toInt());
     setDebug(settings->value("common/debug", false).toBool());
 
     mpv->LoadSettings(settings);
@@ -1108,6 +1100,9 @@ void MainWindow::SaveSettings()
 
 void MainWindow::Load(QString file)
 {
+    // load the settings here--the constructor has already been called
+    // this solves some issues with setting things before the constructor has ended
+    LoadSettings();
     mpv->LoadFile(file);
 }
 
@@ -1320,8 +1315,6 @@ void MainWindow::FullScreen(bool fs)
 
 void MainWindow::ShowPlaylist(bool visible)
 {
-    if(!ui->splitter->normalPosition()) ui->splitter->setNormalPosition(ui->splitter->max()*1.0/8); // default normal position: must be done here because in constructor max is 0
-
     if(visible)
         ui->splitter->setPosition(ui->splitter->normalPosition()); // bring splitter position to normal
     else
@@ -1437,8 +1430,7 @@ void MainWindow::DimLights(bool dim)
     setFocus();
 }
 
-#ifdef Q_OS_WIN
-void MainWindow::SetAlwaysOnTop(bool ontop)
+void MainWindow::AlwaysOnTop(bool ontop)
 {
     // maybe in the future, Linux X specific code that way we could enable it for both platforms
 #if defined(Q_OS_WIN)
@@ -1446,21 +1438,25 @@ void MainWindow::SetAlwaysOnTop(bool ontop)
                  ontop ? HWND_TOPMOST : HWND_NOTOPMOST,
                  0, 0, 0, 0,
                  SWP_NOSIZE | SWP_NOMOVE | SWP_SHOWWINDOW);
-//#elif defined(Q_OS_LINUX) // though this code should work, I'm not sure how to implement it yet
-//    XClientMessageEvent xclient;
-//    memset(&xclient, 0, sizeof(xclient));
-//    xclient.type = ClientMessage;
-//    xclient.window = window;
-//    xclient.message_type = "_NET_WM_STATE";
-//    xclient.format = 32;
-//    xclient.data.l[0] = ontop? 1 : 0;
-//    xclient.data.l[1] = "_NET_WM_STATE_ABOVE"; // _NET_WM_STATE_BELOW
-//    xclient.data.l[2] = 0;
-//    xclient.data.l[3] = 0;
-//    xclient.data.l[4] = 0;
-//    XSendEvent (window, NULL, false,
-//        SubstructureRedirectMask | SubstructureNotifyMask,
-//        (XEvent*)&xclient);
+#elif defined(Q_OS_LINUX)
+    Display *display = QX11Info::display();
+    XEvent event;
+    event.xclient.type = ClientMessage;
+    event.xclient.serial = 0;
+    event.xclient.send_event = True;
+    event.xclient.display = display;
+    event.xclient.window  = winId();
+    event.xclient.message_type = XInternAtom (display, "_NET_WM_STATE", False);
+    event.xclient.format = 32;
+
+    event.xclient.data.l[0] = ontop;
+    event.xclient.data.l[1] = XInternAtom (display, "_NET_WM_STATE_ABOVE", False);
+    event.xclient.data.l[2] = 0; //unused.
+    event.xclient.data.l[3] = 0;
+    event.xclient.data.l[4] = 0;
+
+    XSendEvent(display, DefaultRootWindow(display), False,
+                           SubstructureRedirectMask|SubstructureNotifyMask, &event);
 #else // qt code
     if(ontop)
         setWindowFlags(windowFlags() | Qt::WindowStaysOnTopHint);
@@ -1469,34 +1465,3 @@ void MainWindow::SetAlwaysOnTop(bool ontop)
     show();
 #endif
 }
-
-void MainWindow::AlwaysOnTop(bool ontop)
-{
-    ui->actionWhen_Playing->setChecked(false);
-    ui->action_Never->setChecked(false);
-    SetAlwaysOnTop(ontop);
-}
-
-void MainWindow::AlwaysOnTopWhenPlaying(bool ontop)
-{
-    if(ontop)
-    {
-        ui->action_Always->setChecked(false);
-        ui->action_Never->setChecked(false);
-        if(mpv->GetPlayState() == Mpv::Playing)
-            SetAlwaysOnTop(true);
-    }
-    else
-        SetAlwaysOnTop(false);
-}
-
-void MainWindow::NeverOnTop(bool ontop)
-{
-    if(ontop)
-    {
-        ui->actionWhen_Playing->setChecked(false);
-        ui->action_Always->setChecked(false);
-        SetAlwaysOnTop(false);
-    }
-}
-#endif
