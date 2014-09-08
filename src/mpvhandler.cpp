@@ -280,14 +280,20 @@ void MpvHandler::ShowAllPlaylist(bool b)
 
 void MpvHandler::Play()
 {
-    const char *args[] = {"set", "pause", "no", NULL};
-    AsyncCommand(args);
+    if(playState > 0)
+    {
+        const char *args[] = {"set", "pause", "no", NULL};
+        AsyncCommand(args);
+    }
 }
 
 void MpvHandler::Pause()
 {
-    const char *args[] = {"set", "pause", "yes", NULL};
-    AsyncCommand(args);
+    if(playState > 0)
+    {
+        const char *args[] = {"set", "pause", "yes", NULL};
+        AsyncCommand(args);
+    }
 }
 
 void MpvHandler::Stop()

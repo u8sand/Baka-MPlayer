@@ -22,9 +22,9 @@ MOC_DIR = $${DESTDIR}/moc
 RCC_DIR = $${DESTDIR}/rcc
 UI_DIR = $${DESTDIR}/ui
 
-#unix {
-#    QT += x11extras
-#}
+unix {
+    QT += x11extras
+}
 
 win32 {
         CONFIG += static

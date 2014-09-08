@@ -19,7 +19,7 @@
 #include <QWindow>
 
 #if defined(Q_OS_UNIX) || defined(Q_OS_LINUX)
-//#include <QX11Info>
+#include <QX11Info>
 #else
 #include <windows.h>
 #endif
@@ -42,14 +42,15 @@ MainWindow::MainWindow(QWidget *parent):
 {
     QAction *action;
 
-//#if defined(Q_OS_LINUX) || defined(Q_OS_UNIX) // if on x11, dim lights requies a compositing manager, make light NULL if there is none
+#if defined(Q_OS_LINUX) || defined(Q_OS_UNIX) // if on x11, dim lights requies a compositing manager, make light NULL if there is none
+    // todo:
 //    if(QX11Info::isCompositingManagerRunning())
-//        light = new LightDialog(); // lightdialog must be initialized before ui is setup
+        light = new LightDialog(); // lightdialog must be initialized before ui is setup
 //    else
 //        light = 0;
-//#else
+#else
     light = new LightDialog(); // lightdialog must be initialized before ui is setup
-//#endif
+#endif
     ui->setupUi(this);
     ShowPlaylist(false);
     addActions(ui->menubar->actions()); // makes menubar shortcuts work even when menubar is hidden
@@ -1416,14 +1417,14 @@ void MainWindow::SetAspectRatio(QString aspect)
 
 void MainWindow::DimLights(bool dim)
 {
-//#if defined(Q_OS_LINUX) || defined(Q_OS_UNIX)
-//    if(dim && !light) // if light is NULL (composition manager not found)
-//    {
-//        QMessageBox::information(this, "Dim Lights", "Dim lights feature requires desktop composition to be enabled. This can be done through Window Manager Desktop.");
-//        ui->action_Dim_Lights_2->setChecked(false);
-//        return;
-//    }
-//#endif
+#if defined(Q_OS_LINUX) || defined(Q_OS_UNIX)
+    if(dim && !light) // if light is NULL (composition manager not found)
+    {
+        QMessageBox::information(this, "Dim Lights", "Dim lights feature requires desktop composition to be enabled. This can be done through Window Manager Desktop.");
+        ui->action_Dim_Lights_2->setChecked(false);
+        return;
+    }
+#endif
     if(dim)
         light->show();
     else
