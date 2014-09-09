@@ -988,19 +988,22 @@ MainWindow::MainWindow(QWidget *parent):
 
     // qApp
 
-    connect(qApp, &QApplication::focusWindowChanged,
-            [=](QWindow *focusWindow)
-            {
-                // note: focusWindow will be 0 if anything is clicked outside of our program which is useful
-                // the only other problem is that when dragging by the top handle
-                // it will be 0 thus reverting dim desktop, this is a side effect
-                // which will have to stay for now.
-                if(focusWindow == 0 && dimDialog->isVisible())
+    if(dimDialog) // no need to monitor focus if you can't use dimDialog
+    {
+        connect(qApp, &QApplication::focusWindowChanged,
+                [=](QWindow *focusWindow)
                 {
-                    dimDialog->setVisible(false); // remove dim desktop
-                    ui->action_Dim_Desktop->setChecked(false); // uncheck dim desktop
-                }
-            });
+                    // note: focusWindow will be 0 if anything is clicked outside of our program which is useful
+                    // the only other problem is that when dragging by the top handle
+                    // it will be 0 thus reverting dim desktop, this is a side effect
+                    // which will have to stay for now.
+                    if(focusWindow == 0 && dimDialog->isVisible())
+                    {
+                        dimDialog->setVisible(false); // remove dim desktop
+                        ui->action_Dim_Desktop->setChecked(false); // uncheck dim desktop
+                    }
+                });
+    }
 
     // keyboard shortcuts
     action = new QAction(this);
