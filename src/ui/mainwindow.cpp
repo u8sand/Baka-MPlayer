@@ -1419,7 +1419,7 @@ void MainWindow::DimDesktop(bool dim)
 {
     if(!dimDialog) // dimDialog is NULL if desktop compositor is disabled or missing
     {
-        QMessageBox::information(this, "Dim Desktop", "In order to Dim Desktop, the desktop compositor has to be enabled. This can be done through Window Manager Desktop.");
+        QMessageBox::information(this, "Dim Desktop", "In order to dim the desktop, the desktop compositor has to be enabled. This can be done through Window Manager Desktop.");
         ui->action_Dim_Desktop->setChecked(false);
         return;
     }
