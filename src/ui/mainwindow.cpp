@@ -1313,6 +1313,7 @@ void MainWindow::FullScreen(bool fs)
         ui->playbackLayoutWidget->setVisible(true);
         setMouseTracking(false); // stop registering mouse move event
         setCursor(QCursor(Qt::ArrowCursor)); // show cursor
+        autohide->stop();
     }
 }
 
