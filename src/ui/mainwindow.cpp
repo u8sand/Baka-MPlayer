@@ -50,7 +50,7 @@ MainWindow::MainWindow(QWidget *parent):
     else
         dimDialog = 0;
 #else
-    dimdialog = new DimDialog(); // dimdialog must be initialized before ui is setup
+    dimdialog = new DimDialog(); // dimDialog must be initialized before ui is setup
 #endif
     ui->setupUi(this);
     ShowPlaylist(false);
@@ -1289,7 +1289,7 @@ void MainWindow::FullScreen(bool fs)
 {
     if(fs)
     {
-        if(dimDialog->isVisible())
+        if(dimDialog && dimDialog->isVisible())
         {
             dimDialog->setVisible(false);
             ui->action_Dim_Desktop->setChecked(false);
@@ -1416,14 +1416,12 @@ void MainWindow::SetAspectRatio(QString aspect)
 
 void MainWindow::DimDesktop(bool dim)
 {
-#if defined(Q_OS_LINUX) || defined(Q_OS_UNIX)
-    if(dim && !dimDialog) // dimDialog is NULL if desktop compositor is disabled or missing
+    if(!dimDialog) // dimDialog is NULL if desktop compositor is disabled or missing
     {
         QMessageBox::information(this, "Dim Desktop", "In order to Dim Desktop, the desktop compositor has to be enabled. This can be done through Window Manager Desktop.");
         ui->action_Dim_Desktop->setChecked(false);
         return;
     }
-#endif
     if(dim)
         dimDialog->show();
     else
