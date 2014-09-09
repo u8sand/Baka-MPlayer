@@ -130,17 +130,11 @@ MainWindow::MainWindow(QWidget *parent):
                 if(list.length() > 1)
                 {
                     ui->actionSh_uffle->setEnabled(true);
-                    ui->playlistButton->setEnabled(true);
-                    ui->action_Show_Playlist_2->setEnabled(true);
-                    ui->splitter->setEnabled(true);
                     ui->actionStop_after_Current->setEnabled(true);
                 }
                 else
                 {
                     ui->actionSh_uffle->setEnabled(false);
-                    ui->playlistButton->setEnabled(false);
-                    ui->action_Show_Playlist_2->setEnabled(false);
-                    ui->splitter->setEnabled(false);
                     ui->actionStop_after_Current->setEnabled(false);
                 }
 
@@ -293,6 +287,9 @@ MainWindow::MainWindow(QWidget *parent):
                     {
                         ui->action_Play->setEnabled(true);
                         ui->playButton->setEnabled(true);
+                        ui->playlistButton->setEnabled(true);
+                        ui->action_Show_Playlist_2->setEnabled(true);
+                        ui->splitter->setEnabled(true);
                         init = true;
                     }
                     if(pathChanged && autoFit)
