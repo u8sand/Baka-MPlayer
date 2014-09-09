@@ -8,12 +8,27 @@
 #   for the mxe folder so 8gb is probably just a little bit too little
 #		though with less threads might be just enough.
 
-git clone https://github.com/mxe/mxe.git
-cd mxe
+arch=x86_64
+jobs=12
+if [[ $1 == 'x86_64' ]]; then
+	arch=x86_64
+elif [[ $1 == 'i686' ]]; then
+	arch=i686
+else
+	echo "Please specify either x86_64 or i686 architecture.";
+	exit;
+fi
+
+if [[ $2 != '' ]]; then
+	jobs=$2
+fi
+
+git clone https://github.com/mxe/mxe.git mxe.$arch
+cd mxe.$arch
 # set jobs optimal for your computer
-echo "JOBS := 12" >> settings.mk
-# i recommend you only specify the mxe target for the architecture you want to compile for
-# took 1 hour each on my system. (remove the one you don't want in the line bellow
-echo "MXE_TARGETS := x86_64-w64-mingw32 i686-w64-mingw32" >> settings.mk
+echo "JOBS := $jobs" > settings.mk
+# this took 1 hour each on my system.
+echo "MXE_TARGETS := $arch-w64-mingw32.static" >> settings.mk
+
 make gcc ffmpeg libass jpeg pthreads qt5
 cd ..

@@ -1,26 +1,21 @@
 #!/bin/bash
 
+arch=x86_64
+if [[ $1 == 'x86_64' ]]; then
+	arch=x86_64
+elif [[ $1 == 'i686' ]]; then
+	arch=i686
+else
+	echo "Please specify either x86_64 or i686 architecture.";
+	exit;
+fi
+
 # add built mxe directory to the path
-export PATH=$(pwd)/mxe/usr/bin/:$PATH
+export PATH=$(pwd)/mxe.$arch/usr/bin/:$PATH
 
 # get bakamplayer
-git clone https://github.com/u8sand/Baka-MPlayer.git
-
-# if your mxe toolchain is only there for one architecture,
-#  comment out this block, the other architecture's block, and
-#	  the cd command of your architecture
-# copy and make two folders: .x86_64, .i686
-cp Baka-MPlayer{,.i686} -r
-mv Baka-MPlayer{,.x86_64}
-
-# compile i686
-cd "Baka-MPlayer.i686/"
-i686-w64-mingw32-qmake-qt5 src/Baka-MPlayer.pro
-make
-cd ..
-
-# compile x86_64
-cd "Baka-MPlayer.x84_64/"
-x86_64-w64-mingw32-qmake-qt5 src/Baka-MPlayer.pro
+git clone https://github.com/u8sand/Baka-MPlayer.git Baka-MPlayer.$arch
+cd Baka-MPlayer.$arch
+$arch-w64-mingw32-qmake-qt5.static src/Baka-MPlayer.pro
 make
 cd ..
