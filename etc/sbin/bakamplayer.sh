@@ -16,6 +16,6 @@ export PATH=$(pwd)/mxe.$arch/usr/bin/:$PATH
 # get bakamplayer
 git clone https://github.com/u8sand/Baka-MPlayer.git Baka-MPlayer.$arch
 cd Baka-MPlayer.$arch
-$arch-w64-mingw32-qmake-qt5.static src/Baka-MPlayer.pro
+$arch-w64-mingw32.static-qmake-qt5 src/Baka-MPlayer.pro
 make
 cd ..

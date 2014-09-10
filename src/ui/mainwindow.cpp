@@ -50,7 +50,7 @@ MainWindow::MainWindow(QWidget *parent):
     else
         dimDialog = 0;
 #else
-    dimdialog = new DimDialog(); // dimDialog must be initialized before ui is setup
+    dimDialog = new DimDialog(); // dimDialog must be initialized before ui is setup
 #endif
     ui->setupUi(this);
     ShowPlaylist(false);

@@ -26,7 +26,7 @@ UpdateDialog::UpdateDialog(UpdateManager *updateManager, QWidget *parent) :
     connect(ui->updateButton, &QPushButton::clicked,
             [=]
             {
-                update->DownloadUpdate();
+                updateManager->DownloadUpdate();
             });
 
     connect(updateManager, &UpdateManager::Downloaded,
