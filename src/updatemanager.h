@@ -16,7 +16,7 @@ public:
 
 public slots:
     void CheckForUpdates();
-#if defined(Q_WIN_OS)
+#if defined(Q_OS_WIN)
     void DownloadUpdate();
 signals:
     void Downloaded(int);
