@@ -142,6 +142,7 @@ MainWindow::MainWindow(QWidget *parent):
                     ui->menuR_epeat->setEnabled(true);
                 else
                     ui->menuR_epeat->setEnabled(false);
+                ui->playlistWidget->setCurrentRow(mpv->getIndex());
             });
 
     connect(mpv, &MpvHandler::fileInfoChanged,
@@ -593,9 +594,15 @@ MainWindow::MainWindow(QWidget *parent):
             [=](int i)
             {
                 if(i == -1) // no selection
-                    ui->indexLabel->setText("File - of "+QString::number(ui->playlistWidget->count()));
+                {
+                    ui->indexLabel->setText("No files in playlist");
+                    ui->indexLabel->setEnabled(false);
+                }
                 else
+                {
+                    ui->indexLabel->setEnabled(true);
                     ui->indexLabel->setText("File "+QString::number(i+1)+" of "+QString::number(ui->playlistWidget->count()));
+                }
             });
 
     connect(ui->playlistWidget, &CustomListWidget::doubleClicked,       // Playlist: Item double clicked
@@ -622,15 +629,15 @@ MainWindow::MainWindow(QWidget *parent):
                 mpv->RefreshPlaylist();
             });
 
-    action = ui->playlistWidget->addAction("R&emove from Playlist");    // Playlist: Remove from playlist (right-click)
-    connect(action, &QAction::triggered,
+    action = ui->playlistWidget->addAction("R&emove from Playlist");
+    connect(action, &QAction::triggered,                                // Playlist: Remove from playlist (right-click)
             [=]
             {
                 ui->playlistWidget->takeItem(ui->playlistWidget->currentRow());
             });
 
-    action = ui->playlistWidget->addAction("&Delete from Disk");        // Playlist: Delete from Disk (right-click)
-    connect(action, &QAction::triggered,
+    action = ui->playlistWidget->addAction("&Delete from Disk");
+    connect(action, &QAction::triggered,                                // Playlist: Delete from Disk (right-click)
             [=]
             {
                 QListWidgetItem *item = ui->playlistWidget->takeItem(ui->playlistWidget->currentRow());
@@ -994,11 +1001,29 @@ MainWindow::MainWindow(QWidget *parent):
                     // the only other problem is that when dragging by the top handle
                     // it will be 0 thus reverting dim desktop, this is a side effect
                     // which will have to stay for now.
-                    if(focusWindow == 0 && dimDialog->isVisible())
+                    if(dimDialog->isVisible())
                     {
-                        dimDialog->setVisible(false); // remove dim desktop
-                        ui->action_Dim_Desktop->setChecked(false); // uncheck dim desktop
+                        if(focusWindow == 0)
+                        {
+                            dimDialog->setVisible(false); // remove dim desktop
+                            ui->action_Dim_Desktop->setChecked(false); // uncheck dim desktop
+                        }
+                        else if(focusWindow == dimDialog->windowHandle())
+                        {
+                            activateWindow();
+                            raise();
+                            setFocus();
+                        }
                     }
+                });
+        connect(dimDialog, &DimDialog::clicked,
+                [=]
+                {
+                    dimDialog->setVisible(false); // remove dim desktop
+                    ui->action_Dim_Desktop->setChecked(false); // uncheck dim desktop
+                    activateWindow();
+                    raise();
+                    setFocus();
                 });
     }
 
@@ -1424,9 +1449,6 @@ void MainWindow::DimDesktop(bool dim)
         dimDialog->show();
     else
         dimDialog->close();
-    activateWindow();
-    raise();
-    setFocus();
 }
 
 void MainWindow::AlwaysOnTop(bool ontop)
