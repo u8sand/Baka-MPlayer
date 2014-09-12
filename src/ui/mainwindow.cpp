@@ -164,7 +164,8 @@ MainWindow::MainWindow(QWidget *parent):
         if(mpv->getPlayState() > 0)
         {
             QAction *action;
-            bool video = false;
+            bool video = false,
+                 albumArt = false;
 
             ui->menuSubtitle_Track->clear();
             ui->menuSubtitle_Track->addAction(ui->action_Add_Subtitle_File);
@@ -195,16 +196,22 @@ MainWindow::MainWindow(QWidget *parent):
                 }
                 else if(track.type == "video") // video track
                 {
-                    if(track.albumart) // is album art
-                    {
-                        ui->action_Hide_Album_Art_2->setEnabled(true);
-                    }
-                    else
+                    if(!track.albumart) // isn't album art
                         video = true;
+                    else
+                        albumArt = true;
                 }
             }
             if(video)
             {
+                // if we were hiding album art, show it--we've gone to a video
+                if(ui->action_Hide_Album_Art_2->isChecked())
+                {
+                    HideAlbumArt(false);
+                    ui->action_Show_Playlist_2->setEnabled(true);
+                    ui->splitter->setEnabled(true);
+                }
+                ui->action_Hide_Album_Art_2->setEnabled(false);
                 ui->menuSubtitle_Track->setEnabled(true);
                 if(ui->menuSubtitle_Track->actions().count() > 1)
                 {
@@ -220,15 +227,32 @@ MainWindow::MainWindow(QWidget *parent):
                 ui->menuTake_Screenshot->setEnabled(true);
                 ui->menuFit_Window->setEnabled(true);
                 ui->menuAspect_Ratio->setEnabled(true);
+                ui->action_Frame_Step->setEnabled(true);
+                ui->actionFrame_Back_Step->setEnabled(true);
             }
             else
             {
+                // if there is no album art we force hide album art
+                if(!albumArt)
+                {
+                    HideAlbumArt(true);
+                    ui->action_Show_Playlist_2->setEnabled(false);
+                    ui->splitter->setEnabled(false);
+                }
+                else
+                {
+                    ui->action_Show_Playlist_2->setEnabled(true);
+                    ui->action_Hide_Album_Art_2->setEnabled(true);
+                    ui->splitter->setEnabled(true);
+                }
                 ui->menuSubtitle_Track->setEnabled(false);
                 ui->menuFont_Si_ze->setEnabled(false);
                 ui->actionShow_Subtitles->setEnabled(false);
                 ui->menuTake_Screenshot->setEnabled(false);
                 ui->menuFit_Window->setEnabled(ui->action_Hide_Album_Art_2->isEnabled());
                 ui->menuAspect_Ratio->setEnabled(false);
+                ui->action_Frame_Step->setEnabled(false);
+                ui->actionFrame_Back_Step->setEnabled(false);
             }
         }
     });
@@ -1269,8 +1293,6 @@ void MainWindow::SetPlaybackControls(bool enable)
     // menubar
     ui->action_Stop->setEnabled(enable);
     ui->action_Restart->setEnabled(enable);
-    ui->action_Frame_Step->setEnabled(enable);
-    ui->actionFrame_Back_Step->setEnabled(enable);
     ui->action_Jump_to_Time->setEnabled(enable);
     ui->actionMedia_Info->setEnabled(enable);
     ui->actionShow_in_Folder->setEnabled(enable);
