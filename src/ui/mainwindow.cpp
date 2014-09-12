@@ -87,16 +87,22 @@ MainWindow::MainWindow(QWidget *parent):
                     AlwaysOnTop(true);
             });
 
-//    connect(this, &MainWindow::autoFitChanged,
-//            [=](int i)
-//            {
-//            });
+    connect(sysTrayIcon, &QSystemTrayIcon::activated,
+            [=](QSystemTrayIcon::ActivationReason reason)
+            {
+                if(reason == QSystemTrayIcon::Trigger)
+                {
+                    if(!hidePopup)
+                    {
+                        if(mpv->getPlayState() == Mpv::Playing)
+                            sysTrayIcon->showMessage("Baka MPlayer", "Playing", QSystemTrayIcon::NoIcon, 4000);
+                        else if(mpv->getPlayState() == Mpv::Paused)
+                            sysTrayIcon->showMessage("Baka MPlayer", "Paused", QSystemTrayIcon::NoIcon, 4000);
+                    }
+                    mpv->PlayPause(ui->playlistWidget->currentRow());
+                }
 
-//    connect(this, &MainWindow::trayIconChanged,
-//            [=](bool b)
-//            {
-//                trayIcon->setVisible(b);
-//            });
+            });
 
 //    connect(this, &MainWindow::hidePopupChanged,
 //            [=](bool b)
@@ -253,6 +259,13 @@ MainWindow::MainWindow(QWidget *parent):
                 ui->menuAspect_Ratio->setEnabled(false);
                 ui->action_Frame_Step->setEnabled(false);
                 ui->actionFrame_Back_Step->setEnabled(false);
+
+
+                if(sysTrayIcon->isVisible() && !hidePopup)
+                {
+                    // todo: use {artist} - {title}
+                    sysTrayIcon->showMessage("Baka MPlayer", mpv->getFileInfo().media_title, QSystemTrayIcon::NoIcon, 4000);
+                }
             }
         }
     });
@@ -1117,7 +1130,7 @@ void MainWindow::LoadSettings()
 {
     setOnTop(settings->value("window/onTop", "never").toString());
     setAutoFit(settings->value("window/autoFit", 100).toInt());
-    setTrayIcon(settings->value("window/trayIcon", false).toBool());
+    sysTrayIcon->setVisible(settings->value("window/trayIcon", false).toBool());
     setHidePopup(settings->value("window/hidePopup", false).toBool());
     setRemaining(settings->value("window/remaining", true).toBool());
     ui->splitter->setNormalPosition(settings->value("window/splitter", ui->splitter->max()*1.0/8).toInt());
@@ -1135,7 +1148,7 @@ void MainWindow::SaveSettings()
     settings->setValue("window/height", normalGeometry().height());
     settings->setValue("window/onTop", getOnTop());
     settings->setValue("window/autoFit", getAutoFit());
-    settings->setValue("window/trayIcon", getTrayIcon());
+    settings->setValue("window/trayIcon", sysTrayIcon->isVisible());
     settings->setValue("window/hidePopup", getHidePopup());
     settings->setValue("window/remaining", getRemaining());
     settings->setValue("window/splitter", (ui->splitter->position() == 0 ||
