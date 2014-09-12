@@ -1226,7 +1226,7 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
 
 void MainWindow::mouseDoubleClickEvent(QMouseEvent *event)
 {
-    if(ui->mpvFrame->geometry().contains(event->pos())) // if mouse is in the mpvFrame
+    if(event->button() == Qt::LeftButton && ui->mpvFrame->geometry().contains(event->pos())) // if mouse is in the mpvFrame
     {
         if(!isFullScreen() && ui->action_Full_Screen->isEnabled()) // don't allow people to go full screen if they shouldn't be able to
             FullScreen(true);
