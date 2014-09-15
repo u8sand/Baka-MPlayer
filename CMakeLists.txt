@@ -10,6 +10,10 @@ set(BAKA_MPLAYER_VERSION
 
 # C++11 support
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+# Static compilation on windows
+if(WIN32)
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -static")
+endif()
 # output in the directory cmake was executed
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
 
@@ -22,10 +26,11 @@ find_package(Qt5Core)
 find_package(Qt5Gui)
 find_package(Qt5Network)
 find_package(Qt5Svg)
-find_package(Qt5X11Extras)
 
-# find libx11
-find_package(X11)
+if(UNIX)
+	find_package(Qt5X11Extras)
+	find_package(X11)
+endif()
 
 # find mpv
 find_package(PkgConfig)
@@ -43,28 +48,39 @@ set(MPV_INCLUDE_DIRS ${MPV_INCLUDE_DIRS})
 # add necessary compiler flags
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${Qt5Widgets_EXECUTABLE_COMPILE_FLAGS}")
 
-# add necessary includes
+# add necessary includes/definitions/libraries
 include_directories(
 	${Qt5Core_INCLUDE_DIRS}
 	${Qt5Gui_INCLUDE_DIRS}
 	${Qt5Network_INCLUDE_DIRS}
 	${Qt5Svg_INCLUDE_DIRS}
-	${Qt5X11Extras_INCLUDE_DIRS}
-	${X11_INCLUDE_DIRS}
 	${MPV_INCLUDE_DIRS}
 )
-
-# add necessary definitions
 add_definitions(
 	-DBAKA_MPLAYER_VERSION="\\"${BAKA_MPLAYER_VERSION}\\""
 	-DSETTINGS_FILE="\\"bakamplayer\\""
+	${Qt5Core_DEFINITIONS}
+	${Qt5Gui_DEFINITIONS}
+	${Qt5Network_DEFINITIONS}
+	${Qt5Svg_DEFINITIONS}
+	${MPV_DEFINITIONS}
+)
+set(LIBRARIES
+	${MPV_LIBRARIES}
 )
 
-# add necessary libraries
-set(LIBRARIES 
-	${MPV_LIBRARIES}
-	${X11_LIBRARIES}
-)
+# add os specific includes/definitions/libraries
+if(UNIX)
+	include_directories(
+		${Qt5X11Extras_INCLUDE_DIRS}
+		${X11_INCLUDE_DIRS}
+	)
+	add_definitions(
+		${Qt5X11Extras_DEFINITIONS}
+		${X11_DEFINITIONS}
+	)
+	list(APPEND LIBRARIES ${X11_LIBRARIES})
+endif()
 
 # go into source
 add_subdirectory(src)
