@@ -11,11 +11,23 @@ else
 fi
 
 # add built mxe directory to the path
-export PATH=$(pwd)/mxe.$arch/usr/bin/:$PATH
+mxeroot=$(pwd)/mxe.$arch/usr/bin/
 
 # get bakamplayer
 git clone https://github.com/u8sand/Baka-MPlayer.git Baka-MPlayer.$arch
 cd Baka-MPlayer.$arch
-$arch-w64-mingw32.static-qmake-qt5 src/Baka-MPlayer.pro
+mkdir -p build
+cd build
+# generate toolchain cmake
+cat > $arch.cmake << EOF
+SET(CMAKE_SYSTEM_NAME win32)
+SET(CMAKE_C_COMPILER   ${mxeroot}${arch}-w64-mingw32.static-gcc)
+SET(CMAKE_CXX_COMPILER ${mxeroot}${arch}-w64-mingw32.static-g++)
+SET(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ${mxeroot}/${arch}-w64-mingw32.static)
+SET(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+SET(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+SET(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+EOF
+cmake -G Ninja -DCMAKE_TOOLCHAIN_FILE=$arch.cmake ..
 make
 cd ..
