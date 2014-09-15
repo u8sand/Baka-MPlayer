@@ -13,7 +13,7 @@
 
 #include "mpvhandler.h"
 #include "updatemanager.h"
-#include "dimdialog.h"
+#include "widgets/dimdialog.h"
 
 namespace Ui {
 class MainWindow;

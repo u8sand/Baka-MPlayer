@@ -1,12 +1,19 @@
 #!/bin/bash
 
-hash qmake 2>/dev/null || { echo >&2 "Cannot find qmake."; exit 1; }
-hash make 2>/dev/null || { echo >&2 "Cannot find make."; exit 1; }
+ninja=1
 
-qmake_ver=`qmake --version | awk '/Using Qt version.*/{print $4}'`
-echo "Found qt version $qmake_ver...";
-if [[ $qmake_ver =~ (5.*) ]]; then
-	qmake src/Baka-MPlayer.pro && make $@
+hash cmake 2>/dev/null || { echo >&2 "Cannot find cmake."; exit 1; }
+hash ninja 2>/dev/null || { echo >&2 "Cannot find ninja."; ninja=0; }
+if [[ $ninja == 0 ]]; then
+	hash make 2>/dev/null || { echo >&2 "Cannot find make."; exit 1; }
+fi
+
+mkdir -p build
+cd build
+if [[ $ninja == 1  ]]; then
+	cmake -G Ninja ..
+	ninja
 else
-	echo "You need qt version 5.x.x to compile Baka MPlayer.";
+	cmake ..
+	make
 fi

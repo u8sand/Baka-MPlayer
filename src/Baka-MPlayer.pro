@@ -28,29 +28,30 @@ unix {
 }
 
 win32 {
-        CONFIG += static
-        QTPLUGIN += qsvg
+    CONFIG += static
+    QTPLUGIN += qsvg
 }
 
 SOURCES += main.cpp\
     mpvhandler.cpp \
     updatemanager.cpp \
-    widgets/customslider.cpp \
-    widgets/openbutton.cpp \
-    widgets/indexbutton.cpp \
-    widgets/customlistwidget.cpp \
-    widgets/seekbar.cpp \
-    widgets/customlabel.cpp \
-    widgets/customsplitter.cpp \
-    ui/mainwindow.cpp \
-    ui/locationdialog.cpp \
-    ui/infodialog.cpp \
-    ui/jumpdialog.cpp \
     ui/aboutdialog.cpp \
-    ui/updatedialog.cpp \
+    ui/infodialog.cpp \
     ui/inputdialog.cpp \
-    ui/dimdialog.cpp \
-    ui/preferencesdialog.cpp
+    ui/jumpdialog.cpp \
+    ui/locationdialog.cpp \
+    ui/mainwindow.cpp \
+    ui/preferencesdialog.cpp \
+    ui/updatedialog.cpp \
+    widgets/customlabel.cpp \
+    widgets/customlistwidget.cpp \
+    widgets/customslider.cpp \
+    widgets/customsplitter.cpp \
+    widgets/dimdialog.cpp \
+    widgets/indexbutton.cpp \
+    widgets/openbutton.cpp \
+    widgets/playpausebutton.cpp \
+    widgets/seekbar.cpp
 
 HEADERS  += \
     mpvtypes.h \
@@ -63,6 +64,7 @@ HEADERS  += \
     widgets/seekbar.h \
     widgets/customlabel.h \
     widgets/customsplitter.h \
+    widgets/dimdialog.h \
     ui/mainwindow.h \
     ui/locationdialog.h \
     ui/infodialog.h \
@@ -70,7 +72,6 @@ HEADERS  += \
     ui/aboutdialog.h \
     ui/updatedialog.h \
     ui/inputdialog.h \
-    ui/dimdialog.h \
     ui/preferencesdialog.h
 
 FORMS    += \
