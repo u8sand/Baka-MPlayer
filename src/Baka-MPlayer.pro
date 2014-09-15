@@ -50,7 +50,6 @@ SOURCES += main.cpp\
     widgets/dimdialog.cpp \
     widgets/indexbutton.cpp \
     widgets/openbutton.cpp \
-    widgets/playpausebutton.cpp \
     widgets/seekbar.cpp
 
 HEADERS  += \

@@ -87,16 +87,22 @@ MainWindow::MainWindow(QWidget *parent):
                     AlwaysOnTop(true);
             });
 
-//    connect(this, &MainWindow::autoFitChanged,
-//            [=](int i)
-//            {
-//            });
+    connect(sysTrayIcon, &QSystemTrayIcon::activated,
+            [=](QSystemTrayIcon::ActivationReason reason)
+            {
+                if(reason == QSystemTrayIcon::Trigger)
+                {
+                    if(!hidePopup)
+                    {
+                        if(mpv->getPlayState() == Mpv::Playing)
+                            sysTrayIcon->showMessage("Baka MPlayer", "Playing", QSystemTrayIcon::NoIcon, 4000);
+                        else if(mpv->getPlayState() == Mpv::Paused)
+                            sysTrayIcon->showMessage("Baka MPlayer", "Paused", QSystemTrayIcon::NoIcon, 4000);
+                    }
+                    mpv->PlayPause(ui->playlistWidget->currentRow());
+                }
 
-//    connect(this, &MainWindow::trayIconChanged,
-//            [=](bool b)
-//            {
-//                trayIcon->setVisible(b);
-//            });
+            });
 
 //    connect(this, &MainWindow::hidePopupChanged,
 //            [=](bool b)
@@ -142,6 +148,7 @@ MainWindow::MainWindow(QWidget *parent):
                     ui->menuR_epeat->setEnabled(true);
                 else
                     ui->menuR_epeat->setEnabled(false);
+                ui->playlistWidget->setCurrentRow(mpv->getIndex());
             });
 
     connect(mpv, &MpvHandler::fileInfoChanged,
@@ -163,7 +170,8 @@ MainWindow::MainWindow(QWidget *parent):
         if(mpv->getPlayState() > 0)
         {
             QAction *action;
-            bool video = false;
+            bool video = false,
+                 albumArt = false;
 
             ui->menuSubtitle_Track->clear();
             ui->menuSubtitle_Track->addAction(ui->action_Add_Subtitle_File);
@@ -194,16 +202,22 @@ MainWindow::MainWindow(QWidget *parent):
                 }
                 else if(track.type == "video") // video track
                 {
-                    if(track.albumart) // is album art
-                    {
-                        ui->action_Hide_Album_Art_2->setEnabled(true);
-                    }
-                    else
+                    if(!track.albumart) // isn't album art
                         video = true;
+                    else
+                        albumArt = true;
                 }
             }
             if(video)
             {
+                // if we were hiding album art, show it--we've gone to a video
+                if(ui->action_Hide_Album_Art_2->isChecked())
+                {
+                    HideAlbumArt(false);
+                    ui->action_Show_Playlist_2->setEnabled(true);
+                    ui->splitter->setEnabled(true);
+                }
+                ui->action_Hide_Album_Art_2->setEnabled(false);
                 ui->menuSubtitle_Track->setEnabled(true);
                 if(ui->menuSubtitle_Track->actions().count() > 1)
                 {
@@ -219,15 +233,39 @@ MainWindow::MainWindow(QWidget *parent):
                 ui->menuTake_Screenshot->setEnabled(true);
                 ui->menuFit_Window->setEnabled(true);
                 ui->menuAspect_Ratio->setEnabled(true);
+                ui->action_Frame_Step->setEnabled(true);
+                ui->actionFrame_Back_Step->setEnabled(true);
             }
             else
             {
+                // if there is no album art we force hide album art
+                if(!albumArt)
+                {
+                    HideAlbumArt(true);
+                    ui->action_Show_Playlist_2->setEnabled(false);
+                    ui->splitter->setEnabled(false);
+                }
+                else
+                {
+                    ui->action_Show_Playlist_2->setEnabled(true);
+                    ui->action_Hide_Album_Art_2->setEnabled(true);
+                    ui->splitter->setEnabled(true);
+                }
                 ui->menuSubtitle_Track->setEnabled(false);
                 ui->menuFont_Si_ze->setEnabled(false);
                 ui->actionShow_Subtitles->setEnabled(false);
                 ui->menuTake_Screenshot->setEnabled(false);
                 ui->menuFit_Window->setEnabled(ui->action_Hide_Album_Art_2->isEnabled());
                 ui->menuAspect_Ratio->setEnabled(false);
+                ui->action_Frame_Step->setEnabled(false);
+                ui->actionFrame_Back_Step->setEnabled(false);
+
+
+                if(sysTrayIcon->isVisible() && !hidePopup)
+                {
+                    // todo: use {artist} - {title}
+                    sysTrayIcon->showMessage("Baka MPlayer", mpv->getFileInfo().media_title, QSystemTrayIcon::NoIcon, 4000);
+                }
             }
         }
     });
@@ -593,9 +631,15 @@ MainWindow::MainWindow(QWidget *parent):
             [=](int i)
             {
                 if(i == -1) // no selection
-                    ui->indexLabel->setText("File - of "+QString::number(ui->playlistWidget->count()));
+                {
+                    ui->indexLabel->setText("No files in playlist");
+                    ui->indexLabel->setEnabled(false);
+                }
                 else
+                {
+                    ui->indexLabel->setEnabled(true);
                     ui->indexLabel->setText("File "+QString::number(i+1)+" of "+QString::number(ui->playlistWidget->count()));
+                }
             });
 
     connect(ui->playlistWidget, &CustomListWidget::doubleClicked,       // Playlist: Item double clicked
@@ -622,15 +666,15 @@ MainWindow::MainWindow(QWidget *parent):
                 mpv->RefreshPlaylist();
             });
 
-    action = ui->playlistWidget->addAction("R&emove from Playlist");    // Playlist: Remove from playlist (right-click)
-    connect(action, &QAction::triggered,
+    action = ui->playlistWidget->addAction("R&emove from Playlist");
+    connect(action, &QAction::triggered,                                // Playlist: Remove from playlist (right-click)
             [=]
             {
                 ui->playlistWidget->takeItem(ui->playlistWidget->currentRow());
             });
 
-    action = ui->playlistWidget->addAction("&Delete from Disk");        // Playlist: Delete from Disk (right-click)
-    connect(action, &QAction::triggered,
+    action = ui->playlistWidget->addAction("&Delete from Disk");
+    connect(action, &QAction::triggered,                                // Playlist: Delete from Disk (right-click)
             [=]
             {
                 QListWidgetItem *item = ui->playlistWidget->takeItem(ui->playlistWidget->currentRow());
@@ -994,11 +1038,29 @@ MainWindow::MainWindow(QWidget *parent):
                     // the only other problem is that when dragging by the top handle
                     // it will be 0 thus reverting dim desktop, this is a side effect
                     // which will have to stay for now.
-                    if(focusWindow == 0 && dimDialog->isVisible())
+                    if(dimDialog->isVisible())
                     {
-                        dimDialog->setVisible(false); // remove dim desktop
-                        ui->action_Dim_Desktop->setChecked(false); // uncheck dim desktop
+                        if(focusWindow == 0)
+                        {
+                            dimDialog->setVisible(false); // remove dim desktop
+                            ui->action_Dim_Desktop->setChecked(false); // uncheck dim desktop
+                        }
+                        else if(focusWindow == dimDialog->windowHandle())
+                        {
+                            activateWindow();
+                            raise();
+                            setFocus();
+                        }
                     }
+                });
+        connect(dimDialog, &DimDialog::clicked,
+                [=]
+                {
+                    dimDialog->setVisible(false); // remove dim desktop
+                    ui->action_Dim_Desktop->setChecked(false); // uncheck dim desktop
+                    activateWindow();
+                    raise();
+                    setFocus();
                 });
     }
 
@@ -1068,7 +1130,7 @@ void MainWindow::LoadSettings()
 {
     setOnTop(settings->value("window/onTop", "never").toString());
     setAutoFit(settings->value("window/autoFit", 100).toInt());
-    setTrayIcon(settings->value("window/trayIcon", false).toBool());
+    sysTrayIcon->setVisible(settings->value("window/trayIcon", false).toBool());
     setHidePopup(settings->value("window/hidePopup", false).toBool());
     setRemaining(settings->value("window/remaining", true).toBool());
     ui->splitter->setNormalPosition(settings->value("window/splitter", ui->splitter->max()*1.0/8).toInt());
@@ -1086,7 +1148,7 @@ void MainWindow::SaveSettings()
     settings->setValue("window/height", normalGeometry().height());
     settings->setValue("window/onTop", getOnTop());
     settings->setValue("window/autoFit", getAutoFit());
-    settings->setValue("window/trayIcon", getTrayIcon());
+    settings->setValue("window/trayIcon", sysTrayIcon->isVisible());
     settings->setValue("window/hidePopup", getHidePopup());
     settings->setValue("window/remaining", getRemaining());
     settings->setValue("window/splitter", (ui->splitter->position() == 0 ||
@@ -1201,7 +1263,7 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
 
 void MainWindow::mouseDoubleClickEvent(QMouseEvent *event)
 {
-    if(ui->mpvFrame->geometry().contains(event->pos())) // if mouse is in the mpvFrame
+    if(event->button() == Qt::LeftButton && ui->mpvFrame->geometry().contains(event->pos())) // if mouse is in the mpvFrame
     {
         if(!isFullScreen() && ui->action_Full_Screen->isEnabled()) // don't allow people to go full screen if they shouldn't be able to
             FullScreen(true);
@@ -1244,8 +1306,6 @@ void MainWindow::SetPlaybackControls(bool enable)
     // menubar
     ui->action_Stop->setEnabled(enable);
     ui->action_Restart->setEnabled(enable);
-    ui->action_Frame_Step->setEnabled(enable);
-    ui->actionFrame_Back_Step->setEnabled(enable);
     ui->action_Jump_to_Time->setEnabled(enable);
     ui->actionMedia_Info->setEnabled(enable);
     ui->actionShow_in_Folder->setEnabled(enable);
@@ -1424,9 +1484,6 @@ void MainWindow::DimDesktop(bool dim)
         dimDialog->show();
     else
         dimDialog->close();
-    activateWindow();
-    raise();
-    setFocus();
 }
 
 void MainWindow::AlwaysOnTop(bool ontop)
