@@ -1,5 +1,9 @@
-# Note: sources -> ui -> widgets
+# Note: ui -> widgets -> sources
 
+set(SOURCES
+	mpvhandler
+	updatemanager
+)
 set(WIDGETS
 	customslider
 	openbutton
@@ -11,7 +15,6 @@ set(WIDGETS
 	dimdialog
 )
 set(UI
-	mainwindow
 	locationdialog
 	infodialog
 	jumpdialog
@@ -19,13 +22,16 @@ set(UI
 	updatedialog
 	inputdialog
 	preferencesdialog
-)
-set(SOURCES
-	mpvhandler
-	updatemanager
+	mainwindow
 )
 
 # build and link libraries
+
+foreach(src ${SOURCES})
+	add_library(${src} ${src}.cpp)
+	target_link_libraries(${src} ${LIBRARIES})
+	set(LIBRARIES "${LIBRARIES};${src}")
+endforeach()
 
 foreach(widget ${WIDGETS})
 	add_library(${widget} widgets/${widget}.cpp)
@@ -38,12 +44,6 @@ foreach(ui ${UI})
 	add_library(${ui} ui/${ui}.cpp ${UI_HEADER})
 	target_link_libraries(${ui} ${LIBRARIES})
 	set(LIBRARIES "${LIBRARIES};${ui}")
-endforeach()
-
-foreach(src ${SOURCES})
-	add_library(${src} ${src}.cpp)
-	target_link_libraries(${src} ${LIBRARIES})
-	set(LIBRARIES "${LIBRARIES};${src}")
 endforeach()
 
 # add qt5 resources
