@@ -1003,7 +1003,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->actionOnline_Help, &QAction::triggered,                 // Help -> Online Help
             [=]
             {
-                QDesktopServices::openUrl(QUrl("http://bakamplayer.u8sand.net/help"));
+                QDesktopServices::openUrl(QUrl("http://bakamplayer.u8sand.net/help.php"));
             });
 
     connect(ui->action_Check_for_Updates, &QAction::triggered,          // Help -> Check for Updates
