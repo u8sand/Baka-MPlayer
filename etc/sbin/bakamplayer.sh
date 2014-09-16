@@ -19,6 +19,6 @@ cd Baka-MPlayer.$arch
 mkdir -p build
 cd build
 # generate toolchain cmake
-cmake -DCMAKE_TOOLCHAIN_FILE=$mxeroot/usr/$arch-w64-mingw32.static/share/cmake/mxe-conf.cmake ..
+cmake -GNinja -DCMAKE_TOOLCHAIN_FILE=$mxeroot/usr/$arch-w64-mingw32.static/share/cmake/mxe-conf.cmake ..
 make
 cd ..

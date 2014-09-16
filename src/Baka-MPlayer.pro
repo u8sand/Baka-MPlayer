@@ -29,7 +29,6 @@ unix {
 
 win32 {
     CONFIG += static
-    QTPLUGIN += qsvg
 }
 
 SOURCES += main.cpp\
