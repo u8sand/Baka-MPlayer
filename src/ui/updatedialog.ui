@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>360</width>
-    <height>400</height>
+    <width>350</width>
+    <height>320</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -58,33 +58,68 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
 	background: transparent;
 }</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
-   <property name="spacing">
-    <number>8</number>
-   </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
-    <widget class="QLabel" name="updateLabel">
-     <property name="styleSheet">
-      <string notr="true">#updateLabel {
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="updateImg">
+       <property name="pixmap">
+        <pixmap resource="../rsclist.qrc">:/img/download.svg</pixmap>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <property name="spacing">
+        <number>2</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="updateLabel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>1</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">#updateLabel {
 	font-size: 20px;
 }</string>
-     </property>
-     <property name="text">
-      <string>Update is Available</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QLabel" name="versionLabel">
-     <property name="styleSheet">
-      <string notr="true">#versionLabel {
-	color: lightgray;
-}</string>
-     </property>
-     <property name="text">
-      <string>Your version: 0.0.0</string>
-     </property>
-    </widget>
+         </property>
+         <property name="text">
+          <string>An Update is Available</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QProgressBar" name="progressBar">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>8</height>
+          </size>
+         </property>
+         <property name="value">
+          <number>0</number>
+         </property>
+         <property name="textVisible">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="timeRemainingLabel">
+         <property name="text">
+          <string>About 0 second(s) remaining</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
    </item>
    <item>
     <widget class="QPlainTextEdit" name="plainTextEdit">
@@ -96,19 +131,6 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
      </property>
      <property name="readOnly">
       <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QProgressBar" name="progressBar">
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>10</height>
-      </size>
-     </property>
-     <property name="value">
-      <number>0</number>
      </property>
     </widget>
    </item>
@@ -216,6 +238,8 @@ QPushButton:disabled {
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../rsclist.qrc"/>
+ </resources>
  <connections/>
 </ui>
