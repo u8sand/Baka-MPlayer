@@ -52,8 +52,3 @@ qt5_add_resources(RESOURCES rsclist.qrc)
 # build and link baka-mplayer
 add_executable(baka-mplayer main.cpp ${RESOURCES})
 target_link_libraries(baka-mplayer ${LIBRARIES})
-
-qt5_use_modules(baka-mplayer Widgets Core Gui Network Svg)
-if(UNIX)
-	qt5_use_modules(baka-mplayer X11Extras)
-endif()

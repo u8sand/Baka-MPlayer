@@ -63,6 +63,11 @@ add_definitions(
 	${MPV_DEFINITIONS}
 )
 set(LIBRARIES
+	${Qt5Widgets_LIBRARIES}
+	${Qt5Core_LIBRARIES}
+	${Qt5Gui_LIBRARIES}
+	${Qt5Network_LIBRARIES}
+	${Qt5Svg_LIBRARIES}
 	${MPV_LIBRARIES}
 )
 
