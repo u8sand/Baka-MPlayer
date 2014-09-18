@@ -13,7 +13,7 @@ UpdateDialog::UpdateDialog(UpdateManager *updateManager, QWidget *parent) :
     connect(updateManager, &UpdateManager::Update,
             [=](QMap<QString, QString> info)
             {
-                ui->versionLabel->setText(info["version"]+" released "+info["date"]);
+                ui->updateLabel->setText(info["version"]+" released "+info["date"]);
                 ui->plainTextEdit->setPlainText(info["bugfixes"]);
                 if(info["version"] == BAKA_MPLAYER_VERSION)
                 {

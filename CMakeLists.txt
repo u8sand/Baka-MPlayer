@@ -19,7 +19,6 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 # find qt5
-find_package(Qt5Widgets REQUIRED)
 find_package(Qt5Core REQUIRED)
 find_package(Qt5Gui REQUIRED)
 find_package(Qt5Network REQUIRED)
@@ -43,9 +42,8 @@ set(MPV_INCLUDE_DIRS ${MPV_INCLUDE_DIRS})
 
 
 # add includes/definitions/libraries
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${Qt5Widgets_EXECUTABLE_COMPILE_FLAGS}")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${Qt5Core_EXECUTABLE_COMPILE_FLAGS}")
 include_directories(
-	${Qt5Widgets_INCLUDE_DIRS}
 	${Qt5Core_INCLUDE_DIRS}
 	${Qt5Gui_INCLUDE_DIRS}
 	${Qt5Network_INCLUDE_DIRS}
@@ -55,7 +53,6 @@ include_directories(
 add_definitions(
 	-DBAKA_MPLAYER_VERSION="\\"${BAKA_MPLAYER_VERSION}\\""
 	-DSETTINGS_FILE="\\"bakamplayer\\""
-	${Qt5Widgets_DEFINITIONS}
 	${Qt5Core_DEFINITIONS}
 	${Qt5Gui_DEFINITIONS}
 	${Qt5Network_DEFINITIONS}
@@ -63,7 +60,6 @@ add_definitions(
 	${MPV_DEFINITIONS}
 )
 set(LIBRARIES
-	${Qt5Widgets_LIBRARIES}
 	${Qt5Core_LIBRARIES}
 	${Qt5Gui_LIBRARIES}
 	${Qt5Network_LIBRARIES}
@@ -81,7 +77,10 @@ if(UNIX)
 		${Qt5X11Extras_DEFINITIONS}
 		${X11_DEFINITIONS}
 	)
-	list(APPEND LIBRARIES ${X11_LIBRARIES})
+	list(APPEND LIBRARIES 
+		${Qt5X11Extras_LIBRARIES}
+		${X11_LIBRARIES}
+	)
 endif()
 
 # go into source
