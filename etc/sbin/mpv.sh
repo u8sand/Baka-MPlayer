@@ -20,7 +20,7 @@ export PATH=$root/mxe.$arch/usr/bin/:$PATH
 git clone https://github.com/mpv-player/mpv.git mpv.$arch
 cd mpv.$arch
 ./bootstrap.py
-DEST_OS=win32 TARGET=$arch-w64-mingw32.static ./waf configure --enable-libmpv-shared --enable-static-build --disable-client-api-examples
+DEST_OS=win32 TARGET=$arch-w64-mingw32.static ./waf configure --enable-libmpv-static --enable-static-build --disable-client-api-examples
 ./waf build
 
 # after building successfully we need to copy the files into the correct locations in mxe
@@ -35,6 +35,6 @@ cat build/libmpv/mpv.pc |
 	sed "s,^prefix=.*$,prefix=${instroot},g" |
 	sed "s,^exec_prefix=.*$,exec_prefix=\${prefix},g" |
 	sed "s,^libdir=.*$,libdir=\${prefix}/lib,g" |
-	sed "s,^includedir=.*$,includedir=\${prefix}/include,g" > $instroot/lib/pkgbuild/mpv.pc
+	sed "s,^includedir=.*$,includedir=\${prefix}/include,g" > $instroot/lib/pkgconfig/mpv.pc
 
 cd ..

@@ -11,7 +11,6 @@
 #include <QDir>
 #include <QFileInfo>
 #include <QDesktopWidget>
-#include <QSignalMapper>
 #include <QAction>
 #include <QShortcut>
 #include <QProcess>
@@ -39,7 +38,8 @@ MainWindow::MainWindow(QWidget *parent):
     lastMousePos(QPoint()),
     move(false),
     init(false),
-    autohide(new QTimer(this))
+    autohide(new QTimer(this)),
+    chaptersSignalMapper(0)
 {
     QAction *action;
 
@@ -276,7 +276,9 @@ MainWindow::MainWindow(QWidget *parent):
         if(mpv->getPlayState() > 0)
         {
             QList<int> ticks;
-            QSignalMapper *signalMapper = new QSignalMapper(this);
+            if(chaptersSignalMapper)
+                delete chaptersSignalMapper;
+            chaptersSignalMapper = new QSignalMapper(this);
             int n = 1;
             ui->menu_Chapters->clear();
             for(auto &ch : chapters)
@@ -287,12 +289,12 @@ MainWindow::MainWindow(QWidget *parent):
                 else
                     action = ui->menu_Chapters->addAction(QString::number(n)+": "+ch.title);
                 n++;
-                signalMapper->setMapping(action, ch.time);
+                chaptersSignalMapper->setMapping(action, ch.time);
                 connect(action, SIGNAL(triggered()),
-                        signalMapper, SLOT(map()));
+                        chaptersSignalMapper, SLOT(map()));
                 ticks.push_back(ch.time);
             }
-            connect(signalMapper, SIGNAL(mapped(int)),
+            connect(chaptersSignalMapper, SIGNAL(mapped(int)),
                     mpv, SLOT(Seek(int)));
 
             if(ui->menu_Chapters->actions().count() == 0)
@@ -701,6 +703,7 @@ MainWindow::MainWindow(QWidget *parent):
             {
                 QProcess *p = new QProcess(0);
                 p->startDetached(QApplication::applicationFilePath());
+                delete p;
             });
 
     connect(ui->action_Open_File, &QAction::triggered,                  // File -> Open File
@@ -1119,10 +1122,11 @@ MainWindow::~MainWindow()
 {
     SaveSettings();
 
-    // cleanup
-    delete update;
-    delete mpv;
-    delete settings;
+    // note: child objects do not need to be deleted;
+    // all children get deleted when mainwindow is deleted
+    // see: http://qt-project.org/doc/qt-4.8/objecttrees.html
+    if(dimDialog)
+        delete dimDialog;
     delete ui;
 }
 
@@ -1357,10 +1361,9 @@ void MainWindow::FullScreen(bool fs)
         setMouseTracking(true); // register mouse move event
 
         // post a mouseMoveEvent (in case user doesn't actually move the mouse when entering fs)
-        QMouseEvent *event = new QMouseEvent(QMouseEvent::MouseMove,
-                                             QCursor::pos(),
-                                             Qt::NoButton,Qt::NoButton,Qt::NoModifier);
-        QCoreApplication::postEvent(this, event);
+        QCoreApplication::postEvent(this, new QMouseEvent(QMouseEvent::MouseMove,
+                                                          QCursor::pos(),
+                                                          Qt::NoButton,Qt::NoButton,Qt::NoModifier));
     }
     else
     {

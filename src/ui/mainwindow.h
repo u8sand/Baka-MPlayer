@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QSystemTrayIcon>
+#include <QSignalMapper>
 #include <QSettings>
 #include <QModelIndex>
 #include <QStringList>
@@ -69,6 +70,7 @@ private:
     QSystemTrayIcon *sysTrayIcon;
     QMenu           *trayIconMenu;
     DimDialog       *dimDialog;
+    QSignalMapper   *chaptersSignalMapper;
 
     // variables
     QString onTop;
