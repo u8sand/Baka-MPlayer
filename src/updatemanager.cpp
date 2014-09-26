@@ -27,7 +27,8 @@ void UpdateManager::CheckForUpdates()
                     QList<QByteArray> pair;
                     for(auto line : lines)
                     {
-                        pair = line.split('=');
+                        if((pair = line.split('=')).size() != 2)
+                            break;
                         info[QString(pair[0])] = QString(pair[1].replace('\r','\n')); // for multi-line info use \r's instead of \n's
                     }
                     emit Update(info);

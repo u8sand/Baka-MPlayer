@@ -51,8 +51,8 @@ include_directories(
 	${MPV_INCLUDE_DIRS}
 )
 add_definitions(
-	-DBAKA_MPLAYER_VERSION="\\"${BAKA_MPLAYER_VERSION}\\""
-	-DSETTINGS_FILE="\\"bakamplayer\\""
+	-DBAKA_MPLAYER_VERSION="${BAKA_MPLAYER_VERSION}"
+	-DSETTINGS_FILE="bakamplayer"
 	${Qt5Core_DEFINITIONS}
 	${Qt5Gui_DEFINITIONS}
 	${Qt5Network_DEFINITIONS}
