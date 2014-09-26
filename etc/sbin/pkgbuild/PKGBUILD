@@ -30,7 +30,7 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname"
-	install -D "build/Baka-MPlayer" "$pkgdir/usr/bin/baka-mplayer"
+	install -D "build/baka-mplayer" "$pkgdir/usr/bin/baka-mplayer"
 	install -D "etc/doc/baka-mplayer.md" "$pkgdir/usr/share/doc/baka-mplayer/baka-mplayer.md"
 	install -D "etc/doc/baka-mplayer.1.gz" "$pkgdir/usr/share/man/man1/baka-mplayer.1.gz"
 	install -D "LICENSE" "$pkgdir/usr/share/licenses/baka-mplayer/LICENSE"
