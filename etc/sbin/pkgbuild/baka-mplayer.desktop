@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Baka-MPlayer
+Comment=An open source remake of the classic arcade game Galaga
+Exec=baka-mplayer
+Icon=baka-mplayer
+Terminal=false
+Categories=AudioVideo;Audio;Video;
