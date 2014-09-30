@@ -283,15 +283,18 @@ MainWindow::MainWindow(QWidget *parent):
             if(chaptersSignalMapper)
                 delete chaptersSignalMapper;
             chaptersSignalMapper = new QSignalMapper(this);
-            int n = 1;
+            int n = 1,
+                N = chapters.length();
             ui->menu_Chapters->clear();
             for(auto &ch : chapters)
             {
-                QAction *action;
-                if(n <= 9)
-                    action = ui->menu_Chapters->addAction(QString::number(n)+": "+ch.title, NULL, NULL, QKeySequence("Ctrl+"+QString::number(n)));
-                else
-                    action = ui->menu_Chapters->addAction(QString::number(n)+": "+ch.title);
+                QAction *action = ui->menu_Chapters->addAction(FormatNumber(n, N)+
+                                                               ": " +
+                                                               ch.title,
+                                                               NULL,
+                                                               NULL,
+                                                               (n <= 9 ? QKeySequence("Ctrl+"+QString::number(n)) : QKeySequence())
+                                                               );
                 n++;
                 chaptersSignalMapper->setMapping(action, ch.time);
                 connect(action, SIGNAL(triggered()),
@@ -1335,6 +1338,16 @@ QString MainWindow::FormatTime(int _time)
     if(fi.length >= 60)   // minutes
         return time.toString("mm:ss");
     return time.toString("0:ss");   // seconds
+}
+
+QString MainWindow::FormatNumber(int val, int length)
+{
+    if(length < 10)
+        return QString::number(val);
+    else if(length < 100)
+        return QString("%1").arg(val, 2, 10, QChar('0'));
+    else
+        return QString("%1").arg(val, 3, 10, QChar('0'));
 }
 
 bool MainWindow::SetScreenshotDir()
