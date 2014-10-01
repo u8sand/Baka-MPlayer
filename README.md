@@ -7,7 +7,7 @@ This program is in its alpha stages. Until this notice is removed, expect bugs.
 ## Overview
 
 Baka MPlayer is a free and open source, cross-platform, **libmpv** based multimedia player.
-Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching anime.
+Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.
 
 ## Installation
 
