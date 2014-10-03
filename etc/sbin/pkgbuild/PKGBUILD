@@ -15,7 +15,7 @@ source=("$pkgname"::'git://github.com/u8sand/Baka-MPlayer.git#branch=release'
         "baka-mplayer.desktop")
 md5sums=('SKIP'
          '635c0c198491c5378edbaa2006ef3b63'
-         '11ea48e786706c94deafa7a759457d8c')
+         'd7ea76e74a584d33d905ae2ab985eb96')
 
 pkgver() {
 	cd "$srcdir/$pkgname"
