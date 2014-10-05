@@ -1448,6 +1448,7 @@ void MainWindow::FitWindow(int percent)
     {
         w = fG.width();
         h = fG.height();
+        dG = cG; // mascarade the desktop geometry so that it centers in-place
     }
     else
     {
