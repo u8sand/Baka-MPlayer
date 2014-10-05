@@ -53,6 +53,7 @@ MainWindow::MainWindow(QWidget *parent):
     dimDialog = new DimDialog(); // dimDialog must be initialized before ui is setup
 #endif
     ui->setupUi(this);
+    menuVisible = ui->menubar->isVisible(); // does the OS use a menubar? (appmenu doesn't)
     ShowPlaylist(false);
     addActions(ui->menubar->actions()); // makes menubar shortcuts work even when menubar is hidden
 
@@ -1412,7 +1413,8 @@ void MainWindow::FullScreen(bool fs)
     else
     {
         setWindowState(windowState() & ~Qt::WindowFullScreen);
-        ui->menubar->setVisible(true);
+        if(menuVisible)
+            ui->menubar->setVisible(true);
         ui->seekBar->setVisible(true);
         ui->playbackLayoutWidget->setVisible(true);
         setMouseTracking(false); // stop registering mouse move event
@@ -1473,6 +1475,7 @@ void MainWindow::FitWindow(int percent)
     {
         w = fG.width();
         h = fG.height();
+        dG = cG; // mascarade the desktop geometry so that it centers in-place
     }
     else
     {
