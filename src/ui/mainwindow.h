@@ -65,6 +65,7 @@ private:
     QPoint          lastMousePos;
     bool            move,
                     pathChanged,
+                    menuVisible,
                     init;
     QTimer          *autohide;
 
