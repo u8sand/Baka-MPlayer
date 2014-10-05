@@ -29,7 +29,6 @@ MpvHandler::MpvHandler(int64_t wid, QObject *parent):
     mpv_set_option(mpv, "wid", MPV_FORMAT_INT64, &wid);
     mpv_set_option_string(mpv, "input-cursor", "no");   // no mouse handling
     mpv_set_option_string(mpv, "cursor-autohide", "no");// no cursor-autohide, we handle that
-    mpv_set_option_string(mpv, "af", "scaletempo");     // make sure audio tempo is scaled (when speed is changing)
 
     // get updates when these properties change
     mpv_observe_property(mpv, 0, "time-pos", MPV_FORMAT_DOUBLE);
@@ -129,29 +128,49 @@ bool MpvHandler::event(QEvent *event)
     return QObject::event(event);
 }
 
-void MpvHandler::LoadSettings(QSettings *settings)
+void MpvHandler::LoadSettings(QSettings *settings, QString version)
 {
-    setLastFile(settings->value("mpv/lastFile", "").toString());
-    ShowAllPlaylist(settings->value("mpv/showAll", false).toBool());
-    ScreenshotFormat(settings->value("mpv/screenshotFormat", "jpg").toString());
-    ScreenshotTemplate(settings->value("mpv/screenshotTemplate", "screenshot%#04n").toString());
-    ScreenshotDirectory(settings->value("mpv/screenshotDir", "").toString());
-    Speed(settings->value("mpv/speed", 1.0).toDouble());
-    Volume(settings->value("mpv/volume", 100).toInt());
-    Debug(settings->value("common/debug", false).toBool());
+    if(version == "") // before we had a version
+    {
+        setLastFile(settings->value("mpv/lastFile", "").toString());
+        ShowAllPlaylist(settings->value("mpv/showAll", false).toBool());
+        ScreenshotFormat(settings->value("mpv/screenshotFormat", "jpg").toString());
+        ScreenshotTemplate(settings->value("mpv/screenshotTemplate", "screenshot%#04n").toString());
+        ScreenshotDirectory(settings->value("mpv/screenshotDir", "").toString());
+        Speed(settings->value("mpv/speed", 1.0).toDouble());
+        Volume(settings->value("mpv/volume", 100).toInt());
+        Debug(settings->value("common/debug", false).toBool());
+    }
+    else if(version == "1.0.0") // current version
+    {
+        setLastFile(settings->value("baka-mplayer/lastFile", "").toString());
+        ShowAllPlaylist(settings->value("baka-mplayer/showAll", false).toBool());
+        Debug(settings->value("baka-mplayer/debug", false).toBool());
+
+        Volume(settings->value("mpv/volume", 100).toInt());
+
+        for(auto &key : settings->allKeys())
+        {
+            QStringList parts = key.split('/');
+            if(parts[0] == "mpv")
+            {
+                QByteArray tmp1 = parts[1].toUtf8().data(),
+                           tmp2 = settings->value(key).toString().toUtf8().data();
+
+                mpv_set_option_string(mpv, tmp1.constData(), tmp2.constData());
+            }
+        }
+    }
 }
 
 void MpvHandler::SaveSettings(QSettings *settings)
 {
     if(file != "")
-        settings->setValue("mpv/lastFile", file);
+        settings->setValue("baka-mplayer/lastFile", file);
     else
-        settings->setValue("mpv/lastFile", lastFile);
-    settings->setValue("mpv/showAll", showAll);
-    settings->setValue("mpv/screenshotFormat", screenshotFormat);
-    settings->setValue("mpv/screenshotTemplate", screenshotTemplate);
-    settings->setValue("mpv/screenshotDir", screenshotDir);
-    settings->setValue("mpv/speed", speed);
+        settings->setValue("baka-mplayer/lastFile", lastFile);
+    settings->setValue("baka-mplayer/showAll", showAll);
+
     settings->setValue("mpv/volume", volume);
 }
 

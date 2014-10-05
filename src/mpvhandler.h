@@ -45,7 +45,7 @@ protected:
     virtual bool event(QEvent *event);
 
 public slots:
-    void LoadSettings(QSettings*);
+    void LoadSettings(QSettings*,QString);
     void SaveSettings(QSettings*);
 
     void LoadFile(QString);
