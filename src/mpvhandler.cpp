@@ -132,7 +132,11 @@ void MpvHandler::LoadSettings(QSettings *settings, QString version)
 {
     if(version == "") // before we had a version
     {
-        setLastFile(settings->value("mpv/lastFile", "").toString());
+        QString lf = settings->value("mpv/lastFile", "").toString();
+        if(FileExists(lf)) // make sure the last file exists
+            setLastFile(lf);
+        else
+            setLastFile("");
         ShowAllPlaylist(settings->value("mpv/showAll", false).toBool());
         ScreenshotFormat(settings->value("mpv/screenshotFormat", "jpg").toString());
         ScreenshotTemplate(settings->value("mpv/screenshotTemplate", "screenshot%#04n").toString());
@@ -143,7 +147,11 @@ void MpvHandler::LoadSettings(QSettings *settings, QString version)
     }
     else if(version == "1.0.0") // current version
     {
-        setLastFile(settings->value("baka-mplayer/lastFile", "").toString());
+        QString lf = settings->value("baka-mplayer/lastFile", "").toString();
+        if(FileExists(lf)) // make sure the last file exists
+            setLastFile(lf);
+        else
+            setLastFile("");
         ShowAllPlaylist(settings->value("baka-mplayer/showAll", false).toBool());
         Debug(settings->value("baka-mplayer/debug", false).toBool());
 
@@ -163,6 +171,14 @@ void MpvHandler::LoadSettings(QSettings *settings, QString version)
     }
 }
 
+bool MpvHandler::FileExists(QString f)
+{
+    QRegExp rx("^(https?://.+\\.[a-z]+)", Qt::CaseInsensitive);
+    if(rx.indexIn(f) != -1) // web url
+        return true;
+    return QFile(f).exists();
+}
+
 void MpvHandler::SaveSettings(QSettings *settings)
 {
     if(file != "")
@@ -176,7 +192,8 @@ void MpvHandler::SaveSettings(QSettings *settings)
 
 void MpvHandler::LoadFile(QString f)
 {
-    if(f == "") return; // ignore empty file name
+    if(f == "") // ignore empty file name
+        return;
 
     int i;
     QRegExp rx("^(https?://.+\\.[a-z]+)", Qt::CaseInsensitive);
@@ -192,6 +209,8 @@ void MpvHandler::LoadFile(QString f)
     else // local file
     {
         QFileInfo fi(f);
+        if(!fi.exists()) // ignore if file doesn't exist
+            return;
         if(path != QString(fi.absolutePath()+"/") || // path is the same
           (i = playlist.indexOf(fi.fileName())) == -1) // file doesn't exists in the list
         {
