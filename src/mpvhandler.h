@@ -44,6 +44,8 @@ public:
 protected:
     virtual bool event(QEvent *event);
 
+    bool FileExists(QString);
+
 public slots:
     void LoadSettings(QSettings*);
     void SaveSettings(QSettings*);

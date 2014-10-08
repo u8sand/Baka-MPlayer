@@ -2,7 +2,7 @@
 Type=Application
 Version=1.0
 Name=Baka-MPlayer
-Comment=An open source remake of the classic arcade game Galaga
+Comment=Baka MPlayer is a free and open source, cross-platform, **libmpv** based multimedia player.
 Exec=baka-mplayer
 Icon=baka-mplayer
 Terminal=false
