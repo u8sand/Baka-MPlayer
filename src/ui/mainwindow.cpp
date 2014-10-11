@@ -1169,6 +1169,7 @@ void MainWindow::SaveSettings()
     // mpv
     // common
     settings->setValue("common/debug", getDebug());
+    settings->setValue("baka-mplayer/version", BAKA_MPLAYER_VERSION);
 }
 
 void MainWindow::Load(QString file)
