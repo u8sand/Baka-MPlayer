@@ -53,7 +53,6 @@ MainWindow::MainWindow(QWidget *parent):
     dimDialog = new DimDialog(); // dimDialog must be initialized before ui is setup
 #endif
     ui->setupUi(this);
-    menuVisible = ui->menubar->isVisible(); // does the OS use a menubar? (appmenu doesn't)
     ShowPlaylist(false);
     addActions(ui->menubar->actions()); // makes menubar shortcuts work even when menubar is hidden
 
@@ -1206,6 +1205,7 @@ void MainWindow::Load(QString file)
 {
     // load the settings here--the constructor has already been called
     // this solves some issues with setting things before the constructor has ended
+    menuVisible = ui->menubar->isVisible(); // does the OS use a menubar? (appmenu doesn't)
     LoadSettings();
     mpv->LoadFile(file);
 }

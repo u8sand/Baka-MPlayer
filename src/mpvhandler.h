@@ -41,7 +41,7 @@ public:
     bool getSubtitleVisibility()            { return subtitleVisibility; }
 
 protected:
-    virtual bool event(QEvent *event);
+    virtual bool event(QEvent*);
 
     bool FileExists(QString);
 
@@ -72,33 +72,33 @@ public slots:
     void FrameStep();
     void FrameBackStep();
 
-    void Chapter(int chapter);
+    void Chapter(int);
     void NextChapter();
     void PreviousChapter();
 
-    void Volume(int level);
+    void Volume(int);
     void Speed(double);
-    void Aspect(QString aspect);
-    void Vid(int vid);
-    void Aid(int aid);
-    void Sid(int sid);
+    void Aspect(QString);
+    void Vid(int);
+    void Aid(int);
+    void Sid(int);
 
     void Screenshot(bool withSubs = false);
 
     void ScreenshotFormat(QString);
     void ScreenshotTemplate(QString);
 
-    void AddSubtitleTrack(QString file);
+    void AddSubtitleTrack(QString);
     void ShowSubtitles(bool);
     void SubtitleScale(double scale, bool relative = false);
 
-    void Debug(bool b);
+    void Debug(bool);
 
     void LoadTracks();
     void LoadChapters();
     void LoadVideoParams();
 protected slots:
-    void OpenFile(QString f);
+    void OpenFile(QString);
     void PopulatePlaylist();
     void SortPlaylist();
     void LoadFileInfo();
