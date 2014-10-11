@@ -1160,9 +1160,12 @@ void MainWindow::LoadSettings() // todo: this is messy; make an upgrader
 
         settings->clear(); // clear the settings--the new settings will get written
         settings->setValue("baka-mplayer/version", "1.0.0"); // set to new version
-        settings->setValue("mpv/speed", mpv->getSpeed());
-        settings->setValue("mpv/screenshot-format", mpv->getScreenshotFormat());
-        settings->setValue("mpv/screenshot-template", mpv->getScreenshotTemplate());
+        if(mpv->getSpeed() != 1)
+            settings->setValue("mpv/speed", mpv->getSpeed());
+        if(mpv->getScreenshotFormat() != "")
+            settings->setValue("mpv/screenshot-format", mpv->getScreenshotFormat());
+        if(mpv->getScreenshotTemplate() != "")
+            settings->setValue("mpv/screenshot-template", mpv->getScreenshotTemplate());
         SaveSettings(); // save it now
     }
     else if(version == "1.0.0") // current version

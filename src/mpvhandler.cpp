@@ -70,7 +70,7 @@ bool MpvHandler::event(QEvent *event)
                 }
                 else if(QString(prop->name) == "volume")
                 {
-                    if(prop->format == MPV_FORMAT_DOUBLE && init) // todo: remove && init; mpv fixed this
+                    if(prop->format == MPV_FORMAT_DOUBLE)
                         setVolume((int)*(double*)prop->data);
                 }
                 else if(QString(prop->name) == "sid")
@@ -85,11 +85,6 @@ bool MpvHandler::event(QEvent *event)
                 }
                 break;
             }
-             // todo: remove mpv fixed this
-            case MPV_EVENT_AUDIO_RECONFIG:
-                if(!init)
-                    init = true;
-                break;
             case MPV_EVENT_IDLE:
                 fileInfo.length = 0;
                 setTime(0);
@@ -138,10 +133,14 @@ void MpvHandler::LoadSettings(QSettings *settings, QString version)
             setLastFile("");
         ShowAllPlaylist(settings->value("mpv/showAll", false).toBool());
         ScreenshotFormat(settings->value("mpv/screenshotFormat", "jpg").toString());
-        ScreenshotTemplate(
-          settings->value("mpv/screenshotDir", ".").toString()+"/"+
-          settings->value("mpv/screenshotTemplate", "").toString() // screenshot%#04n
-        );
+        QString dir = settings->value("mpv/screenshotDir", "").toString(),
+                temp = settings->value("mpv/screenshotTemplate", "").toString();
+        if(dir != "" && temp != "")
+            ScreenshotTemplate(dir+"/"+temp);
+        else if(dir != "")
+            ScreenshotTemplate(dir+"/screenshot%#04n");
+        else if(temp != "")
+            ScreenshotTemplate(temp);
         Speed(settings->value("mpv/speed", 1.0).toDouble());
         Volume(settings->value("mpv/volume", 100).toInt());
         Debug(settings->value("common/debug", false).toBool());
@@ -163,6 +162,8 @@ void MpvHandler::LoadSettings(QSettings *settings, QString version)
             {
                 if(parts[1] == "volume") // exception--we want to update our ui accordingly
                     Volume(settings->value(key).toInt());
+                else if(parts[1] == "screenshot-template")
+                    ScreenshotTemplate(settings->value(key).toString());
                 else
                 {
                     QByteArray tmp1 = parts[1].toUtf8(),
@@ -181,6 +182,8 @@ void MpvHandler::LoadSettings(QSettings *settings, QString version)
         // initialize mpv
         if(mpv_initialize(mpv) < 0)
             throw "Could not initialize mpv";
+
+        init = true;
     }
 }
 
@@ -201,9 +204,12 @@ void MpvHandler::SaveSettings(QSettings *settings)
     settings->setValue("baka-mplayer/showAll", showAll);
 
     settings->setValue("mpv/volume", volume);
-    settings->setValue("mpv/speed", speed);
-    settings->setValue("mpv/screenshot-format", screenshotFormat);
-    settings->setValue("mpv/screenshot-template", screenshotTemplate);
+    if(speed != 1)
+        settings->setValue("mpv/speed", speed);
+    if(screenshotFormat != "")
+        settings->setValue("mpv/screenshot-format", screenshotFormat);
+    if(screenshotTemplate != "")
+        settings->setValue("mpv/screenshot-template", screenshotTemplate);
 }
 
 void MpvHandler::LoadFile(QString f)
