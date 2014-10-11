@@ -139,32 +139,38 @@ bool MpvHandler::FileExists(QString f)
 
 void MpvHandler::LoadSettings(QSettings *settings)
 {
-    QString lf = settings->value("mpv/lastFile", "").toString();
-    if(FileExists(lf)) // make sure the last file exists
-        setLastFile(lf);
-    else
-        setLastFile("");
-    ShowAllPlaylist(settings->value("mpv/showAll", false).toBool());
-    ScreenshotFormat(settings->value("mpv/screenshotFormat", "jpg").toString());
-    ScreenshotTemplate(settings->value("mpv/screenshotTemplate", "screenshot%#04n").toString());
-    ScreenshotDirectory(settings->value("mpv/screenshotDir", "").toString());
-    Speed(settings->value("mpv/speed", 1.0).toDouble());
-    Volume(settings->value("mpv/volume", 100).toInt());
-    Debug(settings->value("common/debug", false).toBool());
+    if(settings)
+    {
+        QString lf = settings->value("mpv/lastFile", "").toString();
+        if(FileExists(lf)) // make sure the last file exists
+            setLastFile(lf);
+        else
+            setLastFile("");
+        ShowAllPlaylist(settings->value("mpv/showAll", false).toBool());
+        ScreenshotFormat(settings->value("mpv/screenshotFormat", "jpg").toString());
+        ScreenshotTemplate(settings->value("mpv/screenshotTemplate", "screenshot%#04n").toString());
+        ScreenshotDirectory(settings->value("mpv/screenshotDir", "").toString());
+        Speed(settings->value("mpv/speed", 1.0).toDouble());
+        Volume(settings->value("mpv/volume", 100).toInt());
+        Debug(settings->value("common/debug", false).toBool());
+    }
 }
 
 void MpvHandler::SaveSettings(QSettings *settings)
 {
-    if(file != "")
-        settings->setValue("mpv/lastFile", file);
-    else
-        settings->setValue("mpv/lastFile", lastFile);
-    settings->setValue("mpv/showAll", showAll);
-    settings->setValue("mpv/screenshotFormat", screenshotFormat);
-    settings->setValue("mpv/screenshotTemplate", screenshotTemplate);
-    settings->setValue("mpv/screenshotDir", screenshotDir);
-    settings->setValue("mpv/speed", speed);
-    settings->setValue("mpv/volume", volume);
+    if(settings)
+    {
+        if(file != "")
+            settings->setValue("mpv/lastFile", file);
+        else
+            settings->setValue("mpv/lastFile", lastFile);
+        settings->setValue("mpv/showAll", showAll);
+        settings->setValue("mpv/screenshotFormat", screenshotFormat);
+        settings->setValue("mpv/screenshotTemplate", screenshotTemplate);
+        settings->setValue("mpv/screenshotDir", screenshotDir);
+        settings->setValue("mpv/speed", speed);
+        settings->setValue("mpv/volume", volume);
+    }
 }
 
 void MpvHandler::LoadFile(QString f)
