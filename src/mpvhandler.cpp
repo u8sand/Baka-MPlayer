@@ -161,19 +161,13 @@ void MpvHandler::LoadSettings(QSettings *settings, QString version)
             QStringList parts = key.split('/');
             if(parts[0] == "mpv")
             {
-                if(parts[1] == "volume") // exceptions
+                if(parts[1] == "volume") // exception--we want to update our ui accordingly
                     Volume(settings->value(key).toInt());
-                else if(parts[1] == "speed")
-                    Speed(settings->value(key).toDouble());
                 else
                 {
                     QByteArray tmp1 = parts[1].toUtf8(),
                                tmp2 = settings->value(key).toString().toUtf8();
-                    bool ok = 1;
-                    double tmp3 = tmp2.toDouble(&ok);
-                    if(ok)
-                        mpv_set_option(mpv, tmp1.constData(), MPV_FORMAT_DOUBLE, &tmp3);
-                    else if(tmp2 != QByteArray())
+                    if(tmp2 != QByteArray())
                         mpv_set_option_string(mpv, tmp1.constData(), tmp2.constData());
                 }
             }
