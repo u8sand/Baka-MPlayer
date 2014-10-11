@@ -70,7 +70,7 @@ bool MpvHandler::event(QEvent *event)
                 }
                 else if(QString(prop->name) == "volume")
                 {
-                    if(prop->format == MPV_FORMAT_DOUBLE && init)
+                    if(prop->format == MPV_FORMAT_DOUBLE && init) // todo: remove && init; mpv fixed this
                         setVolume((int)*(double*)prop->data);
                 }
                 else if(QString(prop->name) == "sid")
@@ -85,6 +85,7 @@ bool MpvHandler::event(QEvent *event)
                 }
                 break;
             }
+             // todo: remove mpv fixed this
             case MPV_EVENT_AUDIO_RECONFIG:
                 if(!init)
                     init = true;
