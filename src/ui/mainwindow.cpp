@@ -775,7 +775,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->actionWith_Subtitles, &QAction::triggered,              // View -> Take Screenshot -> With Subtitles
             [=]
             {
-                if(mpv->getScreenshotDir() == "" && !SetScreenshotDir())
+                if(mpv->getScreenshotTemplate() == "" && !SetScreenshotTemplate())
                     return;
                 mpv->Screenshot(true);
             });
@@ -783,7 +783,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->actionWithout_Subtitles, &QAction::triggered,           // View -> Take Screenshot -> Without Subtitles
             [=]
             {
-                if(mpv->getScreenshotDir() == "" && !SetScreenshotDir())
+                if(mpv->getScreenshotTemplate() == "" && !SetScreenshotTemplate())
                     return;
                 mpv->Screenshot(false);
             });
@@ -1138,7 +1138,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::LoadSettings()
+void MainWindow::LoadSettings() // todo: this is messy; make an upgrader
 {
     QString version = settings->value("baka-mplayer/version", "").toString();
     if(version == "") // before we had a version
@@ -1161,6 +1161,9 @@ void MainWindow::LoadSettings()
 
         settings->clear(); // clear the settings--the new settings will get written
         settings->setValue("baka-mplayer/version", "1.0.0"); // set to new version
+        settings->setValue("mpv/speed", mpv->getSpeed());
+        settings->setValue("mpv/screenshot-format", mpv->getScreenshotFormat());
+        settings->setValue("mpv/screenshot-template", mpv->getScreenshotTemplate());
         SaveSettings(); // save it now
     }
     else if(version == "1.0.0") // current version
@@ -1378,14 +1381,14 @@ QString MainWindow::FormatNumber(int val, int length)
         return QString("%1").arg(val, 3, 10, QChar('0'));
 }
 
-bool MainWindow::SetScreenshotDir()
+bool MainWindow::SetScreenshotTemplate()
 {
     QMessageBox::information(this, "Take Screenshot",
                              "Choose the default location where you would like to save your screenshots. Also by default, we will save your screenshots as a jpg file. If you'd like to change any of these settings, it is under Preferences.");
     QString dir = QFileDialog::getExistingDirectory(this, "Screenshot Directory");
     if(dir != "")
     {
-        mpv->ScreenshotDirectory(dir);
+        mpv->ScreenshotTemplate(dir+"/"+"screenshot%#04n");
         return true;
     }
     return false;

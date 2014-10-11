@@ -25,7 +25,6 @@ public:
     QString getLastFile()                   { return lastFile; }
     QString getScreenshotFormat()           { return screenshotFormat; }
     QString getScreenshotTemplate()         { return screenshotTemplate; }
-    QString getScreenshotDir()              { return screenshotDir; }
     QString getSearch()                     { return search; }
     double getSpeed()                       { return speed; }
     int getTime()                           { return time; }
@@ -88,7 +87,6 @@ public slots:
 
     void ScreenshotFormat(QString);
     void ScreenshotTemplate(QString);
-    void ScreenshotDirectory(QString);
 
     void AddSubtitleTrack(QString file);
     void ShowSubtitles(bool);
@@ -118,7 +116,6 @@ private slots:
     void setLastFile(QString s)             { emit lastFileChanged(lastFile = s); }
     void setScreenshotFormat(QString s)     { emit screenshotFormatChanged(screenshotFormat = s); }
     void setScreenshotTemplate(QString s)   { emit screenshotTemplateChanged(screenshotTemplate = s); }
-    void setScreenshotDir(QString s)        { emit screenshotDirChanged(screenshotDir = s); }
     void setSearch(QString s)               { emit searchChanged(search = s); }
     void setSpeed(double d)                 { emit speedChanged(speed = d); }
     void setTime(int i)                     { emit timeChanged(time = i); }
@@ -145,7 +142,6 @@ signals:
     void lastFileChanged(QString);
     void screenshotFormatChanged(QString);
     void screenshotTemplateChanged(QString);
-    void screenshotDirChanged(QString);
     void searchChanged(QString);
     void speedChanged(double);
     void timeChanged(int);
@@ -175,7 +171,6 @@ private:
                 lastFile,
                 screenshotFormat,
                 screenshotTemplate,
-                screenshotDir,
                 search,
                 suffix;
     double      speed = 1;
@@ -185,7 +180,8 @@ private:
                 vid,
                 aid,
                 sid;
-    bool        debug = false,
+    bool        init = false,
+                debug = false,
                 showAll = false,
                 shuffle = false,
                 playlistVisible = false,

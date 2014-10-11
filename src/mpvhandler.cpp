@@ -36,12 +36,6 @@ MpvHandler::MpvHandler(int64_t wid, QObject *parent):
     mpv_observe_property(mpv, 0, "sid", MPV_FORMAT_INT64);
     mpv_observe_property(mpv, 0, "sub-visibility", MPV_FORMAT_FLAG);
 
-    // setup callback event handling
-    mpv_set_wakeup_callback(mpv, wakeup, this);
-
-    // initialize mpv
-    if(mpv_initialize(mpv) < 0)
-        throw "Could not initialize mpv";
 }
 
 MpvHandler::~MpvHandler()
@@ -76,7 +70,7 @@ bool MpvHandler::event(QEvent *event)
                 }
                 else if(QString(prop->name) == "volume")
                 {
-                    if(prop->format == MPV_FORMAT_DOUBLE)
+                    if(prop->format == MPV_FORMAT_DOUBLE && init)
                         setVolume((int)*(double*)prop->data);
                 }
                 else if(QString(prop->name) == "sid")
@@ -91,6 +85,10 @@ bool MpvHandler::event(QEvent *event)
                 }
                 break;
             }
+            case MPV_EVENT_AUDIO_RECONFIG:
+                if(!init)
+                    init = true;
+                break;
             case MPV_EVENT_IDLE:
                 fileInfo.length = 0;
                 setTime(0);
@@ -139,8 +137,10 @@ void MpvHandler::LoadSettings(QSettings *settings, QString version)
             setLastFile("");
         ShowAllPlaylist(settings->value("mpv/showAll", false).toBool());
         ScreenshotFormat(settings->value("mpv/screenshotFormat", "jpg").toString());
-        ScreenshotTemplate(settings->value("mpv/screenshotTemplate", "screenshot%#04n").toString());
-        ScreenshotDirectory(settings->value("mpv/screenshotDir", "").toString());
+        ScreenshotTemplate(
+          settings->value("mpv/screenshotDir", ".").toString()+"/"+
+          settings->value("mpv/screenshotTemplate", "").toString() // screenshot%#04n
+        );
         Speed(settings->value("mpv/speed", 1.0).toDouble());
         Volume(settings->value("mpv/volume", 100).toInt());
         Debug(settings->value("common/debug", false).toBool());
@@ -155,19 +155,37 @@ void MpvHandler::LoadSettings(QSettings *settings, QString version)
         ShowAllPlaylist(settings->value("baka-mplayer/showAll", false).toBool());
         Debug(settings->value("baka-mplayer/debug", false).toBool());
 
-        Volume(settings->value("mpv/volume", 100).toInt());
-
         for(auto &key : settings->allKeys())
         {
             QStringList parts = key.split('/');
             if(parts[0] == "mpv")
             {
-                QByteArray tmp1 = parts[1].toUtf8().data(),
-                           tmp2 = settings->value(key).toString().toUtf8().data();
-
-                mpv_set_option_string(mpv, tmp1.constData(), tmp2.constData());
+                if(parts[1] == "volume") // exceptions
+                    Volume(settings->value(key).toInt());
+                else if(parts[1] == "speed")
+                    Speed(settings->value(key).toDouble());
+                else
+                {
+                    QByteArray tmp1 = parts[1].toUtf8(),
+                               tmp2 = settings->value(key).toString().toUtf8();
+                    bool ok = 1;
+                    double tmp3 = tmp2.toDouble(&ok);
+                    if(ok)
+                        mpv_set_option(mpv, tmp1.constData(), MPV_FORMAT_DOUBLE, &tmp3);
+                    else if(tmp2 != QByteArray())
+                        mpv_set_option_string(mpv, tmp1.constData(), tmp2.constData());
+                }
             }
         }
+    }
+    if(!init)
+    {
+        // setup callback event handling
+        mpv_set_wakeup_callback(mpv, wakeup, this);
+
+        // initialize mpv
+        if(mpv_initialize(mpv) < 0)
+            throw "Could not initialize mpv";
     }
 }
 
@@ -188,6 +206,9 @@ void MpvHandler::SaveSettings(QSettings *settings)
     settings->setValue("baka-mplayer/showAll", showAll);
 
     settings->setValue("mpv/volume", volume);
+    settings->setValue("mpv/speed", speed);
+    settings->setValue("mpv/screenshot-format", screenshotFormat);
+    settings->setValue("mpv/screenshot-template", screenshotTemplate);
 }
 
 void MpvHandler::LoadFile(QString f)
@@ -494,22 +515,12 @@ void MpvHandler::ScreenshotFormat(QString s)
 
 void MpvHandler::ScreenshotTemplate(QString s)
 {
-//    if(mpv)
-//    {
-//        const QByteArray tmp = (screenshotDir+"/"+s).toUtf8();
-//        mpv_set_option_string(mpv, "screenshot-template", tmp.data());
-//    }
-    setScreenshotTemplate(s);
-}
-
-void MpvHandler::ScreenshotDirectory(QString s)
-{
     if(mpv)
     {
-        const QByteArray tmp = (s+"/"+screenshotTemplate).toUtf8();
+        const QByteArray tmp = screenshotTemplate.toUtf8();
         mpv_set_option_string(mpv, "screenshot-template", tmp.data());
     }
-    setScreenshotDir(s);
+    setScreenshotTemplate(s);
 }
 
 void MpvHandler::AddSubtitleTrack(QString f)
