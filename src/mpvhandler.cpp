@@ -124,28 +124,7 @@ bool MpvHandler::event(QEvent *event)
 
 void MpvHandler::LoadSettings(QSettings *settings, QString version)
 {
-    if(version == "") // before we had a version
-    {
-        QString lf = settings->value("mpv/lastFile", "").toString();
-        if(FileExists(lf)) // make sure the last file exists
-            setLastFile(lf);
-        else
-            setLastFile("");
-        ShowAllPlaylist(settings->value("mpv/showAll", false).toBool());
-        ScreenshotFormat(settings->value("mpv/screenshotFormat", "jpg").toString());
-        QString dir = settings->value("mpv/screenshotDir", "").toString(),
-                temp = settings->value("mpv/screenshotTemplate", "").toString();
-        if(dir != "" && temp != "")
-            ScreenshotTemplate(dir+"/"+temp);
-        else if(dir != "")
-            ScreenshotTemplate(dir+"/screenshot%#04n");
-        else if(temp != "")
-            ScreenshotTemplate(temp);
-        Speed(settings->value("mpv/speed", 1.0).toDouble());
-        Volume(settings->value("mpv/volume", 100).toInt());
-        Debug(settings->value("common/debug", false).toBool());
-    }
-    else if(version == "1.0.0") // current version
+    if(version == BAKA_MPLAYER_VERSION)
     {
         QString lf = settings->value("baka-mplayer/lastFile", "").toString();
         if(FileExists(lf)) // make sure the last file exists
@@ -174,6 +153,28 @@ void MpvHandler::LoadSettings(QSettings *settings, QString version)
             }
         }
     }
+    else if(version == "1.9.9")
+    {
+        QString lf = settings->value("mpv/lastFile", "").toString();
+        if(FileExists(lf)) // make sure the last file exists
+            setLastFile(lf);
+        else
+            setLastFile("");
+        ShowAllPlaylist(settings->value("mpv/showAll", false).toBool());
+        ScreenshotFormat(settings->value("mpv/screenshotFormat", "jpg").toString());
+        QString dir = settings->value("mpv/screenshotDir", "").toString(),
+                temp = settings->value("mpv/screenshotTemplate", "").toString();
+        if(dir != "" && temp != "")
+            ScreenshotTemplate(dir+"/"+temp);
+        else if(dir != "")
+            ScreenshotTemplate(dir+"/screenshot%#04n");
+        else if(temp != "")
+            ScreenshotTemplate(temp);
+        Speed(settings->value("mpv/speed", 1.0).toDouble());
+        Volume(settings->value("mpv/volume", 100).toInt());
+        Debug(settings->value("common/debug", false).toBool());
+    }
+
     if(!init)
     {
         // setup callback event handling
