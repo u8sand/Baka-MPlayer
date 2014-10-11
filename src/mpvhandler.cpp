@@ -124,67 +124,70 @@ bool MpvHandler::event(QEvent *event)
 
 void MpvHandler::LoadSettings(QSettings *settings, QString version)
 {
-    if(version == BAKA_MPLAYER_VERSION)
+    if(settings)
     {
-        QString lf = settings->value("baka-mplayer/lastFile", "").toString();
-        if(FileExists(lf)) // make sure the last file exists
-            setLastFile(lf);
-        else
-            setLastFile("");
-        ShowAllPlaylist(settings->value("baka-mplayer/showAll", false).toBool());
-        Debug(settings->value("baka-mplayer/debug", false).toBool());
-
-        for(auto &key : settings->allKeys())
+        if(version == BAKA_MPLAYER_VERSION)
         {
-            QStringList parts = key.split('/');
-            if(parts[0] == "mpv")
+            QString lf = settings->value("baka-mplayer/lastFile", "").toString();
+            if(FileExists(lf)) // make sure the last file exists
+                setLastFile(lf);
+            else
+                setLastFile("");
+            ShowAllPlaylist(settings->value("baka-mplayer/showAll", false).toBool());
+            Debug(settings->value("baka-mplayer/debug", false).toBool());
+
+            for(auto &key : settings->allKeys())
             {
-                if(parts[1] == "volume") // exception--we want to update our ui accordingly
-                    Volume(settings->value(key).toInt());
-                else if(parts[1] == "screenshot-template")
-                    ScreenshotTemplate(settings->value(key).toString());
-                else
+                QStringList parts = key.split('/');
+                if(parts[0] == "mpv")
                 {
-                    QByteArray tmp1 = parts[1].toUtf8(),
-                               tmp2 = settings->value(key).toString().toUtf8();
-                    if(tmp2 != QByteArray())
-                        mpv_set_option_string(mpv, tmp1.constData(), tmp2.constData());
+                    if(parts[1] == "volume") // exception--we want to update our ui accordingly
+                        Volume(settings->value(key).toInt());
+                    else if(parts[1] == "screenshot-template")
+                        ScreenshotTemplate(settings->value(key).toString());
+                    else
+                    {
+                        QByteArray tmp1 = parts[1].toUtf8(),
+                                   tmp2 = settings->value(key).toString().toUtf8();
+                        if(tmp2 != QByteArray())
+                            mpv_set_option_string(mpv, tmp1.constData(), tmp2.constData());
+                    }
                 }
             }
         }
-    }
-    else if(version == "1.9.9")
-    {
-        QString lf = settings->value("mpv/lastFile", "").toString();
-        if(FileExists(lf)) // make sure the last file exists
-            setLastFile(lf);
-        else
-            setLastFile("");
-        ShowAllPlaylist(settings->value("mpv/showAll", false).toBool());
-        ScreenshotFormat(settings->value("mpv/screenshotFormat", "jpg").toString());
-        QString dir = settings->value("mpv/screenshotDir", "").toString(),
-                temp = settings->value("mpv/screenshotTemplate", "").toString();
-        if(dir != "" && temp != "")
-            ScreenshotTemplate(dir+"/"+temp);
-        else if(dir != "")
-            ScreenshotTemplate(dir+"/screenshot%#04n");
-        else if(temp != "")
-            ScreenshotTemplate(temp);
-        Speed(settings->value("mpv/speed", 1.0).toDouble());
-        Volume(settings->value("mpv/volume", 100).toInt());
-        Debug(settings->value("common/debug", false).toBool());
-    }
+        else if(version == "1.9.9")
+        {
+            QString lf = settings->value("mpv/lastFile", "").toString();
+            if(FileExists(lf)) // make sure the last file exists
+                setLastFile(lf);
+            else
+                setLastFile("");
+            ShowAllPlaylist(settings->value("mpv/showAll", false).toBool());
+            ScreenshotFormat(settings->value("mpv/screenshotFormat", "jpg").toString());
+            QString dir = settings->value("mpv/screenshotDir", "").toString(),
+                    temp = settings->value("mpv/screenshotTemplate", "").toString();
+            if(dir != "" && temp != "")
+                ScreenshotTemplate(dir+"/"+temp);
+            else if(dir != "")
+                ScreenshotTemplate(dir+"/screenshot%#04n");
+            else if(temp != "")
+                ScreenshotTemplate(temp);
+            Speed(settings->value("mpv/speed", 1.0).toDouble());
+            Volume(settings->value("mpv/volume", 100).toInt());
+            Debug(settings->value("common/debug", false).toBool());
+        }
 
-    if(!init)
-    {
-        // setup callback event handling
-        mpv_set_wakeup_callback(mpv, wakeup, this);
+        if(!init)
+        {
+            // setup callback event handling
+            mpv_set_wakeup_callback(mpv, wakeup, this);
 
-        // initialize mpv
-        if(mpv_initialize(mpv) < 0)
-            throw "Could not initialize mpv";
+            // initialize mpv
+            if(mpv_initialize(mpv) < 0)
+                throw "Could not initialize mpv";
 
-        init = true;
+            init = true;
+        }
     }
 }
 
@@ -198,19 +201,22 @@ bool MpvHandler::FileExists(QString f)
 
 void MpvHandler::SaveSettings(QSettings *settings)
 {
-    if(file != "")
-        settings->setValue("baka-mplayer/lastFile", file);
-    else
-        settings->setValue("baka-mplayer/lastFile", lastFile);
-    settings->setValue("baka-mplayer/showAll", showAll);
+    if(settings)
+    {
+        if(file != "")
+            settings->setValue("baka-mplayer/lastFile", file);
+        else
+            settings->setValue("baka-mplayer/lastFile", lastFile);
+        settings->setValue("baka-mplayer/showAll", showAll);
 
-    settings->setValue("mpv/volume", volume);
-    if(speed != 1)
-        settings->setValue("mpv/speed", speed);
-    if(screenshotFormat != "")
-        settings->setValue("mpv/screenshot-format", screenshotFormat);
-    if(screenshotTemplate != "")
-        settings->setValue("mpv/screenshot-template", screenshotTemplate);
+        settings->setValue("mpv/volume", volume);
+        if(speed != 1)
+            settings->setValue("mpv/speed", speed);
+        if(screenshotFormat != "")
+            settings->setValue("mpv/screenshot-format", screenshotFormat);
+        if(screenshotTemplate != "")
+            settings->setValue("mpv/screenshot-template", screenshotTemplate);
+    }
 }
 
 void MpvHandler::LoadFile(QString f)

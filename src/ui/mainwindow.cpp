@@ -1137,71 +1137,92 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::LoadSettings() // todo: this is messy; make an upgrader
+void MainWindow::LoadSettings()
 {
-    QString version = settings->value("baka-mplayer/version", BAKA_MPLAYER_VERSION).toString();
-    if(version == BAKA_MPLAYER_VERSION) // current version
+    if(settings)
     {
-        setOnTop(settings->value("baka-mplayer/onTop", "never").toString());
-        setAutoFit(settings->value("baka-mplayer/autoFit", 100).toInt());
-        sysTrayIcon->setVisible(settings->value("baka-mplayer/trayIcon", false).toBool());
-        setHidePopup(settings->value("baka-mplayer/hidePopup", false).toBool());
-        setRemaining(settings->value("baka-mplayer/remaining", true).toBool());
-        ui->splitter->setNormalPosition(settings->value("baka-mplayer/splitter", ui->splitter->max()*1.0/8).toInt());
-        setDebug(settings->value("baka-mplayer/debug", false).toBool());
-        mpv->LoadSettings(settings, version);
-    }
-    else if(version == "1.9.9")
-    {
-        // baka-mplayer
-        setGeometry(QStyle::alignedRect(Qt::LeftToRight,
-                                        Qt::AlignCenter,
-                                        QSize(settings->value("window/width", 600).toInt(),
-                                              settings->value("window/height", 430).toInt()),
-                                        qApp->desktop()->availableGeometry()));
-        setOnTop(settings->value("window/onTop", "never").toString());
-        setAutoFit(settings->value("window/autoFit", 100).toInt());
-        sysTrayIcon->setVisible(settings->value("window/trayIcon", false).toBool());
-        setHidePopup(settings->value("window/hidePopup", false).toBool());
-        setRemaining(settings->value("window/remaining", true).toBool());
-        ui->splitter->setNormalPosition(settings->value("window/splitter", ui->splitter->max()*1.0/8).toInt());
-        setDebug(settings->value("common/debug", false).toBool());
-        // mpv
-        mpv->LoadSettings(settings, version);
+        QString version = settings->value("baka-mplayer/version", BAKA_MPLAYER_VERSION).toString();
+        if(version == BAKA_MPLAYER_VERSION) // current version
+        {
+            setOnTop(settings->value("baka-mplayer/onTop", "never").toString());
+            setAutoFit(settings->value("baka-mplayer/autoFit", 100).toInt());
+            sysTrayIcon->setVisible(settings->value("baka-mplayer/trayIcon", false).toBool());
+            setHidePopup(settings->value("baka-mplayer/hidePopup", false).toBool());
+            setRemaining(settings->value("baka-mplayer/remaining", true).toBool());
+            ui->splitter->setNormalPosition(settings->value("baka-mplayer/splitter", ui->splitter->max()*1.0/8).toInt());
+            setDebug(settings->value("baka-mplayer/debug", false).toBool());
+            mpv->LoadSettings(settings, version);
+        }
+        else if(version == "1.9.9")
+        {
+            // baka-mplayer
+            setGeometry(QStyle::alignedRect(Qt::LeftToRight,
+                                            Qt::AlignCenter,
+                                            QSize(settings->value("window/width", 600).toInt(),
+                                                  settings->value("window/height", 430).toInt()),
+                                            qApp->desktop()->availableGeometry()));
+            setOnTop(settings->value("window/onTop", "never").toString());
+            setAutoFit(settings->value("window/autoFit", 100).toInt());
+            sysTrayIcon->setVisible(settings->value("window/trayIcon", false).toBool());
+            setHidePopup(settings->value("window/hidePopup", false).toBool());
+            setRemaining(settings->value("window/remaining", true).toBool());
+            ui->splitter->setNormalPosition(settings->value("window/splitter", ui->splitter->max()*1.0/8).toInt());
+            setDebug(settings->value("common/debug", false).toBool());
+            // mpv
+            mpv->LoadSettings(settings, version);
 
-        settings->clear(); // clear the settings--the new settings will get written
-        settings->setValue("baka-mplayer/version", BAKA_MPLAYER_VERSION); // set to new version
-        if(mpv->getSpeed() != 1)
-            settings->setValue("mpv/speed", mpv->getSpeed());
-        if(mpv->getScreenshotFormat() != "")
-            settings->setValue("mpv/screenshot-format", mpv->getScreenshotFormat());
-        if(mpv->getScreenshotTemplate() != "")
-            settings->setValue("mpv/screenshot-template", mpv->getScreenshotTemplate());
-        SaveSettings(); // save it now
-    }
-    else // unrecognized version
-    {
-        QMessageBox::information(this, "Settings version not recognized", "The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.");
+            settings->clear(); // clear the settings--the new settings will get written
+            settings->setValue("baka-mplayer/version", BAKA_MPLAYER_VERSION); // set to new version
+            if(mpv->getSpeed() != 1)
+                settings->setValue("mpv/speed", mpv->getSpeed());
+            if(mpv->getScreenshotFormat() != "")
+                settings->setValue("mpv/screenshot-format", mpv->getScreenshotFormat());
+            if(mpv->getScreenshotTemplate() != "")
+                settings->setValue("mpv/screenshot-template", mpv->getScreenshotTemplate());
+            SaveSettings(); // save it now
+        }
+        else // unrecognized version
+        {
+            QMessageBox::information(this, "Settings version not recognized", "The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.");
+
+            // load what we can
+            setOnTop(settings->value("baka-mplayer/onTop", "never").toString());
+            setAutoFit(settings->value("baka-mplayer/autoFit", 100).toInt());
+            sysTrayIcon->setVisible(settings->value("baka-mplayer/trayIcon", false).toBool());
+            setHidePopup(settings->value("baka-mplayer/hidePopup", false).toBool());
+            setRemaining(settings->value("baka-mplayer/remaining", true).toBool());
+            ui->splitter->setNormalPosition(settings->value("baka-mplayer/splitter", ui->splitter->max()*1.0/8).toInt());
+            setDebug(settings->value("baka-mplayer/debug", false).toBool());
+            mpv->LoadSettings(settings, version);
+
+            // disable settings manipulation
+            delete settings;
+            settings = 0;
+            ui->action_Preferences->setEnabled(false);
+        }
     }
 }
 
 void MainWindow::SaveSettings()
 {
-    // mpv
-    mpv->SaveSettings(settings);
-    // baka-mplayer
-    settings->setValue("baka-mplayer/width", normalGeometry().width());
-    settings->setValue("baka-mplayer/height", normalGeometry().height());
-    settings->setValue("baka-mplayer/onTop", getOnTop());
-    settings->setValue("baka-mplayer/autoFit", getAutoFit());
-    settings->setValue("baka-mplayer/trayIcon", sysTrayIcon->isVisible());
-    settings->setValue("baka-mplayer/hidePopup", getHidePopup());
-    settings->setValue("baka-mplayer/remaining", getRemaining());
-    settings->setValue("baka-mplayer/splitter", (ui->splitter->position() == 0 ||
-                                           ui->splitter->position() == ui->splitter->max()) ?
-                                            ui->splitter->normalPosition() :
-                                            ui->splitter->position());
-    settings->setValue("baka-mplayer/debug", getDebug());
+    if(settings)
+    {
+        // mpv
+        mpv->SaveSettings(settings);
+        // baka-mplayer
+        settings->setValue("baka-mplayer/width", normalGeometry().width());
+        settings->setValue("baka-mplayer/height", normalGeometry().height());
+        settings->setValue("baka-mplayer/onTop", getOnTop());
+        settings->setValue("baka-mplayer/autoFit", getAutoFit());
+        settings->setValue("baka-mplayer/trayIcon", sysTrayIcon->isVisible());
+        settings->setValue("baka-mplayer/hidePopup", getHidePopup());
+        settings->setValue("baka-mplayer/remaining", getRemaining());
+        settings->setValue("baka-mplayer/splitter", (ui->splitter->position() == 0 ||
+                                               ui->splitter->position() == ui->splitter->max()) ?
+                                                ui->splitter->normalPosition() :
+                                                ui->splitter->position());
+        settings->setValue("baka-mplayer/debug", getDebug());
+    }
 }
 
 void MainWindow::Load(QString file)
