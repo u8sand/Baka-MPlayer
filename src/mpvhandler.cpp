@@ -298,8 +298,8 @@ void MpvHandler::Play()
 {
     if(playState > 0)
     {
-        const char *args[] = {"set", "pause", "no", NULL};
-        AsyncCommand(args);
+        int f = 0;
+        mpv_set_property_async(mpv, 0, "pause", MPV_FORMAT_FLAG, &f);
     }
 }
 
@@ -307,8 +307,8 @@ void MpvHandler::Pause()
 {
     if(playState > 0)
     {
-        const char *args[] = {"set", "pause", "yes", NULL};
-        AsyncCommand(args);
+        int f = 1;
+        mpv_set_property_async(mpv, 0, "pause", MPV_FORMAT_FLAG, &f);
     }
 }
 
@@ -361,8 +361,8 @@ void MpvHandler::Seek(int pos, bool relative)
     }
     else
     {
-        const char *args[] = {"seek", tmp.constData(), "absolute", NULL};
-        AsyncCommand(args);
+        double p = pos;
+        mpv_set_property_async(mpv, 0, "time-pos", MPV_FORMAT_DOUBLE, &p);
     }
 }
 
@@ -380,9 +380,10 @@ void MpvHandler::FrameBackStep()
 
 void MpvHandler::Chapter(int c)
 {
-    const QByteArray tmp = QString::number(c).toUtf8();
-    const char *args[] = {"set", "chapter", tmp.constData(), NULL};
-    AsyncCommand(args);
+    mpv_set_property_async(mpv, 0, "chapter", MPV_FORMAT_INT64, &c);
+//    const QByteArray tmp = QString::number(c).toUtf8();
+//    const char *args[] = {"set", "chapter", tmp.constData(), NULL};
+//    AsyncCommand(args);
 }
 
 void MpvHandler::NextChapter()
@@ -404,9 +405,8 @@ void MpvHandler::Volume(int level)
 
     if(playState > 0)
     {
-        const QByteArray tmp = QString::number(level).toUtf8();
-        const char *args[] = {"set", "volume", tmp.constData(), NULL};
-        AsyncCommand(args);
+        double v = level;
+        mpv_set_property_async(mpv, 0, "volume", MPV_FORMAT_DOUBLE, &v);
     }
     else
         setVolume(level);
@@ -415,11 +415,7 @@ void MpvHandler::Volume(int level)
 void MpvHandler::Speed(double d)
 {
     if(playState > 0)
-    {
-        const QByteArray tmp = QString::number(d).toUtf8();
-        const char *args[] = {"set", "speed", tmp.constData(), NULL};
-        AsyncCommand(args);
-    }
+        mpv_set_property_async(mpv, 0, "speed", MPV_FORMAT_DOUBLE, &d);
     else
         setSpeed(d);
 }
@@ -499,8 +495,7 @@ void MpvHandler::AddSubtitleTrack(QString f)
 
 void MpvHandler::ShowSubtitles(bool b)
 {
-    const char *args[] = {"set", "sub-visibility", b?"yes":"no", NULL};
-    AsyncCommand(args);
+    mpv_set_property_async(mpv, 0, "sub-visibility", MPV_FORMAT_FLAG, &b);
 }
 
 void MpvHandler::SubtitleScale(double scale, bool relative)
