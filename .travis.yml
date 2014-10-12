@@ -13,7 +13,7 @@ branches:
 
 install:
   - sudo apt-get update
-  - sudo apt-get install qt5-default qttools5-dev-tools
+  - sudo apt-get install libqt5-dev
 
 script:
   - ./make.sh
