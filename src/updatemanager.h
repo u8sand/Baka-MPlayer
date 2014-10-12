@@ -18,16 +18,21 @@ public slots:
     void CheckForUpdates();
 //#if defined(Q_OS_WIN)
     void DownloadUpdate();
+    void ApplyUpdate();
 signals:
     void Downloaded(int);
 //#else
 //signals:
 //#endif
-    void Update(QMap<QString, QString> info);
+    void versionInfoReceived(QMap<QString, QString> info);
+
+    void progressSignal(int percent);
 
     void errorSignal(QString err);
+    void verboseSignal(QString msg);
 
 private:
+    QNetworkAccessManager *manager;
 };
 
 #endif // UPDATEMANAGER_H
