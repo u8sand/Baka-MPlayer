@@ -1,0 +1,23 @@
+language: c++
+
+os:
+  - linux
+
+compiler:
+  - clang
+
+branches:
+  only:
+    - master
+    - release
+
+script:
+  - ./make
+
+notifications:
+  email: false
+  irc:
+    channels:
+      - "irc.freenode.org#baka-mplayer"
+    on_success: change
+    on_failure: always
