@@ -13,7 +13,7 @@ UpdateDialog::UpdateDialog(UpdateManager *updateManager, QWidget *parent) :
     connect(updateManager, &UpdateManager::Update,
             [=](QMap<QString, QString> info)
             {
-                ui->updateLabel->setText(info["version"]+" released "+info["date"]);
+                ui->updateLabel->setText(info["version"]+" Released "+info["date"]);
                 ui->plainTextEdit->setPlainText(info["bugfixes"]);
                 if(info["version"] == BAKA_MPLAYER_VERSION)
                 {
@@ -22,7 +22,7 @@ UpdateDialog::UpdateDialog(UpdateManager *updateManager, QWidget *parent) :
                 }
 
             });
-#if defined(Q_OS_WIN)
+//#if defined(Q_OS_WIN)
     connect(ui->updateButton, &QPushButton::clicked,
             [=]
             {
@@ -39,11 +39,11 @@ UpdateDialog::UpdateDialog(UpdateManager *updateManager, QWidget *parent) :
                     // update progress bar with percent
                 }
             });
-#endif
+//#endif
     connect(ui->cancelButton, SIGNAL(clicked()),
             this, SLOT(reject()));
 
-    updateManager->CheckForUpdates();
+    updateManager->CheckForUpdates(); // todo: do this after dialog is opened
 }
 
 UpdateDialog::~UpdateDialog()

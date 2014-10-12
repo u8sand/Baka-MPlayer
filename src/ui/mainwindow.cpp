@@ -64,12 +64,12 @@ MainWindow::MainWindow(QWidget *parent):
     settings = new QSettings(QSettings::IniFormat, QSettings::UserScope, SETTINGS_FILE, QString(), this);
 #endif
     mpv = new MpvHandler(ui->mpvFrame->winId(), this);
-#if defined(Q_OS_WIN)
+//#if defined(Q_OS_WIN)
     update = new UpdateManager(this);
-#else
-    // todo: remove this when checking for updates shows the latest version on linux
-    ui->action_Check_for_Updates->setEnabled(false);
-#endif
+//#else
+//    // todo: remove this when checking for updates shows the latest version on linux
+//    ui->action_Check_for_Updates->setEnabled(false);
+//#endif
     // initialize other ui elements
     // note: trayIcon does not work in my environment--known qt bug
     // see: https://bugreports.qt-project.org/browse/QTBUG-34364

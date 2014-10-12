@@ -25,11 +25,13 @@ void UpdateManager::CheckForUpdates()
                     QMap<QString, QString> info;
                     QList<QByteArray> lines = reply->readAll().split('\n');
                     QList<QByteArray> pair;
+                    QString lastPair;
                     for(auto line : lines)
                     {
                         if((pair = line.split('=')).size() != 2)
-                            break;
-                        info[QString(pair[0])] = QString(pair[1].replace('\r','\n')); // for multi-line info use \r's instead of \n's
+                            info[lastPair].append(line);
+                        else
+                            info[(lastPair = pair[0])] = QString(pair[1]);
                     }
                     emit Update(info);
                 }
@@ -38,7 +40,7 @@ void UpdateManager::CheckForUpdates()
     manager->get(QNetworkRequest(QUrl("http://bakamplayer.u8sand.net/version")));
 }
 
-#if defined(Q_OS_WIN)
+//#if defined(Q_OS_WIN)
 void UpdateManager::DownloadUpdate()
 {
     QNetworkAccessManager *manager = new QNetworkAccessManager(this);
@@ -64,4 +66,4 @@ void UpdateManager::DownloadUpdate()
             });
     manager->get(QNetworkRequest(QUrl("http://bakamplayer.u8sand.net/Baka MPlayer.exe")));
 }
-#endif
+//#endif
