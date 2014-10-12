@@ -160,7 +160,14 @@ MainWindow::MainWindow(QWidget *parent):
             {
                 if(mpv->getPlayState() > 0)
                 {
-                    setWindowTitle(fileInfo.media_title);
+                    if(fileInfo.media_title == "")
+                        setWindowTitle("Baka-MPlayer");
+                    else if(fileInfo.media_title == "-")
+                        setWindowTitle("Baka-MPlayer: stdin"); // todo: disable playlist?
+                    else
+                        setWindowTitle(fileInfo.media_title);
+
+                    // todo: deal with streamed input for which we do not know the length
                     ui->seekBar->setTracking(fileInfo.length);
 
                     if(!remaining)

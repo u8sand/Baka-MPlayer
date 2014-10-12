@@ -181,7 +181,15 @@ void MpvHandler::LoadFile(QString f)
     int i;
     QRegExp rx("^(https?://.+\\.[a-z]+)", Qt::CaseInsensitive);
 
-    if(rx.indexIn(f) != -1) // web url
+    if(f == "-")
+    {
+        i = 0;
+        setPath("");
+        playlist.clear();
+        playlist.push_back(f);
+        setPlaylist();
+    }
+    else if(rx.indexIn(f) != -1) // web url
     {
         i = 0;
         setPath("");
