@@ -4,7 +4,6 @@ os:
   - linux
 
 env:
-  - TRAVIS_OS_NAME=linux
   - LIBAV=libav-stable
   - LIBAV=libav-git
   - LIBAV=ffmpeg-stable
@@ -22,7 +21,7 @@ install:
   - sudo apt-get update -qq
   - sudo apt-get install -qq qt5-default libqt5core5 libqt5gui5 libqt5declarative5 libqt5x11extras5 cmake
 
-before_install: ./travis-deps libass-stable $LIBAV libmpv-git
+before_install: TRAVIS_OS_NAME=linux; ./travis-deps libass-stable $LIBAV libmpv-git
 script:
   - ./make.sh
 
