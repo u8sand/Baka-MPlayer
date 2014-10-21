@@ -136,7 +136,7 @@ class Libmpv < TravisDepsBuilder
     {
       "mpv-git" => {
         :action => :git,
-        :url    => 'git://github.com/mpv-player/mpv.git'
+        :url    => "git://github.com/mpv-player/mpv.git"
       }
     }
   end
