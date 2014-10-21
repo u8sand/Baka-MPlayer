@@ -31,12 +31,11 @@ If your distribution does not provide a package--you must compile baka mplayer f
 	cd "Baka-MPlayer"
 	./make.sh
 	
-Copy the resulting executable (build/Baka MPlayer) wherever you like; (eg. `sudo cp "build/baka-mplayer" /usr/bin/`) your configuration file will be written to `~/.config/bakamplayer.ini`.
+Copy the resulting executable (build/baka-mplayer) wherever you like; (eg. `sudo cp "build/baka-mplayer" /usr/bin/`) your configuration file will be written to `~/.config/bakamplayer.ini`.
 
 ## Bug reports
 
-Please use the [issues tracker](https://github.com/u8sand/Baka-MPlayer/issues) provided by GitHub to send us bug reports or
-feature requests.
+Please use the [issues tracker](https://github.com/u8sand/Baka-MPlayer/issues) provided by GitHub to send us bug reports or feature requests.
 
 ## Contact
 
