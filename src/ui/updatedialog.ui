@@ -90,7 +90,7 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
 }</string>
          </property>
          <property name="text">
-          <string>An Update is Available</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Checking for updates...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
         </widget>
        </item>
