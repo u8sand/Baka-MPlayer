@@ -4,10 +4,10 @@ os:
   - linux
 
 env:
-  - LIBAV=libav-stable
+#  - LIBAV=libav-stable
   - LIBAV=libav-git
-  - LIBAV=ffmpeg-stable
-  - LIBAV=ffmpeg-git
+#  - LIBAV=ffmpeg-stable
+#  - LIBAV=ffmpeg-git
 
 compiler:
   - clang
@@ -18,8 +18,9 @@ branches:
     - release
 
 install:
+  - sudo add-apt-repository --yes ppa:ubuntu-sdk-team/ppa
   - sudo apt-get update -qq
-  - sudo apt-get install -qq qt5-default libqt5core5 libqt5gui5 libqt5declarative5 libqt5x11extras5 cmake
+  - sudo apt-get install -qq qt5-default qtbase5-dev libqt5core5 libqt5gui5 libqt5declarative5 libqt5x11extras5 cmake
 
 before_install: TRAVIS_OS_NAME=linux; ./travis-deps libass-stable $LIBAV libmpv-git
 script:
