@@ -4,6 +4,7 @@ os:
   - linux
 
 env:
+  - TRAVIS_OS_NAME=linux
   - LIBAV=libav-stable
   - LIBAV=libav-git
   - LIBAV=ffmpeg-stable
