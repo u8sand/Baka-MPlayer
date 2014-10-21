@@ -1,5 +1,6 @@
 #include "updatemanager.h"
 
+#include <QCoreApplication>
 #include <QNetworkRequest>
 #include <QList>
 #include <QByteArray>
@@ -15,7 +16,6 @@ UpdateManager::UpdateManager(QObject *parent) :
 
 void UpdateManager::CheckForUpdates()
 {
-    emit progressSignal(0);
     QNetworkRequest request(QUrl("http://bakamplayer.u8sand.net/version"));
     QNetworkReply *reply = manager->get(request);
 
@@ -32,7 +32,6 @@ void UpdateManager::CheckForUpdates()
                     emit errorSignal(reply->errorString());
                 else
                 {
-                    emit progressSignal(50); // when we've gotten the data 50% is already done
                     QMap<QString, QString> info;
                     QList<QByteArray> lines = reply->readAll().split('\n');
                     QList<QByteArray> pair;
@@ -55,14 +54,21 @@ void UpdateManager::CheckForUpdates()
             });
 }
 
-//#if defined(Q_OS_WIN)
-void UpdateManager::DownloadUpdate()
+#if defined(Q_OS_WIN)
+void UpdateManager::DownloadUpdate(QString url, QString version)
 {
+    // todo: handle redirects
+
     emit verboseSignal("Downloading update...");
-    QNetworkRequest request(QUrl("http://bakamplayer.u8sand.net/Baka MPlayer.7z"));
+    QNetworkRequest request(QUrl(url));
     QNetworkReply *reply = manager->get(request);
-    QFile *file = new QFile("Baka MPlayer.exe");
-    file->open(QFile::Truncate);
+    QFile *file = new QFile(QCoreApplication::applicationDirPath()+"\\Baka-MPlayer-"+version+".exe");
+    if(!file->open(QFile::WriteOnly | QFile::Truncate))
+    {
+        emit errorSignal("write error");
+        reply->abort();
+        delete file;
+    }
 
     connect(reply, &QNetworkReply::downloadProgress,
             [=](qint64 received, qint64 total)
@@ -75,30 +81,38 @@ void UpdateManager::DownloadUpdate()
             {
                 if(reply->error())
                     emit errorSignal(reply->errorString());
-                else
-                    file->write(reply->read(reply->bytesAvailable()));
+                else if(file->write(reply->read(reply->bytesAvailable()), reply->bytesAvailable()) == -1)
+                    emit errorSignal("write error");
             });
 
     connect(reply, &QNetworkReply::finished,
             [=]
             {
                 if(reply->error())
+                {
                     emit errorSignal(reply->errorString());
+                    file->close();
+                    delete file;
+                }
                 else
                 {
                     file->flush();
                     file->close();
                     delete file;
                     emit verboseSignal("Downloaded");
+                    ApplyUpdate();
                 }
                 reply->deleteLater();
             });
 }
 
-void UpdateManager::ApplyUpdate()
+void UpdateManager::ApplyUpdate(QString version)
 {
     emit verboseSignal("Applying update...");
-    // todo
+
+    // extract?
+    // execute new version ("Baka-MPlayer-"+version+".exe") passing --update BAKA_MPLAYER_VERSION
+
     emit verboseSignal("Done.");
 }
-//#endif
+#endif

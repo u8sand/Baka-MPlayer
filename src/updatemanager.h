@@ -16,14 +16,14 @@ public:
 
 public slots:
     void CheckForUpdates();
-//#if defined(Q_OS_WIN)
-    void DownloadUpdate();
-    void ApplyUpdate();
+#if defined(Q_OS_WIN)
+    void DownloadUpdate(QString url, QString version);
+    void ApplyUpdate(QString version);
 signals:
     void Downloaded(int);
-//#else
-//signals:
-//#endif
+#else
+signals:
+#endif
     void versionInfoReceived(QMap<QString, QString> info);
 
     void progressSignal(int percent);

@@ -2,6 +2,7 @@
 #define UPDATEDIALOG_H
 
 #include <QDialog>
+#include <QTime>
 
 #include "updatemanager.h"
 
@@ -21,6 +22,16 @@ public:
 
 private:
     Ui::UpdateDialog *ui;
+
+    QTime *timer;
+    double avgSpeed = 1,
+           lastSpeed=0;
+    int lastProgress,
+        lastTime;
+#if defined(Q_OS_WIN)
+    QString version,
+            url;
+#endif
 };
 
 #endif // UPDATEDIALOG_H
