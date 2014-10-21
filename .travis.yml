@@ -18,9 +18,9 @@ branches:
     - release
 
 install:
-  - sudo add-apt-repository --yes ppa:ubuntu-sdk-team/ppa
+  - sudo add-apt-repository --yes ppa:ubuntu-sdk-team/ppa ppa:kalakris/cmake
   - sudo apt-get update -qq
-  - sudo apt-get install -qq qt5-default qtbase5-dev libqt5core5 libqt5gui5 libqt5declarative5 libqt5x11extras5 cmake
+  - sudo apt-get install -qq qt5-qmake qtbase5-dev qtdeclarative5-dev libqt5webkit5-dev libsqlite3-dev cmake
 
 before_install: TRAVIS_OS_NAME=linux; ./travis-deps libass-stable $LIBAV libmpv-git
 script:

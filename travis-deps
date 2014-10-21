@@ -142,7 +142,7 @@ class Libmpv < TravisDepsBuilder
   end
   
   def compile(dirname)
-    sh "cd #{dirname} && ./waf configure --enable-libmpv-shared --disable-client-api-examples && ./waf build && sudo ./waf install"
+    sh "cd #{dirname} && ./bootstrap.py && ./waf configure --enable-libmpv-shared --disable-client-api-examples && ./waf build && sudo ./waf install"
     sh "cd $TRAVIS_BUILD_DIR"
   end
 end
