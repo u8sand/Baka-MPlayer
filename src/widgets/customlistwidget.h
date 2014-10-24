@@ -12,12 +12,21 @@ public:
     explicit CustomListWidget(QWidget *parent = 0);
 
     QAction *addAction(const QString &text);
+    void SelectItem(const QString &item);
 
+    QString PreviousItem();
+    QString NextItem();
+
+    void Search(QString);
+    void ShowAll(bool);
+    void Shuffle(bool);
+
+    bool isShowAll();
 protected:
     void contextMenuEvent(QContextMenuEvent *event);
 
-signals:
-    void reordered(int old_index, int new_index); // todo
+private:
+    bool showAll;
 };
 
 #endif // CUSTOMLISTWIDGET_H

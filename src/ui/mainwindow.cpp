@@ -103,7 +103,7 @@ MainWindow::MainWindow(QWidget *parent):
                         else if(mpv->getPlayState() == Mpv::Paused)
                             sysTrayIcon->showMessage("Baka MPlayer", "Paused", QSystemTrayIcon::NoIcon, 4000);
                     }
-                    mpv->PlayPause(ui->playlistWidget->currentRow());
+                    mpv->PlayPause(ui->playlistWidget->currentItem()->text());
                 }
 
             });
@@ -152,7 +152,6 @@ MainWindow::MainWindow(QWidget *parent):
                     ui->menuR_epeat->setEnabled(true);
                 else
                     ui->menuR_epeat->setEnabled(false);
-                ui->playlistWidget->setCurrentRow(mpv->getIndex());
             });
 
     connect(mpv, &MpvHandler::fileInfoChanged,
@@ -165,7 +164,10 @@ MainWindow::MainWindow(QWidget *parent):
                     else if(fileInfo.media_title == "-")
                         setWindowTitle("Baka-MPlayer: stdin"); // todo: disable playlist?
                     else
+                    {
                         setWindowTitle(fileInfo.media_title);
+                        ui->playlistWidget->SelectItem(mpv->getFile());
+                    }
 
                     // todo: deal with streamed input for which we do not know the length
                     ui->seekBar->setTracking(fileInfo.length);
@@ -372,12 +374,12 @@ MainWindow::MainWindow(QWidget *parent):
                     if(init)
                     {
                         if(ui->action_This_File->isChecked())
-                            mpv->PlayIndex(mpv->getIndex()); // restart file
-                        else if(mpv->getIndex() >= mpv->getMaxIndex() ||
+                            mpv->PlayFile(mpv->getFile()); // restart file
+                        else if(ui->playlistWidget->currentRow() >= ui->playlistWidget->count() ||
                            ui->actionStop_after_Current->isChecked())
                         {
                             if(ui->action_Playlist->isChecked())
-                                mpv->PlayIndex(0); // restart playlist
+                                mpv->PlayFile(ui->playlistWidget->item(0)->text()); // restart playlist
                             else
                             {
                                 setWindowTitle("Baka MPlayer");
@@ -387,7 +389,7 @@ MainWindow::MainWindow(QWidget *parent):
                             }
                         }
                         else
-                            mpv->NextFile();
+                            mpv->PlayFile(ui->playlistWidget->NextItem());
                     }
                     break;
                 }
@@ -403,12 +405,6 @@ MainWindow::MainWindow(QWidget *parent):
             [=](QString f)
             {
                 ui->actionOpen_Last_File->setEnabled(f != "");
-            });
-
-    connect(mpv, &MpvHandler::searchChanged,
-            [=](QString s)
-            {
-                ui->searchBox->setText(s);
             });
 
     connect(mpv, &MpvHandler::timeChanged,
@@ -438,12 +434,6 @@ MainWindow::MainWindow(QWidget *parent):
                 ui->volumeSlider->setValueNoSignal(volume);
             });
 
-    connect(mpv, &MpvHandler::indexChanged,
-            [=](int index)
-            {
-                ui->playlistWidget->setCurrentRow(index);
-            });
-
     connect(mpv, &MpvHandler::sidChanged,
             [=](int sid)
             {
@@ -458,18 +448,6 @@ MainWindow::MainWindow(QWidget *parent):
                     else
                         action->setChecked(false);
                 }
-            });
-
-    connect(mpv, &MpvHandler::showAllChanged,
-            [=](bool b)
-            {
-                ui->showAllButton->setChecked(b);
-            });
-
-    connect(mpv, &MpvHandler::shuffleChanged,
-            [=](bool b)
-            {
-                ui->actionSh_uffle->setChecked(b);
             });
 
     connect(mpv, &MpvHandler::playlistVisibleChanged,
@@ -570,19 +548,19 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->previousButton, &IndexButton::clicked,                  // Playback: Previous button
             [=]
             {
-                mpv->PreviousFile();
+                mpv->PlayFile(ui->playlistWidget->PreviousItem());
             });
 
     connect(ui->playButton, &QPushButton::clicked,                      // Playback: Play/pause button
             [=]
             {
-                mpv->PlayPause(ui->playlistWidget->currentRow());
+                mpv->PlayPause(ui->playlistWidget->currentItem()->text());
             });
 
     connect(ui->nextButton, &IndexButton::clicked,                      // Playback: Next button
             [=]
             {
-                mpv->NextFile();
+                mpv->PlayFile(ui->playlistWidget->NextItem());
             });
 
     connect(ui->volumeSlider, &CustomSlider::valueChanged,              // Playback: Volume slider adjusted
@@ -623,24 +601,24 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->searchBox, &QLineEdit::textChanged,                     // Playlist: Search box
             [=](QString s)
             {
-                mpv->SearchPlaylist(s);
+                ui->playlistWidget->Search(s);
             });
 
     connect(ui->indexLabel, &CustomLabel::clicked,                      // Playlist: Clicked the indexLabel
             [=]
             {
-                QString res = InputDialog::getInput("Enter the file number you want to play:\nNote: Value must be from 1 - "+QString::number(mpv->getMaxIndex()+1),
+                QString res = InputDialog::getInput("Enter the file number you want to play:\nNote: Value must be from 1 - "+QString::number(ui->playlistWidget->count()),
                                                     "Enter File Number",
                                                     [this](QString input)
                                                     {
                                                         int in = input.toInt();
-                                                        if(in >= 1 && in <= mpv->getMaxIndex()+1)
+                                                        if(in >= 1 && in <= ui->playlistWidget->count())
                                                             return true;
                                                         return false;
                                                     },
                                                     this);
                 if(res != "")
-                    mpv->PlayIndex(res.toInt()-1); // user index will be 1 greater than actual
+                    mpv->PlayFile(ui->playlistWidget->item(res.toInt()-1)->text()); // user index will be 1 greater than actual
             });
 
     connect(ui->playlistWidget, &CustomListWidget::currentRowChanged,   // Playlist: Playlist selection changed
@@ -661,25 +639,25 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->playlistWidget, &CustomListWidget::doubleClicked,       // Playlist: Item double clicked
             [=](const QModelIndex &i)
             {
-                mpv->PlayIndex(i.row());
+                mpv->PlayFile(ui->playlistWidget->item(i.row())->text());
             });
 
     connect(ui->currentFileButton, &QPushButton::clicked,               // Playlist: Select current file button
             [=]
             {
-                ui->playlistWidget->setCurrentRow(mpv->getIndex());
+                ui->playlistWidget->SelectItem(mpv->getFile());
             });
 
     connect(ui->showAllButton, &QPushButton::clicked,                   // Playlist: Show All button
             [=](bool b)
             {
-                mpv->ShowAllPlaylist(b);
+                ui->playlistWidget->ShowAll(b);
             });
 
     connect(ui->refreshButton, &QPushButton::clicked,                   // Playlist: Refresh playlist button
             [=]
             {
-                mpv->RefreshPlaylist();
+                mpv->LoadPlaylist(mpv->getFile());
             });
 
     action = ui->playlistWidget->addAction("R&emove from Playlist");
@@ -702,15 +680,8 @@ MainWindow::MainWindow(QWidget *parent):
     connect(action, &QAction::triggered,
             [=]
             {
-                mpv->RefreshPlaylist();
+                mpv->LoadPlaylist(mpv->getFile());
             });
-
-    connect(ui->playlistWidget, &CustomListWidget::reordered,           // Playlist: Re-arrange
-            [=](int old_index, int new_index)
-            {
-                mpv->ReorderPlaylist(old_index, new_index);
-            });
-
                                                                         // File ->
     connect(ui->action_New_Player, &QAction::triggered,                 // File -> New Player
             [=]
@@ -757,13 +728,13 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->actionPlay_Next_File, &QAction::triggered,              // File -> Play Next File
             [=]
             {
-                mpv->NextFile();
+                mpv->PlayFile(ui->playlistWidget->NextItem());
             });
 
     connect(ui->actionPlay_Previous_File, &QAction::triggered,          // File -> Play Previous File
             [=]
             {
-                mpv->PreviousFile();
+                mpv->PlayFile(ui->playlistWidget->PreviousItem());
             });
 
     connect(ui->actionE_xit_2, &QAction::triggered,                     // File -> Exit
@@ -890,7 +861,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->action_Play, &QAction::triggered,                       // Playback -> (Play|Pause)
             [=]
             {
-                mpv->PlayPause(ui->playlistWidget->currentRow());
+                mpv->PlayPause(ui->playlistWidget->currentItem()->text());
             });
 
     connect(ui->action_Stop, &QAction::triggered,                       // Playback -> Stop
@@ -908,7 +879,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->actionSh_uffle, &QAction::triggered,                    // Playback -> Shuffle
             [=](bool b)
             {
-                mpv->ShufflePlaylist(b);
+                ui->playlistWidget->Shuffle(b);
             });
                                                                         // Playback -> Repeat
     connect(ui->action_Off, &QAction::triggered,                        // Playback -> Repeat -> Off
@@ -997,7 +968,7 @@ MainWindow::MainWindow(QWidget *parent):
                 HideAlbumArt(b);
             });
 
-    connect(ui->action_Dim_Desktop, &QAction::triggered,               // Settings -> Dim Lights
+    connect(ui->action_Dim_Desktop, &QAction::triggered,                // Settings -> Dim Lights
             [=](bool b)
             {
                 DimDesktop(b);
@@ -1157,6 +1128,7 @@ void MainWindow::LoadSettings()
             setHidePopup(settings->value("window/hidePopup", false).toBool());
             setRemaining(settings->value("window/remaining", true).toBool());
             ui->splitter->setNormalPosition(settings->value("window/splitter", ui->splitter->max()*1.0/8).toInt());
+            ui->playlistWidget->ShowAll(settings->value("window/showAll", false).toBool());
             setDebug(settings->value("common/debug", false).toBool());
 
             mpv->LoadSettings(settings);
@@ -1172,6 +1144,7 @@ void MainWindow::LoadSettings()
             setHidePopup(settings->value("window/hidePopup", false).toBool());
             setRemaining(settings->value("window/remaining", true).toBool());
             ui->splitter->setNormalPosition(settings->value("window/splitter", ui->splitter->max()*1.0/8).toInt());
+            ui->playlistWidget->ShowAll(settings->value("mpv/showAll", false).toBool());
             setDebug(settings->value("common/debug", false).toBool());
 
             mpv->LoadSettings(settings);
@@ -1202,6 +1175,7 @@ void MainWindow::SaveSettings()
                                                ui->splitter->position() == ui->splitter->max()) ?
                                                 ui->splitter->normalPosition() :
                                                 ui->splitter->position());
+        settings->setValue("window/showAll", ui->playlistWidget->isShowAll());
         // mpv
         // common
         settings->setValue("common/debug", getDebug());
@@ -1250,7 +1224,7 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
             lastMousePos = event->pos();
         }
         else if(event->button() == Qt::RightButton && mpv->getPlayState() > 0) // if playing
-            mpv->PlayPause(ui->playlistWidget->currentRow());
+            mpv->PlayPause(ui->playlistWidget->currentItem()->text());
     }
     QMainWindow::mousePressEvent(event);
 }
@@ -1329,10 +1303,10 @@ void MainWindow::SetPlaybackControls(bool enable)
     ui->seekBar->setEnabled(enable);
     ui->rewindButton->setEnabled(enable);
     // next file
-    if(enable && mpv->getIndex()+1 < ui->playlistWidget->count()) // not the last entry
+    if(enable && ui->playlistWidget->currentRow()+1 < ui->playlistWidget->count()) // not the last entry
     {
         ui->nextButton->setEnabled(true);
-        ui->nextButton->setIndex(mpv->getIndex()+2); // starting at 1 instead of at 0 like actual index
+        ui->nextButton->setIndex(ui->playlistWidget->currentRow()+2); // starting at 1 instead of at 0 like actual index
         ui->actionPlay_Next_File->setEnabled(true);
     }
     else
@@ -1341,10 +1315,10 @@ void MainWindow::SetPlaybackControls(bool enable)
         ui->actionPlay_Next_File->setEnabled(false);
     }
     // previous file
-    if(enable && mpv->getIndex()-1 >= 0) // not the first entry
+    if(enable && ui->playlistWidget->currentRow()-1 >= 0) // not the first entry
     {
         ui->previousButton->setEnabled(true);
-        ui->previousButton->setIndex(-mpv->getIndex()); // we use a negative index value for the left button
+        ui->previousButton->setIndex(-ui->playlistWidget->currentRow()); // we use a negative index value for the left button
         ui->actionPlay_Previous_File->setEnabled(true);
     }
     else

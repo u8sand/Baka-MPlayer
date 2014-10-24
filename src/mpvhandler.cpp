@@ -146,7 +146,6 @@ void MpvHandler::LoadSettings(QSettings *settings)
             setLastFile(lf);
         else
             setLastFile("");
-        ShowAllPlaylist(settings->value("mpv/showAll", false).toBool());
         ScreenshotFormat(settings->value("mpv/screenshotFormat", "jpg").toString());
         ScreenshotTemplate(settings->value("mpv/screenshotTemplate", "screenshot%#04n").toString());
         ScreenshotDirectory(settings->value("mpv/screenshotDir", "").toString());
@@ -164,7 +163,6 @@ void MpvHandler::SaveSettings(QSettings *settings)
             settings->setValue("mpv/lastFile", file);
         else
             settings->setValue("mpv/lastFile", lastFile);
-        settings->setValue("mpv/showAll", showAll);
         settings->setValue("mpv/screenshotFormat", screenshotFormat);
         settings->setValue("mpv/screenshotTemplate", screenshotTemplate);
         settings->setValue("mpv/screenshotDir", screenshotDir);
@@ -175,137 +173,58 @@ void MpvHandler::SaveSettings(QSettings *settings)
 
 void MpvHandler::LoadFile(QString f)
 {
+    LoadPlaylist(f);
+    PlayFile(f);
+}
+
+void MpvHandler::LoadPlaylist(QString f)
+{
     if(f == "") // ignore empty file name
         return;
 
-    int i;
     QRegExp rx("^(https?://.+\\.[a-z]+)", Qt::CaseInsensitive);
 
     if(f == "-")
     {
-        i = 0;
         setPath("");
-        playlist.clear();
-        playlist.push_back(f);
-        setPlaylist();
+        setPlaylist({f});
     }
     else if(rx.indexIn(f) != -1) // web url
     {
-        i = 0;
         setPath("");
-        playlist.clear();
-        playlist.push_back(f);
-        setPlaylist();
+        setPlaylist({f});
     }
     else // local file
     {
         QFileInfo fi(f);
         if(!fi.exists()) // ignore if file doesn't exist
             return;
-        if(path != QString(fi.absolutePath()+"/") || // path is the same
-          (i = playlist.indexOf(fi.fileName())) == -1) // file doesn't exists in the list
-        {
-            setPath(QString(fi.absolutePath()+"/")); // set new path
-            suffix = fi.suffix();
-            PopulatePlaylist();
-            SortPlaylist();
-            setPlaylist();
-            i = playlist.indexOf(fi.fileName()); // get index
-        }
+        setPath(QString(fi.absolutePath()+"/")); // set new path
+        PopulatePlaylist();
     }
-    if(playlist.size() > 1) // open up the playlist only if there is more than one item
-        setPlaylistVisible(true);
-    else // close it otherwise
-        setPlaylistVisible(false);
-    PlayIndex(i);
 }
 
-void MpvHandler::PlayIndex(int i)
+void MpvHandler::PlayFile(QString f)
 {
-    if(i >= 0 && i < playlist.size())
+    if(path == "") // web url
     {
-        if(path == "") // web url
+        if(getFile() != "")
+            setLastFile(getFile());
+        OpenFile(f);
+    }
+    else
+    {
+        QFile qf(path+f);
+        if(qf.exists())
         {
             if(getFile() != "")
                 setLastFile(getFile());
-            OpenFile(playlist[i]);
+            OpenFile(path+f);
+            Play();
         }
         else
-        {
-            QFile f(path+playlist[i]);
-            if(f.exists())
-            {
-                if(getFile() != "")
-                    setLastFile(getFile());
-                OpenFile(path+playlist[i]);
-                Play();
-            }
-            else
-                Stop();
-        }
-        setIndex(i);
+            Stop();
     }
-    else // out of bounds
-    {
-        Stop();
-        if(i < 0)
-            setIndex(0);
-        else
-            setIndex(playlist.size()-1);
-    }
-}
-
-void MpvHandler::NextFile()
-{
-    PlayIndex(index+1);
-}
-
-void MpvHandler::PreviousFile()
-{
-    PlayIndex(index-1);
-}
-
-void MpvHandler::ReorderPlaylist(int old_index, int new_index)
-{
-    playlist.swap(old_index, new_index);
-}
-
-void MpvHandler::RefreshPlaylist()
-{
-    setShuffle(false);
-    setSearch("");
-    PopulatePlaylist();
-    SortPlaylist();
-    setPlaylist();
-}
-
-void MpvHandler::SearchPlaylist(QString s)
-{
-    QStringList tmplist;
-    for(QStringList::iterator item = playlist.begin(); item != playlist.end(); ++item)
-        if(item->contains(s, Qt::CaseInsensitive))
-            tmplist.push_back(*item);
-    emit playlistChanged(tmplist);
-}
-
-void MpvHandler::ShufflePlaylist(bool b)
-{
-    setShuffle(b);
-    SortPlaylist();
-    setPlaylist();
-}
-
-void MpvHandler::ShowAllPlaylist(bool b)
-{
-    showAll = b;
-    if(!b)
-        suffix = QFileInfo(getFile()).suffix();
-    else
-        suffix = "";
-    PopulatePlaylist();
-    SortPlaylist();
-    setPlaylist();
-    setSearch("");
 }
 
 void MpvHandler::Play()
@@ -332,10 +251,10 @@ void MpvHandler::Stop()
     Pause();
 }
 
-void MpvHandler::PlayPause(int indexIfStopped)
+void MpvHandler::PlayPause(QString fileIfStopped)
 {
     if(playState < 0) // not playing, play plays the selected playlist file
-        PlayIndex(indexIfStopped);
+        PlayFile(fileIfStopped);
     else
     {
         const char *args[] = {"cycle", "pause", NULL};
@@ -673,24 +592,14 @@ void MpvHandler::PopulatePlaylist()
 {
     if(path != "")
     {
-        playlist.clear(); // clear existing list
+        QStringList playlist;
         QDir root(path);
         QFileInfoList flist;
-        if(suffix == "")
-            flist = root.entryInfoList(Mpv::media_filetypes, QDir::Files);
-        else
-            flist = root.entryInfoList({QString("*.").append(suffix)}, QDir::Files);
+        flist = root.entryInfoList(Mpv::media_filetypes, QDir::Files);
         for(auto &i : flist)
             playlist.push_back(i.fileName()); // add files to the list
+        setPlaylist(playlist);
     }
-}
-
-void MpvHandler::SortPlaylist()
-{
-    if(shuffle) // shuffle list
-        std::random_shuffle(playlist.begin(), playlist.end());
-    else        // sort list
-        std::sort(playlist.begin(), playlist.end());
 }
 
 void MpvHandler::SetProperties()
