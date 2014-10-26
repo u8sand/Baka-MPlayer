@@ -1,20 +1,16 @@
 # Baka MPlayer User Manual
-Version 1.0
+Version 1.1
 
 ## Introduction
 
 Baka MPlayer is a free and open source, cross-platform, **libmpv** based multimedia player.
-Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching anime.
-It's also portable and supports opening Youtube videos (through **libmpv**).
-
-This manual seeks to cover all related topics.
+Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.
 
 
 ## Portability
 
-Baka MPlayer is made to be cross-platform and portable--simple to put on your usb and use anywhere to play those video formats that no one else seems to be able to play. Though the linux version only works on the distribution it was compiled for, the windows version is compiled with mingw and should work in both all windows versions and on linux with wine.
-
-Configuration files on the windows version are saved with the executable in an ini file `bakamplayer.ini`. On the linux version they are saved in the qt location `~/.config/bakamplayer.ini`
+Baka MPlayer is made to be cross-platform and portable.
+Although the Linux version only works on the distribution it was compiled for, the Windows version is compiled with mingw and should run in any version of Windows and on Linux with Wine installed.
 
 
 ## Hotkeys
@@ -31,6 +27,9 @@ Most hotkeys are labeled on the file menu. Other hotkeys are described here.
 
 
 ## Settings
+
+On Windows, the config files are saved with the executable in an ini file `bakamplayer.ini`.
+On Linux, they are saved in the Qt location `~/.config/bakamplayer.ini`.
 
 	# Format: [category] key=value
 	# Below are the keys and comments specify setting details
