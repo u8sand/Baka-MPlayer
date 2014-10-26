@@ -149,446 +149,288 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="CustomSplitter" name="splitter">
-    <property name="enabled">
-     <bool>false</bool>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="spacing">
+     <number>0</number>
     </property>
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>514</width>
-      <height>263</height>
-     </rect>
+    <property name="leftMargin">
+     <number>0</number>
     </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
+    <property name="topMargin">
+     <number>0</number>
     </property>
-    <widget class="QSplitter" name="videoSplitter">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-       <horstretch>1</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <widget class="QFrame" name="mpvFrame">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-        <horstretch>0</horstretch>
-        <verstretch>1</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="mouseTracking">
-       <bool>true</bool>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::NoFrame</enum>
-      </property>
-     </widget>
-     <widget class="QPlainTextEdit" name="outputTextEdit">
-      <property name="contextMenuPolicy">
-       <enum>Qt::PreventContextMenu</enum>
-      </property>
-      <property name="acceptDrops">
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="CustomSplitter" name="splitter">
+      <property name="enabled">
        <bool>false</bool>
       </property>
-      <property name="styleSheet">
-       <string notr="true">#outputTextEdit {
-	font: 12px &quot;Courier New&quot;, monospace;
-	border-top: 1px solid #212121;
-}</string>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
       </property>
-      <property name="frameShape">
-       <enum>QFrame::NoFrame</enum>
-      </property>
-      <property name="undoRedoEnabled">
-       <bool>false</bool>
-      </property>
-      <property name="readOnly">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="playlistLayoutWidget" native="true">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <layout class="QVBoxLayout" name="playlistLayout">
-      <property name="spacing">
-       <number>0</number>
-      </property>
-      <property name="leftMargin">
-       <number>2</number>
-      </property>
-      <property name="topMargin">
-       <number>0</number>
-      </property>
-      <property name="rightMargin">
-       <number>0</number>
-      </property>
-      <property name="bottomMargin">
-       <number>0</number>
-      </property>
-      <item>
-       <widget class="QLineEdit" name="searchBox">
+      <widget class="QSplitter" name="videoSplitter">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+         <horstretch>1</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <widget class="QFrame" name="mpvFrame">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>1</verstretch>
+         </sizepolicy>
+        </property>
         <property name="mouseTracking">
-         <bool>false</bool>
-        </property>
-        <property name="focusPolicy">
-         <enum>Qt::ClickFocus</enum>
-        </property>
-        <property name="placeholderText">
-         <string>Search Playlist</string>
-        </property>
-        <property name="clearButtonEnabled">
          <bool>true</bool>
         </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="CustomLabel" name="indexLabel">
-        <property name="cursor">
-         <cursorShape>PointingHandCursor</cursorShape>
-        </property>
-        <property name="toolTip">
-         <string>Click to play a file by index</string>
-        </property>
-        <property name="text">
-         <string>File 0 of 0</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-        <property name="margin">
-         <number>4</number>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="CustomListWidget" name="playlistWidget">
         <property name="focusPolicy">
-         <enum>Qt::ClickFocus</enum>
-        </property>
-        <property name="contextMenuPolicy">
-         <enum>Qt::DefaultContextMenu</enum>
+         <enum>Qt::NoFocus</enum>
         </property>
         <property name="frameShape">
          <enum>QFrame::NoFrame</enum>
         </property>
-        <property name="dragDropMode">
-         <enum>QAbstractItemView::InternalMove</enum>
+       </widget>
+       <widget class="QPlainTextEdit" name="outputTextEdit">
+        <property name="contextMenuPolicy">
+         <enum>Qt::PreventContextMenu</enum>
         </property>
-        <property name="alternatingRowColors">
+        <property name="acceptDrops">
+         <bool>false</bool>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">#outputTextEdit {
+	font: 12px &quot;Courier New&quot;, monospace;
+	border-top: 1px solid #212121;
+}</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
+        </property>
+        <property name="undoRedoEnabled">
+         <bool>false</bool>
+        </property>
+        <property name="readOnly">
          <bool>true</bool>
         </property>
        </widget>
-      </item>
-      <item>
-       <widget class="QWidget" name="playlistControlLayout" native="true">
-        <layout class="QHBoxLayout" name="horizontalLayout">
-         <property name="spacing">
-          <number>2</number>
-         </property>
-         <property name="leftMargin">
-          <number>0</number>
-         </property>
-         <property name="topMargin">
-          <number>0</number>
-         </property>
-         <property name="rightMargin">
-          <number>0</number>
-         </property>
-         <property name="bottomMargin">
-          <number>0</number>
-         </property>
-         <item>
-          <widget class="QPushButton" name="currentFileButton">
-           <property name="focusPolicy">
-            <enum>Qt::NoFocus</enum>
-           </property>
-           <property name="toolTip">
-            <string>Select the Current File</string>
-           </property>
-           <property name="icon">
-            <iconset resource="../rsclist.qrc">
-             <normaloff>:/img/select_current.svg</normaloff>:/img/select_current.svg</iconset>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>14</width>
-             <height>14</height>
-            </size>
-           </property>
-           <property name="flat">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_2">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QPushButton" name="showAllButton">
-           <property name="focusPolicy">
-            <enum>Qt::NoFocus</enum>
-           </property>
-           <property name="toolTip">
-            <string>Show All Files</string>
-           </property>
-           <property name="icon">
-            <iconset resource="../rsclist.qrc">
-             <normaloff>:/img/default_show_all.svg</normaloff>
-             <normalon>:/img/enabled_show_all.svg</normalon>
-             <disabledon>:/img/enabled_show_all.svg</disabledon>
-             <activeon>:/img/enabled_show_all.svg</activeon>
-             <selectedon>:/img/enabled_show_all.svg</selectedon>:/img/default_show_all.svg</iconset>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>14</width>
-             <height>14</height>
-            </size>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-           <property name="flat">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="refreshButton">
-           <property name="focusPolicy">
-            <enum>Qt::NoFocus</enum>
-           </property>
-           <property name="toolTip">
-            <string>Refresh Playlist</string>
-           </property>
-           <property name="icon">
-            <iconset resource="../rsclist.qrc">
-             <normaloff>:/img/refresh_view.svg</normaloff>:/img/refresh_view.svg</iconset>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>14</width>
-             <height>14</height>
-            </size>
-           </property>
-           <property name="flat">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </widget>
-   <widget class="QWidget" name="playbackLayoutWidget" native="true">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>333</y>
-      <width>580</width>
-      <height>44</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="mouseTracking">
-     <bool>false</bool>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_3">
-     <property name="spacing">
-      <number>8</number>
-     </property>
-     <property name="leftMargin">
-      <number>14</number>
-     </property>
-     <property name="topMargin">
-      <number>6</number>
-     </property>
-     <property name="rightMargin">
-      <number>14</number>
-     </property>
-     <property name="bottomMargin">
-      <number>6</number>
-     </property>
-     <item>
-      <widget class="OpenButton" name="openButton">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>16</width>
-         <height>16</height>
-        </size>
-       </property>
-       <property name="cursor">
-        <cursorShape>PointingHandCursor</cursorShape>
-       </property>
-       <property name="focusPolicy">
-        <enum>Qt::NoFocus</enum>
-       </property>
-       <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Left Click to Open File&lt;br&gt;Mouse Wheel Click to Jump&lt;br&gt;Right Click to Open URL&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-       <property name="icon">
-        <iconset resource="../rsclist.qrc">
-         <normaloff>:/img/default_open.svg</normaloff>:/img/default_open.svg</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>16</width>
-         <height>16</height>
-        </size>
-       </property>
-       <property name="flat">
-        <bool>true</bool>
-       </property>
       </widget>
-     </item>
-     <item>
-      <widget class="IndexButton" name="previousButton">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
+      <widget class="QWidget" name="playlistLayoutWidget" native="true">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="maximumSize">
-        <size>
-         <width>26</width>
-         <height>16</height>
-        </size>
-       </property>
-       <property name="cursor">
-        <cursorShape>PointingHandCursor</cursorShape>
-       </property>
-       <property name="focusPolicy">
-        <enum>Qt::NoFocus</enum>
-       </property>
-       <property name="icon">
-        <iconset resource="../rsclist.qrc">
-         <normaloff>:/img/default_previous.svg</normaloff>
-         <disabledoff>:/img/disabled_previous.svg</disabledoff>
-         <disabledon>:/img/disabled_previous.svg</disabledon>:/img/default_previous.svg</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>22</width>
-         <height>16</height>
-        </size>
-       </property>
-       <property name="flat">
-        <bool>true</bool>
-       </property>
+       <layout class="QVBoxLayout" name="playlistLayout">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <property name="leftMargin">
+         <number>2</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QLineEdit" name="searchBox">
+          <property name="mouseTracking">
+           <bool>false</bool>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
+          <property name="placeholderText">
+           <string>Search Playlist</string>
+          </property>
+          <property name="clearButtonEnabled">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="CustomLabel" name="indexLabel">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="toolTip">
+           <string>Click to play a file by index</string>
+          </property>
+          <property name="text">
+           <string>File 0 of 0</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="margin">
+           <number>4</number>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="CustomListWidget" name="playlistWidget">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
+          <property name="contextMenuPolicy">
+           <enum>Qt::DefaultContextMenu</enum>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::NoFrame</enum>
+          </property>
+          <property name="dragDropMode">
+           <enum>QAbstractItemView::InternalMove</enum>
+          </property>
+          <property name="alternatingRowColors">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QWidget" name="playlistControlLayout" native="true">
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <property name="spacing">
+            <number>2</number>
+           </property>
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QPushButton" name="currentFileButton">
+             <property name="focusPolicy">
+              <enum>Qt::NoFocus</enum>
+             </property>
+             <property name="toolTip">
+              <string>Select the Current File</string>
+             </property>
+             <property name="icon">
+              <iconset resource="../rsclist.qrc">
+               <normaloff>:/img/select_current.svg</normaloff>:/img/select_current.svg</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>14</width>
+               <height>14</height>
+              </size>
+             </property>
+             <property name="flat">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_2">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QPushButton" name="showAllButton">
+             <property name="focusPolicy">
+              <enum>Qt::NoFocus</enum>
+             </property>
+             <property name="toolTip">
+              <string>Show All Files</string>
+             </property>
+             <property name="icon">
+              <iconset resource="../rsclist.qrc">
+               <normaloff>:/img/default_show_all.svg</normaloff>
+               <normalon>:/img/enabled_show_all.svg</normalon>
+               <disabledon>:/img/enabled_show_all.svg</disabledon>
+               <activeon>:/img/enabled_show_all.svg</activeon>
+               <selectedon>:/img/enabled_show_all.svg</selectedon>:/img/default_show_all.svg</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>14</width>
+               <height>14</height>
+              </size>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+             <property name="flat">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="refreshButton">
+             <property name="focusPolicy">
+              <enum>Qt::NoFocus</enum>
+             </property>
+             <property name="toolTip">
+              <string>Refresh Playlist</string>
+             </property>
+             <property name="icon">
+              <iconset resource="../rsclist.qrc">
+               <normaloff>:/img/refresh_view.svg</normaloff>:/img/refresh_view.svg</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>14</width>
+               <height>14</height>
+              </size>
+             </property>
+             <property name="flat">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
       </widget>
-     </item>
-     <item>
-      <widget class="IndexButton" name="nextButton">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>26</width>
-         <height>16</height>
-        </size>
-       </property>
-       <property name="cursor">
-        <cursorShape>PointingHandCursor</cursorShape>
-       </property>
-       <property name="focusPolicy">
-        <enum>Qt::NoFocus</enum>
-       </property>
-       <property name="icon">
-        <iconset resource="../rsclist.qrc">
-         <normaloff>:/img/default_next.svg</normaloff>
-         <disabledoff>:/img/disabled_next.svg</disabledoff>
-         <disabledon>:/img/disabled_next.svg</disabledon>:/img/default_next.svg</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>22</width>
-         <height>16</height>
-        </size>
-       </property>
-       <property name="flat">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="durationLabel">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="text">
-        <string>0:00:00</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="SeekBar" name="seekBar">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="focusPolicy">
-        <enum>Qt::NoFocus</enum>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QSlider {
+     </widget>
+    </item>
+    <item>
+     <widget class="SeekBar" name="seekBar">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QSlider {
 	height: 7px;
 }
 QSlider::handle:horizontal {
@@ -602,56 +444,366 @@ QSlider::groove:horizontal {
 QSlider::sub-page:horizontal {
 	background: #008098;
 }</string>
+      </property>
+      <property name="maximum">
+       <number>1000000</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QWidget" name="playbackLayoutWidget" native="true">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="mouseTracking">
+       <bool>false</bool>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <property name="spacing">
+        <number>8</number>
        </property>
-       <property name="maximum">
-        <number>1000000</number>
+       <property name="leftMargin">
+        <number>14</number>
        </property>
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
+       <property name="topMargin">
+        <number>6</number>
        </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="CustomLabel" name="remainingLabel">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
+       <property name="rightMargin">
+        <number>14</number>
        </property>
-       <property name="cursor">
-        <cursorShape>PointingHandCursor</cursorShape>
+       <property name="bottomMargin">
+        <number>6</number>
        </property>
-       <property name="toolTip">
-        <string>Click to change between total and remaining time</string>
-       </property>
-       <property name="text">
-        <string>-0:00:00</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="CustomSlider" name="volumeSlider">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>100</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="focusPolicy">
-        <enum>Qt::NoFocus</enum>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QSlider::groove:horizontal {
+       <item>
+        <widget class="QWidget" name="timeLayoutWidget" native="true">
+         <property name="minimumSize">
+          <size>
+           <width>150</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <property name="spacing">
+           <number>8</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="OpenButton" name="openButton">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16</width>
+              <height>16</height>
+             </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Left Click to Open File&lt;br&gt;Mouse Wheel Click to Jump&lt;br&gt;Right Click to Open URL&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../rsclist.qrc">
+              <normaloff>:/img/default_open.svg</normaloff>:/img/default_open.svg</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>16</width>
+              <height>16</height>
+             </size>
+            </property>
+            <property name="flat">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="durationLabel">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>0:00:00</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="seperatorLabel">
+            <property name="text">
+             <string>/</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="CustomLabel" name="remainingLabel">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="toolTip">
+             <string>Click to change between total and remaining time</string>
+            </property>
+            <property name="text">
+             <string>-0:00:00</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <property name="spacing">
+          <number>8</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="rewindButton">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>24</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="icon">
+            <iconset resource="../rsclist.qrc">
+             <normaloff>:/img/default_reverse.svg</normaloff>
+             <disabledoff>:/img/disabled_reverse.svg</disabledoff>
+             <disabledon>:/img/disabled_reverse.svg</disabledon>:/img/default_reverse.svg</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>20</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="flat">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="IndexButton" name="previousButton">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>26</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="icon">
+            <iconset resource="../rsclist.qrc">
+             <normaloff>:/img/default_previous.svg</normaloff>
+             <disabledoff>:/img/disabled_previous.svg</disabledoff>
+             <disabledon>:/img/disabled_previous.svg</disabledon>:/img/default_previous.svg</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>22</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="flat">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="playButton">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>28</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="icon">
+            <iconset resource="../rsclist.qrc">
+             <normaloff>:/img/disabled_play.svg</normaloff>:/img/disabled_play.svg</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>23</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="flat">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="IndexButton" name="nextButton">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>26</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="icon">
+            <iconset resource="../rsclist.qrc">
+             <normaloff>:/img/default_next.svg</normaloff>
+             <disabledoff>:/img/disabled_next.svg</disabledoff>
+             <disabledon>:/img/disabled_next.svg</disabledon>:/img/default_next.svg</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>22</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="flat">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="CustomSlider" name="volumeSlider">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QSlider::groove:horizontal {
 	background: gray;
 	height: 1px;
 }
@@ -666,177 +818,105 @@ QSlider::handle:horizontal {
 	margin: -7px 0;
 	width: 12px;
 }</string>
-       </property>
-       <property name="maximum">
-        <number>100</number>
-       </property>
-       <property name="pageStep">
-        <number>5</number>
-       </property>
-       <property name="value">
-        <number>50</number>
-       </property>
-       <property name="tracking">
-        <bool>false</bool>
-       </property>
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="playlistButton">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>16</width>
-         <height>16</height>
-        </size>
-       </property>
-       <property name="cursor">
-        <cursorShape>PointingHandCursor</cursorShape>
-       </property>
-       <property name="focusPolicy">
-        <enum>Qt::NoFocus</enum>
-       </property>
-       <property name="icon">
-        <iconset resource="../rsclist.qrc">
-         <normaloff>:/img/default_playlist.svg</normaloff>
-         <disabledoff>:/img/disabled_playlist.svg</disabledoff>
-         <disabledon>:/img/disabled_playlist.svg</disabledon>:/img/default_playlist.svg</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>16</width>
-         <height>16</height>
-        </size>
-       </property>
-       <property name="checked">
-        <bool>false</bool>
-       </property>
-       <property name="flat">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QLabel" name="seperatorLabel">
-    <property name="geometry">
-     <rect>
-      <x>140</x>
-      <y>300</y>
-      <width>4</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>/</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="playButton">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>250</x>
-      <y>300</y>
-      <width>28</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>28</width>
-      <height>30</height>
-     </size>
-    </property>
-    <property name="cursor">
-     <cursorShape>PointingHandCursor</cursorShape>
-    </property>
-    <property name="focusPolicy">
-     <enum>Qt::NoFocus</enum>
-    </property>
-    <property name="icon">
-     <iconset resource="../rsclist.qrc">
-      <normaloff>:/img/disabled_play.svg</normaloff>:/img/disabled_play.svg</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>23</width>
-      <height>30</height>
-     </size>
-    </property>
-    <property name="flat">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="rewindButton">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>300</y>
-      <width>24</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>24</width>
-      <height>16</height>
-     </size>
-    </property>
-    <property name="cursor">
-     <cursorShape>PointingHandCursor</cursorShape>
-    </property>
-    <property name="focusPolicy">
-     <enum>Qt::NoFocus</enum>
-    </property>
-    <property name="icon">
-     <iconset resource="../rsclist.qrc">
-      <normaloff>:/img/default_reverse.svg</normaloff>
-      <disabledoff>:/img/disabled_reverse.svg</disabledoff>
-      <disabledon>:/img/disabled_reverse.svg</disabledon>:/img/default_reverse.svg</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>20</width>
-      <height>16</height>
-     </size>
-    </property>
-    <property name="flat">
-     <bool>true</bool>
-    </property>
-   </widget>
+           </property>
+           <property name="maximum">
+            <number>100</number>
+           </property>
+           <property name="pageStep">
+            <number>5</number>
+           </property>
+           <property name="value">
+            <number>50</number>
+           </property>
+           <property name="tracking">
+            <bool>false</bool>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_5">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Fixed</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>50</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="playlistButton">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
+         </property>
+         <property name="icon">
+          <iconset resource="../rsclist.qrc">
+           <normaloff>:/img/default_playlist.svg</normaloff>
+           <disabledoff>:/img/disabled_playlist.svg</disabledoff>
+           <disabledon>:/img/disabled_playlist.svg</disabledon>:/img/default_playlist.svg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>16</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+         <property name="flat">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
    <zorder>playbackLayoutWidget</zorder>
    <zorder>splitter</zorder>
-   <zorder>seperatorLabel</zorder>
-   <zorder>playButton</zorder>
-   <zorder>rewindButton</zorder>
+   <zorder>seekBar</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -955,6 +1035,15 @@ QSlider::handle:horizontal {
      <addaction name="action_Playlist"/>
      <addaction name="action_This_File"/>
     </widget>
+    <widget class="QMenu" name="menuAudio_Tracks">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="title">
+      <string>Audio &amp;Tracks</string>
+     </property>
+     <addaction name="action_none_3"/>
+    </widget>
     <addaction name="action_Play"/>
     <addaction name="action_Stop"/>
     <addaction name="action_Restart"/>
@@ -963,6 +1052,7 @@ QSlider::handle:horizontal {
     <addaction name="menuR_epeat"/>
     <addaction name="actionStop_after_Current"/>
     <addaction name="separator"/>
+    <addaction name="menuAudio_Tracks"/>
     <addaction name="action_Increase_Volume"/>
     <addaction name="action_Decrease_Volume"/>
    </widget>
@@ -1579,6 +1669,14 @@ QSlider::handle:horizontal {
   <action name="action_Preferences">
    <property name="text">
     <string>&amp;Preferences...</string>
+   </property>
+  </action>
+  <action name="action_none_3">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>[ none ]</string>
    </property>
   </action>
  </widget>
