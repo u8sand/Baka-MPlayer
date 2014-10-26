@@ -213,9 +213,6 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
       <property name="readOnly">
        <bool>true</bool>
       </property>
-      <property name="placeholderText">
-       <string>Baka MPlayer loaded...</string>
-      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="playlistLayoutWidget" native="true">
