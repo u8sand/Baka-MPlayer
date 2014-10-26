@@ -150,8 +150,7 @@ end
 class Dependencies < TravisDepsBuilder
   def deps
     packages = {
-      'linux' => 'pkg-config fontconfig libfribidi-dev yasm',
-      'osx'   => 'pkg-config fontconfig freetype fribidi yasm'
+      'linux' => 'pkg-config fontconfig libfribidi-dev yasm qt5-qmake qtbase5-dev qtdeclarative5-dev libqt5webkit5-dev libqt5svg5-dev libqt5x11extras5-dev libsqlite3-dev cmake ninja-build'
     }
     package_manager_update
     package_install(packages.fetch(os))

@@ -18,9 +18,8 @@ branches:
     - release
 
 install:
-  - sudo add-apt-repository --yes ppa:ubuntu-sdk-team/ppa
-  - sudo apt-get update -qq
-  - sudo apt-get install -qq qt5-qmake qtbase5-dev qtdeclarative5-dev libqt5webkit5-dev libqt5svg5-dev libqt5x11extras5 libsqlite3-dev cmake ninja-build
+  - sudo echo "deb http://ftp.debian.org sid main" >> /etc/apt/source.list
+  - sudo echo "deb-src http://ftp.debian.org sid main" >> /etc/apt/source.list
 
 before_install: TRAVIS_OS_NAME=linux; ./travis-deps libass-stable $LIBAV libmpv-git
 script:
