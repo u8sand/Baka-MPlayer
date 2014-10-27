@@ -44,7 +44,8 @@ MainWindow::MainWindow(QWidget *parent):
     QAction *action;
 
 #if defined(Q_OS_LINUX) || defined(Q_OS_UNIX) // if on x11, dim desktop requires a compositing manager, make dimDialog NULL if there is none
-    Atom a = XInternAtom(QX11Info::display(), "_NET_WM_CM_S0", false);
+    QString tmp = "_NET_WM_CM_S"+QString::number(QX11Info::appScreen());
+    Atom a = XInternAtom(QX11Info::display(), tmp.toUtf8().constData(), false);
     if(a && XGetSelectionOwner(QX11Info::display(), a)) // hack for QX11Info::isCompositingManagerRunning()
         dimDialog = new DimDialog(); // dimdialog must be initialized before ui is setup
     else
