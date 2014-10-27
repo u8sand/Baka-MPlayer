@@ -186,6 +186,7 @@ MainWindow::MainWindow(QWidget *parent):
 
             ui->menuSubtitle_Track->clear();
             ui->menuSubtitle_Track->addAction(ui->action_Add_Subtitle_File);
+            ui->menuAudio_Tracks->clear();
             for(auto &track : trackList)
             {
                 if(track.type == "sub")
@@ -209,6 +210,18 @@ MainWindow::MainWindow(QWidget *parent):
                                 else if(!mpv->getSubtitleVisibility())
                                     mpv->ShowSubtitles(true);
                                 mpv->Sid(track.id);
+                            });
+                }
+                else if(track.type == "audio")
+                {
+                    action = ui->menuAudio_Tracks->addAction(QString::number(track.id)+": "+track.title+" ("+track.lang+")");
+                    connect(action, &QAction::triggered,
+                            [=]
+                            {
+                                if(mpv->getAid() != track.id) // don't allow selection of the same track
+                                    mpv->Aid(track.id);
+                                else
+                                    action->setChecked(true); // recheck the track
                             });
                 }
                 else if(track.type == "video") // video track
@@ -241,6 +254,7 @@ MainWindow::MainWindow(QWidget *parent):
                     ui->menuFont_Si_ze->setEnabled(false);
                     ui->actionShow_Subtitles->setEnabled(false);
                 }
+                ui->menuAudio_Tracks->setEnabled((ui->menuAudio_Tracks->actions().count() > 1));
                 ui->menuTake_Screenshot->setEnabled(true);
                 ui->menuFit_Window->setEnabled(true);
                 ui->menuAspect_Ratio->setEnabled(true);
@@ -262,6 +276,7 @@ MainWindow::MainWindow(QWidget *parent):
                     ui->action_Hide_Album_Art_2->setEnabled(true);
                     ui->splitter->setEnabled(true);
                 }
+                ui->menuAudio_Tracks->setEnabled((ui->menuAudio_Tracks->actions().count() > 1));
                 ui->menuSubtitle_Track->setEnabled(false);
                 ui->menuFont_Si_ze->setEnabled(false);
                 ui->actionShow_Subtitles->setEnabled(false);
@@ -451,6 +466,22 @@ MainWindow::MainWindow(QWidget *parent):
                 for(auto &action : actions)
                 {
                     if(action->text().startsWith(QString::number(sid)))
+                    {
+                        action->setCheckable(true);
+                        action->setChecked(true);
+                    }
+                    else
+                        action->setChecked(false);
+                }
+            });
+
+    connect(mpv, &MpvHandler::aidChanged,
+            [=](int aid)
+            {
+                QList<QAction*> actions = ui->menuAudio_Tracks->actions();
+                for(auto &action : actions)
+                {
+                    if(action->text().startsWith(QString::number(aid)))
                     {
                         action->setCheckable(true);
                         action->setChecked(true);
@@ -1363,6 +1394,7 @@ void MainWindow::SetPlaybackControls(bool enable)
     {
         ui->action_Hide_Album_Art_2->setEnabled(false);
         ui->menuSubtitle_Track->setEnabled(false);
+        ui->menuAudio_Tracks->setEnabled(false);
         ui->menuFont_Si_ze->setEnabled(false);
     }
 }

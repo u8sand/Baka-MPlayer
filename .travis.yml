@@ -18,8 +18,7 @@ branches:
     - release
 
 install:
-  - echo "deb http://ftp.debian.org sid main" | sudo tee --append /etc/apt/sources.list
-  - echo "deb-src http://ftp.debian.org sid main" | sudo tee --append /etc/apt/sources.list
+  - sudo add-apt-repository --yes ppa:ubuntu-sdk-team/ppa
 
 before_install: TRAVIS_OS_NAME=linux; ./travis-deps libass-stable $LIBAV libmpv-git
 script:

@@ -35,6 +35,7 @@ MpvHandler::MpvHandler(int64_t wid, QObject *parent):
     mpv_observe_property(mpv, 0, "time-pos", MPV_FORMAT_DOUBLE);
     mpv_observe_property(mpv, 0, "volume", MPV_FORMAT_DOUBLE);
     mpv_observe_property(mpv, 0, "sid", MPV_FORMAT_INT64);
+    mpv_observe_property(mpv, 0, "aid", MPV_FORMAT_INT64);
     mpv_observe_property(mpv, 0, "sub-visibility", MPV_FORMAT_FLAG);
 
     // setup callback event handling
@@ -84,6 +85,11 @@ bool MpvHandler::event(QEvent *event)
                 {
                     if(prop->format == MPV_FORMAT_INT64)
                         setSid(*(int*)prop->data);
+                }
+                else if(QString(prop->name) == "aid")
+                {
+                    if(prop->format == MPV_FORMAT_INT64)
+                        setAid(*(int*)prop->data);
                 }
                 else if(QString(prop->name) == "sub-visibility")
                 {
