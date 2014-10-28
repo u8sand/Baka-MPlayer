@@ -211,6 +211,7 @@ MainWindow::MainWindow(QWidget *parent):
                                 else if(!mpv->getSubtitleVisibility())
                                     mpv->ShowSubtitles(true);
                                 mpv->Sid(track.id);
+                                mpv->ShowText("Sub "+QString::number(track.id)+": "+track.title+" ("+track.lang+")");
                             });
                 }
                 else if(track.type == "audio")
@@ -220,7 +221,10 @@ MainWindow::MainWindow(QWidget *parent):
                             [=]
                             {
                                 if(mpv->getAid() != track.id) // don't allow selection of the same track
+                                {
                                     mpv->Aid(track.id);
+                                    mpv->ShowText("Audio "+QString::number(track.id)+": "+track.title+" ("+track.lang+")");
+                                }
                                 else
                                     action->setChecked(true); // recheck the track
                             });

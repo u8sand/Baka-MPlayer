@@ -96,6 +96,8 @@ public slots:
 
     void Debug(bool);
 
+    void ShowText(QString text, int duration = 4000, int level = 1);
+
     void LoadTracks();
     void LoadChapters();
     void LoadVideoParams();

@@ -534,6 +534,18 @@ void MpvHandler::Debug(bool b)
     }
 }
 
+void MpvHandler::ShowText(QString text, int duration, int level)
+{
+    if(mpv)
+    {
+        const QByteArray tmp1 = text.toUtf8(),
+                         tmp2 = QString::number(duration).toUtf8(),
+                         tmp3 = QString::number(level).toUtf8();
+        const char *args[] = {"show_text", tmp1.constData(), tmp2.constData(), tmp3.constData(), NULL};
+        AsyncCommand(args);
+    }
+}
+
 void MpvHandler::LoadFileInfo()
 {
     // get media-title
