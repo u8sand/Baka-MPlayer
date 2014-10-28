@@ -222,9 +222,6 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
         <property name="readOnly">
          <bool>true</bool>
         </property>
-        <property name="placeholderText">
-         <string>Baka MPlayer loaded...</string>
-        </property>
        </widget>
       </widget>
       <widget class="QWidget" name="playlistLayoutWidget" native="true">
@@ -927,7 +924,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>580</width>
-     <height>24</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
@@ -1038,6 +1035,15 @@ QSlider::handle:horizontal {
      <addaction name="action_Playlist"/>
      <addaction name="action_This_File"/>
     </widget>
+    <widget class="QMenu" name="menuAudio_Tracks">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="title">
+      <string>Audio &amp;Tracks</string>
+     </property>
+     <addaction name="action_none_3"/>
+    </widget>
     <addaction name="action_Play"/>
     <addaction name="action_Stop"/>
     <addaction name="action_Restart"/>
@@ -1046,6 +1052,7 @@ QSlider::handle:horizontal {
     <addaction name="menuR_epeat"/>
     <addaction name="actionStop_after_Current"/>
     <addaction name="separator"/>
+    <addaction name="menuAudio_Tracks"/>
     <addaction name="action_Increase_Volume"/>
     <addaction name="action_Decrease_Volume"/>
    </widget>
@@ -1662,6 +1669,14 @@ QSlider::handle:horizontal {
   <action name="action_Preferences">
    <property name="text">
     <string>&amp;Preferences...</string>
+   </property>
+  </action>
+  <action name="action_none_3">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>[ none ]</string>
    </property>
   </action>
  </widget>
