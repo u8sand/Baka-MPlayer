@@ -213,9 +213,10 @@ void MpvHandler::PlayFile(QString f)
 {
     if(path == "") // web url
     {
-        if(getFile() != "")
-            setLastFile(getFile());
+        if(file != "")
+            setLastFile(file);
         OpenFile(f);
+        setFile(f);
     }
     else
     {
@@ -223,8 +224,9 @@ void MpvHandler::PlayFile(QString f)
         if(qf.exists())
         {
             if(getFile() != "")
-                setLastFile(getFile());
+                setLastFile(path+file);
             OpenFile(path+f);
+            setFile(f);
             Play();
         }
         else
@@ -602,7 +604,6 @@ void MpvHandler::OpenFile(QString f)
     const QByteArray tmp = f.toUtf8();
     const char *args[] = {"loadfile", tmp.constData(), NULL};
     AsyncCommand(args);
-    setFile(f);
 }
 
 void MpvHandler::PopulatePlaylist()

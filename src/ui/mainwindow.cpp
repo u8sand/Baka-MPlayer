@@ -135,8 +135,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(mpv, &MpvHandler::playlistChanged,
             [=](const QStringList &list)
             {
-                ui->playlistWidget->clear();
-                ui->playlistWidget->addItems(list);
+                ui->playlistWidget->Populate(list);
 
                 if(list.length() > 1)
                 {
@@ -560,7 +559,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->openButton, &OpenButton::RightClick,                    // Playback: Open button (right click)
             [=]
             {
-                mpv->LoadFile(LocationDialog::getUrl(mpv->getFile(), this));
+                mpv->LoadFile(LocationDialog::getUrl(mpv->getPath()+mpv->getFile(), this));
             });
 
     connect(ui->remainingLabel, &CustomLabel::clicked,                  // Playback: Remaining Label
@@ -693,22 +692,22 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->refreshButton, &QPushButton::clicked,                   // Playlist: Refresh playlist button
             [=]
             {
-                mpv->LoadPlaylist(mpv->getFile());
+                mpv->LoadPlaylist(mpv->getPath()+mpv->getFile());
             });
 
     action = ui->playlistWidget->addAction("R&emove from Playlist");
     connect(action, &QAction::triggered,                                // Playlist: Remove from playlist (right-click)
             [=]
             {
-                ui->playlistWidget->takeItem(ui->playlistWidget->currentRow());
+                ui->playlistWidget->RemoveItem(ui->playlistWidget->currentRow());
             });
 
     action = ui->playlistWidget->addAction("&Delete from Disk");
     connect(action, &QAction::triggered,                                // Playlist: Delete from Disk (right-click)
             [=]
             {
-                QListWidgetItem *item = ui->playlistWidget->takeItem(ui->playlistWidget->currentRow());
-                QFile f(mpv->getPath()+item->text());
+                QString item = ui->playlistWidget->RemoveItem(ui->playlistWidget->currentRow());
+                QFile f(mpv->getPath()+item);
                 f.remove();
             });
 
@@ -716,7 +715,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(action, &QAction::triggered,
             [=]
             {
-                mpv->LoadPlaylist(mpv->getFile());
+                mpv->LoadPlaylist(mpv->getPath()+mpv->getFile());
             });
                                                                         // File ->
     connect(ui->action_New_Player, &QAction::triggered,                 // File -> New Player
@@ -740,7 +739,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->actionOpen_URL, &QAction::triggered,                    // File -> Open URL
             [=]
             {
-                mpv->LoadFile(LocationDialog::getUrl(mpv->getFile(), this));
+                mpv->LoadFile(LocationDialog::getUrl(mpv->getPath()+mpv->getFile(), this));
             });
 
     connect(ui->actionOpen_Path_from_Clipboard, &QAction::triggered,    // File -> Open Path from Clipboard

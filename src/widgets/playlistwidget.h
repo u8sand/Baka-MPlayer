@@ -12,7 +12,9 @@ public:
     explicit PlaylistWidget(QWidget *parent = 0);
 
     QAction *addAction(const QString &text);
+    QString RemoveItem(int index);
     void SelectItem(const QString &item);
+    void Populate(QStringList list);
 
     QString PreviousItem();
     QString NextItem();
