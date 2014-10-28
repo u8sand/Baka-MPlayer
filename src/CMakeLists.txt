@@ -8,7 +8,7 @@ set(WIDGETS
 	customslider
 	openbutton
 	indexbutton
-	customlistwidget
+	playlistwidget
 	seekbar
 	customlabel
 	customsplitter

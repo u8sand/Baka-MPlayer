@@ -657,7 +657,7 @@ MainWindow::MainWindow(QWidget *parent):
                     mpv->PlayFile(ui->playlistWidget->item(res.toInt()-1)->text()); // user index will be 1 greater than actual
             });
 
-    connect(ui->playlistWidget, &CustomListWidget::currentRowChanged,   // Playlist: Playlist selection changed
+    connect(ui->playlistWidget, &PlaylistWidget::currentRowChanged,   // Playlist: Playlist selection changed
             [=](int i)
             {
                 if(i == -1) // no selection
@@ -672,7 +672,7 @@ MainWindow::MainWindow(QWidget *parent):
                 }
             });
 
-    connect(ui->playlistWidget, &CustomListWidget::doubleClicked,       // Playlist: Item double clicked
+    connect(ui->playlistWidget, &PlaylistWidget::doubleClicked,       // Playlist: Item double clicked
             [=](const QModelIndex &i)
             {
                 mpv->PlayFile(ui->playlistWidget->item(i.row())->text());

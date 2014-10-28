@@ -1,57 +1,65 @@
-#include "customlistwidget.h"
+#include "playlistwidget.h"
 
 #include <QListWidgetItem>
 #include <QMenu>
 
-CustomListWidget::CustomListWidget(QWidget *parent) :
+#include <algorithm> // for std::random_shuffle and std::sort
+
+PlaylistWidget::PlaylistWidget(QWidget *parent) :
     QListWidget(parent),
     showAll(false)
 {
 }
 
-QAction *CustomListWidget::addAction(const QString &text)
+QAction *PlaylistWidget::addAction(const QString &text)
 {
     QAction *action = new QAction(text, this);
     QListWidget::addAction(action);
     return action;
 }
 
-void CustomListWidget::SelectItem(const QString &item)
+void PlaylistWidget::SelectItem(const QString &item)
 {
     setCurrentItem(*findItems(item, Qt::MatchExactly).begin());
 }
 
-QString CustomListWidget::PreviousItem()
+QString PlaylistWidget::PreviousItem()
 {
     return item(currentRow()-1)->text();
 }
 
-QString CustomListWidget::NextItem()
+QString PlaylistWidget::NextItem()
 {
     return item(currentRow()+1)->text();
 }
 
-void CustomListWidget::Search(QString s)
+void PlaylistWidget::Search(QString s)
 {
     // todo: narrow list based on search
 }
 
-void CustomListWidget::ShowAll(bool b)
+void PlaylistWidget::ShowAll(bool b)
 {
     // todo: narrow list based on suffix
 }
 
-void CustomListWidget::Shuffle(bool b)
+void PlaylistWidget::Shuffle(bool b)
 {
-    // todo: shuffle list
+    if(b)
+    {
+        QList<QListWidgetItem*> L = items(nullptr);
+        std::random_shuffle(L.begin(), L.end());
+    }
+    else
+        sortItems(Qt::AscendingOrder);
 }
 
-bool CustomListWidget::isShowAll()
+bool PlaylistWidget::isShowAll()
 {
     return showAll;
 }
 
-void CustomListWidget::contextMenuEvent(QContextMenuEvent *event)
+void PlaylistWidget::contextMenuEvent(QContextMenuEvent *event)
 {
     QListWidgetItem *item = itemAt(event->pos());
     if(item)

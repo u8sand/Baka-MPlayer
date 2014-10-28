@@ -1,15 +1,15 @@
-#ifndef CUSTOMLISTWIDGET_H
-#define CUSTOMLISTWIDGET_H
+#ifndef PLAYLISTWIDGET_H
+#define PLAYLISTWIDGET_H
 
 #include <QListWidget>
 #include <QContextMenuEvent>
 #include <QAction>
 
-class CustomListWidget : public QListWidget
+class PlaylistWidget : public QListWidget
 {
     Q_OBJECT
 public:
-    explicit CustomListWidget(QWidget *parent = 0);
+    explicit PlaylistWidget(QWidget *parent = 0);
 
     QAction *addAction(const QString &text);
     void SelectItem(const QString &item);
@@ -26,7 +26,9 @@ protected:
     void contextMenuEvent(QContextMenuEvent *event);
 
 private:
+    QStringList playlist;
+    QString search;
     bool showAll;
 };
 
-#endif // CUSTOMLISTWIDGET_H
+#endif // PLAYLISTWIDGET_H

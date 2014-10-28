@@ -7,8 +7,6 @@
 #include <QFileInfoList>
 #include <QRegExp>
 
-#include <algorithm> // for std::random_shuffle and std::sort
-
 static void wakeup(void *ctx)
 {
     MpvHandler *mpvhandler = (MpvHandler*)ctx;
@@ -180,7 +178,8 @@ void MpvHandler::SaveSettings(QSettings *settings)
 void MpvHandler::LoadFile(QString f)
 {
     LoadPlaylist(f);
-    PlayFile(f);
+    QFileInfo fi(f);
+    PlayFile(fi.fileName());
 }
 
 void MpvHandler::LoadPlaylist(QString f)

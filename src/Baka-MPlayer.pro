@@ -43,13 +43,13 @@ SOURCES += main.cpp\
     ui/preferencesdialog.cpp \
     ui/updatedialog.cpp \
     widgets/customlabel.cpp \
-    widgets/customlistwidget.cpp \
     widgets/customslider.cpp \
     widgets/customsplitter.cpp \
     widgets/dimdialog.cpp \
     widgets/indexbutton.cpp \
     widgets/openbutton.cpp \
-    widgets/seekbar.cpp
+    widgets/seekbar.cpp \
+    widgets/playlistwidget.cpp
 
 HEADERS  += \
     mpvtypes.h \
@@ -58,7 +58,6 @@ HEADERS  += \
     widgets/customslider.h \
     widgets/openbutton.h \
     widgets/indexbutton.h \
-    widgets/customlistwidget.h \
     widgets/seekbar.h \
     widgets/customlabel.h \
     widgets/customsplitter.h \
@@ -70,7 +69,8 @@ HEADERS  += \
     ui/aboutdialog.h \
     ui/updatedialog.h \
     ui/inputdialog.h \
-    ui/preferencesdialog.h
+    ui/preferencesdialog.h \
+    widgets/playlistwidget.h
 
 FORMS    += \
     ui/mainwindow.ui \

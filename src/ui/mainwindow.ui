@@ -283,7 +283,7 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
          </widget>
         </item>
         <item>
-         <widget class="CustomListWidget" name="playlistWidget">
+         <widget class="PlaylistWidget" name="playlistWidget">
           <property name="focusPolicy">
            <enum>Qt::ClickFocus</enum>
           </property>
@@ -924,7 +924,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>580</width>
-     <height>23</height>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
@@ -1697,11 +1697,6 @@ QSlider::handle:horizontal {
    <header>widgets/indexbutton.h</header>
   </customwidget>
   <customwidget>
-   <class>CustomListWidget</class>
-   <extends>QListWidget</extends>
-   <header>widgets/customlistwidget.h</header>
-  </customwidget>
-  <customwidget>
    <class>SeekBar</class>
    <extends>QSlider</extends>
    <header>widgets/seekbar.h</header>
@@ -1716,6 +1711,11 @@ QSlider::handle:horizontal {
    <extends>QSplitter</extends>
    <header>widgets/customsplitter.h</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>PlaylistWidget</class>
+   <extends>QListWidget</extends>
+   <header>widgets/playlistwidget.h</header>
   </customwidget>
  </customwidgets>
  <resources>
