@@ -1141,8 +1141,16 @@ void MainWindow::LoadSettings()
 {
     if(settings)
     {
-        QString version = settings->value("baka-mplayer/version", BAKA_MPLAYER_VERSION).toString();
-        if(version == BAKA_MPLAYER_VERSION) // current version
+        QString version;
+        if(settings->allKeys().length() == 0) // empty settings
+        {
+            version = "2.0.0"; // current version
+            settings->setValue("baka-mplayer/version", "2.0.0");
+        }
+        else
+            version = settings->value("baka-mplayer/version", "1.9.9").toString(); // defaults to the first version without version info in settings
+
+        if(version == "2.0.0") // current version
         {
             setOnTop(settings->value("baka-mplayer/onTop", "never").toString());
             setAutoFit(settings->value("baka-mplayer/autoFit", 100).toInt());
@@ -1153,7 +1161,7 @@ void MainWindow::LoadSettings()
             setDebug(settings->value("baka-mplayer/debug", false).toBool());
             mpv->LoadSettings(settings, version);
         }
-        else if(version == "1.9.9")
+        else if(version == "1.9.9") // old version
         {
             // baka-mplayer
             setGeometry(QStyle::alignedRect(Qt::LeftToRight,
@@ -1172,7 +1180,7 @@ void MainWindow::LoadSettings()
             mpv->LoadSettings(settings, version);
 
             settings->clear(); // clear the settings--the new settings will get written
-            settings->setValue("baka-mplayer/version", BAKA_MPLAYER_VERSION); // set to new version
+            settings->setValue("baka-mplayer/version", "2.0.0"); // set to new version
             if(mpv->getSpeed() != 1)
                 settings->setValue("mpv/speed", mpv->getSpeed());
             if(mpv->getScreenshotFormat() != "")
@@ -1181,7 +1189,7 @@ void MainWindow::LoadSettings()
                 settings->setValue("mpv/screenshot-template", mpv->getScreenshotTemplate());
             SaveSettings(); // save it now
         }
-        else // unrecognized version
+        else // unrecognized version (newer)
         {
             QMessageBox::information(this, "Settings version not recognized", "The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.");
 

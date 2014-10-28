@@ -126,7 +126,7 @@ void MpvHandler::LoadSettings(QSettings *settings, QString version)
 {
     if(settings)
     {
-        if(version == BAKA_MPLAYER_VERSION)
+        if(version == "2.0.0")
         {
             QString lf = settings->value("baka-mplayer/lastFile", "").toString();
             if(FileExists(lf)) // make sure the last file exists
