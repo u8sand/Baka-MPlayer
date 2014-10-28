@@ -44,7 +44,7 @@ protected:
     void SetPlaybackControls(bool enable);          // macro to enable/disable playback controls
     QString FormatTime(int time);                   // format the time the way we want to display it
     QString FormatNumber(int val, int length);      // format the number with leading 0s
-    bool SetScreenshotDir();                        // prompt the user to select a screenshot directory
+    bool SetScreenshotTemplate();                   // prompt the user to select a screenshot directory
 
 private slots:
 

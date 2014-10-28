@@ -24,6 +24,8 @@ protected slots:
 private:
     Ui::PreferencesDialog *ui;
     QSettings *settings;
+    QString screenshotTemplate,
+            screenshotDir;
 };
 
 #endif // PREFERENCESDIALOG_H
