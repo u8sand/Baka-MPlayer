@@ -60,10 +60,23 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QListWidget" name="infoList">
-     <property name="frameShadow">
-      <enum>QFrame::Plain</enum>
+    <widget class="QTableWidget" name="infoWidget">
+     <property name="styleSheet">
+      <string notr="true">QHeaderView::section {
+	background: black;
+	border: 1px solid gray;
+}</string>
      </property>
+     <column>
+      <property name="text">
+       <string>Info Type</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Value</string>
+      </property>
+     </column>
     </widget>
    </item>
    <item>
