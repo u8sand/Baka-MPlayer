@@ -34,7 +34,6 @@ MpvHandler::MpvHandler(int64_t wid, QObject *parent):
     mpv_observe_property(mpv, 0, "sid", MPV_FORMAT_INT64);
     mpv_observe_property(mpv, 0, "aid", MPV_FORMAT_INT64);
     mpv_observe_property(mpv, 0, "sub-visibility", MPV_FORMAT_FLAG);
-
 }
 
 MpvHandler::~MpvHandler()
@@ -222,6 +221,7 @@ void MpvHandler::SaveSettings(QSettings *settings)
 
 void MpvHandler::LoadFile(QString f)
 {
+    if(f == "") return;
     LoadPlaylist(f);
     QFileInfo fi(f);
     PlayFile(fi.fileName());
