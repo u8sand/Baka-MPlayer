@@ -12,6 +12,7 @@ InfoDialog::InfoDialog(const Mpv::FileInfo &_fileInfo, QWidget *parent) :
             this, SLOT(close()));
 
     // todo: need to organize the information in a better way (like using columns)
+    /*
     ui->infoList->addItem("media-title = "+fileInfo.media_title);
     ui->infoList->addItem("length = "+QString::number(fileInfo.length));
     ui->infoList->addItem("width = "+QString::number(fileInfo.video_params.width));
@@ -24,6 +25,7 @@ InfoDialog::InfoDialog(const Mpv::FileInfo &_fileInfo, QWidget *parent) :
     ui->infoList->addItem("Chapters:");
     for(auto chapter : fileInfo.chapters)
         ui->infoList->addItem(chapter.title+": "+QString::number(chapter.time));
+    */
 }
 
 InfoDialog::~InfoDialog()
