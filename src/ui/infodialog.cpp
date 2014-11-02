@@ -11,19 +11,36 @@ InfoDialog::InfoDialog(const Mpv::FileInfo &_fileInfo, QWidget *parent) :
     connect(ui->closeButton, SIGNAL(clicked()),
             this, SLOT(close()));
 
-    // todo: need to organize the information in a better way (like using columns)
-    ui->infoList->addItem("media-title = "+fileInfo.media_title);
-    ui->infoList->addItem("length = "+QString::number(fileInfo.length));
-    ui->infoList->addItem("width = "+QString::number(fileInfo.video_params.width));
-    ui->infoList->addItem("height = "+QString::number(fileInfo.video_params.height));
-    ui->infoList->addItem("dwidth = "+QString::number(fileInfo.video_params.dwidth));
-    ui->infoList->addItem("dheight = "+QString::number(fileInfo.video_params.dheight));
-    ui->infoList->addItem("Tracks:");
-    for(auto track : fileInfo.tracks)
-        ui->infoList->addItem(QString::number(track.id)+": "+track.title+"["+track.type+":"+track.lang+"] "+track.external_filename);
-    ui->infoList->addItem("Chapters:");
-    for(auto chapter : fileInfo.chapters)
-        ui->infoList->addItem(chapter.title+": "+QString::number(chapter.time));
+    QList<QPair<QString, QString>> items = {
+        {"media-title", fileInfo.media_title},
+        {"length", QString::number(fileInfo.length)},
+        {"width", QString::number(fileInfo.video_params.width)},
+        {"height", QString::number(fileInfo.video_params.height)},
+        {"dwidth", QString::number(fileInfo.video_params.dwidth)},
+        {"dheight", QString::number(fileInfo.video_params.dheight)}
+    };
+    ui->infoWidget->setRowCount(items.length()+1+fileInfo.tracks.length()+1+fileInfo.chapters.length());
+    int r = 0;
+    for(auto &iter : items)
+    {
+        ui->infoWidget->setItem(r, 0, new QTableWidgetItem(iter.first));
+        ui->infoWidget->setItem(r, 1, new QTableWidgetItem(iter.second));
+        r++;
+    }
+    ui->infoWidget->setItem(r++, 0, new QTableWidgetItem("Track List"));
+    for(auto &track : fileInfo.tracks)
+    {
+        ui->infoWidget->setItem(r, 0, new QTableWidgetItem(QString::number(track.id)));
+        ui->infoWidget->setItem(r, 1, new QTableWidgetItem(track.title+"["+track.type+":"+track.lang+"] "+track.external_filename));
+        r++;
+    }
+    ui->infoWidget->setItem(r++, 0, new QTableWidgetItem("Chapter List"));
+    for(auto &chapter : fileInfo.chapters)
+    {
+        ui->infoWidget->setItem(r, 0, new QTableWidgetItem(chapter.title));
+        ui->infoWidget->setItem(r, 1, new QTableWidgetItem(QString::number(chapter.time)));
+        r++;
+    }
 }
 
 InfoDialog::~InfoDialog()
