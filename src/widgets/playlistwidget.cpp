@@ -6,8 +6,7 @@
 #include <algorithm> // for std::random_shuffle and std::sort
 
 PlaylistWidget::PlaylistWidget(QWidget *parent) :
-    QListWidget(parent),
-    showAll(false)
+    QListWidget(parent)
 {
 }
 
@@ -54,7 +53,7 @@ void PlaylistWidget::Search(QString s)
     QString item = currentItem()->text();
     QStringList newPlaylist;
     for(QStringList::iterator item = playlist.begin(); item != playlist.end(); item++)
-        if(item->startsWith(s))
+        if(item->contains(s))
             newPlaylist.append(*item);
     clear();
     addItems(newPlaylist);
@@ -63,10 +62,8 @@ void PlaylistWidget::Search(QString s)
 
 void PlaylistWidget::ShowAll(bool b)
 {
-    QString item;
-    if(currentItem())
-        item = currentItem()->text();
     if(count() == 0) return;
+    QListWidgetItem *item = currentItem();
     if(b)
     {
         clear();
@@ -75,19 +72,18 @@ void PlaylistWidget::ShowAll(bool b)
     else
     {
         // todo: this is gross; make it more efficient
-        if(currentItem())
+        if(item)
         {
-            item = currentItem()->text();
-            QString suffix = currentItem()->text().split('.').last();
-            QStringList newPlaylist = playlist;
-            for(QStringList::iterator item = playlist.begin(); item != playlist.end(); item++)
-                if(item->endsWith(suffix))
-                    newPlaylist.append(*item);
+            QString suffix = item->text().split('.').last();
+            QStringList newPlaylist;
+            for(QStringList::iterator i = playlist.begin(); i != playlist.end(); i++)
+                if(i->endsWith(suffix))
+                    newPlaylist.append(*i);
             clear();
             addItems(newPlaylist);
         }
     }
-    SelectItem(item);
+    SelectItem(item->text());
 }
 
 void PlaylistWidget::Shuffle(bool b)
@@ -106,11 +102,6 @@ void PlaylistWidget::Shuffle(bool b)
         addItems(playlist);
     }
     SelectItem(item);
-}
-
-bool PlaylistWidget::isShowAll()
-{
-    return showAll;
 }
 
 void PlaylistWidget::contextMenuEvent(QContextMenuEvent *event)

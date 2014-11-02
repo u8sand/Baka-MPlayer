@@ -680,7 +680,7 @@ MainWindow::MainWindow(QWidget *parent):
             {
                 if(i == -1) // no selection
                 {
-                    ui->indexLabel->setText("No files in playlist");
+                    ui->indexLabel->setText("No selection");
                     ui->indexLabel->setEnabled(false);
                 }
                 else
@@ -712,6 +712,7 @@ MainWindow::MainWindow(QWidget *parent):
             [=]
             {
                 mpv->LoadPlaylist(mpv->getPath()+mpv->getFile());
+                ui->playlistWidget->SelectItem(mpv->getFile());
             });
 
     action = ui->playlistWidget->addAction("R&emove from Playlist");

@@ -22,15 +22,11 @@ public:
     void Search(QString);
     void ShowAll(bool);
     void Shuffle(bool);
-
-    bool isShowAll();
 protected:
     void contextMenuEvent(QContextMenuEvent *event);
 
 private:
     QStringList playlist;
-    QString search;
-    bool showAll;
 };
 
 #endif // PLAYLISTWIDGET_H
