@@ -27,7 +27,8 @@ QString PlaylistWidget::RemoveItem(int index)
 
 void PlaylistWidget::SelectItem(const QString &item)
 {
-    setCurrentItem(findItems(item, Qt::MatchExactly).first());
+    if(item != "")
+        setCurrentItem(findItems(item, Qt::MatchExactly).first());
 }
 
 void PlaylistWidget::Populate(QStringList list)

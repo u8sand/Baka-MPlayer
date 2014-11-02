@@ -164,10 +164,7 @@ MainWindow::MainWindow(QWidget *parent):
                     else if(fileInfo.media_title == "-")
                         setWindowTitle("Baka-MPlayer: stdin"); // todo: disable playlist?
                     else
-                    {
                         setWindowTitle(fileInfo.media_title);
-                        ui->playlistWidget->SelectItem(mpv->getFile());
-                    }
 
                     // todo: deal with streamed input for which we do not know the length
                     ui->seekBar->setTracking(fileInfo.length);
@@ -418,6 +415,12 @@ MainWindow::MainWindow(QWidget *parent):
             [=]()
             {
                 pathChanged = true;
+            });
+
+    connect(mpv, &MpvHandler::fileChanged,
+            [=](QString f)
+            {
+                ui->playlistWidget->SelectItem(f);
             });
 
     connect(mpv, &MpvHandler::lastFileChanged,
