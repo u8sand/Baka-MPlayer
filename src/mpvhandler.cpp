@@ -207,7 +207,7 @@ void MpvHandler::SaveSettings(QSettings *settings)
     if(settings)
     {
         if(file != "")
-            settings->setValue("baka-mplayer/lastFile", file);
+            settings->setValue("baka-mplayer/lastFile", path+file);
         else
             settings->setValue("baka-mplayer/lastFile", lastFile);
         settings->setValue("mpv/volume", volume);
