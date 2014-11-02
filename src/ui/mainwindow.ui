@@ -1044,9 +1044,22 @@ QSlider::handle:horizontal {
      </property>
      <addaction name="action_none_3"/>
     </widget>
+    <widget class="QMenu" name="menuS_peed">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="title">
+      <string>S&amp;peed</string>
+     </property>
+     <addaction name="action_Increase"/>
+     <addaction name="action_Decrease"/>
+     <addaction name="separator"/>
+     <addaction name="action_Reset"/>
+    </widget>
     <addaction name="action_Play"/>
     <addaction name="action_Stop"/>
     <addaction name="action_Restart"/>
+    <addaction name="menuS_peed"/>
     <addaction name="separator"/>
     <addaction name="actionSh_uffle"/>
     <addaction name="menuR_epeat"/>
@@ -1677,6 +1690,30 @@ QSlider::handle:horizontal {
    </property>
    <property name="text">
     <string>[ none ]</string>
+   </property>
+  </action>
+  <action name="action_Increase">
+   <property name="text">
+    <string>&amp;Increase</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+Up</string>
+   </property>
+  </action>
+  <action name="action_Decrease">
+   <property name="text">
+    <string>&amp;Decrease</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+Down</string>
+   </property>
+  </action>
+  <action name="action_Reset">
+   <property name="text">
+    <string>&amp;Reset</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+R</string>
    </property>
   </action>
  </widget>

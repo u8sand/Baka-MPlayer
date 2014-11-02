@@ -24,7 +24,6 @@ public:
     QString getLastFile()                   { return lastFile; }
     QString getScreenshotFormat()           { return screenshotFormat; }
     QString getScreenshotTemplate()         { return screenshotTemplate; }
-    QString getScreenshotDir()              { return screenshotDir; }
     double getSpeed()                       { return speed; }
     int getTime()                           { return time; }
     int getVolume()                         { return volume; }
@@ -41,7 +40,7 @@ protected:
     bool FileExists(QString);
 
 public slots:
-    void LoadSettings(QSettings*);
+    void LoadSettings(QSettings*,QString);
     void SaveSettings(QSettings*);
 
     void LoadFile(QString);
@@ -74,7 +73,6 @@ public slots:
 
     void ScreenshotFormat(QString);
     void ScreenshotTemplate(QString);
-    void ScreenshotDirectory(QString);
 
     void AddSubtitleTrack(QString);
     void ShowSubtitles(bool);
@@ -105,7 +103,6 @@ private slots:
     void setLastFile(QString s)             { emit lastFileChanged(lastFile = s); }
     void setScreenshotFormat(QString s)     { emit screenshotFormatChanged(screenshotFormat = s); }
     void setScreenshotTemplate(QString s)   { emit screenshotTemplateChanged(screenshotTemplate = s); }
-    void setScreenshotDir(QString s)        { emit screenshotDirChanged(screenshotDir = s); }
     void setSpeed(double d)                 { emit speedChanged(speed = d); }
     void setTime(int i)                     { emit timeChanged(time = i); }
     void setVolume(int i)                   { emit volumeChanged(volume = i); }
@@ -129,7 +126,6 @@ signals:
     void lastFileChanged(QString);
     void screenshotFormatChanged(QString);
     void screenshotTemplateChanged(QString);
-    void screenshotDirChanged(QString);
     void speedChanged(double);
     void timeChanged(int);
     void volumeChanged(int);
@@ -155,7 +151,7 @@ private:
                 lastFile,
                 screenshotFormat,
                 screenshotTemplate,
-                screenshotDir;
+                suffix;
     double      speed = 1;
     int         time = 0,
                 volume = 100,
@@ -163,7 +159,8 @@ private:
                 vid,
                 aid,
                 sid;
-    bool        debug = false,
+    bool        init = false,
+                debug = false,
                 playlistVisible = false,
                 subtitleVisibility = true;
 };

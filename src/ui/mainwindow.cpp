@@ -453,6 +453,22 @@ MainWindow::MainWindow(QWidget *parent):
                 ui->volumeSlider->setValueNoSignal(volume);
             });
 
+    connect(mpv, &MpvHandler::speedChanged,
+            [=](double speed)
+            {
+                static double last = 1;
+                if(last != speed)
+                {
+                    if(init)
+                        mpv->ShowText("Speed: "+QString::number(speed)+"x");
+                    if(speed <= 0.25)
+                        ui->action_Decrease->setEnabled(false);
+                    else
+                        ui->action_Decrease->setEnabled(true);
+                    last = speed;
+                }
+            });
+
     connect(mpv, &MpvHandler::sidChanged,
             [=](int sid)
             {
@@ -787,7 +803,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->actionWith_Subtitles, &QAction::triggered,              // View -> Take Screenshot -> With Subtitles
             [=]
             {
-                if(mpv->getScreenshotDir() == "" && !SetScreenshotDir())
+                if(mpv->getScreenshotTemplate() == "" && !SetScreenshotTemplate())
                     return;
                 mpv->Screenshot(true);
             });
@@ -795,7 +811,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->actionWithout_Subtitles, &QAction::triggered,           // View -> Take Screenshot -> Without Subtitles
             [=]
             {
-                if(mpv->getScreenshotDir() == "" && !SetScreenshotDir())
+                if(mpv->getScreenshotTemplate() == "" && !SetScreenshotTemplate())
                     return;
                 mpv->Screenshot(false);
             });
@@ -909,6 +925,24 @@ MainWindow::MainWindow(QWidget *parent):
             [=]
             {
                 mpv->Restart();
+            });
+                                                                        // Playback -> Speed ->
+    connect(ui->action_Increase, &QAction::triggered,                   // Playback -> Speed -> Increase
+            [=]
+            {
+                mpv->Speed(mpv->getSpeed()+.25);
+            });
+
+    connect(ui->action_Decrease, &QAction::triggered,                   // Playback -> Speed -> Increase
+            [=]
+            {
+                mpv->Speed(mpv->getSpeed()-.25);
+            });
+
+    connect(ui->action_Reset, &QAction::triggered,                      // Playback -> Speed -> Reset
+            [=]
+            {
+                mpv->Speed(1);
             });
 
     connect(ui->actionSh_uffle, &QAction::triggered,                    // Playback -> Shuffle
@@ -1133,8 +1167,8 @@ MainWindow::MainWindow(QWidget *parent):
     // set window geometry from settings: leave this out of settings so that preference dialog doesn't center/resize the window
     setGeometry(QStyle::alignedRect(Qt::LeftToRight,
                                     Qt::AlignCenter,
-                                    QSize(settings->value("window/width", 600).toInt(),
-                                          settings->value("window/height", 430).toInt()),
+                                    QSize(settings->value("baka-mplayer/width", 600).toInt(),
+                                          settings->value("baka-mplayer/height", 430).toInt()),
                                     qApp->desktop()->availableGeometry()));
 }
 
@@ -1154,9 +1188,34 @@ void MainWindow::LoadSettings()
 {
     if(settings)
     {
-        QString version = settings->value("baka-mplayer/version", BAKA_MPLAYER_VERSION).toString();
-        if(version == BAKA_MPLAYER_VERSION)
+        QString version;
+        if(settings->allKeys().length() == 0) // empty settings
         {
+            version = "2.0.0"; // current version
+            settings->setValue("baka-mplayer/version", "2.0.0");
+        }
+        else
+            version = settings->value("baka-mplayer/version", "1.9.9").toString(); // defaults to the first version without version info in settings
+
+        if(version == "2.0.0") // current version
+        {
+            setOnTop(settings->value("baka-mplayer/onTop", "never").toString());
+            setAutoFit(settings->value("baka-mplayer/autoFit", 100).toInt());
+            sysTrayIcon->setVisible(settings->value("baka-mplayer/trayIcon", false).toBool());
+            setHidePopup(settings->value("baka-mplayer/hidePopup", false).toBool());
+            setRemaining(settings->value("baka-mplayer/remaining", true).toBool());
+            ui->splitter->setNormalPosition(settings->value("baka-mplayer/splitter", ui->splitter->max()*1.0/8).toInt());
+            setDebug(settings->value("baka-mplayer/debug", false).toBool());
+            mpv->LoadSettings(settings, version);
+        }
+        else if(version == "1.9.9") // old version
+        {
+            // baka-mplayer
+            setGeometry(QStyle::alignedRect(Qt::LeftToRight,
+                                            Qt::AlignCenter,
+                                            QSize(settings->value("window/width", 600).toInt(),
+                                                  settings->value("window/height", 430).toInt()),
+                                            qApp->desktop()->availableGeometry()));
             setOnTop(settings->value("window/onTop", "never").toString());
             setAutoFit(settings->value("window/autoFit", 100).toInt());
             sysTrayIcon->setVisible(settings->value("window/trayIcon", false).toBool());
@@ -1165,24 +1224,32 @@ void MainWindow::LoadSettings()
             ui->splitter->setNormalPosition(settings->value("window/splitter", ui->splitter->max()*1.0/8).toInt());
             ui->playlistWidget->ShowAll(settings->value("window/showAll", false).toBool());
             setDebug(settings->value("common/debug", false).toBool());
+            // mpv
+            mpv->LoadSettings(settings, version);
 
-            mpv->LoadSettings(settings);
+            settings->clear(); // clear the settings--the new settings will get written
+            settings->setValue("baka-mplayer/version", "2.0.0"); // set to new version
+            if(mpv->getSpeed() != 1)
+                settings->setValue("mpv/speed", mpv->getSpeed());
+            if(mpv->getScreenshotFormat() != "")
+                settings->setValue("mpv/screenshot-format", mpv->getScreenshotFormat());
+            if(mpv->getScreenshotTemplate() != "")
+                settings->setValue("mpv/screenshot-template", mpv->getScreenshotTemplate());
+            SaveSettings(); // save it now
         }
-        else
+        else // unrecognized version (newer)
         {
             QMessageBox::information(this, "Settings version not recognized", "The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.");
 
             // load what we can
-            setOnTop(settings->value("window/onTop", "never").toString());
-            setAutoFit(settings->value("window/autoFit", 100).toInt());
-            sysTrayIcon->setVisible(settings->value("window/trayIcon", false).toBool());
-            setHidePopup(settings->value("window/hidePopup", false).toBool());
-            setRemaining(settings->value("window/remaining", true).toBool());
-            ui->splitter->setNormalPosition(settings->value("window/splitter", ui->splitter->max()*1.0/8).toInt());
-            ui->playlistWidget->ShowAll(settings->value("mpv/showAll", false).toBool());
-            setDebug(settings->value("common/debug", false).toBool());
-
-            mpv->LoadSettings(settings);
+            setOnTop(settings->value("baka-mplayer/onTop", "never").toString());
+            setAutoFit(settings->value("baka-mplayer/autoFit", 100).toInt());
+            sysTrayIcon->setVisible(settings->value("baka-mplayer/trayIcon", false).toBool());
+            setHidePopup(settings->value("baka-mplayer/hidePopup", false).toBool());
+            setRemaining(settings->value("baka-mplayer/remaining", true).toBool());
+            ui->splitter->setNormalPosition(settings->value("baka-mplayer/splitter", ui->splitter->max()*1.0/8).toInt());
+            setDebug(settings->value("baka-mplayer/debug", false).toBool());
+            mpv->LoadSettings(settings, version);
 
             // disable settings manipulation
             delete settings;
@@ -1196,24 +1263,21 @@ void MainWindow::SaveSettings()
 {
     if(settings)
     {
+        // mpv
         mpv->SaveSettings(settings);
-
-        // window
-        settings->setValue("window/width", normalGeometry().width());
-        settings->setValue("window/height", normalGeometry().height());
-        settings->setValue("window/onTop", getOnTop());
-        settings->setValue("window/autoFit", getAutoFit());
-        settings->setValue("window/trayIcon", sysTrayIcon->isVisible());
-        settings->setValue("window/hidePopup", getHidePopup());
-        settings->setValue("window/remaining", getRemaining());
-        settings->setValue("window/splitter", (ui->splitter->position() == 0 ||
+        // baka-mplayer
+        settings->setValue("baka-mplayer/width", normalGeometry().width());
+        settings->setValue("baka-mplayer/height", normalGeometry().height());
+        settings->setValue("baka-mplayer/onTop", getOnTop());
+        settings->setValue("baka-mplayer/autoFit", getAutoFit());
+        settings->setValue("baka-mplayer/trayIcon", sysTrayIcon->isVisible());
+        settings->setValue("baka-mplayer/hidePopup", getHidePopup());
+        settings->setValue("baka-mplayer/remaining", getRemaining());
+        settings->setValue("baka-mplayer/splitter", (ui->splitter->position() == 0 ||
                                                ui->splitter->position() == ui->splitter->max()) ?
                                                 ui->splitter->normalPosition() :
                                                 ui->splitter->position());
-        settings->setValue("window/showAll", ui->playlistWidget->isShowAll());
-        // mpv
-        // common
-        settings->setValue("common/debug", getDebug());
+        settings->setValue("baka-mplayer/debug", getDebug());
     }
 }
 
@@ -1364,6 +1428,7 @@ void MainWindow::SetPlaybackControls(bool enable)
     // menubar
     ui->action_Stop->setEnabled(enable);
     ui->action_Restart->setEnabled(enable);
+    ui->menuS_peed->setEnabled(enable);
     ui->action_Jump_to_Time->setEnabled(enable);
     ui->actionMedia_Info->setEnabled(enable);
     ui->actionShow_in_Folder->setEnabled(enable);
@@ -1398,14 +1463,14 @@ QString MainWindow::FormatNumber(int val, int length)
         return QString("%1").arg(val, 3, 10, QChar('0'));
 }
 
-bool MainWindow::SetScreenshotDir()
+bool MainWindow::SetScreenshotTemplate()
 {
     QMessageBox::information(this, "Take Screenshot",
                              "Choose the default location where you would like to save your screenshots. Also by default, we will save your screenshots as a jpg file. If you'd like to change any of these settings, it is under Preferences.");
     QString dir = QFileDialog::getExistingDirectory(this, "Screenshot Directory");
     if(dir != "")
     {
-        mpv->ScreenshotDirectory(dir);
+        mpv->ScreenshotTemplate(dir+"/"+"screenshot%#04n");
         return true;
     }
     return false;

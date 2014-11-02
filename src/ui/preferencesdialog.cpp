@@ -6,7 +6,9 @@
 PreferencesDialog::PreferencesDialog(QSettings *_settings, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::PreferencesDialog),
-    settings(_settings)
+    settings(_settings),
+    screenshotTemplate(""),
+    screenshotDir("")
 {
     ui->setupUi(this);
 
@@ -16,52 +18,56 @@ PreferencesDialog::PreferencesDialog(QSettings *_settings, QWidget *parent) :
             this, SLOT(close()));
 
     // populate existing preferences
-    QString ontop = settings->value("window/onTop").toString();
+    QString ontop = settings->value("baka-mplayer/onTop").toString();
     if(ontop == "never")
         ui->neverRadioButton->setChecked(true);
     else if(ontop == "playing")
         ui->playingRadioButton->setChecked(true);
     else if(ontop == "always")
         ui->alwaysRadioButton->setChecked(true);
-    ui->groupBox_2->setChecked(settings->value("window/trayIcon").toBool());
-    ui->hidePopupCheckBox->setChecked(settings->value("window/hidePopup").toBool());
-    int autofit = settings->value("window/autoFit").toInt();
+    ui->groupBox_2->setChecked(settings->value("baka-mplayer/trayIcon").toBool());
+    ui->hidePopupCheckBox->setChecked(settings->value("baka-mplayer/hidePopup").toBool());
+    int autofit = settings->value("baka-mplayer/autoFit").toInt();
     ui->autoFitCheckBox->setChecked((bool)autofit);
     ui->comboBox->setCurrentText(QString::number(autofit)+"%");
-    ui->formatComboBox->setCurrentText(settings->value("mpv/screenshotFormat").toString());
-    ui->templateLineEdit->setText(settings->value("mpv/screenshotTemplate").toString());
+    ui->formatComboBox->setCurrentText(settings->value("mpv/screenshot-format").toString());
+    screenshotDir = settings->value("mpv/screenshot-template", "screenshot%#04n").toString();
+    int i = screenshotDir.lastIndexOf('/');
+    screenshotTemplate = screenshotDir.remove(0, i+1);
+    screenshotDir.truncate(i);
+    ui->templateLineEdit->setText(screenshotTemplate);
 
     // propigate changes to data
     connect(ui->neverRadioButton, &QRadioButton::clicked,
             [=]
             {
-                settings->setValue("window/onTop", "never");
+                settings->setValue("baka-mplayer/onTop", "never");
             });
     connect(ui->playingRadioButton, &QRadioButton::clicked,
             [=]
             {
-                settings->setValue("window/onTop", "playing");
+                settings->setValue("baka-mplayer/onTop", "playing");
             });
     connect(ui->alwaysRadioButton, &QRadioButton::clicked,
             [=]
             {
-                settings->setValue("window/onTop", "always");
+                settings->setValue("baka-mplayer/onTop", "always");
             });
     connect(ui->groupBox_2, &QGroupBox::clicked,
             [=](bool b)
             {
-                settings->setValue("window/trayIcon", b);
+                settings->setValue("baka-mplayer/trayIcon", b);
             });
     connect(ui->hidePopupCheckBox, &QCheckBox::clicked,
             [=](bool b)
             {
-                settings->setValue("window/hidePopup", b);
+                settings->setValue("baka-mplayer/hidePopup", b);
             });
     connect(ui->comboBox, &QComboBox::currentTextChanged,
             [=](QString s)
             {
                 s.chop(1);
-                settings->setValue("window/autoFit", s.toInt());
+                settings->setValue("baka-mplayer/autoFit", s.toInt());
             });
     connect(ui->autoFitCheckBox, &QCheckBox::clicked,
             [=](bool b)
@@ -69,25 +75,26 @@ PreferencesDialog::PreferencesDialog(QSettings *_settings, QWidget *parent) :
                 if(!b)
                 {
                     ui->comboBox->setEnabled(false);
-                    settings->setValue("window/autoFit", 0);
+                    settings->setValue("baka-mplayer/autoFit", 0);
                 }
                 else
                 {
                     ui->comboBox->setEnabled(true);
                     QString autofit = ui->comboBox->currentText();
                     autofit.chop(1);
-                    settings->setValue("window/autoFit", autofit.toInt());
+                    settings->setValue("baka-mplayer/autoFit", autofit.toInt());
                 }
             });
     connect(ui->formatComboBox, &QComboBox::currentTextChanged,
             [=](QString s)
             {
-                settings->setValue("mpv/screenshotFormat", s);
+                settings->setValue("mpv/screenshot-format", s);
             });
     connect(ui->templateLineEdit, &QLineEdit::textChanged,
             [=](QString s)
             {
-                settings->setValue("mpv/screenshotTemplate", s);
+                screenshotTemplate = s;
+                settings->setValue("mpv/screenshot-template", screenshotDir+"/"+screenshotTemplate);
             });
 }
 
@@ -104,7 +111,10 @@ void PreferencesDialog::showPreferences(QSettings *settings, QWidget *parent)
 
 void PreferencesDialog::ChangeScreenshotLocation()
 {
-    QString dir = QFileDialog::getExistingDirectory(this, "Choose screenshot directory", settings->value("mpv/screenshotDir").toString());
+    QString dir = QFileDialog::getExistingDirectory(this, "Choose screenshot directory", screenshotDir);
     if(dir.length() > 0)
-        settings->setValue("mpv/screenshotDir", dir);
+    {
+        screenshotDir = dir;
+        settings->setValue("mpv/screenshot-template", screenshotDir+"/"+screenshotTemplate);
+    }
 }
