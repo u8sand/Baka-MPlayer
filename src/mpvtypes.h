@@ -8,7 +8,7 @@
 
 namespace Mpv
 {
-    const QStringList audio_filetypes = {"*.mp3","*.ogg","*.wav","*.wma","*.m4a","*.ac3","*.ape","*.flac","*.ra"},
+    const QStringList audio_filetypes = {"*.mp3","*.ogg","*.wav","*.wma","*.m4a","*.aac","*.ac3","*.ape","*.flac","*.ra"},
                       video_filetypes = {"*.avi","*.divx","*.mpg","*.mpeg","*.m1v","*.m2v","*.mpv","*.dv","*.3gp","*.mov","*.mp4","*.m4v","*.mqv","*.dat","*.vcd","*.ogm","*.ogv","*.asf","*.wmv","*.vob","*.mkv","*.ram","*.flv","*.rm","*.ts","*.rmvb","*.dvr-ms","*.m2t","*.m2ts","*.rec","*.f4v","*.hdmov","*.webm","*.vp8"},
                       media_filetypes = audio_filetypes + video_filetypes,
                       subtitle_filetypes = {"*.sub","*.srt","*.ass","*.ssa"};
