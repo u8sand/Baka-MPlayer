@@ -466,6 +466,10 @@ MainWindow::MainWindow(QWidget *parent):
                 {
                     if(init)
                         mpv->ShowText("Speed: "+QString::number(speed)+"x");
+                    if(speed <= 0.25)
+                        ui->action_Decrease->setEnabled(false);
+                    else
+                        ui->action_Decrease->setEnabled(true);
                     last = speed;
                 }
             });
