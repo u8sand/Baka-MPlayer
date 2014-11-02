@@ -458,6 +458,18 @@ MainWindow::MainWindow(QWidget *parent):
                 ui->volumeSlider->setValueNoSignal(volume);
             });
 
+    connect(mpv, &MpvHandler::speedChanged,
+            [=](double speed)
+            {
+                static double last = 1;
+                if(last != speed)
+                {
+                    if(init)
+                        mpv->ShowText("Speed: "+QString::number(speed)+"x");
+                    last = speed;
+                }
+            });
+
     connect(mpv, &MpvHandler::indexChanged,
             [=](int index)
             {
@@ -939,6 +951,24 @@ MainWindow::MainWindow(QWidget *parent):
             [=]
             {
                 mpv->Restart();
+            });
+                                                                        // Playback -> Speed ->
+    connect(ui->action_Increase, &QAction::triggered,                   // Playback -> Speed -> Increase
+            [=]
+            {
+                mpv->Speed(mpv->getSpeed()+.25);
+            });
+
+    connect(ui->action_Decrease, &QAction::triggered,                   // Playback -> Speed -> Increase
+            [=]
+            {
+                mpv->Speed(mpv->getSpeed()-.25);
+            });
+
+    connect(ui->action_Reset, &QAction::triggered,                      // Playback -> Speed -> Reset
+            [=]
+            {
+                mpv->Speed(1);
             });
 
     connect(ui->actionSh_uffle, &QAction::triggered,                    // Playback -> Shuffle
@@ -1423,6 +1453,7 @@ void MainWindow::SetPlaybackControls(bool enable)
     // menubar
     ui->action_Stop->setEnabled(enable);
     ui->action_Restart->setEnabled(enable);
+    ui->menuS_peed->setEnabled(enable);
     ui->action_Jump_to_Time->setEnabled(enable);
     ui->actionMedia_Info->setEnabled(enable);
     ui->actionShow_in_Folder->setEnabled(enable);

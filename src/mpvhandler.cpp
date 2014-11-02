@@ -149,6 +149,8 @@ void MpvHandler::LoadSettings(QSettings *settings, QString version)
                 {
                     if(parts[1] == "volume") // exception--we want to update our ui accordingly
                         Volume(settings->value(key).toInt());
+                    else if(parts[1] == "speed")
+                        Speed(settings->value(key).toDouble());
                     else if(parts[1] == "screenshot-template")
                         ScreenshotTemplate(settings->value(key).toString());
                     else
@@ -216,8 +218,7 @@ void MpvHandler::SaveSettings(QSettings *settings)
         settings->setValue("baka-mplayer/showAll", showAll);
 
         settings->setValue("mpv/volume", volume);
-        if(speed != 1)
-            settings->setValue("mpv/speed", speed);
+        settings->setValue("mpv/speed", speed);
         if(screenshotFormat != "")
             settings->setValue("mpv/screenshot-format", screenshotFormat);
         if(screenshotTemplate != "")
@@ -482,8 +483,7 @@ void MpvHandler::Speed(double d)
 {
     if(playState > 0)
         mpv_set_property_async(mpv, 0, "speed", MPV_FORMAT_DOUBLE, &d);
-    else
-        setSpeed(d);
+    setSpeed(d);
 }
 
 void MpvHandler::Aspect(QString aspect)
