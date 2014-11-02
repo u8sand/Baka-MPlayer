@@ -6,9 +6,9 @@ bakamplayer - A free and open source, cross-platform, \fBlibmpv\fP based multime
 \fBbakamplayer\fP [file|-]
 
 .SH DESCRIPTION
-\fBBaka-MPlayer\fP is a free and open source, cross-platform, \fBlibmpv\fP based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching anime. It's also portable and supports opening Youtube videos (through \fBlibmpv\fP).
+\fBBaka-MPlayer\fP is a free and open source, cross-platform, \fBlibmpv\fP based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.
 .PP
-\fBBaka-MPlayer\fP is a graphical front-end to \fBmpv\fP. It is mostly self-explanitory and has little need for a manual.
+\fBBaka-MPlayer\fP is a graphical front-end to \fBmpv\fP. It is mostly self-explanatory and has little need for a manual.
 
 .SH EXAMPLES
 .nf
