@@ -20,6 +20,14 @@
 	color: whitesmoke;
 }
 
+/* QHeaderView for QTableWidget has to be set here */
+
+QTableWidget QHeaderView::section {
+	padding: 4px 2px;
+	background: #141414;
+	border: 1px solid #212121;
+}
+
 /* QScrollBar:vertical */
 
 QScrollBar:vertical {
@@ -62,8 +70,10 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
    <item>
     <widget class="QTableWidget" name="infoWidget">
      <property name="styleSheet">
-      <string notr="true">QTableWidget QHeaderView::section {
-	background-color: #141414;
+      <string notr="true">/* QHeaderView set under main stylesheet (QDialog) */
+
+QTableWidget {
+	border: 1px solid #212121;
 }
 
 QTableWidget::item {
