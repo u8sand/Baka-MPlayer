@@ -24,7 +24,7 @@
 
 QTableWidget QHeaderView::section {
 	padding: 4px 2px;
-	background: #141414;
+	background: #263238;
 	border: 1px solid #212121;
 }
 
