@@ -70,7 +70,6 @@ private:
     QSystemTrayIcon *sysTrayIcon;
     QMenu           *trayIconMenu;
     DimDialog       *dimDialog;
-    QSignalMapper   *chaptersSignalMapper;
 
     // variables
     QString onTop;

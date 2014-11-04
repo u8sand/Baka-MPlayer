@@ -41,8 +41,7 @@ MainWindow::MainWindow(QWidget *parent):
     lastMousePos(QPoint()),
     move(false),
     init(false),
-    autohide(new QTimer(this)),
-    chaptersSignalMapper(0)
+    autohide(new QTimer(this))
 {
     QAction *action;
 
@@ -307,31 +306,28 @@ MainWindow::MainWindow(QWidget *parent):
     {
         if(mpv->getPlayState() > 0)
         {
+            QAction *action;
             QList<int> ticks;
-            if(chaptersSignalMapper)
-                delete chaptersSignalMapper;
-            chaptersSignalMapper = new QSignalMapper(this);
             int n = 1,
                 N = chapters.length();
             ui->menu_Chapters->clear();
             for(auto &ch : chapters)
             {
-                QAction *action = ui->menu_Chapters->addAction(FormatNumber(n, N)+
-                                                               ": " +
-                                                               ch.title,
-                                                               NULL,
-                                                               NULL,
-                                                               (n <= 9 ? QKeySequence("Ctrl+"+QString::number(n)) : QKeySequence())
-                                                               );
-                n++;
-                chaptersSignalMapper->setMapping(action, ch.time);
-                connect(action, SIGNAL(triggered()),
-                        chaptersSignalMapper, SLOT(map()));
+                action = ui->menu_Chapters->addAction(FormatNumber(n, N)+
+                                                      ": " +
+                                                      ch.title,
+                                                      NULL,
+                                                      NULL,
+                                                      (n <= 9 ? QKeySequence("Ctrl+"+QString::number(n)) : QKeySequence())
+                                                      );
+                connect(action, &QAction::triggered,
+                        [=]
+                        {
+                            mpv->Seek(ch.time);
+                        });
                 ticks.push_back(ch.time);
+                n++;
             }
-            connect(chaptersSignalMapper, SIGNAL(mapped(int)),
-                    mpv, SLOT(Seek(int)));
-
             if(ui->menu_Chapters->actions().count() == 0)
             {
                 ui->menu_Chapters->setEnabled(false);
