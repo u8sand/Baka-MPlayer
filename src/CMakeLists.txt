@@ -3,6 +3,7 @@
 set(SOURCES
 	mpvhandler
 	updatemanager
+	util
 )
 set(WIDGETS
 	customslider

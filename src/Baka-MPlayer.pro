@@ -49,7 +49,8 @@ SOURCES += main.cpp\
     widgets/indexbutton.cpp \
     widgets/openbutton.cpp \
     widgets/seekbar.cpp \
-    widgets/playlistwidget.cpp
+    widgets/playlistwidget.cpp \
+    util.cpp
 
 HEADERS  += \
     mpvtypes.h \
@@ -70,7 +71,8 @@ HEADERS  += \
     ui/updatedialog.h \
     ui/inputdialog.h \
     ui/preferencesdialog.h \
-    widgets/playlistwidget.h
+    widgets/playlistwidget.h \
+    util.h
 
 FORMS    += \
     ui/mainwindow.ui \

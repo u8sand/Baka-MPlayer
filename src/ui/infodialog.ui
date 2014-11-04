@@ -101,6 +101,9 @@ QTableWidget::item:selected {
      <property name="cornerButtonEnabled">
       <bool>false</bool>
      </property>
+     <attribute name="horizontalHeaderCascadingSectionResizes">
+      <bool>false</bool>
+     </attribute>
      <attribute name="horizontalHeaderHighlightSections">
       <bool>false</bool>
      </attribute>

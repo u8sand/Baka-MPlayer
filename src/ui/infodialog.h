@@ -14,10 +14,10 @@ class InfoDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit InfoDialog(const Mpv::FileInfo &fileInfo, QWidget *parent = 0);
+    explicit InfoDialog(const QString &fileName, const Mpv::FileInfo &fileInfo, QWidget *parent = 0);
     ~InfoDialog();
 
-    static void info(const Mpv::FileInfo &fileInfo, QWidget *parent = 0);
+    static void info(const QString &fileName, const Mpv::FileInfo &fileInfo, QWidget *parent = 0);
 private:
     Ui::InfoDialog *ui;
     const Mpv::FileInfo &fileInfo;
