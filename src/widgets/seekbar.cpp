@@ -52,7 +52,7 @@ void SeekBar::mouseMoveEvent(QMouseEvent* event)
         // these values work best for xx:xx size; it might be possible to hardcode sizes
         // for the other most common formats eg. xx:xx:xx, x:xx:xx, xx:xx, x:xx
         QToolTip::showText(QPoint(event->globalX()-25, mapToGlobal(rect().topLeft()).y()-40),
-                           FormatTime((minimum() + ((maximum()-minimum()) * event->x()) / width())/maximum()*totalTime, totalTime),
+                           FormatTime((double)((minimum() + ((maximum()-minimum()) * event->x()) / width())/maximum())*totalTime, totalTime),
                            this, rect());
     }
     QSlider::mouseMoveEvent(event);

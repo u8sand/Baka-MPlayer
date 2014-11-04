@@ -67,7 +67,7 @@ UpdateDialog::UpdateDialog(UpdateManager *updateManager, QWidget *parent) :
                         timer = nullptr;
                     }
                 }
-                else
+                else if(timer) // don't execute this if timer is not defined--this shouldn't happen though.. but it does
                 {
                     avgSpeed = 0.005*lastSpeed + 0.995*avgSpeed;
 
@@ -105,6 +105,7 @@ UpdateDialog::UpdateDialog(UpdateManager *updateManager, QWidget *parent) :
     lastSpeed = 0;
     lastProgress = 0;
     lastTime = 0;
+
     timer = new QTime();
     timer->start();
     updateManager->CheckForUpdates();
