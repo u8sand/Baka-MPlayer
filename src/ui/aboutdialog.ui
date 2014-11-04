@@ -67,7 +67,7 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
     <widget class="QTabWidget" name="tabWidget">
      <property name="styleSheet">
       <string notr="true">QTabWidget::pane { /* The tab widget frame */
-    border-top: 1px solid gray;
+    border-top: 1px solid #4C4C4C;
 	padding: 5px 0px;
 }
 
@@ -82,7 +82,7 @@ QTabBar::tab:selected {
     border-bottom: 1px solid #008098;
 }
 QTabBar::tab:!selected {
-	color: silver;
+	color: #b8b8b8;
     margin-bottom: 1px;
 }</string>
      </property>
@@ -276,25 +276,27 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</string
       <widget class="QPushButton" name="closeButton">
        <property name="styleSheet">
         <string notr="true">QPushButton {
-    background: #263238;
-	color: white;
+    background: #008098;
+	color: whitesmoke;
 	border: 1px solid black;
 	border-radius: 2px;
     min-width: 88px;
 	min-height: 25px;
 }
 QPushButton:default {
-	border: 1px solid #008098;
+	border: 1px solid whitesmoke;
 }
 QPushButton:pressed {
-    background: #008098;
+    background: #005A6A;
 }
 QPushButton:disabled {
-    color: gray;
+	background: black;
+	border: 1px solid #008098;
+    color: #B8B8B8;
 }</string>
        </property>
        <property name="text">
-        <string>&amp;Close</string>
+        <string>&amp;CLOSE</string>
        </property>
        <property name="default">
         <bool>true</bool>

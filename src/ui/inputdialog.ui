@@ -64,10 +64,14 @@
        <widget class="QLineEdit" name="inputLineEdit">
         <property name="styleSheet">
          <string notr="true">QLineEdit {
-	background: #263238;
-	border: 1px solid black;
-	border-radius: 2px;
-	padding: 2px;
+	background: black;
+	border: none;
+	border-bottom: 1px solid #4C4C4C;
+	padding: 4px;
+}
+QLineEdit:focus {
+    border: none;
+	border-bottom: 1px solid #008098;
 }</string>
         </property>
         <property name="clearButtonEnabled">
@@ -94,21 +98,23 @@
         </property>
         <property name="styleSheet">
          <string notr="true">QPushButton {
-    background: #263238;
-	color: white;
+    background: #008098;
+	color: whitesmoke;
 	border: 1px solid black;
 	border-radius: 2px;
-    min-width: 86px;
-	min-height: 23px;
+    min-width: 88px;
+	min-height: 25px;
 }
 QPushButton:default {
 	border: 1px solid #008098;
 }
 QPushButton:pressed {
-    background: #008098;
+    background: #005A6A;
 }
 QPushButton:disabled {
-    color: gray;
+	background: black;
+	border: 1px solid #008098;
+    color: #B8B8B8;
 }</string>
         </property>
         <property name="text">
@@ -135,25 +141,27 @@ QPushButton:disabled {
         </property>
         <property name="styleSheet">
          <string notr="true">QPushButton {
-    background: #263238;
-	color: white;
+    background: #008098;
+	color: whitesmoke;
 	border: 1px solid black;
 	border-radius: 2px;
-    min-width: 86px;
-	min-height: 23px;
+    min-width: 88px;
+	min-height: 25px;
 }
 QPushButton:default {
 	border: 1px solid #008098;
 }
 QPushButton:pressed {
-    background: #008098;
+    background: #005A6A;
 }
 QPushButton:disabled {
-    color: gray;
+	background: black;
+	border: 1px solid #008098;
+    color: #b8b8b8;
 }</string>
         </property>
         <property name="text">
-         <string>&amp;Cancel</string>
+         <string>&amp;CANCEL</string>
         </property>
         <property name="autoDefault">
          <bool>false</bool>

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>650</width>
-    <height>80</height>
+    <height>83</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -46,10 +46,14 @@
       <widget class="QLineEdit" name="urlEdit">
        <property name="styleSheet">
         <string notr="true">QLineEdit {
-	background: #263238;
-	border: 1px solid black;
-	border-radius: 2px;
-	padding: 2px;
+	background: black;
+	border: none;
+	border-bottom: 1px solid #4C4C4C;
+	padding: 4px;
+}
+QLineEdit:focus {
+    border: none;
+	border-bottom: 1px solid #008098;
 }</string>
        </property>
        <property name="placeholderText">
@@ -111,21 +115,23 @@
        </property>
        <property name="styleSheet">
         <string notr="true">QPushButton {
-    background: #263238;
-	color: white;
+    background: #008098;
+	color: whitesmoke;
 	border: 1px solid black;
 	border-radius: 2px;
     min-width: 88px;
 	min-height: 25px;
 }
 QPushButton:default {
-	border: 1px solid #008098;
+	border: 1px solid whitesmoke;
 }
 QPushButton:pressed {
-    background: #008098;
+    background: #005A6A;
 }
 QPushButton:disabled {
-    color: gray;
+	background: black;
+	border: 1px solid #008098;
+    color: #B8B8B8;
 }</string>
        </property>
        <property name="text">
@@ -165,25 +171,27 @@ QPushButton:disabled {
        </property>
        <property name="styleSheet">
         <string notr="true">QPushButton {
-    background: #263238;
-	color: white;
+    background: #008098;
+	color: whitesmoke;
 	border: 1px solid black;
 	border-radius: 2px;
     min-width: 88px;
 	min-height: 25px;
 }
 QPushButton:default {
-	border: 1px solid #008098;
+	border: 1px solid whitesmoke;
 }
 QPushButton:pressed {
-    background: #008098;
+    background: #005A6A;
 }
 QPushButton:disabled {
-    color: gray;
+	background: black;
+	border: 1px solid #008098;
+    color: #B8B8B8;
 }</string>
        </property>
        <property name="text">
-        <string>&amp;Paste</string>
+        <string>&amp;PASTE</string>
        </property>
        <property name="autoDefault">
         <bool>false</bool>
@@ -206,25 +214,27 @@ QPushButton:disabled {
        </property>
        <property name="styleSheet">
         <string notr="true">QPushButton {
-    background: #263238;
-	color: white;
+    background: #008098;
+	color: whitesmoke;
 	border: 1px solid black;
 	border-radius: 2px;
     min-width: 88px;
 	min-height: 25px;
 }
 QPushButton:default {
-	border: 1px solid #008098;
+	border: 1px solid whitesmoke;
 }
 QPushButton:pressed {
-    background: #008098;
+    background: #005A6A;
 }
 QPushButton:disabled {
-    color: gray;
+	background: black;
+	border: 1px solid #008098;
+    color: #B8B8B8;
 }</string>
        </property>
        <property name="text">
-        <string>&amp;Copy</string>
+        <string>&amp;COPY</string>
        </property>
        <property name="autoDefault">
         <bool>false</bool>
@@ -247,25 +257,27 @@ QPushButton:disabled {
        </property>
        <property name="styleSheet">
         <string notr="true">QPushButton {
-    background: #263238;
-	color: white;
+    background: #008098;
+	color: whitesmoke;
 	border: 1px solid black;
 	border-radius: 2px;
     min-width: 88px;
 	min-height: 25px;
 }
 QPushButton:default {
-	border: 1px solid #008098;
+	border: 1px solid whitesmoke;
 }
 QPushButton:pressed {
-    background: #008098;
+    background: #005A6A;
 }
 QPushButton:disabled {
-    color: gray;
+	background: black;
+	border: 1px solid #008098;
+    color: #B8B8B8;
 }</string>
        </property>
        <property name="text">
-        <string>Clea&amp;r</string>
+        <string>CLEA&amp;R</string>
        </property>
        <property name="autoDefault">
         <bool>false</bool>
@@ -301,25 +313,27 @@ QPushButton:disabled {
        </property>
        <property name="styleSheet">
         <string notr="true">QPushButton {
-    background: #263238;
-	color: white;
+    background: #008098;
+	color: whitesmoke;
 	border: 1px solid black;
 	border-radius: 2px;
     min-width: 88px;
 	min-height: 25px;
 }
 QPushButton:default {
-	border: 1px solid #008098;
+	border: 1px solid whitesmoke;
 }
 QPushButton:pressed {
-    background: #008098;
+    background: #005A6A;
 }
 QPushButton:disabled {
-    color: gray;
+	background: black;
+	border: 1px solid #008098;
+    color: #B8B8B8;
 }</string>
        </property>
        <property name="text">
-        <string>Canc&amp;el</string>
+        <string>CANC&amp;EL</string>
        </property>
        <property name="autoDefault">
         <bool>false</bool>
