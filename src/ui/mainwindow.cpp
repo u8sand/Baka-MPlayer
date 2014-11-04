@@ -31,6 +31,9 @@
 #include "inputdialog.h"
 #include "updatedialog.h"
 #include "preferencesdialog.h"
+#include "util.h"
+
+using namespace BakaUtil;
 
 MainWindow::MainWindow(QWidget *parent):
     QMainWindow(parent),
@@ -170,7 +173,7 @@ MainWindow::MainWindow(QWidget *parent):
                     ui->seekBar->setTracking(fileInfo.length);
 
                     if(!remaining)
-                        ui->remainingLabel->setText(FormatTime(fileInfo.length));
+                        ui->remainingLabel->setText(FormatTime(fileInfo.length, fileInfo.length));
                 }
             });
 
@@ -438,9 +441,9 @@ MainWindow::MainWindow(QWidget *parent):
                 ui->seekBar->setValueNoSignal(ui->seekBar->maximum()*((double)i/fi.length));
 
                 // set duration and remaining labels, QDateTime takes care of formatting for us
-                ui->durationLabel->setText(FormatTime(i));
+                ui->durationLabel->setText(FormatTime(i, mpv->getFileInfo().length));
                 if(remaining)
-                    ui->remainingLabel->setText("-"+FormatTime(fi.length-i));
+                    ui->remainingLabel->setText("-"+FormatTime(fi.length-i, mpv->getFileInfo().length));
 
                 // set next/previous chapter's enabled state
                 if(fi.chapters.length() > 0)
@@ -587,7 +590,7 @@ MainWindow::MainWindow(QWidget *parent):
                 if(remaining)
                 {
                     setRemaining(false);
-                    ui->remainingLabel->setText(FormatTime(mpv->getFileInfo().length));
+                    ui->remainingLabel->setText(FormatTime(mpv->getFileInfo().length, mpv->getFileInfo().length));
                 }
                 else
                     setRemaining(true);
@@ -910,7 +913,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->actionMedia_Info, &QAction::triggered,                  // View -> Media Info
             [=]
             {
-                InfoDialog::info(mpv->getFileInfo(), this);
+                InfoDialog::info(mpv->getPath()+mpv->getFile(), mpv->getFileInfo(), this);
             });
                                                                         // Playback ->
     connect(ui->action_Play, &QAction::triggered,                       // Playback -> (Play|Pause)
@@ -1444,27 +1447,6 @@ void MainWindow::SetPlaybackControls(bool enable)
         ui->menuAudio_Tracks->setEnabled(false);
         ui->menuFont_Si_ze->setEnabled(false);
     }
-}
-
-QString MainWindow::FormatTime(int _time)
-{
-    const Mpv::FileInfo &fi = mpv->getFileInfo();
-    QTime time = QTime::fromMSecsSinceStartOfDay(_time * 1000);
-    if(fi.length >= 3600) // hours
-        return time.toString("h:mm:ss");
-    if(fi.length >= 60)   // minutes
-        return time.toString("mm:ss");
-    return time.toString("0:ss");   // seconds
-}
-
-QString MainWindow::FormatNumber(int val, int length)
-{
-    if(length < 10)
-        return QString::number(val);
-    else if(length < 100)
-        return QString("%1").arg(val, 2, 10, QChar('0'));
-    else
-        return QString("%1").arg(val, 3, 10, QChar('0'));
 }
 
 bool MainWindow::SetScreenshotTemplate()

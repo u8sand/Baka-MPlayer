@@ -509,6 +509,15 @@ void MpvHandler::LoadFileInfo()
     mpv_get_property(mpv, "length", MPV_FORMAT_DOUBLE, &len);
     fileInfo.length = (int)len;
 
+    fileInfo.video_params.codec = mpv_get_property_string(mpv, "video-codec");
+    fileInfo.video_params.format = mpv_get_property_string(mpv, "video-format");
+    fileInfo.video_params.bitrate = mpv_get_property_string(mpv, "video-bitrate");
+    fileInfo.audio_params.codec = mpv_get_property_string(mpv, "audio-codec");
+    fileInfo.audio_params.format = mpv_get_property_string(mpv, "audio-format");
+    fileInfo.audio_params.bitrate = mpv_get_property_string(mpv, "audio-bitrate");
+    fileInfo.audio_params.samplerate = mpv_get_property_string(mpv, "audio-samplerate");
+    fileInfo.audio_params.channels = mpv_get_property_string(mpv, "audio-channels");
+
     LoadTracks();
     LoadChapters();
     LoadVideoParams();
