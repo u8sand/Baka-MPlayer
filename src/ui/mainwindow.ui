@@ -924,7 +924,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>580</width>
-     <height>24</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
@@ -936,7 +936,7 @@ QSlider::handle:horizontal {
     <addaction name="action_Open_File"/>
     <addaction name="actionOpen_URL"/>
     <addaction name="actionOpen_Path_from_Clipboard"/>
-    <addaction name="actionOpen_Last_File"/>
+    <addaction name="action_Recently_Opened"/>
     <addaction name="separator"/>
     <addaction name="actionShow_in_Folder"/>
     <addaction name="separator"/>
@@ -1714,6 +1714,11 @@ QSlider::handle:horizontal {
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+R</string>
+   </property>
+  </action>
+  <action name="action_Recently_Opened">
+   <property name="text">
+    <string>&amp;Recently Opened</string>
    </property>
   </action>
  </widget>
