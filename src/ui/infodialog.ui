@@ -120,22 +120,10 @@ QTableWidget::item:selected {
       <property name="text">
        <string>Info Type</string>
       </property>
-      <property name="font">
-       <font>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
      </column>
      <column>
       <property name="text">
        <string>Value</string>
-      </property>
-      <property name="font">
-       <font>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
       </property>
      </column>
     </widget>
@@ -159,25 +147,27 @@ QTableWidget::item:selected {
       <widget class="QPushButton" name="closeButton">
        <property name="styleSheet">
         <string notr="true">QPushButton {
-    background: #263238;
-	color: white;
+    background: #008098;
+	color: whitesmoke;
 	border: 1px solid black;
 	border-radius: 2px;
     min-width: 88px;
 	min-height: 25px;
 }
 QPushButton:default {
-	border: 1px solid #008098;
+	border: 1px solid whitesmoke;
 }
 QPushButton:pressed {
-    background: #008098;
+    background: #005A6A;
 }
 QPushButton:disabled {
-    color: gray;
+	background: black;
+	border: 1px solid #008098;
+    color: #B8B8B8;
 }</string>
        </property>
        <property name="text">
-        <string>&amp;Close</string>
+        <string>&amp;CLOSE</string>
        </property>
        <property name="default">
         <bool>true</bool>
