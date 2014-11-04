@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Update Available</string>
+   <string>Check for Updates</string>
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget {
@@ -66,6 +66,12 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
      </property>
      <item>
       <widget class="QLabel" name="updateImg">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="pixmap">
         <pixmap resource="../rsclist.qrc">:/img/download.svg</pixmap>
        </property>
