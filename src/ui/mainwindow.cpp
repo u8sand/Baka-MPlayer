@@ -106,7 +106,7 @@ MainWindow::MainWindow(QWidget *parent):
                         else if(mpv->getPlayState() == Mpv::Paused)
                             sysTrayIcon->showMessage("Baka MPlayer", "Paused", QSystemTrayIcon::NoIcon, 4000);
                     }
-                    mpv->PlayPause(ui->playlistWidget->currentItem()->text());
+                    mpv->PlayPause(ui->playlistWidget->CurrentItem());
                 }
 
             });
@@ -390,11 +390,11 @@ MainWindow::MainWindow(QWidget *parent):
                     {
                         if(ui->action_This_File->isChecked())
                             mpv->PlayFile(mpv->getFile()); // restart file
-                        else if(ui->playlistWidget->currentRow() >= ui->playlistWidget->count() ||
+                        else if(ui->playlistWidget->currentRow() >= ui->playlistWidget->count()-1 ||
                            ui->actionStop_after_Current->isChecked())
                         {
-                            if(ui->action_Playlist->isChecked())
-                                mpv->PlayFile(ui->playlistWidget->item(0)->text()); // restart playlist
+                            if(ui->action_Playlist->isChecked() && ui->playlistWidget->count() > 0)
+                                mpv->PlayFile(ui->playlistWidget->FirstItem()); // restart playlist
                             else
                             {
                                 setWindowTitle("Baka MPlayer");
@@ -607,7 +607,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->playButton, &QPushButton::clicked,                      // Playback: Play/pause button
             [=]
             {
-                mpv->PlayPause(ui->playlistWidget->currentItem()->text());
+                mpv->PlayPause(ui->playlistWidget->CurrentItem());
             });
 
     connect(ui->nextButton, &IndexButton::clicked,                      // Playback: Next button
@@ -671,7 +671,7 @@ MainWindow::MainWindow(QWidget *parent):
                                                     },
                                                     this);
                 if(res != "")
-                    mpv->PlayFile(ui->playlistWidget->item(res.toInt()-1)->text()); // user index will be 1 greater than actual
+                    mpv->PlayFile(ui->playlistWidget->FileAt(res.toInt()-1)); // user index will be 1 greater than actual
             });
 
     connect(ui->playlistWidget, &PlaylistWidget::currentRowChanged,   // Playlist: Playlist selection changed
@@ -692,7 +692,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->playlistWidget, &PlaylistWidget::doubleClicked,       // Playlist: Item double clicked
             [=](const QModelIndex &i)
             {
-                mpv->PlayFile(ui->playlistWidget->item(i.row())->text());
+                mpv->PlayFile(ui->playlistWidget->FileAt(i.row()));
             });
 
     connect(ui->currentFileButton, &QPushButton::clicked,               // Playlist: Select current file button
@@ -915,7 +915,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->action_Play, &QAction::triggered,                       // Playback -> (Play|Pause)
             [=]
             {
-                mpv->PlayPause(ui->playlistWidget->currentItem()->text());
+                mpv->PlayPause(ui->playlistWidget->CurrentItem());
             });
 
     connect(ui->action_Stop, &QAction::triggered,                       // Playback -> Stop
@@ -1326,7 +1326,7 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
             lastMousePos = event->pos();
         }
         else if(event->button() == Qt::RightButton && mpv->getPlayState() > 0) // if playing
-            mpv->PlayPause(ui->playlistWidget->currentItem()->text());
+            mpv->PlayPause(ui->playlistWidget->CurrentItem());
     }
     QMainWindow::mousePressEvent(event);
 }

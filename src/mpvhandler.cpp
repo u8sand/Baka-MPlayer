@@ -338,16 +338,19 @@ void MpvHandler::Rewind()
 
 void MpvHandler::Seek(int pos, bool relative)
 {
-    const QByteArray tmp = QString::number(pos).toUtf8();
-    if(relative)
+    if(playState > 0)
     {
-        const char *args[] = {"seek", tmp.constData(), NULL};
-        AsyncCommand(args);
-    }
-    else
-    {
-        double p = pos;
-        mpv_set_property_async(mpv, 0, "time-pos", MPV_FORMAT_DOUBLE, &p);
+        const QByteArray tmp = QString::number(pos).toUtf8();
+        if(relative)
+        {
+            const char *args[] = {"seek", tmp.constData(), NULL};
+            AsyncCommand(args);
+        }
+        else
+        {
+            double p = pos;
+            mpv_set_property_async(mpv, 0, "time-pos", MPV_FORMAT_DOUBLE, &p);
+        }
     }
 }
 
