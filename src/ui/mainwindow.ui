@@ -196,9 +196,6 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
         <property name="focusPolicy">
          <enum>Qt::NoFocus</enum>
         </property>
-        <property name="frameShape">
-         <enum>QFrame::NoFrame</enum>
-        </property>
        </widget>
        <widget class="QPlainTextEdit" name="outputTextEdit">
         <property name="contextMenuPolicy">

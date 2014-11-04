@@ -240,12 +240,10 @@ MainWindow::MainWindow(QWidget *parent):
             if(video)
             {
                 // if we were hiding album art, show it--we've gone to a video
+                if(ui->mpvFrame->styleSheet() != QString()) // remove filler album art
+                    ui->mpvFrame->setStyleSheet("");
                 if(ui->action_Hide_Album_Art_2->isChecked())
-                {
                     HideAlbumArt(false);
-                    ui->action_Show_Playlist_2->setEnabled(true);
-                    ui->splitter->setEnabled(true);
-                }
                 ui->action_Hide_Album_Art_2->setEnabled(false);
                 ui->menuSubtitle_Track->setEnabled(true);
                 if(ui->menuSubtitle_Track->actions().count() > 1)
@@ -259,7 +257,9 @@ MainWindow::MainWindow(QWidget *parent):
                     ui->menuFont_Si_ze->setEnabled(false);
                     ui->actionShow_Subtitles->setEnabled(false);
                 }
-                ui->menuAudio_Tracks->setEnabled((ui->menuAudio_Tracks->actions().count() > 1));
+                ui->menuAudio_Tracks->setEnabled((ui->menuAudio_Tracks->actions().count() > 0));
+                if(ui->menuAudio_Tracks->actions().count() == 1)
+                    ui->menuAudio_Tracks->actions().first()->setEnabled(false);
                 ui->menuTake_Screenshot->setEnabled(true);
                 ui->menuFit_Window->setEnabled(true);
                 ui->menuAspect_Ratio->setEnabled(true);
@@ -268,25 +268,19 @@ MainWindow::MainWindow(QWidget *parent):
             }
             else
             {
-                // if there is no album art we force hide album art
                 if(!albumArt)
                 {
-                    HideAlbumArt(true);
-                    ui->action_Show_Playlist_2->setEnabled(false);
-                    ui->splitter->setEnabled(false);
+                    // put in filler albumArt
+                    if(ui->mpvFrame->styleSheet() == QString())
+                        ui->mpvFrame->setStyleSheet("background-image:url(:/img/logo.svg);background-repeat:no-repeat;background-position:center;");
                 }
-                else
-                {
-                    ui->action_Show_Playlist_2->setEnabled(true);
-                    ui->action_Hide_Album_Art_2->setEnabled(true);
-                    ui->splitter->setEnabled(true);
-                }
+                ui->action_Hide_Album_Art_2->setEnabled(true);
                 ui->menuAudio_Tracks->setEnabled((ui->menuAudio_Tracks->actions().count() > 1));
                 ui->menuSubtitle_Track->setEnabled(false);
                 ui->menuFont_Si_ze->setEnabled(false);
                 ui->actionShow_Subtitles->setEnabled(false);
                 ui->menuTake_Screenshot->setEnabled(false);
-                ui->menuFit_Window->setEnabled(ui->action_Hide_Album_Art_2->isEnabled());
+                ui->menuFit_Window->setEnabled(false);
                 ui->menuAspect_Ratio->setEnabled(false);
                 ui->action_Frame_Step->setEnabled(false);
                 ui->actionFrame_Back_Step->setEnabled(false);
@@ -401,6 +395,8 @@ MainWindow::MainWindow(QWidget *parent):
                                 SetPlaybackControls(false);
                                 ui->seekBar->setTracking(0);
                                 ui->actionStop_after_Current->setChecked(false);
+                                if(ui->mpvFrame->styleSheet() != QString()) // remove filler album art
+                                    ui->mpvFrame->setStyleSheet("");
                             }
                         }
                         else
@@ -823,30 +819,35 @@ MainWindow::MainWindow(QWidget *parent):
             [=]
             {
                 FitWindow(0);
+                mpv->ShowText("Fit Window: To Current Size");
             });
 
     connect(ui->action50, &QAction::triggered,                          // View -> Fit Window -> 50%
             [=]
             {
                 FitWindow(50);
+                mpv->ShowText("Fit Window: 50%");
             });
 
     connect(ui->action75, &QAction::triggered,                          // View -> Fit Window -> 75%
             [=]
             {
                 FitWindow(75);
+                mpv->ShowText("Fit Window: 75%");
             });
 
     connect(ui->action100, &QAction::triggered,                         // View -> Fit Window -> 100%
             [=]
             {
                 FitWindow(100);
+                mpv->ShowText("Fit Window: 100%");
             });
 
     connect(ui->action200, &QAction::triggered,                         // View -> Fit Window -> 200%
             [=]
             {
                 FitWindow(200);
+                mpv->ShowText("Fit Window: 200%");
             });
                                                                         // View -> Aspect Ratio ->
     connect(ui->action_Autodetect, &QAction::triggered,                 // View -> Aspect Ratio -> Auto Detect
