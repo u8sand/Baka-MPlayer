@@ -84,7 +84,7 @@ QSplitter::handle {
 }
 
 QListView::item {
-	padding: 3px 1px;
+	padding: 2px 0px;
 	alternate-background-color: #141414;
 }
 QListView::item:alternate {
@@ -904,7 +904,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>580</width>
-     <height>23</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">

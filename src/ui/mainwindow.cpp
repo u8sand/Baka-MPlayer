@@ -697,7 +697,7 @@ MainWindow::MainWindow(QWidget *parent):
                 ui->playlistWidget->SelectItem(mpv->getFile());
             });
 
-    connect(ui->showAllButton, &QPushButton::clicked,                   // Playlist: Show All button
+    connect(ui->hideFilesButton, &QPushButton::clicked,                   // Playlist: Hide files button
             [=](bool b)
             {
                 ui->playlistWidget->ShowAll(b);
