@@ -83,7 +83,8 @@ QSplitter::handle {
 	padding: 2px;
 }
 
-#playlistWidget::item {
+QListView::item {
+	padding: 3px 1px;
 	alternate-background-color: #141414;
 }
 QListView::item:alternate {
@@ -359,14 +360,6 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
              </property>
              <property name="toolTip">
               <string>Show All Files</string>
-             </property>
-             <property name="icon">
-              <iconset resource="../rsclist.qrc">
-               <normaloff>:/img/default_show_all.svg</normaloff>
-               <normalon>:/img/enabled_show_all.svg</normalon>
-               <disabledon>:/img/enabled_show_all.svg</disabledon>
-               <activeon>:/img/enabled_show_all.svg</activeon>
-               <selectedon>:/img/enabled_show_all.svg</selectedon>:/img/default_show_all.svg</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -921,7 +914,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>580</width>
-     <height>24</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
