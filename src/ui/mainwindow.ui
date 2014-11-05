@@ -329,12 +329,6 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
               <iconset resource="../rsclist.qrc">
                <normaloff>:/img/select_current.svg</normaloff>:/img/select_current.svg</iconset>
              </property>
-             <property name="iconSize">
-              <size>
-               <width>14</width>
-               <height>14</height>
-              </size>
-             </property>
              <property name="flat">
               <bool>true</bool>
              </property>
@@ -354,18 +348,20 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
             </spacer>
            </item>
            <item>
-            <widget class="QPushButton" name="showAllButton">
+            <widget class="QPushButton" name="hideFilesButton">
              <property name="focusPolicy">
               <enum>Qt::NoFocus</enum>
              </property>
              <property name="toolTip">
-              <string>Show All Files</string>
+              <string>Hide files with different extensions</string>
              </property>
-             <property name="iconSize">
-              <size>
-               <width>14</width>
-               <height>14</height>
-              </size>
+             <property name="icon">
+              <iconset resource="../rsclist.qrc">
+               <normaloff>:/img/disabled_hide_files.svg</normaloff>
+               <normalon>:/img/enabled_hide_files.svg</normalon>
+               <disabledon>:/img/enabled_hide_files.svg</disabledon>
+               <activeon>:/img/enabled_hide_files.svg</activeon>
+               <selectedon>:/img/enabled_hide_files.svg</selectedon>:/img/disabled_hide_files.svg</iconset>
              </property>
              <property name="checkable">
               <bool>true</bool>
@@ -386,12 +382,6 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
              <property name="icon">
               <iconset resource="../rsclist.qrc">
                <normaloff>:/img/refresh_view.svg</normaloff>:/img/refresh_view.svg</iconset>
-             </property>
-             <property name="iconSize">
-              <size>
-               <width>14</width>
-               <height>14</height>
-              </size>
              </property>
              <property name="flat">
               <bool>true</bool>
@@ -914,7 +904,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>580</width>
-     <height>22</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
