@@ -338,16 +338,19 @@ void MpvHandler::Rewind()
 
 void MpvHandler::Seek(int pos, bool relative)
 {
-    const QByteArray tmp = QString::number(pos).toUtf8();
-    if(relative)
+    if(playState > 0)
     {
-        const char *args[] = {"seek", tmp.constData(), NULL};
-        AsyncCommand(args);
-    }
-    else
-    {
-        double p = pos;
-        mpv_set_property_async(mpv, 0, "time-pos", MPV_FORMAT_DOUBLE, &p);
+        const QByteArray tmp = QString::number(pos).toUtf8();
+        if(relative)
+        {
+            const char *args[] = {"seek", tmp.constData(), NULL};
+            AsyncCommand(args);
+        }
+        else
+        {
+            double p = pos;
+            mpv_set_property_async(mpv, 0, "time-pos", MPV_FORMAT_DOUBLE, &p);
+        }
     }
 }
 
@@ -508,6 +511,15 @@ void MpvHandler::LoadFileInfo()
     double len;
     mpv_get_property(mpv, "length", MPV_FORMAT_DOUBLE, &len);
     fileInfo.length = (int)len;
+
+    fileInfo.video_params.codec = mpv_get_property_string(mpv, "video-codec");
+    fileInfo.video_params.format = mpv_get_property_string(mpv, "video-format");
+    fileInfo.video_params.bitrate = mpv_get_property_string(mpv, "video-bitrate");
+    fileInfo.audio_params.codec = mpv_get_property_string(mpv, "audio-codec");
+    fileInfo.audio_params.format = mpv_get_property_string(mpv, "audio-format");
+    fileInfo.audio_params.bitrate = mpv_get_property_string(mpv, "audio-bitrate");
+    fileInfo.audio_params.samplerate = mpv_get_property_string(mpv, "audio-samplerate");
+    fileInfo.audio_params.channels = mpv_get_property_string(mpv, "audio-channels");
 
     LoadTracks();
     LoadChapters();

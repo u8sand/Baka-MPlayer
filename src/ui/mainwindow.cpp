@@ -31,6 +31,9 @@
 #include "inputdialog.h"
 #include "updatedialog.h"
 #include "preferencesdialog.h"
+#include "util.h"
+
+using namespace BakaUtil;
 
 MainWindow::MainWindow(QWidget *parent):
     QMainWindow(parent),
@@ -38,8 +41,7 @@ MainWindow::MainWindow(QWidget *parent):
     lastMousePos(QPoint()),
     move(false),
     init(false),
-    autohide(new QTimer(this)),
-    chaptersSignalMapper(0)
+    autohide(new QTimer(this))
 {
     QAction *action;
 
@@ -65,12 +67,8 @@ MainWindow::MainWindow(QWidget *parent):
     settings = new QSettings(QSettings::IniFormat, QSettings::UserScope, SETTINGS_FILE, QString(), this);
 #endif
     mpv = new MpvHandler(ui->mpvFrame->winId(), this);
-//#if defined(Q_OS_WIN)
     update = new UpdateManager(this);
-//#else
-//    // todo: remove this when checking for updates shows the latest version on linux
-//    ui->action_Check_for_Updates->setEnabled(false);
-//#endif
+
     // initialize other ui elements
     // note: trayIcon does not work in my environment--known qt bug
     // see: https://bugreports.qt-project.org/browse/QTBUG-34364
@@ -104,7 +102,7 @@ MainWindow::MainWindow(QWidget *parent):
                         else if(mpv->getPlayState() == Mpv::Paused)
                             sysTrayIcon->showMessage("Baka MPlayer", "Paused", QSystemTrayIcon::NoIcon, 4000);
                     }
-                    mpv->PlayPause(ui->playlistWidget->currentItem()->text());
+                    mpv->PlayPause(ui->playlistWidget->CurrentItem());
                 }
 
             });
@@ -131,11 +129,11 @@ MainWindow::MainWindow(QWidget *parent):
 
     // mpv
 
-
     connect(mpv, &MpvHandler::playlistChanged,
             [=](const QStringList &list)
             {
                 ui->playlistWidget->Populate(list);
+                ui->playlistWidget->ShowAll(ui->hideFilesButton->isChecked());
 
                 if(list.length() > 1)
                 {
@@ -170,7 +168,7 @@ MainWindow::MainWindow(QWidget *parent):
                     ui->seekBar->setTracking(fileInfo.length);
 
                     if(!remaining)
-                        ui->remainingLabel->setText(FormatTime(fileInfo.length));
+                        ui->remainingLabel->setText(FormatTime(fileInfo.length, fileInfo.length));
                 }
             });
 
@@ -238,12 +236,10 @@ MainWindow::MainWindow(QWidget *parent):
             if(video)
             {
                 // if we were hiding album art, show it--we've gone to a video
+                if(ui->mpvFrame->styleSheet() != QString()) // remove filler album art
+                    ui->mpvFrame->setStyleSheet("");
                 if(ui->action_Hide_Album_Art_2->isChecked())
-                {
                     HideAlbumArt(false);
-                    ui->action_Show_Playlist_2->setEnabled(true);
-                    ui->splitter->setEnabled(true);
-                }
                 ui->action_Hide_Album_Art_2->setEnabled(false);
                 ui->menuSubtitle_Track->setEnabled(true);
                 if(ui->menuSubtitle_Track->actions().count() > 1)
@@ -257,7 +253,9 @@ MainWindow::MainWindow(QWidget *parent):
                     ui->menuFont_Si_ze->setEnabled(false);
                     ui->actionShow_Subtitles->setEnabled(false);
                 }
-                ui->menuAudio_Tracks->setEnabled((ui->menuAudio_Tracks->actions().count() > 1));
+                ui->menuAudio_Tracks->setEnabled((ui->menuAudio_Tracks->actions().count() > 0));
+                if(ui->menuAudio_Tracks->actions().count() == 1)
+                    ui->menuAudio_Tracks->actions().first()->setEnabled(false);
                 ui->menuTake_Screenshot->setEnabled(true);
                 ui->menuFit_Window->setEnabled(true);
                 ui->menuAspect_Ratio->setEnabled(true);
@@ -266,25 +264,19 @@ MainWindow::MainWindow(QWidget *parent):
             }
             else
             {
-                // if there is no album art we force hide album art
                 if(!albumArt)
                 {
-                    HideAlbumArt(true);
-                    ui->action_Show_Playlist_2->setEnabled(false);
-                    ui->splitter->setEnabled(false);
+                    // put in filler albumArt
+                    if(ui->mpvFrame->styleSheet() == QString())
+                        ui->mpvFrame->setStyleSheet("background-image:url(:/img/logo.svg);background-repeat:no-repeat;background-position:center;");
                 }
-                else
-                {
-                    ui->action_Show_Playlist_2->setEnabled(true);
-                    ui->action_Hide_Album_Art_2->setEnabled(true);
-                    ui->splitter->setEnabled(true);
-                }
+                ui->action_Hide_Album_Art_2->setEnabled(true);
                 ui->menuAudio_Tracks->setEnabled((ui->menuAudio_Tracks->actions().count() > 1));
                 ui->menuSubtitle_Track->setEnabled(false);
                 ui->menuFont_Si_ze->setEnabled(false);
                 ui->actionShow_Subtitles->setEnabled(false);
                 ui->menuTake_Screenshot->setEnabled(false);
-                ui->menuFit_Window->setEnabled(ui->action_Hide_Album_Art_2->isEnabled());
+                ui->menuFit_Window->setEnabled(false);
                 ui->menuAspect_Ratio->setEnabled(false);
                 ui->action_Frame_Step->setEnabled(false);
                 ui->actionFrame_Back_Step->setEnabled(false);
@@ -304,31 +296,28 @@ MainWindow::MainWindow(QWidget *parent):
     {
         if(mpv->getPlayState() > 0)
         {
+            QAction *action;
             QList<int> ticks;
-            if(chaptersSignalMapper)
-                delete chaptersSignalMapper;
-            chaptersSignalMapper = new QSignalMapper(this);
             int n = 1,
                 N = chapters.length();
             ui->menu_Chapters->clear();
             for(auto &ch : chapters)
             {
-                QAction *action = ui->menu_Chapters->addAction(FormatNumber(n, N)+
-                                                               ": " +
-                                                               ch.title,
-                                                               NULL,
-                                                               NULL,
-                                                               (n <= 9 ? QKeySequence("Ctrl+"+QString::number(n)) : QKeySequence())
-                                                               );
-                n++;
-                chaptersSignalMapper->setMapping(action, ch.time);
-                connect(action, SIGNAL(triggered()),
-                        chaptersSignalMapper, SLOT(map()));
+                action = ui->menu_Chapters->addAction(FormatNumber(n, N)+
+                                                      ": " +
+                                                      ch.title,
+                                                      NULL,
+                                                      NULL,
+                                                      (n <= 9 ? QKeySequence("Ctrl+"+QString::number(n)) : QKeySequence())
+                                                      );
+                connect(action, &QAction::triggered,
+                        [=]
+                        {
+                            mpv->Seek(ch.time);
+                        });
                 ticks.push_back(ch.time);
+                n++;
             }
-            connect(chaptersSignalMapper, SIGNAL(mapped(int)),
-                    mpv, SLOT(Seek(int)));
-
             if(ui->menu_Chapters->actions().count() == 0)
             {
                 ui->menu_Chapters->setEnabled(false);
@@ -391,17 +380,19 @@ MainWindow::MainWindow(QWidget *parent):
                     {
                         if(ui->action_This_File->isChecked())
                             mpv->PlayFile(mpv->getFile()); // restart file
-                        else if(ui->playlistWidget->currentRow() >= ui->playlistWidget->count() ||
+                        else if(ui->playlistWidget->currentRow() >= ui->playlistWidget->count()-1 ||
                            ui->actionStop_after_Current->isChecked())
                         {
-                            if(ui->action_Playlist->isChecked())
-                                mpv->PlayFile(ui->playlistWidget->item(0)->text()); // restart playlist
+                            if(ui->action_Playlist->isChecked() && ui->playlistWidget->count() > 0)
+                                mpv->PlayFile(ui->playlistWidget->FirstItem()); // restart playlist
                             else
                             {
                                 setWindowTitle("Baka MPlayer");
                                 SetPlaybackControls(false);
                                 ui->seekBar->setTracking(0);
                                 ui->actionStop_after_Current->setChecked(false);
+                                if(ui->mpvFrame->styleSheet() != QString()) // remove filler album art
+                                    ui->mpvFrame->setStyleSheet("");
                             }
                         }
                         else
@@ -438,9 +429,9 @@ MainWindow::MainWindow(QWidget *parent):
                 ui->seekBar->setValueNoSignal(ui->seekBar->maximum()*((double)i/fi.length));
 
                 // set duration and remaining labels, QDateTime takes care of formatting for us
-                ui->durationLabel->setText(FormatTime(i));
+                ui->durationLabel->setText(FormatTime(i, mpv->getFileInfo().length));
                 if(remaining)
-                    ui->remainingLabel->setText("-"+FormatTime(fi.length-i));
+                    ui->remainingLabel->setText("-"+FormatTime(fi.length-i, mpv->getFileInfo().length));
 
                 // set next/previous chapter's enabled state
                 if(fi.chapters.length() > 0)
@@ -587,7 +578,7 @@ MainWindow::MainWindow(QWidget *parent):
                 if(remaining)
                 {
                     setRemaining(false);
-                    ui->remainingLabel->setText(FormatTime(mpv->getFileInfo().length));
+                    ui->remainingLabel->setText(FormatTime(mpv->getFileInfo().length, mpv->getFileInfo().length));
                 }
                 else
                     setRemaining(true);
@@ -608,7 +599,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->playButton, &QPushButton::clicked,                      // Playback: Play/pause button
             [=]
             {
-                mpv->PlayPause(ui->playlistWidget->currentItem()->text());
+                mpv->PlayPause(ui->playlistWidget->CurrentItem());
             });
 
     connect(ui->nextButton, &IndexButton::clicked,                      // Playback: Next button
@@ -672,7 +663,7 @@ MainWindow::MainWindow(QWidget *parent):
                                                     },
                                                     this);
                 if(res != "")
-                    mpv->PlayFile(ui->playlistWidget->item(res.toInt()-1)->text()); // user index will be 1 greater than actual
+                    mpv->PlayFile(ui->playlistWidget->FileAt(res.toInt()-1)); // user index will be 1 greater than actual
             });
 
     connect(ui->playlistWidget, &PlaylistWidget::currentRowChanged,   // Playlist: Playlist selection changed
@@ -693,7 +684,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->playlistWidget, &PlaylistWidget::doubleClicked,       // Playlist: Item double clicked
             [=](const QModelIndex &i)
             {
-                mpv->PlayFile(ui->playlistWidget->item(i.row())->text());
+                mpv->PlayFile(ui->playlistWidget->FileAt(i.row()));
             });
 
     connect(ui->currentFileButton, &QPushButton::clicked,               // Playlist: Select current file button
@@ -702,7 +693,7 @@ MainWindow::MainWindow(QWidget *parent):
                 ui->playlistWidget->SelectItem(mpv->getFile());
             });
 
-    connect(ui->showAllButton, &QPushButton::clicked,                   // Playlist: Show All button
+    connect(ui->hideFilesButton, &QPushButton::clicked,                   // Playlist: Hide files button
             [=](bool b)
             {
                 ui->playlistWidget->ShowAll(b);
@@ -824,30 +815,35 @@ MainWindow::MainWindow(QWidget *parent):
             [=]
             {
                 FitWindow(0);
+                mpv->ShowText("Fit Window: To Current Size");
             });
 
     connect(ui->action50, &QAction::triggered,                          // View -> Fit Window -> 50%
             [=]
             {
                 FitWindow(50);
+                mpv->ShowText("Fit Window: 50%");
             });
 
     connect(ui->action75, &QAction::triggered,                          // View -> Fit Window -> 75%
             [=]
             {
                 FitWindow(75);
+                mpv->ShowText("Fit Window: 75%");
             });
 
     connect(ui->action100, &QAction::triggered,                         // View -> Fit Window -> 100%
             [=]
             {
                 FitWindow(100);
+                mpv->ShowText("Fit Window: 100%");
             });
 
     connect(ui->action200, &QAction::triggered,                         // View -> Fit Window -> 200%
             [=]
             {
                 FitWindow(200);
+                mpv->ShowText("Fit Window: 200%");
             });
                                                                         // View -> Aspect Ratio ->
     connect(ui->action_Autodetect, &QAction::triggered,                 // View -> Aspect Ratio -> Auto Detect
@@ -910,13 +906,13 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->actionMedia_Info, &QAction::triggered,                  // View -> Media Info
             [=]
             {
-                InfoDialog::info(mpv->getFileInfo(), this);
+                InfoDialog::info(mpv->getPath()+mpv->getFile(), mpv->getFileInfo(), this);
             });
                                                                         // Playback ->
     connect(ui->action_Play, &QAction::triggered,                       // Playback -> (Play|Pause)
             [=]
             {
-                mpv->PlayPause(ui->playlistWidget->currentItem()->text());
+                mpv->PlayPause(ui->playlistWidget->CurrentItem());
             });
 
     connect(ui->action_Stop, &QAction::triggered,                       // Playback -> Stop
@@ -1210,6 +1206,7 @@ void MainWindow::LoadSettings()
             setRemaining(settings->value("baka-mplayer/remaining", true).toBool());
             ui->splitter->setNormalPosition(settings->value("baka-mplayer/splitter", ui->splitter->max()*1.0/8).toInt());
             setDebug(settings->value("baka-mplayer/debug", false).toBool());
+            ui->hideFilesButton->setChecked(settings->value("baka-mplayer/showAll", true).toBool());
             mpv->LoadSettings(settings, version);
         }
         else if(version == "1.9.9") // old version
@@ -1226,7 +1223,7 @@ void MainWindow::LoadSettings()
             setHidePopup(settings->value("window/hidePopup", false).toBool());
             setRemaining(settings->value("window/remaining", true).toBool());
             ui->splitter->setNormalPosition(settings->value("window/splitter", ui->splitter->max()*1.0/8).toInt());
-            ui->playlistWidget->ShowAll(settings->value("window/showAll", false).toBool());
+            ui->hideFilesButton->setChecked(settings->value("window/showAll", false).toBool());
             setDebug(settings->value("common/debug", false).toBool());
             // mpv
             mpv->LoadSettings(settings, version);
@@ -1253,6 +1250,7 @@ void MainWindow::LoadSettings()
             setRemaining(settings->value("baka-mplayer/remaining", true).toBool());
             ui->splitter->setNormalPosition(settings->value("baka-mplayer/splitter", ui->splitter->max()*1.0/8).toInt());
             setDebug(settings->value("baka-mplayer/debug", false).toBool());
+            ui->hideFilesButton->setChecked(settings->value("baka-mplayer/showAll", true).toBool());
             mpv->LoadSettings(settings, version);
 
             // disable settings manipulation
@@ -1281,6 +1279,7 @@ void MainWindow::SaveSettings()
                                                ui->splitter->position() == ui->splitter->max()) ?
                                                 ui->splitter->normalPosition() :
                                                 ui->splitter->position());
+        settings->setValue("baka-mplayer/showAll", ui->hideFilesButton->isChecked());
         settings->setValue("baka-mplayer/debug", getDebug());
     }
 }
@@ -1327,7 +1326,7 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
             lastMousePos = event->pos();
         }
         else if(event->button() == Qt::RightButton && mpv->getPlayState() > 0) // if playing
-            mpv->PlayPause(ui->playlistWidget->currentItem()->text());
+            mpv->PlayPause(ui->playlistWidget->CurrentItem());
     }
     QMainWindow::mousePressEvent(event);
 }
@@ -1444,27 +1443,6 @@ void MainWindow::SetPlaybackControls(bool enable)
         ui->menuAudio_Tracks->setEnabled(false);
         ui->menuFont_Si_ze->setEnabled(false);
     }
-}
-
-QString MainWindow::FormatTime(int _time)
-{
-    const Mpv::FileInfo &fi = mpv->getFileInfo();
-    QTime time = QTime::fromMSecsSinceStartOfDay(_time * 1000);
-    if(fi.length >= 3600) // hours
-        return time.toString("h:mm:ss");
-    if(fi.length >= 60)   // minutes
-        return time.toString("mm:ss");
-    return time.toString("0:ss");   // seconds
-}
-
-QString MainWindow::FormatNumber(int val, int length)
-{
-    if(length < 10)
-        return QString::number(val);
-    else if(length < 100)
-        return QString("%1").arg(val, 2, 10, QChar('0'));
-    else
-        return QString("%1").arg(val, 3, 10, QChar('0'));
 }
 
 bool MainWindow::SetScreenshotTemplate()

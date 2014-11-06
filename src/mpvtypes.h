@@ -43,11 +43,22 @@ namespace Mpv
     };
     struct VideoParams
     {
+        QString codec,
+                format,
+                bitrate;
         int width,
             height,
             dwidth,
             dheight;
         double aspect;
+    };
+    struct AudioParams
+    {
+        QString codec,
+                format,
+                bitrate,
+                samplerate,
+                channels;
     };
 
     struct FileInfo
@@ -55,6 +66,7 @@ namespace Mpv
         QString media_title;
         int length;
         VideoParams video_params;
+        AudioParams audio_params;
         QList<Track> tracks; // audio, video, and subs
         QList<Chapter> chapters;
     };
@@ -63,6 +75,7 @@ Q_DECLARE_METATYPE(Mpv::PlayState) // so we can pass it with signals & slots
 Q_DECLARE_METATYPE(Mpv::Chapter)
 Q_DECLARE_METATYPE(Mpv::Track)
 Q_DECLARE_METATYPE(Mpv::VideoParams)
+Q_DECLARE_METATYPE(Mpv::AudioParams)
 Q_DECLARE_METATYPE(Mpv::FileInfo)
 
 

@@ -42,8 +42,6 @@ protected:
     bool eventFilter(QObject *obj, QEvent *event);  // event filter (get mouse move events from mpvFrame)
 
     void SetPlaybackControls(bool enable);          // macro to enable/disable playback controls
-    QString FormatTime(int time);                   // format the time the way we want to display it
-    QString FormatNumber(int val, int length);      // format the number with leading 0s
     bool SetScreenshotTemplate();                   // prompt the user to select a screenshot directory
 
 private slots:
@@ -72,7 +70,6 @@ private:
     QSystemTrayIcon *sysTrayIcon;
     QMenu           *trayIconMenu;
     DimDialog       *dimDialog;
-    QSignalMapper   *chaptersSignalMapper;
 
     // variables
     QString onTop;

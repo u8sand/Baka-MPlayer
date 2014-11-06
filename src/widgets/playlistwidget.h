@@ -16,8 +16,11 @@ public:
     void SelectItem(const QString &item);
     void Populate(QStringList list);
 
+    QString FirstItem();
+    QString CurrentItem();
     QString PreviousItem();
     QString NextItem();
+    QString FileAt(int index);
 
     void Search(QString);
     void ShowAll(bool);

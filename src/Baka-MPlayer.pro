@@ -34,6 +34,7 @@ win32 {
 SOURCES += main.cpp\
     mpvhandler.cpp \
     updatemanager.cpp \
+    util.cpp \
     ui/aboutdialog.cpp \
     ui/infodialog.cpp \
     ui/inputdialog.cpp \
@@ -55,6 +56,7 @@ HEADERS  += \
     mpvtypes.h \
     mpvhandler.h \
     updatemanager.h \
+    util.h \
     widgets/customslider.h \
     widgets/openbutton.h \
     widgets/indexbutton.h \

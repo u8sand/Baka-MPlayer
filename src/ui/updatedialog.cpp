@@ -9,7 +9,8 @@ UpdateDialog::UpdateDialog(UpdateManager *updateManager, QWidget *parent) :
 #if defined(Q_OS_UNIX) || defined(Q_OS_LINUX)
     // no update support on unix/linux, we just show if one is available
     ui->updateButton->setVisible(false);
-    ui->cancelButton->setText("&Close");
+    ui->cancelButton->setText("&CLOSE");
+    ui->cancelButton->setDefault(true);
 #endif
 
     connect(updateManager, &UpdateManager::versionInfoReceived,
@@ -19,11 +20,11 @@ UpdateDialog::UpdateDialog(UpdateManager *updateManager, QWidget *parent) :
                 if(info["version"] == BAKA_MPLAYER_VERSION)
                 {
                     ui->updateButton->setEnabled(false);
-                    ui->updateLabel->setText("You are up to date!\n"+info["version"]+" Released "+info["date"]);
+                    ui->updateLabel->setText("You have the latest verion!");
                 }
                 else
                 {
-                    ui->updateLabel->setText("Update available\n"+info["version"]+" Released "+info["date"]);
+                    ui->updateLabel->setText("Update Available!\nVersion: "+info["version"]);
 #if defined(Q_OS_WIN)
                     version = info["version"];
                     // url = info["url"];
@@ -67,7 +68,7 @@ UpdateDialog::UpdateDialog(UpdateManager *updateManager, QWidget *parent) :
                         timer = nullptr;
                     }
                 }
-                else
+                else if(timer) // don't execute this if timer is not defined--this shouldn't happen though.. but it does
                 {
                     avgSpeed = 0.005*lastSpeed + 0.995*avgSpeed;
 
@@ -105,6 +106,7 @@ UpdateDialog::UpdateDialog(UpdateManager *updateManager, QWidget *parent) :
     lastSpeed = 0;
     lastProgress = 0;
     lastTime = 0;
+
     timer = new QTime();
     timer->start();
     updateManager->CheckForUpdates();

@@ -20,6 +20,14 @@
 	color: whitesmoke;
 }
 
+/* QHeaderView for QTableWidget has to be set here */
+
+QTableWidget QHeaderView::section {
+	padding: 4px 2px;
+	background: #263238;
+	border: 1px solid #212121;
+}
+
 /* QScrollBar:vertical */
 
 QScrollBar:vertical {
@@ -62,11 +70,52 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
    <item>
     <widget class="QTableWidget" name="infoWidget">
      <property name="styleSheet">
-      <string notr="true">QHeaderView::section {
-	background: black;
-	border: 1px solid gray;
+      <string notr="true">/* QHeaderView set under main stylesheet (QDialog) */
+
+QTableWidget {
+	border: 1px solid #212121;
+}
+
+QTableWidget::item {
+	alternate-background-color: #141414;
+}
+QTableWidget::item:alternate {
+    background: #141414;
+}
+QTableWidget::item:selected {
+	background: #008098;
 }</string>
      </property>
+     <property name="editTriggers">
+      <set>QAbstractItemView::NoEditTriggers</set>
+     </property>
+     <property name="showDropIndicator" stdset="0">
+      <bool>false</bool>
+     </property>
+     <property name="alternatingRowColors">
+      <bool>true</bool>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::SingleSelection</enum>
+     </property>
+     <property name="cornerButtonEnabled">
+      <bool>false</bool>
+     </property>
+     <attribute name="horizontalHeaderCascadingSectionResizes">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="horizontalHeaderHighlightSections">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="horizontalHeaderStretchLastSection">
+      <bool>true</bool>
+     </attribute>
+     <attribute name="verticalHeaderVisible">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="verticalHeaderHighlightSections">
+      <bool>false</bool>
+     </attribute>
      <column>
       <property name="text">
        <string>Info Type</string>
@@ -98,25 +147,27 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
       <widget class="QPushButton" name="closeButton">
        <property name="styleSheet">
         <string notr="true">QPushButton {
-    background: #263238;
-	color: white;
+    background: #008098;
+	color: whitesmoke;
 	border: 1px solid black;
 	border-radius: 2px;
     min-width: 88px;
 	min-height: 25px;
 }
 QPushButton:default {
-	border: 1px solid #008098;
+	border: 1px solid whitesmoke;
 }
 QPushButton:pressed {
-    background: #008098;
+    background: #005A6A;
 }
 QPushButton:disabled {
-    color: gray;
+	background: black;
+	border: 1px solid #008098;
+    color: #B8B8B8;
 }</string>
        </property>
        <property name="text">
-        <string>&amp;Close</string>
+        <string>&amp;CLOSE</string>
        </property>
        <property name="default">
         <bool>true</bool>
