@@ -37,14 +37,6 @@ class TravisDepsBuilder
   def deps; end
 
   private
-  def package_manager_update
-    # yes class variable, you wanna update only once across all instances
-    @@updated ||= false
-    return if @@updated
-    sh({'linux' => 'sudo apt-get update -y', 'osx' => 'brew update'}[os])
-    @@updated = true
-  end
-
   def package_install(*packages)
     cmd = {
       'linux' => 'sudo apt-get install %s -y',
@@ -146,18 +138,6 @@ class Libmpv < TravisDepsBuilder
     sh "cd $TRAVIS_BUILD_DIR"
   end
 end
-
-class Dependencies < TravisDepsBuilder
-  def deps
-    packages = {
-      'linux' => 'pkg-config fontconfig libfribidi-dev yasm qt5-qmake qtbase5-dev qtdeclarative5-dev libqt5webkit5-dev libqt5svg5-dev libsqlite3-dev cmake ninja-build'
-    }
-    package_manager_update
-    package_install(packages.fetch(os))
-  end
-end
-
-Dependencies.new(:deps).deps
 
 Libass.make(ARGV[0])
 Libav.make(ARGV[1])

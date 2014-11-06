@@ -19,8 +19,10 @@ branches:
 
 install:
   - sudo add-apt-repository --yes ppa:ubuntu-sdk-team/ppa
-#  - sudo add-apt-repository --yes 'deb http://http.debian.net/debian wheezy-backports main'
+  - sudo add-apt-repository --yes 'deb http://http.debian.net/debian wheezy-backports main'
+  - sudo apt-get update
   - sudo apt-get -t wheezy-backports install "libqt5x11extras5-dev"
+  - sudo apt-get install pkg-config fontconfig libfribidi-dev yasm qt5-qmake qtbase5-dev qtdeclarative5-dev libqt5webkit5-dev libqt5svg5-dev libsqlite3-dev cmake ninja-build
 
 before_install: TRAVIS_OS_NAME=linux; ./travis-deps libass-stable $LIBAV libmpv-git
 script:
