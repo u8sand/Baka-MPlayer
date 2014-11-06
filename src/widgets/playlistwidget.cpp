@@ -103,7 +103,10 @@ void PlaylistWidget::ShowAll(bool b)
 {
     if(count() > 0)
     {
-        QListWidgetItem *item = currentItem();
+        QListWidgetItem *_item = currentItem();
+        QString item;
+        if(_item)
+            item = _item->text();
         if(b)
         {
             clear();
@@ -112,9 +115,9 @@ void PlaylistWidget::ShowAll(bool b)
         else
         {
             // todo: this is gross; make it more efficient
-            if(item)
+            if(_item)
             {
-                QString suffix = item->text().split('.').last();
+                QString suffix = item.split('.').last();
                 QStringList newPlaylist;
                 for(QStringList::iterator i = playlist.begin(); i != playlist.end(); i++)
                     if(i->endsWith(suffix))
@@ -123,29 +126,32 @@ void PlaylistWidget::ShowAll(bool b)
                 addItems(newPlaylist);
             }
         }
-        SelectItem(item->text());
+        SelectItem(item);
     }
 }
 
 void PlaylistWidget::Shuffle(bool b)
 {
-    QListWidgetItem *_item = currentItem();
-    QString item;
-    if(_item)
-        item = _item->text();
-    if(b)
+    if(count() > 0)
     {
-        QStringList newPlaylist = playlist;
-        std::random_shuffle(newPlaylist.begin(), newPlaylist.end());
-        clear();
-        addItems(newPlaylist);
+        QListWidgetItem *_item = currentItem();
+        QString item;
+        if(_item)
+            item = _item->text();
+        if(b)
+        {
+            QStringList newPlaylist = playlist;
+            std::random_shuffle(newPlaylist.begin(), newPlaylist.end());
+            clear();
+            addItems(newPlaylist);
+        }
+        else
+        {
+            clear();
+            addItems(playlist);
+        }
+        SelectItem(item);
     }
-    else
-    {
-        clear();
-        addItems(playlist);
-    }
-    SelectItem(item);
 }
 
 void PlaylistWidget::contextMenuEvent(QContextMenuEvent *event)
