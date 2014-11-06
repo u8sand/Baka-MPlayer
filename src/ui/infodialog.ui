@@ -28,6 +28,28 @@ QTableWidget QHeaderView::section {
 	border: 1px solid #212121;
 }
 
+/* QPushButton */
+
+QPushButton {
+    background: #008098;
+	color: whitesmoke;
+	border: 1px solid black;
+	border-radius: 2px;
+    min-width: 88px;
+	min-height: 25px;
+}
+QPushButton:default {
+	border: 1px solid whitesmoke;
+}
+QPushButton:pressed {
+    background: #005A6A;
+}
+QPushButton:disabled {
+	background: black;
+	border: 1px solid #008098;
+    color: #B8B8B8;
+}
+
 /* QScrollBar:vertical */
 
 QScrollBar:vertical {
@@ -145,27 +167,6 @@ QTableWidget::item:selected {
      </item>
      <item>
       <widget class="QPushButton" name="closeButton">
-       <property name="styleSheet">
-        <string notr="true">QPushButton {
-    background: #008098;
-	color: whitesmoke;
-	border: 1px solid black;
-	border-radius: 2px;
-    min-width: 88px;
-	min-height: 25px;
-}
-QPushButton:default {
-	border: 1px solid whitesmoke;
-}
-QPushButton:pressed {
-    background: #005A6A;
-}
-QPushButton:disabled {
-	background: black;
-	border: 1px solid #008098;
-    color: #B8B8B8;
-}</string>
-       </property>
        <property name="text">
         <string>&amp;CLOSE</string>
        </property>

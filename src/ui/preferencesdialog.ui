@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>230</width>
-    <height>303</height>
+    <height>311</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,6 +18,43 @@
 	font: 12px &quot;Noto Sans&quot;, &quot;FreeSans&quot;;
 	background: black;
 	color: whitesmoke;
+}
+
+/* QComboBox */
+
+QComboBox {
+	background: #005A6A;
+	border: 1px solid black;
+	border-radius: 2px;
+	padding: 2px;
+}
+QComboBox::drop-down {
+    border: none;
+}
+QComboBox::down-arrow {
+	image: url(:/img/down-arrow.svg);
+}
+
+/* QPushButton */
+
+QPushButton {
+    background: #008098;
+	color: whitesmoke;
+	border: 1px solid black;
+	border-radius: 2px;
+    min-width: 88px;
+	min-height: 25px;
+}
+QPushButton:default {
+	border: 1px solid whitesmoke;
+}
+QPushButton:pressed {
+    background: #005A6A;
+}
+QPushButton:disabled {
+	background: black;
+	border: 1px solid #008098;
+    color: #B8B8B8;
 }
 
 /* QScrollBar:vertical */
@@ -83,7 +120,7 @@ QTabBar::tab:!selected {
 }</string>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="tab">
       <attribute name="title">
@@ -187,20 +224,6 @@ QTabBar::tab:!selected {
          </item>
          <item>
           <widget class="QComboBox" name="comboBox">
-           <property name="styleSheet">
-            <string notr="true">QComboBox {
-	background: #005A6A;
-	border: 1px solid black;
-	border-radius: 2px;
-	padding: 2px;
-}
-QComboBox::drop-down {
-    border: none;
-}
-QComboBox::down-arrow {
-	image: url(:/img/down-arrow.svg);
-}</string>
-           </property>
            <property name="currentIndex">
             <number>2</number>
            </property>
@@ -243,20 +266,6 @@ QComboBox::down-arrow {
           </item>
           <item row="0" column="1">
            <widget class="QComboBox" name="formatComboBox">
-            <property name="styleSheet">
-             <string notr="true">QComboBox {
-	background: #005A6A;
-	border: 1px solid black;
-	border-radius: 2px;
-	padding: 2px;
-}
-QComboBox::drop-down {
-    border: none;
-}
-QComboBox::down-arrow {
-	image: url(:/img/down-arrow.svg);
-}</string>
-            </property>
             <item>
              <property name="text">
               <string>jpg</string>
@@ -309,27 +318,6 @@ QLineEdit:focus {
           </item>
           <item row="5" column="0" colspan="2">
            <widget class="QPushButton" name="changeButton">
-            <property name="styleSheet">
-             <string notr="true">QPushButton {
-    background: #008098;
-	color: whitesmoke;
-	border: 1px solid black;
-	border-radius: 2px;
-    min-width: 88px;
-	min-height: 25px;
-}
-QPushButton:default {
-	border: 1px solid #008098;
-}
-QPushButton:pressed {
-    background: #005A6A;
-}
-QPushButton:disabled {
-	background: black;
-	border: 1px solid #008098;
-    color: #B8B8B8;
-}</string>
-            </property>
             <property name="text">
              <string>CHANG&amp;E</string>
             </property>
@@ -359,27 +347,6 @@ QPushButton:disabled {
      </item>
      <item>
       <widget class="QPushButton" name="closeButton">
-       <property name="styleSheet">
-        <string notr="true">QPushButton {
-    background: #008098;
-	color: whitesmoke;
-	border: 1px solid black;
-	border-radius: 2px;
-    min-width: 88px;
-	min-height: 25px;
-}
-QPushButton:default {
-	border: 1px solid whitesmoke;
-}
-QPushButton:pressed {
-    background: #005A6A;
-}
-QPushButton:disabled {
-	background: black;
-	border: 1px solid #008098;
-    color: #B8B8B8;
-}</string>
-       </property>
        <property name="text">
         <string>&amp;CLOSE</string>
        </property>
