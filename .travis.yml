@@ -22,7 +22,7 @@ before_install:
   - sudo add-apt-repository --yes 'deb http://http.debian.net/debian wheezy-backports main'
   - sudo apt-get update
   - sudo apt-get install libfribidi-dev pkg-config fontconfig libsqlite3-dev yasm cmake ninja-build
-  - sudo apt-get -t wheezy-backports install "libqt5x11extras5-dev qt5-qmake qtbase5-dev qtdeclarative5-dev libqt5webkit5-dev libqt5svg5-dev"
+  - sudo apt-get -t wheezy-backports install libqt5x11extras5-dev qt5-qmake qtbase5-dev qtdeclarative5-dev libqt5webkit5-dev libqt5svg5-dev
   - TRAVIS_OS_NAME=linux; ./travis-deps libass-stable $LIBAV libmpv-git
 
 script:
