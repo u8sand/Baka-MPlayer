@@ -1206,7 +1206,7 @@ void MainWindow::LoadSettings()
             setRemaining(settings->value("baka-mplayer/remaining", true).toBool());
             ui->splitter->setNormalPosition(settings->value("baka-mplayer/splitter", ui->splitter->max()*1.0/8).toInt());
             setDebug(settings->value("baka-mplayer/debug", false).toBool());
-            ui->hideFilesButton->setChecked(settings->value("baka-mplayer/showAll", false).toBool());
+            ui->hideFilesButton->setChecked(settings->value("baka-mplayer/showAll", true).toBool());
             mpv->LoadSettings(settings, version);
         }
         else if(version == "1.9.9") // old version
@@ -1250,7 +1250,7 @@ void MainWindow::LoadSettings()
             setRemaining(settings->value("baka-mplayer/remaining", true).toBool());
             ui->splitter->setNormalPosition(settings->value("baka-mplayer/splitter", ui->splitter->max()*1.0/8).toInt());
             setDebug(settings->value("baka-mplayer/debug", false).toBool());
-            ui->hideFilesButton->setChecked(settings->value("baka-mplayer/showAll", false).toBool());
+            ui->hideFilesButton->setChecked(settings->value("baka-mplayer/showAll", true).toBool());
             mpv->LoadSettings(settings, version);
 
             // disable settings manipulation
