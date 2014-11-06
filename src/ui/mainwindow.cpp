@@ -67,12 +67,8 @@ MainWindow::MainWindow(QWidget *parent):
     settings = new QSettings(QSettings::IniFormat, QSettings::UserScope, SETTINGS_FILE, QString(), this);
 #endif
     mpv = new MpvHandler(ui->mpvFrame->winId(), this);
-//#if defined(Q_OS_WIN)
     update = new UpdateManager(this);
-//#else
-//    // todo: remove this when checking for updates shows the latest version on linux
-//    ui->action_Check_for_Updates->setEnabled(false);
-//#endif
+
     // initialize other ui elements
     // note: trayIcon does not work in my environment--known qt bug
     // see: https://bugreports.qt-project.org/browse/QTBUG-34364
@@ -133,11 +129,11 @@ MainWindow::MainWindow(QWidget *parent):
 
     // mpv
 
-
     connect(mpv, &MpvHandler::playlistChanged,
             [=](const QStringList &list)
             {
                 ui->playlistWidget->Populate(list);
+                ui->playlistWidget->ShowAll(ui->hideFilesButton->isChecked());
 
                 if(list.length() > 1)
                 {
@@ -1210,6 +1206,7 @@ void MainWindow::LoadSettings()
             setRemaining(settings->value("baka-mplayer/remaining", true).toBool());
             ui->splitter->setNormalPosition(settings->value("baka-mplayer/splitter", ui->splitter->max()*1.0/8).toInt());
             setDebug(settings->value("baka-mplayer/debug", false).toBool());
+            ui->hideFilesButton->setChecked(settings->value("baka-mplayer/showAll", false).toBool());
             mpv->LoadSettings(settings, version);
         }
         else if(version == "1.9.9") // old version
@@ -1226,7 +1223,7 @@ void MainWindow::LoadSettings()
             setHidePopup(settings->value("window/hidePopup", false).toBool());
             setRemaining(settings->value("window/remaining", true).toBool());
             ui->splitter->setNormalPosition(settings->value("window/splitter", ui->splitter->max()*1.0/8).toInt());
-            ui->playlistWidget->ShowAll(settings->value("window/showAll", false).toBool());
+            ui->hideFilesButton->setChecked(settings->value("window/showAll", false).toBool());
             setDebug(settings->value("common/debug", false).toBool());
             // mpv
             mpv->LoadSettings(settings, version);
@@ -1253,6 +1250,7 @@ void MainWindow::LoadSettings()
             setRemaining(settings->value("baka-mplayer/remaining", true).toBool());
             ui->splitter->setNormalPosition(settings->value("baka-mplayer/splitter", ui->splitter->max()*1.0/8).toInt());
             setDebug(settings->value("baka-mplayer/debug", false).toBool());
+            ui->hideFilesButton->setChecked(settings->value("baka-mplayer/showAll", false).toBool());
             mpv->LoadSettings(settings, version);
 
             // disable settings manipulation
@@ -1281,6 +1279,7 @@ void MainWindow::SaveSettings()
                                                ui->splitter->position() == ui->splitter->max()) ?
                                                 ui->splitter->normalPosition() :
                                                 ui->splitter->position());
+        settings->setValue("baka-mplayer/showAll", ui->hideFilesButton->isChecked());
         settings->setValue("baka-mplayer/debug", getDebug());
     }
 }

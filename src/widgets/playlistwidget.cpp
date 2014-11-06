@@ -65,18 +65,11 @@ QString PlaylistWidget::CurrentItem()
 QString PlaylistWidget::PreviousItem()
 {
     return FileAt(currentRow()-1);
-    /*
-    if(currentRow() > 0)
-        return item(currentRow()-1)->text();
-    return QString();*/
 }
 
 QString PlaylistWidget::NextItem()
 {
     return FileAt(currentRow()+1);
-    /*if(currentRow() < count()-1)
-        return item(currentRow()+1)->text();
-    return QString();*/
 }
 
 QString PlaylistWidget::FileAt(int index)
@@ -114,7 +107,6 @@ void PlaylistWidget::ShowAll(bool b)
         }
         else
         {
-            // todo: this is gross; make it more efficient
             if(_item)
             {
                 QString suffix = item.split('.').last();
