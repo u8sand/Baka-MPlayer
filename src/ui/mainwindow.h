@@ -49,7 +49,7 @@ private slots:
     void FullScreen(bool fs);                       // makes window fullscreen
     void ShowPlaylist(bool visible);                // sets the playlist visibility
     void HideAlbumArt(bool hide);                   // hides the album art
-    void FitWindow(int percent);                    // fit the window the the specified percent
+    void FitWindow(int percent, bool msg = false);  // fit the window the the specified percent
     void SetAspectRatio(QString aspect);            // set the aspect ratio to specified proportions
     void DimDesktop(bool dim);                      // grays out the rest of the screen with LightDialog
     void AlwaysOnTop(bool ontop);
