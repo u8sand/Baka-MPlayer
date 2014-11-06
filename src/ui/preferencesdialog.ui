@@ -35,6 +35,18 @@ QComboBox::down-arrow {
 	image: url(:/img/down-arrow.svg);
 }
 
+/* QLineEdit */
+
+QLineEdit {
+	background: #212121;
+	border: 1px solid #4C4C4C;
+	border-radius: 2px;
+	padding: 2px;
+}
+QLineEdit:focus {
+    border: 1px solid #008098;
+}
+
 /* QPushButton */
 
 QPushButton {
@@ -120,7 +132,7 @@ QTabBar::tab:!selected {
 }</string>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tab">
       <attribute name="title">
@@ -299,18 +311,6 @@ QTabBar::tab:!selected {
           </item>
           <item row="3" column="0" colspan="2">
            <widget class="QLineEdit" name="templateLineEdit">
-            <property name="styleSheet">
-             <string notr="true">QLineEdit {
-	background: black;
-	border: none;
-	border-bottom: 1px solid #4C4C4C;
-	padding: 4px;
-}
-QLineEdit:focus {
-    border: none;
-	border-bottom: 1px solid #008098;
-}</string>
-            </property>
             <property name="text">
              <string>screenshot%#04n</string>
             </property>

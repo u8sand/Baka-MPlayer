@@ -185,12 +185,6 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="maximumSize">
-        <size>
-         <width>16777215</width>
-         <height>25</height>
-        </size>
-       </property>
        <property name="text">
         <string>&amp;UPDATE</string>
        </property>
@@ -209,12 +203,6 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>16777215</width>
-         <height>25</height>
-        </size>
        </property>
        <property name="text">
         <string>&amp;CANCEL</string>

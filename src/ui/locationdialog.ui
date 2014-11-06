@@ -20,6 +20,18 @@
 	color: whitesmoke;
 }
 
+/* QLineEdit */
+
+QLineEdit {
+	background: #212121;
+	border: 1px solid #4C4C4C;
+	border-radius: 2px;
+	padding: 2px;
+}
+QLineEdit:focus {
+    border: 1px solid #008098;
+}
+
 /* QPushButton */
 
 QPushButton {
@@ -66,18 +78,6 @@ QPushButton:disabled {
      </item>
      <item>
       <widget class="QLineEdit" name="urlEdit">
-       <property name="styleSheet">
-        <string notr="true">QLineEdit {
-	background: black;
-	border: none;
-	border-bottom: 1px solid #4C4C4C;
-	padding: 4px;
-}
-QLineEdit:focus {
-    border: none;
-	border-bottom: 1px solid #008098;
-}</string>
-       </property>
        <property name="placeholderText">
         <string>Type URL or location here</string>
        </property>
@@ -129,12 +129,6 @@ QLineEdit:focus {
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="maximumSize">
-        <size>
-         <width>16777215</width>
-         <height>25</height>
-        </size>
-       </property>
        <property name="text">
         <string>&amp;OK</string>
        </property>
@@ -164,12 +158,6 @@ QLineEdit:focus {
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="maximumSize">
-        <size>
-         <width>16777215</width>
-         <height>25</height>
-        </size>
-       </property>
        <property name="text">
         <string>&amp;PASTE</string>
        </property>
@@ -186,12 +174,6 @@ QLineEdit:focus {
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="maximumSize">
-        <size>
-         <width>16777215</width>
-         <height>25</height>
-        </size>
-       </property>
        <property name="text">
         <string>&amp;COPY</string>
        </property>
@@ -207,12 +189,6 @@ QLineEdit:focus {
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>16777215</width>
-         <height>25</height>
-        </size>
        </property>
        <property name="text">
         <string>CLEA&amp;R</string>
@@ -242,12 +218,6 @@ QLineEdit:focus {
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>16777215</width>
-         <height>25</height>
-        </size>
        </property>
        <property name="text">
         <string>CANC&amp;EL</string>

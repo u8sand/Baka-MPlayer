@@ -20,6 +20,18 @@
 	color: whitesmoke;
 }
 
+/* QLineEdit */
+
+QLineEdit {
+	background: #212121;
+	border: 1px solid #4C4C4C;
+	border-radius: 2px;
+	padding: 2px;
+}
+QLineEdit:focus {
+    border: 1px solid #008098;
+}
+
 /* QPushButton */
 
 QPushButton {
@@ -84,18 +96,6 @@ QPushButton:disabled {
       </property>
       <item>
        <widget class="QLineEdit" name="inputLineEdit">
-        <property name="styleSheet">
-         <string notr="true">QLineEdit {
-	background: black;
-	border: none;
-	border-bottom: 1px solid #4C4C4C;
-	padding: 4px;
-}
-QLineEdit:focus {
-    border: none;
-	border-bottom: 1px solid #008098;
-}</string>
-        </property>
         <property name="clearButtonEnabled">
          <bool>true</bool>
         </property>
@@ -112,12 +112,6 @@ QLineEdit:focus {
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>25</height>
-         </size>
-        </property>
         <property name="text">
          <string>&amp;OK</string>
         </property>
@@ -133,12 +127,6 @@ QLineEdit:focus {
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>25</height>
-         </size>
         </property>
         <property name="text">
          <string>&amp;CANCEL</string>
