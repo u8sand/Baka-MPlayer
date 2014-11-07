@@ -33,5 +33,6 @@
     <file>img/down_pause.svg</file>
     <file>img/disabled_pause.svg</file>
     <file>img/default_pause.svg</file>
+    <file>img/album_art.png</file>
   </qresource>
 </RCC>
