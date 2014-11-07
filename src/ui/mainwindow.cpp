@@ -1122,7 +1122,7 @@ MainWindow::MainWindow(QWidget *parent):
     }
 
     // keyboard shortcuts
-    action = new QAction(this);
+    action = new QAction("Seek Forward", this);
     action->setShortcut(QKeySequence("Right"));
     connect(action, &QAction::triggered,
             [=]
@@ -1131,7 +1131,7 @@ MainWindow::MainWindow(QWidget *parent):
             });
     addAction(action);
 
-    action = new QAction(this);
+    action = new QAction("Seek Backward", this);
     action->setShortcut(QKeySequence("Left"));
     connect(action, &QAction::triggered,
             [=]
@@ -1140,7 +1140,7 @@ MainWindow::MainWindow(QWidget *parent):
             });
     addAction(action);
 
-    action = new QAction(this);
+    action = new QAction("Exit Fullscreen/Boss Key", this);
     action->setShortcut(QKeySequence("Esc"));
     connect(action, &QAction::triggered,
             [=]
@@ -1471,7 +1471,7 @@ void MainWindow::FullScreen(bool fs)
         ui->menubar->setVisible(false);
         ShowPlaylist(false);
         setMouseTracking(true); // register mouse move event
-
+        setContextMenuPolicy(Qt::ActionsContextMenu);
         // post a mouseMoveEvent (in case user doesn't actually move the mouse when entering fs)
         QCoreApplication::postEvent(this, new QMouseEvent(QMouseEvent::MouseMove,
                                                           QCursor::pos(),
@@ -1485,6 +1485,7 @@ void MainWindow::FullScreen(bool fs)
         ui->seekBar->setVisible(true);
         ui->playbackLayoutWidget->setVisible(true);
         setMouseTracking(false); // stop registering mouse move event
+        setContextMenuPolicy(Qt::NoContextMenu);
         setCursor(QCursor(Qt::ArrowCursor)); // show cursor
         autohide->stop();
     }
