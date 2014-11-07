@@ -815,35 +815,30 @@ MainWindow::MainWindow(QWidget *parent):
             [=]
             {
                 FitWindow(0);
-                mpv->ShowText("Fit Window: To Current Size");
             });
 
     connect(ui->action50, &QAction::triggered,                          // View -> Fit Window -> 50%
             [=]
             {
-                FitWindow(50);
-                mpv->ShowText("Fit Window: 50%");
+                FitWindow(50, true);
             });
 
     connect(ui->action75, &QAction::triggered,                          // View -> Fit Window -> 75%
             [=]
             {
-                FitWindow(75);
-                mpv->ShowText("Fit Window: 75%");
+                FitWindow(75, true);
             });
 
     connect(ui->action100, &QAction::triggered,                         // View -> Fit Window -> 100%
             [=]
             {
-                FitWindow(100);
-                mpv->ShowText("Fit Window: 100%");
+                FitWindow(100, true);
             });
 
     connect(ui->action200, &QAction::triggered,                         // View -> Fit Window -> 200%
             [=]
             {
-                FitWindow(200);
-                mpv->ShowText("Fit Window: 200%");
+                FitWindow(200, true);
             });
                                                                         // View -> Aspect Ratio ->
     connect(ui->action_Autodetect, &QAction::triggered,                 // View -> Aspect Ratio -> Auto Detect
@@ -1515,12 +1510,10 @@ void MainWindow::HideAlbumArt(bool hide)
         ui->splitter->setPosition(ui->splitter->normalPosition()); // bring the splitter to normal position
 }
 
-void MainWindow::FitWindow(int percent)
+void MainWindow::FitWindow(int percent, bool msg)
 {
-    if(isFullScreen())
+    if(isFullScreen() || isMaximized())
         return;
-    if(isMaximized())
-        setWindowFlags(windowFlags() & ~Qt::WindowMaximized);
 
     mpv->LoadVideoParams();
     const Mpv::VideoParams &params = mpv->getFileInfo().video_params;
@@ -1581,6 +1574,8 @@ void MainWindow::FitWindow(int percent)
                                     Qt::AlignCenter,
                                     QSize(w, h),
                                     dG));
+    if(msg)
+        mpv->ShowText("Fit Window: "+QString::number(percent)+"%");
 }
 
 void MainWindow::SetAspectRatio(QString aspect)
