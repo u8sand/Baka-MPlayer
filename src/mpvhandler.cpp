@@ -221,16 +221,15 @@ void MpvHandler::SaveSettings(QSettings *settings)
 
 void MpvHandler::LoadFile(QString f)
 {
-    if(f == "") return;
-    LoadPlaylist(f);
-    QFileInfo fi(f);
-    PlayFile(fi.fileName());
+    if(f == "")
+        return;
+    PlayFile(LoadPlaylist(f));
 }
 
-void MpvHandler::LoadPlaylist(QString f)
+QString MpvHandler::LoadPlaylist(QString f)
 {
     if(f == "") // ignore empty file name
-        return;
+        return QString();
 
     QRegExp rx("^(https?://.+\\.[a-z]+)", Qt::CaseInsensitive);
 
@@ -248,10 +247,12 @@ void MpvHandler::LoadPlaylist(QString f)
     {
         QFileInfo fi(f);
         if(!fi.exists()) // ignore if file doesn't exist
-            return;
+            return QString();
         setPath(QString(fi.absolutePath()+"/")); // set new path
         PopulatePlaylist();
+        return fi.fileName();
     }
+    return f;
 }
 
 void MpvHandler::PlayFile(QString f)

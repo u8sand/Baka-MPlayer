@@ -555,7 +555,8 @@ MainWindow::MainWindow(QWidget *parent):
                                "Open File",mpv->getPath(),
                                "Media Files ("+Mpv::media_filetypes.join(" ")+");;"+
                                "Video Files ("+Mpv::video_filetypes.join(" ")+");;"+
-                               "Audio Files ("+Mpv::audio_filetypes.join(" ")+")"));
+                               "Audio Files ("+Mpv::audio_filetypes.join(" ")+")",
+                               0, QFileDialog::DontUseSheet));
             });
 
     connect(ui->openButton, &OpenButton::MiddleClick,                   // Playback: Open button (middle click)
@@ -744,7 +745,8 @@ MainWindow::MainWindow(QWidget *parent):
                               "Open File",mpv->getPath(),
                               "Media Files ("+Mpv::media_filetypes.join(" ")+");;"+
                               "Video Files ("+Mpv::video_filetypes.join(" ")+");;"+
-                              "Audio Files ("+Mpv::audio_filetypes.join(" ")+")"));
+                              "Audio Files ("+Mpv::audio_filetypes.join(" ")+")",
+                              0, QFileDialog::DontUseSheet));
             });
 
     connect(ui->actionOpen_URL, &QAction::triggered,                    // File -> Open URL
@@ -875,7 +877,8 @@ MainWindow::MainWindow(QWidget *parent):
             [=]
             {
                 QString trackFile = QFileDialog::getOpenFileName(this, "Open Subtitle File", mpv->getPath(),
-                                                                  "Subtitle Files ("+Mpv::subtitle_filetypes.join(" ")+")");
+                                                                 "Subtitle Files ("+Mpv::subtitle_filetypes.join(" ")+")",
+                                                                 0, QFileDialog::DontUseSheet);
                 if(trackFile != "")
                     mpv->AddSubtitleTrack(trackFile);
             });

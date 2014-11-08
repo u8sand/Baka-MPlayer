@@ -44,7 +44,7 @@ public slots:
     void SaveSettings(QSettings*);
 
     void LoadFile(QString);
-    void LoadPlaylist(QString);
+    QString LoadPlaylist(QString);
     void PlayFile(QString);
 
     void Play();
