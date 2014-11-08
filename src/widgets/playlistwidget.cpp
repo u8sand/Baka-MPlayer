@@ -6,7 +6,8 @@
 #include <algorithm> // for std::random_shuffle and std::sort
 
 PlaylistWidget::PlaylistWidget(QWidget *parent) :
-    QListWidget(parent)
+    QListWidget(parent),
+    cItem()
 {
 }
 
@@ -28,13 +29,21 @@ QString PlaylistWidget::RemoveItem(int index)
     return QString();
 }
 
-void PlaylistWidget::SelectItem(const QString &item)
+void PlaylistWidget::SelectItem(const QString &item, bool internal)
 {
     if(item != "")
     {
-        QList<QListWidgetItem*> items = findItems(item, Qt::MatchExactly);
-        if(items.length() > 0)
-            setCurrentItem(items.first());
+        if(!internal)
+        {
+            QList<QListWidgetItem*> items = findItems(item, Qt::MatchExactly);
+            if(items.length() > 0)
+            {
+                setCurrentItem(items.first());
+                cItem = items.first()->text();
+            }
+        }
+        else
+            cItem = item;
     }
 }
 
@@ -42,8 +51,6 @@ void PlaylistWidget::Populate(QStringList list)
 {
     playlist = list;
     playlist.sort();
-    clear();
-    addItems(playlist);
 }
 
 QString PlaylistWidget::FirstItem()
@@ -94,12 +101,14 @@ void PlaylistWidget::Search(QString s)
 
 void PlaylistWidget::ShowAll(bool b)
 {
-    if(count() > 0)
+    if(playlist.length() > 0)
     {
         QListWidgetItem *_item = currentItem();
         QString item;
         if(_item)
             item = _item->text();
+        else
+            item = cItem;
         if(b)
         {
             clear();
@@ -107,16 +116,15 @@ void PlaylistWidget::ShowAll(bool b)
         }
         else
         {
-            if(_item)
-            {
-                QString suffix = item.split('.').last();
-                QStringList newPlaylist;
-                for(QStringList::iterator i = playlist.begin(); i != playlist.end(); i++)
-                    if(i->endsWith(suffix))
-                        newPlaylist.append(*i);
-                clear();
-                addItems(newPlaylist);
-            }
+            if(!_item)
+                item = cItem;
+            QString suffix = item.split('.').last();
+            QStringList newPlaylist;
+            for(QStringList::iterator i = playlist.begin(); i != playlist.end(); i++)
+                if(i->endsWith(suffix))
+                    newPlaylist.append(*i);
+            clear();
+            addItems(newPlaylist);
         }
         SelectItem(item);
     }

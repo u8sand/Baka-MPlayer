@@ -40,6 +40,7 @@ MainWindow::MainWindow(QWidget *parent):
     ui(new Ui::MainWindow),
     lastMousePos(QPoint()),
     move(false),
+    firstItem(false),
     init(false),
     autohide(new QTimer(this))
 {
@@ -133,7 +134,7 @@ MainWindow::MainWindow(QWidget *parent):
             [=](const QStringList &list)
             {
                 ui->playlistWidget->Populate(list);
-                ui->playlistWidget->ShowAll(ui->hideFilesButton->isChecked());
+                firstItem = true;
 
                 if(list.length() > 1)
                 {
@@ -411,7 +412,14 @@ MainWindow::MainWindow(QWidget *parent):
     connect(mpv, &MpvHandler::fileChanged,
             [=](QString f)
             {
-                ui->playlistWidget->SelectItem(f);
+                if(!firstItem)
+                    ui->playlistWidget->SelectItem(f);
+                else
+                {
+                    ui->playlistWidget->SelectItem(f, true);
+                    ui->playlistWidget->ShowAll(!ui->hideFilesButton->isChecked());
+                    firstItem = false;
+                }
             });
 
     connect(mpv, &MpvHandler::lastFileChanged,
@@ -667,7 +675,7 @@ MainWindow::MainWindow(QWidget *parent):
                     mpv->PlayFile(ui->playlistWidget->FileAt(res.toInt()-1)); // user index will be 1 greater than actual
             });
 
-    connect(ui->playlistWidget, &PlaylistWidget::currentRowChanged,   // Playlist: Playlist selection changed
+    connect(ui->playlistWidget, &PlaylistWidget::currentRowChanged,     // Playlist: Playlist selection changed
             [=](int i)
             {
                 if(i == -1) // no selection
@@ -682,7 +690,7 @@ MainWindow::MainWindow(QWidget *parent):
                 }
             });
 
-    connect(ui->playlistWidget, &PlaylistWidget::doubleClicked,       // Playlist: Item double clicked
+    connect(ui->playlistWidget, &PlaylistWidget::doubleClicked,         // Playlist: Item double clicked
             [=](const QModelIndex &i)
             {
                 mpv->PlayFile(ui->playlistWidget->FileAt(i.row()));
@@ -694,10 +702,10 @@ MainWindow::MainWindow(QWidget *parent):
                 ui->playlistWidget->SelectItem(mpv->getFile());
             });
 
-    connect(ui->hideFilesButton, &QPushButton::clicked,                   // Playlist: Hide files button
+    connect(ui->hideFilesButton, &QPushButton::clicked,                 // Playlist: Hide files button
             [=](bool b)
             {
-                ui->playlistWidget->ShowAll(b);
+                ui->playlistWidget->ShowAll(!b);
             });
 
     connect(ui->refreshButton, &QPushButton::clicked,                   // Playlist: Refresh playlist button
@@ -1204,7 +1212,7 @@ void MainWindow::LoadSettings()
             setRemaining(settings->value("baka-mplayer/remaining", true).toBool());
             ui->splitter->setNormalPosition(settings->value("baka-mplayer/splitter", ui->splitter->max()*1.0/8).toInt());
             setDebug(settings->value("baka-mplayer/debug", false).toBool());
-            ui->hideFilesButton->setChecked(settings->value("baka-mplayer/showAll", true).toBool());
+            ui->hideFilesButton->setChecked(!settings->value("baka-mplayer/showAll", true).toBool());
             mpv->LoadSettings(settings, version);
         }
         else if(version == "1.9.9") // old version
@@ -1221,7 +1229,7 @@ void MainWindow::LoadSettings()
             setHidePopup(settings->value("window/hidePopup", false).toBool());
             setRemaining(settings->value("window/remaining", true).toBool());
             ui->splitter->setNormalPosition(settings->value("window/splitter", ui->splitter->max()*1.0/8).toInt());
-            ui->hideFilesButton->setChecked(settings->value("window/showAll", false).toBool());
+            ui->hideFilesButton->setChecked(!settings->value("window/showAll", true).toBool());
             setDebug(settings->value("common/debug", false).toBool());
             // mpv
             mpv->LoadSettings(settings, version);
@@ -1248,7 +1256,7 @@ void MainWindow::LoadSettings()
             setRemaining(settings->value("baka-mplayer/remaining", true).toBool());
             ui->splitter->setNormalPosition(settings->value("baka-mplayer/splitter", ui->splitter->max()*1.0/8).toInt());
             setDebug(settings->value("baka-mplayer/debug", false).toBool());
-            ui->hideFilesButton->setChecked(settings->value("baka-mplayer/showAll", true).toBool());
+            ui->hideFilesButton->setChecked(!settings->value("baka-mplayer/showAll", true).toBool());
             mpv->LoadSettings(settings, version);
 
             // disable settings manipulation
@@ -1277,7 +1285,7 @@ void MainWindow::SaveSettings()
                                                ui->splitter->position() == ui->splitter->max()) ?
                                                 ui->splitter->normalPosition() :
                                                 ui->splitter->position());
-        settings->setValue("baka-mplayer/showAll", ui->hideFilesButton->isChecked());
+        settings->setValue("baka-mplayer/showAll", !ui->hideFilesButton->isChecked());
         settings->setValue("baka-mplayer/debug", getDebug());
     }
 }

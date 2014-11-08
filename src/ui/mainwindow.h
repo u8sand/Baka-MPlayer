@@ -64,6 +64,7 @@ private:
     bool            move,
                     pathChanged,
                     menuVisible,
+                    firstItem,
                     init;
     QTimer          *autohide;
 
@@ -93,7 +94,7 @@ signals:
     void onTopChanged(QString);
     void autoFitChanged(int);
     void hidePopupChanged(bool);
-    void remainingChanged(bool b);
+    void remainingChanged(bool);
     void debugChanged(bool);
 };
 
