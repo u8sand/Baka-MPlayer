@@ -20,6 +20,41 @@
 	color: whitesmoke;
 }
 
+/* QRadioButton */
+
+QRadioButton::indicator {
+	width: 10px;
+	height: 10px;
+	border: 1px solid black;
+	border-radius: 6px;
+}
+QRadioButton::indicator:unchecked {
+	background: #424242;
+}
+QRadioButton::indicator:checked {
+	background: #008098;
+}
+
+/* QCheckBox */
+
+QCheckBox::indicator,
+QGroupBox::indicator{
+	width: 10px;
+	height: 10px;
+	border: 1px solid black;
+	border-radius: 2px;
+}
+QCheckBox::indicator:unchecked,
+QGroupBox::indicator:unchecked {
+	background: #424242;
+	image: none;
+}
+QCheckBox::indicator:checked,
+QGroupBox::indicator:checked {
+	background: #008098;
+	image: url(:/img/checked.svg);
+}
+
 /* QComboBox */
 
 QComboBox {

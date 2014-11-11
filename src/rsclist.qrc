@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="/">
+    <file>img/checked.svg</file>
     <file>img/download.svg</file>
     <file>img/repeat.svg</file>
     <file>img/shuffle.svg</file>
