@@ -82,7 +82,8 @@ QSplitter::handle,
 #searchBox {
 	font-size: 12px;
 	padding: 2px;
-	border: none; /* reset border style */
+	border-left-color: black;
+	border-right-color: black;
 	border-top: 1px solid black;
 	border-bottom: 1px solid black;
 }
