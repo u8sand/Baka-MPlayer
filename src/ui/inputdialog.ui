@@ -16,14 +16,14 @@
   <property name="styleSheet">
    <string notr="true">QWidget {
 	font: 12px &quot;Noto Sans&quot;, &quot;FreeSans&quot;;
-	background: black;
+	background: #1A1A1A;
 	color: whitesmoke;
 }
 
 /* QLineEdit */
 
 QLineEdit {
-	background: #212121;
+	background: black;
 	border: 1px solid #4C4C4C;
 	border-radius: 2px;
 	padding: 2px;

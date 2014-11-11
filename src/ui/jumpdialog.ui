@@ -16,7 +16,7 @@
   <property name="styleSheet">
    <string notr="true">QWidget {
 	font: 12px &quot;Noto Sans&quot;, &quot;FreeSans&quot;;
-	background: black;
+	background: #1A1A1A;
 	color: whitesmoke;
 }
 

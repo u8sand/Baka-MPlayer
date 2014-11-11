@@ -16,14 +16,14 @@
   <property name="styleSheet">
    <string notr="true">QWidget {
 	font: 12px &quot;Noto Sans&quot;, &quot;FreeSans&quot;;
-	background: black;
+	background: #1A1A1A;
 	color: whitesmoke;
 }
 
 /* QComboBox */
 
 QComboBox {
-	background: #005A6A;
+	background: #008098;
 	border: 1px solid black;
 	border-radius: 2px;
 	padding: 2px;
@@ -38,7 +38,7 @@ QComboBox::down-arrow {
 /* QLineEdit */
 
 QLineEdit {
-	background: #212121;
+	background: black;
 	border: 1px solid #4C4C4C;
 	border-radius: 2px;
 	padding: 2px;
@@ -69,7 +69,7 @@ QPushButton:disabled {
     color: #B8B8B8;
 }
 
-/* QScrollBar:vertical */
+/* QScrollBar */
 
 QScrollBar:vertical {
 	border: none;
@@ -87,8 +87,6 @@ QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical,
 QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
 	background: transparent;
 }
-
-/* QScrollBar:horizontal */
 
 QScrollBar:horizontal {
 	border: none;
