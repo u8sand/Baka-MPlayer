@@ -1,6 +1,6 @@
 # Maintainer: u8sand <u8sand@gmail.com>
 pkgname=baka-mplayer-git
-pkgver=1.9.9_alpha
+pkgver=2.0.0_beta
 pkgrel=1
 pkgdesc="Baka MPlayer is a free and open source, cross-platform, libmpv based multimedia player."
 url="http://bakamplayer.u8sand.net/"
@@ -15,7 +15,7 @@ source=("$pkgname"::'git://github.com/u8sand/Baka-MPlayer.git#branch=release'
         "baka-mplayer.desktop")
 md5sums=('SKIP'
          '635c0c198491c5378edbaa2006ef3b63'
-         'd7ea76e74a584d33d905ae2ab985eb96')
+         '4fb426e227a32d63ce44dc8d1fbed0d9')
 
 pkgver() {
 	cd "$srcdir/$pkgname"

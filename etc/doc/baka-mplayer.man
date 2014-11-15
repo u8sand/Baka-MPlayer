@@ -14,7 +14,7 @@ baka-mplayer - A free and open source, cross-platform, \fBlibmpv\fP based multim
 .nf
 \fBbaka-mplayer\fP
 \fBbaka-mplayer\fP myvideo.mkv
-cat myvideo.mkv | \fBbaka-bmplayer\fP -
+cat myvideo.mkv | \fBbaka-mplayer\fP -
 
 .SH SEE ALSO
 \fBmpv\fP
