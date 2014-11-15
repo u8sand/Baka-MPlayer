@@ -457,7 +457,7 @@ void MpvHandler::ScreenshotTemplate(QString s)
 {
     if(mpv)
     {
-        const QByteArray tmp = screenshotTemplate.toUtf8();
+        const QByteArray tmp = s.toUtf8();
         mpv_set_option_string(mpv, "screenshot-template", tmp.data());
     }
     setScreenshotTemplate(s);

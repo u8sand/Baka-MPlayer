@@ -31,10 +31,18 @@ PreferencesDialog::PreferencesDialog(QSettings *_settings, QWidget *parent) :
     ui->autoFitCheckBox->setChecked((bool)autofit);
     ui->comboBox->setCurrentText(QString::number(autofit)+"%");
     ui->formatComboBox->setCurrentText(settings->value("mpv/screenshot-format").toString());
-    screenshotDir = settings->value("mpv/screenshot-template", "screenshot%#04n").toString();
+    screenshotDir = settings->value("mpv/screenshot-template", "./screenshot%#04n").toString();
     int i = screenshotDir.lastIndexOf('/');
-    screenshotTemplate = screenshotDir.remove(0, i+1);
-    screenshotDir.truncate(i);
+    if(i != -1)
+    {
+        screenshotTemplate = screenshotDir.remove(0, i+1);
+        screenshotDir.truncate(i);
+    }
+    else
+    {
+        screenshotTemplate = screenshotDir;
+        screenshotDir = ".";
+    }
     ui->templateLineEdit->setText(screenshotTemplate);
 
     // propigate changes to data
@@ -112,7 +120,7 @@ void PreferencesDialog::showPreferences(QSettings *settings, QWidget *parent)
 void PreferencesDialog::ChangeScreenshotLocation()
 {
     QString dir = QFileDialog::getExistingDirectory(this, "Choose screenshot directory", screenshotDir);
-    if(dir.length() > 0)
+    if(dir != QString())
     {
         screenshotDir = dir;
         settings->setValue("mpv/screenshot-template", screenshotDir+"/"+screenshotTemplate);
