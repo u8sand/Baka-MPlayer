@@ -259,7 +259,7 @@ MainWindow::MainWindow(QWidget *parent):
                 ui->menuAudio_Tracks->setEnabled((ui->menuAudio_Tracks->actions().count() > 0));
                 if(ui->menuAudio_Tracks->actions().count() == 1)
                     ui->menuAudio_Tracks->actions().first()->setEnabled(false);
-                ui->actionTake_Screenshot->setEnabled(true);
+                ui->menuTake_Screenshot->setEnabled(true);
                 ui->menuFit_Window->setEnabled(true);
                 ui->menuAspect_Ratio->setEnabled(true);
                 ui->action_Frame_Step->setEnabled(true);
@@ -278,7 +278,7 @@ MainWindow::MainWindow(QWidget *parent):
                 ui->menuSubtitle_Track->setEnabled(false);
                 ui->menuFont_Si_ze->setEnabled(false);
                 ui->actionShow_Subtitles->setEnabled(false);
-                ui->actionTake_Screenshot->setEnabled(false);
+                ui->menuTake_Screenshot->setEnabled(false);
                 ui->menuFit_Window->setEnabled(false);
                 ui->menuAspect_Ratio->setEnabled(false);
                 ui->action_Frame_Step->setEnabled(false);
@@ -814,27 +814,27 @@ MainWindow::MainWindow(QWidget *parent):
                 FullScreen(true);
             });
 
-    connect(ui->actionTake_Screenshot, &QAction::triggered,             // View -> Take Screenshot
+//    connect(ui->menuTake_Screenshot, &QAction::triggered,             // View -> Take Screenshot
+//            [=]
+//            {
+//
+//            });
+
+    connect(ui->actionWith_Subtitles, &QAction::triggered,              // View -> Take Screenshot -> With Subtitles
             [=]
             {
-                // todo
+                if(mpv->getScreenshotTemplate() == "" && !SetScreenshotTemplate())
+                    return;
+                mpv->Screenshot(true);
             });
 
-//    connect(ui->actionWith_Subtitles, &QAction::triggered,              // View -> Take Screenshot -> With Subtitles
-//            [=]
-//            {
-//                if(mpv->getScreenshotTemplate() == "" && !SetScreenshotTemplate())
-//                    return;
-//                mpv->Screenshot(true);
-//            });
-
-//    connect(ui->actionWithout_Subtitles, &QAction::triggered,           // View -> Take Screenshot -> Without Subtitles
-//            [=]
-//            {
-//                if(mpv->getScreenshotTemplate() == "" && !SetScreenshotTemplate())
-//                    return;
-//                mpv->Screenshot(false);
-//            });
+    connect(ui->actionWithout_Subtitles, &QAction::triggered,           // View -> Take Screenshot -> Without Subtitles
+            [=]
+            {
+                if(mpv->getScreenshotTemplate() == "" && !SetScreenshotTemplate())
+                    return;
+                mpv->Screenshot(false);
+            });
                                                                         // View -> Fit Window ->
     connect(ui->action_To_Current_Size, &QAction::triggered,            // View -> Fit Window -> To Current Size
             [=]
