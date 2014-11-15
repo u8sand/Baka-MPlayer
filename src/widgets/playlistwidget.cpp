@@ -89,7 +89,12 @@ QString PlaylistWidget::FileAt(int index)
 
 void PlaylistWidget::Search(QString s)
 {
-    QString item = currentItem()->text();
+    QListWidgetItem *_item = currentItem();
+    QString item;
+    if(_item)
+        item = _item->text();
+    else
+        item = cItem;
     QStringList newPlaylist;
     for(QStringList::iterator item = playlist.begin(); item != playlist.end(); item++)
         if(item->contains(s))
@@ -138,6 +143,8 @@ void PlaylistWidget::Shuffle(bool b)
         QString item;
         if(_item)
             item = _item->text();
+        else
+            item = cItem;
         if(b)
         {
             QStringList newPlaylist = playlist;
