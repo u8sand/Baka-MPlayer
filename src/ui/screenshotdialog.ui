@@ -159,7 +159,14 @@ QPushButton:disabled {
      <item>
       <widget class="QCheckBox" name="subtitlesCheckBox">
        <property name="text">
-        <string>Sho&amp;w subtitles in image</string>
+        <string>Sho&amp;w subtitles</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="showCheckBox">
+       <property name="text">
+        <string>Always show this dialog</string>
        </property>
        <property name="checked">
         <bool>true</bool>
@@ -205,6 +212,7 @@ QPushButton:disabled {
   <tabstop>templateEdit</tabstop>
   <tabstop>formatComboBox</tabstop>
   <tabstop>subtitlesCheckBox</tabstop>
+  <tabstop>showCheckBox</tabstop>
   <tabstop>saveButton</tabstop>
  </tabstops>
  <resources/>
