@@ -12,7 +12,33 @@ Its simple design reflects the idea for an uncluttered, simple, and enjoyable en
 Baka MPlayer is made to be cross-platform and portable.
 Although currently no Windows binaries exist, Windows compilation is in the scope of the project for the near future.
 
-## Baka-MPlayer Documentation
+## Documentation
+
+### Playlist
+
+The playlist is populated by loading the files in the directory of the loaded  file. Items can be rearranged at will, removed and deleted.
+
+Refreshing the playlist will recheck the directory (files that were deleted will still be there until playlist is refreshed).
+
+Shuffling the playlist shuffles the actual contents of the list rather than jumping to a random index--this way you know exactly what will be playing next.
+
+Clicking the Index allows you to type a specific index to play--this is particularly useful for playing a specific episode if all episodes are sorted by ascending order.
+
+Typing into the search makes the list only show results that contain the search text.
+
+### Sreenshots
+
+Screenshots can be taken through the mpv engine with the relevant actions. The template used in the program is directly inserted into mpv as screenshot-template; see mpv's manual for more details on valid screenshot-template. Specified directories are prepended to the screenshot-template passed to mpv.
+
+The following is in the scope of the project for the near future.
+*The screenshot mostly needed initially can be hidden by unselecting the `Always show this dialog` option; to get the dialog back one must set the `baka-mplayer/screenshotDialog` to true.*
+
+### Recent Files
+
+The last file viewed is stored as `last-file` in the settings for easy access.
+
+The following is in the scope of the project for the near future.
+*Your recently viewed files are stored in settings in settings for easy access. They will be seen in the settings file at the bottom under `[recent]` line by line as file paths. The program will maintain a `recent-length` length (also in the settings) to those files. (disabling this feature can be done by setting `recent-length` to 0; aquiring the old functionality can be done by setting `recent-length` to 1).*
 
 ### Special functions
 Some functionality is not entirely explained to the user; this is explained here.
@@ -67,15 +93,3 @@ On Linux, they are saved in the Qt location `~/.config/bakamplayer.ini`.
 	                        # ...
 
 Note that for mpv specific options you can use mpv's options. See mpv's manual for valid options.
-
-### Playlist
-
-The Baka-MPlayer playlist is populated by loading the files in the directory of the loaded  file. Items can be rearranged at will, removed and deleted.
-
-Refreshing the playlist will recheck the directory (files that were deleted will still be there until playlist is refreshed).
-
-Shuffling the playlist shuffles the actual contents of the list rather than jumping to a random index--this way you know exactly what will be playing next.
-
-Clicking the Index allows you to type a specific index to play--this is particularly useful for playing a specific episode if all episodes are sorted by ascending order.
-
-Typing into the search makes the list only show results that contain the search text.
