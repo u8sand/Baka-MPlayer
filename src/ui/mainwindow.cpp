@@ -713,22 +713,27 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->refreshButton, &QPushButton::clicked,                   // Playlist: Refresh playlist button
             [=]
             {
-                mpv->LoadPlaylist(mpv->getPath()+mpv->getFile());
-                ui->playlistWidget->SelectItem(mpv->getFile());
+                ui->playlistWidget->SelectItem(mpv->LoadPlaylist(mpv->getPath()+mpv->getFile()), true);
+                ui->playlistWidget->ShowAll(!ui->hideFilesButton->isChecked());
+                firstItem = false;
             });
 
     action = ui->playlistWidget->addAction("R&emove from Playlist");
     connect(action, &QAction::triggered,                                // Playlist: Remove from playlist (right-click)
             [=]
             {
+                QString next = ui->playlistWidget->NextItem();
                 ui->playlistWidget->RemoveItem(ui->playlistWidget->currentRow());
+                ui->playlistWidget->SelectItem(next);
             });
 
     action = ui->playlistWidget->addAction("&Delete from Disk");
     connect(action, &QAction::triggered,                                // Playlist: Delete from Disk (right-click)
             [=]
             {
-                QString item = ui->playlistWidget->RemoveItem(ui->playlistWidget->currentRow());
+                QString next = ui->playlistWidget->NextItem(),
+                        item = ui->playlistWidget->RemoveItem(ui->playlistWidget->currentRow());
+                ui->playlistWidget->SelectItem(next);
                 QFile f(mpv->getPath()+item);
                 f.remove();
             });
@@ -737,7 +742,9 @@ MainWindow::MainWindow(QWidget *parent):
     connect(action, &QAction::triggered,
             [=]
             {
-                mpv->LoadPlaylist(mpv->getPath()+mpv->getFile());
+                ui->playlistWidget->SelectItem(mpv->LoadPlaylist(mpv->getPath()+mpv->getFile()), true);
+                ui->playlistWidget->ShowAll(!ui->hideFilesButton->isChecked());
+                firstItem = false;
             });
                                                                         // File ->
     connect(ui->action_New_Player, &QAction::triggered,                 // File -> New Player
