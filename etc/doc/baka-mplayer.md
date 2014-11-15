@@ -10,23 +10,34 @@ Its simple design reflects the idea for an uncluttered, simple, and enjoyable en
 ## Portability
 
 Baka MPlayer is made to be cross-platform and portable.
-Although the Linux version only works on the distribution it was compiled for, the Windows version is compiled with mingw and should run in any version of Windows and on Linux with Wine installed.
+Although currently no Windows binaries exist, Windows compilation is in the scope of the project for the near future.
 
+## Baka-MPlayer Documentation
 
-## Hotkeys
+### Special functions
+Some functionality is not entirely explained to the user; this is explained here.
 
-Most hotkeys are labeled on the file menu. Other hotkeys are described here.
+	Hotkeys
+		Left                    Seek backwards 5 seconds
+		Right                   Seek forwards 5 seconds
+		Esc                     Exit fullscreen mode or Boss Key (pause and minimize)
+		MediaPlay               Triggers Play/Pause
+		MediaStop               Triggers Stop
+		MediaNext               Triggers Play Next File
+		MediaPrevious           Triggers Play Previous File
+	Clicking and Dragging
+		the main window         Move the main window
+	Right Clicking the video
+		In Fullscreen           Context menu with options that were available in the menubar
+		Outside of Fullscreen   Play/Pause the video
+	Open Button
+		Left Click - Open a local file (File Dialog)
+		Middle Click - Jump to a specific time in a file
+		Right Click - Open a location (URL Dialog)
 
-	Left                    Seek backwards 5 seconds
-	Right                   Seek forwards 5 seconds
-	Esc                     Exit fullscreen mode or Boss Key (pause and minimize)
-	MediaPlay               Triggers Play/Pause
-	MediaStop               Triggers Stop
-	MediaNext               Triggers Play Next File
-	MediaPrevious           Triggers Play Previous File
+*Though customization of key bindings is not yet possible, it is in the scope of the project for the near future.
 
-
-## Settings
+### Settings
 
 On Windows, the config files are saved with the executable in an ini file `bakamplayer.ini`.
 On Linux, they are saved in the Qt location `~/.config/bakamplayer.ini`.
@@ -55,4 +66,16 @@ On Linux, they are saved in the Qt location `~/.config/bakamplayer.ini`.
 	volume=                 # volume
 	                        # ...
 
-Note that for mpv specific options you can use mpv's options. See mpv's man for valid options.
+Note that for mpv specific options you can use mpv's options. See mpv's manual for valid options.
+
+### Playlist
+
+The Baka-MPlayer playlist is populated by loading the files in the directory of the loaded  file. Items can be rearranged at will, removed and deleted.
+
+Refreshing the playlist will recheck the directory (files that were deleted will still be there until playlist is refreshed).
+
+Shuffling the playlist shuffles the actual contents of the list rather than jumping to a random index--this way you know exactly what will be playing next.
+
+Clicking the Index allows you to type a specific index to play--this is particularly useful for playing a specific episode if all episodes are sorted by ascending order.
+
+Typing into the search makes the list only show results that contain the search text.
