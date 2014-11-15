@@ -13,6 +13,6 @@ void OpenButton::mousePressEvent(QMouseEvent *event)
         emit MiddleClick();
     else if(event->button() == Qt::RightButton)
         emit RightClick();
-
-  QPushButton::mousePressEvent(event);
+    event->accept();
+    QPushButton::mousePressEvent(event);
 }

@@ -1238,10 +1238,16 @@ void MainWindow::LoadSettings()
             settings->setValue("baka-mplayer/version", "2.0.0"); // set to new version
             if(mpv->getSpeed() != 1)
                 settings->setValue("mpv/speed", mpv->getSpeed());
+            QString dir = settings->value("mpv/screenshotDir", "").toString(),
+                    temp = settings->value("mpv/screenshotTemplate", "").toString();
+            if(dir != "" && temp != "")
+                settings->setValue("mpv/screenshot-template", (dir+"/"+temp));
+            else if(dir != "")
+                settings->setValue("mpv/screenshot-template", (dir+"/screenshot%#04n"));
+            else if(temp != "")
+                settings->setValue("mpv/screenshot-template", temp);
             if(mpv->getScreenshotFormat() != "")
-                settings->setValue("mpv/screenshot-format", mpv->getScreenshotFormat());
-            if(mpv->getScreenshotTemplate() != "")
-                settings->setValue("mpv/screenshot-template", mpv->getScreenshotTemplate());
+                mpv->getScreenshotFormat();
             SaveSettings(); // save it now
         }
         else // unrecognized version (newer)
