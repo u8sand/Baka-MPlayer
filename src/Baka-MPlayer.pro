@@ -43,6 +43,7 @@ SOURCES += main.cpp\
     ui/mainwindow.cpp \
     ui/preferencesdialog.cpp \
     ui/updatedialog.cpp \
+    ui/screenshotdialog.cpp \
     widgets/customlabel.cpp \
     widgets/customslider.cpp \
     widgets/customsplitter.cpp \
@@ -64,6 +65,7 @@ HEADERS  += \
     widgets/customlabel.h \
     widgets/customsplitter.h \
     widgets/dimdialog.h \
+    widgets/playlistwidget.h \
     ui/mainwindow.h \
     ui/locationdialog.h \
     ui/infodialog.h \
@@ -72,7 +74,7 @@ HEADERS  += \
     ui/updatedialog.h \
     ui/inputdialog.h \
     ui/preferencesdialog.h \
-    widgets/playlistwidget.h
+    ui/screenshotdialog.h
 
 FORMS    += \
     ui/mainwindow.ui \
@@ -82,7 +84,8 @@ FORMS    += \
     ui/aboutdialog.ui \
     ui/updatedialog.ui \
     ui/inputdialog.ui \
-    ui/preferencesdialog.ui
+    ui/preferencesdialog.ui \
+    ui/screenshotdialog.ui
 
 RESOURCES += \
     rsclist.qrc

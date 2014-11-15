@@ -16,6 +16,7 @@ set(WIDGETS
 	dimdialog
 )
 set(UI
+	screenshotdialog
 	locationdialog
 	infodialog
 	jumpdialog
