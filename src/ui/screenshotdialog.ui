@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ScreenshotDialog</class>
+ <widget class="QDialog" name="ScreenshotDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>450</width>
+    <height>113</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Take Screenshot</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+	font: 12px &quot;Noto Sans&quot;, &quot;FreeSans&quot;;
+	background: #1A1A1A;
+	color: whitesmoke;
+}
+
+/* QCheckBox */
+
+QCheckBox::indicator,
+QGroupBox::indicator{
+	width: 10px;
+	height: 10px;
+	border: 1px solid black;
+	border-radius: 2px;
+}
+QCheckBox::indicator:unchecked,
+QGroupBox::indicator:unchecked {
+	background: #424242;
+	image: none;
+}
+QCheckBox::indicator:checked,
+QGroupBox::indicator:checked {
+	background: #008098;
+	image: url(:/img/checked.svg);
+}
+
+/* QComboBox */
+
+QComboBox {
+	background: #008098;
+	border: 1px solid black;
+	border-radius: 2px;
+	padding: 2px;
+}
+QComboBox::drop-down {
+    border: none;
+}
+QComboBox::down-arrow {
+	image: url(:/img/down-arrow.svg);
+}
+
+/* QLineEdit */
+
+QLineEdit {
+	background: black;
+	border: 1px solid #4C4C4C;
+	border-radius: 2px;
+	padding: 2px;
+}
+QLineEdit:focus {
+    border: 1px solid #008098;
+}
+
+/* QPushButton */
+
+QPushButton {
+    background: #008098;
+	color: whitesmoke;
+	border: 1px solid black;
+	border-radius: 2px;
+    min-width: 88px;
+	min-height: 25px;
+}
+QPushButton:default {
+	border: 1px solid whitesmoke;
+}
+QPushButton:pressed {
+    background: #005A6A;
+}
+QPushButton:disabled {
+	background: black;
+	border: 1px solid #008098;
+    color: #B8B8B8;
+}</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="1">
+      <widget class="QPushButton" name="browseButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    min-width: 40px;
+}</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="autoDefault">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLineEdit" name="locationEdit">
+       <property name="placeholderText">
+        <string>Save Location</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLineEdit" name="templateEdit">
+       <property name="placeholderText">
+        <string>File Name Template</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QComboBox" name="formatComboBox">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <item>
+        <property name="text">
+         <string>jpg</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>png</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>tga</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QCheckBox" name="subtitlesCheckBox">
+       <property name="text">
+        <string>Sho&amp;w subtitles in image</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="saveButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>&amp;SAVE</string>
+       </property>
+       <property name="default">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>locationEdit</tabstop>
+  <tabstop>browseButton</tabstop>
+  <tabstop>templateEdit</tabstop>
+  <tabstop>formatComboBox</tabstop>
+  <tabstop>subtitlesCheckBox</tabstop>
+  <tabstop>saveButton</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

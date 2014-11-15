@@ -971,18 +971,8 @@ QSlider::handle:horizontal {
      <addaction name="actionS_ize"/>
      <addaction name="action_Reset_Size"/>
     </widget>
-    <widget class="QMenu" name="menuTake_Screenshot">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="title">
-      <string>Take &amp;Screenshot</string>
-     </property>
-     <addaction name="actionWith_Subtitles"/>
-     <addaction name="actionWithout_Subtitles"/>
-    </widget>
     <addaction name="action_Full_Screen"/>
-    <addaction name="menuTake_Screenshot"/>
+    <addaction name="actionTake_Screenshot"/>
     <addaction name="separator"/>
     <addaction name="menuFit_Window"/>
     <addaction name="menuAspect_Ratio"/>
@@ -1206,7 +1196,7 @@ QSlider::handle:horizontal {
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>Show &amp;Subtitles</string>
+    <string>Show S&amp;ubtitles</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+W</string>
@@ -1638,22 +1628,6 @@ QSlider::handle:horizontal {
     <string>Ctrl+Down</string>
    </property>
   </action>
-  <action name="actionWith_Subtitles">
-   <property name="text">
-    <string>With &amp;Subtitles...</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+T</string>
-   </property>
-  </action>
-  <action name="actionWithout_Subtitles">
-   <property name="text">
-    <string>&amp;Without Subtitles...</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+Shift+T</string>
-   </property>
-  </action>
   <action name="action_Preferences">
    <property name="text">
     <string>&amp;Preferences...</string>
@@ -1689,6 +1663,17 @@ QSlider::handle:horizontal {
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+R</string>
+   </property>
+  </action>
+  <action name="actionTake_Screenshot">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Take &amp;Screenshot...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+T</string>
    </property>
   </action>
  </widget>
