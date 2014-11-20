@@ -82,13 +82,12 @@ QSplitter::handle,
 #searchBox {
 	font-size: 12px;
 	padding: 2px;
-	border-left-color: black;
-	border-right-color: black;
-	border-top: 1px solid black;
-	border-bottom: 1px solid black;
+	border-style: solid;
+	border-width: 1px;
+	border-color: black #1A1A1A;
 }
 #searchBox:focus {
-	border: 1px solid #008098;
+	border-color: #008098;
 }
 
 /* time labels */
@@ -899,7 +898,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>580</width>
-     <height>23</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
