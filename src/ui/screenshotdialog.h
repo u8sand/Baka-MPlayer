@@ -18,7 +18,7 @@ public://ScreenshotDialog::showDialog(screenshotDialog, true, mpv);
     explicit ScreenshotDialog(bool &always, bool screenshot, MpvHandler *mpv, QWidget *parent = 0);
     ~ScreenshotDialog();
 
-    static void showScreenshotDialog(bool &always, bool screenshot, MpvHandler *mpv, QWidget *parent = 0);
+    static bool showScreenshotDialog(bool &always, bool screenshot, MpvHandler *mpv, QWidget *parent = 0);
 private:
     Ui::ScreenshotDialog *ui;
     bool &always;

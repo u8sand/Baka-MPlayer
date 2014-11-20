@@ -53,8 +53,9 @@ ScreenshotDialog::~ScreenshotDialog()
     delete ui;
 }
 
-void ScreenshotDialog::showScreenshotDialog(bool &always, bool screenshot, MpvHandler *mpv, QWidget *parent)
+bool ScreenshotDialog::showScreenshotDialog(bool &always, bool screenshot, MpvHandler *mpv, QWidget *parent)
 {
     ScreenshotDialog dialog(always, screenshot, mpv, parent);
     dialog.exec();
+    return dialog.ui->subtitlesCheckBox->isChecked();
 }

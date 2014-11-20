@@ -52,7 +52,9 @@ private slots:
     void FitWindow(int percent, bool msg = false);  // fit the window the the specified percent
     void SetAspectRatio(QString aspect);            // set the aspect ratio to specified proportions
     void DimDesktop(bool dim);                      // grays out the rest of the screen with LightDialog
-    void AlwaysOnTop(bool ontop);
+    void AlwaysOnTop(bool ontop);                   // set always on top window state
+    void TakeScreenshot(bool subs);                 // take a screenshot
+    void ShowScreenshotMessage(bool subs);          // show the screenshot status message
 
 private:
     Ui::MainWindow  *ui;

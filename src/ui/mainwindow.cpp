@@ -817,25 +817,13 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->actionWith_Subtitles, &QAction::triggered,              // View -> Take Screenshot -> With Subtitles
             [=]
             {
-                if(screenshotDialog)
-                {
-                    mpv->Pause();
-                    ScreenshotDialog::showScreenshotDialog(screenshotDialog, true, mpv);
-                }
-                else
-                    mpv->Screenshot(true);
+                TakeScreenshot(true);
             });
 
     connect(ui->actionWithout_Subtitles, &QAction::triggered,           // View -> Take Screenshot -> Without Subtitles
             [=]
             {
-                if(screenshotDialog)
-                {
-                    mpv->Pause();
-                    ScreenshotDialog::showScreenshotDialog(screenshotDialog, false, mpv);
-                }
-                else
-                    mpv->Screenshot(false);
+                TakeScreenshot(false);
             });
                                                                         // View -> Fit Window ->
     connect(ui->action_To_Current_Size, &QAction::triggered,            // View -> Fit Window -> To Current Size
@@ -1673,4 +1661,36 @@ void MainWindow::AlwaysOnTop(bool ontop)
         setWindowFlags(windowFlags() & ~Qt::WindowStaysOnTopHint);
     show();
 #endif
+}
+
+void MainWindow::TakeScreenshot(bool subs)
+{
+    if(screenshotDialog)
+    {
+        mpv->Pause();
+        subs = ScreenshotDialog::showScreenshotDialog(screenshotDialog, subs, mpv);
+    }
+    else
+        mpv->Screenshot(subs);
+    ShowScreenshotMessage(subs);
+}
+
+void MainWindow::ShowScreenshotMessage(bool subs)
+{
+    QString dir = mpv->getScreenshotTemplate();
+    int i = dir.lastIndexOf('/');
+    if(i != -1)
+    {
+        dir.truncate(i);
+        i = dir.lastIndexOf('/');
+        if(i != -1)
+            dir.remove(0, i+1);
+    }
+    else
+    {
+        dir = QApplication::applicationDirPath();
+        i = dir.lastIndexOf('/');
+        dir.remove(0, i+1);
+    }
+    mpv->ShowText("Saved to \""+dir+"\", "+(subs?"with":"without")+" subs");
 }
