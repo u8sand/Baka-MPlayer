@@ -4,6 +4,8 @@
 #include <QDialog>
 #include <QString>
 
+#include "mpvhandler.h"
+
 namespace Ui {
 class ScreenshotDialog;
 }
@@ -12,13 +14,14 @@ class ScreenshotDialog : public QDialog
 {
     Q_OBJECT
 
-public:
-    explicit ScreenshotDialog(QString t, QWidget *parent = 0);
+public://ScreenshotDialog::showDialog(screenshotDialog, true, mpv);
+    explicit ScreenshotDialog(bool &always, bool screenshot, MpvHandler *mpv, QWidget *parent = 0);
     ~ScreenshotDialog();
 
-    static QString showScreenshotDialog(QString t, QWidget *parent = 0);
+    static void showScreenshotDialog(bool &always, bool screenshot, MpvHandler *mpv, QWidget *parent = 0);
 private:
     Ui::ScreenshotDialog *ui;
+    bool &always;
 };
 
 #endif // SCREENSHOTDIALOG_H

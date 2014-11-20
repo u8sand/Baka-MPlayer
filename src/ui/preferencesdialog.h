@@ -18,14 +18,10 @@ public:
 
     static void showPreferences(QSettings *settings, QWidget *parent = 0);
 
-protected slots:
-    void ChangeScreenshotLocation();
-
 private:
     Ui::PreferencesDialog *ui;
     QSettings *settings;
-    QString screenshotTemplate,
-            screenshotDir;
+    QString screenshotDir;
 };
 
 #endif // PREFERENCESDIALOG_H

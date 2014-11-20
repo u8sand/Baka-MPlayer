@@ -77,24 +77,23 @@ private:
     int autoFit;
     bool hidePopup,
          remaining,
+         screenshotDialog,
          debug;
-public:
-    QString getOnTop()          { return onTop; }
-    int getAutoFit()            { return autoFit; }
-    bool getHidePopup()         { return hidePopup; }
-    bool getRemaining()         { return remaining; }
-    bool getDebug()             { return debug; }
+
 public slots:
-    void setOnTop(QString s)    { emit onTopChanged(onTop = s); }
-    void setAutoFit(int b)      { emit autoFitChanged(autoFit = b); }
-    void setHidePopup(bool b)   { emit hidePopupChanged(hidePopup = b); }
-    void setRemaining(bool b)   { emit remainingChanged(remaining = b); }
-    void setDebug(bool b)       { emit debugChanged(debug = b); }
+    void setOnTop(QString s)         { emit onTopChanged(onTop = s); }
+    void setAutoFit(int b)           { emit autoFitChanged(autoFit = b); }
+    void setHidePopup(bool b)        { emit hidePopupChanged(hidePopup = b); }
+    void setRemaining(bool b)        { emit remainingChanged(remaining = b); }
+    void setScreenshotDialog(bool b) { emit screenshotDialogChanged(screenshotDialog = b); }
+    void setDebug(bool b)            { emit debugChanged(debug = b); }
+
 signals:
     void onTopChanged(QString);
     void autoFitChanged(int);
     void hidePopupChanged(bool);
     void remainingChanged(bool);
+    void screenshotDialogChanged(bool);
     void debugChanged(bool);
 };
 

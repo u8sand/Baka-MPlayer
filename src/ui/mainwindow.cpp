@@ -814,26 +814,28 @@ MainWindow::MainWindow(QWidget *parent):
                 FullScreen(true);
             });
 
-//    connect(ui->menuTake_Screenshot, &QAction::triggered,             // View -> Take Screenshot
-//            [=]
-//            {
-//
-//            });
-
     connect(ui->actionWith_Subtitles, &QAction::triggered,              // View -> Take Screenshot -> With Subtitles
             [=]
             {
-                if(mpv->getScreenshotTemplate() == "" && !SetScreenshotTemplate())
-                    return;
-                mpv->Screenshot(true);
+                if(screenshotDialog)
+                {
+                    mpv->Pause();
+                    ScreenshotDialog::showScreenshotDialog(screenshotDialog, true, mpv);
+                }
+                else
+                    mpv->Screenshot(true);
             });
 
     connect(ui->actionWithout_Subtitles, &QAction::triggered,           // View -> Take Screenshot -> Without Subtitles
             [=]
             {
-                if(mpv->getScreenshotTemplate() == "" && !SetScreenshotTemplate())
-                    return;
-                mpv->Screenshot(false);
+                if(screenshotDialog)
+                {
+                    mpv->Pause();
+                    ScreenshotDialog::showScreenshotDialog(screenshotDialog, false, mpv);
+                }
+                else
+                    mpv->Screenshot(false);
             });
                                                                         // View -> Fit Window ->
     connect(ui->action_To_Current_Size, &QAction::triggered,            // View -> Fit Window -> To Current Size
@@ -1228,6 +1230,7 @@ void MainWindow::LoadSettings()
             ui->splitter->setNormalPosition(settings->value("baka-mplayer/splitter", ui->splitter->max()*1.0/8).toInt());
             setDebug(settings->value("baka-mplayer/debug", false).toBool());
             ui->hideFilesButton->setChecked(!settings->value("baka-mplayer/showAll", true).toBool());
+            setScreenshotDialog(settings->value("baka-mplayer/screenshotDialog", true).toBool());
             mpv->LoadSettings(settings, version);
         }
         else if(version == "1.9.9") // old version
@@ -1261,6 +1264,7 @@ void MainWindow::LoadSettings()
                 settings->setValue("mpv/screenshot-template", (dir+"/screenshot%#04n"));
             else if(temp != "")
                 settings->setValue("mpv/screenshot-template", temp);
+            setScreenshotDialog(true);
             if(mpv->getScreenshotFormat() != "")
                 mpv->getScreenshotFormat();
             SaveSettings(); // save it now
@@ -1278,6 +1282,7 @@ void MainWindow::LoadSettings()
             ui->splitter->setNormalPosition(settings->value("baka-mplayer/splitter", ui->splitter->max()*1.0/8).toInt());
             setDebug(settings->value("baka-mplayer/debug", false).toBool());
             ui->hideFilesButton->setChecked(!settings->value("baka-mplayer/showAll", true).toBool());
+            setScreenshotDialog(settings->value("baka-mplayer/screenshotDialog", true).toBool());
             mpv->LoadSettings(settings, version);
 
             // disable settings manipulation
@@ -1297,17 +1302,18 @@ void MainWindow::SaveSettings()
         // baka-mplayer
         settings->setValue("baka-mplayer/width", normalGeometry().width());
         settings->setValue("baka-mplayer/height", normalGeometry().height());
-        settings->setValue("baka-mplayer/onTop", getOnTop());
-        settings->setValue("baka-mplayer/autoFit", getAutoFit());
+        settings->setValue("baka-mplayer/onTop", onTop);
+        settings->setValue("baka-mplayer/autoFit", autoFit);
         settings->setValue("baka-mplayer/trayIcon", sysTrayIcon->isVisible());
-        settings->setValue("baka-mplayer/hidePopup", getHidePopup());
-        settings->setValue("baka-mplayer/remaining", getRemaining());
+        settings->setValue("baka-mplayer/hidePopup", hidePopup);
+        settings->setValue("baka-mplayer/remaining", remaining);
         settings->setValue("baka-mplayer/splitter", (ui->splitter->position() == 0 ||
                                                ui->splitter->position() == ui->splitter->max()) ?
                                                 ui->splitter->normalPosition() :
                                                 ui->splitter->position());
         settings->setValue("baka-mplayer/showAll", !ui->hideFilesButton->isChecked());
-        settings->setValue("baka-mplayer/debug", getDebug());
+        settings->setValue("baka-mplayer/screenshotDialog", screenshotDialog);
+        settings->setValue("baka-mplayer/debug", debug);
     }
 }
 
