@@ -323,6 +323,12 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
               <iconset resource="../rsclist.qrc">
                <normaloff>:/img/select_current.svg</normaloff>:/img/select_current.svg</iconset>
              </property>
+             <property name="iconSize">
+              <size>
+               <width>16</width>
+               <height>16</height>
+              </size>
+             </property>
              <property name="flat">
               <bool>true</bool>
              </property>
@@ -357,6 +363,12 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
                <activeon>:/img/enabled_hide_files.svg</activeon>
                <selectedon>:/img/enabled_hide_files.svg</selectedon>:/img/disabled_hide_files.svg</iconset>
              </property>
+             <property name="iconSize">
+              <size>
+               <width>16</width>
+               <height>16</height>
+              </size>
+             </property>
              <property name="checkable">
               <bool>true</bool>
              </property>
@@ -376,6 +388,12 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
              <property name="icon">
               <iconset resource="../rsclist.qrc">
                <normaloff>:/img/refresh_view.svg</normaloff>:/img/refresh_view.svg</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>16</width>
+               <height>16</height>
+              </size>
              </property>
              <property name="flat">
               <bool>true</bool>
