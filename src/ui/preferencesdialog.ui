@@ -109,7 +109,7 @@ QPushButton:disabled {
 QGroupBox {
 	border: 1px solid #424242;
 	border-radius: 2px;
-	margin-top: 1ex;
+	margin-top: 0.5em;
 }
 QGroupBox::title {
 	subcontrol-origin: margin;
