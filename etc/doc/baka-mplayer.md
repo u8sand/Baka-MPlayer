@@ -6,36 +6,31 @@ Version 1.1
 Baka MPlayer is a free and open source, cross-platform, **libmpv** based multimedia player.
 Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.
 
-
 ## Portability
 
 Baka MPlayer is made to be cross-platform and portable.
-Although currently no Windows binaries exist, Windows compilation is in the scope of the project for the near future.
+Although no Windows builds currently exist, work is being done to build for Windows.
 
 ## Documentation
 
 ### Playlist
 
-The playlist is populated by loading the files in the directory of the loaded  file. Items can be rearranged at will, removed and deleted.
+The playlist is populated by loading the files in the directory of the loaded file. Items can be rearranged, removed, and deleted from disk.
 
 Refreshing the playlist will recheck the directory (files that were deleted will still be there until playlist is refreshed).
 
-Shuffling the playlist shuffles the actual contents of the list rather than jumping to a random index--this way you know exactly what will be playing next.
-
 Clicking the Index allows you to type a specific index to play--this is particularly useful for playing a specific episode if all episodes are sorted by ascending order.
-
-Typing into the search makes the list only show results that contain the search text.
 
 ### Sreenshots
 
-Screenshots can be taken through the mpv engine with the relevant actions. The template used in the program is directly inserted into mpv as screenshot-template; see mpv's manual for more details on valid screenshot-template. Specified directories are prepended to the screenshot-template passed to mpv. The screenshot mostly needed initially can be hidden by unselecting the `Always show this dialog` option; to get the dialog back one must set the `baka-mplayer/screenshotDialog` to true.
+Screenshots are taken through mpv. The template specified is passed into mpv as screenshot-template; see mpv's manual for more details on valid screenshot-template. Specified directories are prepended to the screenshot-template. If the screenshot dialog is hidden by unchecking the `Always show this dialog` option, the dialog can be restored by setting `baka-mplayer/screenshotDialog` to true in the settings file.
 
 ### Recent Files
 
 The last file viewed is stored as `last-file` in the settings for easy access.
 
 The following is in the scope of the project for the near future.
-*Your recently viewed files are stored in settings in settings for easy access. They will be seen in the settings file at the bottom under `[recent]` line by line as file paths. The program will maintain a `recent-length` length (also in the settings) to those files. (disabling this feature can be done by setting `recent-length` to 0; aquiring the old functionality can be done by setting `recent-length` to 1).*
+*Your recently viewed files are stored in settings for easy access. They will be seen in the settings file at the bottom under `[recent]` line by line as file paths. The program will maintain a `recent-length` length (also in the settings) to those files. (disabling this feature can be done by setting `recent-length` to 0; acquiring the old functionality can be done by setting `recent-length` to 1).*
 
 ### Special functions
 Some functionality is not entirely explained to the user; this is explained here.
@@ -51,14 +46,14 @@ Some functionality is not entirely explained to the user; this is explained here
 	Clicking and Dragging
 		the main window         Move the main window
 	Right Clicking the video
-		In Fullscreen           Context menu with options that were available in the menubar
-		Outside of Fullscreen   Play/Pause the video
+		In Fullscreen           Shows the menubar actions in context menu form
+		Outside of Fullscreen   Triggers Play/Pause
 	Open Button
-		Left Click - Open a local file (File Dialog)
-		Middle Click - Jump to a specific time in a file
-		Right Click - Open a location (URL Dialog)
+		Left Click - Show the open file dialog
+		Middle Click - Jump to a specific time
+		Right Click - Open a location (including URLs)
 
-*Though customization of key bindings is not yet possible, it is in the scope of the project for the near future.
+*Customization of the key bindings will be implemented in the near future.
 
 ### Settings
 
