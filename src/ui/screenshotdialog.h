@@ -14,14 +14,15 @@ class ScreenshotDialog : public QDialog
 {
     Q_OBJECT
 
-public://ScreenshotDialog::showDialog(screenshotDialog, true, mpv);
-    explicit ScreenshotDialog(bool &always, bool screenshot, MpvHandler *mpv, QWidget *parent = 0);
+public:
+    explicit ScreenshotDialog(bool &always, bool &screenshot, MpvHandler *mpv, QWidget *parent = 0);
     ~ScreenshotDialog();
 
-    static bool showScreenshotDialog(bool &always, bool screenshot, MpvHandler *mpv, QWidget *parent = 0);
+    static int showScreenshotDialog(bool &always, bool &screenshot, MpvHandler *mpv, QWidget *parent = 0);
 private:
     Ui::ScreenshotDialog *ui;
-    bool &always;
+    bool &always,
+         &screenshot;
 };
 
 #endif // SCREENSHOTDIALOG_H

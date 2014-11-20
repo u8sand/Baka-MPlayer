@@ -148,7 +148,20 @@ void MpvHandler::LoadSettings(QSettings *settings, QString version)
                     else if(parts[1] == "speed")
                         Speed(settings->value(key).toDouble());
                     else if(parts[1] == "screenshot-template")
-                        ScreenshotTemplate(settings->value(key).toString());
+                    {
+                        QString temp = settings->value(key).toString();
+                        int i = temp.lastIndexOf('/');
+                        if(i != -1)
+                        {
+                            ScreenshotDirectory(temp.mid(0, i));
+                            ScreenshotTemplate(temp.mid(i+1));
+                        }
+                        else
+                        {
+                            ScreenshotDirectory(".");
+                            ScreenshotTemplate(temp);
+                        }
+                    }
                     else
                     {
                         QByteArray tmp1 = parts[1].toUtf8(),
@@ -167,14 +180,8 @@ void MpvHandler::LoadSettings(QSettings *settings, QString version)
             else
                 setLastFile("");
             ScreenshotFormat(settings->value("mpv/screenshotFormat", "jpg").toString());
-            QString dir = settings->value("mpv/screenshotDir", "").toString(),
-                    temp = settings->value("mpv/screenshotTemplate", "").toString();
-            if(dir != "" && temp != "")
-                ScreenshotTemplate(dir+"/"+temp);
-            else if(dir != "")
-                ScreenshotTemplate(dir+"/screenshot%#04n");
-            else if(temp != "")
-                ScreenshotTemplate(temp);
+            ScreenshotDirectory(settings->value("mpv/screenshotDir", ".").toString());
+            ScreenshotTemplate(settings->value("mpv/screenshotTemplate", "screenshot%#04n").toString());
             Speed(settings->value("mpv/speed", 1.0).toDouble());
             Volume(settings->value("mpv/volume", 100).toInt());
             Debug(settings->value("common/debug", false).toBool());
@@ -215,7 +222,7 @@ void MpvHandler::SaveSettings(QSettings *settings)
         if(screenshotFormat != "")
             settings->setValue("mpv/screenshot-format", screenshotFormat);
         if(screenshotTemplate != "")
-            settings->setValue("mpv/screenshot-template", screenshotTemplate);
+            settings->setValue("mpv/screenshot-template", screenshotDir+"/"+screenshotTemplate);
     }
 }
 
@@ -457,10 +464,20 @@ void MpvHandler::ScreenshotTemplate(QString s)
 {
     if(mpv)
     {
-        const QByteArray tmp = s.toUtf8();
+        const QByteArray tmp = (screenshotDir+"/"+s).toUtf8();
         mpv_set_option_string(mpv, "screenshot-template", tmp.data());
     }
     setScreenshotTemplate(s);
+}
+
+void MpvHandler::ScreenshotDirectory(QString s)
+{
+//    if(mpv)
+//    {
+//        const QByteArray tmp = (s+"/"+screenshotTemplate).toUtf8();
+//        mpv_set_option_string(mpv, "screenshot-template", tmp.data());
+//    }
+    setScreenshotDir(s);
 }
 
 void MpvHandler::AddSubtitleTrack(QString f)

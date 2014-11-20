@@ -1668,7 +1668,8 @@ void MainWindow::TakeScreenshot(bool subs)
     if(screenshotDialog)
     {
         mpv->Pause();
-        subs = ScreenshotDialog::showScreenshotDialog(screenshotDialog, subs, mpv);
+        if(ScreenshotDialog::showScreenshotDialog(screenshotDialog, subs, mpv) != QDialog::Accepted)
+            return;
     }
     else
         mpv->Screenshot(subs);
@@ -1677,20 +1678,9 @@ void MainWindow::TakeScreenshot(bool subs)
 
 void MainWindow::ShowScreenshotMessage(bool subs)
 {
-    QString dir = mpv->getScreenshotTemplate();
+    QString dir = mpv->getScreenshotDir();
     int i = dir.lastIndexOf('/');
     if(i != -1)
-    {
-        dir.truncate(i);
-        i = dir.lastIndexOf('/');
-        if(i != -1)
-            dir.remove(0, i+1);
-    }
-    else
-    {
-        dir = QApplication::applicationDirPath();
-        i = dir.lastIndexOf('/');
         dir.remove(0, i+1);
-    }
     mpv->ShowText("Saved to \""+dir+"\", "+(subs?"with":"without")+" subs");
 }

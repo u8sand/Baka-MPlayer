@@ -4,10 +4,11 @@
 #include <QFileDialog>
 #include <QString>
 
-ScreenshotDialog::ScreenshotDialog(bool &_always, bool screenshot, MpvHandler *mpv, QWidget *parent) :
+ScreenshotDialog::ScreenshotDialog(bool &_always, bool &_screenshot, MpvHandler *mpv, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ScreenshotDialog),
-    always(_always)
+    always(_always),
+    screenshot(_screenshot)
 {
     ui->setupUi(this);
 
@@ -16,18 +17,8 @@ ScreenshotDialog::ScreenshotDialog(bool &_always, bool screenshot, MpvHandler *m
     ui->templateEdit->setText(mpv->getScreenshotTemplate());
     ui->formatComboBox->setCurrentText(mpv->getScreenshotFormat());
 
-    QString screenshotTemplate = mpv->getScreenshotTemplate();
-    int i = screenshotTemplate.lastIndexOf('/');
-    if(i != -1)
-    {
-        ui->locationEdit->setText(screenshotTemplate.mid(0, i));
-        ui->templateEdit->setText(screenshotTemplate.mid(i+1));
-    }
-    else
-    {
-        ui->templateEdit->setText(screenshotTemplate);
-        ui->locationEdit->setText(".");
-    }
+    ui->locationEdit->setText(mpv->getScreenshotDir());
+    ui->templateEdit->setText(mpv->getScreenshotTemplate());
 
     connect(ui->browseButton, &QPushButton::clicked,
             [=]
@@ -41,9 +32,11 @@ ScreenshotDialog::ScreenshotDialog(bool &_always, bool screenshot, MpvHandler *m
             [=]
             {
                 mpv->ScreenshotFormat(ui->formatComboBox->currentText());
-                mpv->ScreenshotTemplate(ui->locationEdit->text()+"/"+ui->templateEdit->text());
+                mpv->ScreenshotDirectory(ui->locationEdit->text());
+                mpv->ScreenshotTemplate(ui->templateEdit->text());
                 always = ui->showCheckBox->isChecked();
-                mpv->Screenshot(ui->subtitlesCheckBox->isChecked());
+                screenshot = ui->subtitlesCheckBox->isChecked();
+                mpv->Screenshot(screenshot);
                 accept();
             });
 }
@@ -53,9 +46,8 @@ ScreenshotDialog::~ScreenshotDialog()
     delete ui;
 }
 
-bool ScreenshotDialog::showScreenshotDialog(bool &always, bool screenshot, MpvHandler *mpv, QWidget *parent)
+int ScreenshotDialog::showScreenshotDialog(bool &always, bool &screenshot, MpvHandler *mpv, QWidget *parent)
 {
     ScreenshotDialog dialog(always, screenshot, mpv, parent);
-    dialog.exec();
-    return dialog.ui->subtitlesCheckBox->isChecked();
+    return dialog.exec();
 }
