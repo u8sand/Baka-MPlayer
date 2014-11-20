@@ -28,10 +28,7 @@ Typing into the search makes the list only show results that contain the search 
 
 ### Sreenshots
 
-Screenshots can be taken through the mpv engine with the relevant actions. The template used in the program is directly inserted into mpv as screenshot-template; see mpv's manual for more details on valid screenshot-template. Specified directories are prepended to the screenshot-template passed to mpv.
-
-The following is in the scope of the project for the near future.
-*The screenshot mostly needed initially can be hidden by unselecting the `Always show this dialog` option; to get the dialog back one must set the `baka-mplayer/screenshotDialog` to true.*
+Screenshots can be taken through the mpv engine with the relevant actions. The template used in the program is directly inserted into mpv as screenshot-template; see mpv's manual for more details on valid screenshot-template. Specified directories are prepended to the screenshot-template passed to mpv. The screenshot mostly needed initially can be hidden by unselecting the `Always show this dialog` option; to get the dialog back one must set the `baka-mplayer/screenshotDialog` to true.
 
 ### Recent Files
 
@@ -79,10 +76,11 @@ On Linux, they are saved in the Qt location `~/.config/bakamplayer.ini`.
 	last-file=              # The full path of the last file opened
 	onTop=                  # on top setting (always, never, or playing)
 	remaining=              # display remaining time or duration time label
+	screenshotDialog=       # always show the screenshot dialog when taking screenshots
 	showAll=                # Should we load files of different extensions
 	splitter=               # the normal splitter position (playlist size)
 	trayIcon=               # should we display the trayIcon
-    version=                # the settings version (do not modify)
+	version=                # the settings version (do not modify)
 	width=                  # width of the window
 
 	[mpv]                   # mpv specific options
