@@ -17,7 +17,7 @@ UpdateDialog::UpdateDialog(UpdateManager *updateManager, QWidget *parent) :
             [=](QMap<QString, QString> info)
             {
                 ui->plainTextEdit->setPlainText(info["bugfixes"]);
-                if(info["version"] == BAKA_MPLAYER_VERSION)
+                if(info["version"].trimmed() == BAKA_MPLAYER_VERSION)
                 {
                     ui->updateButton->setEnabled(false);
                     ui->updateLabel->setText("You have the latest verion!");
