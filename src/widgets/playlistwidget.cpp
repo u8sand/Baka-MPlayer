@@ -20,11 +20,13 @@ QAction *PlaylistWidget::addAction(const QString &text)
 
 QString PlaylistWidget::RemoveItem(int index)
 {
-    QListWidgetItem *item = takeItem(index);
-    if(item)
+    QListWidgetItem *_item = takeItem(index);
+    if(_item)
     {
-        playlist.removeOne(item->text());
-        return item->text();
+        QString item = _item->text();
+        playlist.removeOne(item);
+        delete _item;
+        return item;
     }
     return QString();
 }
