@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>230</width>
-    <height>338</height>
+    <height>319</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -102,6 +102,22 @@ QPushButton:disabled {
 	background: black;
 	border: 1px solid #008098;
     color: #B8B8B8;
+}
+
+/* QGroupBox */
+
+QGroupBox {
+	border: 1px solid #424242;
+	border-radius: 2px;
+	margin-top: 0.5em;
+}
+QGroupBox::title {
+	subcontrol-origin: margin;
+	subcontrol-position: top center;
+	background: #424242;
+	border: 1px solid #424242;
+	border-radius: 2px;
+	padding: 0 2px;
 }
 
 /* QScrollBar */

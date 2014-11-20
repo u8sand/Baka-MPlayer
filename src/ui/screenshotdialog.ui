@@ -135,6 +135,12 @@ QPushButton:disabled {
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
+       <property name="minimumSize">
+        <size>
+         <width>80</width>
+         <height>0</height>
+        </size>
+       </property>
        <item>
         <property name="text">
          <string>jpg</string>
