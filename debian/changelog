@@ -1,5 +1,37 @@
-baka-mplayer (2.0.0-1) UNRELEASED; urgency=low
+baka-mplayer (2.0.0-1) trusty; urgency=low
 
-  * Initial package.
+  * Entire new look and feel
+  * More complete manual
+  * More efficient preferences functionality
+  * Changes to right-click (now opens context menu in full  *screen mode)
+  * Playlist drag and drop support
+  * Mpv settings in settings file
+  * Settings version information for better version upgrading
+  * Baka  *MPlayer album art for music without album art
+  * More useful Media Info dialog
+  * Playback speed adjusting
+  * Use of mpv OSD to notify you about various actions
+  * Update manager version information
+  * Window fitting probably works better
+  * Screenshot Dialog for selecting location and screenshot template
 
- -- Joshua Park (godly-devotion) <azian.otaku@live.com>  Mon, 10 Nov 2014 22:47:20 -0500
+ -- Joshua Park (godly-devotion) <azian.otaku@live.com>  Thu, 11 Nov 2014 11:30:00 -0500
+
+baka-mplayer (1.9.9-1) trusty; urgency=low
+
+  * New build system
+  * Desktop file for appearing in linux distro's application menus
+  * Disabled check for updates which caused a segfault in the last version (even though it doesn't do anything anyway)
+  * Cleanup in various areas
+  * More dependencies specified
+  * Playlist functionality modified--enabled when there is a single file and some use cases have been repaired
+  * Dim lights works better
+  * Always on top functionality
+
+ -- Joshua Park (godly-devotion) <azian.otaku@live.com>  Fri, 26 Sep 2014 15:58:00 -0500
+
+baka-mplayer (1.9.8-1) trusty; urgency=low
+
+  * Initial Release (continuation of https://github.com/godly-devotion/Baka-MPlayer)
+
+ -- Joshua Park (godly-devotion) <azian.otaku@live.com>  Mon, 08 Sep 2014 20:34:00 -0500
