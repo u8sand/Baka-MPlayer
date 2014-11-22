@@ -16,3 +16,4 @@ override_dh_builddeb:
 
 override_dh_auto_build:
 	sh make.sh
+    gzip -c etc/doc/baka-mplayer.man > etc/doc/baka-mplayer.1.gz
