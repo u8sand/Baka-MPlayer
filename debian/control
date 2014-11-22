@@ -11,7 +11,7 @@ Homepage: http://bakamplayer.u8sand.net/
 
 Package: baka-mplayer
 Architecture: any
-Depends: ${misc:Depends},  ${shlibs:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}
 Recommends: fonts-noto
 Description: Baka MPlayer - The mpv based media player
  Free and open source, cross-platform, libmpv based multimedia player. Qt 5.
