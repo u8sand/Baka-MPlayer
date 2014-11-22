@@ -1,4 +1,4 @@
 build/baka-mplayer			/usr/bin
 debian/baka-mplayer.xpm			/usr/share/pixmaps
 etc/baka-mplayer.desktop		/usr/share/applications
-etc/doc/baka-mplayer.1.gz		/usr/share/man/man1/baka-mplayer.1.gz
+etc/doc/baka-mplayer.1.gz		/usr/share/man/man1
