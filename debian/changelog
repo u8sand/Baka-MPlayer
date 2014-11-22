@@ -1,4 +1,4 @@
-baka-mplayer (2.0.0-1) trusty; urgency=low
+baka-mplayer (2.0.0-1) unstable; urgency=low
 
   * Entire new look and feel
   * More complete manual
@@ -17,7 +17,7 @@ baka-mplayer (2.0.0-1) trusty; urgency=low
 
  -- Joshua Park (godly-devotion) <azian.otaku@live.com>  Thu, 20 Nov 2014 11:30:00 -0500
 
-baka-mplayer (1.9.9-1) trusty; urgency=low
+baka-mplayer (1.9.9-1) unstable; urgency=low
 
   * New build system
   * Desktop file for appearing in linux distro's application menus
@@ -30,7 +30,7 @@ baka-mplayer (1.9.9-1) trusty; urgency=low
 
  -- Joshua Park (godly-devotion) <azian.otaku@live.com>  Fri, 26 Sep 2014 15:58:00 -0500
 
-baka-mplayer (1.9.8-1) trusty; urgency=low
+baka-mplayer (1.9.8-1) unstable; urgency=low
 
   * Initial Release (continuation of https://github.com/godly-devotion/Baka-MPlayer)
 
