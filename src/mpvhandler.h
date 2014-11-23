@@ -149,12 +149,7 @@ private:
 
     // variables
     Mpv::PlayState playState = Mpv::Idle;
-    Mpv::FileInfo fileInfo = {QString(),
-                              0,
-                              {QString(), QString(), QString(), 0, 0, 0, 0, 0},
-                              {QString(), QString(), QString(), QString(), QString()},
-                              QList<Mpv::Track>(),
-                              QList<Mpv::Chapter>()};
+    Mpv::FileInfo fileInfo;
     QString     file,
                 path,
                 lastFile,
