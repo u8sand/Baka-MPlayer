@@ -7,7 +7,6 @@
 #include <QMap>
 #include <QString>
 
-// todo
 class UpdateManager : public QObject
 {
     Q_OBJECT

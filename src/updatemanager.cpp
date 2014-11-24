@@ -64,7 +64,7 @@ void UpdateManager::CheckForUpdates()
 void UpdateManager::DownloadUpdate(QString url, QString version)
 {
     // todo: handle redirects
-
+/*
     emit verboseSignal("Downloading update...");
     QNetworkRequest request(QUrl(url));
     QNetworkReply *reply = manager->get(request);
@@ -106,10 +106,11 @@ void UpdateManager::DownloadUpdate(QString url, QString version)
                     file->close();
                     delete file;
                     emit verboseSignal("Downloaded");
-                    ApplyUpdate();
+                    ApplyUpdate("");
                 }
                 reply->deleteLater();
             });
+*/
 }
 
 void UpdateManager::ApplyUpdate(QString version)
