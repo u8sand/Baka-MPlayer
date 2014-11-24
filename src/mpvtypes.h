@@ -46,11 +46,11 @@ namespace Mpv
         QString codec,
                 format,
                 bitrate;
-        int width,
-            height,
-            dwidth,
-            dheight;
-        double aspect;
+        int width = 0,
+            height = 0,
+            dwidth = 0,
+            dheight = 0;
+        double aspect = 0;
     };
     struct AudioParams
     {
@@ -64,7 +64,7 @@ namespace Mpv
     struct FileInfo
     {
         QString media_title;
-        int length;
+        int length = 0;
         VideoParams video_params;
         AudioParams audio_params;
         QList<Track> tracks; // audio, video, and subs
