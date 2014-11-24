@@ -138,39 +138,37 @@ void MpvHandler::LoadSettings(QSettings *settings, QString version)
                 setLastFile("");
             Debug(settings->value("baka-mplayer/debug", false).toBool());
 
-            for(auto &key : settings->allKeys())
+            settings->beginGroup("mpv");
+            for(auto &key : settings->childKeys())
             {
-                QStringList parts = key.split('/');
-                if(parts[0] == "mpv")
+                if(key == "volume") // exception--we want to update our ui accordingly
+                    Volume(settings->value(key).toInt());
+                else if(key == "speed")
+                    Speed(settings->value(key).toDouble());
+                else if(key == "screenshot-template")
                 {
-                    if(parts[1] == "volume") // exception--we want to update our ui accordingly
-                        Volume(settings->value(key).toInt());
-                    else if(parts[1] == "speed")
-                        Speed(settings->value(key).toDouble());
-                    else if(parts[1] == "screenshot-template")
+                    QString temp = settings->value(key).toString();
+                    int i = temp.lastIndexOf('/');
+                    if(i != -1)
                     {
-                        QString temp = settings->value(key).toString();
-                        int i = temp.lastIndexOf('/');
-                        if(i != -1)
-                        {
-                            ScreenshotDirectory(temp.mid(0, i));
-                            ScreenshotTemplate(temp.mid(i+1));
-                        }
-                        else
-                        {
-                            ScreenshotDirectory(".");
-                            ScreenshotTemplate(temp);
-                        }
+                        ScreenshotDirectory(temp.mid(0, i));
+                        ScreenshotTemplate(temp.mid(i+1));
                     }
                     else
                     {
-                        QByteArray tmp1 = parts[1].toUtf8(),
-                                   tmp2 = settings->value(key).toString().toUtf8();
-                        if(tmp2 != QByteArray())
-                            mpv_set_option_string(mpv, tmp1.constData(), tmp2.constData());
+                        ScreenshotDirectory(".");
+                        ScreenshotTemplate(temp);
                     }
                 }
+                else
+                {
+                    QByteArray tmp1 = key.toUtf8(),
+                               tmp2 = settings->value(key).toString().toUtf8();
+                    if(tmp2 != QByteArray())
+                        mpv_set_option_string(mpv, tmp1.constData(), tmp2.constData());
+                }
             }
+            settings->endGroup();
         }
         else if(version == "1.9.9")
         {
