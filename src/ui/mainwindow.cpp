@@ -1261,7 +1261,9 @@ void MainWindow::LoadSettings()
         {
             QMessageBox::information(this, "Settings version not recognized", "The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.");
 
-            // load what we can
+            // load what we can assuming the settings are like the current version
+            version = "2.0.0";
+
             setOnTop(settings->value("baka-mplayer/onTop", "never").toString());
             setAutoFit(settings->value("baka-mplayer/autoFit", 100).toInt());
             sysTrayIcon->setVisible(settings->value("baka-mplayer/trayIcon", false).toBool());
