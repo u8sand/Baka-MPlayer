@@ -16,8 +16,42 @@
   <property name="styleSheet">
    <string notr="true">QWidget {
 	font: 12px &quot;Noto Sans&quot;, &quot;FreeSans&quot;;
-	background: black;
+	background: #1A1A1A;
 	color: whitesmoke;
+}
+
+/* QLineEdit */
+
+QLineEdit {
+	background: black;
+	border: 1px solid #4C4C4C;
+	border-radius: 2px;
+	padding: 2px;
+}
+QLineEdit:focus {
+    border: 1px solid #008098;
+}
+
+/* QPushButton */
+
+QPushButton {
+    background: #008098;
+	color: whitesmoke;
+	border: 1px solid black;
+	border-radius: 2px;
+    min-width: 88px;
+	min-height: 25px;
+}
+QPushButton:default {
+	border: 1px solid whitesmoke;
+}
+QPushButton:pressed {
+    background: #005A6A;
+}
+QPushButton:disabled {
+	background: black;
+	border: 1px solid #008098;
+    color: #B8B8B8;
 }</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
@@ -44,18 +78,6 @@
      </item>
      <item>
       <widget class="QLineEdit" name="urlEdit">
-       <property name="styleSheet">
-        <string notr="true">QLineEdit {
-	background: black;
-	border: none;
-	border-bottom: 1px solid #4C4C4C;
-	padding: 4px;
-}
-QLineEdit:focus {
-    border: none;
-	border-bottom: 1px solid #008098;
-}</string>
-       </property>
        <property name="placeholderText">
         <string>Type URL or location here</string>
        </property>
@@ -107,33 +129,6 @@ QLineEdit:focus {
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="maximumSize">
-        <size>
-         <width>16777215</width>
-         <height>25</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton {
-    background: #008098;
-	color: whitesmoke;
-	border: 1px solid black;
-	border-radius: 2px;
-    min-width: 88px;
-	min-height: 25px;
-}
-QPushButton:default {
-	border: 1px solid whitesmoke;
-}
-QPushButton:pressed {
-    background: #005A6A;
-}
-QPushButton:disabled {
-	background: black;
-	border: 1px solid #008098;
-    color: #B8B8B8;
-}</string>
-       </property>
        <property name="text">
         <string>&amp;OK</string>
        </property>
@@ -163,33 +158,6 @@ QPushButton:disabled {
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="maximumSize">
-        <size>
-         <width>16777215</width>
-         <height>25</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton {
-    background: #008098;
-	color: whitesmoke;
-	border: 1px solid black;
-	border-radius: 2px;
-    min-width: 88px;
-	min-height: 25px;
-}
-QPushButton:default {
-	border: 1px solid whitesmoke;
-}
-QPushButton:pressed {
-    background: #005A6A;
-}
-QPushButton:disabled {
-	background: black;
-	border: 1px solid #008098;
-    color: #B8B8B8;
-}</string>
-       </property>
        <property name="text">
         <string>&amp;PASTE</string>
        </property>
@@ -206,33 +174,6 @@ QPushButton:disabled {
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="maximumSize">
-        <size>
-         <width>16777215</width>
-         <height>25</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton {
-    background: #008098;
-	color: whitesmoke;
-	border: 1px solid black;
-	border-radius: 2px;
-    min-width: 88px;
-	min-height: 25px;
-}
-QPushButton:default {
-	border: 1px solid whitesmoke;
-}
-QPushButton:pressed {
-    background: #005A6A;
-}
-QPushButton:disabled {
-	background: black;
-	border: 1px solid #008098;
-    color: #B8B8B8;
-}</string>
-       </property>
        <property name="text">
         <string>&amp;COPY</string>
        </property>
@@ -248,33 +189,6 @@ QPushButton:disabled {
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>16777215</width>
-         <height>25</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton {
-    background: #008098;
-	color: whitesmoke;
-	border: 1px solid black;
-	border-radius: 2px;
-    min-width: 88px;
-	min-height: 25px;
-}
-QPushButton:default {
-	border: 1px solid whitesmoke;
-}
-QPushButton:pressed {
-    background: #005A6A;
-}
-QPushButton:disabled {
-	background: black;
-	border: 1px solid #008098;
-    color: #B8B8B8;
-}</string>
        </property>
        <property name="text">
         <string>CLEA&amp;R</string>
@@ -304,33 +218,6 @@ QPushButton:disabled {
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>16777215</width>
-         <height>25</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton {
-    background: #008098;
-	color: whitesmoke;
-	border: 1px solid black;
-	border-radius: 2px;
-    min-width: 88px;
-	min-height: 25px;
-}
-QPushButton:default {
-	border: 1px solid whitesmoke;
-}
-QPushButton:pressed {
-    background: #005A6A;
-}
-QPushButton:disabled {
-	background: black;
-	border: 1px solid #008098;
-    color: #B8B8B8;
-}</string>
        </property>
        <property name="text">
         <string>CANC&amp;EL</string>

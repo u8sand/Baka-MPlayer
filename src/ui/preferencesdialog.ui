@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>230</width>
-    <height>303</height>
+    <height>319</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,11 +16,111 @@
   <property name="styleSheet">
    <string notr="true">QWidget {
 	font: 12px &quot;Noto Sans&quot;, &quot;FreeSans&quot;;
-	background: black;
+	background: #1A1A1A;
 	color: whitesmoke;
 }
 
-/* QScrollBar:vertical */
+/* QRadioButton */
+
+QRadioButton::indicator {
+	width: 10px;
+	height: 10px;
+	border: 1px solid black;
+	border-radius: 6px;
+}
+QRadioButton::indicator:unchecked {
+	background: #424242;
+}
+QRadioButton::indicator:checked {
+	background: #008098;
+}
+
+/* QCheckBox */
+
+QCheckBox::indicator,
+QGroupBox::indicator{
+	width: 10px;
+	height: 10px;
+	border: 1px solid black;
+	border-radius: 2px;
+}
+QCheckBox::indicator:unchecked,
+QGroupBox::indicator:unchecked {
+	background: #424242;
+	image: none;
+}
+QCheckBox::indicator:checked,
+QGroupBox::indicator:checked {
+	background: #008098;
+	image: url(:/img/checked.svg);
+}
+
+/* QComboBox */
+
+QComboBox {
+	background: #008098;
+	border: 1px solid black;
+	border-radius: 2px;
+	padding: 2px;
+}
+QComboBox::drop-down {
+    border: none;
+}
+QComboBox::down-arrow {
+	image: url(:/img/down-arrow.svg);
+}
+
+/* QLineEdit */
+
+QLineEdit {
+	background: black;
+	border: 1px solid #4C4C4C;
+	border-radius: 2px;
+	padding: 2px;
+}
+QLineEdit:focus {
+    border: 1px solid #008098;
+}
+
+/* QPushButton */
+
+QPushButton {
+    background: #008098;
+	color: whitesmoke;
+	border: 1px solid black;
+	border-radius: 2px;
+    min-width: 88px;
+	min-height: 25px;
+}
+QPushButton:default {
+	border: 1px solid whitesmoke;
+}
+QPushButton:pressed {
+    background: #005A6A;
+}
+QPushButton:disabled {
+	background: black;
+	border: 1px solid #008098;
+    color: #B8B8B8;
+}
+
+/* QGroupBox */
+
+QGroupBox {
+	border: 1px solid #424242;
+	border-radius: 2px;
+	margin-top: 0.5em;
+}
+QGroupBox::title {
+	subcontrol-origin: margin;
+	subcontrol-position: top center;
+	background: #424242;
+	border: 1px solid #424242;
+	border-radius: 2px;
+	padding: 0 2px;
+}
+
+/* QScrollBar */
 
 QScrollBar:vertical {
 	border: none;
@@ -38,8 +138,6 @@ QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical,
 QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
 	background: transparent;
 }
-
-/* QScrollBar:horizontal */
 
 QScrollBar:horizontal {
 	border: none;
@@ -178,7 +276,7 @@ QTabBar::tab:!selected {
          <item>
           <widget class="QCheckBox" name="autoFitCheckBox">
            <property name="text">
-            <string>Auto-Fit Window:</string>
+            <string>&amp;Auto-Fit Window:</string>
            </property>
            <property name="checked">
             <bool>true</bool>
@@ -187,20 +285,6 @@ QTabBar::tab:!selected {
          </item>
          <item>
           <widget class="QComboBox" name="comboBox">
-           <property name="styleSheet">
-            <string notr="true">QComboBox {
-	background: #005A6A;
-	border: 1px solid black;
-	border-radius: 2px;
-	padding: 2px;
-}
-QComboBox::drop-down {
-    border: none;
-}
-QComboBox::down-arrow {
-	image: url(:/img/down-arrow.svg);
-}</string>
-           </property>
            <property name="currentIndex">
             <number>2</number>
            </property>
@@ -234,29 +318,15 @@ QComboBox::down-arrow {
           <string>Screenshot</string>
          </property>
          <layout class="QFormLayout" name="formLayout">
-          <item row="0" column="0">
+          <item row="2" column="0">
            <widget class="QLabel" name="label">
             <property name="text">
              <string>File Format:</string>
             </property>
            </widget>
           </item>
-          <item row="0" column="1">
+          <item row="2" column="1">
            <widget class="QComboBox" name="formatComboBox">
-            <property name="styleSheet">
-             <string notr="true">QComboBox {
-	background: #005A6A;
-	border: 1px solid black;
-	border-radius: 2px;
-	padding: 2px;
-}
-QComboBox::drop-down {
-    border: none;
-}
-QComboBox::down-arrow {
-	image: url(:/img/down-arrow.svg);
-}</string>
-            </property>
             <item>
              <property name="text">
               <string>jpg</string>
@@ -274,64 +344,41 @@ QComboBox::down-arrow {
             </item>
            </widget>
           </item>
-          <item row="2" column="0" colspan="2">
+          <item row="4" column="0" colspan="2">
            <widget class="QLabel" name="label_2">
             <property name="text">
              <string>File Name Template:</string>
             </property>
            </widget>
           </item>
-          <item row="4" column="0" colspan="2">
+          <item row="6" column="0" colspan="2">
            <widget class="QLabel" name="label_3">
             <property name="text">
              <string>Default Save Location:</string>
             </property>
            </widget>
           </item>
-          <item row="3" column="0" colspan="2">
+          <item row="5" column="0" colspan="2">
            <widget class="QLineEdit" name="templateLineEdit">
-            <property name="styleSheet">
-             <string notr="true">QLineEdit {
-	background: black;
-	border: none;
-	border-bottom: 1px solid #4C4C4C;
-	padding: 4px;
-}
-QLineEdit:focus {
-    border: none;
-	border-bottom: 1px solid #008098;
-}</string>
-            </property>
             <property name="text">
              <string>screenshot%#04n</string>
             </property>
            </widget>
           </item>
-          <item row="5" column="0" colspan="2">
+          <item row="7" column="0" colspan="2">
            <widget class="QPushButton" name="changeButton">
-            <property name="styleSheet">
-             <string notr="true">QPushButton {
-    background: #008098;
-	color: whitesmoke;
-	border: 1px solid black;
-	border-radius: 2px;
-    min-width: 88px;
-	min-height: 25px;
-}
-QPushButton:default {
-	border: 1px solid #008098;
-}
-QPushButton:pressed {
-    background: #005A6A;
-}
-QPushButton:disabled {
-	background: black;
-	border: 1px solid #008098;
-    color: #B8B8B8;
-}</string>
-            </property>
             <property name="text">
              <string>CHANG&amp;E</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0" colspan="2">
+           <widget class="QCheckBox" name="checkBox">
+            <property name="text">
+             <string>&amp;Always show the dialog</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -359,27 +406,6 @@ QPushButton:disabled {
      </item>
      <item>
       <widget class="QPushButton" name="closeButton">
-       <property name="styleSheet">
-        <string notr="true">QPushButton {
-    background: #008098;
-	color: whitesmoke;
-	border: 1px solid black;
-	border-radius: 2px;
-    min-width: 88px;
-	min-height: 25px;
-}
-QPushButton:default {
-	border: 1px solid whitesmoke;
-}
-QPushButton:pressed {
-    background: #005A6A;
-}
-QPushButton:disabled {
-	background: black;
-	border: 1px solid #008098;
-    color: #B8B8B8;
-}</string>
-       </property>
        <property name="text">
         <string>&amp;CLOSE</string>
        </property>
@@ -405,6 +431,21 @@ QPushButton:disabled {
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>alwaysRadioButton</tabstop>
+  <tabstop>playingRadioButton</tabstop>
+  <tabstop>neverRadioButton</tabstop>
+  <tabstop>groupBox_2</tabstop>
+  <tabstop>hidePopupCheckBox</tabstop>
+  <tabstop>closeButton</tabstop>
+  <tabstop>autoFitCheckBox</tabstop>
+  <tabstop>comboBox</tabstop>
+  <tabstop>checkBox</tabstop>
+  <tabstop>formatComboBox</tabstop>
+  <tabstop>templateLineEdit</tabstop>
+  <tabstop>changeButton</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

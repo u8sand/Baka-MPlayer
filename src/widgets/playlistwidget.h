@@ -13,7 +13,7 @@ public:
 
     QAction *addAction(const QString &text);
     QString RemoveItem(int index);
-    void SelectItem(const QString &item);
+    void SelectItem(const QString &item, bool internal = false);
     void Populate(QStringList list);
 
     QString FirstItem();
@@ -30,6 +30,7 @@ protected:
 
 private:
     QStringList playlist;
+    QString cItem;
 };
 
 #endif // PLAYLISTWIDGET_H

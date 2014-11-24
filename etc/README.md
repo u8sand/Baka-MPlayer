@@ -13,4 +13,4 @@ Here we will store various resources important for the project.
 - `mpv.sh` - Build mpv/libmpv for windows on linux with mxe toolchain
 - `bakamplayer.sh` - Build baka mplayer for windows on linux with mxe toolchain
 
-**Note**: The Qt Project File is set to look here (etc/{include,lib}) for the mpv include/library when on windows.
+`/travis` - Travis build system files; archived until we can compile in travis successfully

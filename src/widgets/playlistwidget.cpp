@@ -6,7 +6,8 @@
 #include <algorithm> // for std::random_shuffle and std::sort
 
 PlaylistWidget::PlaylistWidget(QWidget *parent) :
-    QListWidget(parent)
+    QListWidget(parent),
+    cItem()
 {
 }
 
@@ -19,22 +20,32 @@ QAction *PlaylistWidget::addAction(const QString &text)
 
 QString PlaylistWidget::RemoveItem(int index)
 {
-    QListWidgetItem *item = takeItem(index);
-    if(item)
+    QListWidgetItem *_item = takeItem(index);
+    if(_item)
     {
-        playlist.removeOne(item->text());
-        return item->text();
+        QString item = _item->text();
+        playlist.removeOne(item);
+        delete _item;
+        return item;
     }
     return QString();
 }
 
-void PlaylistWidget::SelectItem(const QString &item)
+void PlaylistWidget::SelectItem(const QString &item, bool internal)
 {
     if(item != "")
     {
-        QList<QListWidgetItem*> items = findItems(item, Qt::MatchExactly);
-        if(items.length() > 0)
-            setCurrentItem(items.first());
+        if(!internal)
+        {
+            QList<QListWidgetItem*> items = findItems(item, Qt::MatchExactly);
+            if(items.length() > 0)
+            {
+                setCurrentItem(items.first());
+                cItem = items.first()->text();
+            }
+        }
+        else
+            cItem = item;
     }
 }
 
@@ -42,8 +53,6 @@ void PlaylistWidget::Populate(QStringList list)
 {
     playlist = list;
     playlist.sort();
-    clear();
-    addItems(playlist);
 }
 
 QString PlaylistWidget::FirstItem()
@@ -82,7 +91,12 @@ QString PlaylistWidget::FileAt(int index)
 
 void PlaylistWidget::Search(QString s)
 {
-    QString item = currentItem()->text();
+    QListWidgetItem *_item = currentItem();
+    QString item;
+    if(_item)
+        item = _item->text();
+    else
+        item = cItem;
     QStringList newPlaylist;
     for(QStringList::iterator item = playlist.begin(); item != playlist.end(); item++)
         if(item->contains(s))
@@ -94,12 +108,14 @@ void PlaylistWidget::Search(QString s)
 
 void PlaylistWidget::ShowAll(bool b)
 {
-    if(count() > 0)
+    if(playlist.length() > 0)
     {
         QListWidgetItem *_item = currentItem();
         QString item;
         if(_item)
             item = _item->text();
+        else
+            item = cItem;
         if(b)
         {
             clear();
@@ -107,16 +123,15 @@ void PlaylistWidget::ShowAll(bool b)
         }
         else
         {
-            if(_item)
-            {
-                QString suffix = item.split('.').last();
-                QStringList newPlaylist;
-                for(QStringList::iterator i = playlist.begin(); i != playlist.end(); i++)
-                    if(i->endsWith(suffix))
-                        newPlaylist.append(*i);
-                clear();
-                addItems(newPlaylist);
-            }
+            if(!_item)
+                item = cItem;
+            QString suffix = item.split('.').last();
+            QStringList newPlaylist;
+            for(QStringList::iterator i = playlist.begin(); i != playlist.end(); i++)
+                if(i->endsWith(suffix))
+                    newPlaylist.append(*i);
+            clear();
+            addItems(newPlaylist);
         }
         SelectItem(item);
     }
@@ -130,6 +145,8 @@ void PlaylistWidget::Shuffle(bool b)
         QString item;
         if(_item)
             item = _item->text();
+        else
+            item = cItem;
         if(b)
         {
             QStringList newPlaylist = playlist;

@@ -16,6 +16,7 @@
 #include <QProcess>
 #include <QIcon>
 #include <QWindow>
+#include <QCheckBox>
 
 #if defined(Q_OS_UNIX) || defined(Q_OS_LINUX)
 #include <QX11Info>
@@ -31,6 +32,7 @@
 #include "inputdialog.h"
 #include "updatedialog.h"
 #include "preferencesdialog.h"
+#include "screenshotdialog.h"
 #include "util.h"
 
 using namespace BakaUtil;
@@ -40,6 +42,7 @@ MainWindow::MainWindow(QWidget *parent):
     ui(new Ui::MainWindow),
     lastMousePos(QPoint()),
     move(false),
+    firstItem(false),
     init(false),
     autohide(new QTimer(this))
 {
@@ -133,7 +136,7 @@ MainWindow::MainWindow(QWidget *parent):
             [=](const QStringList &list)
             {
                 ui->playlistWidget->Populate(list);
-                ui->playlistWidget->ShowAll(ui->hideFilesButton->isChecked());
+                firstItem = true;
 
                 if(list.length() > 1)
                 {
@@ -268,7 +271,7 @@ MainWindow::MainWindow(QWidget *parent):
                 {
                     // put in filler albumArt
                     if(ui->mpvFrame->styleSheet() == QString())
-                        ui->mpvFrame->setStyleSheet("background-image:url(:/img/logo.svg);background-repeat:no-repeat;background-position:center;");
+                        ui->mpvFrame->setStyleSheet("background-image:url(:/img/album_art.png);background-repeat:no-repeat;background-position:center;");
                 }
                 ui->action_Hide_Album_Art_2->setEnabled(true);
                 ui->menuAudio_Tracks->setEnabled((ui->menuAudio_Tracks->actions().count() > 1));
@@ -411,7 +414,14 @@ MainWindow::MainWindow(QWidget *parent):
     connect(mpv, &MpvHandler::fileChanged,
             [=](QString f)
             {
-                ui->playlistWidget->SelectItem(f);
+                if(!firstItem)
+                    ui->playlistWidget->SelectItem(f);
+                else
+                {
+                    ui->playlistWidget->SelectItem(f, true);
+                    ui->playlistWidget->ShowAll(!ui->hideFilesButton->isChecked());
+                    firstItem = false;
+                }
             });
 
     connect(mpv, &MpvHandler::lastFileChanged,
@@ -555,7 +565,8 @@ MainWindow::MainWindow(QWidget *parent):
                                "Open File",mpv->getPath(),
                                "Media Files ("+Mpv::media_filetypes.join(" ")+");;"+
                                "Video Files ("+Mpv::video_filetypes.join(" ")+");;"+
-                               "Audio Files ("+Mpv::audio_filetypes.join(" ")+")"));
+                               "Audio Files ("+Mpv::audio_filetypes.join(" ")+")",
+                               0, QFileDialog::DontUseSheet));
             });
 
     connect(ui->openButton, &OpenButton::MiddleClick,                   // Playback: Open button (middle click)
@@ -666,7 +677,7 @@ MainWindow::MainWindow(QWidget *parent):
                     mpv->PlayFile(ui->playlistWidget->FileAt(res.toInt()-1)); // user index will be 1 greater than actual
             });
 
-    connect(ui->playlistWidget, &PlaylistWidget::currentRowChanged,   // Playlist: Playlist selection changed
+    connect(ui->playlistWidget, &PlaylistWidget::currentRowChanged,     // Playlist: Playlist selection changed
             [=](int i)
             {
                 if(i == -1) // no selection
@@ -681,7 +692,7 @@ MainWindow::MainWindow(QWidget *parent):
                 }
             });
 
-    connect(ui->playlistWidget, &PlaylistWidget::doubleClicked,       // Playlist: Item double clicked
+    connect(ui->playlistWidget, &PlaylistWidget::doubleClicked,         // Playlist: Item double clicked
             [=](const QModelIndex &i)
             {
                 mpv->PlayFile(ui->playlistWidget->FileAt(i.row()));
@@ -693,31 +704,36 @@ MainWindow::MainWindow(QWidget *parent):
                 ui->playlistWidget->SelectItem(mpv->getFile());
             });
 
-    connect(ui->hideFilesButton, &QPushButton::clicked,                   // Playlist: Hide files button
+    connect(ui->hideFilesButton, &QPushButton::clicked,                 // Playlist: Hide files button
             [=](bool b)
             {
-                ui->playlistWidget->ShowAll(b);
+                ui->playlistWidget->ShowAll(!b);
             });
 
     connect(ui->refreshButton, &QPushButton::clicked,                   // Playlist: Refresh playlist button
             [=]
             {
-                mpv->LoadPlaylist(mpv->getPath()+mpv->getFile());
-                ui->playlistWidget->SelectItem(mpv->getFile());
+                ui->playlistWidget->SelectItem(mpv->LoadPlaylist(mpv->getPath()+mpv->getFile()), true);
+                ui->playlistWidget->ShowAll(!ui->hideFilesButton->isChecked());
+                firstItem = false;
             });
 
     action = ui->playlistWidget->addAction("R&emove from Playlist");
     connect(action, &QAction::triggered,                                // Playlist: Remove from playlist (right-click)
             [=]
             {
+                QString next = ui->playlistWidget->NextItem();
                 ui->playlistWidget->RemoveItem(ui->playlistWidget->currentRow());
+                ui->playlistWidget->SelectItem(next);
             });
 
     action = ui->playlistWidget->addAction("&Delete from Disk");
     connect(action, &QAction::triggered,                                // Playlist: Delete from Disk (right-click)
             [=]
             {
-                QString item = ui->playlistWidget->RemoveItem(ui->playlistWidget->currentRow());
+                QString next = ui->playlistWidget->NextItem(),
+                        item = ui->playlistWidget->RemoveItem(ui->playlistWidget->currentRow());
+                ui->playlistWidget->SelectItem(next);
                 QFile f(mpv->getPath()+item);
                 f.remove();
             });
@@ -726,7 +742,9 @@ MainWindow::MainWindow(QWidget *parent):
     connect(action, &QAction::triggered,
             [=]
             {
-                mpv->LoadPlaylist(mpv->getPath()+mpv->getFile());
+                ui->playlistWidget->SelectItem(mpv->LoadPlaylist(mpv->getPath()+mpv->getFile()), true);
+                ui->playlistWidget->ShowAll(!ui->hideFilesButton->isChecked());
+                firstItem = false;
             });
                                                                         // File ->
     connect(ui->action_New_Player, &QAction::triggered,                 // File -> New Player
@@ -744,7 +762,8 @@ MainWindow::MainWindow(QWidget *parent):
                               "Open File",mpv->getPath(),
                               "Media Files ("+Mpv::media_filetypes.join(" ")+");;"+
                               "Video Files ("+Mpv::video_filetypes.join(" ")+");;"+
-                              "Audio Files ("+Mpv::audio_filetypes.join(" ")+")"));
+                              "Audio Files ("+Mpv::audio_filetypes.join(" ")+")",
+                              0, QFileDialog::DontUseSheet));
             });
 
     connect(ui->actionOpen_URL, &QAction::triggered,                    // File -> Open URL
@@ -798,52 +817,43 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->actionWith_Subtitles, &QAction::triggered,              // View -> Take Screenshot -> With Subtitles
             [=]
             {
-                if(mpv->getScreenshotTemplate() == "" && !SetScreenshotTemplate())
-                    return;
-                mpv->Screenshot(true);
+                TakeScreenshot(true);
             });
 
     connect(ui->actionWithout_Subtitles, &QAction::triggered,           // View -> Take Screenshot -> Without Subtitles
             [=]
             {
-                if(mpv->getScreenshotTemplate() == "" && !SetScreenshotTemplate())
-                    return;
-                mpv->Screenshot(false);
+                TakeScreenshot(false);
             });
                                                                         // View -> Fit Window ->
     connect(ui->action_To_Current_Size, &QAction::triggered,            // View -> Fit Window -> To Current Size
             [=]
             {
                 FitWindow(0);
-                mpv->ShowText("Fit Window: To Current Size");
             });
 
     connect(ui->action50, &QAction::triggered,                          // View -> Fit Window -> 50%
             [=]
             {
-                FitWindow(50);
-                mpv->ShowText("Fit Window: 50%");
+                FitWindow(50, true);
             });
 
     connect(ui->action75, &QAction::triggered,                          // View -> Fit Window -> 75%
             [=]
             {
-                FitWindow(75);
-                mpv->ShowText("Fit Window: 75%");
+                FitWindow(75, true);
             });
 
     connect(ui->action100, &QAction::triggered,                         // View -> Fit Window -> 100%
             [=]
             {
-                FitWindow(100);
-                mpv->ShowText("Fit Window: 100%");
+                FitWindow(100, true);
             });
 
     connect(ui->action200, &QAction::triggered,                         // View -> Fit Window -> 200%
             [=]
             {
-                FitWindow(200);
-                mpv->ShowText("Fit Window: 200%");
+                FitWindow(200, true);
             });
                                                                         // View -> Aspect Ratio ->
     connect(ui->action_Autodetect, &QAction::triggered,                 // View -> Aspect Ratio -> Auto Detect
@@ -880,7 +890,8 @@ MainWindow::MainWindow(QWidget *parent):
             [=]
             {
                 QString trackFile = QFileDialog::getOpenFileName(this, "Open Subtitle File", mpv->getPath(),
-                                                                  "Subtitle Files ("+Mpv::subtitle_filetypes.join(" ")+")");
+                                                                 "Subtitle Files ("+Mpv::subtitle_filetypes.join(" ")+")",
+                                                                 0, QFileDialog::DontUseSheet);
                 if(trackFile != "")
                     mpv->AddSubtitleTrack(trackFile);
             });
@@ -1122,7 +1133,7 @@ MainWindow::MainWindow(QWidget *parent):
     }
 
     // keyboard shortcuts
-    action = new QAction(this);
+    action = new QAction("Seek Forward", this);
     action->setShortcut(QKeySequence("Right"));
     connect(action, &QAction::triggered,
             [=]
@@ -1131,7 +1142,7 @@ MainWindow::MainWindow(QWidget *parent):
             });
     addAction(action);
 
-    action = new QAction(this);
+    action = new QAction("Seek Backward", this);
     action->setShortcut(QKeySequence("Left"));
     connect(action, &QAction::triggered,
             [=]
@@ -1140,7 +1151,7 @@ MainWindow::MainWindow(QWidget *parent):
             });
     addAction(action);
 
-    action = new QAction(this);
+    action = new QAction("Exit Fullscreen/Boss Key", this);
     action->setShortcut(QKeySequence("Esc"));
     connect(action, &QAction::triggered,
             [=]
@@ -1206,7 +1217,8 @@ void MainWindow::LoadSettings()
             setRemaining(settings->value("baka-mplayer/remaining", true).toBool());
             ui->splitter->setNormalPosition(settings->value("baka-mplayer/splitter", ui->splitter->max()*1.0/8).toInt());
             setDebug(settings->value("baka-mplayer/debug", false).toBool());
-            ui->hideFilesButton->setChecked(settings->value("baka-mplayer/showAll", true).toBool());
+            ui->hideFilesButton->setChecked(!settings->value("baka-mplayer/showAll", true).toBool());
+            setScreenshotDialog(settings->value("baka-mplayer/screenshotDialog", true).toBool());
             mpv->LoadSettings(settings, version);
         }
         else if(version == "1.9.9") // old version
@@ -1223,7 +1235,7 @@ void MainWindow::LoadSettings()
             setHidePopup(settings->value("window/hidePopup", false).toBool());
             setRemaining(settings->value("window/remaining", true).toBool());
             ui->splitter->setNormalPosition(settings->value("window/splitter", ui->splitter->max()*1.0/8).toInt());
-            ui->hideFilesButton->setChecked(settings->value("window/showAll", false).toBool());
+            ui->hideFilesButton->setChecked(!settings->value("window/showAll", true).toBool());
             setDebug(settings->value("common/debug", false).toBool());
             // mpv
             mpv->LoadSettings(settings, version);
@@ -1232,10 +1244,17 @@ void MainWindow::LoadSettings()
             settings->setValue("baka-mplayer/version", "2.0.0"); // set to new version
             if(mpv->getSpeed() != 1)
                 settings->setValue("mpv/speed", mpv->getSpeed());
+            QString dir = settings->value("mpv/screenshotDir", "").toString(),
+                    temp = settings->value("mpv/screenshotTemplate", "").toString();
+            if(dir != "" && temp != "")
+                settings->setValue("mpv/screenshot-template", (dir+"/"+temp));
+            else if(dir != "")
+                settings->setValue("mpv/screenshot-template", (dir+"/screenshot%#04n"));
+            else if(temp != "")
+                settings->setValue("mpv/screenshot-template", temp);
+            setScreenshotDialog(true);
             if(mpv->getScreenshotFormat() != "")
-                settings->setValue("mpv/screenshot-format", mpv->getScreenshotFormat());
-            if(mpv->getScreenshotTemplate() != "")
-                settings->setValue("mpv/screenshot-template", mpv->getScreenshotTemplate());
+                mpv->getScreenshotFormat();
             SaveSettings(); // save it now
         }
         else // unrecognized version (newer)
@@ -1250,7 +1269,8 @@ void MainWindow::LoadSettings()
             setRemaining(settings->value("baka-mplayer/remaining", true).toBool());
             ui->splitter->setNormalPosition(settings->value("baka-mplayer/splitter", ui->splitter->max()*1.0/8).toInt());
             setDebug(settings->value("baka-mplayer/debug", false).toBool());
-            ui->hideFilesButton->setChecked(settings->value("baka-mplayer/showAll", true).toBool());
+            ui->hideFilesButton->setChecked(!settings->value("baka-mplayer/showAll", true).toBool());
+            setScreenshotDialog(settings->value("baka-mplayer/screenshotDialog", true).toBool());
             mpv->LoadSettings(settings, version);
 
             // disable settings manipulation
@@ -1270,17 +1290,18 @@ void MainWindow::SaveSettings()
         // baka-mplayer
         settings->setValue("baka-mplayer/width", normalGeometry().width());
         settings->setValue("baka-mplayer/height", normalGeometry().height());
-        settings->setValue("baka-mplayer/onTop", getOnTop());
-        settings->setValue("baka-mplayer/autoFit", getAutoFit());
+        settings->setValue("baka-mplayer/onTop", onTop);
+        settings->setValue("baka-mplayer/autoFit", autoFit);
         settings->setValue("baka-mplayer/trayIcon", sysTrayIcon->isVisible());
-        settings->setValue("baka-mplayer/hidePopup", getHidePopup());
-        settings->setValue("baka-mplayer/remaining", getRemaining());
+        settings->setValue("baka-mplayer/hidePopup", hidePopup);
+        settings->setValue("baka-mplayer/remaining", remaining);
         settings->setValue("baka-mplayer/splitter", (ui->splitter->position() == 0 ||
                                                ui->splitter->position() == ui->splitter->max()) ?
                                                 ui->splitter->normalPosition() :
                                                 ui->splitter->position());
-        settings->setValue("baka-mplayer/showAll", ui->hideFilesButton->isChecked());
-        settings->setValue("baka-mplayer/debug", getDebug());
+        settings->setValue("baka-mplayer/showAll", !ui->hideFilesButton->isChecked());
+        settings->setValue("baka-mplayer/screenshotDialog", screenshotDialog);
+        settings->setValue("baka-mplayer/debug", debug);
     }
 }
 
@@ -1325,7 +1346,9 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
             move = true;
             lastMousePos = event->pos();
         }
-        else if(event->button() == Qt::RightButton && mpv->getPlayState() > 0) // if playing
+        else if(event->button() == Qt::RightButton &&
+                mpv->getPlayState() > 0 &&  // if playing
+                ui->mpvFrame->rect().contains(event->pos())) // mouse is in the mpvFrame
             mpv->PlayPause(ui->playlistWidget->CurrentItem());
     }
     QMainWindow::mousePressEvent(event);
@@ -1471,7 +1494,7 @@ void MainWindow::FullScreen(bool fs)
         ui->menubar->setVisible(false);
         ShowPlaylist(false);
         setMouseTracking(true); // register mouse move event
-
+        setContextMenuPolicy(Qt::ActionsContextMenu);
         // post a mouseMoveEvent (in case user doesn't actually move the mouse when entering fs)
         QCoreApplication::postEvent(this, new QMouseEvent(QMouseEvent::MouseMove,
                                                           QCursor::pos(),
@@ -1485,6 +1508,7 @@ void MainWindow::FullScreen(bool fs)
         ui->seekBar->setVisible(true);
         ui->playbackLayoutWidget->setVisible(true);
         setMouseTracking(false); // stop registering mouse move event
+        setContextMenuPolicy(Qt::NoContextMenu);
         setCursor(QCursor(Qt::ArrowCursor)); // show cursor
         autohide->stop();
     }
@@ -1514,12 +1538,10 @@ void MainWindow::HideAlbumArt(bool hide)
         ui->splitter->setPosition(ui->splitter->normalPosition()); // bring the splitter to normal position
 }
 
-void MainWindow::FitWindow(int percent)
+void MainWindow::FitWindow(int percent, bool msg)
 {
-    if(isFullScreen())
+    if(isFullScreen() || isMaximized())
         return;
-    if(isMaximized())
-        setWindowFlags(windowFlags() & ~Qt::WindowMaximized);
 
     mpv->LoadVideoParams();
     const Mpv::VideoParams &params = mpv->getFileInfo().video_params;
@@ -1531,7 +1553,7 @@ void MainWindow::FitWindow(int percent)
 
     // get aspect ratio
     if(params.width == 0 || params.height == 0) // width/height are 0 when there is no output
-    	return;
+        return;
     if(params.dwidth == 0 || params.dheight == 0) // dwidth/height are 0 on load
         a = (double)params.width/params.height; // use video width and height for aspect ratio
     else
@@ -1580,6 +1602,8 @@ void MainWindow::FitWindow(int percent)
                                     Qt::AlignCenter,
                                     QSize(w, h),
                                     dG));
+    if(msg)
+        mpv->ShowText("Fit Window: "+QString::number(percent)+"%");
 }
 
 void MainWindow::SetAspectRatio(QString aspect)
@@ -1637,4 +1661,26 @@ void MainWindow::AlwaysOnTop(bool ontop)
         setWindowFlags(windowFlags() & ~Qt::WindowStaysOnTopHint);
     show();
 #endif
+}
+
+void MainWindow::TakeScreenshot(bool subs)
+{
+    if(screenshotDialog)
+    {
+        mpv->Pause();
+        if(ScreenshotDialog::showScreenshotDialog(screenshotDialog, subs, mpv) != QDialog::Accepted)
+            return;
+    }
+    else
+        mpv->Screenshot(subs);
+    ShowScreenshotMessage(subs);
+}
+
+void MainWindow::ShowScreenshotMessage(bool subs)
+{
+    QString dir = mpv->getScreenshotDir();
+    int i = dir.lastIndexOf('/');
+    if(i != -1)
+        dir.remove(0, i+1);
+    mpv->ShowText("Saved to \""+dir+"\", "+(subs?"with":"without")+" subs");
 }

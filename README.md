@@ -1,11 +1,5 @@
 # [Baka MPlayer](http://bakamplayer.u8sand.net)
 
-[![Build Status](https://api.travis-ci.org/u8sand/Baka-MPlayer.png)](https://travis-ci.org/u8sand/Baka-MPlayer)
-
-## Note
-
-This program is in its alpha stages. Until this notice is removed, expect bugs.
-
 ## Overview
 
 Baka MPlayer is a free and open source, cross-platform, **libmpv** based multimedia player.

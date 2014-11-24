@@ -1,9 +1,9 @@
-.TH bakamplayer 1
+.TH baka-mplayer 1
 .SH NAME
-bakamplayer - A free and open source, cross-platform, \fBlibmpv\fP based multimedia player.
+baka-mplayer - A free and open source, cross-platform, \fBlibmpv\fP based multimedia player.
 
 .SH SYNOPSIS
-\fBbakamplayer\fP [file|-]
+\fBbaka-mplayer\fP [file|-]
 
 .SH DESCRIPTION
 \fBBaka-MPlayer\fP is a free and open source, cross-platform, \fBlibmpv\fP based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.
@@ -12,9 +12,9 @@ bakamplayer - A free and open source, cross-platform, \fBlibmpv\fP based multime
 
 .SH EXAMPLES
 .nf
-\fBbakamplayer\fP
-\fBbakamplayer\fP myvideo.mkv
-cat myvideo.mkv | \fBbakamplayer\fP -
+\fBbaka-mplayer\fP
+\fBbaka-mplayer\fP myvideo.mkv
+cat myvideo.mkv | \fBbaka-mplayer\fP -
 
 .SH SEE ALSO
 \fBmpv\fP

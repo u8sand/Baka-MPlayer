@@ -16,7 +16,7 @@
   <property name="styleSheet">
    <string notr="true">QWidget {
 	font: 12px &quot;Noto Sans&quot;, &quot;FreeSans&quot;;
-	background: black;
+	background: #1A1A1A;
 	color: whitesmoke;
 }
 
@@ -24,7 +24,29 @@
 	font-size: 26px;
 }
 
-/* QScrollBar:vertical */
+/* QPushButton */
+
+QPushButton {
+    background: #008098;
+	color: whitesmoke;
+	border: 1px solid black;
+	border-radius: 2px;
+    min-width: 88px;
+	min-height: 25px;
+}
+QPushButton:default {
+	border: 1px solid whitesmoke;
+}
+QPushButton:pressed {
+    background: #005A6A;
+}
+QPushButton:disabled {
+	background: black;
+	border: 1px solid #008098;
+    color: #B8B8B8;
+}
+
+/* QScrollBar */
 
 QScrollBar:vertical {
 	border: none;
@@ -42,8 +64,6 @@ QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical,
 QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
 	background: transparent;
 }
-
-/* QScrollBar:horizontal */
 
 QScrollBar:horizontal {
 	border: none;
@@ -274,27 +294,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</string
      </item>
      <item>
       <widget class="QPushButton" name="closeButton">
-       <property name="styleSheet">
-        <string notr="true">QPushButton {
-    background: #008098;
-	color: whitesmoke;
-	border: 1px solid black;
-	border-radius: 2px;
-    min-width: 88px;
-	min-height: 25px;
-}
-QPushButton:default {
-	border: 1px solid whitesmoke;
-}
-QPushButton:pressed {
-    background: #005A6A;
-}
-QPushButton:disabled {
-	background: black;
-	border: 1px solid #008098;
-    color: #B8B8B8;
-}</string>
-       </property>
        <property name="text">
         <string>&amp;CLOSE</string>
        </property>

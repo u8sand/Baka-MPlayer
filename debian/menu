@@ -1,0 +1,5 @@
+?package(baka-mplayer): needs="X11" \
+	section="Applications/Video" \
+	title="Baka MPlayer" \
+	longtitle="Baka MPlayer - The mpv based media player" \
+	command="/usr/bin/baka-mplayer"

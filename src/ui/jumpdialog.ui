@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>334</width>
+    <width>342</width>
     <height>45</height>
    </rect>
   </property>
@@ -16,7 +16,7 @@
   <property name="styleSheet">
    <string notr="true">QWidget {
 	font: 12px &quot;Noto Sans&quot;, &quot;FreeSans&quot;;
-	background: black;
+	background: #1A1A1A;
 	color: whitesmoke;
 }
 
@@ -40,6 +40,28 @@ QSpinBox::up-arrow {
 }
 QSpinBox::down-arrow {
 	background: url(:/img/down-arrow.svg);
+}
+
+/* QPushButton */
+
+QPushButton {
+    background: #008098;
+	color: whitesmoke;
+	border: 1px solid black;
+	border-radius: 2px;
+    min-width: 88px;
+	min-height: 25px;
+}
+QPushButton:default {
+	border: 1px solid whitesmoke;
+}
+QPushButton:pressed {
+    background: #005A6A;
+}
+QPushButton:disabled {
+	background: black;
+	border: 1px solid #008098;
+    color: #B8B8B8;
 }</string>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -165,33 +187,6 @@ QSpinBox::down-arrow {
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>25</height>
-      </size>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton {
-    background: #008098;
-	color: whitesmoke;
-	border: 1px solid black;
-	border-radius: 2px;
-    min-width: 88px;
-	min-height: 25px;
-}
-QPushButton:default {
-	border: 1px solid whitesmoke;
-}
-QPushButton:pressed {
-    background: #005A6A;
-}
-QPushButton:disabled {
-	background: black;
-	border: 1px solid #008098;
-    color: #B8B8B8;
-}</string>
      </property>
      <property name="text">
       <string>&amp;OK</string>

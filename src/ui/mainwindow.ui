@@ -29,21 +29,21 @@
   <property name="styleSheet">
    <string notr="true">QWidget {
 	font-family: &quot;Noto Sans&quot;, &quot;FreeSans&quot;;
-	background: black;
+	background: #1A1A1A;
 	color: whitesmoke;
 }
 
 /* QMenuBar and stuff */
 
 QMenuBar, QMenuBar::item {
-	background: black;
+	background: #1A1A1A;
 }
 QMenuBar::item:selected {
 	background: #424242;
 }
 
 QMenu {
-	background: #212121;
+	background: #1A1A1A;
     border: 1px solid #424242;
 }
 QMenu::item:selected {
@@ -66,39 +66,28 @@ QMenu::separator {
 
 /* QSplitter */
 
-QSplitter::handle {
+QSplitter::handle,
+#mpvFrame,
+#outputTextEdit {
 	background: black;
+}
+
+#outputTextEdit {
+	font: 12px &quot;Courier New&quot;, monospace;
+	border-top: 2px solid #1A1A1A;
 }
 
 /* Playlist */
 
-#playlistLayoutWidget {
-	border-left: 1px solid #212121;
-}
-
 #searchBox {
 	font-size: 12px;
-	border-top: 1px solid #212121;
-	border-bottom: 1px solid #212121;
 	padding: 2px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: black #1A1A1A;
 }
-
-QListView::item {
-	padding: 2px 0px;
-	alternate-background-color: #141414;
-}
-QListView::item:alternate {
-    background: #141414;
-}
-QListView::item:selected {
-	background: #008098;
-}
-
-/* seekbarLayoutWidget */
-
-#seekbarLayoutWidget {
-	padding-top: 10px;
-	border-top: 1px solid #212121;
+#searchBox:focus {
+	border-color: #008098;
 }
 
 /* time labels */
@@ -111,7 +100,20 @@ QListView::item:selected {
 	font-size: 12px;
 }
 
-/* QScrollBar:vertical */
+/* QListView */
+
+QListView::item {
+	padding: 2px 0px;
+	alternate-background-color: #141414;
+}
+QListView::item:alternate {
+    background: #141414;
+}
+QListView::item:selected {
+	background: #008098;
+}
+
+/* QScrollBar */
 
 QScrollBar:vertical {
 	border: none;
@@ -129,8 +131,6 @@ QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical,
 QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
 	background: transparent;
 }
-
-/* QScrollBar:horizontal */
 
 QScrollBar:horizontal {
 	border: none;
@@ -204,12 +204,6 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
         </property>
         <property name="acceptDrops">
          <bool>false</bool>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">#outputTextEdit {
-	font: 12px &quot;Courier New&quot;, monospace;
-	border-top: 1px solid #212121;
-}</string>
         </property>
         <property name="frameShape">
          <enum>QFrame::NoFrame</enum>
@@ -329,6 +323,12 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
               <iconset resource="../rsclist.qrc">
                <normaloff>:/img/select_current.svg</normaloff>:/img/select_current.svg</iconset>
              </property>
+             <property name="iconSize">
+              <size>
+               <width>16</width>
+               <height>16</height>
+              </size>
+             </property>
              <property name="flat">
               <bool>true</bool>
              </property>
@@ -363,6 +363,12 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
                <activeon>:/img/enabled_hide_files.svg</activeon>
                <selectedon>:/img/enabled_hide_files.svg</selectedon>:/img/disabled_hide_files.svg</iconset>
              </property>
+             <property name="iconSize">
+              <size>
+               <width>16</width>
+               <height>16</height>
+              </size>
+             </property>
              <property name="checkable">
               <bool>true</bool>
              </property>
@@ -382,6 +388,12 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
              <property name="icon">
               <iconset resource="../rsclist.qrc">
                <normaloff>:/img/refresh_view.svg</normaloff>:/img/refresh_view.svg</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>16</width>
+               <height>16</height>
+              </size>
              </property>
              <property name="flat">
               <bool>true</bool>
@@ -419,7 +431,7 @@ QSlider::handle:horizontal {
 	width: 14px;
 }
 QSlider::groove:horizontal {
-	background: #141414;
+	background: #0D0D0D;
 }
 QSlider::sub-page:horizontal {
 	background: #008098;
@@ -793,7 +805,7 @@ QSlider::sub-page:horizontal {
 QSlider::handle:horizontal {
 	background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
 					stop: 0 silver, stop: 1 darkgray);
-	border: 2px solid black;
+	border: 2px solid #1A1A1A;
 	border-radius: 7px;
 	margin: -7px 0;
 	width: 12px;
@@ -904,7 +916,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>580</width>
-     <height>22</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
@@ -1211,7 +1223,7 @@ QSlider::handle:horizontal {
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>Show &amp;Subtitles</string>
+    <string>Show S&amp;ubtitles</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+W</string>

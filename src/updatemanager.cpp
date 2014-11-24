@@ -16,7 +16,13 @@ UpdateManager::UpdateManager(QObject *parent) :
 
 void UpdateManager::CheckForUpdates()
 {
-    QNetworkRequest request(QUrl("http://bakamplayer.u8sand.net/version"));
+    QNetworkRequest request(QUrl(
+#if defined(Q_OS_LINUX) || defined(Q_OS_UNIX)
+    "http://bakamplayer.u8sand.net/version_linux"
+#elif defined(Q_OS_WIN)
+    "http://bakamplayer.u8sand.net/version_windows"
+#endif
+    ));
     QNetworkReply *reply = manager->get(request);
 
     connect(reply, &QNetworkReply::downloadProgress,
