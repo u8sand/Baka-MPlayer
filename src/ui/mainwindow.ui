@@ -916,19 +916,25 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>580</width>
-     <height>26</height>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
     <property name="title">
      <string>&amp;File</string>
     </property>
+    <widget class="QMenu" name="menu_Recently_Opened">
+     <property name="title">
+      <string>&amp;Recently Opened</string>
+     </property>
+     <addaction name="action_none_4"/>
+    </widget>
     <addaction name="action_New_Player"/>
     <addaction name="separator"/>
     <addaction name="action_Open_File"/>
     <addaction name="actionOpen_URL"/>
     <addaction name="actionOpen_Path_from_Clipboard"/>
-    <addaction name="action_Recently_Opened"/>
+    <addaction name="menu_Recently_Opened"/>
     <addaction name="separator"/>
     <addaction name="actionShow_in_Folder"/>
     <addaction name="separator"/>
@@ -1708,9 +1714,12 @@ QSlider::handle:horizontal {
     <string>Ctrl+Shift+R</string>
    </property>
   </action>
-  <action name="action_Recently_Opened">
+  <action name="action_none_4">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
-    <string>&amp;Recently Opened</string>
+    <string>[none]</string>
    </property>
   </action>
  </widget>
