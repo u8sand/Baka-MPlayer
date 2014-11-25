@@ -21,7 +21,6 @@ public:
     Mpv::PlayState getPlayState()           { return playState; }
     QString getFile()                       { return file; }
     QString getPath()                       { return path; }
-    QString getLastFile()                   { return lastFile; }
     QString getScreenshotFormat()           { return screenshotFormat; }
     QString getScreenshotTemplate()         { return screenshotTemplate; }
     QString getScreenshotDir()              { return screenshotDir; }
@@ -102,7 +101,6 @@ private slots:
     void setPlayState(Mpv::PlayState s)     { emit playStateChanged(playState = s); }
     void setFile(QString s)                 { emit fileChanged(file = s); }
     void setPath(QString s)                 { emit pathChanged(path = s); }
-    void setLastFile(QString s)             { emit lastFileChanged(lastFile = s); }
     void setScreenshotFormat(QString s)     { emit screenshotFormatChanged(screenshotFormat = s); }
     void setScreenshotTemplate(QString s)   { emit screenshotTemplateChanged(screenshotTemplate = s); }
     void setScreenshotDir(QString s)        { emit screenshotDirChanged(screenshotDir = s); }
@@ -126,7 +124,6 @@ signals:
     void playStateChanged(Mpv::PlayState);
     void fileChanged(QString);
     void pathChanged(QString);
-    void lastFileChanged(QString);
     void screenshotFormatChanged(QString);
     void screenshotTemplateChanged(QString);
     void screenshotDirChanged(QString);
@@ -152,7 +149,6 @@ private:
     Mpv::FileInfo fileInfo;
     QString     file,
                 path,
-                lastFile,
                 screenshotFormat,
                 screenshotTemplate,
                 screenshotDir,

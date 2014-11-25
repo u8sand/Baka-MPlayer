@@ -131,11 +131,6 @@ void MpvHandler::LoadSettings(QSettings *settings, QString version)
     {
         if(version == "2.0.0")
         {
-            QString lf = settings->value("baka-mplayer/lastFile", "").toString();
-            if(FileExists(lf)) // make sure the last file exists
-                setLastFile(lf);
-            else
-                setLastFile("");
             Debug(settings->value("baka-mplayer/debug", false).toBool());
 
             settings->beginGroup("mpv");
@@ -172,11 +167,6 @@ void MpvHandler::LoadSettings(QSettings *settings, QString version)
         }
         else if(version == "1.9.9")
         {
-            QString lf = settings->value("mpv/lastFile", "").toString();
-            if(FileExists(lf)) // make sure the last file exists
-                setLastFile(lf);
-            else
-                setLastFile("");
             ScreenshotFormat(settings->value("mpv/screenshotFormat", "jpg").toString());
             ScreenshotDirectory(settings->value("mpv/screenshotDir", ".").toString());
             ScreenshotTemplate(settings->value("mpv/screenshotTemplate", "screenshot%#04n").toString());
@@ -211,10 +201,6 @@ void MpvHandler::SaveSettings(QSettings *settings)
 {
     if(settings)
     {
-        if(file != "")
-            settings->setValue("baka-mplayer/lastFile", path+file);
-        else
-            settings->setValue("baka-mplayer/lastFile", lastFile);
         settings->setValue("mpv/volume", volume);
         settings->setValue("mpv/speed", speed);
         if(screenshotFormat != "")
@@ -264,8 +250,6 @@ void MpvHandler::PlayFile(QString f)
 {
     if(path == "") // web url
     {
-        if(file != "")
-            setLastFile(file);
         OpenFile(f);
         setFile(f);
     }
@@ -274,8 +258,6 @@ void MpvHandler::PlayFile(QString f)
         QFile qf(path+f);
         if(qf.exists())
         {
-            if(getFile() != "")
-                setLastFile(path+file);
             OpenFile(path+f);
             setFile(f);
             Play();

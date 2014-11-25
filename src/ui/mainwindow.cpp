@@ -439,19 +439,14 @@ MainWindow::MainWindow(QWidget *parent):
                     ui->playlistWidget->ShowAll(!ui->hideFilesButton->isChecked());
                     firstItem = false;
                 }
-            });
 
-    connect(mpv, &MpvHandler::lastFileChanged,
-            [=](QString f)
-            {
-                if(maxRecent > 0)
+                if(f != QString() && maxRecent > 0)
                 {
-                    recent.removeAll(f);
-                    while(recent.length() > maxRecent)
+                    recent.removeAll(mpv->getPath()+f);
+                    while(recent.length() > maxRecent-1)
                         recent.removeLast();
-                    recent.push_front(f);
+                    recent.push_front(mpv->getPath()+f);
                     emit recentChanged(recent);
-                    ui->actionOpen_Last_File->setEnabled(f != "");
                 }
             });
 
@@ -801,12 +796,6 @@ MainWindow::MainWindow(QWidget *parent):
             [=]
             {
                 mpv->LoadFile(QApplication::clipboard()->text());
-            });
-
-    connect(ui->actionOpen_Last_File, &QAction::triggered,              // File -> Open Last File
-            [=]
-            {
-                mpv->LoadFile(mpv->getLastFile());
             });
 
     connect(ui->actionShow_in_Folder, &QAction::triggered,              // File -> Show in Folder
@@ -1191,6 +1180,15 @@ MainWindow::MainWindow(QWidget *parent):
             });
     addAction(action);
 
+    action = new QAction("Open Last File", this);
+    action->setShortcut(QKeySequence("Ctrl+Z"));
+    connect(action, &QAction::triggered,
+            [=]
+            {
+                if(recent.length() > 0)
+                    mpv->LoadFile(recent.front());
+            });
+    addAction(action);
 
     // add multimedia shortcuts
     ui->action_Play->setShortcuts({ui->action_Play->shortcut(), QKeySequence(Qt::Key_MediaPlay)});
@@ -1269,8 +1267,12 @@ void MainWindow::LoadSettings()
 
             settings->clear(); // clear the settings--the new settings will get written
             settings->setValue("baka-mplayer/version", "2.0.0"); // set to new version
+            settings->setValue("recent/max", 5);
             setScreenshotDialog(true);
-            maxRecent = 5;
+            QString lf = settings->value("mpv/lastFile").toString();
+            if(lf != QString())
+                recent.push_front(lf);
+            emit recentChanged(recent);
             SaveSettings(); // save it now
         }
         else // unrecognized version (newer)
@@ -1307,6 +1309,7 @@ void MainWindow::SaveSettings()
     {
         // recent
         settings->setValue("recent/files", recent);
+        settings->setValue("recent/max", maxRecent);
         // mpv
         mpv->SaveSettings(settings);
         // baka-mplayer
