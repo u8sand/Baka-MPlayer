@@ -75,14 +75,17 @@ private:
     DimDialog       *dimDialog;
 
     // variables
+    QStringList recent;
     QString onTop;
-    int autoFit;
+    int autoFit,
+        maxRecent;
     bool hidePopup,
          remaining,
          screenshotDialog,
          debug;
 
 public slots:
+    void setRecent(QStringList s)    { recent = s; emit recentChanged(recent); }
     void setOnTop(QString s)         { emit onTopChanged(onTop = s); }
     void setAutoFit(int b)           { emit autoFitChanged(autoFit = b); }
     void setHidePopup(bool b)        { emit hidePopupChanged(hidePopup = b); }
@@ -91,6 +94,7 @@ public slots:
     void setDebug(bool b)            { emit debugChanged(debug = b); }
 
 signals:
+    void recentChanged(QStringList&);
     void onTopChanged(QString);
     void autoFitChanged(int);
     void hidePopupChanged(bool);

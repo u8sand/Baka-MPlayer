@@ -82,6 +82,23 @@ MainWindow::MainWindow(QWidget *parent):
     // setup signals & slots
 
     // mainwindow
+    connect(this, &MainWindow::recentChanged,
+            [=](QStringList &r)
+            {
+                QAction *action;
+                ui->menu_Recently_Opened->clear();
+                for(auto &f : r)
+                {
+                    QFileInfo fi(f);
+                    action = ui->menu_Recently_Opened->addAction(fi.baseName());
+                    connect(action, &QAction::triggered,
+                            [=]
+                            {
+                                mpv->LoadFile(f);
+                            });
+                }
+            });
+
     connect(this, &MainWindow::onTopChanged,
             [=](QString onTop)
             {
@@ -427,7 +444,15 @@ MainWindow::MainWindow(QWidget *parent):
     connect(mpv, &MpvHandler::lastFileChanged,
             [=](QString f)
             {
-                ui->actionOpen_Last_File->setEnabled(f != "");
+                if(maxRecent > 0)
+                {
+                    recent.removeAll(f);
+                    while(recent.length() > maxRecent)
+                        recent.removeLast();
+                    recent.push_front(f);
+                    emit recentChanged(recent);
+                    ui->actionOpen_Last_File->setEnabled(f != "");
+                }
             });
 
     connect(mpv, &MpvHandler::timeChanged,
@@ -1220,6 +1245,8 @@ void MainWindow::LoadSettings()
             ui->hideFilesButton->setChecked(!settings->value("baka-mplayer/showAll", true).toBool());
             setScreenshotDialog(settings->value("baka-mplayer/screenshotDialog", true).toBool());
             mpv->LoadSettings(settings, version);
+            setRecent(settings->value("recent/files").toStringList());
+            maxRecent = settings->value("recent/max", 5).toInt();
         }
         else if(version == "1.9.9") // old version
         {
@@ -1242,19 +1269,8 @@ void MainWindow::LoadSettings()
 
             settings->clear(); // clear the settings--the new settings will get written
             settings->setValue("baka-mplayer/version", "2.0.0"); // set to new version
-            if(mpv->getSpeed() != 1)
-                settings->setValue("mpv/speed", mpv->getSpeed());
-            QString dir = settings->value("mpv/screenshotDir", "").toString(),
-                    temp = settings->value("mpv/screenshotTemplate", "").toString();
-            if(dir != "" && temp != "")
-                settings->setValue("mpv/screenshot-template", (dir+"/"+temp));
-            else if(dir != "")
-                settings->setValue("mpv/screenshot-template", (dir+"/screenshot%#04n"));
-            else if(temp != "")
-                settings->setValue("mpv/screenshot-template", temp);
             setScreenshotDialog(true);
-            if(mpv->getScreenshotFormat() != "")
-                mpv->getScreenshotFormat();
+            maxRecent = 5;
             SaveSettings(); // save it now
         }
         else // unrecognized version (newer)
@@ -1274,6 +1290,8 @@ void MainWindow::LoadSettings()
             ui->hideFilesButton->setChecked(!settings->value("baka-mplayer/showAll", true).toBool());
             setScreenshotDialog(settings->value("baka-mplayer/screenshotDialog", true).toBool());
             mpv->LoadSettings(settings, version);
+            setRecent(settings->value("recent/files").toStringList());
+            maxRecent = settings->value("recent/max", 5).toInt();
 
             // disable settings manipulation
             delete settings;
@@ -1287,6 +1305,8 @@ void MainWindow::SaveSettings()
 {
     if(settings)
     {
+        // recent
+        settings->setValue("recent/files", recent);
         // mpv
         mpv->SaveSettings(settings);
         // baka-mplayer
