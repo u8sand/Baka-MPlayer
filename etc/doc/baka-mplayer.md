@@ -26,11 +26,7 @@ Clicking the Index allows you to type a specific index to play--this is particul
 Screenshots are taken through mpv. The template specified is passed into mpv as screenshot-template; see mpv's manual for more details on valid screenshot-template. Specified directories are prepended to the screenshot-template. If the screenshot dialog is hidden by unchecking the `Always show this dialog` option, the dialog can be restored by setting `baka-mplayer/screenshotDialog` to true in the settings file.
 
 ### Recent Files
-
-The last file viewed is stored as `last-file` in the settings for easy access.
-
-The following is in the scope of the project for the near future.
-*Your recently viewed files are stored in settings for easy access. They will be seen in the settings file at the bottom under `[recent]` line by line as file paths. The program will maintain a `recent-length` length (also in the settings) to those files. (disabling this feature can be done by setting `recent-length` to 0; acquiring the old functionality can be done by setting `recent-length` to 1).*
+Your recently viewed files are stored in settings for easy access. They will be seen in the settings file at the bottom as `recent/files`. To make the recent history bigger or smaller simply set `recent/max` and the list will trim itself accordingly.
 
 ### Special functions
 Some functionality is not entirely explained to the user; this is explained here.
@@ -68,7 +64,6 @@ On Linux, they are saved in the Qt location `~/.config/bakamplayer.ini`.
 	debug=                  # debugging enabled (output box)
 	height=                 # height of the window
 	hidePopup=              # hide tray icon notifications
-	last-file=              # The full path of the last file opened
 	onTop=                  # on top setting (always, never, or playing)
 	remaining=              # display remaining time or duration time label
 	screenshotDialog=       # always show the screenshot dialog when taking screenshots
@@ -84,5 +79,9 @@ On Linux, they are saved in the Qt location `~/.config/bakamplayer.ini`.
 	af=                     # audio filters
 	volume=                 # volume
 	                        # ...
+	                        
+	[recent]                # recent file history
+	files=                  # the files
+	max=                    # the maximum files saved in recent
 
 Note that for mpv specific options you can use mpv's options. See mpv's manual for valid options.
