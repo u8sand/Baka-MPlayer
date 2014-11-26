@@ -14,12 +14,21 @@ fi
 
 # add built mxe directory to the path
 root=$(pwd)
-export PATH=$root/mxe.$arch/usr/bin/:$PATH
 
 # get mpv/waf
 git clone https://github.com/mpv-player/mpv.git mpv.$arch
 cd mpv.$arch
 ./bootstrap.py
+
+# setup mxe environment
+export PATH=$mxeroot/usr/bin:$PATH
+export PKG_CONFIG_PATH=$mreroot/usr/$arch-w64-mingw32.static/lib/pkgconfig
+unset `env | \
+    grep -vi '^EDITOR=\|^HOME=\|^LANG=\|MXE\|^PATH=' | \
+    grep -vi 'PKG_CONFIG\|PROXY\|^PS1=\|^TERM=' | \
+    cut -d '=' -f1 | tr '\n' ' '`
+
+# build mpv
 DEST_OS=win32 TARGET=$arch-w64-mingw32.static ./waf configure --enable-libmpv-static --enable-static-build --disable-client-api-examples
 ./waf build
 
