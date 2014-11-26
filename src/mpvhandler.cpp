@@ -129,7 +129,7 @@ void MpvHandler::LoadSettings(QSettings *settings, QString version)
 {
     if(settings)
     {
-        if(version == "2.0.0")
+        if(version == "2.0.1" || version == "2.0.0")
         {
             Debug(settings->value("baka-mplayer/debug", false).toBool());
 
@@ -167,11 +167,14 @@ void MpvHandler::LoadSettings(QSettings *settings, QString version)
         }
         else if(version == "1.9.9")
         {
-            ScreenshotFormat(settings->value("mpv/screenshotFormat", "jpg").toString());
-            ScreenshotDirectory(settings->value("mpv/screenshotDir", ".").toString());
-            ScreenshotTemplate(settings->value("mpv/screenshotTemplate", "screenshot%#04n").toString());
-            Speed(settings->value("mpv/speed", 1.0).toDouble());
-            Volume(settings->value("mpv/volume", 100).toInt());
+            settings->beginGroup("mpv");
+            ScreenshotFormat(settings->value("screenshotFormat", "jpg").toString());
+            ScreenshotDirectory(settings->value("screenshotDir", ".").toString());
+            ScreenshotTemplate(settings->value("screenshotTemplate", "screenshot%#04n").toString());
+            Speed(settings->value("speed", 1.0).toDouble());
+            Volume(settings->value("volume", 100).toInt());
+            settings->endGroup();
+
             Debug(settings->value("common/debug", false).toBool());
         }
 

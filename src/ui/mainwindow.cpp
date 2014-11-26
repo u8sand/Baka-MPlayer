@@ -85,12 +85,21 @@ MainWindow::MainWindow(QWidget *parent):
     connect(this, &MainWindow::recentChanged,
             [=](QStringList &r)
             {
-                QAction *action;
                 ui->menu_Recently_Opened->clear();
+                QAction *action;
+                int n = 1,
+                    N = r.length();
+                bool last = false;
                 for(auto &f : r)
                 {
-                    QFileInfo fi(f);
-                    action = ui->menu_Recently_Opened->addAction(fi.baseName());
+                    action = ui->menu_Recently_Opened->addAction(FormatNumberWithAmpersand(n++, N)+
+                                                                 ". "+
+                                                                 ShortenPathToParent(f).replace("&","&&"));
+                    if(!last && f != mpv->getPath()+mpv->getFile())
+                    {
+                        action->setShortcut(QKeySequence("Ctrl+Z"));
+                        last = true;
+                    }
                     connect(action, &QAction::triggered,
                             [=]
                             {
@@ -208,7 +217,7 @@ MainWindow::MainWindow(QWidget *parent):
             {
                 if(track.type == "sub")
                 {
-                    action = ui->menuSubtitle_Track->addAction(QString::number(track.id)+": "+track.title+" ("+track.lang+")");
+                    action = ui->menuSubtitle_Track->addAction(QString::number(track.id)+": "+QString(track.title+" ("+track.lang+")").replace("&","&&"));
                     connect(action, &QAction::triggered,
                             [=]
                             {
@@ -232,7 +241,7 @@ MainWindow::MainWindow(QWidget *parent):
                 }
                 else if(track.type == "audio")
                 {
-                    action = ui->menuAudio_Tracks->addAction(QString::number(track.id)+": "+track.title+" ("+track.lang+")");
+                    action = ui->menuAudio_Tracks->addAction(QString::number(track.id)+": "+QString(track.title+" ("+track.lang+")").replace("&","&&"));
                     connect(action, &QAction::triggered,
                             [=]
                             {
@@ -323,7 +332,7 @@ MainWindow::MainWindow(QWidget *parent):
             ui->menu_Chapters->clear();
             for(auto &ch : chapters)
             {
-                action = ui->menu_Chapters->addAction(FormatNumber(n, N)+
+                action = ui->menu_Chapters->addAction(FormatNumberWithAmpersand(n, N)+
                                                       ": " +
                                                       ch.title,
                                                       NULL,
@@ -1180,16 +1189,6 @@ MainWindow::MainWindow(QWidget *parent):
             });
     addAction(action);
 
-    action = new QAction("Open Last File", this);
-    action->setShortcut(QKeySequence("Ctrl+Z"));
-    connect(action, &QAction::triggered,
-            [=]
-            {
-                if(recent.length() > 0)
-                    mpv->LoadFile(recent.front());
-            });
-    addAction(action);
-
     // add multimedia shortcuts
     ui->action_Play->setShortcuts({ui->action_Play->shortcut(), QKeySequence(Qt::Key_MediaPlay)});
     ui->action_Stop->setShortcuts({ui->action_Stop->shortcut(), QKeySequence(Qt::Key_MediaStop)});
@@ -1224,81 +1223,109 @@ void MainWindow::LoadSettings()
     {
         QString version;
         if(settings->allKeys().length() == 0) // empty settings
-        {
-            version = "2.0.0"; // current version
-            settings->setValue("baka-mplayer/version", "2.0.0");
-        }
+            version = "2.0.1"; // current version
         else
             version = settings->value("baka-mplayer/version", "1.9.9").toString(); // defaults to the first version without version info in settings
 
-        if(version == "2.0.0") // current version
+        if(version == "2.0.1") // current version
         {
-            setOnTop(settings->value("baka-mplayer/onTop", "never").toString());
-            setAutoFit(settings->value("baka-mplayer/autoFit", 100).toInt());
-            sysTrayIcon->setVisible(settings->value("baka-mplayer/trayIcon", false).toBool());
-            setHidePopup(settings->value("baka-mplayer/hidePopup", false).toBool());
-            setRemaining(settings->value("baka-mplayer/remaining", true).toBool());
-            ui->splitter->setNormalPosition(settings->value("baka-mplayer/splitter", ui->splitter->max()*1.0/8).toInt());
-            setDebug(settings->value("baka-mplayer/debug", false).toBool());
-            ui->hideFilesButton->setChecked(!settings->value("baka-mplayer/showAll", true).toBool());
-            setScreenshotDialog(settings->value("baka-mplayer/screenshotDialog", true).toBool());
+            settings->beginGroup("baka-mplayer");
+            setOnTop(settings->value("onTop", "never").toString());
+            setAutoFit(settings->value("autoFit", 100).toInt());
+            sysTrayIcon->setVisible(settings->value("trayIcon", false).toBool());
+            setHidePopup(settings->value("hidePopup", false).toBool());
+            setRemaining(settings->value("remaining", true).toBool());
+            ui->splitter->setNormalPosition(settings->value("splitter", ui->splitter->max()*1.0/8).toInt());
+            setDebug(settings->value("debug", false).toBool());
+            ui->hideFilesButton->setChecked(!settings->value("showAll", true).toBool());
+            setScreenshotDialog(settings->value("screenshotDialog", true).toBool());
+            recent = settings->value("recent").toStringList();
+            emit recentChanged(recent);
+            maxRecent = settings->value("maxRecent", 5).toInt();
+            settings->endGroup();
+
             mpv->LoadSettings(settings, version);
-            setRecent(settings->value("recent/files").toStringList());
-            maxRecent = settings->value("recent/max", 5).toInt();
         }
-        else if(version == "1.9.9") // old version
+        else if(version == "2.0.0")
         {
-            // baka-mplayer
-            setGeometry(QStyle::alignedRect(Qt::LeftToRight,
-                                            Qt::AlignCenter,
-                                            QSize(settings->value("window/width", 600).toInt(),
-                                                  settings->value("window/height", 430).toInt()),
-                                            qApp->desktop()->availableGeometry()));
-            setOnTop(settings->value("window/onTop", "never").toString());
-            setAutoFit(settings->value("window/autoFit", 100).toInt());
-            sysTrayIcon->setVisible(settings->value("window/trayIcon", false).toBool());
-            setHidePopup(settings->value("window/hidePopup", false).toBool());
-            setRemaining(settings->value("window/remaining", true).toBool());
-            ui->splitter->setNormalPosition(settings->value("window/splitter", ui->splitter->max()*1.0/8).toInt());
-            ui->hideFilesButton->setChecked(!settings->value("window/showAll", true).toBool());
-            setDebug(settings->value("common/debug", false).toBool());
-            // mpv
+            settings->beginGroup("baka-mplayer");
+            setOnTop(settings->value("onTop", "never").toString());
+            setAutoFit(settings->value("autoFit", 100).toInt());
+            sysTrayIcon->setVisible(settings->value("trayIcon", false).toBool());
+            setHidePopup(settings->value("hidePopup", false).toBool());
+            setRemaining(settings->value("remaining", true).toBool());
+            ui->splitter->setNormalPosition(settings->value("splitter", ui->splitter->max()*1.0/8).toInt());
+            setDebug(settings->value("debug", false).toBool());
+            ui->hideFilesButton->setChecked(!settings->value("showAll", true).toBool());
+            setScreenshotDialog(settings->value("screenshotDialog", true).toBool());
+            maxRecent = 5;
+            QString lf = settings->value("lastFile").toString();
+            if(lf != QString())
+                recent.push_front(lf);
+            emit recentChanged(recent);
+            settings->endGroup();
+
             mpv->LoadSettings(settings, version);
 
-            settings->clear(); // clear the settings--the new settings will get written
-            settings->setValue("baka-mplayer/version", "2.0.0"); // set to new version
-            settings->setValue("recent/max", 5);
+            settings->clear();
+            SaveSettings();
+        }
+        else if(version == "1.9.9")
+        {
+            settings->beginGroup("window");
+            setGeometry(QStyle::alignedRect(Qt::LeftToRight,
+                                            Qt::AlignCenter,
+                                            QSize(settings->value("width", 600).toInt(),
+                                                  settings->value("height", 430).toInt()),
+                                            qApp->desktop()->availableGeometry()));
+            setOnTop(settings->value("onTop", "never").toString());
+            setAutoFit(settings->value("autoFit", 100).toInt());
+            sysTrayIcon->setVisible(settings->value("trayIcon", false).toBool());
+            setHidePopup(settings->value("hidePopup", false).toBool());
+            setRemaining(settings->value("remaining", true).toBool());
+            ui->splitter->setNormalPosition(settings->value("splitter", ui->splitter->max()*1.0/8).toInt());
+            ui->hideFilesButton->setChecked(!settings->value("showAll", true).toBool());
+            settings->endGroup();
+            setDebug(settings->value("common/debug", false).toBool());
+            maxRecent = 5;
             setScreenshotDialog(true);
             QString lf = settings->value("mpv/lastFile").toString();
             if(lf != QString())
                 recent.push_front(lf);
             emit recentChanged(recent);
-            SaveSettings(); // save it now
+
+            mpv->LoadSettings(settings, version);
+
+            settings->clear();
+            SaveSettings();
         }
         else // unrecognized version (newer)
         {
-            QMessageBox::information(this, "Settings version not recognized", "The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.");
+            version = "2.0.1"; // load what we can assuming the settings are like the current version
 
-            // load what we can assuming the settings are like the current version
-            version = "2.0.0";
+            settings->beginGroup("baka-mplayer");
+            setOnTop(settings->value("onTop", "never").toString());
+            setAutoFit(settings->value("autoFit", 100).toInt());
+            sysTrayIcon->setVisible(settings->value("trayIcon", false).toBool());
+            setHidePopup(settings->value("hidePopup", false).toBool());
+            setRemaining(settings->value("remaining", true).toBool());
+            ui->splitter->setNormalPosition(settings->value("splitter", ui->splitter->max()*1.0/8).toInt());
+            setDebug(settings->value("debug", false).toBool());
+            ui->hideFilesButton->setChecked(!settings->value("showAll", true).toBool());
+            setScreenshotDialog(settings->value("screenshotDialog", true).toBool());
+            recent = settings->value("recent").toStringList();
+            emit recentChanged(recent);
+            maxRecent = settings->value("maxRecent", 5).toInt();
+            settings->endGroup();
 
-            setOnTop(settings->value("baka-mplayer/onTop", "never").toString());
-            setAutoFit(settings->value("baka-mplayer/autoFit", 100).toInt());
-            sysTrayIcon->setVisible(settings->value("baka-mplayer/trayIcon", false).toBool());
-            setHidePopup(settings->value("baka-mplayer/hidePopup", false).toBool());
-            setRemaining(settings->value("baka-mplayer/remaining", true).toBool());
-            ui->splitter->setNormalPosition(settings->value("baka-mplayer/splitter", ui->splitter->max()*1.0/8).toInt());
-            setDebug(settings->value("baka-mplayer/debug", false).toBool());
-            ui->hideFilesButton->setChecked(!settings->value("baka-mplayer/showAll", true).toBool());
-            setScreenshotDialog(settings->value("baka-mplayer/screenshotDialog", true).toBool());
             mpv->LoadSettings(settings, version);
-            setRecent(settings->value("recent/files").toStringList());
-            maxRecent = settings->value("recent/max", 5).toInt();
 
             // disable settings manipulation
             delete settings;
             settings = 0;
             ui->action_Preferences->setEnabled(false);
+
+            QMessageBox::information(this, "Settings version not recognized", "The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.\nSome features may not work and changed settings will not be saved.");
         }
     }
 }
@@ -1307,26 +1334,28 @@ void MainWindow::SaveSettings()
 {
     if(settings)
     {
-        // recent
-        settings->setValue("recent/files", recent);
-        settings->setValue("recent/max", maxRecent);
         // mpv
         mpv->SaveSettings(settings);
-        // baka-mplayer
-        settings->setValue("baka-mplayer/width", normalGeometry().width());
-        settings->setValue("baka-mplayer/height", normalGeometry().height());
-        settings->setValue("baka-mplayer/onTop", onTop);
-        settings->setValue("baka-mplayer/autoFit", autoFit);
-        settings->setValue("baka-mplayer/trayIcon", sysTrayIcon->isVisible());
-        settings->setValue("baka-mplayer/hidePopup", hidePopup);
-        settings->setValue("baka-mplayer/remaining", remaining);
-        settings->setValue("baka-mplayer/splitter", (ui->splitter->position() == 0 ||
-                                               ui->splitter->position() == ui->splitter->max()) ?
-                                                ui->splitter->normalPosition() :
-                                                ui->splitter->position());
-        settings->setValue("baka-mplayer/showAll", !ui->hideFilesButton->isChecked());
-        settings->setValue("baka-mplayer/screenshotDialog", screenshotDialog);
-        settings->setValue("baka-mplayer/debug", debug);
+
+        settings->beginGroup("baka-mplayer");
+        settings->setValue("width", normalGeometry().width());
+        settings->setValue("height", normalGeometry().height());
+        settings->setValue("onTop", onTop);
+        settings->setValue("autoFit", autoFit);
+        settings->setValue("trayIcon", sysTrayIcon->isVisible());
+        settings->setValue("hidePopup", hidePopup);
+        settings->setValue("remaining", remaining);
+        settings->setValue("splitter", (ui->splitter->position() == 0 ||
+                                        ui->splitter->position() == ui->splitter->max()) ?
+                                        ui->splitter->normalPosition() :
+                                        ui->splitter->position());
+        settings->setValue("showAll", !ui->hideFilesButton->isChecked());
+        settings->setValue("screenshotDialog", screenshotDialog);
+        settings->setValue("debug", debug);
+        settings->setValue("recent", recent);
+        settings->setValue("maxRecent", maxRecent);
+        settings->setValue("version", "2.0.1");
+        settings->endGroup();
     }
 }
 

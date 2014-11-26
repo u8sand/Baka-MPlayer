@@ -11,19 +11,20 @@ PreferencesDialog::PreferencesDialog(QSettings *_settings, QWidget *parent) :
 {
     ui->setupUi(this);
 
-    // populate existing preferences
-    QString ontop = settings->value("baka-mplayer/onTop").toString();
+    settings->beginGroup("baka-mplayer");
+    QString ontop = settings->value("onTop").toString();
     if(ontop == "never")
         ui->neverRadioButton->setChecked(true);
     else if(ontop == "playing")
         ui->playingRadioButton->setChecked(true);
     else if(ontop == "always")
         ui->alwaysRadioButton->setChecked(true);
-    ui->groupBox_2->setChecked(settings->value("baka-mplayer/trayIcon").toBool());
-    ui->hidePopupCheckBox->setChecked(settings->value("baka-mplayer/hidePopup").toBool());
-    int autofit = settings->value("baka-mplayer/autoFit").toInt();
+    ui->groupBox_2->setChecked(settings->value("trayIcon").toBool());
+    ui->hidePopupCheckBox->setChecked(settings->value("hidePopup").toBool());
+    int autofit = settings->value("autoFit").toInt();
     ui->autoFitCheckBox->setChecked((bool)autofit);
     ui->comboBox->setCurrentText(QString::number(autofit)+"%");
+    settings->endGroup();
     ui->formatComboBox->setCurrentText(settings->value("mpv/screenshot-format").toString());
 
     QString screenshotTemplate = settings->value("mpv/screenshot-template", "./screenshot%#04n").toString();
@@ -59,19 +60,21 @@ PreferencesDialog::PreferencesDialog(QSettings *_settings, QWidget *parent) :
 
 PreferencesDialog::~PreferencesDialog()
 {
+    settings->beginGroup("baka-mplayer");
     if(ui->neverRadioButton->isChecked())
-        settings->setValue("baka-mplayer/onTop", "never");
+        settings->setValue("onTop", "never");
     else if(ui->playingRadioButton->isChecked())
-        settings->setValue("baka-mplayer/onTop", "playing");
+        settings->setValue("onTop", "playing");
     else if(ui->alwaysRadioButton->isChecked())
-        settings->setValue("baka-mplayer/onTop", "always");
-    settings->setValue("baka-mplayer/trayIcon", ui->groupBox_2->isChecked());
-    settings->setValue("baka-mplayer/hidePopup", ui->hidePopupCheckBox->isChecked());
-    settings->setValue("baka-mplayer/autoFit", ui->comboBox->currentText().midRef(1).toInt());
+        settings->setValue("onTop", "always");
+    settings->setValue("trayIcon", ui->groupBox_2->isChecked());
+    settings->setValue("hidePopup", ui->hidePopupCheckBox->isChecked());
+    settings->setValue("autoFit", ui->comboBox->currentText().midRef(1).toInt());
     if(ui->autoFitCheckBox->isChecked())
-        settings->setValue("baka-mplayer/autoFit", ui->comboBox->currentText().midRef(1).toInt());
+        settings->setValue("autoFit", ui->comboBox->currentText().midRef(1).toInt());
     else
-        settings->setValue("baka-mplayer/autoFit", 0);
+        settings->setValue("autoFit", 0);
+    settings->endGroup();
     settings->setValue("mpv/screenshot-format", ui->formatComboBox->currentText());
     settings->setValue("mpv/screenshot-template", screenshotDir+"/"+ui->templateLineEdit->text());
 
