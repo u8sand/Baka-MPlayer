@@ -82,32 +82,6 @@ MainWindow::MainWindow(QWidget *parent):
     // setup signals & slots
 
     // mainwindow
-    connect(this, &MainWindow::recentChanged,
-            [=](QStringList &r)
-            {
-                ui->menu_Recently_Opened->clear();
-                QAction *action;
-                int n = 1,
-                    N = r.length();
-                bool last = false;
-                for(auto &f : r)
-                {
-                    action = ui->menu_Recently_Opened->addAction(FormatNumberWithAmpersand(n++, N)+
-                                                                 ". "+
-                                                                 ShortenPathToParent(f).replace("&","&&"));
-                    if(!last && f != mpv->getPath()+mpv->getFile())
-                    {
-                        action->setShortcut(QKeySequence("Ctrl+Z"));
-                        last = true;
-                    }
-                    connect(action, &QAction::triggered,
-                            [=]
-                            {
-                                mpv->LoadFile(f);
-                            });
-                }
-            });
-
     connect(this, &MainWindow::onTopChanged,
             [=](QString onTop)
             {
@@ -449,13 +423,17 @@ MainWindow::MainWindow(QWidget *parent):
                     firstItem = false;
                 }
 
-                if(f != QString() && maxRecent > 0)
+                QString file = mpv->getPath()+f;
+                if(init &&
+                   recent.front() != file &&
+                   f != QString() &&
+                   maxRecent > 0)
                 {
-                    recent.removeAll(mpv->getPath()+f);
+                    UpdateRecentFiles(); // update after initialization and only if the current file is different from the first recent
+                    recent.removeAll(file);
                     while(recent.length() > maxRecent-1)
                         recent.removeLast();
-                    recent.push_front(mpv->getPath()+f);
-                    emit recentChanged(recent);
+                    recent.push_front(file);
                 }
             });
 
@@ -1240,9 +1218,9 @@ void MainWindow::LoadSettings()
             ui->hideFilesButton->setChecked(!settings->value("showAll", true).toBool());
             setScreenshotDialog(settings->value("screenshotDialog", true).toBool());
             recent = settings->value("recent").toStringList();
-            emit recentChanged(recent);
             maxRecent = settings->value("maxRecent", 5).toInt();
             settings->endGroup();
+            UpdateRecentFiles();
 
             mpv->LoadSettings(settings, version);
         }
@@ -1262,8 +1240,8 @@ void MainWindow::LoadSettings()
             QString lf = settings->value("lastFile").toString();
             if(lf != QString())
                 recent.push_front(lf);
-            emit recentChanged(recent);
             settings->endGroup();
+            UpdateRecentFiles();
 
             mpv->LoadSettings(settings, version);
 
@@ -1292,7 +1270,7 @@ void MainWindow::LoadSettings()
             QString lf = settings->value("mpv/lastFile").toString();
             if(lf != QString())
                 recent.push_front(lf);
-            emit recentChanged(recent);
+            UpdateRecentFiles();
 
             mpv->LoadSettings(settings, version);
 
@@ -1314,9 +1292,9 @@ void MainWindow::LoadSettings()
             ui->hideFilesButton->setChecked(!settings->value("showAll", true).toBool());
             setScreenshotDialog(settings->value("screenshotDialog", true).toBool());
             recent = settings->value("recent").toStringList();
-            emit recentChanged(recent);
             maxRecent = settings->value("maxRecent", 5).toInt();
             settings->endGroup();
+            UpdateRecentFiles();
 
             mpv->LoadSettings(settings, version);
 
@@ -1737,4 +1715,25 @@ void MainWindow::ShowScreenshotMessage(bool subs)
     if(i != -1)
         dir.remove(0, i+1);
     mpv->ShowText("Saved to \""+dir+"\", "+(subs?"with":"without")+" subs");
+}
+
+void MainWindow::UpdateRecentFiles()
+{
+    ui->menu_Recently_Opened->clear();
+    QAction *action;
+    int n = 1,
+        N = recent.length();
+    for(auto &f : recent)
+    {
+        action = ui->menu_Recently_Opened->addAction(FormatNumberWithAmpersand(n, N)+
+                                                     ". "+
+                                                     ShortenPathToParent(f).replace("&","&&"));
+        if(n++ == 1)
+            action->setShortcut(QKeySequence("Ctrl+Z"));
+        connect(action, &QAction::triggered,
+                [=]
+                {
+                    mpv->LoadFile(f);
+                });
+    }
 }
