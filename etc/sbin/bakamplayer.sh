@@ -16,9 +16,6 @@ mxeroot=$(pwd)/mxe.$arch
 # get bakamplayer
 git clone https://github.com/u8sand/Baka-MPlayer.git Baka-MPlayer.$arch
 cd Baka-MPlayer.$arch
-mkdir -p build
-cd build
-# generate toolchain cmake
-cmake -GNinja -DCMAKE_TOOLCHAIN_FILE=$mxeroot/usr/$arch-w64-mingw32.static/share/cmake/mxe-conf.cmake ..
+$mxeroot/usr/$arch-w64-mingw32.static/qt5/bin/qmake src/Baka-MPlayer.pro
 make
 cd ..

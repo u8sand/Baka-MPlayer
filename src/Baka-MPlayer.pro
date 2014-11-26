@@ -8,7 +8,7 @@ QT       += core gui network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = Baka-MPlayer
+TARGET = baka-mplayer
 DEFINES += 'BAKA_MPLAYER_VERSION=\\"2.0.0\\"' \
            'SETTINGS_FILE=\\"bakamplayer\\"'
 

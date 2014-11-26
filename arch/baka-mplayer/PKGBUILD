@@ -1,0 +1,35 @@
+# Maintainer: u8sand <u8sand@gmail.com>
+pkgname=baka-mplayer
+pkgver=2.0.0
+pkgrel=1
+pkgdesc="Baka MPlayer is a free and open source, cross-platform, libmpv based multimedia player."
+url="http://bakamplayer.u8sand.net/"
+arch=('x86_64' 'i686')
+license=('GPLv2')
+depends=('mpv' 'qt5-base' 'qt5-declarative' 'qt5-svg' 'qt5-x11extras')
+makedepends=('git' 'make' 'cmake')
+conflicts=('bakamplayer' 'baka-mplayer')
+provides=('baka-mplayer')
+source=("$pkgname"::'git://github.com/u8sand/Baka-MPlayer.git#branch=release')
+md5sums=('SKIP')
+
+pkgver() {
+	cd "$srcdir/$pkgname"
+	echo $(git describe --tag | sed 's#-#_#g;s#v##')
+}
+
+build() {
+  cd "$srcdir/$pkgname"
+	./make.sh
+	gzip -c etc/doc/baka-mplayer.man > etc/doc/baka-mplayer.1.gz
+}
+
+package() {
+  cd "$srcdir/$pkgname"
+	install -D "build/baka-mplayer" "$pkgdir/usr/bin/baka-mplayer"
+	install -D "etc/doc/baka-mplayer.md" "$pkgdir/usr/share/doc/baka-mplayer/baka-mplayer.md"
+	install -D "etc/doc/baka-mplayer.1.gz" "$pkgdir/usr/share/man/man1/baka-mplayer.1.gz"
+	install -D "LICENSE" "$pkgdir/usr/share/licenses/baka-mplayer/LICENSE"
+	install -D "etc/logo/baka-mplayer.svg" "$pkgdir/usr/share/pixmaps/baka-mplayer.svg"
+	install -D "etc/baka-mplayer.desktop" "$pkgdir/usr/share/applications/baka-mplayer.desktop"
+}
