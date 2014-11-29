@@ -353,7 +353,6 @@ MainWindow::MainWindow(QWidget *parent):
                         ui->playButton->setEnabled(true);
                         ui->playlistButton->setEnabled(true);
                         ui->action_Show_Playlist_2->setEnabled(true);
-//                        ui->splitter->setEnabled(true);
                         init = true;
                     }
                     if(pathChanged && autoFit)
@@ -424,8 +423,7 @@ MainWindow::MainWindow(QWidget *parent):
                 }
 
                 QString file = mpv->getPath()+f;
-                if(init &&
-                   recent.front() != file &&
+                if((recent.isEmpty() || recent.front() != file) &&
                    f != QString() &&
                    maxRecent > 0)
                 {
