@@ -55,7 +55,7 @@ bool MpvHandler::event(QEvent *event)
             if (event->event_id == MPV_EVENT_NONE)
                 break;
             if(event->error < 0)
-                emit errorSignal(mpv_error_string(event->error));
+                emit messageSignal(QString("[mpv]: ")+QString(mpv_error_string(event->error)));
             switch (event->event_id)
             {
             case MPV_EVENT_PROPERTY_CHANGE:
@@ -114,7 +114,7 @@ bool MpvHandler::event(QEvent *event)
                 QCoreApplication::quit();
                 break;
             case MPV_EVENT_LOG_MESSAGE:
-                emit debugSignal(QString(((mpv_event_log_message*)event->data)->text));
+                emit messageSignal("[mpv]: "+QString(((mpv_event_log_message*)event->data)->text));
                 break;
             default: // unhandled events
                 break;
@@ -161,10 +161,16 @@ void MpvHandler::LoadSettings(QSettings *settings, QString version)
                                tmp2;
                     // fix to qsettings reading comma-separation as a list
                     QVariant tmp = settings->value(key);
-                    if(tmp.type() == QVariant::StringList)
-                        tmp2 = tmp.toStringList().join(",").toUtf8();
-                    else
+                    if(tmp.type() == QVariant::String)
                         tmp2 = tmp.toString().toUtf8();
+                    else if(tmp.type() == QVariant::StringList)
+                        tmp2 = tmp.toStringList().join(",").toUtf8();
+                    else if(tmp.type() == QVariant::Int)
+                        tmp2 = QString::number(tmp.toInt()).toUtf8();
+                    else if(tmp.type() == QVariant::Double)
+                        tmp2 = QString::number(tmp.toDouble()).toUtf8();
+                    else
+                        emit messageSignal(QString("[Baka-MPlayer]: Setting type was parsed as ")+QString(tmp.type())+"\n");
 
                     if(tmp2 != QByteArray())
                         mpv_set_option_string(mpv, tmp1.constData(), tmp2.constData());
@@ -699,7 +705,7 @@ void MpvHandler::AsyncCommand(const char *args[])
     if(mpv)
         mpv_command_async(mpv, 0, args);
     else
-        emit errorSignal("mpv was not initialized");
+        emit messageSignal("[mpv]: mpv was not initialized\n");
 }
 
 void MpvHandler::Command(const char *args[])
@@ -707,5 +713,5 @@ void MpvHandler::Command(const char *args[])
     if(mpv)
         mpv_command(mpv, args);
     else
-        emit errorSignal("mpv was not initialized");
+        emit messageSignal("[mpv]: mpv was not initialized\n");
 }

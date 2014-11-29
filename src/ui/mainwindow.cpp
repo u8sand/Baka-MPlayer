@@ -521,16 +521,11 @@ MainWindow::MainWindow(QWidget *parent):
                 ui->actionShow_Subtitles->setChecked(b);
             });
 
-    connect(mpv, &MpvHandler::errorSignal,
-            [=](QString err)
-            {
-                QMessageBox::warning(this, "Mpv Error", err);
-            });
-
-    connect(mpv, &MpvHandler::debugSignal,
+    connect(mpv, &MpvHandler::messageSignal,
             [=](QString msg)
             {
-                ui->outputTextEdit->appendPlainText(msg);
+                ui->outputTextEdit->moveCursor(QTextCursor::End);
+                ui->outputTextEdit->insertPlainText(msg);
             });
 
     // update manager

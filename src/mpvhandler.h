@@ -138,8 +138,7 @@ signals:
     void playlistVisibleChanged(bool);
     void subtitleVisibilityChanged(bool);
 
-    void errorSignal(QString e);
-    void debugSignal(QString d);
+    void messageSignal(QString m);
 
 private:
     mpv_handle *mpv;
