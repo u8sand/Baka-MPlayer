@@ -68,13 +68,25 @@ QMenu::separator {
 
 QSplitter::handle,
 #mpvFrame,
-#outputTextEdit {
+#outputTextEdit,
+#inputLineEdit {
 	background: black;
 }
 
 #outputTextEdit {
 	font: 12px &quot;Courier New&quot;, monospace;
 	border-top: 2px solid #1A1A1A;
+}
+
+#inputLineEdit {
+	font: 12px &quot;Courier New&quot;,monospace;
+	padding: 2px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #1A1A1A black;
+}
+#inputLineEdit:focus {
+	border-color: #008098;
 }
 
 /* Playlist */
@@ -150,7 +162,7 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout">
+   <layout class="QVBoxLayout" name="verticalLayout_2">
     <property name="spacing">
      <number>0</number>
     </property>
@@ -167,18 +179,18 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
      <number>0</number>
     </property>
     <item>
-     <widget class="CustomSplitter" name="splitter">
+     <widget class="QSplitter" name="splitter">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
-      <widget class="QSplitter" name="videoSplitter">
+      <widget class="CustomSplitter" name="videoSplitter">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
          <horstretch>1</horstretch>
-         <verstretch>0</verstretch>
+         <verstretch>1</verstretch>
         </sizepolicy>
        </property>
        <property name="orientation">
@@ -198,22 +210,59 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
          <enum>Qt::NoFocus</enum>
         </property>
        </widget>
-       <widget class="QPlainTextEdit" name="outputTextEdit">
-        <property name="contextMenuPolicy">
-         <enum>Qt::PreventContextMenu</enum>
-        </property>
-        <property name="acceptDrops">
-         <bool>false</bool>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::NoFrame</enum>
-        </property>
-        <property name="undoRedoEnabled">
-         <bool>false</bool>
-        </property>
-        <property name="readOnly">
-         <bool>true</bool>
-        </property>
+       <widget class="QWidget" name="verticalWidget" native="true">
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QPlainTextEdit" name="outputTextEdit">
+           <property name="contextMenuPolicy">
+            <enum>Qt::PreventContextMenu</enum>
+           </property>
+           <property name="acceptDrops">
+            <bool>false</bool>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <property name="undoRedoEnabled">
+            <bool>false</bool>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="inputLineEdit">
+           <property name="mouseTracking">
+            <bool>false</bool>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::ClickFocus</enum>
+           </property>
+           <property name="placeholderText">
+            <string>&gt;</string>
+           </property>
+           <property name="clearButtonEnabled">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
       </widget>
       <widget class="QWidget" name="playlistLayoutWidget" native="true">
@@ -907,8 +956,10 @@ QSlider::handle:horizontal {
     </item>
    </layout>
    <zorder>playbackLayoutWidget</zorder>
-   <zorder>splitter</zorder>
    <zorder>seekBar</zorder>
+   <zorder>mpvFrame</zorder>
+   <zorder>playlistLayoutWidget</zorder>
+   <zorder>verticalLayoutWidget</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -916,7 +967,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>580</width>
-     <height>26</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
