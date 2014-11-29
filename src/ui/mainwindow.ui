@@ -179,18 +179,18 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
      <number>0</number>
     </property>
     <item>
-     <widget class="QSplitter" name="splitter">
+     <widget class="CustomSplitter" name="splitter">
       <property name="enabled">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
-      <widget class="CustomSplitter" name="videoSplitter">
+      <widget class="QSplitter" name="videoSplitter">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
          <horstretch>1</horstretch>
-         <verstretch>1</verstretch>
+         <verstretch>0</verstretch>
         </sizepolicy>
        </property>
        <property name="orientation">
@@ -955,11 +955,9 @@ QSlider::handle:horizontal {
      </widget>
     </item>
    </layout>
+   <zorder>splitter</zorder>
    <zorder>playbackLayoutWidget</zorder>
    <zorder>seekBar</zorder>
-   <zorder>mpvFrame</zorder>
-   <zorder>playlistLayoutWidget</zorder>
-   <zorder>verticalLayoutWidget</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
