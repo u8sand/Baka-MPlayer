@@ -1381,7 +1381,7 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
         }
         else if(event->button() == Qt::RightButton &&
                 mpv->getPlayState() > 0 &&  // if playing
-                ui->mpvFrame->rect().contains(event->globalPos())) // mouse is in the mpvFrame
+                ui->mpvFrame->rect().contains(event->pos())) // mouse is in the mpvFrame
             mpv->PlayPause(ui->playlistWidget->CurrentItem());
     }
     QMainWindow::mousePressEvent(event);
