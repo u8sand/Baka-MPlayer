@@ -180,9 +180,6 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
     </property>
     <item>
      <widget class="CustomSplitter" name="splitter">
-      <property name="enabled">
-       <bool>false</bool>
-      </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
@@ -965,7 +962,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>580</width>
-     <height>23</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">

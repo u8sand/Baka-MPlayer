@@ -120,7 +120,7 @@ MainWindow::MainWindow(QWidget *parent):
             {
                 mpv->Debug(b);
                 ui->actionShow_D_ebug_Output->setChecked(b);
-                ui->outputTextEdit->setVisible(b);
+                ui->verticalWidget->setVisible(b);
             });
 
     connect(autohide, &QTimer::timeout, // cursor autohide
@@ -353,7 +353,7 @@ MainWindow::MainWindow(QWidget *parent):
                         ui->playButton->setEnabled(true);
                         ui->playlistButton->setEnabled(true);
                         ui->action_Show_Playlist_2->setEnabled(true);
-                        ui->splitter->setEnabled(true);
+//                        ui->splitter->setEnabled(true);
                         init = true;
                     }
                     if(pathChanged && autoFit)
