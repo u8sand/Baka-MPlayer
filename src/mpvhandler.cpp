@@ -158,7 +158,14 @@ void MpvHandler::LoadSettings(QSettings *settings, QString version)
                 else
                 {
                     QByteArray tmp1 = key.toUtf8(),
-                               tmp2 = settings->value(key).toString().toUtf8();
+                               tmp2;
+                    // fix to qsettings reading comma-separation as a list
+                    QVariant tmp = settings->value(key);
+                    if(tmp.type() == QVariant::StringList)
+                        tmp2 = tmp.toStringList().join(",").toUtf8();
+                    else
+                        tmp2 = tmp.toString().toUtf8();
+
                     if(tmp2 != QByteArray())
                         mpv_set_option_string(mpv, tmp1.constData(), tmp2.constData());
                 }
@@ -242,9 +249,17 @@ QString MpvHandler::LoadPlaylist(QString f)
         QFileInfo fi(f);
         if(!fi.exists()) // ignore if file doesn't exist
             return QString();
-        setPath(QString(fi.absolutePath()+"/")); // set new path
-        PopulatePlaylist();
-        return fi.fileName();
+        else if(fi.isDir()) // if directory
+        {
+            setPath(QString(fi.absoluteFilePath()+"/")); // set new path
+            return PopulatePlaylist();
+        }
+        else if(fi.isFile()) // if file
+        {
+            setPath(QString(fi.absolutePath()+"/")); // set new path
+            PopulatePlaylist();
+            return fi.fileName();
+        }
     }
     return f;
 }
@@ -653,7 +668,7 @@ void MpvHandler::OpenFile(QString f)
     AsyncCommand(args);
 }
 
-void MpvHandler::PopulatePlaylist()
+QString MpvHandler::PopulatePlaylist()
 {
     if(path != "")
     {
@@ -666,7 +681,11 @@ void MpvHandler::PopulatePlaylist()
         setPlaylist(playlist);
         if(playlist.length() > 1)
             setPlaylistVisible(true);
+        if(playlist.empty())
+            return QString();
+        return playlist.first();
     }
+    return QString();
 }
 
 void MpvHandler::SetProperties()
