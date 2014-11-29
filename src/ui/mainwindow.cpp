@@ -40,7 +40,6 @@ using namespace BakaUtil;
 MainWindow::MainWindow(QWidget *parent):
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-    lastMousePos(QPoint()),
     move(false),
     firstItem(false),
     init(false),
@@ -1374,11 +1373,14 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
         if(event->button() == Qt::LeftButton)
         {
             move = true;
-            lastMousePos = event->pos();
+            origPos = pos();
+            lastMousePos = event->globalPos();
+            moveTimer.start();
+            lastTime = 0;
         }
         else if(event->button() == Qt::RightButton &&
                 mpv->getPlayState() > 0 &&  // if playing
-                ui->mpvFrame->rect().contains(event->pos())) // mouse is in the mpvFrame
+                ui->mpvFrame->rect().contains(event->globalPos())) // mouse is in the mpvFrame
             mpv->PlayPause(ui->playlistWidget->CurrentItem());
     }
     QMainWindow::mousePressEvent(event);
@@ -1386,18 +1388,26 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
 
 void MainWindow::mouseReleaseEvent(QMouseEvent *event)
 {
-    move = false;
+    if(move)
+    {
+        QMainWindow::move(origPos+event->globalPos()-lastMousePos);
+        event->accept();
+        move = false;
+    }
     QMainWindow::mouseReleaseEvent(event);
 }
 
 void MainWindow::mouseMoveEvent(QMouseEvent *event)
 {
     static QRect playbackRect;
+    static int time;
 
-    if(move)
+    if(move &&
+       (time = moveTimer.elapsed())-lastTime > 10)
     {
-        QMainWindow::move(pos()+event->pos()-lastMousePos);
+        QMainWindow::move(origPos+event->globalPos()-lastMousePos);
         event->accept();
+        lastTime = time;
     }
     else if(isFullScreen())
     {

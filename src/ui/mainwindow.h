@@ -11,6 +11,7 @@
 #include <QEvent>
 #include <QPoint>
 #include <QTimer>
+#include <QElapsedTimer>
 
 #include "mpvhandler.h"
 #include "updatemanager.h"
@@ -63,13 +64,16 @@ private:
     MpvHandler      *mpv;
     UpdateManager   *update;
 
-    QPoint          lastMousePos;
+    QPoint          origPos,
+                    lastMousePos;
     bool            move,
                     pathChanged,
                     menuVisible,
                     firstItem,
                     init;
     QTimer          *autohide;
+    QElapsedTimer   moveTimer;
+    int             lastTime;
 
     QSystemTrayIcon *sysTrayIcon;
     QMenu           *trayIconMenu;
