@@ -99,7 +99,7 @@ void PlaylistWidget::Search(QString s)
         item = cItem;
     QStringList newPlaylist;
     for(QStringList::iterator item = playlist.begin(); item != playlist.end(); item++)
-        if(item->contains(s))
+        if(item->contains(s, Qt::CaseInsensitive))
             newPlaylist.append(*item);
     clear();
     addItems(newPlaylist);
