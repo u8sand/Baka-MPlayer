@@ -1386,8 +1386,6 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *event)
 {
     if(moveTimer)
     {
-        QMainWindow::move(origPos+event->globalPos()-lastMousePos);
-        event->accept();
         delete moveTimer;
         moveTimer = nullptr;
     }
