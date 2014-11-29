@@ -40,10 +40,10 @@ using namespace BakaUtil;
 MainWindow::MainWindow(QWidget *parent):
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-    move(false),
     firstItem(false),
     init(false),
-    autohide(new QTimer(this))
+    autohide(new QTimer(this)),
+    moveTimer(nullptr)
 {
     QAction *action;
 
@@ -53,7 +53,7 @@ MainWindow::MainWindow(QWidget *parent):
     if(a && XGetSelectionOwner(QX11Info::display(), a)) // hack for QX11Info::isCompositingManagerRunning()
         dimDialog = new DimDialog(); // dimdialog must be initialized before ui is setup
     else
-        dimDialog = 0;
+        dimDialog = nullptr;
 #else
     dimDialog = new DimDialog(); // dimDialog must be initialized before ui is setup
 #endif
@@ -1189,6 +1189,8 @@ MainWindow::~MainWindow()
     // see: http://qt-project.org/doc/qt-4.8/objecttrees.html
     if(dimDialog)
         delete dimDialog;
+    if(moveTimer)
+        delete moveTimer;
     delete ui;
 }
 
@@ -1370,13 +1372,12 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
 {
     if(!isFullScreen())
     {
-        if(event->button() == Qt::LeftButton)
+        if(event->button() == Qt::LeftButton && !moveTimer)
         {
-            move = true;
+            moveTimer = new QElapsedTimer();
+            moveTimer->start();
             origPos = pos();
             lastMousePos = event->globalPos();
-            moveTimer.start();
-            lastTime = 0;
         }
         else if(event->button() == Qt::RightButton &&
                 mpv->getPlayState() > 0 &&  // if playing
@@ -1388,11 +1389,12 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
 
 void MainWindow::mouseReleaseEvent(QMouseEvent *event)
 {
-    if(move)
+    if(moveTimer)
     {
         QMainWindow::move(origPos+event->globalPos()-lastMousePos);
         event->accept();
-        move = false;
+        delete moveTimer;
+        moveTimer = nullptr;
     }
     QMainWindow::mouseReleaseEvent(event);
 }
@@ -1400,14 +1402,12 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *event)
 void MainWindow::mouseMoveEvent(QMouseEvent *event)
 {
     static QRect playbackRect;
-    static int time;
 
-    if(move &&
-       (time = moveTimer.elapsed())-lastTime > 10)
+    if(moveTimer && moveTimer->elapsed() > 10)
     {
         QMainWindow::move(origPos+event->globalPos()-lastMousePos);
         event->accept();
-        lastTime = time;
+        moveTimer->restart();
     }
     else if(isFullScreen())
     {

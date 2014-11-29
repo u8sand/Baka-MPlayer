@@ -66,14 +66,12 @@ private:
 
     QPoint          origPos,
                     lastMousePos;
-    bool            move,
-                    pathChanged,
+    bool            pathChanged,
                     menuVisible,
                     firstItem,
                     init;
     QTimer          *autohide;
-    QElapsedTimer   moveTimer;
-    int             lastTime;
+    QElapsedTimer   *moveTimer;
 
     QSystemTrayIcon *sysTrayIcon;
     QMenu           *trayIconMenu;
