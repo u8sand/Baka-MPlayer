@@ -51,8 +51,8 @@ SOURCES += main.cpp\
     widgets/dimdialog.cpp \
     widgets/indexbutton.cpp \
     widgets/openbutton.cpp \
-    widgets/playlistwidget.cpp
-    widgets/seekbar.cpp \
+    widgets/playlistwidget.cpp \
+    widgets/seekbar.cpp
 
 HEADERS  += \
     mpvhandler.h \
@@ -75,20 +75,20 @@ HEADERS  += \
     widgets/dimdialog.h \
     widgets/indexbutton.h \
     widgets/openbutton.h \
-    widgets/playlistwidget.h
-    widgets/seekbar.h \
+    widgets/playlistwidget.h \
+    widgets/seekbar.h
 
 FORMS    += \
     ui/aboutdialog.ui \
     ui/infodialog.ui \
     ui/inputdialog.ui \
-    ui/ircdialog.ui
+    ui/ircdialog.ui \
     ui/jumpdialog.ui \
     ui/locationdialog.ui \
     ui/mainwindow.ui \
     ui/preferencesdialog.ui \
     ui/screenshotdialog.ui \
-    ui/updatedialog.ui \
+    ui/updatedialog.ui
 
 RESOURCES += \
     rsclist.qrc
