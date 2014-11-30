@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>315</width>
+    <height>173</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Connect to IRC</string>
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget {
@@ -52,8 +52,128 @@ QPushButton:disabled {
 	background: black;
 	border: 1px solid #008098;
     color: #B8B8B8;
-}</string>
+}
+
+/* QCheckBox */
+
+QCheckBox::indicator,
+QGroupBox::indicator{
+	width: 10px;
+	height: 10px;
+	border: 1px solid black;
+	border-radius: 2px;
+}
+QCheckBox::indicator:unchecked,
+QGroupBox::indicator:unchecked {
+	background: #424242;
+	image: none;
+}
+QCheckBox::indicator:checked,
+QGroupBox::indicator:checked {
+	background: #008098;
+	image: url(:/img/checked.svg);
+}
+</string>
   </property>
+  <layout class="QVBoxLayout">
+   <item>
+    <layout class="QFormLayout" name="formLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>IRC Server:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="serverLineEdit">
+       <property name="text">
+        <string>chat.freenode.net</string>
+       </property>
+       <property name="clearButtonEnabled">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Nick name:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="nickLineEdit">
+       <property name="clearButtonEnabled">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Password:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QLineEdit" name="passLineEdit">
+       <property name="placeholderText">
+        <string>(only if you have an account)</string>
+       </property>
+       <property name="clearButtonEnabled">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>Channel:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="channelLineEdit">
+       <property name="text">
+        <string>#baka-mplayer</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QCheckBox" name="hideCheckBox">
+       <property name="text">
+        <string>&amp;Don't show this dialog anymore</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="connectButton">
+       <property name="text">
+        <string>&amp;CONNECT</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections/>
