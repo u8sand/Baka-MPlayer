@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+	font: 12px &quot;Noto Sans&quot;, &quot;FreeSans&quot;;
+	background: #1A1A1A;
+	color: whitesmoke;
+}
+
+/* QLineEdit */
+
+QLineEdit {
+	background: black;
+	border: 1px solid #4C4C4C;
+	border-radius: 2px;
+	padding: 2px;
+}
+QLineEdit:focus {
+    border: 1px solid #008098;
+}
+
+/* QPushButton */
+
+QPushButton {
+    background: #008098;
+	color: whitesmoke;
+	border: 1px solid black;
+	border-radius: 2px;
+    min-width: 88px;
+	min-height: 25px;
+}
+QPushButton:default {
+	border: 1px solid whitesmoke;
+}
+QPushButton:pressed {
+    background: #005A6A;
+}
+QPushButton:disabled {
+	background: black;
+	border: 1px solid #008098;
+    color: #B8B8B8;
+}</string>
+  </property>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
