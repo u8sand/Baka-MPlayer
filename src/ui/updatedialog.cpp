@@ -20,7 +20,7 @@ UpdateDialog::UpdateDialog(UpdateManager *updateManager, QWidget *parent) :
                 if(info["version"].trimmed() == BAKA_MPLAYER_VERSION)
                 {
                     ui->updateButton->setEnabled(false);
-                    ui->updateLabel->setText("You have the latest verion!");
+                    ui->updateLabel->setText("You have the latest version!");
                 }
                 else
                 {
