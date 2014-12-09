@@ -6,10 +6,13 @@
 
 QT       += core gui network
 
+CODECFORSRC = UTF-8
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = baka-mplayer
 DEFINES += 'BAKA_MPLAYER_VERSION=\\"2.0.0\\"' \
+           'BAKA_MPLAYER_LANG=\\"baka-mplayer-en\\"' \
            'SETTINGS_FILE=\\"bakamplayer\\"'
 
 TEMPLATE = app
@@ -91,3 +94,6 @@ FORMS    += \
 
 RESOURCES += \
     rsclist.qrc
+
+TRANSLATIONS += \
+    baka-mplayer-en.ts

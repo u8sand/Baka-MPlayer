@@ -170,7 +170,7 @@ void MpvHandler::LoadSettings(QSettings *settings, QString version)
                     else if(tmp.type() == QVariant::Double)
                         tmp2 = QString::number(tmp.toDouble()).toUtf8();
                     else
-                        emit messageSignal(QString("[Baka-MPlayer]: Setting type was parsed as ")+QString(tmp.type())+"\n");
+                        emit messageSignal(QString("[Baka-MPlayer]: "+tr("Setting type was parsed as "))+QString(tmp.type())+"\n");
 
                     if(tmp2 != QByteArray())
                         mpv_set_option_string(mpv, tmp1.constData(), tmp2.constData());
@@ -711,7 +711,7 @@ void MpvHandler::AsyncCommand(const char *args[])
     if(mpv)
         mpv_command_async(mpv, 0, args);
     else
-        emit messageSignal("[mpv]: mpv was not initialized\n");
+        emit messageSignal("[mpv]: "+tr("mpv was not initialized")+"\n");
 }
 
 void MpvHandler::Command(const char *args[])
@@ -719,5 +719,5 @@ void MpvHandler::Command(const char *args[])
     if(mpv)
         mpv_command(mpv, args);
     else
-        emit messageSignal("[mpv]: mpv was not initialized\n");
+        emit messageSignal("[mpv]: "+tr("mpv was not initialized")+"\n");
 }

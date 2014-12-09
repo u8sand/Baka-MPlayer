@@ -49,7 +49,7 @@ PreferencesDialog::PreferencesDialog(QSettings *_settings, QWidget *parent) :
     connect(ui->changeButton, &QPushButton::clicked,
             [=]
             {
-                QString dir = QFileDialog::getExistingDirectory(this, "Choose screenshot directory", screenshotDir);
+                QString dir = QFileDialog::getExistingDirectory(this, tr("Choose screenshot directory"), screenshotDir);
                 if(dir != QString())
                     screenshotDir = dir;
             });
