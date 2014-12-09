@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="en_US">
+<TS version="2.1" language="ko_KR">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -1329,6 +1329,31 @@ Note: Value must be from</source>
 <context>
     <name>UpdateDialog</name>
     <message>
+        <location filename="../ui/updatedialog.ui" line="14"/>
+        <source>Check for Updates</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/updatedialog.ui" line="124"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Checking for updates...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/updatedialog.ui" line="147"/>
+        <source>About 0 second(s) remaining</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/updatedialog.ui" line="192"/>
+        <source>&amp;UPDATE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/updatedialog.ui" line="211"/>
+        <source>&amp;CANCEL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../ui/updatedialog.cpp" line="12"/>
         <source>&amp;CLOSE</source>
         <translation type="unfinished"></translation>
@@ -1372,31 +1397,6 @@ Version: </source>
     <message>
         <location filename="../ui/updatedialog.cpp" line="98"/>
         <source>error</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/updatedialog.ui" line="14"/>
-        <source>Check for Updates</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/updatedialog.ui" line="124"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Checking for updates...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/updatedialog.ui" line="147"/>
-        <source>About 0 second(s) remaining</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/updatedialog.ui" line="192"/>
-        <source>&amp;UPDATE</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/updatedialog.ui" line="211"/>
-        <source>&amp;CANCEL</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

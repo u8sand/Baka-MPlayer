@@ -12,7 +12,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = baka-mplayer
 DEFINES += 'BAKA_MPLAYER_VERSION=\\"2.0.0\\"' \
-           'BAKA_MPLAYER_LANG=\\"baka-mplayer_en\\"' \
+           'BAKA_MPLAYER_LANG=\\"baka-mplayer_ko\\"' \
            'SETTINGS_FILE=\\"bakamplayer\\"'
 
 TEMPLATE = app
@@ -96,4 +96,5 @@ RESOURCES += \
     rsclist.qrc
 
 TRANSLATIONS += \
-    translations/baka-mplayer_en.ts
+    translations/baka-mplayer_en.ts \
+    translations/baka-mplayer_ko.ts
