@@ -745,6 +745,13 @@ MainWindow::MainWindow(QWidget *parent):
                 ui->playlistWidget->ShowAll(!ui->hideFilesButton->isChecked());
                 firstItem = false;
             });
+
+    connect(ui->inputLineEdit, &CustomLineEdit::submitted,
+            [=](QString s)
+            {
+                mpv->CommandString(s);
+                ui->inputLineEdit->setText("");
+            });
                                                                         // File ->
     connect(ui->action_New_Player, &QAction::triggered,                 // File -> New Player
             [=]

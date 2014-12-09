@@ -42,50 +42,52 @@ SOURCES += main.cpp\
     ui/locationdialog.cpp \
     ui/mainwindow.cpp \
     ui/preferencesdialog.cpp \
-    ui/updatedialog.cpp \
     ui/screenshotdialog.cpp \
+    ui/updatedialog.cpp \
     widgets/customlabel.cpp \
+    widgets/customlineedit.cpp \
     widgets/customslider.cpp \
     widgets/customsplitter.cpp \
     widgets/dimdialog.cpp \
     widgets/indexbutton.cpp \
     widgets/openbutton.cpp \
-    widgets/seekbar.cpp \
     widgets/playlistwidget.cpp
+    widgets/seekbar.cpp \
 
 HEADERS  += \
-    mpvtypes.h \
     mpvhandler.h \
+    mpvtypes.h \
     updatemanager.h \
     util.h \
-    widgets/customslider.h \
-    widgets/openbutton.h \
-    widgets/indexbutton.h \
-    widgets/seekbar.h \
     widgets/customlabel.h \
+    widgets/customlineedit.h \
+    widgets/customslider.h \
     widgets/customsplitter.h \
     widgets/dimdialog.h \
+    widgets/indexbutton.h \
+    widgets/openbutton.h \
     widgets/playlistwidget.h \
-    ui/mainwindow.h \
-    ui/locationdialog.h \
-    ui/infodialog.h \
-    ui/jumpdialog.h \
+    widgets/seekbar.h \
     ui/aboutdialog.h \
-    ui/updatedialog.h \
+    ui/infodialog.h \
     ui/inputdialog.h \
+    ui/jumpdialog.h \
+    ui/locationdialog.h \
+    ui/mainwindow.h \
     ui/preferencesdialog.h \
     ui/screenshotdialog.h
+    ui/updatedialog.h \
 
 FORMS    += \
-    ui/mainwindow.ui \
-    ui/locationdialog.ui \
-    ui/infodialog.ui \
-    ui/jumpdialog.ui \
     ui/aboutdialog.ui \
-    ui/updatedialog.ui \
+    ui/infodialog.ui \
     ui/inputdialog.ui \
+    ui/jumpdialog.ui \
+    ui/locationdialog.ui \
+    ui/mainwindow.ui \
     ui/preferencesdialog.ui \
     ui/screenshotdialog.ui
+    ui/updatedialog.ui \
 
 RESOURCES += \
     rsclist.qrc

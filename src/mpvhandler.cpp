@@ -667,6 +667,12 @@ void MpvHandler::LoadVideoParams()
     emit videoParamsChanged(fileInfo.video_params);
 }
 
+void MpvHandler::CommandString(QString str)
+{
+    const QByteArray tmp = str.toUtf8();
+    mpv_command_string(mpv, tmp.constData());
+}
+
 void MpvHandler::OpenFile(QString f)
 {
     const QByteArray tmp = f.toUtf8();

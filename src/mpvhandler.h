@@ -86,6 +86,8 @@ public slots:
     void LoadTracks();
     void LoadChapters();
     void LoadVideoParams();
+
+    void CommandString(QString);
 protected slots:
     void OpenFile(QString);
     QString PopulatePlaylist();
