@@ -86,23 +86,16 @@ Note that for mpv specific options you can use mpv's options. See mpv's manual f
 
 ### Translation
 
-Qt makes it quite easy to setup projects for translation. Because of this we've already set it up so that it's easy for people to make their own translations. Translation works somewhat like so:
+Qt makes it quite easy to setup projects for translation. Because of this we've already set it up so that it's easy for people to make their own translations. Translation works by following these steps:
 
-	src/ $ vim Baka-MPlayer.pro
-	13 G                                (go to line 13)
-	                                    (replace baka-mplayer_en with baka-mplayer_lang)
-	G                                   (go to the bottom)
-	A                                   (append to the end of the line)
-	\                                   (insert a backslash and add a new line
-	translations/baka-mplayer_lang.tr   (replace lang with your language code)
-	:wq                                 (to exit)
-	src/ $ lupdate Baka-MPlayer.pro
-	src/ $ linguist-qt5 translations/baka-mplayer_lang.ts
-	
-After translating via qt's translation software...
+1. Modify `src/Baka-MPlayer.pro`
+ 1. Under `DEFINES`, change `BAKA_MPLAYER_LANG`'s string from `baka-mplayer_en` to `baka-mplayer_lang` where `lang` is your language code.
+ 2. Under `TRANSLATIONS` (at the bottom of the file), add a new line (all lines except the last must end with a `\`) with the string from before but prepended with `translations/` and appended with `.ts` eg. if it was `baka-mplayer_en`, it becomes `translations/baka-mplayer_en`.
+2. Execute the command: `lupdate Baka-MPlayer.pro` in `src/`. This will generate a translation file for you at the location specified in step 2.
+3. Open the file with qt's lingist `linguist translations/baka-mplayer_lang` and proceed to translate into your language.
+4. Upon completion of the translation, execute `lrelease Baka-MPlayer.pro`.
+5. Finally compile Baka-MPlayer as you would normally `./make.sh` in Baka-MPlayer's root directory.
 
-	src/ $ lsrelease Baka-MPlayer.pro
-	src/ $ cd ..
-	$ ./make.sh
+If you have a translation please submit it to us so that we can make it available for everyone.
 
 For more information on Qt Linguist usage, see http://qt-project.org/doc/qt-5/qtlinguist-index.html
