@@ -9,7 +9,7 @@ UpdateDialog::UpdateDialog(UpdateManager *updateManager, QWidget *parent) :
 #if defined(Q_OS_UNIX) || defined(Q_OS_LINUX)
     // no update support on unix/linux, we just show if one is available
     ui->updateButton->setVisible(false);
-    ui->cancelButton->setText("&CLOSE");
+    ui->cancelButton->setText(tr("&CLOSE"));
     ui->cancelButton->setDefault(true);
 #endif
 
@@ -20,11 +20,11 @@ UpdateDialog::UpdateDialog(UpdateManager *updateManager, QWidget *parent) :
                 if(info["version"].trimmed() == BAKA_MPLAYER_VERSION)
                 {
                     ui->updateButton->setEnabled(false);
-                    ui->updateLabel->setText("You have the latest version!");
+                    ui->updateLabel->setText(tr("You have the latest version!"));
                 }
                 else
                 {
-                    ui->updateLabel->setText("Update Available!\nVersion: "+info["version"]);
+                    ui->updateLabel->setText(tr("Update Available!\nVersion: ")+info["version"]);
 #if defined(Q_OS_WIN)
                     version = info["version"];
                     // url = info["url"];
@@ -45,7 +45,7 @@ UpdateDialog::UpdateDialog(UpdateManager *updateManager, QWidget *parent) :
                 lastTime = 0;
                 timer = new QTime();
                 timer->start();
-                ui->updateLabel->setText("Downloading update...");
+                ui->updateLabel->setText(tr("Downloading update..."));
                 ui->progressBar->setVisible(true);
                 ui->timeRemainingLabel->setVisible(true);
                 ui->plainTextEdit->clear();
@@ -59,7 +59,7 @@ UpdateDialog::UpdateDialog(UpdateManager *updateManager, QWidget *parent) :
                 ui->progressBar->setValue(percent);
                 if(percent == 100)
                 {
-                    ui->updateLabel->setText("Download Complete");
+                    ui->updateLabel->setText(tr("Download Complete"));
                     ui->progressBar->setVisible(false);
                     ui->timeRemainingLabel->setVisible(false);
                     if(timer)
@@ -73,9 +73,9 @@ UpdateDialog::UpdateDialog(UpdateManager *updateManager, QWidget *parent) :
                     avgSpeed = 0.005*lastSpeed + 0.995*avgSpeed;
 
                     if(avgSpeed > 0)
-                        ui->timeRemainingLabel->setText("About "+QString::number(1/(1000*avgSpeed))+" second(s) remaining");
+                        ui->timeRemainingLabel->setText(tr("About")+" "+QString::number(1/(1000*avgSpeed))+" "+tr("second(s) remaining"));
                     else
-                        ui->timeRemainingLabel->setText("Calculating...");
+                        ui->timeRemainingLabel->setText(tr("Calculating..."));
 
                     int time = timer->elapsed();
                     if(time != lastTime) // prevent cases when we're too fast haha
@@ -95,7 +95,7 @@ UpdateDialog::UpdateDialog(UpdateManager *updateManager, QWidget *parent) :
     connect(updateManager, &UpdateManager::errorSignal,
             [=](QString msg)
             {
-                ui->plainTextEdit->appendPlainText("error: "+msg+"\n");
+                ui->plainTextEdit->appendPlainText(tr("error")+": "+msg+"\n");
             });
 
     connect(ui->cancelButton, SIGNAL(clicked()),

@@ -57,6 +57,7 @@ MainWindow::MainWindow(QWidget *parent):
 #else
     dimDialog = new DimDialog(); // dimDialog must be initialized before ui is setup
 #endif
+
     ui->setupUi(this);
     ShowPlaylist(false);
     addActions(ui->menubar->actions()); // makes menubar shortcuts work even when menubar is hidden
@@ -100,9 +101,9 @@ MainWindow::MainWindow(QWidget *parent):
                     if(!hidePopup)
                     {
                         if(mpv->getPlayState() == Mpv::Playing)
-                            sysTrayIcon->showMessage("Baka MPlayer", "Playing", QSystemTrayIcon::NoIcon, 4000);
+                            sysTrayIcon->showMessage("Baka MPlayer", tr("Playing"), QSystemTrayIcon::NoIcon, 4000);
                         else if(mpv->getPlayState() == Mpv::Paused)
-                            sysTrayIcon->showMessage("Baka MPlayer", "Paused", QSystemTrayIcon::NoIcon, 4000);
+                            sysTrayIcon->showMessage("Baka MPlayer", tr("Paused"), QSystemTrayIcon::NoIcon, 4000);
                     }
                     mpv->PlayPause(ui->playlistWidget->CurrentItem());
                 }
@@ -209,7 +210,7 @@ MainWindow::MainWindow(QWidget *parent):
                                 else if(!mpv->getSubtitleVisibility())
                                     mpv->ShowSubtitles(true);
                                 mpv->Sid(track.id);
-                                mpv->ShowText("Sub "+QString::number(track.id)+": "+track.title+" ("+track.lang+")");
+                                mpv->ShowText(tr("Sub")+" "+QString::number(track.id)+": "+track.title+" ("+track.lang+")");
                             });
                 }
                 else if(track.type == "audio")
@@ -221,7 +222,7 @@ MainWindow::MainWindow(QWidget *parent):
                                 if(mpv->getAid() != track.id) // don't allow selection of the same track
                                 {
                                     mpv->Aid(track.id);
-                                    mpv->ShowText("Audio "+QString::number(track.id)+": "+track.title+" ("+track.lang+")");
+                                    mpv->ShowText(tr("Audio")+" "+QString::number(track.id)+": "+track.title+" ("+track.lang+")");
                                 }
                                 else
                                     action->setChecked(true); // recheck the track
@@ -363,7 +364,7 @@ MainWindow::MainWindow(QWidget *parent):
                     mpv->Play();
                 case Mpv::Playing:
                     ui->playButton->setIcon(QIcon(":/img/default_pause.svg"));
-                    ui->action_Play->setText("&Pause");
+                    ui->action_Play->setText(tr("&Pause"));
                     if(onTop == "playing")
                         AlwaysOnTop(true);
                     break;
@@ -371,7 +372,7 @@ MainWindow::MainWindow(QWidget *parent):
                 case Mpv::Paused:
                 case Mpv::Stopped:
                     ui->playButton->setIcon(QIcon(":/img/default_play.svg"));
-                    ui->action_Play->setText("&Play");
+                    ui->action_Play->setText(tr("&Play"));
                     if(ui->actionWhen_Playing->isChecked())
                         AlwaysOnTop(false);
                     break;
@@ -388,7 +389,7 @@ MainWindow::MainWindow(QWidget *parent):
                                 mpv->PlayFile(ui->playlistWidget->FirstItem()); // restart playlist
                             else
                             {
-                                setWindowTitle("Baka MPlayer");
+                                setWindowTitle("Baka-MPlayer");
                                 SetPlaybackControls(false);
                                 ui->seekBar->setTracking(0);
                                 ui->actionStop_after_Current->setChecked(false);
@@ -468,7 +469,7 @@ MainWindow::MainWindow(QWidget *parent):
                 if(last != speed)
                 {
                     if(init)
-                        mpv->ShowText("Speed: "+QString::number(speed)+"x");
+                        mpv->ShowText(tr("Speed")+": "+QString::number(speed)+"x");
                     if(speed <= 0.25)
                         ui->action_Decrease->setEnabled(false);
                     else
@@ -561,10 +562,10 @@ MainWindow::MainWindow(QWidget *parent):
             [=]
             {
                 mpv->LoadFile(QFileDialog::getOpenFileName(this,
-                               "Open File",mpv->getPath(),
-                               "Media Files ("+Mpv::media_filetypes.join(" ")+");;"+
-                               "Video Files ("+Mpv::video_filetypes.join(" ")+");;"+
-                               "Audio Files ("+Mpv::audio_filetypes.join(" ")+")",
+                               tr("Open File"),mpv->getPath(),
+                               tr("Media Files")+" ("+Mpv::media_filetypes.join(" ")+");;"+
+                               tr("Video Files")+" ("+Mpv::video_filetypes.join(" ")+");;"+
+                               tr("Audio Files")+" ("+Mpv::audio_filetypes.join(" ")+")",
                                0, QFileDialog::DontUseSheet));
             });
 
@@ -662,8 +663,8 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->indexLabel, &CustomLabel::clicked,                      // Playlist: Clicked the indexLabel
             [=]
             {
-                QString res = InputDialog::getInput("Enter the file number you want to play:\nNote: Value must be from 1 - "+QString::number(ui->playlistWidget->count()),
-                                                    "Enter File Number",
+                QString res = InputDialog::getInput(tr("Enter the file number you want to play:\nNote: Value must be from")+" 1 - "+QString::number(ui->playlistWidget->count()),
+                                                    tr("Enter File Number"),
                                                     [this](QString input)
                                                     {
                                                         int in = input.toInt();
@@ -681,13 +682,13 @@ MainWindow::MainWindow(QWidget *parent):
             {
                 if(i == -1) // no selection
                 {
-                    ui->indexLabel->setText("No selection");
+                    ui->indexLabel->setText(tr("No selection"));
                     ui->indexLabel->setEnabled(false);
                 }
                 else
                 {
                     ui->indexLabel->setEnabled(true);
-                    ui->indexLabel->setText("File "+QString::number(i+1)+" of "+QString::number(ui->playlistWidget->count()));
+                    ui->indexLabel->setText(tr("File")+" "+QString::number(i+1)+" "+tr("of")+" "+QString::number(ui->playlistWidget->count()));
                 }
             });
 
@@ -717,7 +718,7 @@ MainWindow::MainWindow(QWidget *parent):
                 firstItem = false;
             });
 
-    action = ui->playlistWidget->addAction("R&emove from Playlist");
+    action = ui->playlistWidget->addAction(tr("R&emove from Playlist"));
     connect(action, &QAction::triggered,                                // Playlist: Remove from playlist (right-click)
             [=]
             {
@@ -726,7 +727,7 @@ MainWindow::MainWindow(QWidget *parent):
                 ui->playlistWidget->SelectItem(next);
             });
 
-    action = ui->playlistWidget->addAction("&Delete from Disk");
+    action = ui->playlistWidget->addAction(tr("&Delete from Disk"));
     connect(action, &QAction::triggered,                                // Playlist: Delete from Disk (right-click)
             [=]
             {
@@ -737,7 +738,7 @@ MainWindow::MainWindow(QWidget *parent):
                 f.remove();
             });
 
-    action = ui->playlistWidget->addAction("&Refresh");                 // Playlist: Refresh (right-click)
+    action = ui->playlistWidget->addAction(tr("&Refresh"));                 // Playlist: Refresh (right-click)
     connect(action, &QAction::triggered,
             [=]
             {
@@ -758,11 +759,11 @@ MainWindow::MainWindow(QWidget *parent):
             [=]
             {
                 mpv->LoadFile(QFileDialog::getOpenFileName(this,
-                              "Open File",mpv->getPath(),
-                              "Media Files ("+Mpv::media_filetypes.join(" ")+");;"+
-                              "Video Files ("+Mpv::video_filetypes.join(" ")+");;"+
-                              "Audio Files ("+Mpv::audio_filetypes.join(" ")+")",
-                              0, QFileDialog::DontUseSheet));
+                               tr("Open File"),mpv->getPath(),
+                               tr("Media Files")+" ("+Mpv::media_filetypes.join(" ")+");;"+
+                               tr("Video Files")+" ("+Mpv::video_filetypes.join(" ")+");;"+
+                               tr("Audio Files")+" ("+Mpv::audio_filetypes.join(" ")+")",
+                               0, QFileDialog::DontUseSheet));
             });
 
     connect(ui->actionOpen_URL, &QAction::triggered,                    // File -> Open URL
@@ -882,8 +883,8 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->action_Add_Subtitle_File, &QAction::triggered,          //  View -> Subtitle Track -> Add Subtitle File...
             [=]
             {
-                QString trackFile = QFileDialog::getOpenFileName(this, "Open Subtitle File", mpv->getPath(),
-                                                                 "Subtitle Files ("+Mpv::subtitle_filetypes.join(" ")+")",
+                QString trackFile = QFileDialog::getOpenFileName(this, tr("Open Subtitle File"), mpv->getPath(),
+                                                                 tr("Subtitle Files")+" ("+Mpv::subtitle_filetypes.join(" ")+")",
                                                                  0, QFileDialog::DontUseSheet);
                 if(trackFile != "")
                     mpv->AddSubtitleTrack(trackFile);
@@ -1126,7 +1127,7 @@ MainWindow::MainWindow(QWidget *parent):
     }
 
     // keyboard shortcuts
-    action = new QAction("Seek Forward", this);
+    action = new QAction(tr("Seek Forward"), this);
     action->setShortcut(QKeySequence("Right"));
     connect(action, &QAction::triggered,
             [=]
@@ -1135,7 +1136,7 @@ MainWindow::MainWindow(QWidget *parent):
             });
     addAction(action);
 
-    action = new QAction("Seek Backward", this);
+    action = new QAction(tr("Seek Backward"), this);
     action->setShortcut(QKeySequence("Left"));
     connect(action, &QAction::triggered,
             [=]
@@ -1144,7 +1145,7 @@ MainWindow::MainWindow(QWidget *parent):
             });
     addAction(action);
 
-    action = new QAction("Exit Fullscreen/Boss Key", this);
+    action = new QAction(tr("Exit Fullscreen/Boss Key"), this);
     action->setShortcut(QKeySequence("Esc"));
     connect(action, &QAction::triggered,
             [=]
@@ -1503,12 +1504,12 @@ void MainWindow::SetPlaybackControls(bool enable)
 
 bool MainWindow::SetScreenshotTemplate()
 {
-    QMessageBox::information(this, "Take Screenshot",
-                             "Choose the default location where you would like to save your screenshots. Also by default, we will save your screenshots as a jpg file. If you'd like to change any of these settings, it is under Preferences.");
-    QString dir = QFileDialog::getExistingDirectory(this, "Screenshot Directory");
+    QMessageBox::information(this, tr("Take Screenshot"),
+                             tr("Choose the default location where you would like to save your screenshots. Also by default, we will save your screenshots as a jpg file. If you'd like to change any of these settings, it is under Preferences."));
+    QString dir = QFileDialog::getExistingDirectory(this, tr("Screenshot Directory"));
     if(dir != "")
     {
-        mpv->ScreenshotTemplate(dir+"/"+"screenshot%#04n");
+        mpv->ScreenshotTemplate(dir+"/"+tr("screenshot")+"%#04n");
         return true;
     }
     return false;
@@ -1650,7 +1651,7 @@ void MainWindow::DimDesktop(bool dim)
 {
     if(!dimDialog) // dimDialog is NULL if desktop compositor is disabled or missing
     {
-        QMessageBox::information(this, "Dim Desktop", "In order to dim the desktop, the desktop compositor has to be enabled. This can be done through Window Manager Desktop.");
+        QMessageBox::information(this, tr("Dim Desktop"), tr("In order to dim the desktop, the desktop compositor has to be enabled. This can be done through Window Manager Desktop."));
         ui->action_Dim_Desktop->setChecked(false);
         return;
     }
@@ -1715,7 +1716,7 @@ void MainWindow::ShowScreenshotMessage(bool subs)
     int i = dir.lastIndexOf('/');
     if(i != -1)
         dir.remove(0, i+1);
-    mpv->ShowText("Saved to \""+dir+"\", "+(subs?"with":"without")+" subs");
+    mpv->ShowText(tr("Saved to")+" \""+dir+"\", "+(subs?tr("with"):tr("without"))+" "+tr("subs"));
 }
 
 void MainWindow::UpdateRecentFiles()

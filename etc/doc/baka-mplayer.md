@@ -1,4 +1,4 @@
-# Baka MPlayer User Manual
+﻿# Baka MPlayer User Manual
 Version 1.1
 
 ## Introduction
@@ -83,3 +83,26 @@ On Linux, they are saved in the Qt location `~/.config/bakamplayer.ini`.
 	                        # ...
 
 Note that for mpv specific options you can use mpv's options. See mpv's manual for valid options.
+
+### Translation
+
+Qt makes it quite easy to setup projects for translation. Because of this we've already set it up so that it's easy for people to make their own translations. Translation works somewhat like so:
+
+	src/ $ vim Baka-MPlayer.pro
+	13 G                 (go to line 13)
+	                     (replace baka-mplayer-en with baka-mplayer-lang)
+	G                    (go to the bottom)
+	A                    (append to the end of the line)
+	\                    (insert a backslash and add a new line
+	baka-mplayer-lang.tr (replace lang with your language code)
+	:wq                  (to exit)
+	src/ $ lupdate Baka-MPlayer.pro
+	src/ $ linguist-qt5 baka-mplayer-lang.ts
+	
+After translating via qt's translation software...
+
+	src/ $ lsrelease Baka-MPlayer.pro
+	src/ $ cd ..
+	$ ./make.sh
+
+For more information on Qt Linguist usage, see http://qt-project.org/doc/qt-5/qtlinguist-index.html
