@@ -561,12 +561,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->openButton, &OpenButton::LeftClick,                     // Playback: Open button (left click)
             [=]
             {
-                mpv->LoadFile(QFileDialog::getOpenFileName(this,
-                               tr("Open File"),mpv->getPath(),
-                               tr("Media Files")+" ("+Mpv::media_filetypes.join(" ")+");;"+
-                               tr("Video Files")+" ("+Mpv::video_filetypes.join(" ")+");;"+
-                               tr("Audio Files")+" ("+Mpv::audio_filetypes.join(" ")+")",
-                               0, QFileDialog::DontUseSheet));
+                OpenFile();
             });
 
     connect(ui->openButton, &OpenButton::MiddleClick,                   // Playback: Open button (middle click)
@@ -738,8 +733,8 @@ MainWindow::MainWindow(QWidget *parent):
                 f.remove();
             });
 
-    action = ui->playlistWidget->addAction(tr("&Refresh"));                 // Playlist: Refresh (right-click)
-    connect(action, &QAction::triggered,
+    action = ui->playlistWidget->addAction(tr("&Refresh"));
+    connect(action, &QAction::triggered,                                // Playlist: Refresh (right-click)
             [=]
             {
                 ui->playlistWidget->SelectItem(mpv->LoadPlaylist(mpv->getPath()+mpv->getFile()), true);
@@ -765,12 +760,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->action_Open_File, &QAction::triggered,                  // File -> Open File
             [=]
             {
-                mpv->LoadFile(QFileDialog::getOpenFileName(this,
-                               tr("Open File"),mpv->getPath(),
-                               tr("Media Files")+" ("+Mpv::media_filetypes.join(" ")+");;"+
-                               tr("Video Files")+" ("+Mpv::video_filetypes.join(" ")+");;"+
-                               tr("Audio Files")+" ("+Mpv::audio_filetypes.join(" ")+")",
-                               0, QFileDialog::DontUseSheet));
+                OpenFile();
             });
 
     connect(ui->actionOpen_URL, &QAction::triggered,                    // File -> Open URL
@@ -1745,4 +1735,14 @@ void MainWindow::UpdateRecentFiles()
                     mpv->LoadFile(f);
                 });
     }
+}
+
+void MainWindow::OpenFile()
+{
+    mpv->LoadFile(QFileDialog::getOpenFileName(this,
+                   tr("Open File"),mpv->getPath(),
+                   tr("Media Files")+" ("+Mpv::media_filetypes.join(" ")+");;"+
+                   tr("Video Files")+" ("+Mpv::video_filetypes.join(" ")+");;"+
+                   tr("Audio Files")+" ("+Mpv::audio_filetypes.join(" ")+")",
+                   0, QFileDialog::DontUseSheet));
 }

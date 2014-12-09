@@ -57,6 +57,7 @@ private slots:
     void TakeScreenshot(bool subs);                 // take a screenshot
     void ShowScreenshotMessage(bool subs);          // show the screenshot status message
     void UpdateRecentFiles();                       // populate recentFiles menu
+    void OpenFile();
 
 private:
     Ui::MainWindow  *ui;

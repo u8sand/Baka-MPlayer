@@ -12,7 +12,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = baka-mplayer
 DEFINES += 'BAKA_MPLAYER_VERSION=\\"2.0.0\\"' \
-           'BAKA_MPLAYER_LANG=\\"baka-mplayer-en\\"' \
+           'BAKA_MPLAYER_LANG=\\"baka-mplayer_en\\"' \
            'SETTINGS_FILE=\\"bakamplayer\\"'
 
 TEMPLATE = app
@@ -54,8 +54,8 @@ SOURCES += main.cpp\
     widgets/dimdialog.cpp \
     widgets/indexbutton.cpp \
     widgets/openbutton.cpp \
-    widgets/playlistwidget.cpp
-    widgets/seekbar.cpp \
+    widgets/playlistwidget.cpp \
+    widgets/seekbar.cpp
 
 HEADERS  += \
     mpvhandler.h \
@@ -78,8 +78,8 @@ HEADERS  += \
     ui/locationdialog.h \
     ui/mainwindow.h \
     ui/preferencesdialog.h \
-    ui/screenshotdialog.h
-    ui/updatedialog.h \
+    ui/screenshotdialog.h \
+    ui/updatedialog.h
 
 FORMS    += \
     ui/aboutdialog.ui \
@@ -89,11 +89,11 @@ FORMS    += \
     ui/locationdialog.ui \
     ui/mainwindow.ui \
     ui/preferencesdialog.ui \
-    ui/screenshotdialog.ui
-    ui/updatedialog.ui \
+    ui/screenshotdialog.ui \
+    ui/updatedialog.ui
 
 RESOURCES += \
     rsclist.qrc
 
 TRANSLATIONS += \
-    baka-mplayer-en.ts
+    translations/baka-mplayer_en.ts
