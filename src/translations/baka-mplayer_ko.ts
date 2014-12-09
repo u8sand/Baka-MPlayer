@@ -6,17 +6,17 @@
     <message>
         <location filename="../ui/aboutdialog.ui" line="14"/>
         <source>About Baka MPlayer</source>
-        <translation type="unfinished"></translation>
+        <translation>Baka MPlayer 정보</translation>
     </message>
     <message>
         <location filename="../ui/aboutdialog.ui" line="114"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>정보</translation>
     </message>
     <message>
         <location filename="../ui/aboutdialog.ui" line="167"/>
         <source>Baka MPlayer 0.0.0</source>
-        <translation type="unfinished"></translation>
+        <translation>Baka MPlayer 0.0.0</translation>
     </message>
     <message>
         <location filename="../ui/aboutdialog.ui" line="177"/>
@@ -26,7 +26,7 @@
     <message>
         <location filename="../ui/aboutdialog.ui" line="191"/>
         <source>Credits</source>
-        <translation type="unfinished"></translation>
+        <translation>크레딧</translation>
     </message>
     <message>
         <location filename="../ui/aboutdialog.ui" line="215"/>
@@ -43,7 +43,7 @@ CC BY 3.0 &lt;Sasha Mescheryakov&gt;</source>
     <message>
         <location filename="../ui/aboutdialog.ui" line="230"/>
         <source>License</source>
-        <translation type="unfinished"></translation>
+        <translation>라이센스</translation>
     </message>
     <message>
         <location filename="../ui/aboutdialog.ui" line="254"/>
@@ -68,7 +68,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/aboutdialog.ui" line="295"/>
         <source>&amp;CLOSE</source>
-        <translation type="unfinished"></translation>
+        <translation>닫기(&amp;C)</translation>
     </message>
 </context>
 <context>
@@ -76,12 +76,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/infodialog.ui" line="14"/>
         <source>Media Info</source>
-        <translation type="unfinished"></translation>
+        <translation>미디어 정보</translation>
     </message>
     <message>
         <location filename="../ui/infodialog.ui" line="142"/>
         <source>Info Type</source>
-        <translation type="unfinished"></translation>
+        <translation>정보 유형</translation>
     </message>
     <message>
         <location filename="../ui/infodialog.ui" line="147"/>
@@ -91,7 +91,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/infodialog.ui" line="170"/>
         <source>&amp;CLOSE</source>
-        <translation type="unfinished"></translation>
+        <translation>닫기(&amp;C)</translation>
     </message>
     <message>
         <location filename="../ui/infodialog.cpp" line="24"/>
@@ -199,12 +199,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/inputdialog.ui" line="116"/>
         <source>&amp;OK</source>
-        <translation type="unfinished"></translation>
+        <translation>확인(&amp;O)</translation>
     </message>
     <message>
         <location filename="../ui/inputdialog.ui" line="132"/>
         <source>&amp;CANCEL</source>
-        <translation type="unfinished"></translation>
+        <translation>취소(&amp;C)</translation>
     </message>
 </context>
 <context>
@@ -217,28 +217,28 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/jumpdialog.ui" line="111"/>
         <source> hr</source>
-        <translation type="unfinished"></translation>
+        <translation>시</translation>
     </message>
     <message>
         <location filename="../ui/jumpdialog.ui" line="129"/>
         <location filename="../ui/jumpdialog.ui" line="160"/>
         <source>:</source>
-        <translation type="unfinished"></translation>
+        <translation>:</translation>
     </message>
     <message>
         <location filename="../ui/jumpdialog.ui" line="142"/>
         <source> min</source>
-        <translation type="unfinished"></translation>
+        <translation>분</translation>
     </message>
     <message>
         <location filename="../ui/jumpdialog.ui" line="173"/>
         <source> sec</source>
-        <translation type="unfinished"></translation>
+        <translation>초</translation>
     </message>
     <message>
         <location filename="../ui/jumpdialog.ui" line="192"/>
         <source>&amp;OK</source>
-        <translation type="unfinished"></translation>
+        <translation>확인(&amp;O)</translation>
     </message>
 </context>
 <context>
@@ -246,12 +246,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/locationdialog.ui" line="14"/>
         <source>Open Location</source>
-        <translation type="unfinished"></translation>
+        <translation>주소 열기</translation>
     </message>
     <message>
         <location filename="../ui/locationdialog.ui" line="82"/>
         <source>Type URL or location here</source>
-        <translation type="unfinished"></translation>
+        <translation>주소</translation>
     </message>
     <message>
         <location filename="../ui/locationdialog.ui" line="107"/>
@@ -261,27 +261,27 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/locationdialog.ui" line="133"/>
         <source>&amp;OK</source>
-        <translation type="unfinished"></translation>
+        <translation>확인(&amp;O)</translation>
     </message>
     <message>
         <location filename="../ui/locationdialog.ui" line="162"/>
         <source>&amp;PASTE</source>
-        <translation type="unfinished"></translation>
+        <translation>붙여넣기(&amp;P)</translation>
     </message>
     <message>
         <location filename="../ui/locationdialog.ui" line="178"/>
         <source>&amp;COPY</source>
-        <translation type="unfinished"></translation>
+        <translation>복사(&amp;C)</translation>
     </message>
     <message>
         <location filename="../ui/locationdialog.ui" line="194"/>
         <source>CLEA&amp;R</source>
-        <translation type="unfinished"></translation>
+        <translation>지우기(&amp;R)</translation>
     </message>
     <message>
         <location filename="../ui/locationdialog.ui" line="223"/>
         <source>CANC&amp;EL</source>
-        <translation type="unfinished"></translation>
+        <translation>취소(&amp;C)</translation>
     </message>
 </context>
 <context>
@@ -289,17 +289,17 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="23"/>
         <source>Baka MPlayer</source>
-        <translation type="unfinished"></translation>
+        <translation>Baka MPlayer</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="255"/>
         <source>&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&gt;</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="297"/>
         <source>Search Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>검색</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="310"/>
@@ -334,12 +334,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="601"/>
         <source>0:00:00</source>
-        <translation type="unfinished"></translation>
+        <translation>0:00:00</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="611"/>
         <source>/</source>
-        <translation type="unfinished"></translation>
+        <translation>/</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="627"/>
@@ -349,22 +349,22 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="630"/>
         <source>-0:00:00</source>
-        <translation type="unfinished"></translation>
+        <translation>-0:00:00</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="973"/>
         <source>&amp;File</source>
-        <translation type="unfinished"></translation>
+        <translation>파일(&amp;F)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="977"/>
         <source>&amp;Recently Opened</source>
-        <translation type="unfinished"></translation>
+        <translation>최근에 연 파일들(&amp;R)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="997"/>
         <source>&amp;View</source>
-        <translation type="unfinished"></translation>
+        <translation>보기(&amp;V)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1004"/>
@@ -374,73 +374,73 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1017"/>
         <source>Aspect &amp;Ratio</source>
-        <translation type="unfinished"></translation>
+        <translation>화면 비율(&amp;R)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1029"/>
         <source>Subtitle &amp;Track</source>
-        <translation type="unfinished"></translation>
+        <translation>자막(&amp;T)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1040"/>
         <source>Font Si&amp;ze</source>
-        <translation type="unfinished"></translation>
+        <translation>자막 크기(&amp;Z)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1051"/>
         <source>Take &amp;Screenshot</source>
-        <translation type="unfinished"></translation>
+        <translation>스크린 찍기(&amp;S)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1070"/>
         <source>&amp;Playback</source>
-        <translation type="unfinished"></translation>
+        <translation>재생(&amp;P)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1074"/>
         <source>R&amp;epeat</source>
-        <translation type="unfinished"></translation>
+        <translation>반복(&amp;E)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1090"/>
         <source>Audio &amp;Tracks</source>
-        <translation type="unfinished"></translation>
+        <translation>오디오 트랙(&amp;T)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1099"/>
         <source>S&amp;peed</source>
-        <translation type="unfinished"></translation>
+        <translation>속도(&amp;P)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1121"/>
         <source>&amp;Navigate</source>
-        <translation type="unfinished"></translation>
+        <translation>이동(&amp;N)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1128"/>
         <source>&amp;Chapters</source>
-        <translation type="unfinished"></translation>
+        <translation>챕터(&amp;C)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1143"/>
         <source>&amp;Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>설정(&amp;S)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1155"/>
         <source>&amp;Help</source>
-        <translation type="unfinished"></translation>
+        <translation>도움말(&amp;H)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1172"/>
         <location filename="../ui/mainwindow.ui" line="1253"/>
         <source>E&amp;xit</source>
-        <translation type="unfinished"></translation>
+        <translation>끝내기(&amp;X)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1177"/>
         <source>&amp;New Player</source>
-        <translation type="unfinished"></translation>
+        <translation>새로 열기(&amp;N)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1180"/>
@@ -450,7 +450,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1185"/>
         <source>&amp;Open File...</source>
-        <translation type="unfinished"></translation>
+        <translation>파일 열기(&amp;O)...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1188"/>
@@ -460,7 +460,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1193"/>
         <source>Open &amp;URL...</source>
-        <translation type="unfinished"></translation>
+        <translation>주소 열기(&amp;U)...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1196"/>
@@ -470,7 +470,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1201"/>
         <source>Open Path from &amp;Clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>크립보드의 위치 열기(&amp;C)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1204"/>
@@ -490,7 +490,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1223"/>
         <source>Show in &amp;Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>파일 위치 열기(&amp;F)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1226"/>
@@ -500,7 +500,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1234"/>
         <source>Play &amp;Next File</source>
-        <translation type="unfinished"></translation>
+        <translation>다음 파일 열기(&amp;N)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1237"/>
@@ -510,7 +510,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1245"/>
         <source>Play &amp;Previous File</source>
-        <translation type="unfinished"></translation>
+        <translation>이전 파일 열기(&amp;P)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1248"/>
@@ -525,7 +525,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1264"/>
         <source>&amp;Full Screen</source>
-        <translation type="unfinished"></translation>
+        <translation>전체화면(&amp;F)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1267"/>
@@ -535,7 +535,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1281"/>
         <source>Show S&amp;ubtitles</source>
-        <translation type="unfinished"></translation>
+        <translation>자막 보임(&amp;U)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1284"/>
@@ -545,7 +545,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1292"/>
         <source>Media &amp;Info</source>
-        <translation type="unfinished"></translation>
+        <translation>미디어 정보(&amp;I)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1295"/>
@@ -556,7 +556,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
         <location filename="../ui/mainwindow.ui" line="1303"/>
         <location filename="../ui/mainwindow.cpp" line="375"/>
         <source>&amp;Play</source>
-        <translation type="unfinished"></translation>
+        <translation>재생(&amp;P)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1306"/>
@@ -566,7 +566,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1314"/>
         <source>&amp;Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>정지(&amp;S)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1317"/>
@@ -576,7 +576,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1325"/>
         <source>&amp;Restart</source>
-        <translation type="unfinished"></translation>
+        <translation>다시시작(&amp;R)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1328"/>
@@ -586,7 +586,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1343"/>
         <source>Sh&amp;uffle</source>
-        <translation type="unfinished"></translation>
+        <translation>무작위(&amp;U)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1351"/>
@@ -597,7 +597,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
         <location filename="../ui/mainwindow.ui" line="1356"/>
         <location filename="../ui/mainwindow.ui" line="1447"/>
         <source>&amp;Show Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>재생목록 보이기(&amp;S)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1361"/>
@@ -629,7 +629,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1389"/>
         <source>&amp;Next Chapter</source>
-        <translation type="unfinished"></translation>
+        <translation>다음 챕터(&amp;N)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1392"/>
@@ -639,7 +639,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1400"/>
         <source>&amp;Previous Chapter</source>
-        <translation type="unfinished"></translation>
+        <translation>이전 챕터(&amp;P)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1403"/>
@@ -649,7 +649,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1411"/>
         <source>&amp;Frame Step</source>
-        <translation type="unfinished"></translation>
+        <translation>프레임별(&amp;F)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1414"/>
@@ -659,7 +659,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1422"/>
         <source>Frame &amp;Back Step</source>
-        <translation type="unfinished"></translation>
+        <translation>뒤로 프레임별(&amp;F)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1425"/>
@@ -669,7 +669,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1433"/>
         <source>&amp;Jump to Time...</source>
-        <translation type="unfinished"></translation>
+        <translation>특정 시간으로 이동(&amp;J)...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1436"/>
@@ -694,7 +694,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1485"/>
         <source>Online &amp;Help</source>
-        <translation type="unfinished"></translation>
+        <translation>온라인 도움말(&amp;H)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1488"/>
@@ -704,17 +704,17 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1493"/>
         <source>&amp;Check for Updates</source>
-        <translation type="unfinished"></translation>
+        <translation>업데이트 확인(&amp;C)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1498"/>
         <source>About &amp;Qt</source>
-        <translation type="unfinished"></translation>
+        <translation>Qt 정보(&amp;Q)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1503"/>
         <source>About &amp;Baka MPlayer</source>
-        <translation type="unfinished"></translation>
+        <translation>Baka MPlayer 정보(&amp;B)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1508"/>
@@ -729,7 +729,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1516"/>
         <source>50%</source>
-        <translation type="unfinished"></translation>
+        <translation>50%</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1519"/>
@@ -739,7 +739,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1524"/>
         <source>75%</source>
-        <translation type="unfinished"></translation>
+        <translation>75%</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1527"/>
@@ -749,7 +749,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1532"/>
         <source>100%</source>
-        <translation type="unfinished"></translation>
+        <translation>100%</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1535"/>
@@ -759,7 +759,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1540"/>
         <source>200%</source>
-        <translation type="unfinished"></translation>
+        <translation>200%</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1543"/>
@@ -794,7 +794,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1576"/>
         <source>&amp;Add Subtitle File...</source>
-        <translation type="unfinished"></translation>
+        <translation>자막 파일 추가(&amp;A)...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1584"/>
@@ -802,12 +802,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
         <location filename="../ui/mainwindow.ui" line="1739"/>
         <location filename="../ui/mainwindow.ui" line="1771"/>
         <source>[ none ]</source>
-        <translation type="unfinished"></translation>
+        <translation>[ 없음 ]</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1589"/>
         <source>&amp;Size +</source>
-        <translation type="unfinished"></translation>
+        <translation>더 크게(&amp;S) +</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1592"/>
@@ -817,7 +817,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1597"/>
         <source>S&amp;ize -</source>
-        <translation type="unfinished"></translation>
+        <translation>더 작게(&amp;S) -</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1600"/>
@@ -832,7 +832,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1616"/>
         <source>&amp;Off</source>
-        <translation type="unfinished"></translation>
+        <translation>사용 안함(&amp;O)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1624"/>
@@ -882,7 +882,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1699"/>
         <source>&amp;Increase Volume</source>
-        <translation type="unfinished"></translation>
+        <translation>볼륨 키우기(&amp;I)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1702"/>
@@ -892,7 +892,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1707"/>
         <source>&amp;Decrease Volume</source>
-        <translation type="unfinished"></translation>
+        <translation>볼륨 줄이기(&amp;D)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1710"/>
@@ -902,7 +902,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1715"/>
         <source>With &amp;Subtitles...</source>
-        <translation type="unfinished"></translation>
+        <translation>자막도 포함(&amp;S)...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1718"/>
@@ -912,7 +912,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1723"/>
         <source>&amp;Without Subtitles...</source>
-        <translation type="unfinished"></translation>
+        <translation>자막 포함 안함(&amp;W)...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1726"/>
@@ -922,7 +922,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1731"/>
         <source>&amp;Preferences...</source>
-        <translation type="unfinished"></translation>
+        <translation>환경설정(&amp;P)...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1744"/>
@@ -967,22 +967,22 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.cpp" line="213"/>
         <source>Sub</source>
-        <translation type="unfinished"></translation>
+        <translation>자막</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="225"/>
         <source>Audio</source>
-        <translation type="unfinished"></translation>
+        <translation>오디오</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="367"/>
         <source>&amp;Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>일시중지(&amp;P)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="472"/>
         <source>Speed</source>
-        <translation type="unfinished"></translation>
+        <translation>속도</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="661"/>
@@ -1013,12 +1013,12 @@ Note: Value must be from</source>
     <message>
         <location filename="../ui/mainwindow.cpp" line="716"/>
         <source>R&amp;emove from Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>선택 제거하기(&amp;R)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="725"/>
         <source>&amp;Delete from Disk</source>
-        <translation type="unfinished"></translation>
+        <translation>파일 지우기(&amp;D)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="736"/>
@@ -1028,22 +1028,22 @@ Note: Value must be from</source>
     <message>
         <location filename="../ui/mainwindow.cpp" line="883"/>
         <source>Open Subtitle File</source>
-        <translation type="unfinished"></translation>
+        <translation>자막 파일 열기</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="884"/>
         <source>Subtitle Files</source>
-        <translation type="unfinished"></translation>
+        <translation>자막 파일</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1127"/>
         <source>Seek Forward</source>
-        <translation type="unfinished"></translation>
+        <translation>앞으로 이동하기</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1136"/>
         <source>Seek Backward</source>
-        <translation type="unfinished"></translation>
+        <translation>뒤로 이동하기</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1145"/>
@@ -1053,7 +1053,7 @@ Note: Value must be from</source>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1504"/>
         <source>Take Screenshot</source>
-        <translation type="unfinished"></translation>
+        <translation>스크린 찍기</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1505"/>
@@ -1103,22 +1103,22 @@ Note: Value must be from</source>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1743"/>
         <source>Open File</source>
-        <translation type="unfinished"></translation>
+        <translation>파일 열기</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1744"/>
         <source>Media Files</source>
-        <translation type="unfinished"></translation>
+        <translation>미디어 파일</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1745"/>
         <source>Video Files</source>
-        <translation type="unfinished"></translation>
+        <translation>비디오 파일</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1746"/>
         <source>Audio Files</source>
-        <translation type="unfinished"></translation>
+        <translation>오디오 파일</translation>
     </message>
 </context>
 <context>
@@ -1140,12 +1140,12 @@ Note: Value must be from</source>
     <message>
         <location filename="../ui/preferencesdialog.ui" line="14"/>
         <source>Preferences</source>
-        <translation type="unfinished"></translation>
+        <translation>환경설정</translation>
     </message>
     <message>
         <location filename="../ui/preferencesdialog.ui" line="188"/>
         <source>Player</source>
-        <translation type="unfinished"></translation>
+        <translation>인터페이스</translation>
     </message>
     <message>
         <location filename="../ui/preferencesdialog.ui" line="206"/>
@@ -1180,7 +1180,7 @@ Note: Value must be from</source>
     <message>
         <location filename="../ui/preferencesdialog.ui" line="259"/>
         <source>Video</source>
-        <translation type="unfinished"></translation>
+        <translation>비디오</translation>
     </message>
     <message>
         <location filename="../ui/preferencesdialog.ui" line="279"/>
@@ -1190,22 +1190,22 @@ Note: Value must be from</source>
     <message>
         <location filename="../ui/preferencesdialog.ui" line="293"/>
         <source>50%</source>
-        <translation type="unfinished"></translation>
+        <translation>50%</translation>
     </message>
     <message>
         <location filename="../ui/preferencesdialog.ui" line="298"/>
         <source>75%</source>
-        <translation type="unfinished"></translation>
+        <translation>75%</translation>
     </message>
     <message>
         <location filename="../ui/preferencesdialog.ui" line="303"/>
         <source>100%</source>
-        <translation type="unfinished"></translation>
+        <translation>100%</translation>
     </message>
     <message>
         <location filename="../ui/preferencesdialog.ui" line="308"/>
         <source>200%</source>
-        <translation type="unfinished"></translation>
+        <translation>200%</translation>
     </message>
     <message>
         <location filename="../ui/preferencesdialog.ui" line="318"/>
@@ -1215,7 +1215,7 @@ Note: Value must be from</source>
     <message>
         <location filename="../ui/preferencesdialog.ui" line="324"/>
         <source>File Format:</source>
-        <translation type="unfinished"></translation>
+        <translation>파일 종류:</translation>
     </message>
     <message>
         <location filename="../ui/preferencesdialog.ui" line="332"/>
@@ -1250,7 +1250,7 @@ Note: Value must be from</source>
     <message>
         <location filename="../ui/preferencesdialog.ui" line="371"/>
         <source>CHANG&amp;E</source>
-        <translation type="unfinished"></translation>
+        <translation>변동(&amp;E)</translation>
     </message>
     <message>
         <location filename="../ui/preferencesdialog.ui" line="378"/>
@@ -1260,7 +1260,7 @@ Note: Value must be from</source>
     <message>
         <location filename="../ui/preferencesdialog.ui" line="410"/>
         <source>&amp;CLOSE</source>
-        <translation type="unfinished"></translation>
+        <translation>닫기(&amp;C)</translation>
     </message>
     <message>
         <location filename="../ui/preferencesdialog.cpp" line="52"/>
@@ -1273,7 +1273,7 @@ Note: Value must be from</source>
     <message>
         <location filename="../ui/screenshotdialog.ui" line="14"/>
         <source>Take Screenshot</source>
-        <translation type="unfinished"></translation>
+        <translation>스크린 찍기</translation>
     </message>
     <message>
         <location filename="../ui/screenshotdialog.ui" line="109"/>
@@ -1308,7 +1308,7 @@ Note: Value must be from</source>
     <message>
         <location filename="../ui/screenshotdialog.ui" line="168"/>
         <source>Sho&amp;w subtitles</source>
-        <translation type="unfinished"></translation>
+        <translation>자막도 포함(&amp;W)</translation>
     </message>
     <message>
         <location filename="../ui/screenshotdialog.ui" line="175"/>
@@ -1318,7 +1318,7 @@ Note: Value must be from</source>
     <message>
         <location filename="../ui/screenshotdialog.ui" line="204"/>
         <source>&amp;SAVE</source>
-        <translation type="unfinished"></translation>
+        <translation>저장(&amp;S)</translation>
     </message>
     <message>
         <location filename="../ui/screenshotdialog.cpp" line="26"/>
@@ -1336,7 +1336,7 @@ Note: Value must be from</source>
     <message>
         <location filename="../ui/updatedialog.ui" line="124"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Checking for updates...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;업데이트 확인중...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../ui/updatedialog.ui" line="147"/>
@@ -1346,17 +1346,17 @@ Note: Value must be from</source>
     <message>
         <location filename="../ui/updatedialog.ui" line="192"/>
         <source>&amp;UPDATE</source>
-        <translation type="unfinished"></translation>
+        <translation>업데이트(&amp;U)</translation>
     </message>
     <message>
         <location filename="../ui/updatedialog.ui" line="211"/>
         <source>&amp;CANCEL</source>
-        <translation type="unfinished"></translation>
+        <translation>취소(&amp;C)</translation>
     </message>
     <message>
         <location filename="../ui/updatedialog.cpp" line="12"/>
         <source>&amp;CLOSE</source>
-        <translation type="unfinished"></translation>
+        <translation>닫기(&amp;C)</translation>
     </message>
     <message>
         <location filename="../ui/updatedialog.cpp" line="23"/>
@@ -1392,7 +1392,7 @@ Version: </source>
     <message>
         <location filename="../ui/updatedialog.cpp" line="78"/>
         <source>Calculating...</source>
-        <translation type="unfinished"></translation>
+        <translation>계산중...</translation>
     </message>
     <message>
         <location filename="../ui/updatedialog.cpp" line="98"/>
