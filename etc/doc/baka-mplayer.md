@@ -89,12 +89,12 @@ Note that for mpv specific options you can use mpv's options. See mpv's manual f
 Qt makes it quite easy to setup projects for translation. Because of this we've already set it up so that it's easy for people to make their own translations. Translation works by following these steps:
 
 1. Modify `src/Baka-MPlayer.pro`
- 1. Under `DEFINES`, change `BAKA_MPLAYER_LANG`'s string from `baka-mplayer_en` to `baka-mplayer_lang` where `lang` is your language code.
- 2. Under `TRANSLATIONS` (at the bottom of the file), add a new line (all lines except the last must end with a `\`) with the string from before but prepended with `translations/` and appended with `.ts` eg. if it was `baka-mplayer_en`, it becomes `translations/baka-mplayer_en`.
-2. Execute the command: `lupdate Baka-MPlayer.pro` in `src/`. This will generate a translation file for you at the location specified in step 2.
-3. Open the file with qt's lingist `linguist translations/baka-mplayer_lang` and proceed to translate into your language.
-4. Upon completion of the translation, execute `lrelease Baka-MPlayer.pro`.
-5. Finally compile Baka-MPlayer as you would normally `./make.sh` in Baka-MPlayer's root directory.
+ 1. Under `DEFINES`, change `BAKA_MPLAYER_LANG`'s string from `baka-mplayer_en` to `baka-mplayer_lang` where `lang` is your language code to get Baka-MPlayer to use your language.
+ 2. Under `TRANSLATIONS` (at the bottom of the file), add a new line (all lines except the last must end with a `\`) with the string from before but prepended with `translations/` and appended with `.ts` eg. if it was `baka-mplayer_en`, it becomes `translations/baka-mplayer_en.ts`.
+2. Execute the command: `./make.sh` to compile baka-mplayer and your translation file.
+3. Under `src/translations/` you will now find your lang `.ts` file.
+3. Open the file with qt's lingist and proceed to translate into your language.
+4. Upon completion of the translation, execute `./make.sh` again to compile your translation file.
 
 If you have a translation please submit it to us so that we can make it available for everyone.
 
