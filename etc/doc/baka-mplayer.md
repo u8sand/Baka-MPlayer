@@ -92,9 +92,9 @@ Qt makes it quite easy to setup projects for translation. You can create your ow
  2. Under `TRANSLATIONS` (at the bottom of the file), add a new line that says `translations/baka-mplayer_{lang-code}.ts`.
 2. Run `./make.sh` to compile baka-mplayer and your translation file.
 3. Go to `src/translations/` and you will now find your language `.ts` file.
-3. Open the file with Qt Linguist and proceed to translate into your language.
+3. Open the `.ts` file with Qt Linguist and proceed to translate into your language.
 4. Upon completion of the translation, run `./make.sh` again to compile your translation file.
 
-If you have a translation, you may submit it to us via git merge or through irc.
+If you want to submit a translation, you can create a git pull request, or send it to us through irc.
 
 For more information on Qt Linguist, see http://qt-project.org/doc/qt-5/qtlinguist-index.html
