@@ -14,9 +14,7 @@ static void wakeup(void *ctx)
 }
 
 MpvHandler::MpvHandler(int64_t wid, QObject *parent):
-    QObject(parent),
-    mpv(0),
-    playState(Mpv::Idle)
+    QObject(parent)
 {
     // create mpv
     mpv = mpv_create();

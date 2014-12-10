@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="pt_BR">
+<TS version="2.0" language="pt_BR">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -95,7 +95,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
         <location filename="../ui/infodialog.ui" line="147"/>
         <source>Value</source>
         <translatorcomment>Not sure....</translatorcomment>
-        <translation type="unfinished"></translation>
+        <translation>Valor</translation>
     </message>
     <message>
         <location filename="../ui/infodialog.ui" line="170"/>
@@ -318,7 +318,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="310"/>
         <source>Click to play a file by index</source>
-        <translation type="unfinished"></translation>
+        <translation>Clique para selecionar um arquivo de índice</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="313"/>
@@ -333,7 +333,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="402"/>
         <source>Hide files with different extensions</source>
-        <translation type="unfinished"></translation>
+        <translation>Ocultar arquivos com diferentes extensões</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="432"/>
@@ -343,7 +343,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="575"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Left Click to Open File&lt;br&gt;Mouse Wheel Click to Jump&lt;br&gt;Right Click to Open URL&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Clique Esquerdo para Abrir o Arquivo&lt;br&gt;Clique na Roda do Mouse para Saltar&lt;br&gt;Clique Direito para Abrir URL&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="601"/>
@@ -358,7 +358,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="627"/>
         <source>Click to change between total and remaining time</source>
-        <translation type="unfinished"></translation>
+        <translation>Clique para alternar entre o tempo total eo tempo restante</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="630"/>
@@ -664,7 +664,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1411"/>
         <source>&amp;Frame Step</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Frame passo</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1414"/>
@@ -674,7 +674,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1422"/>
         <source>Frame &amp;Back Step</source>
-        <translation type="unfinished"></translation>
+        <translation>Frame passo para &amp;trás</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1425"/>
@@ -1003,12 +1003,13 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
         <location filename="../ui/mainwindow.cpp" line="661"/>
         <source>Enter the file number you want to play:
 Note: Value must be from</source>
-        <translation type="unfinished"></translation>
+        <translation>Entrar índice arquivo que você quer:
+Nota: O valor deve ser de</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="662"/>
         <source>Enter File Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Entrar Índice Arquivo</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="680"/>
@@ -1094,7 +1095,7 @@ Note: Value must be from</source>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1651"/>
         <source>In order to dim the desktop, the desktop compositor has to be enabled. This can be done through Window Manager Desktop.</source>
-        <translation type="unfinished"></translation>
+        <translation>Para escurecer o ambiente de trabalho, transparência do desktop tem que ser ativado.</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1716"/>
@@ -1177,7 +1178,7 @@ Note: Value must be from</source>
         <location filename="../ui/preferencesdialog.ui" line="219"/>
         <source>&amp;When Playing</source>
         <translatorcomment>Unsure about this &quot;playing&quot;</translatorcomment>
-        <translation type="unfinished">&amp;Quando </translation>
+        <translation>&amp;Quando reproduzido</translation>
     </message>
     <message>
         <location filename="../ui/preferencesdialog.ui" line="226"/>
@@ -1304,12 +1305,12 @@ Note: Value must be from</source>
     <message>
         <location filename="../ui/screenshotdialog.ui" line="119"/>
         <source>Save Location</source>
-        <translation type="unfinished"></translation>
+        <translation>Local de Salvamento</translation>
     </message>
     <message>
         <location filename="../ui/screenshotdialog.ui" line="126"/>
         <source>File Name Template</source>
-        <translation type="unfinished"></translation>
+        <translation>Modelo de nome de arquivo</translation>
     </message>
     <message>
         <location filename="../ui/screenshotdialog.ui" line="146"/>

@@ -143,7 +143,7 @@ signals:
     void messageSignal(QString m);
 
 private:
-    mpv_handle *mpv;
+    mpv_handle *mpv = nullptr;
 
     // variables
     Mpv::PlayState playState = Mpv::Idle;
