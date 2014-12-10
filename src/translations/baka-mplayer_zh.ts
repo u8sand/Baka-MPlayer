@@ -502,7 +502,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
     <message>
         <location filename="../ui/mainwindow.ui" line="1212"/>
         <source>Open &amp;Last File</source>
-        <translation>打开上次文件</translation>
+        <translation>打开上次文件(&amp;L)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1215"/>
@@ -706,7 +706,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
     <message>
         <location filename="../ui/mainwindow.ui" line="1469"/>
         <source>&amp;Dim Desktop</source>
-        <translation type="unfinished">黯淡桌面(&amp;D)</translation>
+        <translation>黯淡桌面(&amp;D)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1472"/>
@@ -741,7 +741,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
     <message>
         <location filename="../ui/mainwindow.ui" line="1508"/>
         <source>To &amp;Current Size</source>
-        <translation type="unfinished">到当前尺寸(&amp;C)</translation>
+        <translation>到当前尺寸(&amp;C)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1511"/>
