@@ -3,8 +3,8 @@ Section: video
 Priority: optional
 Maintainer: Joshua Park (godly-devotion) <azian.otaku@live.com>
 Build-Depends: debhelper (>=9), pkg-config, libice-dev,
-        libmpv-dev, libqt5svg5-dev, qtbase5-dev, 
-        qtdeclarative5-dev, libqt5x11extras5-dev,
+        libmpv-dev, qtbase5-dev (>= 5.2.0), qt5-qmake, 
+        libqt5svg5-dev, qtdeclarative5-dev, libqt5x11extras5-dev,
 
 Standards-Version: 3.9.5
 Homepage: http://bakamplayer.u8sand.net/
