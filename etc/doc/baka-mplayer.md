@@ -85,16 +85,16 @@ Note that for mpv specific options you can use mpv's options. See mpv's manual f
 
 ### Translation
 
-Qt makes it quite easy to setup projects for translation. Because of this we've already set it up so that it's easy for people to make their own translations. Translation works by following these steps:
+Qt makes it quite easy to setup projects for translation. You can create your own translations by following these steps:
 
-1. Modify `src/Baka-MPlayer.pro`
- 1. Under `DEFINES`, change `BAKA_MPLAYER_LANG`'s string from `baka-mplayer_en` to `baka-mplayer_lang` where `lang` is your language code to get Baka-MPlayer to use your language.
- 2. Under `TRANSLATIONS` (at the bottom of the file), add a new line (all lines except the last must end with a `\`) with the string from before but prepended with `translations/` and appended with `.ts` eg. if it was `baka-mplayer_en`, it becomes `translations/baka-mplayer_en.ts`.
-2. Execute the command: `./make.sh` to compile baka-mplayer and your translation file.
-3. Under `src/translations/` you will now find your lang `.ts` file.
+1. Open `src/Baka-MPlayer.pro` with your favorite text editor.
+ 1. Under `DEFINES`, change `BAKA_MPLAYER_LANG`'s value from `baka-mplayer_en` to `baka-mplayer_{lang-code}` where `{lang-code}` is your language code (ISO 639-1).
+ 2. Under `TRANSLATIONS` (at the bottom of the file), add a new line that says `translations/baka-mplayer_{lang-code}.ts`.
+2. Run `./make.sh` to compile baka-mplayer and your translation file.
+3. Go to `src/translations/` and you will now find your language `.ts` file.
 3. Open the file with Qt Linguist and proceed to translate into your language.
-4. Upon completion of the translation, execute `./make.sh` again to compile your translation file.
+4. Upon completion of the translation, run `./make.sh` again to compile your translation file.
 
-If you have a translation please submit it to us so that we can make it available for everyone.
+If you have a translation, you may submit it to us via git merge or through irc.
 
-For more information on Qt Linguist usage, see http://qt-project.org/doc/qt-5/qtlinguist-index.html
+For more information on Qt Linguist, see http://qt-project.org/doc/qt-5/qtlinguist-index.html
