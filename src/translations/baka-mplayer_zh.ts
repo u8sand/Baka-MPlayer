@@ -38,7 +38,14 @@ Apache License, version 2.0 &lt;Google&gt;
 
 Download icon
 CC BY 3.0 &lt;Sasha Mescheryakov&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>mpv - video player based on MPlayer/mplayer2
+GPLv2 &lt;mpv.io&gt;
+
+Noto Sans -  font family with many supported characters
+Apache License, version 2.0 &lt;Google&gt;
+
+Download icon
+CC BY 3.0 &lt;Sasha Mescheryakov&gt;</translation>
     </message>
     <message>
         <location filename="../ui/aboutdialog.ui" line="230"/>
@@ -63,7 +70,22 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source>
-        <translation type="unfinished"></translation>
+        <translation>                GNU GENERAL PUBLIC LICENSE
+                   Version 2, June 1991
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</translation>
     </message>
     <message>
         <location filename="../ui/aboutdialog.ui" line="295"/>
@@ -281,7 +303,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/locationdialog.ui" line="223"/>
         <source>CANC&amp;EL</source>
-        <translation>取消(&amp;C)</translation>
+        <translation>取消(&amp;E)</translation>
     </message>
 </context>
 <context>
@@ -369,7 +391,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1004"/>
         <source>Fit &amp;Window</source>
-        <translation>适应窗口大小</translation>
+        <translation>适应窗口大小(&amp;W)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1017"/>
@@ -591,7 +613,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1351"/>
         <source>Stop after &amp;Current</source>
-        <translation>当前播放完毕后停止</translation>
+        <translation>当前播放完毕后停止(&amp;C)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1356"/>
@@ -603,28 +625,28 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
         <location filename="../ui/mainwindow.ui" line="1361"/>
         <location filename="../ui/mainwindow.ui" line="1461"/>
         <source>&amp;Hide Album Art</source>
-        <translation>隐藏专辑封面</translation>
+        <translation>隐藏专辑封面(&amp;H)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1366"/>
         <source>&amp;Dim Lights</source>
-        <translation>昏暗灯光</translation>
+        <translation>昏暗灯光(&amp;D)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1371"/>
         <location filename="../ui/mainwindow.ui" line="1480"/>
         <source>Show &amp;Command Line</source>
-        <translation>显示命令行</translation>
+        <translation>显示命令行(&amp;C)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1376"/>
         <source>&amp;On Top</source>
-        <translation>置顶</translation>
+        <translation>置顶(&amp;O)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1381"/>
         <source>&amp;Tray Icon</source>
-        <translation>托盘图标</translation>
+        <translation>托盘图标(&amp;T)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1389"/>
@@ -684,7 +706,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1469"/>
         <source>&amp;Dim Desktop</source>
-        <translation>黯淡桌面</translation>
+        <translation type="unfinished">黯淡桌面(&amp;D)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1472"/>
@@ -719,7 +741,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1508"/>
         <source>To &amp;Current Size</source>
-        <translation>到当前尺寸</translation>
+        <translation type="unfinished">到当前尺寸(&amp;C)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1511"/>
@@ -769,12 +791,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1548"/>
         <source>&amp;Auto Detect</source>
-        <translation>自动探测</translation>
+        <translation>自动探测(&amp;A)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1553"/>
         <source>&amp;Autodetect</source>
-        <translation>自动探测</translation>
+        <translation>自动探测(&amp;A)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1558"/>
@@ -827,7 +849,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1605"/>
         <source>&amp;Reset Size</source>
-        <translation>重置尺寸</translation>
+        <translation>重置尺寸(&amp;R)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1616"/>
@@ -837,42 +859,42 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1624"/>
         <source>&amp;Playlist</source>
-        <translation>播放列表</translation>
+        <translation>播放列表(&amp;P)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1632"/>
         <source>&amp;This File</source>
-        <translation>本文件</translation>
+        <translation>本文件(&amp;T)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1648"/>
         <source>&amp;Always</source>
-        <translation>总是</translation>
+        <translation>总是(&amp;A)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1656"/>
         <source>When &amp;Playing</source>
-        <translation>播放时</translation>
+        <translation>播放时(&amp;P)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1667"/>
         <source>&amp;Never</source>
-        <translation>从不</translation>
+        <translation>从不(&amp;N)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1675"/>
         <source>&amp;Show in Tray</source>
-        <translation>托盘中显示</translation>
+        <translation>托盘中显示(&amp;S)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1683"/>
         <source>&amp;Hide Popup</source>
-        <translation>隐藏退出</translation>
+        <translation>隐藏退出(&amp;H)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1691"/>
         <source>Show D&amp;ebug Output</source>
-        <translation>显示调试信息</translation>
+        <translation>显示调试信息(&amp;E)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1694"/>
@@ -927,7 +949,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1744"/>
         <source>&amp;Increase</source>
-        <translation>提高</translation>
+        <translation>提高(&amp;I)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1747"/>
@@ -937,7 +959,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1752"/>
         <source>&amp;Decrease</source>
-        <translation>降低</translation>
+        <translation>降低(&amp;D)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1755"/>
@@ -947,7 +969,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1760"/>
         <source>&amp;Reset</source>
-        <translation>重置</translation>
+        <translation>重置(&amp;R)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1763"/>
@@ -1024,7 +1046,7 @@ Note: Value must be from</source>
     <message>
         <location filename="../ui/mainwindow.cpp" line="736"/>
         <source>&amp;Refresh</source>
-        <translation>刷新</translation>
+        <translation>刷新(&amp;R)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="883"/>
