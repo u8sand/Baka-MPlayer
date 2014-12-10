@@ -43,7 +43,6 @@ protected:
     bool eventFilter(QObject *obj, QEvent *event);  // event filter (get mouse move events from mpvFrame)
 
     void SetPlaybackControls(bool enable);          // macro to enable/disable playback controls
-    bool SetScreenshotTemplate();                   // prompt the user to select a screenshot directory
 
 private slots:
 
@@ -57,7 +56,7 @@ private slots:
     void TakeScreenshot(bool subs);                 // take a screenshot
     void ShowScreenshotMessage(bool subs);          // show the screenshot status message
     void UpdateRecentFiles();                       // populate recentFiles menu
-    void OpenFile();
+    void OpenFile();                                // open file dialog
 
 private:
     Ui::MainWindow  *ui;

@@ -1124,13 +1124,13 @@ Note: Value must be from</source>
 <context>
     <name>MpvHandler</name>
     <message>
-        <location filename="../mpvhandler.cpp" line="173"/>
+        <location filename="../mpvhandler.cpp" line="171"/>
         <source>Setting type was parsed as </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mpvhandler.cpp" line="714"/>
-        <location filename="../mpvhandler.cpp" line="722"/>
+        <location filename="../mpvhandler.cpp" line="712"/>
+        <location filename="../mpvhandler.cpp" line="720"/>
         <source>mpv was not initialized</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1143,122 +1143,122 @@ Note: Value must be from</source>
         <translation>환경설정</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="188"/>
+        <location filename="../ui/preferencesdialog.ui" line="191"/>
         <source>Player</source>
         <translation>인터페이스</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="206"/>
+        <location filename="../ui/preferencesdialog.ui" line="209"/>
         <source>On Top</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="212"/>
+        <location filename="../ui/preferencesdialog.ui" line="215"/>
         <source>&amp;Always</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="219"/>
+        <location filename="../ui/preferencesdialog.ui" line="222"/>
         <source>&amp;When Playing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="226"/>
+        <location filename="../ui/preferencesdialog.ui" line="229"/>
         <source>&amp;Never</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="239"/>
+        <location filename="../ui/preferencesdialog.ui" line="242"/>
         <source>Tray Icon</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="248"/>
+        <location filename="../ui/preferencesdialog.ui" line="251"/>
         <source>&amp;Hide Popup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="259"/>
+        <location filename="../ui/preferencesdialog.ui" line="262"/>
         <source>Video</source>
         <translation>비디오</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="279"/>
+        <location filename="../ui/preferencesdialog.ui" line="282"/>
         <source>&amp;Auto-Fit Window:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="293"/>
+        <location filename="../ui/preferencesdialog.ui" line="296"/>
         <source>50%</source>
         <translation>50%</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="298"/>
+        <location filename="../ui/preferencesdialog.ui" line="301"/>
         <source>75%</source>
         <translation>75%</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="303"/>
+        <location filename="../ui/preferencesdialog.ui" line="306"/>
         <source>100%</source>
         <translation>100%</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="308"/>
+        <location filename="../ui/preferencesdialog.ui" line="311"/>
         <source>200%</source>
         <translation>200%</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="318"/>
+        <location filename="../ui/preferencesdialog.ui" line="321"/>
         <source>Screenshot</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="324"/>
+        <location filename="../ui/preferencesdialog.ui" line="327"/>
         <source>File Format:</source>
         <translation>파일 종류:</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="332"/>
+        <location filename="../ui/preferencesdialog.ui" line="335"/>
         <source>jpg</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="337"/>
+        <location filename="../ui/preferencesdialog.ui" line="340"/>
         <source>png</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="342"/>
+        <location filename="../ui/preferencesdialog.ui" line="345"/>
         <source>tga</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="350"/>
+        <location filename="../ui/preferencesdialog.ui" line="353"/>
         <source>File Name Template:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="357"/>
+        <location filename="../ui/preferencesdialog.ui" line="360"/>
         <source>Default Save Location:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="364"/>
+        <location filename="../ui/preferencesdialog.ui" line="367"/>
         <source>screenshot%#04n</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="371"/>
+        <location filename="../ui/preferencesdialog.ui" line="374"/>
         <source>CHANG&amp;E</source>
         <translation>변동(&amp;E)</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="378"/>
+        <location filename="../ui/preferencesdialog.ui" line="381"/>
         <source>&amp;Always show the dialog</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="410"/>
+        <location filename="../ui/preferencesdialog.ui" line="413"/>
         <source>&amp;CLOSE</source>
         <translation>닫기(&amp;C)</translation>
     </message>
@@ -1382,7 +1382,7 @@ Version: </source>
     <message>
         <location filename="../ui/updatedialog.cpp" line="76"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">정보</translation>
     </message>
     <message>
         <location filename="../ui/updatedialog.cpp" line="76"/>

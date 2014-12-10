@@ -1499,19 +1499,6 @@ void MainWindow::SetPlaybackControls(bool enable)
     }
 }
 
-bool MainWindow::SetScreenshotTemplate()
-{
-    QMessageBox::information(this, tr("Take Screenshot"),
-                             tr("Choose the default location where you would like to save your screenshots. Also by default, we will save your screenshots as a jpg file. If you'd like to change any of these settings, it is under Preferences."));
-    QString dir = QFileDialog::getExistingDirectory(this, tr("Screenshot Directory"));
-    if(dir != "")
-    {
-        mpv->ScreenshotTemplate(dir+"/"+tr("screenshot")+"%#04n");
-        return true;
-    }
-    return false;
-}
-
 void MainWindow::FullScreen(bool fs)
 {
     if(fs)

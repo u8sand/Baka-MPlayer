@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="pt_BR">
+<TS version="2.1" language="pt_BR">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -1141,13 +1141,13 @@ Nota: O valor deve ser de</translation>
 <context>
     <name>MpvHandler</name>
     <message>
-        <location filename="../mpvhandler.cpp" line="173"/>
+        <location filename="../mpvhandler.cpp" line="171"/>
         <source>Setting type was parsed as </source>
         <translation>Tipo de configurações foram interpretado esta </translation>
     </message>
     <message>
-        <location filename="../mpvhandler.cpp" line="714"/>
-        <location filename="../mpvhandler.cpp" line="722"/>
+        <location filename="../mpvhandler.cpp" line="712"/>
+        <location filename="../mpvhandler.cpp" line="720"/>
         <source>mpv was not initialized</source>
         <translation>mpv não foi inicializado</translation>
     </message>
@@ -1160,127 +1160,127 @@ Nota: O valor deve ser de</translation>
         <translation>Preferências</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="188"/>
+        <location filename="../ui/preferencesdialog.ui" line="191"/>
         <source>Player</source>
         <translation>Aparelho</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="206"/>
+        <location filename="../ui/preferencesdialog.ui" line="209"/>
         <source>On Top</source>
         <translation>No topo</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="212"/>
+        <location filename="../ui/preferencesdialog.ui" line="215"/>
         <source>&amp;Always</source>
         <translation>&amp;Sempre</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="219"/>
+        <location filename="../ui/preferencesdialog.ui" line="222"/>
         <source>&amp;When Playing</source>
         <translatorcomment>Unsure about this &quot;playing&quot;</translatorcomment>
         <translation>&amp;Quando reproduzido</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="226"/>
+        <location filename="../ui/preferencesdialog.ui" line="229"/>
         <source>&amp;Never</source>
         <translation>&amp;Nunca</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="239"/>
+        <location filename="../ui/preferencesdialog.ui" line="242"/>
         <source>Tray Icon</source>
         <translatorcomment>I assure you no brazillian without computer knowledge has any clue what this means lmfao</translatorcomment>
         <translation>Ícone do Bandeja</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="248"/>
+        <location filename="../ui/preferencesdialog.ui" line="251"/>
         <source>&amp;Hide Popup</source>
         <translation>Es&amp;conder Pop-up</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="259"/>
+        <location filename="../ui/preferencesdialog.ui" line="262"/>
         <source>Video</source>
         <translation>Vídeo</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="279"/>
+        <location filename="../ui/preferencesdialog.ui" line="282"/>
         <source>&amp;Auto-Fit Window:</source>
         <translation>Ajustar a &amp;Janela &amp;Automático:</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="293"/>
+        <location filename="../ui/preferencesdialog.ui" line="296"/>
         <source>50%</source>
         <translation>50%</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="298"/>
+        <location filename="../ui/preferencesdialog.ui" line="301"/>
         <source>75%</source>
         <translation>75%</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="303"/>
+        <location filename="../ui/preferencesdialog.ui" line="306"/>
         <source>100%</source>
         <translation>100%</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="308"/>
+        <location filename="../ui/preferencesdialog.ui" line="311"/>
         <source>200%</source>
         <translation>200%</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="318"/>
+        <location filename="../ui/preferencesdialog.ui" line="321"/>
         <source>Screenshot</source>
         <translatorcomment>^ I guess?</translatorcomment>
         <translation>Foto</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="324"/>
+        <location filename="../ui/preferencesdialog.ui" line="327"/>
         <source>File Format:</source>
         <translation>Formato de arquivo:</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="332"/>
+        <location filename="../ui/preferencesdialog.ui" line="335"/>
         <source>jpg</source>
         <translation>jpg</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="337"/>
+        <location filename="../ui/preferencesdialog.ui" line="340"/>
         <source>png</source>
         <translation>png</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="342"/>
+        <location filename="../ui/preferencesdialog.ui" line="345"/>
         <source>tga</source>
         <translation>tga</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="350"/>
+        <location filename="../ui/preferencesdialog.ui" line="353"/>
         <source>File Name Template:</source>
         <translation>Modelo de nome de arquivo:</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="357"/>
+        <location filename="../ui/preferencesdialog.ui" line="360"/>
         <source>Default Save Location:</source>
         <translatorcomment>I just removed the part about &quot;default&quot;</translatorcomment>
         <translation>Local de Salvamento:</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="364"/>
+        <location filename="../ui/preferencesdialog.ui" line="367"/>
         <source>screenshot%#04n</source>
         <translatorcomment>Someone in Brazil needs to help me out..</translatorcomment>
         <translation>foto%#04n</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="371"/>
+        <location filename="../ui/preferencesdialog.ui" line="374"/>
         <source>CHANG&amp;E</source>
         <translation>ALT&amp;ERAÇÃO</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="378"/>
+        <location filename="../ui/preferencesdialog.ui" line="381"/>
         <source>&amp;Always show the dialog</source>
         <translation>&amp;Sempre mostrar a janela</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="410"/>
+        <location filename="../ui/preferencesdialog.ui" line="413"/>
         <source>&amp;CLOSE</source>
         <translation>&amp;FECHAR</translation>
     </message>

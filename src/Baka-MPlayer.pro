@@ -19,7 +19,7 @@ TEMPLATE = app
 CONFIG += c++11 link_pkgconfig
 PKGCONFIG += mpv
 
-DESTDIR = build/
+DESTDIR = build
 OBJECTS_DIR = $${DESTDIR}/obj
 MOC_DIR = $${DESTDIR}/moc
 RCC_DIR = $${DESTDIR}/rcc
@@ -32,6 +32,20 @@ unix {
 
 win32 {
     CONFIG += static
+}
+
+CONFIG(release, debug|release) {
+    QMAKE_EXTRA_COMPILERS += lupdate
+    lupdate.input    = TRANSLATIONS
+    lupdate.output   = ${QMAKE_FILE_IN}
+    lupdate.commands = lupdate ${QMAKE_FILE_IN}
+    lupdate.CONFIG  += no_link target_predeps
+
+    QMAKE_EXTRA_COMPILERS += lrelease
+    lrelease.input    = TRANSLATIONS
+    lrelease.output   = ${DESTDIR}${QMAKE_FILE_BASE}.qm
+    lrelease.commands = lrelease ${QMAKE_FILE_IN} -qm $${lrelease.output}
+    lrelease.CONFIG  += no_link target_predeps
 }
 
 SOURCES += main.cpp\
