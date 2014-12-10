@@ -41,7 +41,7 @@ CC BY 3.0 &lt;Sasha Mescheryakov&gt;</source>
         <translation>mpv - aparelho de vídeo de MPlayer/mplayer2
 GPLv2 &lt;mpv.io&gt;
 
-Noto Sans -  família de Fontes com muitos caracteres suportados
+Noto Sans -  família de fontes com muitos caracteres suportados
 Apache Licença, versão 2.0 &lt;Google&gt;
 
 Baixar ícone
@@ -205,7 +205,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/inputdialog.ui" line="69"/>
         <source>Please enter a value:</source>
-        <translation>Por favor preencha:</translation>
+        <translation>Por favor, insira o valor:</translation>
     </message>
     <message>
         <location filename="../ui/inputdialog.ui" line="116"/>
@@ -303,7 +303,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="23"/>
         <source>Baka MPlayer</source>
-        <translation></translation>
+        <translation>Baka MPlayer</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="255"/>
@@ -393,7 +393,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1029"/>
         <source>Subtitle &amp;Track</source>
-        <translation>Faixa de &amp;legendas</translation>
+        <translation>Faixa de &amp;legenda</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1040"/>
@@ -403,6 +403,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1051"/>
         <source>Take &amp;Screenshot</source>
+        <translatorcomment>Not sure if there&apos;s a better translation for screenshot</translatorcomment>
         <translation>Tirar &amp;foto</translation>
     </message>
     <message>
@@ -514,7 +515,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1234"/>
         <source>Play &amp;Next File</source>
-        <translation>Play Arquivo &amp;Próxima</translation>
+        <translation>Play Arquivo &amp;Próximo</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1237"/>
@@ -549,7 +550,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1281"/>
         <source>Show S&amp;ubtitles</source>
-        <translation>&amp;Vista de legendas</translation>
+        <translation>&amp;Mostrar legendas</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1284"/>
@@ -639,7 +640,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1381"/>
         <source>&amp;Tray Icon</source>
-        <translation>Ícone do &amp;Bandeja</translation>
+        <translation>Ícone da &amp;Bandeja</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1389"/>
@@ -817,7 +818,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
         <location filename="../ui/mainwindow.ui" line="1739"/>
         <location filename="../ui/mainwindow.ui" line="1771"/>
         <source>[ none ]</source>
-        <translation>[nada]</translation>
+        <translation>[ nada ]</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1589"/>
@@ -1054,7 +1055,7 @@ Nota: O valor deve ser de</translation>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1127"/>
         <source>Seek Forward</source>
-        <translation>Procurar Para a Frente</translation>
+        <translation>Procurar para a Frente</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1136"/>
@@ -1189,7 +1190,7 @@ Nota: O valor deve ser de</translation>
         <location filename="../ui/preferencesdialog.ui" line="242"/>
         <source>Tray Icon</source>
         <translatorcomment>I assure you no brazillian without computer knowledge has any clue what this means lmfao</translatorcomment>
-        <translation>Ícone do Bandeja</translation>
+        <translation>Ícone da Bandeja</translation>
     </message>
     <message>
         <location filename="../ui/preferencesdialog.ui" line="251"/>
@@ -1255,7 +1256,7 @@ Nota: O valor deve ser de</translation>
     <message>
         <location filename="../ui/preferencesdialog.ui" line="353"/>
         <source>File Name Template:</source>
-        <translation>Modelo de nome de arquivo:</translation>
+        <translation>Modelo de nome do arquivo:</translation>
     </message>
     <message>
         <location filename="../ui/preferencesdialog.ui" line="360"/>
