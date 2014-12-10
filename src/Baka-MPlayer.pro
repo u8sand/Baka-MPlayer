@@ -96,5 +96,5 @@ RESOURCES += \
     rsclist.qrc
 
 TRANSLATIONS += \
-    translations/baka-mplayer_en.ts \
+    translations/baka-mplayer_pt.ts \
     translations/baka-mplayer_ko.ts
