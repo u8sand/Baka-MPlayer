@@ -25,6 +25,7 @@ fi
 
 git clone https://github.com/mxe/mxe.git mxe.$arch
 cd mxe.$arch
+git pull
 # set jobs optimal for your computer
 echo "JOBS := $jobs" > settings.mk
 # this took 1 hour each on my system.

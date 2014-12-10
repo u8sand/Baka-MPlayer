@@ -37,7 +37,8 @@ win32 {
 CONFIG(release, debug|release) {
     QMAKE_EXTRA_COMPILERS += lupdate
     lupdate.input    = TRANSLATIONS
-    lupdate.output   = ${QMAKE_FILE_IN}
+    # lupdate command knows where to put it, this is to get qmake to not display a dumb warning
+    lupdate.output   = ${DESTDIR}
     lupdate.commands = lupdate ${QMAKE_FILE_IN}
     lupdate.CONFIG  += no_link target_predeps
 

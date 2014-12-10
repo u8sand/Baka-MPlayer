@@ -18,6 +18,7 @@ root=$(pwd)
 # get mpv/waf
 git clone https://github.com/mpv-player/mpv.git mpv.$arch
 cd mpv.$arch
+git pull
 ./bootstrap.py
 
 # setup mxe environment

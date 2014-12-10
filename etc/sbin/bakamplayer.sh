@@ -16,7 +16,7 @@ mxeroot=$(pwd)/mxe.$arch
 # get bakamplayer
 git clone https://github.com/u8sand/Baka-MPlayer.git Baka-MPlayer.$arch
 cd Baka-MPlayer.$arch
-
+git pull
 # setup mxe environment
 export PATH=$mxeroot/usr/bin:$PATH
 export PKG_CONFIG_PATH=$mreroot/usr/$arch-w64-mingw32.static/lib/pkgconfig
