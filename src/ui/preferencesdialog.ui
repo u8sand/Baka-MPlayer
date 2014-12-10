@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>230</width>
-    <height>319</height>
+    <height>322</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,16 +23,19 @@
 /* QRadioButton */
 
 QRadioButton::indicator {
-	width: 10px;
-	height: 10px;
+	width: 7px;
+	height: 7px;
 	border: 1px solid black;
 	border-radius: 6px;
+	padding: 2px;
 }
 QRadioButton::indicator:unchecked {
 	background: #424242;
+	image: none;
 }
 QRadioButton::indicator:checked {
 	background: #008098;
+	image: url(:/img/selected.svg);
 }
 
 /* QCheckBox */
