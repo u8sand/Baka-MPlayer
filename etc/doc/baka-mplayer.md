@@ -1,5 +1,4 @@
 ﻿# Baka MPlayer User Manual
-Version 1.1
 
 ## Introduction
 
@@ -21,7 +20,7 @@ Refreshing the playlist will recheck the directory (files that were deleted will
 
 Clicking the Index allows you to type a specific index to play--this is particularly useful for playing a specific episode if all episodes are sorted by ascending order.
 
-### Sreenshots
+### Screenshots
 
 Screenshots are taken through mpv. The template specified is passed into mpv as screenshot-template; see mpv's manual for more details on valid screenshot-template. Specified directories are prepended to the screenshot-template. If the screenshot dialog is hidden by unchecking the `Always show this dialog` option, the dialog can be restored by setting `baka-mplayer/screenshotDialog` to true in the settings file.
 
@@ -49,7 +48,7 @@ Some functionality is not entirely explained to the user; this is explained here
 		Middle Click - Jump to a specific time
 		Right Click - Open a location (including URLs)
 
-*Customization of the key bindings will be implemented in the near future.
+* Customization of the key bindings will be implemented in the near future.
 
 ### Settings
 
@@ -93,7 +92,7 @@ Qt makes it quite easy to setup projects for translation. Because of this we've 
  2. Under `TRANSLATIONS` (at the bottom of the file), add a new line (all lines except the last must end with a `\`) with the string from before but prepended with `translations/` and appended with `.ts` eg. if it was `baka-mplayer_en`, it becomes `translations/baka-mplayer_en.ts`.
 2. Execute the command: `./make.sh` to compile baka-mplayer and your translation file.
 3. Under `src/translations/` you will now find your lang `.ts` file.
-3. Open the file with qt's lingist and proceed to translate into your language.
+3. Open the file with Qt Linguist and proceed to translate into your language.
 4. Upon completion of the translation, execute `./make.sh` again to compile your translation file.
 
 If you have a translation please submit it to us so that we can make it available for everyone.
