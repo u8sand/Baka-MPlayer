@@ -16,7 +16,7 @@
     <message>
         <location filename="../ui/aboutdialog.ui" line="167"/>
         <source>Baka MPlayer 0.0.0</source>
-        <translation></translation>
+        <translation>Baka MPlayer 0.0.0</translation>
     </message>
     <message>
         <location filename="../ui/aboutdialog.ui" line="177"/>
@@ -211,7 +211,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
         <location filename="../ui/inputdialog.ui" line="116"/>
         <source>&amp;OK</source>
         <translatorcomment>Not really sure about this one lmfao.</translatorcomment>
-        <translation></translation>
+        <translation>&amp;OK</translation>
     </message>
     <message>
         <location filename="../ui/inputdialog.ui" line="132"/>
@@ -235,22 +235,22 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
         <location filename="../ui/jumpdialog.ui" line="129"/>
         <location filename="../ui/jumpdialog.ui" line="160"/>
         <source>:</source>
-        <translation></translation>
+        <translation>:</translation>
     </message>
     <message>
         <location filename="../ui/jumpdialog.ui" line="142"/>
         <source> min</source>
-        <translation></translation>
+        <translation> min</translation>
     </message>
     <message>
         <location filename="../ui/jumpdialog.ui" line="173"/>
         <source> sec</source>
-        <translation></translation>
+        <translation> sec</translation>
     </message>
     <message>
         <location filename="../ui/jumpdialog.ui" line="192"/>
         <source>&amp;OK</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;OK</translation>
     </message>
 </context>
 <context>
@@ -269,12 +269,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/locationdialog.ui" line="107"/>
         <source>*.*</source>
-        <translation></translation>
+        <translation>*.*</translation>
     </message>
     <message>
         <location filename="../ui/locationdialog.ui" line="133"/>
         <source>&amp;OK</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;OK</translation>
     </message>
     <message>
         <location filename="../ui/locationdialog.ui" line="162"/>
@@ -308,7 +308,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="255"/>
         <source>&gt;</source>
-        <translation></translation>
+        <translation>&gt;</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="297"/>
@@ -348,12 +348,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="601"/>
         <source>0:00:00</source>
-        <translation></translation>
+        <translation>0:00:00</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="611"/>
         <source>/</source>
-        <translation></translation>
+        <translation>/</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="627"/>
@@ -363,7 +363,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="630"/>
         <source>-0:00:00</source>
-        <translation></translation>
+        <translation>-0:00:00</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="973"/>
@@ -459,7 +459,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1180"/>
         <source>Ctrl+N</source>
-        <translation></translation>
+        <translation>Ctrl+N</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1185"/>
@@ -469,7 +469,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1188"/>
         <source>Ctrl+O</source>
-        <translation></translation>
+        <translation>Ctrl+O</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1193"/>
@@ -479,7 +479,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1196"/>
         <source>Ctrl+U</source>
-        <translation></translation>
+        <translation>Ctrl+U</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1201"/>
@@ -489,7 +489,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1204"/>
         <source>Ctrl+V</source>
-        <translation></translation>
+        <translation>Ctrl+V</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1212"/>
@@ -499,7 +499,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1215"/>
         <source>Ctrl+Z</source>
-        <translation></translation>
+        <translation>Ctrl+Z</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1223"/>
@@ -509,7 +509,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1226"/>
         <source>Ctrl+F</source>
-        <translation></translation>
+        <translation>Ctrl+F</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1234"/>
@@ -519,7 +519,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1237"/>
         <source>Ctrl+Right</source>
-        <translation></translation>
+        <translation>Ctrl+Right</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1245"/>
@@ -529,12 +529,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1248"/>
         <source>Ctrl+Left</source>
-        <translation></translation>
+        <translation>Ctrl+Left</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1256"/>
         <source>Ctrl+Q</source>
-        <translation></translation>
+        <translation>Ctrl+Q</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1264"/>
@@ -544,7 +544,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1267"/>
         <source>Alt+Return</source>
-        <translation></translation>
+        <translation>Alt+Return</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1281"/>
@@ -554,7 +554,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1284"/>
         <source>Ctrl+W</source>
-        <translation></translation>
+        <translation>Ctrl+W</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1292"/>
@@ -564,7 +564,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1295"/>
         <source>Ctrl+I</source>
-        <translation></translation>
+        <translation>Ctrl+I</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1303"/>
@@ -576,7 +576,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1306"/>
         <source>Space</source>
-        <translation></translation>
+        <translation>Space</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1314"/>
@@ -586,7 +586,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1317"/>
         <source>Ctrl+S</source>
-        <translation></translation>
+        <translation>Ctrl+S</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1325"/>
@@ -596,7 +596,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1328"/>
         <source>Ctrl+R</source>
-        <translation></translation>
+        <translation>Ctrl+R</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1343"/>
@@ -649,7 +649,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1392"/>
         <source>PgDown</source>
-        <translation></translation>
+        <translation>PgDown</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1400"/>
@@ -659,7 +659,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1403"/>
         <source>PgUp</source>
-        <translation></translation>
+        <translation>PgUp</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1411"/>
@@ -669,7 +669,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1414"/>
         <source>Shift+Right</source>
-        <translation></translation>
+        <translation>Shift+Right</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1422"/>
@@ -679,7 +679,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1425"/>
         <source>Shift+Left</source>
-        <translation></translation>
+        <translation>Shift+Left</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1433"/>
@@ -689,12 +689,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1436"/>
         <source>Ctrl+J</source>
-        <translation></translation>
+        <translation>Ctrl+J</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1450"/>
         <source>Ctrl+X</source>
-        <translation></translation>
+        <translation>Ctrl+X</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1469"/>
@@ -704,7 +704,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1472"/>
         <source>Ctrl+D</source>
-        <translation></translation>
+        <translation>Ctrl+D</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1485"/>
@@ -714,7 +714,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1488"/>
         <source>F1</source>
-        <translation></translation>
+        <translation>F1</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1493"/>
@@ -739,47 +739,47 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1511"/>
         <source>Alt+1</source>
-        <translation></translation>
+        <translation>Alt+1</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1516"/>
         <source>50%</source>
-        <translation></translation>
+        <translation>50%</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1519"/>
         <source>Alt+2</source>
-        <translation></translation>
+        <translation>Alt+2</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1524"/>
         <source>75%</source>
-        <translation></translation>
+        <translation>75%</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1527"/>
         <source>Alt+3</source>
-        <translation></translation>
+        <translation>Alt+3</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1532"/>
         <source>100%</source>
-        <translation></translation>
+        <translation>100%</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1535"/>
         <source>Alt+4</source>
-        <translation></translation>
+        <translation>Alt+4</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1540"/>
         <source>200%</source>
-        <translation></translation>
+        <translation>200%</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1543"/>
         <source>Alt+5</source>
-        <translation></translation>
+        <translation>Alt+5</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1548"/>
@@ -827,7 +827,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1592"/>
         <source>Ctrl++</source>
-        <translation></translation>
+        <translation>Ctrl++</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1597"/>
@@ -837,7 +837,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1600"/>
         <source>Ctrl+-</source>
-        <translation></translation>
+        <translation>Ctrl+-</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1605"/>
@@ -892,7 +892,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1694"/>
         <source>Ctrl+E</source>
-        <translation></translation>
+        <translation>Ctrl+E</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1699"/>
@@ -902,7 +902,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1702"/>
         <source>Ctrl+Up</source>
-        <translation></translation>
+        <translation>Ctrl+Up</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1707"/>
@@ -912,7 +912,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1710"/>
         <source>Ctrl+Down</source>
-        <translation></translation>
+        <translation>Ctrl+Down</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1715"/>
@@ -922,7 +922,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1718"/>
         <source>Ctrl+T</source>
-        <translation></translation>
+        <translation>Ctrl+T</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1723"/>
@@ -932,7 +932,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1726"/>
         <source>Ctrl+Shift+T</source>
-        <translation></translation>
+        <translation>Ctrl+Shift+T</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1731"/>
@@ -947,7 +947,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1747"/>
         <source>Ctrl+Shift+Up</source>
-        <translation></translation>
+        <translation>Ctrl+Shift+Up</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1752"/>
@@ -957,7 +957,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1755"/>
         <source>Ctrl+Shift+Down</source>
-        <translation></translation>
+        <translation>Ctrl+Shift+Down</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1760"/>
@@ -967,7 +967,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.ui" line="1763"/>
         <source>Ctrl+Shift+R</source>
-        <translation></translation>
+        <translation>Ctrl+Shift+R</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="104"/>
@@ -1208,22 +1208,22 @@ Note: Value must be from</source>
     <message>
         <location filename="../ui/preferencesdialog.ui" line="293"/>
         <source>50%</source>
-        <translation></translation>
+        <translation>50%</translation>
     </message>
     <message>
         <location filename="../ui/preferencesdialog.ui" line="298"/>
         <source>75%</source>
-        <translation></translation>
+        <translation>75%</translation>
     </message>
     <message>
         <location filename="../ui/preferencesdialog.ui" line="303"/>
         <source>100%</source>
-        <translation></translation>
+        <translation>100%</translation>
     </message>
     <message>
         <location filename="../ui/preferencesdialog.ui" line="308"/>
         <source>200%</source>
-        <translation></translation>
+        <translation>200%</translation>
     </message>
     <message>
         <location filename="../ui/preferencesdialog.ui" line="318"/>
@@ -1239,17 +1239,17 @@ Note: Value must be from</source>
     <message>
         <location filename="../ui/preferencesdialog.ui" line="332"/>
         <source>jpg</source>
-        <translation></translation>
+        <translation>jpg</translation>
     </message>
     <message>
         <location filename="../ui/preferencesdialog.ui" line="337"/>
         <source>png</source>
-        <translation></translation>
+        <translation>png</translation>
     </message>
     <message>
         <location filename="../ui/preferencesdialog.ui" line="342"/>
         <source>tga</source>
-        <translation></translation>
+        <translation>tga</translation>
     </message>
     <message>
         <location filename="../ui/preferencesdialog.ui" line="350"/>
@@ -1299,7 +1299,7 @@ Note: Value must be from</source>
     <message>
         <location filename="../ui/screenshotdialog.ui" line="109"/>
         <source>...</source>
-        <translation></translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../ui/screenshotdialog.ui" line="119"/>
@@ -1314,17 +1314,17 @@ Note: Value must be from</source>
     <message>
         <location filename="../ui/screenshotdialog.ui" line="146"/>
         <source>jpg</source>
-        <translation></translation>
+        <translation>jpg</translation>
     </message>
     <message>
         <location filename="../ui/screenshotdialog.ui" line="151"/>
         <source>png</source>
-        <translation></translation>
+        <translation>png</translation>
     </message>
     <message>
         <location filename="../ui/screenshotdialog.ui" line="156"/>
         <source>tga</source>
-        <translation></translation>
+        <translation>tga</translation>
     </message>
     <message>
         <location filename="../ui/screenshotdialog.ui" line="168"/>
