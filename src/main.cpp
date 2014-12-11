@@ -2,14 +2,18 @@
 
 #include <QApplication>
 #include <QTranslator>
+#include <QString>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    QTranslator translator;
-    translator.load(BAKA_MPLAYER_LANG);
-    a.installTranslator(&translator);
+    if(QString(BAKA_MPLAYER_LANG) != "baka-mplayer-en")
+    {
+      QTranslator translator;
+      translator.load(BAKA_MPLAYER_LANG);
+      a.installTranslator(&translator);
+    }
 
     MainWindow w;
     w.show();
