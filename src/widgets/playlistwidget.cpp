@@ -73,11 +73,13 @@ QString PlaylistWidget::CurrentItem()
 
 QString PlaylistWidget::PreviousItem()
 {
+    SelectItem(cItem);
     return FileAt(currentRow()-1);
 }
 
 QString PlaylistWidget::NextItem()
 {
+    SelectItem(cItem);
     return FileAt(currentRow()+1);
 }
 
@@ -112,7 +114,7 @@ void PlaylistWidget::ShowAll(bool b)
     {
         QListWidgetItem *_item = currentItem();
         QString item;
-        if(_item)
+        if(_item && cItem == QString())
             item = _item->text();
         else
             item = cItem;
@@ -143,7 +145,7 @@ void PlaylistWidget::Shuffle(bool b)
     {
         QListWidgetItem *_item = currentItem();
         QString item;
-        if(_item)
+        if(_item && cItem == QString())
             item = _item->text();
         else
             item = cItem;

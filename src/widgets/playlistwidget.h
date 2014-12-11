@@ -25,6 +25,7 @@ public:
     void Search(QString);
     void ShowAll(bool);
     void Shuffle(bool);
+
 protected:
     void contextMenuEvent(QContextMenuEvent *event);
 
