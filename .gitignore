@@ -1,4 +1,4 @@
 build*
-*.pro.user
+*.pro.*
 Makefile
 *.kdev4
