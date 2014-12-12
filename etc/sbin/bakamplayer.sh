@@ -17,6 +17,7 @@ mxeroot=$(pwd)/mxe.$arch
 git clone https://github.com/u8sand/Baka-MPlayer.git Baka-MPlayer.$arch
 cd Baka-MPlayer.$arch
 git pull
+
 # setup mxe environment
 export PATH=$mxeroot/usr/bin:$PATH
 export PKG_CONFIG_PATH=$mreroot/usr/$arch-w64-mingw32.static/lib/pkgconfig
@@ -26,6 +27,6 @@ unset `env | \
     cut -d '=' -f1 | tr '\n' ' '`
 
 # build baka-mplayer
-$mxeroot/usr/$arch-w64-mingw32.static/qt5/bin/qmake src/Baka-MPlayer.pro
+$mxeroot/usr/$arch-w64-mingw32.static/qt5/bin/qmake src/Baka-MPlayer.pro CONFIG+=release
 make -j `grep -c ^processor /proc/cpuinfo`
 cd ..

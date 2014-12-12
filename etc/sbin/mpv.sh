@@ -13,7 +13,7 @@ else
 fi
 
 # add built mxe directory to the path
-mxeroot=$(pwd)/mxe.x86_64
+mxeroot=$(pwd)/mxe.$arch
 
 # get mpv/waf
 git clone https://github.com/mpv-player/mpv.git mpv.$arch
