@@ -71,7 +71,7 @@ InfoDialog::InfoDialog(const QString &fileName, const Mpv::FileInfo &_fileInfo, 
     }
     if(fileInfo.chapters.length() > 0)
     {
-        ui->infoWidget->setRowCount(ui->infoWidget->rowCount()+1+fileInfo.tracks.length());
+        ui->infoWidget->setRowCount(ui->infoWidget->rowCount()+1+fileInfo.chapters.length());
 
         item = new QTableWidgetItem(tr("[Chapter List]"));
         item->setTextAlignment(Qt::AlignCenter);
