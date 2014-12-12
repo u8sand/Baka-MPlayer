@@ -3,6 +3,8 @@
 CustomSlider::CustomSlider(QWidget *parent):
     QSlider(parent)
 {
+    connect(this, SIGNAL(sliderMoved(int)),
+            this, SLOT(setValue(int)));
 }
 
 void CustomSlider::setValueNoSignal(int value)
@@ -20,8 +22,7 @@ void CustomSlider::mousePressEvent(QMouseEvent *event)
 //      if (orientation() == Qt::Vertical)
 //          setValue(minimum() + ((maximum()-minimum()) * (height()-event->y())) / height());
 //      else // we're always horizontal, extra code not needed
-          setValue(minimum() + ((maximum()-minimum()) * event->x()) / width());
-
+      setValue(minimum() + double((maximum()-minimum()) * event->x()) / width());
       event->accept();
   }
   QSlider::mousePressEvent(event);
