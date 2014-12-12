@@ -28,7 +28,7 @@ InfoDialog::InfoDialog(const QString &fileName, const Mpv::FileInfo &_fileInfo, 
         {tr("Media length"), FormatTime(fileInfo.length, fileInfo.length)},
     };
 
-    if (fileInfo.video_params.codec.length() > 0)
+    if(fileInfo.video_params.codec != QString())
     {
         QList<QPair<QString, QString>> video_items = {
             {tr("[Video]"), QString()},
@@ -40,7 +40,7 @@ InfoDialog::InfoDialog(const QString &fileName, const Mpv::FileInfo &_fileInfo, 
         items.append(video_items);
     }
 
-    if (fileInfo.audio_params.codec.length() > 0)
+    if(fileInfo.audio_params.codec != QString())
     {
         QList<QPair<QString, QString>> audio_items = {
             {tr("[Audio]"), QString()},
