@@ -26,18 +26,32 @@ InfoDialog::InfoDialog(const QString &fileName, const Mpv::FileInfo &_fileInfo, 
         {tr("File size"), HumanSize(fi.size())},
         {tr("Date created"), fi.created().toString()},
         {tr("Media length"), FormatTime(fileInfo.length, fileInfo.length)},
-        {tr("[Video]"), QString()},
-        {tr("Video codec"), fileInfo.video_params.codec},
-        {tr("Video format"), fileInfo.video_params.format},
-        {tr("Video bitrate"), fileInfo.video_params.bitrate},
-        {tr("Video dimensions"), QString::number(fileInfo.video_params.width)+" x "+QString::number(fileInfo.video_params.height)},
-        {tr("[Audio]"), QString()},
-        {tr("Audio codec"), fileInfo.audio_params.codec},
-        {tr("Audio format"), fileInfo.audio_params.format},
-        {tr("Audio bitrate"), fileInfo.audio_params.bitrate},
-        {tr("Audio samplerate"), fileInfo.audio_params.samplerate},
-        {tr("Audio channels"), fileInfo.audio_params.channels}
     };
+
+    if (fileInfo.video_params.codec.length() > 0)
+    {
+        QList<QPair<QString, QString>> video_items = {
+            {tr("[Video]"), QString()},
+            {tr("Video codec"), fileInfo.video_params.codec},
+            {tr("Video format"), fileInfo.video_params.format},
+            {tr("Video bitrate"), fileInfo.video_params.bitrate},
+            {tr("Video dimensions"), QString::number(fileInfo.video_params.width)+" x "+QString::number(fileInfo.video_params.height)}
+        };
+        items.append(video_items);
+    }
+
+    if (fileInfo.audio_params.codec.length() > 0)
+    {
+        QList<QPair<QString, QString>> audio_items = {
+            {tr("[Audio]"), QString()},
+            {tr("Audio codec"), fileInfo.audio_params.codec},
+            {tr("Audio format"), fileInfo.audio_params.format},
+            {tr("Audio bitrate"), fileInfo.audio_params.bitrate},
+            {tr("Audio samplerate"), fileInfo.audio_params.samplerate},
+            {tr("Audio channels"), fileInfo.audio_params.channels}
+        };
+        items.append(audio_items);
+    }
 
     ui->infoWidget->setRowCount(items.length());
     int r = 0;
