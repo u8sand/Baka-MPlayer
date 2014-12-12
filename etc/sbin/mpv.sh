@@ -36,7 +36,7 @@ DEST_OS=win32 TARGET=$arch-w64-mingw32.static ./waf configure --enable-libmpv-st
 # after building successfully we need to copy the files into the correct locations in mxe
 instroot=$root/mxe.$arch/usr/$arch-w64-mingw32.static
 # copy the static library over
-cp build/*.a $instroot/lib
+cp build/libmpv.a $instroot/lib
 mkdir -p $instroot/include/mpv
 # copy the include file over
 cp libmpv/client.h $instroot/include/mpv/
