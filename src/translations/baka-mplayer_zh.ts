@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="zh">
+<TS version="2.0" language="zh">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -26,7 +26,7 @@
     <message>
         <location filename="../ui/aboutdialog.ui" line="191"/>
         <source>Credits</source>
-        <translation>许可</translation>
+        <translation>贡献名单</translation>
     </message>
     <message>
         <location filename="../ui/aboutdialog.ui" line="215"/>
@@ -50,7 +50,7 @@ CC BY 3.0 &lt;Sasha Mescheryakov&gt;</translation>
     <message>
         <location filename="../ui/aboutdialog.ui" line="230"/>
         <source>License</source>
-        <translation>证书</translation>
+        <translation>许可证</translation>
     </message>
     <message>
         <location filename="../ui/aboutdialog.ui" line="254"/>
@@ -1364,7 +1364,7 @@ Note: Value must be from</source>
     <message>
         <location filename="../ui/updatedialog.ui" line="147"/>
         <source>About 0 second(s) remaining</source>
-        <translation type="unfinished"></translation>
+        <translation>剩余大约 0 秒</translation>
     </message>
     <message>
         <location filename="../ui/updatedialog.ui" line="192"/>
@@ -1411,7 +1411,7 @@ Version: </source>
     <message>
         <location filename="../ui/updatedialog.cpp" line="76"/>
         <source>second(s) remaining</source>
-        <translation type="unfinished"></translation>
+        <translation>秒 剩余</translation>
     </message>
     <message>
         <location filename="../ui/updatedialog.cpp" line="78"/>
