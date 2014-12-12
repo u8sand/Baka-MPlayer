@@ -46,6 +46,6 @@ cat build/libmpv/mpv.pc |
 	sed "s,^exec_prefix=.*$,exec_prefix=\${prefix},g" |
 	sed "s,^libdir=.*$,libdir=\${prefix}/lib,g" |
 	sed "s,^includedir=.*$,includedir=\${prefix}/include,g" |
-	awk '/^Libs\.private/{print $0" -pthread"}' > $instroot/lib/pkgconfig/mpv.pc
+	sed '/^Libs\.private:/ s/$/-pthread/' > $instroot/lib/pkgconfig/mpv.pc
 
 cd ..
