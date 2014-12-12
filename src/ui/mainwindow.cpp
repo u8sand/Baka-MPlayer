@@ -65,7 +65,7 @@ MainWindow::MainWindow(QWidget *parent):
 
     // initialize managers/handlers
 #if defined(Q_OS_WIN) // saves to $(application directory)\${SETTINGS_FILE}.ini
-    settings = new QSettings(QApplication::applicationDirPath()+"\\"+SETTINGS_FILE, QSettings::IniFormat,this);
+    settings = new QSettings(QApplication::applicationDirPath()+"\\"+SETTINGS_FILE+".ini", QSettings::IniFormat,this);
 #else // saves to  ~/.config/${SETTINGS_FILE}.ini on linux
     settings = new QSettings(QSettings::IniFormat, QSettings::UserScope, SETTINGS_FILE, QString(), this);
 #endif

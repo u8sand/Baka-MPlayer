@@ -31,5 +31,5 @@ echo "JOBS := $jobs" > settings.mk
 # this took 1 hour each on my system.
 echo "MXE_TARGETS := $arch-w64-mingw32.static" >> settings.mk
 
-make gcc ffmpeg libass jpeg pthreads qt5
+make gcc ffmpeg libass lua jpeg pthreads qt5
 cd ..
