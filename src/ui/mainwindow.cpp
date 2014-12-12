@@ -614,7 +614,7 @@ MainWindow::MainWindow(QWidget *parent):
                 mpv->PlayFile(ui->playlistWidget->NextItem());
             });
 
-    connect(ui->volumeSlider, &CustomSlider::sliderMoved,              // Playback: Volume slider adjusted
+    connect(ui->volumeSlider, &CustomSlider::valueChanged,              // Playback: Volume slider adjusted
             [=](int i)
             {
                 mpv->Volume(i);
