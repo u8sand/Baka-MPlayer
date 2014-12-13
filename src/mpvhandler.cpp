@@ -53,7 +53,7 @@ bool MpvHandler::event(QEvent *event)
             if (event->event_id == MPV_EVENT_NONE)
                 break;
             if(event->error < 0)
-                emit messageSignal(QString("[mpv]: ")+QString(mpv_error_string(event->error)));
+                emit messageSignal(tr("[mpv]: %0").arg(mpv_error_string(event->error)));
             switch (event->event_id)
             {
             case MPV_EVENT_PROPERTY_CHANGE:
@@ -112,7 +112,7 @@ bool MpvHandler::event(QEvent *event)
                 QCoreApplication::quit();
                 break;
             case MPV_EVENT_LOG_MESSAGE:
-                emit messageSignal("[mpv]: "+QString(((mpv_event_log_message*)event->data)->text));
+                emit messageSignal(tr("[mpv]: %0").arg(static_cast<mpv_event_log_message*>(event->data)->text));
                 break;
             default: // unhandled events
                 break;
@@ -168,7 +168,7 @@ void MpvHandler::LoadSettings(QSettings *settings, QString version)
                     else if(tmp.type() == QVariant::Double)
                         tmp2 = QString::number(tmp.toDouble()).toUtf8();
                     else
-                        emit messageSignal(QString("[Baka-MPlayer]: "+tr("Setting type was parsed as "))+QString(tmp.type())+"\n");
+                        emit messageSignal(tr("[Baka-MPlayer]: Setting type was parsed as %0\n").arg(tmp.type()));
 
                     if(tmp2 != QByteArray())
                         mpv_set_option_string(mpv, tmp1.constData(), tmp2.constData());
@@ -181,7 +181,7 @@ void MpvHandler::LoadSettings(QSettings *settings, QString version)
             settings->beginGroup("mpv");
             ScreenshotFormat(settings->value("screenshotFormat", "jpg").toString());
             ScreenshotDirectory(settings->value("screenshotDir", ".").toString());
-            ScreenshotTemplate(settings->value("screenshotTemplate", "screenshot%#04n").toString());
+            ScreenshotTemplate(settings->value("screenshotTemplate", tr("screenshot%#04n")).toString());
             Speed(settings->value("speed", 1.0).toDouble());
             Volume(settings->value("volume", 100).toInt());
             settings->endGroup();
@@ -709,7 +709,7 @@ void MpvHandler::AsyncCommand(const char *args[])
     if(mpv)
         mpv_command_async(mpv, 0, args);
     else
-        emit messageSignal("[mpv]: "+tr("mpv was not initialized")+"\n");
+        emit messageSignal(tr("[mpv]: mpv was not initialized\n"));
 }
 
 void MpvHandler::Command(const char *args[])
@@ -717,5 +717,5 @@ void MpvHandler::Command(const char *args[])
     if(mpv)
         mpv_command(mpv, args);
     else
-        emit messageSignal("[mpv]: "+tr("mpv was not initialized")+"\n");
+        emit messageSignal(tr("[mpv]: mpv was not initialized\n"));
 }

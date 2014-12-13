@@ -47,7 +47,7 @@ MainWindow::MainWindow(QWidget *parent):
 {
     QAction *action;
 
-#if defined(Q_OS_LINUX) || defined(Q_OS_UNIX) // if on x11, dim desktop requires a compositing manager, make dimDialog NULL if there is none
+#if defined(Q_OS_LINUX) || defined(Q_OS_UNIX) // if on x11, dim lights requires a compositing manager, make dimDialog NULL if there is none
     QString tmp = "_NET_WM_CM_S"+QString::number(QX11Info::appScreen());
     Atom a = XInternAtom(QX11Info::display(), tmp.toUtf8().constData(), false);
     if(a && XGetSelectionOwner(QX11Info::display(), a)) // hack for QX11Info::isCompositingManagerRunning()
@@ -161,9 +161,9 @@ MainWindow::MainWindow(QWidget *parent):
                 if(mpv->getPlayState() > 0)
                 {
                     if(fileInfo.media_title == "")
-                        setWindowTitle("Baka-MPlayer");
+                        setWindowTitle("Baka MPlayer");
                     else if(fileInfo.media_title == "-")
-                        setWindowTitle("Baka-MPlayer: stdin"); // todo: disable playlist?
+                        setWindowTitle("Baka MPlayer: stdin"); // todo: disable playlist?
                     else
                         setWindowTitle(fileInfo.media_title);
 
@@ -191,7 +191,7 @@ MainWindow::MainWindow(QWidget *parent):
             {
                 if(track.type == "sub")
                 {
-                    action = ui->menuSubtitle_Track->addAction(QString::number(track.id)+": "+QString(track.title+" ("+track.lang+")").replace("&","&&"));
+                    action = ui->menuSubtitle_Track->addAction(tr("%0: %1 (%2)").arg(QString::number(track.id), track.title, track.lang).replace("&", "&&"));
                     connect(action, &QAction::triggered,
                             [=]
                             {
@@ -210,19 +210,19 @@ MainWindow::MainWindow(QWidget *parent):
                                 else if(!mpv->getSubtitleVisibility())
                                     mpv->ShowSubtitles(true);
                                 mpv->Sid(track.id);
-                                mpv->ShowText(tr("Sub")+" "+QString::number(track.id)+": "+track.title+" ("+track.lang+")");
+                                mpv->ShowText(tr("Sub %0: %1 (%2)").arg(QString::number(track.id), track.title, track.lang));
                             });
                 }
                 else if(track.type == "audio")
                 {
-                    action = ui->menuAudio_Tracks->addAction(QString::number(track.id)+": "+QString(track.title+" ("+track.lang+")").replace("&","&&"));
+                    action = ui->menuAudio_Tracks->addAction(tr("%0: %1 (%2)").arg(QString::number(track.id), track.title, track.lang).replace("&", "&&"));
                     connect(action, &QAction::triggered,
                             [=]
                             {
                                 if(mpv->getAid() != track.id) // don't allow selection of the same track
                                 {
                                     mpv->Aid(track.id);
-                                    mpv->ShowText(tr("Audio")+" "+QString::number(track.id)+": "+track.title+" ("+track.lang+")");
+                                    mpv->ShowText(tr("Audio %0: %1 (%2)").arg(QString::number(track.id), track.title, track.lang));
                                 }
                                 else
                                     action->setChecked(true); // recheck the track
@@ -241,9 +241,9 @@ MainWindow::MainWindow(QWidget *parent):
                 // if we were hiding album art, show it--we've gone to a video
                 if(ui->mpvFrame->styleSheet() != QString()) // remove filler album art
                     ui->mpvFrame->setStyleSheet("");
-                if(ui->action_Hide_Album_Art_2->isChecked())
+                if(ui->action_Hide_Album_Art->isChecked())
                     HideAlbumArt(false);
-                ui->action_Hide_Album_Art_2->setEnabled(false);
+                ui->action_Hide_Album_Art->setEnabled(false);
                 ui->menuSubtitle_Track->setEnabled(true);
                 if(ui->menuSubtitle_Track->actions().count() > 1)
                 {
@@ -273,7 +273,7 @@ MainWindow::MainWindow(QWidget *parent):
                     if(ui->mpvFrame->styleSheet() == QString())
                         ui->mpvFrame->setStyleSheet("background-image:url(:/img/album_art.png);background-repeat:no-repeat;background-position:center;");
                 }
-                ui->action_Hide_Album_Art_2->setEnabled(true);
+                ui->action_Hide_Album_Art->setEnabled(true);
                 ui->menuAudio_Tracks->setEnabled((ui->menuAudio_Tracks->actions().count() > 1));
                 ui->menuSubtitle_Track->setEnabled(false);
                 ui->menuFont_Si_ze->setEnabled(false);
@@ -306,9 +306,7 @@ MainWindow::MainWindow(QWidget *parent):
             ui->menu_Chapters->clear();
             for(auto &ch : chapters)
             {
-                action = ui->menu_Chapters->addAction(FormatNumberWithAmpersand(n, N)+
-                                                      ": " +
-                                                      ch.title,
+                action = ui->menu_Chapters->addAction(tr("%0: %1").arg(FormatNumberWithAmpersand(n, N), ch.title),
                                                       NULL,
                                                       NULL,
                                                       (n <= 9 ? QKeySequence("Ctrl+"+QString::number(n)) : QKeySequence())
@@ -352,7 +350,7 @@ MainWindow::MainWindow(QWidget *parent):
                         ui->action_Play->setEnabled(true);
                         ui->playButton->setEnabled(true);
                         ui->playlistButton->setEnabled(true);
-                        ui->action_Show_Playlist_2->setEnabled(true);
+                        ui->action_Show_Playlist->setEnabled(true);
                         init = true;
                     }
                     if(pathChanged && autoFit)
@@ -389,7 +387,7 @@ MainWindow::MainWindow(QWidget *parent):
                                 mpv->PlayFile(ui->playlistWidget->FirstItem()); // restart playlist
                             else
                             {
-                                setWindowTitle("Baka-MPlayer");
+                                setWindowTitle("Baka MPlayer");
                                 SetPlaybackControls(false);
                                 ui->seekBar->setTracking(0);
                                 ui->actionStop_after_Current->setChecked(false);
@@ -469,7 +467,7 @@ MainWindow::MainWindow(QWidget *parent):
                 if(last != speed)
                 {
                     if(init)
-                        mpv->ShowText(tr("Speed")+": "+QString::number(speed)+"x");
+                        mpv->ShowText(tr("Speed: %0x").arg(QString::number(speed)));
                     if(speed <= 0.25)
                         ui->action_Decrease->setEnabled(false);
                     else
@@ -633,18 +631,18 @@ MainWindow::MainWindow(QWidget *parent):
                 blockSignals(true);
                 if(i == 0) // right-most, playlist is hidden
                 {
-                    ui->action_Show_Playlist_2->setChecked(false);
-                    ui->action_Hide_Album_Art_2->setChecked(false);
+                    ui->action_Show_Playlist->setChecked(false);
+                    ui->action_Hide_Album_Art->setChecked(false);
                 }
                 else if(i == ui->splitter->max()) // left-most, album art is hidden, playlist is visible
                 {
-                    ui->action_Show_Playlist_2->setChecked(true);
-                    ui->action_Hide_Album_Art_2->setChecked(true);
+                    ui->action_Show_Playlist->setChecked(true);
+                    ui->action_Hide_Album_Art->setChecked(true);
                 }
                 else // in the middle, album art is visible, playlist is visible
                 {
-                    ui->action_Show_Playlist_2->setChecked(true);
-                    ui->action_Hide_Album_Art_2->setChecked(false);
+                    ui->action_Show_Playlist->setChecked(true);
+                    ui->action_Hide_Album_Art->setChecked(false);
                 }
                 blockSignals(false);
             });
@@ -658,7 +656,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->indexLabel, &CustomLabel::clicked,                      // Playlist: Clicked the indexLabel
             [=]
             {
-                QString res = InputDialog::getInput(tr("Enter the file number you want to play:\nNote: Value must be from")+" 1 - "+QString::number(ui->playlistWidget->count()),
+                QString res = InputDialog::getInput(tr("Enter the file number you want to play:\nNote: Value must be from 1 - %0").arg(QString::number(ui->playlistWidget->count())),
                                                     tr("Enter File Number"),
                                                     [this](QString input)
                                                     {
@@ -683,7 +681,7 @@ MainWindow::MainWindow(QWidget *parent):
                 else
                 {
                     ui->indexLabel->setEnabled(true);
-                    ui->indexLabel->setText(tr("File")+" "+QString::number(i+1)+" "+tr("of")+" "+QString::number(ui->playlistWidget->count()));
+                    ui->indexLabel->setText(tr("File %0 of %1").arg(QString::number(i+1), QString::number(ui->playlistWidget->count())));
                 }
             });
 
@@ -793,7 +791,7 @@ MainWindow::MainWindow(QWidget *parent):
                 mpv->PlayFile(ui->playlistWidget->PreviousItem());
             });
 
-    connect(ui->actionE_xit_2, &QAction::triggered,                     // File -> Exit
+    connect(ui->actionE_xit, &QAction::triggered,                       // File -> Exit
             [=]
             {
                 close();
@@ -847,7 +845,7 @@ MainWindow::MainWindow(QWidget *parent):
                 FitWindow(200, true);
             });
                                                                         // View -> Aspect Ratio ->
-    connect(ui->action_Autodetect, &QAction::triggered,                 // View -> Aspect Ratio -> Auto Detect
+    connect(ui->action_Auto_Detect, &QAction::triggered,                // View -> Aspect Ratio -> Auto Detect
             [=]
             {
                 SetAspectRatio("-1");
@@ -881,7 +879,7 @@ MainWindow::MainWindow(QWidget *parent):
             [=]
             {
                 QString trackFile = QFileDialog::getOpenFileName(this, tr("Open Subtitle File"), mpv->getPath(),
-                                                                 tr("Subtitle Files")+" ("+Mpv::subtitle_filetypes.join(" ")+")",
+                                                                 tr("Subtitle Files (%0)").arg(Mpv::subtitle_filetypes.join(" ")),
                                                                  0, QFileDialog::DontUseSheet);
                 if(trackFile != "")
                     mpv->AddSubtitleTrack(trackFile);
@@ -1027,22 +1025,22 @@ MainWindow::MainWindow(QWidget *parent):
                     mpv->Seek(time);
             });
                                                                         // Settings ->
-    connect(ui->action_Show_Playlist_2, &QAction::triggered,            // Settings -> Show Playlist
+    connect(ui->action_Show_Playlist, &QAction::triggered,              // Settings -> Show Playlist
             [=](bool b)
             {
                 ShowPlaylist(b);
             });
 
-    connect(ui->action_Hide_Album_Art_2, &QAction::triggered,           // Settings -> Hide Album Art
+    connect(ui->action_Hide_Album_Art, &QAction::triggered,             // Settings -> Hide Album Art
             [=](bool b)
             {
                 HideAlbumArt(b);
             });
 
-    connect(ui->action_Dim_Desktop, &QAction::triggered,                // Settings -> Dim Lights
+    connect(ui->action_Dim_Lights, &QAction::triggered,                 // Settings -> Dim Lights
             [=](bool b)
             {
-                DimDesktop(b);
+                DimLights(b);
             });
 
     connect(ui->actionShow_D_ebug_Output, &QAction::triggered,          // Settings -> Show Debug Output
@@ -1062,7 +1060,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->actionOnline_Help, &QAction::triggered,                 // Help -> Online Help
             [=]
             {
-                QDesktopServices::openUrl(QUrl("http://bakamplayer.u8sand.net/help.php"));
+                QDesktopServices::openUrl(QUrl(tr("http://bakamplayer.u8sand.net/help.php")));
             });
 
     connect(ui->action_Check_for_Updates, &QAction::triggered,          // Help -> Check for Updates
@@ -1095,14 +1093,14 @@ MainWindow::MainWindow(QWidget *parent):
                 {
                     // note: focusWindow will be 0 if anything is clicked outside of our program which is useful
                     // the only other problem is that when dragging by the top handle
-                    // it will be 0 thus reverting dim desktop, this is a side effect
+                    // it will be 0 thus reverting dim lights, this is a side effect
                     // which will have to stay for now.
                     if(dimDialog->isVisible())
                     {
                         if(focusWindow == 0)
                         {
-                            dimDialog->setVisible(false); // remove dim desktop
-                            ui->action_Dim_Desktop->setChecked(false); // uncheck dim desktop
+                            dimDialog->setVisible(false); // remove dim lights
+                            ui->action_Dim_Lights->setChecked(false); // uncheck dim lights
                         }
                         else if(focusWindow == dimDialog->windowHandle())
                         {
@@ -1115,8 +1113,8 @@ MainWindow::MainWindow(QWidget *parent):
         connect(dimDialog, &DimDialog::clicked,
                 [=]
                 {
-                    dimDialog->setVisible(false); // remove dim desktop
-                    ui->action_Dim_Desktop->setChecked(false); // uncheck dim desktop
+                    dimDialog->setVisible(false); // remove dim lights
+                    ui->action_Dim_Lights->setChecked(false); // uncheck dim lights
                     activateWindow();
                     raise();
                     setFocus();
@@ -1492,7 +1490,7 @@ void MainWindow::SetPlaybackControls(bool enable)
     ui->action_Full_Screen->setEnabled(enable);
     if(!enable)
     {
-        ui->action_Hide_Album_Art_2->setEnabled(false);
+        ui->action_Hide_Album_Art->setEnabled(false);
         ui->menuSubtitle_Track->setEnabled(false);
         ui->menuAudio_Tracks->setEnabled(false);
         ui->menuFont_Si_ze->setEnabled(false);
@@ -1506,7 +1504,7 @@ void MainWindow::FullScreen(bool fs)
         if(dimDialog && dimDialog->isVisible())
         {
             dimDialog->setVisible(false);
-            ui->action_Dim_Desktop->setChecked(false);
+            ui->action_Dim_Lights->setChecked(false);
         }
         setWindowState(windowState() | Qt::WindowFullScreen);
         ui->menubar->setVisible(false);
@@ -1631,12 +1629,12 @@ void MainWindow::SetAspectRatio(QString aspect)
     mpv->Aspect(aspect);
 }
 
-void MainWindow::DimDesktop(bool dim)
+void MainWindow::DimLights(bool dim)
 {
     if(!dimDialog) // dimDialog is NULL if desktop compositor is disabled or missing
     {
-        QMessageBox::information(this, tr("Dim Desktop"), tr("In order to dim the desktop, the desktop compositor has to be enabled. This can be done through Window Manager Desktop."));
-        ui->action_Dim_Desktop->setChecked(false);
+        QMessageBox::information(this, tr("Dim Lights"), tr("In order to dim the lights, the desktop compositor has to be enabled. This can be done through Window Manager Desktop."));
+        ui->action_Dim_Lights->setChecked(false);
         return;
     }
     if(dim)
@@ -1700,7 +1698,10 @@ void MainWindow::ShowScreenshotMessage(bool subs)
     int i = dir.lastIndexOf('/');
     if(i != -1)
         dir.remove(0, i+1);
-    mpv->ShowText(tr("Saved to")+" \""+dir+"\", "+(subs?tr("with"):tr("without"))+" "+tr("subs"));
+    if(subs)
+        mpv->ShowText(tr("Saved to \"%0\", with subs").arg(dir));
+    else
+        mpv->ShowText(tr("Saved to \"%0\", without subs").arg(dir));
 }
 
 void MainWindow::UpdateRecentFiles()
@@ -1711,9 +1712,7 @@ void MainWindow::UpdateRecentFiles()
         N = recent.length();
     for(auto &f : recent)
     {
-        action = ui->menu_Recently_Opened->addAction(FormatNumberWithAmpersand(n, N)+
-                                                     ". "+
-                                                     ShortenPathToParent(f).replace("&","&&"));
+        action = ui->menu_Recently_Opened->addAction(tr("%0. %1").arg(FormatNumberWithAmpersand(n, N), ShortenPathToParent(f).replace("&","&&")));
         if(n++ == 1)
             action->setShortcut(QKeySequence("Ctrl+Z"));
         connect(action, &QAction::triggered,
@@ -1728,8 +1727,8 @@ void MainWindow::OpenFile()
 {
     mpv->LoadFile(QFileDialog::getOpenFileName(this,
                    tr("Open File"),mpv->getPath(),
-                   tr("Media Files")+" ("+Mpv::media_filetypes.join(" ")+");;"+
-                   tr("Video Files")+" ("+Mpv::video_filetypes.join(" ")+");;"+
-                   tr("Audio Files")+" ("+Mpv::audio_filetypes.join(" ")+")",
+                   tr("Media Files (%0);;").arg(Mpv::media_filetypes.join(" "))+
+                   tr("Video Files (%0);;").arg(Mpv::video_filetypes.join(" "))+
+                   tr("Audio Files (%0)").arg(Mpv::audio_filetypes.join(" ")),
                    0, QFileDialog::DontUseSheet));
 }

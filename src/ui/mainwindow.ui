@@ -990,7 +990,7 @@ QSlider::handle:horizontal {
     <addaction name="actionPlay_Next_File"/>
     <addaction name="actionPlay_Previous_File"/>
     <addaction name="separator"/>
-    <addaction name="actionE_xit_2"/>
+    <addaction name="actionE_xit"/>
    </widget>
    <widget class="QMenu" name="menu_View">
     <property name="title">
@@ -1016,7 +1016,7 @@ QSlider::handle:horizontal {
      <property name="title">
       <string>Aspect &amp;Ratio</string>
      </property>
-     <addaction name="action_Autodetect"/>
+     <addaction name="action_Auto_Detect"/>
      <addaction name="actionForce_4_3"/>
      <addaction name="actionForce_16_9"/>
      <addaction name="actionForce_2_35_1"/>
@@ -1142,10 +1142,10 @@ QSlider::handle:horizontal {
     <property name="title">
      <string>&amp;Settings</string>
     </property>
-    <addaction name="action_Show_Playlist_2"/>
-    <addaction name="action_Hide_Album_Art_2"/>
+    <addaction name="action_Show_Playlist"/>
+    <addaction name="action_Hide_Album_Art"/>
     <addaction name="separator"/>
-    <addaction name="action_Dim_Desktop"/>
+    <addaction name="action_Dim_Lights"/>
     <addaction name="actionShow_D_ebug_Output"/>
     <addaction name="separator"/>
     <addaction name="action_Preferences"/>
@@ -1167,11 +1167,6 @@ QSlider::handle:horizontal {
    <addaction name="menu_Settings"/>
    <addaction name="menu_Help"/>
   </widget>
-  <action name="actionE_xit">
-   <property name="text">
-    <string>E&amp;xit</string>
-   </property>
-  </action>
   <action name="action_New_Player">
    <property name="text">
     <string>&amp;New Player</string>
@@ -1248,7 +1243,7 @@ QSlider::handle:horizontal {
     <string>Ctrl+Left</string>
    </property>
   </action>
-  <action name="actionE_xit_2">
+  <action name="actionE_xit">
    <property name="text">
     <string>E&amp;xit</string>
    </property>
@@ -1351,21 +1346,6 @@ QSlider::handle:horizontal {
     <string>Stop after &amp;Current</string>
    </property>
   </action>
-  <action name="action_Show_Playlist">
-   <property name="text">
-    <string>&amp;Show Playlist</string>
-   </property>
-  </action>
-  <action name="action_Hide_Album_Art">
-   <property name="text">
-    <string>&amp;Hide Album Art</string>
-   </property>
-  </action>
-  <action name="action_Dim_Lights">
-   <property name="text">
-    <string>&amp;Dim Lights</string>
-   </property>
-  </action>
   <action name="actionShow_Command_Line">
    <property name="text">
     <string>Show &amp;Command Line</string>
@@ -1436,7 +1416,7 @@ QSlider::handle:horizontal {
     <string>Ctrl+J</string>
    </property>
   </action>
-  <action name="action_Show_Playlist_2">
+  <action name="action_Show_Playlist">
    <property name="checkable">
     <bool>true</bool>
    </property>
@@ -1450,7 +1430,7 @@ QSlider::handle:horizontal {
     <string>Ctrl+X</string>
    </property>
   </action>
-  <action name="action_Hide_Album_Art_2">
+  <action name="action_Hide_Album_Art">
    <property name="checkable">
     <bool>true</bool>
    </property>
@@ -1461,12 +1441,12 @@ QSlider::handle:horizontal {
     <string>&amp;Hide Album Art</string>
    </property>
   </action>
-  <action name="action_Dim_Desktop">
+  <action name="action_Dim_Lights">
    <property name="checkable">
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>&amp;Dim Desktop</string>
+    <string>&amp;Dim Lights</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+D</string>
@@ -1546,11 +1526,6 @@ QSlider::handle:horizontal {
   <action name="action_Auto_Detect">
    <property name="text">
     <string>&amp;Auto Detect</string>
-   </property>
-  </action>
-  <action name="action_Autodetect">
-   <property name="text">
-    <string>&amp;Autodetect</string>
    </property>
   </action>
   <action name="actionForce_4_3">

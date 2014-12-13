@@ -24,7 +24,7 @@ UpdateDialog::UpdateDialog(UpdateManager *updateManager, QWidget *parent) :
                 }
                 else
                 {
-                    ui->updateLabel->setText(tr("Update Available!\nVersion: ")+info["version"]);
+                    ui->updateLabel->setText(tr("Update Available!\nVersion: %0").arg(info["version"]));
 #if defined(Q_OS_WIN)
                     version = info["version"];
                     // url = info["url"];
@@ -73,7 +73,7 @@ UpdateDialog::UpdateDialog(UpdateManager *updateManager, QWidget *parent) :
                     avgSpeed = 0.005*lastSpeed + 0.995*avgSpeed;
 
                     if(avgSpeed > 0)
-                        ui->timeRemainingLabel->setText(tr("About")+" "+QString::number(1/(1000*avgSpeed))+" "+tr("second(s) remaining"));
+                        ui->timeRemainingLabel->setText(tr("About %0 second(s) remaining").arg(QString::number(1/(1000*avgSpeed))));
                     else
                         ui->timeRemainingLabel->setText(tr("Calculating..."));
 
@@ -95,7 +95,7 @@ UpdateDialog::UpdateDialog(UpdateManager *updateManager, QWidget *parent) :
     connect(updateManager, &UpdateManager::errorSignal,
             [=](QString msg)
             {
-                ui->plainTextEdit->appendPlainText(tr("error")+": "+msg+"\n");
+                ui->plainTextEdit->appendPlainText(tr("error: %0\n").arg(msg));
             });
 
     connect(ui->cancelButton, SIGNAL(clicked()),

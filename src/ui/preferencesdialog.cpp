@@ -27,7 +27,7 @@ PreferencesDialog::PreferencesDialog(QSettings *_settings, QWidget *parent) :
     settings->endGroup();
     ui->formatComboBox->setCurrentText(settings->value("mpv/screenshot-format").toString());
 
-    QString screenshotTemplate = settings->value("mpv/screenshot-template", "./screenshot%#04n").toString();
+    QString screenshotTemplate = settings->value("mpv/screenshot-template", tr("screenshot%#04n")).toString();
     int i = screenshotTemplate.lastIndexOf('/');
     if(i != -1)
     {

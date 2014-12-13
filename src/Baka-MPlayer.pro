@@ -28,25 +28,6 @@ UI_DIR = $${DESTDIR}/ui
 unix {
     QT += x11extras
     PKGCONFIG += x11
-
-    CONFIG(release, debug|release) {
-        QMAKE_EXTRA_COMPILERS += lupdate
-        lupdate.input    = TRANSLATIONS
-        # lupdate command knows where to put it, this is to get qmake to not display a dumb warning
-        lupdate.output   = ${DESTDIR}
-        lupdate.commands = lupdate ${QMAKE_FILE_IN}
-        lupdate.CONFIG  += no_link target_predeps
-
-        QMAKE_EXTRA_COMPILERS += lrelease
-        lrelease.input    = TRANSLATIONS
-        lrelease.output   = ${DESTDIR}${QMAKE_FILE_BASE}.qm
-        lrelease.commands = lrelease ${QMAKE_FILE_IN} -qm $${lrelease.output}
-        lrelease.CONFIG  += no_link target_predeps
-    }
-    TRANSLATIONS += \
-        translations/baka-mplayer_pt.ts \
-        translations/baka-mplayer_ko.ts \
-        translations/baka-mplayer_zh.ts
 }
 
 win32 {
@@ -117,3 +98,8 @@ FORMS    += \
 
 RESOURCES += \
     rsclist.qrc
+
+TRANSLATIONS += \
+    translations/baka-mplayer_pt.ts \
+    translations/baka-mplayer_ko.ts \
+    translations/baka-mplayer_zh.ts
