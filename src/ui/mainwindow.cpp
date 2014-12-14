@@ -715,18 +715,30 @@ MainWindow::MainWindow(QWidget *parent):
     connect(action, &QAction::triggered,                                // Playlist: Remove from playlist (right-click)
             [=]
             {
-                QString next = ui->playlistWidget->NextItem();
-                ui->playlistWidget->RemoveItem(ui->playlistWidget->currentRow());
-                ui->playlistWidget->SelectItem(next);
+                int row = ui->playlistWidget->currentRow();
+                ui->playlistWidget->RemoveItem(row);
+                if(row > 0)
+                {
+                    if(row < ui->playlistWidget->count()-1)
+                        ui->playlistWidget->setCurrentRow(row);
+                    else
+                        ui->playlistWidget->setCurrentRow(row-1);
+                }
             });
 
     action = ui->playlistWidget->addAction(tr("&Delete from Disk"));
     connect(action, &QAction::triggered,                                // Playlist: Delete from Disk (right-click)
             [=]
             {
-                QString next = ui->playlistWidget->NextItem(),
-                        item = ui->playlistWidget->RemoveItem(ui->playlistWidget->currentRow());
-                ui->playlistWidget->SelectItem(next);
+                int row = ui->playlistWidget->currentRow();
+                QString item = ui->playlistWidget->RemoveItem(row);
+                if(row > 0)
+                {
+                    if(row < ui->playlistWidget->count()-1)
+                        ui->playlistWidget->setCurrentRow(row);
+                    else
+                        ui->playlistWidget->setCurrentRow(row-1);
+                }
                 QFile f(mpv->getPath()+item);
                 f.remove();
             });
