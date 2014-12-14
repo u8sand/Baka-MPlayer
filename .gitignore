@@ -2,3 +2,4 @@ build*
 *.pro.*
 Makefile
 *.kdev4
+*.qm
