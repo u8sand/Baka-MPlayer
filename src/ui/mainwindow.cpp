@@ -57,11 +57,9 @@ MainWindow::MainWindow(QWidget *parent):
 #else
     dimDialog = new DimDialog(); // dimDialog must be initialized before ui is setup
 #endif
-
     ui->setupUi(this);
     ShowPlaylist(false);
     addActions(ui->menubar->actions()); // makes menubar shortcuts work even when menubar is hidden
-
 
     // initialize managers/handlers
 #if defined(Q_OS_WIN) // saves to $(application directory)\${SETTINGS_FILE}.ini
@@ -812,7 +810,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->action_Full_Screen, &QAction::triggered,                // View -> Full Screen
             [=]
             {
-                FullScreen(true);
+                FullScreen((windowState() & Qt::WindowFullScreen) == 0);
             });
 
     connect(ui->actionWith_Subtitles, &QAction::triggered,              // View -> Take Screenshot -> With Subtitles
