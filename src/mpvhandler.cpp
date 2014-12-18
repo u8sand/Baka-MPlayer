@@ -25,6 +25,7 @@ MpvHandler::MpvHandler(int64_t wid, QObject *parent):
     mpv_set_option(mpv, "wid", MPV_FORMAT_INT64, &wid);
     mpv_set_option_string(mpv, "input-cursor", "no");   // no mouse handling
     mpv_set_option_string(mpv, "cursor-autohide", "no");// no cursor-autohide, we handle that
+    mpv_set_option_string(mpv, "ytdl", "yes"); // youtube-dl support
 
     // get updates when these properties change
     mpv_observe_property(mpv, 0, "time-pos", MPV_FORMAT_DOUBLE);
