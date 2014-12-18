@@ -1199,6 +1199,9 @@ void MainWindow::LoadSettings()
 {
     if(settings)
     {
+        gesture = 2;
+        gestureRatio = 0.1;
+
         QString version;
         if(settings->allKeys().length() == 0) // empty settings
             version = "2.0.1"; // current version
@@ -1375,10 +1378,13 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
     {
         if(event->button() == Qt::LeftButton && !moveTimer)
         {
-            moveTimer = new QElapsedTimer();
-            moveTimer->start();
-            origPos = pos();
-            lastMousePos = event->globalPos();
+            if(gesture > 0)
+            {
+                moveTimer = new QElapsedTimer();
+                moveTimer->start();
+                origPos = pos();
+                lastMousePos = event->globalPos();
+            }
         }
         else if(event->button() == Qt::RightButton &&
                 mpv->getPlayState() > 0 &&  // if playing
@@ -1404,7 +1410,16 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
 
     if(moveTimer && moveTimer->elapsed() > 10)
     {
-        QMainWindow::move(origPos+event->globalPos()-lastMousePos);
+        if(gesture == 2)
+        {
+            QPoint delta = (event->globalPos()-lastMousePos)*gestureRatio;
+            if(abs(delta.x()) >= abs(delta.y()))
+                mpv->Seek(delta.x(), true);
+            else
+                mpv->Volume(mpv->getVolume()-delta.y());
+        }
+        else if(gesture == 1)
+            QMainWindow::move(origPos+event->globalPos()-lastMousePos);
         event->accept();
         moveTimer->restart();
     }
