@@ -62,7 +62,10 @@ bool MpvHandler::event(QEvent *event)
                 if(QString(prop->name) == "time-pos")
                 {
                     if(prop->format == MPV_FORMAT_DOUBLE)
+                    {
                         setTime((int)*(double*)prop->data);
+                        lastTime = time;
+                    }
                 }
                 else if(QString(prop->name) == "volume")
                 {
@@ -350,9 +353,9 @@ void MpvHandler::Seek(int pos, bool relative)
 {
     if(playState > 0)
     {
-        const QByteArray tmp = QString::number(pos).toUtf8();
         if(relative)
         {
+            const QByteArray tmp = (((pos >= 0) ? "+" : QString())+QString::number(pos)).toUtf8();
             const char *args[] = {"seek", tmp.constData(), NULL};
             AsyncCommand(args);
         }
@@ -362,6 +365,13 @@ void MpvHandler::Seek(int pos, bool relative)
             mpv_set_property_async(mpv, 0, "time-pos", MPV_FORMAT_DOUBLE, &p);
         }
     }
+}
+
+int MpvHandler::Relative(int pos)
+{
+    int ret = pos - lastTime;
+    lastTime = pos;
+    return ret;
 }
 
 void MpvHandler::FrameStep()

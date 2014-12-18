@@ -55,6 +55,7 @@ public slots:
     void Rewind();
 
     void Seek(int pos, bool relative = false);
+    int Relative(int pos);
     void FrameStep();
     void FrameBackStep();
 
@@ -156,6 +157,7 @@ private:
                 suffix;
     double      speed = 1;
     int         time = 0,
+                lastTime = 0,
                 volume = 100,
                 index = 0,
                 vid,
