@@ -8,6 +8,7 @@ Its simple design reflects the idea for an uncluttered, simple, and enjoyable en
 ## Requirements
 
 * gcc
+* pkg-config
 * libmpv-dev
 * qtbase5-dev (>= 5.2.0)
   * qt5-qmake
