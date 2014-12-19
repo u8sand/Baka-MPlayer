@@ -30,6 +30,9 @@
 QSpinBox {
 	background: #005A6A;
 }
+QSpinBox::disabled {
+	color: #B8B8B8;
+}
 QSpinBox::up-button, 
 QSpinBox::down-button {
 	border: none;
