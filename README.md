@@ -5,27 +5,32 @@
 Baka MPlayer is a free and open source, cross-platform, **libmpv** based multimedia player.
 Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.
 
-## Installation
+## Requirements
+
+* gcc
+* libmpv-dev
+* qtbase5-dev (>= 5.2.0)
+  * qt5-qmake
+  * qtdeclarative5-dev
+  * libqt5svg5-dev
+  * libqt5x11extras5-dev
+  * libqt5network5
+
+## Compilation
 
 ### Windows
 
-#### Official Releases
-
-The official Windows builds will be available soon.
-
-#### Development Release
-
-See Linux instructions. If compilation goes successfully you'll have built `Baka-MPlayer.exe`.
+TODO
 
 ### Linux
 
-If your distribution does not provide a package--you must compile baka mplayer for your system. This requires libmpv (see https://github.com/mpv-player/mpv), qt5 (https://qt-project.org/), pkg-config, make, gcc, and git.
+If your distribution does not provide a package, you can compile from source.
 
 	git clone -b release https://github.com/u8sand/Baka-MPlayer.git
 	cd "Baka-MPlayer"
 	./make.sh
-	
-Copy the resulting executable (build/baka-mplayer) wherever you like; (eg. `sudo cp "build/baka-mplayer" /usr/bin/`) your configuration file will be written to `~/.config/bakamplayer.ini`.
+
+The executable will be built into the `build` folder. You can then install it to your system by copying it to the `/usr/bin/` folder. The configuration file will be created on first run and will be written to `~/.config/bakamplayer.ini`.
 
 ## Bug reports
 
