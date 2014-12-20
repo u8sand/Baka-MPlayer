@@ -14,6 +14,11 @@ UpdateManager::UpdateManager(QObject *parent) :
 {
 }
 
+UpdateManager::~UpdateManager()
+{
+    delete manager;
+}
+
 void UpdateManager::CheckForUpdates()
 {
     QNetworkRequest request(QUrl(

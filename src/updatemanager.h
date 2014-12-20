@@ -12,6 +12,7 @@ class UpdateManager : public QObject
     Q_OBJECT
 public:
     explicit UpdateManager(QObject *parent = 0);
+    ~UpdateManager();
 
 public slots:
     void CheckForUpdates();
