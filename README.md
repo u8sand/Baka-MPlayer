@@ -21,7 +21,7 @@ Its simple design reflects the idea for an uncluttered, simple, and enjoyable en
 
 ### Windows
 
-These instructions are for cross-compiling for windows on a Linux system. (Note arch can be either `x86_64` or `i686` depending on which platform you're compiling for)
+These instructions are for cross-compiling for Windows on a Linux system. (Note: the architecture can be either `x86_64` or `i686` depending on which platform you're compiling for)
 
 	arch=x86_64
 	git clone -b release https://github.com/u8sand/Baka-MPlayer.git
@@ -33,15 +33,15 @@ These instructions are for cross-compiling for windows on a Linux system. (Note 
 	./mpv.sh $arch
 	./bakamplayer.sh $arch
 
-This is a very long process because you'll need to build the mingw32 toolchain `mxe` and all dependent libraries, `libmpv.a`, and finally `baka-mplayer.exe`. If everything succeeded without error, `baka-mplayer.exe` will be in `Baka-MPlayer.x86_64/build/`
+This is a very long process because you'll need to build the mingw32 toolchain `mxe` and all dependent libraries, `libmpv.a`, and finally `baka-mplayer.exe`. If everything succeeded without error, `baka-mplayer.exe` will be built under `Baka-MPlayer.x86_64/build/`
 
-Luckily in the future to rebuild `baka-mplayer.exe` you simple have to do
+The next time you build the executable it will be as simple as
 
 	arch=x86_64
 	./mpv.sh $arch
 	./bakamplayer.sh $arch
 
-again, this scripts will pull the new version and compile them again using the existing mxe toolchain. To update your mxe toolchain similarly use `./mxe.sh $arch`.
+These scripts will pull the new version and compile them again using the existing mxe toolchain. To update your mxe toolchain, use `./mxe.sh $arch`.
 
 ### Linux
 
