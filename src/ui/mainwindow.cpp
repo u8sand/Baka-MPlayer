@@ -1185,11 +1185,11 @@ MainWindow::~MainWindow()
 {
     SaveSettings();
 
-    // note: child objects should do not need to be deleted;
-    // all children get deleted when mainwindow is deleted
+    // Note: child objects _should_ not need to be deleted because
+    // all children should get deleted when mainwindow is deleted
     // see: http://qt-project.org/doc/qt-4.8/objecttrees.html
 
-    // but apparently they do (https://github.com/u8sand/Baka-MPlayer/issues/47)
+    // but apparently they don't (https://github.com/u8sand/Baka-MPlayer/issues/47)
     delete mpv;
     delete update;
 
