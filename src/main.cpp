@@ -8,12 +8,11 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    if(QString(BAKA_MPLAYER_LANG) != "baka-mplayer-en")
-    {
-      QTranslator translator;
-      translator.load(BAKA_MPLAYER_LANG);
-      a.installTranslator(&translator);
-    }
+#ifdef BAKA_MPLAYER_LANG
+    QTranslator translator;
+    translator.load(BAKA_MPLAYER_LANG);
+    a.installTranslator(&translator);
+#endif
 
     MainWindow w;
     w.show();
