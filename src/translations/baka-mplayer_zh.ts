@@ -251,28 +251,28 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
         <translation>对话框</translation>
     </message>
     <message>
-        <location filename="../ui/jumpdialog.ui" line="111"/>
+        <location filename="../ui/jumpdialog.ui" line="114"/>
         <source> hr</source>
         <translation>时</translation>
     </message>
     <message>
-        <location filename="../ui/jumpdialog.ui" line="129"/>
-        <location filename="../ui/jumpdialog.ui" line="160"/>
+        <location filename="../ui/jumpdialog.ui" line="132"/>
+        <location filename="../ui/jumpdialog.ui" line="163"/>
         <source>:</source>
         <translation>:</translation>
     </message>
     <message>
-        <location filename="../ui/jumpdialog.ui" line="142"/>
+        <location filename="../ui/jumpdialog.ui" line="145"/>
         <source> min</source>
         <translation>分</translation>
     </message>
     <message>
-        <location filename="../ui/jumpdialog.ui" line="173"/>
+        <location filename="../ui/jumpdialog.ui" line="176"/>
         <source> sec</source>
         <translation>秒</translation>
     </message>
     <message>
-        <location filename="../ui/jumpdialog.ui" line="192"/>
+        <location filename="../ui/jumpdialog.ui" line="195"/>
         <source>&amp;OK</source>
         <translation>确定(&amp;O)</translation>
     </message>
@@ -290,32 +290,31 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
         <translation>请输入URL</translation>
     </message>
     <message>
-        <location filename="../ui/locationdialog.ui" line="107"/>
         <source>*.*</source>
-        <translation>*.*</translation>
+        <translation type="vanished">*.*</translation>
     </message>
     <message>
-        <location filename="../ui/locationdialog.ui" line="133"/>
+        <location filename="../ui/locationdialog.ui" line="108"/>
         <source>&amp;OK</source>
         <translation>确定(&amp;O)</translation>
     </message>
     <message>
-        <location filename="../ui/locationdialog.ui" line="162"/>
+        <location filename="../ui/locationdialog.ui" line="137"/>
         <source>&amp;PASTE</source>
         <translation>粘贴(&amp;P)</translation>
     </message>
     <message>
-        <location filename="../ui/locationdialog.ui" line="178"/>
+        <location filename="../ui/locationdialog.ui" line="153"/>
         <source>&amp;COPY</source>
         <translation>复制(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../ui/locationdialog.ui" line="194"/>
+        <location filename="../ui/locationdialog.ui" line="169"/>
         <source>CLEA&amp;R</source>
         <translation>清空(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../ui/locationdialog.ui" line="223"/>
+        <location filename="../ui/locationdialog.ui" line="198"/>
         <source>CANC&amp;EL</source>
         <translation>取消(&amp;E)</translation>
     </message>
@@ -328,389 +327,389 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
         <translation>Baka MPlayer</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="255"/>
+        <location filename="../ui/mainwindow.ui" line="259"/>
         <source>&gt;</source>
         <translation>&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="297"/>
+        <location filename="../ui/mainwindow.ui" line="301"/>
         <source>Search Playlist</source>
         <translation>搜索播放列表</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="310"/>
+        <location filename="../ui/mainwindow.ui" line="314"/>
         <source>Click to play a file by index</source>
         <translation>点击通过索引播放文件</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="313"/>
+        <location filename="../ui/mainwindow.ui" line="317"/>
         <source>File 0 of 0</source>
         <translation>文件 0 总数 0</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="366"/>
+        <location filename="../ui/mainwindow.ui" line="370"/>
         <source>Select the Current File</source>
         <translation>选择当前文件</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="402"/>
+        <location filename="../ui/mainwindow.ui" line="406"/>
         <source>Hide files with different extensions</source>
         <translation>隐藏不同扩展名的文件</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="432"/>
+        <location filename="../ui/mainwindow.ui" line="436"/>
         <source>Refresh Playlist</source>
         <translation>刷新播放列表</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="575"/>
+        <location filename="../ui/mainwindow.ui" line="579"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Left Click to Open File&lt;br&gt;Mouse Wheel Click to Jump&lt;br&gt;Right Click to Open URL&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;鼠标左键打开文件&lt;br&gt;中键跳转&lt;br&gt;右键打开URL&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="601"/>
+        <location filename="../ui/mainwindow.ui" line="605"/>
         <source>0:00:00</source>
         <translation>0:00:00</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="611"/>
+        <location filename="../ui/mainwindow.ui" line="615"/>
         <source>/</source>
         <translation>/</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="627"/>
+        <location filename="../ui/mainwindow.ui" line="631"/>
         <source>Click to change between total and remaining time</source>
         <translation>点击切换总时间和剩余时间</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="630"/>
+        <location filename="../ui/mainwindow.ui" line="634"/>
         <source>-0:00:00</source>
         <translation>-0:00:00</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="973"/>
+        <location filename="../ui/mainwindow.ui" line="977"/>
         <source>&amp;File</source>
         <translation>文件(&amp;F)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="977"/>
+        <location filename="../ui/mainwindow.ui" line="981"/>
         <source>&amp;Recently Opened</source>
         <translation>最近打开(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="997"/>
+        <location filename="../ui/mainwindow.ui" line="1001"/>
         <source>&amp;View</source>
         <translation>视图(&amp;V)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1004"/>
+        <location filename="../ui/mainwindow.ui" line="1008"/>
         <source>Fit &amp;Window</source>
         <translation>适应窗口大小(&amp;W)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1017"/>
+        <location filename="../ui/mainwindow.ui" line="1021"/>
         <source>Aspect &amp;Ratio</source>
         <translation>高宽比(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1029"/>
+        <location filename="../ui/mainwindow.ui" line="1033"/>
         <source>Subtitle &amp;Track</source>
         <translation>字幕轨道(&amp;T)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1040"/>
+        <location filename="../ui/mainwindow.ui" line="1044"/>
         <source>Font Si&amp;ze</source>
         <translation>字体大小(&amp;Z)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1051"/>
+        <location filename="../ui/mainwindow.ui" line="1055"/>
         <source>Take &amp;Screenshot</source>
         <translation>截图(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1070"/>
+        <location filename="../ui/mainwindow.ui" line="1074"/>
         <source>&amp;Playback</source>
         <translation>播放(&amp;P)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1074"/>
+        <location filename="../ui/mainwindow.ui" line="1078"/>
         <source>R&amp;epeat</source>
         <translation>重复(&amp;E)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1090"/>
+        <location filename="../ui/mainwindow.ui" line="1094"/>
         <source>Audio &amp;Tracks</source>
         <translation>音频轨道(&amp;T)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1099"/>
+        <location filename="../ui/mainwindow.ui" line="1103"/>
         <source>S&amp;peed</source>
         <translation>速度(&amp;P)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1121"/>
+        <location filename="../ui/mainwindow.ui" line="1125"/>
         <source>&amp;Navigate</source>
         <translation>导航(&amp;N)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1128"/>
+        <location filename="../ui/mainwindow.ui" line="1132"/>
         <source>&amp;Chapters</source>
         <translation>章节(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1143"/>
+        <location filename="../ui/mainwindow.ui" line="1147"/>
         <source>&amp;Settings</source>
         <translation>设置(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1155"/>
+        <location filename="../ui/mainwindow.ui" line="1159"/>
         <source>&amp;Help</source>
         <translation>帮助(&amp;H)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1248"/>
+        <location filename="../ui/mainwindow.ui" line="1252"/>
         <source>E&amp;xit</source>
         <translation>离开(&amp;X)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1172"/>
+        <location filename="../ui/mainwindow.ui" line="1176"/>
         <source>&amp;New Player</source>
         <translation>打开新播放器(&amp;N)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1175"/>
+        <location filename="../ui/mainwindow.ui" line="1179"/>
         <source>Ctrl+N</source>
         <translation>Ctrl+N</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1180"/>
+        <location filename="../ui/mainwindow.ui" line="1184"/>
         <source>&amp;Open File...</source>
         <translation>打开文件(&amp;O)...</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1183"/>
+        <location filename="../ui/mainwindow.ui" line="1187"/>
         <source>Ctrl+O</source>
         <translation>Ctrl+O</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1188"/>
+        <location filename="../ui/mainwindow.ui" line="1192"/>
         <source>Open &amp;URL...</source>
         <translation>打开URL(&amp;U)...</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1191"/>
+        <location filename="../ui/mainwindow.ui" line="1195"/>
         <source>Ctrl+U</source>
         <translation>Ctrl+U</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1196"/>
+        <location filename="../ui/mainwindow.ui" line="1200"/>
         <source>Open Path from &amp;Clipboard</source>
         <translation>打开剪贴板的路径(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1199"/>
+        <location filename="../ui/mainwindow.ui" line="1203"/>
         <source>Ctrl+V</source>
         <translation>Ctrl+V</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1207"/>
+        <location filename="../ui/mainwindow.ui" line="1211"/>
         <source>Open &amp;Last File</source>
         <translation>打开上次文件(&amp;L)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1210"/>
+        <location filename="../ui/mainwindow.ui" line="1214"/>
         <source>Ctrl+Z</source>
         <translation>Ctrl+Z</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1218"/>
+        <location filename="../ui/mainwindow.ui" line="1222"/>
         <source>Show in &amp;Folder</source>
         <translation>在文件夹中显示(&amp;F)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1221"/>
+        <location filename="../ui/mainwindow.ui" line="1225"/>
         <source>Ctrl+F</source>
         <translation>Ctrl+F</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1229"/>
+        <location filename="../ui/mainwindow.ui" line="1233"/>
         <source>Play &amp;Next File</source>
         <translation>播放下一文件(&amp;N)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1232"/>
+        <location filename="../ui/mainwindow.ui" line="1236"/>
         <source>Ctrl+Right</source>
         <translation>Ctrl+Right</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1240"/>
+        <location filename="../ui/mainwindow.ui" line="1244"/>
         <source>Play &amp;Previous File</source>
         <translation>播放前一个文件(&amp;P)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1243"/>
+        <location filename="../ui/mainwindow.ui" line="1247"/>
         <source>Ctrl+Left</source>
         <translation>Ctrl+Left</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1251"/>
+        <location filename="../ui/mainwindow.ui" line="1255"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1259"/>
+        <location filename="../ui/mainwindow.ui" line="1263"/>
         <source>&amp;Full Screen</source>
         <translation>全屏(&amp;F)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1262"/>
+        <location filename="../ui/mainwindow.ui" line="1266"/>
         <source>Alt+Return</source>
         <translation>Alt+Return</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1276"/>
+        <location filename="../ui/mainwindow.ui" line="1280"/>
         <source>Show S&amp;ubtitles</source>
         <translation>显示字幕(&amp;U)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1279"/>
+        <location filename="../ui/mainwindow.ui" line="1283"/>
         <source>Ctrl+W</source>
         <translation>Ctrl+W</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1287"/>
+        <location filename="../ui/mainwindow.ui" line="1291"/>
         <source>Media &amp;Info</source>
         <translation>媒体信息(&amp;I)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1290"/>
+        <location filename="../ui/mainwindow.ui" line="1294"/>
         <source>Ctrl+I</source>
         <translation>Ctrl+I</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1298"/>
-        <location filename="../ui/mainwindow.cpp" line="373"/>
+        <location filename="../ui/mainwindow.ui" line="1302"/>
+        <location filename="../ui/mainwindow.cpp" line="371"/>
         <source>&amp;Play</source>
         <translation>播放(&amp;P)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1301"/>
+        <location filename="../ui/mainwindow.ui" line="1305"/>
         <source>Space</source>
         <translation>空格</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1309"/>
+        <location filename="../ui/mainwindow.ui" line="1313"/>
         <source>&amp;Stop</source>
         <translation>停止(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1312"/>
+        <location filename="../ui/mainwindow.ui" line="1316"/>
         <source>Ctrl+S</source>
         <translation>Ctrl+S</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1320"/>
+        <location filename="../ui/mainwindow.ui" line="1324"/>
         <source>&amp;Restart</source>
         <translation>重新开始(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1323"/>
+        <location filename="../ui/mainwindow.ui" line="1327"/>
         <source>Ctrl+R</source>
         <translation>Ctrl+R</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1338"/>
+        <location filename="../ui/mainwindow.ui" line="1342"/>
         <source>Sh&amp;uffle</source>
         <translation>随机顺序(&amp;U)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1346"/>
+        <location filename="../ui/mainwindow.ui" line="1350"/>
         <source>Stop after &amp;Current</source>
         <translation>当前播放完毕后停止(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1427"/>
+        <location filename="../ui/mainwindow.ui" line="1431"/>
         <source>&amp;Show Playlist</source>
         <translation>显示播放列表(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1441"/>
+        <location filename="../ui/mainwindow.ui" line="1445"/>
         <source>&amp;Hide Album Art</source>
         <translation>隐藏专辑封面(&amp;H)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1449"/>
+        <location filename="../ui/mainwindow.ui" line="1453"/>
         <source>&amp;Dim Lights</source>
         <translation>昏暗灯光(&amp;D)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1351"/>
-        <location filename="../ui/mainwindow.ui" line="1460"/>
+        <location filename="../ui/mainwindow.ui" line="1355"/>
+        <location filename="../ui/mainwindow.ui" line="1464"/>
         <source>Show &amp;Command Line</source>
         <translation>显示命令行(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1356"/>
+        <location filename="../ui/mainwindow.ui" line="1360"/>
         <source>&amp;On Top</source>
         <translation>置顶(&amp;O)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1361"/>
+        <location filename="../ui/mainwindow.ui" line="1365"/>
         <source>&amp;Tray Icon</source>
         <translation>托盘图标(&amp;T)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1369"/>
+        <location filename="../ui/mainwindow.ui" line="1373"/>
         <source>&amp;Next Chapter</source>
         <translation>下一章节(&amp;N)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1372"/>
+        <location filename="../ui/mainwindow.ui" line="1376"/>
         <source>PgDown</source>
         <translation>向下翻页</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1380"/>
+        <location filename="../ui/mainwindow.ui" line="1384"/>
         <source>&amp;Previous Chapter</source>
         <translation>上一章节(&amp;P)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1383"/>
+        <location filename="../ui/mainwindow.ui" line="1387"/>
         <source>PgUp</source>
         <translation>向上翻页</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1391"/>
+        <location filename="../ui/mainwindow.ui" line="1395"/>
         <source>&amp;Frame Step</source>
         <translation>逐帧播放(&amp;F)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1394"/>
+        <location filename="../ui/mainwindow.ui" line="1398"/>
         <source>Shift+Right</source>
         <translation>Shift+Right</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1402"/>
+        <location filename="../ui/mainwindow.ui" line="1406"/>
         <source>Frame &amp;Back Step</source>
         <translation>向后逐帧(&amp;F)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1405"/>
+        <location filename="../ui/mainwindow.ui" line="1409"/>
         <source>Shift+Left</source>
         <translation>Shift+Left</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1413"/>
+        <location filename="../ui/mainwindow.ui" line="1417"/>
         <source>&amp;Jump to Time...</source>
         <translation>跳转到时间(&amp;J)...</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1416"/>
+        <location filename="../ui/mainwindow.ui" line="1420"/>
         <source>Ctrl+J</source>
         <translation>Ctrl+J</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1430"/>
+        <location filename="../ui/mainwindow.ui" line="1434"/>
         <source>Ctrl+X</source>
         <translation>Ctrl+X</translation>
     </message>
@@ -719,87 +718,87 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
         <translation type="vanished">黯淡桌面(&amp;D)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1452"/>
+        <location filename="../ui/mainwindow.ui" line="1456"/>
         <source>Ctrl+D</source>
         <translation>Ctrl+D</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1465"/>
+        <location filename="../ui/mainwindow.ui" line="1469"/>
         <source>Online &amp;Help</source>
         <translation>在线帮助&amp;H)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1468"/>
+        <location filename="../ui/mainwindow.ui" line="1472"/>
         <source>F1</source>
         <translation>F1</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1473"/>
+        <location filename="../ui/mainwindow.ui" line="1477"/>
         <source>&amp;Check for Updates</source>
         <translation>检查更新(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1478"/>
+        <location filename="../ui/mainwindow.ui" line="1482"/>
         <source>About &amp;Qt</source>
         <translation>关于Qt(&amp;Q)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1483"/>
+        <location filename="../ui/mainwindow.ui" line="1487"/>
         <source>About &amp;Baka MPlayer</source>
         <translation>关于 Baka MPlayer (&amp;B)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1488"/>
+        <location filename="../ui/mainwindow.ui" line="1492"/>
         <source>To &amp;Current Size</source>
         <translation>到当前尺寸(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1491"/>
+        <location filename="../ui/mainwindow.ui" line="1495"/>
         <source>Alt+1</source>
         <translation>Alt+1</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1496"/>
+        <location filename="../ui/mainwindow.ui" line="1500"/>
         <source>50%</source>
         <translation>50%</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1499"/>
+        <location filename="../ui/mainwindow.ui" line="1503"/>
         <source>Alt+2</source>
         <translation>Alt+2</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1504"/>
+        <location filename="../ui/mainwindow.ui" line="1508"/>
         <source>75%</source>
         <translation>75%</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1507"/>
+        <location filename="../ui/mainwindow.ui" line="1511"/>
         <source>Alt+3</source>
         <translation>Alt+3</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1512"/>
+        <location filename="../ui/mainwindow.ui" line="1516"/>
         <source>100%</source>
         <translation>100%</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1515"/>
+        <location filename="../ui/mainwindow.ui" line="1519"/>
         <source>Alt+4</source>
         <translation>Alt+4</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1520"/>
+        <location filename="../ui/mainwindow.ui" line="1524"/>
         <source>200%</source>
         <translation>200%</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1523"/>
+        <location filename="../ui/mainwindow.ui" line="1527"/>
         <source>Alt+5</source>
         <translation>Alt+5</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1528"/>
+        <location filename="../ui/mainwindow.ui" line="1532"/>
         <source>&amp;Auto Detect</source>
         <translation>自动探测(&amp;A)</translation>
     </message>
@@ -808,190 +807,190 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
         <translation type="vanished">自动探测(&amp;A)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1533"/>
+        <location filename="../ui/mainwindow.ui" line="1537"/>
         <source>Force &amp;4:3</source>
         <translation>强制 &amp;4:3</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1538"/>
+        <location filename="../ui/mainwindow.ui" line="1542"/>
         <source>Force 16:&amp;9</source>
         <translation>强制 16:&amp;9</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1543"/>
+        <location filename="../ui/mainwindow.ui" line="1547"/>
         <source>Force &amp;2.35:1</source>
         <translation>强制 &amp;2.35:1</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1551"/>
+        <location filename="../ui/mainwindow.ui" line="1555"/>
         <source>&amp;Add Subtitle File...</source>
         <translation>添加字幕文件(&amp;A)...</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1559"/>
-        <location filename="../ui/mainwindow.ui" line="1615"/>
-        <location filename="../ui/mainwindow.ui" line="1714"/>
-        <location filename="../ui/mainwindow.ui" line="1746"/>
+        <location filename="../ui/mainwindow.ui" line="1563"/>
+        <location filename="../ui/mainwindow.ui" line="1619"/>
+        <location filename="../ui/mainwindow.ui" line="1718"/>
+        <location filename="../ui/mainwindow.ui" line="1750"/>
         <source>[ none ]</source>
         <translation>[ 无 ]</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1564"/>
+        <location filename="../ui/mainwindow.ui" line="1568"/>
         <source>&amp;Size +</source>
         <translation>尺寸(&amp;S) +</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1567"/>
+        <location filename="../ui/mainwindow.ui" line="1571"/>
         <source>Ctrl++</source>
         <translation>Ctrl++</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1572"/>
+        <location filename="../ui/mainwindow.ui" line="1576"/>
         <source>S&amp;ize -</source>
         <translation>尺寸(&amp;S) -</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1575"/>
+        <location filename="../ui/mainwindow.ui" line="1579"/>
         <source>Ctrl+-</source>
         <translation>Ctrl+-</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1580"/>
+        <location filename="../ui/mainwindow.ui" line="1584"/>
         <source>&amp;Reset Size</source>
         <translation>重置尺寸(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1591"/>
+        <location filename="../ui/mainwindow.ui" line="1595"/>
         <source>&amp;Off</source>
         <translation>关闭(&amp;O)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1599"/>
+        <location filename="../ui/mainwindow.ui" line="1603"/>
         <source>&amp;Playlist</source>
         <translation>播放列表(&amp;P)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1607"/>
+        <location filename="../ui/mainwindow.ui" line="1611"/>
         <source>&amp;This File</source>
         <translation>本文件(&amp;T)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1623"/>
+        <location filename="../ui/mainwindow.ui" line="1627"/>
         <source>&amp;Always</source>
         <translation>总是(&amp;A)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1631"/>
+        <location filename="../ui/mainwindow.ui" line="1635"/>
         <source>When &amp;Playing</source>
         <translation>播放时(&amp;P)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1642"/>
+        <location filename="../ui/mainwindow.ui" line="1646"/>
         <source>&amp;Never</source>
         <translation>从不(&amp;N)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1650"/>
+        <location filename="../ui/mainwindow.ui" line="1654"/>
         <source>&amp;Show in Tray</source>
         <translation>托盘中显示(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1658"/>
+        <location filename="../ui/mainwindow.ui" line="1662"/>
         <source>&amp;Hide Popup</source>
         <translation>隐藏退出(&amp;H)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1666"/>
+        <location filename="../ui/mainwindow.ui" line="1670"/>
         <source>Show D&amp;ebug Output</source>
         <translation>显示调试信息(&amp;E)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1669"/>
+        <location filename="../ui/mainwindow.ui" line="1673"/>
         <source>Ctrl+E</source>
         <translation>Ctrl+E</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1674"/>
+        <location filename="../ui/mainwindow.ui" line="1678"/>
         <source>&amp;Increase Volume</source>
         <translation>提高音量(&amp;I)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1677"/>
+        <location filename="../ui/mainwindow.ui" line="1681"/>
         <source>Ctrl+Up</source>
         <translation>Ctrl+Up</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1682"/>
+        <location filename="../ui/mainwindow.ui" line="1686"/>
         <source>&amp;Decrease Volume</source>
         <translation>降低音量(&amp;D)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1685"/>
+        <location filename="../ui/mainwindow.ui" line="1689"/>
         <source>Ctrl+Down</source>
         <translation>Ctrl+Down</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1690"/>
+        <location filename="../ui/mainwindow.ui" line="1694"/>
         <source>With &amp;Subtitles...</source>
         <translation>打开字幕(&amp;S)...</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1693"/>
+        <location filename="../ui/mainwindow.ui" line="1697"/>
         <source>Ctrl+T</source>
         <translation>Ctrl+T</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1698"/>
+        <location filename="../ui/mainwindow.ui" line="1702"/>
         <source>&amp;Without Subtitles...</source>
         <translation>关闭字幕(&amp;W)...</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1701"/>
+        <location filename="../ui/mainwindow.ui" line="1705"/>
         <source>Ctrl+Shift+T</source>
         <translation>Ctrl+Shift+T</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1706"/>
+        <location filename="../ui/mainwindow.ui" line="1710"/>
         <source>&amp;Preferences...</source>
         <translation>首选项(&amp;P)...</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1719"/>
+        <location filename="../ui/mainwindow.ui" line="1723"/>
         <source>&amp;Increase</source>
         <translation>提高(&amp;I)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1722"/>
+        <location filename="../ui/mainwindow.ui" line="1726"/>
         <source>Ctrl+Shift+Up</source>
         <translation>Ctrl+Shift+Up</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1727"/>
+        <location filename="../ui/mainwindow.ui" line="1731"/>
         <source>&amp;Decrease</source>
         <translation>降低(&amp;D)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1730"/>
+        <location filename="../ui/mainwindow.ui" line="1734"/>
         <source>Ctrl+Shift+Down</source>
         <translation>Ctrl+Shift+Down</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1735"/>
+        <location filename="../ui/mainwindow.ui" line="1739"/>
         <source>&amp;Reset</source>
         <translation>重置(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1738"/>
+        <location filename="../ui/mainwindow.ui" line="1742"/>
         <source>Ctrl+Shift+R</source>
         <translation>Ctrl+Shift+R</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="104"/>
+        <location filename="../ui/mainwindow.cpp" line="102"/>
         <source>Playing</source>
         <translation>播放</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="106"/>
+        <location filename="../ui/mainwindow.cpp" line="104"/>
         <source>Paused</source>
         <translation>暂停</translation>
     </message>
@@ -1004,7 +1003,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
         <translation type="vanished">音频</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="365"/>
+        <location filename="../ui/mainwindow.cpp" line="363"/>
         <source>&amp;Pause</source>
         <translation>暂停(&amp;P)</translation>
     </message>
@@ -1019,12 +1018,12 @@ Note: Value must be from</source>
 注意: 编号必须在以下范围</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="660"/>
+        <location filename="../ui/mainwindow.cpp" line="658"/>
         <source>Enter File Number</source>
         <translation>输入文件编号</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="678"/>
+        <location filename="../ui/mainwindow.cpp" line="676"/>
         <source>No selection</source>
         <translation>无选择</translation>
     </message>
@@ -1037,109 +1036,109 @@ Note: Value must be from</source>
         <translation type="vanished">总数</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="194"/>
-        <location filename="../ui/mainwindow.cpp" line="218"/>
+        <location filename="../ui/mainwindow.cpp" line="192"/>
+        <location filename="../ui/mainwindow.cpp" line="216"/>
         <source>%0: %1 (%2)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="213"/>
+        <location filename="../ui/mainwindow.cpp" line="211"/>
         <source>Sub %0: %1 (%2)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="225"/>
+        <location filename="../ui/mainwindow.cpp" line="223"/>
         <source>Audio %0: %1 (%2)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="309"/>
+        <location filename="../ui/mainwindow.cpp" line="307"/>
         <source>%0: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="470"/>
+        <location filename="../ui/mainwindow.cpp" line="468"/>
         <source>Speed: %0x</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="659"/>
+        <location filename="../ui/mainwindow.cpp" line="657"/>
         <source>Enter the file number you want to play:
 Note: Value must be from 1 - %0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="684"/>
+        <location filename="../ui/mainwindow.cpp" line="682"/>
         <source>File %0 of %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="714"/>
+        <location filename="../ui/mainwindow.cpp" line="712"/>
         <source>R&amp;emove from Playlist</source>
         <translation>移出播放列表(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="723"/>
+        <location filename="../ui/mainwindow.cpp" line="727"/>
         <source>&amp;Delete from Disk</source>
         <translation>从磁盘删除(&amp;D)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="734"/>
+        <location filename="../ui/mainwindow.cpp" line="744"/>
         <source>&amp;Refresh</source>
         <translation>刷新(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="881"/>
+        <location filename="../ui/mainwindow.cpp" line="891"/>
         <source>Open Subtitle File</source>
         <translation>打开字幕文件</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="882"/>
+        <location filename="../ui/mainwindow.cpp" line="892"/>
         <source>Subtitle Files (%0)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1063"/>
+        <location filename="../ui/mainwindow.cpp" line="1073"/>
         <source>http://bakamplayer.u8sand.net/help.php</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1636"/>
+        <location filename="../ui/mainwindow.cpp" line="1651"/>
         <source>Dim Lights</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1636"/>
+        <location filename="../ui/mainwindow.cpp" line="1651"/>
         <source>In order to dim the lights, the desktop compositor has to be enabled. This can be done through Window Manager Desktop.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1702"/>
+        <location filename="../ui/mainwindow.cpp" line="1717"/>
         <source>Saved to &quot;%0&quot;, with subs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1704"/>
+        <location filename="../ui/mainwindow.cpp" line="1719"/>
         <source>Saved to &quot;%0&quot;, without subs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1715"/>
+        <location filename="../ui/mainwindow.cpp" line="1730"/>
         <source>%0. %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1730"/>
+        <location filename="../ui/mainwindow.cpp" line="1745"/>
         <source>Media Files (%0);;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1731"/>
+        <location filename="../ui/mainwindow.cpp" line="1746"/>
         <source>Video Files (%0);;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1732"/>
+        <location filename="../ui/mainwindow.cpp" line="1747"/>
         <source>Audio Files (%0)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1148,17 +1147,17 @@ Note: Value must be from 1 - %0</source>
         <translation type="vanished">字幕文件</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1125"/>
+        <location filename="../ui/mainwindow.cpp" line="1135"/>
         <source>Seek Forward</source>
         <translation>向前跳转</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1134"/>
+        <location filename="../ui/mainwindow.cpp" line="1144"/>
         <source>Seek Backward</source>
         <translation>向后跳转</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1143"/>
+        <location filename="../ui/mainwindow.cpp" line="1153"/>
         <source>Exit Fullscreen/Boss Key</source>
         <translation>退出全屏</translation>
     </message>
@@ -1203,7 +1202,7 @@ Note: Value must be from 1 - %0</source>
         <translation type="vanished">字幕</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1729"/>
+        <location filename="../ui/mainwindow.cpp" line="1744"/>
         <source>Open File</source>
         <translation>打开文件</translation>
     </message>
@@ -1231,25 +1230,25 @@ Note: Value must be from 1 - %0</source>
         <translation type="vanished">mpv未初始化</translation>
     </message>
     <message>
-        <location filename="../mpvhandler.cpp" line="56"/>
-        <location filename="../mpvhandler.cpp" line="115"/>
+        <location filename="../mpvhandler.cpp" line="57"/>
+        <location filename="../mpvhandler.cpp" line="119"/>
         <source>[mpv]: %0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mpvhandler.cpp" line="171"/>
+        <location filename="../mpvhandler.cpp" line="175"/>
         <source>[Baka-MPlayer]: Setting type was parsed as %0
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mpvhandler.cpp" line="184"/>
+        <location filename="../mpvhandler.cpp" line="188"/>
         <source>screenshot%#04n</source>
         <translation type="unfinished">screenshot%#04n</translation>
     </message>
     <message>
-        <location filename="../mpvhandler.cpp" line="712"/>
-        <location filename="../mpvhandler.cpp" line="720"/>
+        <location filename="../mpvhandler.cpp" line="723"/>
+        <location filename="../mpvhandler.cpp" line="731"/>
         <source>[mpv]: mpv was not initialized
 </source>
         <translation type="unfinished"></translation>
