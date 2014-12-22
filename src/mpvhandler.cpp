@@ -485,11 +485,6 @@ void MpvHandler::ScreenshotTemplate(QString s)
 
 void MpvHandler::ScreenshotDirectory(QString s)
 {
-//    if(mpv)
-//    {
-//        const QByteArray tmp = (s+"/"+screenshotTemplate).toUtf8();
-//        mpv_set_option_string(mpv, "screenshot-template", tmp.data());
-//    }
     setScreenshotDir(s);
 }
 
@@ -503,7 +498,8 @@ void MpvHandler::AddSubtitleTrack(QString f)
 
 void MpvHandler::ShowSubtitles(bool b)
 {
-    mpv_set_property_async(mpv, 0, "sub-visibility", MPV_FORMAT_FLAG, &b);
+    const char *args[] = {"set", "sub-visibility", b ? "yes" : "no", NULL};
+    AsyncCommand(args);
 }
 
 void MpvHandler::SubtitleScale(double scale, bool relative)
