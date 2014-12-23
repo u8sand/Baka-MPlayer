@@ -45,13 +45,20 @@ These scripts will pull the new version and compile them again using the existin
 
 ### Linux
 
-If your distribution does not provide a package, you can compile from source.
+If your distribution does not provide a package, you can compile it from source.
 
 	git clone -b release https://github.com/u8sand/Baka-MPlayer.git
 	cd "Baka-MPlayer"
 	./make.sh
 
 The executable will be built into the `build` folder. You can then install it to your system by copying it to the `/usr/bin/` folder. The configuration file will be created on first run and will be written to `~/.config/bakamplayer.ini`.
+
+### Other Languages
+
+By default, Baka MPlayer will compile in English if no language is specified during compilation.
+To compile in a different language, run `./make.sh LANG` with LANG being the with two-letter language code.
+For example, to compile in Chinese you would run: `./make.sh zh`.
+You can check out which languages we currently support by checking out `Baka-MPlayer/src/translations`.
 
 ## Bug reports
 
