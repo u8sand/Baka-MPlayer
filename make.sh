@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [[ $1 != "" ]]; then
+if [ "$1" != "" ]; then
   BAKA_LANG=$1
   # make sure we rebuild main
   touch src/main.cpp
