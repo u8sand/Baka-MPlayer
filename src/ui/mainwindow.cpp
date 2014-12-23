@@ -369,7 +369,7 @@ MainWindow::MainWindow(QWidget *parent):
                 case Mpv::Stopped:
                     ui->playButton->setIcon(QIcon(":/img/default_play.svg"));
                     ui->action_Play->setText(tr("&Play"));
-                    if(ui->actionWhen_Playing->isChecked())
+                    if(onTop == "playing")
                         AlwaysOnTop(false);
                     break;
 

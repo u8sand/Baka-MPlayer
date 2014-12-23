@@ -468,7 +468,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
         <translation>A&amp;juda</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1252"/>
+        <location filename="../ui/mainwindow.ui" line="1241"/>
         <source>E&amp;xit</source>
         <translation>&amp;Fechar</translation>
     </message>
@@ -513,468 +513,457 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
         <translation>Ctrl+V</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1211"/>
         <source>Open &amp;Last File</source>
-        <translation>Arquivo Ú&amp;ltimo Aberto</translation>
+        <translation type="vanished">Arquivo Ú&amp;ltimo Aberto</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1214"/>
         <source>Ctrl+Z</source>
-        <translation>Ctrl+Z</translation>
+        <translation type="vanished">Ctrl+Z</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1222"/>
+        <location filename="../ui/mainwindow.ui" line="1211"/>
         <source>Show in &amp;Folder</source>
         <translation>Vista na &amp;pasta</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1225"/>
+        <location filename="../ui/mainwindow.ui" line="1214"/>
         <source>Ctrl+F</source>
         <translation>Ctrl+F</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1233"/>
+        <location filename="../ui/mainwindow.ui" line="1222"/>
         <source>Play &amp;Next File</source>
         <translation>Play Arquivo &amp;Próximo</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1236"/>
+        <location filename="../ui/mainwindow.ui" line="1225"/>
         <source>Ctrl+Right</source>
         <translation>Ctrl+Right</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1244"/>
+        <location filename="../ui/mainwindow.ui" line="1233"/>
         <source>Play &amp;Previous File</source>
         <translation>Play Arquivo &amp;Anterior</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1247"/>
+        <location filename="../ui/mainwindow.ui" line="1236"/>
         <source>Ctrl+Left</source>
         <translation>Ctrl+Left</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1255"/>
+        <location filename="../ui/mainwindow.ui" line="1244"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1263"/>
+        <location filename="../ui/mainwindow.ui" line="1252"/>
         <source>&amp;Full Screen</source>
         <translation>&amp;Tela Cheia</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1266"/>
+        <location filename="../ui/mainwindow.ui" line="1255"/>
         <source>Alt+Return</source>
         <translation>Alt+Return</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1280"/>
+        <location filename="../ui/mainwindow.ui" line="1269"/>
         <source>Show S&amp;ubtitles</source>
         <translation>&amp;Mostrar legendas</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1283"/>
+        <location filename="../ui/mainwindow.ui" line="1272"/>
         <source>Ctrl+W</source>
         <translation>Ctrl+W</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1291"/>
+        <location filename="../ui/mainwindow.ui" line="1280"/>
         <source>Media &amp;Info</source>
         <translation>&amp;Informação Mídia</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1294"/>
+        <location filename="../ui/mainwindow.ui" line="1283"/>
         <source>Ctrl+I</source>
         <translation>Ctrl+I</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1302"/>
+        <location filename="../ui/mainwindow.ui" line="1291"/>
         <location filename="../ui/mainwindow.cpp" line="371"/>
         <source>&amp;Play</source>
         <translatorcomment>I&apos;ve been told this is acceptable.</translatorcomment>
         <translation>&amp;Play</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1305"/>
+        <location filename="../ui/mainwindow.ui" line="1294"/>
         <source>Space</source>
         <translation>Space</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1313"/>
+        <location filename="../ui/mainwindow.ui" line="1302"/>
         <source>&amp;Stop</source>
         <translation>&amp;Pare</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1316"/>
+        <location filename="../ui/mainwindow.ui" line="1305"/>
         <source>Ctrl+S</source>
         <translation>Ctrl+S</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1324"/>
+        <location filename="../ui/mainwindow.ui" line="1313"/>
         <source>&amp;Restart</source>
         <translation>&amp;Reiniciar</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1327"/>
+        <location filename="../ui/mainwindow.ui" line="1316"/>
         <source>Ctrl+R</source>
         <translation>Ctrl+R</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1342"/>
+        <location filename="../ui/mainwindow.ui" line="1331"/>
         <source>Sh&amp;uffle</source>
         <translation>&amp;Embaralhar</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1350"/>
+        <location filename="../ui/mainwindow.ui" line="1339"/>
         <source>Stop after &amp;Current</source>
         <translation>Parar depois a&amp;tual</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1431"/>
+        <location filename="../ui/mainwindow.ui" line="1405"/>
         <source>&amp;Show Playlist</source>
         <translation>&amp;Vista Lista</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1445"/>
+        <location filename="../ui/mainwindow.ui" line="1419"/>
         <source>&amp;Hide Album Art</source>
         <translation>&amp;Esconder arte do álbum</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1453"/>
+        <location filename="../ui/mainwindow.ui" line="1427"/>
         <source>&amp;Dim Lights</source>
         <translation>Luzes &amp;Difusas</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1355"/>
-        <location filename="../ui/mainwindow.ui" line="1464"/>
         <source>Show &amp;Command Line</source>
-        <translation>Linha de Comando &amp;Vista</translation>
+        <translation type="vanished">Linha de Comando &amp;Vista</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1360"/>
         <source>&amp;On Top</source>
-        <translation>&amp;No topo</translation>
+        <translation type="vanished">&amp;No topo</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1365"/>
         <source>&amp;Tray Icon</source>
-        <translation>Ícone da &amp;Bandeja</translation>
+        <translation type="vanished">Ícone da &amp;Bandeja</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1373"/>
+        <location filename="../ui/mainwindow.ui" line="1347"/>
         <source>&amp;Next Chapter</source>
         <translation>&amp;Próximo Capítulo</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1376"/>
+        <location filename="../ui/mainwindow.ui" line="1350"/>
         <source>PgDown</source>
         <translation>PgDown</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1384"/>
+        <location filename="../ui/mainwindow.ui" line="1358"/>
         <source>&amp;Previous Chapter</source>
         <translation>P&amp;révio Capítulo</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1387"/>
+        <location filename="../ui/mainwindow.ui" line="1361"/>
         <source>PgUp</source>
         <translation>PgUp</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1395"/>
+        <location filename="../ui/mainwindow.ui" line="1369"/>
         <source>&amp;Frame Step</source>
         <translation>&amp;Frame passo</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1398"/>
+        <location filename="../ui/mainwindow.ui" line="1372"/>
         <source>Shift+Right</source>
         <translation>Shift+Right</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1406"/>
+        <location filename="../ui/mainwindow.ui" line="1380"/>
         <source>Frame &amp;Back Step</source>
         <translation>Frame passo para &amp;trás</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1409"/>
+        <location filename="../ui/mainwindow.ui" line="1383"/>
         <source>Shift+Left</source>
         <translation>Shift+Left</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1417"/>
+        <location filename="../ui/mainwindow.ui" line="1391"/>
         <source>&amp;Jump to Time...</source>
         <translation>&amp;Vá para o tempo...</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1420"/>
+        <location filename="../ui/mainwindow.ui" line="1394"/>
         <source>Ctrl+J</source>
         <translation>Ctrl+J</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1434"/>
+        <location filename="../ui/mainwindow.ui" line="1408"/>
         <source>Ctrl+X</source>
         <translation>Ctrl+X</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1456"/>
+        <location filename="../ui/mainwindow.ui" line="1430"/>
         <source>Ctrl+D</source>
         <translation>Ctrl+D</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1469"/>
+        <location filename="../ui/mainwindow.ui" line="1435"/>
         <source>Online &amp;Help</source>
         <translation>&amp;Ajuda On-line</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1472"/>
+        <location filename="../ui/mainwindow.ui" line="1438"/>
         <source>F1</source>
         <translation>F1</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1477"/>
+        <location filename="../ui/mainwindow.ui" line="1443"/>
         <source>&amp;Check for Updates</source>
         <translation>&amp;Verificar se há Atualizações</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1482"/>
+        <location filename="../ui/mainwindow.ui" line="1448"/>
         <source>About &amp;Qt</source>
         <translation>&amp;Sobre Qt</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1487"/>
+        <location filename="../ui/mainwindow.ui" line="1453"/>
         <source>About &amp;Baka MPlayer</source>
         <translation>Sobre &amp;Baka MPlayer</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1492"/>
+        <location filename="../ui/mainwindow.ui" line="1458"/>
         <source>To &amp;Current Size</source>
         <translation>Ao Tamanho &amp;Atual</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1495"/>
+        <location filename="../ui/mainwindow.ui" line="1461"/>
         <source>Alt+1</source>
         <translation>Alt+1</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1500"/>
+        <location filename="../ui/mainwindow.ui" line="1466"/>
         <source>50%</source>
         <translation>50%</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1503"/>
+        <location filename="../ui/mainwindow.ui" line="1469"/>
         <source>Alt+2</source>
         <translation>Alt+2</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1508"/>
+        <location filename="../ui/mainwindow.ui" line="1474"/>
         <source>75%</source>
         <translation>75%</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1511"/>
+        <location filename="../ui/mainwindow.ui" line="1477"/>
         <source>Alt+3</source>
         <translation>Alt+3</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1516"/>
+        <location filename="../ui/mainwindow.ui" line="1482"/>
         <source>100%</source>
         <translation>100%</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1519"/>
+        <location filename="../ui/mainwindow.ui" line="1485"/>
         <source>Alt+4</source>
         <translation>Alt+4</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1524"/>
+        <location filename="../ui/mainwindow.ui" line="1490"/>
         <source>200%</source>
         <translation>200%</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1527"/>
+        <location filename="../ui/mainwindow.ui" line="1493"/>
         <source>Alt+5</source>
         <translation>Alt+5</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1532"/>
+        <location filename="../ui/mainwindow.ui" line="1498"/>
         <source>&amp;Auto Detect</source>
         <translation>Detecção &amp;Automática</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1537"/>
+        <location filename="../ui/mainwindow.ui" line="1503"/>
         <source>Force &amp;4:3</source>
         <translation>Forçar &amp;4:3</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1542"/>
+        <location filename="../ui/mainwindow.ui" line="1508"/>
         <source>Force 16:&amp;9</source>
         <translation>Forçar 16:&amp;9</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1547"/>
+        <location filename="../ui/mainwindow.ui" line="1513"/>
         <source>Force &amp;2.35:1</source>
         <translation>Forçar &amp;2.35:1</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1555"/>
+        <location filename="../ui/mainwindow.ui" line="1521"/>
         <source>&amp;Add Subtitle File...</source>
         <translation>&amp;Adicionar arquivo da legenda...</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1563"/>
-        <location filename="../ui/mainwindow.ui" line="1619"/>
-        <location filename="../ui/mainwindow.ui" line="1718"/>
-        <location filename="../ui/mainwindow.ui" line="1750"/>
+        <location filename="../ui/mainwindow.ui" line="1529"/>
+        <location filename="../ui/mainwindow.ui" line="1585"/>
+        <location filename="../ui/mainwindow.ui" line="1641"/>
+        <location filename="../ui/mainwindow.ui" line="1673"/>
         <source>[ none ]</source>
         <translation>[ nada ]</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1568"/>
+        <location filename="../ui/mainwindow.ui" line="1534"/>
         <source>&amp;Size +</source>
         <translation>&amp;Tamanho +</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1571"/>
+        <location filename="../ui/mainwindow.ui" line="1537"/>
         <source>Ctrl++</source>
         <translation>Ctrl++</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1576"/>
+        <location filename="../ui/mainwindow.ui" line="1542"/>
         <source>S&amp;ize -</source>
         <translation>T&amp;amanho -</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1579"/>
+        <location filename="../ui/mainwindow.ui" line="1545"/>
         <source>Ctrl+-</source>
         <translation>Ctrl+-</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1584"/>
+        <location filename="../ui/mainwindow.ui" line="1550"/>
         <source>&amp;Reset Size</source>
         <translation>Tamanho de &amp;Redefinição</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1595"/>
+        <location filename="../ui/mainwindow.ui" line="1561"/>
         <source>&amp;Off</source>
         <translation>&amp;Fora</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1603"/>
+        <location filename="../ui/mainwindow.ui" line="1569"/>
         <source>&amp;Playlist</source>
         <translation>&amp;Lista</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1611"/>
+        <location filename="../ui/mainwindow.ui" line="1577"/>
         <source>&amp;This File</source>
         <translation>&amp;Esse arquivo</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1627"/>
         <source>&amp;Always</source>
-        <translation>&amp;Sempre</translation>
+        <translation type="vanished">&amp;Sempre</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1635"/>
         <source>When &amp;Playing</source>
-        <translation>Quando &amp;Visualizando</translation>
+        <translation type="vanished">Quando &amp;Visualizando</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1646"/>
         <source>&amp;Never</source>
-        <translation>&amp;Nunca</translation>
+        <translation type="vanished">&amp;Nunca</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1654"/>
         <source>&amp;Show in Tray</source>
-        <translation>&amp;Vista na Bandeja</translation>
+        <translation type="vanished">&amp;Vista na Bandeja</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1662"/>
         <source>&amp;Hide Popup</source>
-        <translation>Es&amp;conder Pop-up</translation>
+        <translation type="vanished">Es&amp;conder Pop-up</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1670"/>
+        <location filename="../ui/mainwindow.ui" line="1593"/>
         <source>Show D&amp;ebug Output</source>
         <translation>&amp;Vista Mensagens de Depuração</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1673"/>
+        <location filename="../ui/mainwindow.ui" line="1596"/>
         <source>Ctrl+E</source>
         <translation>Ctrl+E</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1678"/>
+        <location filename="../ui/mainwindow.ui" line="1601"/>
         <source>&amp;Increase Volume</source>
         <translation>&amp;Aumento de Volume</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1681"/>
+        <location filename="../ui/mainwindow.ui" line="1604"/>
         <source>Ctrl+Up</source>
         <translation>Ctrl+Up</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1686"/>
+        <location filename="../ui/mainwindow.ui" line="1609"/>
         <source>&amp;Decrease Volume</source>
         <translation>&amp;Diminuir o Volume</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1689"/>
+        <location filename="../ui/mainwindow.ui" line="1612"/>
         <source>Ctrl+Down</source>
         <translation>Ctrl+Down</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1694"/>
+        <location filename="../ui/mainwindow.ui" line="1617"/>
         <source>With &amp;Subtitles...</source>
         <translation>Com &amp;Legendas...</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1697"/>
+        <location filename="../ui/mainwindow.ui" line="1620"/>
         <source>Ctrl+T</source>
         <translation>Ctrl+T</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1702"/>
+        <location filename="../ui/mainwindow.ui" line="1625"/>
         <source>&amp;Without Subtitles...</source>
         <translation>Sem &amp;Legendas...</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1705"/>
+        <location filename="../ui/mainwindow.ui" line="1628"/>
         <source>Ctrl+Shift+T</source>
         <translation>Ctrl+Shift+T</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1710"/>
+        <location filename="../ui/mainwindow.ui" line="1633"/>
         <source>&amp;Preferences...</source>
         <translation>&amp;Preferências...</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1723"/>
+        <location filename="../ui/mainwindow.ui" line="1646"/>
         <source>&amp;Increase</source>
         <translation>&amp;Aumento</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1726"/>
+        <location filename="../ui/mainwindow.ui" line="1649"/>
         <source>Ctrl+Shift+Up</source>
         <translation>Ctrl+Shift+Up</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1731"/>
+        <location filename="../ui/mainwindow.ui" line="1654"/>
         <source>&amp;Decrease</source>
         <translation>&amp;Diminuir</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1734"/>
+        <location filename="../ui/mainwindow.ui" line="1657"/>
         <source>Ctrl+Shift+Down</source>
         <translation>Ctrl+Shift+Down</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1739"/>
+        <location filename="../ui/mainwindow.ui" line="1662"/>
         <source>&amp;Reset</source>
         <translation>&amp;Redefinição</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1742"/>
+        <location filename="../ui/mainwindow.ui" line="1665"/>
         <source>Ctrl+Shift+R</source>
         <translation>Ctrl+Shift+R</translation>
     </message>
@@ -989,9 +978,25 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
         <translation>Pausada</translation>
     </message>
     <message>
+        <location filename="../ui/mainwindow.cpp" line="211"/>
+        <source>Sub</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.cpp" line="223"/>
+        <source>Audio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../ui/mainwindow.cpp" line="363"/>
         <source>&amp;Pause</source>
         <translation>&amp;Pausa</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.cpp" line="657"/>
+        <source>Enter the file number you want to play:
+Note: Value must be from %0 - %1</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="658"/>
@@ -1004,25 +1009,40 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
         <translation>Nenhuma seleção</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="192"/>
-        <location filename="../ui/mainwindow.cpp" line="216"/>
+        <location filename="../ui/mainwindow.cpp" line="892"/>
+        <source>Subtitle Files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.cpp" line="1754"/>
+        <source>Media Files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.cpp" line="1755"/>
+        <source>Video Files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.cpp" line="1756"/>
+        <source>Audio Files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>%0: %1 (%2)</source>
-        <translation>%0: %1 (%2)</translation>
+        <translation type="vanished">%0: %1 (%2)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="211"/>
         <source>Sub %0: %1 (%2)</source>
-        <translation>Legenda %0: %1 (%2)</translation>
+        <translation type="vanished">Legenda %0: %1 (%2)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="223"/>
         <source>Audio %0: %1 (%2)</source>
-        <translation>Áudio %0: %1 (%2)</translation>
+        <translation type="vanished">Áudio %0: %1 (%2)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="307"/>
         <source>%0: %1</source>
-        <translation>%0: %1</translation>
+        <translation type="vanished">%0: %1</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="468"/>
@@ -1030,10 +1050,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
         <translation>Velocidade: %0x</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="657"/>
         <source>Enter the file number you want to play:
 Note: Value must be from 1 - %0</source>
-        <translation>Entrar índice arquivo que você quer:
+        <translation type="vanished">Entrar índice arquivo que você quer:
 Nota: O valor deve ser de 1 - %0</translation>
     </message>
     <message>
@@ -1062,9 +1081,8 @@ Nota: O valor deve ser de 1 - %0</translation>
         <translation>Arquivo de legenda aberta</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="892"/>
         <source>Subtitle Files (%0)</source>
-        <translation>Arquivos de Legendas (%0)</translation>
+        <translation type="vanished">Arquivos de Legendas (%0)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1073"/>
@@ -1072,44 +1090,40 @@ Nota: O valor deve ser de 1 - %0</translation>
         <translation>http://bakamplayer.u8sand.net/help.php</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1651"/>
+        <location filename="../ui/mainwindow.cpp" line="1660"/>
         <source>Dim Lights</source>
         <translation>Luzes Difusas</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1651"/>
+        <location filename="../ui/mainwindow.cpp" line="1660"/>
         <source>In order to dim the lights, the desktop compositor has to be enabled. This can be done through Window Manager Desktop.</source>
         <translation>Para escurecer o ambiente de trabalho, transparência do desktop tem que ser ativado.</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1717"/>
+        <location filename="../ui/mainwindow.cpp" line="1726"/>
         <source>Saved to &quot;%0&quot;, with subs</source>
         <translation>Salvos em &quot;%0&quot;, com legendas</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1719"/>
+        <location filename="../ui/mainwindow.cpp" line="1728"/>
         <source>Saved to &quot;%0&quot;, without subs</source>
         <translation>Salvos em &quot;%0&quot;, sem legendas</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1730"/>
         <source>%0. %1</source>
-        <translation>%0. %1</translation>
+        <translation type="vanished">%0. %1</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1745"/>
         <source>Media Files (%0);;</source>
-        <translation>Arquivos de Mídia (%0);;</translation>
+        <translation type="vanished">Arquivos de Mídia (%0);;</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1746"/>
         <source>Video Files (%0);;</source>
-        <translation>Arquivos de Vídeo (%0);;</translation>
+        <translation type="vanished">Arquivos de Vídeo (%0);;</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1747"/>
         <source>Audio Files (%0)</source>
-        <translation>Arquivos de Áudio (%0)</translation>
+        <translation type="vanished">Arquivos de Áudio (%0)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1135"/>
@@ -1128,7 +1142,7 @@ Nota: O valor deve ser de 1 - %0</translation>
         <translation>Saída Tela Cheia/Boss Key</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1744"/>
+        <location filename="../ui/mainwindow.cpp" line="1753"/>
         <source>Open File</source>
         <translation>Arquivo Aberto</translation>
     </message>
@@ -1136,16 +1150,18 @@ Nota: O valor deve ser de 1 - %0</translation>
 <context>
     <name>MpvHandler</name>
     <message>
-        <location filename="../mpvhandler.cpp" line="57"/>
-        <location filename="../mpvhandler.cpp" line="119"/>
         <source>[mpv]: %0</source>
-        <translation>[mpv]: %0</translation>
+        <translation type="vanished">[mpv]: %0</translation>
+    </message>
+    <message>
+        <source>[Baka-MPlayer]: Setting type was parsed as %0
+</source>
+        <translation type="vanished">[Baka-MPlayer]: Tipo de configurações foram interpretado esta %0</translation>
     </message>
     <message>
         <location filename="../mpvhandler.cpp" line="175"/>
-        <source>[Baka-MPlayer]: Setting type was parsed as %0
-</source>
-        <translation>[Baka-MPlayer]: Tipo de configurações foram interpretado esta %0</translation>
+        <source>Setting type was parsed as %0</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mpvhandler.cpp" line="188"/>
@@ -1153,11 +1169,14 @@ Nota: O valor deve ser de 1 - %0</translation>
         <translation>foto%#04n</translation>
     </message>
     <message>
-        <location filename="../mpvhandler.cpp" line="719"/>
-        <location filename="../mpvhandler.cpp" line="727"/>
+        <location filename="../mpvhandler.cpp" line="732"/>
+        <source>mpv was not initialized</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>[mpv]: mpv was not initialized
 </source>
-        <translation>[mpv]: mpv não foi inicializado</translation>
+        <translation type="vanished">[mpv]: mpv não foi inicializado</translation>
     </message>
 </context>
 <context>
