@@ -1339,16 +1339,6 @@ QSlider::handle:horizontal {
     <string>Stop after &amp;Current</string>
    </property>
   </action>
-  <action name="action_On_Top">
-   <property name="text">
-    <string>&amp;On Top</string>
-   </property>
-  </action>
-  <action name="action_Tray_Icon">
-   <property name="text">
-    <string>&amp;Tray Icon</string>
-   </property>
-  </action>
   <action name="action_Next_Chapter">
    <property name="enabled">
     <bool>false</bool>
@@ -1593,49 +1583,6 @@ QSlider::handle:horizontal {
    </property>
    <property name="text">
     <string>[ none ]</string>
-   </property>
-  </action>
-  <action name="action_Always">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>&amp;Always</string>
-   </property>
-  </action>
-  <action name="actionWhen_Playing">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>When &amp;Playing</string>
-   </property>
-  </action>
-  <action name="action_Never">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="checked">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>&amp;Never</string>
-   </property>
-  </action>
-  <action name="action_Show_in_Tray">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>&amp;Show in Tray</string>
-   </property>
-  </action>
-  <action name="action_Hide_Popup">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>&amp;Hide Popup</string>
    </property>
   </action>
   <action name="actionShow_D_ebug_Output">

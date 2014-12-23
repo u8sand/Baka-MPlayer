@@ -44,6 +44,11 @@ win32 {
     #RC_LANG +=
 }
 
+CONFIG(debug, debug|release) {
+    RESOURCES += \
+        rsclist.qrc
+}
+
 SOURCES += main.cpp\
     mpvhandler.cpp \
     updatemanager.cpp \
@@ -101,9 +106,6 @@ FORMS    += \
     ui/preferencesdialog.ui \
     ui/screenshotdialog.ui \
     ui/updatedialog.ui
-
-#RESOURCES += \
-#    rsclist.qrc
 
 TRANSLATIONS += \
     translations/baka-mplayer_pt.ts \
