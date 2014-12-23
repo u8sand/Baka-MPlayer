@@ -95,8 +95,8 @@ FORMS    += \
     ui/screenshotdialog.ui \
     ui/updatedialog.ui
 
-RESOURCES += \
-    rsclist.qrc
+#RESOURCES += \
+#    rsclist.qrc
 
 TRANSLATIONS += \
     translations/baka-mplayer_pt.ts \

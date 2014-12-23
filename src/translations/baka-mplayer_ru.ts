@@ -40,8 +40,25 @@ Download icon
 CC BY 3.0 &lt;Sasha Mescheryakov&gt;
 
 Translations
+- Chinese &lt;amazingfate&gt;
+- Korean &lt;godly-devotion&gt;
+- Portugese &lt;u8sand&gt;
+- Russian &lt;suhr&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>mpv - video player based on MPlayer/mplayer2
+GPLv2 &lt;mpv.io&gt;
+
+Noto Sans -  font family with many supported characters
+Apache License, version 2.0 &lt;Google&gt;
+
+Download icon
+CC BY 3.0 &lt;Sasha Mescheryakov&gt;
+
+Translations
 - Chinese &lt;amazingfate&gt;</source>
-        <translation type="unfinished">mpv — видеоплеер, основанный на MPlayer/mplayer2
+        <translation type="obsolete">mpv — видеоплеер, основанный на MPlayer/mplayer2
 GPLv2 &lt;mpv.io&gt;
 
 Noto Sans — семейство шрифтов с поддержкой многих символов
@@ -54,12 +71,12 @@ CC BY 3.0 &lt;Sasha Mescheryakov&gt;
 - Китайский &lt;amazingfate&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/aboutdialog.ui" line="233"/>
+        <location filename="../ui/aboutdialog.ui" line="236"/>
         <source>License</source>
         <translation>Лицензия</translation>
     </message>
     <message>
-        <location filename="../ui/aboutdialog.ui" line="257"/>
+        <location filename="../ui/aboutdialog.ui" line="260"/>
         <source>                GNU GENERAL PUBLIC LICENSE
                    Version 2, June 1991
 
@@ -79,7 +96,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/aboutdialog.ui" line="298"/>
+        <location filename="../ui/aboutdialog.ui" line="301"/>
         <source>&amp;CLOSE</source>
         <translation>&amp;Закрыть</translation>
     </message>
@@ -1122,8 +1139,8 @@ Note: Value must be from 1 - %0</source>
         <translation>скриншот%#04n</translation>
     </message>
     <message>
-        <location filename="../mpvhandler.cpp" line="723"/>
-        <location filename="../mpvhandler.cpp" line="731"/>
+        <location filename="../mpvhandler.cpp" line="719"/>
+        <location filename="../mpvhandler.cpp" line="727"/>
         <source>[mpv]: mpv was not initialized
 </source>
         <translation>[mpv]: mpv не был инициализирован

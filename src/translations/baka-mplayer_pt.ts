@@ -40,8 +40,25 @@ Download icon
 CC BY 3.0 &lt;Sasha Mescheryakov&gt;
 
 Translations
+- Chinese &lt;amazingfate&gt;
+- Korean &lt;godly-devotion&gt;
+- Portugese &lt;u8sand&gt;
+- Russian &lt;suhr&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>mpv - video player based on MPlayer/mplayer2
+GPLv2 &lt;mpv.io&gt;
+
+Noto Sans -  font family with many supported characters
+Apache License, version 2.0 &lt;Google&gt;
+
+Download icon
+CC BY 3.0 &lt;Sasha Mescheryakov&gt;
+
+Translations
 - Chinese &lt;amazingfate&gt;</source>
-        <translation>mpv - aparelho de vídeo de MPlayer/mplayer2
+        <translation type="vanished">mpv - aparelho de vídeo de MPlayer/mplayer2
 GPLv2 &lt;mpv.io&gt;
 
 Noto Sans -  família de fontes com muitos caracteres suportados
@@ -54,17 +71,17 @@ Traduções
 - Chinês &lt;amazingfate&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/aboutdialog.ui" line="233"/>
+        <location filename="../ui/aboutdialog.ui" line="236"/>
         <source>License</source>
         <translation>Licença</translation>
     </message>
     <message>
-        <location filename="../ui/aboutdialog.ui" line="298"/>
+        <location filename="../ui/aboutdialog.ui" line="301"/>
         <source>&amp;CLOSE</source>
         <translation>&amp;FECHAR</translation>
     </message>
     <message>
-        <location filename="../ui/aboutdialog.ui" line="257"/>
+        <location filename="../ui/aboutdialog.ui" line="260"/>
         <source>                GNU GENERAL PUBLIC LICENSE
                    Version 2, June 1991
 
@@ -1136,8 +1153,8 @@ Nota: O valor deve ser de 1 - %0</translation>
         <translation>foto%#04n</translation>
     </message>
     <message>
-        <location filename="../mpvhandler.cpp" line="723"/>
-        <location filename="../mpvhandler.cpp" line="731"/>
+        <location filename="../mpvhandler.cpp" line="719"/>
+        <location filename="../mpvhandler.cpp" line="727"/>
         <source>[mpv]: mpv was not initialized
 </source>
         <translation>[mpv]: mpv não foi inicializado</translation>

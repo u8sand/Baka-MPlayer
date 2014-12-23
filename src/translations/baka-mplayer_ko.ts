@@ -40,7 +40,10 @@ Download icon
 CC BY 3.0 &lt;Sasha Mescheryakov&gt;
 
 Translations
-- Chinese &lt;amazingfate&gt;</source>
+- Chinese &lt;amazingfate&gt;
+- Korean &lt;godly-devotion&gt;
+- Portugese &lt;u8sand&gt;
+- Russian &lt;suhr&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -62,12 +65,12 @@ Download icon
 CC BY 3.0 &lt;Sasha Mescheryakov&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/aboutdialog.ui" line="233"/>
+        <location filename="../ui/aboutdialog.ui" line="236"/>
         <source>License</source>
         <translation>라이센스</translation>
     </message>
     <message>
-        <location filename="../ui/aboutdialog.ui" line="257"/>
+        <location filename="../ui/aboutdialog.ui" line="260"/>
         <source>                GNU GENERAL PUBLIC LICENSE
                    Version 2, June 1991
 
@@ -102,7 +105,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</translation>
     </message>
     <message>
-        <location filename="../ui/aboutdialog.ui" line="298"/>
+        <location filename="../ui/aboutdialog.ui" line="301"/>
         <source>&amp;CLOSE</source>
         <translation>닫기(&amp;C)</translation>
     </message>
@@ -1177,8 +1180,8 @@ Note: Value must be from 1 - %0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mpvhandler.cpp" line="723"/>
-        <location filename="../mpvhandler.cpp" line="731"/>
+        <location filename="../mpvhandler.cpp" line="719"/>
+        <location filename="../mpvhandler.cpp" line="727"/>
         <source>[mpv]: mpv was not initialized
 </source>
         <translation type="unfinished"></translation>
