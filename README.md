@@ -56,9 +56,9 @@ The executable will be built into the `build` folder. You can then install it to
 ### Other Languages
 
 By default, Baka MPlayer will compile in English if no language is specified during compilation.
-To compile in a different language, run `./make.sh LANG` with LANG being the with two-letter language code.
+To compile in a different language, run `./make.sh LANG` replacing `LANG` with the two-letter language code.
 For example, to compile in Chinese you would run: `./make.sh zh`.
-You can check out which languages we currently support by checking out `Baka-MPlayer/src/translations`.
+You can check out which languages we currently support by checking out `Baka-MPlayer/src/translations/`.
 
 ## Bug reports
 
