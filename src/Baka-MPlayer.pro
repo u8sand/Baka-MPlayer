@@ -4,6 +4,8 @@
 #
 #-------------------------------------------------
 
+VERSION   = 2.0.0
+
 QT       += core gui network svg
 
 CODECFORSRC = UTF-8
@@ -35,6 +37,11 @@ win32 {
     # mxe fix:
     CONFIG -= windows
     QMAKE_LFLAGS += $$QMAKE_LFLAGS_WINDOWS
+
+    RC_ICONS += img/logo.ico
+    QMAKE_TARGET_PRODUCT += Baka MPlayer
+    QMAKE_TARGET_DESCRIPTION += The libmpv based media player.
+    #RC_LANG +=
 }
 
 SOURCES += main.cpp\
