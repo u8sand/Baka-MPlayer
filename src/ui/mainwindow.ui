@@ -1203,17 +1203,6 @@ QSlider::handle:horizontal {
     <string>Ctrl+V</string>
    </property>
   </action>
-  <action name="actionOpen_Last_File">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="text">
-    <string>Open &amp;Last File</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+Z</string>
-   </property>
-  </action>
   <action name="actionShow_in_Folder">
    <property name="enabled">
     <bool>false</bool>
@@ -1350,11 +1339,6 @@ QSlider::handle:horizontal {
     <string>Stop after &amp;Current</string>
    </property>
   </action>
-  <action name="actionShow_Command_Line">
-   <property name="text">
-    <string>Show &amp;Command Line</string>
-   </property>
-  </action>
   <action name="action_On_Top">
    <property name="text">
     <string>&amp;On Top</string>
@@ -1454,14 +1438,6 @@ QSlider::handle:horizontal {
    </property>
    <property name="shortcut">
     <string>Ctrl+D</string>
-   </property>
-  </action>
-  <action name="actionShow_Command_Line_2">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>Show &amp;Command Line</string>
    </property>
   </action>
   <action name="actionOnline_Help">

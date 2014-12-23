@@ -54,7 +54,7 @@ bool MpvHandler::event(QEvent *event)
             if (event->event_id == MPV_EVENT_NONE)
                 break;
             if(event->error < 0)
-                emit messageSignal(tr("[mpv]: %0").arg(mpv_error_string(event->error)));
+                emit messageSignal(QString("[mpv]: %0").arg(mpv_error_string(event->error)));
             switch (event->event_id)
             {
             case MPV_EVENT_PROPERTY_CHANGE:
@@ -116,7 +116,7 @@ bool MpvHandler::event(QEvent *event)
                 QCoreApplication::quit();
                 break;
             case MPV_EVENT_LOG_MESSAGE:
-                emit messageSignal(tr("[mpv]: %0").arg(static_cast<mpv_event_log_message*>(event->data)->text));
+                emit messageSignal(QString("[mpv]: %0").arg(static_cast<mpv_event_log_message*>(event->data)->text));
                 break;
             default: // unhandled events
                 break;
@@ -172,7 +172,7 @@ void MpvHandler::LoadSettings(QSettings *settings, QString version)
                     else if(tmp.type() == QVariant::Double)
                         tmp2 = QString::number(tmp.toDouble()).toUtf8();
                     else
-                        emit messageSignal(tr("[Baka-MPlayer]: Setting type was parsed as %0\n").arg(tmp.type()));
+                        emit messageSignal(QString("[Baka-MPlayer]: %0\n").arg(tr("Setting type was parsed as %0").arg(tmp.type())));
 
                     if(tmp2 != QByteArray())
                         mpv_set_option_string(mpv, tmp1.constData(), tmp2.constData());
@@ -716,7 +716,7 @@ void MpvHandler::AsyncCommand(const char *args[])
     if(mpv)
         mpv_command_async(mpv, 0, args);
     else
-        emit messageSignal(tr("[mpv]: mpv was not initialized\n"));
+        NotInitialized();
 }
 
 void MpvHandler::Command(const char *args[])
@@ -724,5 +724,10 @@ void MpvHandler::Command(const char *args[])
     if(mpv)
         mpv_command(mpv, args);
     else
-        emit messageSignal(tr("[mpv]: mpv was not initialized\n"));
+        NotInitialized();
+}
+
+void MpvHandler::NotInitialized()
+{
+    emit messageSignal(QString("[mpv]: %0\n").arg(tr("mpv was not initialized")));
 }
