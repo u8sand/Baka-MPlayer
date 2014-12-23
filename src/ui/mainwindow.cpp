@@ -1308,7 +1308,7 @@ void MainWindow::LoadSettings()
             settings = 0;
             ui->action_Preferences->setEnabled(false);
 
-            QMessageBox::information(this, "Settings version not recognized", "The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.\nSome features may not work and changed settings will not be saved.");
+            QMessageBox::information(this, tr("Settings version not recognized"), tr("The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.\nSome features may not work and changed settings will not be saved."));
         }
     }
 }

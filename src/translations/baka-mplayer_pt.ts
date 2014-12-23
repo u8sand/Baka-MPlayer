@@ -44,21 +44,7 @@ Translations
 - Korean &lt;godly-devotion&gt;
 - Portugese &lt;u8sand&gt;
 - Russian &lt;suhr&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>mpv - video player based on MPlayer/mplayer2
-GPLv2 &lt;mpv.io&gt;
-
-Noto Sans -  font family with many supported characters
-Apache License, version 2.0 &lt;Google&gt;
-
-Download icon
-CC BY 3.0 &lt;Sasha Mescheryakov&gt;
-
-Translations
-- Chinese &lt;amazingfate&gt;</source>
-        <translation type="vanished">mpv - aparelho de vídeo de MPlayer/mplayer2
+        <translation>mpv - aparelho de vídeo de MPlayer/mplayer2
 GPLv2 &lt;mpv.io&gt;
 
 Noto Sans -  família de fontes com muitos caracteres suportados
@@ -68,7 +54,10 @@ Baixar ícone
 CC BY 3.0 &lt;Sasha Mescheryakov&gt;
 
 Traduções
-- Chinês &lt;amazingfate&gt;</translation>
+- Chinês &lt;amazingfate&gt;
+- Coreano &lt;godly-devotion&gt;
+- Português &lt;u8sand&gt;
+- Russo &lt;suhr&gt;</translation>
     </message>
     <message>
         <location filename="../ui/aboutdialog.ui" line="236"/>
@@ -98,7 +87,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -287,10 +276,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
         <location filename="../ui/locationdialog.ui" line="82"/>
         <source>Type URL or location here</source>
         <translation>Tipo URL aqui</translation>
-    </message>
-    <message>
-        <source>*.*</source>
-        <translation type="vanished">*.*</translation>
     </message>
     <message>
         <location filename="../ui/locationdialog.ui" line="108"/>
@@ -513,14 +498,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
         <translation>Ctrl+V</translation>
     </message>
     <message>
-        <source>Open &amp;Last File</source>
-        <translation type="vanished">Arquivo Ú&amp;ltimo Aberto</translation>
-    </message>
-    <message>
-        <source>Ctrl+Z</source>
-        <translation type="vanished">Ctrl+Z</translation>
-    </message>
-    <message>
         <location filename="../ui/mainwindow.ui" line="1211"/>
         <source>Show in &amp;Folder</source>
         <translation>Vista na &amp;pasta</translation>
@@ -641,18 +618,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
         <location filename="../ui/mainwindow.ui" line="1427"/>
         <source>&amp;Dim Lights</source>
         <translation>Luzes &amp;Difusas</translation>
-    </message>
-    <message>
-        <source>Show &amp;Command Line</source>
-        <translation type="vanished">Linha de Comando &amp;Vista</translation>
-    </message>
-    <message>
-        <source>&amp;On Top</source>
-        <translation type="vanished">&amp;No topo</translation>
-    </message>
-    <message>
-        <source>&amp;Tray Icon</source>
-        <translation type="vanished">Ícone da &amp;Bandeja</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1347"/>
@@ -863,26 +828,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
         <translation>&amp;Esse arquivo</translation>
     </message>
     <message>
-        <source>&amp;Always</source>
-        <translation type="vanished">&amp;Sempre</translation>
-    </message>
-    <message>
-        <source>When &amp;Playing</source>
-        <translation type="vanished">Quando &amp;Visualizando</translation>
-    </message>
-    <message>
-        <source>&amp;Never</source>
-        <translation type="vanished">&amp;Nunca</translation>
-    </message>
-    <message>
-        <source>&amp;Show in Tray</source>
-        <translation type="vanished">&amp;Vista na Bandeja</translation>
-    </message>
-    <message>
-        <source>&amp;Hide Popup</source>
-        <translation type="vanished">Es&amp;conder Pop-up</translation>
-    </message>
-    <message>
         <location filename="../ui/mainwindow.ui" line="1593"/>
         <source>Show D&amp;ebug Output</source>
         <translation>&amp;Vista Mensagens de Depuração</translation>
@@ -980,12 +925,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.cpp" line="211"/>
         <source>Sub</source>
-        <translation type="unfinished"></translation>
+        <translation>Legenda</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="223"/>
         <source>Audio</source>
-        <translation type="unfinished"></translation>
+        <translation>Áudio</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="363"/>
@@ -996,7 +941,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
         <location filename="../ui/mainwindow.cpp" line="657"/>
         <source>Enter the file number you want to play:
 Note: Value must be from %0 - %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Entrar índice arquivo que você quer:
+Nota: O valor deve ser de %0 - %1</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="658"/>
@@ -1011,49 +957,39 @@ Note: Value must be from %0 - %1</source>
     <message>
         <location filename="../ui/mainwindow.cpp" line="892"/>
         <source>Subtitle Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Arquivos de Legendas</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.cpp" line="1311"/>
+        <source>Settings version not recognized</source>
+        <translation>Versão configurações não reconhecido</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.cpp" line="1311"/>
+        <source>The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.
+Some features may not work and changed settings will not be saved.</source>
+        <translation>O arquivo de configurações foi feita por uma versão mais nova do baka-mplayer; por favor, atualize esta versão ou procurar ajuda de desenvolvedores.
+Alguns recursos podem não funcionar e configurações alteradas não serão salvas.</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1754"/>
         <source>Media Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Arquivos de Mídia</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1755"/>
         <source>Video Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Arquivos de Vídeo</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1756"/>
         <source>Audio Files</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>%0: %1 (%2)</source>
-        <translation type="vanished">%0: %1 (%2)</translation>
-    </message>
-    <message>
-        <source>Sub %0: %1 (%2)</source>
-        <translation type="vanished">Legenda %0: %1 (%2)</translation>
-    </message>
-    <message>
-        <source>Audio %0: %1 (%2)</source>
-        <translation type="vanished">Áudio %0: %1 (%2)</translation>
-    </message>
-    <message>
-        <source>%0: %1</source>
-        <translation type="vanished">%0: %1</translation>
+        <translation>Arquivos de Áudio</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="468"/>
         <source>Speed: %0x</source>
         <translation>Velocidade: %0x</translation>
-    </message>
-    <message>
-        <source>Enter the file number you want to play:
-Note: Value must be from 1 - %0</source>
-        <translation type="vanished">Entrar índice arquivo que você quer:
-Nota: O valor deve ser de 1 - %0</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="682"/>
@@ -1081,10 +1017,6 @@ Nota: O valor deve ser de 1 - %0</translation>
         <translation>Arquivo de legenda aberta</translation>
     </message>
     <message>
-        <source>Subtitle Files (%0)</source>
-        <translation type="vanished">Arquivos de Legendas (%0)</translation>
-    </message>
-    <message>
         <location filename="../ui/mainwindow.cpp" line="1073"/>
         <source>http://bakamplayer.u8sand.net/help.php</source>
         <translation>http://bakamplayer.u8sand.net/help.php</translation>
@@ -1108,22 +1040,6 @@ Nota: O valor deve ser de 1 - %0</translation>
         <location filename="../ui/mainwindow.cpp" line="1728"/>
         <source>Saved to &quot;%0&quot;, without subs</source>
         <translation>Salvos em &quot;%0&quot;, sem legendas</translation>
-    </message>
-    <message>
-        <source>%0. %1</source>
-        <translation type="vanished">%0. %1</translation>
-    </message>
-    <message>
-        <source>Media Files (%0);;</source>
-        <translation type="vanished">Arquivos de Mídia (%0);;</translation>
-    </message>
-    <message>
-        <source>Video Files (%0);;</source>
-        <translation type="vanished">Arquivos de Vídeo (%0);;</translation>
-    </message>
-    <message>
-        <source>Audio Files (%0)</source>
-        <translation type="vanished">Arquivos de Áudio (%0)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1135"/>
@@ -1150,18 +1066,9 @@ Nota: O valor deve ser de 1 - %0</translation>
 <context>
     <name>MpvHandler</name>
     <message>
-        <source>[mpv]: %0</source>
-        <translation type="vanished">[mpv]: %0</translation>
-    </message>
-    <message>
-        <source>[Baka-MPlayer]: Setting type was parsed as %0
-</source>
-        <translation type="vanished">[Baka-MPlayer]: Tipo de configurações foram interpretado esta %0</translation>
-    </message>
-    <message>
         <location filename="../mpvhandler.cpp" line="175"/>
         <source>Setting type was parsed as %0</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipo de configurações foram interpretado esta %0</translation>
     </message>
     <message>
         <location filename="../mpvhandler.cpp" line="188"/>
@@ -1171,12 +1078,7 @@ Nota: O valor deve ser de 1 - %0</translation>
     <message>
         <location filename="../mpvhandler.cpp" line="732"/>
         <source>mpv was not initialized</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>[mpv]: mpv was not initialized
-</source>
-        <translation type="vanished">[mpv]: mpv não foi inicializado</translation>
+        <translation>mpv não foi inicializado</translation>
     </message>
 </context>
 <context>

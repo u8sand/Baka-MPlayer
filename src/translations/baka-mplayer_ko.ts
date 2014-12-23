@@ -60,24 +60,6 @@ Translations
 - Russian &lt;suhr&gt;</translation>
     </message>
     <message>
-        <source>mpv - video player based on MPlayer/mplayer2
-GPLv2 &lt;mpv.io&gt;
-
-Noto Sans -  font family with many supported characters
-Apache License, version 2.0 &lt;Google&gt;
-
-Download icon
-CC BY 3.0 &lt;Sasha Mescheryakov&gt;</source>
-        <translation type="vanished">mpv - video player based on MPlayer/mplayer2
-GPLv2 &lt;mpv.io&gt;
-
-Noto Sans -  font family with many supported characters
-Apache License, version 2.0 &lt;Google&gt;
-
-Download icon
-CC BY 3.0 &lt;Sasha Mescheryakov&gt;</translation>
-    </message>
-    <message>
         <location filename="../ui/aboutdialog.ui" line="236"/>
         <source>License</source>
         <translation>라이센스</translation>
@@ -524,10 +506,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
         <translation>Ctrl+V</translation>
     </message>
     <message>
-        <source>Ctrl+Z</source>
-        <translation type="vanished">Ctrl+Z</translation>
-    </message>
-    <message>
         <location filename="../ui/mainwindow.ui" line="1211"/>
         <source>Show in &amp;Folder</source>
         <translation>파일 위치 열기(&amp;F)</translation>
@@ -647,14 +625,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
         <location filename="../ui/mainwindow.ui" line="1427"/>
         <source>&amp;Dim Lights</source>
         <translation>불 끄기(&amp;D)</translation>
-    </message>
-    <message>
-        <source>&amp;On Top</source>
-        <translation type="vanished">맨위에 표시(&amp;O)</translation>
-    </message>
-    <message>
-        <source>&amp;Tray Icon</source>
-        <translation type="vanished">시스템 트레이 아이콘(&amp;T)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1347"/>
@@ -865,26 +835,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
         <translation>이 파일만(&amp;T)</translation>
     </message>
     <message>
-        <source>&amp;Always</source>
-        <translation type="vanished">항상(&amp;A)</translation>
-    </message>
-    <message>
-        <source>When &amp;Playing</source>
-        <translation type="vanished">재생중일 때만(&amp;A)</translation>
-    </message>
-    <message>
-        <source>&amp;Never</source>
-        <translation type="vanished">끄기(&amp;N)</translation>
-    </message>
-    <message>
-        <source>&amp;Show in Tray</source>
-        <translation type="vanished">시스템 트레이 보이기(&amp;S)</translation>
-    </message>
-    <message>
-        <source>&amp;Hide Popup</source>
-        <translation type="vanished">파프업 숨기기(&amp;H)</translation>
-    </message>
-    <message>
         <location filename="../ui/mainwindow.ui" line="1593"/>
         <source>Show D&amp;ebug Output</source>
         <translation>디버그 출력 보이기(&amp;E)</translation>
@@ -1001,10 +951,6 @@ Note: Value must be from %0 - %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Speed</source>
-        <translation type="vanished">속도</translation>
-    </message>
-    <message>
         <location filename="../ui/mainwindow.cpp" line="658"/>
         <source>Enter File Number</source>
         <translation type="unfinished"></translation>
@@ -1045,12 +991,19 @@ Note: Value must be from %0 - %1</source>
         <translation>자막 파일 열기</translation>
     </message>
     <message>
-        <source>Subtitle Files (%0)</source>
-        <translation type="vanished">자막 파일 (%0)</translation>
-    </message>
-    <message>
         <location filename="../ui/mainwindow.cpp" line="1073"/>
         <source>http://bakamplayer.u8sand.net/help.php</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.cpp" line="1311"/>
+        <source>Settings version not recognized</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.cpp" line="1311"/>
+        <source>The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.
+Some features may not work and changed settings will not be saved.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1074,18 +1027,6 @@ Note: Value must be from %0 - %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Media Files (%0);;</source>
-        <translation type="vanished">미디어 파일 (%0)</translation>
-    </message>
-    <message>
-        <source>Video Files (%0);;</source>
-        <translation type="vanished">비디오 파일 (%0)</translation>
-    </message>
-    <message>
-        <source>Audio Files (%0)</source>
-        <translation type="vanished">오디오 파일 (%0)</translation>
-    </message>
-    <message>
         <location filename="../ui/mainwindow.cpp" line="892"/>
         <source>Subtitle Files</source>
         <translation>자막 파일</translation>
@@ -1104,10 +1045,6 @@ Note: Value must be from %0 - %1</source>
         <location filename="../ui/mainwindow.cpp" line="1153"/>
         <source>Exit Fullscreen/Boss Key</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Take Screenshot</source>
-        <translation type="vanished">스크린 찍기</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1753"/>
@@ -1404,10 +1341,6 @@ Version: %0</source>
         <location filename="../ui/updatedialog.cpp" line="62"/>
         <source>Download Complete</source>
         <translation>다운로드 완료</translation>
-    </message>
-    <message>
-        <source>About</source>
-        <translation type="vanished">정보</translation>
     </message>
     <message>
         <location filename="../ui/updatedialog.cpp" line="78"/>

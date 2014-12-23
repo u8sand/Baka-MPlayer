@@ -1071,6 +1071,17 @@ Note: Value must be from</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/mainwindow.cpp" line="1311"/>
+        <source>Settings version not recognized</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.cpp" line="1311"/>
+        <source>The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.
+Some features may not work and changed settings will not be saved.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../ui/mainwindow.cpp" line="1660"/>
         <source>Dim Lights</source>
         <translation type="unfinished"></translation>
