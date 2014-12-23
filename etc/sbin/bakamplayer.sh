@@ -27,6 +27,6 @@ unset `env | \
     cut -d '=' -f1 | tr '\n' ' '`
 
 # build baka-mplayer
-$mxeroot/usr/$arch-w64-mingw32.static/qt5/bin/qmake src/Baka-MPlayer.pro CONFIG+=release
+$mxeroot/usr/$arch-w64-mingw32.static/qt5/bin/qmake src/Baka-MPlayer.pro CONFIG+=release RESOURCES+=rsclist.qrc
 make -j `grep -c ^processor /proc/cpuinfo`
 cd ..
