@@ -8,6 +8,7 @@
 #include <QModelIndex>
 #include <QStringList>
 #include <QMouseEvent>
+#include <QWheelEvent>
 #include <QEvent>
 #include <QPoint>
 #include <QTimer>
@@ -41,11 +42,11 @@ protected:
     void mouseMoveEvent(QMouseEvent *event);        // moved mouse on the form
     void mouseDoubleClickEvent(QMouseEvent *event); // double clicked the form
     bool eventFilter(QObject *obj, QEvent *event);  // event filter (get mouse move events from mpvFrame)
+    void wheelEvent(QWheelEvent *event);            // the mouse wheel is used
 
     void SetPlaybackControls(bool enable);          // macro to enable/disable playback controls
 
 private slots:
-
     void FullScreen(bool fs);                       // makes window fullscreen
     void ShowPlaylist(bool visible);                // sets the playlist visibility
     void HideAlbumArt(bool hide);                   // hides the album art

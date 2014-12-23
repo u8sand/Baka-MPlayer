@@ -1453,6 +1453,15 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
     return false;
 }
 
+void MainWindow::wheelEvent(QWheelEvent *event)
+{
+    if(event->delta() > 0)
+        mpv->Volume(mpv->getVolume()+5);
+    else
+        mpv->Volume(mpv->getVolume()-5);
+    QMainWindow::wheelEvent(event);
+}
+
 void MainWindow::mouseDoubleClickEvent(QMouseEvent *event)
 {
     if(event->button() == Qt::LeftButton && ui->mpvFrame->geometry().contains(event->pos())) // if mouse is in the mpvFrame
