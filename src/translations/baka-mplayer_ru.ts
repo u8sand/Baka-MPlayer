@@ -44,21 +44,7 @@ Translations
 - Korean &lt;godly-devotion&gt;
 - Portugese &lt;u8sand&gt;
 - Russian &lt;suhr&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>mpv - video player based on MPlayer/mplayer2
-GPLv2 &lt;mpv.io&gt;
-
-Noto Sans -  font family with many supported characters
-Apache License, version 2.0 &lt;Google&gt;
-
-Download icon
-CC BY 3.0 &lt;Sasha Mescheryakov&gt;
-
-Translations
-- Chinese &lt;amazingfate&gt;</source>
-        <translation type="obsolete">mpv — видеоплеер, основанный на MPlayer/mplayer2
+        <translation type="unfinished">mpv — видеоплеер, основанный на MPlayer/mplayer2
 GPLv2 &lt;mpv.io&gt;
 
 Noto Sans — семейство шрифтов с поддержкой многих символов
@@ -497,10 +483,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
         <translation>Ctrl+V</translation>
     </message>
     <message>
-        <source>Ctrl+Z</source>
-        <translation type="vanished">Ctrl+Z</translation>
-    </message>
-    <message>
         <location filename="../ui/mainwindow.ui" line="1211"/>
         <source>Show in &amp;Folder</source>
         <translation>Показать в &amp;папке</translation>
@@ -835,14 +817,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
         <translation>&amp;Этот файл</translation>
     </message>
     <message>
-        <source>&amp;Always</source>
-        <translation type="obsolete">&amp;Всегда</translation>
-    </message>
-    <message>
-        <source>&amp;Never</source>
-        <translation type="obsolete">&amp;Никогда</translation>
-    </message>
-    <message>
         <location filename="../ui/mainwindow.ui" line="1593"/>
         <source>Show D&amp;ebug Output</source>
         <translation>Показать информацию для &amp;отладки</translation>
@@ -938,14 +912,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>%0: %1 (%2)</source>
-        <translation type="vanished">%0: %1 (%2)</translation>
-    </message>
-    <message>
-        <source>%0: %1</source>
-        <translation type="vanished">%0: %1</translation>
-    </message>
-    <message>
         <location filename="../ui/mainwindow.cpp" line="363"/>
         <source>&amp;Pause</source>
         <translation type="unfinished"></translation>
@@ -991,10 +957,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
         <translation>Открыть файл субтитров</translation>
     </message>
     <message>
-        <source>Subtitle Files (%0)</source>
-        <translation type="vanished">Файлы субтитров (%0)</translation>
-    </message>
-    <message>
         <location filename="../ui/mainwindow.cpp" line="211"/>
         <source>Sub</source>
         <translation type="unfinished"></translation>
@@ -1002,7 +964,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <location filename="../ui/mainwindow.cpp" line="223"/>
         <source>Audio</source>
-        <translation type="unfinished"></translation>
+        <translation>Аудио</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="657"/>
@@ -1013,7 +975,7 @@ Note: Value must be from %0 - %1</source>
     <message>
         <location filename="../ui/mainwindow.cpp" line="892"/>
         <source>Subtitle Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Файлы субтитров</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1073"/>
@@ -1069,46 +1031,26 @@ Some features may not work and changed settings will not be saved.</source>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1754"/>
         <source>Media Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Медиафайлы</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1755"/>
         <source>Video Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Видеофайлы</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1756"/>
         <source>Audio Files</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>%0. %1</source>
-        <translation type="vanished">%0. %1</translation>
+        <translation>Аудиофайлы</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1753"/>
         <source>Open File</source>
         <translation>Открыть файл</translation>
     </message>
-    <message>
-        <source>Media Files (%0);;</source>
-        <translation type="vanished">Медиафайлы (%0);;</translation>
-    </message>
-    <message>
-        <source>Video Files (%0);;</source>
-        <translation type="vanished">Видеофайлы (%0);;</translation>
-    </message>
-    <message>
-        <source>Audio Files (%0)</source>
-        <translation type="vanished">Аудиофайлы (%0)</translation>
-    </message>
 </context>
 <context>
     <name>MpvHandler</name>
-    <message>
-        <source>[mpv]: %0</source>
-        <translation type="vanished">[mpv]: %0</translation>
-    </message>
     <message>
         <location filename="../mpvhandler.cpp" line="175"/>
         <source>Setting type was parsed as %0</source>
@@ -1122,13 +1064,7 @@ Some features may not work and changed settings will not be saved.</source>
     <message>
         <location filename="../mpvhandler.cpp" line="732"/>
         <source>mpv was not initialized</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>[mpv]: mpv was not initialized
-</source>
-        <translation type="vanished">[mpv]: mpv не был инициализирован
-</translation>
+        <translation>mpv не был инициализирован</translation>
     </message>
 </context>
 <context>

@@ -47,24 +47,6 @@ Translations
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>mpv - video player based on MPlayer/mplayer2
-GPLv2 &lt;mpv.io&gt;
-
-Noto Sans -  font family with many supported characters
-Apache License, version 2.0 &lt;Google&gt;
-
-Download icon
-CC BY 3.0 &lt;Sasha Mescheryakov&gt;</source>
-        <translation type="vanished">mpv - video player based on MPlayer/mplayer2
-GPLv2 &lt;mpv.io&gt;
-
-Noto Sans -  font family with many supported characters
-Apache License, version 2.0 &lt;Google&gt;
-
-Download icon
-CC BY 3.0 &lt;Sasha Mescheryakov&gt;</translation>
-    </message>
-    <message>
         <location filename="../ui/aboutdialog.ui" line="236"/>
         <source>License</source>
         <translation>许可证</translation>
@@ -293,10 +275,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
         <translation>请输入URL</translation>
     </message>
     <message>
-        <source>*.*</source>
-        <translation type="vanished">*.*</translation>
-    </message>
-    <message>
         <location filename="../ui/locationdialog.ui" line="108"/>
         <source>&amp;OK</source>
         <translation>确定(&amp;O)</translation>
@@ -515,14 +493,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
         <translation>Ctrl+V</translation>
     </message>
     <message>
-        <source>Open &amp;Last File</source>
-        <translation type="vanished">打开上次文件(&amp;L)</translation>
-    </message>
-    <message>
-        <source>Ctrl+Z</source>
-        <translation type="vanished">Ctrl+Z</translation>
-    </message>
-    <message>
         <location filename="../ui/mainwindow.ui" line="1211"/>
         <source>Show in &amp;Folder</source>
         <translation>在文件夹中显示(&amp;F)</translation>
@@ -644,18 +614,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
         <translation>昏暗灯光(&amp;D)</translation>
     </message>
     <message>
-        <source>Show &amp;Command Line</source>
-        <translation type="vanished">显示命令行(&amp;C)</translation>
-    </message>
-    <message>
-        <source>&amp;On Top</source>
-        <translation type="vanished">置顶(&amp;O)</translation>
-    </message>
-    <message>
-        <source>&amp;Tray Icon</source>
-        <translation type="vanished">托盘图标(&amp;T)</translation>
-    </message>
-    <message>
         <location filename="../ui/mainwindow.ui" line="1347"/>
         <source>&amp;Next Chapter</source>
         <translation>下一章节(&amp;N)</translation>
@@ -709,10 +667,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
         <location filename="../ui/mainwindow.ui" line="1408"/>
         <source>Ctrl+X</source>
         <translation>Ctrl+X</translation>
-    </message>
-    <message>
-        <source>&amp;Dim Desktop</source>
-        <translation type="vanished">黯淡桌面(&amp;D)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1430"/>
@@ -800,10 +754,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
         <translation>自动探测(&amp;A)</translation>
     </message>
     <message>
-        <source>&amp;Autodetect</source>
-        <translation type="vanished">自动探测(&amp;A)</translation>
-    </message>
-    <message>
         <location filename="../ui/mainwindow.ui" line="1503"/>
         <source>Force &amp;4:3</source>
         <translation>强制 &amp;4:3</translation>
@@ -870,26 +820,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
         <location filename="../ui/mainwindow.ui" line="1577"/>
         <source>&amp;This File</source>
         <translation>本文件(&amp;T)</translation>
-    </message>
-    <message>
-        <source>&amp;Always</source>
-        <translation type="vanished">总是(&amp;A)</translation>
-    </message>
-    <message>
-        <source>When &amp;Playing</source>
-        <translation type="vanished">播放时(&amp;P)</translation>
-    </message>
-    <message>
-        <source>&amp;Never</source>
-        <translation type="vanished">从不(&amp;N)</translation>
-    </message>
-    <message>
-        <source>&amp;Show in Tray</source>
-        <translation type="vanished">托盘中显示(&amp;S)</translation>
-    </message>
-    <message>
-        <source>&amp;Hide Popup</source>
-        <translation type="vanished">隐藏退出(&amp;H)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1593"/>
@@ -1005,17 +935,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
         <location filename="../ui/mainwindow.cpp" line="657"/>
         <source>Enter the file number you want to play:
 Note: Value must be from %0 - %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Speed</source>
-        <translation type="vanished">速度</translation>
-    </message>
-    <message>
-        <source>Enter the file number you want to play:
-Note: Value must be from</source>
-        <translation type="vanished">输入你想要播放的文件编号:
-注意: 编号必须在以下范围</translation>
+        <translation>输入你想要播放的文件编号:
+注意: 编号必须在以下范围%0 - %1</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="658"/>
@@ -1028,22 +949,14 @@ Note: Value must be from</source>
         <translation>无选择</translation>
     </message>
     <message>
-        <source>File</source>
-        <translation type="vanished">文件</translation>
-    </message>
-    <message>
-        <source>of</source>
-        <translation type="vanished">总数</translation>
-    </message>
-    <message>
         <location filename="../ui/mainwindow.cpp" line="468"/>
         <source>Speed: %0x</source>
-        <translation type="unfinished"></translation>
+        <translation>速度: %0x</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="682"/>
         <source>File %0 of %1</source>
-        <translation type="unfinished"></translation>
+        <translation>文件 %0 总数 %1</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="712"/>
@@ -1084,22 +997,22 @@ Some features may not work and changed settings will not be saved.</source>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1660"/>
         <source>Dim Lights</source>
-        <translation type="unfinished"></translation>
+        <translation>昏暗灯光</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1660"/>
         <source>In order to dim the lights, the desktop compositor has to be enabled. This can be done through Window Manager Desktop.</source>
-        <translation type="unfinished"></translation>
+        <translation>为了开启黯淡桌面功能,桌面混成需要开启，可以通过窗口管理进行设置。</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1726"/>
         <source>Saved to &quot;%0&quot;, with subs</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">保存到 &quot;%0&quot; 附带字幕</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1728"/>
         <source>Saved to &quot;%0&quot;, without subs</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">保存到 &quot;%0&quot; 不附带字幕</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="892"/>
@@ -1120,46 +1033,6 @@ Some features may not work and changed settings will not be saved.</source>
         <location filename="../ui/mainwindow.cpp" line="1153"/>
         <source>Exit Fullscreen/Boss Key</source>
         <translation>退出全屏</translation>
-    </message>
-    <message>
-        <source>Take Screenshot</source>
-        <translation type="vanished">截图</translation>
-    </message>
-    <message>
-        <source>Choose the default location where you would like to save your screenshots. Also by default, we will save your screenshots as a jpg file. If you&apos;d like to change any of these settings, it is under Preferences.</source>
-        <translation type="vanished">选择截图的默认目录，我们将把你的截图保存为jpg文件。如果你想更改设置，可以在首选项进行相应配置。</translation>
-    </message>
-    <message>
-        <source>Screenshot Directory</source>
-        <translation type="vanished">截图目录</translation>
-    </message>
-    <message>
-        <source>screenshot</source>
-        <translation type="vanished">截图</translation>
-    </message>
-    <message>
-        <source>Dim Desktop</source>
-        <translation type="vanished">黯淡桌面</translation>
-    </message>
-    <message>
-        <source>In order to dim the desktop, the desktop compositor has to be enabled. This can be done through Window Manager Desktop.</source>
-        <translation type="vanished">为了开启黯淡桌面功能,桌面混成需要开启，可以通过窗口管理进行设置。</translation>
-    </message>
-    <message>
-        <source>Saved to</source>
-        <translation type="vanished">保存到</translation>
-    </message>
-    <message>
-        <source>with</source>
-        <translation type="vanished">附带</translation>
-    </message>
-    <message>
-        <source>without</source>
-        <translation type="vanished">不附带</translation>
-    </message>
-    <message>
-        <source>subs</source>
-        <translation type="vanished">字幕</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1753"/>
@@ -1185,13 +1058,9 @@ Some features may not work and changed settings will not be saved.</source>
 <context>
     <name>MpvHandler</name>
     <message>
-        <source>Setting type was parsed as </source>
-        <translation type="vanished">设置类型被解析为</translation>
-    </message>
-    <message>
         <location filename="../mpvhandler.cpp" line="175"/>
         <source>Setting type was parsed as %0</source>
-        <translation type="unfinished"></translation>
+        <translation>设置类型被解析为 %0</translation>
     </message>
     <message>
         <location filename="../mpvhandler.cpp" line="732"/>
@@ -1437,24 +1306,19 @@ Some features may not work and changed settings will not be saved.</source>
         <location filename="../ui/updatedialog.cpp" line="27"/>
         <source>Update Available!
 Version: %0</source>
-        <translation type="unfinished"></translation>
+        <translation>有可用更新!
+版本: %0</translation>
     </message>
     <message>
         <location filename="../ui/updatedialog.cpp" line="76"/>
         <source>About %0 second(s) remaining</source>
-        <translation type="unfinished"></translation>
+        <translation>剩余大约 %0 秒</translation>
     </message>
     <message>
         <location filename="../ui/updatedialog.cpp" line="98"/>
         <source>error: %0
 </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Update Available!
-Version: </source>
-        <translation type="vanished">有可用更新!
-版本: </translation>
+        <translation>错误: %0</translation>
     </message>
     <message>
         <location filename="../ui/updatedialog.cpp" line="48"/>
@@ -1467,21 +1331,9 @@ Version: </source>
         <translation>下载完成</translation>
     </message>
     <message>
-        <source>About</source>
-        <translation type="vanished">关于</translation>
-    </message>
-    <message>
-        <source>second(s) remaining</source>
-        <translation type="vanished">秒 剩余</translation>
-    </message>
-    <message>
         <location filename="../ui/updatedialog.cpp" line="78"/>
         <source>Calculating...</source>
         <translation>计算中...</translation>
-    </message>
-    <message>
-        <source>error</source>
-        <translation type="vanished">错误</translation>
     </message>
 </context>
 </TS>
