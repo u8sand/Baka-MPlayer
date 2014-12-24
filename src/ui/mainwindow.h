@@ -83,12 +83,15 @@ private:
     QString onTop;
     int autoFit,
         maxRecent,
-        gesture; // 0 == none, 1 = move, 2 = control seek/volume
+        gesture,    // 0 = none, 1 = move, 2 = control seek/volume
+        gestureType,// 0 = none, 1 = seek, 2 = volume
+        origTime;
     bool hidePopup,
          remaining,
          screenshotDialog,
          debug;
-    double gestureRatio;
+    double gestureSeekRatio,
+           gestureVolumeRatio;
 
 public slots:
     void setOnTop(QString s)         { emit onTopChanged(onTop = s); }

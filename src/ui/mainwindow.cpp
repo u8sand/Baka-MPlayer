@@ -1205,7 +1205,8 @@ void MainWindow::LoadSettings()
     if(settings)
     {
         gesture = 2;
-        gestureRatio = 0.1;
+        gestureSeekRatio = 0.5;
+        gestureVolumeRatio = 0.1;
 
         QString version;
         if(settings->allKeys().length() == 0) // empty settings
@@ -1387,7 +1388,11 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
             {
                 moveTimer = new QElapsedTimer();
                 moveTimer->start();
-                origPos = pos();
+                gestureType = 0;
+                if(gesture == 2)
+                    origTime = mpv->getTime();
+                else
+                    origPos = pos();
                 lastMousePos = event->globalPos();
             }
         }
@@ -1403,6 +1408,8 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *event)
 {
     if(moveTimer)
     {
+        if(gesture == 2 && gestureType == 1)
+            mpv->Seek(origTime+(event->globalPos().x()-lastMousePos.x())*gestureSeekRatio, false);
         delete moveTimer;
         moveTimer = nullptr;
     }
@@ -1417,11 +1424,17 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
     {
         if(gesture == 2)
         {
-            QPoint delta = (event->globalPos()-lastMousePos)*gestureRatio;
-            if(abs(delta.x()) >= abs(delta.y()))
-                mpv->Seek(delta.x(), true);
-            else
-                mpv->Volume(mpv->getVolume()-delta.y());
+            QPoint delta = (event->globalPos()-lastMousePos);
+            if(gestureType == 1 || abs(delta.x()) >= abs(delta.y())+10)
+            {
+                gestureType = 1;
+                mpv->Seek(mpv->Relative(origTime+delta.x()*gestureSeekRatio), true);
+            }
+            else if(gestureType == 2 || abs(delta.x()) <= abs(delta.y())+10)
+            {
+                gestureType = 2;
+                mpv->Volume(mpv->getVolume()-delta.y()*gestureVolumeRatio);
+            }
         }
         else if(gesture == 1)
             QMainWindow::move(origPos+event->globalPos()-lastMousePos);
