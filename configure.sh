@@ -22,21 +22,22 @@
 
 if [ "$QMAKE" == "" ]; then
 	QMAKE=qmake
-fi
-hash $QMAKE 2>/dev/null || { echo >&2 "Cannot find qmake."; exit 0; }
 
-qmake_ver=`$QMAKE --version | awk '/^Using Qt version/{print $4}'`
-if [[ $qmake_ver =~ (5.*) ]]; then
-  QMAKE=qmake
-else
-  echo "qmake version $qmake_ver found, looking for version 5.x..."
-  QMAKE=qmake-qt5
-  hash $QMAKE 2>/dev/null || { echo >&2 "Cannot find qmake version 5.x. Please specify QMAKE environment variable."; exit 0; }
-  
+  hash $QMAKE 2>/dev/null || { echo >&2 "Cannot find qmake."; exit 0; }
+
   qmake_ver=`$QMAKE --version | awk '/^Using Qt version/{print $4}'`
   if [[ $qmake_ver =~ (5.*) ]]; then
-    echo "Could not find qt version 5.x, please specify the QMAKE environment variable."
-    exit 0
+    QMAKE=qmake
+  else
+    echo "qmake version $qmake_ver found, looking for version 5.x..."
+    QMAKE=qmake-qt5
+    hash $QMAKE 2>/dev/null || { echo >&2 "Cannot find qmake version 5.x. Please specify QMAKE environment variable."; exit 0; }
+
+    qmake_ver=`$QMAKE --version | awk '/^Using Qt version/{print $4}'`
+    if [[ $qmake_ver =~ (5.*) ]]; then
+      echo "Could not find qt version 5.x, please specify the QMAKE environment variable."
+      exit 0
+    fi
   fi
 fi
 
