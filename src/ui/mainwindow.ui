@@ -476,12 +476,13 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
       </property>
       <property name="styleSheet">
        <string notr="true">QSlider {
-	height: 7px;
+	height: 10px;
 }
 QSlider::handle:horizontal {
 	/* handle color */
 	background: #01455F;
-	width: 14px;
+	width: 10px;
+	border-radius: 4px;
 }
 QSlider::groove:horizontal {
 	background: #0D0D0D;
@@ -969,7 +970,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>580</width>
-     <height>24</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
