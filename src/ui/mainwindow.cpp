@@ -1413,7 +1413,7 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
 {
     if(!isFullScreen())
     {
-        if(event->button() == Qt::LeftButton && !moveTimer && gesture == 1)
+        if(gesture == 1 && event->button() == Qt::LeftButton && !moveTimer)
         {
             moveTimer = new QElapsedTimer();
             moveTimer->start();
@@ -1425,12 +1425,13 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
                 ui->mpvFrame->rect().contains(event->pos())) // mouse is in the mpvFrame
             mpv->PlayPause(ui->playlistWidget->CurrentItem());
     }
-    else if(event->button() == Qt::LeftButton && !moveTimer && gesture == 2)
+    if(gesture == 2 && event->button() == Qt::LeftButton && !moveTimer)
     {
         moveTimer = new QElapsedTimer();
         moveTimer->start();
         gestureType = 0;
         origTime = mpv->getTime();
+        origVolume = mpv->getVolume();
         lastMousePos = event->globalPos();
     }
     QMainWindow::mousePressEvent(event);
@@ -1465,7 +1466,7 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
             else if(gestureType == 2 || abs(delta.x()) <= abs(delta.y())+10)
             {
                 gestureType = 2;
-                mpv->Volume(mpv->getVolume()-delta.y()*gestureVolumeRatio);
+                mpv->Volume(origVolume+delta.y()*gestureVolumeRatio);
             }
         }
         else if(gesture == 1)

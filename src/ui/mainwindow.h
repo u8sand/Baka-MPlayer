@@ -85,7 +85,8 @@ private:
         maxRecent,
         gesture,    // 0 = none, 1 = move, 2 = control seek/volume
         gestureType,// 0 = none, 1 = seek, 2 = volume
-        origTime;
+        origTime,
+        origVolume;
     bool hidePopup,
          remaining,
          screenshotDialog,
