@@ -409,6 +409,8 @@ MainWindow::MainWindow(QWidget *parent):
     connect(mpv, &MpvHandler::fileChanged,
             [=](QString f)
             {
+                static QString prev;
+
                 if(!firstItem)
                     ui->playlistWidget->SelectItem(f);
                 else
@@ -417,6 +419,10 @@ MainWindow::MainWindow(QWidget *parent):
                     ui->playlistWidget->ShowAll(!ui->hideFilesButton->isChecked());
                     firstItem = false;
                 }
+
+                ui->playlistWidget->BoldText(prev, false);
+                ui->playlistWidget->BoldText(f, true);
+                prev = f;
 
                 QString file = mpv->getPath()+f;
                 if((recent.isEmpty() || recent.front() != file) &&
@@ -527,14 +533,26 @@ MainWindow::MainWindow(QWidget *parent):
 
     // update manager
 
-    /* automatic updating support
+    // automatic updating support
+    /*
+    connect(update, &UpdateManager::versionInfoReceived,
+            [=](QMap<QString, QString> info)
+            {
+                if(info["version"].trimmed() != "")
+                {
+                    if(UpdateDialog::update(update, this) == QDialog::Accepted)
+                    {
+
+                    }
+                }
+            });
+
     connect(update, &UpdateManager::Update,
             [=](QMap<QString, QString> info)
             {
                 if(info["version"] != BAKA_MPLAYER_VERSION)
                     update->DownloadUpdate();
             });
-
     connect(update, &UpdateManager::Downloaded,
             [=](int percent)
             {

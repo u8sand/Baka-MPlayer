@@ -2,6 +2,7 @@
 
 #include <QListWidgetItem>
 #include <QMenu>
+#include <QFont>
 
 #include <algorithm> // for std::random_shuffle and std::sort
 
@@ -48,6 +49,20 @@ void PlaylistWidget::SelectItem(const QString &item, bool internal)
         }
         else
             cItem = item;
+    }
+}
+
+void PlaylistWidget::BoldText(const QString &item, bool state)
+{
+    if(item != "")
+    {
+        QList<QListWidgetItem*> items = findItems(item, Qt::MatchExactly);
+        if(items.length() > 0)
+        {
+            QFont font = items.first()->font();
+            font.setBold(state);
+            items.first()->setFont(font);
+        }
     }
 }
 

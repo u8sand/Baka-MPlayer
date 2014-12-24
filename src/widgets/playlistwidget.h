@@ -14,6 +14,7 @@ public:
     QAction *addAction(const QString &text);
     QString RemoveItem(int index);
     void SelectItem(const QString &item, bool internal = false);
+    void BoldText(const QString &item, bool state);
     void Populate(QStringList list);
 
     QString FirstItem();
