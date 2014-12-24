@@ -59,9 +59,9 @@ QMenu::item::disabled:selected {
 	color: black;
 }
 QMenu::separator {
-	background: #424242;
+	background: #333333;
 	height: 1px;
-	margin: 3px 0;
+	margin: 2px 0;
 }
 
 /* QSplitter */
@@ -971,7 +971,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>580</width>
-     <height>26</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
