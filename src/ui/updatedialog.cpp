@@ -109,7 +109,7 @@ UpdateDialog::UpdateDialog(UpdateManager *updateManager, QWidget *parent) :
 
     timer = new QTime();
     timer->start();
-    updateManager->CheckForUpdates();
+    //updateManager->CheckForUpdates();
 }
 
 UpdateDialog::~UpdateDialog()
