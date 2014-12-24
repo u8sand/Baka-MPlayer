@@ -43,6 +43,8 @@ void PlaylistWidget::SelectItem(const QString &item, bool internal)
                 setCurrentItem(items.first());
                 cItem = items.first()->text();
             }
+            else
+                setCurrentRow(0);
         }
         else
             cItem = item;
