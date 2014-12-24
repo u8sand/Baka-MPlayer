@@ -620,7 +620,7 @@ MainWindow::MainWindow(QWidget *parent):
             [=]
             {
                 // if the position is 0, playlist is hidden so show it
-                ShowPlaylist(!ui->splitter->position());
+                ShowPlaylist(ui->splitter->position() == 0);
             });
 
     connect(ui->splitter, &CustomSplitter::positionChanged,             // Splitter position changed
@@ -1165,6 +1165,37 @@ MainWindow::MainWindow(QWidget *parent):
             });
     addAction(action);
 
+
+    action = new QAction(this);
+    action->setShortcut(QKeySequence("Up"));
+    connect(action, &QAction::triggered,
+            [=]
+            {
+                if(ui->splitter->position() != 0)
+                    ui->playlistWidget->SelectItem(ui->playlistWidget->PreviousItem());
+            });
+    addAction(action);
+
+    action = new QAction(this);
+    action->setShortcut(QKeySequence("Down"));
+    connect(action, &QAction::triggered,
+            [=]
+            {
+                if(ui->splitter->position() != 0)
+                    ui->playlistWidget->SelectItem(ui->playlistWidget->NextItem());
+            });
+    addAction(action);
+
+    action = new QAction(this);
+    action->setShortcut(QKeySequence("Return"));
+    connect(action, &QAction::triggered,
+            [=]
+            {
+                if(ui->splitter->position() != 0)
+                    mpv->PlayFile(ui->playlistWidget->CurrentItem());
+            });
+    addAction(action);
+
     // add multimedia shortcuts
     ui->action_Play->setShortcuts({ui->action_Play->shortcut(), QKeySequence(Qt::Key_MediaPlay)});
     ui->action_Stop->setShortcuts({ui->action_Stop->shortcut(), QKeySequence(Qt::Key_MediaStop)});
@@ -1585,7 +1616,10 @@ void MainWindow::FullScreen(bool fs)
 void MainWindow::ShowPlaylist(bool visible)
 {
     if(visible)
+    {
         ui->splitter->setPosition(ui->splitter->normalPosition()); // bring splitter position to normal
+        ui->searchBox->setFocus();
+    }
     else
     {
         if(ui->splitter->position() != ui->splitter->max() && ui->splitter->position() != 0)
