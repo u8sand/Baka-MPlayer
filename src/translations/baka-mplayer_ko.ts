@@ -333,7 +333,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
     <message>
         <location filename="../ui/mainwindow.ui" line="314"/>
         <source>Click to play a file by index</source>
-        <translation type="unfinished"></translation>
+        <translation>파일 번호로 열기</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="317"/>
@@ -358,7 +358,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
     <message>
         <location filename="../ui/mainwindow.ui" line="580"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Left Click to Open File&lt;br&gt;Mouse Wheel Click to Jump&lt;br&gt;Right Click to Open URL&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;왼쪽 클릭: 파일 열기&lt;br&gt;Mouse Wheel: 특정 시간으로 이동&lt;br&gt;오른쪽 클릭: 주소 열기&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;왼쪽 클릭: 파일 열기&lt;br&gt;마우스 휠 클릭: 특정 시간으로 이동&lt;br&gt;오른쪽 클릭: 주소 열기&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="606"/>
@@ -398,7 +398,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
     <message>
         <location filename="../ui/mainwindow.ui" line="1009"/>
         <source>Fit &amp;Window</source>
-        <translation type="unfinished"></translation>
+        <translation>창 크기 맞추기 (&amp;W)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1022"/>
@@ -764,22 +764,22 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
     <message>
         <location filename="../ui/mainwindow.ui" line="1499"/>
         <source>&amp;Auto Detect</source>
-        <translation type="unfinished"></translation>
+        <translation>자동 (&amp;A)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1504"/>
         <source>Force &amp;4:3</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;4:3 으로</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1509"/>
         <source>Force 16:&amp;9</source>
-        <translation type="unfinished"></translation>
+        <translation>16:&amp;9 으로</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1514"/>
         <source>Force &amp;2.35:1</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;2.35:1 으로</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1522"/>
@@ -948,12 +948,13 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
         <location filename="../ui/mainwindow.cpp" line="675"/>
         <source>Enter the file number you want to play:
 Note: Value must be from %0 - %1</source>
-        <translation type="unfinished"></translation>
+        <translation>원하신 파일 번호를 입력해주세요:
+%0 - %1만 입력이 가능합니다.</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="676"/>
         <source>Enter File Number</source>
-        <translation type="unfinished"></translation>
+        <translation>파일 번호</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="694"/>
@@ -993,7 +994,7 @@ Note: Value must be from %0 - %1</source>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1091"/>
         <source>http://bakamplayer.u8sand.net/help.php</source>
-        <translation type="unfinished"></translation>
+        <translation>http://bakamplayer.u8sand.net/help.php</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1360"/>
@@ -1014,17 +1015,17 @@ Some features may not work and changed settings will not be saved.</source>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1712"/>
         <source>In order to dim the lights, the desktop compositor has to be enabled. This can be done through Window Manager Desktop.</source>
-        <translation type="unfinished"></translation>
+        <translation>불 끄기 기는은 Desktop Compositor가 필요합니다. Window Manager Desktop을 통에서 키실수 있습니다.</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1778"/>
         <source>Saved to &quot;%0&quot;, with subs</source>
-        <translation type="unfinished"></translation>
+        <translation>자막없이 &quot;%0&quot;으로 저장됨</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1780"/>
         <source>Saved to &quot;%0&quot;, without subs</source>
-        <translation type="unfinished"></translation>
+        <translation>자막과 함께 &quot;%0&quot;으로 저장됨</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="910"/>
@@ -1044,7 +1045,7 @@ Some features may not work and changed settings will not be saved.</source>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1171"/>
         <source>Exit Fullscreen/Boss Key</source>
-        <translation type="unfinished"></translation>
+        <translation>전체화면 나오기/보스 키</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1805"/>
@@ -1077,12 +1078,12 @@ Some features may not work and changed settings will not be saved.</source>
     <message>
         <location filename="../mpvhandler.cpp" line="188"/>
         <source>screenshot%#04n</source>
-        <translation type="unfinished">screenshot%#04n</translation>
+        <translation>screenshot%#04n</translation>
     </message>
     <message>
         <location filename="../mpvhandler.cpp" line="732"/>
         <source>mpv was not initialized</source>
-        <translation type="unfinished"></translation>
+        <translation>mpv가 실행 되지 않았습니다</translation>
     </message>
 </context>
 <context>
@@ -1135,7 +1136,7 @@ Some features may not work and changed settings will not be saved.</source>
     <message>
         <location filename="../ui/preferencesdialog.ui" line="282"/>
         <source>&amp;Auto-Fit Window:</source>
-        <translation type="unfinished"></translation>
+        <translation>자동 창 크기 맞추기 (&amp;A):</translation>
     </message>
     <message>
         <location filename="../ui/preferencesdialog.ui" line="296"/>
@@ -1190,7 +1191,7 @@ Some features may not work and changed settings will not be saved.</source>
     <message>
         <location filename="../ui/preferencesdialog.ui" line="360"/>
         <source>Default Save Location:</source>
-        <translation type="unfinished"></translation>
+        <translation>기본 저장 위치:</translation>
     </message>
     <message>
         <location filename="../ui/preferencesdialog.ui" line="367"/>
@@ -1206,7 +1207,7 @@ Some features may not work and changed settings will not be saved.</source>
     <message>
         <location filename="../ui/preferencesdialog.ui" line="381"/>
         <source>&amp;Always show the dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>항상 창을 보이기 (&amp;A)</translation>
     </message>
     <message>
         <location filename="../ui/preferencesdialog.ui" line="413"/>
@@ -1216,7 +1217,7 @@ Some features may not work and changed settings will not be saved.</source>
     <message>
         <location filename="../ui/preferencesdialog.cpp" line="52"/>
         <source>Choose screenshot directory</source>
-        <translation type="unfinished"></translation>
+        <translation>스크린샷 위치 선택</translation>
     </message>
 </context>
 <context>
@@ -1234,7 +1235,7 @@ Some features may not work and changed settings will not be saved.</source>
     <message>
         <location filename="../ui/screenshotdialog.ui" line="119"/>
         <source>Save Location</source>
-        <translation type="unfinished"></translation>
+        <translation>저장 위치</translation>
     </message>
     <message>
         <location filename="../ui/screenshotdialog.ui" line="126"/>
@@ -1264,7 +1265,7 @@ Some features may not work and changed settings will not be saved.</source>
     <message>
         <location filename="../ui/screenshotdialog.ui" line="175"/>
         <source>Always show this dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>항상 창을 보이기</translation>
     </message>
     <message>
         <location filename="../ui/screenshotdialog.ui" line="204"/>
@@ -1274,7 +1275,7 @@ Some features may not work and changed settings will not be saved.</source>
     <message>
         <location filename="../ui/screenshotdialog.cpp" line="26"/>
         <source>Choose screenshot directory</source>
-        <translation type="unfinished"></translation>
+        <translation>스크린샷 위치 선택</translation>
     </message>
 </context>
 <context>
