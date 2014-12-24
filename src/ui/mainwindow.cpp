@@ -116,7 +116,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(this, &MainWindow::debugChanged,
             [=](bool b)
             {
-                mpv->Debug(b);
+                //mpv->Debug(b);
                 ui->actionShow_D_ebug_Output->setChecked(b);
                 ui->verticalWidget->setVisible(b);
             });
@@ -189,7 +189,7 @@ MainWindow::MainWindow(QWidget *parent):
             {
                 if(track.type == "sub")
                 {
-                    action = ui->menuSubtitle_Track->addAction(tr("%0: %1 (%2)").arg(QString::number(track.id), track.title, track.lang).replace("&", "&&"));
+                    action = ui->menuSubtitle_Track->addAction(QString("%0: %1 (%2)").arg(QString::number(track.id), track.title, track.lang).replace("&", "&&"));
                     connect(action, &QAction::triggered,
                             [=]
                             {
@@ -208,19 +208,19 @@ MainWindow::MainWindow(QWidget *parent):
                                 else if(!mpv->getSubtitleVisibility())
                                     mpv->ShowSubtitles(true);
                                 mpv->Sid(track.id);
-                                mpv->ShowText(tr("Sub %0: %1 (%2)").arg(QString::number(track.id), track.title, track.lang));
+                                mpv->ShowText(QString("%0 %1: %2 (%3)").arg(tr("Sub"), QString::number(track.id), track.title, track.lang));
                             });
                 }
                 else if(track.type == "audio")
                 {
-                    action = ui->menuAudio_Tracks->addAction(tr("%0: %1 (%2)").arg(QString::number(track.id), track.title, track.lang).replace("&", "&&"));
+                    action = ui->menuAudio_Tracks->addAction(QString("%0: %1 (%2)").arg(QString::number(track.id), track.title, track.lang).replace("&", "&&"));
                     connect(action, &QAction::triggered,
                             [=]
                             {
                                 if(mpv->getAid() != track.id) // don't allow selection of the same track
                                 {
                                     mpv->Aid(track.id);
-                                    mpv->ShowText(tr("Audio %0: %1 (%2)").arg(QString::number(track.id), track.title, track.lang));
+                                    mpv->ShowText(QString("%0 %1: %2 (%3)").arg(tr("Audio"), QString::number(track.id), track.title, track.lang));
                                 }
                                 else
                                     action->setChecked(true); // recheck the track
@@ -304,7 +304,7 @@ MainWindow::MainWindow(QWidget *parent):
             ui->menu_Chapters->clear();
             for(auto &ch : chapters)
             {
-                action = ui->menu_Chapters->addAction(tr("%0: %1").arg(FormatNumberWithAmpersand(n, N), ch.title),
+                action = ui->menu_Chapters->addAction(QString("%0: %1").arg(FormatNumberWithAmpersand(n, N), ch.title),
                                                       NULL,
                                                       NULL,
                                                       (n <= 9 ? QKeySequence("Ctrl+"+QString::number(n)) : QKeySequence())
@@ -369,7 +369,7 @@ MainWindow::MainWindow(QWidget *parent):
                 case Mpv::Stopped:
                     ui->playButton->setIcon(QIcon(":/img/default_play.svg"));
                     ui->action_Play->setText(tr("&Play"));
-                    if(ui->actionWhen_Playing->isChecked())
+                    if(onTop == "playing")
                         AlwaysOnTop(false);
                     break;
 
@@ -654,7 +654,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->indexLabel, &CustomLabel::clicked,                      // Playlist: Clicked the indexLabel
             [=]
             {
-                QString res = InputDialog::getInput(tr("Enter the file number you want to play:\nNote: Value must be from 1 - %0").arg(QString::number(ui->playlistWidget->count())),
+                QString res = InputDialog::getInput(tr("Enter the file number you want to play:\nNote: Value must be from %0 - %1").arg("1", QString::number(ui->playlistWidget->count())),
                                                     tr("Enter File Number"),
                                                     [this](QString input)
                                                     {
@@ -889,7 +889,7 @@ MainWindow::MainWindow(QWidget *parent):
             [=]
             {
                 QString trackFile = QFileDialog::getOpenFileName(this, tr("Open Subtitle File"), mpv->getPath(),
-                                                                 tr("Subtitle Files (%0)").arg(Mpv::subtitle_filetypes.join(" ")),
+                                                                 QString("%0 (%1)").arg(tr("Subtitle Files"), Mpv::subtitle_filetypes.join(" ")),
                                                                  0, QFileDialog::DontUseSheet);
                 if(trackFile != "")
                     mpv->AddSubtitleTrack(trackFile);
@@ -1185,9 +1185,14 @@ MainWindow::~MainWindow()
 {
     SaveSettings();
 
-    // note: child objects do not need to be deleted;
-    // all children get deleted when mainwindow is deleted
+    // Note: child objects _should_ not need to be deleted because
+    // all children should get deleted when mainwindow is deleted
     // see: http://qt-project.org/doc/qt-4.8/objecttrees.html
+
+    // but apparently they don't (https://github.com/u8sand/Baka-MPlayer/issues/47)
+    delete mpv;
+    delete update;
+
     if(dimDialog)
         delete dimDialog;
     if(moveTimer)
@@ -1306,7 +1311,7 @@ void MainWindow::LoadSettings()
             settings = 0;
             ui->action_Preferences->setEnabled(false);
 
-            QMessageBox::information(this, "Settings version not recognized", "The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.\nSome features may not work and changed settings will not be saved.");
+            QMessageBox::information(this, tr("Settings version not recognized"), tr("The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.\nSome features may not work and changed settings will not be saved."));
         }
     }
 }
@@ -1461,6 +1466,15 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
         mouseMoveEvent(mouseEvent);
     }
     return false;
+}
+
+void MainWindow::wheelEvent(QWheelEvent *event)
+{
+    if(event->delta() > 0)
+        mpv->Volume(mpv->getVolume()+5);
+    else
+        mpv->Volume(mpv->getVolume()-5);
+    QMainWindow::wheelEvent(event);
 }
 
 void MainWindow::mouseDoubleClickEvent(QMouseEvent *event)
@@ -1737,7 +1751,7 @@ void MainWindow::UpdateRecentFiles()
         N = recent.length();
     for(auto &f : recent)
     {
-        action = ui->menu_Recently_Opened->addAction(tr("%0. %1").arg(FormatNumberWithAmpersand(n, N), ShortenPathToParent(f).replace("&","&&")));
+        action = ui->menu_Recently_Opened->addAction(QString("%0. %1").arg(FormatNumberWithAmpersand(n, N), ShortenPathToParent(f).replace("&","&&")));
         if(n++ == 1)
             action->setShortcut(QKeySequence("Ctrl+Z"));
         connect(action, &QAction::triggered,
@@ -1752,8 +1766,8 @@ void MainWindow::OpenFile()
 {
     mpv->LoadFile(QFileDialog::getOpenFileName(this,
                    tr("Open File"),mpv->getPath(),
-                   tr("Media Files (%0);;").arg(Mpv::media_filetypes.join(" "))+
-                   tr("Video Files (%0);;").arg(Mpv::video_filetypes.join(" "))+
-                   tr("Audio Files (%0)").arg(Mpv::audio_filetypes.join(" ")),
+                   QString("%0 (%1);;").arg(tr("Media Files"), Mpv::media_filetypes.join(" "))+
+                   QString("%0 (%1);;").arg(tr("Video Files"), Mpv::video_filetypes.join(" "))+
+                   QString("%0 (%1)").arg(tr("Audio Files"), Mpv::audio_filetypes.join(" ")),
                    0, QFileDialog::DontUseSheet));
 }

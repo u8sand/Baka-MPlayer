@@ -25,6 +25,7 @@ MpvHandler::MpvHandler(int64_t wid, QObject *parent):
     mpv_set_option(mpv, "wid", MPV_FORMAT_INT64, &wid);
     mpv_set_option_string(mpv, "input-cursor", "no");   // no mouse handling
     mpv_set_option_string(mpv, "cursor-autohide", "no");// no cursor-autohide, we handle that
+    mpv_set_option_string(mpv, "ytdl", "yes"); // youtube-dl support
 
     // get updates when these properties change
     mpv_observe_property(mpv, 0, "time-pos", MPV_FORMAT_DOUBLE);
@@ -53,7 +54,7 @@ bool MpvHandler::event(QEvent *event)
             if (event->event_id == MPV_EVENT_NONE)
                 break;
             if(event->error < 0)
-                emit messageSignal(tr("[mpv]: %0").arg(mpv_error_string(event->error)));
+                emit messageSignal(QString("[mpv]: %0").arg(mpv_error_string(event->error)));
             switch (event->event_id)
             {
             case MPV_EVENT_PROPERTY_CHANGE:
@@ -115,7 +116,7 @@ bool MpvHandler::event(QEvent *event)
                 QCoreApplication::quit();
                 break;
             case MPV_EVENT_LOG_MESSAGE:
-                emit messageSignal(tr("[mpv]: %0").arg(static_cast<mpv_event_log_message*>(event->data)->text));
+                emit messageSignal(QString("[mpv]: %0").arg(static_cast<mpv_event_log_message*>(event->data)->text));
                 break;
             default: // unhandled events
                 break;
@@ -171,7 +172,7 @@ void MpvHandler::LoadSettings(QSettings *settings, QString version)
                     else if(tmp.type() == QVariant::Double)
                         tmp2 = QString::number(tmp.toDouble()).toUtf8();
                     else
-                        emit messageSignal(tr("[Baka-MPlayer]: Setting type was parsed as %0\n").arg(tmp.type()));
+                        emit messageSignal(QString("[Baka-MPlayer]: %0\n").arg(tr("Setting type was parsed as %0").arg(tmp.type())));
 
                     if(tmp2 != QByteArray())
                         mpv_set_option_string(mpv, tmp1.constData(), tmp2.constData());
@@ -484,11 +485,6 @@ void MpvHandler::ScreenshotTemplate(QString s)
 
 void MpvHandler::ScreenshotDirectory(QString s)
 {
-//    if(mpv)
-//    {
-//        const QByteArray tmp = (s+"/"+screenshotTemplate).toUtf8();
-//        mpv_set_option_string(mpv, "screenshot-template", tmp.data());
-//    }
     setScreenshotDir(s);
 }
 
@@ -502,7 +498,8 @@ void MpvHandler::AddSubtitleTrack(QString f)
 
 void MpvHandler::ShowSubtitles(bool b)
 {
-    mpv_set_property_async(mpv, 0, "sub-visibility", MPV_FORMAT_FLAG, &b);
+    const char *args[] = {"set", "sub-visibility", b ? "yes" : "no", NULL};
+    AsyncCommand(args);
 }
 
 void MpvHandler::SubtitleScale(double scale, bool relative)
@@ -719,7 +716,7 @@ void MpvHandler::AsyncCommand(const char *args[])
     if(mpv)
         mpv_command_async(mpv, 0, args);
     else
-        emit messageSignal(tr("[mpv]: mpv was not initialized\n"));
+        NotInitialized();
 }
 
 void MpvHandler::Command(const char *args[])
@@ -727,5 +724,10 @@ void MpvHandler::Command(const char *args[])
     if(mpv)
         mpv_command(mpv, args);
     else
-        emit messageSignal(tr("[mpv]: mpv was not initialized\n"));
+        NotInitialized();
+}
+
+void MpvHandler::NotInitialized()
+{
+    emit messageSignal(QString("[mpv]: %0\n").arg(tr("mpv was not initialized")));
 }

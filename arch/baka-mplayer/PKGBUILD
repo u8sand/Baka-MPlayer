@@ -8,6 +8,9 @@ arch=('x86_64' 'i686')
 license=('GPLv2')
 depends=('mpv' 'qt5-base' 'qt5-declarative' 'qt5-svg' 'qt5-x11extras')
 makedepends=('git' 'make' 'pkg-config')
+optdepends=(
+  'youtube-dl: support for remote video streaming'
+)
 conflicts=('bakamplayer' 'baka-mplayer')
 provides=('baka-mplayer')
 

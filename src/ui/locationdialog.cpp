@@ -3,6 +3,7 @@
 
 #include <QClipboard>
 #include <QRegExp>
+#include <QDir>
 
 LocationDialog::LocationDialog(QString path, QWidget *parent) :
     QDialog(parent),
@@ -17,7 +18,7 @@ LocationDialog::LocationDialog(QString path, QWidget *parent) :
     connect(ui->urlEdit, SIGNAL(textChanged(QString)),
             this, SLOT(validate(QString)));
 
-    ui->urlEdit->setText(path);
+    ui->urlEdit->setText(QDir::toNativeSeparators(path));
 }
 
 LocationDialog::~LocationDialog()
@@ -54,7 +55,7 @@ void LocationDialog::on_clearButton_clicked()
 void LocationDialog::validate(QString input)
 {
 #ifdef Q_OS_WIN
-    QRegExp rx("^(https?://.+\\.[a-z]+|[a-z]:/)", Qt::CaseInsensitive);
+    QRegExp rx("^(https?://.+\\.[a-z]+|[a-z]:\\\\)", Qt::CaseInsensitive);
 #elif defined(Q_OS_LINUX) || defined(Q_OS_UNIX)
     QRegExp rx("^(https?://.+\\.[a-z]+|\\.{0,2}/)", Qt::CaseInsensitive);
 #endif

@@ -3,3 +3,4 @@ build*
 Makefile
 *.kdev4
 *.qm
+*.out

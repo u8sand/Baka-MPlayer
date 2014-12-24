@@ -5,30 +5,21 @@
 Baka MPlayer is a free and open source, cross-platform, **libmpv** based multimedia player.
 Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.
 
-## Portability
+## Playlist
 
-Baka MPlayer is made to be cross-platform and portable.
-Although no Windows builds currently exist, work is being done to build for Windows.
+The playlist is automatically populated by loading the files in the directory of the loaded file. Refreshing the playlist will recheck the directory (files that were deleted will still be there until playlist is refreshed).
 
-## Documentation
+## Screenshots
 
-### Playlist
+Screenshots are taken through mpv. The template specified is passed into mpv as screenshot-template (see mpv's manual for more details on valid screenshot-template). If the screenshot dialog is hidden by unchecking the `Always show this dialog` option, the dialog can be restored by setting `baka-mplayer/screenshotDialog` to true in the settings file.
 
-The playlist is populated by loading the files in the directory of the loaded file. Items can be rearranged, removed, and deleted from disk.
+## Recent Files
 
-Refreshing the playlist will recheck the directory (files that were deleted will still be there until playlist is refreshed).
+Your recently viewed files are stored in settings for easy access. It is located at the bottom of the file under `[baka-mplayer] -> recent`. To store more recently viewed files, set the `[baka-mplayer] -> maxRecent` value and the list will trim itself accordingly.
 
-Clicking the Index allows you to type a specific index to play--this is particularly useful for playing a specific episode if all episodes are sorted by ascending order.
+## Special functions
 
-### Screenshots
-
-Screenshots are taken through mpv. The template specified is passed into mpv as screenshot-template; see mpv's manual for more details on valid screenshot-template. Specified directories are prepended to the screenshot-template. If the screenshot dialog is hidden by unchecking the `Always show this dialog` option, the dialog can be restored by setting `baka-mplayer/screenshotDialog` to true in the settings file.
-
-### Recent Files
-Your recently viewed files are stored in settings for easy access. They will be seen in the settings file at the bottom as `baka-mplayer/recent`. To make the recent history bigger or smaller simply set `baka-mplayer/maxRecent` and the list will trim itself accordingly.
-
-### Special functions
-Some functionality is not entirely explained to the user; this is explained here.
+Some functionality that is not explained or is immediately obvious is written here.
 
 	Hotkeys
 		Left                    Seek backwards 5 seconds
@@ -48,9 +39,9 @@ Some functionality is not entirely explained to the user; this is explained here
 		Middle Click - Jump to a specific time
 		Right Click - Open a location (including URLs)
 
-* Customization of the key bindings will be implemented in the near future.
+* Custom key bindings will be allowed soon
 
-### Settings
+## Settings
 
 On Windows, the config files are saved with the executable in an ini file `bakamplayer.ini`.
 On Linux, they are saved in the Qt location `~/.config/bakamplayer.ini`.
@@ -81,11 +72,11 @@ On Linux, they are saved in the Qt location `~/.config/bakamplayer.ini`.
 	volume=                 # volume
 	                        # ...
 
-Note that for mpv specific options you can use mpv's options. See mpv's manual for valid options.
+Note that the `[mpv]` section is using mpv's options. See mpv's manual for a list of valid options.
 
 ### Translation
 
-Qt makes it quite easy to setup projects for translation. You can create your own translations by following these steps:
+You can create your own translations by following these steps:
 
 1. Open `src/Baka-MPlayer.pro` with your favorite text editor.
  1. Under `DEFINES`, change `BAKA_MPLAYER_LANG`'s value from `baka-mplayer_en` to `baka-mplayer_{lang-code}` where `{lang-code}` is your language code (ISO 639-1).
@@ -96,7 +87,7 @@ Qt makes it quite easy to setup projects for translation. You can create your ow
 5. Upon completion of the translation, run `lrelease Baka-MPlayer.pro` to compile your translation file into a .qm file.
 6. Add the .qm file to rsclist.qrc.
 
-*Note: The compilation of programs for your language will be made easier in the near future.
+* Note: The compilation of programs for your language will be made easier in the near future.
 
 If you want to submit a translation, you can create a git pull request or send it to us through irc.
 

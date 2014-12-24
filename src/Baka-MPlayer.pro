@@ -4,6 +4,8 @@
 #
 #-------------------------------------------------
 
+VERSION   = 2.0.0
+
 QT       += core gui network svg
 
 CODECFORSRC = UTF-8
@@ -12,7 +14,6 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = baka-mplayer
 DEFINES += 'BAKA_MPLAYER_VERSION=\\"2.0.0\\"' \
-           'BAKA_MPLAYER_LANG=\\"baka-mplayer_en\\"' \
            'SETTINGS_FILE=\\"bakamplayer\\"'
 
 TEMPLATE = app
@@ -36,6 +37,16 @@ win32 {
     # mxe fix:
     CONFIG -= windows
     QMAKE_LFLAGS += $$QMAKE_LFLAGS_WINDOWS
+
+    RC_ICONS += img/logo.ico
+    QMAKE_TARGET_PRODUCT += Baka MPlayer
+    QMAKE_TARGET_DESCRIPTION += The libmpv based media player.
+    #RC_LANG +=
+}
+
+CONFIG(debug, debug|release) {
+    RESOURCES += \
+        rsclist.qrc
 }
 
 SOURCES += main.cpp\
@@ -96,10 +107,8 @@ FORMS    += \
     ui/screenshotdialog.ui \
     ui/updatedialog.ui
 
-RESOURCES += \
-    rsclist.qrc
-
 TRANSLATIONS += \
     translations/baka-mplayer_pt.ts \
+    translations/baka-mplayer_ru.ts \
     translations/baka-mplayer_ko.ts \
     translations/baka-mplayer_zh.ts
