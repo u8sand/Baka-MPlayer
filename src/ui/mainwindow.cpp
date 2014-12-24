@@ -1413,24 +1413,25 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
 {
     if(!isFullScreen())
     {
-        if(event->button() == Qt::LeftButton && !moveTimer)
+        if(event->button() == Qt::LeftButton && !moveTimer && gesture == 1)
         {
-            if(gesture > 0)
-            {
-                moveTimer = new QElapsedTimer();
-                moveTimer->start();
-                gestureType = 0;
-                if(gesture == 2)
-                    origTime = mpv->getTime();
-                else
-                    origPos = pos();
-                lastMousePos = event->globalPos();
-            }
+            moveTimer = new QElapsedTimer();
+            moveTimer->start();
+            origPos = pos();
+            lastMousePos = event->globalPos();
         }
         else if(event->button() == Qt::RightButton &&
                 mpv->getPlayState() > 0 &&  // if playing
                 ui->mpvFrame->rect().contains(event->pos())) // mouse is in the mpvFrame
             mpv->PlayPause(ui->playlistWidget->CurrentItem());
+    }
+    else if(event->button() == Qt::LeftButton && !moveTimer && gesture == 2)
+    {
+        moveTimer = new QElapsedTimer();
+        moveTimer->start();
+        gestureType = 0;
+        origTime = mpv->getTime();
+        lastMousePos = event->globalPos();
     }
     QMainWindow::mousePressEvent(event);
 }
