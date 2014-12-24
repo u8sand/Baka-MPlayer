@@ -1205,7 +1205,7 @@ void MainWindow::LoadSettings()
     if(settings)
     {
         gesture = 2;
-        gestureSeekRatio = 0.5;
+        gestureSeekRatio = 0.05;
         gestureVolumeRatio = 0.1;
 
         QString version;
@@ -1428,7 +1428,7 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
             if(gestureType == 1 || abs(delta.x()) >= abs(delta.y())+10)
             {
                 gestureType = 1;
-                mpv->Seek(mpv->Relative(origTime+delta.x()*gestureSeekRatio), true);
+                mpv->Seek(origTime+delta.x()*gestureSeekRatio, false);
             }
             else if(gestureType == 2 || abs(delta.x()) <= abs(delta.y())+10)
             {
