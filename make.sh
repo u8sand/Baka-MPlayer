@@ -1,6 +1,8 @@
 #!/bin/sh
 
-QMAKE=qmake-qt5
+if [ "$QMAKE" == "" ]; then
+	QMAKE=qmake-qt5
+fi
 
 if [ "$1" != "" ]; then
   BAKA_LANG=$1
@@ -26,3 +28,4 @@ fi
 
 echo "Compiling baka-mplayer..."
 make -j `grep -c ^processor /proc/cpuinfo`;
+
