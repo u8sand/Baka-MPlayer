@@ -1,5 +1,7 @@
 #!/bin/sh
 
+QMAKE=qmake-qt5
+
 if [ "$1" != "" ]; then
   BAKA_LANG=$1
   # make sure we rebuild main
@@ -15,11 +17,11 @@ if [ "$1" != "" ]; then
   cat src/rsclist.qrc.in | sed "s/\$lang/$BAKA_LANG.qm/g" > src/rsclist.qrc.out
 
   echo "Configuring..."
-  qmake src/Baka-MPlayer.pro CONFIG+=release "DEFINES+=\'BAKA_MPLAYER_LANG=\\\":/translations/baka-mplayer_$BAKA_LANG\\\"\'" RESOURCES+=rsclist.qrc.out
+  $QMAKE src/Baka-MPlayer.pro CONFIG+=release "DEFINES+=\'BAKA_MPLAYER_LANG=\\\":/translations/baka-mplayer_$BAKA_LANG\\\"\'" RESOURCES+=rsclist.qrc.out
 
 else
   echo "Configuring..."
-  qmake src/Baka-MPlayer.pro CONFIG+=release RESOURCES+=rsclist.qrc
+  $QMAKE src/Baka-MPlayer.pro CONFIG+=release RESOURCES+=rsclist.qrc
 fi
 
 echo "Compiling baka-mplayer..."
