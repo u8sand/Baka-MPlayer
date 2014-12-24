@@ -5,18 +5,12 @@
 #-------------------------------------------------
 
 VERSION   = 2.0.0
-
 QT       += core gui network svg
-
 CODECFORSRC = UTF-8
-
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
-
 TARGET = baka-mplayer
-DEFINES += 'BAKA_MPLAYER_VERSION=\\"2.0.0\\"' \
-           'SETTINGS_FILE=\\"bakamplayer\\"'
-
 TEMPLATE = app
+
 CONFIG += c++11 link_pkgconfig
 PKGCONFIG += mpv
 
@@ -33,21 +27,98 @@ unix {
 
 win32 {
     CONFIG += static
-    
     # mxe fix:
     CONFIG -= windows
     QMAKE_LFLAGS += $$QMAKE_LFLAGS_WINDOWS
-
+    # application information
     RC_ICONS += img/logo.ico
     QMAKE_TARGET_PRODUCT += Baka MPlayer
     QMAKE_TARGET_DESCRIPTION += The libmpv based media player.
     #RC_LANG +=
 }
 
-CONFIG(debug, debug|release) {
-    RESOURCES += \
-        rsclist.qrc
+!isEmpty(SETTINGS_FILE):SETTINGS_FILE=bakamplayer
+DEFINES += "BAKA_MPLAYER_VERSION=\\\"$$VERSION\\\"" \
+           "SETTINGS_FILE=\\\"$SETTINGS_FILE\\\""
+!isEmpty(BAKA_LANG):DEFINES += "BAKA_MPLAYER_LANG=\\\"$$BAKA_LANG\\\""
+
+# INSTROOT is the installation root directory, leave empty if not using a package management system
+isEmpty(BINDIR):BINDIR=$$INSTROOT/usr/bin
+isEmpty(MEDIADIR):MEDIADIR=$$INSTROOT/usr/share/pixmaps
+isEmpty(APPDIR):APPDIR=$$INSTROOT/usr/share/applications
+isEmpty(DOCDIR):DOCDIR=$$INSTROOT/usr/share/doc
+isEmpty(MANDIR):MANDIR=$$INSTROOT/usr/share/man
+isEmpty(LICENSEDIR):LICENSEDIR=$$INSTROOT/usr/share/licenses
+isEmpty(BAKADIR):BAKADIR=$$INSTROOT/usr/share/baka-mplayer
+
+target.path = $$BINDIR
+logo.path = $$MEDIADIR
+desktop.path = $$APPDIR
+manual.path = $$DOCDIR/baka-mplayer
+man.path = $$MANDIR/man1
+license.path = $$LICENSEDIR/baka-mplayer
+translations.path = $$BAKADIR
+
+logo.files = ../etc/logo/baka-mplayer.svg
+desktop.files = ../etc/baka-mplayer.desktop
+manual.files = ../etc/doc/baka-mplayer.md
+man.files = ../etc/doc/baka-mplayer.1.gz
+license.files = ../LICENSE
+
+man.extra:system(gzip -c ../etc/doc/baka-mplayer.man > ../etc/doc/baka-mplayer.1.gz)
+
+INSTALLS += target logo desktop manual man license
+
+RESOURCES += rsclist.qrc
+
+isEmpty(TRANSLATIONS) {
+    TRANSLATIONS += \
+        translations/baka-mplayer_pt.ts \
+        translations/baka-mplayer_ru.ts \
+        translations/baka-mplayer_ko.ts \
+        translations/baka-mplayer_zh.ts
 }
+
+TRANSLATIONS_COMPILED = $$TRANSLATIONS
+TRANSLATIONS_COMPILED ~= s/\.ts/.qm/g
+
+CONFIG(embed_translations) {
+    # create translations resource file
+    system("echo \'<RCC><qresource prefix=\"/\">\' > translations.qrc")
+    for(translation, TRANSLATIONS_COMPILED):system("echo \'<file>$$translation</file>\' >> translations.qrc")
+    system("echo \'</qresource></RCC>\'" >> translations.qrc)
+
+    # add file to build
+    RESOURCES += translations.qrc
+
+    # setup defines so program knows what to look for
+    DEFINES += "BAKA_MPLAYER_LANG_PATH=\\\":/translations/\\\""
+
+    # make sure translations are updated and released
+    CONFIG *= update_translations release_translations
+}
+
+CONFIG(install_translations) {
+    # install translation files
+    translations.files = $$TRANSLATIONS_COMPILED
+    INSTALLS += translations
+
+    # setup defines so program knows what to look for
+
+    DEFINES += "BAKA_MPLAYER_LANG_PATH=\\\"$$translations.path\\\""
+
+    # make sure translations are updated and released
+    CONFIG *= update_translations release_translations
+}
+
+CONFIG(update_translations) {
+    system(lupdate $$_PRO_FILE_)
+}
+
+CONFIG(release_translations) {
+    system(lrelease $$_PRO_FILE_)
+}
+
 
 SOURCES += main.cpp\
     mpvhandler.cpp \
@@ -106,9 +177,3 @@ FORMS    += \
     ui/preferencesdialog.ui \
     ui/screenshotdialog.ui \
     ui/updatedialog.ui
-
-TRANSLATIONS += \
-    translations/baka-mplayer_pt.ts \
-    translations/baka-mplayer_ru.ts \
-    translations/baka-mplayer_ko.ts \
-    translations/baka-mplayer_zh.ts

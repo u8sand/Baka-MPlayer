@@ -356,566 +356,566 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
         <translation>재생 목록 다시 불러오기</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="579"/>
+        <location filename="../ui/mainwindow.ui" line="580"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Left Click to Open File&lt;br&gt;Mouse Wheel Click to Jump&lt;br&gt;Right Click to Open URL&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;왼쪽 클릭: 파일 열기&lt;br&gt;Mouse Wheel: 특정 시간으로 이동&lt;br&gt;오른쪽 클릭: 주소 열기&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="605"/>
+        <location filename="../ui/mainwindow.ui" line="606"/>
         <source>0:00:00</source>
         <translation>0:00:00</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="615"/>
+        <location filename="../ui/mainwindow.ui" line="616"/>
         <source>/</source>
         <translation>/</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="631"/>
+        <location filename="../ui/mainwindow.ui" line="632"/>
         <source>Click to change between total and remaining time</source>
         <translation>전체 시간/남은 시간 전환</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="634"/>
+        <location filename="../ui/mainwindow.ui" line="635"/>
         <source>-0:00:00</source>
         <translation>-0:00:00</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="977"/>
+        <location filename="../ui/mainwindow.ui" line="978"/>
         <source>&amp;File</source>
         <translation>파일(&amp;F)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="981"/>
+        <location filename="../ui/mainwindow.ui" line="982"/>
         <source>&amp;Recently Opened</source>
         <translation>최근에 연 파일들(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1001"/>
+        <location filename="../ui/mainwindow.ui" line="1002"/>
         <source>&amp;View</source>
         <translation>보기(&amp;V)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1008"/>
+        <location filename="../ui/mainwindow.ui" line="1009"/>
         <source>Fit &amp;Window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1021"/>
+        <location filename="../ui/mainwindow.ui" line="1022"/>
         <source>Aspect &amp;Ratio</source>
         <translation>화면 비율(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1033"/>
+        <location filename="../ui/mainwindow.ui" line="1034"/>
         <source>Subtitle &amp;Track</source>
         <translation>자막(&amp;T)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1044"/>
+        <location filename="../ui/mainwindow.ui" line="1045"/>
         <source>Font Si&amp;ze</source>
         <translation>자막 크기(&amp;Z)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1055"/>
+        <location filename="../ui/mainwindow.ui" line="1056"/>
         <source>Take &amp;Screenshot</source>
         <translation>스크린 찍기(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1074"/>
+        <location filename="../ui/mainwindow.ui" line="1075"/>
         <source>&amp;Playback</source>
         <translation>재생(&amp;P)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1078"/>
+        <location filename="../ui/mainwindow.ui" line="1079"/>
         <source>R&amp;epeat</source>
         <translation>반복(&amp;E)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1094"/>
+        <location filename="../ui/mainwindow.ui" line="1095"/>
         <source>Audio &amp;Tracks</source>
         <translation>오디오 트랙(&amp;T)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1103"/>
+        <location filename="../ui/mainwindow.ui" line="1104"/>
         <source>S&amp;peed</source>
         <translation>속도(&amp;P)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1125"/>
+        <location filename="../ui/mainwindow.ui" line="1126"/>
         <source>&amp;Navigate</source>
         <translation>이동(&amp;N)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1132"/>
+        <location filename="../ui/mainwindow.ui" line="1133"/>
         <source>&amp;Chapters</source>
         <translation>챕터(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1147"/>
+        <location filename="../ui/mainwindow.ui" line="1148"/>
         <source>&amp;Settings</source>
         <translation>설정(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1159"/>
+        <location filename="../ui/mainwindow.ui" line="1160"/>
         <source>&amp;Help</source>
         <translation>도움말(&amp;H)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1241"/>
+        <location filename="../ui/mainwindow.ui" line="1242"/>
         <source>E&amp;xit</source>
         <translation>끝내기(&amp;X)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1176"/>
+        <location filename="../ui/mainwindow.ui" line="1177"/>
         <source>&amp;New Player</source>
         <translation>새로 열기(&amp;N)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1179"/>
+        <location filename="../ui/mainwindow.ui" line="1180"/>
         <source>Ctrl+N</source>
         <translation>Ctrl+N</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1184"/>
+        <location filename="../ui/mainwindow.ui" line="1185"/>
         <source>&amp;Open File...</source>
         <translation>파일 열기(&amp;O)...</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1187"/>
+        <location filename="../ui/mainwindow.ui" line="1188"/>
         <source>Ctrl+O</source>
         <translation>Ctrl+O</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1192"/>
+        <location filename="../ui/mainwindow.ui" line="1193"/>
         <source>Open &amp;URL...</source>
         <translation>주소 열기(&amp;U)...</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1195"/>
+        <location filename="../ui/mainwindow.ui" line="1196"/>
         <source>Ctrl+U</source>
         <translation>Ctrl+U</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1200"/>
+        <location filename="../ui/mainwindow.ui" line="1201"/>
         <source>Open Path from &amp;Clipboard</source>
         <translation>크립보드의 위치 열기(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1203"/>
+        <location filename="../ui/mainwindow.ui" line="1204"/>
         <source>Ctrl+V</source>
         <translation>Ctrl+V</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1211"/>
+        <location filename="../ui/mainwindow.ui" line="1212"/>
         <source>Show in &amp;Folder</source>
         <translation>파일 위치 열기(&amp;F)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1214"/>
+        <location filename="../ui/mainwindow.ui" line="1215"/>
         <source>Ctrl+F</source>
         <translation>Ctrl+F</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1222"/>
+        <location filename="../ui/mainwindow.ui" line="1223"/>
         <source>Play &amp;Next File</source>
         <translation>다음 파일 열기(&amp;N)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1225"/>
+        <location filename="../ui/mainwindow.ui" line="1226"/>
         <source>Ctrl+Right</source>
         <translation>Ctrl+Right</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1233"/>
+        <location filename="../ui/mainwindow.ui" line="1234"/>
         <source>Play &amp;Previous File</source>
         <translation>이전 파일 열기(&amp;P)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1236"/>
+        <location filename="../ui/mainwindow.ui" line="1237"/>
         <source>Ctrl+Left</source>
         <translation>Ctrl+Left</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1244"/>
+        <location filename="../ui/mainwindow.ui" line="1245"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1252"/>
+        <location filename="../ui/mainwindow.ui" line="1253"/>
         <source>&amp;Full Screen</source>
         <translation>전체화면(&amp;F)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1255"/>
+        <location filename="../ui/mainwindow.ui" line="1256"/>
         <source>Alt+Return</source>
         <translation>Alt+Return</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1269"/>
+        <location filename="../ui/mainwindow.ui" line="1270"/>
         <source>Show S&amp;ubtitles</source>
         <translation>자막 보임(&amp;U)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1272"/>
+        <location filename="../ui/mainwindow.ui" line="1273"/>
         <source>Ctrl+W</source>
         <translation>Ctrl+W</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1280"/>
+        <location filename="../ui/mainwindow.ui" line="1281"/>
         <source>Media &amp;Info</source>
         <translation>미디어 정보(&amp;I)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1283"/>
+        <location filename="../ui/mainwindow.ui" line="1284"/>
         <source>Ctrl+I</source>
         <translation>Ctrl+I</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1291"/>
+        <location filename="../ui/mainwindow.ui" line="1292"/>
         <location filename="../ui/mainwindow.cpp" line="371"/>
         <source>&amp;Play</source>
         <translation>재생(&amp;P)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1294"/>
+        <location filename="../ui/mainwindow.ui" line="1295"/>
         <source>Space</source>
         <translation>Space</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1302"/>
+        <location filename="../ui/mainwindow.ui" line="1303"/>
         <source>&amp;Stop</source>
         <translation>정지(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1305"/>
+        <location filename="../ui/mainwindow.ui" line="1306"/>
         <source>Ctrl+S</source>
         <translation>Ctrl+S</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1313"/>
+        <location filename="../ui/mainwindow.ui" line="1314"/>
         <source>&amp;Restart</source>
         <translation>다시시작(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1316"/>
+        <location filename="../ui/mainwindow.ui" line="1317"/>
         <source>Ctrl+R</source>
         <translation>Ctrl+R</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1331"/>
+        <location filename="../ui/mainwindow.ui" line="1332"/>
         <source>Sh&amp;uffle</source>
         <translation>무작위(&amp;U)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1339"/>
+        <location filename="../ui/mainwindow.ui" line="1340"/>
         <source>Stop after &amp;Current</source>
         <translation>현재 파일만 재생하기(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1405"/>
+        <location filename="../ui/mainwindow.ui" line="1406"/>
         <source>&amp;Show Playlist</source>
         <translation>재생목록 보이기(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1419"/>
+        <location filename="../ui/mainwindow.ui" line="1420"/>
         <source>&amp;Hide Album Art</source>
         <translation>앨범아트 숨기기(&amp;H)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1427"/>
+        <location filename="../ui/mainwindow.ui" line="1428"/>
         <source>&amp;Dim Lights</source>
         <translation>불 끄기(&amp;D)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1347"/>
+        <location filename="../ui/mainwindow.ui" line="1348"/>
         <source>&amp;Next Chapter</source>
         <translation>다음 챕터(&amp;N)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1350"/>
+        <location filename="../ui/mainwindow.ui" line="1351"/>
         <source>PgDown</source>
         <translation>PgDown</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1358"/>
+        <location filename="../ui/mainwindow.ui" line="1359"/>
         <source>&amp;Previous Chapter</source>
         <translation>이전 챕터(&amp;P)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1361"/>
+        <location filename="../ui/mainwindow.ui" line="1362"/>
         <source>PgUp</source>
         <translation>PgUp</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1369"/>
+        <location filename="../ui/mainwindow.ui" line="1370"/>
         <source>&amp;Frame Step</source>
         <translation>프레임별(&amp;F)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1372"/>
+        <location filename="../ui/mainwindow.ui" line="1373"/>
         <source>Shift+Right</source>
         <translation>Shift+Right</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1380"/>
+        <location filename="../ui/mainwindow.ui" line="1381"/>
         <source>Frame &amp;Back Step</source>
         <translation>뒤로 프레임별(&amp;F)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1383"/>
+        <location filename="../ui/mainwindow.ui" line="1384"/>
         <source>Shift+Left</source>
         <translation>Shift+Left</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1391"/>
+        <location filename="../ui/mainwindow.ui" line="1392"/>
         <source>&amp;Jump to Time...</source>
         <translation>특정 시간으로 이동(&amp;J)...</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1394"/>
+        <location filename="../ui/mainwindow.ui" line="1395"/>
         <source>Ctrl+J</source>
         <translation>Ctrl+J</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1408"/>
+        <location filename="../ui/mainwindow.ui" line="1409"/>
         <source>Ctrl+X</source>
         <translation>Ctrl+X</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1430"/>
+        <location filename="../ui/mainwindow.ui" line="1431"/>
         <source>Ctrl+D</source>
         <translation>Ctrl+D</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1435"/>
+        <location filename="../ui/mainwindow.ui" line="1436"/>
         <source>Online &amp;Help</source>
         <translation>온라인 도움말(&amp;H)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1438"/>
+        <location filename="../ui/mainwindow.ui" line="1439"/>
         <source>F1</source>
         <translation>F1</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1443"/>
+        <location filename="../ui/mainwindow.ui" line="1444"/>
         <source>&amp;Check for Updates</source>
         <translation>업데이트 확인(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1448"/>
+        <location filename="../ui/mainwindow.ui" line="1449"/>
         <source>About &amp;Qt</source>
         <translation>Qt 정보(&amp;Q)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1453"/>
+        <location filename="../ui/mainwindow.ui" line="1454"/>
         <source>About &amp;Baka MPlayer</source>
         <translation>Baka MPlayer 정보(&amp;B)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1458"/>
+        <location filename="../ui/mainwindow.ui" line="1459"/>
         <source>To &amp;Current Size</source>
         <translation>현재 크기로(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1461"/>
+        <location filename="../ui/mainwindow.ui" line="1462"/>
         <source>Alt+1</source>
         <translation>Alt+1</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1466"/>
+        <location filename="../ui/mainwindow.ui" line="1467"/>
         <source>50%</source>
         <translation>50%</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1469"/>
+        <location filename="../ui/mainwindow.ui" line="1470"/>
         <source>Alt+2</source>
         <translation>Alt+2</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1474"/>
+        <location filename="../ui/mainwindow.ui" line="1475"/>
         <source>75%</source>
         <translation>75%</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1477"/>
+        <location filename="../ui/mainwindow.ui" line="1478"/>
         <source>Alt+3</source>
         <translation>Alt+3</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1482"/>
+        <location filename="../ui/mainwindow.ui" line="1483"/>
         <source>100%</source>
         <translation>100%</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1485"/>
+        <location filename="../ui/mainwindow.ui" line="1486"/>
         <source>Alt+4</source>
         <translation>Alt+4</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1490"/>
+        <location filename="../ui/mainwindow.ui" line="1491"/>
         <source>200%</source>
         <translation>200%</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1493"/>
+        <location filename="../ui/mainwindow.ui" line="1494"/>
         <source>Alt+5</source>
         <translation>Alt+5</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1498"/>
+        <location filename="../ui/mainwindow.ui" line="1499"/>
         <source>&amp;Auto Detect</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1503"/>
+        <location filename="../ui/mainwindow.ui" line="1504"/>
         <source>Force &amp;4:3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1508"/>
+        <location filename="../ui/mainwindow.ui" line="1509"/>
         <source>Force 16:&amp;9</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1513"/>
+        <location filename="../ui/mainwindow.ui" line="1514"/>
         <source>Force &amp;2.35:1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1521"/>
+        <location filename="../ui/mainwindow.ui" line="1522"/>
         <source>&amp;Add Subtitle File...</source>
         <translation>자막 파일 추가(&amp;A)...</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1529"/>
-        <location filename="../ui/mainwindow.ui" line="1585"/>
-        <location filename="../ui/mainwindow.ui" line="1641"/>
-        <location filename="../ui/mainwindow.ui" line="1673"/>
+        <location filename="../ui/mainwindow.ui" line="1530"/>
+        <location filename="../ui/mainwindow.ui" line="1586"/>
+        <location filename="../ui/mainwindow.ui" line="1642"/>
+        <location filename="../ui/mainwindow.ui" line="1674"/>
         <source>[ none ]</source>
         <translation>[ 없음 ]</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1534"/>
+        <location filename="../ui/mainwindow.ui" line="1535"/>
         <source>&amp;Size +</source>
         <translation>더 크게(&amp;S) +</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1537"/>
+        <location filename="../ui/mainwindow.ui" line="1538"/>
         <source>Ctrl++</source>
         <translation>Ctrl++</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1542"/>
+        <location filename="../ui/mainwindow.ui" line="1543"/>
         <source>S&amp;ize -</source>
         <translation>더 작게(&amp;S) -</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1545"/>
+        <location filename="../ui/mainwindow.ui" line="1546"/>
         <source>Ctrl+-</source>
         <translation>Ctrl+-</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1550"/>
+        <location filename="../ui/mainwindow.ui" line="1551"/>
         <source>&amp;Reset Size</source>
         <translation>크기 초기화(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1561"/>
+        <location filename="../ui/mainwindow.ui" line="1562"/>
         <source>&amp;Off</source>
         <translation>사용 안함(&amp;O)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1569"/>
+        <location filename="../ui/mainwindow.ui" line="1570"/>
         <source>&amp;Playlist</source>
         <translation>재생목록(&amp;P)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1577"/>
+        <location filename="../ui/mainwindow.ui" line="1578"/>
         <source>&amp;This File</source>
         <translation>이 파일만(&amp;T)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1593"/>
+        <location filename="../ui/mainwindow.ui" line="1594"/>
         <source>Show D&amp;ebug Output</source>
         <translation>디버그 출력 보이기(&amp;E)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1596"/>
+        <location filename="../ui/mainwindow.ui" line="1597"/>
         <source>Ctrl+E</source>
         <translation>Ctrl+E</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1601"/>
+        <location filename="../ui/mainwindow.ui" line="1602"/>
         <source>&amp;Increase Volume</source>
         <translation>볼륨 키우기(&amp;I)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1604"/>
+        <location filename="../ui/mainwindow.ui" line="1605"/>
         <source>Ctrl+Up</source>
         <translation>Ctrl+Up</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1609"/>
+        <location filename="../ui/mainwindow.ui" line="1610"/>
         <source>&amp;Decrease Volume</source>
         <translation>볼륨 줄이기(&amp;D)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1612"/>
+        <location filename="../ui/mainwindow.ui" line="1613"/>
         <source>Ctrl+Down</source>
         <translation>Ctrl+Down</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1617"/>
+        <location filename="../ui/mainwindow.ui" line="1618"/>
         <source>With &amp;Subtitles...</source>
         <translation>자막도 포함(&amp;S)...</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1620"/>
+        <location filename="../ui/mainwindow.ui" line="1621"/>
         <source>Ctrl+T</source>
         <translation>Ctrl+T</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1625"/>
+        <location filename="../ui/mainwindow.ui" line="1626"/>
         <source>&amp;Without Subtitles...</source>
         <translation>자막 포함 안함(&amp;W)...</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1628"/>
+        <location filename="../ui/mainwindow.ui" line="1629"/>
         <source>Ctrl+Shift+T</source>
         <translation>Ctrl+Shift+T</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1633"/>
+        <location filename="../ui/mainwindow.ui" line="1634"/>
         <source>&amp;Preferences...</source>
         <translation>환경설정(&amp;P)...</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1646"/>
+        <location filename="../ui/mainwindow.ui" line="1647"/>
         <source>&amp;Increase</source>
         <translation>더 크게(&amp;I)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1649"/>
+        <location filename="../ui/mainwindow.ui" line="1650"/>
         <source>Ctrl+Shift+Up</source>
         <translation>Ctrl+Shift+Up</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1654"/>
+        <location filename="../ui/mainwindow.ui" line="1655"/>
         <source>&amp;Decrease</source>
         <translation>더 작게(&amp;D)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1657"/>
+        <location filename="../ui/mainwindow.ui" line="1658"/>
         <source>Ctrl+Shift+Down</source>
         <translation>Ctrl+Shift+Down</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1662"/>
+        <location filename="../ui/mainwindow.ui" line="1663"/>
         <source>&amp;Reset</source>
         <translation>초기화(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1665"/>
+        <location filename="../ui/mainwindow.ui" line="1666"/>
         <source>Ctrl+Shift+R</source>
         <translation>Ctrl+Shift+R</translation>
     </message>
@@ -945,124 +945,124 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
         <translation>일시중지(&amp;P)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="657"/>
+        <location filename="../ui/mainwindow.cpp" line="675"/>
         <source>Enter the file number you want to play:
 Note: Value must be from %0 - %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="658"/>
+        <location filename="../ui/mainwindow.cpp" line="676"/>
         <source>Enter File Number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="676"/>
+        <location filename="../ui/mainwindow.cpp" line="694"/>
         <source>No selection</source>
         <translation>선택 없음</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="468"/>
+        <location filename="../ui/mainwindow.cpp" line="474"/>
         <source>Speed: %0x</source>
         <translation>속도: %0x</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="682"/>
+        <location filename="../ui/mainwindow.cpp" line="700"/>
         <source>File %0 of %1</source>
         <translation>파일 %0 의 %1</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="712"/>
+        <location filename="../ui/mainwindow.cpp" line="730"/>
         <source>R&amp;emove from Playlist</source>
         <translation>선택 제거하기(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="727"/>
+        <location filename="../ui/mainwindow.cpp" line="745"/>
         <source>&amp;Delete from Disk</source>
         <translation>파일 지우기(&amp;D)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="744"/>
+        <location filename="../ui/mainwindow.cpp" line="762"/>
         <source>&amp;Refresh</source>
         <translation>다시 불러오기 (&amp;R)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="891"/>
+        <location filename="../ui/mainwindow.cpp" line="909"/>
         <source>Open Subtitle File</source>
         <translation>자막 파일 열기</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1073"/>
+        <location filename="../ui/mainwindow.cpp" line="1091"/>
         <source>http://bakamplayer.u8sand.net/help.php</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1311"/>
+        <location filename="../ui/mainwindow.cpp" line="1360"/>
         <source>Settings version not recognized</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1311"/>
+        <location filename="../ui/mainwindow.cpp" line="1360"/>
         <source>The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.
 Some features may not work and changed settings will not be saved.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1660"/>
+        <location filename="../ui/mainwindow.cpp" line="1712"/>
         <source>Dim Lights</source>
         <translation>불 끄기</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1660"/>
+        <location filename="../ui/mainwindow.cpp" line="1712"/>
         <source>In order to dim the lights, the desktop compositor has to be enabled. This can be done through Window Manager Desktop.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1726"/>
+        <location filename="../ui/mainwindow.cpp" line="1778"/>
         <source>Saved to &quot;%0&quot;, with subs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1728"/>
+        <location filename="../ui/mainwindow.cpp" line="1780"/>
         <source>Saved to &quot;%0&quot;, without subs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="892"/>
+        <location filename="../ui/mainwindow.cpp" line="910"/>
         <source>Subtitle Files</source>
         <translation>자막 파일</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1135"/>
+        <location filename="../ui/mainwindow.cpp" line="1153"/>
         <source>Seek Forward</source>
         <translation>앞으로 이동하기</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1144"/>
+        <location filename="../ui/mainwindow.cpp" line="1162"/>
         <source>Seek Backward</source>
         <translation>뒤로 이동하기</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1153"/>
+        <location filename="../ui/mainwindow.cpp" line="1171"/>
         <source>Exit Fullscreen/Boss Key</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1753"/>
+        <location filename="../ui/mainwindow.cpp" line="1805"/>
         <source>Open File</source>
         <translation>파일 열기</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1754"/>
+        <location filename="../ui/mainwindow.cpp" line="1806"/>
         <source>Media Files</source>
         <translation>미디어 파일</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1755"/>
+        <location filename="../ui/mainwindow.cpp" line="1807"/>
         <source>Video Files</source>
         <translation>비디오 파일</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1756"/>
+        <location filename="../ui/mainwindow.cpp" line="1808"/>
         <source>Audio Files</source>
         <translation>오디오 파일</translation>
     </message>
