@@ -27,7 +27,7 @@ if [ "$QMAKE" == "" ]; then
 
   qmake_ver=`$QMAKE --version | awk '/^Using Qt version/{print $4}'`
   if [[ $qmake_ver =~ (5.*) ]]; then
-    QMAKE=qmake
+    echo "Using qmake version $qmake_ver..."
   else
     echo "qmake version $qmake_ver found, looking for version 5.x..."
     QMAKE=qmake-qt5
@@ -35,6 +35,8 @@ if [ "$QMAKE" == "" ]; then
 
     qmake_ver=`$QMAKE --version | awk '/^Using Qt version/{print $4}'`
     if [[ $qmake_ver =~ (5.*) ]]; then
+      echo "Using qmake version $qmake_ver..."
+    else
       echo "Could not find qt version 5.x, please specify the QMAKE environment variable."
       exit 0
     fi
