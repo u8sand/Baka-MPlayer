@@ -57,7 +57,7 @@ desktop.path = $$APPDIR
 manual.path = $$DOCDIR/baka-mplayer
 man.path = $$MANDIR/man1
 license.path = $$LICENSEDIR/baka-mplayer
-translations.path = $$BAKADIR
+translations.path = $$BAKADIR/translations
 
 logo.files = ../etc/logo/baka-mplayer.svg
 desktop.files = ../etc/baka-mplayer.desktop
