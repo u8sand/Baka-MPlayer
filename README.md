@@ -59,7 +59,7 @@ The configuration file will be created on first run and will be written to `~/.c
 
 By default, Baka MPlayer will compile in English if no language is specified during compilation. To compile a multi-lingual version of baka-mplayer, configure it like so:
 
-	sh configure.sh CONFIG+=embed_translations
+	bash configure CONFIG+=embed_translations
 
 For more configuration options see the `configure.sh` source file or read the manual.
 

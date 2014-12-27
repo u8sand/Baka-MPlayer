@@ -21,7 +21,7 @@ build() {
   cd "$srcdir"
   git clone ${_gitroot} -b ${_gitname} ${pkgname}
   cd "$pkgname"
-	sh configure.sh INSTROOT="$pkgdir"
+	bash configure INSTROOT="$pkgdir"
 	make -j`grep -c ^processor /proc/cpuinfo`
 }
 

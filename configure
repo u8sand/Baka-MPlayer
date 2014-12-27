@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # options:
 # "TRANSLATIONS=translations/baka-mplayer_$lang.ts" - put language(s) you want, override
