@@ -21,16 +21,11 @@ build() {
   cd "$srcdir"
   git clone ${_gitroot} -b ${_gitname} ${pkgname}
   cd "$pkgname"
-	./make.sh
-	gzip -c etc/doc/baka-mplayer.man > etc/doc/baka-mplayer.1.gz
+	bash configure INSTROOT="$pkgdir"
+	make -j`grep -c ^processor /proc/cpuinfo`
 }
 
 package() {
   cd "$srcdir/$pkgname"
-	install -D "build/baka-mplayer" "$pkgdir/usr/bin/baka-mplayer"
-	install -D "etc/doc/baka-mplayer.md" "$pkgdir/usr/share/doc/baka-mplayer/baka-mplayer.md"
-	install -D "etc/doc/baka-mplayer.1.gz" "$pkgdir/usr/share/man/man1/baka-mplayer.1.gz"
-	install -D "LICENSE" "$pkgdir/usr/share/licenses/baka-mplayer/LICENSE"
-	install -D "etc/logo/baka-mplayer.svg" "$pkgdir/usr/share/pixmaps/baka-mplayer.svg"
-	install -D "etc/baka-mplayer.desktop" "$pkgdir/usr/share/applications/baka-mplayer.desktop"
+  make install
 }
