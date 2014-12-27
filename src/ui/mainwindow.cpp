@@ -1149,71 +1149,6 @@ MainWindow::MainWindow(QWidget *parent):
                 });
     }
 
-    // keyboard shortcuts
-    action = new QAction(tr("Seek Forward"), this);
-    action->setShortcut(QKeySequence("Right"));
-    connect(action, &QAction::triggered,
-            [=]
-            {
-                mpv->Seek(5, true);
-            });
-    addAction(action);
-
-    action = new QAction(tr("Seek Backward"), this);
-    action->setShortcut(QKeySequence("Left"));
-    connect(action, &QAction::triggered,
-            [=]
-            {
-                mpv->Seek(-5, true);
-            });
-    addAction(action);
-
-    action = new QAction(tr("Exit Fullscreen/Boss Key"), this);
-    action->setShortcut(QKeySequence("Esc"));
-    connect(action, &QAction::triggered,
-            [=]
-            {
-                if(isFullScreen()) // in fullscreen mode, escape will exit fullscreen
-                    FullScreen(false);
-                else
-                {
-                    mpv->Pause();
-                    setWindowState(windowState() | Qt::WindowMinimized);
-                }
-            });
-    addAction(action);
-
-
-    action = new QAction(this);
-    action->setShortcut(QKeySequence("Up"));
-    connect(action, &QAction::triggered,
-            [=]
-            {
-                if(ui->splitter->position() != 0)
-                    ui->playlistWidget->SelectItem(ui->playlistWidget->PreviousItem());
-            });
-    addAction(action);
-
-    action = new QAction(this);
-    action->setShortcut(QKeySequence("Down"));
-    connect(action, &QAction::triggered,
-            [=]
-            {
-                if(ui->splitter->position() != 0)
-                    ui->playlistWidget->SelectItem(ui->playlistWidget->NextItem());
-            });
-    addAction(action);
-
-    action = new QAction(this);
-    action->setShortcut(QKeySequence("Return"));
-    connect(action, &QAction::triggered,
-            [=]
-            {
-                if(ui->splitter->position() != 0)
-                    mpv->PlayFile(ui->playlistWidget->CurrentItem());
-            });
-    addAction(action);
-
     // add multimedia shortcuts
     ui->action_Play->setShortcuts({ui->action_Play->shortcut(), QKeySequence(Qt::Key_MediaPlay)});
     ui->action_Stop->setShortcuts({ui->action_Stop->shortcut(), QKeySequence(Qt::Key_MediaStop)});
@@ -1509,6 +1444,11 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
         QMouseEvent *mouseEvent = static_cast<QMouseEvent*>(event);
         mouseMoveEvent(mouseEvent);
     }
+    else if(event->type() == 6) // QEvent::KeyPress = 6  (but using QEvent::KeyPress causes compile errors, not sure why)
+    {
+        QKeyEvent *keyEvent = static_cast<QKeyEvent*>(event);
+        keyPressEvent(keyEvent);
+    }
     return false;
 }
 
@@ -1519,6 +1459,41 @@ void MainWindow::wheelEvent(QWheelEvent *event)
     else
         mpv->Volume(mpv->getVolume()-5);
     QMainWindow::wheelEvent(event);
+}
+
+void MainWindow::keyPressEvent(QKeyEvent *event)
+{
+    // keyboard shortcuts
+    switch(event->key())
+    {
+    case Qt::Key_Left:
+        mpv->Seek(-5, true);
+        break;
+    case Qt::Key_Right:
+        mpv->Seek(5, true);
+        break;
+    case Qt::Key_Up:
+        if(ui->splitter->position() != 0)
+            ui->playlistWidget->SelectItem(ui->playlistWidget->PreviousItem());
+        break;
+    case Qt::Key_Down:
+        if(ui->splitter->position() != 0)
+            ui->playlistWidget->SelectItem(ui->playlistWidget->NextItem());
+        break;
+    case Qt::Key_Return:
+        if(ui->splitter->position() != 0)
+            mpv->PlayFile(ui->playlistWidget->CurrentItem());
+        break;
+    case Qt::Key_Escape:
+        if(isFullScreen()) // in fullscreen mode, escape will exit fullscreen
+            FullScreen(false);
+        else
+        {
+            mpv->Pause();
+            setWindowState(windowState() | Qt::WindowMinimized);
+        }
+        break;
+    }
 }
 
 void MainWindow::mouseDoubleClickEvent(QMouseEvent *event)

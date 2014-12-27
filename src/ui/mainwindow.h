@@ -9,6 +9,7 @@
 #include <QStringList>
 #include <QMouseEvent>
 #include <QWheelEvent>
+#include <QKeyEvent>
 #include <QEvent>
 #include <QPoint>
 #include <QTimer>
@@ -43,7 +44,7 @@ protected:
     void mouseDoubleClickEvent(QMouseEvent *event); // double clicked the form
     bool eventFilter(QObject *obj, QEvent *event);  // event filter (get mouse move events from mpvFrame)
     void wheelEvent(QWheelEvent *event);            // the mouse wheel is used
-
+    void keyPressEvent(QKeyEvent *event);
     void SetPlaybackControls(bool enable);          // macro to enable/disable playback controls
 
 private slots:
