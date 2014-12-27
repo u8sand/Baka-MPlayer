@@ -49,8 +49,8 @@ If your distribution does not provide a package, you can compile it from source.
 
 	git clone -b release https://github.com/u8sand/Baka-MPlayer.git
 	cd "Baka-MPlayer"
-	sh configure.sh
-	make -j`grep -c ^processor /proc/cpuinfo`
+	./configure
+	make -j `grep -c ^processor /proc/cpuinfo`
 	make install
 
 The configuration file will be created on first run and will be written to `~/.config/bakamplayer.ini`.
@@ -59,7 +59,7 @@ The configuration file will be created on first run and will be written to `~/.c
 
 By default, Baka MPlayer will compile in English if no language is specified during compilation. To compile a multi-lingual version of baka-mplayer, configure it like so:
 
-	bash configure CONFIG+=embed_translations
+	./configure CONFIG+=embed_translations
 
 For more configuration options see the `configure.sh` source file or read the manual.
 
