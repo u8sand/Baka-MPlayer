@@ -69,9 +69,8 @@ PreferencesDialog::~PreferencesDialog()
         settings->setValue("onTop", "always");
     settings->setValue("trayIcon", ui->groupBox_2->isChecked());
     settings->setValue("hidePopup", ui->hidePopupCheckBox->isChecked());
-    settings->setValue("autoFit", ui->comboBox->currentText().midRef(1).toInt());
     if(ui->autoFitCheckBox->isChecked())
-        settings->setValue("autoFit", ui->comboBox->currentText().midRef(1).toInt());
+        settings->setValue("autoFit", ui->comboBox->currentText().left(ui->comboBox->currentText().length()-1).toInt());
     else
         settings->setValue("autoFit", 0);
     settings->endGroup();
