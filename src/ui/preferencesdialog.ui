@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>230</width>
-    <height>322</height>
+    <height>324</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -93,8 +93,9 @@ QPushButton {
 	color: whitesmoke;
 	border: 1px solid black;
 	border-radius: 2px;
-    min-width: 88px;
-	min-height: 25px;
+	padding: 4px 6px;
+    min-width: 76px;
+	min-height: 17px;
 }
 QPushButton:default {
 	border: 1px solid whitesmoke;
