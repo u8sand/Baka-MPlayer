@@ -1213,7 +1213,7 @@ QSlider::handle:horizontal {
     <string>Show in &amp;Folder</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+F</string>
+    <string>Ctrl+G</string>
    </property>
   </action>
   <action name="actionPlay_Next_File">
@@ -1407,7 +1407,7 @@ QSlider::handle:horizontal {
     <string>&amp;Show Playlist</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+X</string>
+    <string>Ctrl+F</string>
    </property>
   </action>
   <action name="action_Hide_Album_Art">
