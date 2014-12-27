@@ -39,7 +39,7 @@ win32 {
 
 !isEmpty(SETTINGS_FILE):SETTINGS_FILE=bakamplayer
 DEFINES += "BAKA_MPLAYER_VERSION=\\\"$$VERSION\\\"" \
-           "SETTINGS_FILE=\\\"$SETTINGS_FILE\\\""
+           "SETTINGS_FILE=\\\"$$SETTINGS_FILE\\\""
 !isEmpty(BAKA_LANG):DEFINES += "BAKA_MPLAYER_LANG=\\\"$$BAKA_LANG\\\""
 
 # INSTROOT is the installation root directory, leave empty if not using a package management system
