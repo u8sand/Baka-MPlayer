@@ -61,7 +61,7 @@ By default, Baka MPlayer will compile in English if no language is specified dur
 
 	./configure CONFIG+=embed_translations
 
-For more configuration options see the `configure.sh` source file or read the manual.
+For more configuration options see the `configure` source file or read the manual.
 
 You can check out which languages we currently support by checking out `Baka-MPlayer/src/translations/`.
 
