@@ -1255,7 +1255,17 @@ void MainWindow::LoadSettings()
     {
         QString version;
         if(settings->allKeys().length() == 0) // empty settings
+        {
             version = "2.0.1"; // current version
+
+            // populate initially
+#if defined(Q_OS_LINUX) || defined(Q_OS_UNIX)
+            settings->beginGroup("mpv");
+            settings->setValue("vo", QStringList{"vdpau","opengl-hq"});
+            settings->setValue("hwdec", "auto");
+            settings->endGroup();
+#endif
+        }
         else
             version = settings->value("baka-mplayer/version", "1.9.9").toString(); // defaults to the first version without version info in settings
 
