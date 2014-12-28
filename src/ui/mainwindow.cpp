@@ -1519,9 +1519,10 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
         case Qt::Key_Right:
             mpv->Seek(5, true);
             break;
-        case Qt::Key_Space:
-            TogglePlay();
-            break;
+            // already exists as play/pause hotkey
+//        case Qt::Key_Space:
+//            TogglePlay();
+//            break;
 
         // Playlist Control
         case Qt::Key_Up:
