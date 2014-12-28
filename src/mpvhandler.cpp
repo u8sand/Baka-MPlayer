@@ -131,7 +131,7 @@ void MpvHandler::LoadSettings(QSettings *settings, QString version)
 {
     if(settings)
     {
-        if(version == "2.0.1" || version == "2.0.0")
+        if(version == "2.0.2" || version == "2.0.1" || version == "2.0.0")
         {
             Debug(settings->value("baka-mplayer/debug", false).toBool());
 

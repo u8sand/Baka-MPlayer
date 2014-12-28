@@ -14,6 +14,7 @@
 #include <QPoint>
 #include <QTimer>
 #include <QElapsedTimer>
+#include <QTranslator>
 
 #include "mpvhandler.h"
 #include "updatemanager.h"
@@ -67,6 +68,7 @@ private:
     MpvHandler      *mpv;
     UpdateManager   *update;
     GestureHandler  *gesture;
+    QTranslator     *translator;
 
     bool            pathChanged,
                     menuVisible,
@@ -80,23 +82,26 @@ private:
 
     // variables
     QStringList recent;
-    QString onTop;
+    QString lang,
+            onTop;
     int autoFit,
         maxRecent;
     bool hidePopup,
          remaining,
          screenshotDialog,
-         debug;
+         debug,
+         gestures;
 
 public slots:
+    void setLang(QString s)          { emit langChanged(lang = s); }
     void setOnTop(QString s)         { emit onTopChanged(onTop = s); }
     void setAutoFit(int b)           { emit autoFitChanged(autoFit = b); }
     void setHidePopup(bool b)        { emit hidePopupChanged(hidePopup = b); }
     void setRemaining(bool b)        { emit remainingChanged(remaining = b); }
     void setScreenshotDialog(bool b) { emit screenshotDialogChanged(screenshotDialog = b); }
     void setDebug(bool b)            { emit debugChanged(debug = b); }
-
 signals:
+    void langChanged(QString);
     void onTopChanged(QString);
     void autoFitChanged(int);
     void hidePopupChanged(bool);

@@ -41,6 +41,7 @@ using namespace BakaUtil;
 MainWindow::MainWindow(QWidget *parent):
     QMainWindow(parent),
     ui(new Ui::MainWindow),
+    translator(nullptr),
     firstItem(false),
     init(false),
     autohide(new QTimer(this))
@@ -81,6 +82,26 @@ MainWindow::MainWindow(QWidget *parent):
     // setup signals & slots
 
     // mainwindow
+    connect(this, &MainWindow::langChanged,
+            [=](QString lang)
+            {
+                if(lang == "auto") // fetch lang from locale
+                    lang = QLocale::system().name().left(2);
+
+                if(lang != "en")
+                {
+                    QTranslator *tmp = translator;
+                    translator = new QTranslator();
+                    translator->load(QString("%0baka-mplayer_%1").arg(BAKA_MPLAYER_LANG_PATH, lang));
+                    qApp->installTranslator(translator);
+                    if(tmp != nullptr)
+                        delete tmp;
+                }
+                else if(translator != nullptr)
+                    qApp->removeTranslator(translator);
+
+                ui->retranslateUi(this);
+            });
     connect(this, &MainWindow::onTopChanged,
             [=](QString onTop)
             {
@@ -1191,7 +1212,7 @@ void MainWindow::LoadSettings()
         QString version;
         if(settings->allKeys().length() == 0) // empty settings
         {
-            version = "2.0.1"; // current version
+            version = "2.0.2"; // current version
 
             // populate initially
 #if defined(Q_OS_LINUX) || defined(Q_OS_UNIX)
@@ -1204,7 +1225,7 @@ void MainWindow::LoadSettings()
         else
             version = settings->value("baka-mplayer/version", "1.9.9").toString(); // defaults to the first version without version info in settings
 
-        if(version == "2.0.1") // current version
+        if(version == "2.0.2") // current version
         {
             settings->beginGroup("baka-mplayer");
             setOnTop(settings->value("onTop", "never").toString());
@@ -1218,6 +1239,29 @@ void MainWindow::LoadSettings()
             setScreenshotDialog(settings->value("screenshotDialog", true).toBool());
             recent = settings->value("recent").toStringList();
             maxRecent = settings->value("maxRecent", 5).toInt();
+            gestures = settings->value("gestures", true).toBool();
+            setLang(settings->value("lang", "auto").toString());
+            settings->endGroup();
+            UpdateRecentFiles();
+
+            mpv->LoadSettings(settings, version);
+        }
+        else if(version == "2.0.1")
+        {
+            settings->beginGroup("baka-mplayer");
+            setOnTop(settings->value("onTop", "never").toString());
+            setAutoFit(settings->value("autoFit", 100).toInt());
+            sysTrayIcon->setVisible(settings->value("trayIcon", false).toBool());
+            setHidePopup(settings->value("hidePopup", false).toBool());
+            setRemaining(settings->value("remaining", true).toBool());
+            ui->splitter->setNormalPosition(settings->value("splitter", ui->splitter->max()*1.0/8).toInt());
+            setDebug(settings->value("debug", false).toBool());
+            ui->hideFilesButton->setChecked(!settings->value("showAll", true).toBool());
+            setScreenshotDialog(settings->value("screenshotDialog", true).toBool());
+            recent = settings->value("recent").toStringList();
+            maxRecent = settings->value("maxRecent", 5).toInt();
+            gestures = settings->value("gestures", true).toBool();
+            setLang(settings->value("lang", "auto").toString());
             settings->endGroup();
             UpdateRecentFiles();
 
@@ -1239,6 +1283,8 @@ void MainWindow::LoadSettings()
             QString lf = settings->value("lastFile").toString();
             if(lf != QString())
                 recent.push_front(lf);
+            gestures = settings->value("gestures", true).toBool();
+            setLang(settings->value("lang", "auto").toString());
             settings->endGroup();
             UpdateRecentFiles();
 
@@ -1269,6 +1315,8 @@ void MainWindow::LoadSettings()
             QString lf = settings->value("mpv/lastFile").toString();
             if(lf != QString())
                 recent.push_front(lf);
+            gestures = settings->value("gestures", true).toBool();
+            setLang(settings->value("lang", "auto").toString());
             UpdateRecentFiles();
 
             mpv->LoadSettings(settings, version);
@@ -1292,6 +1340,8 @@ void MainWindow::LoadSettings()
             setScreenshotDialog(settings->value("screenshotDialog", true).toBool());
             recent = settings->value("recent").toStringList();
             maxRecent = settings->value("maxRecent", 5).toInt();
+            gestures = settings->value("gestures", true).toBool();
+            setLang(settings->value("lang", "auto").toString());
             settings->endGroup();
             UpdateRecentFiles();
 
@@ -1372,8 +1422,13 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
 {
     if(event->button() == Qt::LeftButton)
     {
-        if(ui->mpvFrame->rect().contains(event->pos())) // mouse is in the mpvFrame
-            gesture->Begin(GestureHandler::HSEEK_VVOLUME, event->globalPos(), pos());
+        if(gestures)
+        {
+            if(ui->mpvFrame->rect().contains(event->pos())) // mouse is in the mpvFrame
+                gesture->Begin(GestureHandler::HSEEK_VVOLUME, event->globalPos(), pos());
+            else if(!isFullScreen()) // not fullscreen
+                gesture->Begin(GestureHandler::MOVE, event->globalPos(), pos());
+        }
         else if(!isFullScreen()) // not fullscreen
             gesture->Begin(GestureHandler::MOVE, event->globalPos(), pos());
     }
