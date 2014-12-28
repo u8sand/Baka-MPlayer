@@ -1512,33 +1512,53 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
     // keyboard shortcuts
     switch(event->key())
     {
-    case Qt::Key_Left:
-        mpv->Seek(-5, true);
-        break;
-    case Qt::Key_Right:
-        mpv->Seek(5, true);
-        break;
-    case Qt::Key_Up:
-        if(ui->splitter->position() != 0)
-            ui->playlistWidget->SelectItem(ui->playlistWidget->PreviousItem());
-        break;
-    case Qt::Key_Down:
-        if(ui->splitter->position() != 0)
-            ui->playlistWidget->SelectItem(ui->playlistWidget->NextItem());
-        break;
-    case Qt::Key_Return:
-        if(ui->splitter->position() != 0)
-            mpv->PlayFile(ui->playlistWidget->CurrentItem());
-        break;
-    case Qt::Key_Escape:
-        if(isFullScreen()) // in fullscreen mode, escape will exit fullscreen
-            FullScreen(false);
-        else
-        {
-            mpv->Pause();
-            setWindowState(windowState() | Qt::WindowMinimized);
-        }
-        break;
+        // Playback/Seeking
+        case Qt::Key_Left:
+            mpv->Seek(-5, true);
+            break;
+        case Qt::Key_Right:
+            mpv->Seek(5, true);
+            break;
+        case Qt::Key_Space:
+            TogglePlay();
+            break;
+
+        // Playlist Control
+        case Qt::Key_Up:
+            if(ui->splitter->position() != 0)
+                ui->playlistWidget->SelectItem(ui->playlistWidget->PreviousItem());
+            break;
+        case Qt::Key_Down:
+            if(ui->splitter->position() != 0)
+                ui->playlistWidget->SelectItem(ui->playlistWidget->NextItem());
+            break;
+        case Qt::Key_Return:
+            if(ui->splitter->position() != 0)
+                mpv->PlayFile(ui->playlistWidget->CurrentItem());
+            break;
+        case Qt::Key_Escape:
+            if(isFullScreen()) // in fullscreen mode, escape will exit fullscreen
+                FullScreen(false);
+            else
+            {
+                mpv->Pause();
+                setWindowState(windowState() | Qt::WindowMinimized);
+            }
+            break;
+
+        // MPlayer shortcuts
+        case Qt::Key_F:
+            FullScreen(!isFullScreen());
+            break;
+        case Qt::Key_Q:
+            close();
+            break;
+        case Qt::Key_V:
+            TogglePlaylist();
+            break;
+        case Qt::Key_S:
+            ToggleSubtitles();
+            break;
     }
 }
 
