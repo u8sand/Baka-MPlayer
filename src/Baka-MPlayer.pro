@@ -93,7 +93,7 @@ CONFIG(install_translations) {
     translations.files = $$TRANSLATIONS_COMPILED
     INSTALLS += translations
 
-    BAKA_LANG_PATH += $$translations.path
+    BAKA_LANG_PATH += $$BAKADIR/translations
 
     # make sure translations are updated and released
     CONFIG *= update_translations release_translations

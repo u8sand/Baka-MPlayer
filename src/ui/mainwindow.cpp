@@ -92,7 +92,7 @@ MainWindow::MainWindow(QWidget *parent):
                 {
                     QTranslator *tmp = translator;
                     translator = new QTranslator();
-                    translator->load(QString("%0baka-mplayer_%1").arg(BAKA_MPLAYER_LANG_PATH, lang));
+                    translator->load(QString("baka-mplayer_%1").arg(lang), BAKA_MPLAYER_LANG_PATH);
                     qApp->installTranslator(translator);
                     if(tmp != nullptr)
                         delete tmp;
