@@ -125,7 +125,7 @@ MainWindow::MainWindow(QWidget *parent):
                         else if(mpv->getPlayState() == Mpv::Paused)
                             sysTrayIcon->showMessage("Baka MPlayer", tr("Paused"), QSystemTrayIcon::NoIcon, 4000);
                     }
-                    mpv->PlayPause(ui->playlistWidget->CurrentItem());
+                    TogglePlay();
                 }
 
             });
@@ -641,7 +641,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->playButton, &QPushButton::clicked,                      // Playback: Play/pause button
             [=]
             {
-                mpv->PlayPause(ui->playlistWidget->CurrentItem());
+                TogglePlay();
             });
 
     connect(ui->nextButton, &IndexButton::clicked,                      // Playback: Next button
@@ -659,8 +659,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->playlistButton, &QPushButton::clicked,                  // Playback: Clicked the playlist button
             [=]
             {
-                // if the position is 0, playlist is hidden so show it
-                ShowPlaylist(ui->splitter->position() == 0);
+                TogglePlaylist();
             });
 
     connect(ui->splitter, &CustomSplitter::positionChanged,             // Splitter position changed
@@ -962,7 +961,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->action_Play, &QAction::triggered,                       // Playback -> (Play|Pause)
             [=]
             {
-                mpv->PlayPause(ui->playlistWidget->CurrentItem());
+                TogglePlay();
             });
 
     connect(ui->action_Stop, &QAction::triggered,                       // Playback -> Stop
@@ -1633,6 +1632,26 @@ void MainWindow::FullScreen(bool fs)
         setCursor(QCursor(Qt::ArrowCursor)); // show cursor
         autohide->stop();
     }
+}
+
+void MainWindow::TogglePlay() {
+   mpv->PlayPause(ui->playlistWidget->CurrentItem());
+}
+
+bool MainWindow::isPlaylistVisible() {
+    // if the position is 0, playlist is hidden
+    return ui->splitter->position() != 0;
+}
+
+void MainWindow::TogglePlaylist() {
+    ShowPlaylist(!isPlaylistVisible());
+}
+
+void MainWindow::ToggleSubtitles() {
+    if(mpv->getSubtitleVisibility())
+        mpv->ShowSubtitles(false);
+    else
+        mpv->ShowSubtitles(true);
 }
 
 void MainWindow::ShowPlaylist(bool visible)
