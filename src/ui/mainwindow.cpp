@@ -326,11 +326,9 @@ MainWindow::MainWindow(QWidget *parent):
             ui->menu_Chapters->clear();
             for(auto &ch : chapters)
             {
-                action = ui->menu_Chapters->addAction(QString("%0: %1").arg(FormatNumberWithAmpersand(n, N), ch.title),
-                                                      this,
-                                                      nullptr,
-                                                      (n <= 9 ? QKeySequence("Ctrl+"+QString::number(n)) : QKeySequence())
-                                                      );
+                action = ui->menu_Chapters->addAction(QString("%0: %1").arg(FormatNumberWithAmpersand(n, N), ch.title));
+                if(n <= 9)
+                    action->setShortcut(QKeySequence("Ctrl+"+QString::number(n)));
                 connect(action, &QAction::triggered,
                         [=]
                         {
