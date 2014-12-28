@@ -327,8 +327,8 @@ MainWindow::MainWindow(QWidget *parent):
             for(auto &ch : chapters)
             {
                 action = ui->menu_Chapters->addAction(QString("%0: %1").arg(FormatNumberWithAmpersand(n, N), ch.title),
-                                                      NULL,
-                                                      NULL,
+                                                      this,
+                                                      nullptr,
                                                       (n <= 9 ? QKeySequence("Ctrl+"+QString::number(n)) : QKeySequence())
                                                       );
                 connect(action, &QAction::triggered,
