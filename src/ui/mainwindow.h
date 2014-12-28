@@ -17,6 +17,7 @@
 
 #include "mpvhandler.h"
 #include "updatemanager.h"
+#include "gesturehandler.h"
 #include "widgets/dimdialog.h"
 
 namespace Ui {
@@ -65,15 +66,13 @@ private:
     QSettings       *settings;
     MpvHandler      *mpv;
     UpdateManager   *update;
+    GestureHandler  *gesture;
 
-    QPoint          origPos,
-                    lastMousePos;
     bool            pathChanged,
                     menuVisible,
                     firstItem,
                     init;
     QTimer          *autohide;
-    QElapsedTimer   *moveTimer;
 
     QSystemTrayIcon *sysTrayIcon;
     QMenu           *trayIconMenu;

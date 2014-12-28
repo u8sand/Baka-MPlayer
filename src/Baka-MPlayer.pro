@@ -141,7 +141,8 @@ SOURCES += main.cpp\
     widgets/indexbutton.cpp \
     widgets/openbutton.cpp \
     widgets/playlistwidget.cpp \
-    widgets/seekbar.cpp
+    widgets/seekbar.cpp \
+    gesturehandler.cpp
 
 HEADERS  += \
     mpvhandler.h \
@@ -165,7 +166,8 @@ HEADERS  += \
     ui/mainwindow.h \
     ui/preferencesdialog.h \
     ui/screenshotdialog.h \
-    ui/updatedialog.h
+    ui/updatedialog.h \
+    gesturehandler.h
 
 FORMS    += \
     ui/aboutdialog.ui \

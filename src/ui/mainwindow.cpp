@@ -34,6 +34,7 @@
 #include "preferencesdialog.h"
 #include "screenshotdialog.h"
 #include "util.h"
+#include "gesturehandler.h"
 
 using namespace BakaUtil;
 
@@ -42,8 +43,7 @@ MainWindow::MainWindow(QWidget *parent):
     ui(new Ui::MainWindow),
     firstItem(false),
     init(false),
-    autohide(new QTimer(this)),
-    moveTimer(nullptr)
+    autohide(new QTimer(this))
 {
     QAction *action;
 
@@ -69,6 +69,7 @@ MainWindow::MainWindow(QWidget *parent):
 #endif
     mpv = new MpvHandler(ui->mpvFrame->winId(), this);
     update = new UpdateManager(this);
+    gesture = new GestureHandler(mpv, this);
 
     // initialize other ui elements
     // note: trayIcon does not work in my environment--known qt bug
@@ -1176,11 +1177,10 @@ MainWindow::~MainWindow()
     // but apparently they don't (https://github.com/u8sand/Baka-MPlayer/issues/47)
     delete mpv;
     delete update;
+    delete gesture;
 
     if(dimDialog)
         delete dimDialog;
-    if(moveTimer)
-        delete moveTimer;
     delete ui;
 }
 
@@ -1370,30 +1370,26 @@ void MainWindow::dropEvent(QDropEvent *event)
 
 void MainWindow::mousePressEvent(QMouseEvent *event)
 {
-    if(!isFullScreen())
+    if(event->button() == Qt::LeftButton)
     {
-        if(event->button() == Qt::LeftButton && !moveTimer)
-        {
-            moveTimer = new QElapsedTimer();
-            moveTimer->start();
-            origPos = pos();
-            lastMousePos = event->globalPos();
-        }
-        else if(event->button() == Qt::RightButton &&
-                mpv->getPlayState() > 0 &&  // if playing
-                ui->mpvFrame->rect().contains(event->pos())) // mouse is in the mpvFrame
-            mpv->PlayPause(ui->playlistWidget->CurrentItem());
+        if(ui->mpvFrame->rect().contains(event->pos())) // mouse is in the mpvFrame
+            gesture->Begin(GestureHandler::HSEEK_VVOLUME, event->globalPos(), pos());
+        else if(!isFullScreen()) // not fullscreen
+            gesture->Begin(GestureHandler::MOVE, event->globalPos(), pos());
+    }
+    else if(event->button() == Qt::RightButton &&
+            !isFullScreen() &&  // not fullscreen
+            mpv->getPlayState() > 0 &&  // playing
+            ui->mpvFrame->rect().contains(event->pos())) // mouse is in the mpvFrame
+    {
+        mpv->PlayPause(ui->playlistWidget->CurrentItem());
     }
     QMainWindow::mousePressEvent(event);
 }
 
 void MainWindow::mouseReleaseEvent(QMouseEvent *event)
 {
-    if(moveTimer)
-    {
-        delete moveTimer;
-        moveTimer = nullptr;
-    }
+    gesture->End();
     QMainWindow::mouseReleaseEvent(event);
 }
 
@@ -1401,12 +1397,8 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
 {
     static QRect playbackRect;
 
-    if(moveTimer && moveTimer->elapsed() > 10)
-    {
-        QMainWindow::move(origPos+event->globalPos()-lastMousePos);
+    if(gesture->Process(event->globalPos()))
         event->accept();
-        moveTimer->restart();
-    }
     else if(isFullScreen())
     {
         setCursor(QCursor(Qt::ArrowCursor)); // show the cursor
