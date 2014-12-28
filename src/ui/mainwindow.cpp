@@ -886,6 +886,12 @@ MainWindow::MainWindow(QWidget *parent):
                 FitWindow(100, true);
             });
 
+    connect(ui->action150, &QAction::triggered,                         // View -> Fit Window -> 150%
+            [=]
+            {
+                FitWindow(150, true);
+            });
+
     connect(ui->action200, &QAction::triggered,                         // View -> Fit Window -> 200%
             [=]
             {

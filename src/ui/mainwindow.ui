@@ -976,7 +976,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>580</width>
-     <height>24</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
@@ -1018,6 +1018,7 @@ QSlider::handle:horizontal {
      <addaction name="action50"/>
      <addaction name="action75"/>
      <addaction name="action100"/>
+     <addaction name="action150"/>
      <addaction name="action200"/>
     </widget>
     <widget class="QMenu" name="menuAspect_Ratio">
@@ -1497,7 +1498,7 @@ QSlider::handle:horizontal {
     <string>200%</string>
    </property>
    <property name="shortcut">
-    <string>Alt+5</string>
+    <string>Alt+6</string>
    </property>
   </action>
   <action name="action_Auto_Detect">
@@ -1678,6 +1679,14 @@ QSlider::handle:horizontal {
    </property>
    <property name="text">
     <string>[ none ]</string>
+   </property>
+  </action>
+  <action name="action150">
+   <property name="text">
+    <string>150%</string>
+   </property>
+   <property name="shortcut">
+    <string>Alt+5</string>
    </property>
   </action>
  </widget>
