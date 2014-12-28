@@ -1,7 +1,10 @@
 #include "gesturehandler.h"
 
+#include <QApplication>
+
 #include "ui/mainwindow.h"
 #include "mpvhandler.h"
+#include "util.h"
 
 GestureHandler::GestureHandler(MpvHandler *mpv, QObject *parent):
     QObject(parent),
@@ -28,6 +31,7 @@ bool GestureHandler::Begin(int gesture_type, QPoint mousePos, QPoint windowPos)
         elapsedTimer->start();
         this->gesture_type = gesture_type;
         this->gesture_state = NONE;
+        QApplication::setOverrideCursor(QCursor(Qt::PointingHandCursor));
     }
     else
         return false;
@@ -39,7 +43,6 @@ bool GestureHandler::Begin(int gesture_type, QPoint mousePos, QPoint windowPos)
         start.time = mpv->getTime();
         start.volume = mpv->getVolume();
     }
-
     start.mousePos = mousePos;
     return true;
 }
@@ -63,10 +66,13 @@ bool GestureHandler::Process(QPoint mousePos)
                     gesture_state = ADJUSTING_VOLUME;
                 break;
             case SEEKING:
-                mpv->Seek(start.time + delta.x() * hRatio, false);
+            {
+                int relative = delta.x() * hRatio;
+                mpv->Seek(start.time + relative, false, true);
                 break;
+            }
             case ADJUSTING_VOLUME:
-                mpv->Volume(start.volume - delta.y() * vRatio);
+                mpv->Volume(start.volume - delta.y() * vRatio, true);
                 break;
             }
         }
@@ -84,6 +90,7 @@ bool GestureHandler::End()
     {
         delete elapsedTimer;
         elapsedTimer = nullptr;
+        QApplication::restoreOverrideCursor();
     }
     else
         return false;

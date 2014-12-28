@@ -350,20 +350,37 @@ void MpvHandler::Rewind()
     }
 }
 
-void MpvHandler::Seek(int pos, bool relative)
+void MpvHandler::Seek(int pos, bool relative, bool osd)
 {
     if(playState > 0)
     {
         if(relative)
         {
             const QByteArray tmp = (((pos >= 0) ? "+" : QString())+QString::number(pos)).toUtf8();
-            const char *args[] = {"seek", tmp.constData(), NULL};
-            AsyncCommand(args);
+            if(osd)
+            {
+                const char *args[] = {"osd-msg", "seek", tmp.constData(), NULL};
+                AsyncCommand(args);
+            }
+            else
+            {
+                const char *args[] = {"seek", tmp.constData(), NULL};
+                AsyncCommand(args);
+            }
         }
         else
         {
-            double p = pos;
-            mpv_set_property_async(mpv, 0, "time-pos", MPV_FORMAT_DOUBLE, &p);
+            const QByteArray tmp = QString::number(pos).toUtf8();
+            if(osd)
+            {
+                const char *args[] = {"osd-msg", "seek", tmp.constData(), "absolute", NULL};
+                AsyncCommand(args);
+            }
+            else
+            {
+                const char *args[] = {"seek", tmp.constData(), "absolute", NULL};
+                AsyncCommand(args);
+            }
         }
     }
 }
@@ -407,15 +424,24 @@ void MpvHandler::PreviousChapter()
     AsyncCommand(args);
 }
 
-void MpvHandler::Volume(int level)
+void MpvHandler::Volume(int level, bool osd)
 {
     if(level > 100) level = 100;
     else if(level < 0) level = 0;
 
     if(playState > 0)
     {
-        double v = level;
-        mpv_set_property_async(mpv, 0, "volume", MPV_FORMAT_DOUBLE, &v);
+        if(osd)
+        {
+            const QByteArray tmp = QString::number(level).toUtf8();
+            const char *args[] = {"osd-msg", "set", "volume", tmp.constData(), NULL};
+            AsyncCommand(args);
+        }
+        else
+        {
+            double v = level;
+            mpv_set_property_async(mpv, 0, "volume", MPV_FORMAT_DOUBLE, &v);
+        }
     }
     else
         setVolume(level);

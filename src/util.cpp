@@ -13,6 +13,24 @@ QString BakaUtil::FormatTime(int _time, int _totalTime)
     return time.toString("0:ss");   // seconds
 }
 
+QString BakaUtil::FormatRelativeTime(int _time)
+{
+    QString prefix;
+    if(_time < 0)
+    {
+        prefix = "-";
+        _time = -_time;
+    }
+    else
+        prefix = "+";
+    QTime time = QTime::fromMSecsSinceStartOfDay(_time * 1000);
+    if(_time >= 3600) // hours
+        return prefix+time.toString("h:mm:ss");
+    if(_time >= 60)   // minutes
+        return prefix+time.toString("mm:ss");
+    return prefix+time.toString("0:ss");   // seconds
+}
+
 QString BakaUtil::FormatNumber(int val, int length)
 {
     if(length < 10)

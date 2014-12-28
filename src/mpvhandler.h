@@ -54,7 +54,7 @@ public slots:
     void Restart();
     void Rewind();
 
-    void Seek(int pos, bool relative = false);
+    void Seek(int pos, bool relative = false, bool osd = false);
     int Relative(int pos);
     void FrameStep();
     void FrameBackStep();
@@ -63,7 +63,7 @@ public slots:
     void NextChapter();
     void PreviousChapter();
 
-    void Volume(int);
+    void Volume(int, bool osd = false);
     void Speed(double);
     void Aspect(QString);
     void Vid(int);

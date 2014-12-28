@@ -6,6 +6,7 @@
 namespace BakaUtil
 {
     QString FormatTime(int time, int totalTime);
+    QString FormatRelativeTime(int time);
     QString FormatNumber(int val, int length);
     QString FormatNumberWithAmpersand(int val, int length);
     QString HumanSize(qint64);
