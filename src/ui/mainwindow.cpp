@@ -1426,14 +1426,19 @@ void MainWindow::dropEvent(QDropEvent *event)
 void MainWindow::mousePressEvent(QMouseEvent *event)
 {
     if(event->button() == Qt::LeftButton)
-        gesture->Begin(GestureHandler::MOVE, event->globalPos(), pos());
-    else if(event->button() == Qt::MiddleButton)
-        gesture->Begin(GestureHandler::HSEEK_VVOLUME, event->globalPos(), pos());
-    else if(!isFullScreen() && event->button() == Qt::RightButton &&
-                mpv->getPlayState() > 0 &&  // if playing
-                ui->mpvFrame->rect().contains(event->pos())) // mouse is in the mpvFrame
-            mpv->PlayPause(ui->playlistWidget->CurrentItem());
-
+    {
+        if(ui->mpvFrame->rect().contains(event->pos())) // mouse is in the mpvFrame
+            gesture->Begin(GestureHandler::HSEEK_VVOLUME, event->globalPos(), pos());
+        else if(!isFullScreen()) // not fullscreen
+            gesture->Begin(GestureHandler::MOVE, event->globalPos(), pos());
+    }
+    else if(event->button() == Qt::RightButton &&
+            !isFullScreen() &&  // not fullscreen
+            mpv->getPlayState() > 0 &&  // playing
+            ui->mpvFrame->rect().contains(event->pos())) // mouse is in the mpvFrame
+    {
+        mpv->PlayPause(ui->playlistWidget->CurrentItem());
+    }
     QMainWindow::mousePressEvent(event);
 }
 
