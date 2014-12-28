@@ -1519,10 +1519,6 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
         case Qt::Key_Right:
             mpv->Seek(5, true);
             break;
-            // already exists as play/pause hotkey
-//        case Qt::Key_Space:
-//            TogglePlay();
-//            break;
 
         // Playlist Control
         case Qt::Key_Up:
@@ -1545,20 +1541,6 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
                 mpv->Pause();
                 setWindowState(windowState() | Qt::WindowMinimized);
             }
-            break;
-
-        // MPlayer shortcuts
-        case Qt::Key_F:
-            FullScreen(!isFullScreen());
-            break;
-        case Qt::Key_Q:
-            close();
-            break;
-        case Qt::Key_V:
-            TogglePlaylist();
-            break;
-        case Qt::Key_S:
-            ToggleSubtitles();
             break;
     }
 }
