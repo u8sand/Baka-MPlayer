@@ -1635,20 +1635,24 @@ void MainWindow::FullScreen(bool fs)
     }
 }
 
-void MainWindow::TogglePlay() {
+void MainWindow::TogglePlay()
+{
    mpv->PlayPause(ui->playlistWidget->CurrentItem());
 }
 
-bool MainWindow::isPlaylistVisible() {
+bool MainWindow::isPlaylistVisible()
+{
     // if the position is 0, playlist is hidden
     return ui->splitter->position() != 0;
 }
 
-void MainWindow::TogglePlaylist() {
+void MainWindow::TogglePlaylist()
+{
     ShowPlaylist(!isPlaylistVisible());
 }
 
-void MainWindow::ToggleSubtitles() {
+void MainWindow::ToggleSubtitles()
+{
     if(mpv->getSubtitleVisibility())
         mpv->ShowSubtitles(false);
     else
