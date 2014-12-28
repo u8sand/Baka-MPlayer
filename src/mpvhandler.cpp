@@ -563,16 +563,16 @@ void MpvHandler::LoadFileInfo()
     // get length
     double len;
     mpv_get_property(mpv, "length", MPV_FORMAT_DOUBLE, &len);
-    fileInfo.length = (int)len;
+    fileInfo.length                  = (int)len;
 
-    fileInfo.video_params.codec = mpv_get_property_string(mpv, "video-codec");
-    fileInfo.video_params.format = mpv_get_property_string(mpv, "video-format");
-    fileInfo.video_params.bitrate = mpv_get_property_string(mpv, "video-bitrate");
-    fileInfo.audio_params.codec = mpv_get_property_string(mpv, "audio-codec");
-    fileInfo.audio_params.format = mpv_get_property_string(mpv, "audio-format");
-    fileInfo.audio_params.bitrate = mpv_get_property_string(mpv, "audio-bitrate");
+    fileInfo.video_params.codec      = mpv_get_property_string(mpv, "video-codec");
+    fileInfo.video_params.format     = mpv_get_property_string(mpv, "video-format");
+    fileInfo.video_params.bitrate    = mpv_get_property_string(mpv, "video-bitrate");
+    fileInfo.audio_params.codec      = mpv_get_property_string(mpv, "audio-codec");
+    fileInfo.audio_params.format     = mpv_get_property_string(mpv, "audio-format");
+    fileInfo.audio_params.bitrate    = mpv_get_property_string(mpv, "audio-bitrate");
     fileInfo.audio_params.samplerate = mpv_get_property_string(mpv, "audio-samplerate");
-    fileInfo.audio_params.channels = mpv_get_property_string(mpv, "audio-channels");
+    fileInfo.audio_params.channels   = mpv_get_property_string(mpv, "audio-channels");
 
     LoadTracks();
     LoadChapters();
@@ -689,10 +689,10 @@ void MpvHandler::LoadChapters()
 
 void MpvHandler::LoadVideoParams()
 {
-    mpv_get_property(mpv, "width", MPV_FORMAT_INT64, &fileInfo.video_params.width);
-    mpv_get_property(mpv, "height", MPV_FORMAT_INT64, &fileInfo.video_params.height);
-    mpv_get_property(mpv, "dwidth", MPV_FORMAT_INT64, &fileInfo.video_params.dwidth);
-    mpv_get_property(mpv, "dheight", MPV_FORMAT_INT64, &fileInfo.video_params.dheight);
+    mpv_get_property(mpv, "width",        MPV_FORMAT_INT64, &fileInfo.video_params.width);
+    mpv_get_property(mpv, "height",       MPV_FORMAT_INT64, &fileInfo.video_params.height);
+    mpv_get_property(mpv, "dwidth",       MPV_FORMAT_INT64, &fileInfo.video_params.dwidth);
+    mpv_get_property(mpv, "dheight",      MPV_FORMAT_INT64, &fileInfo.video_params.dheight);
     mpv_get_property(mpv, "video-aspect", MPV_FORMAT_INT64, &fileInfo.video_params.aspect);
 
     emit videoParamsChanged(fileInfo.video_params);

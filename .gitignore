@@ -4,3 +4,4 @@ Makefile
 *.kdev4
 *.qm
 *.out
+.tags*

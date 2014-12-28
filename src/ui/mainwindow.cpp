@@ -125,7 +125,7 @@ MainWindow::MainWindow(QWidget *parent):
                         else if(mpv->getPlayState() == Mpv::Paused)
                             sysTrayIcon->showMessage("Baka MPlayer", tr("Paused"), QSystemTrayIcon::NoIcon, 4000);
                     }
-                    mpv->PlayPause(ui->playlistWidget->CurrentItem());
+                    TogglePlay();
                 }
 
             });
@@ -641,7 +641,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->playButton, &QPushButton::clicked,                      // Playback: Play/pause button
             [=]
             {
-                mpv->PlayPause(ui->playlistWidget->CurrentItem());
+                TogglePlay();
             });
 
     connect(ui->nextButton, &IndexButton::clicked,                      // Playback: Next button
@@ -659,8 +659,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->playlistButton, &QPushButton::clicked,                  // Playback: Clicked the playlist button
             [=]
             {
-                // if the position is 0, playlist is hidden so show it
-                ShowPlaylist(ui->splitter->position() == 0);
+                TogglePlaylist();
             });
 
     connect(ui->splitter, &CustomSplitter::positionChanged,             // Splitter position changed
@@ -962,7 +961,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->action_Play, &QAction::triggered,                       // Playback -> (Play|Pause)
             [=]
             {
-                mpv->PlayPause(ui->playlistWidget->CurrentItem());
+                TogglePlay();
             });
 
     connect(ui->action_Stop, &QAction::triggered,                       // Playback -> Stop
@@ -1513,33 +1512,54 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
     // keyboard shortcuts
     switch(event->key())
     {
-    case Qt::Key_Left:
-        mpv->Seek(-5, true);
-        break;
-    case Qt::Key_Right:
-        mpv->Seek(5, true);
-        break;
-    case Qt::Key_Up:
-        if(ui->splitter->position() != 0)
-            ui->playlistWidget->SelectItem(ui->playlistWidget->PreviousItem());
-        break;
-    case Qt::Key_Down:
-        if(ui->splitter->position() != 0)
-            ui->playlistWidget->SelectItem(ui->playlistWidget->NextItem());
-        break;
-    case Qt::Key_Return:
-        if(ui->splitter->position() != 0)
-            mpv->PlayFile(ui->playlistWidget->CurrentItem());
-        break;
-    case Qt::Key_Escape:
-        if(isFullScreen()) // in fullscreen mode, escape will exit fullscreen
-            FullScreen(false);
-        else
-        {
-            mpv->Pause();
-            setWindowState(windowState() | Qt::WindowMinimized);
-        }
-        break;
+        // Playback/Seeking
+        case Qt::Key_Left:
+            mpv->Seek(-5, true);
+            break;
+        case Qt::Key_Right:
+            mpv->Seek(5, true);
+            break;
+            // already exists as play/pause hotkey
+//        case Qt::Key_Space:
+//            TogglePlay();
+//            break;
+
+        // Playlist Control
+        case Qt::Key_Up:
+            if(ui->splitter->position() != 0)
+                ui->playlistWidget->SelectItem(ui->playlistWidget->PreviousItem());
+            break;
+        case Qt::Key_Down:
+            if(ui->splitter->position() != 0)
+                ui->playlistWidget->SelectItem(ui->playlistWidget->NextItem());
+            break;
+        case Qt::Key_Return:
+            if(ui->splitter->position() != 0)
+                mpv->PlayFile(ui->playlistWidget->CurrentItem());
+            break;
+        case Qt::Key_Escape:
+            if(isFullScreen()) // in fullscreen mode, escape will exit fullscreen
+                FullScreen(false);
+            else
+            {
+                mpv->Pause();
+                setWindowState(windowState() | Qt::WindowMinimized);
+            }
+            break;
+
+        // MPlayer shortcuts
+        case Qt::Key_F:
+            FullScreen(!isFullScreen());
+            break;
+        case Qt::Key_Q:
+            close();
+            break;
+        case Qt::Key_V:
+            TogglePlaylist();
+            break;
+        case Qt::Key_S:
+            ToggleSubtitles();
+            break;
     }
 }
 
@@ -1633,6 +1653,26 @@ void MainWindow::FullScreen(bool fs)
         setCursor(QCursor(Qt::ArrowCursor)); // show cursor
         autohide->stop();
     }
+}
+
+void MainWindow::TogglePlay() {
+   mpv->PlayPause(ui->playlistWidget->CurrentItem());
+}
+
+bool MainWindow::isPlaylistVisible() {
+    // if the position is 0, playlist is hidden
+    return ui->splitter->position() != 0;
+}
+
+void MainWindow::TogglePlaylist() {
+    ShowPlaylist(!isPlaylistVisible());
+}
+
+void MainWindow::ToggleSubtitles() {
+    if(mpv->getSubtitleVisibility())
+        mpv->ShowSubtitles(false);
+    else
+        mpv->ShowSubtitles(true);
 }
 
 void MainWindow::ShowPlaylist(bool visible)

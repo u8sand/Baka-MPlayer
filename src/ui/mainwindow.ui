@@ -976,7 +976,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>580</width>
-     <height>26</height>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
@@ -1218,7 +1218,7 @@ QSlider::handle:horizontal {
     <string>Show in &amp;Folder</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+G</string>
+    <string>Ctrl+E</string>
    </property>
   </action>
   <action name="actionPlay_Next_File">
@@ -1600,7 +1600,7 @@ QSlider::handle:horizontal {
     <string>Show &amp;Command Line</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+E</string>
+    <string>Ctrl+G</string>
    </property>
   </action>
   <action name="action_Increase_Volume">

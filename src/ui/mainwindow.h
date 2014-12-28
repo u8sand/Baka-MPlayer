@@ -48,6 +48,10 @@ protected:
     void wheelEvent(QWheelEvent *event);            // the mouse wheel is used
     void keyPressEvent(QKeyEvent *event);
     void SetPlaybackControls(bool enable);          // macro to enable/disable playback controls
+    void TogglePlaylist();                          // toggles playlist visibility
+    void TogglePlay();                              // play/pause
+    void ToggleSubtitles();                         // play/pause
+    bool isPlaylistVisible();                       // is the playlist visible?
 
 private slots:
     void FullScreen(bool fs);                       // makes window fullscreen

@@ -10,6 +10,7 @@ PlaylistWidget::PlaylistWidget(QWidget *parent) :
     QListWidget(parent),
     cItem()
 {
+    setAttribute(Qt::WA_NoMousePropagation);
 }
 
 QAction *PlaylistWidget::addAction(const QString &text)
