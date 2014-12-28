@@ -123,6 +123,7 @@ CONFIG(release_translations) {
 SOURCES += main.cpp\
     mpvhandler.cpp \
     updatemanager.cpp \
+    gesturehandler.cpp \
     util.cpp \
     ui/aboutdialog.cpp \
     ui/infodialog.cpp \
@@ -147,6 +148,7 @@ HEADERS  += \
     mpvhandler.h \
     mpvtypes.h \
     updatemanager.h \
+    gesturehandler.h \
     util.h \
     widgets/customlabel.h \
     widgets/customlineedit.h \
