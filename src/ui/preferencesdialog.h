@@ -18,6 +18,9 @@ public:
 
     static void showPreferences(QSettings *settings, QWidget *parent = 0);
 
+protected:
+    void PopulateLangs();
+
 private:
     Ui::PreferencesDialog *ui;
     QSettings *settings;

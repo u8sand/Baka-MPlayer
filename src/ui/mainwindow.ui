@@ -478,17 +478,22 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
        <string notr="true">QSlider {
 	height: 9px;
 }
+QSlider::handle:horizontal:disabled,
+QSlider::sub-page:horizontal:disabled {
+	background: #0D0D0D;
+}
 QSlider::handle:horizontal {
 	/* handle color */
-	/*background: #01455F;*/
 	background: #008098;
 	width: 9px;
 	border-radius: 4px;
 }
 QSlider::groove:horizontal {
+	/* the non-progressed color */
 	background: #0D0D0D;
 }
 QSlider::sub-page:horizontal {
+	/* the progress color */
 	background: #008098;
 }</string>
       </property>
@@ -971,7 +976,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>580</width>
-     <height>23</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
@@ -1213,7 +1218,7 @@ QSlider::handle:horizontal {
     <string>Show in &amp;Folder</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+F</string>
+    <string>Ctrl+G</string>
    </property>
   </action>
   <action name="actionPlay_Next_File">
@@ -1407,7 +1412,7 @@ QSlider::handle:horizontal {
     <string>&amp;Show Playlist</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+X</string>
+    <string>Ctrl+F</string>
    </property>
   </action>
   <action name="action_Hide_Album_Art">

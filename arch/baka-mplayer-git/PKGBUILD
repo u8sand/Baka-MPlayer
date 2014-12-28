@@ -21,8 +21,8 @@ build() {
   cd "$srcdir"
   git clone ${_gitroot} -b ${_gitname} ${pkgname}
   cd "$pkgname"
-	bash configure INSTROOT="$pkgdir"
-	make -j`grep -c ^processor /proc/cpuinfo`
+	./configure INSTROOT="$pkgdir" CONFIG+=install_translations
+	make -j `grep -c ^processor /proc/cpuinfo`
 }
 
 package() {

@@ -37,11 +37,6 @@ win32 {
     #RC_LANG +=
 }
 
-isEmpty(SETTINGS_FILE):SETTINGS_FILE=bakamplayer
-DEFINES += "BAKA_MPLAYER_VERSION=\\\"$$VERSION\\\"" \
-           "SETTINGS_FILE=\\\"$$SETTINGS_FILE\\\""
-!isEmpty(BAKA_LANG):DEFINES += "BAKA_MPLAYER_LANG=\\\"$$BAKA_LANG\\\""
-
 # INSTROOT is the installation root directory, leave empty if not using a package management system
 isEmpty(BINDIR):BINDIR=$$INSTROOT/usr/bin
 isEmpty(MEDIADIR):MEDIADIR=$$INSTROOT/usr/share/pixmaps
@@ -72,11 +67,7 @@ INSTALLS += target logo desktop manual man license
 RESOURCES += rsclist.qrc
 
 isEmpty(TRANSLATIONS) {
-    TRANSLATIONS += \
-        translations/baka-mplayer_pt.ts \
-        translations/baka-mplayer_ru.ts \
-        translations/baka-mplayer_ko.ts \
-        translations/baka-mplayer_zh.ts
+    include(translations.pri)
 }
 
 TRANSLATIONS_COMPILED = $$TRANSLATIONS
@@ -91,8 +82,7 @@ CONFIG(embed_translations) {
     # add file to build
     RESOURCES += translations.qrc
 
-    # setup defines so program knows what to look for
-    DEFINES += "BAKA_MPLAYER_LANG_PATH=\\\":/translations/\\\""
+    BAKA_LANG_PATH += :/translations
 
     # make sure translations are updated and released
     CONFIG *= update_translations release_translations
@@ -103,9 +93,7 @@ CONFIG(install_translations) {
     translations.files = $$TRANSLATIONS_COMPILED
     INSTALLS += translations
 
-    # setup defines so program knows what to look for
-
-    DEFINES += "BAKA_MPLAYER_LANG_PATH=\\\"$$translations.path\\\""
+    BAKA_LANG_PATH += $$BAKADIR/translations
 
     # make sure translations are updated and released
     CONFIG *= update_translations release_translations
@@ -120,9 +108,17 @@ CONFIG(release_translations) {
 }
 
 
+isEmpty(SETTINGS_FILE):SETTINGS_FILE=bakamplayer
+DEFINES += "BAKA_MPLAYER_VERSION=\\\"$$VERSION\\\"" \
+           "SETTINGS_FILE=\\\"$$SETTINGS_FILE\\\"" \
+           "BAKA_MPLAYER_LANG_PATH=\\\"$$BAKA_LANG_PATH\\\""
+!isEmpty(BAKA_LANG):DEFINES += "BAKA_MPLAYER_LANG=\\\"$$BAKA_LANG\\\""
+
+
 SOURCES += main.cpp\
     mpvhandler.cpp \
     updatemanager.cpp \
+    gesturehandler.cpp \
     util.cpp \
     ui/aboutdialog.cpp \
     ui/infodialog.cpp \
@@ -147,6 +143,7 @@ HEADERS  += \
     mpvhandler.h \
     mpvtypes.h \
     updatemanager.h \
+    gesturehandler.h \
     util.h \
     widgets/customlabel.h \
     widgets/customlineedit.h \

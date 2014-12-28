@@ -34,16 +34,17 @@
 #include "preferencesdialog.h"
 #include "screenshotdialog.h"
 #include "util.h"
+#include "gesturehandler.h"
 
 using namespace BakaUtil;
 
 MainWindow::MainWindow(QWidget *parent):
     QMainWindow(parent),
     ui(new Ui::MainWindow),
+    translator(nullptr),
     firstItem(false),
     init(false),
-    autohide(new QTimer(this)),
-    moveTimer(nullptr)
+    autohide(new QTimer(this))
 {
     QAction *action;
 
@@ -69,6 +70,7 @@ MainWindow::MainWindow(QWidget *parent):
 #endif
     mpv = new MpvHandler(ui->mpvFrame->winId(), this);
     update = new UpdateManager(this);
+    gesture = new GestureHandler(mpv, this);
 
     // initialize other ui elements
     // note: trayIcon does not work in my environment--known qt bug
@@ -80,6 +82,26 @@ MainWindow::MainWindow(QWidget *parent):
     // setup signals & slots
 
     // mainwindow
+    connect(this, &MainWindow::langChanged,
+            [=](QString lang)
+            {
+                if(lang == "auto") // fetch lang from locale
+                    lang = QLocale::system().name().left(2);
+
+                if(lang != "en")
+                {
+                    QTranslator *tmp = translator;
+                    translator = new QTranslator();
+                    translator->load(QString("baka-mplayer_%1").arg(lang), BAKA_MPLAYER_LANG_PATH);
+                    qApp->installTranslator(translator);
+                    if(tmp != nullptr)
+                        delete tmp;
+                }
+                else if(translator != nullptr)
+                    qApp->removeTranslator(translator);
+
+                ui->retranslateUi(this);
+            });
     connect(this, &MainWindow::onTopChanged,
             [=](QString onTop)
             {
@@ -305,8 +327,8 @@ MainWindow::MainWindow(QWidget *parent):
             for(auto &ch : chapters)
             {
                 action = ui->menu_Chapters->addAction(QString("%0: %1").arg(FormatNumberWithAmpersand(n, N), ch.title),
-                                                      NULL,
-                                                      NULL,
+                                                      this,
+                                                      nullptr,
                                                       (n <= 9 ? QKeySequence("Ctrl+"+QString::number(n)) : QKeySequence())
                                                       );
                 connect(action, &QAction::triggered,
@@ -1149,71 +1171,6 @@ MainWindow::MainWindow(QWidget *parent):
                 });
     }
 
-    // keyboard shortcuts
-    action = new QAction(tr("Seek Forward"), this);
-    action->setShortcut(QKeySequence("Right"));
-    connect(action, &QAction::triggered,
-            [=]
-            {
-                mpv->Seek(5, true);
-            });
-    addAction(action);
-
-    action = new QAction(tr("Seek Backward"), this);
-    action->setShortcut(QKeySequence("Left"));
-    connect(action, &QAction::triggered,
-            [=]
-            {
-                mpv->Seek(-5, true);
-            });
-    addAction(action);
-
-    action = new QAction(tr("Exit Fullscreen/Boss Key"), this);
-    action->setShortcut(QKeySequence("Esc"));
-    connect(action, &QAction::triggered,
-            [=]
-            {
-                if(isFullScreen()) // in fullscreen mode, escape will exit fullscreen
-                    FullScreen(false);
-                else
-                {
-                    mpv->Pause();
-                    setWindowState(windowState() | Qt::WindowMinimized);
-                }
-            });
-    addAction(action);
-
-
-    action = new QAction(this);
-    action->setShortcut(QKeySequence("Up"));
-    connect(action, &QAction::triggered,
-            [=]
-            {
-                if(ui->splitter->position() != 0)
-                    ui->playlistWidget->SelectItem(ui->playlistWidget->PreviousItem());
-            });
-    addAction(action);
-
-    action = new QAction(this);
-    action->setShortcut(QKeySequence("Down"));
-    connect(action, &QAction::triggered,
-            [=]
-            {
-                if(ui->splitter->position() != 0)
-                    ui->playlistWidget->SelectItem(ui->playlistWidget->NextItem());
-            });
-    addAction(action);
-
-    action = new QAction(this);
-    action->setShortcut(QKeySequence("Return"));
-    connect(action, &QAction::triggered,
-            [=]
-            {
-                if(ui->splitter->position() != 0)
-                    mpv->PlayFile(ui->playlistWidget->CurrentItem());
-            });
-    addAction(action);
-
     // add multimedia shortcuts
     ui->action_Play->setShortcuts({ui->action_Play->shortcut(), QKeySequence(Qt::Key_MediaPlay)});
     ui->action_Stop->setShortcuts({ui->action_Stop->shortcut(), QKeySequence(Qt::Key_MediaStop)});
@@ -1241,11 +1198,10 @@ MainWindow::~MainWindow()
     // but apparently they don't (https://github.com/u8sand/Baka-MPlayer/issues/47)
     delete mpv;
     delete update;
+    delete gesture;
 
     if(dimDialog)
         delete dimDialog;
-    if(moveTimer)
-        delete moveTimer;
     delete ui;
 }
 
@@ -1256,7 +1212,7 @@ void MainWindow::LoadSettings()
         QString version;
         if(settings->allKeys().length() == 0) // empty settings
         {
-            version = "2.0.1"; // current version
+            version = "2.0.2"; // current version
 
             // populate initially
 #if defined(Q_OS_LINUX) || defined(Q_OS_UNIX)
@@ -1269,7 +1225,7 @@ void MainWindow::LoadSettings()
         else
             version = settings->value("baka-mplayer/version", "1.9.9").toString(); // defaults to the first version without version info in settings
 
-        if(version == "2.0.1") // current version
+        if(version == "2.0.2") // current version
         {
             settings->beginGroup("baka-mplayer");
             setOnTop(settings->value("onTop", "never").toString());
@@ -1283,6 +1239,29 @@ void MainWindow::LoadSettings()
             setScreenshotDialog(settings->value("screenshotDialog", true).toBool());
             recent = settings->value("recent").toStringList();
             maxRecent = settings->value("maxRecent", 5).toInt();
+            gestures = settings->value("gestures", true).toBool();
+            setLang(settings->value("lang", "auto").toString());
+            settings->endGroup();
+            UpdateRecentFiles();
+
+            mpv->LoadSettings(settings, version);
+        }
+        else if(version == "2.0.1")
+        {
+            settings->beginGroup("baka-mplayer");
+            setOnTop(settings->value("onTop", "never").toString());
+            setAutoFit(settings->value("autoFit", 100).toInt());
+            sysTrayIcon->setVisible(settings->value("trayIcon", false).toBool());
+            setHidePopup(settings->value("hidePopup", false).toBool());
+            setRemaining(settings->value("remaining", true).toBool());
+            ui->splitter->setNormalPosition(settings->value("splitter", ui->splitter->max()*1.0/8).toInt());
+            setDebug(settings->value("debug", false).toBool());
+            ui->hideFilesButton->setChecked(!settings->value("showAll", true).toBool());
+            setScreenshotDialog(settings->value("screenshotDialog", true).toBool());
+            recent = settings->value("recent").toStringList();
+            maxRecent = settings->value("maxRecent", 5).toInt();
+            gestures = settings->value("gestures", true).toBool();
+            setLang(settings->value("lang", "auto").toString());
             settings->endGroup();
             UpdateRecentFiles();
 
@@ -1304,6 +1283,8 @@ void MainWindow::LoadSettings()
             QString lf = settings->value("lastFile").toString();
             if(lf != QString())
                 recent.push_front(lf);
+            gestures = settings->value("gestures", true).toBool();
+            setLang(settings->value("lang", "auto").toString());
             settings->endGroup();
             UpdateRecentFiles();
 
@@ -1334,6 +1315,8 @@ void MainWindow::LoadSettings()
             QString lf = settings->value("mpv/lastFile").toString();
             if(lf != QString())
                 recent.push_front(lf);
+            gestures = settings->value("gestures", true).toBool();
+            setLang(settings->value("lang", "auto").toString());
             UpdateRecentFiles();
 
             mpv->LoadSettings(settings, version);
@@ -1357,6 +1340,8 @@ void MainWindow::LoadSettings()
             setScreenshotDialog(settings->value("screenshotDialog", true).toBool());
             recent = settings->value("recent").toStringList();
             maxRecent = settings->value("maxRecent", 5).toInt();
+            gestures = settings->value("gestures", true).toBool();
+            setLang(settings->value("lang", "auto").toString());
             settings->endGroup();
             UpdateRecentFiles();
 
@@ -1435,30 +1420,31 @@ void MainWindow::dropEvent(QDropEvent *event)
 
 void MainWindow::mousePressEvent(QMouseEvent *event)
 {
-    if(!isFullScreen())
+    if(event->button() == Qt::LeftButton)
     {
-        if(event->button() == Qt::LeftButton && !moveTimer)
+        if(gestures)
         {
-            moveTimer = new QElapsedTimer();
-            moveTimer->start();
-            origPos = pos();
-            lastMousePos = event->globalPos();
+            if(ui->mpvFrame->rect().contains(event->pos())) // mouse is in the mpvFrame
+                gesture->Begin(GestureHandler::HSEEK_VVOLUME, event->globalPos(), pos());
+            else if(!isFullScreen()) // not fullscreen
+                gesture->Begin(GestureHandler::MOVE, event->globalPos(), pos());
         }
-        else if(event->button() == Qt::RightButton &&
-                mpv->getPlayState() > 0 &&  // if playing
-                ui->mpvFrame->rect().contains(event->pos())) // mouse is in the mpvFrame
-            mpv->PlayPause(ui->playlistWidget->CurrentItem());
+        else if(!isFullScreen()) // not fullscreen
+            gesture->Begin(GestureHandler::MOVE, event->globalPos(), pos());
+    }
+    else if(event->button() == Qt::RightButton &&
+            !isFullScreen() &&  // not fullscreen
+            mpv->getPlayState() > 0 &&  // playing
+            ui->mpvFrame->rect().contains(event->pos())) // mouse is in the mpvFrame
+    {
+        mpv->PlayPause(ui->playlistWidget->CurrentItem());
     }
     QMainWindow::mousePressEvent(event);
 }
 
 void MainWindow::mouseReleaseEvent(QMouseEvent *event)
 {
-    if(moveTimer)
-    {
-        delete moveTimer;
-        moveTimer = nullptr;
-    }
+    gesture->End();
     QMainWindow::mouseReleaseEvent(event);
 }
 
@@ -1466,12 +1452,8 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
 {
     static QRect playbackRect;
 
-    if(moveTimer && moveTimer->elapsed() > 10)
-    {
-        QMainWindow::move(origPos+event->globalPos()-lastMousePos);
+    if(gesture->Process(event->globalPos()))
         event->accept();
-        moveTimer->restart();
-    }
     else if(isFullScreen())
     {
         setCursor(QCursor(Qt::ArrowCursor)); // show the cursor
@@ -1509,6 +1491,11 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
         QMouseEvent *mouseEvent = static_cast<QMouseEvent*>(event);
         mouseMoveEvent(mouseEvent);
     }
+    else if(event->type() == 6) // QEvent::KeyPress = 6  (but using QEvent::KeyPress causes compile errors, not sure why)
+    {
+        QKeyEvent *keyEvent = static_cast<QKeyEvent*>(event);
+        keyPressEvent(keyEvent);
+    }
     return false;
 }
 
@@ -1519,6 +1506,41 @@ void MainWindow::wheelEvent(QWheelEvent *event)
     else
         mpv->Volume(mpv->getVolume()-5);
     QMainWindow::wheelEvent(event);
+}
+
+void MainWindow::keyPressEvent(QKeyEvent *event)
+{
+    // keyboard shortcuts
+    switch(event->key())
+    {
+    case Qt::Key_Left:
+        mpv->Seek(-5, true);
+        break;
+    case Qt::Key_Right:
+        mpv->Seek(5, true);
+        break;
+    case Qt::Key_Up:
+        if(ui->splitter->position() != 0)
+            ui->playlistWidget->SelectItem(ui->playlistWidget->PreviousItem());
+        break;
+    case Qt::Key_Down:
+        if(ui->splitter->position() != 0)
+            ui->playlistWidget->SelectItem(ui->playlistWidget->NextItem());
+        break;
+    case Qt::Key_Return:
+        if(ui->splitter->position() != 0)
+            mpv->PlayFile(ui->playlistWidget->CurrentItem());
+        break;
+    case Qt::Key_Escape:
+        if(isFullScreen()) // in fullscreen mode, escape will exit fullscreen
+            FullScreen(false);
+        else
+        {
+            mpv->Pause();
+            setWindowState(windowState() | Qt::WindowMinimized);
+        }
+        break;
+    }
 }
 
 void MainWindow::mouseDoubleClickEvent(QMouseEvent *event)
@@ -1625,6 +1647,7 @@ void MainWindow::ShowPlaylist(bool visible)
         if(ui->splitter->position() != ui->splitter->max() && ui->splitter->position() != 0)
             ui->splitter->setNormalPosition(ui->splitter->position()); // save current splitter position as the normal position
         ui->splitter->setPosition(0); // set splitter position to right-most
+        setFocus();
     }
 }
 

@@ -9,13 +9,16 @@
 #include <QStringList>
 #include <QMouseEvent>
 #include <QWheelEvent>
+#include <QKeyEvent>
 #include <QEvent>
 #include <QPoint>
 #include <QTimer>
 #include <QElapsedTimer>
+#include <QTranslator>
 
 #include "mpvhandler.h"
 #include "updatemanager.h"
+#include "gesturehandler.h"
 #include "widgets/dimdialog.h"
 
 namespace Ui {
@@ -43,7 +46,7 @@ protected:
     void mouseDoubleClickEvent(QMouseEvent *event); // double clicked the form
     bool eventFilter(QObject *obj, QEvent *event);  // event filter (get mouse move events from mpvFrame)
     void wheelEvent(QWheelEvent *event);            // the mouse wheel is used
-
+    void keyPressEvent(QKeyEvent *event);
     void SetPlaybackControls(bool enable);          // macro to enable/disable playback controls
 
 private slots:
@@ -64,15 +67,14 @@ private:
     QSettings       *settings;
     MpvHandler      *mpv;
     UpdateManager   *update;
+    GestureHandler  *gesture;
+    QTranslator     *translator;
 
-    QPoint          origPos,
-                    lastMousePos;
     bool            pathChanged,
                     menuVisible,
                     firstItem,
                     init;
     QTimer          *autohide;
-    QElapsedTimer   *moveTimer;
 
     QSystemTrayIcon *sysTrayIcon;
     QMenu           *trayIconMenu;
@@ -80,23 +82,26 @@ private:
 
     // variables
     QStringList recent;
-    QString onTop;
+    QString lang,
+            onTop;
     int autoFit,
         maxRecent;
     bool hidePopup,
          remaining,
          screenshotDialog,
-         debug;
+         debug,
+         gestures;
 
 public slots:
+    void setLang(QString s)          { emit langChanged(lang = s); }
     void setOnTop(QString s)         { emit onTopChanged(onTop = s); }
     void setAutoFit(int b)           { emit autoFitChanged(autoFit = b); }
     void setHidePopup(bool b)        { emit hidePopupChanged(hidePopup = b); }
     void setRemaining(bool b)        { emit remainingChanged(remaining = b); }
     void setScreenshotDialog(bool b) { emit screenshotDialogChanged(screenshotDialog = b); }
     void setDebug(bool b)            { emit debugChanged(debug = b); }
-
 signals:
+    void langChanged(QString);
     void onTopChanged(QString);
     void autoFitChanged(int);
     void hidePopupChanged(bool);

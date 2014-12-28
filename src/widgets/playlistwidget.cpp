@@ -46,6 +46,7 @@ void PlaylistWidget::SelectItem(const QString &item, bool internal)
             }
             else
                 setCurrentRow(0);
+            scrollToItem(currentItem());
         }
         else
             cItem = item;
