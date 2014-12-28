@@ -1592,6 +1592,7 @@ void MainWindow::ShowPlaylist(bool visible)
         if(ui->splitter->position() != ui->splitter->max() && ui->splitter->position() != 0)
             ui->splitter->setNormalPosition(ui->splitter->position()); // save current splitter position as the normal position
         ui->splitter->setPosition(0); // set splitter position to right-most
+        setFocus();
     }
 }
 
