@@ -1181,13 +1181,6 @@ MainWindow::MainWindow(QWidget *parent):
     ui->actionPlay_Previous_File->setShortcuts({ui->actionPlay_Previous_File->shortcut(), QKeySequence(Qt::Key_MediaPrevious)});
 //    ui->action_Increase_Volume->setShortcuts();
 //    ui->action_Decrease_Volume->setShortcuts();
-
-    // set window geometry from settings: leave this out of settings so that preference dialog doesn't center/resize the window
-    setGeometry(QStyle::alignedRect(Qt::LeftToRight,
-                                    Qt::AlignCenter,
-                                    QSize(settings->value("baka-mplayer/width", 600).toInt(),
-                                          settings->value("baka-mplayer/height", 430).toInt()),
-                                    qApp->desktop()->availableGeometry()));
 }
 
 MainWindow::~MainWindow()
@@ -1299,11 +1292,6 @@ void MainWindow::LoadSettings()
         else if(version == "1.9.9")
         {
             settings->beginGroup("window");
-            setGeometry(QStyle::alignedRect(Qt::LeftToRight,
-                                            Qt::AlignCenter,
-                                            QSize(settings->value("width", 600).toInt(),
-                                                  settings->value("height", 430).toInt()),
-                                            qApp->desktop()->availableGeometry()));
             setOnTop(settings->value("onTop", "never").toString());
             setAutoFit(settings->value("autoFit", 100).toInt());
             sysTrayIcon->setVisible(settings->value("trayIcon", false).toBool());
@@ -1368,8 +1356,6 @@ void MainWindow::SaveSettings()
         mpv->SaveSettings(settings);
 
         settings->beginGroup("baka-mplayer");
-        settings->setValue("width", normalGeometry().width());
-        settings->setValue("height", normalGeometry().height());
         settings->setValue("onTop", onTop);
         settings->setValue("autoFit", autoFit);
         settings->setValue("trayIcon", sysTrayIcon->isVisible());
