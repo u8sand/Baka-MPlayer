@@ -123,6 +123,7 @@ CONFIG(release_translations) {
 SOURCES += main.cpp\
     mpvhandler.cpp \
     updatemanager.cpp \
+    gesturehandler.cpp \
     util.cpp \
     ui/aboutdialog.cpp \
     ui/infodialog.cpp \
@@ -141,13 +142,13 @@ SOURCES += main.cpp\
     widgets/indexbutton.cpp \
     widgets/openbutton.cpp \
     widgets/playlistwidget.cpp \
-    widgets/seekbar.cpp \
-    gesturehandler.cpp
+    widgets/seekbar.cpp
 
 HEADERS  += \
     mpvhandler.h \
     mpvtypes.h \
     updatemanager.h \
+    gesturehandler.h \
     util.h \
     widgets/customlabel.h \
     widgets/customlineedit.h \
@@ -166,8 +167,7 @@ HEADERS  += \
     ui/mainwindow.h \
     ui/preferencesdialog.h \
     ui/screenshotdialog.h \
-    ui/updatedialog.h \
-    gesturehandler.h
+    ui/updatedialog.h
 
 FORMS    += \
     ui/aboutdialog.ui \
