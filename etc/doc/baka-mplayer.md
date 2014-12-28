@@ -87,14 +87,12 @@ Note that the `[mpv]` section is using mpv's options. See mpv's manual for a lis
 
 You can create your own translations by following these steps:
 
-1. Open `src/Baka-MPlayer.pro` with your favorite text editor.
- 1. Under `DEFINES`, change `BAKA_MPLAYER_LANG`'s value from `baka-mplayer_en` to `baka-mplayer_{lang-code}` where `{lang-code}` is your language code (ISO 639-1).
- 2. Under `TRANSLATIONS` (at the bottom of the file), add a new line that says `translations/baka-mplayer_{lang-code}.ts`.
+1. Open `src/translations.pri` with your favorite text editor.
+2. Add a new line that says `translations/baka-mplayer_{lang-code}.ts` in the format that exists (all lines except the last require a `\`).
 2. Run `lupdate Baka-MPlayer.pro` to prepare your translation file.
 3. Go to `src/translations/` and you will now find your language's `.ts` file.
 4. Open the `.ts` file with Qt Linguist and proceed to translate into your language.
-5. Upon completion of the translation, run `lrelease Baka-MPlayer.pro` to compile your translation file into a .qm file.
-6. Add the .qm file to rsclist.qrc.
+5. Upon completion of the translation, configure baka-mplayer as you normally would to compile with translations.
 
 If you want to submit a translation, you can create a git pull request or send it to us through irc.
 
