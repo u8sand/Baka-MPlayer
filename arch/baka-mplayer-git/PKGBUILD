@@ -1,6 +1,6 @@
 # Maintainer: u8sand <u8sand@gmail.com>
 pkgname=baka-mplayer-git
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Baka MPlayer is a free and open source, cross-platform, libmpv based multimedia player."
 url="http://bakamplayer.u8sand.net/"
