@@ -27,6 +27,10 @@ unset `env | \
     cut -d '=' -f1 | tr '\n' ' '`
 
 # build baka-mplayer
-QMAKE="$mxeroot/usr/$arch-w64-mingw32.static/qt5/bin/qmake -win32" ./configure "CONFIG+=embed_translations"
+QMAKE="$mxeroot/usr/$arch-w64-mingw32.static/qt5/bin/qmake" \
+    ./configure \
+    "CONFIG+=embed_translations" \
+    "lupdate=$mxeroot/usr/$arch-w64-mingw32.static/qt5/bin/lupdate" \
+    "lrelease=$mxeroot/usr/$arch-w64-mingw32.static/qt5/bin/lrelease"
 make -j`grep -c ^processor /proc/cpuinfo`
 cd ..

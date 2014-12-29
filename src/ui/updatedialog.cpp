@@ -39,6 +39,7 @@ UpdateDialog::UpdateDialog(QWidget *parent) :
                     if(!isVisible())
                         show();
 #endif
+
                 }
                 ui->progressBar->setVisible(false);
                 ui->timeRemainingLabel->setVisible(false);
@@ -48,7 +49,11 @@ UpdateDialog::UpdateDialog(QWidget *parent) :
     connect(ui->updateButton, &QPushButton::clicked,
             [=]
             {
+#if defined(_X86_)
                 QDesktopServices::openUrl(QUrl(tr("http://bakamplayer.u8sand.net/Baka%20MPlayer.7z")));
+#else
+                QDesktopServices::openUrl(QUrl(tr("http://bakamplayer.u8sand.net/Baka%20MPlayer%20x86.7z")));
+#endif
                 /*
                 avgSpeed = 0;
                 lastSpeed = 0;
