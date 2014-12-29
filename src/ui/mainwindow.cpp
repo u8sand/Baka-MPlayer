@@ -1232,12 +1232,15 @@ void MainWindow::LoadSettings()
             setScreenshotDialog(settings->value("screenshotDialog", true).toBool());
             recent = settings->value("recent").toStringList();
             maxRecent = settings->value("maxRecent", 5).toInt();
-            gestures = settings->value("gestures", true).toBool();
-            setLang(settings->value("lang", "auto").toString());
+            gestures = true;
+            setLang("auto");
             settings->endGroup();
             UpdateRecentFiles();
 
             mpv->LoadSettings(settings, version);
+
+            settings->clear();
+            SaveSettings();
         }
         else if(version == "2.0.0")
         {
@@ -1255,8 +1258,8 @@ void MainWindow::LoadSettings()
             QString lf = settings->value("lastFile").toString();
             if(lf != QString())
                 recent.push_front(lf);
-            gestures = settings->value("gestures", true).toBool();
-            setLang(settings->value("lang", "auto").toString());
+            gestures = true;
+            setLang("auto");
             settings->endGroup();
             UpdateRecentFiles();
 
@@ -1282,8 +1285,8 @@ void MainWindow::LoadSettings()
             QString lf = settings->value("mpv/lastFile").toString();
             if(lf != QString())
                 recent.push_front(lf);
-            gestures = settings->value("gestures", true).toBool();
-            setLang(settings->value("lang", "auto").toString());
+            gestures = true;
+            setLang("auto");
             UpdateRecentFiles();
 
             mpv->LoadSettings(settings, version);
@@ -1293,7 +1296,7 @@ void MainWindow::LoadSettings()
         }
         else // unrecognized version (newer)
         {
-            version = "2.0.1"; // load what we can assuming the settings are like the current version
+            version = "2.0.2"; // load what we can assuming the settings are like the current version
 
             settings->beginGroup("baka-mplayer");
             setOnTop(settings->value("onTop", "never").toString());
@@ -1351,7 +1354,9 @@ void MainWindow::SaveSettings()
         settings->setValue("debug", debug);
         settings->setValue("recent", recent);
         settings->setValue("maxRecent", maxRecent);
-        settings->setValue("version", "2.0.1");
+        settings->setValue("lang", lang);
+        settings->setValue("gestures", gestures);
+        settings->setValue("version", "2.0.2");
         settings->endGroup();
     }
 }
