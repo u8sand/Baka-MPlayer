@@ -15,19 +15,24 @@ class UpdateDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit UpdateDialog(UpdateManager *update, QWidget *parent = 0);
+    explicit UpdateDialog(QWidget *parent = 0);
     ~UpdateDialog();
 
-    static int update(UpdateManager *update, QWidget *parent = 0);
+    int exec();
+
+public slots:
+    void CheckForUpdates();
 
 private:
     Ui::UpdateDialog *ui;
+    UpdateManager *updateManager;
 
     QTime *timer;
     double avgSpeed = 1,
            lastSpeed=0;
     int lastProgress,
         lastTime;
+    bool init;
 #if defined(Q_OS_WIN)
     QString version,
             url;

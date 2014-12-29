@@ -17,9 +17,9 @@
 #include <QTranslator>
 
 #include "mpvhandler.h"
-#include "updatemanager.h"
 #include "gesturehandler.h"
 #include "widgets/dimdialog.h"
+#include "updatedialog.h"
 
 namespace Ui {
 class MainWindow;
@@ -70,7 +70,6 @@ private:
     Ui::MainWindow  *ui;
     QSettings       *settings;
     MpvHandler      *mpv;
-    UpdateManager   *update;
     GestureHandler  *gesture;
     QTranslator     *translator;
 
@@ -83,6 +82,7 @@ private:
     QSystemTrayIcon *sysTrayIcon;
     QMenu           *trayIconMenu;
     DimDialog       *dimDialog;
+    UpdateDialog    *updateDialog;
 
     // variables
     QStringList recent;

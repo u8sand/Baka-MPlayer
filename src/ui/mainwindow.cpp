@@ -69,14 +69,14 @@ MainWindow::MainWindow(QWidget *parent):
     settings = new QSettings(QSettings::IniFormat, QSettings::UserScope, SETTINGS_FILE, QString(), this);
 #endif
     mpv = new MpvHandler(ui->mpvFrame->winId(), this);
-    update = new UpdateManager(this);
     gesture = new GestureHandler(mpv, this);
+    updateDialog = new UpdateDialog(this);
 
     // initialize other ui elements
     // note: trayIcon does not work in my environment--known qt bug
     // see: https://bugreports.qt-project.org/browse/QTBUG-34364
     // todo: tray menu/tooltip
-    sysTrayIcon = new QSystemTrayIcon(qApp->windowIcon(), this);
+    sysTrayIcon = new QSystemTrayIcon(windowIcon(), this);
     ui->mpvFrame->installEventFilter(this); // capture events on mpvFrame in the eventFilter function
 
     // setup signals & slots
@@ -102,6 +102,7 @@ MainWindow::MainWindow(QWidget *parent):
 
                 ui->retranslateUi(this);
             });
+
     connect(this, &MainWindow::onTopChanged,
             [=](QString onTop)
             {
@@ -550,39 +551,6 @@ MainWindow::MainWindow(QWidget *parent):
                 ui->outputTextEdit->moveCursor(QTextCursor::End);
                 ui->outputTextEdit->insertPlainText(msg);
             });
-
-    // update manager
-
-    // automatic updating support
-    /*
-    connect(update, &UpdateManager::versionInfoReceived,
-            [=](QMap<QString, QString> info)
-            {
-                if(info["version"].trimmed() != "")
-                {
-                    if(UpdateDialog::update(update, this) == QDialog::Accepted)
-                    {
-
-                    }
-                }
-            });
-
-    connect(update, &UpdateManager::Update,
-            [=](QMap<QString, QString> info)
-            {
-                if(info["version"] != BAKA_MPLAYER_VERSION)
-                    update->DownloadUpdate();
-            });
-    connect(update, &UpdateManager::Downloaded,
-            [=](int percent)
-            {
-                if(percent == 100)
-                {
-                    // prepare for update
-                }
-                // show progress as status message?
-            });
-    */
 
     // ui
 
@@ -1119,7 +1087,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->action_Check_for_Updates, &QAction::triggered,          // Help -> Check for Updates
             [=]
             {
-                if(UpdateDialog::update(update, this) == QDialog::Accepted)
+                if(updateDialog->exec() == QDialog::Accepted)
                 {
                     // todo: close and finish update (overwrite self and restart)
                 }
@@ -1193,7 +1161,7 @@ MainWindow::~MainWindow()
 
     // but apparently they don't (https://github.com/u8sand/Baka-MPlayer/issues/47)
     delete mpv;
-    delete update;
+    delete updateDialog;
     delete gesture;
 
     if(dimDialog)
@@ -1237,6 +1205,14 @@ void MainWindow::LoadSettings()
             maxRecent = settings->value("maxRecent", 5).toInt();
             gestures = settings->value("gestures", true).toBool();
             setLang(settings->value("lang", "auto").toString());
+#if defined(Q_OS_WIN)
+            QDate last = settings->value("lastcheck", QDate(2014, 1, 1)).toDate();
+            if(last.daysTo(QDate::currentDate()) > 7) // been a week since we last checked?
+            {
+                updateDialog->CheckForUpdates();
+                settings->setValue("lastcheck", QDate::currentDate());
+            }
+#endif
             settings->endGroup();
             UpdateRecentFiles();
 
@@ -1333,6 +1309,11 @@ void MainWindow::LoadSettings()
             maxRecent = settings->value("maxRecent", 5).toInt();
             gestures = settings->value("gestures", true).toBool();
             setLang(settings->value("lang", "auto").toString());
+#if defined(Q_OS_WIN)
+            QDate last = settings->value("lastcheck", QDate(2014, 1, 1)).toDate();
+            if(last.daysTo(QDate::currentDate()) > 7) // been a week since we last checked?
+                updateDialog->CheckForUpdates();
+#endif
             settings->endGroup();
             UpdateRecentFiles();
 

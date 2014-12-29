@@ -1,11 +1,17 @@
 #include "updatedialog.h"
 #include "ui_updatedialog.h"
 
-UpdateDialog::UpdateDialog(UpdateManager *updateManager, QWidget *parent) :
+#include <QDesktopServices>
+
+UpdateDialog::UpdateDialog(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::UpdateDialog)
+    ui(new Ui::UpdateDialog),
+    init(false)
 {
     ui->setupUi(this);
+
+    updateManager = new UpdateManager(this);
+
 #if defined(Q_OS_UNIX) || defined(Q_OS_LINUX)
     // no update support on unix/linux, we just show if one is available
     ui->updateButton->setVisible(false);
@@ -29,6 +35,9 @@ UpdateDialog::UpdateDialog(UpdateManager *updateManager, QWidget *parent) :
                     version = info["version"];
                     // url = info["url"];
                     url = "http://bakamplayer.u8sand.net/Baka%20MPlayer.7z";
+
+                    if(!isVisible())
+                        show();
 #endif
                 }
                 ui->progressBar->setVisible(false);
@@ -39,6 +48,8 @@ UpdateDialog::UpdateDialog(UpdateManager *updateManager, QWidget *parent) :
     connect(ui->updateButton, &QPushButton::clicked,
             [=]
             {
+                QDesktopServices::openUrl(QUrl(tr("http://bakamplayer.u8sand.net/Baka%20MPlayer.7z")));
+                /*
                 avgSpeed = 0;
                 lastSpeed = 0;
                 lastProgress = 0;
@@ -50,6 +61,7 @@ UpdateDialog::UpdateDialog(UpdateManager *updateManager, QWidget *parent) :
                 ui->timeRemainingLabel->setVisible(true);
                 ui->plainTextEdit->clear();
                 updateManager->DownloadUpdate(url, version);
+                */
             });
 #endif
 
@@ -100,25 +112,29 @@ UpdateDialog::UpdateDialog(UpdateManager *updateManager, QWidget *parent) :
 
     connect(ui->cancelButton, SIGNAL(clicked()),
             this, SLOT(reject()));
-
-
-    avgSpeed = 0;
-    lastSpeed = 0;
-    lastProgress = 0;
-    lastTime = 0;
-
-    timer = new QTime();
-    timer->start();
-    //updateManager->CheckForUpdates();
 }
 
 UpdateDialog::~UpdateDialog()
 {
+    delete updateManager;
     delete ui;
 }
 
-int UpdateDialog::update(UpdateManager *updateManager, QWidget *parent)
+int UpdateDialog::exec()
 {
-    UpdateDialog dialog(updateManager, parent);
-    return dialog.exec();
+    if(!init)
+        CheckForUpdates();
+    return QDialog::exec();
+}
+
+void UpdateDialog::CheckForUpdates()
+{
+    init = true;
+    avgSpeed = 0;
+    lastSpeed = 0;
+    lastProgress = 0;
+    lastTime = 0;
+    timer = new QTime();
+    timer->start();
+    updateManager->CheckForUpdates();
 }
