@@ -995,29 +995,29 @@ Nota: O valor deve ser de %0 - %1</translation>
         <translation>Arquivos de Legendas</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1327"/>
+        <location filename="../ui/mainwindow.cpp" line="1330"/>
         <source>Settings version not recognized</source>
         <translation>Versão configurações não reconhecido</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1327"/>
+        <location filename="../ui/mainwindow.cpp" line="1330"/>
         <source>The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.
 Some features may not work and changed settings will not be saved.</source>
         <translation>O arquivo de configurações foi feita por uma versão mais nova do baka-mplayer; por favor, atualize esta versão ou procurar ajuda de desenvolvedores.
 Alguns recursos podem não funcionar e configurações alteradas não serão salvas.</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1836"/>
+        <location filename="../ui/mainwindow.cpp" line="1841"/>
         <source>Media Files</source>
         <translation>Arquivos de Mídia</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1837"/>
+        <location filename="../ui/mainwindow.cpp" line="1842"/>
         <source>Video Files</source>
         <translation>Arquivos de Vídeo</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1838"/>
+        <location filename="../ui/mainwindow.cpp" line="1843"/>
         <source>Audio Files</source>
         <translation>Arquivos de Áudio</translation>
     </message>
@@ -1057,22 +1057,22 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
         <translation>http://bakamplayer.u8sand.net/help.php</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1742"/>
+        <location filename="../ui/mainwindow.cpp" line="1747"/>
         <source>Dim Lights</source>
         <translation>Luzes Difusas</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1742"/>
+        <location filename="../ui/mainwindow.cpp" line="1747"/>
         <source>In order to dim the lights, the desktop compositor has to be enabled. This can be done through Window Manager Desktop.</source>
         <translation>Para escurecer o ambiente de trabalho, transparência do desktop tem que ser ativado.</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1808"/>
+        <location filename="../ui/mainwindow.cpp" line="1813"/>
         <source>Saved to &quot;%0&quot;, with subs</source>
         <translation>Salvos em &quot;%0&quot;, com legendas</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1810"/>
+        <location filename="../ui/mainwindow.cpp" line="1815"/>
         <source>Saved to &quot;%0&quot;, without subs</source>
         <translation>Salvos em &quot;%0&quot;, sem legendas</translation>
     </message>
@@ -1090,7 +1090,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
         <translation type="vanished">Saída Tela Cheia/Boss Key</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1835"/>
+        <location filename="../ui/mainwindow.cpp" line="1840"/>
         <source>Open File</source>
         <translation>Arquivo Aberto</translation>
     </message>
@@ -1369,17 +1369,22 @@ Version: %0</source>
         <translation>Atualização Disponível! Versão: %0</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.cpp" line="51"/>
+        <location filename="../ui/updatedialog.cpp" line="53"/>
         <source>http://bakamplayer.u8sand.net/Baka%20MPlayer.7z</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.cpp" line="88"/>
+        <location filename="../ui/updatedialog.cpp" line="55"/>
+        <source>http://bakamplayer.u8sand.net/Baka%20MPlayer%20x86.7z</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/updatedialog.cpp" line="93"/>
         <source>About %0 second(s) remaining</source>
         <translation>Sobre %0 segundo(s) mais</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.cpp" line="110"/>
+        <location filename="../ui/updatedialog.cpp" line="115"/>
         <source>error: %0
 </source>
         <translation>erro: %0
@@ -1390,12 +1395,12 @@ Version: %0</source>
         <translation type="vanished">Baixando de atualização...</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.cpp" line="74"/>
+        <location filename="../ui/updatedialog.cpp" line="79"/>
         <source>Download Complete</source>
         <translation>Baixar Completado</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.cpp" line="90"/>
+        <location filename="../ui/updatedialog.cpp" line="95"/>
         <source>Calculating...</source>
         <translation>Cálculo...</translation>
     </message>

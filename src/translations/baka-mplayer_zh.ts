@@ -1002,33 +1002,33 @@ Note: Value must be from %0 - %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1327"/>
+        <location filename="../ui/mainwindow.cpp" line="1330"/>
         <source>Settings version not recognized</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1327"/>
+        <location filename="../ui/mainwindow.cpp" line="1330"/>
         <source>The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.
 Some features may not work and changed settings will not be saved.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1742"/>
+        <location filename="../ui/mainwindow.cpp" line="1747"/>
         <source>Dim Lights</source>
         <translation>昏暗灯光</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1742"/>
+        <location filename="../ui/mainwindow.cpp" line="1747"/>
         <source>In order to dim the lights, the desktop compositor has to be enabled. This can be done through Window Manager Desktop.</source>
         <translation>为了开启黯淡桌面功能,桌面混成需要开启，可以通过窗口管理进行设置。</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1808"/>
+        <location filename="../ui/mainwindow.cpp" line="1813"/>
         <source>Saved to &quot;%0&quot;, with subs</source>
         <translation type="unfinished">保存到 &quot;%0&quot; 附带字幕</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1810"/>
+        <location filename="../ui/mainwindow.cpp" line="1815"/>
         <source>Saved to &quot;%0&quot;, without subs</source>
         <translation type="unfinished">保存到 &quot;%0&quot; 不附带字幕</translation>
     </message>
@@ -1050,22 +1050,22 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">退出全屏</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1835"/>
+        <location filename="../ui/mainwindow.cpp" line="1840"/>
         <source>Open File</source>
         <translation>打开文件</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1836"/>
+        <location filename="../ui/mainwindow.cpp" line="1841"/>
         <source>Media Files</source>
         <translation>媒体文件</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1837"/>
+        <location filename="../ui/mainwindow.cpp" line="1842"/>
         <source>Video Files</source>
         <translation>视频文件</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1838"/>
+        <location filename="../ui/mainwindow.cpp" line="1843"/>
         <source>Audio Files</source>
         <translation>音频文件</translation>
     </message>
@@ -1340,17 +1340,22 @@ Version: %0</source>
 版本: %0</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.cpp" line="51"/>
+        <location filename="../ui/updatedialog.cpp" line="53"/>
         <source>http://bakamplayer.u8sand.net/Baka%20MPlayer.7z</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.cpp" line="88"/>
+        <location filename="../ui/updatedialog.cpp" line="55"/>
+        <source>http://bakamplayer.u8sand.net/Baka%20MPlayer%20x86.7z</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/updatedialog.cpp" line="93"/>
         <source>About %0 second(s) remaining</source>
         <translation>剩余大约 %0 秒</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.cpp" line="110"/>
+        <location filename="../ui/updatedialog.cpp" line="115"/>
         <source>error: %0
 </source>
         <translation>错误: %0</translation>
@@ -1360,12 +1365,12 @@ Version: %0</source>
         <translation type="vanished">下载更新...</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.cpp" line="74"/>
+        <location filename="../ui/updatedialog.cpp" line="79"/>
         <source>Download Complete</source>
         <translation>下载完成</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.cpp" line="90"/>
+        <location filename="../ui/updatedialog.cpp" line="95"/>
         <source>Calculating...</source>
         <translation>计算中...</translation>
     </message>

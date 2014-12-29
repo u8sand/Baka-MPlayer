@@ -1032,33 +1032,33 @@ Note: Value must be from %0 - %1</source>
         <translation>http://bakamplayer.u8sand.net/help.php</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1327"/>
+        <location filename="../ui/mainwindow.cpp" line="1330"/>
         <source>Settings version not recognized</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1327"/>
+        <location filename="../ui/mainwindow.cpp" line="1330"/>
         <source>The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.
 Some features may not work and changed settings will not be saved.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1742"/>
+        <location filename="../ui/mainwindow.cpp" line="1747"/>
         <source>Dim Lights</source>
         <translation>불 끄기</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1742"/>
+        <location filename="../ui/mainwindow.cpp" line="1747"/>
         <source>In order to dim the lights, the desktop compositor has to be enabled. This can be done through Window Manager Desktop.</source>
         <translation>불 끄기 기는은 Desktop Compositor가 필요합니다. Window Manager Desktop을 통에서 키실수 있습니다.</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1808"/>
+        <location filename="../ui/mainwindow.cpp" line="1813"/>
         <source>Saved to &quot;%0&quot;, with subs</source>
         <translation>자막없이 &quot;%0&quot;으로 저장됨</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1810"/>
+        <location filename="../ui/mainwindow.cpp" line="1815"/>
         <source>Saved to &quot;%0&quot;, without subs</source>
         <translation>자막과 함께 &quot;%0&quot;으로 저장됨</translation>
     </message>
@@ -1080,22 +1080,22 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">전체화면 나오기/보스 키</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1835"/>
+        <location filename="../ui/mainwindow.cpp" line="1840"/>
         <source>Open File</source>
         <translation>파일 열기</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1836"/>
+        <location filename="../ui/mainwindow.cpp" line="1841"/>
         <source>Media Files</source>
         <translation>미디어 파일</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1837"/>
+        <location filename="../ui/mainwindow.cpp" line="1842"/>
         <source>Video Files</source>
         <translation>비디오 파일</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1838"/>
+        <location filename="../ui/mainwindow.cpp" line="1843"/>
         <source>Audio Files</source>
         <translation>오디오 파일</translation>
     </message>
@@ -1370,17 +1370,22 @@ Version: %0</source>
 버전: %0</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.cpp" line="51"/>
+        <location filename="../ui/updatedialog.cpp" line="53"/>
         <source>http://bakamplayer.u8sand.net/Baka%20MPlayer.7z</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.cpp" line="88"/>
+        <location filename="../ui/updatedialog.cpp" line="55"/>
+        <source>http://bakamplayer.u8sand.net/Baka%20MPlayer%20x86.7z</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/updatedialog.cpp" line="93"/>
         <source>About %0 second(s) remaining</source>
         <translation>%0초 남아 있읍</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.cpp" line="110"/>
+        <location filename="../ui/updatedialog.cpp" line="115"/>
         <source>error: %0
 </source>
         <translation>에러: %0</translation>
@@ -1390,12 +1395,12 @@ Version: %0</source>
         <translation type="vanished">업데이트를 다운로드중...</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.cpp" line="74"/>
+        <location filename="../ui/updatedialog.cpp" line="79"/>
         <source>Download Complete</source>
         <translation>다운로드 완료</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.cpp" line="90"/>
+        <location filename="../ui/updatedialog.cpp" line="95"/>
         <source>Calculating...</source>
         <translation>계산중...</translation>
     </message>
