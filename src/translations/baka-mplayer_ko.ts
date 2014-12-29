@@ -1370,16 +1370,6 @@ Version: %0</source>
 버전: %0</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.cpp" line="53"/>
-        <source>http://bakamplayer.u8sand.net/Baka%20MPlayer.7z</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/updatedialog.cpp" line="55"/>
-        <source>http://bakamplayer.u8sand.net/Baka%20MPlayer%20x86.7z</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../ui/updatedialog.cpp" line="93"/>
         <source>About %0 second(s) remaining</source>
         <translation>%0초 남아 있읍</translation>

@@ -50,9 +50,9 @@ UpdateDialog::UpdateDialog(QWidget *parent) :
             [=]
             {
 #if defined(_X86_)
-                QDesktopServices::openUrl(QUrl(tr("http://bakamplayer.u8sand.net/Baka%20MPlayer.7z")));
+                QDesktopServices::openUrl(QUrl("http://bakamplayer.u8sand.net/Baka%20MPlayer%20(64-bit).zip"));
 #else
-                QDesktopServices::openUrl(QUrl(tr("http://bakamplayer.u8sand.net/Baka%20MPlayer%20x86.7z")));
+                QDesktopServices::openUrl(QUrl("http://bakamplayer.u8sand.net/Baka%20MPlayer%20(32-bit).zip"));
 #endif
                 /*
                 avgSpeed = 0;

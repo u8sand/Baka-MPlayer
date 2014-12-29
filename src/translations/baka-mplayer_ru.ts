@@ -1343,16 +1343,6 @@ Version: %0</source>
         <translation type="vanished">Скачиваем обновление...</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.cpp" line="53"/>
-        <source>http://bakamplayer.u8sand.net/Baka%20MPlayer.7z</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/updatedialog.cpp" line="55"/>
-        <source>http://bakamplayer.u8sand.net/Baka%20MPlayer%20x86.7z</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../ui/updatedialog.cpp" line="79"/>
         <source>Download Complete</source>
         <translation>Скачивание завершено</translation>
