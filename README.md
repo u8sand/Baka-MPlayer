@@ -16,6 +16,7 @@ Its simple design reflects the idea for an uncluttered, simple, and enjoyable en
   * libqt5svg5-dev
   * libqt5x11extras5-dev
   * libqt5network5
+* youtube-dl (optional, for watching youtube videos)
 
 ## Compilation
 
