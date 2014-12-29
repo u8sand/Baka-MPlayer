@@ -100,11 +100,13 @@ CONFIG(install_translations) {
 }
 
 CONFIG(update_translations) {
-    system(lupdate $$_PRO_FILE_)
+    isEmpty(lupdate):lupdate=lupdate
+    system($$lupdate $$_PRO_FILE_)
 }
 
 CONFIG(release_translations) {
-    system(lrelease $$_PRO_FILE_)
+    isEmpty(lrelease):lrelease=lrelease
+    system($$lrelease $$_PRO_FILE_)
 }
 
 
