@@ -16,7 +16,7 @@ Its simple design reflects the idea for an uncluttered, simple, and enjoyable en
   * libqt5svg5-dev
   * libqt5x11extras5-dev
   * libqt5network5
-* youtube-dl (optional, for watching youtube videos)
+* youtube-dl (optional, for streaming youtube videos)
 
 ## Compilation
 
@@ -60,7 +60,7 @@ The configuration file will be created on first run and will be written to `~/.c
 
 By default, Baka MPlayer will compile in English if no language is specified during compilation. To compile a multi-lingual version of baka-mplayer, configure it like so:
 
-	./configure CONFIG+=embed_translations
+	./configure CONFIG+=install_translations
 
 For more configuration options see the `configure` source file or read the manual.
 
