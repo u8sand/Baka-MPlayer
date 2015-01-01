@@ -55,10 +55,10 @@ CC BY 3.0 &lt;Sasha Mescheryakov&gt;
 
 Traduzioni
 - Cinese &lt;amazingfate, Antares95&gt;
+- Italiano &lt;Aloysius&gt;
 - Coreano &lt;godly-devotion&gt;
 - Portoghese &lt;u8sand&gt;
-- Russo &lt;suhr&gt;
-- Italiano &lt;Aloysius&gt;</translation>
+- Russo &lt;suhr&gt;</translation>
     </message>
     <message>
         <location filename="../ui/aboutdialog.ui" line="237"/>
