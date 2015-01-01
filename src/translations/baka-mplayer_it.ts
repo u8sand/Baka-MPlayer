@@ -41,8 +41,9 @@ CC BY 3.0 &lt;Sasha Mescheryakov&gt;
 
 Translations
 - Chinese &lt;amazingfate, Antares95&gt;
+- Italian &lt;Aloysius&gt;
 - Korean &lt;godly-devotion&gt;
-- Portugese &lt;u8sand&gt;
+- Portuguese &lt;u8sand&gt;
 - Russian &lt;suhr&gt;</source>
         <translation>mpv - lettore multimediale basato su MPlayer/mplayer2
 GPLv2 &lt;mpv.io&gt;
@@ -61,12 +62,12 @@ Traduzioni
 - Russo &lt;suhr&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/aboutdialog.ui" line="237"/>
+        <location filename="../ui/aboutdialog.ui" line="238"/>
         <source>License</source>
         <translation>Licenza</translation>
     </message>
     <message>
-        <location filename="../ui/aboutdialog.ui" line="261"/>
+        <location filename="../ui/aboutdialog.ui" line="262"/>
         <source>                GNU GENERAL PUBLIC LICENSE
                    Version 2, June 1991
 
@@ -86,7 +87,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/aboutdialog.ui" line="302"/>
+        <location filename="../ui/aboutdialog.ui" line="303"/>
         <source>&amp;CLOSE</source>
         <translation>&amp;CHIUDI</translation>
     </message>
