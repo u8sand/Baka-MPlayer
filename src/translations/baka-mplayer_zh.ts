@@ -450,12 +450,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
     <message>
         <location filename="../ui/mainwindow.ui" line="1501"/>
         <source>Alt+6</source>
-        <translation type="unfinished">Alt+6</translation>
+        <translation>Alt+6</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1604"/>
         <source>Ctrl+G</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+G</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1249"/>
@@ -465,7 +465,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
     <message>
         <location filename="../ui/mainwindow.ui" line="1601"/>
         <source>Show &amp;Command Line</source>
-        <translation type="unfinished"></translation>
+        <translation>显示命令行</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1184"/>
@@ -760,7 +760,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
     <message>
         <location filename="../ui/mainwindow.ui" line="1686"/>
         <source>150%</source>
-        <translation type="unfinished">200% {150%?}</translation>
+        <translation>150%</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1689"/>
@@ -999,18 +999,19 @@ Note: Value must be from %0 - %1</source>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1084"/>
         <source>http://bakamplayer.u8sand.net/help.php</source>
-        <translation type="unfinished"></translation>
+        <translation>http://bakamplayer.u8sand.net/help.php</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1330"/>
         <source>Settings version not recognized</source>
-        <translation type="unfinished"></translation>
+        <translation>配置文件版本无法被识别</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1330"/>
         <source>The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.
 Some features may not work and changed settings will not be saved.</source>
-        <translation type="unfinished"></translation>
+        <translation>配置文件是由更新版本的baka-mplayer创建的，请更新此版本或者向开发者寻求帮助
+一些特性可能无法工作且更改的设置无法被保存</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1747"/>
@@ -1025,12 +1026,12 @@ Some features may not work and changed settings will not be saved.</source>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1813"/>
         <source>Saved to &quot;%0&quot;, with subs</source>
-        <translation type="unfinished">保存到 &quot;%0&quot; 附带字幕</translation>
+        <translation>保存到 &quot;%0&quot;, 附带字幕</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1815"/>
         <source>Saved to &quot;%0&quot;, without subs</source>
-        <translation type="unfinished">保存到 &quot;%0&quot; 不附带字幕</translation>
+        <translation>保存到 &quot;%0&quot;, 不附带字幕</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="903"/>
@@ -1085,7 +1086,7 @@ Some features may not work and changed settings will not be saved.</source>
     <message>
         <location filename="../mpvhandler.cpp" line="188"/>
         <source>screenshot%#04n</source>
-        <translation type="unfinished">screenshot%#04n</translation>
+        <translation>截图%#04n</translation>
     </message>
 </context>
 <context>
@@ -1133,17 +1134,17 @@ Some features may not work and changed settings will not be saved.</source>
     <message>
         <location filename="../ui/preferencesdialog.ui" line="265"/>
         <source>Mouse &amp;Gesture Support</source>
-        <translation type="unfinished"></translation>
+        <translation>鼠标手势支持</translation>
     </message>
     <message>
         <location filename="../ui/preferencesdialog.ui" line="280"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Click &amp;amp; drag cursor up/down to change volume&lt;br&gt;Click &amp;amp; drag cursor left/right to seek&lt;/b&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;点击画面 &amp;amp; 上下拖动光标以控制音量e&lt;br&gt;点击画面 &amp;amp; 左右拖动光标来控制进度&lt;/b&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../ui/preferencesdialog.ui" line="300"/>
         <source>Language:</source>
-        <translation type="unfinished"></translation>
+        <translation>语言：</translation>
     </message>
     <message>
         <location filename="../ui/preferencesdialog.ui" line="313"/>
