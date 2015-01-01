@@ -139,7 +139,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(this, &MainWindow::debugChanged,
             [=](bool b)
             {
-                //mpv->Debug(b);
+                mpv->Debug(b);
                 ui->actionShow_D_ebug_Output->setChecked(b);
                 ui->verticalWidget->setVisible(b);
             });
