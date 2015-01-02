@@ -107,6 +107,6 @@ void PreferencesDialog::PopulateLangs()
     {
         // right 5: xx.qm
         // left 2:  xx
-        ui->langComboBox->addItem(i.fileName().right(5).left(2));
+        ui->langComboBox->addItem(i.fileName().mid(13,i.fileName().length()-16));
     }
 }
