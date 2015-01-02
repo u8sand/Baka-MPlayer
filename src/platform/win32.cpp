@@ -20,7 +20,7 @@ void SetAlwaysOnTop(WId wid, bool ontop)
 QSettings *InitializeSettings(QObject *parent)
 {
     // saves to $(application directory)\${SETTINGS_FILE}.ini
-    return new QSettings(QApplication::applicationDirPath()+"\\"+SETTINGS_FILE+".ini", QSettings::IniFormat,this);
+    return new QSettings(QApplication::applicationDirPath()+"\\"+SETTINGS_FILE+".ini", QSettings::IniFormat, parent);
 }
 
 }
