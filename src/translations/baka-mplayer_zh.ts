@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="zh">
+<TS version="2.1" language="zh">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -681,7 +681,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
     </message>
     <message>
         <source>Ctrl+X</source>
-        <translation>Ctrl+X</translation>
+        <translation type="vanished">Ctrl+X</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1438"/>
@@ -843,7 +843,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
     </message>
     <message>
         <source>Show D&amp;ebug Output</source>
-        <translation>显示调试信息(&amp;E)</translation>
+        <translation type="vanished">显示调试信息(&amp;E)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1222"/>
@@ -979,15 +979,15 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>R&amp;emove from Playlist</source>
-        <translation>移出播放列表(&amp;R)</translation>
+        <translation type="vanished">移出播放列表(&amp;R)</translation>
     </message>
     <message>
         <source>&amp;Delete from Disk</source>
-        <translation>从磁盘删除(&amp;D)</translation>
+        <translation type="vanished">从磁盘删除(&amp;D)</translation>
     </message>
     <message>
         <source>&amp;Refresh</source>
-        <translation>刷新(&amp;R)</translation>
+        <translation type="vanished">刷新(&amp;R)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="877"/>
@@ -1038,15 +1038,15 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Seek Forward</source>
-        <translation>向前跳转</translation>
+        <translation type="vanished">向前跳转</translation>
     </message>
     <message>
         <source>Seek Backward</source>
-        <translation>向后跳转</translation>
+        <translation type="vanished">向后跳转</translation>
     </message>
     <message>
         <source>Exit Fullscreen/Boss Key</source>
-        <translation>退出全屏</translation>
+        <translation type="vanished">退出全屏</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1781"/>
@@ -1369,7 +1369,7 @@ Version: %0</source>
     </message>
     <message>
         <source>Downloading update...</source>
-        <translation>下载更新...</translation>
+        <translation type="vanished">下载更新...</translation>
     </message>
     <message>
         <location filename="../ui/updatedialog.cpp" line="79"/>
