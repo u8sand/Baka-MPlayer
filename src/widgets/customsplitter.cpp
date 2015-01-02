@@ -38,3 +38,9 @@ void CustomSplitter::setNormalPosition(int pos)
 {
     normalPos = pos;
 }
+
+void CustomSplitter::enterEvent(QEvent *event)
+{
+    emit entered();
+    QSplitter::enterEvent(event);
+}

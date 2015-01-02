@@ -173,6 +173,16 @@ MainWindow::MainWindow(QWidget *parent):
                 firstItem = false;
             });
 
+    connect(ui->splitter, &CustomSplitter::entered,
+            [=]
+            {
+                if(isFullScreen() && !isPlaylistVisible())
+                {
+                    ShowPlaylist(true);
+                    autohide->stop();
+                }
+            });
+
     // mpv
 
     connect(mpv, &MpvHandler::playlistChanged,
@@ -1436,19 +1446,12 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
             }
         }
 
-        if(!isPlaylistVisible())
-        {
-            if(playlistRect.contains(event->globalPos()))
-            {
-                ShowPlaylist(true);
-                in = true;
-            }
-        }
-        else
+        if(isPlaylistVisible())
         {
             playlistRect = ui->playlistLayoutWidget->geometry();
             playlistRect.moveTo(ui->playlistLayoutWidget->pos());
             playlistRect.setLeft(playlistRect.left()-20);
+            playlistRect.setRight(playlistRect.right()+5);
             playlistRect.setHeight(height());
 
             if(!playlistRect.contains(event->globalPos()))
@@ -1654,7 +1657,6 @@ void MainWindow::ShowPlaylist(bool visible)
         if(ui->splitter->position() != ui->splitter->max() && ui->splitter->position() != 0)
             ui->splitter->setNormalPosition(ui->splitter->position()); // save current splitter position as the normal position
         ui->splitter->setPosition(0); // set splitter position to right-most
-        setFocus();
     }
 }
 
