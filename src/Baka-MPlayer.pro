@@ -23,6 +23,8 @@ UI_DIR = $${DESTDIR}/ui
 unix {
     QT += x11extras
     PKGCONFIG += x11
+
+    SOURCES += platform/x11.cpp
 }
 
 win32 {
@@ -35,6 +37,8 @@ win32 {
     QMAKE_TARGET_PRODUCT += Baka MPlayer
     QMAKE_TARGET_DESCRIPTION += The libmpv based media player.
     #RC_LANG +=
+
+    SOURCES += platform/win32.cpp
 }
 
 # INSTROOT is the installation root directory, leave empty if not using a package management system
@@ -147,6 +151,7 @@ HEADERS  += \
     updatemanager.h \
     gesturehandler.h \
     util.h \
+    platform.h \
     widgets/customlabel.h \
     widgets/customlineedit.h \
     widgets/customslider.h \

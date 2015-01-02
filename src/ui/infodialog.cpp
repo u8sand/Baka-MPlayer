@@ -5,8 +5,6 @@
 
 #include "util.h"
 
-using namespace BakaUtil;
-
 InfoDialog::InfoDialog(const QString &fileName, const Mpv::FileInfo &_fileInfo, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::InfoDialog),
@@ -23,9 +21,9 @@ InfoDialog::InfoDialog(const QString &fileName, const Mpv::FileInfo &_fileInfo, 
     QList<QPair<QString, QString>> items = {
         {tr("File name"), fi.fileName()},
         {tr("Media Title"), fileInfo.media_title},
-        {tr("File size"), HumanSize(fi.size())},
+        {tr("File size"), Util::HumanSize(fi.size())},
         {tr("Date created"), fi.created().toString()},
-        {tr("Media length"), FormatTime(fileInfo.length, fileInfo.length)},
+        {tr("Media length"), Util::FormatTime(fileInfo.length, fileInfo.length)},
     };
 
     if(fileInfo.video_params.codec != QString())
@@ -93,7 +91,7 @@ InfoDialog::InfoDialog(const QString &fileName, const Mpv::FileInfo &_fileInfo, 
         for(auto &chapter : fileInfo.chapters)
         {
             ui->infoWidget->setItem(r, 0, new QTableWidgetItem(chapter.title));
-            ui->infoWidget->setItem(r, 1, new QTableWidgetItem(FormatTime(chapter.time, fileInfo.length)));
+            ui->infoWidget->setItem(r, 1, new QTableWidgetItem(Util::FormatTime(chapter.time, fileInfo.length)));
             r++;
         }
     }

@@ -18,13 +18,6 @@
 #include <QWindow>
 #include <QCheckBox>
 
-#if defined(Q_OS_UNIX) || defined(Q_OS_LINUX)
-#include <QX11Info>
-#include <X11/Xlib.h>
-#else
-#include <windows.h>
-#endif
-
 #include "aboutdialog.h"
 #include "infodialog.h"
 #include "locationdialog.h"
@@ -34,9 +27,8 @@
 #include "preferencesdialog.h"
 #include "screenshotdialog.h"
 #include "util.h"
+#include "platform.h"
 #include "gesturehandler.h"
-
-using namespace BakaUtil;
 
 MainWindow::MainWindow(QWidget *parent):
     QMainWindow(parent),
@@ -46,26 +38,17 @@ MainWindow::MainWindow(QWidget *parent):
     init(false),
     autohide(new QTimer(this))
 {
-#if defined(Q_OS_LINUX) || defined(Q_OS_UNIX) // if on x11, dim lights requires a compositing manager, make dimDialog NULL if there is none
-    QString tmp = "_NET_WM_CM_S"+QString::number(QX11Info::appScreen());
-    Atom a = XInternAtom(QX11Info::display(), tmp.toUtf8().constData(), false);
-    if(a && XGetSelectionOwner(QX11Info::display(), a)) // hack for QX11Info::isCompositingManagerRunning()
+    if(Platform::DimLightsSupported())
         dimDialog = new DimDialog(); // dimdialog must be initialized before ui is setup
     else
         dimDialog = nullptr;
-#else
-    dimDialog = new DimDialog(); // dimDialog must be initialized before ui is setup
-#endif
+
     ui->setupUi(this);
     ShowPlaylist(false);
     addActions(ui->menubar->actions()); // makes menubar shortcuts work even when menubar is hidden
 
     // initialize managers/handlers
-#if defined(Q_OS_WIN) // saves to $(application directory)\${SETTINGS_FILE}.ini
-    settings = new QSettings(QApplication::applicationDirPath()+"\\"+SETTINGS_FILE+".ini", QSettings::IniFormat,this);
-#else // saves to  ~/.config/${SETTINGS_FILE}.ini on linux
-    settings = new QSettings(QSettings::IniFormat, QSettings::UserScope, SETTINGS_FILE, QString(), this);
-#endif
+    settings = Platform::InitializeSettings(this);
     mpv = new MpvHandler(ui->mpvFrame->winId(), this);
     gesture = new GestureHandler(mpv, this);
     updateDialog = new UpdateDialog(this);
@@ -105,11 +88,11 @@ MainWindow::MainWindow(QWidget *parent):
             [=](QString onTop)
             {
                 if(onTop == "never")
-                    AlwaysOnTop(false);
+                    Platform::SetAlwaysOnTop(winId(), false);
                 else if(onTop == "always")
-                    AlwaysOnTop(true);
+                    Platform::SetAlwaysOnTop(winId(), true);
                 else if(onTop == "playing" && mpv->getPlayState() > 0)
-                    AlwaysOnTop(true);
+                    Platform::SetAlwaysOnTop(winId(), true);
             });
 
     connect(sysTrayIcon, &QSystemTrayIcon::activated,
@@ -206,7 +189,7 @@ MainWindow::MainWindow(QWidget *parent):
                     ui->seekBar->setTracking(fileInfo.length);
 
                     if(!remaining)
-                        ui->remainingLabel->setText(FormatTime(fileInfo.length, fileInfo.length));
+                        ui->remainingLabel->setText(Util::FormatTime(fileInfo.length, fileInfo.length));
                 }
             });
 
@@ -341,7 +324,7 @@ MainWindow::MainWindow(QWidget *parent):
             ui->menu_Chapters->clear();
             for(auto &ch : chapters)
             {
-                action = ui->menu_Chapters->addAction(QString("%0: %1").arg(FormatNumberWithAmpersand(n, N), ch.title));
+                action = ui->menu_Chapters->addAction(QString("%0: %1").arg(Util::FormatNumberWithAmpersand(n, N), ch.title));
                 if(n <= 9)
                     action->setShortcut(QKeySequence("Ctrl+"+QString::number(n)));
                 connect(action, &QAction::triggered,
@@ -397,7 +380,7 @@ MainWindow::MainWindow(QWidget *parent):
                     ui->playButton->setIcon(QIcon(":/img/default_pause.svg"));
                     ui->action_Play->setText(tr("&Pause"));
                     if(onTop == "playing")
-                        AlwaysOnTop(true);
+                        Platform::SetAlwaysOnTop(winId(), true);
                     break;
 
                 case Mpv::Paused:
@@ -405,7 +388,7 @@ MainWindow::MainWindow(QWidget *parent):
                     ui->playButton->setIcon(QIcon(":/img/default_play.svg"));
                     ui->action_Play->setText(tr("&Play"));
                     if(onTop == "playing")
-                        AlwaysOnTop(false);
+                        Platform::SetAlwaysOnTop(winId(), false);
                     break;
 
                 case Mpv::Idle:
@@ -481,9 +464,9 @@ MainWindow::MainWindow(QWidget *parent):
                 ui->seekBar->setValueNoSignal(ui->seekBar->maximum()*((double)i/fi.length));
 
                 // set duration and remaining labels, QDateTime takes care of formatting for us
-                ui->durationLabel->setText(FormatTime(i, mpv->getFileInfo().length));
+                ui->durationLabel->setText(Util::FormatTime(i, mpv->getFileInfo().length));
                 if(remaining)
-                    ui->remainingLabel->setText("-"+FormatTime(fi.length-i, mpv->getFileInfo().length));
+                    ui->remainingLabel->setText("-"+Util::FormatTime(fi.length-i, mpv->getFileInfo().length));
 
                 // set next/previous chapter's enabled state
                 if(fi.chapters.length() > 0)
@@ -600,7 +583,7 @@ MainWindow::MainWindow(QWidget *parent):
                 if(remaining)
                 {
                     setRemaining(false);
-                    ui->remainingLabel->setText(FormatTime(mpv->getFileInfo().length, mpv->getFileInfo().length));
+                    ui->remainingLabel->setText(Util::FormatTime(mpv->getFileInfo().length, mpv->getFileInfo().length));
                 }
                 else
                     setRemaining(true);
@@ -1727,42 +1710,6 @@ void MainWindow::DimLights(bool dim)
         dimDialog->close();
 }
 
-void MainWindow::AlwaysOnTop(bool ontop)
-{
-    // maybe in the future, Linux X specific code that way we could enable it for both platforms
-#if defined(Q_OS_WIN)
-    SetWindowPos((HWND)winId(),
-                 ontop ? HWND_TOPMOST : HWND_NOTOPMOST,
-                 0, 0, 0, 0,
-                 SWP_NOSIZE | SWP_NOMOVE | SWP_SHOWWINDOW);
-#elif defined(Q_OS_LINUX)
-    Display *display = QX11Info::display();
-    XEvent event;
-    event.xclient.type = ClientMessage;
-    event.xclient.serial = 0;
-    event.xclient.send_event = True;
-    event.xclient.display = display;
-    event.xclient.window  = winId();
-    event.xclient.message_type = XInternAtom (display, "_NET_WM_STATE", False);
-    event.xclient.format = 32;
-
-    event.xclient.data.l[0] = ontop;
-    event.xclient.data.l[1] = XInternAtom (display, "_NET_WM_STATE_ABOVE", False);
-    event.xclient.data.l[2] = 0; //unused.
-    event.xclient.data.l[3] = 0;
-    event.xclient.data.l[4] = 0;
-
-    XSendEvent(display, DefaultRootWindow(display), False,
-                           SubstructureRedirectMask|SubstructureNotifyMask, &event);
-#else // qt code
-    if(ontop)
-        setWindowFlags(windowFlags() | Qt::WindowStaysOnTopHint);
-    else
-        setWindowFlags(windowFlags() & ~Qt::WindowStaysOnTopHint);
-    show();
-#endif
-}
-
 void MainWindow::TakeScreenshot(bool subs)
 {
     if(screenshotDialog)
@@ -1796,7 +1743,7 @@ void MainWindow::UpdateRecentFiles()
         N = recent.length();
     for(auto &f : recent)
     {
-        action = ui->menu_Recently_Opened->addAction(QString("%0. %1").arg(FormatNumberWithAmpersand(n, N), ShortenPathToParent(f).replace("&","&&")));
+        action = ui->menu_Recently_Opened->addAction(QString("%0. %1").arg(Util::FormatNumberWithAmpersand(n, N), Util::ShortenPathToParent(f).replace("&","&&")));
         if(n++ == 1)
             action->setShortcut(QKeySequence("Ctrl+Z"));
         connect(action, &QAction::triggered,

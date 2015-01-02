@@ -3,7 +3,9 @@
 #include <QTime>
 #include <QStringListIterator>
 
-QString BakaUtil::FormatTime(int _time, int _totalTime)
+namespace Util {
+
+QString FormatTime(int _time, int _totalTime)
 {
     QTime time = QTime::fromMSecsSinceStartOfDay(_time * 1000);
     if(_totalTime >= 3600) // hours
@@ -13,7 +15,7 @@ QString BakaUtil::FormatTime(int _time, int _totalTime)
     return time.toString("0:ss");   // seconds
 }
 
-QString BakaUtil::FormatRelativeTime(int _time)
+QString FormatRelativeTime(int _time)
 {
     QString prefix;
     if(_time < 0)
@@ -31,7 +33,7 @@ QString BakaUtil::FormatRelativeTime(int _time)
     return prefix+time.toString("0:ss");   // seconds
 }
 
-QString BakaUtil::FormatNumber(int val, int length)
+QString FormatNumber(int val, int length)
 {
     if(length < 10)
         return QString::number(val);
@@ -41,7 +43,7 @@ QString BakaUtil::FormatNumber(int val, int length)
         return QString("%1").arg(val, 3, 10, QChar('0'));
 }
 
-QString BakaUtil::FormatNumberWithAmpersand(int val, int length)
+QString FormatNumberWithAmpersand(int val, int length)
 {
     if(length < 10)
         return "&"+QString::number(val);
@@ -59,7 +61,7 @@ QString BakaUtil::FormatNumberWithAmpersand(int val, int length)
     }
 }
 
-QString BakaUtil::HumanSize(qint64 size)
+QString HumanSize(qint64 size)
 {
     // taken from http://comments.gmane.org/gmane.comp.lib.qt.general/34914
     float num = size;
@@ -78,7 +80,7 @@ QString BakaUtil::HumanSize(qint64 size)
 }
 
 
-QString BakaUtil::ShortenPathToParent(const QString &path)
+QString ShortenPathToParent(const QString &path)
 {
     int pos = path.lastIndexOf('/');
     if(pos != -1)
@@ -88,4 +90,6 @@ QString BakaUtil::ShortenPathToParent(const QString &path)
             return path.mid(pos+1);
     }
     return path;
+}
+
 }

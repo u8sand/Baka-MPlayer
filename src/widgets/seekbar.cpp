@@ -8,8 +8,6 @@
 
 #include "util.h"
 
-using namespace BakaUtil;
-
 SeekBar::SeekBar(QWidget *parent):
     CustomSlider(parent),
     tickReady(false),
@@ -48,7 +46,7 @@ void SeekBar::mouseMoveEvent(QMouseEvent* event)
     if(totalTime != 0)
     {
         QToolTip::showText(QPoint(event->globalX()-25, mapToGlobal(rect().topLeft()).y()-40),
-                           FormatTime(QStyle::sliderValueFromPosition(minimum(), maximum(), event->x(), width())*(double)totalTime/maximum(), totalTime),
+                           Util::FormatTime(QStyle::sliderValueFromPosition(minimum(), maximum(), event->x(), width())*(double)totalTime/maximum(), totalTime),
                            this, rect());
     }
     QSlider::mouseMoveEvent(event);
