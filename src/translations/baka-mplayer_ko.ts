@@ -605,7 +605,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1296"/>
-        <location filename="../ui/mainwindow.cpp" line="424"/>
+        <location filename="../ui/mainwindow.cpp" line="426"/>
         <source>&amp;Play</source>
         <translation>재생(&amp;P)</translation>
     </message>
@@ -966,44 +966,44 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
         <translation>일시정지</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="266"/>
+        <location filename="../ui/mainwindow.cpp" line="268"/>
         <source>Sub</source>
         <translation>자막</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="278"/>
+        <location filename="../ui/mainwindow.cpp" line="280"/>
         <source>Audio</source>
         <translation>오디오</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="416"/>
+        <location filename="../ui/mainwindow.cpp" line="418"/>
         <source>&amp;Pause</source>
         <translation>일시중지(&amp;P)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="688"/>
+        <location filename="../ui/mainwindow.cpp" line="690"/>
         <source>Enter the file number you want to play:
 Note: Value must be from %0 - %1</source>
         <translation>원하신 파일 번호를 입력해주세요:
 %0 - %1만 입력이 가능합니다.</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="689"/>
+        <location filename="../ui/mainwindow.cpp" line="691"/>
         <source>Enter File Number</source>
         <translation>파일 번호</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="707"/>
+        <location filename="../ui/mainwindow.cpp" line="709"/>
         <source>No selection</source>
         <translation>선택 없음</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="527"/>
+        <location filename="../ui/mainwindow.cpp" line="529"/>
         <source>Speed: %0x</source>
         <translation>속도: %0x</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="713"/>
+        <location filename="../ui/mainwindow.cpp" line="715"/>
         <source>File %0 of %1</source>
         <translation>파일 %0 의 %1</translation>
     </message>
@@ -1020,22 +1020,22 @@ Note: Value must be from %0 - %1</source>
         <translation type="vanished">다시 불러오기 (&amp;R)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="887"/>
+        <location filename="../ui/mainwindow.cpp" line="889"/>
         <source>Open Subtitle File</source>
         <translation>자막 파일 열기</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1069"/>
+        <location filename="../ui/mainwindow.cpp" line="1071"/>
         <source>http://bakamplayer.u8sand.net/help.php</source>
         <translation>http://bakamplayer.u8sand.net/help.php</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1317"/>
+        <location filename="../ui/mainwindow.cpp" line="1319"/>
         <source>Settings version not recognized</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1317"/>
+        <location filename="../ui/mainwindow.cpp" line="1319"/>
         <source>The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.
 Some features may not work and changed settings will not be saved.</source>
         <translation type="unfinished"></translation>
@@ -1061,7 +1061,7 @@ Some features may not work and changed settings will not be saved.</source>
         <translation>자막과 함께 &quot;%0&quot;으로 저장됨</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="888"/>
+        <location filename="../ui/mainwindow.cpp" line="890"/>
         <source>Subtitle Files</source>
         <translation>자막 파일</translation>
     </message>

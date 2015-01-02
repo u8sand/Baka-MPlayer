@@ -64,8 +64,6 @@ manual.files = ../etc/doc/baka-mplayer.md
 man.files = ../etc/doc/baka-mplayer.1.gz
 license.files = ../LICENSE
 
-man.extra:system(gzip -c ../etc/doc/baka-mplayer.man > ../etc/doc/baka-mplayer.1.gz)
-
 INSTALLS += target logo desktop manual man license
 
 RESOURCES += rsclist.qrc

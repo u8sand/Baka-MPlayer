@@ -559,7 +559,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1296"/>
-        <location filename="../ui/mainwindow.cpp" line="424"/>
+        <location filename="../ui/mainwindow.cpp" line="426"/>
         <source>&amp;Play</source>
         <translation>&amp;Riproduci</translation>
     </message>
@@ -927,44 +927,44 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
         <translation>In pausa</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="266"/>
+        <location filename="../ui/mainwindow.cpp" line="268"/>
         <source>Sub</source>
         <translation>Sottotitolo</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="278"/>
+        <location filename="../ui/mainwindow.cpp" line="280"/>
         <source>Audio</source>
         <translation>Audio</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="416"/>
+        <location filename="../ui/mainwindow.cpp" line="418"/>
         <source>&amp;Pause</source>
         <translation>&amp;Pausa</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="527"/>
+        <location filename="../ui/mainwindow.cpp" line="529"/>
         <source>Speed: %0x</source>
         <translation>Velocità: %0x</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="688"/>
+        <location filename="../ui/mainwindow.cpp" line="690"/>
         <source>Enter the file number you want to play:
 Note: Value must be from %0 - %1</source>
         <translation>Inserisci il numero del file che vuoi riprodurre:
 Nota: Il valore deve essere compreso tra %0 e %1</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="689"/>
+        <location filename="../ui/mainwindow.cpp" line="691"/>
         <source>Enter File Number</source>
         <translation>Inserisci numero file</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="707"/>
+        <location filename="../ui/mainwindow.cpp" line="709"/>
         <source>No selection</source>
         <translation>Nessuna selezione</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="713"/>
+        <location filename="../ui/mainwindow.cpp" line="715"/>
         <source>File %0 of %1</source>
         <translation>File %0 di %1</translation>
     </message>
@@ -981,27 +981,27 @@ Nota: Il valore deve essere compreso tra %0 e %1</translation>
         <translation type="vanished">A&amp;ggiorna</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="887"/>
+        <location filename="../ui/mainwindow.cpp" line="889"/>
         <source>Open Subtitle File</source>
         <translation>Apri file sottotitoli</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="888"/>
+        <location filename="../ui/mainwindow.cpp" line="890"/>
         <source>Subtitle Files</source>
         <translation>File sottotitoli</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1069"/>
+        <location filename="../ui/mainwindow.cpp" line="1071"/>
         <source>http://bakamplayer.u8sand.net/help.php</source>
         <translation>http://bakamplayer.u8sand.net/help.php</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1317"/>
+        <location filename="../ui/mainwindow.cpp" line="1319"/>
         <source>Settings version not recognized</source>
         <translation>Versione file di impostazioni non riconosciuta</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1317"/>
+        <location filename="../ui/mainwindow.cpp" line="1319"/>
         <source>The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.
 Some features may not work and changed settings will not be saved.</source>
         <translation>Il file di impostazioni è stato creato da una versione di baka-mplayer più recente; aggiorna questa versione o richiedi assistenza agli sviluppatori.

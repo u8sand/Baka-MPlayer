@@ -575,7 +575,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1296"/>
-        <location filename="../ui/mainwindow.cpp" line="424"/>
+        <location filename="../ui/mainwindow.cpp" line="426"/>
         <source>&amp;Play</source>
         <translation>播放(&amp;P)</translation>
     </message>
@@ -936,44 +936,44 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
         <translation>暂停</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="266"/>
+        <location filename="../ui/mainwindow.cpp" line="268"/>
         <source>Sub</source>
         <translation>字幕</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="278"/>
+        <location filename="../ui/mainwindow.cpp" line="280"/>
         <source>Audio</source>
         <translation>音频</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="416"/>
+        <location filename="../ui/mainwindow.cpp" line="418"/>
         <source>&amp;Pause</source>
         <translation>暂停(&amp;P)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="688"/>
+        <location filename="../ui/mainwindow.cpp" line="690"/>
         <source>Enter the file number you want to play:
 Note: Value must be from %0 - %1</source>
         <translation>输入你想要播放的文件编号:
 注意: 编号必须在以下范围%0 - %1</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="689"/>
+        <location filename="../ui/mainwindow.cpp" line="691"/>
         <source>Enter File Number</source>
         <translation>输入文件编号</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="707"/>
+        <location filename="../ui/mainwindow.cpp" line="709"/>
         <source>No selection</source>
         <translation>无选择</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="527"/>
+        <location filename="../ui/mainwindow.cpp" line="529"/>
         <source>Speed: %0x</source>
         <translation>速度: %0x</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="713"/>
+        <location filename="../ui/mainwindow.cpp" line="715"/>
         <source>File %0 of %1</source>
         <translation>文件 %0 总数 %1</translation>
     </message>
@@ -990,22 +990,22 @@ Note: Value must be from %0 - %1</source>
         <translation type="vanished">刷新(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="887"/>
+        <location filename="../ui/mainwindow.cpp" line="889"/>
         <source>Open Subtitle File</source>
         <translation>打开字幕文件</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1069"/>
+        <location filename="../ui/mainwindow.cpp" line="1071"/>
         <source>http://bakamplayer.u8sand.net/help.php</source>
         <translation>http://bakamplayer.u8sand.net/help.php</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1317"/>
+        <location filename="../ui/mainwindow.cpp" line="1319"/>
         <source>Settings version not recognized</source>
         <translation>配置文件版本无法被识别</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1317"/>
+        <location filename="../ui/mainwindow.cpp" line="1319"/>
         <source>The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.
 Some features may not work and changed settings will not be saved.</source>
         <translation>配置文件是由更新版本的baka-mplayer创建的，请更新此版本或者向开发者寻求帮助
@@ -1032,7 +1032,7 @@ Some features may not work and changed settings will not be saved.</source>
         <translation>保存到 &quot;%0&quot;, 不附带字幕</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="888"/>
+        <location filename="../ui/mainwindow.cpp" line="890"/>
         <source>Subtitle Files</source>
         <translation>字幕文件</translation>
     </message>
