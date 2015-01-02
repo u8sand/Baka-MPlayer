@@ -176,7 +176,9 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->splitter, &CustomSplitter::entered,
             [=]
             {
-                if(isFullScreen() && !isPlaylistVisible())
+                if(isFullScreen() && // full screen
+                   !isPlaylistVisible() && // no playlist
+                   cursor().pos().x() > width() - 10) // make sure the cursor position is all the way on the right
                 {
                     ShowPlaylist(true);
                     autohide->stop();
@@ -1659,6 +1661,7 @@ void MainWindow::ShowPlaylist(bool visible)
         if(ui->splitter->position() != ui->splitter->max() && ui->splitter->position() != 0)
             ui->splitter->setNormalPosition(ui->splitter->position()); // save current splitter position as the normal position
         ui->splitter->setPosition(0); // set splitter position to right-most
+        setFocus();
     }
 }
 
