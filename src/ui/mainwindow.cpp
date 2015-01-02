@@ -67,7 +67,7 @@ MainWindow::MainWindow(QWidget *parent):
             [=](QString lang)
             {
                 if(lang == "auto") // fetch lang from locale
-                    lang = QLocale::system().name().left(2);
+                    lang = QLocale::system().name();
 
                 if(lang != "en")
                 {

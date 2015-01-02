@@ -105,8 +105,8 @@ void PreferencesDialog::PopulateLangs()
     ui->langComboBox->addItem("auto");
     for(auto &i : flist)
     {
-        // right 5: xx.qm
-        // left 2:  xx
-        ui->langComboBox->addItem(i.fileName().mid(13,i.fileName().length()-16));
+        QString lang = i.fileName().mid(i.fileName().indexOf("_") + 1); // baka-mplayer_....
+        lang.chop(3); // -  .qm
+        ui->langComboBox->addItem(lang);
     }
 }
