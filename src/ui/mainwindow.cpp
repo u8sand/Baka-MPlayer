@@ -1402,43 +1402,70 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *event)
 
 void MainWindow::mouseMoveEvent(QMouseEvent *event)
 {
-    static QRect playbackRect;
+    static QRect playbackRect,
+                 playlistRect;
 
     if(gesture->Process(event->globalPos()))
         event->accept();
     else if(isFullScreen())
     {
+        bool in = false;
         setCursor(QCursor(Qt::ArrowCursor)); // show the cursor
         autohide->stop();
 
         if(!ui->playbackLayoutWidget->isVisible())
         {
-            if(playbackRect.contains(event->pos()))
+            if(playbackRect.contains(event->globalPos()))
             {
                 ui->playbackLayoutWidget->setVisible(true);
                 ui->seekBar->setVisible(true);
+                in = true;
             }
-            else
-                autohide->start(500);
         }
         else
         {
             playbackRect = ui->playbackLayoutWidget->geometry();
+            playbackRect.moveTo(ui->playbackLayoutWidget->pos());
             playbackRect.setTop(playbackRect.top()-20);
-            if(!playbackRect.contains(event->pos()))
+            playbackRect.setWidth(width());
+
+            if(!playbackRect.contains(event->globalPos()))
             {
                 ui->playbackLayoutWidget->setVisible(false);
                 ui->seekBar->setVisible(false);
-                autohide->start(500);
             }
         }
+
+        if(!isPlaylistVisible())
+        {
+            if(playlistRect.contains(event->globalPos()))
+            {
+                ShowPlaylist(true);
+                in = true;
+            }
+        }
+        else
+        {
+            playlistRect = ui->playlistLayoutWidget->geometry();
+            playlistRect.moveTo(ui->playlistLayoutWidget->pos());
+            playlistRect.setLeft(playlistRect.left()-20);
+            playlistRect.setHeight(height());
+
+            if(!playlistRect.contains(event->globalPos()))
+                ShowPlaylist(false);
+            else
+                in = true;
+        }
+
+        if(!in)
+            autohide->start(500);
     }
     QMainWindow::mouseMoveEvent(event);
 }
 
 bool MainWindow::eventFilter(QObject *obj, QEvent *event)
 {
-    if(obj == ui->mpvFrame && event->type() == QEvent::MouseMove && isFullScreen())
+    if(event->type() == QEvent::MouseMove && obj == ui->mpvFrame && isFullScreen())
     {
         QMouseEvent *mouseEvent = static_cast<QMouseEvent*>(event);
         mouseMoveEvent(mouseEvent);
@@ -1566,12 +1593,13 @@ void MainWindow::FullScreen(bool fs)
             dimDialog->setVisible(false);
             ui->action_Dim_Lights->setChecked(false);
         }
+        ShowPlaylist(true); // show the playlist so that we can auto-hide it
         setWindowState(windowState() | Qt::WindowFullScreen);
         ui->menubar->setVisible(false);
-        ShowPlaylist(false);
         setMouseTracking(true); // register mouse move event
         setContextMenuPolicy(Qt::ActionsContextMenu);
-        // post a mouseMoveEvent (in case user doesn't actually move the mouse when entering fs)
+
+        // post a mouseMoveEvent to autohide
         QCoreApplication::postEvent(this, new QMouseEvent(QMouseEvent::MouseMove,
                                                           QCursor::pos(),
                                                           Qt::NoButton,Qt::NoButton,Qt::NoModifier));

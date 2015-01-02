@@ -513,9 +513,6 @@ QSlider::sub-page:horizontal {
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
-      <property name="mouseTracking">
-       <bool>false</bool>
-      </property>
       <layout class="QHBoxLayout" name="horizontalLayout_3">
        <property name="spacing">
         <number>8</number>
@@ -976,7 +973,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>580</width>
-     <height>23</height>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
