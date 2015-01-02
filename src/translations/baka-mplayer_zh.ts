@@ -41,18 +41,19 @@ CC BY 3.0 &lt;Sasha Mescheryakov&gt;
 
 Translations
 - Chinese &lt;amazingfate, Antares95&gt;
+- Italian &lt;Aloysius&gt;
 - Korean &lt;godly-devotion&gt;
-- Portugese &lt;u8sand&gt;
+- Portuguese &lt;u8sand&gt;
 - Russian &lt;suhr&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/aboutdialog.ui" line="237"/>
+        <location filename="../ui/aboutdialog.ui" line="238"/>
         <source>License</source>
         <translation>许可证</translation>
     </message>
     <message>
-        <location filename="../ui/aboutdialog.ui" line="261"/>
+        <location filename="../ui/aboutdialog.ui" line="262"/>
         <source>                GNU GENERAL PUBLIC LICENSE
                    Version 2, June 1991
 
@@ -87,7 +88,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</translation>
     </message>
     <message>
-        <location filename="../ui/aboutdialog.ui" line="302"/>
+        <location filename="../ui/aboutdialog.ui" line="303"/>
         <source>&amp;CLOSE</source>
         <translation>关闭(&amp;C)</translation>
     </message>
@@ -574,7 +575,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1299"/>
-        <location filename="../ui/mainwindow.cpp" line="392"/>
+        <location filename="../ui/mainwindow.cpp" line="406"/>
         <source>&amp;Play</source>
         <translation>播放(&amp;P)</translation>
     </message>
@@ -925,116 +926,113 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
         <translation>Ctrl+Shift+R</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="125"/>
+        <location filename="../ui/mainwindow.cpp" line="123"/>
         <source>Playing</source>
         <translation>播放</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="127"/>
+        <location filename="../ui/mainwindow.cpp" line="125"/>
         <source>Paused</source>
         <translation>暂停</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="234"/>
+        <location filename="../ui/mainwindow.cpp" line="248"/>
         <source>Sub</source>
         <translation>字幕</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="246"/>
+        <location filename="../ui/mainwindow.cpp" line="260"/>
         <source>Audio</source>
         <translation>音频</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="384"/>
+        <location filename="../ui/mainwindow.cpp" line="398"/>
         <source>&amp;Pause</source>
         <translation>暂停(&amp;P)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="662"/>
+        <location filename="../ui/mainwindow.cpp" line="676"/>
         <source>Enter the file number you want to play:
 Note: Value must be from %0 - %1</source>
         <translation>输入你想要播放的文件编号:
 注意: 编号必须在以下范围%0 - %1</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="663"/>
+        <location filename="../ui/mainwindow.cpp" line="677"/>
         <source>Enter File Number</source>
         <translation>输入文件编号</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="681"/>
+        <location filename="../ui/mainwindow.cpp" line="695"/>
         <source>No selection</source>
         <translation>无选择</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="495"/>
+        <location filename="../ui/mainwindow.cpp" line="509"/>
         <source>Speed: %0x</source>
         <translation>速度: %0x</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="687"/>
+        <location filename="../ui/mainwindow.cpp" line="701"/>
         <source>File %0 of %1</source>
         <translation>文件 %0 总数 %1</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="717"/>
         <source>R&amp;emove from Playlist</source>
-        <translation>移出播放列表(&amp;R)</translation>
+        <translation type="vanished">移出播放列表(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="732"/>
         <source>&amp;Delete from Disk</source>
-        <translation>从磁盘删除(&amp;D)</translation>
+        <translation type="vanished">从磁盘删除(&amp;D)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="749"/>
         <source>&amp;Refresh</source>
-        <translation>刷新(&amp;R)</translation>
+        <translation type="vanished">刷新(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="902"/>
+        <location filename="../ui/mainwindow.cpp" line="875"/>
         <source>Open Subtitle File</source>
         <translation>打开字幕文件</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1084"/>
+        <location filename="../ui/mainwindow.cpp" line="1057"/>
         <source>http://bakamplayer.u8sand.net/help.php</source>
         <translation>http://bakamplayer.u8sand.net/help.php</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1330"/>
+        <location filename="../ui/mainwindow.cpp" line="1303"/>
         <source>Settings version not recognized</source>
         <translation>配置文件版本无法被识别</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1330"/>
+        <location filename="../ui/mainwindow.cpp" line="1303"/>
         <source>The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.
 Some features may not work and changed settings will not be saved.</source>
         <translation>配置文件是由更新版本的baka-mplayer创建的，请更新此版本或者向开发者寻求帮助
 一些特性可能无法工作且更改的设置无法被保存</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1747"/>
+        <location filename="../ui/mainwindow.cpp" line="1720"/>
         <source>Dim Lights</source>
         <translation>昏暗灯光</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1747"/>
+        <location filename="../ui/mainwindow.cpp" line="1720"/>
         <source>In order to dim the lights, the desktop compositor has to be enabled. This can be done through Window Manager Desktop.</source>
         <translation>为了开启黯淡桌面功能,桌面混成需要开启，可以通过窗口管理进行设置。</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1813"/>
+        <location filename="../ui/mainwindow.cpp" line="1786"/>
         <source>Saved to &quot;%0&quot;, with subs</source>
         <translation>保存到 &quot;%0&quot;, 附带字幕</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1815"/>
+        <location filename="../ui/mainwindow.cpp" line="1788"/>
         <source>Saved to &quot;%0&quot;, without subs</source>
         <translation>保存到 &quot;%0&quot;, 不附带字幕</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="903"/>
+        <location filename="../ui/mainwindow.cpp" line="876"/>
         <source>Subtitle Files</source>
         <translation>字幕文件</translation>
     </message>
@@ -1051,22 +1049,22 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">退出全屏</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1840"/>
+        <location filename="../ui/mainwindow.cpp" line="1813"/>
         <source>Open File</source>
         <translation>打开文件</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1841"/>
+        <location filename="../ui/mainwindow.cpp" line="1814"/>
         <source>Media Files</source>
         <translation>媒体文件</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1842"/>
+        <location filename="../ui/mainwindow.cpp" line="1815"/>
         <source>Video Files</source>
         <translation>视频文件</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1843"/>
+        <location filename="../ui/mainwindow.cpp" line="1816"/>
         <source>Audio Files</source>
         <translation>音频文件</translation>
     </message>
@@ -1074,19 +1072,37 @@ Some features may not work and changed settings will not be saved.</source>
 <context>
     <name>MpvHandler</name>
     <message>
-        <location filename="../mpvhandler.cpp" line="175"/>
+        <location filename="../mpvhandler.cpp" line="182"/>
         <source>Setting type was parsed as %0</source>
         <translation>设置类型被解析为 %0</translation>
     </message>
     <message>
-        <location filename="../mpvhandler.cpp" line="758"/>
+        <location filename="../mpvhandler.cpp" line="765"/>
         <source>mpv was not initialized</source>
         <translation>mpv未初始化</translation>
     </message>
     <message>
-        <location filename="../mpvhandler.cpp" line="188"/>
+        <location filename="../mpvhandler.cpp" line="195"/>
         <source>screenshot%#04n</source>
         <translation>截图%#04n</translation>
+    </message>
+</context>
+<context>
+    <name>PlaylistWidget</name>
+    <message>
+        <location filename="../widgets/playlistwidget.cpp" line="193"/>
+        <source>R&amp;emove from Playlist</source>
+        <translation type="unfinished">移出播放列表(&amp;R)</translation>
+    </message>
+    <message>
+        <location filename="../widgets/playlistwidget.cpp" line="206"/>
+        <source>&amp;Delete from Disk</source>
+        <translation type="unfinished">从磁盘删除(&amp;D)</translation>
+    </message>
+    <message>
+        <location filename="../widgets/playlistwidget.cpp" line="220"/>
+        <source>&amp;Refresh</source>
+        <translation type="unfinished">刷新(&amp;R)</translation>
     </message>
 </context>
 <context>

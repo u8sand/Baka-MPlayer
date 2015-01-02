@@ -41,8 +41,9 @@ CC BY 3.0 &lt;Sasha Mescheryakov&gt;
 
 Translations
 - Chinese &lt;amazingfate, Antares95&gt;
+- Italian &lt;Aloysius&gt;
 - Korean &lt;godly-devotion&gt;
-- Portugese &lt;u8sand&gt;
+- Portuguese &lt;u8sand&gt;
 - Russian &lt;suhr&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -77,17 +78,17 @@ Traduções
 - Russo &lt;suhr&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/aboutdialog.ui" line="237"/>
+        <location filename="../ui/aboutdialog.ui" line="238"/>
         <source>License</source>
         <translation>Licença</translation>
     </message>
     <message>
-        <location filename="../ui/aboutdialog.ui" line="302"/>
+        <location filename="../ui/aboutdialog.ui" line="303"/>
         <source>&amp;CLOSE</source>
         <translation>&amp;FECHAR</translation>
     </message>
     <message>
-        <location filename="../ui/aboutdialog.ui" line="261"/>
+        <location filename="../ui/aboutdialog.ui" line="262"/>
         <source>                GNU GENERAL PUBLIC LICENSE
                    Version 2, June 1991
 
@@ -596,7 +597,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1299"/>
-        <location filename="../ui/mainwindow.cpp" line="392"/>
+        <location filename="../ui/mainwindow.cpp" line="406"/>
         <source>&amp;Play</source>
         <translatorcomment>I&apos;ve been told this is acceptable.</translatorcomment>
         <translation>&amp;Play</translation>
@@ -948,131 +949,128 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
         <translation>Ctrl+Shift+R</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="125"/>
+        <location filename="../ui/mainwindow.cpp" line="123"/>
         <source>Playing</source>
         <translation>Visualizando</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="127"/>
+        <location filename="../ui/mainwindow.cpp" line="125"/>
         <source>Paused</source>
         <translation>Pausada</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="234"/>
+        <location filename="../ui/mainwindow.cpp" line="248"/>
         <source>Sub</source>
         <translation>Legenda</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="246"/>
+        <location filename="../ui/mainwindow.cpp" line="260"/>
         <source>Audio</source>
         <translation>Áudio</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="384"/>
+        <location filename="../ui/mainwindow.cpp" line="398"/>
         <source>&amp;Pause</source>
         <translation>&amp;Pausa</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="662"/>
+        <location filename="../ui/mainwindow.cpp" line="676"/>
         <source>Enter the file number you want to play:
 Note: Value must be from %0 - %1</source>
         <translation>Entrar índice arquivo que você quer:
 Nota: O valor deve ser de %0 - %1</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="663"/>
+        <location filename="../ui/mainwindow.cpp" line="677"/>
         <source>Enter File Number</source>
         <translation>Entrar Índice Arquivo</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="681"/>
+        <location filename="../ui/mainwindow.cpp" line="695"/>
         <source>No selection</source>
         <translation>Nenhuma seleção</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="903"/>
+        <location filename="../ui/mainwindow.cpp" line="876"/>
         <source>Subtitle Files</source>
         <translation>Arquivos de Legendas</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1330"/>
+        <location filename="../ui/mainwindow.cpp" line="1303"/>
         <source>Settings version not recognized</source>
         <translation>Versão configurações não reconhecido</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1330"/>
+        <location filename="../ui/mainwindow.cpp" line="1303"/>
         <source>The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.
 Some features may not work and changed settings will not be saved.</source>
         <translation>O arquivo de configurações foi feita por uma versão mais nova do baka-mplayer; por favor, atualize esta versão ou procurar ajuda de desenvolvedores.
 Alguns recursos podem não funcionar e configurações alteradas não serão salvas.</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1841"/>
+        <location filename="../ui/mainwindow.cpp" line="1814"/>
         <source>Media Files</source>
         <translation>Arquivos de Mídia</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1842"/>
+        <location filename="../ui/mainwindow.cpp" line="1815"/>
         <source>Video Files</source>
         <translation>Arquivos de Vídeo</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1843"/>
+        <location filename="../ui/mainwindow.cpp" line="1816"/>
         <source>Audio Files</source>
         <translation>Arquivos de Áudio</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="495"/>
+        <location filename="../ui/mainwindow.cpp" line="509"/>
         <source>Speed: %0x</source>
         <translation>Velocidade: %0x</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="687"/>
+        <location filename="../ui/mainwindow.cpp" line="701"/>
         <source>File %0 of %1</source>
         <translation>Arquivo %0 de %1</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="717"/>
         <source>R&amp;emove from Playlist</source>
-        <translation>R&amp;emover da Lista</translation>
+        <translation type="vanished">R&amp;emover da Lista</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="732"/>
         <source>&amp;Delete from Disk</source>
-        <translation>&amp;Excluir do disco</translation>
+        <translation type="vanished">&amp;Excluir do disco</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="749"/>
         <source>&amp;Refresh</source>
-        <translation>&amp;Refrescar</translation>
+        <translation type="vanished">&amp;Refrescar</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="902"/>
+        <location filename="../ui/mainwindow.cpp" line="875"/>
         <source>Open Subtitle File</source>
         <translation>Arquivo de legenda aberta</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1084"/>
+        <location filename="../ui/mainwindow.cpp" line="1057"/>
         <source>http://bakamplayer.u8sand.net/help.php</source>
         <translation>http://bakamplayer.u8sand.net/help.php</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1747"/>
+        <location filename="../ui/mainwindow.cpp" line="1720"/>
         <source>Dim Lights</source>
         <translation>Luzes Difusas</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1747"/>
+        <location filename="../ui/mainwindow.cpp" line="1720"/>
         <source>In order to dim the lights, the desktop compositor has to be enabled. This can be done through Window Manager Desktop.</source>
         <translation>Para escurecer o ambiente de trabalho, transparência do desktop tem que ser ativado.</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1813"/>
+        <location filename="../ui/mainwindow.cpp" line="1786"/>
         <source>Saved to &quot;%0&quot;, with subs</source>
         <translation>Salvos em &quot;%0&quot;, com legendas</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1815"/>
+        <location filename="../ui/mainwindow.cpp" line="1788"/>
         <source>Saved to &quot;%0&quot;, without subs</source>
         <translation>Salvos em &quot;%0&quot;, sem legendas</translation>
     </message>
@@ -1090,7 +1088,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
         <translation type="vanished">Saída Tela Cheia/Boss Key</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1840"/>
+        <location filename="../ui/mainwindow.cpp" line="1813"/>
         <source>Open File</source>
         <translation>Arquivo Aberto</translation>
     </message>
@@ -1098,19 +1096,37 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
 <context>
     <name>MpvHandler</name>
     <message>
-        <location filename="../mpvhandler.cpp" line="175"/>
+        <location filename="../mpvhandler.cpp" line="182"/>
         <source>Setting type was parsed as %0</source>
         <translation>Tipo de configurações foram interpretado esta %0</translation>
     </message>
     <message>
-        <location filename="../mpvhandler.cpp" line="188"/>
+        <location filename="../mpvhandler.cpp" line="195"/>
         <source>screenshot%#04n</source>
         <translation>foto%#04n</translation>
     </message>
     <message>
-        <location filename="../mpvhandler.cpp" line="758"/>
+        <location filename="../mpvhandler.cpp" line="765"/>
         <source>mpv was not initialized</source>
         <translation>mpv não foi inicializado</translation>
+    </message>
+</context>
+<context>
+    <name>PlaylistWidget</name>
+    <message>
+        <location filename="../widgets/playlistwidget.cpp" line="193"/>
+        <source>R&amp;emove from Playlist</source>
+        <translation type="unfinished">R&amp;emover da Lista</translation>
+    </message>
+    <message>
+        <location filename="../widgets/playlistwidget.cpp" line="206"/>
+        <source>&amp;Delete from Disk</source>
+        <translation type="unfinished">&amp;Excluir do disco</translation>
+    </message>
+    <message>
+        <location filename="../widgets/playlistwidget.cpp" line="220"/>
+        <source>&amp;Refresh</source>
+        <translation type="unfinished">&amp;Refrescar</translation>
     </message>
 </context>
 <context>

@@ -5,11 +5,15 @@
 #include <QContextMenuEvent>
 #include <QAction>
 
+class MpvHandler;
+
 class PlaylistWidget : public QListWidget
 {
     Q_OBJECT
 public:
     explicit PlaylistWidget(QWidget *parent = 0);
+
+    void AttachMpv(MpvHandler *mpv);
 
     QAction *addAction(const QString &text);
     QString RemoveItem(int index);
@@ -27,10 +31,16 @@ public:
     void ShowAll(bool);
     void Shuffle(bool);
 
+signals:
+    void DeleteFile(QString);
+    void RefreshPlaylist();
+
 protected:
     void contextMenuEvent(QContextMenuEvent *event);
 
 private:
+    MpvHandler *mpv;
+
     QStringList playlist;
     QString cItem;
 };

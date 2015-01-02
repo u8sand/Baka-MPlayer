@@ -46,8 +46,6 @@ MainWindow::MainWindow(QWidget *parent):
     init(false),
     autohide(new QTimer(this))
 {
-    QAction *action;
-
 #if defined(Q_OS_LINUX) || defined(Q_OS_UNIX) // if on x11, dim lights requires a compositing manager, make dimDialog NULL if there is none
     QString tmp = "_NET_WM_CM_S"+QString::number(QX11Info::appScreen());
     Atom a = XInternAtom(QX11Info::display(), tmp.toUtf8().constData(), false);
@@ -149,6 +147,22 @@ MainWindow::MainWindow(QWidget *parent):
             {
                 setCursor(QCursor(Qt::BlankCursor));
                 autohide->stop();
+            });
+
+    // playlistWidget
+    connect(ui->playlistWidget, &PlaylistWidget::DeleteFile,
+            [=](QString file)
+            {
+                QFile f(mpv->getPath()+file);
+                f.remove();
+            });
+
+    connect(ui->playlistWidget, &PlaylistWidget::RefreshPlaylist,
+            [=]
+            {
+                ui->playlistWidget->SelectItem(mpv->LoadPlaylist(mpv->getPath()+mpv->getFile()), true);
+                ui->playlistWidget->ShowAll(!ui->hideFilesButton->isChecked());
+                firstItem = false;
             });
 
     // mpv
@@ -707,47 +721,6 @@ MainWindow::MainWindow(QWidget *parent):
             });
 
     connect(ui->refreshButton, &QPushButton::clicked,                   // Playlist: Refresh playlist button
-            [=]
-            {
-                ui->playlistWidget->SelectItem(mpv->LoadPlaylist(mpv->getPath()+mpv->getFile()), true);
-                ui->playlistWidget->ShowAll(!ui->hideFilesButton->isChecked());
-                firstItem = false;
-            });
-
-    action = ui->playlistWidget->addAction(tr("R&emove from Playlist"));
-    connect(action, &QAction::triggered,                                // Playlist: Remove from playlist (right-click)
-            [=]
-            {
-                int row = ui->playlistWidget->currentRow();
-                ui->playlistWidget->RemoveItem(row);
-                if(row > 0)
-                {
-                    if(row < ui->playlistWidget->count()-1)
-                        ui->playlistWidget->setCurrentRow(row);
-                    else
-                        ui->playlistWidget->setCurrentRow(row-1);
-                }
-            });
-
-    action = ui->playlistWidget->addAction(tr("&Delete from Disk"));
-    connect(action, &QAction::triggered,                                // Playlist: Delete from Disk (right-click)
-            [=]
-            {
-                int row = ui->playlistWidget->currentRow();
-                QString item = ui->playlistWidget->RemoveItem(row);
-                if(row > 0)
-                {
-                    if(row < ui->playlistWidget->count()-1)
-                        ui->playlistWidget->setCurrentRow(row);
-                    else
-                        ui->playlistWidget->setCurrentRow(row-1);
-                }
-                QFile f(mpv->getPath()+item);
-                f.remove();
-            });
-
-    action = ui->playlistWidget->addAction(tr("&Refresh"));
-    connect(action, &QAction::triggered,                                // Playlist: Refresh (right-click)
             [=]
             {
                 ui->playlistWidget->SelectItem(mpv->LoadPlaylist(mpv->getPath()+mpv->getFile()), true);

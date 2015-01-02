@@ -41,8 +41,9 @@ CC BY 3.0 &lt;Sasha Mescheryakov&gt;
 
 Translations
 - Chinese &lt;amazingfate, Antares95&gt;
+- Italian &lt;Aloysius&gt;
 - Korean &lt;godly-devotion&gt;
-- Portugese &lt;u8sand&gt;
+- Portuguese &lt;u8sand&gt;
 - Russian &lt;suhr&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -74,12 +75,12 @@ CC BY 3.0 &lt;Sasha Mescheryakov&gt;
 - Китайский &lt;amazingfate&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/aboutdialog.ui" line="237"/>
+        <location filename="../ui/aboutdialog.ui" line="238"/>
         <source>License</source>
         <translation>Лицензия</translation>
     </message>
     <message>
-        <location filename="../ui/aboutdialog.ui" line="261"/>
+        <location filename="../ui/aboutdialog.ui" line="262"/>
         <source>                GNU GENERAL PUBLIC LICENSE
                    Version 2, June 1991
 
@@ -99,7 +100,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/aboutdialog.ui" line="302"/>
+        <location filename="../ui/aboutdialog.ui" line="303"/>
         <source>&amp;CLOSE</source>
         <translation>&amp;Закрыть</translation>
     </message>
@@ -586,7 +587,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1299"/>
-        <location filename="../ui/mainwindow.cpp" line="392"/>
+        <location filename="../ui/mainwindow.cpp" line="406"/>
         <source>&amp;Play</source>
         <translation>&amp;Играть</translation>
     </message>
@@ -937,134 +938,131 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
         <translation>Ctrl+Shift+R</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="125"/>
+        <location filename="../ui/mainwindow.cpp" line="123"/>
         <source>Playing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="127"/>
+        <location filename="../ui/mainwindow.cpp" line="125"/>
         <source>Paused</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="384"/>
+        <location filename="../ui/mainwindow.cpp" line="398"/>
         <source>&amp;Pause</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="495"/>
+        <location filename="../ui/mainwindow.cpp" line="509"/>
         <source>Speed: %0x</source>
         <translation>Скорость: %0x</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="663"/>
+        <location filename="../ui/mainwindow.cpp" line="677"/>
         <source>Enter File Number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="681"/>
+        <location filename="../ui/mainwindow.cpp" line="695"/>
         <source>No selection</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="687"/>
+        <location filename="../ui/mainwindow.cpp" line="701"/>
         <source>File %0 of %1</source>
         <translation>Файл %0 из %1</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="717"/>
         <source>R&amp;emove from Playlist</source>
-        <translation>&amp;Удалить из списка</translation>
+        <translation type="vanished">&amp;Удалить из списка</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="732"/>
         <source>&amp;Delete from Disk</source>
-        <translation>Удалить с &amp;диска</translation>
+        <translation type="vanished">Удалить с &amp;диска</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="749"/>
         <source>&amp;Refresh</source>
-        <translation>&amp;Обновить</translation>
+        <translation type="vanished">&amp;Обновить</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="902"/>
+        <location filename="../ui/mainwindow.cpp" line="875"/>
         <source>Open Subtitle File</source>
         <translation>Открыть файл субтитров</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="234"/>
+        <location filename="../ui/mainwindow.cpp" line="248"/>
         <source>Sub</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="246"/>
+        <location filename="../ui/mainwindow.cpp" line="260"/>
         <source>Audio</source>
         <translation>Аудио</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="662"/>
+        <location filename="../ui/mainwindow.cpp" line="676"/>
         <source>Enter the file number you want to play:
 Note: Value must be from %0 - %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="903"/>
+        <location filename="../ui/mainwindow.cpp" line="876"/>
         <source>Subtitle Files</source>
         <translation>Файлы субтитров</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1084"/>
+        <location filename="../ui/mainwindow.cpp" line="1057"/>
         <source>http://bakamplayer.u8sand.net/help.php</source>
         <translation>http://bakamplayer.u8sand.net/help.php</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1330"/>
+        <location filename="../ui/mainwindow.cpp" line="1303"/>
         <source>Settings version not recognized</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1330"/>
+        <location filename="../ui/mainwindow.cpp" line="1303"/>
         <source>The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.
 Some features may not work and changed settings will not be saved.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1747"/>
+        <location filename="../ui/mainwindow.cpp" line="1720"/>
         <source>Dim Lights</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1747"/>
+        <location filename="../ui/mainwindow.cpp" line="1720"/>
         <source>In order to dim the lights, the desktop compositor has to be enabled. This can be done through Window Manager Desktop.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1813"/>
+        <location filename="../ui/mainwindow.cpp" line="1786"/>
         <source>Saved to &quot;%0&quot;, with subs</source>
         <translation>Сохранено в «%0», с субтитрами</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1815"/>
+        <location filename="../ui/mainwindow.cpp" line="1788"/>
         <source>Saved to &quot;%0&quot;, without subs</source>
         <translation>Сохранено в «%0», без субтитров</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1841"/>
+        <location filename="../ui/mainwindow.cpp" line="1814"/>
         <source>Media Files</source>
         <translation>Медиафайлы</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1842"/>
+        <location filename="../ui/mainwindow.cpp" line="1815"/>
         <source>Video Files</source>
         <translation>Видеофайлы</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1843"/>
+        <location filename="../ui/mainwindow.cpp" line="1816"/>
         <source>Audio Files</source>
         <translation>Аудиофайлы</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1840"/>
+        <location filename="../ui/mainwindow.cpp" line="1813"/>
         <source>Open File</source>
         <translation>Открыть файл</translation>
     </message>
@@ -1072,19 +1070,37 @@ Some features may not work and changed settings will not be saved.</source>
 <context>
     <name>MpvHandler</name>
     <message>
-        <location filename="../mpvhandler.cpp" line="175"/>
+        <location filename="../mpvhandler.cpp" line="182"/>
         <source>Setting type was parsed as %0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mpvhandler.cpp" line="188"/>
+        <location filename="../mpvhandler.cpp" line="195"/>
         <source>screenshot%#04n</source>
         <translation>скриншот%#04n</translation>
     </message>
     <message>
-        <location filename="../mpvhandler.cpp" line="758"/>
+        <location filename="../mpvhandler.cpp" line="765"/>
         <source>mpv was not initialized</source>
         <translation>mpv не был инициализирован</translation>
+    </message>
+</context>
+<context>
+    <name>PlaylistWidget</name>
+    <message>
+        <location filename="../widgets/playlistwidget.cpp" line="193"/>
+        <source>R&amp;emove from Playlist</source>
+        <translation type="unfinished">&amp;Удалить из списка</translation>
+    </message>
+    <message>
+        <location filename="../widgets/playlistwidget.cpp" line="206"/>
+        <source>&amp;Delete from Disk</source>
+        <translation type="unfinished">Удалить с &amp;диска</translation>
+    </message>
+    <message>
+        <location filename="../widgets/playlistwidget.cpp" line="220"/>
+        <source>&amp;Refresh</source>
+        <translation type="unfinished">&amp;Обновить</translation>
     </message>
 </context>
 <context>

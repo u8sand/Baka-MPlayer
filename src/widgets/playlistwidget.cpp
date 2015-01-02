@@ -190,7 +190,38 @@ void PlaylistWidget::contextMenuEvent(QContextMenuEvent *event)
     if(item)
     {
         QMenu *menu = new QMenu();
-        menu->addActions(actions());
+        connect(menu->addAction(tr("R&emove from Playlist")), &QAction::triggered, // Playlist: Remove from playlist (right-click)
+                [=]
+                {
+                    int row = currentRow();
+                    RemoveItem(row);
+                    if(row > 0)
+                    {
+                        if(row < count()-1)
+                            setCurrentRow(row);
+                        else
+                            setCurrentRow(row-1);
+                    }
+                });
+        connect(menu->addAction(tr("&Delete from Disk")), &QAction::triggered,     // Playlist: Delete from Disk (right-click)
+                [=]
+                {
+                    int row = currentRow();
+                    QString item = RemoveItem(row);
+                    if(row > 0)
+                    {
+                        if(row < count()-1)
+                            setCurrentRow(row);
+                        else
+                            setCurrentRow(row-1);
+                    }
+                    emit DeleteFile(item);
+                });
+        connect(menu->addAction(tr("&Refresh")), &QAction::triggered,              // Playlist: Refresh (right-click)
+                [=]
+                {
+                    emit RefreshPlaylist();
+                });
         menu->exec(viewport()->mapToGlobal(event->pos()));
         delete menu;
     }
