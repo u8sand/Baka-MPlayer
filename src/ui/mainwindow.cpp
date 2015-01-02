@@ -1444,6 +1444,8 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
                 ui->playbackLayoutWidget->setVisible(false);
                 ui->seekBar->setVisible(false);
             }
+            else
+                in = true;
         }
 
         if(isPlaylistVisible())
