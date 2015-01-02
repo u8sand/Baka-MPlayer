@@ -17,7 +17,6 @@ LocationDialog::LocationDialog(QString path, QWidget *parent) :
             this, SLOT(reject()));              // reject
     connect(ui->urlEdit, SIGNAL(textChanged(QString)),
             this, SLOT(validate(QString)));
-
     ui->urlEdit->setText(QDir::toNativeSeparators(path));
 }
 

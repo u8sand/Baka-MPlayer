@@ -51,8 +51,11 @@ bool MpvHandler::event(QEvent *event)
         while(mpv)
         {
             mpv_event *event = mpv_wait_event(mpv, 0);
-            if (event->event_id == MPV_EVENT_NONE)
+            if(event == nullptr ||
+               event->event_id == MPV_EVENT_NONE)
+            {
                 break;
+            }
             if(event->error < 0)
                 emit messageSignal(QString("[mpv]: %0").arg(mpv_error_string(event->error)));
             switch (event->event_id)
@@ -116,8 +119,12 @@ bool MpvHandler::event(QEvent *event)
                 QCoreApplication::quit();
                 break;
             case MPV_EVENT_LOG_MESSAGE:
-                emit messageSignal(QString("[mpv]: %0").arg(static_cast<mpv_event_log_message*>(event->data)->text));
+            {
+                mpv_event_log_message *message = static_cast<mpv_event_log_message*>(event->data);
+                if(message != nullptr)
+                    emit messageSignal(QString("[mpv]: %0").arg(message->text));
                 break;
+            }
             default: // unhandled events
                 break;
             }
@@ -259,12 +266,12 @@ QString MpvHandler::LoadPlaylist(QString f)
             return QString();
         else if(fi.isDir()) // if directory
         {
-            setPath(QString(fi.absoluteFilePath()+"/")); // set new path
+            setPath(QDir::toNativeSeparators(fi.absoluteFilePath()+"/")); // set new path
             return PopulatePlaylist();
         }
         else if(fi.isFile()) // if file
         {
-            setPath(QString(fi.absolutePath()+"/")); // set new path
+            setPath(QDir::toNativeSeparators(fi.absolutePath()+"/")); // set new path
             PopulatePlaylist();
             return fi.fileName();
         }
