@@ -7,8 +7,10 @@ url="http://bakamplayer.u8sand.net/"
 arch=('x86_64' 'i686')
 license=('GPLv2')
 depends=('mpv' 'qt5-base' 'qt5-declarative' 'qt5-svg' 'qt5-x11extras')
-makedepends=('git' 'make' 'pkg-config')
+makedepends=('git' 'make' 'pkg-config' 'qt5-tools')
 optdepends=(
+  'qt5-translations: qt5 dialog translations'
+  'mpv-git: bleeding-edge mpv features'
   'youtube-dl: support for remote video streaming'
 )
 conflicts=('bakamplayer' 'baka-mplayer')
