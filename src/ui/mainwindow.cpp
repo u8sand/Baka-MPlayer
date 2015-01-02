@@ -33,15 +33,11 @@
 
 MainWindow::MainWindow(QWidget *parent):
     QMainWindow(parent),
-    ui(new Ui::MainWindow),
-    translator(nullptr),
-    qtTranslator(nullptr),
-    firstItem(false),
-    init(false),
-    autohide(new QTimer(this))
+    ui(new Ui::MainWindow)
 {
+    // dimdialog must be initialized before ui is setup
     if(Platform::DimLightsSupported())
-        dimDialog = new DimDialog(); // dimdialog must be initialized before ui is setup
+        dimDialog = new DimDialog();
     else
         dimDialog = nullptr;
 
@@ -61,6 +57,8 @@ MainWindow::MainWindow(QWidget *parent):
     // todo: tray menu/tooltip
     sysTrayIcon = new QSystemTrayIcon(windowIcon(), this);
     ui->mpvFrame->installEventFilter(this); // capture events on mpvFrame in the eventFilter function
+    autohide = new QTimer(this);
+
 
     // setup signals & slots
 
@@ -93,10 +91,10 @@ MainWindow::MainWindow(QWidget *parent):
                 }
                 else
                 {
-                    if(translator != nullptr)
-                        qApp->removeTranslator(translator);
                     if(qtTranslator != nullptr)
                         qApp->removeTranslator(qtTranslator);
+                    if(translator != nullptr)
+                        qApp->removeTranslator(translator);
                 }
 
                 ui->retranslateUi(this);
@@ -111,6 +109,23 @@ MainWindow::MainWindow(QWidget *parent):
                     Platform::SetAlwaysOnTop(winId(), true);
                 else if(onTop == "playing" && mpv->getPlayState() > 0)
                     Platform::SetAlwaysOnTop(winId(), true);
+            });
+
+    connect(this, &MainWindow::remainingChanged,
+            [=](bool b)
+            {
+                if(!b)
+                    ui->remainingLabel->setText(Util::FormatTime(mpv->getFileInfo().length, mpv->getFileInfo().length));
+                else
+                    ui->remainingLabel->setText("-"+Util::FormatTime(mpv->getFileInfo().length - mpv->getTime(), mpv->getFileInfo().length));
+            });
+
+    connect(this, &MainWindow::debugChanged,
+            [=](bool b)
+            {
+                mpv->Debug(b);
+                ui->actionShow_D_ebug_Output->setChecked(b);
+                ui->verticalWidget->setVisible(b);
             });
 
     connect(sysTrayIcon, &QSystemTrayIcon::activated,
@@ -130,18 +145,10 @@ MainWindow::MainWindow(QWidget *parent):
 
             });
 
-//    connect(this, &MainWindow::hidePopupChanged,
-//            [=](bool b)
-//    {
-//    });
-
-    connect(this, &MainWindow::debugChanged,
-            [=](bool b)
-            {
-                mpv->Debug(b);
-                ui->actionShow_D_ebug_Output->setChecked(b);
-                ui->verticalWidget->setVisible(b);
-            });
+    //    connect(this, &MainWindow::hidePopupChanged,
+    //            [=](bool b)
+    //    {
+    //    });
 
     connect(autohide, &QTimer::timeout, // cursor autohide
             [=]
@@ -598,13 +605,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->remainingLabel, &CustomLabel::clicked,                  // Playback: Remaining Label
             [=]
             {
-                if(remaining)
-                {
-                    setRemaining(false);
-                    ui->remainingLabel->setText(Util::FormatTime(mpv->getFileInfo().length, mpv->getFileInfo().length));
-                }
-                else
-                    setRemaining(true);
+                setRemaining(!remaining);
             });
 
     connect(ui->rewindButton, &QPushButton::clicked,                    // Playback: Rewind button
@@ -1134,12 +1135,14 @@ MainWindow::~MainWindow()
     // see: http://qt-project.org/doc/qt-4.8/objecttrees.html
 
     // but apparently they don't (https://github.com/u8sand/Baka-MPlayer/issues/47)
-    delete mpv;
-    delete updateDialog;
-    delete gesture;
 
-    if(dimDialog)
-        delete dimDialog;
+    if(mpv != nullptr)          delete mpv;
+    if(updateDialog != nullptr) delete updateDialog;
+    if(gesture != nullptr)      delete gesture;
+    if(translator != nullptr)   delete translator;
+    if(qtTranslator != nullptr) delete qtTranslator;
+    if(dimDialog != nullptr)    delete dimDialog;
+
     delete ui;
 }
 

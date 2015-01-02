@@ -70,14 +70,14 @@ private:
     QSettings       *settings;
     MpvHandler      *mpv;
     GestureHandler  *gesture;
-    QTranslator     *translator,
-                    *qtTranslator;
+    QTranslator     *translator     = nullptr,
+                    *qtTranslator   = nullptr;
 
     bool            pathChanged,
                     menuVisible,
-                    firstItem,
-                    init;
-    QTimer          *autohide;
+                    firstItem       = false,
+                    init            = false;
+    QTimer          *autohide       = nullptr;
 
     QSystemTrayIcon *sysTrayIcon;
     QMenu           *trayIconMenu;
