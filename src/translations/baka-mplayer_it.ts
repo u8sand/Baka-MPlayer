@@ -115,92 +115,92 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
         <translation>&amp;CHIUDI</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="24"/>
+        <location filename="../ui/infodialog.cpp" line="22"/>
         <source>File name</source>
         <translation>Nome del file</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="25"/>
+        <location filename="../ui/infodialog.cpp" line="23"/>
         <source>Media Title</source>
         <translation>Titolo del media</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="26"/>
+        <location filename="../ui/infodialog.cpp" line="24"/>
         <source>File size</source>
         <translation>Dimensioni del file</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="27"/>
+        <location filename="../ui/infodialog.cpp" line="25"/>
         <source>Date created</source>
         <translation>Data di creazione</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="28"/>
+        <location filename="../ui/infodialog.cpp" line="26"/>
         <source>Media length</source>
         <translation>Durata del media</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="34"/>
+        <location filename="../ui/infodialog.cpp" line="32"/>
         <source>[Video]</source>
         <translation>[Video]</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="35"/>
+        <location filename="../ui/infodialog.cpp" line="33"/>
         <source>Video codec</source>
         <translation>Codec video</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="36"/>
+        <location filename="../ui/infodialog.cpp" line="34"/>
         <source>Video format</source>
         <translation>Formato video</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="37"/>
+        <location filename="../ui/infodialog.cpp" line="35"/>
         <source>Video bitrate</source>
         <translation>Bitrate video</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="38"/>
+        <location filename="../ui/infodialog.cpp" line="36"/>
         <source>Video dimensions</source>
         <translation>Dimensioni del video</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="46"/>
+        <location filename="../ui/infodialog.cpp" line="44"/>
         <source>[Audio]</source>
         <translation>[Audio]</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="47"/>
+        <location filename="../ui/infodialog.cpp" line="45"/>
         <source>Audio codec</source>
         <translation>Codec audio</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="48"/>
+        <location filename="../ui/infodialog.cpp" line="46"/>
         <source>Audio format</source>
         <translation>Formato audio</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="49"/>
+        <location filename="../ui/infodialog.cpp" line="47"/>
         <source>Audio bitrate</source>
         <translation>Bitrate audio</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="50"/>
+        <location filename="../ui/infodialog.cpp" line="48"/>
         <source>Audio samplerate</source>
         <translation>Campionamento audio</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="51"/>
+        <location filename="../ui/infodialog.cpp" line="49"/>
         <source>Audio channels</source>
         <translation>Canali audio</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="76"/>
+        <location filename="../ui/infodialog.cpp" line="74"/>
         <source>[Track List]</source>
         <translation>Scaletta</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="90"/>
+        <location filename="../ui/infodialog.cpp" line="88"/>
         <source>[Chapter List]</source>
         <translation>Capitoli</translation>
     </message>
@@ -559,7 +559,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1299"/>
-        <location filename="../ui/mainwindow.cpp" line="406"/>
+        <location filename="../ui/mainwindow.cpp" line="407"/>
         <source>&amp;Play</source>
         <translation>&amp;Riproduci</translation>
     </message>
@@ -917,54 +917,54 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
         <translation>Alt+5</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="123"/>
+        <location filename="../ui/mainwindow.cpp" line="124"/>
         <source>Playing</source>
         <translation>Riproduzione in corso</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="125"/>
+        <location filename="../ui/mainwindow.cpp" line="126"/>
         <source>Paused</source>
         <translation>In pausa</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="248"/>
+        <location filename="../ui/mainwindow.cpp" line="249"/>
         <source>Sub</source>
         <translation>Sottotitolo</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="260"/>
+        <location filename="../ui/mainwindow.cpp" line="261"/>
         <source>Audio</source>
         <translation>Audio</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="398"/>
+        <location filename="../ui/mainwindow.cpp" line="399"/>
         <source>&amp;Pause</source>
         <translation>&amp;Pausa</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="509"/>
+        <location filename="../ui/mainwindow.cpp" line="510"/>
         <source>Speed: %0x</source>
         <translation>Velocità: %0x</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="676"/>
+        <location filename="../ui/mainwindow.cpp" line="677"/>
         <source>Enter the file number you want to play:
 Note: Value must be from %0 - %1</source>
         <translation>Inserisci il numero del file che vuoi riprodurre:
 Nota: Il valore deve essere compreso tra %0 e %1</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="677"/>
+        <location filename="../ui/mainwindow.cpp" line="678"/>
         <source>Enter File Number</source>
         <translation>Inserisci numero file</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="695"/>
+        <location filename="../ui/mainwindow.cpp" line="696"/>
         <source>No selection</source>
         <translation>Nessuna selezione</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="701"/>
+        <location filename="../ui/mainwindow.cpp" line="702"/>
         <source>File %0 of %1</source>
         <translation>File %0 di %1</translation>
     </message>
@@ -981,69 +981,69 @@ Nota: Il valore deve essere compreso tra %0 e %1</translation>
         <translation type="vanished">A&amp;ggiorna</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="875"/>
+        <location filename="../ui/mainwindow.cpp" line="876"/>
         <source>Open Subtitle File</source>
         <translation>Apri file sottotitoli</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="876"/>
+        <location filename="../ui/mainwindow.cpp" line="877"/>
         <source>Subtitle Files</source>
         <translation>File sottotitoli</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1057"/>
+        <location filename="../ui/mainwindow.cpp" line="1058"/>
         <source>http://bakamplayer.u8sand.net/help.php</source>
         <translation>http://bakamplayer.u8sand.net/help.php</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1303"/>
+        <location filename="../ui/mainwindow.cpp" line="1304"/>
         <source>Settings version not recognized</source>
         <translation>Versione file di impostazioni non riconosciuta</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1303"/>
+        <location filename="../ui/mainwindow.cpp" line="1304"/>
         <source>The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.
 Some features may not work and changed settings will not be saved.</source>
         <translation>Il file di impostazioni è stato creato da una versione di baka-mplayer più recente; aggiorna questa versione o richiedi assistenza agli sviluppatori.
 Alcune funzionalità potrebbero non essere disponibili e le impostazioni modificate non verranno salvate.</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1720"/>
+        <location filename="../ui/mainwindow.cpp" line="1721"/>
         <source>Dim Lights</source>
         <translation>Abbassa le luci</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1720"/>
+        <location filename="../ui/mainwindow.cpp" line="1721"/>
         <source>In order to dim the lights, the desktop compositor has to be enabled. This can be done through Window Manager Desktop.</source>
         <translation>Per poter abbassare le luci, il compositore del desktop deve essere abilitato. Questo può essere fatto dal gestore finestre desktop.</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1786"/>
+        <location filename="../ui/mainwindow.cpp" line="1751"/>
         <source>Saved to &quot;%0&quot;, with subs</source>
         <translation>Salvato su &quot;%0&quot;, con sottotitoli</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1788"/>
+        <location filename="../ui/mainwindow.cpp" line="1753"/>
         <source>Saved to &quot;%0&quot;, without subs</source>
         <translation>Salvato su &quot;%0&quot;, senza sottotitoli</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1813"/>
+        <location filename="../ui/mainwindow.cpp" line="1778"/>
         <source>Open File</source>
         <translation>Apri file</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1814"/>
+        <location filename="../ui/mainwindow.cpp" line="1779"/>
         <source>Media Files</source>
         <translation>File multimediali</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1815"/>
+        <location filename="../ui/mainwindow.cpp" line="1780"/>
         <source>Video Files</source>
         <translation>File video</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1816"/>
+        <location filename="../ui/mainwindow.cpp" line="1781"/>
         <source>Audio Files</source>
         <translation>File audio</translation>
     </message>

@@ -11,7 +11,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = baka-mplayer
 TEMPLATE = app
 
-CONFIG += c++11 link_pkgconfig embed_translations
+CONFIG += c++11 link_pkgconfig
 PKGCONFIG += mpv
 
 DESTDIR = build

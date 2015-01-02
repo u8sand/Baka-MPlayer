@@ -116,92 +116,92 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
         <translation>关闭(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="24"/>
+        <location filename="../ui/infodialog.cpp" line="22"/>
         <source>File name</source>
         <translation>文件名</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="25"/>
+        <location filename="../ui/infodialog.cpp" line="23"/>
         <source>Media Title</source>
         <translation>媒体标题</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="26"/>
+        <location filename="../ui/infodialog.cpp" line="24"/>
         <source>File size</source>
         <translation>文件大小</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="27"/>
+        <location filename="../ui/infodialog.cpp" line="25"/>
         <source>Date created</source>
         <translation>创建时间</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="28"/>
+        <location filename="../ui/infodialog.cpp" line="26"/>
         <source>Media length</source>
         <translation>媒体时长</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="34"/>
+        <location filename="../ui/infodialog.cpp" line="32"/>
         <source>[Video]</source>
         <translation>视频</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="35"/>
+        <location filename="../ui/infodialog.cpp" line="33"/>
         <source>Video codec</source>
         <translation>视频编解码器</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="36"/>
+        <location filename="../ui/infodialog.cpp" line="34"/>
         <source>Video format</source>
         <translation>视频格式</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="37"/>
+        <location filename="../ui/infodialog.cpp" line="35"/>
         <source>Video bitrate</source>
         <translation>视频比特率</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="38"/>
+        <location filename="../ui/infodialog.cpp" line="36"/>
         <source>Video dimensions</source>
         <translation>视频分辨率</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="46"/>
+        <location filename="../ui/infodialog.cpp" line="44"/>
         <source>[Audio]</source>
         <translation>音频</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="47"/>
+        <location filename="../ui/infodialog.cpp" line="45"/>
         <source>Audio codec</source>
         <translation>音频编解码器</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="48"/>
+        <location filename="../ui/infodialog.cpp" line="46"/>
         <source>Audio format</source>
         <translation>音频格式</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="49"/>
+        <location filename="../ui/infodialog.cpp" line="47"/>
         <source>Audio bitrate</source>
         <translation>音频比特率</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="50"/>
+        <location filename="../ui/infodialog.cpp" line="48"/>
         <source>Audio samplerate</source>
         <translation>音频采样率</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="51"/>
+        <location filename="../ui/infodialog.cpp" line="49"/>
         <source>Audio channels</source>
         <translation>音频通道</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="76"/>
+        <location filename="../ui/infodialog.cpp" line="74"/>
         <source>[Track List]</source>
         <translation>曲目列表</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="90"/>
+        <location filename="../ui/infodialog.cpp" line="88"/>
         <source>[Chapter List]</source>
         <translation>章节列表</translation>
     </message>
@@ -575,7 +575,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1299"/>
-        <location filename="../ui/mainwindow.cpp" line="406"/>
+        <location filename="../ui/mainwindow.cpp" line="407"/>
         <source>&amp;Play</source>
         <translation>播放(&amp;P)</translation>
     </message>
@@ -926,54 +926,54 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
         <translation>Ctrl+Shift+R</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="123"/>
+        <location filename="../ui/mainwindow.cpp" line="124"/>
         <source>Playing</source>
         <translation>播放</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="125"/>
+        <location filename="../ui/mainwindow.cpp" line="126"/>
         <source>Paused</source>
         <translation>暂停</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="248"/>
+        <location filename="../ui/mainwindow.cpp" line="249"/>
         <source>Sub</source>
         <translation>字幕</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="260"/>
+        <location filename="../ui/mainwindow.cpp" line="261"/>
         <source>Audio</source>
         <translation>音频</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="398"/>
+        <location filename="../ui/mainwindow.cpp" line="399"/>
         <source>&amp;Pause</source>
         <translation>暂停(&amp;P)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="676"/>
+        <location filename="../ui/mainwindow.cpp" line="677"/>
         <source>Enter the file number you want to play:
 Note: Value must be from %0 - %1</source>
         <translation>输入你想要播放的文件编号:
 注意: 编号必须在以下范围%0 - %1</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="677"/>
+        <location filename="../ui/mainwindow.cpp" line="678"/>
         <source>Enter File Number</source>
         <translation>输入文件编号</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="695"/>
+        <location filename="../ui/mainwindow.cpp" line="696"/>
         <source>No selection</source>
         <translation>无选择</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="509"/>
+        <location filename="../ui/mainwindow.cpp" line="510"/>
         <source>Speed: %0x</source>
         <translation>速度: %0x</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="701"/>
+        <location filename="../ui/mainwindow.cpp" line="702"/>
         <source>File %0 of %1</source>
         <translation>文件 %0 总数 %1</translation>
     </message>
@@ -990,49 +990,49 @@ Note: Value must be from %0 - %1</source>
         <translation type="vanished">刷新(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="875"/>
+        <location filename="../ui/mainwindow.cpp" line="876"/>
         <source>Open Subtitle File</source>
         <translation>打开字幕文件</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1057"/>
+        <location filename="../ui/mainwindow.cpp" line="1058"/>
         <source>http://bakamplayer.u8sand.net/help.php</source>
         <translation>http://bakamplayer.u8sand.net/help.php</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1303"/>
+        <location filename="../ui/mainwindow.cpp" line="1304"/>
         <source>Settings version not recognized</source>
         <translation>配置文件版本无法被识别</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1303"/>
+        <location filename="../ui/mainwindow.cpp" line="1304"/>
         <source>The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.
 Some features may not work and changed settings will not be saved.</source>
         <translation>配置文件是由更新版本的baka-mplayer创建的，请更新此版本或者向开发者寻求帮助
 一些特性可能无法工作且更改的设置无法被保存</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1720"/>
+        <location filename="../ui/mainwindow.cpp" line="1721"/>
         <source>Dim Lights</source>
         <translation>昏暗灯光</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1720"/>
+        <location filename="../ui/mainwindow.cpp" line="1721"/>
         <source>In order to dim the lights, the desktop compositor has to be enabled. This can be done through Window Manager Desktop.</source>
         <translation>为了开启黯淡桌面功能,桌面混成需要开启，可以通过窗口管理进行设置。</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1786"/>
+        <location filename="../ui/mainwindow.cpp" line="1751"/>
         <source>Saved to &quot;%0&quot;, with subs</source>
         <translation>保存到 &quot;%0&quot;, 附带字幕</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1788"/>
+        <location filename="../ui/mainwindow.cpp" line="1753"/>
         <source>Saved to &quot;%0&quot;, without subs</source>
         <translation>保存到 &quot;%0&quot;, 不附带字幕</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="876"/>
+        <location filename="../ui/mainwindow.cpp" line="877"/>
         <source>Subtitle Files</source>
         <translation>字幕文件</translation>
     </message>
@@ -1049,22 +1049,22 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">退出全屏</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1813"/>
+        <location filename="../ui/mainwindow.cpp" line="1778"/>
         <source>Open File</source>
         <translation>打开文件</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1814"/>
+        <location filename="../ui/mainwindow.cpp" line="1779"/>
         <source>Media Files</source>
         <translation>媒体文件</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1815"/>
+        <location filename="../ui/mainwindow.cpp" line="1780"/>
         <source>Video Files</source>
         <translation>视频文件</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1816"/>
+        <location filename="../ui/mainwindow.cpp" line="1781"/>
         <source>Audio Files</source>
         <translation>音频文件</translation>
     </message>

@@ -70,7 +70,8 @@ private:
     QSettings       *settings;
     MpvHandler      *mpv;
     GestureHandler  *gesture;
-    QTranslator     *translator;
+    QTranslator     *translator,
+                    *qtTranslator;
 
     bool            pathChanged,
                     menuVisible,

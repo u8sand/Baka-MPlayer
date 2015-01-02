@@ -132,93 +132,93 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
         <translation>&amp;FECHAR</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="24"/>
+        <location filename="../ui/infodialog.cpp" line="22"/>
         <source>File name</source>
         <translation>Nome do arquivo</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="25"/>
+        <location filename="../ui/infodialog.cpp" line="23"/>
         <source>Media Title</source>
         <translation>Título de Mídia</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="26"/>
+        <location filename="../ui/infodialog.cpp" line="24"/>
         <source>File size</source>
         <translatorcomment>Not entirely sure about &quot;Tamanho&quot;</translatorcomment>
         <translation>Tamanho do Arquivo</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="27"/>
+        <location filename="../ui/infodialog.cpp" line="25"/>
         <source>Date created</source>
         <translation>Data de Criação</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="28"/>
+        <location filename="../ui/infodialog.cpp" line="26"/>
         <source>Media length</source>
         <translation>Duração de Mídia</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="34"/>
+        <location filename="../ui/infodialog.cpp" line="32"/>
         <source>[Video]</source>
         <translation>[Vídeo]</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="35"/>
+        <location filename="../ui/infodialog.cpp" line="33"/>
         <source>Video codec</source>
         <translation>Codec de vídeo</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="36"/>
+        <location filename="../ui/infodialog.cpp" line="34"/>
         <source>Video format</source>
         <translation>Formato de vídeo</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="37"/>
+        <location filename="../ui/infodialog.cpp" line="35"/>
         <source>Video bitrate</source>
         <translation>Texa de bits de vídeo</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="38"/>
+        <location filename="../ui/infodialog.cpp" line="36"/>
         <source>Video dimensions</source>
         <translation>dimensões do vídeo</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="46"/>
+        <location filename="../ui/infodialog.cpp" line="44"/>
         <source>[Audio]</source>
         <translation>[Áudio]</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="47"/>
+        <location filename="../ui/infodialog.cpp" line="45"/>
         <source>Audio codec</source>
         <translation>Codec de áudio</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="48"/>
+        <location filename="../ui/infodialog.cpp" line="46"/>
         <source>Audio format</source>
         <translation>Formato de áudio</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="49"/>
+        <location filename="../ui/infodialog.cpp" line="47"/>
         <source>Audio bitrate</source>
         <translation>Texa de bits de áudio</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="50"/>
+        <location filename="../ui/infodialog.cpp" line="48"/>
         <source>Audio samplerate</source>
         <translation>Taxa de amostragem de áudio</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="51"/>
+        <location filename="../ui/infodialog.cpp" line="49"/>
         <source>Audio channels</source>
         <translation>Canais de áudio</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="76"/>
+        <location filename="../ui/infodialog.cpp" line="74"/>
         <source>[Track List]</source>
         <translation>[Lista de Pistas]</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.cpp" line="90"/>
+        <location filename="../ui/infodialog.cpp" line="88"/>
         <source>[Chapter List]</source>
         <translation>[Lista de Capítulos]</translation>
     </message>
@@ -597,7 +597,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1299"/>
-        <location filename="../ui/mainwindow.cpp" line="406"/>
+        <location filename="../ui/mainwindow.cpp" line="407"/>
         <source>&amp;Play</source>
         <translatorcomment>I&apos;ve been told this is acceptable.</translatorcomment>
         <translation>&amp;Play</translation>
@@ -949,86 +949,86 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
         <translation>Ctrl+Shift+R</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="123"/>
+        <location filename="../ui/mainwindow.cpp" line="124"/>
         <source>Playing</source>
         <translation>Visualizando</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="125"/>
+        <location filename="../ui/mainwindow.cpp" line="126"/>
         <source>Paused</source>
         <translation>Pausada</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="248"/>
+        <location filename="../ui/mainwindow.cpp" line="249"/>
         <source>Sub</source>
         <translation>Legenda</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="260"/>
+        <location filename="../ui/mainwindow.cpp" line="261"/>
         <source>Audio</source>
         <translation>Áudio</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="398"/>
+        <location filename="../ui/mainwindow.cpp" line="399"/>
         <source>&amp;Pause</source>
         <translation>&amp;Pausa</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="676"/>
+        <location filename="../ui/mainwindow.cpp" line="677"/>
         <source>Enter the file number you want to play:
 Note: Value must be from %0 - %1</source>
         <translation>Entrar índice arquivo que você quer:
 Nota: O valor deve ser de %0 - %1</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="677"/>
+        <location filename="../ui/mainwindow.cpp" line="678"/>
         <source>Enter File Number</source>
         <translation>Entrar Índice Arquivo</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="695"/>
+        <location filename="../ui/mainwindow.cpp" line="696"/>
         <source>No selection</source>
         <translation>Nenhuma seleção</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="876"/>
+        <location filename="../ui/mainwindow.cpp" line="877"/>
         <source>Subtitle Files</source>
         <translation>Arquivos de Legendas</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1303"/>
+        <location filename="../ui/mainwindow.cpp" line="1304"/>
         <source>Settings version not recognized</source>
         <translation>Versão configurações não reconhecido</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1303"/>
+        <location filename="../ui/mainwindow.cpp" line="1304"/>
         <source>The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.
 Some features may not work and changed settings will not be saved.</source>
         <translation>O arquivo de configurações foi feita por uma versão mais nova do baka-mplayer; por favor, atualize esta versão ou procurar ajuda de desenvolvedores.
 Alguns recursos podem não funcionar e configurações alteradas não serão salvas.</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1814"/>
+        <location filename="../ui/mainwindow.cpp" line="1779"/>
         <source>Media Files</source>
         <translation>Arquivos de Mídia</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1815"/>
+        <location filename="../ui/mainwindow.cpp" line="1780"/>
         <source>Video Files</source>
         <translation>Arquivos de Vídeo</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1816"/>
+        <location filename="../ui/mainwindow.cpp" line="1781"/>
         <source>Audio Files</source>
         <translation>Arquivos de Áudio</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="509"/>
+        <location filename="../ui/mainwindow.cpp" line="510"/>
         <source>Speed: %0x</source>
         <translation>Velocidade: %0x</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="701"/>
+        <location filename="../ui/mainwindow.cpp" line="702"/>
         <source>File %0 of %1</source>
         <translation>Arquivo %0 de %1</translation>
     </message>
@@ -1045,32 +1045,32 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
         <translation type="vanished">&amp;Refrescar</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="875"/>
+        <location filename="../ui/mainwindow.cpp" line="876"/>
         <source>Open Subtitle File</source>
         <translation>Arquivo de legenda aberta</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1057"/>
+        <location filename="../ui/mainwindow.cpp" line="1058"/>
         <source>http://bakamplayer.u8sand.net/help.php</source>
         <translation>http://bakamplayer.u8sand.net/help.php</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1720"/>
+        <location filename="../ui/mainwindow.cpp" line="1721"/>
         <source>Dim Lights</source>
         <translation>Luzes Difusas</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1720"/>
+        <location filename="../ui/mainwindow.cpp" line="1721"/>
         <source>In order to dim the lights, the desktop compositor has to be enabled. This can be done through Window Manager Desktop.</source>
         <translation>Para escurecer o ambiente de trabalho, transparência do desktop tem que ser ativado.</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1786"/>
+        <location filename="../ui/mainwindow.cpp" line="1751"/>
         <source>Saved to &quot;%0&quot;, with subs</source>
         <translation>Salvos em &quot;%0&quot;, com legendas</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1788"/>
+        <location filename="../ui/mainwindow.cpp" line="1753"/>
         <source>Saved to &quot;%0&quot;, without subs</source>
         <translation>Salvos em &quot;%0&quot;, sem legendas</translation>
     </message>
@@ -1088,7 +1088,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
         <translation type="vanished">Saída Tela Cheia/Boss Key</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1813"/>
+        <location filename="../ui/mainwindow.cpp" line="1778"/>
         <source>Open File</source>
         <translation>Arquivo Aberto</translation>
     </message>

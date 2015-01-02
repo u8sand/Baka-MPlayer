@@ -17,6 +17,7 @@
 #include <QIcon>
 #include <QWindow>
 #include <QCheckBox>
+#include <QLibraryInfo>
 
 #include "aboutdialog.h"
 #include "infodialog.h"
@@ -34,6 +35,7 @@ MainWindow::MainWindow(QWidget *parent):
     QMainWindow(parent),
     ui(new Ui::MainWindow),
     translator(nullptr),
+    qtTranslator(nullptr),
     firstItem(false),
     init(false),
     autohide(new QTimer(this))
@@ -71,15 +73,31 @@ MainWindow::MainWindow(QWidget *parent):
 
                 if(lang != "en")
                 {
-                    QTranslator *tmp = translator;
+                    QTranslator *tmp;
+
+                    // load the system translations provided by Qt
+                    tmp = qtTranslator;
+                    qtTranslator = new QTranslator();
+                    qtTranslator->load(QString("qt_%0").arg(lang), QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+                    qApp->installTranslator(qtTranslator);
+                    if(tmp != nullptr)
+                        delete tmp;
+
+                    // load the application translations
+                    tmp = translator;
                     translator = new QTranslator();
-                    translator->load(QString("baka-mplayer_%1").arg(lang), BAKA_MPLAYER_LANG_PATH);
+                    translator->load(QString("baka-mplayer_%0").arg(lang), BAKA_MPLAYER_LANG_PATH);
                     qApp->installTranslator(translator);
                     if(tmp != nullptr)
                         delete tmp;
                 }
-                else if(translator != nullptr)
-                    qApp->removeTranslator(translator);
+                else
+                {
+                    if(translator != nullptr)
+                        qApp->removeTranslator(translator);
+                    if(qtTranslator != nullptr)
+                        qApp->removeTranslator(qtTranslator);
+                }
 
                 ui->retranslateUi(this);
             });
