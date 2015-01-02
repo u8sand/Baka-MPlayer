@@ -1155,7 +1155,7 @@ Some features may not work and changed settings will not be saved.</source>
     <message>
         <location filename="../ui/preferencesdialog.ui" line="280"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Click &amp;amp; drag cursor up/down to change volume&lt;br&gt;Click &amp;amp; drag cursor left/right to seek&lt;/b&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;点击画面 &amp;amp; 上下拖动光标以控制音量e&lt;br&gt;点击画面 &amp;amp; 左右拖动光标来控制进度&lt;/b&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;点击画面 &amp;amp; 上下拖动光标以控制音量&lt;br&gt;点击画面 &amp;amp; 左右拖动光标来控制进度&lt;/b&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../ui/preferencesdialog.ui" line="300"/>
