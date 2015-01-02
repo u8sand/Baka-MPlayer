@@ -2,17 +2,18 @@
 # See debhelper(7) (uncomment to enable)
 # output every command that modifies files on the build system.
 #DH_VERBOSE = 1
+export QT_SELECT=qt5
 
 # main packaging script based on dh7 syntax
 %:
 	dh $@
 
+override_dh_builddeb:
+	dh_builddeb -- -Z xz
+
 # debmake generated override targets
 override_dh_auto_configure:
-	./configure CONFIG+=install_translations
+	./configure INSTROOT=$(CURDIR)/debian/baka-mplayer CONFIG+=install_translations
 
 override_dh_auto_build:
 	$(MAKE) -j `grep -c ^processor /proc/cpuinfo`
-
-#override_dh_auto_install:
-#	$(MAKE) INSTROOT=$(CURDIR)/debian/baka-mplayer install
