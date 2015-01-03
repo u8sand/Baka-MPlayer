@@ -1,11 +1,11 @@
-#include "platform.h"
+#include "util.h"
 
 #include <QX11Info>
 #include <X11/Xlib.h>
 
 #include <QRegExp>
 
-namespace Platform {
+namespace Util {
 
 bool DimLightsSupported()
 {
@@ -48,12 +48,6 @@ bool IsValidFile(QString path)
 {
     QRegExp rx("^\\.{1,2}|/", Qt::CaseInsensitive); // relative path, network location, drive
     return (rx.indexIn(path) != -1);
-}
-
-bool IsValidUrl(QString url)
-{
-    QRegExp rx("^[a-z]{2,}://", Qt::CaseInsensitive); // url
-    return (rx.indexIn(url) != -1);
 }
 
 bool IsValidLocation(QString loc)

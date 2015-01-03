@@ -28,7 +28,6 @@
 #include "preferencesdialog.h"
 #include "screenshotdialog.h"
 #include "util.h"
-#include "platform.h"
 #include "gesturehandler.h"
 
 MainWindow::MainWindow(QWidget *parent):
@@ -36,7 +35,7 @@ MainWindow::MainWindow(QWidget *parent):
     ui(new Ui::MainWindow)
 {
     // dimdialog must be initialized before ui is setup
-    if(Platform::DimLightsSupported())
+    if(Util::DimLightsSupported())
         dimDialog = new DimDialog();
     else
         dimDialog = nullptr;
@@ -46,7 +45,7 @@ MainWindow::MainWindow(QWidget *parent):
     addActions(ui->menubar->actions()); // makes menubar shortcuts work even when menubar is hidden
 
     // initialize managers/handlers
-    settings = Platform::InitializeSettings(this);
+    settings = Util::InitializeSettings(this);
     mpv = new MpvHandler(ui->mpvFrame->winId(), this);
     gesture = new GestureHandler(mpv, this);
     updateDialog = new UpdateDialog(this);
@@ -104,11 +103,11 @@ MainWindow::MainWindow(QWidget *parent):
             [=](QString onTop)
             {
                 if(onTop == "never")
-                    Platform::SetAlwaysOnTop(winId(), false);
+                    Util::SetAlwaysOnTop(winId(), false);
                 else if(onTop == "always")
-                    Platform::SetAlwaysOnTop(winId(), true);
+                    Util::SetAlwaysOnTop(winId(), true);
                 else if(onTop == "playing" && mpv->getPlayState() > 0)
-                    Platform::SetAlwaysOnTop(winId(), true);
+                    Util::SetAlwaysOnTop(winId(), true);
             });
 
     connect(this, &MainWindow::remainingChanged,
@@ -417,7 +416,7 @@ MainWindow::MainWindow(QWidget *parent):
                     ui->playButton->setIcon(QIcon(":/img/default_pause.svg"));
                     ui->action_Play->setText(tr("&Pause"));
                     if(onTop == "playing")
-                        Platform::SetAlwaysOnTop(winId(), true);
+                        Util::SetAlwaysOnTop(winId(), true);
                     break;
 
                 case Mpv::Paused:
@@ -425,7 +424,7 @@ MainWindow::MainWindow(QWidget *parent):
                     ui->playButton->setIcon(QIcon(":/img/default_play.svg"));
                     ui->action_Play->setText(tr("&Play"));
                     if(onTop == "playing")
-                        Platform::SetAlwaysOnTop(winId(), false);
+                        Util::SetAlwaysOnTop(winId(), false);
                     break;
 
                 case Mpv::Idle:

@@ -4,7 +4,7 @@
 #include <QClipboard>
 #include <QDir>
 
-#include "platform.h"
+#include "util.h"
 
 LocationDialog::LocationDialog(QString path, QWidget *parent) :
     QDialog(parent),
@@ -19,7 +19,7 @@ LocationDialog::LocationDialog(QString path, QWidget *parent) :
     connect(ui->urlEdit, SIGNAL(textChanged(QString)),
             this, SLOT(validate(QString)));
 
-    if(Platform::IsValidFile(path))
+    if(Util::IsValidFile(path))
         ui->urlEdit->setText(QDir::toNativeSeparators(path));
     else
         ui->urlEdit->setText(path);
@@ -58,7 +58,7 @@ void LocationDialog::on_clearButton_clicked()
 
 void LocationDialog::validate(QString input)
 {
-    if(Platform::IsValidLocation(input))
+    if(Util::IsValidLocation(input))
     {
         ui->validEntryLabel->setPixmap(QPixmap(":/img/exists.svg"));
         ui->okButton->setEnabled(true);

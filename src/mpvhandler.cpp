@@ -6,7 +6,7 @@
 #include <QFileInfo>
 #include <QFileInfoList>
 
-#include "platform.h"
+#include "util.h"
 
 static void wakeup(void *ctx)
 {
@@ -217,7 +217,7 @@ void MpvHandler::LoadSettings(QSettings *settings, QString version)
 
 bool MpvHandler::FileExists(QString f)
 {
-    if(Platform::IsValidUrl(f)) // web url
+    if(Util::IsValidUrl(f)) // web url
         return true;
     return QFile(f).exists();
 }
@@ -252,7 +252,7 @@ QString MpvHandler::LoadPlaylist(QString f)
         setPath("");
         setPlaylist({f});
     }
-    else if(Platform::IsValidUrl(f)) // web url
+    else if(Util::IsValidUrl(f)) // web url
     {
         setPath("");
         setPlaylist({f});

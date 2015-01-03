@@ -5,6 +5,13 @@
 
 namespace Util {
 
+
+bool IsValidUrl(QString url)
+{
+    QRegExp rx("^[a-z]{2,}://", Qt::CaseInsensitive); // url
+    return (rx.indexIn(url) != -1);
+}
+
 QString FormatTime(int _time, int _totalTime)
 {
     QTime time = QTime::fromMSecsSinceStartOfDay(_time * 1000);

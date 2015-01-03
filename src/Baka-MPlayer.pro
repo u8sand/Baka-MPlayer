@@ -148,7 +148,6 @@ HEADERS  += \
     updatemanager.h \
     gesturehandler.h \
     util.h \
-    platform.h \
     widgets/customlabel.h \
     widgets/customlineedit.h \
     widgets/customslider.h \

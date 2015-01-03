@@ -1,9 +1,22 @@
 #ifndef UTIL_H
 #define UTIL_H
 
+#include <QWidget>
+#include <QSettings>
 #include <QString>
 
 namespace Util {
+
+// plaltform specific
+bool DimLightsSupported();
+void SetAlwaysOnTop(WId wid, bool);
+QSettings *InitializeSettings(QObject *parent);
+
+bool IsValidFile(QString path);
+bool IsValidLocation(QString loc); // combined file and url
+
+// common
+bool IsValidUrl(QString url);
 
 QString FormatTime(int time, int totalTime);
 QString FormatRelativeTime(int time);
