@@ -9,7 +9,7 @@
 #		though with less threads might be just enough.
 
 arch=x86_64
-jobs=12
+jobs=`grep -c ^processor /proc/cpuinfo`
 if [[ $1 == 'x86_64' ]]; then
 	arch=x86_64
 elif [[ $1 == 'i686' ]]; then
@@ -17,10 +17,6 @@ elif [[ $1 == 'i686' ]]; then
 else
 	echo "Please specify either x86_64 or i686 architecture.";
 	exit;
-fi
-
-if [[ $2 != '' ]]; then
-	jobs=$2
 fi
 
 git clone https://github.com/mxe/mxe.git mxe.$arch

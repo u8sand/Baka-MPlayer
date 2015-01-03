@@ -32,5 +32,5 @@ QMAKE="$mxeroot/usr/$arch-w64-mingw32.static/qt5/bin/qmake" \
     "CONFIG+=embed_translations" \
     "lupdate=$mxeroot/usr/$arch-w64-mingw32.static/qt5/bin/lupdate" \
     "lrelease=$mxeroot/usr/$arch-w64-mingw32.static/qt5/bin/lrelease"
-make -j`grep -c ^processor /proc/cpuinfo`
+make -j `grep -c ^processor /proc/cpuinfo`
 cd ..

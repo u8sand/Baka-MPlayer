@@ -1,5 +1,6 @@
 #include "platform.h"
 
+#include <QApplication>
 #include <windows.h>
 
 namespace Platform {

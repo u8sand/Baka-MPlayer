@@ -31,7 +31,7 @@ win32 {
     CONFIG += static compile_libtool
     # mxe fix:
     CONFIG -= windows
-    QMAKE_LFLAGS += $$QMAKE_LFLAGS_WINDOWS
+    QMAKE_LFLAGS += $$QMAKE_LFLAGS_WINDOWS -pthread
     # application information
     RC_ICONS += img/logo.ico
     QMAKE_TARGET_PRODUCT += Baka MPlayer
@@ -117,7 +117,6 @@ DEFINES += "BAKA_MPLAYER_VERSION=\\\"$$VERSION\\\"" \
            "SETTINGS_FILE=\\\"$$SETTINGS_FILE\\\"" \
            "BAKA_MPLAYER_LANG_PATH=\\\"$$BAKA_LANG_PATH\\\""
 !isEmpty(BAKA_LANG):DEFINES += "BAKA_MPLAYER_LANG=\\\"$$BAKA_LANG\\\""
-
 
 SOURCES += main.cpp\
     mpvhandler.cpp \

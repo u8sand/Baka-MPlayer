@@ -45,7 +45,6 @@ cat build/libmpv/mpv.pc |
 	sed "s,^prefix=.*$,prefix=${instroot},g" |
 	sed "s,^exec_prefix=.*$,exec_prefix=\${prefix},g" |
 	sed "s,^libdir=.*$,libdir=\${prefix}/lib,g" |
-	sed "s,^includedir=.*$,includedir=\${prefix}/include,g" |
-	sed '/^Libs\.private:/ s/$/-pthread/' > $instroot/lib/pkgconfig/mpv.pc
+	sed "s,^includedir=.*$,includedir=\${prefix}/include,g" > $instroot/lib/pkgconfig/mpv.pc
 
 cd ..
