@@ -9,7 +9,10 @@ function build_arch {
   ./bakamplayer.sh $1 >> $log 2>> $log
   echo "Compressing baka-mplayer.$1 with upx..." | tee -a $log
   upx Baka-MPlayer.$1/build/baka-mplayer.exe -o baka-mplayer-$1.exe >> $log 2>> $log
+  echo "Completed baka-mplayer.$1." | tee -a $log
 }
+
+echo "Creating releases..."
 
 build_arch i686 &
 i686_pid=$!
@@ -19,4 +22,4 @@ x86_64_pid=$!
 wait $i686_pid
 wait $x86_64_pid
 
-echo "Completed"
+echo "Done"
