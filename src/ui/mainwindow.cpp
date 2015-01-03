@@ -737,8 +737,10 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->refreshButton, &QPushButton::clicked,                   // Playlist: Refresh playlist button
             [=]
             {
-                ui->playlistWidget->SelectItem(mpv->LoadPlaylist(mpv->getPath()+mpv->getFile()), true);
+                QString item = mpv->LoadPlaylist(mpv->getPath()+mpv->getFile());
+                ui->playlistWidget->SelectItem(item, true);
                 ui->playlistWidget->ShowAll(!ui->hideFilesButton->isChecked());
+                ui->playlistWidget->BoldText(item, true);
                 firstItem = false;
             });
 
