@@ -1630,7 +1630,7 @@ void MainWindow::TogglePlay()
 bool MainWindow::isPlaylistVisible()
 {
     // if the position is 0, playlist is hidden
-    return ui->splitter->position() != 0;
+    return (ui->splitter->position() != 0);
 }
 
 void MainWindow::TogglePlaylist()
@@ -1649,10 +1649,7 @@ void MainWindow::ToggleSubtitles()
 void MainWindow::ShowPlaylist(bool visible)
 {
     if(visible)
-    {
         ui->splitter->setPosition(ui->splitter->normalPosition()); // bring splitter position to normal
-        ui->searchBox->setFocus();
-    }
     else
     {
         if(ui->splitter->position() != ui->splitter->max() && ui->splitter->position() != 0)
