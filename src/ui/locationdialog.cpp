@@ -2,8 +2,9 @@
 #include "ui_locationdialog.h"
 
 #include <QClipboard>
-#include <QRegExp>
 #include <QDir>
+
+#include "platform.h"
 
 LocationDialog::LocationDialog(QString path, QWidget *parent) :
     QDialog(parent),
@@ -17,7 +18,11 @@ LocationDialog::LocationDialog(QString path, QWidget *parent) :
             this, SLOT(reject()));              // reject
     connect(ui->urlEdit, SIGNAL(textChanged(QString)),
             this, SLOT(validate(QString)));
-    ui->urlEdit->setText(QDir::toNativeSeparators(path));
+
+    if(Platform::IsValidFile(path))
+        ui->urlEdit->setText(QDir::toNativeSeparators(path));
+    else
+        ui->urlEdit->setText(path);
 }
 
 LocationDialog::~LocationDialog()
@@ -53,12 +58,7 @@ void LocationDialog::on_clearButton_clicked()
 
 void LocationDialog::validate(QString input)
 {
-#ifdef Q_OS_WIN
-    QRegExp rx("^(https?://.+\\.[a-z]+|[a-z]:\\\\)", Qt::CaseInsensitive);
-#elif defined(Q_OS_LINUX) || defined(Q_OS_UNIX)
-    QRegExp rx("^(https?://.+\\.[a-z]+|\\.{0,2}/)", Qt::CaseInsensitive);
-#endif
-    if(rx.indexIn(input) != -1)
+    if(Platform::IsValidLocation(input))
     {
         ui->validEntryLabel->setPixmap(QPixmap(":/img/exists.svg"));
         ui->okButton->setEnabled(true);

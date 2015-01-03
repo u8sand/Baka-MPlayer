@@ -5,7 +5,8 @@
 #include <QFile>
 #include <QFileInfo>
 #include <QFileInfoList>
-#include <QRegExp>
+
+#include "platform.h"
 
 static void wakeup(void *ctx)
 {
@@ -216,8 +217,7 @@ void MpvHandler::LoadSettings(QSettings *settings, QString version)
 
 bool MpvHandler::FileExists(QString f)
 {
-    QRegExp rx("^(https?://.+\\.[a-z]+)", Qt::CaseInsensitive);
-    if(rx.indexIn(f) != -1) // web url
+    if(Platform::IsValidUrl(f)) // web url
         return true;
     return QFile(f).exists();
 }
@@ -247,14 +247,12 @@ QString MpvHandler::LoadPlaylist(QString f)
     if(f == "") // ignore empty file name
         return QString();
 
-    QRegExp rx("^(https?://.+\\.[a-z]+)", Qt::CaseInsensitive);
-
     if(f == "-")
     {
         setPath("");
         setPlaylist({f});
     }
-    else if(rx.indexIn(f) != -1) // web url
+    else if(Platform::IsValidUrl(f)) // web url
     {
         setPath("");
         setPlaylist({f});

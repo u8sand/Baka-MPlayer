@@ -1,7 +1,9 @@
 #include "platform.h"
 
-#include <QApplication>
 #include <windows.h>
+
+#include <QApplication>
+#include <QRegExp>
 
 namespace Platform {
 
@@ -22,6 +24,24 @@ QSettings *InitializeSettings(QObject *parent)
 {
     // saves to $(application directory)\${SETTINGS_FILE}.ini
     return new QSettings(QApplication::applicationDirPath()+"\\"+SETTINGS_FILE+".ini", QSettings::IniFormat, parent);
+}
+
+bool IsValidFile(QString path)
+{
+    QRegExp rx("^(\\.{1,2}|[a-z]:|\\\\\\\\)", Qt::CaseInsensitive); // relative path, network location, drive
+    return (rx.indexIn(path) != -1);
+}
+
+bool IsValidUrl(QString url)
+{
+    QRegExp rx("^[a-z]{2,}://", Qt::CaseInsensitive); // url
+    return (rx.indexIn(url) != -1);
+}
+
+bool IsValidLocation(QString loc)
+{
+    QRegExp rx("^([a-z]{2,}://|\\.{1,2}|[a-z]:|\\\\\\\\)", Qt::CaseInsensitive); // url, relative path, network location, drive
+    return (rx.indexIn(loc) != -1);
 }
 
 }

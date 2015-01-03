@@ -1,8 +1,9 @@
 #include "platform.h"
 
-#include <QString>
 #include <QX11Info>
 #include <X11/Xlib.h>
+
+#include <QRegExp>
 
 namespace Platform {
 
@@ -41,6 +42,24 @@ QSettings *InitializeSettings(QObject *parent)
 {
     // saves to  ~/.config/${SETTINGS_FILE}.ini
     return new QSettings(QSettings::IniFormat, QSettings::UserScope, SETTINGS_FILE, QString(), parent);
+}
+
+bool IsValidFile(QString path)
+{
+    QRegExp rx("^\\.{1,2}|/", Qt::CaseInsensitive); // relative path, network location, drive
+    return (rx.indexIn(path) != -1);
+}
+
+bool IsValidUrl(QString url)
+{
+    QRegExp rx("^[a-z]{2,}://", Qt::CaseInsensitive); // url
+    return (rx.indexIn(url) != -1);
+}
+
+bool IsValidLocation(QString loc)
+{
+    QRegExp rx("^([a-z]{2,}://|\\.{1,2}|/)", Qt::CaseInsensitive); // url, relative path, drive
+    return (rx.indexIn(loc) != -1);
 }
 
 }
