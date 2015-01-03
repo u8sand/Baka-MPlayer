@@ -1,6 +1,8 @@
 #include "updatedialog.h"
 #include "ui_updatedialog.h"
 
+#include "util.h"
+
 #include <QDesktopServices>
 
 UpdateDialog::UpdateDialog(QWidget *parent) :
@@ -49,11 +51,7 @@ UpdateDialog::UpdateDialog(QWidget *parent) :
     connect(ui->updateButton, &QPushButton::clicked,
             [=]
             {
-#if defined(_X86_)
-                QDesktopServices::openUrl(QUrl("http://bakamplayer.u8sand.net/Baka%20MPlayer%20(64-bit).zip"));
-#else
-                QDesktopServices::openUrl(QUrl("http://bakamplayer.u8sand.net/Baka%20MPlayer%20(32-bit).zip"));
-#endif
+                QDesktopServices::openUrl(QUrl(Util::DownloadFileUrl()));
                 /*
                 avgSpeed = 0;
                 lastSpeed = 0;

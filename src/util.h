@@ -7,7 +7,10 @@
 
 namespace Util {
 
-// plaltform specific
+// platform specific
+QString VersionFileUrl();
+QString DownloadFileUrl();
+
 bool DimLightsSupported();
 void SetAlwaysOnTop(WId wid, bool);
 QSettings *InitializeSettings(QObject *parent);

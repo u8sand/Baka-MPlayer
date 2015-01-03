@@ -1369,28 +1369,28 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
         <translation>&amp;CANCELAR</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.cpp" line="18"/>
+        <location filename="../ui/updatedialog.cpp" line="20"/>
         <source>&amp;CLOSE</source>
         <translation>&amp;FECHAR</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.cpp" line="29"/>
+        <location filename="../ui/updatedialog.cpp" line="31"/>
         <source>You have the latest version!</source>
         <translation>Tem a última versão!</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.cpp" line="33"/>
+        <location filename="../ui/updatedialog.cpp" line="35"/>
         <source>Update Available!
 Version: %0</source>
         <translation>Atualização Disponível! Versão: %0</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.cpp" line="93"/>
+        <location filename="../ui/updatedialog.cpp" line="91"/>
         <source>About %0 second(s) remaining</source>
         <translation>Sobre %0 segundo(s) mais</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.cpp" line="115"/>
+        <location filename="../ui/updatedialog.cpp" line="113"/>
         <source>error: %0
 </source>
         <translation>erro: %0
@@ -1401,12 +1401,12 @@ Version: %0</source>
         <translation type="vanished">Baixando de atualização...</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.cpp" line="79"/>
+        <location filename="../ui/updatedialog.cpp" line="77"/>
         <source>Download Complete</source>
         <translation>Baixar Completado</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.cpp" line="95"/>
+        <location filename="../ui/updatedialog.cpp" line="93"/>
         <source>Calculating...</source>
         <translation>Cálculo...</translation>
     </message>

@@ -7,6 +7,16 @@
 
 namespace Util {
 
+QString VersionFileUrl()
+{
+    return "http://bakamplayer.u8sand.net/version_linux";
+}
+
+QString DownloadFileUrl()
+{
+    return "";
+}
+
 bool DimLightsSupported()
 {
     QString tmp = "_NET_WM_CM_S"+QString::number(QX11Info::appScreen());

@@ -1319,39 +1319,39 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
         <translation>&amp;ANNULLA</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.cpp" line="18"/>
+        <location filename="../ui/updatedialog.cpp" line="20"/>
         <source>&amp;CLOSE</source>
         <translation>&amp;CHIUDI</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.cpp" line="29"/>
+        <location filename="../ui/updatedialog.cpp" line="31"/>
         <source>You have the latest version!</source>
         <translation>Stai utilizzando l&apos;ultima versione.</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.cpp" line="33"/>
+        <location filename="../ui/updatedialog.cpp" line="35"/>
         <source>Update Available!
 Version: %0</source>
         <translation>È disponibile un aggiornamento.
 Versione: %0</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.cpp" line="79"/>
+        <location filename="../ui/updatedialog.cpp" line="77"/>
         <source>Download Complete</source>
         <translation>Scaricamento completato</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.cpp" line="93"/>
+        <location filename="../ui/updatedialog.cpp" line="91"/>
         <source>About %0 second(s) remaining</source>
         <translation>Circa %0 secondi rimanenti</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.cpp" line="95"/>
+        <location filename="../ui/updatedialog.cpp" line="93"/>
         <source>Calculating...</source>
         <translation>Sto calcolando...</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.cpp" line="115"/>
+        <location filename="../ui/updatedialog.cpp" line="113"/>
         <source>error: %0
 </source>
         <translation>errore: %0

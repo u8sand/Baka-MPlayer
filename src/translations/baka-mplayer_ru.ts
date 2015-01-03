@@ -1338,17 +1338,17 @@ Some features may not work and changed settings will not be saved.</source>
         <translation>&amp;Отмена</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.cpp" line="18"/>
+        <location filename="../ui/updatedialog.cpp" line="20"/>
         <source>&amp;CLOSE</source>
         <translation>&amp;Закрыть</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.cpp" line="29"/>
+        <location filename="../ui/updatedialog.cpp" line="31"/>
         <source>You have the latest version!</source>
         <translation>У вас последняя версия!</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.cpp" line="33"/>
+        <location filename="../ui/updatedialog.cpp" line="35"/>
         <source>Update Available!
 Version: %0</source>
         <translation>Доступно обновление!
@@ -1359,22 +1359,22 @@ Version: %0</source>
         <translation type="vanished">Скачиваем обновление...</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.cpp" line="79"/>
+        <location filename="../ui/updatedialog.cpp" line="77"/>
         <source>Download Complete</source>
         <translation>Скачивание завершено</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.cpp" line="93"/>
+        <location filename="../ui/updatedialog.cpp" line="91"/>
         <source>About %0 second(s) remaining</source>
         <translation>Осталось примерно %0 секунд</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.cpp" line="95"/>
+        <location filename="../ui/updatedialog.cpp" line="93"/>
         <source>Calculating...</source>
         <translation>Подсчитываем...</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.cpp" line="115"/>
+        <location filename="../ui/updatedialog.cpp" line="113"/>
         <source>error: %0
 </source>
         <translation>ошибка: %0

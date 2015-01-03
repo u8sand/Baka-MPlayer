@@ -1340,29 +1340,29 @@ Some features may not work and changed settings will not be saved.</source>
         <translation>&amp;取消(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.cpp" line="18"/>
+        <location filename="../ui/updatedialog.cpp" line="20"/>
         <source>&amp;CLOSE</source>
         <translation>&amp;关闭(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.cpp" line="29"/>
+        <location filename="../ui/updatedialog.cpp" line="31"/>
         <source>You have the latest version!</source>
         <translation>已经是最新版本!</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.cpp" line="33"/>
+        <location filename="../ui/updatedialog.cpp" line="35"/>
         <source>Update Available!
 Version: %0</source>
         <translation>有可用更新!
 版本: %0</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.cpp" line="93"/>
+        <location filename="../ui/updatedialog.cpp" line="91"/>
         <source>About %0 second(s) remaining</source>
         <translation>剩余大约 %0 秒</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.cpp" line="115"/>
+        <location filename="../ui/updatedialog.cpp" line="113"/>
         <source>error: %0
 </source>
         <translation>错误: %0</translation>
@@ -1372,12 +1372,12 @@ Version: %0</source>
         <translation type="vanished">下载更新...</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.cpp" line="79"/>
+        <location filename="../ui/updatedialog.cpp" line="77"/>
         <source>Download Complete</source>
         <translation>下载完成</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.cpp" line="95"/>
+        <location filename="../ui/updatedialog.cpp" line="93"/>
         <source>Calculating...</source>
         <translation>计算中...</translation>
     </message>

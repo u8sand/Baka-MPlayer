@@ -24,7 +24,7 @@ unix {
     QT += x11extras
     PKGCONFIG += x11
 
-    SOURCES += platform/x11.cpp
+    SOURCES += platform/linux.cpp
 }
 
 win32 {
@@ -38,7 +38,12 @@ win32 {
     QMAKE_TARGET_DESCRIPTION += The libmpv based media player.
     #RC_LANG +=
 
-    SOURCES += platform/win32.cpp
+    SOURCES += platform/win.cpp
+
+    # 32 bit
+    contains(QMAKE_HOST.arch, x86): SOURCES += platform/win32.cpp
+    # 64 bit
+    contains(QMAKE_HOST.arch, x86_64): SOURCES += platform/win64.cpp
 }
 
 # INSTROOT is the installation root directory, leave empty if not using a package management system
