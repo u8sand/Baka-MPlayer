@@ -4,32 +4,32 @@
 <context>
     <name>AboutDialog</name>
     <message>
-        <location filename="../ui/aboutdialog.ui" line="14"/>
+        <location filename="../ui/aboutdialog.ui"/>
         <source>About Baka MPlayer</source>
         <translation>Informazioni su Baka MPlayer</translation>
     </message>
     <message>
-        <location filename="../ui/aboutdialog.ui" line="115"/>
+        <location filename="../ui/aboutdialog.ui"/>
         <source>About</source>
         <translation>Informazioni</translation>
     </message>
     <message>
-        <location filename="../ui/aboutdialog.ui" line="168"/>
+        <location filename="../ui/aboutdialog.ui"/>
         <source>Baka MPlayer 0.0.0</source>
         <translation>Baka MPlayer 0.0.0</translation>
     </message>
     <message>
-        <location filename="../ui/aboutdialog.ui" line="178"/>
+        <location filename="../ui/aboutdialog.ui"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2014 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; è un lettore multimediale libero e a sorgente aperto, multipiattaforma, basato su &lt;b&gt;libmpv&lt;/b&gt;. Il suo design semplice riflette l&apos;idea di un ambiente semplice, ordinato e piacevole per guardare programmi TV.&lt;br&gt;&lt;br&gt;Copyright © 2014 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/aboutdialog.ui" line="192"/>
+        <location filename="../ui/aboutdialog.ui"/>
         <source>Credits</source>
         <translation>Ringraziamenti</translation>
     </message>
     <message>
-        <location filename="../ui/aboutdialog.ui" line="216"/>
+        <location filename="../ui/aboutdialog.ui"/>
         <source>mpv - video player based on MPlayer/mplayer2
 GPLv2 &lt;mpv.io&gt;
 
@@ -62,12 +62,12 @@ Traduzioni
 - Russo &lt;suhr&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/aboutdialog.ui" line="238"/>
+        <location filename="../ui/aboutdialog.ui"/>
         <source>License</source>
         <translation>Licenza</translation>
     </message>
     <message>
-        <location filename="../ui/aboutdialog.ui" line="262"/>
+        <location filename="../ui/aboutdialog.ui"/>
         <source>                GNU GENERAL PUBLIC LICENSE
                    Version 2, June 1991
 
@@ -87,7 +87,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/aboutdialog.ui" line="303"/>
+        <location filename="../ui/aboutdialog.ui"/>
         <source>&amp;CLOSE</source>
         <translation>&amp;CHIUDI</translation>
     </message>
@@ -115,22 +115,22 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
 <context>
     <name>InfoDialog</name>
     <message>
-        <location filename="../ui/infodialog.ui" line="14"/>
+        <location filename="../ui/infodialog.ui"/>
         <source>Media Info</source>
         <translation>Informazioni sul media</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.ui" line="143"/>
+        <location filename="../ui/infodialog.ui"/>
         <source>Info Type</source>
         <translation>Tipo di informazione</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.ui" line="148"/>
+        <location filename="../ui/infodialog.ui"/>
         <source>Value</source>
         <translation>Valore</translation>
     </message>
     <message>
-        <location filename="../ui/infodialog.ui" line="171"/>
+        <location filename="../ui/infodialog.ui"/>
         <source>&amp;CLOSE</source>
         <translation>&amp;CHIUDI</translation>
     </message>
@@ -228,22 +228,22 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
 <context>
     <name>InputDialog</name>
     <message>
-        <location filename="../ui/inputdialog.ui" line="14"/>
+        <location filename="../ui/inputdialog.ui"/>
         <source>Dialog</source>
         <translation>Finestra di dialogo</translation>
     </message>
     <message>
-        <location filename="../ui/inputdialog.ui" line="70"/>
+        <location filename="../ui/inputdialog.ui"/>
         <source>Please enter a value:</source>
         <translation>Inserisci un valore</translation>
     </message>
     <message>
-        <location filename="../ui/inputdialog.ui" line="117"/>
+        <location filename="../ui/inputdialog.ui"/>
         <source>&amp;OK</source>
         <translation>&amp;OK</translation>
     </message>
     <message>
-        <location filename="../ui/inputdialog.ui" line="133"/>
+        <location filename="../ui/inputdialog.ui"/>
         <source>&amp;CANCEL</source>
         <translation>&amp;ANNULLA</translation>
     </message>
@@ -251,33 +251,32 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
 <context>
     <name>JumpDialog</name>
     <message>
-        <location filename="../ui/jumpdialog.ui" line="14"/>
+        <location filename="../ui/jumpdialog.ui"/>
         <source>Dialog</source>
         <translation>Finestra di dialogo</translation>
     </message>
     <message>
-        <location filename="../ui/jumpdialog.ui" line="115"/>
+        <location filename="../ui/jumpdialog.ui"/>
         <source> hr</source>
         <translation> h</translation>
     </message>
     <message>
-        <location filename="../ui/jumpdialog.ui" line="133"/>
-        <location filename="../ui/jumpdialog.ui" line="164"/>
+        <location filename="../ui/jumpdialog.ui"/>
         <source>:</source>
         <translation>:</translation>
     </message>
     <message>
-        <location filename="../ui/jumpdialog.ui" line="146"/>
+        <location filename="../ui/jumpdialog.ui"/>
         <source> min</source>
         <translation> min.</translation>
     </message>
     <message>
-        <location filename="../ui/jumpdialog.ui" line="177"/>
+        <location filename="../ui/jumpdialog.ui"/>
         <source> sec</source>
         <translation> s</translation>
     </message>
     <message>
-        <location filename="../ui/jumpdialog.ui" line="196"/>
+        <location filename="../ui/jumpdialog.ui"/>
         <source>&amp;OK</source>
         <translation>&amp;OK</translation>
     </message>
@@ -285,37 +284,37 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
 <context>
     <name>LocationDialog</name>
     <message>
-        <location filename="../ui/locationdialog.ui" line="14"/>
+        <location filename="../ui/locationdialog.ui"/>
         <source>Open Location</source>
         <translation>Apri posizione</translation>
     </message>
     <message>
-        <location filename="../ui/locationdialog.ui" line="83"/>
+        <location filename="../ui/locationdialog.ui"/>
         <source>Type URL or location here</source>
         <translation>Inserisci URL o posizione qui</translation>
     </message>
     <message>
-        <location filename="../ui/locationdialog.ui" line="109"/>
+        <location filename="../ui/locationdialog.ui"/>
         <source>&amp;OK</source>
         <translation>&amp;OK</translation>
     </message>
     <message>
-        <location filename="../ui/locationdialog.ui" line="138"/>
+        <location filename="../ui/locationdialog.ui"/>
         <source>&amp;PASTE</source>
         <translation>&amp;INCOLLA</translation>
     </message>
     <message>
-        <location filename="../ui/locationdialog.ui" line="154"/>
+        <location filename="../ui/locationdialog.ui"/>
         <source>&amp;COPY</source>
         <translation>&amp;COPIA</translation>
     </message>
     <message>
-        <location filename="../ui/locationdialog.ui" line="170"/>
+        <location filename="../ui/locationdialog.ui"/>
         <source>CLEA&amp;R</source>
         <translation>&amp;SVUOTA</translation>
     </message>
     <message>
-        <location filename="../ui/locationdialog.ui" line="199"/>
+        <location filename="../ui/locationdialog.ui"/>
         <source>CANC&amp;EL</source>
         <translation>&amp;ANNULLA</translation>
     </message>
@@ -323,616 +322,613 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../ui/mainwindow.ui" line="23"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Baka MPlayer</source>
         <translation>Baka MPlayer</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="260"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>&gt;</source>
         <translation>&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="302"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Search Playlist</source>
         <translation>Cerca nella scaletta</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="315"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Click to play a file by index</source>
         <translation>Clicca per riprodurre un file per indice</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="318"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>File 0 of 0</source>
         <translation>File 0 di 0</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="371"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Select the Current File</source>
         <translation>Seleziona file corrente</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="407"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Hide files with different extensions</source>
         <translation>Nascondi file con estensioni diverse</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="437"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Refresh Playlist</source>
         <translation>Aggiorna scaletta</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="584"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Left Click to Open File&lt;br&gt;Mouse Wheel Click to Jump&lt;br&gt;Right Click to Open URL&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Clic sinistro per aprire un file&lt;br&gt;Clic sulla rotella del mouse per saltare&lt;br&gt;Clic destro per aprire URL&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="610"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>0:00:00</source>
         <translation>0:00:00</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="620"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>/</source>
         <translation>/</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="636"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Click to change between total and remaining time</source>
         <translation>Clic per alternare fra tempo totale e tempo rimanente</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="639"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>-0:00:00</source>
         <translation>-0:00:00</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="982"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>&amp;File</source>
         <translation>&amp;File</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="986"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>&amp;Recently Opened</source>
         <translation>Apri &amp;recente</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1006"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>&amp;View</source>
         <translation>&amp;Vista</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1013"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Fit &amp;Window</source>
         <translation>&amp;Adatta alla finestra</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1027"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Aspect &amp;Ratio</source>
         <translation>&amp;Rapporto di aspetto</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1039"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Subtitle &amp;Track</source>
         <translation>&amp;Traccia sottotitoli</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1050"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Font Si&amp;ze</source>
         <translation>&amp;Dimensione carattere</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1061"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Take &amp;Screenshot</source>
         <translation>&amp;Cattura schermata</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1080"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>&amp;Playback</source>
         <translation>&amp;Riproduzione</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1084"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>R&amp;epeat</source>
         <translation>Ri&amp;peti</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1100"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Audio &amp;Tracks</source>
         <translation>&amp;Tracce audio</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1109"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>S&amp;peed</source>
         <translation>Ve&amp;locità</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1131"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>&amp;Navigate</source>
         <translation>&amp;Navigazione</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1138"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>&amp;Chapters</source>
         <translation>&amp;Capitoli</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1153"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>&amp;Settings</source>
         <translation>&amp;Impostazioni</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1165"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>&amp;Help</source>
         <translation>&amp;Aiuto</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1182"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>&amp;New Player</source>
         <translation>&amp;Lettore aggiuntivo</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1185"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Ctrl+N</source>
         <translation>Ctrl+N</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1190"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>&amp;Open File...</source>
         <translation>&amp;Apri file...</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1193"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Ctrl+O</source>
         <translation>Ctrl+O</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1198"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Open &amp;URL...</source>
         <translation>Apri &amp;URL...</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1201"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Ctrl+U</source>
         <translation>Ctrl+U</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1206"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Open Path from &amp;Clipboard</source>
         <translation>Apri percorso &amp;da appunti</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1209"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Ctrl+V</source>
         <translation>Ctrl+V</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1217"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Show in &amp;Folder</source>
         <translation>Mostra in &amp;cartella</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1220"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Ctrl+E</source>
         <translation>Ctrl+E</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1228"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Play &amp;Next File</source>
         <translation>Riproduci file &amp;successivo</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1231"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Ctrl+Right</source>
         <translation>Ctrl+Destra</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1239"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Play &amp;Previous File</source>
         <translation>Riproduci file &amp;precedente</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1242"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Ctrl+Left</source>
         <translation>Ctrl+Sinistra</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1247"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>E&amp;xit</source>
         <translation>&amp;Esci</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1250"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1258"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>&amp;Full Screen</source>
         <translation>&amp;Schermo intero</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1261"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Alt+Return</source>
         <translation>Alt+Invio</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1275"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Show S&amp;ubtitles</source>
         <translation>&amp;Mostra sottotitoli</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1278"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Ctrl+W</source>
         <translation>Ctrl+W</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1286"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Media &amp;Info</source>
         <translation>&amp;Informazioni sul media</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1289"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Ctrl+I</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1297"/>
+        <location filename="../ui/mainwindow.ui"/>
         <location filename="../ui/mainwindow.cpp" line="416"/>
         <source>&amp;Play</source>
         <translation>&amp;Riproduci</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1300"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Space</source>
         <translation>Spazio</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1308"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>&amp;Stop</source>
         <translation>&amp;Interrompi</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1311"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Ctrl+S</source>
         <translation>Ctrl+S</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1319"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>&amp;Restart</source>
         <translation>Ria&amp;vvia</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1322"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Ctrl+R</source>
         <translation>Ctrl+R</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1334"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Sh&amp;uffle</source>
         <translation>&amp;Mescola</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1342"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Stop after &amp;Current</source>
         <translation>Interrompi dopo &amp;corrente</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1350"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>&amp;Next Chapter</source>
         <translation>Capitolo &amp;successivo</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1353"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>PgDown</source>
         <translation>PagGiù</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1361"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>&amp;Previous Chapter</source>
         <translation>Capitolo &amp;precedente</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1364"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>PgUp</source>
         <translation>PagSu</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1372"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>&amp;Frame Step</source>
         <translation>Fotogramma &amp;avanti</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1375"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Shift+Right</source>
         <translation>Shift+Destra</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1383"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Frame &amp;Back Step</source>
         <translation>Fotogramma &amp;indietro</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1386"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Shift+Left</source>
         <translation>Shift+Sinistra</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1394"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>&amp;Jump to Time...</source>
         <translation>Salta a &amp;tempo...</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1397"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Ctrl+J</source>
         <translation>Ctrl+J</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1408"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>&amp;Show Playlist</source>
         <translation>&amp;Mostra scaletta</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1411"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Ctrl+F</source>
         <translation>Ctrl+F</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1422"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>&amp;Hide Album Art</source>
         <translation>&amp;Nascondi copertina</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1430"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>&amp;Dim Lights</source>
         <translation>Abbassa le &amp;luci</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1433"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Ctrl+D</source>
         <translation>Ctrl+D</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1438"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Online &amp;Help</source>
         <translation>&amp;Guida in linea</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1441"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>F1</source>
         <translation>F1</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1446"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>&amp;Check for Updates</source>
         <translation>Cerca a&amp;ggiornamenti</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1451"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>About &amp;Qt</source>
         <translation>Informazioni su &amp;Qt</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1456"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>About &amp;Baka MPlayer</source>
         <translation>Informazioni su &amp;Baka MPlayer</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1461"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>To &amp;Current Size</source>
         <translation>Alla dimensione &amp;corrente</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1464"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Alt+1</source>
         <translation>Alt+1</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1469"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>50%</source>
         <translation>50%</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1472"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Alt+2</source>
         <translation>Alt+2</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1477"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>75%</source>
         <translation>75%</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1480"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Alt+3</source>
         <translation>Alt+3</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1485"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>100%</source>
         <translation>100%</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1488"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Alt+4</source>
         <translation>Alt+4</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1493"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>200%</source>
         <translation>200%</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1496"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Alt+6</source>
         <translation>Alt+6</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1501"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>&amp;Auto Detect</source>
         <translation>Rileva &amp;automaticamente</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1506"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Force &amp;4:3</source>
         <translation>Forza &amp;4:3</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1511"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Force 16:&amp;9</source>
         <translation>Forza 16:&amp;9</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1516"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Force &amp;2.35:1</source>
         <translation>Forza &amp;2.35.1</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1524"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>&amp;Add Subtitle File...</source>
         <translation>&amp;Aggiungi file sottotitoli</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1532"/>
-        <location filename="../ui/mainwindow.ui" line="1588"/>
-        <location filename="../ui/mainwindow.ui" line="1644"/>
-        <location filename="../ui/mainwindow.ui" line="1676"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>[ none ]</source>
         <translation>[ vuoto ]</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1537"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>&amp;Size +</source>
         <translation>&amp;Dimensione +</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1540"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Ctrl++</source>
         <translation>Ctrl++</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1545"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>S&amp;ize -</source>
         <translation>D&amp;imensione -</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1548"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Ctrl+-</source>
         <translation>Ctrl+-</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1553"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>&amp;Reset Size</source>
         <translation>&amp;Ripristina dimensione</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1564"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>&amp;Off</source>
         <translation>&amp;Off</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1572"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>&amp;Playlist</source>
         <translation>&amp;Scaletta</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1580"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>&amp;This File</source>
         <translation>&amp;Questo file</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1596"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Show &amp;Command Line</source>
         <translation>Mostra linea di &amp;comando</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1599"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Ctrl+G</source>
         <translation>Ctrl+G</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1604"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>&amp;Increase Volume</source>
         <translation>&amp;Aumenta volume</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1607"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Ctrl+Up</source>
         <translation>Ctrl+Su</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1612"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>&amp;Decrease Volume</source>
         <translation>&amp;Diminuisci volume</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1615"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Ctrl+Down</source>
         <translation>Ctrl+Giù</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1620"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>With &amp;Subtitles...</source>
         <translation>Con &amp;sottotitoli...</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1623"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Ctrl+T</source>
         <translation>Ctrl+T</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1628"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>&amp;Without Subtitles...</source>
         <translation>Sen&amp;za sottotitoli...</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1631"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Ctrl+Shift+T</source>
         <translation>Ctrl+Maiusc+T</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1636"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>&amp;Preferences...</source>
         <translation>&amp;Preferenze...</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1649"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>&amp;Increase</source>
         <translation>&amp;Aumenta</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1652"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Ctrl+Shift+Up</source>
         <translation>Ctrl+Maiusc+Su</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1657"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>&amp;Decrease</source>
         <translation>&amp;Diminuisci</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1660"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Ctrl+Shift+Down</source>
         <translation>Ctrl+Maiusc+Giù</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1665"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>&amp;Reset</source>
         <translation>&amp;Ripristina</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1668"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Ctrl+Shift+R</source>
         <translation>Ctrl+Maiusc+R</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1681"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>150%</source>
         <translation>150%</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1684"/>
+        <location filename="../ui/mainwindow.ui"/>
         <source>Alt+5</source>
         <translation>Alt+5</translation>
     </message>
@@ -1103,143 +1099,143 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
 <context>
     <name>PreferencesDialog</name>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="14"/>
+        <location filename="../ui/preferencesdialog.ui"/>
         <source>Preferences</source>
         <translation>Preferenze</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="193"/>
+        <location filename="../ui/preferencesdialog.ui"/>
         <source>Player</source>
         <translation>Lettore</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="211"/>
+        <location filename="../ui/preferencesdialog.ui"/>
         <source>On Top</source>
         <translation>In primo piano</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="217"/>
+        <location filename="../ui/preferencesdialog.ui"/>
         <source>&amp;Always</source>
         <translation>&amp;Sempre</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="224"/>
+        <location filename="../ui/preferencesdialog.ui"/>
         <source>&amp;When Playing</source>
         <translation>&amp;Durante la riproduzione</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="231"/>
+        <location filename="../ui/preferencesdialog.ui"/>
         <source>&amp;Never</source>
         <translation>&amp;Mai</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="244"/>
+        <location filename="../ui/preferencesdialog.ui"/>
         <source>Tray Icon</source>
         <translation>Icona nell&apos;area di notifica</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="253"/>
+        <location filename="../ui/preferencesdialog.ui"/>
         <source>&amp;Hide Popup</source>
         <translation>&amp;Nascondi notifica</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="265"/>
+        <location filename="../ui/preferencesdialog.ui"/>
         <source>Mouse &amp;Gesture Support</source>
         <translation>Abilita &amp;gesti del mouse</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="280"/>
+        <location filename="../ui/preferencesdialog.ui"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Click &amp;amp; drag cursor up/down to change volume&lt;br&gt;Click &amp;amp; drag cursor left/right to seek&lt;/b&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Clicca e trascina il cursore in su/giù per cambiare il volume&lt;br&gt;Clicca e trascina il cursore a destra/sinistra per posizionare&lt;/b&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="300"/>
+        <location filename="../ui/preferencesdialog.ui"/>
         <source>Language:</source>
         <translation>Lingua:</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="313"/>
+        <location filename="../ui/preferencesdialog.ui"/>
         <source>Video</source>
         <translation>Video</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="333"/>
+        <location filename="../ui/preferencesdialog.ui"/>
         <source>&amp;Auto-Fit Window:</source>
         <translation>&amp;Adatta automaticamente alla finestra</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="347"/>
+        <location filename="../ui/preferencesdialog.ui"/>
         <source>50%</source>
         <translation>50%</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="352"/>
+        <location filename="../ui/preferencesdialog.ui"/>
         <source>75%</source>
         <translation>75%</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="357"/>
+        <location filename="../ui/preferencesdialog.ui"/>
         <source>100%</source>
         <translation>100%</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="362"/>
+        <location filename="../ui/preferencesdialog.ui"/>
         <source>200%</source>
         <translation>200%</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="372"/>
+        <location filename="../ui/preferencesdialog.ui"/>
         <source>Screenshot</source>
         <translation>Istantanea</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="378"/>
+        <location filename="../ui/preferencesdialog.ui"/>
         <source>File Format:</source>
         <translation>Formato file:</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="386"/>
+        <location filename="../ui/preferencesdialog.ui"/>
         <source>jpg</source>
         <translation>jpg</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="391"/>
+        <location filename="../ui/preferencesdialog.ui"/>
         <source>png</source>
         <translation>png</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="396"/>
+        <location filename="../ui/preferencesdialog.ui"/>
         <source>tga</source>
         <translation>tga</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="404"/>
+        <location filename="../ui/preferencesdialog.ui"/>
         <source>File Name Template:</source>
         <translation>Nome del file di modello:</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="411"/>
+        <location filename="../ui/preferencesdialog.ui"/>
         <source>Default Save Location:</source>
         <translation>Posizione di salvataggio predefinita:</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="418"/>
+        <location filename="../ui/preferencesdialog.ui"/>
         <location filename="../ui/preferencesdialog.cpp" line="36"/>
         <source>screenshot%#04n</source>
         <translation>istantanea%#04n</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="425"/>
+        <location filename="../ui/preferencesdialog.ui"/>
         <source>CHANG&amp;E</source>
         <translation>CAM&amp;BIA</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="432"/>
+        <location filename="../ui/preferencesdialog.ui"/>
         <source>&amp;Always show the dialog</source>
         <translation>&amp;Mostra sempre la finestra di dialogo</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="464"/>
+        <location filename="../ui/preferencesdialog.ui"/>
         <source>&amp;CLOSE</source>
         <translation>&amp;CHIUDI</translation>
     </message>
@@ -1252,52 +1248,52 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
 <context>
     <name>ScreenshotDialog</name>
     <message>
-        <location filename="../ui/screenshotdialog.ui" line="14"/>
+        <location filename="../ui/screenshotdialog.ui"/>
         <source>Take Screenshot</source>
         <translation>Cattura schermata</translation>
     </message>
     <message>
-        <location filename="../ui/screenshotdialog.ui" line="112"/>
+        <location filename="../ui/screenshotdialog.ui"/>
         <source>...</source>
         <translation>...</translation>
     </message>
     <message>
-        <location filename="../ui/screenshotdialog.ui" line="122"/>
+        <location filename="../ui/screenshotdialog.ui"/>
         <source>Save Location</source>
         <translation>Posizione di salvataggio</translation>
     </message>
     <message>
-        <location filename="../ui/screenshotdialog.ui" line="129"/>
+        <location filename="../ui/screenshotdialog.ui"/>
         <source>File Name Template</source>
         <translation>Nome del file di modello</translation>
     </message>
     <message>
-        <location filename="../ui/screenshotdialog.ui" line="149"/>
+        <location filename="../ui/screenshotdialog.ui"/>
         <source>jpg</source>
         <translation>jpg</translation>
     </message>
     <message>
-        <location filename="../ui/screenshotdialog.ui" line="154"/>
+        <location filename="../ui/screenshotdialog.ui"/>
         <source>png</source>
         <translation>png</translation>
     </message>
     <message>
-        <location filename="../ui/screenshotdialog.ui" line="159"/>
+        <location filename="../ui/screenshotdialog.ui"/>
         <source>tga</source>
         <translation>tga</translation>
     </message>
     <message>
-        <location filename="../ui/screenshotdialog.ui" line="171"/>
+        <location filename="../ui/screenshotdialog.ui"/>
         <source>Sho&amp;w subtitles</source>
         <translation>&amp;Mostra sottotitoli</translation>
     </message>
     <message>
-        <location filename="../ui/screenshotdialog.ui" line="178"/>
+        <location filename="../ui/screenshotdialog.ui"/>
         <source>Always show this dialog</source>
         <translation>Mostra sempre questa finestra di dialogo</translation>
     </message>
     <message>
-        <location filename="../ui/screenshotdialog.ui" line="207"/>
+        <location filename="../ui/screenshotdialog.ui"/>
         <source>&amp;SAVE</source>
         <translation>&amp;SALVA</translation>
     </message>
@@ -1310,27 +1306,27 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
 <context>
     <name>UpdateDialog</name>
     <message>
-        <location filename="../ui/updatedialog.ui" line="14"/>
+        <location filename="../ui/updatedialog.ui"/>
         <source>Check for Updates</source>
         <translation>Controlla aggiornamenti</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.ui" line="125"/>
+        <location filename="../ui/updatedialog.ui"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Checking for updates...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Sto controllando gli aggiornamenti...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.ui" line="148"/>
+        <location filename="../ui/updatedialog.ui"/>
         <source>About 0 second(s) remaining</source>
         <translation>Circa 0 secondi rimanenti</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.ui" line="193"/>
+        <location filename="../ui/updatedialog.ui"/>
         <source>&amp;UPDATE</source>
         <translation>A&amp;GGIORNA</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.ui" line="212"/>
+        <location filename="../ui/updatedialog.ui"/>
         <source>&amp;CANCEL</source>
         <translation>&amp;ANNULLA</translation>
     </message>

@@ -110,7 +110,7 @@ CONFIG(install_translations) {
 
 CONFIG(update_translations) {
     isEmpty(lupdate):lupdate=lupdate
-    system($$lupdate $$_PRO_FILE_)
+    system($$lupdate -no-ui-lines $$_PRO_FILE_)
 }
 
 CONFIG(release_translations) {
