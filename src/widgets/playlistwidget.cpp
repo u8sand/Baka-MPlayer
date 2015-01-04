@@ -158,28 +158,28 @@ void PlaylistWidget::ShowAll(bool b)
     }
 }
 
-void PlaylistWidget::Shuffle(bool b)
+void PlaylistWidget::Shuffle()
 {
     if(count() > 0)
     {
         QListWidgetItem *_item = currentItem();
-        QString item;
-        if(_item && cItem == QString())
+        QString item, playingItem = cItem;
+        if(_item)
             item = _item->text();
         else
             item = cItem;
-        if(b)
-        {
-            QStringList newPlaylist = playlist;
-            std::random_shuffle(newPlaylist.begin(), newPlaylist.end());
-            clear();
-            addItems(newPlaylist);
-        }
-        else
-        {
-            clear();
-            addItems(playlist);
-        }
+
+        QStringList newPlaylist = playlist;
+        std::random_shuffle(newPlaylist.begin(), newPlaylist.end());
+        // make current playing item the first
+        for(QStringList::iterator iter = newPlaylist.begin(); iter != newPlaylist.end(); ++iter)
+            if(*iter == playingItem)
+            {
+                std::swap(*iter, *newPlaylist.begin());
+                break;
+            }
+        clear();
+        addItems(newPlaylist);
         SelectItem(item);
     }
 }

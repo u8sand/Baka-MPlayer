@@ -946,9 +946,10 @@ MainWindow::MainWindow(QWidget *parent):
             });
 
     connect(ui->actionSh_uffle, &QAction::triggered,                    // Playback -> Shuffle
-            [=](bool b)
+            [=]
             {
-                ui->playlistWidget->Shuffle(b);
+                ui->playlistWidget->Shuffle();
+                ui->playlistWidget->BoldText(ui->playlistWidget->FirstItem(), true);
             });
                                                                         // Playback -> Repeat
     connect(ui->action_Off, &QAction::triggered,                        // Playback -> Repeat -> Off

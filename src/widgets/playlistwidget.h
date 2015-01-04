@@ -29,7 +29,7 @@ public:
 
     void Search(QString);
     void ShowAll(bool);
-    void Shuffle(bool);
+    void Shuffle();
 
 signals:
     void DeleteFile(QString);
