@@ -111,12 +111,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
 <context>
     <name>BakaEngine</name>
     <message>
-        <location filename="../bakaengine.cpp" line="61"/>
+        <location filename="../bakaengine.cpp" line="60"/>
         <source>Settings version not recognized</source>
         <translation type="unfinished">Versão configurações não reconhecido</translation>
     </message>
     <message>
-        <location filename="../bakaengine.cpp" line="61"/>
+        <location filename="../bakaengine.cpp" line="60"/>
         <source>The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.
 Some features may not work and changed settings will not be saved.</source>
         <translation type="unfinished">O arquivo de configurações foi feita por uma versão mais nova do baka-mplayer; por favor, atualize esta versão ou procurar ajuda de desenvolvedores.
@@ -491,12 +491,12 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
         <translation>A&amp;juda</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1499"/>
+        <location filename="../ui/mainwindow.ui" line="1496"/>
         <source>Alt+6</source>
         <translation type="unfinished">Alt+6</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1602"/>
+        <location filename="../ui/mainwindow.ui" line="1599"/>
         <source>Ctrl+G</source>
         <translation type="unfinished"></translation>
     </message>
@@ -506,7 +506,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
         <translation>&amp;Fechar</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1599"/>
+        <location filename="../ui/mainwindow.ui" line="1596"/>
         <source>Show &amp;Command Line</source>
         <translation type="unfinished"></translation>
     </message>
@@ -556,7 +556,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
         <translation>Vista na &amp;pasta</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1414"/>
+        <location filename="../ui/mainwindow.ui" line="1411"/>
         <source>Ctrl+F</source>
         <translation>Ctrl+F</translation>
     </message>
@@ -648,77 +648,77 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
         <translation>Ctrl+R</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1337"/>
+        <location filename="../ui/mainwindow.ui" line="1334"/>
         <source>Sh&amp;uffle</source>
         <translation>&amp;Embaralhar</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1345"/>
+        <location filename="../ui/mainwindow.ui" line="1342"/>
         <source>Stop after &amp;Current</source>
         <translation>Parar depois a&amp;tual</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1411"/>
+        <location filename="../ui/mainwindow.ui" line="1408"/>
         <source>&amp;Show Playlist</source>
         <translation>&amp;Vista Lista</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1425"/>
+        <location filename="../ui/mainwindow.ui" line="1422"/>
         <source>&amp;Hide Album Art</source>
         <translation>&amp;Esconder arte do álbum</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1433"/>
+        <location filename="../ui/mainwindow.ui" line="1430"/>
         <source>&amp;Dim Lights</source>
         <translation>Luzes &amp;Difusas</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1353"/>
+        <location filename="../ui/mainwindow.ui" line="1350"/>
         <source>&amp;Next Chapter</source>
         <translation>&amp;Próximo Capítulo</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1356"/>
+        <location filename="../ui/mainwindow.ui" line="1353"/>
         <source>PgDown</source>
         <translation>PgDown</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1364"/>
+        <location filename="../ui/mainwindow.ui" line="1361"/>
         <source>&amp;Previous Chapter</source>
         <translation>P&amp;révio Capítulo</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1367"/>
+        <location filename="../ui/mainwindow.ui" line="1364"/>
         <source>PgUp</source>
         <translation>PgUp</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1375"/>
+        <location filename="../ui/mainwindow.ui" line="1372"/>
         <source>&amp;Frame Step</source>
         <translation>&amp;Frame passo</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1378"/>
+        <location filename="../ui/mainwindow.ui" line="1375"/>
         <source>Shift+Right</source>
         <translation>Shift+Right</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1386"/>
+        <location filename="../ui/mainwindow.ui" line="1383"/>
         <source>Frame &amp;Back Step</source>
         <translation>Frame passo para &amp;trás</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1389"/>
+        <location filename="../ui/mainwindow.ui" line="1386"/>
         <source>Shift+Left</source>
         <translation>Shift+Left</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1397"/>
+        <location filename="../ui/mainwindow.ui" line="1394"/>
         <source>&amp;Jump to Time...</source>
         <translation>&amp;Vá para o tempo...</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1400"/>
+        <location filename="../ui/mainwindow.ui" line="1397"/>
         <source>Ctrl+J</source>
         <translation>Ctrl+J</translation>
     </message>
@@ -727,160 +727,160 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
         <translation type="vanished">Ctrl+X</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1436"/>
+        <location filename="../ui/mainwindow.ui" line="1433"/>
         <source>Ctrl+D</source>
         <translation>Ctrl+D</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1441"/>
+        <location filename="../ui/mainwindow.ui" line="1438"/>
         <source>Online &amp;Help</source>
         <translation>&amp;Ajuda On-line</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1444"/>
+        <location filename="../ui/mainwindow.ui" line="1441"/>
         <source>F1</source>
         <translation>F1</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1449"/>
+        <location filename="../ui/mainwindow.ui" line="1446"/>
         <source>&amp;Check for Updates</source>
         <translation>&amp;Verificar se há Atualizações</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1454"/>
+        <location filename="../ui/mainwindow.ui" line="1451"/>
         <source>About &amp;Qt</source>
         <translation>&amp;Sobre Qt</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1459"/>
+        <location filename="../ui/mainwindow.ui" line="1456"/>
         <source>About &amp;Baka MPlayer</source>
         <translation>Sobre &amp;Baka MPlayer</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1464"/>
+        <location filename="../ui/mainwindow.ui" line="1461"/>
         <source>To &amp;Current Size</source>
         <translation>Ao Tamanho &amp;Atual</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1467"/>
+        <location filename="../ui/mainwindow.ui" line="1464"/>
         <source>Alt+1</source>
         <translation>Alt+1</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1472"/>
+        <location filename="../ui/mainwindow.ui" line="1469"/>
         <source>50%</source>
         <translation>50%</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1475"/>
+        <location filename="../ui/mainwindow.ui" line="1472"/>
         <source>Alt+2</source>
         <translation>Alt+2</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1480"/>
+        <location filename="../ui/mainwindow.ui" line="1477"/>
         <source>75%</source>
         <translation>75%</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1483"/>
+        <location filename="../ui/mainwindow.ui" line="1480"/>
         <source>Alt+3</source>
         <translation>Alt+3</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1488"/>
+        <location filename="../ui/mainwindow.ui" line="1485"/>
         <source>100%</source>
         <translation>100%</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1491"/>
+        <location filename="../ui/mainwindow.ui" line="1488"/>
         <source>Alt+4</source>
         <translation>Alt+4</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1496"/>
+        <location filename="../ui/mainwindow.ui" line="1493"/>
         <source>200%</source>
         <translation>200%</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1684"/>
+        <location filename="../ui/mainwindow.ui" line="1681"/>
         <source>150%</source>
         <translation type="unfinished">200% {150%?}</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1687"/>
+        <location filename="../ui/mainwindow.ui" line="1684"/>
         <source>Alt+5</source>
         <translation>Alt+5</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1504"/>
+        <location filename="../ui/mainwindow.ui" line="1501"/>
         <source>&amp;Auto Detect</source>
         <translation>Detecção &amp;Automática</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1509"/>
+        <location filename="../ui/mainwindow.ui" line="1506"/>
         <source>Force &amp;4:3</source>
         <translation>Forçar &amp;4:3</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1514"/>
+        <location filename="../ui/mainwindow.ui" line="1511"/>
         <source>Force 16:&amp;9</source>
         <translation>Forçar 16:&amp;9</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1519"/>
+        <location filename="../ui/mainwindow.ui" line="1516"/>
         <source>Force &amp;2.35:1</source>
         <translation>Forçar &amp;2.35:1</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1527"/>
+        <location filename="../ui/mainwindow.ui" line="1524"/>
         <source>&amp;Add Subtitle File...</source>
         <translation>&amp;Adicionar arquivo da legenda...</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1535"/>
-        <location filename="../ui/mainwindow.ui" line="1591"/>
-        <location filename="../ui/mainwindow.ui" line="1647"/>
-        <location filename="../ui/mainwindow.ui" line="1679"/>
+        <location filename="../ui/mainwindow.ui" line="1532"/>
+        <location filename="../ui/mainwindow.ui" line="1588"/>
+        <location filename="../ui/mainwindow.ui" line="1644"/>
+        <location filename="../ui/mainwindow.ui" line="1676"/>
         <source>[ none ]</source>
         <translation>[ nada ]</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1540"/>
+        <location filename="../ui/mainwindow.ui" line="1537"/>
         <source>&amp;Size +</source>
         <translation>&amp;Tamanho +</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1543"/>
+        <location filename="../ui/mainwindow.ui" line="1540"/>
         <source>Ctrl++</source>
         <translation>Ctrl++</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1548"/>
+        <location filename="../ui/mainwindow.ui" line="1545"/>
         <source>S&amp;ize -</source>
         <translation>T&amp;amanho -</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1551"/>
+        <location filename="../ui/mainwindow.ui" line="1548"/>
         <source>Ctrl+-</source>
         <translation>Ctrl+-</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1556"/>
+        <location filename="../ui/mainwindow.ui" line="1553"/>
         <source>&amp;Reset Size</source>
         <translation>Tamanho de &amp;Redefinição</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1567"/>
+        <location filename="../ui/mainwindow.ui" line="1564"/>
         <source>&amp;Off</source>
         <translation>&amp;Fora</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1575"/>
+        <location filename="../ui/mainwindow.ui" line="1572"/>
         <source>&amp;Playlist</source>
         <translation>&amp;Lista</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1583"/>
+        <location filename="../ui/mainwindow.ui" line="1580"/>
         <source>&amp;This File</source>
         <translation>&amp;Esse arquivo</translation>
     </message>
@@ -894,77 +894,77 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
         <translation>Ctrl+E</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1607"/>
+        <location filename="../ui/mainwindow.ui" line="1604"/>
         <source>&amp;Increase Volume</source>
         <translation>&amp;Aumento de Volume</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1610"/>
+        <location filename="../ui/mainwindow.ui" line="1607"/>
         <source>Ctrl+Up</source>
         <translation>Ctrl+Up</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1615"/>
+        <location filename="../ui/mainwindow.ui" line="1612"/>
         <source>&amp;Decrease Volume</source>
         <translation>&amp;Diminuir o Volume</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1618"/>
+        <location filename="../ui/mainwindow.ui" line="1615"/>
         <source>Ctrl+Down</source>
         <translation>Ctrl+Down</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1623"/>
+        <location filename="../ui/mainwindow.ui" line="1620"/>
         <source>With &amp;Subtitles...</source>
         <translation>Com &amp;Legendas...</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1626"/>
+        <location filename="../ui/mainwindow.ui" line="1623"/>
         <source>Ctrl+T</source>
         <translation>Ctrl+T</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1631"/>
+        <location filename="../ui/mainwindow.ui" line="1628"/>
         <source>&amp;Without Subtitles...</source>
         <translation>Sem &amp;Legendas...</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1634"/>
+        <location filename="../ui/mainwindow.ui" line="1631"/>
         <source>Ctrl+Shift+T</source>
         <translation>Ctrl+Shift+T</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1639"/>
+        <location filename="../ui/mainwindow.ui" line="1636"/>
         <source>&amp;Preferences...</source>
         <translation>&amp;Preferências...</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1652"/>
+        <location filename="../ui/mainwindow.ui" line="1649"/>
         <source>&amp;Increase</source>
         <translation>&amp;Aumento</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1655"/>
+        <location filename="../ui/mainwindow.ui" line="1652"/>
         <source>Ctrl+Shift+Up</source>
         <translation>Ctrl+Shift+Up</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1660"/>
+        <location filename="../ui/mainwindow.ui" line="1657"/>
         <source>&amp;Decrease</source>
         <translation>&amp;Diminuir</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1663"/>
+        <location filename="../ui/mainwindow.ui" line="1660"/>
         <source>Ctrl+Shift+Down</source>
         <translation>Ctrl+Shift+Down</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1668"/>
+        <location filename="../ui/mainwindow.ui" line="1665"/>
         <source>&amp;Reset</source>
         <translation>&amp;Redefinição</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1671"/>
+        <location filename="../ui/mainwindow.ui" line="1668"/>
         <source>Ctrl+Shift+R</source>
         <translation>Ctrl+Shift+R</translation>
     </message>
@@ -1068,7 +1068,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
         <translation>Arquivo de legenda aberta</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1063"/>
+        <location filename="../ui/mainwindow.cpp" line="1064"/>
         <source>http://bakamplayer.u8sand.net/help.php</source>
         <translation>http://bakamplayer.u8sand.net/help.php</translation>
     </message>

@@ -1403,7 +1403,6 @@ void MainWindow::FullScreen(bool fs)
             dimDialog->setVisible(false);
             ui->action_Dim_Lights->setChecked(false);
         }
-        ShowPlaylist(true); // show the playlist so that we can auto-hide it
         setWindowState(windowState() | Qt::WindowFullScreen);
         ui->menubar->setVisible(false);
         ui->splitter->handle(1)->installEventFilter(this); // capture events for the splitter
