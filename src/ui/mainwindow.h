@@ -4,7 +4,6 @@
 #include <QMainWindow>
 #include <QSystemTrayIcon>
 #include <QSignalMapper>
-#include <QSettings>
 #include <QModelIndex>
 #include <QStringList>
 #include <QMouseEvent>
@@ -20,6 +19,7 @@
 #include "gesturehandler.h"
 #include "widgets/dimdialog.h"
 #include "updatedialog.h"
+#include "settings.h"
 
 namespace Ui {
 class MainWindow;
@@ -67,7 +67,7 @@ private slots:
 
 private:
     Ui::MainWindow  *ui;
-    QSettings       *settings;
+    Settings        *settings;
     MpvHandler      *mpv;
     GestureHandler  *gesture;
     QTranslator     *translator     = nullptr,

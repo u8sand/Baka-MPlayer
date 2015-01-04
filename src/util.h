@@ -2,8 +2,9 @@
 #define UTIL_H
 
 #include <QWidget>
-#include <QSettings>
 #include <QString>
+
+#include "settings.h"
 
 namespace Util {
 
@@ -13,7 +14,7 @@ QString DownloadFileUrl();
 
 bool DimLightsSupported();
 void SetAlwaysOnTop(WId wid, bool);
-QSettings *InitializeSettings(QObject *parent);
+Settings *InitializeSettings(QObject *parent);
 
 bool IsValidFile(QString path);
 bool IsValidLocation(QString loc); // combined file and url

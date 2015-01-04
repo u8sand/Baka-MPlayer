@@ -130,6 +130,7 @@ SOURCES += main.cpp\
     updatemanager.cpp \
     gesturehandler.cpp \
     util.cpp \
+    settings.cpp \
     ui/aboutdialog.cpp \
     ui/infodialog.cpp \
     ui/inputdialog.cpp \
@@ -155,6 +156,7 @@ HEADERS  += \
     updatemanager.h \
     gesturehandler.h \
     util.h \
+    settings.h \
     widgets/customlabel.h \
     widgets/customlineedit.h \
     widgets/customslider.h \

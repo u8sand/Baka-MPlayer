@@ -1152,44 +1152,50 @@ void MainWindow::LoadSettings()
 {
     if(settings)
     {
+        settings->Load();
+
         QString version;
-        if(settings->allKeys().length() == 0) // empty settings
+        if(settings->isEmpty()) // empty settings
         {
             version = "2.0.2"; // current version
 
             // populate initially
 #if defined(Q_OS_LINUX) || defined(Q_OS_UNIX)
             settings->beginGroup("mpv");
-            settings->setValue("vo", QStringList{"vdpau","opengl-hq"});
+            settings->setValueQStringList("vo", QStringList{"vdpau","opengl-hq"});
             settings->setValue("hwdec", "auto");
             settings->endGroup();
 #endif
         }
         else
-            version = settings->value("baka-mplayer/version", "1.9.9").toString(); // defaults to the first version without version info in settings
+        {
+            settings->beginGroup("baka-mplayer");
+            version = settings->value("version", "1.9.9"); // defaults to the first version without version info in settings
+            settings->endGroup();
+        }
 
         if(version == "2.0.2") // current version
         {
             settings->beginGroup("baka-mplayer");
-            setOnTop(settings->value("onTop", "never").toString());
-            setAutoFit(settings->value("autoFit", 100).toInt());
-            sysTrayIcon->setVisible(settings->value("trayIcon", false).toBool());
-            setHidePopup(settings->value("hidePopup", false).toBool());
-            setRemaining(settings->value("remaining", true).toBool());
-            ui->splitter->setNormalPosition(settings->value("splitter", ui->splitter->max()*1.0/8).toInt());
-            setDebug(settings->value("debug", false).toBool());
-            ui->hideFilesButton->setChecked(!settings->value("showAll", true).toBool());
-            setScreenshotDialog(settings->value("screenshotDialog", true).toBool());
-            recent = settings->value("recent").toStringList();
-            maxRecent = settings->value("maxRecent", 5).toInt();
-            gestures = settings->value("gestures", true).toBool();
-            setLang(settings->value("lang", "auto").toString());
+            setOnTop(settings->value("onTop", "never"));
+            setAutoFit(settings->valueInt("autoFit", 100));
+            sysTrayIcon->setVisible(settings->valueBool("trayIcon", false));
+            setHidePopup(settings->valueBool("hidePopup", false));
+            setRemaining(settings->valueBool("remaining", true));
+            ui->splitter->setNormalPosition(settings->valueInt("splitter", ui->splitter->max()*1.0/8));
+            setDebug(settings->valueBool("debug", false));
+            ui->hideFilesButton->setChecked(!settings->valueBool("showAll", true));
+            setScreenshotDialog(settings->valueBool("screenshotDialog", true));
+            recent = settings->valueQStringList("recent");
+            maxRecent = settings->valueInt("maxRecent", 5);
+            gestures = settings->valueBool("gestures", true);
+            setLang(settings->value("lang", "auto"));
 #if defined(Q_OS_WIN)
-            QDate last = settings->value("lastcheck", QDate(2014, 1, 1)).toDate();
+            QDate last = settings->valueQDate("lastcheck", QDate(2014, 1, 1));
             if(last.daysTo(QDate::currentDate()) > 7) // been a week since we last checked?
             {
                 updateDialog->CheckForUpdates();
-                settings->setValue("lastcheck", QDate::currentDate());
+                settings->setValueQDate("lastcheck", QDate::currentDate());
             }
 #endif
             settings->endGroup();
@@ -1200,17 +1206,17 @@ void MainWindow::LoadSettings()
         else if(version == "2.0.1")
         {
             settings->beginGroup("baka-mplayer");
-            setOnTop(settings->value("onTop", "never").toString());
-            setAutoFit(settings->value("autoFit", 100).toInt());
-            sysTrayIcon->setVisible(settings->value("trayIcon", false).toBool());
-            setHidePopup(settings->value("hidePopup", false).toBool());
-            setRemaining(settings->value("remaining", true).toBool());
-            ui->splitter->setNormalPosition(settings->value("splitter", ui->splitter->max()*1.0/8).toInt());
-            setDebug(settings->value("debug", false).toBool());
-            ui->hideFilesButton->setChecked(!settings->value("showAll", true).toBool());
-            setScreenshotDialog(settings->value("screenshotDialog", true).toBool());
-            recent = settings->value("recent").toStringList();
-            maxRecent = settings->value("maxRecent", 5).toInt();
+            setOnTop(QString(settings->value("onTop", "never")));
+            setAutoFit(settings->valueInt("autoFit", 100));
+            sysTrayIcon->setVisible(settings->valueBool("trayIcon", false));
+            setHidePopup(settings->valueBool("hidePopup", false));
+            setRemaining(settings->valueBool("remaining", true));
+            ui->splitter->setNormalPosition(settings->valueInt("splitter", ui->splitter->max()*1.0/8));
+            setDebug(settings->valueBool("debug", false));
+            ui->hideFilesButton->setChecked(!settings->valueBool("showAll", true));
+            setScreenshotDialog(settings->valueBool("screenshotDialog", true));
+            recent = settings->valueQStringList("recent");
+            maxRecent = settings->valueInt("maxRecent", 5);
             gestures = true;
             setLang("auto");
             settings->endGroup();
@@ -1224,17 +1230,17 @@ void MainWindow::LoadSettings()
         else if(version == "2.0.0")
         {
             settings->beginGroup("baka-mplayer");
-            setOnTop(settings->value("onTop", "never").toString());
-            setAutoFit(settings->value("autoFit", 100).toInt());
-            sysTrayIcon->setVisible(settings->value("trayIcon", false).toBool());
-            setHidePopup(settings->value("hidePopup", false).toBool());
-            setRemaining(settings->value("remaining", true).toBool());
-            ui->splitter->setNormalPosition(settings->value("splitter", ui->splitter->max()*1.0/8).toInt());
-            setDebug(settings->value("debug", false).toBool());
-            ui->hideFilesButton->setChecked(!settings->value("showAll", true).toBool());
-            setScreenshotDialog(settings->value("screenshotDialog", true).toBool());
+            setOnTop(QString(settings->value("onTop", "never")));
+            setAutoFit(settings->valueInt("autoFit", 100));
+            sysTrayIcon->setVisible(settings->valueBool("trayIcon", false));
+            setHidePopup(settings->valueBool("hidePopup", false));
+            setRemaining(settings->valueBool("remaining", true));
+            ui->splitter->setNormalPosition(settings->valueInt("splitter", ui->splitter->max()*1.0/8));
+            setDebug(settings->valueBool("debug", false));
+            ui->hideFilesButton->setChecked(!settings->valueBool("showAll", true));
+            setScreenshotDialog(settings->valueBool("screenshotDialog", true));
             maxRecent = 5;
-            QString lf = settings->value("lastFile").toString();
+            QString lf = settings->value("lastFile");
             if(lf != QString())
                 recent.push_front(lf);
             gestures = true;
@@ -1250,18 +1256,18 @@ void MainWindow::LoadSettings()
         else if(version == "1.9.9")
         {
             settings->beginGroup("window");
-            setOnTop(settings->value("onTop", "never").toString());
-            setAutoFit(settings->value("autoFit", 100).toInt());
-            sysTrayIcon->setVisible(settings->value("trayIcon", false).toBool());
-            setHidePopup(settings->value("hidePopup", false).toBool());
-            setRemaining(settings->value("remaining", true).toBool());
-            ui->splitter->setNormalPosition(settings->value("splitter", ui->splitter->max()*1.0/8).toInt());
-            ui->hideFilesButton->setChecked(!settings->value("showAll", true).toBool());
+            setOnTop(settings->value("onTop", "never"));
+            setAutoFit(settings->valueInt("autoFit", 100));
+            sysTrayIcon->setVisible(settings->valueBool("trayIcon", false));
+            setHidePopup(settings->valueBool("hidePopup", false));
+            setRemaining(settings->valueBool("remaining", true));
+            ui->splitter->setNormalPosition(settings->valueInt("splitter", ui->splitter->max()*1.0/8));
+            ui->hideFilesButton->setChecked(!settings->valueBool("showAll", true));
             settings->endGroup();
-            setDebug(settings->value("common/debug", false).toBool());
+            setDebug(settings->valueBool("common/debug", false));
             maxRecent = 5;
             setScreenshotDialog(true);
-            QString lf = settings->value("mpv/lastFile").toString();
+            QString lf = settings->value("mpv/lastFile");
             if(lf != QString())
                 recent.push_front(lf);
             gestures = true;
@@ -1278,21 +1284,21 @@ void MainWindow::LoadSettings()
             version = "2.0.2"; // load what we can assuming the settings are like the current version
 
             settings->beginGroup("baka-mplayer");
-            setOnTop(settings->value("onTop", "never").toString());
-            setAutoFit(settings->value("autoFit", 100).toInt());
-            sysTrayIcon->setVisible(settings->value("trayIcon", false).toBool());
-            setHidePopup(settings->value("hidePopup", false).toBool());
-            setRemaining(settings->value("remaining", true).toBool());
-            ui->splitter->setNormalPosition(settings->value("splitter", ui->splitter->max()*1.0/8).toInt());
-            setDebug(settings->value("debug", false).toBool());
-            ui->hideFilesButton->setChecked(!settings->value("showAll", true).toBool());
-            setScreenshotDialog(settings->value("screenshotDialog", true).toBool());
-            recent = settings->value("recent").toStringList();
-            maxRecent = settings->value("maxRecent", 5).toInt();
-            gestures = settings->value("gestures", true).toBool();
-            setLang(settings->value("lang", "auto").toString());
+            setOnTop(settings->value("onTop", "never"));
+            setAutoFit(settings->valueInt("autoFit", 100));
+            sysTrayIcon->setVisible(settings->valueBool("trayIcon", false));
+            setHidePopup(settings->valueBool("hidePopup", false));
+            setRemaining(settings->valueBool("remaining", true));
+            ui->splitter->setNormalPosition(settings->valueInt("splitter", ui->splitter->max()*1.0/8));
+            setDebug(settings->valueBool("debug", false));
+            ui->hideFilesButton->setChecked(!settings->valueBool("showAll", true));
+            setScreenshotDialog(settings->valueBool("screenshotDialog", true));
+            recent = settings->valueQStringList("recent");
+            maxRecent = settings->valueInt("maxRecent", 5);
+            gestures = settings->valueBool("gestures", true);
+            setLang(settings->value("lang", "auto"));
 #if defined(Q_OS_WIN)
-            QDate last = settings->value("lastcheck", QDate(2014, 1, 1)).toDate();
+            QDate last = settings->valueQDate("lastcheck", QDate(2014, 1, 1));
             if(last.daysTo(QDate::currentDate()) > 7) // been a week since we last checked?
                 updateDialog->CheckForUpdates();
 #endif
@@ -1320,23 +1326,25 @@ void MainWindow::SaveSettings()
 
         settings->beginGroup("baka-mplayer");
         settings->setValue("onTop", onTop);
-        settings->setValue("autoFit", autoFit);
-        settings->setValue("trayIcon", sysTrayIcon->isVisible());
-        settings->setValue("hidePopup", hidePopup);
-        settings->setValue("remaining", remaining);
-        settings->setValue("splitter", (ui->splitter->position() == 0 ||
+        settings->setValueInt("autoFit", autoFit);
+        settings->setValueBool("trayIcon", sysTrayIcon->isVisible());
+        settings->setValueBool("hidePopup", hidePopup);
+        settings->setValueBool("remaining", remaining);
+        settings->setValueInt("splitter", (ui->splitter->position() == 0 ||
                                         ui->splitter->position() == ui->splitter->max()) ?
                                         ui->splitter->normalPosition() :
                                         ui->splitter->position());
-        settings->setValue("showAll", !ui->hideFilesButton->isChecked());
-        settings->setValue("screenshotDialog", screenshotDialog);
-        settings->setValue("debug", debug);
-        settings->setValue("recent", recent);
-        settings->setValue("maxRecent", maxRecent);
+        settings->setValueBool("showAll", !ui->hideFilesButton->isChecked());
+        settings->setValueBool("screenshotDialog", screenshotDialog);
+        settings->setValueBool("debug", debug);
+        settings->setValueQStringList("recent", recent);
+        settings->setValueInt("maxRecent", maxRecent);
         settings->setValue("lang", lang);
-        settings->setValue("gestures", gestures);
+        settings->setValueBool("gestures", gestures);
         settings->setValue("version", "2.0.2");
         settings->endGroup();
+
+        settings->Save();
     }
 }
 

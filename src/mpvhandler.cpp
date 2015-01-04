@@ -135,24 +135,26 @@ bool MpvHandler::event(QEvent *event)
     return QObject::event(event);
 }
 
-void MpvHandler::LoadSettings(QSettings *settings, QString version)
+void MpvHandler::LoadSettings(Settings *settings, QString version)
 {
     if(settings)
     {
         if(version == "2.0.2" || version == "2.0.1" || version == "2.0.0")
         {
-            Debug(settings->value("baka-mplayer/debug", false).toBool());
+            settings->beginGroup("baka-mplayer");
+            Debug(settings->valueBool("debug", false));
+            settings->endGroup();
 
             settings->beginGroup("mpv");
-            for(auto &key : settings->childKeys())
+            for(Settings::SettingsGroupData::iterator entry = settings->map().begin(); entry != settings->map().end(); ++entry)
             {
-                if(key == "volume") // exception--we want to update our ui accordingly
-                    Volume(settings->value(key).toInt());
-                else if(key == "speed")
-                    Speed(settings->value(key).toDouble());
-                else if(key == "screenshot-template")
+                if(entry.key() == "volume") // exception--we want to update our ui accordingly
+                    Volume(entry.value().toInt());
+                else if(entry.key() == "speed")
+                    Speed(entry.value().toDouble());
+                else if(entry.key() == "screenshot-template")
                 {
-                    QString temp = settings->value(key).toString();
+                    QString temp = entry.value();
                     int i = temp.lastIndexOf('/');
                     if(i != -1)
                     {
@@ -167,22 +169,9 @@ void MpvHandler::LoadSettings(QSettings *settings, QString version)
                 }
                 else
                 {
-                    QByteArray tmp1 = key.toUtf8(),
-                               tmp2;
-                    // fix to qsettings reading comma-separation as a list
-                    QVariant tmp = settings->value(key);
-                    if(tmp.type() == QVariant::String)
-                        tmp2 = tmp.toString().toUtf8();
-                    else if(tmp.type() == QVariant::StringList)
-                        tmp2 = tmp.toStringList().join(",").toUtf8();
-                    else if(tmp.type() == QVariant::Int)
-                        tmp2 = QString::number(tmp.toInt()).toUtf8();
-                    else if(tmp.type() == QVariant::Double)
-                        tmp2 = QString::number(tmp.toDouble()).toUtf8();
-                    else
-                        emit messageSignal(QString("[Baka-MPlayer]: %0\n").arg(tr("Setting type was parsed as %0").arg(tmp.type())));
-
-                    if(tmp2 != QByteArray())
+                    QByteArray tmp1 = entry.key().toUtf8(),
+                               tmp2 = entry.value().toUtf8();
+                    if(tmp2 != QByteArray()) // empty
                         mpv_set_option_string(mpv, tmp1.constData(), tmp2.constData());
                 }
             }
@@ -191,14 +180,15 @@ void MpvHandler::LoadSettings(QSettings *settings, QString version)
         else if(version == "1.9.9")
         {
             settings->beginGroup("mpv");
-            ScreenshotFormat(settings->value("screenshotFormat", "jpg").toString());
-            ScreenshotDirectory(settings->value("screenshotDir", ".").toString());
-            ScreenshotTemplate(settings->value("screenshotTemplate", tr("screenshot%#04n")).toString());
-            Speed(settings->value("speed", 1.0).toDouble());
-            Volume(settings->value("volume", 100).toInt());
+            ScreenshotFormat(settings->value("screenshotFormat", "jpg"));
+            ScreenshotDirectory(settings->value("screenshotDir", "."));
+            ScreenshotTemplate(settings->value("screenshotTemplate", tr("screenshot%#04n")));
+            Speed(settings->valueDouble("speed", 1.0));
+            Volume(settings->valueInt("volume", 100));
             settings->endGroup();
-
-            Debug(settings->value("common/debug", false).toBool());
+            settings->beginGroup("common");
+            Debug(settings->valueBool("debug", false));
+            settings->endGroup();
         }
 
         if(!init)
@@ -222,16 +212,18 @@ bool MpvHandler::FileExists(QString f)
     return QFile(f).exists();
 }
 
-void MpvHandler::SaveSettings(QSettings *settings)
+void MpvHandler::SaveSettings(Settings *settings)
 {
     if(settings)
     {
-        settings->setValue("mpv/volume", volume);
-        settings->setValue("mpv/speed", speed);
+        settings->beginGroup("mpv");
+        settings->setValueInt("volume", volume);
+        settings->setValueDouble("speed", speed);
         if(screenshotFormat != "")
-            settings->setValue("mpv/screenshot-format", screenshotFormat);
+            settings->setValue("screenshot-format", screenshotFormat);
         if(screenshotTemplate != "")
-            settings->setValue("mpv/screenshot-template", screenshotDir+"/"+screenshotTemplate);
+            settings->setValue("screenshot-template", screenshotDir+"/"+screenshotTemplate);
+        settings->endGroup();
     }
 }
 

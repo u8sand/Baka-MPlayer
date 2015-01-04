@@ -3,7 +3,7 @@
 
 #include <QFileDialog>
 
-PreferencesDialog::PreferencesDialog(QSettings *_settings, QWidget *parent) :
+PreferencesDialog::PreferencesDialog(Settings *_settings, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::PreferencesDialog),
     settings(_settings),
@@ -14,25 +14,27 @@ PreferencesDialog::PreferencesDialog(QSettings *_settings, QWidget *parent) :
     PopulateLangs();
 
     settings->beginGroup("baka-mplayer");
-    QString ontop = settings->value("onTop").toString();
+    QString ontop = settings->value("onTop");
     if(ontop == "never")
         ui->neverRadioButton->setChecked(true);
     else if(ontop == "playing")
         ui->playingRadioButton->setChecked(true);
     else if(ontop == "always")
         ui->alwaysRadioButton->setChecked(true);
-    ui->groupBox_2->setChecked(settings->value("trayIcon").toBool());
-    ui->hidePopupCheckBox->setChecked(settings->value("hidePopup").toBool());
-    ui->gestureCheckBox->setChecked(settings->value("gestures").toBool());
-    ui->langComboBox->setCurrentText(settings->value("lang").toString());
+    ui->groupBox_2->setChecked(settings->valueBool("trayIcon"));
+    ui->hidePopupCheckBox->setChecked(settings->valueBool("hidePopup"));
+    ui->gestureCheckBox->setChecked(settings->valueBool("gestures"));
+    ui->langComboBox->setCurrentText(settings->value("lang"));
 
-    int autofit = settings->value("autoFit").toInt();
+    int autofit = settings->valueInt("autoFit");
     ui->autoFitCheckBox->setChecked((bool)autofit);
     ui->comboBox->setCurrentText(QString::number(autofit)+"%");
     settings->endGroup();
-    ui->formatComboBox->setCurrentText(settings->value("mpv/screenshot-format").toString());
+    settings->beginGroup("mpv");
+    ui->formatComboBox->setCurrentText(settings->value("screenshot-format"));
 
-    QString screenshotTemplate = settings->value("mpv/screenshot-template", tr("screenshot%#04n")).toString();
+    QString screenshotTemplate = settings->value("screenshot-template", tr("screenshot%#04n"));
+    settings->endGroup();
     int i = screenshotTemplate.lastIndexOf('/');
     if(i != -1)
     {
@@ -72,23 +74,26 @@ PreferencesDialog::~PreferencesDialog()
         settings->setValue("onTop", "playing");
     else if(ui->alwaysRadioButton->isChecked())
         settings->setValue("onTop", "always");
-    settings->setValue("trayIcon", ui->groupBox_2->isChecked());
-    settings->setValue("hidePopup", ui->hidePopupCheckBox->isChecked());
-    settings->setValue("gestures", ui->gestureCheckBox->isChecked());
+    settings->setValueBool("trayIcon", ui->groupBox_2->isChecked());
+    settings->setValueBool("hidePopup", ui->hidePopupCheckBox->isChecked());
+    settings->setValueBool("gestures", ui->gestureCheckBox->isChecked());
     settings->setValue("lang", ui->langComboBox->currentText());
 
     if(ui->autoFitCheckBox->isChecked())
-        settings->setValue("autoFit", ui->comboBox->currentText().left(ui->comboBox->currentText().length()-1).toInt());
+        settings->setValueInt("autoFit", ui->comboBox->currentText().left(ui->comboBox->currentText().length()-1).toInt());
     else
-        settings->setValue("autoFit", 0);
+        settings->setValueInt("autoFit", 0);
     settings->endGroup();
-    settings->setValue("mpv/screenshot-format", ui->formatComboBox->currentText());
-    settings->setValue("mpv/screenshot-template", screenshotDir+"/"+ui->templateLineEdit->text());
+    settings->beginGroup("mpv");
+    settings->setValue("screenshot-format", ui->formatComboBox->currentText());
+    settings->setValue("screenshot-template", screenshotDir+"/"+ui->templateLineEdit->text());
+    settings->endGroup();
+    settings->Save();
 
     delete ui;
 }
 
-void PreferencesDialog::showPreferences(QSettings *settings, QWidget *parent)
+void PreferencesDialog::showPreferences(Settings *settings, QWidget *parent)
 {
     PreferencesDialog dialog(settings, parent);
     dialog.exec();

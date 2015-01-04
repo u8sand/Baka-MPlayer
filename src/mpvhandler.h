@@ -4,11 +4,11 @@
 #include <QObject>
 #include <QString>
 #include <QStringList>
-#include <QSettings>
 
 #include <mpv/client.h>
 
 #include "mpvtypes.h"
+#include "settings.h"
 
 class MpvHandler : public QObject
 {
@@ -40,8 +40,8 @@ protected:
     bool FileExists(QString);
 
 public slots:
-    void LoadSettings(QSettings*,QString);
-    void SaveSettings(QSettings*);
+    void LoadSettings(Settings*,QString);
+    void SaveSettings(Settings*);
 
     void LoadFile(QString);
     QString LoadPlaylist(QString);

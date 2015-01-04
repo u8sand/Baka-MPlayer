@@ -2,7 +2,8 @@
 #define PREFERENCESDIALOG_H
 
 #include <QDialog>
-#include <QSettings>
+
+#include "settings.h"
 
 namespace Ui {
 class PreferencesDialog;
@@ -13,17 +14,17 @@ class PreferencesDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit PreferencesDialog(QSettings *settings, QWidget *parent = 0);
+    explicit PreferencesDialog(Settings *settings, QWidget *parent = 0);
     ~PreferencesDialog();
 
-    static void showPreferences(QSettings *settings, QWidget *parent = 0);
+    static void showPreferences(Settings *settings, QWidget *parent = 0);
 
 protected:
     void PopulateLangs();
 
 private:
     Ui::PreferencesDialog *ui;
-    QSettings *settings;
+    Settings *settings;
     QString screenshotDir;
 };
 
