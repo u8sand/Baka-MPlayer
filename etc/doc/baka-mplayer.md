@@ -85,7 +85,7 @@ Note that the `[mpv]` section is using mpv's options. See mpv's manual for a lis
 
 ## Translation
 
-### For adding a new translation
+### To add a new translation
 
 1. Update your local repo to make sure everything is up to date.
 2. Open `src/translations.pri` with your favorite text editor.
@@ -95,7 +95,7 @@ Note that the `[mpv]` section is using mpv's options. See mpv's manual for a lis
 6. Open the `.ts` file with Qt Linguist and proceed to translate into your language.
 7. Upon completion of the translation, configure and compile with translation support then check.
 
-### For updating an existing translation
+### To update an existing translation
 
 1. Update your local repo to make sure everything is up to date.
 2. Run `./configure CONFIG+=update_translations` to regenerate the `.ts` files.
