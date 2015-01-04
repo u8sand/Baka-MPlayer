@@ -4,8 +4,15 @@
 #include <QLocale>
 #include <QString>
 
+#if defined(Q_WIN_OS)
+#include <windows.h>
+#endif
+
 int main(int argc, char *argv[])
 {
+#if defined(Q_WIN_OS)
+    FreeConsole();
+#endif
     QApplication a(argc, argv);
 
     MainWindow w;
