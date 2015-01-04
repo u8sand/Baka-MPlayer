@@ -15,18 +15,21 @@
 #include <QElapsedTimer>
 #include <QTranslator>
 
-#include "mpvhandler.h"
 #include "gesturehandler.h"
 #include "widgets/dimdialog.h"
 #include "updatedialog.h"
-#include "settings.h"
 
 namespace Ui {
 class MainWindow;
 }
 
+class BakaEngine;
+class MpvHandler;
+class Settings;
+
 class MainWindow : public QMainWindow
 {
+friend class BakaEngine;
     Q_OBJECT
 public:
     explicit MainWindow(QWidget *parent = 0);
@@ -67,6 +70,8 @@ private slots:
 
 private:
     Ui::MainWindow  *ui;
+    BakaEngine      *baka;
+
     Settings        *settings;
     MpvHandler      *mpv;
     GestureHandler  *gesture;

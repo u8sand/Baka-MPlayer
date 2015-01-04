@@ -34,6 +34,13 @@ MpvHandler::MpvHandler(int64_t wid, QObject *parent):
     mpv_observe_property(mpv, 0, "sid", MPV_FORMAT_INT64);
     mpv_observe_property(mpv, 0, "aid", MPV_FORMAT_INT64);
     mpv_observe_property(mpv, 0, "sub-visibility", MPV_FORMAT_FLAG);
+
+    // setup callback event handling
+    mpv_set_wakeup_callback(mpv, wakeup, this);
+
+    // initialize mpv
+    if(mpv_initialize(mpv) < 0)
+        throw "Could not initialize mpv";
 }
 
 MpvHandler::~MpvHandler()
@@ -135,96 +142,11 @@ bool MpvHandler::event(QEvent *event)
     return QObject::event(event);
 }
 
-void MpvHandler::LoadSettings(Settings *settings, QString version)
-{
-    if(settings)
-    {
-        if(version == "2.0.2" || version == "2.0.1" || version == "2.0.0")
-        {
-            settings->beginGroup("baka-mplayer");
-            Debug(settings->valueBool("debug", false));
-            settings->endGroup();
-
-            settings->beginGroup("mpv");
-            for(Settings::SettingsGroupData::iterator entry = settings->map().begin(); entry != settings->map().end(); ++entry)
-            {
-                if(entry.key() == "volume") // exception--we want to update our ui accordingly
-                    Volume(entry.value().toInt());
-                else if(entry.key() == "speed")
-                    Speed(entry.value().toDouble());
-                else if(entry.key() == "screenshot-template")
-                {
-                    QString temp = entry.value();
-                    int i = temp.lastIndexOf('/');
-                    if(i != -1)
-                    {
-                        ScreenshotDirectory(temp.mid(0, i));
-                        ScreenshotTemplate(temp.mid(i+1));
-                    }
-                    else
-                    {
-                        ScreenshotDirectory(".");
-                        ScreenshotTemplate(temp);
-                    }
-                }
-                else
-                {
-                    QByteArray tmp1 = entry.key().toUtf8(),
-                               tmp2 = entry.value().toUtf8();
-                    if(tmp2 != QByteArray()) // empty
-                        mpv_set_option_string(mpv, tmp1.constData(), tmp2.constData());
-                }
-            }
-            settings->endGroup();
-        }
-        else if(version == "1.9.9")
-        {
-            settings->beginGroup("mpv");
-            ScreenshotFormat(settings->value("screenshotFormat", "jpg"));
-            ScreenshotDirectory(settings->value("screenshotDir", "."));
-            ScreenshotTemplate(settings->value("screenshotTemplate", tr("screenshot%#04n")));
-            Speed(settings->valueDouble("speed", 1.0));
-            Volume(settings->valueInt("volume", 100));
-            settings->endGroup();
-            settings->beginGroup("common");
-            Debug(settings->valueBool("debug", false));
-            settings->endGroup();
-        }
-
-        if(!init)
-        {
-            // setup callback event handling
-            mpv_set_wakeup_callback(mpv, wakeup, this);
-
-            // initialize mpv
-            if(mpv_initialize(mpv) < 0)
-                throw "Could not initialize mpv";
-
-            init = true;
-        }
-    }
-}
-
 bool MpvHandler::FileExists(QString f)
 {
     if(Util::IsValidUrl(f)) // web url
         return true;
     return QFile(f).exists();
-}
-
-void MpvHandler::SaveSettings(Settings *settings)
-{
-    if(settings)
-    {
-        settings->beginGroup("mpv");
-        settings->setValueInt("volume", volume);
-        settings->setValueDouble("speed", speed);
-        if(screenshotFormat != "")
-            settings->setValue("screenshot-format", screenshotFormat);
-        if(screenshotTemplate != "")
-            settings->setValue("screenshot-template", screenshotDir+"/"+screenshotTemplate);
-        settings->endGroup();
-    }
 }
 
 void MpvHandler::LoadFile(QString f)
@@ -699,6 +621,13 @@ void MpvHandler::CommandString(QString str)
 {
     const QByteArray tmp = str.toUtf8();
     mpv_command_string(mpv, tmp.constData());
+}
+
+void MpvHandler::SetOption(QString key, QString val)
+{
+    QByteArray tmp1 = key.toUtf8(),
+               tmp2 = val.toUtf8();
+    mpv_set_option_string(mpv, tmp1.constData(), tmp2.constData());
 }
 
 void MpvHandler::OpenFile(QString f)

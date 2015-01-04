@@ -126,11 +126,16 @@ DEFINES += "BAKA_MPLAYER_VERSION=\\\"$$VERSION\\\"" \
 !isEmpty(BAKA_LANG):DEFINES += "BAKA_MPLAYER_LANG=\\\"$$BAKA_LANG\\\""
 
 SOURCES += main.cpp\
+    bakaengine.cpp \
     mpvhandler.cpp \
     updatemanager.cpp \
     gesturehandler.cpp \
     util.cpp \
     settings.cpp \
+    versions/1_9_9.cpp \
+    versions/2_0_0.cpp \
+    versions/2_0_1.cpp \
+    versions/2_0_2.cpp \
     ui/aboutdialog.cpp \
     ui/infodialog.cpp \
     ui/inputdialog.cpp \
@@ -151,6 +156,7 @@ SOURCES += main.cpp\
     widgets/seekbar.cpp
 
 HEADERS  += \
+    bakaengine.h \
     mpvhandler.h \
     mpvtypes.h \
     updatemanager.h \

@@ -8,10 +8,10 @@
 #include <mpv/client.h>
 
 #include "mpvtypes.h"
-#include "settings.h"
 
 class MpvHandler : public QObject
 {
+friend class BakaEngine;
     Q_OBJECT
 public:
     explicit MpvHandler(int64_t wid, QObject *parent = 0);
@@ -40,9 +40,6 @@ protected:
     bool FileExists(QString);
 
 public slots:
-    void LoadSettings(Settings*,QString);
-    void SaveSettings(Settings*);
-
     void LoadFile(QString);
     QString LoadPlaylist(QString);
     void PlayFile(QString);
@@ -89,6 +86,8 @@ public slots:
     void LoadVideoParams();
 
     void CommandString(QString);
+    void SetOption(QString key, QString val);
+
 protected slots:
     void OpenFile(QString);
     QString PopulatePlaylist();

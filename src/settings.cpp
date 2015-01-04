@@ -80,27 +80,27 @@ QString Settings::value(QString key, QString default_value)
 
 QStringList Settings::valueQStringList(QString key, QStringList default_value)
 {
-    return QStringList(QString(value(key, default_value.join(","))));
+    return value(key, default_value.join(",")).split(",", QString::SkipEmptyParts);
 }
 
 QDate Settings::valueQDate(QString key, QDate default_value)
 {
-    return QDate::fromString(QString(value(key, default_value.toString())));
+    return QDate::fromString(value(key, default_value.toString()));
 }
 
 bool Settings::valueBool(QString key, bool default_value)
 {
-    return !(QString(value(key, default_value ? "true" : "false")) == "false");
+    return !(value(key, default_value ? "true" : "false") == "false");
 }
 
 int Settings::valueInt(QString key, int default_value)
 {
-    return QString(value(key, QString::number(default_value))).toInt();
+    return value(key, QString::number(default_value)).toInt();
 }
 
 double Settings::valueDouble(QString key, double default_value)
 {
-    return QString(value(key, QString::number(default_value))).toDouble();
+    return value(key, QString::number(default_value)).toDouble();
 }
 
 void Settings::setValue(QString key, QString val)

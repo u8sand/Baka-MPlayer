@@ -7,6 +7,8 @@
 #include <QStringList>
 #include <QDate>
 
+class BakaEngine;
+
 class Settings : public QObject
 {
     Q_OBJECT
@@ -48,6 +50,7 @@ protected:
 signals:
 
 private:
+    BakaEngine *baka;
 
     SettingsData data;
     QString group, file;

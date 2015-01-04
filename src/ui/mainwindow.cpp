@@ -30,6 +30,7 @@
 #include "screenshotdialog.h"
 #include "util.h"
 #include "gesturehandler.h"
+#include "bakaengine.h"
 
 MainWindow::MainWindow(QWidget *parent):
     QMainWindow(parent),
@@ -46,8 +47,10 @@ MainWindow::MainWindow(QWidget *parent):
     addActions(ui->menubar->actions()); // makes menubar shortcuts work even when menubar is hidden
 
     // initialize managers/handlers
-    settings = Util::InitializeSettings(this);
-    mpv = new MpvHandler(ui->mpvFrame->winId(), this);
+    baka = new BakaEngine(this); // todo: remove settings and mpv--access through baka
+    settings = baka->settings;
+    mpv      = baka->mpv;
+
     gesture = new GestureHandler(mpv, this);
     updateDialog = new UpdateDialog(this);
 
@@ -58,7 +61,6 @@ MainWindow::MainWindow(QWidget *parent):
     sysTrayIcon = new QSystemTrayIcon(windowIcon(), this);
     ui->mpvFrame->installEventFilter(this); // capture events on mpvFrame in the eventFilter function
     autohide = new QTimer(this);
-
 
     // setup signals & slots
 
@@ -1050,9 +1052,9 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->action_Preferences, &QAction::triggered,                // Settings -> Preferences...
             [=]
             {
-                SaveSettings();
+                baka->SaveSettings();
                 PreferencesDialog::showPreferences(settings, this);
-                LoadSettings();
+                baka->LoadSettings();
             });
                                                                         // Help ->
     connect(ui->actionOnline_Help, &QAction::triggered,                 // Help -> Online Help
@@ -1130,7 +1132,7 @@ MainWindow::MainWindow(QWidget *parent):
 
 MainWindow::~MainWindow()
 {
-    SaveSettings();
+    baka->SaveSettings();
 
     // Note: child objects _should_ not need to be deleted because
     // all children should get deleted when mainwindow is deleted
@@ -1138,214 +1140,14 @@ MainWindow::~MainWindow()
 
     // but apparently they don't (https://github.com/u8sand/Baka-MPlayer/issues/47)
 
-    if(mpv != nullptr)          delete mpv;
     if(updateDialog != nullptr) delete updateDialog;
     if(gesture != nullptr)      delete gesture;
     if(translator != nullptr)   delete translator;
     if(qtTranslator != nullptr) delete qtTranslator;
     if(dimDialog != nullptr)    delete dimDialog;
 
+    delete baka;
     delete ui;
-}
-
-void MainWindow::LoadSettings()
-{
-    if(settings)
-    {
-        settings->Load();
-
-        QString version;
-        if(settings->isEmpty()) // empty settings
-        {
-            version = "2.0.2"; // current version
-
-            // populate initially
-#if defined(Q_OS_LINUX) || defined(Q_OS_UNIX)
-            settings->beginGroup("mpv");
-            settings->setValueQStringList("vo", QStringList{"vdpau","opengl-hq"});
-            settings->setValue("hwdec", "auto");
-            settings->endGroup();
-#endif
-        }
-        else
-        {
-            settings->beginGroup("baka-mplayer");
-            version = settings->value("version", "1.9.9"); // defaults to the first version without version info in settings
-            settings->endGroup();
-        }
-
-        if(version == "2.0.2") // current version
-        {
-            settings->beginGroup("baka-mplayer");
-            setOnTop(settings->value("onTop", "never"));
-            setAutoFit(settings->valueInt("autoFit", 100));
-            sysTrayIcon->setVisible(settings->valueBool("trayIcon", false));
-            setHidePopup(settings->valueBool("hidePopup", false));
-            setRemaining(settings->valueBool("remaining", true));
-            ui->splitter->setNormalPosition(settings->valueInt("splitter", ui->splitter->max()*1.0/8));
-            setDebug(settings->valueBool("debug", false));
-            ui->hideFilesButton->setChecked(!settings->valueBool("showAll", true));
-            setScreenshotDialog(settings->valueBool("screenshotDialog", true));
-            recent = settings->valueQStringList("recent");
-            maxRecent = settings->valueInt("maxRecent", 5);
-            gestures = settings->valueBool("gestures", true);
-            setLang(settings->value("lang", "auto"));
-#if defined(Q_OS_WIN)
-            QDate last = settings->valueQDate("lastcheck", QDate(2014, 1, 1));
-            if(last.daysTo(QDate::currentDate()) > 7) // been a week since we last checked?
-            {
-                updateDialog->CheckForUpdates();
-                settings->setValueQDate("lastcheck", QDate::currentDate());
-            }
-#endif
-            settings->endGroup();
-            UpdateRecentFiles();
-
-            mpv->LoadSettings(settings, version);
-        }
-        else if(version == "2.0.1")
-        {
-            settings->beginGroup("baka-mplayer");
-            setOnTop(QString(settings->value("onTop", "never")));
-            setAutoFit(settings->valueInt("autoFit", 100));
-            sysTrayIcon->setVisible(settings->valueBool("trayIcon", false));
-            setHidePopup(settings->valueBool("hidePopup", false));
-            setRemaining(settings->valueBool("remaining", true));
-            ui->splitter->setNormalPosition(settings->valueInt("splitter", ui->splitter->max()*1.0/8));
-            setDebug(settings->valueBool("debug", false));
-            ui->hideFilesButton->setChecked(!settings->valueBool("showAll", true));
-            setScreenshotDialog(settings->valueBool("screenshotDialog", true));
-            recent = settings->valueQStringList("recent");
-            maxRecent = settings->valueInt("maxRecent", 5);
-            gestures = true;
-            setLang("auto");
-            settings->endGroup();
-            UpdateRecentFiles();
-
-            mpv->LoadSettings(settings, version);
-
-            settings->clear();
-            SaveSettings();
-        }
-        else if(version == "2.0.0")
-        {
-            settings->beginGroup("baka-mplayer");
-            setOnTop(QString(settings->value("onTop", "never")));
-            setAutoFit(settings->valueInt("autoFit", 100));
-            sysTrayIcon->setVisible(settings->valueBool("trayIcon", false));
-            setHidePopup(settings->valueBool("hidePopup", false));
-            setRemaining(settings->valueBool("remaining", true));
-            ui->splitter->setNormalPosition(settings->valueInt("splitter", ui->splitter->max()*1.0/8));
-            setDebug(settings->valueBool("debug", false));
-            ui->hideFilesButton->setChecked(!settings->valueBool("showAll", true));
-            setScreenshotDialog(settings->valueBool("screenshotDialog", true));
-            maxRecent = 5;
-            QString lf = settings->value("lastFile");
-            if(lf != QString())
-                recent.push_front(lf);
-            gestures = true;
-            setLang("auto");
-            settings->endGroup();
-            UpdateRecentFiles();
-
-            mpv->LoadSettings(settings, version);
-
-            settings->clear();
-            SaveSettings();
-        }
-        else if(version == "1.9.9")
-        {
-            settings->beginGroup("window");
-            setOnTop(settings->value("onTop", "never"));
-            setAutoFit(settings->valueInt("autoFit", 100));
-            sysTrayIcon->setVisible(settings->valueBool("trayIcon", false));
-            setHidePopup(settings->valueBool("hidePopup", false));
-            setRemaining(settings->valueBool("remaining", true));
-            ui->splitter->setNormalPosition(settings->valueInt("splitter", ui->splitter->max()*1.0/8));
-            ui->hideFilesButton->setChecked(!settings->valueBool("showAll", true));
-            settings->endGroup();
-            setDebug(settings->valueBool("common/debug", false));
-            maxRecent = 5;
-            setScreenshotDialog(true);
-            QString lf = settings->value("mpv/lastFile");
-            if(lf != QString())
-                recent.push_front(lf);
-            gestures = true;
-            setLang("auto");
-            UpdateRecentFiles();
-
-            mpv->LoadSettings(settings, version);
-
-            settings->clear();
-            SaveSettings();
-        }
-        else // unrecognized version (newer)
-        {
-            version = "2.0.2"; // load what we can assuming the settings are like the current version
-
-            settings->beginGroup("baka-mplayer");
-            setOnTop(settings->value("onTop", "never"));
-            setAutoFit(settings->valueInt("autoFit", 100));
-            sysTrayIcon->setVisible(settings->valueBool("trayIcon", false));
-            setHidePopup(settings->valueBool("hidePopup", false));
-            setRemaining(settings->valueBool("remaining", true));
-            ui->splitter->setNormalPosition(settings->valueInt("splitter", ui->splitter->max()*1.0/8));
-            setDebug(settings->valueBool("debug", false));
-            ui->hideFilesButton->setChecked(!settings->valueBool("showAll", true));
-            setScreenshotDialog(settings->valueBool("screenshotDialog", true));
-            recent = settings->valueQStringList("recent");
-            maxRecent = settings->valueInt("maxRecent", 5);
-            gestures = settings->valueBool("gestures", true);
-            setLang(settings->value("lang", "auto"));
-#if defined(Q_OS_WIN)
-            QDate last = settings->valueQDate("lastcheck", QDate(2014, 1, 1));
-            if(last.daysTo(QDate::currentDate()) > 7) // been a week since we last checked?
-                updateDialog->CheckForUpdates();
-#endif
-            settings->endGroup();
-            UpdateRecentFiles();
-
-            mpv->LoadSettings(settings, version);
-
-            // disable settings manipulation
-            delete settings;
-            settings = 0;
-            ui->action_Preferences->setEnabled(false);
-
-            QMessageBox::information(this, tr("Settings version not recognized"), tr("The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.\nSome features may not work and changed settings will not be saved."));
-        }
-    }
-}
-
-void MainWindow::SaveSettings()
-{
-    if(settings)
-    {
-        // mpv
-        mpv->SaveSettings(settings);
-
-        settings->beginGroup("baka-mplayer");
-        settings->setValue("onTop", onTop);
-        settings->setValueInt("autoFit", autoFit);
-        settings->setValueBool("trayIcon", sysTrayIcon->isVisible());
-        settings->setValueBool("hidePopup", hidePopup);
-        settings->setValueBool("remaining", remaining);
-        settings->setValueInt("splitter", (ui->splitter->position() == 0 ||
-                                        ui->splitter->position() == ui->splitter->max()) ?
-                                        ui->splitter->normalPosition() :
-                                        ui->splitter->position());
-        settings->setValueBool("showAll", !ui->hideFilesButton->isChecked());
-        settings->setValueBool("screenshotDialog", screenshotDialog);
-        settings->setValueBool("debug", debug);
-        settings->setValueQStringList("recent", recent);
-        settings->setValueInt("maxRecent", maxRecent);
-        settings->setValue("lang", lang);
-        settings->setValueBool("gestures", gestures);
-        settings->setValue("version", "2.0.2");
-        settings->endGroup();
-
-        settings->Save();
-    }
 }
 
 void MainWindow::Load(QString file)
@@ -1353,7 +1155,7 @@ void MainWindow::Load(QString file)
     // load the settings here--the constructor has already been called
     // this solves some issues with setting things before the constructor has ended
     menuVisible = ui->menubar->isVisible(); // does the OS use a menubar? (appmenu doesn't)
-    LoadSettings();
+    baka->LoadSettings();
     mpv->LoadFile(file);
 }
 
