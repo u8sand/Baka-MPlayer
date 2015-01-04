@@ -28,7 +28,7 @@ void BakaEngine::LoadBaka2_0_2()
     window->setScreenshotDialog(settings->valueBool("screenshotDialog", true));
     window->recent = settings->valueQStringList("recent");
     window->maxRecent = settings->valueInt("maxRecent", 5);
-    window->gestures = settings->valueBool("gestures", true);
+    window->gestures = settings->valueBool("gestures", false);
     window->setLang(settings->value("lang", "auto"));
 #if defined(Q_OS_WIN)
     QDate last = settings->valueQDate("lastcheck", QDate(2014, 1, 1));

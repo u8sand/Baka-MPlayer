@@ -33,7 +33,7 @@ void BakaEngine::LoadBaka1_9_9()
     if(lf != QString())
         window->recent.push_front(lf);
     settings->endGroup();
-    window->gestures = true;
+    window->gestures = false;
     window->setLang("auto");
     window->UpdateRecentFiles();
 }

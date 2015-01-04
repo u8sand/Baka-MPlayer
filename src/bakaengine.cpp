@@ -55,7 +55,6 @@ void BakaEngine::LoadSettings()
     else if(version == "1.9.9") { Load1_9_9(); settings->clear(); SaveSettings(); }
     else
     {
-
         Load2_0_2();
         window->ui->action_Preferences->setEnabled(false);
         QMessageBox::information(window, tr("Settings version not recognized"), tr("The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.\nSome features may not work and changed settings will not be saved."));

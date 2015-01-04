@@ -24,7 +24,7 @@ void BakaEngine::LoadBaka2_0_1()
     window->setScreenshotDialog(settings->valueBool("screenshotDialog", true));
     window->recent = settings->valueQStringList("recent");
     window->maxRecent = settings->valueInt("maxRecent", 5);
-    window->gestures = true;
+    window->gestures = false;
     window->setLang("auto");
     settings->endGroup();
     window->UpdateRecentFiles();
