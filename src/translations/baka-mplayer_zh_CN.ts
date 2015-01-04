@@ -575,7 +575,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1297"/>
-        <location filename="../ui/mainwindow.cpp" line="425"/>
+        <location filename="../ui/mainwindow.cpp" line="414"/>
         <source>&amp;Play</source>
         <translation>播放(&amp;P)</translation>
     </message>
@@ -926,54 +926,54 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
         <translation>Ctrl+Shift+R</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="138"/>
+        <location filename="../ui/mainwindow.cpp" line="139"/>
         <source>Playing</source>
         <translation>播放</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="140"/>
+        <location filename="../ui/mainwindow.cpp" line="141"/>
         <source>Paused</source>
         <translation>暂停</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="267"/>
+        <location filename="../ui/mainwindow.cpp" line="256"/>
         <source>Sub</source>
         <translation>字幕</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="279"/>
+        <location filename="../ui/mainwindow.cpp" line="268"/>
         <source>Audio</source>
         <translation>音频</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="417"/>
+        <location filename="../ui/mainwindow.cpp" line="406"/>
         <source>&amp;Pause</source>
         <translation>暂停(&amp;P)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="689"/>
+        <location filename="../ui/mainwindow.cpp" line="678"/>
         <source>Enter the file number you want to play:
 Note: Value must be from %0 - %1</source>
         <translation>输入你想要播放的文件编号:
 注意: 编号必须在以下范围%0 - %1</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="690"/>
+        <location filename="../ui/mainwindow.cpp" line="679"/>
         <source>Enter File Number</source>
         <translation>输入文件编号</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="708"/>
+        <location filename="../ui/mainwindow.cpp" line="697"/>
         <source>No selection</source>
         <translation>无选择</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="528"/>
+        <location filename="../ui/mainwindow.cpp" line="517"/>
         <source>Speed: %0x</source>
         <translation>速度: %0x</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="714"/>
+        <location filename="../ui/mainwindow.cpp" line="703"/>
         <source>File %0 of %1</source>
         <translation>文件 %0 总数 %1</translation>
     </message>
@@ -990,49 +990,49 @@ Note: Value must be from %0 - %1</source>
         <translation type="vanished">刷新(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="890"/>
+        <location filename="../ui/mainwindow.cpp" line="879"/>
         <source>Open Subtitle File</source>
         <translation>打开字幕文件</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1072"/>
+        <location filename="../ui/mainwindow.cpp" line="1061"/>
         <source>http://bakamplayer.u8sand.net/help.php</source>
         <translation>http://bakamplayer.u8sand.net/help.php</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1320"/>
+        <location filename="../ui/mainwindow.cpp" line="1315"/>
         <source>Settings version not recognized</source>
         <translation>配置文件版本无法被识别</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1320"/>
+        <location filename="../ui/mainwindow.cpp" line="1315"/>
         <source>The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.
 Some features may not work and changed settings will not be saved.</source>
         <translation>配置文件是由更新版本的baka-mplayer创建的，请更新此版本或者向开发者寻求帮助
 一些特性可能无法工作且更改的设置无法被保存</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1754"/>
+        <location filename="../ui/mainwindow.cpp" line="1758"/>
         <source>Dim Lights</source>
         <translation>昏暗灯光</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1754"/>
+        <location filename="../ui/mainwindow.cpp" line="1758"/>
         <source>In order to dim the lights, the desktop compositor has to be enabled. This can be done through Window Manager Desktop.</source>
         <translation>为了开启黯淡桌面功能,桌面混成需要开启，可以通过窗口管理进行设置。</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1784"/>
+        <location filename="../ui/mainwindow.cpp" line="1788"/>
         <source>Saved to &quot;%0&quot;, with subs</source>
         <translation>保存到 &quot;%0&quot;, 附带字幕</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1786"/>
+        <location filename="../ui/mainwindow.cpp" line="1790"/>
         <source>Saved to &quot;%0&quot;, without subs</source>
         <translation>保存到 &quot;%0&quot;, 不附带字幕</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="891"/>
+        <location filename="../ui/mainwindow.cpp" line="880"/>
         <source>Subtitle Files</source>
         <translation>字幕文件</translation>
     </message>
@@ -1049,22 +1049,22 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">退出全屏</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1811"/>
+        <location filename="../ui/mainwindow.cpp" line="1815"/>
         <source>Open File</source>
         <translation>打开文件</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1812"/>
+        <location filename="../ui/mainwindow.cpp" line="1816"/>
         <source>Media Files</source>
         <translation>媒体文件</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1813"/>
+        <location filename="../ui/mainwindow.cpp" line="1817"/>
         <source>Video Files</source>
         <translation>视频文件</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1814"/>
+        <location filename="../ui/mainwindow.cpp" line="1818"/>
         <source>Audio Files</source>
         <translation>音频文件</translation>
     </message>
@@ -1072,17 +1072,16 @@ Some features may not work and changed settings will not be saved.</source>
 <context>
     <name>MpvHandler</name>
     <message>
-        <location filename="../mpvhandler.cpp" line="183"/>
         <source>Setting type was parsed as %0</source>
-        <translation>设置类型被解析为 %0</translation>
+        <translation type="vanished">设置类型被解析为 %0</translation>
     </message>
     <message>
-        <location filename="../mpvhandler.cpp" line="763"/>
+        <location filename="../mpvhandler.cpp" line="755"/>
         <source>mpv was not initialized</source>
         <translation>mpv未初始化</translation>
     </message>
     <message>
-        <location filename="../mpvhandler.cpp" line="196"/>
+        <location filename="../mpvhandler.cpp" line="185"/>
         <source>screenshot%#04n</source>
         <translation>截图%#04n</translation>
     </message>
@@ -1229,7 +1228,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <location filename="../ui/preferencesdialog.ui" line="418"/>
-        <location filename="../ui/preferencesdialog.cpp" line="35"/>
+        <location filename="../ui/preferencesdialog.cpp" line="36"/>
         <source>screenshot%#04n</source>
         <translation>screenshot%#04n</translation>
     </message>
@@ -1249,7 +1248,7 @@ Some features may not work and changed settings will not be saved.</source>
         <translation>关闭(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.cpp" line="57"/>
+        <location filename="../ui/preferencesdialog.cpp" line="59"/>
         <source>Choose screenshot directory</source>
         <translation>选择截图目录</translation>
     </message>

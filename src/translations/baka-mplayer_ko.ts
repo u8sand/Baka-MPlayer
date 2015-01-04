@@ -605,7 +605,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1297"/>
-        <location filename="../ui/mainwindow.cpp" line="425"/>
+        <location filename="../ui/mainwindow.cpp" line="414"/>
         <source>&amp;Play</source>
         <translation>재생(&amp;P)</translation>
     </message>
@@ -956,54 +956,54 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
         <translation>Ctrl+Shift+R</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="138"/>
+        <location filename="../ui/mainwindow.cpp" line="139"/>
         <source>Playing</source>
         <translation>재생중</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="140"/>
+        <location filename="../ui/mainwindow.cpp" line="141"/>
         <source>Paused</source>
         <translation>일시정지</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="267"/>
+        <location filename="../ui/mainwindow.cpp" line="256"/>
         <source>Sub</source>
         <translation>자막</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="279"/>
+        <location filename="../ui/mainwindow.cpp" line="268"/>
         <source>Audio</source>
         <translation>오디오</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="417"/>
+        <location filename="../ui/mainwindow.cpp" line="406"/>
         <source>&amp;Pause</source>
         <translation>일시중지(&amp;P)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="689"/>
+        <location filename="../ui/mainwindow.cpp" line="678"/>
         <source>Enter the file number you want to play:
 Note: Value must be from %0 - %1</source>
         <translation>원하신 파일 번호를 입력해주세요:
 %0 - %1만 입력이 가능합니다.</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="690"/>
+        <location filename="../ui/mainwindow.cpp" line="679"/>
         <source>Enter File Number</source>
         <translation>파일 번호</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="708"/>
+        <location filename="../ui/mainwindow.cpp" line="697"/>
         <source>No selection</source>
         <translation>선택 없음</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="528"/>
+        <location filename="../ui/mainwindow.cpp" line="517"/>
         <source>Speed: %0x</source>
         <translation>속도: %0x</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="714"/>
+        <location filename="../ui/mainwindow.cpp" line="703"/>
         <source>File %0 of %1</source>
         <translation>파일 %0 의 %1</translation>
     </message>
@@ -1020,48 +1020,48 @@ Note: Value must be from %0 - %1</source>
         <translation type="vanished">다시 불러오기 (&amp;R)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="890"/>
+        <location filename="../ui/mainwindow.cpp" line="879"/>
         <source>Open Subtitle File</source>
         <translation>자막 파일 열기</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1072"/>
+        <location filename="../ui/mainwindow.cpp" line="1061"/>
         <source>http://bakamplayer.u8sand.net/help.php</source>
         <translation>http://bakamplayer.u8sand.net/help.php</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1320"/>
+        <location filename="../ui/mainwindow.cpp" line="1315"/>
         <source>Settings version not recognized</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1320"/>
+        <location filename="../ui/mainwindow.cpp" line="1315"/>
         <source>The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.
 Some features may not work and changed settings will not be saved.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1754"/>
+        <location filename="../ui/mainwindow.cpp" line="1758"/>
         <source>Dim Lights</source>
         <translation>불 끄기</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1754"/>
+        <location filename="../ui/mainwindow.cpp" line="1758"/>
         <source>In order to dim the lights, the desktop compositor has to be enabled. This can be done through Window Manager Desktop.</source>
         <translation>불 끄기 기는은 Desktop Compositor가 필요합니다. Window Manager Desktop을 통에서 키실수 있습니다.</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1784"/>
+        <location filename="../ui/mainwindow.cpp" line="1788"/>
         <source>Saved to &quot;%0&quot;, with subs</source>
         <translation>자막없이 &quot;%0&quot;으로 저장됨</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1786"/>
+        <location filename="../ui/mainwindow.cpp" line="1790"/>
         <source>Saved to &quot;%0&quot;, without subs</source>
         <translation>자막과 함께 &quot;%0&quot;으로 저장됨</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="891"/>
+        <location filename="../ui/mainwindow.cpp" line="880"/>
         <source>Subtitle Files</source>
         <translation>자막 파일</translation>
     </message>
@@ -1078,22 +1078,22 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">전체화면 나오기/보스 키</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1811"/>
+        <location filename="../ui/mainwindow.cpp" line="1815"/>
         <source>Open File</source>
         <translation>파일 열기</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1812"/>
+        <location filename="../ui/mainwindow.cpp" line="1816"/>
         <source>Media Files</source>
         <translation>미디어 파일</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1813"/>
+        <location filename="../ui/mainwindow.cpp" line="1817"/>
         <source>Video Files</source>
         <translation>비디오 파일</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1814"/>
+        <location filename="../ui/mainwindow.cpp" line="1818"/>
         <source>Audio Files</source>
         <translation>오디오 파일</translation>
     </message>
@@ -1101,17 +1101,12 @@ Some features may not work and changed settings will not be saved.</source>
 <context>
     <name>MpvHandler</name>
     <message>
-        <location filename="../mpvhandler.cpp" line="183"/>
-        <source>Setting type was parsed as %0</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mpvhandler.cpp" line="196"/>
+        <location filename="../mpvhandler.cpp" line="185"/>
         <source>screenshot%#04n</source>
         <translation>screenshot%#04n</translation>
     </message>
     <message>
-        <location filename="../mpvhandler.cpp" line="763"/>
+        <location filename="../mpvhandler.cpp" line="755"/>
         <source>mpv was not initialized</source>
         <translation>mpv가 실행 되지 않았습니다</translation>
     </message>
@@ -1258,7 +1253,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <location filename="../ui/preferencesdialog.ui" line="418"/>
-        <location filename="../ui/preferencesdialog.cpp" line="35"/>
+        <location filename="../ui/preferencesdialog.cpp" line="36"/>
         <source>screenshot%#04n</source>
         <translation>screenshot%#04n</translation>
     </message>
@@ -1278,7 +1273,7 @@ Some features may not work and changed settings will not be saved.</source>
         <translation>닫기(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.cpp" line="57"/>
+        <location filename="../ui/preferencesdialog.cpp" line="59"/>
         <source>Choose screenshot directory</source>
         <translation>스크린샷 위치 선택</translation>
     </message>

@@ -587,7 +587,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1297"/>
-        <location filename="../ui/mainwindow.cpp" line="425"/>
+        <location filename="../ui/mainwindow.cpp" line="414"/>
         <source>&amp;Play</source>
         <translation>&amp;Играть</translation>
     </message>
@@ -938,37 +938,37 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
         <translation>Ctrl+Shift+R</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="138"/>
+        <location filename="../ui/mainwindow.cpp" line="139"/>
         <source>Playing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="140"/>
+        <location filename="../ui/mainwindow.cpp" line="141"/>
         <source>Paused</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="417"/>
+        <location filename="../ui/mainwindow.cpp" line="406"/>
         <source>&amp;Pause</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="528"/>
+        <location filename="../ui/mainwindow.cpp" line="517"/>
         <source>Speed: %0x</source>
         <translation>Скорость: %0x</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="690"/>
+        <location filename="../ui/mainwindow.cpp" line="679"/>
         <source>Enter File Number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="708"/>
+        <location filename="../ui/mainwindow.cpp" line="697"/>
         <source>No selection</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="714"/>
+        <location filename="../ui/mainwindow.cpp" line="703"/>
         <source>File %0 of %1</source>
         <translation>Файл %0 из %1</translation>
     </message>
@@ -985,84 +985,84 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
         <translation type="vanished">&amp;Обновить</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="890"/>
+        <location filename="../ui/mainwindow.cpp" line="879"/>
         <source>Open Subtitle File</source>
         <translation>Открыть файл субтитров</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="267"/>
+        <location filename="../ui/mainwindow.cpp" line="256"/>
         <source>Sub</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="279"/>
+        <location filename="../ui/mainwindow.cpp" line="268"/>
         <source>Audio</source>
         <translation>Аудио</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="689"/>
+        <location filename="../ui/mainwindow.cpp" line="678"/>
         <source>Enter the file number you want to play:
 Note: Value must be from %0 - %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="891"/>
+        <location filename="../ui/mainwindow.cpp" line="880"/>
         <source>Subtitle Files</source>
         <translation>Файлы субтитров</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1072"/>
+        <location filename="../ui/mainwindow.cpp" line="1061"/>
         <source>http://bakamplayer.u8sand.net/help.php</source>
         <translation>http://bakamplayer.u8sand.net/help.php</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1320"/>
+        <location filename="../ui/mainwindow.cpp" line="1315"/>
         <source>Settings version not recognized</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1320"/>
+        <location filename="../ui/mainwindow.cpp" line="1315"/>
         <source>The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.
 Some features may not work and changed settings will not be saved.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1754"/>
+        <location filename="../ui/mainwindow.cpp" line="1758"/>
         <source>Dim Lights</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1754"/>
+        <location filename="../ui/mainwindow.cpp" line="1758"/>
         <source>In order to dim the lights, the desktop compositor has to be enabled. This can be done through Window Manager Desktop.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1784"/>
+        <location filename="../ui/mainwindow.cpp" line="1788"/>
         <source>Saved to &quot;%0&quot;, with subs</source>
         <translation>Сохранено в «%0», с субтитрами</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1786"/>
+        <location filename="../ui/mainwindow.cpp" line="1790"/>
         <source>Saved to &quot;%0&quot;, without subs</source>
         <translation>Сохранено в «%0», без субтитров</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1812"/>
+        <location filename="../ui/mainwindow.cpp" line="1816"/>
         <source>Media Files</source>
         <translation>Медиафайлы</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1813"/>
+        <location filename="../ui/mainwindow.cpp" line="1817"/>
         <source>Video Files</source>
         <translation>Видеофайлы</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1814"/>
+        <location filename="../ui/mainwindow.cpp" line="1818"/>
         <source>Audio Files</source>
         <translation>Аудиофайлы</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1811"/>
+        <location filename="../ui/mainwindow.cpp" line="1815"/>
         <source>Open File</source>
         <translation>Открыть файл</translation>
     </message>
@@ -1070,17 +1070,12 @@ Some features may not work and changed settings will not be saved.</source>
 <context>
     <name>MpvHandler</name>
     <message>
-        <location filename="../mpvhandler.cpp" line="183"/>
-        <source>Setting type was parsed as %0</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mpvhandler.cpp" line="196"/>
+        <location filename="../mpvhandler.cpp" line="185"/>
         <source>screenshot%#04n</source>
         <translation>скриншот%#04n</translation>
     </message>
     <message>
-        <location filename="../mpvhandler.cpp" line="763"/>
+        <location filename="../mpvhandler.cpp" line="755"/>
         <source>mpv was not initialized</source>
         <translation>mpv не был инициализирован</translation>
     </message>
@@ -1227,7 +1222,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <location filename="../ui/preferencesdialog.ui" line="418"/>
-        <location filename="../ui/preferencesdialog.cpp" line="35"/>
+        <location filename="../ui/preferencesdialog.cpp" line="36"/>
         <source>screenshot%#04n</source>
         <translation>скриншот%#04n</translation>
     </message>
@@ -1247,7 +1242,7 @@ Some features may not work and changed settings will not be saved.</source>
         <translation>&amp;Закрыть</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.cpp" line="57"/>
+        <location filename="../ui/preferencesdialog.cpp" line="59"/>
         <source>Choose screenshot directory</source>
         <translation>Выберете директорию для скриншотов</translation>
     </message>
