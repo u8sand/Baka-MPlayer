@@ -18,6 +18,7 @@
 #include <QWindow>
 #include <QCheckBox>
 #include <QLibraryInfo>
+#include <QCursor>
 
 #include "aboutdialog.h"
 #include "infodialog.h"
@@ -170,18 +171,6 @@ MainWindow::MainWindow(QWidget *parent):
                 ui->playlistWidget->SelectItem(mpv->LoadPlaylist(mpv->getPath()+mpv->getFile()), true);
                 ui->playlistWidget->ShowAll(!ui->hideFilesButton->isChecked());
                 firstItem = false;
-            });
-
-    connect(ui->splitter, &CustomSplitter::entered,
-            [=]
-            {
-                if(isFullScreen() && // full screen
-                   !isPlaylistVisible() && // no playlist
-                   cursor().pos().x() > width() - 10) // make sure the cursor position is all the way on the right
-                {
-                    ShowPlaylist(true);
-                    autohide->stop();
-                }
             });
 
     // mpv
@@ -1470,7 +1459,7 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
 
 bool MainWindow::eventFilter(QObject *obj, QEvent *event)
 {
-    if(event->type() == QEvent::MouseMove && obj == ui->mpvFrame && isFullScreen())
+    if(obj == ui->mpvFrame && isFullScreen() && event->type() == QEvent::MouseMove)
     {
         QMouseEvent *mouseEvent = static_cast<QMouseEvent*>(event);
         mouseMoveEvent(mouseEvent);
@@ -1479,6 +1468,11 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
     {
         QKeyEvent *keyEvent = static_cast<QKeyEvent*>(event);
         keyPressEvent(keyEvent);
+    }
+    else if(obj == ui->splitter->handle(1) && event->type() == QEvent::Enter && !isPlaylistVisible())
+    {
+        ShowPlaylist(true);
+        autohide->stop();
     }
     return false;
 }
@@ -1601,6 +1595,7 @@ void MainWindow::FullScreen(bool fs)
         ShowPlaylist(true); // show the playlist so that we can auto-hide it
         setWindowState(windowState() | Qt::WindowFullScreen);
         ui->menubar->setVisible(false);
+        ui->splitter->handle(1)->installEventFilter(this); // capture events for the splitter
         setMouseTracking(true); // register mouse move event
         setContextMenuPolicy(Qt::ActionsContextMenu);
 
@@ -1616,6 +1611,7 @@ void MainWindow::FullScreen(bool fs)
             ui->menubar->setVisible(true);
         ui->seekBar->setVisible(true);
         ui->playbackLayoutWidget->setVisible(true);
+        ui->splitter->handle(1)->removeEventFilter(this);
         setMouseTracking(false); // stop registering mouse move event
         setContextMenuPolicy(Qt::NoContextMenu);
         setCursor(QCursor(Qt::ArrowCursor)); // show cursor

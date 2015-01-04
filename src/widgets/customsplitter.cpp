@@ -10,6 +10,7 @@ CustomSplitter::CustomSplitter(QWidget *parent) :
                 if(index == 1)
                     emit positionChanged(max()-pos);
             });
+
 }
 
 int CustomSplitter::position() const
@@ -37,10 +38,4 @@ void CustomSplitter::setPosition(int pos)
 void CustomSplitter::setNormalPosition(int pos)
 {
     normalPos = pos;
-}
-
-void CustomSplitter::enterEvent(QEvent *event)
-{
-    emit entered();
-    QSplitter::enterEvent(event);
 }

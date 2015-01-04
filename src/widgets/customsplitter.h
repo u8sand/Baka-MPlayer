@@ -2,7 +2,6 @@
 #define CUSTOMSPLITTER_H
 
 #include <QSplitter>
-#include <QEnterEvent>
 
 class CustomSplitter : public QSplitter
 {
@@ -17,9 +16,6 @@ public:
 public slots:
     void setPosition(int pos);
     void setNormalPosition(int pos);
-
-protected:
-    void enterEvent(QEvent *event);
 
 signals:
     void positionChanged(int pos);
