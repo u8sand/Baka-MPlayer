@@ -28,10 +28,12 @@ unix {
 }
 
 win32 {
-    CONFIG += static compile_libtool
+    CONFIG += compile_libtool
+
     # mxe fix:
     CONFIG -= windows
     QMAKE_LFLAGS += $$QMAKE_LFLAGS_WINDOWS -pthread
+
     # application information
     RC_ICONS += img/logo.ico
     QMAKE_TARGET_PRODUCT += Baka MPlayer

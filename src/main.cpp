@@ -4,13 +4,13 @@
 #include <QLocale>
 #include <QString>
 
-#if defined(Q_WIN_OS)
+#if defined(Q_OS_WIN)
 #include <windows.h>
 #endif
 
 int main(int argc, char *argv[])
 {
-#if defined(Q_WIN_OS)
+#if defined(Q_OS_WIN)
     FreeConsole();
 #endif
     QApplication a(argc, argv);
