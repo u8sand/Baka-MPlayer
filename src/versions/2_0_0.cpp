@@ -27,7 +27,7 @@ void BakaEngine::LoadBaka2_0_0()
     QString lf = settings->value("lastFile");
     if(lf != QString())
         window->recent.push_front(lf);
-    window->gestures = false;
+    window->gestures = true;
     window->setLang("auto");
     settings->endGroup();
     window->UpdateRecentFiles();
