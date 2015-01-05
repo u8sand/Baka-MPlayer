@@ -46,6 +46,8 @@ public slots:
 
 protected:
     int ParseLine(QString line);
+    QString FixKeyOnSave(QString key);
+    QString FixKeyOnLoad(QString key);
 
 signals:
 

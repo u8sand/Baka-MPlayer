@@ -13,41 +13,6 @@ Settings::~Settings()
 {
 }
 
-int Settings::ParseLine(QString line)
-{
-    for(int i = 0; i < line.length(); ++i)
-    {
-        if(line[i] == QChar('\\'))
-            ++i; // skip the next char (escape sequence)
-        else if(line[i] == QChar('='))
-            return i;
-    }
-    return -1;
-}
-
-QString FixKeyOnSave(QString key)
-{
-    for(int i = 0; i < key.length(); ++i)
-    {
-        // escape special chars
-        if(key[i] == QChar('=') ||
-           key[i] == QChar('\\'))
-            key.insert(i++, '\\');
-    }
-    return key;
-}
-
-QString FixKeyOnLoad(QString key)
-{
-    for(int i = 0; i < key.length(); ++i)
-    {
-        // revert escaped characters
-        if(key[i] == QChar('\\'))
-            key.remove(i, 1);
-    }
-    return key;
-}
-
 void Settings::Load()
 {
     QFile f(file);
@@ -158,4 +123,39 @@ void Settings::setValueInt(QString key, int val)
 void Settings::setValueDouble(QString key, double val)
 {
     setValue(key, QString::number(val));
+}
+
+int Settings::ParseLine(QString line)
+{
+    for(int i = 0; i < line.length(); ++i)
+    {
+        if(line[i] == QChar('\\'))
+            ++i; // skip the next char (escape sequence)
+        else if(line[i] == QChar('='))
+            return i;
+    }
+    return -1;
+}
+
+QString Settings::FixKeyOnSave(QString key)
+{
+    for(int i = 0; i < key.length(); ++i)
+    {
+        // escape special chars
+        if(key[i] == QChar('=') ||
+           key[i] == QChar('\\'))
+            key.insert(i++, '\\');
+    }
+    return key;
+}
+
+QString Settings::FixKeyOnLoad(QString key)
+{
+    for(int i = 0; i < key.length(); ++i)
+    {
+        // revert escaped characters
+        if(key[i] == QChar('\\'))
+            key.remove(i, 1);
+    }
+    return key;
 }
