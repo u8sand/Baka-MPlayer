@@ -25,6 +25,29 @@ int Settings::ParseLine(QString line)
     return -1;
 }
 
+QString FixKeyOnSave(QString key)
+{
+    for(int i = 0; i < key.length(); ++i)
+    {
+        // escape special chars
+        if(key[i] == QChar('=') ||
+           key[i] == QChar('\\'))
+            key.insert(i++, '\\');
+    }
+    return key;
+}
+
+QString FixKeyOnLoad(QString key)
+{
+    for(int i = 0; i < key.length(); ++i)
+    {
+        // revert escaped characters
+        if(key[i] == QChar('\\'))
+            key.remove(i, 1);
+    }
+    return key;
+}
+
 void Settings::Load()
 {
     QFile f(file);
@@ -41,7 +64,7 @@ void Settings::Load()
             if(line.startsWith('[') && line.endsWith(']')) // group
                 group = line.mid(1, line.length()-2); // [...] <- get ...
             else if((i = ParseLine(line)) != -1) // foo=bar
-                data[group][line.left(i)] = line.mid(i+1); // data[group][foo]=bar
+                data[group][FixKeyOnLoad(line.left(i))] = line.mid(i+1); // data[group][foo]=bar
         } while(!line.isNull());
         f.close();
         group = QString(); // reset the group
@@ -64,12 +87,9 @@ void Settings::Save()
             fout << "[" << group_iter.key() << "]" << endl; // output: [foo]
             for(SettingsGroupData::iterator entry_iter = group_iter->begin(); entry_iter != group_iter->end(); ++entry_iter)
             {
-                // output: foo=bar  if foo has = signs they get backslashed  eg.  Ctrl+= = bar=blah -> Ctrl+\= = bar=blah
-                tmp = entry_iter.key();
-                if(tmp == QString() || entry_iter.value() == QString()) // skip empty entries (either empty key or empty value)
+                if(entry_iter.key() == QString() || entry_iter.value() == QString()) // skip empty entries (either empty key or empty value)
                     return;
-                tmp = tmp.replace("=", "\\=").replace("\\\\", "\\"); // replace special cases
-                fout << tmp << "=" << entry_iter.value() << endl;
+                fout << FixKeyOnSave(entry_iter.key()) << "=" << entry_iter.value() << endl;
             }
             fout << endl;
         }
