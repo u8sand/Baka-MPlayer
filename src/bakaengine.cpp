@@ -136,7 +136,7 @@ void BakaEngine::BakaCommand(QStringList cmdList)
     {
         auto iter = CommandMap.find(cmdList[0]);
         if(iter != CommandMap.end())
-            (*iter)(this); // execute command
+            (this->*(*iter))(); // execute command
         else
             InvalidCommand(cmdList[0]);
     }
@@ -166,17 +166,17 @@ void BakaEngine::InvalidParameter(QString parameter)
     BakaPrint(tr("invalid parameter '%0'\n").arg(parameter));
 }
 
-void BakaEngine::BakaAbout(BakaEngine* baka)
+void BakaEngine::BakaAbout()
 {
-    AboutDialog::about(BAKA_MPLAYER_VERSION, baka->window);
+    AboutDialog::about(BAKA_MPLAYER_VERSION, window);
 }
 
-void BakaEngine::BakaAboutQt(BakaEngine*)
+void BakaEngine::BakaAboutQt()
 {
     qApp->aboutQt();
 }
 
-void BakaEngine::BakaQuit(BakaEngine*)
+void BakaEngine::BakaQuit()
 {
     qApp->quit();
 }

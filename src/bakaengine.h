@@ -37,9 +37,9 @@ protected slots:
     void InvalidParameter(QString);
 
     // Baka Command Functions
-    static void BakaAbout(BakaEngine*);
-    static void BakaAboutQt(BakaEngine*);
-    static void BakaQuit(BakaEngine*);
+    void BakaAbout();
+    void BakaAboutQt();
+    void BakaQuit();
 
     // Settings Loading
     void Load2_0_2();
@@ -63,7 +63,7 @@ signals:
 private:
     // This is a baka-command hashtable initialized in the constructor
     //  by using a hash-table -> function pointer we acheive O(1) function lookups XD
-    typedef void(*BakaCommandFPtr)(BakaEngine*);
+    typedef void(BakaEngine::*BakaCommandFPtr)();
     const QHash<QString, BakaCommandFPtr> CommandMap;
 };
 
