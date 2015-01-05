@@ -58,14 +58,13 @@ PreferencesDialog::PreferencesDialog(Settings *_settings, QWidget *parent) :
         ui->infoWidget->setItem(numberOfShortcuts, 0, new QTableWidgetItem(iter.key()));
         tmp_str = iter.value();
         tmp_str_ls = tmp_str.split("#", QString::SkipEmptyParts);
-        if(tmp_str_ls.length() >= 1)
+        if(!tmp_str_ls.empty())
         {
-            ui->infoWidget->setItem(numberOfShortcuts, 1, new QTableWidgetItem(tmp_str_ls[0].trimmed()));
-            if(tmp_str_ls.length() >= 2)
-            {
-                tmp_str_ls.pop_front();
-                ui->infoWidget->setItem(numberOfShortcuts, 2, new QTableWidgetItem(tmp_str_ls[1].trimmed()));
-            }
+            ui->infoWidget->setItem(numberOfShortcuts, 1, new QTableWidgetItem(tmp_str_ls.front().trimmed()));
+            tmp_str_ls.pop_front();
+
+            if(!tmp_str_ls.empty())
+                ui->infoWidget->setItem(numberOfShortcuts, 2, new QTableWidgetItem(tmp_str_ls.front().trimmed()));
         }
         ++numberOfShortcuts;
     }
@@ -88,7 +87,6 @@ PreferencesDialog::PreferencesDialog(Settings *_settings, QWidget *parent) :
     connect(ui->addKeyButton, &QPushButton::clicked,
             [=]
             {
-                //settings->setValue(ui->keySequenceEdit->keySequence().toString(), QString("%0 # %1").arg(ui->lineEdit->text(), ui->lineEdit_2->text()));
                 // todo: disallow duplicate shortcuts
                 ui->infoWidget->insertRow(numberOfShortcuts);
                 ui->infoWidget->setItem(numberOfShortcuts, 0, new QTableWidgetItem(ui->keySequenceEdit->keySequence().toString()));
@@ -126,13 +124,13 @@ PreferencesDialog::~PreferencesDialog()
     settings->endGroup();
     settings->beginGroup("input");
     for(int i = 0; i < numberOfShortcuts; i++)
-        if(ui->infoWidget->item(0, i) && ui->infoWidget->item(1, i))
-            settings->setValue(ui->infoWidget->item(0, i)->text(),
-                ui->infoWidget->item(2, i) ?
+        if(ui->infoWidget->item(i, 0) && ui->infoWidget->item(i, 1))
+            settings->setValue(ui->infoWidget->item(i, 0)->text(),
+                ui->infoWidget->item(i, 2) ?
                     QString("%0 # %1").arg(
-                        ui->infoWidget->item(1, i)->text(),
-                        ui->infoWidget->item(2, i)->text()) :
-                    ui->infoWidget->item(1, i)->text());
+                        ui->infoWidget->item(i, 1)->text(),
+                        ui->infoWidget->item(i, 2)->text()) :
+                    ui->infoWidget->item(i, 1)->text());
     settings->endGroup();
     settings->Save();
 
