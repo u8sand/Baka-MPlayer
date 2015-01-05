@@ -41,7 +41,8 @@ void BakaEngine::LoadSettings()
         // populate initially
 #if defined(Q_OS_LINUX) || defined(Q_OS_UNIX)
         settings->beginGroup("mpv");
-        settings->setValueQStringList("vo", QStringList{"vdpau","opengl-hq"});
+        settings->setValue("af", "scaletempo");
+        settings->setValue("vo", "vdpau,opengl-hq");
         settings->setValue("hwdec", "auto");
         settings->endGroup();
 #endif
