@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="ru">
+<TS version="2.0" language="ru">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -18,7 +18,7 @@
         <source>Baka MPlayer 0.0.0</source>
         <translation>Baka MPlayer 0.0.0</translation>
     </message>
-    <message>
+    <message utf8="true">
         <location filename="../ui/aboutdialog.ui"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2014 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; — свободный и кросс-платформенный медиаплеер, основанный на &lt;b&gt;libmpv&lt;/b&gt;. Его простой дизайн отражает идею не перегруженного, простого и приятного окружения для просмотра телевизионных передач.&lt;br&gt;&lt;br&gt;Копирайт © 2014 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
@@ -108,14 +108,26 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
 <context>
     <name>BakaEngine</name>
     <message>
-        <location filename="../bakaengine.cpp" line="60"/>
+        <location filename="../bakaengine.cpp" line="63"/>
         <source>Settings version not recognized</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../bakaengine.cpp" line="60"/>
+        <location filename="../bakaengine.cpp" line="63"/>
         <source>The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.
 Some features may not work and changed settings will not be saved.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../bakaengine.cpp" line="153"/>
+        <source>invalid command &apos;%0&apos;
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../bakaengine.cpp" line="158"/>
+        <source>invalid parameter &apos;%0&apos;
+</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -701,7 +713,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Ctrl+X</source>
-        <translation type="vanished">Ctrl+X</translation>
+        <translation type="obsolete">Ctrl+X</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui"/>
@@ -870,7 +882,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Show D&amp;ebug Output</source>
-        <translation type="vanished">Показать информацию для &amp;отладки</translation>
+        <translation type="obsolete">Показать информацию для &amp;отладки</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui"/>
@@ -973,34 +985,34 @@ Some features may not work and changed settings will not be saved.</source>
         <translation>Скорость: %0x</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="681"/>
+        <location filename="../ui/mainwindow.cpp" line="674"/>
         <source>Enter File Number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="699"/>
+        <location filename="../ui/mainwindow.cpp" line="692"/>
         <source>No selection</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="705"/>
+        <location filename="../ui/mainwindow.cpp" line="698"/>
         <source>File %0 of %1</source>
         <translation>Файл %0 из %1</translation>
     </message>
     <message>
         <source>R&amp;emove from Playlist</source>
-        <translation type="vanished">&amp;Удалить из списка</translation>
+        <translation type="obsolete">&amp;Удалить из списка</translation>
     </message>
     <message>
         <source>&amp;Delete from Disk</source>
-        <translation type="vanished">Удалить с &amp;диска</translation>
+        <translation type="obsolete">Удалить с &amp;диска</translation>
     </message>
     <message>
         <source>&amp;Refresh</source>
-        <translation type="vanished">&amp;Обновить</translation>
+        <translation type="obsolete">&amp;Обновить</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="881"/>
+        <location filename="../ui/mainwindow.cpp" line="874"/>
         <source>Open Subtitle File</source>
         <translation>Открыть файл субтитров</translation>
     </message>
@@ -1015,58 +1027,58 @@ Some features may not work and changed settings will not be saved.</source>
         <translation>Аудио</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="680"/>
+        <location filename="../ui/mainwindow.cpp" line="673"/>
         <source>Enter the file number you want to play:
 Note: Value must be from %0 - %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="882"/>
+        <location filename="../ui/mainwindow.cpp" line="875"/>
         <source>Subtitle Files</source>
         <translation>Файлы субтитров</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1064"/>
+        <location filename="../ui/mainwindow.cpp" line="1057"/>
         <source>http://bakamplayer.u8sand.net/help.php</source>
         <translation>http://bakamplayer.u8sand.net/help.php</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1560"/>
+        <location filename="../ui/mainwindow.cpp" line="1576"/>
         <source>Dim Lights</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1560"/>
+        <location filename="../ui/mainwindow.cpp" line="1576"/>
         <source>In order to dim the lights, the desktop compositor has to be enabled. This can be done through Window Manager Desktop.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1590"/>
+        <location filename="../ui/mainwindow.cpp" line="1606"/>
         <source>Saved to &quot;%0&quot;, with subs</source>
         <translation>Сохранено в «%0», с субтитрами</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1592"/>
+        <location filename="../ui/mainwindow.cpp" line="1608"/>
         <source>Saved to &quot;%0&quot;, without subs</source>
         <translation>Сохранено в «%0», без субтитров</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1618"/>
+        <location filename="../ui/mainwindow.cpp" line="1634"/>
         <source>Media Files</source>
         <translation>Медиафайлы</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1619"/>
+        <location filename="../ui/mainwindow.cpp" line="1635"/>
         <source>Video Files</source>
         <translation>Видеофайлы</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1620"/>
+        <location filename="../ui/mainwindow.cpp" line="1636"/>
         <source>Audio Files</source>
         <translation>Аудиофайлы</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1617"/>
+        <location filename="../ui/mainwindow.cpp" line="1633"/>
         <source>Open File</source>
         <translation>Открыть файл</translation>
     </message>
@@ -1075,12 +1087,17 @@ Note: Value must be from %0 - %1</source>
     <name>MpvHandler</name>
     <message>
         <source>screenshot%#04n</source>
-        <translation type="vanished">скриншот%#04n</translation>
+        <translation type="obsolete">скриншот%#04n</translation>
+    </message>
+    <message>
+        <source>mpv was not initialized</source>
+        <translation type="obsolete">mpv не был инициализирован</translation>
     </message>
     <message>
         <location filename="../mpvhandler.cpp" line="684"/>
-        <source>mpv was not initialized</source>
-        <translation>mpv не был инициализирован</translation>
+        <source>mpv was not initialized
+</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1141,11 +1158,6 @@ Note: Value must be from %0 - %1</source>
     <message>
         <location filename="../ui/preferencesdialog.ui"/>
         <source>&amp;Hide Popup</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/preferencesdialog.ui"/>
-        <source>Mouse &amp;Gesture Support</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1248,6 +1260,46 @@ Note: Value must be from %0 - %1</source>
         <location filename="../ui/preferencesdialog.cpp" line="59"/>
         <source>Choose screenshot directory</source>
         <translation>Выберете директорию для скриншотов</translation>
+    </message>
+    <message>
+        <location filename="../ui/preferencesdialog.ui"/>
+        <source>Mouse Gesture</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/preferencesdialog.ui"/>
+        <source>&amp;Enable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/preferencesdialog.ui"/>
+        <source>Keys</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/preferencesdialog.ui"/>
+        <source>Key</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/preferencesdialog.ui"/>
+        <source>Command</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/preferencesdialog.ui"/>
+        <source>Label</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/preferencesdialog.ui"/>
+        <source>Label (optional)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/preferencesdialog.ui"/>
+        <source>&amp;ADD</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1354,7 +1406,7 @@ Version: %0</source>
     </message>
     <message>
         <source>Downloading update...</source>
-        <translation type="vanished">Скачиваем обновление...</translation>
+        <translation type="obsolete">Скачиваем обновление...</translation>
     </message>
     <message>
         <location filename="../ui/updatedialog.cpp" line="77"/>
