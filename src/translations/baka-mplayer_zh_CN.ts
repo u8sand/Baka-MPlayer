@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="zh">
+<TS version="2.1" language="zh">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -18,7 +18,7 @@
         <source>Baka MPlayer 0.0.0</source>
         <translation>Baka MPlayer 0.0.0</translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../ui/aboutdialog.ui"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2014 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; 是一个基于 &lt;b&gt;libmpv&lt;/b&gt; 的自由开源跨平台的多媒体播放器。简单的设计致力于为观看视频提供一个整洁，简单，愉快的环境。&lt;br&gt;&lt;br&gt;Copyright © 2014 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
@@ -111,13 +111,15 @@ Some features may not work and changed settings will not be saved.</source>
         <location filename="../bakaengine.cpp" line="153"/>
         <source>invalid command &apos;%0&apos;
 </source>
-        <translation type="unfinished"></translation>
+        <translation>无效命令 &apos;%0&apos;
+</translation>
     </message>
     <message>
         <location filename="../bakaengine.cpp" line="158"/>
         <source>invalid parameter &apos;%0&apos;
 </source>
-        <translation type="unfinished"></translation>
+        <translation>无效参数 &apos;%0&apos;
+</translation>
     </message>
     <message>
         <location filename="../versions/1_9_9.cpp" line="46"/>
@@ -1113,7 +1115,7 @@ Some features may not work and changed settings will not be saved.</source>
         <location filename="../mpvhandler.cpp" line="684"/>
         <source>mpv was not initialized
 </source>
-        <translation type="unfinished"></translation>
+        <translation>mpv未初始化</translation>
     </message>
 </context>
 <context>
@@ -1284,42 +1286,42 @@ Some features may not work and changed settings will not be saved.</source>
     <message>
         <location filename="../ui/preferencesdialog.ui"/>
         <source>Mouse Gesture</source>
-        <translation type="unfinished"></translation>
+        <translation>鼠标手势</translation>
     </message>
     <message>
         <location filename="../ui/preferencesdialog.ui"/>
         <source>&amp;Enable</source>
-        <translation type="unfinished"></translation>
+        <translation>启用</translation>
     </message>
     <message>
         <location filename="../ui/preferencesdialog.ui"/>
         <source>Keys</source>
-        <translation type="unfinished"></translation>
+        <translation>快捷键</translation>
     </message>
     <message>
         <location filename="../ui/preferencesdialog.ui"/>
         <source>Key</source>
-        <translation type="unfinished"></translation>
+        <translation>快捷键</translation>
     </message>
     <message>
         <location filename="../ui/preferencesdialog.ui"/>
         <source>Command</source>
-        <translation type="unfinished"></translation>
+        <translation>命令</translation>
     </message>
     <message>
         <location filename="../ui/preferencesdialog.ui"/>
         <source>Label</source>
-        <translation type="unfinished"></translation>
+        <translation>标签</translation>
     </message>
     <message>
         <location filename="../ui/preferencesdialog.ui"/>
         <source>Label (optional)</source>
-        <translation type="unfinished"></translation>
+        <translation>标签（可选）</translation>
     </message>
     <message>
         <location filename="../ui/preferencesdialog.ui"/>
         <source>&amp;ADD</source>
-        <translation type="unfinished"></translation>
+        <translation>添加</translation>
     </message>
 </context>
 <context>
