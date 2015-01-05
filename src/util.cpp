@@ -86,17 +86,4 @@ QString HumanSize(qint64 size)
     return QString().setNum(num,'f',2)+" "+unit;
 }
 
-
-QString ShortenPathToParent(const QString &path)
-{
-    int pos = path.lastIndexOf('/');
-    if(pos != -1)
-    {
-        pos = path.lastIndexOf('/', pos-1);
-        if(pos != -1)
-            return path.mid(pos+1);
-    }
-    return path;
-}
-
 }
