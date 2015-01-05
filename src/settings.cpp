@@ -63,7 +63,7 @@ void Settings::Save()
             {
                 // output: foo=bar  if foo has = signs they get backslashed  eg.  Ctrl+= = bar=blah -> Ctrl+\= = bar=blah
                 tmp = entry_iter.key();
-                tmp = tmp.replace("=", "\\=");
+                tmp = tmp.replace("=", "\\=").replace("\\\\", "\\"); // replace special cases
                 fout << tmp << "=" << entry_iter.value() << endl;
             }
             fout << endl;
