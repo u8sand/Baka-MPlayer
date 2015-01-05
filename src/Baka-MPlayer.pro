@@ -108,9 +108,14 @@ CONFIG(install_translations) {
     CONFIG *= update_translations release_translations
 }
 
+CONFIG(begin_translations) {
+    isEmpty(lupdate):lupdate=lupdate
+    system($$lupdate -locations absolute $$_PRO_FILE_)
+}
+
 CONFIG(update_translations) {
     isEmpty(lupdate):lupdate=lupdate
-    system($$lupdate -no-ui-lines $$_PRO_FILE_)
+    system($$lupdate -locations none $$_PRO_FILE_)
 }
 
 CONFIG(release_translations) {
