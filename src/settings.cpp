@@ -44,7 +44,6 @@ void Settings::Save()
         QTextStream fout(&f);
         fout.setCodec("UTF-8");
         fout.setGenerateByteOrderMark(true);
-        QString tmp;
         for(SettingsData::iterator group_iter = data.begin(); group_iter != data.end(); ++group_iter)
         {
             if(group_iter->empty()) // skip empty groups
@@ -53,7 +52,7 @@ void Settings::Save()
             for(SettingsGroupData::iterator entry_iter = group_iter->begin(); entry_iter != group_iter->end(); ++entry_iter)
             {
                 if(entry_iter.key() == QString() || entry_iter.value() == QString()) // skip empty entries (either empty key or empty value)
-                    return;
+                    continue;
                 fout << FixKeyOnSave(entry_iter.key()) << "=" << entry_iter.value() << endl;
             }
             fout << endl;

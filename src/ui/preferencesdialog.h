@@ -26,6 +26,7 @@ private:
     Ui::PreferencesDialog *ui;
     Settings *settings;
     QString screenshotDir;
+    int numberOfShortcuts;
 };
 
 #endif // PREFERENCESDIALOG_H

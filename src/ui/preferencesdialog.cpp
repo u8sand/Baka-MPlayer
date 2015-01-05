@@ -47,6 +47,30 @@ PreferencesDialog::PreferencesDialog(Settings *_settings, QWidget *parent) :
         screenshotDir = ".";
     }
 
+    // add shortcuts
+    settings->beginGroup("input");
+    QString tmp_str;
+    QStringList tmp_str_ls;
+    numberOfShortcuts = 0;
+    for(auto iter = settings->map().begin(); iter != settings->map().end(); ++iter)
+    {
+        ui->infoWidget->insertRow(numberOfShortcuts);
+        ui->infoWidget->setItem(numberOfShortcuts, 0, new QTableWidgetItem(iter.key()));
+        tmp_str = iter.value();
+        tmp_str_ls = tmp_str.split("#", QString::SkipEmptyParts);
+        if(tmp_str_ls.length() >= 1)
+        {
+            ui->infoWidget->setItem(numberOfShortcuts, 1, new QTableWidgetItem(tmp_str_ls[0].trimmed()));
+            if(tmp_str_ls.length() >= 2)
+            {
+                tmp_str_ls.pop_front();
+                ui->infoWidget->setItem(numberOfShortcuts, 2, new QTableWidgetItem(tmp_str_ls[1].trimmed()));
+            }
+        }
+        ++numberOfShortcuts;
+    }
+    settings->endGroup();
+
     connect(ui->autoFitCheckBox, &QCheckBox::clicked,
             [=](bool b)
             {
@@ -59,6 +83,18 @@ PreferencesDialog::PreferencesDialog(Settings *_settings, QWidget *parent) :
                 QString dir = QFileDialog::getExistingDirectory(this, tr("Choose screenshot directory"), screenshotDir);
                 if(dir != QString())
                     screenshotDir = dir;
+            });
+
+    connect(ui->addKeyButton, &QPushButton::clicked,
+            [=]
+            {
+                //settings->setValue(ui->keySequenceEdit->keySequence().toString(), QString("%0 # %1").arg(ui->lineEdit->text(), ui->lineEdit_2->text()));
+                // todo: disallow duplicate shortcuts
+                ui->infoWidget->insertRow(numberOfShortcuts);
+                ui->infoWidget->setItem(numberOfShortcuts, 0, new QTableWidgetItem(ui->keySequenceEdit->keySequence().toString()));
+                ui->infoWidget->setItem(numberOfShortcuts, 1, new QTableWidgetItem(ui->lineEdit->text()));
+                ui->infoWidget->setItem(numberOfShortcuts, 2, new QTableWidgetItem(ui->lineEdit_2->text()));
+                ++numberOfShortcuts;
             });
 
     connect(ui->closeButton, SIGNAL(clicked()),
@@ -87,6 +123,16 @@ PreferencesDialog::~PreferencesDialog()
     settings->beginGroup("mpv");
     settings->setValue("screenshot-format", ui->formatComboBox->currentText());
     settings->setValue("screenshot-template", screenshotDir+"/"+ui->templateLineEdit->text());
+    settings->endGroup();
+    settings->beginGroup("input");
+    for(int i = 0; i < numberOfShortcuts; i++)
+        if(ui->infoWidget->item(0, i) && ui->infoWidget->item(1, i))
+            settings->setValue(ui->infoWidget->item(0, i)->text(),
+                ui->infoWidget->item(2, i) ?
+                    QString("%0 # %1").arg(
+                        ui->infoWidget->item(1, i)->text(),
+                        ui->infoWidget->item(2, i)->text()) :
+                    ui->infoWidget->item(1, i)->text());
     settings->endGroup();
     settings->Save();
 
