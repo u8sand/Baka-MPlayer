@@ -43,4 +43,16 @@ bool IsValidLocation(QString loc)
     return (rx.indexIn(loc) != -1);
 }
 
+QString ShortenPathToParent(const QString &path)
+{
+    int pos = path.lastIndexOf('\\');
+    if(pos != -1)
+    {
+        pos = path.lastIndexOf('\\', pos-1);
+        if(pos != -1)
+            return path.mid(pos+1);
+    }
+    return path;
+}
+
 }

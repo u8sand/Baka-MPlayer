@@ -31,7 +31,6 @@ bool GestureHandler::Begin(int gesture_type, QPoint mousePos, QPoint windowPos)
         elapsedTimer->start();
         this->gesture_type = gesture_type;
         this->gesture_state = NONE;
-        QApplication::setOverrideCursor(QCursor(Qt::PointingHandCursor));
     }
     else
         return false;
@@ -40,6 +39,7 @@ bool GestureHandler::Begin(int gesture_type, QPoint mousePos, QPoint windowPos)
         start.windowPos = windowPos;
     else // if(gesture_type == HSEEK_VVOLUME)
     {
+        QApplication::setOverrideCursor(QCursor(Qt::PointingHandCursor));
         start.time = mpv->getTime();
         start.volume = mpv->getVolume();
     }
