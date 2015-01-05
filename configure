@@ -5,7 +5,8 @@
 # "BAKA_LANG="                                      - overide language selection with language code (default: use locale)
 # "CONFIG+=embed_translations"                      - .qm files will be compiled into the binary
 # "CONFIG+=install_translations"                    - make install will install .qm files on your system
-# "CONFIG+=update_translations"                     - .ts files will be updated based on project changes
+# "CONFIG+=begin_translations"                      - .ts files will be updated based on project changes
+# "CONFIG+=update_translations"                     - .ts files will be trimmed to bare minimum for commits
 # "CONFIG+=release_translations"                    - .qm files will be compiled from .ts files
 # "INSTROOT="                                       - installation root directory
 # "BINDIR=/usr/bin"                                 - installation binary directory
