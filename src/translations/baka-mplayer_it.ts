@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="it_IT">
+<TS version="2.0" language="it_IT">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -18,7 +18,7 @@
         <source>Baka MPlayer 0.0.0</source>
         <translation>Baka MPlayer 0.0.0</translation>
     </message>
-    <message>
+    <message utf8="true">
         <location filename="../ui/aboutdialog.ui"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2014 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; è un lettore multimediale libero e a sorgente aperto, multipiattaforma, basato su &lt;b&gt;libmpv&lt;/b&gt;. Il suo design semplice riflette l&apos;idea di un ambiente semplice, ordinato e piacevole per guardare programmi TV.&lt;br&gt;&lt;br&gt;Copyright © 2014 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
@@ -95,16 +95,28 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
 <context>
     <name>BakaEngine</name>
     <message>
-        <location filename="../bakaengine.cpp" line="60"/>
+        <location filename="../bakaengine.cpp" line="63"/>
         <source>Settings version not recognized</source>
         <translation type="unfinished">Versione file di impostazioni non riconosciuta</translation>
     </message>
     <message>
-        <location filename="../bakaengine.cpp" line="60"/>
+        <location filename="../bakaengine.cpp" line="63"/>
         <source>The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.
 Some features may not work and changed settings will not be saved.</source>
         <translation type="unfinished">Il file di impostazioni è stato creato da una versione di baka-mplayer più recente; aggiorna questa versione o richiedi assistenza agli sviluppatori.
 Alcune funzionalità potrebbero non essere disponibili e le impostazioni modificate non verranno salvate.</translation>
+    </message>
+    <message>
+        <location filename="../bakaengine.cpp" line="153"/>
+        <source>invalid command &apos;%0&apos;
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../bakaengine.cpp" line="158"/>
+        <source>invalid parameter &apos;%0&apos;
+</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../versions/1_9_9.cpp" line="46"/>
@@ -963,101 +975,101 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
         <translation>Velocità: %0x</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="680"/>
+        <location filename="../ui/mainwindow.cpp" line="673"/>
         <source>Enter the file number you want to play:
 Note: Value must be from %0 - %1</source>
         <translation>Inserisci il numero del file che vuoi riprodurre:
 Nota: Il valore deve essere compreso tra %0 e %1</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="681"/>
+        <location filename="../ui/mainwindow.cpp" line="674"/>
         <source>Enter File Number</source>
         <translation>Inserisci numero file</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="699"/>
+        <location filename="../ui/mainwindow.cpp" line="692"/>
         <source>No selection</source>
         <translation>Nessuna selezione</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="705"/>
+        <location filename="../ui/mainwindow.cpp" line="698"/>
         <source>File %0 of %1</source>
         <translation>File %0 di %1</translation>
     </message>
     <message>
         <source>R&amp;emove from Playlist</source>
-        <translation type="vanished">&amp;Rimuovi da scaletta</translation>
+        <translation type="obsolete">&amp;Rimuovi da scaletta</translation>
     </message>
     <message>
         <source>&amp;Delete from Disk</source>
-        <translation type="vanished">&amp;Elimina da disco</translation>
+        <translation type="obsolete">&amp;Elimina da disco</translation>
     </message>
     <message>
         <source>&amp;Refresh</source>
-        <translation type="vanished">A&amp;ggiorna</translation>
+        <translation type="obsolete">A&amp;ggiorna</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="881"/>
+        <location filename="../ui/mainwindow.cpp" line="874"/>
         <source>Open Subtitle File</source>
         <translation>Apri file sottotitoli</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="882"/>
+        <location filename="../ui/mainwindow.cpp" line="875"/>
         <source>Subtitle Files</source>
         <translation>File sottotitoli</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1064"/>
+        <location filename="../ui/mainwindow.cpp" line="1057"/>
         <source>http://bakamplayer.u8sand.net/help.php</source>
         <translation>http://bakamplayer.u8sand.net/help.php</translation>
     </message>
     <message>
         <source>Settings version not recognized</source>
-        <translation type="vanished">Versione file di impostazioni non riconosciuta</translation>
+        <translation type="obsolete">Versione file di impostazioni non riconosciuta</translation>
     </message>
     <message>
         <source>The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.
 Some features may not work and changed settings will not be saved.</source>
-        <translation type="vanished">Il file di impostazioni è stato creato da una versione di baka-mplayer più recente; aggiorna questa versione o richiedi assistenza agli sviluppatori.
+        <translation type="obsolete">Il file di impostazioni è stato creato da una versione di baka-mplayer più recente; aggiorna questa versione o richiedi assistenza agli sviluppatori.
 Alcune funzionalità potrebbero non essere disponibili e le impostazioni modificate non verranno salvate.</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1560"/>
+        <location filename="../ui/mainwindow.cpp" line="1576"/>
         <source>Dim Lights</source>
         <translation>Abbassa le luci</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1560"/>
+        <location filename="../ui/mainwindow.cpp" line="1576"/>
         <source>In order to dim the lights, the desktop compositor has to be enabled. This can be done through Window Manager Desktop.</source>
         <translation>Per poter abbassare le luci, il compositore del desktop deve essere abilitato. Questo può essere fatto dal gestore finestre desktop.</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1590"/>
+        <location filename="../ui/mainwindow.cpp" line="1606"/>
         <source>Saved to &quot;%0&quot;, with subs</source>
         <translation>Salvato su &quot;%0&quot;, con sottotitoli</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1592"/>
+        <location filename="../ui/mainwindow.cpp" line="1608"/>
         <source>Saved to &quot;%0&quot;, without subs</source>
         <translation>Salvato su &quot;%0&quot;, senza sottotitoli</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1617"/>
+        <location filename="../ui/mainwindow.cpp" line="1633"/>
         <source>Open File</source>
         <translation>Apri file</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1618"/>
+        <location filename="../ui/mainwindow.cpp" line="1634"/>
         <source>Media Files</source>
         <translation>File multimediali</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1619"/>
+        <location filename="../ui/mainwindow.cpp" line="1635"/>
         <source>Video Files</source>
         <translation>File video</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1620"/>
+        <location filename="../ui/mainwindow.cpp" line="1636"/>
         <source>Audio Files</source>
         <translation>File audio</translation>
     </message>
@@ -1066,16 +1078,21 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     <name>MpvHandler</name>
     <message>
         <source>Setting type was parsed as %0</source>
-        <translation type="vanished">Il tipo di impostazione è stato interpretato come %0</translation>
+        <translation type="obsolete">Il tipo di impostazione è stato interpretato come %0</translation>
     </message>
     <message>
         <source>screenshot%#04n</source>
-        <translation type="vanished">istantanea%#04n</translation>
+        <translation type="obsolete">istantanea%#04n</translation>
+    </message>
+    <message>
+        <source>mpv was not initialized</source>
+        <translation type="obsolete">mpv non era inizializzato</translation>
     </message>
     <message>
         <location filename="../mpvhandler.cpp" line="684"/>
-        <source>mpv was not initialized</source>
-        <translation>mpv non era inizializzato</translation>
+        <source>mpv was not initialized
+</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1139,9 +1156,8 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
         <translation>&amp;Nascondi notifica</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui"/>
         <source>Mouse &amp;Gesture Support</source>
-        <translation>Abilita &amp;gesti del mouse</translation>
+        <translation type="obsolete">Abilita &amp;gesti del mouse</translation>
     </message>
     <message>
         <location filename="../ui/preferencesdialog.ui"/>
@@ -1243,6 +1259,46 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
         <location filename="../ui/preferencesdialog.cpp" line="59"/>
         <source>Choose screenshot directory</source>
         <translation>Seleziona cartella istantanee</translation>
+    </message>
+    <message>
+        <location filename="../ui/preferencesdialog.ui"/>
+        <source>Mouse Gesture</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/preferencesdialog.ui"/>
+        <source>&amp;Enable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/preferencesdialog.ui"/>
+        <source>Keys</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/preferencesdialog.ui"/>
+        <source>Key</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/preferencesdialog.ui"/>
+        <source>Command</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/preferencesdialog.ui"/>
+        <source>Label</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/preferencesdialog.ui"/>
+        <source>Label (optional)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/preferencesdialog.ui"/>
+        <source>&amp;ADD</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
