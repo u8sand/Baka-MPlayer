@@ -111,18 +111,18 @@ void BakaEngine::Command(QString command)
     QStringList args = command.split(" ");
     if(!args.empty())
     {
-        if(args.front() == "baka")
+        if(args.front() == "mpv")
         {
             args.pop_front();
+            if(mpv->playState > 0)
+                MpvCommand(args);
+        }
+        else// if(args.front() == "baka")
+        {
+            if(args.front() == "baka")
+                args.pop_front();
             BakaCommand(args);
         }
-        else if(args.front() == "mpv")
-        {
-            args.pop_front();
-            MpvCommand(args);
-        }
-        else
-            InvalidCommand(args.join(' '));
     }
     else
         InvalidCommand(args.join(' '));

@@ -1302,7 +1302,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
         if(event->modifiers() & Qt::ControlModifier) key += "Ctrl+";
         if(event->modifiers() & Qt::AltModifier)     key += "Alt+";
         if(event->modifiers() & Qt::MetaModifier)    key += "Meta+";
-        key += event->key();
+        key += QKeySequence(event->key()).toString();
 
         // find shortcut in input hash table
         auto iter = input.find(key);

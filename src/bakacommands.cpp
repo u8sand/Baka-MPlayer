@@ -2,8 +2,34 @@
 
 #include "ui/aboutdialog.h"
 #include "ui/mainwindow.h"
+#include "ui_mainwindow.h"
+#include "mpvhandler.h"
 
 #include <QApplication>
+
+void BakaEngine::BakaPlayPause(QStringList &args)
+{
+    if(args.empty())
+    {
+        if(mpv->getPlayState() > 0)
+            mpv->PlayPause(window->ui->playlistWidget->CurrentItem());
+    }
+    else
+        InvalidParameter(args.join(' '));
+}
+
+void BakaEngine::BakaVolume(QStringList &args)
+{
+    if(!args.empty())
+    {
+        if(args.front().startsWith('+') || args.front().startsWith('-'))
+            mpv->Volume(mpv->getVolume()+args.front().toInt(), true);
+        else
+            mpv->Volume(args.front().toInt(), true);
+    }
+    else
+        RequiresParameters("volume");
+}
 
 void BakaEngine::BakaHelp(QStringList &)
 {
