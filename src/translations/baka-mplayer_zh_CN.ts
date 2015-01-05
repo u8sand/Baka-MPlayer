@@ -98,19 +98,19 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
     <message>
         <location filename="../bakaengine.cpp" line="60"/>
         <source>Settings version not recognized</source>
-        <translation type="unfinished">配置文件版本无法被识别</translation>
+        <translation>配置文件版本无法被识别</translation>
     </message>
     <message>
         <location filename="../bakaengine.cpp" line="60"/>
         <source>The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.
 Some features may not work and changed settings will not be saved.</source>
-        <translation type="unfinished">配置文件是由更新版本的baka-mplayer创建的，请更新此版本或者向开发者寻求帮助
+        <translation>配置文件是由更新版本的baka-mplayer创建的，请更新此版本或者向开发者寻求帮助
 一些特性可能无法工作且更改的设置无法被保存</translation>
     </message>
     <message>
         <location filename="../versions/1_9_9.cpp" line="46"/>
         <source>screenshot%#04n</source>
-        <translation type="unfinished"></translation>
+        <translation>截图%#04n</translation>
     </message>
 </context>
 <context>
