@@ -31,6 +31,7 @@ void Settings::Load()
     if(f.open(QFile::ReadOnly))
     {
         QTextStream fin(&f);
+        fin.setCodec("UTF-8");
         QString line;
         int i;
         group = QString(); // reset the group
@@ -53,6 +54,8 @@ void Settings::Save()
     if(f.open(QFile::WriteOnly | QFile::Truncate))
     {
         QTextStream fout(&f);
+        fout.setCodec("UTF-8");
+        fout.setGenerateByteOrderMark(true);
         QString tmp;
         for(SettingsData::iterator group_iter = data.begin(); group_iter != data.end(); ++group_iter)
         {
