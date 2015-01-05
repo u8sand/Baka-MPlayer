@@ -1296,23 +1296,25 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
     bool handled = false;
     if(!input.empty())
     {
-        QString modifier = QString();
+        // Convert KeyEvent to Shortcut:
+        QString key = QString();
+        if(event->modifiers() & Qt::ShiftModifier)   key += "Shift+";
+        if(event->modifiers() & Qt::ControlModifier) key += "Ctrl+";
+        if(event->modifiers() & Qt::AltModifier)     key += "Alt+";
+        if(event->modifiers() & Qt::MetaModifier)    key += "Meta+";
+        key += event->key();
 
-        for(QMap<QString, QString>::iterator entry_iter = input.begin(); entry_iter != input.end(); ++entry_iter)
+        // find shortcut in input hash table
+        auto iter = input.find(key);
+        if(iter != input.end())
         {
-            if(event->modifiers() & Qt::ShiftModifier)   modifier += "Shift+";
-            if(event->modifiers() & Qt::ControlModifier) modifier += "Ctrl+";
-            if(event->modifiers() & Qt::AltModifier)     modifier += "Alt+";
-            if(event->modifiers() & Qt::MetaModifier)    modifier += "Meta+";
-            if(QKeySequence::fromString(modifier + event->key()) == QKeySequence(entry_iter.key()))
-            {
-                baka->Command(entry_iter.value());
-                handled = true;
-            }
+            baka->Command(*iter); // execute command
+            handled = true;
         }
     }
     if(handled)
         return;
+    // todo: move all these to baka events--hash tables are more efficient than switch
     switch(event->key())
     {
         // Playback/Seeking

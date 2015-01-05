@@ -66,6 +66,8 @@ void Settings::Save()
             {
                 // output: foo=bar  if foo has = signs they get backslashed  eg.  Ctrl+= = bar=blah -> Ctrl+\= = bar=blah
                 tmp = entry_iter.key();
+                if(tmp == QString() || entry_iter.value() == QString()) // skip empty entries (either empty key or empty value)
+                    return;
                 tmp = tmp.replace("=", "\\=").replace("\\\\", "\\"); // replace special cases
                 fout << tmp << "=" << entry_iter.value() << endl;
             }

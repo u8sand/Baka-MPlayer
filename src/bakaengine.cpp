@@ -6,10 +6,17 @@
 #include "mpvhandler.h"
 #include "util.h"
 
+#include "ui/aboutdialog.h"
+
 #include <QMessageBox>
 
 BakaEngine::BakaEngine(QObject *parent):
-    QObject(parent)
+    QObject(parent),
+    CommandMap({
+        {"about", &BakaEngine::BakaAbout},
+        {"about_qt", &BakaEngine::BakaAboutQt},
+        {"quit", &BakaEngine::BakaQuit}
+    })
 {
     window = static_cast<MainWindow*>(parent);
     mpv = new MpvHandler(window->ui->mpvFrame->winId(), this);
@@ -127,8 +134,9 @@ void BakaEngine::BakaCommand(QStringList cmdList)
 {
     if(cmdList.length() == 1)
     {
-        if(cmdList[0] == "exit")
-            qApp->quit();
+        auto iter = CommandMap.find(cmdList[0]);
+        if(iter != CommandMap.end())
+            (*iter)(this); // execute command
         else
             InvalidCommand(cmdList[0]);
     }
@@ -156,4 +164,19 @@ void BakaEngine::InvalidCommand(QString command)
 void BakaEngine::InvalidParameter(QString parameter)
 {
     BakaPrint(tr("invalid parameter '%0'\n").arg(parameter));
+}
+
+void BakaEngine::BakaAbout(BakaEngine* baka)
+{
+    AboutDialog::about(BAKA_MPLAYER_VERSION, baka->window);
+}
+
+void BakaEngine::BakaAboutQt(BakaEngine*)
+{
+    qApp->aboutQt();
+}
+
+void BakaEngine::BakaQuit(BakaEngine*)
+{
+    qApp->quit();
 }

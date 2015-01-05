@@ -2,7 +2,10 @@
 #define BAKAENGINE_H
 
 #include <QObject>
+#include <QString>
 #include <QStringList>
+#include <QHash>
+#include <QFunctionPointer>
 
 class MainWindow;
 class MpvHandler;
@@ -26,13 +29,19 @@ public slots:
     void Command(QString command);
 
 protected slots:
+    // Utility functions
     void BakaCommand(QStringList command);
-
     void BakaPrint(QString);
     void MpvPrint(QString);
     void InvalidCommand(QString);
     void InvalidParameter(QString);
 
+    // Baka Command Functions
+    static void BakaAbout(BakaEngine*);
+    static void BakaAboutQt(BakaEngine*);
+    static void BakaQuit(BakaEngine*);
+
+    // Settings Loading
     void Load2_0_2();
     void Load2_0_1();
     void Load2_0_0();
@@ -50,7 +59,12 @@ protected slots:
 
 signals:
 
-public slots:
+
+private:
+    // This is a baka-command hashtable initialized in the constructor
+    //  by using a hash-table -> function pointer we acheive O(1) function lookups XD
+    typedef void(*BakaCommandFPtr)(BakaEngine*);
+    const QHash<QString, BakaCommandFPtr> CommandMap;
 };
 
 #endif // BAKAENGINE_H

@@ -15,6 +15,7 @@
 #include <QTimer>
 #include <QElapsedTimer>
 #include <QTranslator>
+#include <QHash>
 
 #include "gesturehandler.h"
 #include "widgets/dimdialog.h"
@@ -102,7 +103,8 @@ private:
          debug,
          gestures;
 
-    QMap<QString, QString> input;
+    // input hash-table provides O(1) input-command lookups
+    QHash<QString, QString> input;
 
 public slots:
     void setLang(QString s)          { emit langChanged(lang = s); }
