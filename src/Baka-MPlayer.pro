@@ -132,6 +132,7 @@ DEFINES += "BAKA_MPLAYER_VERSION=\\\"$$VERSION\\\"" \
 
 SOURCES += main.cpp\
     bakaengine.cpp \
+    bakacommands.cpp \
     mpvhandler.cpp \
     updatemanager.cpp \
     gesturehandler.cpp \

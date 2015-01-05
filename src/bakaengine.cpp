@@ -4,24 +4,18 @@
 #include "ui_mainwindow.h"
 #include "settings.h"
 #include "mpvhandler.h"
+#include "gesturehandler.h"
 #include "util.h"
-
-#include "ui/aboutdialog.h"
 
 #include <QMessageBox>
 
 BakaEngine::BakaEngine(QObject *parent):
     QObject(parent),
-    CommandMap({
-        {"about", &BakaEngine::BakaAbout},
-        {"about_qt", &BakaEngine::BakaAboutQt},
-        {"quit", &BakaEngine::BakaQuit}
-    })
+    window(static_cast<MainWindow*>(parent)),
+    mpv(new MpvHandler(window->ui->mpvFrame->winId(), this)),
+    settings(Util::InitializeSettings(this)),
+    gesture(new GestureHandler(this))
 {
-    window = static_cast<MainWindow*>(parent);
-    mpv = new MpvHandler(window->ui->mpvFrame->winId(), this);
-    settings = Util::InitializeSettings(this);
-
     connect(mpv, SIGNAL(messageSignal(QString)),
             this, SLOT(MpvPrint(QString)));
 }
@@ -114,34 +108,49 @@ void BakaEngine::Command(QString command)
 {
     if(command == QString())
         return;
-
-    QStringList cmdList = command.split(" ");
-    if(cmdList[0] == "baka")
+    QStringList args = command.split(" ");
+    if(!args.empty())
     {
-        cmdList.pop_front();
-        BakaCommand(cmdList);
-    }
-    else if(cmdList[0] == "mpv")
-    {
-        cmdList.pop_front();
-        mpv->CommandString(cmdList.join(" "));
+        if(args.front() == "baka")
+        {
+            args.pop_front();
+            BakaCommand(args);
+        }
+        else if(args.front() == "mpv")
+        {
+            args.pop_front();
+            MpvCommand(args);
+        }
+        else
+            InvalidCommand(args.join(' '));
     }
     else
-        InvalidCommand(command);
+        InvalidCommand(args.join(' '));
 }
 
-void BakaEngine::BakaCommand(QStringList cmdList)
+void BakaEngine::MpvCommand(QStringList &args)
 {
-    if(cmdList.length() == 1)
+    if(!args.empty())
+        mpv->CommandString(args.join(" "));
+    else
+        RequiresParameters("mpv");
+}
+
+void BakaEngine::BakaCommand(QStringList &args)
+{
+    if(!args.empty())
     {
-        auto iter = CommandMap.find(cmdList[0]);
-        if(iter != CommandMap.end())
-            (this->*(*iter))(); // execute command
+        auto iter = BakaCommandMap.find(args.front());
+        if(iter != BakaCommandMap.end())
+        {
+            args.pop_front();
+            (this->*(*iter))(args); // execute command
+        }
         else
-            InvalidCommand(cmdList[0]);
+            InvalidCommand(args.join(' '));
     }
     else
-        InvalidCommand(cmdList.join(' '));
+        RequiresParameters("baka");
 }
 
 void BakaEngine::BakaPrint(QString output)
@@ -166,17 +175,7 @@ void BakaEngine::InvalidParameter(QString parameter)
     BakaPrint(tr("invalid parameter '%0'\n").arg(parameter));
 }
 
-void BakaEngine::BakaAbout()
+void BakaEngine::RequiresParameters(QString what)
 {
-    AboutDialog::about(BAKA_MPLAYER_VERSION, window);
-}
-
-void BakaEngine::BakaAboutQt()
-{
-    qApp->aboutQt();
-}
-
-void BakaEngine::BakaQuit()
-{
-    qApp->quit();
+    BakaPrint(tr("'%0'' requires parameters\n").arg(what));
 }

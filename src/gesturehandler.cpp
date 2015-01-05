@@ -2,16 +2,16 @@
 
 #include <QApplication>
 
+#include "bakaengine.h"
 #include "ui/mainwindow.h"
 #include "mpvhandler.h"
 #include "util.h"
 
-GestureHandler::GestureHandler(MpvHandler *mpv, QObject *parent):
+GestureHandler::GestureHandler(QObject *parent):
     QObject(parent),
     elapsedTimer(nullptr)
 {
-    this->window = static_cast<MainWindow*>(parent);
-    this->mpv = mpv;
+    baka = static_cast<BakaEngine*>(parent);
 }
 
 GestureHandler::~GestureHandler()
@@ -40,8 +40,8 @@ bool GestureHandler::Begin(int gesture_type, QPoint mousePos, QPoint windowPos)
     else // if(gesture_type == HSEEK_VVOLUME)
     {
         QApplication::setOverrideCursor(QCursor(Qt::PointingHandCursor));
-        start.time = mpv->getTime();
-        start.volume = mpv->getVolume();
+        start.time = baka->mpv->getTime();
+        start.volume = baka->mpv->getVolume();
     }
     start.mousePos = mousePos;
     return true;
@@ -54,7 +54,7 @@ bool GestureHandler::Process(QPoint mousePos)
         QPoint delta = mousePos - start.mousePos;
 
         if(gesture_type == MOVE)
-            window->move(start.windowPos + delta);
+            baka->window->move(start.windowPos + delta);
         else
         {
             switch(gesture_state)
@@ -68,11 +68,11 @@ bool GestureHandler::Process(QPoint mousePos)
             case SEEKING:
             {
                 int relative = delta.x() * hRatio;
-                mpv->Seek(start.time + relative, false, true);
+                baka->mpv->Seek(start.time + relative, false, true);
                 break;
             }
             case ADJUSTING_VOLUME:
-                mpv->Volume(start.volume - delta.y() * vRatio, true);
+                baka->mpv->Volume(start.volume - delta.y() * vRatio, true);
                 break;
             }
         }

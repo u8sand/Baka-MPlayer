@@ -50,8 +50,8 @@ MainWindow::MainWindow(QWidget *parent):
     baka = new BakaEngine(this); // todo: remove settings and mpv--access through baka
     settings = baka->settings;
     mpv      = baka->mpv;
+    gesture  = baka->gesture;
 
-    gesture = new GestureHandler(mpv, this);
     updateDialog = new UpdateDialog(this);
 
     // initialize other ui elements

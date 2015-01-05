@@ -10,6 +10,7 @@
 class MainWindow;
 class MpvHandler;
 class Settings;
+class GestureHandler;
 
 class BakaEngine : public QObject
 {
@@ -18,9 +19,10 @@ public:
     explicit BakaEngine(QObject *parent = 0);
     ~BakaEngine();
 
-    MainWindow *window;
-    MpvHandler *mpv;
-    Settings *settings;
+    MainWindow     *window;
+    MpvHandler     *mpv;
+    Settings       *settings;
+    GestureHandler *gesture;
 
 public slots:
     void LoadSettings();
@@ -30,16 +32,13 @@ public slots:
 
 protected slots:
     // Utility functions
-    void BakaCommand(QStringList command);
+    void MpvCommand(QStringList&);
+    void BakaCommand(QStringList&);
     void BakaPrint(QString);
     void MpvPrint(QString);
     void InvalidCommand(QString);
     void InvalidParameter(QString);
-
-    // Baka Command Functions
-    void BakaAbout();
-    void BakaAboutQt();
-    void BakaQuit();
+    void RequiresParameters(QString);
 
     // Settings Loading
     void Load2_0_2();
@@ -61,10 +60,20 @@ signals:
 
 
 private:
-    // This is a baka-command hashtable initialized in the constructor
-    //  by using a hash-table -> function pointer we acheive O(1) function lookups XD
-    typedef void(BakaEngine::*BakaCommandFPtr)();
-    const QHash<QString, BakaCommandFPtr> CommandMap;
+    // This is a baka-command hashtable initialized below
+    //  by using a hash-table -> function pointer we acheive O(1) function lookups
+    // Format: void BakaCommand(QStringList args)
+    // See bakacommands.cpp for function definitions
+    typedef void(BakaEngine::*BakaCommandFPtr)(QStringList&);
+    const QHash<QString, BakaCommandFPtr> BakaCommandMap = {
+        {"help", &BakaEngine::BakaHelp},
+        {"about", &BakaEngine::BakaAbout},
+        {"quit", &BakaEngine::BakaQuit}
+    };
+    // Baka Command Functions
+    void BakaHelp(QStringList&);
+    void BakaAbout(QStringList&);
+    void BakaQuit(QStringList&);
 };
 
 #endif // BAKAENGINE_H

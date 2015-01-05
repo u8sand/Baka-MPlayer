@@ -5,8 +5,7 @@
 #include <QElapsedTimer>
 #include <QPoint>
 
-class MainWindow;
-class MpvHandler;
+class BakaEngine;
 
 class GestureHandler : public QObject
 {
@@ -23,7 +22,7 @@ public:
         ADJUSTING_VOLUME
     };
 
-    explicit GestureHandler(MpvHandler *mpv, QObject *parent = 0);
+    explicit GestureHandler(QObject *parent = 0);
     ~GestureHandler();
 
 public slots:
@@ -32,8 +31,7 @@ public slots:
     bool End();
 
 private:
-    MainWindow *window;
-    MpvHandler *mpv;
+    BakaEngine *baka;
 
     QElapsedTimer *elapsedTimer;
 
