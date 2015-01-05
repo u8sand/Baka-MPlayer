@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>330</width>
+    <width>430</width>
     <height>420</height>
    </rect>
   </property>
@@ -169,7 +169,7 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
 	background: transparent;
 }</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_7">
+  <layout class="QVBoxLayout" name="verticalLayout_6">
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="styleSheet">
@@ -266,33 +266,41 @@ QTabBar::tab:!selected {
         </widget>
        </item>
        <item>
-        <layout class="QVBoxLayout" name="verticalLayout_6">
-         <item>
-          <widget class="QCheckBox" name="gestureCheckBox">
-           <property name="text">
-            <string>Mouse &amp;Gesture Support</string>
-           </property>
-           <property name="checked">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="label_5">
-           <property name="styleSheet">
-            <string notr="true">QLabel {
+        <widget class="QGroupBox" name="groupBox_4">
+         <property name="title">
+          <string>Mouse Gesture</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_7">
+          <property name="spacing">
+           <number>4</number>
+          </property>
+          <item>
+           <widget class="QCheckBox" name="gestureCheckBox">
+            <property name="text">
+             <string>&amp;Enable</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_5">
+            <property name="styleSheet">
+             <string notr="true">QLabel {
 	color: #B8B8B8;
 }</string>
-           </property>
-           <property name="text">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Click &amp;amp; drag cursor up/down to change volume&lt;br&gt;Click &amp;amp; drag cursor left/right to seek&lt;/b&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="wordWrap">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
+            </property>
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Click &amp;amp; drag cursor up/down to change volume&lt;br&gt;Click &amp;amp; drag cursor left/right to seek&lt;/b&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -385,22 +393,55 @@ QTableWidget::item:selected {
          </attribute>
          <column>
           <property name="text">
+           <string>Key</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
            <string>Command</string>
           </property>
          </column>
          <column>
           <property name="text">
-           <string>Key</string>
+           <string>Label</string>
           </property>
          </column>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="resetKeysButton">
-         <property name="text">
-          <string>&amp;RESET KEYS TO DEFAULT</string>
-         </property>
-        </widget>
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <item>
+          <widget class="QKeySequenceEdit" name="keySequenceEdit"/>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit">
+           <property name="placeholderText">
+            <string>Command</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_2">
+           <property name="placeholderText">
+            <string>Label (optional)</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="addKeyButton">
+           <property name="styleSheet">
+            <string notr="true">/* addKeyButton */
+
+QPushButton {
+    min-width: 0px;
+}</string>
+           </property>
+           <property name="text">
+            <string>&amp;ADD</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
       </layout>
      </widget>
@@ -585,15 +626,26 @@ QTableWidget::item:selected {
   </layout>
  </widget>
  <tabstops>
-  <tabstop>tabWidget</tabstop>
-  <tabstop>alwaysRadioButton</tabstop>
-  <tabstop>playingRadioButton</tabstop>
-  <tabstop>neverRadioButton</tabstop>
+  <tabstop>formatComboBox</tabstop>
+  <tabstop>templateLineEdit</tabstop>
+  <tabstop>changeButton</tabstop>
+  <tabstop>closeButton</tabstop>
   <tabstop>groupBox_2</tabstop>
   <tabstop>hidePopupCheckBox</tabstop>
-  <tabstop>closeButton</tabstop>
+  <tabstop>gestureCheckBox</tabstop>
+  <tabstop>langComboBox</tabstop>
+  <tabstop>playingRadioButton</tabstop>
+  <tabstop>alwaysRadioButton</tabstop>
+  <tabstop>infoWidget</tabstop>
+  <tabstop>keySequenceEdit</tabstop>
+  <tabstop>lineEdit</tabstop>
+  <tabstop>lineEdit_2</tabstop>
+  <tabstop>addKeyButton</tabstop>
+  <tabstop>neverRadioButton</tabstop>
+  <tabstop>tabWidget</tabstop>
   <tabstop>autoFitCheckBox</tabstop>
   <tabstop>comboBox</tabstop>
+  <tabstop>checkBox</tabstop>
  </tabstops>
  <resources/>
  <connections/>
