@@ -2,6 +2,7 @@
 #define BAKAENGINE_H
 
 #include <QObject>
+#include <QStringList>
 
 class MainWindow;
 class MpvHandler;
@@ -18,10 +19,20 @@ public:
     MpvHandler *mpv;
     Settings *settings;
 
+public slots:
     void LoadSettings();
     void SaveSettings();
 
-protected:
+    void Command(QString command);
+
+protected slots:
+    void BakaCommand(QStringList command);
+
+    void BakaPrint(QString);
+    void MpvPrint(QString);
+    void InvalidCommand(QString);
+    void InvalidParameter(QString);
+
     void Load2_0_2();
     void Load2_0_1();
     void Load2_0_0();
@@ -34,6 +45,8 @@ protected:
 
     void LoadMpv2_0_0();
     void LoadMpv1_9_9();
+
+    void LoadInput2_0_2();
 
 signals:
 

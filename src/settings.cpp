@@ -56,6 +56,8 @@ void Settings::Save()
         QString tmp;
         for(SettingsData::iterator group_iter = data.begin(); group_iter != data.end(); ++group_iter)
         {
+            if(group_iter->empty()) // skip empty groups
+                continue;
             fout << "[" << group_iter.key() << "]" << endl; // output: [foo]
             for(SettingsGroupData::iterator entry_iter = group_iter->begin(); entry_iter != group_iter->end(); ++entry_iter)
             {

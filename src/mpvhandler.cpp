@@ -65,7 +65,7 @@ bool MpvHandler::event(QEvent *event)
                 break;
             }
             if(event->error < 0)
-                emit messageSignal(QString("[mpv]: %0").arg(mpv_error_string(event->error)));
+                emit messageSignal(mpv_error_string(event->error));
             switch (event->event_id)
             {
             case MPV_EVENT_PROPERTY_CHANGE:
@@ -130,7 +130,7 @@ bool MpvHandler::event(QEvent *event)
             {
                 mpv_event_log_message *message = static_cast<mpv_event_log_message*>(event->data);
                 if(message != nullptr)
-                    emit messageSignal(QString("[mpv]: %0").arg(message->text));
+                    emit messageSignal(message->text);
                 break;
             }
             default: // unhandled events
@@ -681,5 +681,5 @@ void MpvHandler::Command(const char *args[])
 
 void MpvHandler::NotInitialized()
 {
-    emit messageSignal(QString("[mpv]: %0\n").arg(tr("mpv was not initialized")));
+    emit messageSignal(tr("mpv was not initialized\n"));
 }

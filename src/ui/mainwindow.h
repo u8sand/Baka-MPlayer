@@ -9,6 +9,7 @@
 #include <QMouseEvent>
 #include <QWheelEvent>
 #include <QKeyEvent>
+#include <QMap>
 #include <QEvent>
 #include <QPoint>
 #include <QTimer>
@@ -101,6 +102,8 @@ private:
          debug,
          gestures;
 
+    QMap<QString, QString> input;
+
 public slots:
     void setLang(QString s)          { emit langChanged(lang = s); }
     void setOnTop(QString s)         { emit onTopChanged(onTop = s); }
@@ -109,6 +112,7 @@ public slots:
     void setRemaining(bool b)        { emit remainingChanged(remaining = b); }
     void setScreenshotDialog(bool b) { emit screenshotDialogChanged(screenshotDialog = b); }
     void setDebug(bool b)            { emit debugChanged(debug = b); }
+
 signals:
     void langChanged(QString);
     void onTopChanged(QString);

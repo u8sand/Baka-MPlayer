@@ -569,13 +569,6 @@ MainWindow::MainWindow(QWidget *parent):
                 ui->actionShow_Subtitles->setChecked(b);
             });
 
-    connect(mpv, &MpvHandler::messageSignal,
-            [=](QString msg)
-            {
-                ui->outputTextEdit->moveCursor(QTextCursor::End);
-                ui->outputTextEdit->insertPlainText(msg);
-            });
-
     // ui
 
     connect(ui->seekBar, &SeekBar::valueChanged,                        // Playback: Seekbar clicked
@@ -737,7 +730,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->inputLineEdit, &CustomLineEdit::submitted,
             [=](QString s)
             {
-                mpv->CommandString(s);
+                baka->Command(s);
                 ui->inputLineEdit->setText("");
             });
                                                                         // File ->
@@ -1300,6 +1293,26 @@ void MainWindow::wheelEvent(QWheelEvent *event)
 void MainWindow::keyPressEvent(QKeyEvent *event)
 {
     // keyboard shortcuts
+    bool handled = false;
+    if(!input.empty())
+    {
+        QString modifier = QString();
+
+        for(QMap<QString, QString>::iterator entry_iter = input.begin(); entry_iter != input.end(); ++entry_iter)
+        {
+            if(event->modifiers() & Qt::ShiftModifier)   modifier += "Shift+";
+            if(event->modifiers() & Qt::ControlModifier) modifier += "Ctrl+";
+            if(event->modifiers() & Qt::AltModifier)     modifier += "Alt+";
+            if(event->modifiers() & Qt::MetaModifier)    modifier += "Meta+";
+            if(QKeySequence::fromString(modifier + event->key()) == QKeySequence(entry_iter.key()))
+            {
+                baka->Command(entry_iter.value());
+                handled = true;
+            }
+        }
+    }
+    if(handled)
+        return;
     switch(event->key())
     {
         // Playback/Seeking
@@ -1309,18 +1322,21 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
         case Qt::Key_Right:
             mpv->Seek(5, true);
             break;
-
         // Playlist Control
         case Qt::Key_Up:
-            if(ui->splitter->position() != 0)
+            if(isPlaylistVisible())
                 ui->playlistWidget->SelectItem(ui->playlistWidget->PreviousItem());
             break;
         case Qt::Key_Down:
-            if(ui->splitter->position() != 0)
+            if(isPlaylistVisible())
                 ui->playlistWidget->SelectItem(ui->playlistWidget->NextItem());
             break;
+        case Qt::Key_Delete:
+            if(isPlaylistVisible() && !ui->inputLineEdit->hasFocus() && !ui->searchBox->hasFocus())
+                ui->playlistWidget->RemoveItem(ui->playlistWidget->currentRow());
+            break;
         case Qt::Key_Return:
-            if(ui->splitter->position() != 0)
+            if(isPlaylistVisible() && !ui->inputLineEdit->hasFocus())
                 mpv->PlayFile(ui->playlistWidget->CurrentItem());
             break;
         case Qt::Key_Escape:

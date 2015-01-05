@@ -12,6 +12,7 @@ void BakaEngine::Load2_0_2()
 {
     LoadBaka2_0_2();
     LoadMpv2_0_0();
+    LoadInput2_0_2();
 }
 
 void BakaEngine::LoadBaka2_0_2()
@@ -40,4 +41,13 @@ void BakaEngine::LoadBaka2_0_2()
 #endif
     settings->endGroup();
     window->UpdateRecentFiles();
+}
+
+void BakaEngine::LoadInput2_0_2()
+{
+    settings->beginGroup("input");
+    for(Settings::SettingsGroupData::iterator entry = settings->map().begin(); entry != settings->map().end(); ++entry)
+        if(entry.key() != QString())
+            window->input[entry.key()] = entry.value();
+    settings->endGroup();
 }
