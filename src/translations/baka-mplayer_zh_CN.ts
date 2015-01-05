@@ -109,6 +109,11 @@ Some features may not work and changed settings will not be saved.</source>
 </translation>
     </message>
     <message>
+        <source>&apos;%0&apos;&apos; requires parameters
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>screenshot%#04n</source>
         <translation>截图%#04n</translation>
     </message>

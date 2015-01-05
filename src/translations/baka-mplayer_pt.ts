@@ -39,24 +39,7 @@ Translations
 - Korean &lt;godly-devotion&gt;
 - Portuguese &lt;u8sand&gt;
 - Russian &lt;suhr&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>mpv - video player based on MPlayer/mplayer2
-GPLv2 &lt;mpv.io&gt;
-
-Noto Sans -  font family with many supported characters
-Apache License, version 2.0 &lt;Google&gt;
-
-Download icon
-CC BY 3.0 &lt;Sasha Mescheryakov&gt;
-
-Translations
-- Chinese &lt;amazingfate&gt;
-- Korean &lt;godly-devotion&gt;
-- Portugese &lt;u8sand&gt;
-- Russian &lt;suhr&gt;</source>
-        <translation type="obsolete">mpv - aparelho de vídeo de MPlayer/mplayer2
+        <translation>mpv - aparelho de vídeo de MPlayer/mplayer2
 GPLv2 &lt;mpv.io&gt;
 
 Noto Sans -  família de fontes com muitos caracteres suportados
@@ -67,6 +50,7 @@ CC BY 3.0 &lt;Sasha Mescheryakov&gt;
 
 Traduções
 - Chinês &lt;amazingfate&gt;
+- Italiano &lt;Aloysius&gt;
 - Coreano &lt;godly-devotion&gt;
 - Português &lt;u8sand&gt;
 - Russo &lt;suhr&gt;</translation>
@@ -103,27 +87,35 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <name>BakaEngine</name>
     <message>
         <source>Settings version not recognized</source>
-        <translation type="unfinished">Versão configurações não reconhecido</translation>
+        <translation>Versão configurações não reconhecido</translation>
     </message>
     <message>
         <source>The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.
 Some features may not work and changed settings will not be saved.</source>
-        <translation type="unfinished">O arquivo de configurações foi feita por uma versão mais nova do baka-mplayer; por favor, atualize esta versão ou procurar ajuda de desenvolvedores.
+        <translation>O arquivo de configurações foi feita por uma versão mais nova do baka-mplayer; por favor, atualize esta versão ou procurar ajuda de desenvolvedores.
 Alguns recursos podem não funcionar e configurações alteradas não serão salvas.</translation>
     </message>
     <message>
         <source>invalid command &apos;%0&apos;
 </source>
-        <translation type="unfinished"></translation>
+        <translation>comando inválido &apos;%0&apos;
+</translation>
     </message>
     <message>
         <source>invalid parameter &apos;%0&apos;
 </source>
-        <translation type="unfinished"></translation>
+        <translation>parâmetro inválido &apos;%0&apos;
+</translation>
+    </message>
+    <message>
+        <source>&apos;%0&apos;&apos; requires parameters
+</source>
+        <translation>&apos;%0&apos; requer parâmetros
+</translation>
     </message>
     <message>
         <source>screenshot%#04n</source>
-        <translation type="unfinished">foto%#04n</translation>
+        <translation>foto%#04n</translation>
     </message>
 </context>
 <context>
@@ -421,11 +413,11 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Alt+6</source>
-        <translation type="unfinished">Alt+6</translation>
+        <translation>Alt+6</translation>
     </message>
     <message>
         <source>Ctrl+G</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+G</translation>
     </message>
     <message>
         <source>E&amp;xit</source>
@@ -433,7 +425,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Show &amp;Command Line</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar Linha de &amp;Comando</translation>
     </message>
     <message>
         <source>&amp;New Player</source>
@@ -605,10 +597,6 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
         <translation>Ctrl+J</translation>
     </message>
     <message>
-        <source>Ctrl+X</source>
-        <translation type="obsolete">Ctrl+X</translation>
-    </message>
-    <message>
         <source>Ctrl+D</source>
         <translation>Ctrl+D</translation>
     </message>
@@ -670,7 +658,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>150%</source>
-        <translation type="unfinished">200% {150%?}</translation>
+        <translation>150%</translation>
     </message>
     <message>
         <source>Alt+5</source>
@@ -731,10 +719,6 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     <message>
         <source>&amp;This File</source>
         <translation>&amp;Esse arquivo</translation>
-    </message>
-    <message>
-        <source>Show D&amp;ebug Output</source>
-        <translation type="obsolete">&amp;Vista Mensagens de Depuração</translation>
     </message>
     <message>
         <source>Ctrl+E</source>
@@ -839,16 +823,6 @@ Nota: O valor deve ser de %0 - %1</translation>
         <translation>Arquivos de Legendas</translation>
     </message>
     <message>
-        <source>Settings version not recognized</source>
-        <translation type="obsolete">Versão configurações não reconhecido</translation>
-    </message>
-    <message>
-        <source>The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.
-Some features may not work and changed settings will not be saved.</source>
-        <translation type="obsolete">O arquivo de configurações foi feita por uma versão mais nova do baka-mplayer; por favor, atualize esta versão ou procurar ajuda de desenvolvedores.
-Alguns recursos podem não funcionar e configurações alteradas não serão salvas.</translation>
-    </message>
-    <message>
         <source>Media Files</source>
         <translation>Arquivos de Mídia</translation>
     </message>
@@ -867,18 +841,6 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     <message>
         <source>File %0 of %1</source>
         <translation>Arquivo %0 de %1</translation>
-    </message>
-    <message>
-        <source>R&amp;emove from Playlist</source>
-        <translation type="obsolete">R&amp;emover da Lista</translation>
-    </message>
-    <message>
-        <source>&amp;Delete from Disk</source>
-        <translation type="obsolete">&amp;Excluir do disco</translation>
-    </message>
-    <message>
-        <source>&amp;Refresh</source>
-        <translation type="obsolete">&amp;Refrescar</translation>
     </message>
     <message>
         <source>Open Subtitle File</source>
@@ -905,19 +867,6 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
         <translation>Salvos em &quot;%0&quot;, sem legendas</translation>
     </message>
     <message>
-        <source>Seek Forward</source>
-        <translation type="obsolete">Procurar para a Frente</translation>
-    </message>
-    <message>
-        <source>Seek Backward</source>
-        <translation type="obsolete">Procurar para Trás</translation>
-    </message>
-    <message>
-        <source>Exit Fullscreen/Boss Key</source>
-        <translatorcomment>Don&apos;t think boss key has a translation</translatorcomment>
-        <translation type="obsolete">Saída Tela Cheia/Boss Key</translation>
-    </message>
-    <message>
         <source>Open File</source>
         <translation>Arquivo Aberto</translation>
     </message>
@@ -925,36 +874,25 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
 <context>
     <name>MpvHandler</name>
     <message>
-        <source>Setting type was parsed as %0</source>
-        <translation type="obsolete">Tipo de configurações foram interpretado esta %0</translation>
-    </message>
-    <message>
-        <source>screenshot%#04n</source>
-        <translation type="obsolete">foto%#04n</translation>
-    </message>
-    <message>
-        <source>mpv was not initialized</source>
-        <translation type="obsolete">mpv não foi inicializado</translation>
-    </message>
-    <message>
         <source>mpv was not initialized
 </source>
-        <translation type="unfinished"></translation>
+        <translation>mpv não foi inicializado
+</translation>
     </message>
 </context>
 <context>
     <name>PlaylistWidget</name>
     <message>
         <source>R&amp;emove from Playlist</source>
-        <translation type="unfinished">R&amp;emover da Lista</translation>
+        <translation>R&amp;emover da Lista</translation>
     </message>
     <message>
         <source>&amp;Delete from Disk</source>
-        <translation type="unfinished">&amp;Excluir do disco</translation>
+        <translation>&amp;Excluir do Disco</translation>
     </message>
     <message>
         <source>&amp;Refresh</source>
-        <translation type="unfinished">&amp;Refrescar</translation>
+        <translation>&amp;Refrescar</translation>
     </message>
 </context>
 <context>
@@ -995,11 +933,11 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Click &amp;amp; drag cursor up/down to change volume&lt;br&gt;Click &amp;amp; drag cursor left/right to seek&lt;/b&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Clique e arraste o cursor para cima e para baixo para alterar o volume&lt;br/&gt;Clique e arraste o cursor para a esquerda e direita para buscar&lt;/b&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Language:</source>
-        <translation type="unfinished"></translation>
+        <translation>Língua:</translation>
     </message>
     <message>
         <source>Video</source>
@@ -1078,35 +1016,35 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Mouse Gesture</source>
-        <translation type="unfinished"></translation>
+        <translation>Gestos do Mouse</translation>
     </message>
     <message>
         <source>&amp;Enable</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Possibilitar</translation>
     </message>
     <message>
         <source>Keys</source>
-        <translation type="unfinished"></translation>
+        <translation>Teclas</translation>
     </message>
     <message>
         <source>Key</source>
-        <translation type="unfinished"></translation>
+        <translation>Tecla</translation>
     </message>
     <message>
         <source>Command</source>
-        <translation type="unfinished"></translation>
+        <translation>Comando</translation>
     </message>
     <message>
         <source>Label</source>
-        <translation type="unfinished"></translation>
+        <translation>Legenda</translation>
     </message>
     <message>
         <source>Label (optional)</source>
-        <translation type="unfinished"></translation>
+        <translation>Label (opcional)</translation>
     </message>
     <message>
         <source>&amp;ADD</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Adicionar</translation>
     </message>
 </context>
 <context>
@@ -1200,10 +1138,6 @@ Version: %0</source>
 </source>
         <translation>erro: %0
 </translation>
-    </message>
-    <message>
-        <source>Downloading update...</source>
-        <translation type="obsolete">Baixando de atualização...</translation>
     </message>
     <message>
         <source>Download Complete</source>

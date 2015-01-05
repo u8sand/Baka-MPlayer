@@ -136,6 +136,11 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>&apos;%0&apos;&apos; requires parameters
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>screenshot%#04n</source>
         <translation type="unfinished">screenshot%#04n</translation>
     </message>

@@ -106,6 +106,11 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>&apos;%0&apos;&apos; requires parameters
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>screenshot%#04n</source>
         <translation type="unfinished">istantanea%#04n</translation>
     </message>
