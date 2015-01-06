@@ -1580,9 +1580,17 @@ void MainWindow::DimLights(bool dim)
         return;
     }
     if(dim)
+    {
         dimDialog->show();
+        activateWindow();
+        setFocus();
+    }
     else
+    {
         dimDialog->close();
+        activateWindow();
+        setFocus();
+    }
 }
 
 void MainWindow::TakeScreenshot(bool subs)
