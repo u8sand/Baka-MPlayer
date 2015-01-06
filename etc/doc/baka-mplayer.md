@@ -5,6 +5,8 @@
 Baka MPlayer is a free and open source, cross-platform, **libmpv** based multimedia player.
 Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.
 
+This manual is based on the status of the `master` branch (not the latest released version).
+
 ## Features
 
 ### Playlist
@@ -93,17 +95,14 @@ Note that the `[mpv]` section is using mpv's options. See mpv's manual for a lis
 4. Run `./configure CONFIG+=begin_translations` to prepare your translation file.
 5. Go to `src/translations/` and you will now find your language's `.ts` file.
 6. Open the `.ts` file with Qt Linguist and proceed to translate into your language.
-7. Upon completion of the translation, configure and compile with translation support then check.
-8. Before commiting execute `./configure CONFIG+=update_translations` this will trim the .ts file to the minimum required information for release.
+7. Upon completion of the translation, run `./configure CONFIG+=update_translations`. This will trim the .ts file to the minimum required information for release.
 
 ### To update an existing translation
 
 1. Update your local repo to make sure everything is up to date.
 2. Run `./configure CONFIG+=begin_translations` to regenerate the `.ts` files.
 3. Make your changes.
-4. Configure and compile with translation support and check.
-5. Run `./configure CONFIG+=update_translations` to trim the `.ts` files.
-6. Commit your changes.
+4. Run `./configure CONFIG+=update_translations` to trim the `.ts` files.
 
 If you want to submit a translation, you can create a git pull request or send it to us through irc.
 
