@@ -16,7 +16,7 @@ Settings::~Settings()
 void Settings::Load()
 {
     QFile f(file);
-    if(f.open(QFile::ReadOnly))
+    if(f.open(QFile::ReadOnly | QIODevice::Text))
     {
         QTextStream fin(&f);
         fin.setCodec("UTF-8");
@@ -39,7 +39,7 @@ void Settings::Load()
 void Settings::Save()
 {
     QFile f(file);
-    if(f.open(QFile::WriteOnly | QFile::Truncate))
+    if(f.open(QFile::WriteOnly | QFile::Truncate | QIODevice::Text))
     {
         QTextStream fout(&f);
         fout.setCodec("UTF-8");
