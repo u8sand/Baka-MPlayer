@@ -12,11 +12,14 @@ Its simple design reflects the idea for an uncluttered, simple, and enjoyable en
 * libmpv-dev
 * qtbase5-dev (>= 5.2.0)
   * qt5-qmake
+  * qttools5-dev-tools
   * qtdeclarative5-dev
   * libqt5svg5-dev
   * libqt5x11extras5-dev
   * libqt5network5
 * youtube-dl (optional, for streaming youtube videos)
+
+Note: Packages may be named slightly different for each distro
 
 ## Compilation
 
@@ -52,7 +55,7 @@ If your distribution does not provide a package, you can compile it from source.
 	cd "Baka-MPlayer"
 	./configure
 	make -j `grep -c ^processor /proc/cpuinfo`
-	make install
+	sudo make install
 
 The configuration file will be created on first run and will be written to `~/.config/bakamplayer.ini`.
 
