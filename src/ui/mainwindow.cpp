@@ -1508,7 +1508,7 @@ void MainWindow::FitWindow(int percent, bool msg)
     QRect mG = ui->mpvFrame->geometry(),                          // mpv geometry
           wfG = frameGeometry(),                                  // frame geometry of window (window geometry + window frame)
           wG = geometry(),                                        // window geometry
-          aG = qApp->desktop()->availableGeometry(pos());         // available geometry of the screen we're in--(geometry not including the taskbar)
+          aG = qApp->desktop()->availableGeometry(wfG.center());  // available geometry of the screen we're in--(geometry not including the taskbar)
 
     double a, // aspect ratio
            w, // width of vid we want
@@ -1560,14 +1560,27 @@ void MainWindow::FitWindow(int percent, bool msg)
         dH = aG.height(); // set the height equal to the available area
         h = dH - (wfG.height() - mG.height()); // calculate the height
         w = h * a;                             // calculate the width accordingly
-        //dW = w + (wfG.width() - mG.width());   // calculate new display width
+        dW = w + (wfG.width() - mG.width());   // calculate new display width
     }
-    // set window position
-    setGeometry(QStyle::alignedRect(Qt::LeftToRight,
-                                    Qt::AlignCenter,
-                                    QSize(int(w) + (wG.width() - mG.width()), // width of mpv frame we want + everything else
-                                          int(h) + (wG.height() - mG.height())), // height of mpv frame we want + everything else
-                                    percent == 0 ? wG : aG)); // center in window (autofit) or on our screen
+
+    // get the centered rectangle we want
+    QRect rect = QStyle::alignedRect(Qt::LeftToRight,
+                                     Qt::AlignCenter,
+                                     QSize(dW,
+                                           dH),
+                                     percent == 0 ? wfG : aG); // center in window (autofit) or on our screen
+
+    // adjust the rect to compensate for the frame
+    rect.setLeft(rect.left() + (wG.left() - wfG.left()));
+    rect.setTop(rect.top() + (wG.top() - wfG.top()));
+    rect.setRight(rect.right() - (wfG.right() - wG.right()));
+    rect.setBottom(rect.bottom() - (wfG.bottom() - wG.bottom()));
+
+    // finally set the geometry of the window
+    setGeometry(rect);
+
+    // note: the above block is required because there is not setFrameGeometry function
+
     if(msg)
         mpv->ShowText(tr("Fit Window: %0%").arg(percent == 0 ? tr("autofit") : QString::number(percent)));
 }
