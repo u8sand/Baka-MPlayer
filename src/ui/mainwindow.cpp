@@ -1504,7 +1504,7 @@ void MainWindow::FitWindow(int percent, bool msg)
 
     mpv->LoadVideoParams();
     const Mpv::VideoParams &vG = mpv->getFileInfo().video_params; // video geometry
-    QRect mG = ui->mpvFrame->frameGeometry(),                     // mpv frame geometry
+    QRect mG = ui->mpvFrame->geometry(),                          // mpv geometry
           wfG = frameGeometry(),                                  // frame geometry of window (window geometry + window frame)
           wG = geometry(),                                        // window geometry
           aG = qApp->desktop()->availableGeometry(pos());         // available geometry of the screen we're in--(geometry not including the taskbar)
@@ -1523,11 +1523,13 @@ void MainWindow::FitWindow(int percent, bool msg)
     {
         // set our current mpv frame dimensions
         double w = mG.width(),
-               h = mG.height();
+               h = mG.height(),
+               cmp = w/h - a, // comparison
+               eps = 0.0001;  // epsilon (small value to deal with rounding errors) we consider -eps < 0 < eps  == 0
 
-        if(double(w)/h > a) // w / h > a means we're too wide
+        if(cmp < -eps) // too wide
             w = h * a; // calculate width based on the correct height
-        else
+        else if(cmp > eps) // too long
             h = w / a; // calculate height based on the correct width
 
         // set window position
@@ -1564,8 +1566,8 @@ void MainWindow::FitWindow(int percent, bool msg)
         // set window position
         setGeometry(QStyle::alignedRect(Qt::LeftToRight,
                                         Qt::AlignCenter,
-                                        QSize(w + (wG.width() - mG.width()), // width of mpv frame we want + everything else
-                                              h + (wG.height() - mG.height())), // height of mpv frame we want + everything else
+                                        QSize(int(w) + (wG.width() - mG.width()), // width of mpv frame we want + everything else
+                                              int(h) + (wG.height() - mG.height())), // height of mpv frame we want + everything else
                                         aG)); // center in our screen
         if(msg)
             mpv->ShowText(tr("Fit Window: %0%").arg(QString::number(percent)));
