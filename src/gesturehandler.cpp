@@ -1,6 +1,7 @@
 #include "gesturehandler.h"
 
 #include <QApplication>
+#include <QDesktopWidget>
 
 #include "bakaengine.h"
 #include "ui/mainwindow.h"
@@ -12,6 +13,9 @@ GestureHandler::GestureHandler(QObject *parent):
     elapsedTimer(nullptr)
 {
     baka = static_cast<BakaEngine*>(parent);
+
+    timer_threshold = 10; // 10ms works quite well
+    gesture_threshold = 25; // 25 pixels is probably fine for anything
 }
 
 GestureHandler::~GestureHandler()
@@ -31,6 +35,9 @@ bool GestureHandler::Begin(int gesture_type, QPoint mousePos, QPoint windowPos)
         elapsedTimer->start();
         this->gesture_type = gesture_type;
         this->gesture_state = NONE;
+        // calculate pixel ratios based on physical dpi
+        hRatio = qApp->desktop()->physicalDpiX() / 800.0;
+        vRatio = qApp->desktop()->physicalDpiY() / 450.0;
     }
     else
         return false;
@@ -49,7 +56,7 @@ bool GestureHandler::Begin(int gesture_type, QPoint mousePos, QPoint windowPos)
 
 bool GestureHandler::Process(QPoint mousePos)
 {
-    if(elapsedTimer && elapsedTimer->elapsed() > 10) // 10ms seems pretty good for all purposes
+    if(elapsedTimer && elapsedTimer->elapsed() > timer_threshold) // 10ms seems pretty good for all purposes
     {
         QPoint delta = mousePos - start.mousePos;
 
@@ -60,9 +67,9 @@ bool GestureHandler::Process(QPoint mousePos)
             switch(gesture_state)
             {
             case NONE:
-                if(abs(delta.x()) >= abs(delta.y())+25) // 25 px seems to be a pretty good threshold
+                if(abs(delta.x()) >= abs(delta.y()) + gesture_threshold)
                     gesture_state = SEEKING;
-                else if(abs(delta.y()) >= abs(delta.x())+25)
+                else if(abs(delta.y()) >= abs(delta.x()) + gesture_threshold)
                     gesture_state = ADJUSTING_VOLUME;
                 break;
             case SEEKING:

@@ -35,8 +35,10 @@ private:
 
     QElapsedTimer *elapsedTimer;
 
-    double hRatio = 0.05,
-           vRatio = 0.10;
+    double hRatio,
+           vRatio;
+    int timer_threshold,
+        gesture_threshold;
 
     int gesture_type,
         gesture_state;
