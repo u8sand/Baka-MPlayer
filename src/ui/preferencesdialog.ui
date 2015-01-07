@@ -24,7 +24,7 @@
 
 QTableWidget QHeaderView::section {
 	padding: 4px 2px;
-	background: #424242;
+	background: #454A4D;
 	border: 1px solid #212121;
 }
 
@@ -194,7 +194,7 @@ QTabBar::tab:!selected {
 }</string>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="tab">
       <attribute name="title">
