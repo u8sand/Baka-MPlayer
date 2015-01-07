@@ -1503,12 +1503,16 @@ void MainWindow::FitWindow(int percent, bool msg)
         return;
 
     mpv->LoadVideoParams();
+
     const Mpv::VideoParams &vG = mpv->getFileInfo().video_params; // video geometry
     QRect mG = ui->mpvFrame->geometry(),                          // mpv geometry
           wfG = frameGeometry(),                                  // frame geometry of window (window geometry + window frame)
           wG = geometry(),                                        // window geometry
           aG = qApp->desktop()->availableGeometry(pos());         // available geometry of the screen we're in--(geometry not including the taskbar)
-    double a; // aspect ratio
+
+    double a, // aspect ratio
+           w, // width of vid we want
+           h; // height of vid we want
 
     // obtain natural video aspect ratio
     if(vG.width == 0 || vG.height == 0) // width/height are 0 when there is no output
@@ -1522,56 +1526,50 @@ void MainWindow::FitWindow(int percent, bool msg)
     if(percent == 0) // fit to window
     {
         // set our current mpv frame dimensions
-        double w = mG.width(),
-               h = mG.height(),
-               cmp = w/h - a, // comparison
-               eps = 0.0001;  // epsilon (small value to deal with rounding errors) we consider -eps < 0 < eps  == 0
+        w = mG.width();
+        h = mG.height();
 
-        if(cmp < -eps) // too wide
+        double cmp = w/h - a, // comparison
+               eps = 0.01;  // epsilon (deal with rounding errors) we consider -eps < 0 < eps ==> 0
+
+        if(cmp > eps) // too wide
             w = h * a; // calculate width based on the correct height
-        else if(cmp > eps) // too long
+        else if(cmp < -eps) // too long
             h = w / a; // calculate height based on the correct width
-
-        // set window position
-        setGeometry(QStyle::alignedRect(Qt::LeftToRight,
-                                        Qt::AlignCenter,
-                                        QSize(int(w) + (wG.width() - mG.width()), // width of mpv frame we want + everything else
-                                              int(h) + (wG.height() - mG.height())), // height of mpv frame we want + everything else
-                                        wG)); // center in our current location
-        if(msg)
-            mpv->ShowText(tr("Auto Fit Window"));
     }
     else // fit into desired dimensions
     {
-        double scale = percent / 100.0, // get scale
-               w = vG.width * scale,  // get scaled width
-               h = vG.height * scale, // get scaled height
-               dW = w + (wfG.width() - mG.width()),   // calculate display width of the window
-               dH = h + (wfG.height() - mG.height()); // calculate display height of the window
+        double scale = percent / 100.0; // get scale
 
-        if(dW > aG.width()) // if the width is bigger than the available area
-        {
-            dW = aG.width(); // set the width equal to the available area
-            w = dW - (wfG.width() - mG.width());    // calculate the width
-            h = w / a;                              // calculate height
-            dH = h + (wfG.height() - mG.height());  // calculate new display height
-        }
-        if(dH > aG.height()) // if the height is bigger than the available area
-        {
-            dH = aG.height(); // set the height equal to the available area
-            h = dH - (wfG.height() - mG.height()); // calculate the height
-            w = h * a;                             // calculate the width accordingly
-            //dW = w + (wfG.width() - mG.width());   // calculate new display width
-        }
-        // set window position
-        setGeometry(QStyle::alignedRect(Qt::LeftToRight,
-                                        Qt::AlignCenter,
-                                        QSize(int(w) + (wG.width() - mG.width()), // width of mpv frame we want + everything else
-                                              int(h) + (wG.height() - mG.height())), // height of mpv frame we want + everything else
-                                        aG)); // center in our screen
-        if(msg)
-            mpv->ShowText(tr("Fit Window: %0%").arg(QString::number(percent)));
+        w = vG.width * scale;  // get scaled width
+        h = vG.height * scale; // get scaled height
     }
+
+    double dW = w + (wfG.width() - mG.width()),   // calculate display width of the window
+           dH = h + (wfG.height() - mG.height()); // calculate display height of the window
+
+    if(dW > aG.width()) // if the width is bigger than the available area
+    {
+        dW = aG.width(); // set the width equal to the available area
+        w = dW - (wfG.width() - mG.width());    // calculate the width
+        h = w / a;                              // calculate height
+        dH = h + (wfG.height() - mG.height());  // calculate new display height
+    }
+    if(dH > aG.height()) // if the height is bigger than the available area
+    {
+        dH = aG.height(); // set the height equal to the available area
+        h = dH - (wfG.height() - mG.height()); // calculate the height
+        w = h * a;                             // calculate the width accordingly
+        //dW = w + (wfG.width() - mG.width());   // calculate new display width
+    }
+    // set window position
+    setGeometry(QStyle::alignedRect(Qt::LeftToRight,
+                                    Qt::AlignCenter,
+                                    QSize(int(w) + (wG.width() - mG.width()), // width of mpv frame we want + everything else
+                                          int(h) + (wG.height() - mG.height())), // height of mpv frame we want + everything else
+                                    percent == 0 ? wG : aG)); // center in window (autofit) or on our screen
+    if(msg)
+        mpv->ShowText(tr("Fit Window: %0%").arg(percent == 0 ? tr("autofit") : QString::number(percent)));
 }
 
 void MainWindow::SetAspectRatio(QString aspect)
