@@ -787,7 +787,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->action_Full_Screen, &QAction::triggered,                // View -> Full Screen
             [=]
             {
-                FullScreen((windowState() & Qt::WindowFullScreen) == 0);
+                FullScreen(!isFullScreen());
             });
 
     connect(ui->actionWith_Subtitles, &QAction::triggered,              // View -> Take Screenshot -> With Subtitles
