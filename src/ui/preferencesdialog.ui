@@ -75,9 +75,8 @@ QComboBox {
 	border-radius: 2px;
 	padding: 2px;
 }
-QPushButton:focus {
+QComboBox:focus {
 	border: 1px solid whitesmoke;
-	outline: none;
 }
 QComboBox::drop-down {
     border: none;
@@ -111,6 +110,7 @@ QPushButton {
 }
 QPushButton:focus {
 	border: 1px solid whitesmoke;
+	outline: none;
 }
 QPushButton:pressed {
     background: #005A6A;
