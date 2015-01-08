@@ -481,7 +481,7 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
 }
 QSlider::handle:horizontal:disabled,
 QSlider::sub-page:horizontal:disabled {
-	background: #0D0D0D;
+	background: #00262E;
 }
 QSlider::handle:horizontal {
 	/* handle color */
@@ -491,7 +491,7 @@ QSlider::handle:horizontal {
 }
 QSlider::groove:horizontal {
 	/* the non-progressed color */
-	background: #0D0D0D;
+	background: #00262E;
 }
 QSlider::sub-page:horizontal {
 	/* the progress color */

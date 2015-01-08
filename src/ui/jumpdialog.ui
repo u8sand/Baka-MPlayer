@@ -56,15 +56,16 @@ QPushButton {
     min-width: 76px;
 	min-height: 17px;
 }
-QPushButton:default {
+QPushButton:focus {
 	border: 1px solid whitesmoke;
+	outline: none;
 }
 QPushButton:pressed {
     background: #005A6A;
 }
 QPushButton:disabled {
 	background: black;
-	border: 1px solid #008098;
+	border: 1px solid #4C4C4C;
     color: #B8B8B8;
 }</string>
   </property>
@@ -202,6 +203,12 @@ QPushButton:disabled {
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>hourBox</tabstop>
+  <tabstop>minBox</tabstop>
+  <tabstop>secBox</tabstop>
+  <tabstop>okButton</tabstop>
+ </tabstops>
  <resources>
   <include location="../rsclist.qrc"/>
  </resources>
