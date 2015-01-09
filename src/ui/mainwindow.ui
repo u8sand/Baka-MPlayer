@@ -39,12 +39,12 @@ QMenuBar, QMenuBar::item {
 	background: #1A1A1A;
 }
 QMenuBar::item:selected {
-	background: #424242;
+	background: #008098;
 }
 
 QMenu {
-	background: #1A1A1A;
-    border: 1px solid #424242;
+	background: #353535;
+    border: none; /*1px solid #353535;*/
 }
 QMenu::item:selected {
 	background: #008098;
@@ -59,7 +59,7 @@ QMenu::item::disabled:selected {
 	color: black;
 }
 QMenu::separator {
-	background: #333333;
+	background: #5A5A5A;
 	height: 1px;
 	margin: 2px 0;
 }
@@ -481,7 +481,7 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
 }
 QSlider::handle:horizontal:disabled,
 QSlider::sub-page:horizontal:disabled {
-	background: #0D0D0D;
+	background: #00262E;
 }
 QSlider::handle:horizontal {
 	/* handle color */
@@ -491,7 +491,7 @@ QSlider::handle:horizontal {
 }
 QSlider::groove:horizontal {
 	/* the non-progressed color */
-	background: #0D0D0D;
+	background: #00262E;
 }
 QSlider::sub-page:horizontal {
 	/* the progress color */
@@ -974,7 +974,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>580</width>
-     <height>24</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">

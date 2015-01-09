@@ -36,18 +36,18 @@ QPushButton {
     min-width: 76px;
 	min-height: 17px;
 }
-QPushButton:default {
+QPushButton:focus {
 	border: 1px solid whitesmoke;
+	outline: none;
 }
 QPushButton:pressed {
     background: #005A6A;
 }
 QPushButton:disabled {
 	background: black;
-	border: 1px solid #008098;
+	border: 1px solid #4C4C4C;
     color: #B8B8B8;
 }
-
 /* QScrollBar */
 
 QScrollBar:vertical {
@@ -220,6 +220,11 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>updateButton</tabstop>
+  <tabstop>cancelButton</tabstop>
+  <tabstop>plainTextEdit</tabstop>
+ </tabstops>
  <resources>
   <include location="../rsclist.qrc"/>
  </resources>
