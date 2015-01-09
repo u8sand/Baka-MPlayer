@@ -142,6 +142,38 @@ bool MpvHandler::event(QEvent *event)
     return QObject::event(event);
 }
 
+void MpvHandler::AddOverlay(int id, int x, int y, QString file, int offset, int w, int h)
+{
+    QByteArray tmp_id = QString::number(id).toUtf8(),
+               tmp_x = QString::number(x).toUtf8(),
+               tmp_y = QString::number(y).toUtf8(),
+               tmp_file = file.toUtf8(),
+               tmp_offset = QString::number(offset).toUtf8(),
+               tmp_w = QString::number(w).toUtf8(),
+               tmp_h = QString::number(h).toUtf8(),
+               tmp_stride = QString::number(4*w).toUtf8();
+
+    const char *args[] = {"overlay_add",
+                       tmp_id.constData(),
+                       tmp_x.constData(),
+                       tmp_y.constData(),
+                       tmp_file.constData(),
+                       tmp_offset.constData(),
+                       "bgra",
+                       tmp_w.constData(),
+                       tmp_h.constData(),
+                       tmp_stride.constData(),
+                       NULL};
+    AsyncCommand(args);
+}
+
+void MpvHandler::RemoveOverlay(int id)
+{
+    QByteArray tmp = QString::number(id).toUtf8();
+    const char *args[] = {"overlay_remove", tmp.constData(), NULL};
+    AsyncCommand(args);
+}
+
 bool MpvHandler::FileExists(QString f)
 {
     if(Util::IsValidUrl(f)) // web url
@@ -615,6 +647,12 @@ void MpvHandler::LoadVideoParams()
     mpv_get_property(mpv, "video-aspect", MPV_FORMAT_INT64, &fileInfo.video_params.aspect);
 
     emit videoParamsChanged(fileInfo.video_params);
+}
+
+void MpvHandler::LoadOsdSize()
+{
+    mpv_get_property(mpv, "osd-width", MPV_FORMAT_INT64, &osdWidth);
+    mpv_get_property(mpv, "osd-height", MPV_FORMAT_INT64, &osdHeight);
 }
 
 void MpvHandler::CommandString(QString str)
