@@ -34,6 +34,8 @@ public:
     bool getPlaylistVisible()               { return playlistVisible; }
     bool getSubtitleVisibility()            { return subtitleVisibility; }
 
+    int getOsdWidth()                       { return osdWidth; }
+    int getOsdHeight()                      { return osdHeight; }
 protected:
     virtual bool event(QEvent*);
 
@@ -43,6 +45,9 @@ public slots:
     void LoadFile(QString);
     QString LoadPlaylist(QString);
     void PlayFile(QString);
+
+    void AddOverlay(int id, int x, int y, QString file, int offset, int w, int h);
+    void RemoveOverlay(int id);
 
     void Play();
     void Pause();
@@ -84,6 +89,7 @@ public slots:
     void LoadTracks();
     void LoadChapters();
     void LoadVideoParams();
+    void LoadOsdSize();
 
     void CommandString(QString);
     void SetOption(QString key, QString val);
@@ -167,6 +173,9 @@ private:
                 debug = false,
                 playlistVisible = false,
                 subtitleVisibility = true;
+
+    int         osdWidth,
+                osdHeight;
 };
 
 #endif // MPVHANDLER_H
