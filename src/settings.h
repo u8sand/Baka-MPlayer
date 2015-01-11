@@ -48,8 +48,8 @@ protected:
     int ParseLine(QString line);
     QString FixKeyOnSave(QString key);
     QString FixKeyOnLoad(QString key);
-
-signals:
+    QStringList FixQStringListOnSave(QStringList list);
+    QStringList FixQStringListOnLoad(QStringList list);
 
 private:
     BakaEngine *baka;

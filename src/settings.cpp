@@ -71,7 +71,7 @@ QString Settings::value(QString key, QString default_value)
 
 QStringList Settings::valueQStringList(QString key, QStringList default_value)
 {
-    return value(key, default_value.join(",")).split(",", QString::SkipEmptyParts);
+    return FixQStringListOnLoad(value(key, FixQStringListOnSave(default_value).join(",")).split(",", QString::SkipEmptyParts));
 }
 
 QDate Settings::valueQDate(QString key, QDate default_value)
@@ -101,7 +101,7 @@ void Settings::setValue(QString key, QString val)
 
 void Settings::setValueQStringList(QString key, QStringList val)
 {
-    setValue(key, val.join(","));
+    setValue(key, FixQStringListOnSave(val).join(","));
 }
 
 void Settings::setValueQDate(QString key, QDate val)
@@ -157,4 +157,33 @@ QString Settings::FixKeyOnLoad(QString key)
             key.remove(i, 1);
     }
     return key;
+}
+
+QStringList Settings::FixQStringListOnSave(QStringList list)
+{
+    for(auto str : list)
+    {
+        for(int i = 0; i < str.length(); ++i)
+        {
+            // escape special chars
+            if(str[i] == QChar(',') ||
+               str[i] == QChar('\\'))
+                str.insert(i++, '\\');
+        }
+    }
+    return list;
+}
+
+QStringList Settings::FixQStringListOnLoad(QStringList list)
+{
+    for(auto str : list)
+    {
+        for(int i = 0; i < str.length(); ++i)
+        {
+            // revert escaped characters
+            if(str[i] == QChar('\\'))
+                str.remove(i, 1);
+        }
+    }
+    return list;
 }

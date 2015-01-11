@@ -28,6 +28,8 @@ QString FormatNumber(int val, int length);
 QString FormatNumberWithAmpersand(int val, int length);
 QString HumanSize(qint64);
 QString ShortenPathToParent(const QString &path);
+QStringList ToNativeSeparators(QStringList list);
+QStringList FromNativeSeparators(QStringList list);
 
 }
 
