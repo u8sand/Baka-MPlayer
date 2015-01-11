@@ -21,28 +21,41 @@
 
 # find qmake
 
-if [ "$QMAKE" == "" ]; then
-	QMAKE=qmake
+have() {
+  if hash $1 2>/dev/null; then
+    return 0
+  else
+    return 1
+  fi
+}
 
-  hash $QMAKE 2>/dev/null || { echo >&2 "Cannot find qmake."; exit 0; }
-
-  qmake_ver=`$QMAKE --version | awk '/^Using Qt version/{print $4}'`
+check_version() {
+  qmake_ver=`$1 --version | awk '/^Using Qt version/{print $4}'`
   if [[ $qmake_ver =~ (5.*) ]]; then
     echo "Using qmake version $qmake_ver..."
-  else
-    echo "qmake version $qmake_ver found, looking for version 5.x..."
-    QMAKE=qmake-qt5
-    hash $QMAKE 2>/dev/null || { echo >&2 "Cannot find qmake version 5.x. Please specify QMAKE environment variable."; exit 0; }
+    return 0
+  fi
+  return 1
+}
 
-    qmake_ver=`$QMAKE --version | awk '/^Using Qt version/{print $4}'`
-    if [[ $qmake_ver =~ (5.*) ]]; then
-      echo "Using qmake version $qmake_ver..."
-    else
-      echo "Could not find qt version 5.x, please specify the QMAKE environment variable."
-      exit 0
+good() {
+  if have $1; then
+    if check_version $1; then
+      return 0
     fi
+  fi
+  return 1
+}
+
+if [ "$QMAKE" == "" ]; then
+  if good qmake; then
+    QMAKE=qmake;
+  elif good qmake-qt5; then
+    QMAKE=qmake-qt5;
+  else
+    echo "Could not find valid qt version, please specify QMAKE."
+    exit 0
   fi
 fi
 
-touch src/main.cpp
 $QMAKE src/Baka-MPlayer.pro CONFIG+=release $@
