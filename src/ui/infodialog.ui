@@ -95,7 +95,7 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
       <string notr="true">/* QHeaderView set under main stylesheet (QDialog) */
 
 QTableWidget {
-	border: 1px solid #212121;
+	border: 1px solid #1A1A1A;
 	background: black;
 }
 
