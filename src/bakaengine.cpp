@@ -22,6 +22,7 @@ BakaEngine::BakaEngine(QObject *parent):
 
 BakaEngine::~BakaEngine()
 {
+    delete gesture;
     delete mpv;
     delete settings;
 }

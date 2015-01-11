@@ -142,7 +142,7 @@ MainWindow::MainWindow(QWidget *parent):
                         else if(mpv->getPlayState() == Mpv::Paused)
                             sysTrayIcon->showMessage("Baka MPlayer", tr("Paused"), QSystemTrayIcon::NoIcon, 4000);
                     }
-                    TogglePlay();
+                    baka->PlayPause();
                 }
 
             });
@@ -398,7 +398,7 @@ MainWindow::MainWindow(QWidget *parent):
                     }
                     if(pathChanged && autoFit)
                     {
-                        FitWindow(autoFit);
+                        baka->FitWindow(autoFit, false);
                         pathChanged = false;
                     }
                     SetPlaybackControls(true);
@@ -580,7 +580,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->openButton, &OpenButton::LeftClick,                     // Playback: Open button (left click)
             [=]
             {
-                OpenFile();
+                baka->Open();
             });
 
     connect(ui->openButton, &OpenButton::MiddleClick,                   // Playback: Open button (middle click)
@@ -618,7 +618,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->playButton, &QPushButton::clicked,                      // Playback: Play/pause button
             [=]
             {
-                TogglePlay();
+                baka->PlayPause();
             });
 
     connect(ui->nextButton, &IndexButton::clicked,                      // Playback: Next button
@@ -745,7 +745,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->action_Open_File, &QAction::triggered,                  // File -> Open File
             [=]
             {
-                OpenFile();
+                baka->Open();
             });
 
     connect(ui->actionOpen_URL, &QAction::triggered,                    // File -> Open URL
@@ -805,61 +805,61 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->action_To_Current_Size, &QAction::triggered,            // View -> Fit Window -> To Current Size
             [=]
             {
-                FitWindow(0);
+                baka->FitWindow(0);
             });
 
     connect(ui->action50, &QAction::triggered,                          // View -> Fit Window -> 50%
             [=]
             {
-                FitWindow(50, true);
+                baka->FitWindow(50);
             });
 
     connect(ui->action75, &QAction::triggered,                          // View -> Fit Window -> 75%
             [=]
             {
-                FitWindow(75, true);
+                baka->FitWindow(75);
             });
 
     connect(ui->action100, &QAction::triggered,                         // View -> Fit Window -> 100%
             [=]
             {
-                FitWindow(100, true);
+                baka->FitWindow(100);
             });
 
     connect(ui->action150, &QAction::triggered,                         // View -> Fit Window -> 150%
             [=]
             {
-                FitWindow(150, true);
+                baka->FitWindow(150);
             });
 
     connect(ui->action200, &QAction::triggered,                         // View -> Fit Window -> 200%
             [=]
             {
-                FitWindow(200, true);
+                baka->FitWindow(200);
             });
                                                                         // View -> Aspect Ratio ->
     connect(ui->action_Auto_Detect, &QAction::triggered,                // View -> Aspect Ratio -> Auto Detect
             [=]
             {
-                SetAspectRatio("-1");
+                mpv->Aspect("-1");
             });
 
     connect(ui->actionForce_4_3, &QAction::triggered,                   // View -> Aspect Ratio -> 4:3
             [=]
             {
-                SetAspectRatio("4:3");
+                mpv->Aspect("4:3");
             });
 
     connect(ui->actionForce_2_35_1, &QAction::triggered,                // View -> Aspect Ratio -> 2.35:1
             [=]
             {
-                SetAspectRatio("2_35:1");
+                mpv->Aspect("2_35:1");
             });
 
     connect(ui->actionForce_16_9, &QAction::triggered,                  // View -> Aspect Ratio -> 16:9
             [=]
             {
-                SetAspectRatio("16:9");
+                mpv->Aspect("16:9");
             });
 
     connect(ui->actionShow_Subtitles, &QAction::triggered,              // View -> Show Subtitles
@@ -905,7 +905,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->action_Play, &QAction::triggered,                       // Playback -> (Play|Pause)
             [=]
             {
-                TogglePlay();
+                baka->PlayPause();
             });
 
     connect(ui->action_Stop, &QAction::triggered,                       // Playback -> Stop
@@ -1135,7 +1135,6 @@ MainWindow::~MainWindow()
     // but apparently they don't (https://github.com/u8sand/Baka-MPlayer/issues/47)
 
     if(updateDialog != nullptr) delete updateDialog;
-    if(gesture != nullptr)      delete gesture;
     if(translator != nullptr)   delete translator;
     if(qtTranslator != nullptr) delete qtTranslator;
     if(dimDialog != nullptr)    delete dimDialog;
@@ -1448,11 +1447,6 @@ void MainWindow::FullScreen(bool fs)
     }
 }
 
-void MainWindow::TogglePlay()
-{
-   mpv->PlayPause(ui->playlistWidget->CurrentItem());
-}
-
 bool MainWindow::isPlaylistVisible()
 {
     // if the position is 0, playlist is hidden
@@ -1462,14 +1456,6 @@ bool MainWindow::isPlaylistVisible()
 void MainWindow::TogglePlaylist()
 {
     ShowPlaylist(!isPlaylistVisible());
-}
-
-void MainWindow::ToggleSubtitles()
-{
-    if(mpv->getSubtitleVisibility())
-        mpv->ShowSubtitles(false);
-    else
-        mpv->ShowSubtitles(true);
 }
 
 void MainWindow::ShowPlaylist(bool visible)
@@ -1495,101 +1481,6 @@ void MainWindow::HideAlbumArt(bool hide)
     }
     else
         ui->splitter->setPosition(ui->splitter->normalPosition()); // bring the splitter to normal position
-}
-
-void MainWindow::FitWindow(int percent, bool msg)
-{
-    if(isFullScreen() || isMaximized())
-        return;
-
-    mpv->LoadVideoParams();
-
-    const Mpv::VideoParams &vG = mpv->getFileInfo().video_params; // video geometry
-    QRect mG = ui->mpvFrame->geometry(),                          // mpv geometry
-          wfG = frameGeometry(),                                  // frame geometry of window (window geometry + window frame)
-          wG = geometry(),                                        // window geometry
-          aG = qApp->desktop()->availableGeometry(wfG.center());  // available geometry of the screen we're in--(geometry not including the taskbar)
-
-    double a, // aspect ratio
-           w, // width of vid we want
-           h; // height of vid we want
-
-    // obtain natural video aspect ratio
-    if(vG.width == 0 || vG.height == 0) // width/height are 0 when there is no output
-        return;
-    if(vG.dwidth == 0 || vG.dheight == 0) // dwidth/height are 0 on load
-        a = double(vG.width)/vG.height; // use video width and height for aspect ratio
-    else
-        a = double(vG.dwidth)/vG.dheight; // use display width and height for aspect ratio
-
-    // calculate resulting display:
-    if(percent == 0) // fit to window
-    {
-        // set our current mpv frame dimensions
-        w = mG.width();
-        h = mG.height();
-
-        double cmp = w/h - a, // comparison
-               eps = 0.01;  // epsilon (deal with rounding errors) we consider -eps < 0 < eps ==> 0
-
-        if(cmp > eps) // too wide
-            w = h * a; // calculate width based on the correct height
-        else if(cmp < -eps) // too long
-            h = w / a; // calculate height based on the correct width
-    }
-    else // fit into desired dimensions
-    {
-        double scale = percent / 100.0; // get scale
-
-        w = vG.width * scale;  // get scaled width
-        h = vG.height * scale; // get scaled height
-    }
-
-    double dW = w + (wfG.width() - mG.width()),   // calculate display width of the window
-           dH = h + (wfG.height() - mG.height()); // calculate display height of the window
-
-    if(dW > aG.width()) // if the width is bigger than the available area
-    {
-        dW = aG.width(); // set the width equal to the available area
-        w = dW - (wfG.width() - mG.width());    // calculate the width
-        h = w / a;                              // calculate height
-        dH = h + (wfG.height() - mG.height());  // calculate new display height
-    }
-    if(dH > aG.height()) // if the height is bigger than the available area
-    {
-        dH = aG.height(); // set the height equal to the available area
-        h = dH - (wfG.height() - mG.height()); // calculate the height
-        w = h * a;                             // calculate the width accordingly
-        dW = w + (wfG.width() - mG.width());   // calculate new display width
-    }
-
-    // get the centered rectangle we want
-    QRect rect = QStyle::alignedRect(Qt::LeftToRight,
-                                     Qt::AlignCenter,
-                                     QSize(dW,
-                                           dH),
-                                     percent == 0 ? wfG : aG); // center in window (autofit) or on our screen
-
-    // adjust the rect to compensate for the frame
-    rect.setLeft(rect.left() + (wG.left() - wfG.left()));
-    rect.setTop(rect.top() + (wG.top() - wfG.top()));
-    rect.setRight(rect.right() - (wfG.right() - wG.right()));
-    rect.setBottom(rect.bottom() - (wfG.bottom() - wG.bottom()));
-
-    // finally set the geometry of the window
-    setGeometry(rect);
-
-    // note: the above block is required because there is not setFrameGeometry function
-
-    if(msg)
-        mpv->ShowText(tr("Fit Window: %0%").arg(percent == 0 ? tr("autofit") : QString::number(percent)));
-}
-
-void MainWindow::SetAspectRatio(QString aspect)
-{
-    if(isFullScreen())
-        return;
-    mpv->Aspect(aspect);
 }
 
 void MainWindow::DimLights(bool dim)
@@ -1656,14 +1547,4 @@ void MainWindow::UpdateRecentFiles()
                     mpv->LoadFile(f);
                 });
     }
-}
-
-void MainWindow::OpenFile()
-{
-    mpv->LoadFile(QFileDialog::getOpenFileName(this,
-                   tr("Open File"),mpv->getPath(),
-                   QString("%0 (%1);;").arg(tr("Media Files"), Mpv::media_filetypes.join(" "))+
-                   QString("%0 (%1);;").arg(tr("Video Files"), Mpv::video_filetypes.join(" "))+
-                   QString("%0 (%1)").arg(tr("Audio Files"), Mpv::audio_filetypes.join(" ")),
-                   0, QFileDialog::DontUseSheet));
 }
