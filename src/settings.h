@@ -49,7 +49,7 @@ protected:
     QString FixKeyOnSave(QString key);
     QString FixKeyOnLoad(QString key);
     QStringList FixQStringListOnSave(QStringList list);
-    QStringList FixQStringListOnLoad(QStringList list);
+    QStringList SplitQStringList(QString list);
 
 private:
     BakaEngine *baka;

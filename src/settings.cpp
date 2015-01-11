@@ -71,7 +71,7 @@ QString Settings::value(QString key, QString default_value)
 
 QStringList Settings::valueQStringList(QString key, QStringList default_value)
 {
-    return FixQStringListOnLoad(value(key, FixQStringListOnSave(default_value).join(",")).split(",", QString::SkipEmptyParts));
+    return SplitQStringList(value(key, FixQStringListOnSave(default_value).join(",")));
 }
 
 QDate Settings::valueQDate(QString key, QDate default_value)
@@ -128,9 +128,9 @@ int Settings::ParseLine(QString line)
 {
     for(int i = 0; i < line.length(); ++i)
     {
-        if(line[i] == QChar('\\'))
+        if(line[i] == '\\')
             ++i; // skip the next char (escape sequence)
-        else if(line[i] == QChar('='))
+        else if(line[i] == '=')
             return i;
     }
     return -1;
@@ -141,8 +141,8 @@ QString Settings::FixKeyOnSave(QString key)
     for(int i = 0; i < key.length(); ++i)
     {
         // escape special chars
-        if(key[i] == QChar('=') ||
-           key[i] == QChar('\\'))
+        if(key[i] == '=' ||
+           key[i] == '\\')
             key.insert(i++, '\\');
     }
     return key;
@@ -153,7 +153,7 @@ QString Settings::FixKeyOnLoad(QString key)
     for(int i = 0; i < key.length(); ++i)
     {
         // revert escaped characters
-        if(key[i] == QChar('\\'))
+        if(key[i] == '\\')
             key.remove(i, 1);
     }
     return key;
@@ -161,29 +161,43 @@ QString Settings::FixKeyOnLoad(QString key)
 
 QStringList Settings::FixQStringListOnSave(QStringList list)
 {
-    for(auto str : list)
+    for(auto &str : list)
     {
         for(int i = 0; i < str.length(); ++i)
         {
             // escape special chars
-            if(str[i] == QChar(',') ||
-               str[i] == QChar('\\'))
+            if(str[i] == ',' ||
+               str[i] == '\\')
                 str.insert(i++, '\\');
         }
     }
     return list;
 }
 
-QStringList Settings::FixQStringListOnLoad(QStringList list)
+QStringList Settings::SplitQStringList(QString str)
 {
-    for(auto str : list)
+    QStringList list;
+    QString entry;
+    for(int i = 0; i < str.length(); ++i)
     {
-        for(int i = 0; i < str.length(); ++i)
+        // revert escaped characters
+        if(str[i] == '\\')
+            entry += str[++i];
+        else if(str[i] == ',')
         {
-            // revert escaped characters
-            if(str[i] == QChar('\\'))
-                str.remove(i, 1);
+            entry = entry.trimmed();
+            if(entry != QString())
+            {
+                list.push_back(entry);
+                entry = QString();
+            }
         }
+        else
+            entry += str[i];
+
     }
+    entry = entry.trimmed();
+    if(entry != QString())
+        list.push_back(entry);
     return list;
 }
