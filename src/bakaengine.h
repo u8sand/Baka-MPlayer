@@ -66,18 +66,30 @@ private:
     // See bakacommands.cpp for function definitions
     typedef void(BakaEngine::*BakaCommandFPtr)(QStringList&);
     const QHash<QString, BakaCommandFPtr> BakaCommandMap = {
+        {"open", &BakaEngine::BakaOpen},
         {"play_pause", &BakaEngine::BakaPlayPause},
+        {"fitwindow", &BakaEngine::BakaFitWindow},
         {"volume", &BakaEngine::BakaVolume},
         {"help", &BakaEngine::BakaHelp},
         {"about", &BakaEngine::BakaAbout},
         {"quit", &BakaEngine::BakaQuit}
     };
     // Baka Command Functions
+    void BakaOpen(QStringList&);
     void BakaPlayPause(QStringList&);
+    void BakaFitWindow(QStringList&);
+    void BakaAspect(QStringList&);
     void BakaVolume(QStringList&);
     void BakaHelp(QStringList&);
     void BakaAbout(QStringList&);
     void BakaQuit(QStringList&);
+public:
+    void Open(QString path = QString());
+    void PlayPause();
+    void FitWindow(int percent = 0, bool msg = true);
+
+    void About(QString what = QString());
+    void Quit();
 };
 
 #endif // BAKAENGINE_H

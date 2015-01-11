@@ -54,21 +54,16 @@ protected:
     void keyPressEvent(QKeyEvent *event);
     void SetPlaybackControls(bool enable);          // macro to enable/disable playback controls
     void TogglePlaylist();                          // toggles playlist visibility
-    void TogglePlay();                              // play/pause
-    void ToggleSubtitles();                         // play/pause
     bool isPlaylistVisible();                       // is the playlist visible?
 
 private slots:
     void FullScreen(bool fs);                       // makes window fullscreen
     void ShowPlaylist(bool visible);                // sets the playlist visibility
     void HideAlbumArt(bool hide);                   // hides the album art
-    void FitWindow(int percent, bool msg = false);  // fit the window the the specified percent
-    void SetAspectRatio(QString aspect);            // set the aspect ratio to specified proportions
     void DimLights(bool dim);                       // grays out the rest of the screen with LightDialog
     void TakeScreenshot(bool subs);                 // take a screenshot
     void ShowScreenshotMessage(bool subs);          // show the screenshot status message
     void UpdateRecentFiles();                       // populate recentFiles menu
-    void OpenFile();                                // open file dialog
 
 private:
     Ui::MainWindow  *ui;

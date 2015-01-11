@@ -142,7 +142,7 @@ MainWindow::MainWindow(QWidget *parent):
                         else if(mpv->getPlayState() == Mpv::Paused)
                             sysTrayIcon->showMessage("Baka MPlayer", tr("Paused"), QSystemTrayIcon::NoIcon, 4000);
                     }
-                    TogglePlay();
+                    baka->PlayPause();
                 }
 
             });
@@ -398,7 +398,7 @@ MainWindow::MainWindow(QWidget *parent):
                     }
                     if(pathChanged && autoFit)
                     {
-                        FitWindow(autoFit);
+                        baka->FitWindow(autoFit, false);
                         pathChanged = false;
                     }
                     SetPlaybackControls(true);
@@ -580,7 +580,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->openButton, &OpenButton::LeftClick,                     // Playback: Open button (left click)
             [=]
             {
-                OpenFile();
+                baka->Open();
             });
 
     connect(ui->openButton, &OpenButton::MiddleClick,                   // Playback: Open button (middle click)
@@ -618,7 +618,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->playButton, &QPushButton::clicked,                      // Playback: Play/pause button
             [=]
             {
-                TogglePlay();
+                baka->PlayPause();
             });
 
     connect(ui->nextButton, &IndexButton::clicked,                      // Playback: Next button
@@ -733,395 +733,114 @@ MainWindow::MainWindow(QWidget *parent):
                 baka->Command(s);
                 ui->inputLineEdit->setText("");
             });
-                                                                        // File ->
-    connect(ui->action_New_Player, &QAction::triggered,                 // File -> New Player
-            [=]
-            {
-                QProcess *p = new QProcess(0);
-                p->startDetached(QApplication::applicationFilePath());
-                delete p;
-            });
 
-    connect(ui->action_Open_File, &QAction::triggered,                  // File -> Open File
-            [=]
-            {
-                OpenFile();
-            });
 
-    connect(ui->actionOpen_URL, &QAction::triggered,                    // File -> Open URL
-            [=]
-            {
-                mpv->LoadFile(LocationDialog::getUrl(mpv->getPath()+mpv->getFile(), this));
-            });
+// baka new
+//                QProcess *p = new QProcess(0);
+//                p->startDetached(QApplication::applicationFilePath());
+//                delete p;
+// baka open_url
+//    mpv->LoadFile(LocationDialog::getUrl(mpv->getPath()+mpv->getFile(), this));
+// baka open_clipboard
+//    mpv->LoadFile(QApplication::clipboard()->text());
+// baka show_in_folder
+//    QDesktopServices::openUrl("file:///"+QDir::toNativeSeparators(mpv->getPath()));
+// mpv toggle sub-visibility
+// baka add_subtitles
+//                QString trackFile = QFileDialog::getOpenFileName(this, tr("Open Subtitle File"), mpv->getPath(),
+//                                                                 QString("%0 (%1)").arg(tr("Subtitle Files"), Mpv::subtitle_filetypes.join(" ")),
+//                                                                 0, QFileDialog::DontUseSheet);
+//                if(trackFile != "")
+//                    mpv->AddSubtitleTrack(trackFile);
+// baka media_info
+//                InfoDialog::info(mpv->getPath()+mpv->getFile(), mpv->getFileInfo(), this);
+// baka stop
+//  mpv->Stop();
+// baka playlist shuffle
+//                ui->playlistWidget->Shuffle();
+//                ui->playlistWidget->BoldText(ui->playlistWidget->FirstItem(), true);
+// baka playlist repeat off
+//                if(b)
+//                {
+//                    ui->action_This_File->setChecked(false);
+//                    ui->action_Playlist->setChecked(false);
+//                }
+// baka playlist repeat this
+//                if(b)
+//                {
+//                    ui->action_Off->setChecked(false);
+//                    ui->action_Playlist->setChecked(false);
+//                }
+// baka playlist repeat playlist
+//                if(b)
+//                {
+//                    ui->action_Off->setChecked(false);
+//                    ui->action_This_File->setChecked(false);
+//                }
+// baka jump
+//                int time = JumpDialog::getTime(mpv->getFileInfo().length,this);
+//                if(time >= 0)
+//                    mpv->Seek(time);
+// baka playlist toggle
+//                ShowPlaylist(b);
+// baka playlist full
+//                HideAlbumArt(b);
+// baka dim
+//                DimLights(b);
+// baka output
+//                setDebug(b);
+// baka preferences
+//                baka->SaveSettings();
+//                PreferencesDialog::showPreferences(settings, this);
+//                baka->LoadSettings();
+// baka online_help
+//                QDesktopServices::openUrl(QUrl(tr("http://bakamplayer.u8sand.net/help.php")));
+// baka update
+//                if(updateDialog->exec() == QDialog::Accepted)
+//                {
+//                    // todo: close and finish update (overwrite self and restart)
+//                }
 
-    connect(ui->actionOpen_Path_from_Clipboard, &QAction::triggered,    // File -> Open Path from Clipboard
-            [=]
-            {
-                mpv->LoadFile(QApplication::clipboard()->text());
-            });
-
-    connect(ui->actionShow_in_Folder, &QAction::triggered,              // File -> Show in Folder
-            [=]
-            {
-                QDesktopServices::openUrl("file:///"+QDir::toNativeSeparators(mpv->getPath()));
-            });
-
-    connect(ui->actionPlay_Next_File, &QAction::triggered,              // File -> Play Next File
-            [=]
-            {
-                mpv->PlayFile(ui->playlistWidget->NextItem());
-            });
-
-    connect(ui->actionPlay_Previous_File, &QAction::triggered,          // File -> Play Previous File
-            [=]
-            {
-                mpv->PlayFile(ui->playlistWidget->PreviousItem());
-            });
-
-    connect(ui->actionE_xit, &QAction::triggered,                       // File -> Exit
-            [=]
-            {
-                close();
-            });
-                                                                        // View ->
-    connect(ui->action_Full_Screen, &QAction::triggered,                // View -> Full Screen
-            [=]
-            {
-                FullScreen(!isFullScreen());
-            });
-
-    connect(ui->actionWith_Subtitles, &QAction::triggered,              // View -> Take Screenshot -> With Subtitles
-            [=]
-            {
-                TakeScreenshot(true);
-            });
-
-    connect(ui->actionWithout_Subtitles, &QAction::triggered,           // View -> Take Screenshot -> Without Subtitles
-            [=]
-            {
-                TakeScreenshot(false);
-            });
-                                                                        // View -> Fit Window ->
-    connect(ui->action_To_Current_Size, &QAction::triggered,            // View -> Fit Window -> To Current Size
-            [=]
-            {
-                FitWindow(0);
-            });
-
-    connect(ui->action50, &QAction::triggered,                          // View -> Fit Window -> 50%
-            [=]
-            {
-                FitWindow(50, true);
-            });
-
-    connect(ui->action75, &QAction::triggered,                          // View -> Fit Window -> 75%
-            [=]
-            {
-                FitWindow(75, true);
-            });
-
-    connect(ui->action100, &QAction::triggered,                         // View -> Fit Window -> 100%
-            [=]
-            {
-                FitWindow(100, true);
-            });
-
-    connect(ui->action150, &QAction::triggered,                         // View -> Fit Window -> 150%
-            [=]
-            {
-                FitWindow(150, true);
-            });
-
-    connect(ui->action200, &QAction::triggered,                         // View -> Fit Window -> 200%
-            [=]
-            {
-                FitWindow(200, true);
-            });
-                                                                        // View -> Aspect Ratio ->
-    connect(ui->action_Auto_Detect, &QAction::triggered,                // View -> Aspect Ratio -> Auto Detect
-            [=]
-            {
-                SetAspectRatio("-1");
-            });
-
-    connect(ui->actionForce_4_3, &QAction::triggered,                   // View -> Aspect Ratio -> 4:3
-            [=]
-            {
-                SetAspectRatio("4:3");
-            });
-
-    connect(ui->actionForce_2_35_1, &QAction::triggered,                // View -> Aspect Ratio -> 2.35:1
-            [=]
-            {
-                SetAspectRatio("2_35:1");
-            });
-
-    connect(ui->actionForce_16_9, &QAction::triggered,                  // View -> Aspect Ratio -> 16:9
-            [=]
-            {
-                SetAspectRatio("16:9");
-            });
-
-    connect(ui->actionShow_Subtitles, &QAction::triggered,              // View -> Show Subtitles
-            [=](bool b)
-            {
-                mpv->ShowSubtitles(b);
-            });
-
-    connect(ui->action_Add_Subtitle_File, &QAction::triggered,          //  View -> Subtitle Track -> Add Subtitle File...
-            [=]
-            {
-                QString trackFile = QFileDialog::getOpenFileName(this, tr("Open Subtitle File"), mpv->getPath(),
-                                                                 QString("%0 (%1)").arg(tr("Subtitle Files"), Mpv::subtitle_filetypes.join(" ")),
-                                                                 0, QFileDialog::DontUseSheet);
-                if(trackFile != "")
-                    mpv->AddSubtitleTrack(trackFile);
-            });
-                                                                        // View -> Font Size ->
-    connect(ui->action_Size, &QAction::triggered,                       // View -> Font Size -> Size +
-            [=]
-            {
-                mpv->SubtitleScale(.02, true);
-            });
-
-    connect(ui->actionS_ize, &QAction::triggered,                       // View -> Font Size -> Size -
-            [=]
-            {
-                mpv->SubtitleScale(-.02, true);
-            });
-
-    connect(ui->action_Reset_Size, &QAction::triggered,                 // View -> Font Size -> Reset Size
-            [=]
-            {
-                mpv->SubtitleScale(1);
-            });
-
-    connect(ui->actionMedia_Info, &QAction::triggered,                  // View -> Media Info
-            [=]
-            {
-                InfoDialog::info(mpv->getPath()+mpv->getFile(), mpv->getFileInfo(), this);
-            });
-                                                                        // Playback ->
-    connect(ui->action_Play, &QAction::triggered,                       // Playback -> (Play|Pause)
-            [=]
-            {
-                TogglePlay();
-            });
-
-    connect(ui->action_Stop, &QAction::triggered,                       // Playback -> Stop
-            [=]
-            {
-                mpv->Stop();
-            });
-
-    connect(ui->action_Restart, &QAction::triggered,                    // Playback -> Restart
-            [=]
-            {
-                mpv->Restart();
-            });
-                                                                        // Playback -> Speed ->
-    connect(ui->action_Increase, &QAction::triggered,                   // Playback -> Speed -> Increase
-            [=]
-            {
-                mpv->Speed(mpv->getSpeed()+.25);
-            });
-
-    connect(ui->action_Decrease, &QAction::triggered,                   // Playback -> Speed -> Increase
-            [=]
-            {
-                mpv->Speed(mpv->getSpeed()-.25);
-            });
-
-    connect(ui->action_Reset, &QAction::triggered,                      // Playback -> Speed -> Reset
-            [=]
-            {
-                mpv->Speed(1);
-            });
-
-    connect(ui->actionSh_uffle, &QAction::triggered,                    // Playback -> Shuffle
-            [=]
-            {
-                ui->playlistWidget->Shuffle();
-                ui->playlistWidget->BoldText(ui->playlistWidget->FirstItem(), true);
-            });
-                                                                        // Playback -> Repeat
-    connect(ui->action_Off, &QAction::triggered,                        // Playback -> Repeat -> Off
-            [=](bool b)
-            {
-                if(b)
-                {
-                    ui->action_This_File->setChecked(false);
-                    ui->action_Playlist->setChecked(false);
-                }
-            });
-
-    connect(ui->action_This_File, &QAction::triggered,                  // Playback -> Repeat -> This File
-            [=](bool b)
-            {
-                if(b)
-                {
-                    ui->action_Off->setChecked(false);
-                    ui->action_Playlist->setChecked(false);
-                }
-            });
-
-    connect(ui->action_Playlist, &QAction::triggered,                   // Playback -> Repeat -> Playlist
-            [=](bool b)
-            {
-                if(b)
-                {
-                    ui->action_Off->setChecked(false);
-                    ui->action_This_File->setChecked(false);
-                }
-            });
-
-    connect(ui->action_Increase_Volume, &QAction::triggered,            // Playback -> Increase Volume
-            [=]
-            {
-                mpv->Volume(mpv->getVolume()+5);
-            });
-
-    connect(ui->action_Decrease_Volume, &QAction::triggered,            // Playback -> Decrease Volume
-            [=]
-            {
-                mpv->Volume(mpv->getVolume()-5);
-            });
-                                                                        // Navigate ->
-    connect(ui->action_Next_Chapter, &QAction::triggered,               // Navigate -> Next Chapter
-            [=]
-            {
-                mpv->NextChapter();
-            });
-
-    connect(ui->action_Previous_Chapter, &QAction::triggered,           // Navigate -> Previous Chapter
-            [=]
-            {
-                mpv->PreviousChapter();
-            });
-
-    connect(ui->action_Frame_Step, &QAction::triggered,                 // Navigate -> Frame Step
-            [=]
-            {
-                mpv->FrameStep();
-            });
-
-    connect(ui->actionFrame_Back_Step, &QAction::triggered,             // Navigate -> Frame Back Step
-            [=]
-            {
-                mpv->FrameBackStep();
-            });
-
-    connect(ui->action_Jump_to_Time, &QAction::triggered,               // Navigate -> Jump to Time
-            [=]
-            {
-                int time = JumpDialog::getTime(mpv->getFileInfo().length,this);
-                if(time >= 0)
-                    mpv->Seek(time);
-            });
-                                                                        // Settings ->
-    connect(ui->action_Show_Playlist, &QAction::triggered,              // Settings -> Show Playlist
-            [=](bool b)
-            {
-                ShowPlaylist(b);
-            });
-
-    connect(ui->action_Hide_Album_Art, &QAction::triggered,             // Settings -> Hide Album Art
-            [=](bool b)
-            {
-                HideAlbumArt(b);
-            });
-
-    connect(ui->action_Dim_Lights, &QAction::triggered,                 // Settings -> Dim Lights
-            [=](bool b)
-            {
-                DimLights(b);
-            });
-
-    connect(ui->actionShow_D_ebug_Output, &QAction::triggered,          // Settings -> Show Debug Output
-            [=](bool b)
-            {
-                setDebug(b);
-            });
-
-    connect(ui->action_Preferences, &QAction::triggered,                // Settings -> Preferences...
-            [=]
-            {
-                baka->SaveSettings();
-                PreferencesDialog::showPreferences(settings, this);
-                baka->LoadSettings();
-            });
-                                                                        // Help ->
-    connect(ui->actionOnline_Help, &QAction::triggered,                 // Help -> Online Help
-            [=]
-            {
-                QDesktopServices::openUrl(QUrl(tr("http://bakamplayer.u8sand.net/help.php")));
-            });
-
-    connect(ui->action_Check_for_Updates, &QAction::triggered,          // Help -> Check for Updates
-            [=]
-            {
-                if(updateDialog->exec() == QDialog::Accepted)
-                {
-                    // todo: close and finish update (overwrite self and restart)
-                }
-            });
-
-    connect(ui->actionAbout_Qt, &QAction::triggered,                    // Help -> About Qt
-            [=]
-            {
-                qApp->aboutQt();
-            });
-
-    connect(ui->actionAbout_Baka_MPlayer, &QAction::triggered,          // Help -> About Baka MPlayer
-            [=]
-            {
-                AboutDialog::about(BAKA_MPLAYER_VERSION, this); // launch about dialog
-            });
+    // todo:
 
     // qApp
-
-    if(dimDialog) // no need to monitor focus if you can't use dimDialog
-    {
-        connect(qApp, &QApplication::focusWindowChanged,
-                [=](QWindow *focusWindow)
-                {
-                    // note: focusWindow will be 0 if anything is clicked outside of our program which is useful
-                    // the only other problem is that when dragging by the top handle
-                    // it will be 0 thus reverting dim lights, this is a side effect
-                    // which will have to stay for now.
-                    if(dimDialog->isVisible())
-                    {
-                        if(focusWindow == 0)
-                        {
-                            dimDialog->setVisible(false); // remove dim lights
-                            ui->action_Dim_Lights->setChecked(false); // uncheck dim lights
-                        }
-                        else if(focusWindow == dimDialog->windowHandle())
-                        {
-                            activateWindow();
-                            raise();
-                            setFocus();
-                        }
-                    }
-                });
-        connect(dimDialog, &DimDialog::clicked,
-                [=]
-                {
-                    dimDialog->setVisible(false); // remove dim lights
-                    ui->action_Dim_Lights->setChecked(false); // uncheck dim lights
-                    activateWindow();
-                    raise();
-                    setFocus();
-                });
-    }
+    connect(qApp, &QApplication::focusWindowChanged,
+            [=](QWindow */*focusWindow*/)
+            {
+                // note: focusWindow will be 0 if anything is clicked outside of our program which is useful
+                // the only other problem is that when dragging by the top handle
+                // it will be 0 thus reverting dim lights, this is a side effect
+                // which will have to stay for now.
+//                if(dimDialog->isVisible())
+//                {
+//                    if(focusWindow == 0)
+//                    {
+//                        dimDialog->setVisible(false); // remove dim lights
+//                        ui->action_Dim_Lights->setChecked(false); // uncheck dim lights
+//                    }
+//                    else if(focusWindow == dimDialog->windowHandle())
+//                    {
+//                        activateWindow();
+//                        raise();
+//                        setFocus();
+//                    }
+//                }
+            });
+//    connect(dimDialog, &DimDialog::clicked,
+//            [=]
+//            {
+//                dimDialog->setVisible(false); // remove dim lights
+//                ui->action_Dim_Lights->setChecked(false); // uncheck dim lights
+//                activateWindow();
+//                raise();
+//                setFocus();
+//            });
 
     // add multimedia shortcuts
     ui->action_Play->setShortcuts({ui->action_Play->shortcut(), QKeySequence(Qt::Key_MediaPlay)});
     ui->action_Stop->setShortcuts({ui->action_Stop->shortcut(), QKeySequence(Qt::Key_MediaStop)});
     ui->actionPlay_Next_File->setShortcuts({ui->actionPlay_Next_File->shortcut(), QKeySequence(Qt::Key_MediaNext)});
     ui->actionPlay_Previous_File->setShortcuts({ui->actionPlay_Previous_File->shortcut(), QKeySequence(Qt::Key_MediaPrevious)});
-//    ui->action_Increase_Volume->setShortcuts();
-//    ui->action_Decrease_Volume->setShortcuts();
 }
 
 MainWindow::~MainWindow()
@@ -1135,7 +854,6 @@ MainWindow::~MainWindow()
     // but apparently they don't (https://github.com/u8sand/Baka-MPlayer/issues/47)
 
     if(updateDialog != nullptr) delete updateDialog;
-    if(gesture != nullptr)      delete gesture;
     if(translator != nullptr)   delete translator;
     if(qtTranslator != nullptr) delete qtTranslator;
     if(dimDialog != nullptr)    delete dimDialog;
@@ -1448,11 +1166,6 @@ void MainWindow::FullScreen(bool fs)
     }
 }
 
-void MainWindow::TogglePlay()
-{
-   mpv->PlayPause(ui->playlistWidget->CurrentItem());
-}
-
 bool MainWindow::isPlaylistVisible()
 {
     // if the position is 0, playlist is hidden
@@ -1462,14 +1175,6 @@ bool MainWindow::isPlaylistVisible()
 void MainWindow::TogglePlaylist()
 {
     ShowPlaylist(!isPlaylistVisible());
-}
-
-void MainWindow::ToggleSubtitles()
-{
-    if(mpv->getSubtitleVisibility())
-        mpv->ShowSubtitles(false);
-    else
-        mpv->ShowSubtitles(true);
 }
 
 void MainWindow::ShowPlaylist(bool visible)
@@ -1495,101 +1200,6 @@ void MainWindow::HideAlbumArt(bool hide)
     }
     else
         ui->splitter->setPosition(ui->splitter->normalPosition()); // bring the splitter to normal position
-}
-
-void MainWindow::FitWindow(int percent, bool msg)
-{
-    if(isFullScreen() || isMaximized())
-        return;
-
-    mpv->LoadVideoParams();
-
-    const Mpv::VideoParams &vG = mpv->getFileInfo().video_params; // video geometry
-    QRect mG = ui->mpvFrame->geometry(),                          // mpv geometry
-          wfG = frameGeometry(),                                  // frame geometry of window (window geometry + window frame)
-          wG = geometry(),                                        // window geometry
-          aG = qApp->desktop()->availableGeometry(wfG.center());  // available geometry of the screen we're in--(geometry not including the taskbar)
-
-    double a, // aspect ratio
-           w, // width of vid we want
-           h; // height of vid we want
-
-    // obtain natural video aspect ratio
-    if(vG.width == 0 || vG.height == 0) // width/height are 0 when there is no output
-        return;
-    if(vG.dwidth == 0 || vG.dheight == 0) // dwidth/height are 0 on load
-        a = double(vG.width)/vG.height; // use video width and height for aspect ratio
-    else
-        a = double(vG.dwidth)/vG.dheight; // use display width and height for aspect ratio
-
-    // calculate resulting display:
-    if(percent == 0) // fit to window
-    {
-        // set our current mpv frame dimensions
-        w = mG.width();
-        h = mG.height();
-
-        double cmp = w/h - a, // comparison
-               eps = 0.01;  // epsilon (deal with rounding errors) we consider -eps < 0 < eps ==> 0
-
-        if(cmp > eps) // too wide
-            w = h * a; // calculate width based on the correct height
-        else if(cmp < -eps) // too long
-            h = w / a; // calculate height based on the correct width
-    }
-    else // fit into desired dimensions
-    {
-        double scale = percent / 100.0; // get scale
-
-        w = vG.width * scale;  // get scaled width
-        h = vG.height * scale; // get scaled height
-    }
-
-    double dW = w + (wfG.width() - mG.width()),   // calculate display width of the window
-           dH = h + (wfG.height() - mG.height()); // calculate display height of the window
-
-    if(dW > aG.width()) // if the width is bigger than the available area
-    {
-        dW = aG.width(); // set the width equal to the available area
-        w = dW - (wfG.width() - mG.width());    // calculate the width
-        h = w / a;                              // calculate height
-        dH = h + (wfG.height() - mG.height());  // calculate new display height
-    }
-    if(dH > aG.height()) // if the height is bigger than the available area
-    {
-        dH = aG.height(); // set the height equal to the available area
-        h = dH - (wfG.height() - mG.height()); // calculate the height
-        w = h * a;                             // calculate the width accordingly
-        dW = w + (wfG.width() - mG.width());   // calculate new display width
-    }
-
-    // get the centered rectangle we want
-    QRect rect = QStyle::alignedRect(Qt::LeftToRight,
-                                     Qt::AlignCenter,
-                                     QSize(dW,
-                                           dH),
-                                     percent == 0 ? wfG : aG); // center in window (autofit) or on our screen
-
-    // adjust the rect to compensate for the frame
-    rect.setLeft(rect.left() + (wG.left() - wfG.left()));
-    rect.setTop(rect.top() + (wG.top() - wfG.top()));
-    rect.setRight(rect.right() - (wfG.right() - wG.right()));
-    rect.setBottom(rect.bottom() - (wfG.bottom() - wG.bottom()));
-
-    // finally set the geometry of the window
-    setGeometry(rect);
-
-    // note: the above block is required because there is not setFrameGeometry function
-
-    if(msg)
-        mpv->ShowText(tr("Fit Window: %0%").arg(percent == 0 ? tr("autofit") : QString::number(percent)));
-}
-
-void MainWindow::SetAspectRatio(QString aspect)
-{
-    if(isFullScreen())
-        return;
-    mpv->Aspect(aspect);
 }
 
 void MainWindow::DimLights(bool dim)
@@ -1656,14 +1266,4 @@ void MainWindow::UpdateRecentFiles()
                     mpv->LoadFile(f);
                 });
     }
-}
-
-void MainWindow::OpenFile()
-{
-    mpv->LoadFile(QFileDialog::getOpenFileName(this,
-                   tr("Open File"),mpv->getPath(),
-                   QString("%0 (%1);;").arg(tr("Media Files"), Mpv::media_filetypes.join(" "))+
-                   QString("%0 (%1);;").arg(tr("Video Files"), Mpv::video_filetypes.join(" "))+
-                   QString("%0 (%1)").arg(tr("Audio Files"), Mpv::audio_filetypes.join(" ")),
-                   0, QFileDialog::DontUseSheet));
 }
