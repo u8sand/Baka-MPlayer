@@ -1,3 +1,29 @@
+baka-mplayer (2.0.1-1) unstable; urgency=low
+
+  * Windows Build Available!
+  * Fixed: Spacing in debug window output
+  * Fixed: Some issue with loading mpv settings
+  * Fixed: Modified PKGBUILD to download much faster than before
+  * Fixed: Desktop file for better platform integration
+  * Fixed: Playlist search is now case-insensitive
+  * Changed: Build system from CMake to QMake
+  * Changed: Some menu item shortcut keys
+  * Changed: Increased seekbar height
+  * Changed: Fast seeking
+  * Changed: Do not save window size into settings
+  * Changed: Currently playing item is bolded
+  * Added: Youtube video playback support (and others)
+  * Added: Ability to open directories
+  * Added: Recently opened file list
+  * Added: Interact with mpv directly via command line interface
+  * Added: Fit Window 150%
+  * Added: Gesture Support
+  * Added: Up/Down Arrow keys navigate playlist, Enter plays
+  * Added Translations (Chinese, Korean, Portuguese, Russian)
+
+ -- Joshua Park (godly-devotion) <azian.otaku@live.com>  Sun, 28 Dec 2014 20:30:00 -0500
+
+
 baka-mplayer (2.0.0-1) unstable; urgency=low
 
   * Entire new look and feel
@@ -7,7 +33,7 @@ baka-mplayer (2.0.0-1) unstable; urgency=low
   * Playlist drag and drop support
   * Mpv settings in settings file
   * Settings version information for better version upgrading
-  * Baka  *MPlayer album art for music without album art
+  * Baka MPlayer album art for music without album art
   * More useful Media Info dialog
   * Playback speed adjusting
   * Use of mpv OSD to notify you about various actions

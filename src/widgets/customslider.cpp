@@ -1,5 +1,7 @@
 #include "customslider.h"
 
+#include <QStyle>
+
 CustomSlider::CustomSlider(QWidget *parent):
     QSlider(parent)
 {
@@ -14,14 +16,9 @@ void CustomSlider::setValueNoSignal(int value)
 
 void CustomSlider::mousePressEvent(QMouseEvent *event)
 {
-  // Thanks to spyke: http://stackoverflow.com/questions/11132597/qslider-mouse-direct-jump
   if (event->button() == Qt::LeftButton)
   {
-//      if (orientation() == Qt::Vertical)
-//          setValue(minimum() + ((maximum()-minimum()) * (height()-event->y())) / height());
-//      else // we're always horizontal, extra code not needed
-          setValue(minimum() + ((maximum()-minimum()) * event->x()) / width());
-
+      setValue(QStyle::sliderValueFromPosition(minimum(), maximum(), event->x(), width()));
       event->accept();
   }
   QSlider::mousePressEvent(event);

@@ -13,11 +13,12 @@ else
 fi
 
 # add built mxe directory to the path
-root=$(pwd)
+mxeroot=$(pwd)/mxe.$arch
 
 # get mpv/waf
 git clone https://github.com/mpv-player/mpv.git mpv.$arch
 cd mpv.$arch
+git pull
 ./bootstrap.py
 
 # setup mxe environment
@@ -29,13 +30,13 @@ unset `env | \
     cut -d '=' -f1 | tr '\n' ' '`
 
 # build mpv
-DEST_OS=win32 TARGET=$arch-w64-mingw32.static ./waf configure --enable-libmpv-static --enable-static-build --disable-client-api-examples
+DEST_OS=win32 TARGET=$arch-w64-mingw32.static ./waf configure --enable-libmpv-static --disable-client-api-examples
 ./waf build
 
 # after building successfully we need to copy the files into the correct locations in mxe
-instroot=$root/mxe.$arch/usr/$arch-w64-mingw32.static
+instroot=$mxeroot/usr/$arch-w64-mingw32.static
 # copy the static library over
-cp build/*.a $instroot/lib
+cp build/libmpv.a $instroot/lib
 mkdir -p $instroot/include/mpv
 # copy the include file over
 cp libmpv/client.h $instroot/include/mpv/

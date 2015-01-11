@@ -5,7 +5,8 @@
 #include <QFile>
 #include <QFileInfo>
 #include <QFileInfoList>
-#include <QRegExp>
+
+#include "util.h"
 
 static void wakeup(void *ctx)
 {
@@ -14,9 +15,7 @@ static void wakeup(void *ctx)
 }
 
 MpvHandler::MpvHandler(int64_t wid, QObject *parent):
-    QObject(parent),
-    mpv(0),
-    playState(Mpv::Idle)
+    QObject(parent)
 {
     // create mpv
     mpv = mpv_create();
@@ -27,6 +26,7 @@ MpvHandler::MpvHandler(int64_t wid, QObject *parent):
     mpv_set_option(mpv, "wid", MPV_FORMAT_INT64, &wid);
     mpv_set_option_string(mpv, "input-cursor", "no");   // no mouse handling
     mpv_set_option_string(mpv, "cursor-autohide", "no");// no cursor-autohide, we handle that
+    mpv_set_option_string(mpv, "ytdl", "yes"); // youtube-dl support
 
     // get updates when these properties change
     mpv_observe_property(mpv, 0, "time-pos", MPV_FORMAT_DOUBLE);
@@ -34,6 +34,13 @@ MpvHandler::MpvHandler(int64_t wid, QObject *parent):
     mpv_observe_property(mpv, 0, "sid", MPV_FORMAT_INT64);
     mpv_observe_property(mpv, 0, "aid", MPV_FORMAT_INT64);
     mpv_observe_property(mpv, 0, "sub-visibility", MPV_FORMAT_FLAG);
+
+    // setup callback event handling
+    mpv_set_wakeup_callback(mpv, wakeup, this);
+
+    // initialize mpv
+    if(mpv_initialize(mpv) < 0)
+        throw "Could not initialize mpv";
 }
 
 MpvHandler::~MpvHandler()
@@ -52,10 +59,13 @@ bool MpvHandler::event(QEvent *event)
         while(mpv)
         {
             mpv_event *event = mpv_wait_event(mpv, 0);
-            if (event->event_id == MPV_EVENT_NONE)
+            if(event == nullptr ||
+               event->event_id == MPV_EVENT_NONE)
+            {
                 break;
+            }
             if(event->error < 0)
-                emit messageSignal(QString("[mpv]: ")+QString(mpv_error_string(event->error)));
+                emit messageSignal(mpv_error_string(event->error));
             switch (event->event_id)
             {
             case MPV_EVENT_PROPERTY_CHANGE:
@@ -64,7 +74,10 @@ bool MpvHandler::event(QEvent *event)
                 if(QString(prop->name) == "time-pos")
                 {
                     if(prop->format == MPV_FORMAT_DOUBLE)
+                    {
                         setTime((int)*(double*)prop->data);
+                        lastTime = time;
+                    }
                 }
                 else if(QString(prop->name) == "volume")
                 {
@@ -114,8 +127,12 @@ bool MpvHandler::event(QEvent *event)
                 QCoreApplication::quit();
                 break;
             case MPV_EVENT_LOG_MESSAGE:
-                emit messageSignal("[mpv]: "+QString(((mpv_event_log_message*)event->data)->text));
+            {
+                mpv_event_log_message *message = static_cast<mpv_event_log_message*>(event->data);
+                if(message != nullptr)
+                    emit messageSignal(message->text);
                 break;
+            }
             default: // unhandled events
                 break;
             }
@@ -125,105 +142,43 @@ bool MpvHandler::event(QEvent *event)
     return QObject::event(event);
 }
 
-void MpvHandler::LoadSettings(QSettings *settings, QString version)
+void MpvHandler::AddOverlay(int id, int x, int y, QString file, int offset, int w, int h)
 {
-    if(settings)
-    {
-        if(version == "2.0.1" || version == "2.0.0")
-        {
-            Debug(settings->value("baka-mplayer/debug", false).toBool());
+    QByteArray tmp_id = QString::number(id).toUtf8(),
+               tmp_x = QString::number(x).toUtf8(),
+               tmp_y = QString::number(y).toUtf8(),
+               tmp_file = file.toUtf8(),
+               tmp_offset = QString::number(offset).toUtf8(),
+               tmp_w = QString::number(w).toUtf8(),
+               tmp_h = QString::number(h).toUtf8(),
+               tmp_stride = QString::number(4*w).toUtf8();
 
-            settings->beginGroup("mpv");
-            for(auto &key : settings->childKeys())
-            {
-                if(key == "volume") // exception--we want to update our ui accordingly
-                    Volume(settings->value(key).toInt());
-                else if(key == "speed")
-                    Speed(settings->value(key).toDouble());
-                else if(key == "screenshot-template")
-                {
-                    QString temp = settings->value(key).toString();
-                    int i = temp.lastIndexOf('/');
-                    if(i != -1)
-                    {
-                        ScreenshotDirectory(temp.mid(0, i));
-                        ScreenshotTemplate(temp.mid(i+1));
-                    }
-                    else
-                    {
-                        ScreenshotDirectory(".");
-                        ScreenshotTemplate(temp);
-                    }
-                }
-                else
-                {
-                    QByteArray tmp1 = key.toUtf8(),
-                               tmp2;
-                    // fix to qsettings reading comma-separation as a list
-                    QVariant tmp = settings->value(key);
-                    if(tmp.type() == QVariant::String)
-                        tmp2 = tmp.toString().toUtf8();
-                    else if(tmp.type() == QVariant::StringList)
-                        tmp2 = tmp.toStringList().join(",").toUtf8();
-                    else if(tmp.type() == QVariant::Int)
-                        tmp2 = QString::number(tmp.toInt()).toUtf8();
-                    else if(tmp.type() == QVariant::Double)
-                        tmp2 = QString::number(tmp.toDouble()).toUtf8();
-                    else
-                        emit messageSignal(QString("[Baka-MPlayer]: Setting type was parsed as ")+QString(tmp.type())+"\n");
+    const char *args[] = {"overlay_add",
+                       tmp_id.constData(),
+                       tmp_x.constData(),
+                       tmp_y.constData(),
+                       tmp_file.constData(),
+                       tmp_offset.constData(),
+                       "bgra",
+                       tmp_w.constData(),
+                       tmp_h.constData(),
+                       tmp_stride.constData(),
+                       NULL};
+    AsyncCommand(args);
+}
 
-                    if(tmp2 != QByteArray())
-                        mpv_set_option_string(mpv, tmp1.constData(), tmp2.constData());
-                }
-            }
-            settings->endGroup();
-        }
-        else if(version == "1.9.9")
-        {
-            settings->beginGroup("mpv");
-            ScreenshotFormat(settings->value("screenshotFormat", "jpg").toString());
-            ScreenshotDirectory(settings->value("screenshotDir", ".").toString());
-            ScreenshotTemplate(settings->value("screenshotTemplate", "screenshot%#04n").toString());
-            Speed(settings->value("speed", 1.0).toDouble());
-            Volume(settings->value("volume", 100).toInt());
-            settings->endGroup();
-
-            Debug(settings->value("common/debug", false).toBool());
-        }
-
-        if(!init)
-        {
-            // setup callback event handling
-            mpv_set_wakeup_callback(mpv, wakeup, this);
-
-            // initialize mpv
-            if(mpv_initialize(mpv) < 0)
-                throw "Could not initialize mpv";
-
-            init = true;
-        }
-    }
+void MpvHandler::RemoveOverlay(int id)
+{
+    QByteArray tmp = QString::number(id).toUtf8();
+    const char *args[] = {"overlay_remove", tmp.constData(), NULL};
+    AsyncCommand(args);
 }
 
 bool MpvHandler::FileExists(QString f)
 {
-    QRegExp rx("^(https?://.+\\.[a-z]+)", Qt::CaseInsensitive);
-    if(rx.indexIn(f) != -1) // web url
+    if(Util::IsValidUrl(f)) // web url
         return true;
     return QFile(f).exists();
-}
-
-void MpvHandler::SaveSettings(QSettings *settings)
-{
-    if(settings)
-    {
-        settings->setValue("mpv/volume", volume);
-        settings->setValue("mpv/speed", speed);
-        if(screenshotFormat != "")
-            settings->setValue("mpv/screenshot-format", screenshotFormat);
-        if(screenshotTemplate != "")
-            settings->setValue("mpv/screenshot-template", screenshotDir+"/"+screenshotTemplate);
-    }
 }
 
 void MpvHandler::LoadFile(QString f)
@@ -238,14 +193,12 @@ QString MpvHandler::LoadPlaylist(QString f)
     if(f == "") // ignore empty file name
         return QString();
 
-    QRegExp rx("^(https?://.+\\.[a-z]+)", Qt::CaseInsensitive);
-
     if(f == "-")
     {
         setPath("");
         setPlaylist({f});
     }
-    else if(rx.indexIn(f) != -1) // web url
+    else if(Util::IsValidUrl(f)) // web url
     {
         setPath("");
         setPlaylist({f});
@@ -257,12 +210,12 @@ QString MpvHandler::LoadPlaylist(QString f)
             return QString();
         else if(fi.isDir()) // if directory
         {
-            setPath(QString(fi.absoluteFilePath()+"/")); // set new path
+            setPath(QDir::toNativeSeparators(fi.absoluteFilePath()+"/")); // set new path
             return PopulatePlaylist();
         }
         else if(fi.isFile()) // if file
         {
-            setPath(QString(fi.absolutePath()+"/")); // set new path
+            setPath(QDir::toNativeSeparators(fi.absolutePath()+"/")); // set new path
             PopulatePlaylist();
             return fi.fileName();
         }
@@ -348,22 +301,46 @@ void MpvHandler::Rewind()
     }
 }
 
-void MpvHandler::Seek(int pos, bool relative)
+void MpvHandler::Seek(int pos, bool relative, bool osd)
 {
     if(playState > 0)
     {
-        const QByteArray tmp = QString::number(pos).toUtf8();
         if(relative)
         {
-            const char *args[] = {"seek", tmp.constData(), NULL};
-            AsyncCommand(args);
+            const QByteArray tmp = (((pos >= 0) ? "+" : QString())+QString::number(pos)).toUtf8();
+            if(osd)
+            {
+                const char *args[] = {"osd-msg", "seek", tmp.constData(), NULL};
+                AsyncCommand(args);
+            }
+            else
+            {
+                const char *args[] = {"seek", tmp.constData(), NULL};
+                AsyncCommand(args);
+            }
         }
         else
         {
-            double p = pos;
-            mpv_set_property_async(mpv, 0, "time-pos", MPV_FORMAT_DOUBLE, &p);
+            const QByteArray tmp = QString::number(pos).toUtf8();
+            if(osd)
+            {
+                const char *args[] = {"osd-msg", "seek", tmp.constData(), "absolute", NULL};
+                AsyncCommand(args);
+            }
+            else
+            {
+                const char *args[] = {"seek", tmp.constData(), "absolute", NULL};
+                AsyncCommand(args);
+            }
         }
     }
+}
+
+int MpvHandler::Relative(int pos)
+{
+    int ret = pos - lastTime;
+    lastTime = pos;
+    return ret;
 }
 
 void MpvHandler::FrameStep()
@@ -398,15 +375,24 @@ void MpvHandler::PreviousChapter()
     AsyncCommand(args);
 }
 
-void MpvHandler::Volume(int level)
+void MpvHandler::Volume(int level, bool osd)
 {
     if(level > 100) level = 100;
     else if(level < 0) level = 0;
 
     if(playState > 0)
     {
-        double v = level;
-        mpv_set_property_async(mpv, 0, "volume", MPV_FORMAT_DOUBLE, &v);
+        if(osd)
+        {
+            const QByteArray tmp = QString::number(level).toUtf8();
+            const char *args[] = {"osd-msg", "set", "volume", tmp.constData(), NULL};
+            AsyncCommand(args);
+        }
+        else
+        {
+            double v = level;
+            mpv_set_property_async(mpv, 0, "volume", MPV_FORMAT_DOUBLE, &v);
+        }
     }
     else
         setVolume(level);
@@ -476,11 +462,6 @@ void MpvHandler::ScreenshotTemplate(QString s)
 
 void MpvHandler::ScreenshotDirectory(QString s)
 {
-//    if(mpv)
-//    {
-//        const QByteArray tmp = (s+"/"+screenshotTemplate).toUtf8();
-//        mpv_set_option_string(mpv, "screenshot-template", tmp.data());
-//    }
     setScreenshotDir(s);
 }
 
@@ -494,7 +475,8 @@ void MpvHandler::AddSubtitleTrack(QString f)
 
 void MpvHandler::ShowSubtitles(bool b)
 {
-    mpv_set_property_async(mpv, 0, "sub-visibility", MPV_FORMAT_FLAG, &b);
+    const char *args[] = {"set", "sub-visibility", b ? "yes" : "no", NULL};
+    AsyncCommand(args);
 }
 
 void MpvHandler::SubtitleScale(double scale, bool relative)
@@ -532,16 +514,16 @@ void MpvHandler::LoadFileInfo()
     // get length
     double len;
     mpv_get_property(mpv, "length", MPV_FORMAT_DOUBLE, &len);
-    fileInfo.length = (int)len;
+    fileInfo.length                  = (int)len;
 
-    fileInfo.video_params.codec = mpv_get_property_string(mpv, "video-codec");
-    fileInfo.video_params.format = mpv_get_property_string(mpv, "video-format");
-    fileInfo.video_params.bitrate = mpv_get_property_string(mpv, "video-bitrate");
-    fileInfo.audio_params.codec = mpv_get_property_string(mpv, "audio-codec");
-    fileInfo.audio_params.format = mpv_get_property_string(mpv, "audio-format");
-    fileInfo.audio_params.bitrate = mpv_get_property_string(mpv, "audio-bitrate");
+    fileInfo.video_params.codec      = mpv_get_property_string(mpv, "video-codec");
+    fileInfo.video_params.format     = mpv_get_property_string(mpv, "video-format");
+    fileInfo.video_params.bitrate    = mpv_get_property_string(mpv, "video-bitrate");
+    fileInfo.audio_params.codec      = mpv_get_property_string(mpv, "audio-codec");
+    fileInfo.audio_params.format     = mpv_get_property_string(mpv, "audio-format");
+    fileInfo.audio_params.bitrate    = mpv_get_property_string(mpv, "audio-bitrate");
     fileInfo.audio_params.samplerate = mpv_get_property_string(mpv, "audio-samplerate");
-    fileInfo.audio_params.channels = mpv_get_property_string(mpv, "audio-channels");
+    fileInfo.audio_params.channels   = mpv_get_property_string(mpv, "audio-channels");
 
     LoadTracks();
     LoadChapters();
@@ -658,13 +640,32 @@ void MpvHandler::LoadChapters()
 
 void MpvHandler::LoadVideoParams()
 {
-    mpv_get_property(mpv, "width", MPV_FORMAT_INT64, &fileInfo.video_params.width);
-    mpv_get_property(mpv, "height", MPV_FORMAT_INT64, &fileInfo.video_params.height);
-    mpv_get_property(mpv, "dwidth", MPV_FORMAT_INT64, &fileInfo.video_params.dwidth);
-    mpv_get_property(mpv, "dheight", MPV_FORMAT_INT64, &fileInfo.video_params.dheight);
+    mpv_get_property(mpv, "width",        MPV_FORMAT_INT64, &fileInfo.video_params.width);
+    mpv_get_property(mpv, "height",       MPV_FORMAT_INT64, &fileInfo.video_params.height);
+    mpv_get_property(mpv, "dwidth",       MPV_FORMAT_INT64, &fileInfo.video_params.dwidth);
+    mpv_get_property(mpv, "dheight",      MPV_FORMAT_INT64, &fileInfo.video_params.dheight);
     mpv_get_property(mpv, "video-aspect", MPV_FORMAT_INT64, &fileInfo.video_params.aspect);
 
     emit videoParamsChanged(fileInfo.video_params);
+}
+
+void MpvHandler::LoadOsdSize()
+{
+    mpv_get_property(mpv, "osd-width", MPV_FORMAT_INT64, &osdWidth);
+    mpv_get_property(mpv, "osd-height", MPV_FORMAT_INT64, &osdHeight);
+}
+
+void MpvHandler::CommandString(QString str)
+{
+    const QByteArray tmp = str.toUtf8();
+    mpv_command_string(mpv, tmp.constData());
+}
+
+void MpvHandler::SetOption(QString key, QString val)
+{
+    QByteArray tmp1 = key.toUtf8(),
+               tmp2 = val.toUtf8();
+    mpv_set_option_string(mpv, tmp1.constData(), tmp2.constData());
 }
 
 void MpvHandler::OpenFile(QString f)
@@ -705,7 +706,7 @@ void MpvHandler::AsyncCommand(const char *args[])
     if(mpv)
         mpv_command_async(mpv, 0, args);
     else
-        emit messageSignal("[mpv]: mpv was not initialized\n");
+        NotInitialized();
 }
 
 void MpvHandler::Command(const char *args[])
@@ -713,5 +714,10 @@ void MpvHandler::Command(const char *args[])
     if(mpv)
         mpv_command(mpv, args);
     else
-        emit messageSignal("[mpv]: mpv was not initialized\n");
+        NotInitialized();
+}
+
+void MpvHandler::NotInitialized()
+{
+    emit messageSignal(tr("mpv was not initialized\n"));
 }

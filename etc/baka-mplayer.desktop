@@ -1,9 +1,10 @@
 [Desktop Entry]
 Type=Application
-Version=2.0.0
+Version=1.0
 Name=Baka-MPlayer
+GenericName=Media player
 Comment=Baka MPlayer is a free and open source, cross-platform, **libmpv** based multimedia player.
-Exec=baka-mplayer
 Icon=baka-mplayer
+Exec=baka-mplayer %u
 Terminal=false
-Categories=AudioVideo;Audio;Video;
+Categories=AudioVideo;Video;

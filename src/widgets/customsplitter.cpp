@@ -10,6 +10,7 @@ CustomSplitter::CustomSplitter(QWidget *parent) :
                 if(index == 1)
                     emit positionChanged(max()-pos);
             });
+
 }
 
 int CustomSplitter::position() const

@@ -2,18 +2,18 @@
 # See debhelper(7) (uncomment to enable)
 # output every command that modifies files on the build system.
 #DH_VERBOSE = 1
-# exclude VCS paths if needed.
-#DH_ALWAYS_EXCLUDE=CVS:.svn:.git
-
 export QT_SELECT=qt5
 
+# main packaging script based on dh7 syntax
 %:
-		dh $@
-
+	dh $@
 
 override_dh_builddeb:
 	dh_builddeb -- -Z xz
 
+# debmake generated override targets
+override_dh_auto_configure:
+	./configure INSTROOT=$(CURDIR)/debian/baka-mplayer CONFIG+=install_translations
+
 override_dh_auto_build:
-	sh make.sh
-	gzip -c etc/doc/baka-mplayer.man > etc/doc/baka-mplayer.1.gz
+	$(MAKE) -j `grep -c ^processor /proc/cpuinfo`

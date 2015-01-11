@@ -6,7 +6,7 @@ AboutDialog::AboutDialog(QString version, QWidget *parent) :
     ui(new Ui::AboutDialog)
 {
     ui->setupUi(this);
-    ui->versionLabel->setText("Baka MPlayer "+version);
+    ui->versionLabel->setText("Baka-MPlayer "+version);
 
     connect(ui->closeButton, SIGNAL(clicked()),
             this, SLOT(close()));

@@ -1,0 +1,61 @@
+#!/bin/bash
+
+# options:
+# "TRANSLATIONS=translations/baka-mplayer_$lang.ts" - put language(s) you want, override
+# "BAKA_LANG="                                      - overide language selection with language code (default: use locale)
+# "CONFIG+=embed_translations"                      - .qm files will be compiled into the binary
+# "CONFIG+=install_translations"                    - make install will install .qm files on your system
+# "CONFIG+=begin_translations"                      - .ts files will be updated based on project changes
+# "CONFIG+=update_translations"                     - .ts files will be trimmed to bare minimum for commits
+# "CONFIG+=release_translations"                    - .qm files will be compiled from .ts files
+# "INSTROOT="                                       - installation root directory
+# "BINDIR=/usr/bin"                                 - installation binary directory
+# "MEDIADIR=/usr/share/pixmaps"                     - installation media directory
+# "APPDIR=/usr/share/applications"                  - installation application directory
+# "DOCDIR=/usr/share/doc/baka-mplayer"              - installation documentation directory
+# "MANDIR=/usr/share/man"                           - installation manual directory
+# "LICENSEDIR=/usr/share/licenses/baka-mplayer"     - installation license directory
+# "BAKADIR=/usr/share/baka-mplayer"                 - installation directory
+# "SETTINGS_FILE=bakamplayer"                       - settings file name
+
+
+# find qmake
+
+have() {
+  if hash $1 2>/dev/null; then
+    return 0
+  else
+    return 1
+  fi
+}
+
+check_version() {
+  qmake_ver=`$1 --version | awk '/^Using Qt version/{print $4}'`
+  if [[ $qmake_ver =~ (5.*) ]]; then
+    echo "Using qmake version $qmake_ver..."
+    return 0
+  fi
+  return 1
+}
+
+good() {
+  if have $1; then
+    if check_version $1; then
+      return 0
+    fi
+  fi
+  return 1
+}
+
+if [ "$QMAKE" == "" ]; then
+  if good qmake; then
+    QMAKE=qmake;
+  elif good qmake-qt5; then
+    QMAKE=qmake-qt5;
+  else
+    echo "Could not find valid qt version, please specify QMAKE."
+    exit 0
+  fi
+fi
+
+$QMAKE src/Baka-MPlayer.pro CONFIG+=release $@

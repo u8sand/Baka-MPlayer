@@ -19,6 +19,7 @@ public slots:
 
 signals:
     void positionChanged(int pos);
+    void entered();
 
 private:
     int normalPos;

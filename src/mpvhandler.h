@@ -4,7 +4,6 @@
 #include <QObject>
 #include <QString>
 #include <QStringList>
-#include <QSettings>
 
 #include <mpv/client.h>
 
@@ -12,6 +11,7 @@
 
 class MpvHandler : public QObject
 {
+friend class BakaEngine;
     Q_OBJECT
 public:
     explicit MpvHandler(int64_t wid, QObject *parent = 0);
@@ -34,18 +34,20 @@ public:
     bool getPlaylistVisible()               { return playlistVisible; }
     bool getSubtitleVisibility()            { return subtitleVisibility; }
 
+    int getOsdWidth()                       { return osdWidth; }
+    int getOsdHeight()                      { return osdHeight; }
 protected:
     virtual bool event(QEvent*);
 
     bool FileExists(QString);
 
 public slots:
-    void LoadSettings(QSettings*,QString);
-    void SaveSettings(QSettings*);
-
     void LoadFile(QString);
     QString LoadPlaylist(QString);
     void PlayFile(QString);
+
+    void AddOverlay(int id, int x, int y, QString file, int offset, int w, int h);
+    void RemoveOverlay(int id);
 
     void Play();
     void Pause();
@@ -54,7 +56,8 @@ public slots:
     void Restart();
     void Rewind();
 
-    void Seek(int pos, bool relative = false);
+    void Seek(int pos, bool relative = false, bool osd = false);
+    int Relative(int pos);
     void FrameStep();
     void FrameBackStep();
 
@@ -62,7 +65,7 @@ public slots:
     void NextChapter();
     void PreviousChapter();
 
-    void Volume(int);
+    void Volume(int, bool osd = false);
     void Speed(double);
     void Aspect(QString);
     void Vid(int);
@@ -86,6 +89,11 @@ public slots:
     void LoadTracks();
     void LoadChapters();
     void LoadVideoParams();
+    void LoadOsdSize();
+
+    void CommandString(QString);
+    void SetOption(QString key, QString val);
+
 protected slots:
     void OpenFile(QString);
     QString PopulatePlaylist();
@@ -94,6 +102,7 @@ protected slots:
 
     void AsyncCommand(const char *args[]);
     void Command(const char *args[]);
+    void NotInitialized();
 
 private slots:
     void setPlaylist(const QStringList& l)  { emit playlistChanged(l); }
@@ -141,7 +150,7 @@ signals:
     void messageSignal(QString m);
 
 private:
-    mpv_handle *mpv;
+    mpv_handle *mpv = nullptr;
 
     // variables
     Mpv::PlayState playState = Mpv::Idle;
@@ -154,6 +163,7 @@ private:
                 suffix;
     double      speed = 1;
     int         time = 0,
+                lastTime = 0,
                 volume = 100,
                 index = 0,
                 vid,
@@ -163,6 +173,9 @@ private:
                 debug = false,
                 playlistVisible = false,
                 subtitleVisibility = true;
+
+    int         osdWidth,
+                osdHeight;
 };
 
 #endif // MPVHANDLER_H

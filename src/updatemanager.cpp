@@ -8,21 +8,22 @@
 #include <QStringList>
 #include <QFile>
 
+#include "util.h"
+
 UpdateManager::UpdateManager(QObject *parent) :
     QObject(parent),
     manager(new QNetworkAccessManager(this))
 {
 }
 
+UpdateManager::~UpdateManager()
+{
+    delete manager;
+}
+
 void UpdateManager::CheckForUpdates()
 {
-    QNetworkRequest request(QUrl(
-#if defined(Q_OS_LINUX) || defined(Q_OS_UNIX)
-    "http://bakamplayer.u8sand.net/version_linux"
-#elif defined(Q_OS_WIN)
-    "http://bakamplayer.u8sand.net/version_windows"
-#endif
-    ));
+    QNetworkRequest request(QUrl(Util::VersionFileUrl()));
     QNetworkReply *reply = manager->get(request);
 
     connect(reply, &QNetworkReply::downloadProgress,

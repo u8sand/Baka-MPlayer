@@ -23,7 +23,7 @@ ScreenshotDialog::ScreenshotDialog(bool &_always, bool &_screenshot, MpvHandler 
     connect(ui->browseButton, &QPushButton::clicked,
             [=]
             {
-                QString dir = QFileDialog::getExistingDirectory(this, "Choose screenshot directory", ui->locationEdit->text());
+                QString dir = QFileDialog::getExistingDirectory(this, tr("Choose screenshot directory"), ui->locationEdit->text());
                 if(dir != QString())
                     ui->locationEdit->setText(dir);
             });

@@ -31,18 +31,20 @@ QPushButton {
 	color: whitesmoke;
 	border: 1px solid black;
 	border-radius: 2px;
-    min-width: 88px;
-	min-height: 25px;
+	padding: 4px 6px;
+    min-width: 76px;
+	min-height: 17px;
 }
-QPushButton:default {
+QPushButton:focus {
 	border: 1px solid whitesmoke;
+	outline: none;
 }
 QPushButton:pressed {
     background: #005A6A;
 }
 QPushButton:disabled {
 	background: black;
-	border: 1px solid #008098;
+	border: 1px solid #4C4C4C;
     color: #B8B8B8;
 }
 
@@ -221,8 +223,12 @@ Apache License, version 2.0 &lt;Google&gt;
 Download icon
 CC BY 3.0 &lt;Sasha Mescheryakov&gt;
 
-Headphone icon
-Public Domain &lt;Michael Martin-Smucker&gt;</string>
+Translations
+- Chinese &lt;amazingfate, Antares95&gt;
+- Italian &lt;Aloysius&gt;
+- Korean &lt;godly-devotion&gt;
+- Portuguese &lt;u8sand&gt;
+- Russian &lt;suhr&gt;</string>
          </property>
         </widget>
        </item>
@@ -319,6 +325,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</string
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>closeButton</tabstop>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>plainTextEdit_2</tabstop>
+  <tabstop>plainTextEdit</tabstop>
+ </tabstops>
  <resources>
   <include location="../rsclist.qrc"/>
  </resources>

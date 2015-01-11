@@ -5,8 +5,6 @@
 
 #include "util.h"
 
-using namespace BakaUtil;
-
 InfoDialog::InfoDialog(const QString &fileName, const Mpv::FileInfo &_fileInfo, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::InfoDialog),
@@ -21,23 +19,37 @@ InfoDialog::InfoDialog(const QString &fileName, const Mpv::FileInfo &_fileInfo, 
 
     QFileInfo fi(fileName);
     QList<QPair<QString, QString>> items = {
-        {"File name", fi.fileName()},
-        {"Media Title", fileInfo.media_title},
-        {"File size", HumanSize(fi.size())},
-        {"Date created", fi.created().toString()},
-        {"Media length", FormatTime(fileInfo.length, fileInfo.length)},
-        {"[Video]", QString()},
-        {"Video codec", fileInfo.video_params.codec},
-        {"Video format", fileInfo.video_params.format},
-        {"Video bitrate", fileInfo.video_params.bitrate},
-        {"Video dimensions", QString::number(fileInfo.video_params.width)+" x "+QString::number(fileInfo.video_params.height)},
-        {"[Audio]", QString()},
-        {"Audio codec", fileInfo.audio_params.codec},
-        {"Audio format", fileInfo.audio_params.format},
-        {"Audio bitrate", fileInfo.audio_params.bitrate},
-        {"Audio samplerate", fileInfo.audio_params.samplerate},
-        {"Audio channels", fileInfo.audio_params.channels}
+        {tr("File name"), fi.fileName()},
+        {tr("Media Title"), fileInfo.media_title},
+        {tr("File size"), Util::HumanSize(fi.size())},
+        {tr("Date created"), fi.created().toString()},
+        {tr("Media length"), Util::FormatTime(fileInfo.length, fileInfo.length)},
     };
+
+    if(fileInfo.video_params.codec != QString())
+    {
+        QList<QPair<QString, QString>> video_items = {
+            {tr("[Video]"), QString()},
+            {tr("Video codec"), fileInfo.video_params.codec},
+            {tr("Video format"), fileInfo.video_params.format},
+            {tr("Video bitrate"), fileInfo.video_params.bitrate},
+            {tr("Video dimensions"), QString::number(fileInfo.video_params.width)+" x "+QString::number(fileInfo.video_params.height)}
+        };
+        items.append(video_items);
+    }
+
+    if(fileInfo.audio_params.codec != QString())
+    {
+        QList<QPair<QString, QString>> audio_items = {
+            {tr("[Audio]"), QString()},
+            {tr("Audio codec"), fileInfo.audio_params.codec},
+            {tr("Audio format"), fileInfo.audio_params.format},
+            {tr("Audio bitrate"), fileInfo.audio_params.bitrate},
+            {tr("Audio samplerate"), fileInfo.audio_params.samplerate},
+            {tr("Audio channels"), fileInfo.audio_params.channels}
+        };
+        items.append(audio_items);
+    }
 
     ui->infoWidget->setRowCount(items.length());
     int r = 0;
@@ -59,7 +71,7 @@ InfoDialog::InfoDialog(const QString &fileName, const Mpv::FileInfo &_fileInfo, 
     if(fileInfo.tracks.length() > 0)
     {
         ui->infoWidget->setRowCount(ui->infoWidget->rowCount()+1+fileInfo.tracks.length());
-        item = new QTableWidgetItem("[Track List]");
+        item = new QTableWidgetItem(tr("[Track List]"));
         item->setTextAlignment(Qt::AlignCenter);
         ui->infoWidget->setItem(r++, 0, item);
         for(auto &track : fileInfo.tracks)
@@ -71,15 +83,15 @@ InfoDialog::InfoDialog(const QString &fileName, const Mpv::FileInfo &_fileInfo, 
     }
     if(fileInfo.chapters.length() > 0)
     {
-        ui->infoWidget->setRowCount(ui->infoWidget->rowCount()+1+fileInfo.tracks.length());
+        ui->infoWidget->setRowCount(ui->infoWidget->rowCount()+1+fileInfo.chapters.length());
 
-        item = new QTableWidgetItem("[Chapter List]");
+        item = new QTableWidgetItem(tr("[Chapter List]"));
         item->setTextAlignment(Qt::AlignCenter);
         ui->infoWidget->setItem(r++, 0, item);
         for(auto &chapter : fileInfo.chapters)
         {
             ui->infoWidget->setItem(r, 0, new QTableWidgetItem(chapter.title));
-            ui->infoWidget->setItem(r, 1, new QTableWidgetItem(FormatTime(chapter.time, fileInfo.length)));
+            ui->infoWidget->setItem(r, 1, new QTableWidgetItem(Util::FormatTime(chapter.time, fileInfo.length)));
             r++;
         }
     }

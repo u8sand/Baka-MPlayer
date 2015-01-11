@@ -9,7 +9,7 @@
 #		though with less threads might be just enough.
 
 arch=x86_64
-jobs=12
+jobs=`grep -c ^processor /proc/cpuinfo`
 if [[ $1 == 'x86_64' ]]; then
 	arch=x86_64
 elif [[ $1 == 'i686' ]]; then
@@ -19,16 +19,13 @@ else
 	exit;
 fi
 
-if [[ $2 != '' ]]; then
-	jobs=$2
-fi
-
 git clone https://github.com/mxe/mxe.git mxe.$arch
 cd mxe.$arch
+git pull
 # set jobs optimal for your computer
 echo "JOBS := $jobs" > settings.mk
 # this took 1 hour each on my system.
 echo "MXE_TARGETS := $arch-w64-mingw32.static" >> settings.mk
 
-make gcc ffmpeg libass jpeg pthreads qt5
+make gcc ffmpeg libass lua jpeg pthreads qt5
 cd ..

@@ -4,11 +4,8 @@ DimDialog::DimDialog(QWidget *parent) :
     QDialog(parent)
 {
     setWindowState(Qt::WindowFullScreen);
-    setAttribute(Qt::WA_TranslucentBackground);
     setWindowOpacity(.6);
-    setWindowFlags(Qt::Tool |
-                   Qt::FramelessWindowHint);
-    setStyleSheet("background-color: rgb(255,255,255);");
+    setStyleSheet("background-color: black;");
 }
 
 void DimDialog::mousePressEvent(QMouseEvent *event)

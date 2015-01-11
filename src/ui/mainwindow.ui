@@ -39,12 +39,12 @@ QMenuBar, QMenuBar::item {
 	background: #1A1A1A;
 }
 QMenuBar::item:selected {
-	background: #424242;
+	background: #008098;
 }
 
 QMenu {
-	background: #1A1A1A;
-    border: 1px solid #424242;
+	background: #353535;
+    border: 1px solid #5A5A5A;
 }
 QMenu::item:selected {
 	background: #008098;
@@ -59,9 +59,9 @@ QMenu::item::disabled:selected {
 	color: black;
 }
 QMenu::separator {
-	background: #424242;
+	background: #5A5A5A;
 	height: 1px;
-	margin: 3px 0;
+	margin: 2px 0;
 }
 
 /* QSplitter */
@@ -89,13 +89,13 @@ QSplitter::handle,
 	border-color: #008098;
 }
 
-/* Playlist */
+/* searchBox */
 
 #searchBox {
 	font-size: 12px;
 	padding: 2px;
 	border-style: solid;
-	border-width: 1px;
+	border-width: 2px;
 	border-color: black #1A1A1A;
 }
 #searchBox:focus {
@@ -116,13 +116,18 @@ QSplitter::handle,
 
 QListView::item {
 	padding: 2px 0px;
-	alternate-background-color: #141414;
+	background: #141414;
+	alternate-background-color: #1A1A1A;
 }
 QListView::item:alternate {
-    background: #141414;
+    background: #1A1A1A;
 }
 QListView::item:selected {
 	background: #008098;
+}
+QListWidget:item:selected:active,
+QListWidget:item:selected:!active {
+	color: whitesmoke;
 }
 
 /* QScrollBar */
@@ -244,7 +249,7 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="inputLineEdit">
+          <widget class="CustomLineEdit" name="inputLineEdit">
            <property name="mouseTracking">
             <bool>false</bool>
            </property>
@@ -464,22 +469,32 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
       <property name="focusPolicy">
        <enum>Qt::NoFocus</enum>
       </property>
       <property name="styleSheet">
        <string notr="true">QSlider {
-	height: 7px;
+	height: 9px;
+}
+QSlider::handle:horizontal:disabled,
+QSlider::sub-page:horizontal:disabled {
+	background: #353535;
 }
 QSlider::handle:horizontal {
 	/* handle color */
-	background: #01455F;
-	width: 14px;
+	background: #008098;
+	width: 9px;
+	border-radius: 4px;
 }
 QSlider::groove:horizontal {
-	background: #0D0D0D;
+	/* the non-progressed color */
+	background: #353535;
 }
 QSlider::sub-page:horizontal {
+	/* the progress color */
 	background: #008098;
 }</string>
       </property>
@@ -498,9 +513,6 @@ QSlider::sub-page:horizontal {
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
-      </property>
-      <property name="mouseTracking">
-       <bool>false</bool>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_3">
        <property name="spacing">
@@ -867,7 +879,7 @@ QSlider::handle:horizontal {
             <number>50</number>
            </property>
            <property name="tracking">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
@@ -962,7 +974,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>580</width>
-     <height>20</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
@@ -987,7 +999,7 @@ QSlider::handle:horizontal {
     <addaction name="actionPlay_Next_File"/>
     <addaction name="actionPlay_Previous_File"/>
     <addaction name="separator"/>
-    <addaction name="actionE_xit_2"/>
+    <addaction name="actionE_xit"/>
    </widget>
    <widget class="QMenu" name="menu_View">
     <property name="title">
@@ -1004,6 +1016,7 @@ QSlider::handle:horizontal {
      <addaction name="action50"/>
      <addaction name="action75"/>
      <addaction name="action100"/>
+     <addaction name="action150"/>
      <addaction name="action200"/>
     </widget>
     <widget class="QMenu" name="menuAspect_Ratio">
@@ -1013,7 +1026,7 @@ QSlider::handle:horizontal {
      <property name="title">
       <string>Aspect &amp;Ratio</string>
      </property>
-     <addaction name="action_Autodetect"/>
+     <addaction name="action_Auto_Detect"/>
      <addaction name="actionForce_4_3"/>
      <addaction name="actionForce_16_9"/>
      <addaction name="actionForce_2_35_1"/>
@@ -1139,10 +1152,10 @@ QSlider::handle:horizontal {
     <property name="title">
      <string>&amp;Settings</string>
     </property>
-    <addaction name="action_Show_Playlist_2"/>
-    <addaction name="action_Hide_Album_Art_2"/>
+    <addaction name="action_Show_Playlist"/>
+    <addaction name="action_Hide_Album_Art"/>
     <addaction name="separator"/>
-    <addaction name="action_Dim_Desktop"/>
+    <addaction name="action_Dim_Lights"/>
     <addaction name="actionShow_D_ebug_Output"/>
     <addaction name="separator"/>
     <addaction name="action_Preferences"/>
@@ -1164,11 +1177,6 @@ QSlider::handle:horizontal {
    <addaction name="menu_Settings"/>
    <addaction name="menu_Help"/>
   </widget>
-  <action name="actionE_xit">
-   <property name="text">
-    <string>E&amp;xit</string>
-   </property>
-  </action>
   <action name="action_New_Player">
    <property name="text">
     <string>&amp;New Player</string>
@@ -1201,17 +1209,6 @@ QSlider::handle:horizontal {
     <string>Ctrl+V</string>
    </property>
   </action>
-  <action name="actionOpen_Last_File">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="text">
-    <string>Open &amp;Last File</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+Z</string>
-   </property>
-  </action>
   <action name="actionShow_in_Folder">
    <property name="enabled">
     <bool>false</bool>
@@ -1220,7 +1217,7 @@ QSlider::handle:horizontal {
     <string>Show in &amp;Folder</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+F</string>
+    <string>Ctrl+E</string>
    </property>
   </action>
   <action name="actionPlay_Next_File">
@@ -1245,7 +1242,7 @@ QSlider::handle:horizontal {
     <string>Ctrl+Left</string>
    </property>
   </action>
-  <action name="actionE_xit_2">
+  <action name="actionE_xit">
    <property name="text">
     <string>E&amp;xit</string>
    </property>
@@ -1326,9 +1323,6 @@ QSlider::handle:horizontal {
    </property>
   </action>
   <action name="actionSh_uffle">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
    <property name="enabled">
     <bool>false</bool>
    </property>
@@ -1346,36 +1340,6 @@ QSlider::handle:horizontal {
    </property>
    <property name="text">
     <string>Stop after &amp;Current</string>
-   </property>
-  </action>
-  <action name="action_Show_Playlist">
-   <property name="text">
-    <string>&amp;Show Playlist</string>
-   </property>
-  </action>
-  <action name="action_Hide_Album_Art">
-   <property name="text">
-    <string>&amp;Hide Album Art</string>
-   </property>
-  </action>
-  <action name="action_Dim_Lights">
-   <property name="text">
-    <string>&amp;Dim Lights</string>
-   </property>
-  </action>
-  <action name="actionShow_Command_Line">
-   <property name="text">
-    <string>Show &amp;Command Line</string>
-   </property>
-  </action>
-  <action name="action_On_Top">
-   <property name="text">
-    <string>&amp;On Top</string>
-   </property>
-  </action>
-  <action name="action_Tray_Icon">
-   <property name="text">
-    <string>&amp;Tray Icon</string>
    </property>
   </action>
   <action name="action_Next_Chapter">
@@ -1433,7 +1397,7 @@ QSlider::handle:horizontal {
     <string>Ctrl+J</string>
    </property>
   </action>
-  <action name="action_Show_Playlist_2">
+  <action name="action_Show_Playlist">
    <property name="checkable">
     <bool>true</bool>
    </property>
@@ -1444,10 +1408,10 @@ QSlider::handle:horizontal {
     <string>&amp;Show Playlist</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+X</string>
+    <string>Ctrl+F</string>
    </property>
   </action>
-  <action name="action_Hide_Album_Art_2">
+  <action name="action_Hide_Album_Art">
    <property name="checkable">
     <bool>true</bool>
    </property>
@@ -1458,23 +1422,15 @@ QSlider::handle:horizontal {
     <string>&amp;Hide Album Art</string>
    </property>
   </action>
-  <action name="action_Dim_Desktop">
+  <action name="action_Dim_Lights">
    <property name="checkable">
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>&amp;Dim Desktop</string>
+    <string>&amp;Dim Lights</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+D</string>
-   </property>
-  </action>
-  <action name="actionShow_Command_Line_2">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>Show &amp;Command Line</string>
    </property>
   </action>
   <action name="actionOnline_Help">
@@ -1537,17 +1493,12 @@ QSlider::handle:horizontal {
     <string>200%</string>
    </property>
    <property name="shortcut">
-    <string>Alt+5</string>
+    <string>Alt+6</string>
    </property>
   </action>
   <action name="action_Auto_Detect">
    <property name="text">
     <string>&amp;Auto Detect</string>
-   </property>
-  </action>
-  <action name="action_Autodetect">
-   <property name="text">
-    <string>&amp;Autodetect</string>
    </property>
   </action>
   <action name="actionForce_4_3">
@@ -1637,58 +1588,15 @@ QSlider::handle:horizontal {
     <string>[ none ]</string>
    </property>
   </action>
-  <action name="action_Always">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>&amp;Always</string>
-   </property>
-  </action>
-  <action name="actionWhen_Playing">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>When &amp;Playing</string>
-   </property>
-  </action>
-  <action name="action_Never">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="checked">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>&amp;Never</string>
-   </property>
-  </action>
-  <action name="action_Show_in_Tray">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>&amp;Show in Tray</string>
-   </property>
-  </action>
-  <action name="action_Hide_Popup">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>&amp;Hide Popup</string>
-   </property>
-  </action>
   <action name="actionShow_D_ebug_Output">
    <property name="checkable">
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Show D&amp;ebug Output</string>
+    <string>Show &amp;Command Line</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+E</string>
+    <string>Ctrl+G</string>
    </property>
   </action>
   <action name="action_Increase_Volume">
@@ -1768,6 +1676,14 @@ QSlider::handle:horizontal {
     <string>[ none ]</string>
    </property>
   </action>
+  <action name="action150">
+   <property name="text">
+    <string>150%</string>
+   </property>
+   <property name="shortcut">
+    <string>Alt+5</string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>
@@ -1805,6 +1721,11 @@ QSlider::handle:horizontal {
    <class>PlaylistWidget</class>
    <extends>QListWidget</extends>
    <header>widgets/playlistwidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>CustomLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>widgets/customlineedit.h</header>
   </customwidget>
  </customwidgets>
  <resources>

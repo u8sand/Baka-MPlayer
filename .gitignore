@@ -1,4 +1,7 @@
 build*
-*.pro.user
+*.pro.*
 Makefile
 *.kdev4
+*.qm
+*.out
+.tags*

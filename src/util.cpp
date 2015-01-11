@@ -3,7 +3,16 @@
 #include <QTime>
 #include <QStringListIterator>
 
-QString BakaUtil::FormatTime(int _time, int _totalTime)
+namespace Util {
+
+
+bool IsValidUrl(QString url)
+{
+    QRegExp rx("^[a-z]{2,}://", Qt::CaseInsensitive); // url
+    return (rx.indexIn(url) != -1);
+}
+
+QString FormatTime(int _time, int _totalTime)
 {
     QTime time = QTime::fromMSecsSinceStartOfDay(_time * 1000);
     if(_totalTime >= 3600) // hours
@@ -13,7 +22,25 @@ QString BakaUtil::FormatTime(int _time, int _totalTime)
     return time.toString("0:ss");   // seconds
 }
 
-QString BakaUtil::FormatNumber(int val, int length)
+QString FormatRelativeTime(int _time)
+{
+    QString prefix;
+    if(_time < 0)
+    {
+        prefix = "-";
+        _time = -_time;
+    }
+    else
+        prefix = "+";
+    QTime time = QTime::fromMSecsSinceStartOfDay(_time * 1000);
+    if(_time >= 3600) // hours
+        return prefix+time.toString("h:mm:ss");
+    if(_time >= 60)   // minutes
+        return prefix+time.toString("mm:ss");
+    return prefix+time.toString("0:ss");   // seconds
+}
+
+QString FormatNumber(int val, int length)
 {
     if(length < 10)
         return QString::number(val);
@@ -23,7 +50,7 @@ QString BakaUtil::FormatNumber(int val, int length)
         return QString("%1").arg(val, 3, 10, QChar('0'));
 }
 
-QString BakaUtil::FormatNumberWithAmpersand(int val, int length)
+QString FormatNumberWithAmpersand(int val, int length)
 {
     if(length < 10)
         return "&"+QString::number(val);
@@ -41,7 +68,7 @@ QString BakaUtil::FormatNumberWithAmpersand(int val, int length)
     }
 }
 
-QString BakaUtil::HumanSize(qint64 size)
+QString HumanSize(qint64 size)
 {
     // taken from http://comments.gmane.org/gmane.comp.lib.qt.general/34914
     float num = size;
@@ -59,15 +86,4 @@ QString BakaUtil::HumanSize(qint64 size)
     return QString().setNum(num,'f',2)+" "+unit;
 }
 
-
-QString BakaUtil::ShortenPathToParent(const QString &path)
-{
-    int pos = path.lastIndexOf('/');
-    if(pos != -1)
-    {
-        pos = path.lastIndexOf('/', pos-1);
-        if(pos != -1)
-            return path.mid(pos+1);
-    }
-    return path;
 }

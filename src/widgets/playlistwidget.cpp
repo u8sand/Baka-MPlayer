@@ -2,6 +2,7 @@
 
 #include <QListWidgetItem>
 #include <QMenu>
+#include <QFont>
 
 #include <algorithm> // for std::random_shuffle and std::sort
 
@@ -9,6 +10,7 @@ PlaylistWidget::PlaylistWidget(QWidget *parent) :
     QListWidget(parent),
     cItem()
 {
+    setAttribute(Qt::WA_NoMousePropagation);
 }
 
 QAction *PlaylistWidget::addAction(const QString &text)
@@ -43,9 +45,26 @@ void PlaylistWidget::SelectItem(const QString &item, bool internal)
                 setCurrentItem(items.first());
                 cItem = items.first()->text();
             }
+            else
+                setCurrentRow(0);
+            scrollToItem(currentItem());
         }
         else
             cItem = item;
+    }
+}
+
+void PlaylistWidget::BoldText(const QString &item, bool state)
+{
+    if(item != "")
+    {
+        QList<QListWidgetItem*> items = findItems(item, Qt::MatchExactly);
+        if(items.length() > 0)
+        {
+            QFont font = items.first()->font();
+            font.setBold(state);
+            items.first()->setFont(font);
+        }
     }
 }
 
@@ -73,11 +92,13 @@ QString PlaylistWidget::CurrentItem()
 
 QString PlaylistWidget::PreviousItem()
 {
+    SelectItem(cItem);
     return FileAt(currentRow()-1);
 }
 
 QString PlaylistWidget::NextItem()
 {
+    SelectItem(cItem);
     return FileAt(currentRow()+1);
 }
 
@@ -112,7 +133,7 @@ void PlaylistWidget::ShowAll(bool b)
     {
         QListWidgetItem *_item = currentItem();
         QString item;
-        if(_item)
+        if(_item && cItem == QString())
             item = _item->text();
         else
             item = cItem;
@@ -137,28 +158,28 @@ void PlaylistWidget::ShowAll(bool b)
     }
 }
 
-void PlaylistWidget::Shuffle(bool b)
+void PlaylistWidget::Shuffle()
 {
     if(count() > 0)
     {
         QListWidgetItem *_item = currentItem();
-        QString item;
+        QString item, playingItem = cItem;
         if(_item)
             item = _item->text();
         else
             item = cItem;
-        if(b)
-        {
-            QStringList newPlaylist = playlist;
-            std::random_shuffle(newPlaylist.begin(), newPlaylist.end());
-            clear();
-            addItems(newPlaylist);
-        }
-        else
-        {
-            clear();
-            addItems(playlist);
-        }
+
+        QStringList newPlaylist = playlist;
+        std::random_shuffle(newPlaylist.begin(), newPlaylist.end());
+        // make current playing item the first
+        for(QStringList::iterator iter = newPlaylist.begin(); iter != newPlaylist.end(); ++iter)
+            if(*iter == playingItem)
+            {
+                std::swap(*iter, *newPlaylist.begin());
+                break;
+            }
+        clear();
+        addItems(newPlaylist);
         SelectItem(item);
     }
 }
@@ -169,7 +190,38 @@ void PlaylistWidget::contextMenuEvent(QContextMenuEvent *event)
     if(item)
     {
         QMenu *menu = new QMenu();
-        menu->addActions(actions());
+        connect(menu->addAction(tr("R&emove from Playlist")), &QAction::triggered, // Playlist: Remove from playlist (right-click)
+                [=]
+                {
+                    int row = currentRow();
+                    RemoveItem(row);
+                    if(row > 0)
+                    {
+                        if(row < count()-1)
+                            setCurrentRow(row);
+                        else
+                            setCurrentRow(row-1);
+                    }
+                });
+        connect(menu->addAction(tr("&Delete from Disk")), &QAction::triggered,     // Playlist: Delete from Disk (right-click)
+                [=]
+                {
+                    int row = currentRow();
+                    QString item = RemoveItem(row);
+                    if(row > 0)
+                    {
+                        if(row < count()-1)
+                            setCurrentRow(row);
+                        else
+                            setCurrentRow(row-1);
+                    }
+                    emit DeleteFile(item);
+                });
+        connect(menu->addAction(tr("&Refresh")), &QAction::triggered,              // Playlist: Refresh (right-click)
+                [=]
+                {
+                    emit RefreshPlaylist();
+                });
         menu->exec(viewport()->mapToGlobal(event->pos()));
         delete menu;
     }
