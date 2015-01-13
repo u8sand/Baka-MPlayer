@@ -111,11 +111,36 @@ Some features may not work and changed settings will not be saved.</source>
     <message>
         <source>&apos;%0&apos;&apos; requires parameters
 </source>
-        <translation type="unfinished"></translation>
+        <translation>&apos;%0&apos;&apos; 需要参数
+</translation>
     </message>
     <message>
         <source>screenshot%#04n</source>
-        <translation>截图%#04n</translation>
+        <translation type="vanished">截图%#04n</translation>
+    </message>
+    <message>
+        <source>Open File</source>
+        <translation>打开文件</translation>
+    </message>
+    <message>
+        <source>Media Files</source>
+        <translation>媒体文件</translation>
+    </message>
+    <message>
+        <source>Video Files</source>
+        <translation>视频文件</translation>
+    </message>
+    <message>
+        <source>Audio Files</source>
+        <translation>音频文件</translation>
+    </message>
+    <message>
+        <source>Fit Window: %0%</source>
+        <translation>适应窗口: %0%</translation>
+    </message>
+    <message>
+        <source>autofit</source>
+        <translation>自动适应</translation>
     </message>
 </context>
 <context>
@@ -890,19 +915,19 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Open File</source>
-        <translation>打开文件</translation>
+        <translation type="vanished">打开文件</translation>
     </message>
     <message>
         <source>Media Files</source>
-        <translation>媒体文件</translation>
+        <translation type="vanished">媒体文件</translation>
     </message>
     <message>
         <source>Video Files</source>
-        <translation>视频文件</translation>
+        <translation type="vanished">视频文件</translation>
     </message>
     <message>
         <source>Audio Files</source>
-        <translation>音频文件</translation>
+        <translation type="vanished">音频文件</translation>
     </message>
 </context>
 <context>
