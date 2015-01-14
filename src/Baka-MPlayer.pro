@@ -28,11 +28,13 @@ unix {
 }
 
 win32 {
-    CONFIG += compile_libtool
-
     # mxe fix:
     CONFIG -= windows
     QMAKE_LFLAGS += $$QMAKE_LFLAGS_WINDOWS -pthread
+
+    # xp (minimum version)
+    DEFINES += "WINVER=0x0501" \
+               "_WIN32_WINNT=0x0501"
 
     # application information
     RC_ICONS += img/logo.ico
