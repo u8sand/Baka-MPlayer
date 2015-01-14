@@ -17,9 +17,7 @@
 #include <QTranslator>
 #include <QHash>
 
-#include "gesturehandler.h"
 #include "widgets/dimdialog.h"
-#include "updatedialog.h"
 
 namespace Ui {
 class MainWindow;
@@ -27,7 +25,6 @@ class MainWindow;
 
 class BakaEngine;
 class MpvHandler;
-class Settings;
 
 class MainWindow : public QMainWindow
 {
@@ -68,10 +65,8 @@ private slots:
 private:
     Ui::MainWindow  *ui;
     BakaEngine      *baka;
-
-    Settings        *settings;
     MpvHandler      *mpv;
-    GestureHandler  *gesture;
+
     QTranslator     *translator     = nullptr,
                     *qtTranslator   = nullptr;
 
@@ -84,7 +79,6 @@ private:
     QSystemTrayIcon *sysTrayIcon;
     QMenu           *trayIconMenu;
     DimDialog       *dimDialog;
-    UpdateDialog    *updateDialog;
 
     // variables
     QStringList recent;

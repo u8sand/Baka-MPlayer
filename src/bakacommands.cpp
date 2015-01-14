@@ -5,6 +5,9 @@
 #include "ui/aboutdialog.h"
 #include "ui/infodialog.h"
 #include "ui/locationdialog.h"
+#include "ui/jumpdialog.h"
+#include "ui/preferencesdialog.h"
+#include "ui/updatedialog.h"
 #include "mpvhandler.h"
 
 #include <QApplication>
@@ -148,25 +151,79 @@ void BakaEngine::BakaPlaylist(QStringList &args)
         RequiresParameters("baka playlist");
 }
 
-// baka jump
-//                int time = JumpDialog::getTime(mpv->getFileInfo().length,this);
-//                if(time >= 0)
-//                    mpv->Seek(time);
-// baka dim
-//                DimLights(b);
-// baka output
-//                setDebug(b);
-// baka preferences
-//                baka->SaveSettings();
-//                PreferencesDialog::showPreferences(settings, this);
-//                baka->LoadSettings();
-// baka online_help
-//                QDesktopServices::openUrl(QUrl(tr("http://bakamplayer.u8sand.net/help.php")));
-// baka update
-//                if(updateDialog->exec() == QDialog::Accepted)
-//                {
-//                    // todo: close and finish update (overwrite self and restart)
-//                }
+void BakaEngine::BakaJump(QStringList &args)
+{
+    if(args.empty())
+    {
+        int time = JumpDialog::getTime(mpv->getFileInfo().length, window);
+        if(time >= 0)
+            mpv->Seek(time);
+    }
+    else
+    {
+        QString arg = args.front();
+        args.pop_front();
+        if(args.empty())
+            mpv->CommandString(QString("seek %0").arg(arg));
+        else
+            InvalidParameter(arg);
+    }
+}
+
+void BakaEngine::BakaDim(QStringList &args)
+{
+    if(args.empty())
+    {
+        window->DimLights(!window->ui->action_Dim_Lights->isChecked());
+    }
+    else
+        InvalidParameter(args.join(' '));
+}
+
+void BakaEngine::BakaOutput(QStringList &args)
+{
+    if(args.empty())
+    {
+        window->setDebug(!window->ui->actionShow_D_ebug_Output->isChecked());
+    }
+    else
+        InvalidParameter(args.join(' '));
+}
+
+void BakaEngine::BakaPreferences(QStringList &args)
+{
+    if(args.empty())
+    {
+        SaveSettings();
+        PreferencesDialog::showPreferences(settings, window);
+        LoadSettings();
+    }
+    else
+        InvalidParameter(args.join(' '));
+}
+
+void BakaEngine::BakaOnlineHelp(QStringList &args)
+{
+    if(args.empty())
+    {
+        QDesktopServices::openUrl(QUrl(tr("http://bakamplayer.u8sand.net/help.php")));
+    }
+    else
+        InvalidParameter(args.join(' '));
+}
+
+void BakaEngine::BakaUpdate(QStringList &args)
+{
+    if(args.empty())
+    {
+        if(updateDialog->exec() == QDialog::Accepted)
+        {
+            // todo: close and finish update (overwrite self and restart)
+        }
+    }
+    else
+        InvalidParameter(args.join(' '));
+}
 
 void BakaEngine::BakaOpen(QStringList &args)
 {

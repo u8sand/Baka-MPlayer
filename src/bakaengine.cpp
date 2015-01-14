@@ -5,6 +5,7 @@
 #include "settings.h"
 #include "mpvhandler.h"
 #include "gesturehandler.h"
+#include "ui/updatedialog.h"
 #include "util.h"
 
 #include <QMessageBox>
@@ -14,7 +15,8 @@ BakaEngine::BakaEngine(QObject *parent):
     window(static_cast<MainWindow*>(parent)),
     mpv(new MpvHandler(window->ui->mpvFrame->winId(), this)),
     settings(Util::InitializeSettings(this)),
-    gesture(new GestureHandler(this))
+    gesture(new GestureHandler(this)),
+    updateDialog(new UpdateDialog(window))
 {
     connect(mpv, SIGNAL(messageSignal(QString)),
             this, SLOT(MpvPrint(QString)));
@@ -22,6 +24,7 @@ BakaEngine::BakaEngine(QObject *parent):
 
 BakaEngine::~BakaEngine()
 {
+    delete updateDialog;
     delete gesture;
     delete mpv;
     delete settings;

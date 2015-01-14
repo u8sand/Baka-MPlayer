@@ -11,6 +11,7 @@ class MainWindow;
 class MpvHandler;
 class Settings;
 class GestureHandler;
+class UpdateDialog;
 
 class BakaEngine : public QObject
 {
@@ -23,6 +24,7 @@ public:
     MpvHandler     *mpv;
     Settings       *settings;
     GestureHandler *gesture;
+    UpdateDialog   *updateDialog;
 
 public slots:
     void LoadSettings();
@@ -74,6 +76,12 @@ private:
         {"media_info", &BakaEngine::BakaMediaInfo},
         {"stop", &BakaEngine::BakaStop},
         {"playlist", &BakaEngine::BakaPlaylist},
+        {"jump", &BakaEngine::BakaJump},
+        {"dim", &BakaEngine::BakaDim},
+        {"output", &BakaEngine::BakaOutput},
+        {"preferences", &BakaEngine::BakaPreferences},
+        {"online_help", &BakaEngine::BakaOnlineHelp},
+        {"update", &BakaEngine::BakaUpdate},
         {"open", &BakaEngine::BakaOpen},
         {"play_pause", &BakaEngine::BakaPlayPause},
         {"fitwindow", &BakaEngine::BakaFitWindow},
@@ -91,6 +99,12 @@ private:
     void BakaMediaInfo(QStringList&);
     void BakaStop(QStringList&);
     void BakaPlaylist(QStringList&);
+    void BakaJump(QStringList&);
+    void BakaDim(QStringList&);
+    void BakaOutput(QStringList&);
+    void BakaPreferences(QStringList&);
+    void BakaOnlineHelp(QStringList&);
+    void BakaUpdate(QStringList&);
     void BakaOpen(QStringList&);
     void BakaPlayPause(QStringList&);
     void BakaFitWindow(QStringList&);

@@ -47,12 +47,8 @@ MainWindow::MainWindow(QWidget *parent):
     addActions(ui->menubar->actions()); // makes menubar shortcuts work even when menubar is hidden
 
     // initialize managers/handlers
-    baka = new BakaEngine(this); // todo: remove settings and mpv--access through baka
-    settings = baka->settings;
-    mpv      = baka->mpv;
-    gesture  = baka->gesture;
-
-    updateDialog = new UpdateDialog(this);
+    baka = new BakaEngine(this);
+    mpv = baka->mpv;
 
     // initialize other ui elements
     // note: trayIcon does not work in my environment--known qt bug
@@ -786,7 +782,6 @@ MainWindow::~MainWindow()
 
     // but apparently they don't (https://github.com/u8sand/Baka-MPlayer/issues/47)
 
-    if(updateDialog != nullptr) delete updateDialog;
     if(translator != nullptr)   delete translator;
     if(qtTranslator != nullptr) delete qtTranslator;
     if(dimDialog != nullptr)    delete dimDialog;
@@ -834,12 +829,12 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
         if(gestures)
         {
             if(ui->mpvFrame->rect().contains(event->pos())) // mouse is in the mpvFrame
-                gesture->Begin(GestureHandler::HSEEK_VVOLUME, event->globalPos(), pos());
+                baka->gesture->Begin(GestureHandler::HSEEK_VVOLUME, event->globalPos(), pos());
             else if(!isFullScreen()) // not fullscreen
-                gesture->Begin(GestureHandler::MOVE, event->globalPos(), pos());
+                baka->gesture->Begin(GestureHandler::MOVE, event->globalPos(), pos());
         }
         else if(!isFullScreen()) // not fullscreen
-            gesture->Begin(GestureHandler::MOVE, event->globalPos(), pos());
+            baka->gesture->Begin(GestureHandler::MOVE, event->globalPos(), pos());
     }
     else if(event->button() == Qt::RightButton &&
             !isFullScreen() &&  // not fullscreen
@@ -853,7 +848,7 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
 
 void MainWindow::mouseReleaseEvent(QMouseEvent *event)
 {
-    gesture->End();
+    baka->gesture->End();
     QMainWindow::mouseReleaseEvent(event);
 }
 
@@ -862,7 +857,7 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
     static QRect playbackRect,
                  playlistRect;
 
-    if(gesture->Process(event->globalPos()))
+    if(baka->gesture->Process(event->globalPos()))
         event->accept();
     else if(isFullScreen())
     {
