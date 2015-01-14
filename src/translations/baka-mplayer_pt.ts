@@ -115,7 +115,43 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>screenshot%#04n</source>
-        <translation>foto%#04n</translation>
+        <translation type="vanished">foto%#04n</translation>
+    </message>
+    <message>
+        <source>Open Subtitle File</source>
+        <translation type="unfinished">Arquivo de legenda aberta</translation>
+    </message>
+    <message>
+        <source>Subtitle Files</source>
+        <translation type="unfinished">Arquivos de Legendas</translation>
+    </message>
+    <message>
+        <source>http://bakamplayer.u8sand.net/help.php</source>
+        <translation type="unfinished">http://bakamplayer.u8sand.net/help.php</translation>
+    </message>
+    <message>
+        <source>Open File</source>
+        <translation type="unfinished">Arquivo Aberto</translation>
+    </message>
+    <message>
+        <source>Media Files</source>
+        <translation type="unfinished">Arquivos de Mídia</translation>
+    </message>
+    <message>
+        <source>Video Files</source>
+        <translation type="unfinished">Arquivos de Vídeo</translation>
+    </message>
+    <message>
+        <source>Audio Files</source>
+        <translation type="unfinished">Arquivos de Áudio</translation>
+    </message>
+    <message>
+        <source>Fit Window: %0%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>autofit</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -413,11 +449,11 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Alt+6</source>
-        <translation>Alt+6</translation>
+        <translation type="vanished">Alt+6</translation>
     </message>
     <message>
         <source>Ctrl+G</source>
-        <translation>Ctrl+G</translation>
+        <translation type="vanished">Ctrl+G</translation>
     </message>
     <message>
         <source>E&amp;xit</source>
@@ -433,7 +469,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Ctrl+N</source>
-        <translation>Ctrl+N</translation>
+        <translation type="vanished">Ctrl+N</translation>
     </message>
     <message>
         <source>&amp;Open File...</source>
@@ -441,7 +477,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Ctrl+O</source>
-        <translation>Ctrl+O</translation>
+        <translation type="vanished">Ctrl+O</translation>
     </message>
     <message>
         <source>Open &amp;URL...</source>
@@ -449,7 +485,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Ctrl+U</source>
-        <translation>Ctrl+U</translation>
+        <translation type="vanished">Ctrl+U</translation>
     </message>
     <message>
         <source>Open Path from &amp;Clipboard</source>
@@ -457,7 +493,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Ctrl+V</source>
-        <translation>Ctrl+V</translation>
+        <translation type="vanished">Ctrl+V</translation>
     </message>
     <message>
         <source>Show in &amp;Folder</source>
@@ -465,7 +501,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Ctrl+F</source>
-        <translation>Ctrl+F</translation>
+        <translation type="vanished">Ctrl+F</translation>
     </message>
     <message>
         <source>Play &amp;Next File</source>
@@ -473,7 +509,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Ctrl+Right</source>
-        <translation>Ctrl+Right</translation>
+        <translation type="vanished">Ctrl+Right</translation>
     </message>
     <message>
         <source>Play &amp;Previous File</source>
@@ -481,11 +517,11 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Ctrl+Left</source>
-        <translation>Ctrl+Left</translation>
+        <translation type="vanished">Ctrl+Left</translation>
     </message>
     <message>
         <source>Ctrl+Q</source>
-        <translation>Ctrl+Q</translation>
+        <translation type="vanished">Ctrl+Q</translation>
     </message>
     <message>
         <source>&amp;Full Screen</source>
@@ -493,7 +529,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Alt+Return</source>
-        <translation>Alt+Return</translation>
+        <translation type="vanished">Alt+Return</translation>
     </message>
     <message>
         <source>Show S&amp;ubtitles</source>
@@ -501,7 +537,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Ctrl+W</source>
-        <translation>Ctrl+W</translation>
+        <translation type="vanished">Ctrl+W</translation>
     </message>
     <message>
         <source>Media &amp;Info</source>
@@ -509,7 +545,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Ctrl+I</source>
-        <translation>Ctrl+I</translation>
+        <translation type="vanished">Ctrl+I</translation>
     </message>
     <message>
         <source>&amp;Play</source>
@@ -518,7 +554,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Space</source>
-        <translation>Space</translation>
+        <translation type="vanished">Space</translation>
     </message>
     <message>
         <source>&amp;Stop</source>
@@ -526,7 +562,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Ctrl+S</source>
-        <translation>Ctrl+S</translation>
+        <translation type="vanished">Ctrl+S</translation>
     </message>
     <message>
         <source>&amp;Restart</source>
@@ -534,7 +570,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Ctrl+R</source>
-        <translation>Ctrl+R</translation>
+        <translation type="vanished">Ctrl+R</translation>
     </message>
     <message>
         <source>Sh&amp;uffle</source>
@@ -562,7 +598,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>PgDown</source>
-        <translation>PgDown</translation>
+        <translation type="vanished">PgDown</translation>
     </message>
     <message>
         <source>&amp;Previous Chapter</source>
@@ -570,7 +606,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>PgUp</source>
-        <translation>PgUp</translation>
+        <translation type="vanished">PgUp</translation>
     </message>
     <message>
         <source>&amp;Frame Step</source>
@@ -578,7 +614,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Shift+Right</source>
-        <translation>Shift+Right</translation>
+        <translation type="vanished">Shift+Right</translation>
     </message>
     <message>
         <source>Frame &amp;Back Step</source>
@@ -586,7 +622,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Shift+Left</source>
-        <translation>Shift+Left</translation>
+        <translation type="vanished">Shift+Left</translation>
     </message>
     <message>
         <source>&amp;Jump to Time...</source>
@@ -594,11 +630,11 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Ctrl+J</source>
-        <translation>Ctrl+J</translation>
+        <translation type="vanished">Ctrl+J</translation>
     </message>
     <message>
         <source>Ctrl+D</source>
-        <translation>Ctrl+D</translation>
+        <translation type="vanished">Ctrl+D</translation>
     </message>
     <message>
         <source>Online &amp;Help</source>
@@ -606,7 +642,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>F1</source>
-        <translation>F1</translation>
+        <translation type="vanished">F1</translation>
     </message>
     <message>
         <source>&amp;Check for Updates</source>
@@ -626,7 +662,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Alt+1</source>
-        <translation>Alt+1</translation>
+        <translation type="vanished">Alt+1</translation>
     </message>
     <message>
         <source>50%</source>
@@ -634,7 +670,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Alt+2</source>
-        <translation>Alt+2</translation>
+        <translation type="vanished">Alt+2</translation>
     </message>
     <message>
         <source>75%</source>
@@ -642,7 +678,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Alt+3</source>
-        <translation>Alt+3</translation>
+        <translation type="vanished">Alt+3</translation>
     </message>
     <message>
         <source>100%</source>
@@ -650,7 +686,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Alt+4</source>
-        <translation>Alt+4</translation>
+        <translation type="vanished">Alt+4</translation>
     </message>
     <message>
         <source>200%</source>
@@ -662,7 +698,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Alt+5</source>
-        <translation>Alt+5</translation>
+        <translation type="vanished">Alt+5</translation>
     </message>
     <message>
         <source>&amp;Auto Detect</source>
@@ -694,7 +730,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Ctrl++</source>
-        <translation>Ctrl++</translation>
+        <translation type="vanished">Ctrl++</translation>
     </message>
     <message>
         <source>S&amp;ize -</source>
@@ -702,7 +738,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Ctrl+-</source>
-        <translation>Ctrl+-</translation>
+        <translation type="vanished">Ctrl+-</translation>
     </message>
     <message>
         <source>&amp;Reset Size</source>
@@ -722,7 +758,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Ctrl+E</source>
-        <translation>Ctrl+E</translation>
+        <translation type="vanished">Ctrl+E</translation>
     </message>
     <message>
         <source>&amp;Increase Volume</source>
@@ -730,7 +766,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Ctrl+Up</source>
-        <translation>Ctrl+Up</translation>
+        <translation type="vanished">Ctrl+Up</translation>
     </message>
     <message>
         <source>&amp;Decrease Volume</source>
@@ -738,7 +774,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Ctrl+Down</source>
-        <translation>Ctrl+Down</translation>
+        <translation type="vanished">Ctrl+Down</translation>
     </message>
     <message>
         <source>With &amp;Subtitles...</source>
@@ -746,7 +782,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Ctrl+T</source>
-        <translation>Ctrl+T</translation>
+        <translation type="vanished">Ctrl+T</translation>
     </message>
     <message>
         <source>&amp;Without Subtitles...</source>
@@ -754,7 +790,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Ctrl+Shift+T</source>
-        <translation>Ctrl+Shift+T</translation>
+        <translation type="vanished">Ctrl+Shift+T</translation>
     </message>
     <message>
         <source>&amp;Preferences...</source>
@@ -766,7 +802,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Ctrl+Shift+Up</source>
-        <translation>Ctrl+Shift+Up</translation>
+        <translation type="vanished">Ctrl+Shift+Up</translation>
     </message>
     <message>
         <source>&amp;Decrease</source>
@@ -774,7 +810,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Ctrl+Shift+Down</source>
-        <translation>Ctrl+Shift+Down</translation>
+        <translation type="vanished">Ctrl+Shift+Down</translation>
     </message>
     <message>
         <source>&amp;Reset</source>
@@ -782,7 +818,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Ctrl+Shift+R</source>
-        <translation>Ctrl+Shift+R</translation>
+        <translation type="vanished">Ctrl+Shift+R</translation>
     </message>
     <message>
         <source>Playing</source>
@@ -820,19 +856,19 @@ Nota: O valor deve ser de %0 - %1</translation>
     </message>
     <message>
         <source>Subtitle Files</source>
-        <translation>Arquivos de Legendas</translation>
+        <translation type="vanished">Arquivos de Legendas</translation>
     </message>
     <message>
         <source>Media Files</source>
-        <translation>Arquivos de Mídia</translation>
+        <translation type="vanished">Arquivos de Mídia</translation>
     </message>
     <message>
         <source>Video Files</source>
-        <translation>Arquivos de Vídeo</translation>
+        <translation type="vanished">Arquivos de Vídeo</translation>
     </message>
     <message>
         <source>Audio Files</source>
-        <translation>Arquivos de Áudio</translation>
+        <translation type="vanished">Arquivos de Áudio</translation>
     </message>
     <message>
         <source>Speed: %0x</source>
@@ -844,11 +880,11 @@ Nota: O valor deve ser de %0 - %1</translation>
     </message>
     <message>
         <source>Open Subtitle File</source>
-        <translation>Arquivo de legenda aberta</translation>
+        <translation type="vanished">Arquivo de legenda aberta</translation>
     </message>
     <message>
         <source>http://bakamplayer.u8sand.net/help.php</source>
-        <translation>http://bakamplayer.u8sand.net/help.php</translation>
+        <translation type="vanished">http://bakamplayer.u8sand.net/help.php</translation>
     </message>
     <message>
         <source>Dim Lights</source>
@@ -868,7 +904,7 @@ Nota: O valor deve ser de %0 - %1</translation>
     </message>
     <message>
         <source>Open File</source>
-        <translation>Arquivo Aberto</translation>
+        <translation type="vanished">Arquivo Aberto</translation>
     </message>
 </context>
 <context>

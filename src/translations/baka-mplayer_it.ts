@@ -112,7 +112,43 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>screenshot%#04n</source>
-        <translation type="unfinished">istantanea%#04n</translation>
+        <translation type="obsolete">istantanea%#04n</translation>
+    </message>
+    <message>
+        <source>Open Subtitle File</source>
+        <translation type="unfinished">Apri file sottotitoli</translation>
+    </message>
+    <message>
+        <source>Subtitle Files</source>
+        <translation type="unfinished">File sottotitoli</translation>
+    </message>
+    <message>
+        <source>http://bakamplayer.u8sand.net/help.php</source>
+        <translation type="unfinished">http://bakamplayer.u8sand.net/help.php</translation>
+    </message>
+    <message>
+        <source>Open File</source>
+        <translation type="unfinished">Apri file</translation>
+    </message>
+    <message>
+        <source>Media Files</source>
+        <translation type="unfinished">File multimediali</translation>
+    </message>
+    <message>
+        <source>Video Files</source>
+        <translation type="unfinished">File video</translation>
+    </message>
+    <message>
+        <source>Audio Files</source>
+        <translation type="unfinished">File audio</translation>
+    </message>
+    <message>
+        <source>Fit Window: %0%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>autofit</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -407,7 +443,7 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>Ctrl+N</source>
-        <translation>Ctrl+N</translation>
+        <translation type="vanished">Ctrl+N</translation>
     </message>
     <message>
         <source>&amp;Open File...</source>
@@ -415,7 +451,7 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>Ctrl+O</source>
-        <translation>Ctrl+O</translation>
+        <translation type="vanished">Ctrl+O</translation>
     </message>
     <message>
         <source>Open &amp;URL...</source>
@@ -423,7 +459,7 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>Ctrl+U</source>
-        <translation>Ctrl+U</translation>
+        <translation type="vanished">Ctrl+U</translation>
     </message>
     <message>
         <source>Open Path from &amp;Clipboard</source>
@@ -431,7 +467,7 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>Ctrl+V</source>
-        <translation>Ctrl+V</translation>
+        <translation type="vanished">Ctrl+V</translation>
     </message>
     <message>
         <source>Show in &amp;Folder</source>
@@ -439,7 +475,7 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>Ctrl+E</source>
-        <translation>Ctrl+E</translation>
+        <translation type="vanished">Ctrl+E</translation>
     </message>
     <message>
         <source>Play &amp;Next File</source>
@@ -447,7 +483,7 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>Ctrl+Right</source>
-        <translation>Ctrl+Destra</translation>
+        <translation type="vanished">Ctrl+Destra</translation>
     </message>
     <message>
         <source>Play &amp;Previous File</source>
@@ -455,7 +491,7 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>Ctrl+Left</source>
-        <translation>Ctrl+Sinistra</translation>
+        <translation type="vanished">Ctrl+Sinistra</translation>
     </message>
     <message>
         <source>E&amp;xit</source>
@@ -463,7 +499,7 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>Ctrl+Q</source>
-        <translation>Ctrl+Q</translation>
+        <translation type="vanished">Ctrl+Q</translation>
     </message>
     <message>
         <source>&amp;Full Screen</source>
@@ -471,7 +507,7 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>Alt+Return</source>
-        <translation>Alt+Invio</translation>
+        <translation type="vanished">Alt+Invio</translation>
     </message>
     <message>
         <source>Show S&amp;ubtitles</source>
@@ -479,15 +515,11 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>Ctrl+W</source>
-        <translation>Ctrl+W</translation>
+        <translation type="vanished">Ctrl+W</translation>
     </message>
     <message>
         <source>Media &amp;Info</source>
         <translation>&amp;Informazioni sul media</translation>
-    </message>
-    <message>
-        <source>Ctrl+I</source>
-        <translation></translation>
     </message>
     <message>
         <source>&amp;Play</source>
@@ -495,7 +527,7 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>Space</source>
-        <translation>Spazio</translation>
+        <translation type="vanished">Spazio</translation>
     </message>
     <message>
         <source>&amp;Stop</source>
@@ -503,7 +535,7 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>Ctrl+S</source>
-        <translation>Ctrl+S</translation>
+        <translation type="vanished">Ctrl+S</translation>
     </message>
     <message>
         <source>&amp;Restart</source>
@@ -511,7 +543,7 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>Ctrl+R</source>
-        <translation>Ctrl+R</translation>
+        <translation type="vanished">Ctrl+R</translation>
     </message>
     <message>
         <source>Sh&amp;uffle</source>
@@ -527,7 +559,7 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>PgDown</source>
-        <translation>PagGiù</translation>
+        <translation type="vanished">PagGiù</translation>
     </message>
     <message>
         <source>&amp;Previous Chapter</source>
@@ -535,7 +567,7 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>PgUp</source>
-        <translation>PagSu</translation>
+        <translation type="vanished">PagSu</translation>
     </message>
     <message>
         <source>&amp;Frame Step</source>
@@ -543,7 +575,7 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>Shift+Right</source>
-        <translation>Shift+Destra</translation>
+        <translation type="vanished">Shift+Destra</translation>
     </message>
     <message>
         <source>Frame &amp;Back Step</source>
@@ -551,7 +583,7 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>Shift+Left</source>
-        <translation>Shift+Sinistra</translation>
+        <translation type="vanished">Shift+Sinistra</translation>
     </message>
     <message>
         <source>&amp;Jump to Time...</source>
@@ -559,7 +591,7 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>Ctrl+J</source>
-        <translation>Ctrl+J</translation>
+        <translation type="vanished">Ctrl+J</translation>
     </message>
     <message>
         <source>&amp;Show Playlist</source>
@@ -567,7 +599,7 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>Ctrl+F</source>
-        <translation>Ctrl+F</translation>
+        <translation type="vanished">Ctrl+F</translation>
     </message>
     <message>
         <source>&amp;Hide Album Art</source>
@@ -579,7 +611,7 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>Ctrl+D</source>
-        <translation>Ctrl+D</translation>
+        <translation type="vanished">Ctrl+D</translation>
     </message>
     <message>
         <source>Online &amp;Help</source>
@@ -587,7 +619,7 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>F1</source>
-        <translation>F1</translation>
+        <translation type="vanished">F1</translation>
     </message>
     <message>
         <source>&amp;Check for Updates</source>
@@ -607,7 +639,7 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>Alt+1</source>
-        <translation>Alt+1</translation>
+        <translation type="vanished">Alt+1</translation>
     </message>
     <message>
         <source>50%</source>
@@ -615,7 +647,7 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>Alt+2</source>
-        <translation>Alt+2</translation>
+        <translation type="vanished">Alt+2</translation>
     </message>
     <message>
         <source>75%</source>
@@ -623,7 +655,7 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>Alt+3</source>
-        <translation>Alt+3</translation>
+        <translation type="vanished">Alt+3</translation>
     </message>
     <message>
         <source>100%</source>
@@ -631,7 +663,7 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>Alt+4</source>
-        <translation>Alt+4</translation>
+        <translation type="vanished">Alt+4</translation>
     </message>
     <message>
         <source>200%</source>
@@ -639,7 +671,7 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>Alt+6</source>
-        <translation>Alt+6</translation>
+        <translation type="vanished">Alt+6</translation>
     </message>
     <message>
         <source>&amp;Auto Detect</source>
@@ -671,7 +703,7 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>Ctrl++</source>
-        <translation>Ctrl++</translation>
+        <translation type="vanished">Ctrl++</translation>
     </message>
     <message>
         <source>S&amp;ize -</source>
@@ -679,7 +711,7 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>Ctrl+-</source>
-        <translation>Ctrl+-</translation>
+        <translation type="vanished">Ctrl+-</translation>
     </message>
     <message>
         <source>&amp;Reset Size</source>
@@ -703,7 +735,7 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>Ctrl+G</source>
-        <translation>Ctrl+G</translation>
+        <translation type="vanished">Ctrl+G</translation>
     </message>
     <message>
         <source>&amp;Increase Volume</source>
@@ -711,7 +743,7 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>Ctrl+Up</source>
-        <translation>Ctrl+Su</translation>
+        <translation type="vanished">Ctrl+Su</translation>
     </message>
     <message>
         <source>&amp;Decrease Volume</source>
@@ -719,7 +751,7 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>Ctrl+Down</source>
-        <translation>Ctrl+Giù</translation>
+        <translation type="vanished">Ctrl+Giù</translation>
     </message>
     <message>
         <source>With &amp;Subtitles...</source>
@@ -727,7 +759,7 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>Ctrl+T</source>
-        <translation>Ctrl+T</translation>
+        <translation type="vanished">Ctrl+T</translation>
     </message>
     <message>
         <source>&amp;Without Subtitles...</source>
@@ -735,7 +767,7 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>Ctrl+Shift+T</source>
-        <translation>Ctrl+Maiusc+T</translation>
+        <translation type="vanished">Ctrl+Maiusc+T</translation>
     </message>
     <message>
         <source>&amp;Preferences...</source>
@@ -747,7 +779,7 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>Ctrl+Shift+Up</source>
-        <translation>Ctrl+Maiusc+Su</translation>
+        <translation type="vanished">Ctrl+Maiusc+Su</translation>
     </message>
     <message>
         <source>&amp;Decrease</source>
@@ -755,7 +787,7 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>Ctrl+Shift+Down</source>
-        <translation>Ctrl+Maiusc+Giù</translation>
+        <translation type="vanished">Ctrl+Maiusc+Giù</translation>
     </message>
     <message>
         <source>&amp;Reset</source>
@@ -763,7 +795,7 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>Ctrl+Shift+R</source>
-        <translation>Ctrl+Maiusc+R</translation>
+        <translation type="vanished">Ctrl+Maiusc+R</translation>
     </message>
     <message>
         <source>150%</source>
@@ -771,7 +803,7 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>Alt+5</source>
-        <translation>Alt+5</translation>
+        <translation type="vanished">Alt+5</translation>
     </message>
     <message>
         <source>Playing</source>
@@ -829,15 +861,15 @@ Nota: Il valore deve essere compreso tra %0 e %1</translation>
     </message>
     <message>
         <source>Open Subtitle File</source>
-        <translation>Apri file sottotitoli</translation>
+        <translation type="vanished">Apri file sottotitoli</translation>
     </message>
     <message>
         <source>Subtitle Files</source>
-        <translation>File sottotitoli</translation>
+        <translation type="vanished">File sottotitoli</translation>
     </message>
     <message>
         <source>http://bakamplayer.u8sand.net/help.php</source>
-        <translation>http://bakamplayer.u8sand.net/help.php</translation>
+        <translation type="vanished">http://bakamplayer.u8sand.net/help.php</translation>
     </message>
     <message>
         <source>Settings version not recognized</source>
@@ -867,19 +899,19 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>Open File</source>
-        <translation>Apri file</translation>
+        <translation type="vanished">Apri file</translation>
     </message>
     <message>
         <source>Media Files</source>
-        <translation>File multimediali</translation>
+        <translation type="vanished">File multimediali</translation>
     </message>
     <message>
         <source>Video Files</source>
-        <translation>File video</translation>
+        <translation type="vanished">File video</translation>
     </message>
     <message>
         <source>Audio Files</source>
-        <translation>File audio</translation>
+        <translation type="vanished">File audio</translation>
     </message>
 </context>
 <context>

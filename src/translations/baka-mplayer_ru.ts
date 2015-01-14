@@ -124,7 +124,43 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>screenshot%#04n</source>
-        <translation type="unfinished">скриншот%#04n</translation>
+        <translation type="obsolete">скриншот%#04n</translation>
+    </message>
+    <message>
+        <source>Open Subtitle File</source>
+        <translation type="unfinished">Открыть файл субтитров</translation>
+    </message>
+    <message>
+        <source>Subtitle Files</source>
+        <translation type="unfinished">Файлы субтитров</translation>
+    </message>
+    <message>
+        <source>http://bakamplayer.u8sand.net/help.php</source>
+        <translation type="unfinished">http://bakamplayer.u8sand.net/help.php</translation>
+    </message>
+    <message>
+        <source>Open File</source>
+        <translation type="unfinished">Открыть файл</translation>
+    </message>
+    <message>
+        <source>Media Files</source>
+        <translation type="unfinished">Медиафайлы</translation>
+    </message>
+    <message>
+        <source>Video Files</source>
+        <translation type="unfinished">Видеофайлы</translation>
+    </message>
+    <message>
+        <source>Audio Files</source>
+        <translation type="unfinished">Аудиофайлы</translation>
+    </message>
+    <message>
+        <source>Fit Window: %0%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>autofit</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -419,7 +455,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Ctrl+N</source>
-        <translation>Ctrl+N</translation>
+        <translation type="vanished">Ctrl+N</translation>
     </message>
     <message>
         <source>&amp;Open File...</source>
@@ -427,7 +463,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Ctrl+O</source>
-        <translation>Ctrl+O</translation>
+        <translation type="vanished">Ctrl+O</translation>
     </message>
     <message>
         <source>Open &amp;URL...</source>
@@ -435,7 +471,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Ctrl+U</source>
-        <translation>Ctrl+U</translation>
+        <translation type="vanished">Ctrl+U</translation>
     </message>
     <message>
         <source>Open Path from &amp;Clipboard</source>
@@ -443,7 +479,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Ctrl+V</source>
-        <translation>Ctrl+V</translation>
+        <translation type="vanished">Ctrl+V</translation>
     </message>
     <message>
         <source>Show in &amp;Folder</source>
@@ -451,15 +487,11 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Alt+6</source>
-        <translation type="unfinished">Alt+6</translation>
-    </message>
-    <message>
-        <source>Ctrl+G</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Alt+6</translation>
     </message>
     <message>
         <source>Ctrl+F</source>
-        <translation>Ctrl+F</translation>
+        <translation type="vanished">Ctrl+F</translation>
     </message>
     <message>
         <source>Show &amp;Command Line</source>
@@ -471,7 +503,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Ctrl+Right</source>
-        <translation>Ctrl+Вправо</translation>
+        <translation type="vanished">Ctrl+Вправо</translation>
     </message>
     <message>
         <source>Play &amp;Previous File</source>
@@ -479,7 +511,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Ctrl+Left</source>
-        <translation>Ctrl+Влево</translation>
+        <translation type="vanished">Ctrl+Влево</translation>
     </message>
     <message>
         <source>E&amp;xit</source>
@@ -487,7 +519,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Ctrl+Q</source>
-        <translation>Ctrl+Q</translation>
+        <translation type="vanished">Ctrl+Q</translation>
     </message>
     <message>
         <source>&amp;Full Screen</source>
@@ -495,7 +527,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Alt+Return</source>
-        <translation>Alt+Return</translation>
+        <translation type="vanished">Alt+Return</translation>
     </message>
     <message>
         <source>Show S&amp;ubtitles</source>
@@ -503,7 +535,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Ctrl+W</source>
-        <translation>Ctrl+W</translation>
+        <translation type="vanished">Ctrl+W</translation>
     </message>
     <message>
         <source>Media &amp;Info</source>
@@ -511,7 +543,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Ctrl+I</source>
-        <translation>Ctrl+I</translation>
+        <translation type="vanished">Ctrl+I</translation>
     </message>
     <message>
         <source>&amp;Play</source>
@@ -519,7 +551,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Space</source>
-        <translation>Пробел</translation>
+        <translation type="vanished">Пробел</translation>
     </message>
     <message>
         <source>&amp;Stop</source>
@@ -527,7 +559,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Ctrl+S</source>
-        <translation>Ctrl+S</translation>
+        <translation type="vanished">Ctrl+S</translation>
     </message>
     <message>
         <source>&amp;Restart</source>
@@ -535,7 +567,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Ctrl+R</source>
-        <translation>Ctrl+R</translation>
+        <translation type="vanished">Ctrl+R</translation>
     </message>
     <message>
         <source>Sh&amp;uffle</source>
@@ -551,7 +583,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>PgDown</source>
-        <translation>PgDown</translation>
+        <translation type="vanished">PgDown</translation>
     </message>
     <message>
         <source>&amp;Previous Chapter</source>
@@ -559,7 +591,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>PgUp</source>
-        <translation>PgUp</translation>
+        <translation type="vanished">PgUp</translation>
     </message>
     <message>
         <source>&amp;Frame Step</source>
@@ -567,7 +599,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Shift+Right</source>
-        <translation>Shift+Right</translation>
+        <translation type="vanished">Shift+Right</translation>
     </message>
     <message>
         <source>Frame &amp;Back Step</source>
@@ -575,7 +607,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Shift+Left</source>
-        <translation>Shift+Влево</translation>
+        <translation type="vanished">Shift+Влево</translation>
     </message>
     <message>
         <source>&amp;Jump to Time...</source>
@@ -583,7 +615,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Ctrl+J</source>
-        <translation>Ctrl+J</translation>
+        <translation type="vanished">Ctrl+J</translation>
     </message>
     <message>
         <source>&amp;Show Playlist</source>
@@ -603,7 +635,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Ctrl+D</source>
-        <translation>Ctrl+D</translation>
+        <translation type="vanished">Ctrl+D</translation>
     </message>
     <message>
         <source>Online &amp;Help</source>
@@ -611,7 +643,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>F1</source>
-        <translation>F1</translation>
+        <translation type="vanished">F1</translation>
     </message>
     <message>
         <source>&amp;Check for Updates</source>
@@ -631,7 +663,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Alt+1</source>
-        <translation>Alt+1</translation>
+        <translation type="vanished">Alt+1</translation>
     </message>
     <message>
         <source>50%</source>
@@ -639,7 +671,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Alt+2</source>
-        <translation>Alt+2</translation>
+        <translation type="vanished">Alt+2</translation>
     </message>
     <message>
         <source>75%</source>
@@ -647,7 +679,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Alt+3</source>
-        <translation>Alt+3</translation>
+        <translation type="vanished">Alt+3</translation>
     </message>
     <message>
         <source>100%</source>
@@ -655,7 +687,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Alt+4</source>
-        <translation>Alt+4</translation>
+        <translation type="vanished">Alt+4</translation>
     </message>
     <message>
         <source>200%</source>
@@ -667,7 +699,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Alt+5</source>
-        <translation>Alt+5</translation>
+        <translation type="vanished">Alt+5</translation>
     </message>
     <message>
         <source>&amp;Auto Detect</source>
@@ -699,7 +731,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Ctrl++</source>
-        <translation>Ctrl++</translation>
+        <translation type="vanished">Ctrl++</translation>
     </message>
     <message>
         <source>S&amp;ize -</source>
@@ -707,7 +739,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Ctrl+-</source>
-        <translation>Ctrl+-</translation>
+        <translation type="vanished">Ctrl+-</translation>
     </message>
     <message>
         <source>&amp;Reset Size</source>
@@ -731,7 +763,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Ctrl+E</source>
-        <translation>Ctrl+E</translation>
+        <translation type="vanished">Ctrl+E</translation>
     </message>
     <message>
         <source>&amp;Increase Volume</source>
@@ -739,7 +771,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Ctrl+Up</source>
-        <translation>Ctrl+Вверх</translation>
+        <translation type="vanished">Ctrl+Вверх</translation>
     </message>
     <message>
         <source>&amp;Decrease Volume</source>
@@ -747,7 +779,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Ctrl+Down</source>
-        <translation>Ctrl+Вниз</translation>
+        <translation type="vanished">Ctrl+Вниз</translation>
     </message>
     <message>
         <source>With &amp;Subtitles...</source>
@@ -755,7 +787,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Ctrl+T</source>
-        <translation>Ctrl+T</translation>
+        <translation type="vanished">Ctrl+T</translation>
     </message>
     <message>
         <source>&amp;Without Subtitles...</source>
@@ -763,7 +795,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Ctrl+Shift+T</source>
-        <translation>Ctrl+Shift+T</translation>
+        <translation type="vanished">Ctrl+Shift+T</translation>
     </message>
     <message>
         <source>&amp;Preferences...</source>
@@ -775,7 +807,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Ctrl+Shift+Up</source>
-        <translation>Ctrl+Shift+Вверх</translation>
+        <translation type="vanished">Ctrl+Shift+Вверх</translation>
     </message>
     <message>
         <source>&amp;Decrease</source>
@@ -783,7 +815,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Ctrl+Shift+Down</source>
-        <translation>Ctrl+Shift+Вниз</translation>
+        <translation type="vanished">Ctrl+Shift+Вниз</translation>
     </message>
     <message>
         <source>&amp;Reset</source>
@@ -791,7 +823,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Ctrl+Shift+R</source>
-        <translation>Ctrl+Shift+R</translation>
+        <translation type="vanished">Ctrl+Shift+R</translation>
     </message>
     <message>
         <source>Playing</source>
@@ -835,7 +867,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Open Subtitle File</source>
-        <translation>Открыть файл субтитров</translation>
+        <translation type="vanished">Открыть файл субтитров</translation>
     </message>
     <message>
         <source>Sub</source>
@@ -852,11 +884,11 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>Subtitle Files</source>
-        <translation>Файлы субтитров</translation>
+        <translation type="vanished">Файлы субтитров</translation>
     </message>
     <message>
         <source>http://bakamplayer.u8sand.net/help.php</source>
-        <translation>http://bakamplayer.u8sand.net/help.php</translation>
+        <translation type="vanished">http://bakamplayer.u8sand.net/help.php</translation>
     </message>
     <message>
         <source>Dim Lights</source>
@@ -876,19 +908,19 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>Media Files</source>
-        <translation>Медиафайлы</translation>
+        <translation type="vanished">Медиафайлы</translation>
     </message>
     <message>
         <source>Video Files</source>
-        <translation>Видеофайлы</translation>
+        <translation type="vanished">Видеофайлы</translation>
     </message>
     <message>
         <source>Audio Files</source>
-        <translation>Аудиофайлы</translation>
+        <translation type="vanished">Аудиофайлы</translation>
     </message>
     <message>
         <source>Open File</source>
-        <translation>Открыть файл</translation>
+        <translation type="vanished">Открыть файл</translation>
     </message>
 </context>
 <context>
