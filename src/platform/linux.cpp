@@ -1,10 +1,16 @@
 #include "util.h"
 
+#include <QRegExp>
+#include <QStandardPaths>
+#include <QDesktopServices>
+#include <QDir>
+#include <QUrl>
+
 #include <QX11Info>
 #include <X11/Xlib.h>
 
-#include <QRegExp>
-#include <QStandardPaths>
+#include "settings.h"
+
 
 namespace Util {
 
@@ -73,16 +79,9 @@ bool IsValidLocation(QString loc)
     return (rx.indexIn(loc) != -1);
 }
 
-QString ShortenPathToParent(const QString &path)
+void ShowInFolder(QString path, QString)
 {
-    int pos = path.lastIndexOf('/');
-    if(pos != -1)
-    {
-        pos = path.lastIndexOf('/', pos-1);
-        if(pos != -1)
-            return path.mid(pos+1);
-    }
-    return path;
+    QDesktopServices::openUrl("file:///"+QDir::toNativeSeparators(path));
 }
 
 }

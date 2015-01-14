@@ -6,6 +6,8 @@
 #include "mpvhandler.h"
 #include "util.h"
 
+#include <QDir>
+
 void BakaEngine::Load1_9_9()
 {
     LoadBaka1_9_9();
@@ -31,7 +33,7 @@ void BakaEngine::LoadBaka1_9_9()
     settings->beginGroup("mpv");
     QString lf = settings->value("mpv/lastFile");
     if(lf != QString())
-        window->recent.push_front(lf);
+        window->recent.push_front(QDir::toNativeSeparators(lf));
     settings->endGroup();
     window->gestures = true;
     window->setLang("auto");

@@ -2,6 +2,7 @@
 
 #include <QTime>
 #include <QStringListIterator>
+#include <QDir>
 
 namespace Util {
 
@@ -84,6 +85,35 @@ QString HumanSize(qint64 size)
         num /= 1024.0;
     }
     return QString().setNum(num,'f',2)+" "+unit;
+}
+
+QString ShortenPathToParent(const QString &path)
+{
+    QString p = QDir::fromNativeSeparators(path);
+    int pos = p.lastIndexOf('/');
+    if(pos != -1)
+    {
+        pos = p.lastIndexOf('/', pos-1);
+        if(pos != -1)
+            return QDir::toNativeSeparators(p.mid(pos+1));
+    }
+    return QDir::toNativeSeparators(path);
+}
+
+QStringList ToNativeSeparators(QStringList list)
+{
+    QStringList ret;
+    for(auto element : list)
+        ret.push_back(QDir::toNativeSeparators(element));
+    return ret;
+}
+
+QStringList FromNativeSeparators(QStringList list)
+{
+    QStringList ret;
+    for(auto element : list)
+        ret.push_back(QDir::fromNativeSeparators(element));
+    return ret;
 }
 
 }

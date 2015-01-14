@@ -1,9 +1,14 @@
 #include "util.h"
 
-#include <windows.h>
-
 #include <QApplication>
 #include <QRegExp>
+#include <QProcess>
+#include <QDir>
+
+#include <windows.h>
+
+#include "settings.h"
+
 
 namespace Util {
 
@@ -43,16 +48,9 @@ bool IsValidLocation(QString loc)
     return (rx.indexIn(loc) != -1);
 }
 
-QString ShortenPathToParent(const QString &path)
+void ShowInFolder(QString path, QString file)
 {
-    int pos = path.lastIndexOf('\\');
-    if(pos != -1)
-    {
-        pos = path.lastIndexOf('\\', pos-1);
-        if(pos != -1)
-            return path.mid(pos+1);
-    }
-    return path;
+    QProcess::startDetached("explorer.exe", {"/select,", QDir::toNativeSeparators(path+file)});
 }
 
 }

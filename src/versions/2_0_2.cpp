@@ -3,6 +3,7 @@
 #include "ui/mainwindow.h"
 #include "ui_mainwindow.h"
 #include "settings.h"
+#include "util.h"
 
 #if defined(Q_OS_WIN)
 #include <QDate>
@@ -27,7 +28,7 @@ void BakaEngine::LoadBaka2_0_2()
     window->setDebug(settings->valueBool("debug", false));
     window->ui->hideFilesButton->setChecked(!settings->valueBool("showAll", true));
     window->setScreenshotDialog(settings->valueBool("screenshotDialog", true));
-    window->recent = settings->valueQStringList("recent");
+    window->recent = Util::ToNativeSeparators(settings->valueQStringList("recent"));
     window->maxRecent = settings->valueInt("maxRecent", 5);
     window->gestures = settings->valueBool("gestures", true);
     window->setLang(settings->value("lang", "auto"));

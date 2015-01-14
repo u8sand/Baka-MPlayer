@@ -9,6 +9,7 @@
 #include "ui/preferencesdialog.h"
 #include "ui/updatedialog.h"
 #include "mpvhandler.h"
+#include "util.h"
 
 #include <QApplication>
 #include <QFileDialog>
@@ -50,7 +51,7 @@ void BakaEngine::BakaOpenClipboard(QStringList &args)
 void BakaEngine::BakaShowInFolder(QStringList &args)
 {
     if(args.empty())
-        QDesktopServices::openUrl("file:///"+QDir::toNativeSeparators(mpv->getPath()));
+        Util::ShowInFolder(mpv->getPath(), mpv->getFile());
     else
         InvalidParameter(args.join(' '));
 }

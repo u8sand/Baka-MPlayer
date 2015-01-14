@@ -4,7 +4,8 @@
 #include <QWidget>
 #include <QString>
 
-#include "settings.h"
+
+class Settings;
 
 namespace Util {
 
@@ -19,6 +20,8 @@ Settings *InitializeSettings(QObject *parent);
 bool IsValidFile(QString path);
 bool IsValidLocation(QString loc); // combined file and url
 
+void ShowInFolder(QString path, QString file);
+
 // common
 bool IsValidUrl(QString url);
 
@@ -28,6 +31,8 @@ QString FormatNumber(int val, int length);
 QString FormatNumberWithAmpersand(int val, int length);
 QString HumanSize(qint64);
 QString ShortenPathToParent(const QString &path);
+QStringList ToNativeSeparators(QStringList list);
+QStringList FromNativeSeparators(QStringList list);
 
 }
 

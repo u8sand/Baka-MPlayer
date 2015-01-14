@@ -3,7 +3,7 @@
 
 #include <QDialog>
 
-#include "mpvhandler.h"
+#include "mpvtypes.h"
 
 namespace Ui {
 class InfoDialog;

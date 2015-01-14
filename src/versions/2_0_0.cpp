@@ -5,6 +5,8 @@
 #include "settings.h"
 #include "mpvhandler.h"
 
+#include <QDir>
+
 void BakaEngine::Load2_0_0()
 {
     LoadBaka2_0_0();
@@ -26,7 +28,7 @@ void BakaEngine::LoadBaka2_0_0()
     window->maxRecent = 5;
     QString lf = settings->value("lastFile");
     if(lf != QString())
-        window->recent.push_front(lf);
+        window->recent.push_front(QDir::toNativeSeparators(lf));
     window->gestures = true;
     window->setLang("auto");
     settings->endGroup();
