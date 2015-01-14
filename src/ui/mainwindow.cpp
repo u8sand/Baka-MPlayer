@@ -763,7 +763,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->actionShow_in_Folder, &QAction::triggered,              // File -> Show in Folder
             [=]
             {
-                QDesktopServices::openUrl("file:///"+QDir::toNativeSeparators(mpv->getPath()));
+                Util::ShowInFolder(mpv->getPath(), mpv->getFile());
             });
 
     connect(ui->actionPlay_Next_File, &QAction::triggered,              // File -> Play Next File

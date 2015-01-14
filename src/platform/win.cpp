@@ -1,9 +1,14 @@
 #include "util.h"
 
-#include <windows.h>
-
 #include <QApplication>
 #include <QRegExp>
+#include <QProcess>
+#include <QDir>
+
+#include <windows.h>
+
+#include "settings.h"
+
 
 namespace Util {
 
@@ -41,6 +46,11 @@ bool IsValidLocation(QString loc)
 {
     QRegExp rx("^([a-z]{2,}://|\\.{1,2}|[a-z]:|\\\\\\\\)", Qt::CaseInsensitive); // url, relative path, network location, drive
     return (rx.indexIn(loc) != -1);
+}
+
+void ShowInFolder(QString path, QString file)
+{
+    QProcess::startDetached("explorer.exe", {"/select,", QDir::toNativeSeparators(path+file)});
 }
 
 }

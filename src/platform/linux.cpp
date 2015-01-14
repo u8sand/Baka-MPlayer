@@ -1,10 +1,16 @@
 #include "util.h"
 
+#include <QRegExp>
+#include <QStandardPaths>
+#include <QDesktopServices>
+#include <QDir>
+#include <QUrl>
+
 #include <QX11Info>
 #include <X11/Xlib.h>
 
-#include <QRegExp>
-#include <QStandardPaths>
+#include "settings.h"
+
 
 namespace Util {
 
@@ -71,6 +77,11 @@ bool IsValidLocation(QString loc)
 {
     QRegExp rx("^([a-z]{2,}://|\\.{1,2}|/)", Qt::CaseInsensitive); // url, relative path, drive
     return (rx.indexIn(loc) != -1);
+}
+
+void ShowInFolder(QString path, QString)
+{
+    QDesktopServices::openUrl("file:///"+QDir::toNativeSeparators(path));
 }
 
 }
