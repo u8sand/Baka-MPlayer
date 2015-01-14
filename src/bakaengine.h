@@ -66,6 +66,14 @@ private:
     // See bakacommands.cpp for function definitions
     typedef void(BakaEngine::*BakaCommandFPtr)(QStringList&);
     const QHash<QString, BakaCommandFPtr> BakaCommandMap = {
+        {"new", &BakaEngine::BakaNew},
+        {"open_url", &BakaEngine::BakaOpenUrl},
+        {"open_clipboard", &BakaEngine::BakaOpenClipboard},
+        {"show_in_folder", &BakaEngine::BakaShowInFolder},
+        {"add_subtitles", &BakaEngine::BakaAddSubtitles},
+        {"media_info", &BakaEngine::BakaMediaInfo},
+        {"stop", &BakaEngine::BakaStop},
+        {"playlist", &BakaEngine::BakaPlaylist},
         {"open", &BakaEngine::BakaOpen},
         {"play_pause", &BakaEngine::BakaPlayPause},
         {"fitwindow", &BakaEngine::BakaFitWindow},
@@ -75,6 +83,14 @@ private:
         {"quit", &BakaEngine::BakaQuit}
     };
     // Baka Command Functions
+    void BakaNew(QStringList&);
+    void BakaOpenUrl(QStringList&);
+    void BakaOpenClipboard(QStringList&);
+    void BakaShowInFolder(QStringList&);
+    void BakaAddSubtitles(QStringList&);
+    void BakaMediaInfo(QStringList&);
+    void BakaStop(QStringList&);
+    void BakaPlaylist(QStringList&);
     void BakaOpen(QStringList&);
     void BakaPlayPause(QStringList&);
     void BakaFitWindow(QStringList&);

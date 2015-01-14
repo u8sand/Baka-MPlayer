@@ -467,6 +467,8 @@ void MpvHandler::ScreenshotDirectory(QString s)
 
 void MpvHandler::AddSubtitleTrack(QString f)
 {
+    if(f == QString())
+        return;
     const QByteArray tmp = f.toUtf8();
     const char *args[] = {"sub_add", tmp.constData(), NULL};
     Command(args);

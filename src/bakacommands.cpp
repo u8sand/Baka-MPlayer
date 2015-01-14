@@ -1,14 +1,172 @@
 #include "bakaengine.h"
 
-#include "ui/aboutdialog.h"
 #include "ui/mainwindow.h"
 #include "ui_mainwindow.h"
+#include "ui/aboutdialog.h"
+#include "ui/infodialog.h"
+#include "ui/locationdialog.h"
 #include "mpvhandler.h"
 
 #include <QApplication>
 #include <QFileDialog>
 #include <QDesktopWidget>
+#include <QDesktopServices>
+#include <QProcess>
+#include <QDir>
+#include <QClipboard>
 
+
+void BakaEngine::BakaNew(QStringList &args)
+{
+    if(args.empty())
+    {
+        QProcess *p = new QProcess(0);
+        p->startDetached(QApplication::applicationFilePath());
+        delete p;
+    }
+    else
+        InvalidParameter(args.join(' '));
+}
+
+void BakaEngine::BakaOpenUrl(QStringList &args)
+{
+    if(args.empty())
+        mpv->LoadFile(LocationDialog::getUrl(mpv->getPath()+mpv->getFile(), window));
+    else
+        mpv->LoadFile(args.join(' '));
+}
+
+void BakaEngine::BakaOpenClipboard(QStringList &args)
+{
+    if(args.empty())
+        mpv->LoadFile(QApplication::clipboard()->text());
+    else
+        InvalidParameter(args.join(' '));
+}
+
+void BakaEngine::BakaShowInFolder(QStringList &args)
+{
+    if(args.empty())
+        QDesktopServices::openUrl("file:///"+QDir::toNativeSeparators(mpv->getPath()));
+    else
+        InvalidParameter(args.join(' '));
+}
+
+void BakaEngine::BakaAddSubtitles(QStringList &args)
+{
+    QString trackFile;
+    if(args.empty())
+    {
+        trackFile = QFileDialog::getOpenFileName(window, tr("Open Subtitle File"), mpv->getPath(),
+                                                 QString("%0 (%1)").arg(tr("Subtitle Files"), Mpv::subtitle_filetypes.join(" ")),
+                                                 0, QFileDialog::DontUseSheet);
+    }
+    else
+        trackFile = args.join(' ');
+
+    mpv->AddSubtitleTrack(trackFile);
+}
+
+void BakaEngine::BakaMediaInfo(QStringList &args)
+{
+    if(args.empty())
+        InfoDialog::info(mpv->getPath()+mpv->getFile(), mpv->getFileInfo(), window);
+    else
+        InvalidParameter(args.join(' '));
+}
+
+void BakaEngine::BakaStop(QStringList &args)
+{
+    if(args.empty())
+        mpv->Stop();
+    else
+        InvalidParameter(args.join(' '));
+}
+
+void BakaEngine::BakaPlaylist(QStringList &args)
+{
+    if(!args.empty())
+    {
+        QString arg = args.front();
+        args.pop_front();
+        if(args.empty())
+        {
+            if(arg == "shuffle")
+            {
+                window->ui->playlistWidget->Shuffle();
+                window->ui->playlistWidget->BoldText(window->ui->playlistWidget->FirstItem(), true);
+            }
+            else if(arg == "toggle")
+            {
+                window->ShowPlaylist(!window->isPlaylistVisible());
+            }
+            else if(arg == "full")
+            {
+                window->HideAlbumArt(!window->ui->action_Hide_Album_Art->isChecked());
+            }
+        }
+        else if(arg == "repeat") // repeat
+        {
+            arg = args.front();
+            args.pop_front();
+            if(args.empty())
+            {
+                if(arg == "off")
+                {
+                    if(window->ui->action_Off->isChecked())
+                    {
+                        window->ui->action_This_File->setChecked(false);
+                        window->ui->action_Playlist->setChecked(false);
+                    }
+                }
+                else if(arg == "this")
+                {
+                    if(window->ui->action_This_File->isChecked())
+                    {
+                        window->ui->action_Off->setChecked(false);
+                        window->ui->action_Playlist->setChecked(false);
+                    }
+                }
+                else if(arg == "playlist")
+                {
+                    if(window->ui->action_Playlist->isChecked())
+                    {
+                        window->ui->action_Off->setChecked(false);
+                        window->ui->action_This_File->setChecked(false);
+                    }
+                }
+                else
+                    InvalidParameter(arg);
+            }
+            else
+                InvalidParameter(args.join(' '));
+        }
+        else
+            InvalidParameter(arg);
+    }
+    else
+        RequiresParameters("baka playlist");
+}
+
+// baka jump
+//                int time = JumpDialog::getTime(mpv->getFileInfo().length,this);
+//                if(time >= 0)
+//                    mpv->Seek(time);
+// baka dim
+//                DimLights(b);
+// baka output
+//                setDebug(b);
+// baka preferences
+//                baka->SaveSettings();
+//                PreferencesDialog::showPreferences(settings, this);
+//                baka->LoadSettings();
+// baka online_help
+//                QDesktopServices::openUrl(QUrl(tr("http://bakamplayer.u8sand.net/help.php")));
+// baka update
+//                if(updateDialog->exec() == QDialog::Accepted)
+//                {
+//                    // todo: close and finish update (overwrite self and restart)
+//                }
 
 void BakaEngine::BakaOpen(QStringList &args)
 {
