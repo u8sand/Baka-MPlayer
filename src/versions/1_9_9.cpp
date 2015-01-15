@@ -19,7 +19,7 @@ void BakaEngine::LoadBaka1_9_9()
     settings->beginGroup("window");
     window->setOnTop(settings->value("onTop", "never"));
     window->setAutoFit(settings->valueInt("autoFit", 100));
-    window->sysTrayIcon->setVisible(settings->valueBool("trayIcon", false));
+    sysTrayIcon->setVisible(settings->valueBool("trayIcon", false));
     window->setHidePopup(settings->valueBool("hidePopup", false));
     window->setRemaining(settings->valueBool("remaining", true));
     window->ui->splitter->setNormalPosition(settings->valueInt("splitter", window->ui->splitter->max()*1.0/8));

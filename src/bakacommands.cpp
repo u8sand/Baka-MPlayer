@@ -97,7 +97,17 @@ void BakaEngine::BakaPlaylist(QStringList &args)
         args.pop_front();
         if(args.empty())
         {
-            if(arg == "shuffle")
+            if(arg == "play")
+            {
+                if(window->isPlaylistVisible() && !window->ui->inputLineEdit->hasFocus())
+                    mpv->PlayFile(window->ui->playlistWidget->CurrentItem());
+            }
+            else if(arg == "remove")
+            {
+                if(window->isPlaylistVisible() && !window->ui->inputLineEdit->hasFocus() && !window->ui->searchBox->hasFocus())
+                    window->ui->playlistWidget->RemoveItem(window->ui->playlistWidget->currentRow());
+            }
+            else if(arg == "shuffle")
             {
                 window->ui->playlistWidget->Shuffle();
                 window->ui->playlistWidget->BoldText(window->ui->playlistWidget->FirstItem(), true);
@@ -110,8 +120,32 @@ void BakaEngine::BakaPlaylist(QStringList &args)
             {
                 window->HideAlbumArt(!window->ui->action_Hide_Album_Art->isChecked());
             }
+            else
+                InvalidParameter(arg);
         }
-        else if(arg == "repeat") // repeat
+        else if(arg == "select")
+        {
+            arg = args.front();
+            args.pop_front();
+            if(args.empty())
+            {
+                if(arg == "next")
+                {
+                    if(window->isPlaylistVisible())
+                        window->ui->playlistWidget->SelectItem(window->ui->playlistWidget->NextItem());
+                }
+                else if(arg == "prev")
+                {
+                    if(window->isPlaylistVisible())
+                        window->ui->playlistWidget->SelectItem(window->ui->playlistWidget->PreviousItem());
+                }
+                else
+                    InvalidParameter(arg);
+            }
+            else
+                InvalidParameter(args.join(' '));
+        }
+        else if(arg == "repeat")
         {
             arg = args.front();
             args.pop_front();
@@ -404,6 +438,26 @@ void BakaEngine::BakaVolume(QStringList &args)
         RequiresParameters("volume");
 }
 
+void BakaEngine::BakaFullScreen(QStringList &args)
+{
+    if(args.empty())
+        window->FullScreen(!window->isFullScreen());
+    else
+        InvalidParameter(args.join(' '));
+}
+
+void BakaEngine::BakaBoss(QStringList &args)
+{
+    if(args.empty())
+    {
+        if(window->isFullScreen()) // exit fullscreen if in fullscreen
+            window->FullScreen(false);
+        mpv->Pause();
+        window->setWindowState(window->windowState() | Qt::WindowMinimized); // minimze window
+    }
+    else
+        InvalidParameter(args.join(' '));
+}
 
 void BakaEngine::BakaHelp(QStringList &)
 {

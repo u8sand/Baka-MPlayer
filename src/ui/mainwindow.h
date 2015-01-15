@@ -2,22 +2,13 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QSystemTrayIcon>
-#include <QSignalMapper>
-#include <QModelIndex>
 #include <QStringList>
 #include <QMouseEvent>
 #include <QWheelEvent>
 #include <QKeyEvent>
-#include <QMap>
 #include <QEvent>
-#include <QPoint>
 #include <QTimer>
-#include <QElapsedTimer>
 #include <QTranslator>
-#include <QHash>
-
-#include "widgets/dimdialog.h"
 
 namespace Ui {
 class MainWindow;
@@ -66,17 +57,11 @@ private:
     BakaEngine      *baka;
     MpvHandler      *mpv;
 
-    QTranslator     *translator     = nullptr,
-                    *qtTranslator   = nullptr;
-
     bool            pathChanged,
                     menuVisible,
                     firstItem       = false,
                     init            = false;
     QTimer          *autohide       = nullptr;
-
-    QSystemTrayIcon *sysTrayIcon;
-    QMenu           *trayIconMenu;
 
     // variables
     QStringList recent;
@@ -89,9 +74,6 @@ private:
          screenshotDialog,
          debug,
          gestures;
-
-    // input hash-table provides O(1) input-command lookups
-    QHash<QString, QString> input;
 
 public slots:
     void setLang(QString s)          { emit langChanged(lang = s); }

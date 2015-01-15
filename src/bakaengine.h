@@ -5,7 +5,9 @@
 #include <QString>
 #include <QStringList>
 #include <QHash>
-#include <QFunctionPointer>
+#include <QSystemTrayIcon>
+#include <QMenu>
+#include <QTranslator>
 
 class MainWindow;
 class MpvHandler;
@@ -27,6 +29,15 @@ public:
     GestureHandler *gesture;
     UpdateDialog   *updateDialog;
     DimDialog      *dimDialog;
+
+    QSystemTrayIcon *sysTrayIcon;
+    QMenu           *trayIconMenu;
+
+    QTranslator     *translator,
+                    *qtTranslator;
+
+    // input hash-table provides O(1) input-command lookups
+    QHash<QString, QString> input;
 
 public slots:
     void LoadSettings();
@@ -88,6 +99,8 @@ private:
         {"play_pause", &BakaEngine::BakaPlayPause},
         {"fitwindow", &BakaEngine::BakaFitWindow},
         {"volume", &BakaEngine::BakaVolume},
+        {"fullscreen", &BakaEngine::BakaFullScreen},
+        {"boss", &BakaEngine::BakaBoss},
         {"help", &BakaEngine::BakaHelp},
         {"about", &BakaEngine::BakaAbout},
         {"quit", &BakaEngine::BakaQuit}
@@ -112,6 +125,8 @@ private:
     void BakaFitWindow(QStringList&);
     void BakaAspect(QStringList&);
     void BakaVolume(QStringList&);
+    void BakaFullScreen(QStringList&);
+    void BakaBoss(QStringList&);
     void BakaHelp(QStringList&);
     void BakaAbout(QStringList&);
     void BakaQuit(QStringList&);

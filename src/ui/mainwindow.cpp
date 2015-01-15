@@ -31,6 +31,7 @@
 #include "util.h"
 #include "gesturehandler.h"
 #include "bakaengine.h"
+#include "widgets/dimdialog.h"
 
 MainWindow::MainWindow(QWidget *parent):
     QMainWindow(parent),
@@ -48,7 +49,6 @@ MainWindow::MainWindow(QWidget *parent):
     // note: trayIcon does not work in my environment--known qt bug
     // see: https://bugreports.qt-project.org/browse/QTBUG-34364
     // todo: tray menu/tooltip
-    sysTrayIcon = new QSystemTrayIcon(windowIcon(), this);
     ui->mpvFrame->installEventFilter(this); // capture events on mpvFrame in the eventFilter function
     autohide = new QTimer(this);
 
@@ -66,27 +66,27 @@ MainWindow::MainWindow(QWidget *parent):
                     QTranslator *tmp;
 
                     // load the system translations provided by Qt
-                    tmp = qtTranslator;
-                    qtTranslator = new QTranslator();
-                    qtTranslator->load(QString("qt_%0").arg(lang), QLibraryInfo::location(QLibraryInfo::TranslationsPath));
-                    qApp->installTranslator(qtTranslator);
+                    tmp = baka->qtTranslator;
+                    baka->qtTranslator = new QTranslator();
+                    baka->qtTranslator->load(QString("qt_%0").arg(lang), QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+                    qApp->installTranslator(baka->qtTranslator);
                     if(tmp != nullptr)
                         delete tmp;
 
                     // load the application translations
-                    tmp = translator;
-                    translator = new QTranslator();
-                    translator->load(QString("baka-mplayer_%0").arg(lang), BAKA_MPLAYER_LANG_PATH);
-                    qApp->installTranslator(translator);
+                    tmp = baka->translator;
+                    baka->translator = new QTranslator();
+                    baka->translator->load(QString("baka-mplayer_%0").arg(lang), BAKA_MPLAYER_LANG_PATH);
+                    qApp->installTranslator(baka->translator);
                     if(tmp != nullptr)
                         delete tmp;
                 }
                 else
                 {
-                    if(qtTranslator != nullptr)
-                        qApp->removeTranslator(qtTranslator);
-                    if(translator != nullptr)
-                        qApp->removeTranslator(translator);
+                    if(baka->qtTranslator != nullptr)
+                        qApp->removeTranslator(baka->qtTranslator);
+                    if(baka->translator != nullptr)
+                        qApp->removeTranslator(baka->translator);
                 }
 
                 ui->retranslateUi(this);
@@ -120,7 +120,7 @@ MainWindow::MainWindow(QWidget *parent):
                 ui->verticalWidget->setVisible(b);
             });
 
-    connect(sysTrayIcon, &QSystemTrayIcon::activated,
+    connect(baka->sysTrayIcon, &QSystemTrayIcon::activated,
             [=](QSystemTrayIcon::ActivationReason reason)
             {
                 if(reason == QSystemTrayIcon::Trigger)
@@ -128,9 +128,9 @@ MainWindow::MainWindow(QWidget *parent):
                     if(!hidePopup)
                     {
                         if(mpv->getPlayState() == Mpv::Playing)
-                            sysTrayIcon->showMessage("Baka MPlayer", tr("Playing"), QSystemTrayIcon::NoIcon, 4000);
+                            baka->sysTrayIcon->showMessage("Baka MPlayer", tr("Playing"), QSystemTrayIcon::NoIcon, 4000);
                         else if(mpv->getPlayState() == Mpv::Paused)
-                            sysTrayIcon->showMessage("Baka MPlayer", tr("Paused"), QSystemTrayIcon::NoIcon, 4000);
+                            baka->sysTrayIcon->showMessage("Baka MPlayer", tr("Paused"), QSystemTrayIcon::NoIcon, 4000);
                     }
                     baka->PlayPause();
                 }
@@ -327,10 +327,10 @@ MainWindow::MainWindow(QWidget *parent):
                 ui->actionFrame_Back_Step->setEnabled(false);
 
 
-                if(sysTrayIcon->isVisible() && !hidePopup)
+                if(baka->sysTrayIcon->isVisible() && !hidePopup)
                 {
                     // todo: use {artist} - {title}
-                    sysTrayIcon->showMessage("Baka MPlayer", mpv->getFileInfo().media_title, QSystemTrayIcon::NoIcon, 4000);
+                    baka->sysTrayIcon->showMessage("Baka MPlayer", mpv->getFileInfo().media_title, QSystemTrayIcon::NoIcon, 4000);
                 }
             }
         }
@@ -748,9 +748,6 @@ MainWindow::~MainWindow()
 
     // but apparently they don't (https://github.com/u8sand/Baka-MPlayer/issues/47)
 
-    if(translator != nullptr)   delete translator;
-    if(qtTranslator != nullptr) delete qtTranslator;
-
     delete baka;
     delete ui;
 }
@@ -905,8 +902,7 @@ void MainWindow::wheelEvent(QWheelEvent *event)
 void MainWindow::keyPressEvent(QKeyEvent *event)
 {
     // keyboard shortcuts
-    bool handled = false;
-    if(!input.empty())
+    if(!baka->input.empty())
     {
         // Convert KeyEvent to Shortcut:
         QString key = QString();
@@ -917,51 +913,9 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
         key += QKeySequence(event->key()).toString();
 
         // find shortcut in input hash table
-        auto iter = input.find(key);
-        if(iter != input.end())
-        {
+        auto iter = baka->input.find(key);
+        if(iter != baka->input.end())
             baka->Command(*iter); // execute command
-            handled = true;
-        }
-    }
-    if(handled)
-        return;
-    // todo: move all these to baka events--hash tables are more efficient than switch
-    switch(event->key())
-    {
-        // Playback/Seeking
-        case Qt::Key_Left:
-            mpv->Seek(-5, true);
-            break;
-        case Qt::Key_Right:
-            mpv->Seek(5, true);
-            break;
-        // Playlist Control
-        case Qt::Key_Up:
-            if(isPlaylistVisible())
-                ui->playlistWidget->SelectItem(ui->playlistWidget->PreviousItem());
-            break;
-        case Qt::Key_Down:
-            if(isPlaylistVisible())
-                ui->playlistWidget->SelectItem(ui->playlistWidget->NextItem());
-            break;
-        case Qt::Key_Delete:
-            if(isPlaylistVisible() && !ui->inputLineEdit->hasFocus() && !ui->searchBox->hasFocus())
-                ui->playlistWidget->RemoveItem(ui->playlistWidget->currentRow());
-            break;
-        case Qt::Key_Return:
-            if(isPlaylistVisible() && !ui->inputLineEdit->hasFocus())
-                mpv->PlayFile(ui->playlistWidget->CurrentItem());
-            break;
-        case Qt::Key_Escape:
-            if(isFullScreen()) // in fullscreen mode, escape will exit fullscreen
-                FullScreen(false);
-            else
-            {
-                mpv->Pause();
-                setWindowState(windowState() | Qt::WindowMinimized);
-            }
-            break;
     }
 }
 

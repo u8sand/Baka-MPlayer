@@ -19,7 +19,10 @@ BakaEngine::BakaEngine(QObject *parent):
     mpv(new MpvHandler(window->ui->mpvFrame->winId(), this)),
     settings(Util::InitializeSettings(this)),
     gesture(new GestureHandler(this)),
-    updateDialog(new UpdateDialog(window))
+    updateDialog(new UpdateDialog(window)),
+    sysTrayIcon(new QSystemTrayIcon(window->windowIcon(), this)),
+    translator(nullptr),
+    qtTranslator(nullptr)
 {
     if(Util::DimLightsSupported())
         dimDialog = new DimDialog(window, nullptr);
@@ -35,6 +38,10 @@ BakaEngine::BakaEngine(QObject *parent):
 
 BakaEngine::~BakaEngine()
 {
+    if(translator != nullptr)
+        delete translator;
+    if(qtTranslator != nullptr)
+        delete qtTranslator;
     if(dimDialog != nullptr)
         delete dimDialog;
     delete updateDialog;
@@ -93,7 +100,7 @@ void BakaEngine::SaveSettings()
     settings->beginGroup("baka-mplayer");
     settings->setValue("onTop", window->onTop);
     settings->setValueInt("autoFit", window->autoFit);
-    settings->setValueBool("trayIcon", window->sysTrayIcon->isVisible());
+    settings->setValueBool("trayIcon", sysTrayIcon->isVisible());
     settings->setValueBool("hidePopup", window->hidePopup);
     settings->setValueBool("remaining", window->remaining);
     settings->setValueInt("splitter", (window->ui->splitter->position() == 0 ||

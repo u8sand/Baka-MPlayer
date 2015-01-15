@@ -22,7 +22,7 @@ void BakaEngine::LoadBaka2_0_2()
     settings->beginGroup("baka-mplayer");
     window->setOnTop(settings->value("onTop", "never"));
     window->setAutoFit(settings->valueInt("autoFit", 100));
-    window->sysTrayIcon->setVisible(settings->valueBool("trayIcon", false));
+    sysTrayIcon->setVisible(settings->valueBool("trayIcon", false));
     window->setHidePopup(settings->valueBool("hidePopup", false));
     window->setRemaining(settings->valueBool("remaining", true));
     window->ui->splitter->setNormalPosition(settings->valueInt("splitter", window->ui->splitter->max()*1.0/8));
@@ -49,10 +49,10 @@ void BakaEngine::LoadInput2_0_2()
 {
     settings->beginGroup("input");
 
-    // todo move these defaults elsewhere?
+    // todo: move these defaults elsewhere?
 
     // default shortcut mappings
-    window->input = {
+    input = {
         {"Ctrl++",          "mpv add sub-scale +0.02"},
         {"Ctrl+-",          "mpv add sub-scale -0.02"},
         {"Ctrl+R",          "mpv set time-pos 0"},
@@ -89,12 +89,16 @@ void BakaEngine::LoadInput2_0_2()
         {"Ctrl+X",          "baka playlist toggle"},
         {"Ctrl+Z",          "baka open_recent 0"},
         {"F1",              "baka online_help"},
-        {"Space",           "baka playpause"},
+        {"Space",           "baka play_pause"},
         {"Alt+3",           "baka fitwindow 70"},
         {"Alt+4",           "baka fitwindow 100"},
         {"Alt+5",           "baka fitwindow 150"},
         {"Alt+6",           "baka fitwindow 200"},
-        {"Esc",             "baka boss"}
+        {"Esc",             "baka boss"},
+        {"Up",              "baka playlist select prev"},
+        {"Down",            "baka playlist select next"},
+        {"Return",          "baka playlist play"},
+        {"Del",             "baka playlist remove"}
     };
 
     // command action mappings
@@ -140,7 +144,7 @@ void BakaEngine::LoadInput2_0_2()
         {"baka playlist toggle", window->ui->action_Show_Playlist},
         {"baka playlist full", window->ui->action_Hide_Album_Art},
         {"baka dim", window->ui->action_Dim_Lights},
-        {"baka playpause", window->ui->action_Play},
+        {"baka play_pause", window->ui->action_Play},
         {"baka quit", window->ui->actionE_xit},
         {"baka show_in_folder", window->ui->actionShow_in_Folder},
         {"baka stop", window->ui->action_Stop},
@@ -156,14 +160,14 @@ void BakaEngine::LoadInput2_0_2()
 
     // load settings defined input bindings
     for(Settings::SettingsGroupData::iterator entry = settings->map().begin(); entry != settings->map().end(); ++entry)
-        window->input[entry.key()] = entry.value();
+        input[entry.key()] = entry.value();
 
     // map shortcuts to actions
-    for(auto input = window->input.begin(); input != window->input.end(); ++input)
+    for(auto input_iter = input.begin(); input_iter != input.end(); ++input_iter)
     {
-        auto commandAction = commandActionMap.find(input.value());
+        auto commandAction = commandActionMap.find(input_iter.value());
         if(commandAction != commandActionMap.end())
-            (*commandAction)->setShortcut(QKeySequence(input.key()));
+            (*commandAction)->setShortcut(QKeySequence(input_iter.key()));
     }
 
     // map actions to commands
