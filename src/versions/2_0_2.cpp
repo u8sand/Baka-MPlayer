@@ -49,11 +49,8 @@ void BakaEngine::LoadInput2_0_2()
 {
     settings->beginGroup("input");
 
-    // default shortcut mappings
-    input = default_input;
-
-    // command action mappings
-    QHash<QString, QAction*> commandActionMap = {
+    // command action mappings (action (right) performs command (left))
+    const QHash<QString, QAction*> commandActionMap = {
         {"mpv add chapter +1", window->ui->action_Next_Chapter},
         {"mpv add chapter -1", window->ui->action_Previous_Chapter},
         {"mpv add speed +0.25", window->ui->action_Increase},
@@ -108,6 +105,9 @@ void BakaEngine::LoadInput2_0_2()
         {"baka about qt", window->ui->actionAbout_Qt},
         {"baka about", window->ui->actionAbout_Baka_MPlayer}
     };
+
+    // apply default shortcut mappings
+    input = default_input;
 
     // load settings defined input bindings
     for(Settings::SettingsGroupData::iterator entry = settings->map().begin(); entry != settings->map().end(); ++entry)
