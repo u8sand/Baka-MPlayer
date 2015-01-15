@@ -915,7 +915,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
         // find shortcut in input hash table
         auto iter = baka->input.find(key);
         if(iter != baka->input.end())
-            baka->Command(*iter); // execute command
+            baka->Command(iter->first); // execute command
     }
 }
 

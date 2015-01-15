@@ -236,9 +236,7 @@ void BakaEngine::Dim(bool dim)
 void BakaEngine::BakaOutput(QStringList &args)
 {
     if(args.empty())
-    {
-        window->setDebug(!window->ui->actionShow_D_ebug_Output->isChecked());
-    }
+        window->setDebug(!window->getDebug());
     else
         InvalidParameter(args.join(' '));
 }
@@ -246,11 +244,7 @@ void BakaEngine::BakaOutput(QStringList &args)
 void BakaEngine::BakaPreferences(QStringList &args)
 {
     if(args.empty())
-    {
-        SaveSettings();
-        PreferencesDialog::showPreferences(settings, window);
-        LoadSettings();
-    }
+        PreferencesDialog::showPreferences(this, window);
     else
         InvalidParameter(args.join(' '));
 }

@@ -49,57 +49,8 @@ void BakaEngine::LoadInput2_0_2()
 {
     settings->beginGroup("input");
 
-    // todo: move these defaults elsewhere?
-
     // default shortcut mappings
-    input = {
-        {"Ctrl++",          "mpv add sub-scale +0.02"},
-        {"Ctrl+-",          "mpv add sub-scale -0.02"},
-        {"Ctrl+R",          "mpv set time-pos 0"},
-        {"Ctrl+Shift+Down", "mpv add speed -0.25"},
-        {"Ctrl+Shift+R",    "mpv set speed 1"},
-        {"Ctrl+Shift+T",    "mpv screenshot video"},
-        {"Ctrl+Shift+Up",   "mpv add speed +0.25"},
-        {"Ctrl+T",          "mpv screenshot subtitles"},
-        {"Ctrl+W",          "mpv toggle sub-visibility"},
-        {"Left",            "mpv seek -5"},
-        {"PgDown",          "mpv add chapter -1"},
-        {"PgUp",            "mpv add chapter +1"},
-        {"Right",           "mpv seek +5"},
-        {"Shift+Left",      "mpv frame_back_step"},
-        {"Shift+Right",     "mpv frame_step"},
-        {"Ctrl+Down",       "baka volume -5"},
-        {"Ctrl+Up",         "baka volume +5"},
-        {"Alt+1",           "baka fitwindow 0"},
-        {"Alt+2",           "baka fitwindow 50"},
-        {"Alt+Return",      "baka fullscreen"},
-        {"Ctrl+D",          "baka dim"},
-        {"Ctrl+E",          "baka toggle debug"},
-        {"Ctrl+F",          "baka show_in_folder"},
-        {"Ctrl+I",          "baka media_info"},
-        {"Ctrl+J",          "baka jump"},
-        {"Ctrl+Left",       "baka play -1"},
-        {"Ctrl+N",          "baka new"},
-        {"Ctrl+O",          "baka open"},
-        {"Ctrl+Q",          "baka quit"},
-        {"Ctrl+Right",      "baka play +1"},
-        {"Ctrl+S",          "baka stop"},
-        {"Ctrl+U",          "baka open_url"},
-        {"Ctrl+V",          "baka open_clipboard"},
-        {"Ctrl+X",          "baka playlist toggle"},
-        {"Ctrl+Z",          "baka open_recent 0"},
-        {"F1",              "baka online_help"},
-        {"Space",           "baka play_pause"},
-        {"Alt+3",           "baka fitwindow 70"},
-        {"Alt+4",           "baka fitwindow 100"},
-        {"Alt+5",           "baka fitwindow 150"},
-        {"Alt+6",           "baka fitwindow 200"},
-        {"Esc",             "baka boss"},
-        {"Up",              "baka playlist select prev"},
-        {"Down",            "baka playlist select next"},
-        {"Return",          "baka playlist play"},
-        {"Del",             "baka playlist remove"}
-    };
+    input = default_input;
 
     // command action mappings
     QHash<QString, QAction*> commandActionMap = {
@@ -123,11 +74,11 @@ void BakaEngine::LoadInput2_0_2()
         {"mpv toggle sub-visibility", window->ui->actionShow_Subtitles},
         {"baka add_subtitles", window->ui->action_Add_Subtitle_File},
         {"baka fitwindow 0", window->ui->action_To_Current_Size},
+        {"baka fitwindow 50", window->ui->action50},
+        {"baka fitwindow 75", window->ui->action75},
         {"baka fitwindow 100", window->ui->action100},
         {"baka fitwindow 150", window->ui->action150},
         {"baka fitwindow 200", window->ui->action200},
-        {"baka fitwindow 50", window->ui->action50},
-        {"baka fitwindow 75", window->ui->action75},
         {"baka fullscreen", window->ui->action_Full_Screen},
         {"baka jump", window->ui->action_Jump_to_Time},
         {"baka media_info", window->ui->actionMedia_Info},
@@ -160,12 +111,20 @@ void BakaEngine::LoadInput2_0_2()
 
     // load settings defined input bindings
     for(Settings::SettingsGroupData::iterator entry = settings->map().begin(); entry != settings->map().end(); ++entry)
-        input[entry.key()] = entry.value();
+    {
+        QStringList parts = entry.value().split('#', QString::SkipEmptyParts);
+        QPair<QString, QString> pair;
+        pair.first = parts.front().trimmed();
+        parts.pop_front();
+        if(!parts.empty())
+            pair.second = parts.join('#').trimmed();
+        input[entry.key()] = pair;
+    }
 
     // map shortcuts to actions
     for(auto input_iter = input.begin(); input_iter != input.end(); ++input_iter)
     {
-        auto commandAction = commandActionMap.find(input_iter.value());
+        auto commandAction = commandActionMap.find(input_iter->first);
         if(commandAction != commandActionMap.end())
             (*commandAction)->setShortcut(QKeySequence(input_iter.key()));
     }

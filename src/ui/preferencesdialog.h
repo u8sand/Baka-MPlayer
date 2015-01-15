@@ -3,28 +3,30 @@
 
 #include <QDialog>
 
-#include "settings.h"
 
 namespace Ui {
 class PreferencesDialog;
 }
+
+class BakaEngine;
 
 class PreferencesDialog : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit PreferencesDialog(Settings *settings, QWidget *parent = 0);
+    explicit PreferencesDialog(BakaEngine *baka, QWidget *parent = 0);
     ~PreferencesDialog();
 
-    static void showPreferences(Settings *settings, QWidget *parent = 0);
+    static void showPreferences(BakaEngine *baka, QWidget *parent = 0);
 
 protected:
     void PopulateLangs();
 
 private:
     Ui::PreferencesDialog *ui;
-    Settings *settings;
+    BakaEngine *baka;
+
     QString screenshotDir;
     int numberOfShortcuts;
 };

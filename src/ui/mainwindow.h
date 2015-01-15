@@ -27,6 +27,15 @@ public:
 
     void Load(QString f = QString());
 
+    QString getLang()          { return lang; }
+    QString getOnTop()         { return onTop; }
+    int getAutoFit()           { return autoFit; }
+    bool getHidePopup()        { return hidePopup; }
+    bool getRemaining()        { return remaining; }
+    bool getScreenshotDialog() { return screenshotDialog; }
+    bool getDebug()            { return debug; }
+    bool getGestures()         { return gestures; }
+
 protected:
     void LoadSettings();
     void SaveSettings();
@@ -83,6 +92,7 @@ public slots:
     void setRemaining(bool b)        { emit remainingChanged(remaining = b); }
     void setScreenshotDialog(bool b) { emit screenshotDialogChanged(screenshotDialog = b); }
     void setDebug(bool b)            { emit debugChanged(debug = b); }
+    void setGestures(bool b)         { emit gesturesChanged(gestures = b); }
 
 signals:
     void langChanged(QString);
@@ -92,6 +102,7 @@ signals:
     void remainingChanged(bool);
     void screenshotDialogChanged(bool);
     void debugChanged(bool);
+    void gesturesChanged(bool);
 };
 
 #endif // MAINWINDOW_H
