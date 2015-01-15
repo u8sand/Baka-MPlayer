@@ -6,6 +6,7 @@
 #include "mpvhandler.h"
 #include "gesturehandler.h"
 #include "ui/updatedialog.h"
+#include "widgets/dimdialog.h"
 #include "util.h"
 
 #include <QMessageBox>
@@ -18,12 +19,22 @@ BakaEngine::BakaEngine(QObject *parent):
     gesture(new GestureHandler(this)),
     updateDialog(new UpdateDialog(window))
 {
+    if(Util::DimLightsSupported())
+        dimDialog = new DimDialog(window, nullptr);
+    else
+    {
+        dimDialog = nullptr;
+        window->ui->action_Dim_Lights->setEnabled(false);
+    }
+
     connect(mpv, SIGNAL(messageSignal(QString)),
             this, SLOT(MpvPrint(QString)));
 }
 
 BakaEngine::~BakaEngine()
 {
+    if(dimDialog != nullptr)
+        delete dimDialog;
     delete updateDialog;
     delete gesture;
     delete mpv;

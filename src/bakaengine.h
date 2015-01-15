@@ -12,6 +12,7 @@ class MpvHandler;
 class Settings;
 class GestureHandler;
 class UpdateDialog;
+class DimDialog;
 
 class BakaEngine : public QObject
 {
@@ -25,6 +26,7 @@ public:
     Settings       *settings;
     GestureHandler *gesture;
     UpdateDialog   *updateDialog;
+    DimDialog      *dimDialog;
 
 public slots:
     void LoadSettings();
@@ -117,7 +119,7 @@ public:
     void Open(QString path = QString());
     void PlayPause();
     void FitWindow(int percent = 0, bool msg = true);
-
+    void Dim(bool dim);
     void About(QString what = QString());
     void Quit();
 };

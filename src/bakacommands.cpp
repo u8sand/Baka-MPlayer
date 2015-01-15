@@ -7,6 +7,7 @@
 #include "ui/locationdialog.h"
 #include "ui/jumpdialog.h"
 #include "ui/preferencesdialog.h"
+#include "widgets/dimdialog.h"
 #include "ui/updatedialog.h"
 #include "mpvhandler.h"
 #include "util.h"
@@ -18,6 +19,7 @@
 #include <QProcess>
 #include <QDir>
 #include <QClipboard>
+#include <QMessageBox>
 
 
 void BakaEngine::BakaNew(QStringList &args)
@@ -173,12 +175,28 @@ void BakaEngine::BakaJump(QStringList &args)
 
 void BakaEngine::BakaDim(QStringList &args)
 {
-    if(args.empty())
+    if(dimDialog == nullptr)
     {
-        window->DimLights(!window->ui->action_Dim_Lights->isChecked());
+        BakaPrint("DimDialog not supported on this platform");
+        return;
     }
+    if(args.empty())
+        Dim(!dimDialog->isVisible());
     else
         InvalidParameter(args.join(' '));
+}
+
+void BakaEngine::Dim(bool dim)
+{
+    if(dimDialog == nullptr)
+    {
+        QMessageBox::information(window, tr("Dim Lights"), tr("In order to dim the lights, the desktop compositor has to be enabled. This can be done through Window Manager Desktop."));
+        return;
+    }
+    if(dim)
+        dimDialog->show();
+    else
+        dimDialog->close();
 }
 
 void BakaEngine::BakaOutput(QStringList &args)

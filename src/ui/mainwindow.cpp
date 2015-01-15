@@ -36,12 +36,6 @@ MainWindow::MainWindow(QWidget *parent):
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    // dimdialog must be initialized before ui is setup
-    if(Util::DimLightsSupported())
-        dimDialog = new DimDialog();
-    else
-        dimDialog = nullptr;
-
     ui->setupUi(this);
     ShowPlaylist(false);
     addActions(ui->menubar->actions()); // makes menubar shortcuts work even when menubar is hidden
@@ -153,6 +147,13 @@ MainWindow::MainWindow(QWidget *parent):
             {
                 setCursor(QCursor(Qt::BlankCursor));
                 autohide->stop();
+            });
+
+    // dimDialog
+    connect(baka->dimDialog, &DimDialog::visbilityChanged,
+            [=](bool dim)
+            {
+                ui->action_Dim_Lights->setChecked(dim);
             });
 
     // playlistWidget
@@ -730,41 +731,6 @@ MainWindow::MainWindow(QWidget *parent):
                 ui->inputLineEdit->setText("");
             });
 
-    // todo:
-
-    // qApp
-    connect(qApp, &QApplication::focusWindowChanged,
-            [=](QWindow */*focusWindow*/)
-            {
-                // note: focusWindow will be 0 if anything is clicked outside of our program which is useful
-                // the only other problem is that when dragging by the top handle
-                // it will be 0 thus reverting dim lights, this is a side effect
-                // which will have to stay for now.
-//                if(dimDialog->isVisible())
-//                {
-//                    if(focusWindow == 0)
-//                    {
-//                        dimDialog->setVisible(false); // remove dim lights
-//                        ui->action_Dim_Lights->setChecked(false); // uncheck dim lights
-//                    }
-//                    else if(focusWindow == dimDialog->windowHandle())
-//                    {
-//                        activateWindow();
-//                        raise();
-//                        setFocus();
-//                    }
-//                }
-            });
-//    connect(dimDialog, &DimDialog::clicked,
-//            [=]
-//            {
-//                dimDialog->setVisible(false); // remove dim lights
-//                ui->action_Dim_Lights->setChecked(false); // uncheck dim lights
-//                activateWindow();
-//                raise();
-//                setFocus();
-//            });
-
     // add multimedia shortcuts
     ui->action_Play->setShortcuts({ui->action_Play->shortcut(), QKeySequence(Qt::Key_MediaPlay)});
     ui->action_Stop->setShortcuts({ui->action_Stop->shortcut(), QKeySequence(Qt::Key_MediaStop)});
@@ -784,7 +750,6 @@ MainWindow::~MainWindow()
 
     if(translator != nullptr)   delete translator;
     if(qtTranslator != nullptr) delete qtTranslator;
-    if(dimDialog != nullptr)    delete dimDialog;
 
     delete baka;
     delete ui;
@@ -1063,11 +1028,8 @@ void MainWindow::FullScreen(bool fs)
 {
     if(fs)
     {
-        if(dimDialog && dimDialog->isVisible())
-        {
-            dimDialog->setVisible(false);
-            ui->action_Dim_Lights->setChecked(false);
-        }
+        if(baka->dimDialog && baka->dimDialog->isVisible())
+            baka->Dim(false);
         setWindowState(windowState() | Qt::WindowFullScreen);
         ui->menubar->setVisible(false);
         ui->splitter->handle(1)->installEventFilter(this); // capture events for the splitter
@@ -1128,28 +1090,6 @@ void MainWindow::HideAlbumArt(bool hide)
     }
     else
         ui->splitter->setPosition(ui->splitter->normalPosition()); // bring the splitter to normal position
-}
-
-void MainWindow::DimLights(bool dim)
-{
-    if(!dimDialog) // dimDialog is NULL if desktop compositor is disabled or missing
-    {
-        QMessageBox::information(this, tr("Dim Lights"), tr("In order to dim the lights, the desktop compositor has to be enabled. This can be done through Window Manager Desktop."));
-        ui->action_Dim_Lights->setChecked(false);
-        return;
-    }
-    if(dim)
-    {
-        dimDialog->show();
-        activateWindow();
-        setFocus();
-    }
-    else
-    {
-        dimDialog->close();
-        activateWindow();
-        setFocus();
-    }
 }
 
 void MainWindow::TakeScreenshot(bool subs)
