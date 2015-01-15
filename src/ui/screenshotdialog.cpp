@@ -17,7 +17,7 @@ ScreenshotDialog::ScreenshotDialog(bool &_always, bool &_screenshot, MpvHandler 
     ui->templateEdit->setText(mpv->getScreenshotTemplate());
     ui->formatComboBox->setCurrentText(mpv->getScreenshotFormat());
 
-    ui->locationEdit->setText(mpv->getScreenshotDir());
+    ui->locationEdit->setText(QDir::toNativeSeparators(mpv->getScreenshotDir()));
     ui->templateEdit->setText(mpv->getScreenshotTemplate());
 
     connect(ui->browseButton, &QPushButton::clicked,
@@ -32,7 +32,7 @@ ScreenshotDialog::ScreenshotDialog(bool &_always, bool &_screenshot, MpvHandler 
             [=]
             {
                 mpv->ScreenshotFormat(ui->formatComboBox->currentText());
-                mpv->ScreenshotDirectory(ui->locationEdit->text());
+                mpv->ScreenshotDirectory(QDir::fromNativeSeparators(ui->locationEdit->text()));
                 mpv->ScreenshotTemplate(ui->templateEdit->text());
                 always = ui->showCheckBox->isChecked();
                 screenshot = ui->subtitlesCheckBox->isChecked();

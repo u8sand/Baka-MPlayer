@@ -1,75 +1,50 @@
 #include "preferencesdialog.h"
 #include "ui_preferencesdialog.h"
 
+#include "bakaengine.h"
+#include "ui/mainwindow.h"
+#include "mpvhandler.h"
+
 #include <QFileDialog>
 
-PreferencesDialog::PreferencesDialog(Settings *_settings, QWidget *parent) :
+PreferencesDialog::PreferencesDialog(BakaEngine *baka, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::PreferencesDialog),
-    settings(_settings),
+    baka(baka),
     screenshotDir("")
 {
     ui->setupUi(this);
 
     PopulateLangs();
 
-    settings->beginGroup("baka-mplayer");
-    QString ontop = settings->value("onTop");
+    QString ontop = baka->window->getOnTop();
     if(ontop == "never")
         ui->neverRadioButton->setChecked(true);
     else if(ontop == "playing")
         ui->playingRadioButton->setChecked(true);
     else if(ontop == "always")
         ui->alwaysRadioButton->setChecked(true);
-    ui->groupBox_2->setChecked(settings->valueBool("trayIcon"));
-    ui->hidePopupCheckBox->setChecked(settings->valueBool("hidePopup"));
-    ui->gestureCheckBox->setChecked(settings->valueBool("gestures"));
-    ui->langComboBox->setCurrentText(settings->value("lang"));
-
-    int autofit = settings->valueInt("autoFit");
+    ui->groupBox_2->setChecked(baka->sysTrayIcon->isVisible());
+    ui->hidePopupCheckBox->setChecked(baka->window->getHidePopup());
+    ui->gestureCheckBox->setChecked(baka->window->getGestures());
+    ui->langComboBox->setCurrentText(baka->window->getLang());
+    int autofit = baka->window->getAutoFit();
     ui->autoFitCheckBox->setChecked((bool)autofit);
     ui->comboBox->setCurrentText(QString::number(autofit)+"%");
-    settings->endGroup();
-    settings->beginGroup("mpv");
-    ui->formatComboBox->setCurrentText(settings->value("screenshot-format"));
-
-    QString screenshotTemplate = settings->value("screenshot-template", tr("screenshot%#04n"));
-    settings->endGroup();
-    int i = screenshotTemplate.lastIndexOf('/');
-    if(i != -1)
-    {
-        screenshotDir = QDir::toNativeSeparators(screenshotTemplate.mid(0, i));
-        ui->templateLineEdit->setText(screenshotTemplate.mid(i+1));
-    }
-    else
-    {
-        ui->templateLineEdit->setText(screenshotTemplate);
-        screenshotDir = ".";
-    }
+    ui->formatComboBox->setCurrentText(baka->mpv->getScreenshotFormat());
+    screenshotDir = QDir::toNativeSeparators(baka->mpv->getScreenshotDir());
+    ui->templateLineEdit->setText(baka->mpv->getScreenshotTemplate());
 
     // add shortcuts
-    settings->beginGroup("input");
-    QString tmp_str;
-    QStringList tmp_str_ls;
     numberOfShortcuts = 0;
-    for(auto iter = settings->map().begin(); iter != settings->map().end(); ++iter)
+    for(auto iter = baka->input.begin(); iter != baka->input.end(); ++iter)
     {
         ui->infoWidget->insertRow(numberOfShortcuts);
         ui->infoWidget->setItem(numberOfShortcuts, 0, new QTableWidgetItem(iter.key()));
-        tmp_str = iter.value();
-        tmp_str_ls = tmp_str.split("#", QString::SkipEmptyParts);
-        if(!tmp_str_ls.empty())
-        {
-            ui->infoWidget->setItem(numberOfShortcuts, 1, new QTableWidgetItem(tmp_str_ls.front().trimmed()));
-            tmp_str_ls.pop_front();
-
-            if(!tmp_str_ls.empty())
-                ui->infoWidget->setItem(numberOfShortcuts, 2, new QTableWidgetItem(tmp_str_ls.front().trimmed()));
-        }
+        ui->infoWidget->setItem(numberOfShortcuts, 1, new QTableWidgetItem(iter->first));
+        ui->infoWidget->setItem(numberOfShortcuts, 2, new QTableWidgetItem(iter->second));
         ++numberOfShortcuts;
     }
-    settings->endGroup();
-
     connect(ui->autoFitCheckBox, &QCheckBox::clicked,
             [=](bool b)
             {
@@ -101,45 +76,40 @@ PreferencesDialog::PreferencesDialog(Settings *_settings, QWidget *parent) :
 
 PreferencesDialog::~PreferencesDialog()
 {
-    settings->beginGroup("baka-mplayer");
     if(ui->neverRadioButton->isChecked())
-        settings->setValue("onTop", "never");
+        baka->window->setOnTop("never");
     else if(ui->playingRadioButton->isChecked())
-        settings->setValue("onTop", "playing");
+        baka->window->setOnTop("playing");
     else if(ui->alwaysRadioButton->isChecked())
-        settings->setValue("onTop", "always");
-    settings->setValueBool("trayIcon", ui->groupBox_2->isChecked());
-    settings->setValueBool("hidePopup", ui->hidePopupCheckBox->isChecked());
-    settings->setValueBool("gestures", ui->gestureCheckBox->isChecked());
-    settings->setValue("lang", ui->langComboBox->currentText());
-
+        baka->window->setOnTop("always");
+    baka->sysTrayIcon->setVisible(ui->groupBox_2->isChecked());
+    baka->window->setHidePopup(ui->hidePopupCheckBox->isChecked());
+    baka->window->setGestures(ui->gestureCheckBox->isChecked());
+    baka->window->setLang(ui->langComboBox->currentText());
     if(ui->autoFitCheckBox->isChecked())
-        settings->setValueInt("autoFit", ui->comboBox->currentText().left(ui->comboBox->currentText().length()-1).toInt());
+        baka->window->setAutoFit(ui->comboBox->currentText().left(ui->comboBox->currentText().length()-1).toInt());
     else
-        settings->setValueInt("autoFit", 0);
-    settings->endGroup();
-    settings->beginGroup("mpv");
-    settings->setValue("screenshot-format", ui->formatComboBox->currentText());
-    settings->setValue("screenshot-template", QDir::fromNativeSeparators(screenshotDir)+"/"+ui->templateLineEdit->text());
-    settings->endGroup();
-    settings->beginGroup("input");
+        baka->window->setAutoFit(0);
+    baka->mpv->ScreenshotFormat(ui->formatComboBox->currentText());
+    baka->mpv->ScreenshotDirectory(screenshotDir);
+    baka->mpv->ScreenshotTemplate(ui->templateLineEdit->text());
+    baka->input.clear();
     for(int i = 0; i < numberOfShortcuts; i++)
         if(ui->infoWidget->item(i, 0) && ui->infoWidget->item(i, 1))
-            settings->setValue(ui->infoWidget->item(i, 0)->text(),
-                ui->infoWidget->item(i, 2) ?
-                    QString("%0 # %1").arg(
-                        ui->infoWidget->item(i, 1)->text(),
-                        ui->infoWidget->item(i, 2)->text()) :
-                    ui->infoWidget->item(i, 1)->text());
-    settings->endGroup();
-    settings->Save();
+        {
+            QPair<QString, QString> pair;
+            pair.first = ui->infoWidget->item(i, 1)->text();
+            if(ui->infoWidget->item(i, 2))
+                pair.second = ui->infoWidget->item(i, 2)->text();
+            baka->input[ui->infoWidget->item(i, 0)->text()] = pair;
+        }
 
     delete ui;
 }
 
-void PreferencesDialog::showPreferences(Settings *settings, QWidget *parent)
+void PreferencesDialog::showPreferences(BakaEngine *baka, QWidget *parent)
 {
-    PreferencesDialog dialog(settings, parent);
+    PreferencesDialog dialog(baka, parent);
     dialog.exec();
 }
 

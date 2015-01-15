@@ -1,14 +1,276 @@
 #include "bakaengine.h"
 
-#include "ui/aboutdialog.h"
 #include "ui/mainwindow.h"
 #include "ui_mainwindow.h"
+#include "ui/aboutdialog.h"
+#include "ui/infodialog.h"
+#include "ui/locationdialog.h"
+#include "ui/jumpdialog.h"
+#include "ui/preferencesdialog.h"
+#include "widgets/dimdialog.h"
+#include "ui/updatedialog.h"
 #include "mpvhandler.h"
+#include "util.h"
 
 #include <QApplication>
 #include <QFileDialog>
 #include <QDesktopWidget>
+#include <QDesktopServices>
+#include <QProcess>
+#include <QDir>
+#include <QClipboard>
+#include <QMessageBox>
 
+
+void BakaEngine::BakaNew(QStringList &args)
+{
+    if(args.empty())
+    {
+        QProcess *p = new QProcess(0);
+        p->startDetached(QApplication::applicationFilePath());
+        delete p;
+    }
+    else
+        InvalidParameter(args.join(' '));
+}
+
+void BakaEngine::BakaOpenUrl(QStringList &args)
+{
+    if(args.empty())
+        mpv->LoadFile(LocationDialog::getUrl(mpv->getPath()+mpv->getFile(), window));
+    else
+        mpv->LoadFile(args.join(' '));
+}
+
+void BakaEngine::BakaOpenClipboard(QStringList &args)
+{
+    if(args.empty())
+        mpv->LoadFile(QApplication::clipboard()->text());
+    else
+        InvalidParameter(args.join(' '));
+}
+
+void BakaEngine::BakaShowInFolder(QStringList &args)
+{
+    if(args.empty())
+        Util::ShowInFolder(mpv->getPath(), mpv->getFile());
+    else
+        InvalidParameter(args.join(' '));
+}
+
+void BakaEngine::BakaAddSubtitles(QStringList &args)
+{
+    QString trackFile;
+    if(args.empty())
+    {
+        trackFile = QFileDialog::getOpenFileName(window, tr("Open Subtitle File"), mpv->getPath(),
+                                                 QString("%0 (%1)").arg(tr("Subtitle Files"), Mpv::subtitle_filetypes.join(" ")),
+                                                 0, QFileDialog::DontUseSheet);
+    }
+    else
+        trackFile = args.join(' ');
+
+    mpv->AddSubtitleTrack(trackFile);
+}
+
+void BakaEngine::BakaMediaInfo(QStringList &args)
+{
+    if(args.empty())
+        InfoDialog::info(mpv->getPath()+mpv->getFile(), mpv->getFileInfo(), window);
+    else
+        InvalidParameter(args.join(' '));
+}
+
+void BakaEngine::BakaStop(QStringList &args)
+{
+    if(args.empty())
+        mpv->Stop();
+    else
+        InvalidParameter(args.join(' '));
+}
+
+void BakaEngine::BakaPlaylist(QStringList &args)
+{
+    if(!args.empty())
+    {
+        QString arg = args.front();
+        args.pop_front();
+        if(args.empty())
+        {
+            if(arg == "play")
+            {
+                if(window->isPlaylistVisible() && !window->ui->inputLineEdit->hasFocus())
+                    mpv->PlayFile(window->ui->playlistWidget->CurrentItem());
+            }
+            else if(arg == "remove")
+            {
+                if(window->isPlaylistVisible() && !window->ui->inputLineEdit->hasFocus() && !window->ui->searchBox->hasFocus())
+                    window->ui->playlistWidget->RemoveItem(window->ui->playlistWidget->currentRow());
+            }
+            else if(arg == "shuffle")
+            {
+                window->ui->playlistWidget->Shuffle();
+                window->ui->playlistWidget->BoldText(window->ui->playlistWidget->FirstItem(), true);
+            }
+            else if(arg == "toggle")
+            {
+                window->ShowPlaylist(!window->isPlaylistVisible());
+            }
+            else if(arg == "full")
+            {
+                window->HideAlbumArt(!window->ui->action_Hide_Album_Art->isChecked());
+            }
+            else
+                InvalidParameter(arg);
+        }
+        else if(arg == "select")
+        {
+            arg = args.front();
+            args.pop_front();
+            if(args.empty())
+            {
+                if(arg == "next")
+                {
+                    if(window->isPlaylistVisible())
+                        window->ui->playlistWidget->SelectItem(window->ui->playlistWidget->NextItem());
+                }
+                else if(arg == "prev")
+                {
+                    if(window->isPlaylistVisible())
+                        window->ui->playlistWidget->SelectItem(window->ui->playlistWidget->PreviousItem());
+                }
+                else
+                    InvalidParameter(arg);
+            }
+            else
+                InvalidParameter(args.join(' '));
+        }
+        else if(arg == "repeat")
+        {
+            arg = args.front();
+            args.pop_front();
+            if(args.empty())
+            {
+                if(arg == "off")
+                {
+                    if(window->ui->action_Off->isChecked())
+                    {
+                        window->ui->action_This_File->setChecked(false);
+                        window->ui->action_Playlist->setChecked(false);
+                    }
+                }
+                else if(arg == "this")
+                {
+                    if(window->ui->action_This_File->isChecked())
+                    {
+                        window->ui->action_Off->setChecked(false);
+                        window->ui->action_Playlist->setChecked(false);
+                    }
+                }
+                else if(arg == "playlist")
+                {
+                    if(window->ui->action_Playlist->isChecked())
+                    {
+                        window->ui->action_Off->setChecked(false);
+                        window->ui->action_This_File->setChecked(false);
+                    }
+                }
+                else
+                    InvalidParameter(arg);
+            }
+            else
+                InvalidParameter(args.join(' '));
+        }
+        else
+            InvalidParameter(arg);
+    }
+    else
+        RequiresParameters("baka playlist");
+}
+
+void BakaEngine::BakaJump(QStringList &args)
+{
+    if(args.empty())
+    {
+        int time = JumpDialog::getTime(mpv->getFileInfo().length, window);
+        if(time >= 0)
+            mpv->Seek(time);
+    }
+    else
+    {
+        QString arg = args.front();
+        args.pop_front();
+        if(args.empty())
+            mpv->CommandString(QString("seek %0").arg(arg));
+        else
+            InvalidParameter(arg);
+    }
+}
+
+void BakaEngine::BakaDim(QStringList &args)
+{
+    if(dimDialog == nullptr)
+    {
+        BakaPrint("DimDialog not supported on this platform");
+        return;
+    }
+    if(args.empty())
+        Dim(!dimDialog->isVisible());
+    else
+        InvalidParameter(args.join(' '));
+}
+
+void BakaEngine::Dim(bool dim)
+{
+    if(dimDialog == nullptr)
+    {
+        QMessageBox::information(window, tr("Dim Lights"), tr("In order to dim the lights, the desktop compositor has to be enabled. This can be done through Window Manager Desktop."));
+        return;
+    }
+    if(dim)
+        dimDialog->show();
+    else
+        dimDialog->close();
+}
+
+void BakaEngine::BakaOutput(QStringList &args)
+{
+    if(args.empty())
+        window->setDebug(!window->getDebug());
+    else
+        InvalidParameter(args.join(' '));
+}
+
+void BakaEngine::BakaPreferences(QStringList &args)
+{
+    if(args.empty())
+        PreferencesDialog::showPreferences(this, window);
+    else
+        InvalidParameter(args.join(' '));
+}
+
+void BakaEngine::BakaOnlineHelp(QStringList &args)
+{
+    if(args.empty())
+    {
+        QDesktopServices::openUrl(QUrl(tr("http://bakamplayer.u8sand.net/help.php")));
+    }
+    else
+        InvalidParameter(args.join(' '));
+}
+
+void BakaEngine::BakaUpdate(QStringList &args)
+{
+    if(args.empty())
+    {
+        if(updateDialog->exec() == QDialog::Accepted)
+        {
+            // todo: close and finish update (overwrite self and restart)
+        }
+    }
+    else
+        InvalidParameter(args.join(' '));
+}
 
 void BakaEngine::BakaOpen(QStringList &args)
 {
@@ -170,6 +432,26 @@ void BakaEngine::BakaVolume(QStringList &args)
         RequiresParameters("volume");
 }
 
+void BakaEngine::BakaFullScreen(QStringList &args)
+{
+    if(args.empty())
+        window->FullScreen(!window->isFullScreen());
+    else
+        InvalidParameter(args.join(' '));
+}
+
+void BakaEngine::BakaBoss(QStringList &args)
+{
+    if(args.empty())
+    {
+        if(window->isFullScreen()) // exit fullscreen if in fullscreen
+            window->FullScreen(false);
+        mpv->Pause();
+        window->setWindowState(window->windowState() | Qt::WindowMinimized); // minimze window
+    }
+    else
+        InvalidParameter(args.join(' '));
+}
 
 void BakaEngine::BakaHelp(QStringList &)
 {

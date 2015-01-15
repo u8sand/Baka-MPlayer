@@ -454,7 +454,7 @@ void MpvHandler::ScreenshotTemplate(QString s)
 {
     if(mpv)
     {
-        const QByteArray tmp = QDir::toNativeSeparators(screenshotDir+"/"+s).toUtf8();
+        const QByteArray tmp = (screenshotDir+"/"+s).toUtf8();
         mpv_set_option_string(mpv, "screenshot-template", tmp.data());
     }
     setScreenshotTemplate(s);
@@ -462,11 +462,13 @@ void MpvHandler::ScreenshotTemplate(QString s)
 
 void MpvHandler::ScreenshotDirectory(QString s)
 {
-    setScreenshotDir(QDir::fromNativeSeparators(s));
+    setScreenshotDir(s);
 }
 
 void MpvHandler::AddSubtitleTrack(QString f)
 {
+    if(f == QString())
+        return;
     const QByteArray tmp = f.toUtf8();
     const char *args[] = {"sub_add", tmp.constData(), NULL};
     Command(args);

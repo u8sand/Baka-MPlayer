@@ -24,8 +24,8 @@ public slots:
     void Save();
 
     void beginGroup(QString grp) { group = grp; }
-    void endGroup()              { group = ""; }
-    void clear()                 { data.clear(); }
+    void endGroup()              { group = QString(); }
+    void clear()                 { if(group == QString()) { data.clear(); } else { data[group].clear(); } }
     SettingsGroupData &map()     { return data[group]; }
 
     QString     value(QString key, QString default_value = QString());

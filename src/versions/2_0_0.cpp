@@ -18,7 +18,7 @@ void BakaEngine::LoadBaka2_0_0()
     settings->beginGroup("baka-mplayer");
     window->setOnTop(QString(settings->value("onTop", "never")));
     window->setAutoFit(settings->valueInt("autoFit", 100));
-    window->sysTrayIcon->setVisible(settings->valueBool("trayIcon", false));
+    sysTrayIcon->setVisible(settings->valueBool("trayIcon", false));
     window->setHidePopup(settings->valueBool("hidePopup", false));
     window->setRemaining(settings->valueBool("remaining", true));
     window->ui->splitter->setNormalPosition(settings->valueInt("splitter", window->ui->splitter->max()*1.0/8));
@@ -50,7 +50,7 @@ void BakaEngine::LoadMpv2_0_0()
             int i = temp.lastIndexOf('/');
             if(i != -1)
             {
-                mpv->ScreenshotDirectory(temp.mid(0, i));
+                mpv->ScreenshotDirectory(QDir::toNativeSeparators(temp.mid(0, i)));
                 mpv->ScreenshotTemplate(temp.mid(i+1));
             }
             else

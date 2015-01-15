@@ -5,24 +5,46 @@
 #include "settings.h"
 #include "mpvhandler.h"
 #include "gesturehandler.h"
+#include "ui/updatedialog.h"
+#include "widgets/dimdialog.h"
 #include "util.h"
 
 #include <QMessageBox>
 #include <QDir>
+
 
 BakaEngine::BakaEngine(QObject *parent):
     QObject(parent),
     window(static_cast<MainWindow*>(parent)),
     mpv(new MpvHandler(window->ui->mpvFrame->winId(), this)),
     settings(Util::InitializeSettings(this)),
-    gesture(new GestureHandler(this))
+    gesture(new GestureHandler(this)),
+    updateDialog(new UpdateDialog(window)),
+    sysTrayIcon(new QSystemTrayIcon(window->windowIcon(), this)),
+    translator(nullptr),
+    qtTranslator(nullptr)
 {
+    if(Util::DimLightsSupported())
+        dimDialog = new DimDialog(window, nullptr);
+    else
+    {
+        dimDialog = nullptr;
+        window->ui->action_Dim_Lights->setEnabled(false);
+    }
+
     connect(mpv, SIGNAL(messageSignal(QString)),
             this, SLOT(MpvPrint(QString)));
 }
 
 BakaEngine::~BakaEngine()
 {
+    if(translator != nullptr)
+        delete translator;
+    if(qtTranslator != nullptr)
+        delete qtTranslator;
+    if(dimDialog != nullptr)
+        delete dimDialog;
+    delete updateDialog;
     delete gesture;
     delete mpv;
     delete settings;
@@ -78,7 +100,7 @@ void BakaEngine::SaveSettings()
     settings->beginGroup("baka-mplayer");
     settings->setValue("onTop", window->onTop);
     settings->setValueInt("autoFit", window->autoFit);
-    settings->setValueBool("trayIcon", window->sysTrayIcon->isVisible());
+    settings->setValueBool("trayIcon", sysTrayIcon->isVisible());
     settings->setValueBool("hidePopup", window->hidePopup);
     settings->setValueBool("remaining", window->remaining);
     settings->setValueInt("splitter", (window->ui->splitter->position() == 0 ||
@@ -101,7 +123,20 @@ void BakaEngine::SaveSettings()
     if(mpv->screenshotFormat != "")
         settings->setValue("screenshot-format", mpv->screenshotFormat);
     if(mpv->screenshotTemplate != "")
-        settings->setValue("screenshot-template", mpv->screenshotDir+"/"+mpv->screenshotTemplate);
+        settings->setValue("screenshot-template", QDir::fromNativeSeparators(mpv->screenshotDir)+"/"+mpv->screenshotTemplate);
+    settings->endGroup();
+
+    settings->beginGroup("input");
+    settings->clear();
+    for(auto input_iter = input.begin(); input_iter != input.end(); ++input_iter)
+    {
+        auto default_iter = default_input.find(input_iter.key());
+        if(default_iter != default_input.end())
+            if(input_iter->first == default_iter->first &&
+               input_iter->second == default_iter->second) // skip entries that are the same as a default_input entry
+                continue;
+        settings->setValue(input_iter.key(), input_iter->first + " # " + input_iter->second);
+    }
     settings->endGroup();
 
     settings->Save();
