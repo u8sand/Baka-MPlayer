@@ -7,6 +7,7 @@
 
 #if defined(Q_OS_WIN)
 #include <QDate>
+#include "ui/updatedialog.h"
 #endif
 
 void BakaEngine::Load2_0_2()
@@ -36,7 +37,7 @@ void BakaEngine::LoadBaka2_0_2()
     QDate last = settings->valueQDate("lastcheck", QDate(2014, 1, 1));
     if(last.daysTo(QDate::currentDate()) > 7) // been a week since we last checked?
     {
-        window->updateDialog->CheckForUpdates();
+        updateDialog->CheckForUpdates();
         settings->setValueQDate("lastcheck", QDate::currentDate());
     }
 #endif
