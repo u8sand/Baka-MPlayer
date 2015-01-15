@@ -50,7 +50,7 @@ bool IsValidLocation(QString loc)
 
 void ShowInFolder(QString path, QString file)
 {
-    QProcess::startDetached("explorer.exe", {"/select,", QString("\"%0\"").arg(QDir::toNativeSeparators(path+file))});
+    QProcess::startDetached(QString("explorer.exe /select,\"%0\"").arg(path+file));
 }
 
 }

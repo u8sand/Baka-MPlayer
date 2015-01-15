@@ -81,7 +81,7 @@ bool IsValidLocation(QString loc)
 
 void ShowInFolder(QString path, QString)
 {
-    QDesktopServices::openUrl("file:///"+QDir::toNativeSeparators(path));
+    QDesktopServices::openUrl(QString("file:///%0").arg(path));
 }
 
 }

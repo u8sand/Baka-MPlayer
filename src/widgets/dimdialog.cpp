@@ -25,10 +25,12 @@ DimDialog::DimDialog(MainWindow *window, QWidget *parent) :
                 // which will have to stay for now.
                 if(this->isVisible())
                 {
-                    if(focusWindow == nullptr)
-                        this->close();
-                    else
+                    // this may indeed disallow opening menus in dimDesktop but it also corrects
+                    // a glitch caused by the needed AlwaysOnTop state of the window and other dialogs
+                    if(focusWindow == this->windowHandle())
                         window->activateWindow();
+                    else if(focusWindow != window->windowHandle())
+                        this->close();
                 }
             });
 }
