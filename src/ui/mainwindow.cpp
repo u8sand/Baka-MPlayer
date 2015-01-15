@@ -45,10 +45,6 @@ MainWindow::MainWindow(QWidget *parent):
     baka = new BakaEngine(this);
     mpv = baka->mpv;
 
-    // initialize other ui elements
-    // note: trayIcon does not work in my environment--known qt bug
-    // see: https://bugreports.qt-project.org/browse/QTBUG-34364
-    // todo: tray menu/tooltip
     ui->mpvFrame->installEventFilter(this); // capture events on mpvFrame in the eventFilter function
     autohide = new QTimer(this);
 
@@ -621,7 +617,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->nextButton, &IndexButton::clicked,                      // Playback: Next button
             [=]
             {
-                mpv->PlayFile(ui->playlistWidget->NextItem());
+                baka->PlayPause();
             });
 
     connect(ui->volumeSlider, &CustomSlider::valueChanged,              // Playback: Volume slider adjusted

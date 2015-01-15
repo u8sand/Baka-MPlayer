@@ -303,8 +303,7 @@ void BakaEngine::BakaPlayPause(QStringList &args)
 
 void BakaEngine::PlayPause()
 {
-    if(mpv->getPlayState() > 0)
-        mpv->PlayPause(window->ui->playlistWidget->CurrentItem());
+    mpv->PlayPause(window->ui->playlistWidget->CurrentItem());
 }
 
 

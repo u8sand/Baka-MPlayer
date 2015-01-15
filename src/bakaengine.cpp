@@ -20,7 +20,10 @@ BakaEngine::BakaEngine(QObject *parent):
     settings(Util::InitializeSettings(this)),
     gesture(new GestureHandler(this)),
     updateDialog(new UpdateDialog(window)),
+    // note: trayIcon does not work in my environment--known qt bug
+    // see: https://bugreports.qt-project.org/browse/QTBUG-34364
     sysTrayIcon(new QSystemTrayIcon(window->windowIcon(), this)),
+    // todo: tray menu/tooltip
     translator(nullptr),
     qtTranslator(nullptr)
 {
