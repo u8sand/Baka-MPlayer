@@ -2,6 +2,7 @@
 
 #include "ui/mainwindow.h"
 #include "ui_mainwindow.h"
+#include "util.h"
 
 #include <QApplication>
 #include <QWindow>
@@ -18,7 +19,7 @@ DimDialog::DimDialog(MainWindow *window, QWidget *parent) :
     connect(qApp, &QApplication::focusWindowChanged,
             [=](QWindow *focusWindow)
             {
-                // note: focusWindow will be 0 if anything is clicked outside of our program which is useful
+                // note: focusWindow will be nullptr if anything is clicked outside of our program which is useful
                 // the only other problem is that when dragging by the top handle
                 // it will be 0 thus reverting dim lights, this is a side effect
                 // which will have to stay for now.
@@ -26,12 +27,8 @@ DimDialog::DimDialog(MainWindow *window, QWidget *parent) :
                 {
                     if(focusWindow == nullptr)
                         this->close();
-                    else if(focusWindow == this->windowHandle())
-                    {
-                        window->raise();
+                    else
                         window->activateWindow();
-                        window->setFocus();
-                    }
                 }
             });
 }

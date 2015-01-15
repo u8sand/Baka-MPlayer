@@ -150,6 +150,10 @@ MainWindow::MainWindow(QWidget *parent):
             [=](bool dim)
             {
                 ui->action_Dim_Lights->setChecked(dim);
+                if(dim)
+                    Util::SetAlwaysOnTop(winId(), true);
+                else if(onTop == "never" || (onTop == "playing" && mpv->getPlayState() > 0))
+                    Util::SetAlwaysOnTop(winId(), false);
             });
 
     // playlistWidget
