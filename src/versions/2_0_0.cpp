@@ -50,7 +50,7 @@ void BakaEngine::LoadMpv2_0_0()
             int i = temp.lastIndexOf('/');
             if(i != -1)
             {
-                mpv->ScreenshotDirectory(temp.mid(0, i));
+                mpv->ScreenshotDirectory(QDir::toNativeSeparators(temp.mid(0, i)));
                 mpv->ScreenshotTemplate(temp.mid(i+1));
             }
             else

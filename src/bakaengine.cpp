@@ -10,6 +10,8 @@
 #include "util.h"
 
 #include <QMessageBox>
+#include <QDir>
+
 
 BakaEngine::BakaEngine(QObject *parent):
     QObject(parent),
@@ -101,7 +103,7 @@ void BakaEngine::SaveSettings()
     settings->setValueBool("showAll", !window->ui->hideFilesButton->isChecked());
     settings->setValueBool("screenshotDialog", window->screenshotDialog);
     settings->setValueBool("debug", window->debug);
-    settings->setValueQStringList("recent", window->recent);
+    settings->setValueQStringList("recent", Util::FromNativeSeparators(window->recent));
     settings->setValueInt("maxRecent", window->maxRecent);
     settings->setValue("lang", window->lang);
     settings->setValueBool("gestures", window->gestures);
@@ -114,7 +116,7 @@ void BakaEngine::SaveSettings()
     if(mpv->screenshotFormat != "")
         settings->setValue("screenshot-format", mpv->screenshotFormat);
     if(mpv->screenshotTemplate != "")
-        settings->setValue("screenshot-template", mpv->screenshotDir+"/"+mpv->screenshotTemplate);
+        settings->setValue("screenshot-template", QDir::fromNativeSeparators(mpv->screenshotDir)+"/"+mpv->screenshotTemplate);
     settings->endGroup();
 
     settings->Save();

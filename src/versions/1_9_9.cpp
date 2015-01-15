@@ -44,7 +44,7 @@ void BakaEngine::LoadMpv1_9_9()
 {
     settings->beginGroup("mpv");
     mpv->ScreenshotFormat(settings->value("screenshotFormat", "jpg"));
-    mpv->ScreenshotDirectory(settings->value("screenshotDir", "."));
+    mpv->ScreenshotDirectory(QDir::toNativeSeparators(settings->value("screenshotDir", ".")));
     mpv->ScreenshotTemplate(settings->value("screenshotTemplate"));
     mpv->Speed(settings->valueDouble("speed", 1.0));
     mpv->Volume(settings->valueInt("volume", 100));

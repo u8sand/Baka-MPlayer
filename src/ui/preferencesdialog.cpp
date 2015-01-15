@@ -38,7 +38,7 @@ PreferencesDialog::PreferencesDialog(Settings *_settings, QWidget *parent) :
     int i = screenshotTemplate.lastIndexOf('/');
     if(i != -1)
     {
-        screenshotDir = screenshotTemplate.mid(0, i);
+        screenshotDir = QDir::toNativeSeparators(screenshotTemplate.mid(0, i));
         ui->templateLineEdit->setText(screenshotTemplate.mid(i+1));
     }
     else
@@ -120,7 +120,7 @@ PreferencesDialog::~PreferencesDialog()
     settings->endGroup();
     settings->beginGroup("mpv");
     settings->setValue("screenshot-format", ui->formatComboBox->currentText());
-    settings->setValue("screenshot-template", screenshotDir+"/"+ui->templateLineEdit->text());
+    settings->setValue("screenshot-template", QDir::fromNativeSeparators(screenshotDir)+"/"+ui->templateLineEdit->text());
     settings->endGroup();
     settings->beginGroup("input");
     for(int i = 0; i < numberOfShortcuts; i++)
