@@ -34,7 +34,7 @@ void BakaEngine::BakaNew(QStringList &args)
         InvalidParameter(args.join(' '));
 }
 
-void BakaEngine::BakaOpenUrl(QStringList &args)
+void BakaEngine::BakaOpenLocation(QStringList &args)
 {
     if(args.empty())
         mpv->LoadFile(LocationDialog::getUrl(mpv->getPath()+mpv->getFile(), window));
