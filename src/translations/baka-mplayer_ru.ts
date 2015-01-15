@@ -162,6 +162,198 @@ Some features may not work and changed settings will not be saved.</source>
         <source>autofit</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Dim Lights</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>In order to dim the lights, the desktop compositor has to be enabled. This can be done through Window Manager Desktop.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Increase Font Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Decrease Font Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Restart Video Playback</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Decrease Playback Speed by 25%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reset Playback Speed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Take a screenshot without subtitles</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Increase Playback Speed by 25%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Take a screenshot with subtitles</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Toggle Subtitle Visibility</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Short Seek Backwards</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Jump to the Previous Chapter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Jump to the Next Chapter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Short Seek Forward</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Frame Back-Step</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Frame Step</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Decrease the Volume</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Increase the Volume</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Toggle Fullscreen Mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dim the lights</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show the file in it&apos;s folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View Media Information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open the Jump To Time Dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Play the Previous Video</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Create a new Baka-MPlayer window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open a file Dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Quit the Baka-MPlayer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Play the Next Video</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stop Video</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open a URL Dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open the file in your Clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Toggle the Playlist Visibility</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open the previous file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Access Baka-MPlayer Command-line</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Launch Online Help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Play/Pause Video</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fit the Window to the video frame</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fit the Window to 50% of the Original Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fit the Window to 75% of the Original Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fit the Window to 100% of the Original Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fit the Window to 150% of the Original Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fit the Window to 200% of the Original Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hide Baka-MPlayer from Your Boss</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select the Previous Item on the Playlist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select the Next Item on the Playlist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Play Selected Item on Playlist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove Selected Item from Playlist</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>InfoDialog</name>
@@ -889,14 +1081,6 @@ Note: Value must be from %0 - %1</source>
     <message>
         <source>http://bakamplayer.u8sand.net/help.php</source>
         <translation type="vanished">http://bakamplayer.u8sand.net/help.php</translation>
-    </message>
-    <message>
-        <source>Dim Lights</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>In order to dim the lights, the desktop compositor has to be enabled. This can be done through Window Manager Desktop.</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Saved to &quot;%0&quot;, with subs</source>

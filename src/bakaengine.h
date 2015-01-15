@@ -109,7 +109,7 @@ private:
         {"Ctrl+S",          {"baka stop",                 tr("Stop Video")}},
         {"Ctrl+U",          {"baka open_url",             tr("Open a URL Dialog")}},
         {"Ctrl+V",          {"baka open_clipboard",       tr("Open the file in your Clipboard")}},
-        {"Ctrl+X",          {"baka playlist toggle",      tr("Toggle the Playlist Visibility")}},
+        {"Ctrl+F",          {"baka playlist toggle",      tr("Toggle the Playlist Visibility")}},
         {"Ctrl+Z",          {"baka open_recent 0",        tr("Open the previous file")}},
         {"Ctrl+G",          {"baka output",               tr("Access Baka-MPlayer Command-line")}},
         {"F1",              {"baka online_help",          tr("Launch Online Help")}},
