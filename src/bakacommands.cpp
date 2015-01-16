@@ -407,7 +407,7 @@ void BakaEngine::FitWindow(int percent, bool msg)
     // note: the above block is required because there is not setFrameGeometry function
 
     if(msg)
-        mpv->ShowText(tr("Fit Window: %0%").arg(percent == 0 ? tr("autofit") : QString::number(percent)));
+        mpv->ShowText(tr("Fit Window: %0").arg(percent == 0 ? tr("autofit") : (QString::number(percent)+"%")));
 }
 
 

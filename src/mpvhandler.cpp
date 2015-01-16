@@ -659,8 +659,23 @@ void MpvHandler::LoadOsdSize()
 
 void MpvHandler::CommandString(QString str)
 {
-    const QByteArray tmp = str.toUtf8();
-    mpv_command_string(mpv, tmp.constData());
+    // convert input string into char array
+    QStringList tmp = str.split(" ");
+    int len = tmp.length();
+    char **data = new char*[len+1];
+    for(int i = 0; i < len; ++i)
+    {
+        data[i] = new char[tmp[i].length()+1];
+        memcpy(data[i], QByteArray(tmp[i].toUtf8()).begin(), tmp[i].length()+1);
+    }
+    data[len] = NULL;
+    AsyncCommand(const_cast<const char**>(data));
+    for(int i = 0; i < len; ++i)
+        delete [] data[i];
+    delete [] data;
+
+//    const QByteArray tmp = str.toUtf8();
+//    mpv_command_string(mpv, tmp.constData());
 }
 
 void MpvHandler::SetOption(QString key, QString val)
