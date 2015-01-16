@@ -82,7 +82,7 @@ void BakaEngine::LoadInput2_0_2()
         {"baka new", window->ui->action_New_Player},
         {"baka open", window->ui->action_Open_File},
         {"baka open_clipboard", window->ui->actionOpen_Path_from_Clipboard},
-        {"baka open_url", window->ui->actionOpen_URL},
+        {"baka open_location", window->ui->actionOpen_URL},
         {"baka play +1", window->ui->actionPlay_Next_File},
         {"baka play -1", window->ui->actionPlay_Previous_File},
         {"baka playlist repeat off", window->ui->action_Off},
