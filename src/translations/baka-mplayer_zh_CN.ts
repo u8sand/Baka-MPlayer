@@ -135,8 +135,12 @@ Some features may not work and changed settings will not be saved.</source>
         <translation>音频文件</translation>
     </message>
     <message>
-        <source>Fit Window: %0%</source>
+        <source>Fit Window: %0</source>
         <translation>适应窗口: %0%</translation>
+    </message>
+    <message>
+        <source>Fit Window: %0%</source>
+        <translation type="vanished">适应窗口: %0%</translation>
     </message>
     <message>
         <source>autofit</source>
@@ -152,7 +156,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>http://bakamplayer.u8sand.net/help.php</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">http://bakamplayer.u8sand.net/help.php</translation>
     </message>
     <message>
         <source>Dim Lights</source>
@@ -164,27 +168,27 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Increase Font Size</source>
-        <translation>增大字体大小</translation>
+        <translation type="vanished">增大字体大小</translation>
     </message>
     <message>
         <source>Decrease Font Size</source>
-        <translation>减小字体大小</translation>
+        <translation type="vanished">减小字体大小</translation>
     </message>
     <message>
         <source>Restart Video Playback</source>
-        <translation>重新启动视频播放</translation>
+        <translation type="vanished">重新启动视频播放</translation>
     </message>
     <message>
         <source>Decrease Playback Speed by 25%</source>
-        <translation>降低25%播放速度</translation>
+        <translation type="vanished">降低25%播放速度</translation>
     </message>
     <message>
         <source>Reset Playback Speed</source>
-        <translation>重置播放速度</translation>
+        <translation type="vanished">重置播放速度</translation>
     </message>
     <message>
         <source>Take a screenshot without subtitles</source>
-        <translation>无字幕截图</translation>
+        <translation type="vanished">无字幕截图</translation>
     </message>
     <message>
         <source>Increase Playback Speed by 25%</source>
@@ -192,51 +196,119 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Take a screenshot with subtitles</source>
-        <translation>有字幕截图</translation>
+        <translation type="vanished">有字幕截图</translation>
     </message>
     <message>
         <source>Toggle Subtitle Visibility</source>
-        <translation>切换字幕可见度</translation>
+        <translation type="vanished">切换字幕可见度</translation>
     </message>
     <message>
         <source>Short Seek Backwards</source>
-        <translation>小幅向后跳转</translation>
+        <translation type="vanished">小幅向后跳转</translation>
     </message>
     <message>
         <source>Jump to the Previous Chapter</source>
-        <translation>跳转到上一章节</translation>
+        <translation type="vanished">跳转到上一章节</translation>
     </message>
     <message>
         <source>Jump to the Next Chapter</source>
-        <translation>跳转到下一章节</translation>
+        <translation type="vanished">跳转到下一章节</translation>
     </message>
     <message>
         <source>Short Seek Forward</source>
-        <translation>小幅向前跳转</translation>
+        <translation type="vanished">小幅向前跳转</translation>
     </message>
     <message>
         <source>Frame Back-Step</source>
-        <translation>向后逐帧</translation>
+        <translation type="vanished">向后逐帧</translation>
     </message>
     <message>
         <source>Frame Step</source>
-        <translation>逐帧</translation>
+        <translation type="vanished">逐帧</translation>
     </message>
     <message>
         <source>Decrease the Volume</source>
-        <translation>降低音量</translation>
+        <translation type="vanished">降低音量</translation>
     </message>
     <message>
         <source>Increase the Volume</source>
-        <translation>提高音量</translation>
+        <translation type="vanished">提高音量</translation>
     </message>
     <message>
         <source>Toggle Fullscreen Mode</source>
-        <translation>切换到全屏模式</translation>
+        <translation type="vanished">切换到全屏模式</translation>
     </message>
     <message>
         <source>Dim the lights</source>
-        <translation>昏暗灯光</translation>
+        <translation type="vanished">昏暗灯光</translation>
+    </message>
+    <message>
+        <source>Increase sub size</source>
+        <translation>增大字幕大小</translation>
+    </message>
+    <message>
+        <source>Decrease sub size</source>
+        <translation>减小字幕大小</translation>
+    </message>
+    <message>
+        <source>Restart playback</source>
+        <translation>重新播放</translation>
+    </message>
+    <message>
+        <source>Decrease speed by 25%</source>
+        <translation>降低25%播放速度</translation>
+    </message>
+    <message>
+        <source>Reset speed</source>
+        <translation>重置播放速度</translation>
+    </message>
+    <message>
+        <source>Take screenshot without subtitles</source>
+        <translation>无字幕截图</translation>
+    </message>
+    <message>
+        <source>Take screenshot with subtitles</source>
+        <translation>有字幕截图</translation>
+    </message>
+    <message>
+        <source>Toggle subtitle visibility</source>
+        <translation>切换字幕可见度</translation>
+    </message>
+    <message>
+        <source>Seek backwards by 5 sec</source>
+        <translation>向后跳转5秒</translation>
+    </message>
+    <message>
+        <source>Go to previous chapter</source>
+        <translation>跳转到前一章节</translation>
+    </message>
+    <message>
+        <source>Go to next chapter</source>
+        <translation>跳转到下一章节</translation>
+    </message>
+    <message>
+        <source>Seek forwards by 5 sec</source>
+        <translation>向前跳转5秒</translation>
+    </message>
+    <message>
+        <source>Frame step backwards</source>
+        <translation>向后逐帧</translation>
+    </message>
+    <message>
+        <source>Frame step</source>
+        <translation>逐帧</translation>
+    </message>
+    <message>
+        <source>Decrease volume</source>
+        <translation>降低音量</translation>
+    </message>
+    <message>
+        <source>Increase volume</source>
+        <translation>提高音量</translation>
+    </message>
+    <message>
+        <source>Toggle fullscreen</source>
+        <translation>切换全屏</translation>
     </message>
     <message>
         <source>Show the file in it&apos;s folder</source>
@@ -247,48 +319,140 @@ Some features may not work and changed settings will not be saved.</source>
         <translation>显示媒体信息</translation>
     </message>
     <message>
-        <source>Open the Jump To Time Dialog</source>
+        <source>Show Jump To Time dialog</source>
         <translation>跳转到时间对话框</translation>
     </message>
     <message>
-        <source>Play the Previous Video</source>
-        <translation>播放上一个视频</translation>
+        <source>Play previous file</source>
+        <translation>播放前一个文件</translation>
     </message>
     <message>
-        <source>Create a new Baka-MPlayer window</source>
-        <translation>打开新的Baka-MPlayer窗口</translation>
+        <source>Open a new window</source>
+        <translation>打开新的窗口</translation>
     </message>
     <message>
-        <source>Open a file Dialog</source>
+        <source>Show Open File dialog</source>
         <translation>打开文件对话框</translation>
     </message>
     <message>
-        <source>Quit the Baka-MPlayer</source>
-        <translation>离开Baka-MPlayer</translation>
+        <source>Quit</source>
+        <translation>离开</translation>
     </message>
     <message>
-        <source>Play the Next Video</source>
-        <translation>播放下一个文件</translation>
+        <source>Play next file</source>
+        <translation>播放下一文件</translation>
     </message>
     <message>
-        <source>Stop Video</source>
-        <translation>停止视频</translation>
+        <source>Stop playback</source>
+        <translation>停止播放</translation>
     </message>
     <message>
-        <source>Open a URL Dialog</source>
-        <translation>打开URL对话框</translation>
+        <source>Show Location dialog</source>
+        <translation>显示路径对话框</translation>
     </message>
     <message>
-        <source>Open the file in your Clipboard</source>
+        <source>Open clipboard location</source>
         <translation>打开剪贴板路径</translation>
     </message>
     <message>
-        <source>Toggle the Playlist Visibility</source>
+        <source>Toggle Playlist visibility</source>
         <translation>切换播放列表可见度</translation>
     </message>
     <message>
+        <source>Open the last played file</source>
+        <translation>打开最近播放的文件</translation>
+    </message>
+    <message>
+        <source>Play/Pause</source>
+        <translation>播放/暂停</translation>
+    </message>
+    <message>
+        <source>Fit the Window to video</source>
+        <translation>根据视频适应窗口</translation>
+    </message>
+    <message>
+        <source>Fit Window to 50%</source>
+        <translation>适应窗口到50%</translation>
+    </message>
+    <message>
+        <source>Fit Window to 75%</source>
+        <translation>适应窗口到75%</translation>
+    </message>
+    <message>
+        <source>Fit Window to 100%</source>
+        <translation>适应窗口到100%</translation>
+    </message>
+    <message>
+        <source>Fit Window to 150%</source>
+        <translation>适应窗口到150%</translation>
+    </message>
+    <message>
+        <source>Fit Window to 200%</source>
+        <translation>适应窗口到200%</translation>
+    </message>
+    <message>
+        <source>Boss Key</source>
+        <translation>老板键</translation>
+    </message>
+    <message>
+        <source>Select previous file on playlist</source>
+        <translation>选择播放列表的前一个文件</translation>
+    </message>
+    <message>
+        <source>Select next file on playlist</source>
+        <translation>选择播放列表的下一个文件</translation>
+    </message>
+    <message>
+        <source>Play selected file on playlist</source>
+        <translation>播放在播放列表选中的文件</translation>
+    </message>
+    <message>
+        <source>Remove selected file from playlist</source>
+        <translation>把选中文件移出播放列表</translation>
+    </message>
+    <message>
+        <source>Open the Jump To Time Dialog</source>
+        <translation type="vanished">跳转到时间对话框</translation>
+    </message>
+    <message>
+        <source>Play the Previous Video</source>
+        <translation type="vanished">播放上一个视频</translation>
+    </message>
+    <message>
+        <source>Create a new Baka-MPlayer window</source>
+        <translation type="vanished">打开新的Baka-MPlayer窗口</translation>
+    </message>
+    <message>
+        <source>Open a file Dialog</source>
+        <translation type="vanished">打开文件对话框</translation>
+    </message>
+    <message>
+        <source>Quit the Baka-MPlayer</source>
+        <translation type="vanished">离开Baka-MPlayer</translation>
+    </message>
+    <message>
+        <source>Play the Next Video</source>
+        <translation type="vanished">播放下一个文件</translation>
+    </message>
+    <message>
+        <source>Stop Video</source>
+        <translation type="vanished">停止视频</translation>
+    </message>
+    <message>
+        <source>Open a URL Dialog</source>
+        <translation type="vanished">打开URL对话框</translation>
+    </message>
+    <message>
+        <source>Open the file in your Clipboard</source>
+        <translation type="vanished">打开剪贴板路径</translation>
+    </message>
+    <message>
+        <source>Toggle the Playlist Visibility</source>
+        <translation type="vanished">切换播放列表可见度</translation>
+    </message>
+    <message>
         <source>Open the previous file</source>
-        <translation>打开上一个文件</translation>
+        <translation type="vanished">打开上一个文件</translation>
     </message>
     <message>
         <source>Access Baka-MPlayer Command-line</source>
@@ -300,51 +464,51 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Play/Pause Video</source>
-        <translation>播放/暂停</translation>
+        <translation type="vanished">播放/暂停</translation>
     </message>
     <message>
         <source>Fit the Window to the video frame</source>
-        <translation>根据视频帧适应窗口</translation>
+        <translation type="vanished">根据视频帧适应窗口</translation>
     </message>
     <message>
         <source>Fit the Window to 50% of the Original Size</source>
-        <translation>适应窗口尺寸到原始大小的50%</translation>
+        <translation type="vanished">适应窗口尺寸到原始大小的50%</translation>
     </message>
     <message>
         <source>Fit the Window to 75% of the Original Size</source>
-        <translation>适应窗口尺寸到原始大小的75%</translation>
+        <translation type="vanished">适应窗口尺寸到原始大小的75%</translation>
     </message>
     <message>
         <source>Fit the Window to 100% of the Original Size</source>
-        <translation>适应窗口尺寸到原始大小的100%</translation>
+        <translation type="vanished">适应窗口尺寸到原始大小的100%</translation>
     </message>
     <message>
         <source>Fit the Window to 150% of the Original Size</source>
-        <translation>适应窗口尺寸到原始大小的150%</translation>
+        <translation type="vanished">适应窗口尺寸到原始大小的150%</translation>
     </message>
     <message>
         <source>Fit the Window to 200% of the Original Size</source>
-        <translation>适应窗口尺寸到原始大小的200%</translation>
+        <translation type="vanished">适应窗口尺寸到原始大小的200%</translation>
     </message>
     <message>
         <source>Hide Baka-MPlayer from Your Boss</source>
-        <translation>不让你的老板发现Baka-MPlayer</translation>
+        <translation type="vanished">不让你的老板发现Baka-MPlayer</translation>
     </message>
     <message>
         <source>Select the Previous Item on the Playlist</source>
-        <translation>选择在播放列表中的上一个项目</translation>
+        <translation type="vanished">选择在播放列表中的上一个项目</translation>
     </message>
     <message>
         <source>Select the Next Item on the Playlist</source>
-        <translation>选择在播放列表中的下一个项目</translation>
+        <translation type="vanished">选择在播放列表中的下一个项目</translation>
     </message>
     <message>
         <source>Play Selected Item on Playlist</source>
-        <translation>播放在播放列表中选中的项目</translation>
+        <translation type="vanished">播放在播放列表中选中的项目</translation>
     </message>
     <message>
         <source>Remove Selected Item from Playlist</source>
-        <translation>移除在播放列表中选中的项目</translation>
+        <translation type="vanished">移除在播放列表中选中的项目</translation>
     </message>
 </context>
 <context>
@@ -634,6 +798,10 @@ Some features may not work and changed settings will not be saved.</source>
         <translation>帮助(&amp;H)</translation>
     </message>
     <message>
+        <source>Open &amp;Location...</source>
+        <translation>打开路径</translation>
+    </message>
+    <message>
         <source>Alt+6</source>
         <translation type="vanished">Alt+6</translation>
     </message>
@@ -667,7 +835,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Open &amp;URL...</source>
-        <translation>打开URL(&amp;U)...</translation>
+        <translation type="vanished">打开URL(&amp;U)...</translation>
     </message>
     <message>
         <source>Ctrl+U</source>
