@@ -17,7 +17,7 @@
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2014 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2014 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Credits</source>
@@ -39,7 +39,21 @@ Translations
 - Korean &lt;godly-devotion&gt;
 - Portuguese &lt;u8sand&gt;
 - Russian &lt;suhr&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>mpv - video player based on MPlayer/mplayer2
+GPLv2 &lt;mpv.io&gt;
+
+Noto Sans -  font family with many supported characters
+Apache License, version 2.0 &lt;Google&gt;
+
+Download icon
+CC BY 3.0 &lt;Sasha Mescheryakov&gt;
+
+Translations
+- Chinese &lt;amazingfate, Antares95&gt;
+- Italian &lt;Aloysius&gt;
+- Korean &lt;godly-devotion&gt;
+- Portuguese &lt;u8sand&gt;
+- Russian &lt;suhr&gt;</translation>
     </message>
     <message>
         <source>mpv - video player based on MPlayer/mplayer2
@@ -146,122 +160,118 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Open Subtitle File</source>
-        <translation type="unfinished">자막 파일 열기</translation>
+        <translation>자막 파일 열기</translation>
     </message>
     <message>
         <source>Subtitle Files</source>
-        <translation type="unfinished">자막 파일</translation>
+        <translation>자막 파일</translation>
     </message>
     <message>
         <source>http://bakamplayer.u8sand.net/help.php</source>
-        <translation type="unfinished">http://bakamplayer.u8sand.net/help.php</translation>
+        <translation>http://bakamplayer.u8sand.net/help.php</translation>
     </message>
     <message>
         <source>Open File</source>
-        <translation type="unfinished">파일 열기</translation>
+        <translation>파일 열기</translation>
     </message>
     <message>
         <source>Media Files</source>
-        <translation type="unfinished">미디어 파일</translation>
+        <translation>미디어 파일</translation>
     </message>
     <message>
         <source>Video Files</source>
-        <translation type="unfinished">비디오 파일</translation>
+        <translation>비디오 파일</translation>
     </message>
     <message>
         <source>Audio Files</source>
-        <translation type="unfinished">오디오 파일</translation>
+        <translation>오디오 파일</translation>
     </message>
     <message>
-        <source>Fit Window: %0%</source>
-        <translation type="unfinished"></translation>
+        <source>Fit Window: %0</source>
+        <translation>창 크기: %0</translation>
     </message>
     <message>
         <source>autofit</source>
-        <translation type="unfinished"></translation>
+        <translation>자동</translation>
     </message>
     <message>
         <source>Dim Lights</source>
-        <translation type="unfinished">불 끄기</translation>
+        <translation>불 끄기</translation>
     </message>
     <message>
         <source>In order to dim the lights, the desktop compositor has to be enabled. This can be done through Window Manager Desktop.</source>
-        <translation type="unfinished">불 끄기 기는은 Desktop Compositor가 필요합니다. Window Manager Desktop을 통에서 키실수 있습니다.</translation>
-    </message>
-    <message>
-        <source>Increase Font Size</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Decrease Font Size</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Restart Video Playback</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Decrease Playback Speed by 25%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Reset Playback Speed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Take a screenshot without subtitles</source>
-        <translation type="unfinished"></translation>
+        <translation>불 끄기 기는은 Desktop Compositor가 필요합니다. Window Manager Desktop을 통에서 키실수 있습니다.</translation>
     </message>
     <message>
         <source>Increase Playback Speed by 25%</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Take a screenshot with subtitles</source>
+        <source>Increase sub size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Toggle Subtitle Visibility</source>
+        <source>Decrease sub size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Short Seek Backwards</source>
+        <source>Restart playback</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Jump to the Previous Chapter</source>
+        <source>Decrease speed by 25%</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Jump to the Next Chapter</source>
+        <source>Reset speed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Short Seek Forward</source>
+        <source>Take screenshot without subtitles</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Frame Back-Step</source>
+        <source>Take screenshot with subtitles</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Frame Step</source>
+        <source>Toggle subtitle visibility</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Decrease the Volume</source>
+        <source>Seek backwards by 5 sec</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Increase the Volume</source>
+        <source>Go to previous chapter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Toggle Fullscreen Mode</source>
+        <source>Go to next chapter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Dim the lights</source>
+        <source>Seek forwards by 5 sec</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Frame step backwards</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Frame step</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Decrease volume</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Increase volume</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Toggle fullscreen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -273,47 +283,95 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Open the Jump To Time Dialog</source>
+        <source>Show Jump To Time dialog</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Play the Previous Video</source>
+        <source>Play previous file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Create a new Baka-MPlayer window</source>
+        <source>Open a new window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Open a file Dialog</source>
+        <source>Show Open File dialog</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Quit the Baka-MPlayer</source>
+        <source>Quit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Play the Next Video</source>
+        <source>Play next file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Stop Video</source>
+        <source>Stop playback</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Open a URL Dialog</source>
+        <source>Show Location dialog</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Open the file in your Clipboard</source>
+        <source>Open clipboard location</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Toggle the Playlist Visibility</source>
+        <source>Toggle Playlist visibility</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Open the previous file</source>
+        <source>Open the last played file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Play/Pause</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fit the Window to video</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fit Window to 50%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fit Window to 75%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fit Window to 100%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fit Window to 150%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fit Window to 200%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Boss Key</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select previous file on playlist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select next file on playlist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Play selected file on playlist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove selected file from playlist</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -322,54 +380,6 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Launch Online Help</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Play/Pause Video</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fit the Window to the video frame</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fit the Window to 50% of the Original Size</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fit the Window to 75% of the Original Size</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fit the Window to 100% of the Original Size</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fit the Window to 150% of the Original Size</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fit the Window to 200% of the Original Size</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Hide Baka-MPlayer from Your Boss</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Select the Previous Item on the Playlist</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Select the Next Item on the Playlist</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Play Selected Item on Playlist</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Remove Selected Item from Playlist</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -660,6 +670,10 @@ Some features may not work and changed settings will not be saved.</source>
         <translation>도움말(&amp;H)</translation>
     </message>
     <message>
+        <source>Open &amp;Location...</source>
+        <translation>주소 열기(&amp;L)...</translation>
+    </message>
+    <message>
         <source>Alt+6</source>
         <translation type="obsolete">Alt+6</translation>
     </message>
@@ -669,7 +683,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Show &amp;Command Line</source>
-        <translation type="unfinished"></translation>
+        <translation>명령 줄 인터페이스 보이기(&amp;C)</translation>
     </message>
     <message>
         <source>&amp;New Player</source>
@@ -689,7 +703,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Open &amp;URL...</source>
-        <translation>주소 열기(&amp;U)...</translation>
+        <translation type="vanished">주소 열기(&amp;U)...</translation>
     </message>
     <message>
         <source>Ctrl+U</source>
@@ -905,7 +919,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>150%</source>
-        <translation type="unfinished">200% {150%?}</translation>
+        <translation>150%</translation>
     </message>
     <message>
         <source>Alt+5</source>
@@ -1159,22 +1173,22 @@ Note: Value must be from %0 - %1</source>
     <message>
         <source>mpv was not initialized
 </source>
-        <translation type="unfinished"></translation>
+        <translation>mpv가 실행 되지 않았습니다</translation>
     </message>
 </context>
 <context>
     <name>PlaylistWidget</name>
     <message>
         <source>R&amp;emove from Playlist</source>
-        <translation type="unfinished">선택 제거하기(&amp;R)</translation>
+        <translation>선택 제거하기(&amp;R)</translation>
     </message>
     <message>
         <source>&amp;Delete from Disk</source>
-        <translation type="unfinished">파일 지우기(&amp;D)</translation>
+        <translation>파일 지우기(&amp;D)</translation>
     </message>
     <message>
         <source>&amp;Refresh</source>
-        <translation type="unfinished">다시 불러오기 (&amp;R)</translation>
+        <translation>다시 불러오기 (&amp;R)</translation>
     </message>
 </context>
 <context>
@@ -1217,7 +1231,7 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>Language:</source>
-        <translation type="unfinished"></translation>
+        <translation>언어 선택:</translation>
     </message>
     <message>
         <source>Video</source>
@@ -1293,11 +1307,11 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>Mouse Gesture</source>
-        <translation type="unfinished"></translation>
+        <translation>마우스 제스처</translation>
     </message>
     <message>
         <source>&amp;Enable</source>
-        <translation type="unfinished"></translation>
+        <translation>사용(&amp;E)</translation>
     </message>
     <message>
         <source>Keys</source>
