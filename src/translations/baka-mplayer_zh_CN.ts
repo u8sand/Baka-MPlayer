@@ -144,207 +144,207 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Open Subtitle File</source>
-        <translation type="unfinished">打开字幕文件</translation>
+        <translation>打开字幕文件</translation>
     </message>
     <message>
         <source>Subtitle Files</source>
-        <translation type="unfinished">字幕文件</translation>
+        <translation>字幕文件</translation>
     </message>
     <message>
         <source>http://bakamplayer.u8sand.net/help.php</source>
-        <translation type="unfinished">http://bakamplayer.u8sand.net/help.php</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Dim Lights</source>
-        <translation type="unfinished">昏暗灯光</translation>
+        <translation>昏暗灯光</translation>
     </message>
     <message>
         <source>In order to dim the lights, the desktop compositor has to be enabled. This can be done through Window Manager Desktop.</source>
-        <translation type="unfinished">为了开启黯淡桌面功能,桌面混成需要开启，可以通过窗口管理进行设置。</translation>
+        <translation>为了开启黯淡桌面功能,桌面混成需要开启，可以通过窗口管理进行设置。</translation>
     </message>
     <message>
         <source>Increase Font Size</source>
-        <translation type="unfinished"></translation>
+        <translation>增大字体大小</translation>
     </message>
     <message>
         <source>Decrease Font Size</source>
-        <translation type="unfinished"></translation>
+        <translation>减小字体大小</translation>
     </message>
     <message>
         <source>Restart Video Playback</source>
-        <translation type="unfinished"></translation>
+        <translation>重新启动视频播放</translation>
     </message>
     <message>
         <source>Decrease Playback Speed by 25%</source>
-        <translation type="unfinished"></translation>
+        <translation>降低25%播放速度</translation>
     </message>
     <message>
         <source>Reset Playback Speed</source>
-        <translation type="unfinished"></translation>
+        <translation>重置播放速度</translation>
     </message>
     <message>
         <source>Take a screenshot without subtitles</source>
-        <translation type="unfinished"></translation>
+        <translation>无字幕截图</translation>
     </message>
     <message>
         <source>Increase Playback Speed by 25%</source>
-        <translation type="unfinished"></translation>
+        <translation>提高25%播放速度</translation>
     </message>
     <message>
         <source>Take a screenshot with subtitles</source>
-        <translation type="unfinished"></translation>
+        <translation>有字幕截图</translation>
     </message>
     <message>
         <source>Toggle Subtitle Visibility</source>
-        <translation type="unfinished"></translation>
+        <translation>切换字幕可见度</translation>
     </message>
     <message>
         <source>Short Seek Backwards</source>
-        <translation type="unfinished"></translation>
+        <translation>小幅向后跳转</translation>
     </message>
     <message>
         <source>Jump to the Previous Chapter</source>
-        <translation type="unfinished"></translation>
+        <translation>跳转到上一章节</translation>
     </message>
     <message>
         <source>Jump to the Next Chapter</source>
-        <translation type="unfinished"></translation>
+        <translation>跳转到下一章节</translation>
     </message>
     <message>
         <source>Short Seek Forward</source>
-        <translation type="unfinished"></translation>
+        <translation>小幅向前跳转</translation>
     </message>
     <message>
         <source>Frame Back-Step</source>
-        <translation type="unfinished"></translation>
+        <translation>向后逐帧</translation>
     </message>
     <message>
         <source>Frame Step</source>
-        <translation type="unfinished"></translation>
+        <translation>逐帧</translation>
     </message>
     <message>
         <source>Decrease the Volume</source>
-        <translation type="unfinished"></translation>
+        <translation>降低音量</translation>
     </message>
     <message>
         <source>Increase the Volume</source>
-        <translation type="unfinished"></translation>
+        <translation>提高音量</translation>
     </message>
     <message>
         <source>Toggle Fullscreen Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>切换到全屏模式</translation>
     </message>
     <message>
         <source>Dim the lights</source>
-        <translation type="unfinished"></translation>
+        <translation>昏暗灯光</translation>
     </message>
     <message>
         <source>Show the file in it&apos;s folder</source>
-        <translation type="unfinished"></translation>
+        <translation>在文件夹中显示文件</translation>
     </message>
     <message>
         <source>View Media Information</source>
-        <translation type="unfinished"></translation>
+        <translation>显示媒体信息</translation>
     </message>
     <message>
         <source>Open the Jump To Time Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>跳转到时间对话框</translation>
     </message>
     <message>
         <source>Play the Previous Video</source>
-        <translation type="unfinished"></translation>
+        <translation>播放上一个视频</translation>
     </message>
     <message>
         <source>Create a new Baka-MPlayer window</source>
-        <translation type="unfinished"></translation>
+        <translation>打开新的Baka-MPlayer窗口</translation>
     </message>
     <message>
         <source>Open a file Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>打开文件对话框</translation>
     </message>
     <message>
         <source>Quit the Baka-MPlayer</source>
-        <translation type="unfinished"></translation>
+        <translation>离开Baka-MPlayer</translation>
     </message>
     <message>
         <source>Play the Next Video</source>
-        <translation type="unfinished"></translation>
+        <translation>播放下一个文件</translation>
     </message>
     <message>
         <source>Stop Video</source>
-        <translation type="unfinished"></translation>
+        <translation>停止视频</translation>
     </message>
     <message>
         <source>Open a URL Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>打开URL对话框</translation>
     </message>
     <message>
         <source>Open the file in your Clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>打开剪贴板路径</translation>
     </message>
     <message>
         <source>Toggle the Playlist Visibility</source>
-        <translation type="unfinished"></translation>
+        <translation>切换播放列表可见度</translation>
     </message>
     <message>
         <source>Open the previous file</source>
-        <translation type="unfinished"></translation>
+        <translation>打开上一个文件</translation>
     </message>
     <message>
         <source>Access Baka-MPlayer Command-line</source>
-        <translation type="unfinished"></translation>
+        <translation>Baka-MPlayer命令行</translation>
     </message>
     <message>
         <source>Launch Online Help</source>
-        <translation type="unfinished"></translation>
+        <translation>启动在线帮助</translation>
     </message>
     <message>
         <source>Play/Pause Video</source>
-        <translation type="unfinished"></translation>
+        <translation>播放/暂停</translation>
     </message>
     <message>
         <source>Fit the Window to the video frame</source>
-        <translation type="unfinished"></translation>
+        <translation>根据视频帧适应窗口</translation>
     </message>
     <message>
         <source>Fit the Window to 50% of the Original Size</source>
-        <translation type="unfinished"></translation>
+        <translation>适应窗口尺寸到原始大小的50%</translation>
     </message>
     <message>
         <source>Fit the Window to 75% of the Original Size</source>
-        <translation type="unfinished"></translation>
+        <translation>适应窗口尺寸到原始大小的75%</translation>
     </message>
     <message>
         <source>Fit the Window to 100% of the Original Size</source>
-        <translation type="unfinished"></translation>
+        <translation>适应窗口尺寸到原始大小的100%</translation>
     </message>
     <message>
         <source>Fit the Window to 150% of the Original Size</source>
-        <translation type="unfinished"></translation>
+        <translation>适应窗口尺寸到原始大小的150%</translation>
     </message>
     <message>
         <source>Fit the Window to 200% of the Original Size</source>
-        <translation type="unfinished"></translation>
+        <translation>适应窗口尺寸到原始大小的200%</translation>
     </message>
     <message>
         <source>Hide Baka-MPlayer from Your Boss</source>
-        <translation type="unfinished"></translation>
+        <translation>不让你的老板发现Baka-MPlayer</translation>
     </message>
     <message>
         <source>Select the Previous Item on the Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>选择在播放列表中的上一个项目</translation>
     </message>
     <message>
         <source>Select the Next Item on the Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>选择在播放列表中的下一个项目</translation>
     </message>
     <message>
         <source>Play Selected Item on Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>播放在播放列表中选中的项目</translation>
     </message>
     <message>
         <source>Remove Selected Item from Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>移除在播放列表中选中的项目</translation>
     </message>
 </context>
 <context>
