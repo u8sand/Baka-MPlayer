@@ -60,6 +60,7 @@ private slots:
     void TakeScreenshot(bool subs);                 // take a screenshot
     void ShowScreenshotMessage(bool subs);          // show the screenshot status message
     void UpdateRecentFiles();                       // populate recentFiles menu
+    void MapShortcuts();
 
 private:
     Ui::MainWindow  *ui;
@@ -83,6 +84,8 @@ private:
          screenshotDialog,
          debug,
          gestures;
+
+    QHash<QString, QAction*> commandActionMap;
 
 public slots:
     void setLang(QString s)          { emit langChanged(lang = s); }

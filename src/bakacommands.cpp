@@ -244,7 +244,10 @@ void BakaEngine::BakaOutput(QStringList &args)
 void BakaEngine::BakaPreferences(QStringList &args)
 {
     if(args.empty())
+    {
         PreferencesDialog::showPreferences(this, window);
+        window->MapShortcuts();
+    }
     else
         InvalidParameter(args.join(' '));
 }
