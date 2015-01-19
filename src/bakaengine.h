@@ -98,7 +98,7 @@ private:
         {"Ctrl+Up",         {"baka volume +5",            tr("Increase volume")}},
         {"Alt+Return",      {"baka fullscreen",           tr("Toggle fullscreen")}},
         {"Ctrl+D",          {"baka dim",                  tr("Dim Lights")}},
-        {"Ctrl+X",          {"baka show_in_folder",       tr("Show the file in it's folder")}},
+        {"Ctrl+E",          {"baka show_in_folder",       tr("Show the file in it's folder")}},
         {"Ctrl+I",          {"baka media_info",           tr("View Media Information")}},
         {"Ctrl+J",          {"baka jump",                 tr("Show Jump To Time dialog")}},
         {"Ctrl+Left",       {"baka play -1",              tr("Play previous file")}},
