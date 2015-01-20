@@ -7,9 +7,10 @@
 #include "ui/locationdialog.h"
 #include "ui/jumpdialog.h"
 #include "ui/preferencesdialog.h"
-#include "widgets/dimdialog.h"
 #include "ui/updatedialog.h"
+#include "widgets/dimdialog.h"
 #include "mpvhandler.h"
+#include "updatemanager.h"
 #include "util.h"
 
 #include <QApplication>
@@ -263,9 +264,7 @@ void BakaEngine::BakaPreferences(QStringList &args)
 void BakaEngine::BakaOnlineHelp(QStringList &args)
 {
     if(args.empty())
-    {
         QDesktopServices::openUrl(QUrl(tr("http://bakamplayer.u8sand.net/help.php")));
-    }
     else
         InvalidParameter(args.join(' '));
 }
@@ -273,12 +272,7 @@ void BakaEngine::BakaOnlineHelp(QStringList &args)
 void BakaEngine::BakaUpdate(QStringList &args)
 {
     if(args.empty())
-    {
-        if(updateDialog->exec() == QDialog::Accepted)
-        {
-            // todo: close and finish update (overwrite self and restart)
-        }
-    }
+        UpdateDialog::CheckForUpdates(this, window);
     else
         InvalidParameter(args.join(' '));
 }

@@ -8,10 +8,12 @@
 #include <QStringList>
 #include <QFile>
 
+#include "bakaengine.h"
 #include "util.h"
 
 UpdateManager::UpdateManager(QObject *parent) :
     QObject(parent),
+    baka(static_cast<BakaEngine*>(parent)),
     manager(new QNetworkAccessManager(this))
 {
 }

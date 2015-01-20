@@ -7,6 +7,8 @@
 #include <QMap>
 #include <QString>
 
+class BakaEngine;
+
 class UpdateManager : public QObject
 {
     Q_OBJECT
@@ -32,6 +34,7 @@ signals:
     void verboseSignal(QString msg);
 
 private:
+    BakaEngine *baka;
     QNetworkAccessManager *manager;
 };
 

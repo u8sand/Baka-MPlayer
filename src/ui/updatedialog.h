@@ -4,28 +4,28 @@
 #include <QDialog>
 #include <QTime>
 
-#include "updatemanager.h"
 
 namespace Ui {
 class UpdateDialog;
 }
+
+class BakaEngine;
 
 class UpdateDialog : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit UpdateDialog(QWidget *parent = 0);
+    explicit UpdateDialog(BakaEngine *baka, QWidget *parent = 0);
     ~UpdateDialog();
 
-    int exec();
+    static void CheckForUpdates(BakaEngine *baka, QWidget *parent = 0);
 
 public slots:
-    void CheckForUpdates();
 
 private:
     Ui::UpdateDialog *ui;
-    UpdateManager *updateManager;
+    BakaEngine *baka;
 
     QTime *timer;
     double avgSpeed = 1,
