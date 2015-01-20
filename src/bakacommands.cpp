@@ -34,6 +34,27 @@ void BakaEngine::BakaNew(QStringList &args)
         InvalidParameter(args.join(' '));
 }
 
+void BakaEngine::BakaPlay(QStringList &args)
+{
+    if(!args.empty())
+    {
+        QString arg = args.front();
+        args.pop_front();
+        if(args.empty())
+        {
+            // TODO: make relative jumps rather than (next/prev +1/-1)
+            if(arg == "+1")
+                mpv->PlayFile(window->ui->playlistWidget->NextItem());
+            else if(arg == "-1")
+                mpv->PlayFile(window->ui->playlistWidget->PreviousItem());
+        }
+        else
+            InvalidParameter(args.join(' '));
+    }
+    else
+        RequiresParameters("play");
+}
+
 void BakaEngine::BakaOpenLocation(QStringList &args)
 {
     if(args.empty())
@@ -464,6 +485,14 @@ void BakaEngine::BakaHelp(QStringList &)
 void BakaEngine::BakaAbout(QStringList &args)
 {
     About(args.join(' '));
+}
+
+void BakaEngine::BakaDebug(QStringList &args)
+{
+    if(args.empty())
+        mpv->Debug(!mpv->getDebug());
+    else
+        InvalidParameter(args.join(' '));
 }
 
 void BakaEngine::About(QString what)

@@ -67,7 +67,7 @@ MainWindow::MainWindow(QWidget *parent):
         {"mpv set video-aspect 16:9", ui->actionForce_16_9},
         {"mpv set video-aspect 2_35:1", ui->actionForce_2_35_1},
         {"mpv set video-aspect 4:3", ui->actionForce_4_3},
-        {"mpv toggle sub-visibility", ui->actionShow_Subtitles},
+        {"mpv cycle sub-visibility", ui->actionShow_Subtitles},
         {"baka add_subtitles", ui->action_Add_Subtitle_File},
         {"baka fitwindow 0", ui->action_To_Current_Size},
         {"baka fitwindow 50", ui->action50},
@@ -176,7 +176,6 @@ MainWindow::MainWindow(QWidget *parent):
     connect(this, &MainWindow::debugChanged,
             [=](bool b)
             {
-                mpv->Debug(b);
                 ui->actionShow_D_ebug_Output->setChecked(b);
                 ui->verticalWidget->setVisible(b);
             });

@@ -87,7 +87,7 @@ private:
         {"Ctrl+Shift+T",    {"mpv screenshot video",      tr("Take screenshot without subtitles")}},
         {"Ctrl+Shift+Up",   {"mpv add speed +0.25",       tr("Increase Playback Speed by 25%")}},
         {"Ctrl+T",          {"mpv screenshot subtitles",  tr("Take screenshot with subtitles")}},
-        {"Ctrl+W",          {"mpv toggle sub-visibility", tr("Toggle subtitle visibility")}},
+        {"Ctrl+W",          {"mpv cycle sub-visibility",  tr("Toggle subtitle visibility")}},
         {"Left",            {"mpv seek -5",               tr("Seek backwards by 5 sec")}},
         {"PgDown",          {"mpv add chapter -1",        tr("Go to previous chapter")}},
         {"PgUp",            {"mpv add chapter +1",        tr("Go to next chapter")}},
@@ -135,6 +135,7 @@ private:
     typedef void(BakaEngine::*BakaCommandFPtr)(QStringList&);
     const QHash<QString, BakaCommandFPtr> BakaCommandMap = {
         {"new", &BakaEngine::BakaNew},
+        {"play", &BakaEngine::BakaPlay},
         {"open_location", &BakaEngine::BakaOpenLocation},
         {"open_clipboard", &BakaEngine::BakaOpenClipboard},
         {"show_in_folder", &BakaEngine::BakaShowInFolder},
@@ -156,10 +157,12 @@ private:
         {"boss", &BakaEngine::BakaBoss},
         {"help", &BakaEngine::BakaHelp},
         {"about", &BakaEngine::BakaAbout},
+        {"debug", &BakaEngine::BakaDebug},
         {"quit", &BakaEngine::BakaQuit}
     };
     // Baka Command Functions
     void BakaNew(QStringList&);
+    void BakaPlay(QStringList&);
     void BakaOpenLocation(QStringList&);
     void BakaOpenClipboard(QStringList&);
     void BakaShowInFolder(QStringList&);
@@ -182,6 +185,7 @@ private:
     void BakaBoss(QStringList&);
     void BakaHelp(QStringList&);
     void BakaAbout(QStringList&);
+    void BakaDebug(QStringList&);
     void BakaQuit(QStringList&);
 public:
     void Open(QString path = QString());
