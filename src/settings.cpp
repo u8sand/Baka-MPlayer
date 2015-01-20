@@ -50,11 +50,7 @@ void Settings::Save()
                 continue;
             fout << "[" << group_iter.key() << "]" << endl; // output: [foo]
             for(SettingsGroupData::iterator entry_iter = group_iter->begin(); entry_iter != group_iter->end(); ++entry_iter)
-            {
-                if(entry_iter.key() == QString() || entry_iter.value() == QString()) // skip empty entries (either empty key or empty value)
-                    continue;
                 fout << FixKeyOnSave(entry_iter.key()) << "=" << entry_iter.value() << endl;
-            }
             fout << endl;
         }
         f.close();

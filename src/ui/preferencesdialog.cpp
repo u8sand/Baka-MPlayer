@@ -39,12 +39,15 @@ PreferencesDialog::PreferencesDialog(BakaEngine *baka, QWidget *parent) :
     numberOfShortcuts = 0;
     for(auto iter = baka->input.begin(); iter != baka->input.end(); ++iter)
     {
+        if(iter->first == QString())
+            continue;
         ui->infoWidget->insertRow(numberOfShortcuts);
         ui->infoWidget->setItem(numberOfShortcuts, 0, new QTableWidgetItem(iter.key()));
         ui->infoWidget->setItem(numberOfShortcuts, 1, new QTableWidgetItem(iter->first));
         ui->infoWidget->setItem(numberOfShortcuts, 2, new QTableWidgetItem(iter->second));
         ++numberOfShortcuts;
     }
+
     connect(ui->autoFitCheckBox, &QCheckBox::clicked,
             [=](bool b)
             {
@@ -68,6 +71,24 @@ PreferencesDialog::PreferencesDialog(BakaEngine *baka, QWidget *parent) :
                 ui->infoWidget->setItem(numberOfShortcuts, 1, new QTableWidgetItem(ui->lineEdit->text()));
                 ui->infoWidget->setItem(numberOfShortcuts, 2, new QTableWidgetItem(ui->lineEdit_2->text()));
                 ++numberOfShortcuts;
+            });
+
+    connect(ui->removeKeyButton, &QPushButton::clicked,
+            [=]
+            {
+                // todo: deal with removing default entries
+                int row = ui->infoWidget->currentRow();
+                if(row == -1)
+                    return;
+                ui->infoWidget->removeRow(row); // remove the row
+                // push the rest of the rows up
+                for(int i = row+1; i < numberOfShortcuts-1; ++i)
+                {
+                    ui->infoWidget->setItem(i-1, 0, ui->infoWidget->item(i, 0));
+                    ui->infoWidget->setItem(i-1, 1, ui->infoWidget->item(i, 1));
+                    ui->infoWidget->setItem(i-1, 2, ui->infoWidget->item(i, 2));
+                }
+                --numberOfShortcuts;
             });
 
     connect(ui->closeButton, SIGNAL(clicked()),
@@ -95,7 +116,7 @@ PreferencesDialog::~PreferencesDialog()
     baka->mpv->ScreenshotTemplate(ui->templateLineEdit->text());
     baka->input.clear();
     for(int i = 0; i < numberOfShortcuts; i++)
-        if(ui->infoWidget->item(i, 0) && ui->infoWidget->item(i, 1))
+        if(ui->infoWidget->item(i, 0) && ui->infoWidget->item(i, 1) && ui->infoWidget->item(i, 0)->text() != QString())
         {
             QPair<QString, QString> pair;
             pair.first = ui->infoWidget->item(i, 1)->text();
