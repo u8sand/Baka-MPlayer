@@ -41,13 +41,7 @@ void BakaEngine::BakaPlay(QStringList &args)
         QString arg = args.front();
         args.pop_front();
         if(args.empty())
-        {
-            // TODO: make relative jumps rather than (next/prev +1/-1)
-            if(arg == "+1")
-                mpv->PlayFile(window->ui->playlistWidget->NextItem());
-            else if(arg == "-1")
-                mpv->PlayFile(window->ui->playlistWidget->PreviousItem());
-        }
+            window->ui->playlistWidget->PlayIndex(arg.toInt(), true);
         else
             InvalidParameter(args.join(' '));
     }
@@ -121,26 +115,19 @@ void BakaEngine::BakaPlaylist(QStringList &args)
             if(arg == "play")
             {
                 if(window->isPlaylistVisible() && !window->ui->inputLineEdit->hasFocus())
-                    mpv->PlayFile(window->ui->playlistWidget->CurrentItem());
+                    window->ui->playlistWidget->PlayIndex(window->ui->playlistWidget->currentRow());
             }
             else if(arg == "remove")
             {
                 if(window->isPlaylistVisible() && !window->ui->inputLineEdit->hasFocus() && !window->ui->searchBox->hasFocus())
-                    window->ui->playlistWidget->RemoveItem(window->ui->playlistWidget->currentRow());
+                    window->ui->playlistWidget->RemoveIndex(window->ui->playlistWidget->currentRow());
             }
             else if(arg == "shuffle")
-            {
                 window->ui->playlistWidget->Shuffle();
-                window->ui->playlistWidget->BoldText(window->ui->playlistWidget->FirstItem(), true);
-            }
             else if(arg == "toggle")
-            {
                 window->ShowPlaylist(!window->isPlaylistVisible());
-            }
             else if(arg == "full")
-            {
                 window->HideAlbumArt(!window->ui->action_Hide_Album_Art->isChecked());
-            }
             else
                 InvalidParameter(arg);
         }
@@ -153,12 +140,12 @@ void BakaEngine::BakaPlaylist(QStringList &args)
                 if(arg == "next")
                 {
                     if(window->isPlaylistVisible())
-                        window->ui->playlistWidget->SelectItem(window->ui->playlistWidget->NextItem());
+                        window->ui->playlistWidget->SelectIndex(1, true);
                 }
                 else if(arg == "prev")
                 {
                     if(window->isPlaylistVisible())
-                        window->ui->playlistWidget->SelectItem(window->ui->playlistWidget->PreviousItem());
+                        window->ui->playlistWidget->SelectIndex(-1, true);
                 }
                 else
                     InvalidParameter(arg);

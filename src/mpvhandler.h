@@ -31,7 +31,6 @@ public:
     int getAid()                            { return aid; }
     int getSid()                            { return sid; }
     bool getDebug()                         { return debug; }
-    bool getPlaylistVisible()               { return playlistVisible; }
     bool getSubtitleVisibility()            { return subtitleVisibility; }
 
     int getOsdWidth()                       { return osdWidth; }
@@ -121,7 +120,6 @@ private slots:
     void setAid(int i)                      { emit aidChanged(aid = i); }
     void setSid(int i)                      { emit sidChanged(sid = i); }
     void setDebug(bool b)                   { emit debugChanged(debug = b); }
-    void setPlaylistVisible(bool b)         { emit playlistVisibleChanged(playlistVisible = b); }
     void setSubtitleVisibility(bool b)      { emit subtitleVisibilityChanged(subtitleVisibility = b); }
 
 signals:
@@ -144,7 +142,6 @@ signals:
     void aidChanged(int);
     void sidChanged(int);
     void debugChanged(bool);
-    void playlistVisibleChanged(bool);
     void subtitleVisibilityChanged(bool);
 
     void messageSignal(QString m);

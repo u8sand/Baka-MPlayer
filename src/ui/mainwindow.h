@@ -49,6 +49,7 @@ protected:
     bool eventFilter(QObject *obj, QEvent *event);  // event filter (get mouse move events from mpvFrame)
     void wheelEvent(QWheelEvent *event);            // the mouse wheel is used
     void keyPressEvent(QKeyEvent *event);
+    void SetIndexLabels(bool enable);
     void SetPlaybackControls(bool enable);          // macro to enable/disable playback controls
     void TogglePlaylist();                          // toggles playlist visibility
     bool isPlaylistVisible();                       // is the playlist visible?

@@ -703,8 +703,6 @@ QString MpvHandler::PopulatePlaylist()
         for(auto &i : flist)
             playlist.push_back(i.fileName()); // add files to the list
         setPlaylist(playlist);
-        if(playlist.length() > 1)
-            setPlaylistVisible(true);
         if(playlist.empty())
             return QString();
         return playlist.first();

@@ -1,5 +1,8 @@
 #include "playlistwidget.h"
 
+#include "bakaengine.h"
+#include "mpvhandler.h"
+
 #include <QListWidgetItem>
 #include <QMenu>
 #include <QFont>
@@ -8,221 +11,296 @@
 
 PlaylistWidget::PlaylistWidget(QWidget *parent) :
     QListWidget(parent),
-    cItem()
+    newPlaylist(false),
+    refresh(false),
+    showAll(true)
 {
     setAttribute(Qt::WA_NoMousePropagation);
 }
 
-QAction *PlaylistWidget::addAction(const QString &text)
+void PlaylistWidget::AttachEngine(BakaEngine *baka)
 {
-    QAction *action = new QAction(text, this);
-    QListWidget::addAction(action);
-    return action;
-}
-
-QString PlaylistWidget::RemoveItem(int index)
-{
-    QListWidgetItem *_item = takeItem(index);
-    if(_item)
-    {
-        QString item = _item->text();
-        playlist.removeOne(item);
-        delete _item;
-        return item;
-    }
-    return QString();
-}
-
-void PlaylistWidget::SelectItem(const QString &item, bool internal)
-{
-    if(item != "")
-    {
-        if(!internal)
-        {
-            QList<QListWidgetItem*> items = findItems(item, Qt::MatchExactly);
-            if(items.length() > 0)
+    this->baka = baka;
+    connect(baka->mpv, &MpvHandler::playlistChanged,
+            [=](const QStringList &list)
             {
-                setCurrentItem(items.first());
-                cItem = items.first()->text();
-            }
-            else
-                setCurrentRow(0);
-            scrollToItem(currentItem());
-        }
-        else
-            cItem = item;
-    }
+                playlist = list;
+                newPlaylist = true;
+                if(refresh)
+                {
+                    Populate();
+                    BoldText(file, true);
+                    refresh = false;
+                }
+            });
+
+    connect(baka->mpv, &MpvHandler::fileChanged,
+            [=](QString f)
+            {
+                if(newPlaylist)
+                {
+                    file = f;
+                    Populate();
+                    BoldText(file, true);
+                    newPlaylist = false;
+                }
+                else
+                {
+                    BoldText(file, false);
+                    BoldText(f, true);
+                    file = f;
+                }
+            });
+
+    connect(this, &PlaylistWidget::doubleClicked,
+            [=](const QModelIndex &i)
+            {
+                PlayIndex(i.row());
+            });
 }
 
-void PlaylistWidget::BoldText(const QString &item, bool state)
+void PlaylistWidget::Populate()
 {
-    if(item != "")
+    if(playlist.empty())
+        return;
+
+    QListWidgetItem *current = currentItem();
+    QString item;
+    if(current != nullptr)
+        item = current->text();
+    else
+        item = file;
+
+    if(showAll == true)
     {
-        QList<QListWidgetItem*> items = findItems(item, Qt::MatchExactly);
-        if(items.length() > 0)
-        {
-            QFont font = items.first()->font();
-            font.setBold(state);
-            items.first()->setFont(font);
-        }
+        clear();
+        addItems(playlist);
     }
+    else
+    {
+        // filter by suffix of current item
+        QString suffix = item.split('.').last();
+        QStringList newPlaylist;
+        for(auto i = playlist.begin(); i != playlist.end(); ++i)
+            if(i->endsWith(suffix))
+                newPlaylist.append(*i);
+        // load
+        clear();
+        addItems(newPlaylist);
+    }
+    SelectItem(item);
 }
 
-void PlaylistWidget::Populate(QStringList list)
+void PlaylistWidget::RefreshPlaylist()
 {
-    playlist = list;
-    playlist.sort();
-}
-
-QString PlaylistWidget::FirstItem()
-{
-    QListWidgetItem *item = QListWidget::item(0);
-    if(item)
-        return item->text();
-    return QString();
+    refresh = true;
+    baka->mpv->LoadPlaylist(baka->mpv->getPath()+file);
 }
 
 QString PlaylistWidget::CurrentItem()
 {
-    QListWidgetItem *item = currentItem();
-    if(item)
-        return item->text();
+    QListWidgetItem *current = currentItem();
+    if(current != nullptr)
+        return current->text();
     return QString();
 }
 
-QString PlaylistWidget::PreviousItem()
+int PlaylistWidget::CurrentIndex()
 {
-    SelectItem(cItem);
-    return FileAt(currentRow()-1);
+    auto items = findItems(file, Qt::MatchExactly);
+    if(!items.empty())
+        return indexFromItem(items.first()).row();
+    return 0;
 }
 
-QString PlaylistWidget::NextItem()
+void PlaylistWidget::SelectIndex(int index, bool relative)
 {
-    SelectItem(cItem);
-    return FileAt(currentRow()+1);
+    int newIndex = relative ? currentRow() : 0;
+    newIndex += index;
+
+    if(newIndex < 0)
+        newIndex = 0;
+    else if(newIndex > count())
+        newIndex = count();
+
+    setCurrentRow(newIndex);
 }
 
-QString PlaylistWidget::FileAt(int index)
+void PlaylistWidget::PlayIndex(int index, bool relative)
 {
-    QListWidgetItem *item = QListWidget::item(index);
-    if(item)
-        return item->text();
-    return QString();
-}
-
-void PlaylistWidget::Search(QString s)
-{
-    QListWidgetItem *_item = currentItem();
-    QString item;
-    if(_item)
-        item = _item->text();
+    int newIndex;
+    if(relative)
+    {
+        auto items = this->findItems(file, Qt::MatchExactly);
+        if(!items.empty())
+            newIndex = indexFromItem(items.first()).row();
+    }
     else
-        item = cItem;
+        newIndex = 0;
+    newIndex += index;
+
+
+    if(newIndex < 0)
+        newIndex = 0;
+    else if(newIndex > count())
+        newIndex = count();
+
+    QListWidgetItem *current = item(newIndex);
+    if(current != nullptr)
+    {
+        baka->mpv->PlayFile(current->text());
+        scrollToItem(current);
+    }
+}
+
+void PlaylistWidget::RemoveIndex(int index)
+{
+    if(index < 0)
+        index = 0;
+    else if(index > count())
+        index = count();
+
+    QListWidgetItem *current = item(index);
+    if(current != nullptr)
+        RemoveFromPlaylist(current);
+}
+
+void PlaylistWidget::BoldText(const QString &f, bool state)
+{
+    auto items = findItems(f, Qt::MatchExactly);
+    if(items.empty())
+        return;
+    auto *item = items.first();
+    if(item)
+    {
+        QFont font = item->font();
+        font.setBold(state);
+        item->setFont(font);
+    }
+}
+
+void PlaylistWidget::Search(const QString &s)
+{
+    QListWidgetItem *current = currentItem();
+    QString item;
+    if(current != nullptr)
+        item = current->text();
+    else
+        item = file;
+
     QStringList newPlaylist;
     for(QStringList::iterator item = playlist.begin(); item != playlist.end(); item++)
         if(item->contains(s, Qt::CaseInsensitive))
             newPlaylist.append(*item);
+
     clear();
     addItems(newPlaylist);
+
+    BoldText(file, true);
     SelectItem(item);
 }
 
 void PlaylistWidget::ShowAll(bool b)
 {
-    if(playlist.length() > 0)
-    {
-        QListWidgetItem *_item = currentItem();
-        QString item;
-        if(_item && cItem == QString())
-            item = _item->text();
-        else
-            item = cItem;
-        if(b)
-        {
-            clear();
-            addItems(playlist);
-        }
-        else
-        {
-            if(!_item)
-                item = cItem;
-            QString suffix = item.split('.').last();
-            QStringList newPlaylist;
-            for(QStringList::iterator i = playlist.begin(); i != playlist.end(); i++)
-                if(i->endsWith(suffix))
-                    newPlaylist.append(*i);
-            clear();
-            addItems(newPlaylist);
-        }
-        SelectItem(item);
-    }
+    QListWidgetItem *current = currentItem();
+    QString item;
+    if(current != nullptr)
+        item = current->text();
+    else
+        item = file;
+
+    showAll = b;
+    Populate();
+
+    BoldText(file, true);
+    SelectItem(item);
 }
 
 void PlaylistWidget::Shuffle()
 {
-    if(count() > 0)
-    {
-        QListWidgetItem *_item = currentItem();
-        QString item, playingItem = cItem;
-        if(_item)
-            item = _item->text();
-        else
-            item = cItem;
+    if(this->count() == 0)
+        return;
 
-        QStringList newPlaylist = playlist;
-        std::random_shuffle(newPlaylist.begin(), newPlaylist.end());
-        // make current playing item the first
-        for(QStringList::iterator iter = newPlaylist.begin(); iter != newPlaylist.end(); ++iter)
-            if(*iter == playingItem)
-            {
-                std::swap(*iter, *newPlaylist.begin());
-                break;
-            }
-        clear();
-        addItems(newPlaylist);
-        SelectItem(item);
+    QListWidgetItem *current = currentItem();
+    QString item;
+    if(current != nullptr)
+        item = current->text();
+    else
+        item = file;
+
+    QStringList newPlaylist = playlist;
+    std::random_shuffle(newPlaylist.begin(), newPlaylist.end());
+    // make current playing item the first
+    auto iter = std::find(newPlaylist.begin(), newPlaylist.end(), file);
+    std::swap(*iter, *newPlaylist.begin());
+    // load
+    clear();
+    addItems(newPlaylist);
+
+    BoldText(file, true);
+    SelectItem(item);
+}
+
+void PlaylistWidget::SelectItem(const QString &item)
+{
+    if(item != QString())
+    {
+        auto items = this->findItems(item, Qt::MatchExactly);
+        if(!items.empty())
+        {
+            setCurrentItem(items.first());
+            scrollToItem(items.first());
+            return;
+        }
     }
+    setCurrentRow(0);
+    scrollToItem(currentItem());
+}
+
+void PlaylistWidget::RemoveFromPlaylist(QListWidgetItem *item)
+{
+    playlist.removeOne(item->text());
+    delete item;
+    emit currentRowChanged(currentRow());
+}
+
+void PlaylistWidget::DeleteFromDisk(QListWidgetItem *item)
+{
+    playlist.removeOne(item->text());
+    QFile f(baka->mpv->getPath()+item->text());
+    f.remove();
+    delete item;
+    emit currentRowChanged(currentRow());
 }
 
 void PlaylistWidget::contextMenuEvent(QContextMenuEvent *event)
 {
     QListWidgetItem *item = itemAt(event->pos());
-    if(item)
+    if(item != nullptr)
     {
         QMenu *menu = new QMenu();
         connect(menu->addAction(tr("R&emove from Playlist")), &QAction::triggered, // Playlist: Remove from playlist (right-click)
                 [=]
                 {
-                    int row = currentRow();
-                    RemoveItem(row);
-                    if(row > 0)
-                    {
-                        if(row < count()-1)
-                            setCurrentRow(row);
-                        else
-                            setCurrentRow(row-1);
-                    }
+                    RemoveFromPlaylist(item);
                 });
         connect(menu->addAction(tr("&Delete from Disk")), &QAction::triggered,     // Playlist: Delete from Disk (right-click)
                 [=]
                 {
-                    int row = currentRow();
-                    QString item = RemoveItem(row);
-                    if(row > 0)
-                    {
-                        if(row < count()-1)
-                            setCurrentRow(row);
-                        else
-                            setCurrentRow(row-1);
-                    }
-                    emit DeleteFile(item);
+                    DeleteFromDisk(item);
                 });
         connect(menu->addAction(tr("&Refresh")), &QAction::triggered,              // Playlist: Refresh (right-click)
                 [=]
                 {
-                    emit RefreshPlaylist();
+                    RefreshPlaylist();
                 });
         menu->exec(viewport()->mapToGlobal(event->pos()));
         delete menu;
     }
+}
+
+void PlaylistWidget::dropEvent(QDropEvent *event)
+{
+    QListWidget::dropEvent(event);
+    emit currentRowChanged(currentRow());
 }

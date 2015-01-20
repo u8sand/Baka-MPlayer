@@ -3,9 +3,10 @@
 
 #include <QListWidget>
 #include <QContextMenuEvent>
+#include <QDropEvent>
 #include <QAction>
 
-class MpvHandler;
+class BakaEngine;
 
 class PlaylistWidget : public QListWidget
 {
@@ -13,36 +14,40 @@ class PlaylistWidget : public QListWidget
 public:
     explicit PlaylistWidget(QWidget *parent = 0);
 
-    void AttachMpv(MpvHandler *mpv);
+    void AttachEngine(BakaEngine *baka);
 
-    QAction *addAction(const QString &text);
-    QString RemoveItem(int index);
-    void SelectItem(const QString &item, bool internal = false);
-    void BoldText(const QString &item, bool state);
-    void Populate(QStringList list);
+public slots:
+    void Populate();
+    void RefreshPlaylist();
 
-    QString FirstItem();
+    void SelectItem(const QString &item);
     QString CurrentItem();
-    QString PreviousItem();
-    QString NextItem();
-    QString FileAt(int index);
+    int CurrentIndex(); // index of the current playing file
+    void SelectIndex(int index, bool relative = false); // relative to current selection
+    void PlayIndex(int index, bool relative = false); // relative to current playing file
+    void RemoveIndex(int index); // remove the selected item
 
-    void Search(QString);
+    void Search(const QString&);
     void ShowAll(bool);
     void Shuffle();
 
-signals:
-    void DeleteFile(QString);
-    void RefreshPlaylist();
+protected slots:
+    void BoldText(const QString &f, bool state);
+    void RemoveFromPlaylist(QListWidgetItem *item);
+    void DeleteFromDisk(QListWidgetItem *item);
 
 protected:
     void contextMenuEvent(QContextMenuEvent *event);
+    void dropEvent(QDropEvent *event);
 
 private:
-    MpvHandler *mpv;
+    BakaEngine *baka;
 
     QStringList playlist;
-    QString cItem;
+    QString file;
+    bool newPlaylist,
+         refresh,
+         showAll;
 };
 
 #endif // PLAYLISTWIDGET_H
