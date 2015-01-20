@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>430</width>
+    <width>460</width>
     <height>420</height>
    </rect>
   </property>
@@ -281,7 +281,7 @@ QTabBar::tab:!selected {
           <item>
            <widget class="QCheckBox" name="gestureCheckBox">
             <property name="text">
-             <string>&amp;Enable</string>
+             <string>&amp;Enable Mouse Gesture support</string>
             </property>
             <property name="checked">
              <bool>true</bool>
@@ -322,9 +322,36 @@ QTabBar::tab:!selected {
           </widget>
          </item>
          <item>
-          <widget class="QComboBox" name="langComboBox"/>
+          <widget class="QComboBox" name="langComboBox">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </spacer>
          </item>
         </layout>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
        </item>
       </layout>
      </widget>
@@ -366,7 +393,10 @@ QTableWidget::item:selected {
 }</string>
          </property>
          <property name="editTriggers">
-          <set>QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed</set>
+          <set>QAbstractItemView::NoEditTriggers</set>
+         </property>
+         <property name="tabKeyNavigation">
+          <bool>false</bool>
          </property>
          <property name="showDropIndicator" stdset="0">
           <bool>false</bool>
@@ -376,6 +406,9 @@ QTableWidget::item:selected {
          </property>
          <property name="selectionMode">
           <enum>QAbstractItemView::SingleSelection</enum>
+         </property>
+         <property name="selectionBehavior">
+          <enum>QAbstractItemView::SelectRows</enum>
          </property>
          <property name="cornerButtonEnabled">
           <bool>false</bool>
@@ -438,10 +471,36 @@ QTableWidget::item:selected {
 
 QPushButton {
     min-width: 0px;
+	min-height: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	font-size: 18px;
 }</string>
            </property>
            <property name="text">
-            <string>&amp;ADD</string>
+            <string>&amp;+</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="removeKeyButton">
+           <property name="styleSheet">
+            <string notr="true">/* addKeyButton */
+
+QPushButton {
+	background: #A51051;
+    min-width: 0px;
+	min-height: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	font-size: 18px;
+}
+QPushButton:pressed {
+    background: #720B38;
+}</string>
+           </property>
+           <property name="text">
+            <string>&amp;-</string>
            </property>
           </widget>
          </item>
@@ -505,6 +564,19 @@ QPushButton {
            </item>
           </widget>
          </item>
+         <item>
+          <spacer name="spacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
         </layout>
        </item>
        <item>
@@ -512,18 +584,18 @@ QPushButton {
          <property name="title">
           <string>Screenshot</string>
          </property>
-         <layout class="QFormLayout" name="formLayout">
-          <property name="fieldGrowthPolicy">
-           <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
-          </property>
-          <item row="2" column="0">
-           <widget class="QLabel" name="label">
+         <layout class="QGridLayout" name="gridLayout">
+          <item row="0" column="0">
+           <widget class="QCheckBox" name="checkBox">
             <property name="text">
-             <string>File Format:</string>
+             <string>&amp;Always show the dialog</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
             </property>
            </widget>
           </item>
-          <item row="2" column="1">
+          <item row="1" column="1">
            <widget class="QComboBox" name="formatComboBox">
             <item>
              <property name="text">
@@ -542,7 +614,28 @@ QPushButton {
             </item>
            </widget>
           </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>File Name Template:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>File Format:</string>
+            </property>
+           </widget>
+          </item>
           <item row="3" column="1">
+           <widget class="QPushButton" name="changeButton">
+            <property name="text">
+             <string>CHANG&amp;E</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
            <widget class="QLineEdit" name="templateLineEdit">
             <property name="text">
              <string>screenshot%#04n</string>
@@ -550,38 +643,66 @@ QPushButton {
            </widget>
           </item>
           <item row="3" column="0">
-           <widget class="QLabel" name="label_2">
-            <property name="text">
-             <string>File Name Template:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="1">
-           <widget class="QPushButton" name="changeButton">
-            <property name="text">
-             <string>CHANG&amp;E</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="0">
            <widget class="QLabel" name="label_3">
             <property name="text">
              <string>Default Save Location:</string>
             </property>
            </widget>
           </item>
-          <item row="1" column="0">
-           <widget class="QCheckBox" name="checkBox">
-            <property name="text">
-             <string>&amp;Always show the dialog</string>
+          <item row="1" column="2">
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
             </property>
-            <property name="checked">
-             <bool>true</bool>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
             </property>
-           </widget>
+           </spacer>
+          </item>
+          <item row="2" column="2">
+           <spacer name="horizontalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="3" column="2">
+           <spacer name="horizontalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
           </item>
          </layout>
         </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
        </item>
       </layout>
      </widget>
@@ -590,7 +711,7 @@ QPushButton {
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
-      <spacer name="horizontalSpacer">
+      <spacer name="spacer_3">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -613,7 +734,7 @@ QPushButton {
       </widget>
      </item>
      <item>
-      <spacer name="horizontalSpacer_2">
+      <spacer name="spacer_2">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -644,6 +765,7 @@ QPushButton {
   <tabstop>lineEdit</tabstop>
   <tabstop>lineEdit_2</tabstop>
   <tabstop>addKeyButton</tabstop>
+  <tabstop>removeKeyButton</tabstop>
   <tabstop>autoFitCheckBox</tabstop>
   <tabstop>comboBox</tabstop>
   <tabstop>checkBox</tabstop>
