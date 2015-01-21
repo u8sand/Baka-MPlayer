@@ -25,8 +25,6 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-    void Load(QString f = QString());
-
     QString getLang()          { return lang; }
     QString getOnTop()         { return onTop; }
     int getAutoFit()           { return autoFit; }
@@ -36,10 +34,11 @@ public:
     bool getDebug()            { return debug; }
     bool getGestures()         { return gestures; }
 
-protected:
-    void LoadSettings();
-    void SaveSettings();
+public slots:
+    void Load(QString f = QString());
+    void MapShortcuts();
 
+protected:
     void dragEnterEvent(QDragEnterEvent *event);    // drag file into
     void dropEvent(QDropEvent *event);              // drop file into
     void mousePressEvent(QMouseEvent *event);       // pressed mouse down
@@ -61,7 +60,6 @@ private slots:
     void TakeScreenshot(bool subs);                 // take a screenshot
     void ShowScreenshotMessage(bool subs);          // show the screenshot status message
     void UpdateRecentFiles();                       // populate recentFiles menu
-    void MapShortcuts();
 
 private:
     Ui::MainWindow  *ui;

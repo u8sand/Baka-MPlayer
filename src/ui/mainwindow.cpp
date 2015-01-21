@@ -151,7 +151,19 @@ MainWindow::MainWindow(QWidget *parent):
                         qApp->removeTranslator(baka->translator);
                 }
 
+                // save strings we want to keep
+                QString title = windowTitle(),
+                        duration = ui->durationLabel->text(),
+                        remaining = ui->remainingLabel->text(),
+                        index = ui->indexLabel->text();
+
                 ui->retranslateUi(this);
+
+                // reload strings we kept
+                setWindowTitle(title);
+                ui->durationLabel->setText(duration);
+                ui->remainingLabel->setText(remaining);
+                ui->indexLabel->setText(index);
             });
 
     connect(this, &MainWindow::onTopChanged,
@@ -768,6 +780,24 @@ void MainWindow::Load(QString file)
     mpv->LoadFile(file);
 }
 
+void MainWindow::MapShortcuts()
+{
+    auto tmp = commandActionMap;
+    // map shortcuts to actions
+    for(auto input_iter = baka->input.begin(); input_iter != baka->input.end(); ++input_iter)
+    {
+        auto commandAction = tmp.find(input_iter->first);
+        if(commandAction != tmp.end())
+        {
+            (*commandAction)->setShortcut(QKeySequence(input_iter.key()));
+            tmp.erase(commandAction);
+        }
+    }
+    // clear the rest
+    for(auto iter = tmp.begin(); iter != tmp.end(); ++iter)
+        (*iter)->setShortcut(QKeySequence());
+}
+
 void MainWindow::dragEnterEvent(QDragEnterEvent *event)
 {
     if(event->mimeData()->hasUrls() || event->mimeData()->hasText()) // url / text
@@ -1116,22 +1146,4 @@ void MainWindow::UpdateRecentFiles()
                     mpv->LoadFile(f);
                 });
     }
-}
-
-void MainWindow::MapShortcuts()
-{
-    auto tmp = commandActionMap;
-    // map shortcuts to actions
-    for(auto input_iter = baka->input.begin(); input_iter != baka->input.end(); ++input_iter)
-    {
-        auto commandAction = tmp.find(input_iter->first);
-        if(commandAction != tmp.end())
-        {
-            (*commandAction)->setShortcut(QKeySequence(input_iter.key()));
-            tmp.erase(commandAction);
-        }
-    }
-    // clear the rest
-    for(auto iter = tmp.begin(); iter != tmp.end(); ++iter)
-        (*iter)->setShortcut(QKeySequence());
 }

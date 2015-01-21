@@ -128,7 +128,7 @@ PreferencesDialog::~PreferencesDialog()
     baka->mpv->ScreenshotFormat(ui->formatComboBox->currentText());
     baka->mpv->ScreenshotDirectory(screenshotDir);
     baka->mpv->ScreenshotTemplate(ui->templateLineEdit->text());
-
+    baka->window->MapShortcuts();
     delete ui;
 }
 
