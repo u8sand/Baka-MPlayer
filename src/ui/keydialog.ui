@@ -67,7 +67,7 @@ QPushButton:disabled {
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit">
+      <widget class="QLineEdit" name="commandLineEdit">
        <property name="placeholderText">
         <string>Command</string>
        </property>
@@ -77,7 +77,7 @@ QPushButton:disabled {
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_2">
+      <widget class="QLineEdit" name="labelLineEdit">
        <property name="placeholderText">
         <string>Label (optional)</string>
        </property>
@@ -143,8 +143,8 @@ QPushButton:disabled {
  </widget>
  <tabstops>
   <tabstop>keySequenceEdit</tabstop>
-  <tabstop>lineEdit</tabstop>
-  <tabstop>lineEdit_2</tabstop>
+  <tabstop>commandLineEdit</tabstop>
+  <tabstop>labelLineEdit</tabstop>
   <tabstop>clearButton</tabstop>
   <tabstop>changeButton</tabstop>
   <tabstop>addButton</tabstop>
