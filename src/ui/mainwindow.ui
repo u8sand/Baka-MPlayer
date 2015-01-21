@@ -974,7 +974,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>580</width>
-     <height>26</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
@@ -1166,6 +1166,7 @@ QSlider::handle:horizontal {
     </property>
     <addaction name="actionOnline_Help"/>
     <addaction name="action_Check_for_Updates"/>
+    <addaction name="actionUpdate_Streaming_Support"/>
     <addaction name="separator"/>
     <addaction name="actionAbout_Qt"/>
     <addaction name="actionAbout_Baka_MPlayer"/>
@@ -1571,6 +1572,11 @@ QSlider::handle:horizontal {
   <action name="action150">
    <property name="text">
     <string>150%</string>
+   </property>
+  </action>
+  <action name="actionUpdate_Streaming_Support">
+   <property name="text">
+    <string>Update &amp;Streaming Support</string>
    </property>
   </action>
  </widget>

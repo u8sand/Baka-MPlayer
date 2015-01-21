@@ -277,7 +277,19 @@ void BakaEngine::BakaUpdate(QStringList &args)
         }
     }
     else
-        InvalidParameter(args.join(' '));
+    {
+#if defined(Q_OS_WIN)
+        QString arg = args.front();
+        args.pop_front();
+        if(arg == "youtube-dl")
+        {
+            // update youtube-dl
+            QProcess::startDetached("youtube-dl --update");
+        }
+        else
+#endif
+            InvalidParameter(args.join(' '));
+    }
 }
 
 void BakaEngine::BakaOpen(QStringList &args)
