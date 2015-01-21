@@ -3,7 +3,6 @@
 
 #include <QObject>
 #include <QNetworkAccessManager>
-#include <QNetworkReply>
 #include <QMap>
 #include <QString>
 
@@ -16,26 +15,26 @@ public:
     explicit UpdateManager(QObject *parent = 0);
     ~UpdateManager();
 
+    QMap<QString, QString> getInfo() { return info; }
+
 public slots:
-    void CheckForUpdates();
-#if defined(Q_OS_WIN)
-    void DownloadUpdate(QString url, QString version);
-    void ApplyUpdate(QString version);
-signals:
-    void Downloaded(int);
-#else
-signals:
-#endif
-    void versionInfoReceived(QMap<QString, QString> info);
+    bool CheckForUpdates();
 
+//#if defined(Q_OS_WIN)
+    bool DownloadUpdate(const QString &url, const QString &version);
+    void ApplyUpdate(const QString &file, const QString &version);
+//#endif
+
+signals:
     void progressSignal(int percent);
-
-    void errorSignal(QString err);
-    void verboseSignal(QString msg);
+    void messageSignal(QString msg);
 
 private:
     BakaEngine *baka;
+
     QNetworkAccessManager *manager;
+    QMap<QString, QString> info;
+    bool busy;
 };
 
 #endif // UPDATEMANAGER_H
