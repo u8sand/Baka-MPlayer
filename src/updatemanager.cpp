@@ -76,7 +76,7 @@ bool UpdateManager::CheckForUpdates()
     return true;
 }
 
-//#if defined(Q_OS_WIN)
+#if defined(Q_OS_WIN)
 bool UpdateManager::DownloadUpdate(const QString &url, const QString &version)
 {
     if(busy)
@@ -126,21 +126,42 @@ bool UpdateManager::DownloadUpdate(const QString &url, const QString &version)
                     delete file;
                     emit messageSignal(tr("Download complete\n"));
                     busy = false;
-                    ApplyUpdate(filename, version);
+                    ApplyUpdate(filename);
                 }
                 reply->deleteLater();
             });
     return true;
 }
 
-void UpdateManager::ApplyUpdate(const QString &file, const QString &version)
+void UpdateManager::ApplyUpdate(const QString &file)
 {
     emit messageSignal(tr("Extracting..."));
+    // todo: extract  (to baka-mplayer-update)
 //    int err;
 //    zip *z = zip_open(file, 0, &err);
 //    zip_set_file_compression(z, ZIP_CM_DEFLATE64, ZIP_CM_DEFAULT)
 //        zip_close(z);
 //    zip_close(z);
+    QFile f("baka-mplayer-updater.bat");
+    if(!f.open(QFile::Truncate))
+    {
+        emit messageSignal(tr("Could not open file for writing..."));
+        return;
+    }
+    f.write(
+        QString(
+        "@echo off\r\n"
+        "echo Updating baka-mplayer...\r\n"
+        "ping 127.0.0.1 -n 1 -w 1000 > NUL\r\n"
+        "cd baka-mplayer-update\r\n"
+        "for %%i in (*) do move \"%%i\" ..\r\n"
+        "for /d %%i in (*) do move \"%%i\" ..\r\n"
+        "move /Y /r \"%0\" \".\" > NUL\r\n"
+        "start /b \"\" cmd /c del \"%%~f0\"&exit /b\"\"\r\n").arg(
+            "baka-mplayer").toUtf8());
+    f.close();
+    QProcess::startDetached("baka-mplayer-updater.bat");
     emit messageSignal(tr("Done."));
+    baka->Quit();
 }
-//#endif
+#endif

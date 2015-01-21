@@ -15,15 +15,15 @@ public:
     explicit UpdateManager(QObject *parent = 0);
     ~UpdateManager();
 
-    QMap<QString, QString> getInfo() { return info; }
+    const QMap<QString, QString> &getInfo() { return info; }
 
 public slots:
     bool CheckForUpdates();
 
-//#if defined(Q_OS_WIN)
+#if defined(Q_OS_WIN)
     bool DownloadUpdate(const QString &url, const QString &version);
-    void ApplyUpdate(const QString &file, const QString &version);
-//#endif
+    void ApplyUpdate(const QString &file);
+#endif
 
 signals:
     void progressSignal(int percent);

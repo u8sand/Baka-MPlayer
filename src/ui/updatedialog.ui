@@ -183,6 +183,9 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
      </item>
      <item>
       <widget class="QPushButton" name="updateButton">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>

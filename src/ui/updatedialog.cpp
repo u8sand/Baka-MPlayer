@@ -10,7 +10,9 @@
 UpdateDialog::UpdateDialog(BakaEngine *baka, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::UpdateDialog),
-    baka(baka)
+    baka(baka),
+    timer(nullptr),
+    init(false)
 {
     ui->setupUi(this);
 
@@ -21,36 +23,6 @@ UpdateDialog::UpdateDialog(BakaEngine *baka, QWidget *parent) :
     ui->cancelButton->setDefault(true);
 #endif
 
-//                ui->plainTextEdit->setPlainText(info["bugfixes"]);
-//                if(info["version"].trimmed() == BAKA_MPLAYER_VERSION)
-//                {
-//                    ui->updateButton->setEnabled(false);
-//                    ui->updateLabel->setText(tr("You have the latest version!"));
-//                }
-//                else
-//                {
-//                    ui->updateLabel->setText(tr("Update Available!\nVersion: %0").arg(info["version"]));
-//#if defined(Q_OS_WIN)
-//                    version = info["version"];
-//                    // url = info["url"];
-//                    url = "http://bakamplayer.u8sand.net/Baka%20MPlayer.7z";
-
-//                    if(!isVisible())
-//                        show();
-//#endif
-
-//                }
-//                ui->progressBar->setVisible(false);
-//                ui->timeRemainingLabel->setVisible(false);
-
-//#if defined(Q_OS_WIN)
-    connect(ui->updateButton, &QPushButton::clicked,
-            [=]
-            {
-                QDesktopServices::openUrl(QUrl(Util::DownloadFileUrl()));
-            });
-//#endif
-
     connect(baka->update, &UpdateManager::progressSignal,
             [=](int percent)
             {
@@ -60,10 +32,16 @@ UpdateDialog::UpdateDialog(BakaEngine *baka, QWidget *parent) :
                     ui->updateLabel->setText(tr("Download Complete"));
                     ui->progressBar->setVisible(false);
                     ui->timeRemainingLabel->setVisible(false);
-                    if(timer)
+                    if(timer != nullptr)
                     {
                         delete timer;
                         timer = nullptr;
+                    }
+
+                    if(!init)
+                    {
+                        ShowInfo();
+                        init = false;
                     }
                 }
                 else if(timer) // don't execute this if timer is not defined--this shouldn't happen though.. but it does
@@ -90,21 +68,33 @@ UpdateDialog::UpdateDialog(BakaEngine *baka, QWidget *parent) :
                 ui->plainTextEdit->appendPlainText(msg);
             });
 
+#if defined(Q_OS_WIN)
+    connect(ui->updateButton, &QPushButton::clicked,
+            [=]
+            {
+                baka->update->DownloadUpdate(Util::DownloadFileUrl(), baka->update->info["version"]);
+            });
+#endif
+
     connect(ui->cancelButton, SIGNAL(clicked()),
             this, SLOT(reject()));
 
-    init = true;
-    avgSpeed = 0;
-    lastSpeed = 0;
-    lastProgress = 0;
-    lastTime = 0;
-    timer = new QTime();
-    timer->start();
-    baka->update->CheckForUpdates();
+    if(baka->update->getInfo().empty())
+    {
+        Prepare();
+        baka->update->CheckForUpdates();
+    }
+    else
+    {
+        init = false;
+        ShowInfo();
+    }
 }
 
 UpdateDialog::~UpdateDialog()
 {
+    if(timer != nullptr)
+        delete timer;
     delete ui;
 }
 
@@ -112,4 +102,38 @@ void UpdateDialog::CheckForUpdates(BakaEngine *baka, QWidget *parent)
 {
     UpdateDialog *dialog = new UpdateDialog(baka, parent);
     dialog->exec();
+}
+
+void UpdateDialog::Prepare()
+{
+    avgSpeed = 0;
+    lastSpeed = 0;
+    lastProgress = 0;
+    lastTime = 0;
+    if(timer != nullptr)
+        delete timer;
+    timer = new QTime();
+    timer->start();
+}
+
+void UpdateDialog::ShowInfo()
+{
+    auto info = baka->update->getInfo();
+    ui->plainTextEdit->setPlainText(info["bugfixes"]);
+    if(info["version"].trimmed() == BAKA_MPLAYER_VERSION)
+    {
+#if defined(Q_OS_WIN)
+        ui->updateButton->setEnabled(false);
+#endif
+        ui->updateLabel->setText(tr("You have the latest version!"));
+    }
+    else
+    {
+        ui->updateLabel->setText(tr("Update Available!\nVersion: %0").arg(info["version"]));
+#if defined(Q_OS_WIN)
+        ui->updateButton->setEnabled(true);
+#endif
+    }
+    ui->progressBar->setVisible(false);
+    ui->timeRemainingLabel->setVisible(false);
 }

@@ -21,7 +21,9 @@ public:
 
     static void CheckForUpdates(BakaEngine *baka, QWidget *parent = 0);
 
-public slots:
+protected slots:
+    void Prepare();
+    void ShowInfo();
 
 private:
     Ui::UpdateDialog *ui;
@@ -31,12 +33,9 @@ private:
     double avgSpeed = 1,
            lastSpeed=0;
     int lastProgress,
-        lastTime;
+        lastTime,
+        state;
     bool init;
-#if defined(Q_OS_WIN)
-    QString version,
-            url;
-#endif
 };
 
 #endif // UPDATEDIALOG_H
