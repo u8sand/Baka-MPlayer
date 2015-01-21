@@ -17,7 +17,7 @@
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2014 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; é livre e open source, multiplataforma, player multimídia de &lt;b&gt;libmpv&lt;/b&gt;. O design simples reflecte a idéia para uma organizada, claro, e agradável ambiente para assistir a programas de TV.&lt;br&gt;&lt;br&gt;Copyright © 2014 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; é livre e open source, multiplataforma, player multimídia de &lt;b&gt;libmpv&lt;/b&gt;. O design simples reflecte a idéia para uma organizada, claro, e agradável ambiente para assistir a programas de TV.&lt;br&gt;&lt;br&gt;Copyright © 2014 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Credits</source>
@@ -81,6 +81,10 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source>
         <translation></translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2015 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; é livre e open source, multiplataforma, player multimídia de &lt;b&gt;libmpv&lt;/b&gt;. O design simples reflecte a idéia para uma organizada, claro, e agradável ambiente para assistir a programas de TV.&lt;br&gt;&lt;br&gt;Copyright © 2014 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt; {2015 ?} {8s?} {8s?} {8s?}</translation>
     </message>
 </context>
 <context>
@@ -146,10 +150,6 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
         <translation type="unfinished">Arquivos de Áudio</translation>
     </message>
     <message>
-        <source>Fit Window: %0%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>autofit</source>
         <translation type="unfinished"></translation>
     </message>
@@ -162,79 +162,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
         <translation type="unfinished">Para escurecer o ambiente de trabalho, transparência do desktop tem que ser ativado.</translation>
     </message>
     <message>
-        <source>Increase Font Size</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Decrease Font Size</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Restart Video Playback</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Decrease Playback Speed by 25%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Reset Playback Speed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Take a screenshot without subtitles</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Increase Playback Speed by 25%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Take a screenshot with subtitles</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Toggle Subtitle Visibility</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Short Seek Backwards</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Jump to the Previous Chapter</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Jump to the Next Chapter</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Short Seek Forward</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Frame Back-Step</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Frame Step</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Decrease the Volume</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Increase the Volume</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Toggle Fullscreen Mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Dim the lights</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -246,50 +174,6 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Open the Jump To Time Dialog</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Play the Previous Video</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Create a new Baka-MPlayer window</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Open a file Dialog</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Quit the Baka-MPlayer</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Play the Next Video</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Stop Video</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Open a URL Dialog</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Open the file in your Clipboard</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Toggle the Playlist Visibility</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Open the previous file</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Access Baka-MPlayer Command-line</source>
         <translation type="unfinished"></translation>
     </message>
@@ -298,51 +182,167 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Play/Pause Video</source>
+        <source>Fit Window: %0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Fit the Window to the video frame</source>
+        <source>Increase sub size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Fit the Window to 50% of the Original Size</source>
+        <source>Decrease sub size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Fit the Window to 75% of the Original Size</source>
+        <source>Restart playback</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Fit the Window to 100% of the Original Size</source>
+        <source>Decrease speed by 25%</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Fit the Window to 150% of the Original Size</source>
+        <source>Reset speed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Fit the Window to 200% of the Original Size</source>
+        <source>Take screenshot without subtitles</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Hide Baka-MPlayer from Your Boss</source>
+        <source>Take screenshot with subtitles</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Select the Previous Item on the Playlist</source>
+        <source>Toggle subtitle visibility</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Select the Next Item on the Playlist</source>
+        <source>Seek backwards by 5 sec</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Play Selected Item on Playlist</source>
+        <source>Go to previous chapter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Remove Selected Item from Playlist</source>
+        <source>Go to next chapter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Seek forwards by 5 sec</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Frame step backwards</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Frame step</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Decrease volume</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Increase volume</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Toggle fullscreen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show Jump To Time dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Play previous file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open a new window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show Open File dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Quit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Play next file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stop playback</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show Location dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open clipboard location</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Toggle Playlist visibility</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open the last played file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Play/Pause</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fit the Window to video</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fit Window to 50%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fit Window to 75%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fit Window to 100%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fit Window to 150%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fit Window to 200%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Boss Key</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select previous file on playlist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select next file on playlist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Play selected file on playlist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove selected file from playlist</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -485,6 +485,37 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     <message>
         <source>&amp;OK</source>
         <translation>&amp;OK</translation>
+    </message>
+</context>
+<context>
+    <name>KeyDialog</name>
+    <message>
+        <source>Modify Shortcut Key</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Command</source>
+        <translation type="unfinished">Comando</translation>
+    </message>
+    <message>
+        <source>Label (optional)</source>
+        <translation type="unfinished">Label (opcional)</translation>
+    </message>
+    <message>
+        <source>C&amp;LEAR SHORTCUT</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CHANG&amp;E</source>
+        <translation type="unfinished">ALT&amp;ERAÇÃO</translation>
+    </message>
+    <message>
+        <source>&amp;ADD</source>
+        <translation type="unfinished">&amp;Adicionar</translation>
+    </message>
+    <message>
+        <source>&amp;CANCEL</source>
+        <translation type="unfinished">&amp;CANCELAR</translation>
     </message>
 </context>
 <context>
@@ -673,7 +704,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Open &amp;URL...</source>
-        <translation>&amp;URL Aberto...</translation>
+        <translation type="vanished">&amp;URL Aberto...</translation>
     </message>
     <message>
         <source>Ctrl+U</source>
@@ -1098,6 +1129,10 @@ Nota: O valor deve ser de %0 - %1</translation>
         <source>Open File</source>
         <translation type="vanished">Arquivo Aberto</translation>
     </message>
+    <message>
+        <source>Open &amp;Location...</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MpvHandler</name>
@@ -1248,7 +1283,7 @@ Nota: O valor deve ser de %0 - %1</translation>
     </message>
     <message>
         <source>&amp;Enable</source>
-        <translation>&amp;Possibilitar</translation>
+        <translation type="vanished">&amp;Possibilitar</translation>
     </message>
     <message>
         <source>Keys</source>
@@ -1268,11 +1303,39 @@ Nota: O valor deve ser de %0 - %1</translation>
     </message>
     <message>
         <source>Label (optional)</source>
-        <translation>Label (opcional)</translation>
+        <translation type="vanished">Label (opcional)</translation>
     </message>
     <message>
         <source>&amp;ADD</source>
         <translation>&amp;Adicionar</translation>
+    </message>
+    <message>
+        <source>&amp;Enable Mouse Gesture support</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;REMOVE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RESE&amp;T</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reset Keybinding</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Are you sure you want to reset the shortcut keys to original bindings?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Existing keybinding</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%0 is already being used. Would you like to change its function?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
