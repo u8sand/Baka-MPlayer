@@ -336,6 +336,12 @@ QTabBar::tab:!selected {
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
           </spacer>
          </item>
         </layout>
@@ -448,61 +454,61 @@ QTableWidget::item:selected {
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_4">
          <item>
-          <widget class="QKeySequenceEdit" name="keySequenceEdit"/>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEdit">
-           <property name="placeholderText">
-            <string>Command</string>
+          <spacer name="horizontalSpacer_5">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
            </property>
-          </widget>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_2">
-           <property name="placeholderText">
-            <string>Label (optional)</string>
+          <widget class="QPushButton" name="changeKeyButton">
+           <property name="text">
+            <string>CHANG&amp;E</string>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QPushButton" name="addKeyButton">
-           <property name="styleSheet">
-            <string notr="true">/* addKeyButton */
-
-QPushButton {
-    min-width: 0px;
-	min-height: 0px;
-	padding-top: 0px;
-	padding-bottom: 0px;
-	font-size: 18px;
-}</string>
-           </property>
            <property name="text">
-            <string>&amp;+</string>
+            <string>&amp;ADD</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="removeKeyButton">
+          <widget class="QPushButton" name="resetKeyButton">
            <property name="styleSheet">
             <string notr="true">/* addKeyButton */
 
 QPushButton {
 	background: #A51051;
-    min-width: 0px;
-	min-height: 0px;
-	padding-top: 0px;
-	padding-bottom: 0px;
-	font-size: 18px;
 }
 QPushButton:pressed {
     background: #720B38;
 }</string>
            </property>
            <property name="text">
-            <string>&amp;-</string>
+            <string>&amp;RESET</string>
            </property>
           </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_6">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
          </item>
         </layout>
        </item>
@@ -709,6 +715,13 @@ QPushButton:pressed {
     </widget>
    </item>
    <item>
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
       <spacer name="spacer_3">
@@ -761,11 +774,9 @@ QPushButton:pressed {
   <tabstop>gestureCheckBox</tabstop>
   <tabstop>langComboBox</tabstop>
   <tabstop>infoWidget</tabstop>
-  <tabstop>keySequenceEdit</tabstop>
-  <tabstop>lineEdit</tabstop>
-  <tabstop>lineEdit_2</tabstop>
+  <tabstop>changeKeyButton</tabstop>
   <tabstop>addKeyButton</tabstop>
-  <tabstop>removeKeyButton</tabstop>
+  <tabstop>resetKeyButton</tabstop>
   <tabstop>autoFitCheckBox</tabstop>
   <tabstop>comboBox</tabstop>
   <tabstop>checkBox</tabstop>
