@@ -2,7 +2,8 @@
 #define PREFERENCESDIALOG_H
 
 #include <QDialog>
-
+#include <QPair>
+#include <QString>
 
 namespace Ui {
 class PreferencesDialog;
@@ -22,6 +23,8 @@ public:
 
 protected:
     void PopulateLangs();
+    void PopulateShortcuts();
+    void SelectKey(bool add, QPair<QString, QPair<QString, QString>> init = QPair<QString, QPair<QString, QString>>());
 
 private:
     Ui::PreferencesDialog *ui;

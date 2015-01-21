@@ -17,7 +17,7 @@
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2014 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2014 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2014 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Credits</source>
@@ -126,6 +126,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
     <message>
         <source>&amp;CLOSE</source>
         <translation>닫기(&amp;C)</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2015 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2014 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt; {2015 ?} {8s?} {8s?} {8s?}</translation>
     </message>
 </context>
 <context>
@@ -518,6 +522,37 @@ Some features may not work and changed settings will not be saved.</source>
     <message>
         <source>&amp;OK</source>
         <translation>확인(&amp;O)</translation>
+    </message>
+</context>
+<context>
+    <name>KeyDialog</name>
+    <message>
+        <source>Modify Shortcut Key</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Command</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Label (optional)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>C&amp;LEAR SHORTCUT</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CHANG&amp;E</source>
+        <translation type="unfinished">변동(&amp;E)</translation>
+    </message>
+    <message>
+        <source>&amp;ADD</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;CANCEL</source>
+        <translation type="unfinished">취소(&amp;C)</translation>
     </message>
 </context>
 <context>
@@ -1311,7 +1346,7 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>&amp;Enable</source>
-        <translation>사용(&amp;E)</translation>
+        <translation type="vanished">사용(&amp;E)</translation>
     </message>
     <message>
         <source>Keys</source>
@@ -1330,11 +1365,35 @@ Note: Value must be from %0 - %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Label (optional)</source>
+        <source>&amp;ADD</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&amp;ADD</source>
+        <source>&amp;Enable Mouse Gesture support</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;REMOVE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RESE&amp;T</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reset Keybinding</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Are you sure you want to reset the shortcut keys to original bindings?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Existing keybinding</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%0 is already being used. Would you like to change its function?</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

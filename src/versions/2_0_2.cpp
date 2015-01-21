@@ -55,7 +55,7 @@ void BakaEngine::LoadInput2_0_2()
     // load settings defined input bindings
     for(Settings::SettingsGroupData::iterator entry = settings->map().begin(); entry != settings->map().end(); ++entry)
     {
-        QStringList parts = entry.value().split('#', QString::SkipEmptyParts);
+        QStringList parts = entry.value().split('#');
         QPair<QString, QString> pair;
         pair.first = parts.front().trimmed();
         parts.pop_front();

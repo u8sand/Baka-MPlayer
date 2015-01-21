@@ -128,15 +128,13 @@ void PlaylistWidget::SelectIndex(int index, bool relative)
 
 void PlaylistWidget::PlayIndex(int index, bool relative)
 {
-    int newIndex;
+    int newIndex = 0;
     if(relative)
     {
         auto items = this->findItems(file, Qt::MatchExactly);
         if(!items.empty())
             newIndex = indexFromItem(items.first()).row();
     }
-    else
-        newIndex = 0;
     newIndex += index;
 
 

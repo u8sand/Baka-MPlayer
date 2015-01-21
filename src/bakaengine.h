@@ -39,42 +39,6 @@ public:
     // input hash-table provides O(1) input-command lookups
     QHash<QString, QPair<QString, QString>> input; // [shortcut] = QPair<command, comment>
 
-public slots:
-    void LoadSettings();
-    void SaveSettings();
-
-    void Command(QString command);
-
-protected slots:
-    // Utility functions
-    void MpvCommand(QStringList&);
-    void BakaCommand(QStringList&);
-    void BakaPrint(QString);
-    void MpvPrint(QString);
-    void InvalidCommand(QString);
-    void InvalidParameter(QString);
-    void RequiresParameters(QString);
-
-    // Settings Loading
-    void Load2_0_2();
-    void Load2_0_1();
-    void Load2_0_0();
-    void Load1_9_9();
-
-    void LoadBaka2_0_2();
-    void LoadBaka2_0_1();
-    void LoadBaka2_0_0();
-    void LoadBaka1_9_9();
-
-    void LoadMpv2_0_0();
-    void LoadMpv1_9_9();
-
-    void LoadInput2_0_2();
-
-signals:
-
-
-private:
     // the following are the default input bindings
     // they are loaded into the input before parsing the settings file
     // when saving the settings file we don't save things that appear here
@@ -127,7 +91,42 @@ private:
         {"Del",             {"baka playlist remove",      tr("Remove selected file from playlist")}}
     };
 
+public slots:
+    void LoadSettings();
+    void SaveSettings();
 
+    void Command(QString command);
+
+protected slots:
+    // Utility functions
+    void MpvCommand(QStringList&);
+    void BakaCommand(QStringList&);
+    void BakaPrint(QString);
+    void MpvPrint(QString);
+    void InvalidCommand(QString);
+    void InvalidParameter(QString);
+    void RequiresParameters(QString);
+
+    // Settings Loading
+    void Load2_0_2();
+    void Load2_0_1();
+    void Load2_0_0();
+    void Load1_9_9();
+
+    void LoadBaka2_0_2();
+    void LoadBaka2_0_1();
+    void LoadBaka2_0_0();
+    void LoadBaka1_9_9();
+
+    void LoadMpv2_0_0();
+    void LoadMpv1_9_9();
+
+    void LoadInput2_0_2();
+
+signals:
+
+
+private:
     // This is a baka-command hashtable initialized below
     //  by using a hash-table -> function pointer we acheive O(1) function lookups
     // Format: void BakaCommand(QStringList args)
