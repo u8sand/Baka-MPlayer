@@ -84,37 +84,26 @@ PreferencesDialog::PreferencesDialog(BakaEngine *baka, QWidget *parent) :
                 }
             });
 
-//    connect(ui->removeKeyButton, &QPushButton::clicked,
-//            [=]
-//            {
-//                int row = ui->infoWidget->currentRow();
-//                if(row == -1)
-//                    return;
+    connect(ui->removeKeyButton, &QPushButton::clicked,
+            [=]
+            {
+                int row = ui->infoWidget->currentRow();
+                if(row == -1)
+                    return;
 
-//                if(ui->infoWidget->item(i, 0))
-//                {
-//                    auto iter = baka->default_input.find(ui->infoWidget->item(i, 0)->text()); // find binding in defaults
-//                    if(iter != baka->default_input.end()) // found
-//                    {
-//                        // remove command/label
-//                        if(ui->infoWidget->item(i, 1))
-//                            ui->infoWidget->item(i, 1)->setText(QString());
-//                        if(ui->infoWidget->item(i, 2))
-//                            ui->infoWidget->item(i, 2)->setText(QString());
-//                    }
-//                    else
-//                    {
-//                        ui->infoWidget->removeRow(row); // remove the row
-//                        for(int i = row+1; i < numberOfShortcuts-1; ++i) // push the rest of the rows up
-//                        {
-//                            ui->infoWidget->setItem(i-1, 0, ui->infoWidget->item(i, 0));
-//                            ui->infoWidget->setItem(i-1, 1, ui->infoWidget->item(i, 1));
-//                            ui->infoWidget->setItem(i-1, 2, ui->infoWidget->item(i, 2));
-//                        }
-//                        --numberOfShortcuts;
-//                    }
-//                }
-//            });
+                if(ui->infoWidget->item(row, 0))
+                {
+                    baka->input[ui->infoWidget->item(row, 0)->text()] = {QString(), QString()};
+                    ui->infoWidget->removeRow(row); // remove the row
+                    for(int i = row+1; i < numberOfShortcuts-1; ++i) // push the rest of the rows up
+                    {
+                        ui->infoWidget->setItem(i-1, 0, ui->infoWidget->item(i, 0));
+                        ui->infoWidget->setItem(i-1, 1, ui->infoWidget->item(i, 1));
+                        ui->infoWidget->setItem(i-1, 2, ui->infoWidget->item(i, 2));
+                    }
+                    --numberOfShortcuts;
+                }
+            });
 
     connect(ui->closeButton, SIGNAL(clicked()),
             this, SLOT(close()));
@@ -139,16 +128,6 @@ PreferencesDialog::~PreferencesDialog()
     baka->mpv->ScreenshotFormat(ui->formatComboBox->currentText());
     baka->mpv->ScreenshotDirectory(screenshotDir);
     baka->mpv->ScreenshotTemplate(ui->templateLineEdit->text());
-    baka->input.clear();
-    for(int i = 0; i < numberOfShortcuts; i++)
-        if(ui->infoWidget->item(i, 0) && ui->infoWidget->item(i, 1) && ui->infoWidget->item(i, 0)->text() != QString())
-        {
-            QPair<QString, QString> pair;
-            pair.first = ui->infoWidget->item(i, 1)->text();
-            if(ui->infoWidget->item(i, 2))
-                pair.second = ui->infoWidget->item(i, 2)->text();
-            baka->input[ui->infoWidget->item(i, 0)->text()] = pair;
-        }
 
     delete ui;
 }
@@ -181,7 +160,7 @@ void PreferencesDialog::PopulateShortcuts()
     numberOfShortcuts = 0;
     for(auto iter = baka->input.begin(); iter != baka->input.end(); ++iter)
     {
-        if(iter->first == QString())
+        if(iter->first == QString() || iter->second == QString())
             continue;
         ui->infoWidget->insertRow(numberOfShortcuts);
         ui->infoWidget->setItem(numberOfShortcuts, 0, new QTableWidgetItem(iter.key()));
@@ -210,6 +189,7 @@ void PreferencesDialog::SelectKey(bool add, QPair<QString, QPair<QString, QStrin
                 {
                     ui->infoWidget->item(i, 1)->setText(result.second.first);
                     ui->infoWidget->item(i, 2)->setText(result.second.second);
+                    baka->input[result.first] = result.second;
                     status = 2;
                 }
                 else
@@ -225,6 +205,7 @@ void PreferencesDialog::SelectKey(bool add, QPair<QString, QPair<QString, QStrin
             ui->infoWidget->setItem(numberOfShortcuts, 0, new QTableWidgetItem(result.first));
             ui->infoWidget->setItem(numberOfShortcuts, 1, new QTableWidgetItem(result.second.first));
             ui->infoWidget->setItem(numberOfShortcuts, 2, new QTableWidgetItem(result.second.second));
+            baka->input[result.first] = result.second;
             ++numberOfShortcuts;
         }
     }

@@ -481,6 +481,13 @@ QTableWidget::item:selected {
           </widget>
          </item>
          <item>
+          <widget class="QPushButton" name="removeKeyButton">
+           <property name="text">
+            <string>&amp;REMOVE</string>
+           </property>
+          </widget>
+         </item>
+         <item>
           <widget class="QPushButton" name="resetKeyButton">
            <property name="styleSheet">
             <string notr="true">/* addKeyButton */
@@ -493,7 +500,7 @@ QPushButton:pressed {
 }</string>
            </property>
            <property name="text">
-            <string>&amp;RESET</string>
+            <string>RESE&amp;T</string>
            </property>
           </widget>
          </item>
@@ -776,6 +783,7 @@ QPushButton:pressed {
   <tabstop>infoWidget</tabstop>
   <tabstop>changeKeyButton</tabstop>
   <tabstop>addKeyButton</tabstop>
+  <tabstop>removeKeyButton</tabstop>
   <tabstop>resetKeyButton</tabstop>
   <tabstop>autoFitCheckBox</tabstop>
   <tabstop>comboBox</tabstop>

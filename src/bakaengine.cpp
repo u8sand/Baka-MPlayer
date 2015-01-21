@@ -135,10 +135,20 @@ void BakaEngine::SaveSettings()
     {
         auto default_iter = default_input.find(input_iter.key());
         if(default_iter != default_input.end())
+        {
             if(input_iter->first == default_iter->first &&
                input_iter->second == default_iter->second) // skip entries that are the same as a default_input entry
                 continue;
-        settings->setValue(input_iter.key(), input_iter->first + " # " + input_iter->second);
+        }
+        else // not found in defaults
+        {
+            if(*input_iter == QPair<QString, QString>({QString(), QString()})) // skip empty entries
+                continue;
+        }
+        settings->setValue(input_iter.key(),
+            input_iter->second.isEmpty() ?
+                input_iter->first :
+                input_iter->first + " # " + input_iter->second);
     }
     settings->endGroup();
 
