@@ -31,9 +31,9 @@ QTableWidget QHeaderView::section {
 /* QRadioButton */
 
 QRadioButton::indicator {
-	width: 7px;
-	height: 7px;
-	border-radius: 6px;
+	width: 6px;
+	height: 6px;
+	border-radius: 5px;
 	padding: 2px;
 }
 QRadioButton::indicator:unchecked {
