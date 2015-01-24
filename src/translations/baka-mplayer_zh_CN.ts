@@ -140,7 +140,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Fit Window: %0</source>
-        <translation>适应窗口: %0%</translation>
+        <translation>适应窗口: %0</translation>
     </message>
     <message>
         <source>Fit Window: %0%</source>
@@ -1524,31 +1524,31 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>&amp;Enable Mouse Gesture support</source>
-        <translation type="unfinished"></translation>
+        <translation>启用鼠标手势支持</translation>
     </message>
     <message>
         <source>&amp;REMOVE</source>
-        <translation type="unfinished"></translation>
+        <translation>移除</translation>
     </message>
     <message>
         <source>RESE&amp;T</source>
-        <translation type="unfinished"></translation>
+        <translation>重置</translation>
     </message>
     <message>
         <source>Reset Keybinding</source>
-        <translation type="unfinished"></translation>
+        <translation>重置快捷键</translation>
     </message>
     <message>
         <source>Are you sure you want to reset the shortcut keys to original bindings?</source>
-        <translation type="unfinished"></translation>
+        <translation>确定要快捷键重置到初始设置吗？</translation>
     </message>
     <message>
         <source>Existing keybinding</source>
-        <translation type="unfinished"></translation>
+        <translation>现有快捷键</translation>
     </message>
     <message>
         <source>%0 is already being used. Would you like to change its function?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">%0正在使用，是否更改其函数？</translation>
     </message>
 </context>
 <context>
