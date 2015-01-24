@@ -14,6 +14,7 @@ int main(int argc, char *argv[])
     FreeConsole();
 #endif
     QApplication a(argc, argv);
+    setlocale(LC_NUMERIC, "C"); // for mpv
 
     MainWindow w;
     w.show();
