@@ -13,7 +13,7 @@ class MainWindow;
 class MpvHandler;
 class Settings;
 class GestureHandler;
-class UpdateDialog;
+class UpdateManager;
 class DimDialog;
 
 class BakaEngine : public QObject
@@ -27,7 +27,7 @@ public:
     MpvHandler     *mpv;
     Settings       *settings;
     GestureHandler *gesture;
-    UpdateDialog   *updateDialog;
+    UpdateManager  *update;
     DimDialog      *dimDialog;
 
     QSystemTrayIcon *sysTrayIcon;

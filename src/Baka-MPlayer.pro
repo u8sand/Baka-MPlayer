@@ -28,6 +28,8 @@ unix {
 }
 
 win32 {
+    PKGCONFIG += libzip
+
     # mxe fix:
     CONFIG -= windows
     QMAKE_LFLAGS += $$QMAKE_LFLAGS_WINDOWS -pthread

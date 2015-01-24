@@ -5,10 +5,10 @@
 #include "settings.h"
 #include "util.h"
 
-#if defined(Q_OS_WIN)
+//#if defined(Q_OS_WIN)
 #include <QDate>
-#include "ui/updatedialog.h"
-#endif
+#include "updatemanager.h"
+//#endif
 
 void BakaEngine::Load2_0_2()
 {
@@ -33,14 +33,14 @@ void BakaEngine::LoadBaka2_0_2()
     window->maxRecent = settings->valueInt("maxRecent", 5);
     window->gestures = settings->valueBool("gestures", true);
     window->setLang(settings->value("lang", "auto"));
-#if defined(Q_OS_WIN)
+//#if defined(Q_OS_WIN)
     QDate last = settings->valueQDate("lastcheck", QDate(2014, 1, 1));
     if(last.daysTo(QDate::currentDate()) > 7) // been a week since we last checked?
     {
-        updateDialog->CheckForUpdates();
+        update->CheckForUpdates();
         settings->setValueQDate("lastcheck", QDate::currentDate());
     }
-#endif
+//#endif
     settings->endGroup();
     window->UpdateRecentFiles();
 }

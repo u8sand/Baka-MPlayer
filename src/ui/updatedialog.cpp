@@ -1,18 +1,20 @@
 #include "updatedialog.h"
 #include "ui_updatedialog.h"
 
+#include "bakaengine.h"
+#include "updatemanager.h"
 #include "util.h"
 
 #include <QDesktopServices>
 
-UpdateDialog::UpdateDialog(QWidget *parent) :
+UpdateDialog::UpdateDialog(BakaEngine *baka, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::UpdateDialog),
+    baka(baka),
+    timer(nullptr),
     init(false)
 {
     ui->setupUi(this);
-
-    updateManager = new UpdateManager(this);
 
 #if defined(Q_OS_UNIX) || defined(Q_OS_LINUX)
     // no update support on unix/linux, we just show if one is available
@@ -21,54 +23,7 @@ UpdateDialog::UpdateDialog(QWidget *parent) :
     ui->cancelButton->setDefault(true);
 #endif
 
-    connect(updateManager, &UpdateManager::versionInfoReceived,
-            [=](QMap<QString, QString> info)
-            {
-                ui->plainTextEdit->setPlainText(info["bugfixes"]);
-                if(info["version"].trimmed() == BAKA_MPLAYER_VERSION)
-                {
-                    ui->updateButton->setEnabled(false);
-                    ui->updateLabel->setText(tr("You have the latest version!"));
-                }
-                else
-                {
-                    ui->updateLabel->setText(tr("Update Available!\nVersion: %0").arg(info["version"]));
-#if defined(Q_OS_WIN)
-                    version = info["version"];
-                    // url = info["url"];
-                    url = "http://bakamplayer.u8sand.net/Baka%20MPlayer.7z";
-
-                    if(!isVisible())
-                        show();
-#endif
-
-                }
-                ui->progressBar->setVisible(false);
-                ui->timeRemainingLabel->setVisible(false);
-            });
-
-#if defined(Q_OS_WIN)
-    connect(ui->updateButton, &QPushButton::clicked,
-            [=]
-            {
-                QDesktopServices::openUrl(QUrl(Util::DownloadFileUrl()));
-                /*
-                avgSpeed = 0;
-                lastSpeed = 0;
-                lastProgress = 0;
-                lastTime = 0;
-                timer = new QTime();
-                timer->start();
-                ui->updateLabel->setText(tr("Downloading update..."));
-                ui->progressBar->setVisible(true);
-                ui->timeRemainingLabel->setVisible(true);
-                ui->plainTextEdit->clear();
-                updateManager->DownloadUpdate(url, version);
-                */
-            });
-#endif
-
-    connect(updateManager, &UpdateManager::progressSignal,
+    connect(baka->update, &UpdateManager::progressSignal,
             [=](int percent)
             {
                 ui->progressBar->setValue(percent);
@@ -77,10 +32,16 @@ UpdateDialog::UpdateDialog(QWidget *parent) :
                     ui->updateLabel->setText(tr("Download Complete"));
                     ui->progressBar->setVisible(false);
                     ui->timeRemainingLabel->setVisible(false);
-                    if(timer)
+                    if(timer != nullptr)
                     {
                         delete timer;
                         timer = nullptr;
+                    }
+
+                    if(!init)
+                    {
+                        ShowInfo();
+                        init = false;
                     }
                 }
                 else if(timer) // don't execute this if timer is not defined--this shouldn't happen though.. but it does
@@ -101,43 +62,78 @@ UpdateDialog::UpdateDialog(QWidget *parent) :
                 }
             });
 
-    connect(updateManager, &UpdateManager::verboseSignal,
+    connect(baka->update, &UpdateManager::messageSignal,
             [=](QString msg)
             {
                 ui->plainTextEdit->appendPlainText(msg);
             });
 
-    connect(updateManager, &UpdateManager::errorSignal,
-            [=](QString msg)
+#if defined(Q_OS_WIN)
+    connect(ui->updateButton, &QPushButton::clicked,
+            [=]
             {
-                ui->plainTextEdit->appendPlainText(tr("error: %0\n").arg(msg));
+                baka->update->DownloadUpdate(Util::DownloadFileUrl(), baka->update->info["version"]);
             });
+#endif
 
     connect(ui->cancelButton, SIGNAL(clicked()),
             this, SLOT(reject()));
+
+    if(baka->update->getInfo().empty())
+    {
+        Prepare();
+        baka->update->CheckForUpdates();
+    }
+    else
+    {
+        init = false;
+        ShowInfo();
+    }
 }
 
 UpdateDialog::~UpdateDialog()
 {
-    delete updateManager;
+    if(timer != nullptr)
+        delete timer;
     delete ui;
 }
 
-int UpdateDialog::exec()
+void UpdateDialog::CheckForUpdates(BakaEngine *baka, QWidget *parent)
 {
-    if(!init)
-        CheckForUpdates();
-    return QDialog::exec();
+    UpdateDialog *dialog = new UpdateDialog(baka, parent);
+    dialog->exec();
 }
 
-void UpdateDialog::CheckForUpdates()
+void UpdateDialog::Prepare()
 {
-    init = true;
     avgSpeed = 0;
     lastSpeed = 0;
     lastProgress = 0;
     lastTime = 0;
+    if(timer != nullptr)
+        delete timer;
     timer = new QTime();
     timer->start();
-    updateManager->CheckForUpdates();
+}
+
+void UpdateDialog::ShowInfo()
+{
+    auto info = baka->update->getInfo();
+    ui->plainTextEdit->setPlainText(info["bugfixes"]);
+    if(info["version"].trimmed() == BAKA_MPLAYER_VERSION)
+    {
+#if defined(Q_OS_WIN)
+        ui->updateButton->setEnabled(false);
+#endif
+        ui->updateLabel->setText(tr("You have the latest version!"));
+    }
+    else
+    {
+        ui->updateLabel->setText(tr("Update Available!\nVersion: %0").arg(info["version"]));
+#if defined(Q_OS_WIN)
+        ui->updateButton->setEnabled(true);
+#endif
+    }
+    ui->progressBar->setVisible(false);
+    ui->timeRemainingLabel->setVisible(false);
 }
