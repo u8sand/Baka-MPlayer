@@ -57,22 +57,22 @@ MainWindow::MainWindow(QWidget *parent):
     commandActionMap = {
         {"mpv add chapter +1", ui->action_Next_Chapter},
         {"mpv add chapter -1", ui->action_Previous_Chapter},
-        {"mpv add speed +0.25", ui->action_Increase},
-        {"mpv add speed -0.25", ui->action_Decrease},
+        {"mpv set sub-scale 1", ui->action_Reset_Size},
         {"mpv add sub-scale +0.02", ui->action_Size},
         {"mpv add sub-scale -0.02", ui->actionS_ize},
-        {"mpv frame_back_step", ui->actionFrame_Back_Step},
-        {"mpv frame_step", ui->action_Frame_Step},
-        {"mpv screenshot subtitles", ui->actionWith_Subtitles},
-        {"mpv screenshot video", ui->actionWithout_Subtitles},
-        {"mpv set speed 1", ui->action_Reset},
-        {"mpv set sub-scale 1", ui->action_Reset_Size},
+        {"mpv osd-msg screenshot subtitles", ui->actionWith_Subtitles},
+        {"mpv osd-msg screenshot video", ui->actionWithout_Subtitles},
+        {"mpv osd-msg add speed +0.25", ui->action_Increase},
+        {"mpv osd-msg add speed -0.25", ui->action_Decrease},
+        {"mpv osd-msg set speed 1", ui->action_Reset},
+        {"mpv osd-msg set video-aspect -1", ui->action_Auto_Detect},
+        {"mpv osd-msg set video-aspect 16:9", ui->actionForce_16_9},
+        {"mpv osd-msg set video-aspect 2_35:1", ui->actionForce_2_35_1},
+        {"mpv osd-msg set video-aspect 4:3", ui->actionForce_4_3},
+        {"mpv osd-msg cycle sub-visibility", ui->actionShow_Subtitles},
         {"mpv set time-pos 0", ui->action_Restart},
-        {"mpv set video-aspect -1", ui->action_Auto_Detect},
-        {"mpv set video-aspect 16:9", ui->actionForce_16_9},
-        {"mpv set video-aspect 2_35:1", ui->actionForce_2_35_1},
-        {"mpv set video-aspect 4:3", ui->actionForce_4_3},
-        {"mpv cycle sub-visibility", ui->actionShow_Subtitles},
+        {"mpv frame_step", ui->action_Frame_Step},
+        {"mpv frame_back_step", ui->actionFrame_Back_Step},
         {"baka add_subtitles", ui->action_Add_Subtitle_File},
         {"baka fitwindow 0", ui->action_To_Current_Size},
         {"baka fitwindow 50", ui->action50},
@@ -948,10 +948,10 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
     {
         // Convert KeyEvent to Shortcut:
         QString key = QString();
-        if(event->modifiers() & Qt::ShiftModifier)   key += "Shift+";
+        if(event->modifiers() & Qt::MetaModifier)    key += "Meta+";
         if(event->modifiers() & Qt::ControlModifier) key += "Ctrl+";
         if(event->modifiers() & Qt::AltModifier)     key += "Alt+";
-        if(event->modifiers() & Qt::MetaModifier)    key += "Meta+";
+        if(event->modifiers() & Qt::ShiftModifier)   key += "Shift+";
         key += QKeySequence(event->key()).toString();
 
         // find shortcut in input hash table
