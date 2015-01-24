@@ -128,7 +128,7 @@ void BakaEngine::BakaPlaylist(QStringList &args)
             else if(arg == "toggle")
                 window->ShowPlaylist(!window->isPlaylistVisible());
             else if(arg == "full")
-                window->HideAlbumArt(!window->ui->action_Hide_Album_Art->isChecked());
+                window->HideAlbumArt(window->ui->action_Hide_Album_Art->isChecked());
             else
                 InvalidParameter(arg);
         }

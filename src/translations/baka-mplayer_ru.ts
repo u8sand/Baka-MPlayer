@@ -1141,6 +1141,10 @@ Note: Value must be from %0 - %1</source>
         <source>Open &amp;Location...</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Update &amp;Streaming Support</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MpvHandler</name>
@@ -1442,8 +1446,48 @@ Version: %0</source>
     <message>
         <source>error: %0
 </source>
-        <translation>ошибка: %0
+        <translation type="vanished">ошибка: %0
 </translation>
+    </message>
+</context>
+<context>
+    <name>UpdateManager</name>
+    <message>
+        <source>Checking for updates...
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Downloading update...
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>fopen error
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>write error
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Download complete
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Extracting...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Could not open file for writing...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Done.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

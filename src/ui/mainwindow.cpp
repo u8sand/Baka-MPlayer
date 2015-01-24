@@ -1087,7 +1087,10 @@ void MainWindow::TogglePlaylist()
 void MainWindow::ShowPlaylist(bool visible)
 {
     if(visible)
+    {
         ui->splitter->setPosition(ui->splitter->normalPosition()); // bring splitter position to normal
+        ui->playlistWidget->SelectIndex(0, true);
+    }
     else
     {
         if(ui->splitter->position() != ui->splitter->max() && ui->splitter->position() != 0)

@@ -1133,6 +1133,10 @@ Nota: O valor deve ser de %0 - %1</translation>
         <source>Open &amp;Location...</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Update &amp;Streaming Support</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MpvHandler</name>
@@ -1427,7 +1431,7 @@ Version: %0</source>
     <message>
         <source>error: %0
 </source>
-        <translation>erro: %0
+        <translation type="vanished">erro: %0
 </translation>
     </message>
     <message>
@@ -1437,6 +1441,46 @@ Version: %0</source>
     <message>
         <source>Calculating...</source>
         <translation>Cálculo...</translation>
+    </message>
+</context>
+<context>
+    <name>UpdateManager</name>
+    <message>
+        <source>Checking for updates...
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Downloading update...
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>fopen error
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>write error
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Download complete
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Extracting...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Could not open file for writing...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Done.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
