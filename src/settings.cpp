@@ -51,7 +51,8 @@ void Settings::Save()
             fout << "[" << group_iter.key() << "]" << endl; // output: [foo]
             for(SettingsGroupData::iterator entry_iter = group_iter->begin(); entry_iter != group_iter->end(); ++entry_iter)
                 fout << FixKeyOnSave(entry_iter.key()) << "=" << entry_iter.value() << endl;
-            fout << endl;
+            if(&*group_iter != &data.last())
+                fout << endl;
         }
         f.close();
     }

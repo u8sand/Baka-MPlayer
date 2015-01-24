@@ -15,7 +15,7 @@ GestureHandler::GestureHandler(QObject *parent):
     baka = static_cast<BakaEngine*>(parent);
 
     timer_threshold = 10; // 10ms works quite well
-    gesture_threshold = 25; // 25 pixels is probably fine for anything
+    gesture_threshold = 15; // 15 pixels is probably fine for anything
 }
 
 GestureHandler::~GestureHandler()
