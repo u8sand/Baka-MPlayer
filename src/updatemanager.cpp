@@ -11,6 +11,7 @@
 #include <QProcess>
 
 #if defined(Q_OS_WIN)
+#include <QDir>
 #include <zip.h>
 #endif
 
@@ -136,13 +137,33 @@ bool UpdateManager::DownloadUpdate(const QString &url, const QString &version)
 void UpdateManager::ApplyUpdate(const QString &file)
 {
     emit messageSignal(tr("Extracting..."));
-    // todo: extract  (to baka-mplayer-update)
-//    int err;
-//    zip *z = zip_open(file, 0, &err);
-//    zip_set_file_compression(z, ZIP_CM_DEFLATE64, ZIP_CM_DEFAULT)
-//        zip_close(z);
-//    zip_close(z);
-    QFile f("baka-mplayer-updater.bat");
+    // create a temporary directory for baka
+    QString path = ".tmp/";
+    QDir::mkpath(path);
+    int err;
+    zip *z = zip_open(file, 0, &err);
+    int n = zip_get_num_entries(z, 0);
+    for(int64_t i = 0; i < n; ++i)
+    {
+        // get file stats
+        zip_stat s;
+        zip_stat_index(z, i, 0, &s);
+        // extract file
+        char *buf = new char[s.size]; // allocate buffer
+        // extract file to buffer
+        zip_file *zf = zip_fopen_index(z, i, 0);
+        zip_fread(zf, buf, s.size);
+        zip_fclose(zf);
+        // write new file
+        QFile f(path + s.name);
+        f.open(QFile::Truncate);
+        f.write(buf, s.size);
+        f.close();
+    }
+    zip_close(z);
+    // write updater batch script
+    QString bat = "updater.bat";
+    QFile f(bat);
     if(!f.open(QFile::Truncate))
     {
         emit messageSignal(tr("Could not open file for writing..."));
@@ -157,10 +178,10 @@ void UpdateManager::ApplyUpdate(const QString &file)
         "for %%i in (*) do move \"%%i\" ..\r\n"
         "for /d %%i in (*) do move \"%%i\" ..\r\n"
         "move /Y /r \"%0\" \".\" > NUL\r\n"
-        "start /b \"\" cmd /c del \"%%~f0\"&exit /b\"\"\r\n").arg(
-            "baka-mplayer").toUtf8());
+        "start /b \"\" cmd /c del \"%%~f0\"&exit /b\"\"\r\n").arg(path).toUtf8());
     f.close();
-    QProcess::startDetached("baka-mplayer-updater.bat");
+
+    QProcess::startDetached(bat);
     emit messageSignal(tr("Done."));
     baka->Quit();
 }
