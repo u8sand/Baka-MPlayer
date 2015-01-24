@@ -140,21 +140,13 @@ SOURCES += main.cpp\
     mpvhandler.cpp \
     updatemanager.cpp \
     gesturehandler.cpp \
+    overlayhandler.cpp \
     util.cpp \
     settings.cpp \
     versions/1_9_9.cpp \
     versions/2_0_0.cpp \
     versions/2_0_1.cpp \
     versions/2_0_2.cpp \
-    ui/aboutdialog.cpp \
-    ui/infodialog.cpp \
-    ui/inputdialog.cpp \
-    ui/jumpdialog.cpp \
-    ui/locationdialog.cpp \
-    ui/mainwindow.cpp \
-    ui/preferencesdialog.cpp \
-    ui/screenshotdialog.cpp \
-    ui/updatedialog.cpp \
     widgets/customlabel.cpp \
     widgets/customlineedit.cpp \
     widgets/customslider.cpp \
@@ -164,8 +156,16 @@ SOURCES += main.cpp\
     widgets/openbutton.cpp \
     widgets/playlistwidget.cpp \
     widgets/seekbar.cpp \
-    ui/keydialog.cpp \
-    overlayhandler.cpp
+    ui/aboutdialog.cpp \
+    ui/infodialog.cpp \
+    ui/inputdialog.cpp \
+    ui/jumpdialog.cpp \
+    ui/locationdialog.cpp \
+    ui/mainwindow.cpp \
+    ui/preferencesdialog.cpp \
+    ui/screenshotdialog.cpp \
+    ui/updatedialog.cpp \
+    ui/keydialog.cpp
 
 HEADERS  += \
     bakaengine.h \
@@ -173,6 +173,7 @@ HEADERS  += \
     mpvtypes.h \
     updatemanager.h \
     gesturehandler.h \
+    overlayhandler.h \
     util.h \
     settings.h \
     widgets/customlabel.h \
@@ -193,8 +194,7 @@ HEADERS  += \
     ui/preferencesdialog.h \
     ui/screenshotdialog.h \
     ui/updatedialog.h \
-    ui/keydialog.h \
-    overlayhandler.h
+    ui/keydialog.h
 
 FORMS    += \
     ui/aboutdialog.ui \
