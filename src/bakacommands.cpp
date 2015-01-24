@@ -10,6 +10,7 @@
 #include "ui/updatedialog.h"
 #include "widgets/dimdialog.h"
 #include "mpvhandler.h"
+#include "overlayhandler.h"
 #include "updatemanager.h"
 #include "util.h"
 
@@ -469,11 +470,15 @@ void BakaEngine::BakaBoss(QStringList &args)
         InvalidParameter(args.join(' '));
 }
 
+void BakaEngine::BakaTest(QStringList&)
+{
+    overlay->showText("This is a status message", 4000);
+}
+
 void BakaEngine::BakaHelp(QStringList &)
 {
     BakaPrint("This feature is coming soon...\n");
 }
-
 
 void BakaEngine::BakaAbout(QStringList &args)
 {

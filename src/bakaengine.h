@@ -13,6 +13,7 @@ class MainWindow;
 class MpvHandler;
 class Settings;
 class GestureHandler;
+class OverlayHandler;
 class UpdateManager;
 class DimDialog;
 
@@ -27,6 +28,7 @@ public:
     MpvHandler     *mpv;
     Settings       *settings;
     GestureHandler *gesture;
+    OverlayHandler *overlay;
     UpdateManager  *update;
     DimDialog      *dimDialog;
 
@@ -154,6 +156,7 @@ private:
         {"volume", &BakaEngine::BakaVolume},
         {"fullscreen", &BakaEngine::BakaFullScreen},
         {"boss", &BakaEngine::BakaBoss},
+        {"test", &BakaEngine::BakaTest},
         {"help", &BakaEngine::BakaHelp},
         {"about", &BakaEngine::BakaAbout},
         {"debug", &BakaEngine::BakaDebug},
@@ -182,6 +185,7 @@ private:
     void BakaVolume(QStringList&);
     void BakaFullScreen(QStringList&);
     void BakaBoss(QStringList&);
+    void BakaTest(QStringList&);
     void BakaHelp(QStringList&);
     void BakaAbout(QStringList&);
     void BakaDebug(QStringList&);

@@ -5,6 +5,7 @@
 #include "settings.h"
 #include "mpvhandler.h"
 #include "gesturehandler.h"
+#include "overlayhandler.h"
 #include "updatemanager.h"
 #include "widgets/dimdialog.h"
 #include "util.h"
@@ -19,6 +20,7 @@ BakaEngine::BakaEngine(QObject *parent):
     mpv(new MpvHandler(window->ui->mpvFrame->winId(), this)),
     settings(Util::InitializeSettings(this)),
     gesture(new GestureHandler(this)),
+    overlay(new OverlayHandler(this)),
     update(new UpdateManager(this)),
     // note: trayIcon does not work in my environment--known qt bug
     // see: https://bugreports.qt-project.org/browse/QTBUG-34364
@@ -48,6 +50,7 @@ BakaEngine::~BakaEngine()
     if(dimDialog != nullptr)
         delete dimDialog;
     delete update;
+    delete overlay;
     delete gesture;
     delete mpv;
     delete settings;

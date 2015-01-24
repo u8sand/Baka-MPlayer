@@ -164,7 +164,8 @@ SOURCES += main.cpp\
     widgets/openbutton.cpp \
     widgets/playlistwidget.cpp \
     widgets/seekbar.cpp \
-    ui/keydialog.cpp
+    ui/keydialog.cpp \
+    overlayhandler.cpp
 
 HEADERS  += \
     bakaengine.h \
@@ -192,7 +193,8 @@ HEADERS  += \
     ui/preferencesdialog.h \
     ui/screenshotdialog.h \
     ui/updatedialog.h \
-    ui/keydialog.h
+    ui/keydialog.h \
+    overlayhandler.h
 
 FORMS    += \
     ui/aboutdialog.ui \
