@@ -116,6 +116,9 @@ int PlaylistWidget::CurrentIndex()
 void PlaylistWidget::SelectIndex(int index, bool relative)
 {
     int newIndex = relative ? currentRow() : 0;
+    if(newIndex < 0)
+        newIndex = 0;
+
     newIndex += index;
 
     if(newIndex < 0)
@@ -124,6 +127,7 @@ void PlaylistWidget::SelectIndex(int index, bool relative)
         newIndex = count();
 
     setCurrentRow(newIndex);
+    scrollToItem(currentItem());
 }
 
 void PlaylistWidget::PlayIndex(int index, bool relative)
@@ -131,12 +135,11 @@ void PlaylistWidget::PlayIndex(int index, bool relative)
     int newIndex = 0;
     if(relative)
     {
-        auto items = this->findItems(file, Qt::MatchExactly);
+        auto items = findItems(file, Qt::MatchExactly);
         if(!items.empty())
             newIndex = indexFromItem(items.first()).row();
     }
     newIndex += index;
-
 
     if(newIndex < 0)
         newIndex = 0;

@@ -278,7 +278,7 @@ void BakaEngine::BakaUpdate(QStringList &args)
         if(arg == "youtube-dl")
         {
             // update youtube-dl
-            QProcess::startDetached("youtube-dl --update");
+            QProcess::startDetached("youtube-dl.exe --update");
         }
         else
 #endif
