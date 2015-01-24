@@ -6,6 +6,8 @@
 #include <QImage>
 #include <QPoint>
 #include <QHash>
+#include <QFontMetrics>
+#include <QFont>
 
 class BakaEngine;
 
@@ -29,9 +31,11 @@ private:
     };
     QHash<int, overlay*> overlays;
 
-    const int min_overlay = 5,
-              max_overlay = 60;
-    int overlay_id;
+    QFont overlay_font;
+    QFontMetrics overlay_fm;
+    int min_overlay,
+        max_overlay,
+        overlay_id;
 };
 
 #endif // OVERLAYHANDLER_H

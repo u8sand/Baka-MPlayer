@@ -3,8 +3,6 @@
 #include "bakaengine.h"
 #include "mpvhandler.h"
 
-#include <QFontMetrics>
-#include <QFont>
 #include <QPainter>
 #include <QColor>
 #include <QTimer>
@@ -12,6 +10,10 @@
 OverlayHandler::OverlayHandler(QObject *parent):
     QObject(parent),
     baka(static_cast<BakaEngine*>(parent)),
+    overlay_font("Monospace", 11),
+    overlay_fm(overlay_font),
+    min_overlay(2),
+    max_overlay(63),
     overlay_id(min_overlay) // start at 1
 {
 }
@@ -36,14 +38,12 @@ void OverlayHandler::showText(QString text, int duration)
 
 void OverlayHandler::showText(QString text, int duration, QPoint pos, int id)
 {
-    QFont font("Monospace", 11);
     // draw to new canvas
-    QFontMetrics fm(font); // get font size
-    QImage *canvas = new QImage(fm.size(0, text), QImage::Format_ARGB32); // make the canvas the right size
+    QImage *canvas = new QImage(overlay_fm.size(0, text), QImage::Format_ARGB32); // make the canvas the right size
     canvas->fill(0); // fill it with nothing
     QPainter painter(canvas); // prepare to paint
-    painter.setFont(font); // set the font
-    painter.setPen(QColor(255, 255, 255)); // set the color
+    painter.setFont(overlay_font); // set the font
+    painter.setPen(QColor(0xe4cf0b)); // set the color
     painter.drawText(canvas->rect(), text); // draw
     // add as mpv overlay
     baka->mpv->AddOverlay(
@@ -52,7 +52,7 @@ void OverlayHandler::showText(QString text, int duration, QPoint pos, int id)
         "&"+QString::number(quintptr(canvas->bits())),
         0, canvas->width(), canvas->height());
     // increase next overlay_id
-    if(id == -1)
+    if(id == -1) // auto id
     {
         id = overlay_id;
         if(overlay_id+1 > max_overlay)
