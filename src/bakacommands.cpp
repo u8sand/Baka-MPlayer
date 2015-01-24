@@ -470,11 +470,6 @@ void BakaEngine::BakaBoss(QStringList &args)
         InvalidParameter(args.join(' '));
 }
 
-void BakaEngine::BakaTest(QStringList&)
-{
-    overlay->showText("This is a status message", 4000);
-}
-
 void BakaEngine::BakaHelp(QStringList &)
 {
     BakaPrint("This feature is coming soon...\n");

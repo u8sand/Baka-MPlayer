@@ -156,7 +156,6 @@ private:
         {"volume", &BakaEngine::BakaVolume},
         {"fullscreen", &BakaEngine::BakaFullScreen},
         {"boss", &BakaEngine::BakaBoss},
-        {"test", &BakaEngine::BakaTest},
         {"help", &BakaEngine::BakaHelp},
         {"about", &BakaEngine::BakaAbout},
         {"debug", &BakaEngine::BakaDebug},
@@ -185,7 +184,6 @@ private:
     void BakaVolume(QStringList&);
     void BakaFullScreen(QStringList&);
     void BakaBoss(QStringList&);
-    void BakaTest(QStringList&);
     void BakaHelp(QStringList&);
     void BakaAbout(QStringList&);
     void BakaDebug(QStringList&);
