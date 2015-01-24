@@ -361,6 +361,7 @@ MainWindow::MainWindow(QWidget *parent):
                 {
                     ui->menuFont_Si_ze->setEnabled(false);
                     ui->actionShow_Subtitles->setEnabled(false);
+                    ui->actionShow_Subtitles->setChecked(false);
                 }
                 ui->menuAudio_Tracks->setEnabled((ui->menuAudio_Tracks->actions().count() > 0));
                 if(ui->menuAudio_Tracks->actions().count() == 1)
@@ -384,6 +385,7 @@ MainWindow::MainWindow(QWidget *parent):
                 ui->menuSubtitle_Track->setEnabled(false);
                 ui->menuFont_Si_ze->setEnabled(false);
                 ui->actionShow_Subtitles->setEnabled(false);
+                ui->actionShow_Subtitles->setChecked(false);
                 ui->menuTake_Screenshot->setEnabled(false);
                 ui->menuFit_Window->setEnabled(false);
                 ui->menuAspect_Ratio->setEnabled(false);
@@ -606,7 +608,8 @@ MainWindow::MainWindow(QWidget *parent):
     connect(mpv, &MpvHandler::subtitleVisibilityChanged,
             [=](bool b)
             {
-                ui->actionShow_Subtitles->setChecked(b);
+                if(ui->actionShow_Subtitles->isEnabled())
+                    ui->actionShow_Subtitles->setChecked(b);
             });
 
     // ui
