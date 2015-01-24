@@ -58,7 +58,16 @@ void KeyDialog::SetButtons()
         (!ui->keySequenceEdit->keySequence().isEmpty() &&
          !ui->commandLineEdit->text().isEmpty());
 
-    ui->addButton->setEnabled(add && enabled);
-    ui->changeButton->setEnabled(!add & enabled);
-
+    if(add)
+    {
+        ui->changeButton->setVisible(false);
+        ui->addButton->setVisible(true);
+        ui->addButton->setEnabled(enabled);
+    }
+    else
+    {
+        ui->addButton->setVisible(false);
+        ui->changeButton->setVisible(true);
+        ui->changeButton->setEnabled(enabled);
+    }
 }
