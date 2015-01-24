@@ -465,8 +465,11 @@ void BakaEngine::BakaBoss(QStringList &args)
     {
         if(window->isFullScreen()) // exit fullscreen if in fullscreen
             window->FullScreen(false);
-        mpv->Pause();
-        window->setWindowState(window->windowState() | Qt::WindowMinimized); // minimze window
+        else
+        {
+            mpv->Pause();
+            window->setWindowState(window->windowState() | Qt::WindowMinimized); // minimze window
+        }
     }
     else
         InvalidParameter(args.join(' '));
