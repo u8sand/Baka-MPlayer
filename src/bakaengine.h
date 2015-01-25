@@ -65,7 +65,7 @@ public:
         {"Alt+Return",      {"baka fullscreen",                     tr("Toggle fullscreen")}},
         {"Ctrl+D",          {"baka dim",                            tr("Dim Lights")}},
         {"Ctrl+E",          {"baka show_in_folder",                 tr("Show the file in it's folder")}},
-        {"Ctrl+I",          {"baka media_info",                     tr("View Media Information")}},
+        {"Tab",             {"baka media_info",                     tr("View Media Information")}},
         {"Ctrl+J",          {"baka jump",                           tr("Show Jump To Time dialog")}},
         {"Ctrl+Left",       {"baka play -1",                        tr("Play previous file")}},
         {"Ctrl+N",          {"baka new",                            tr("Open a new window")}},
@@ -189,8 +189,10 @@ private:
     void BakaDebug(QStringList&);
     void BakaQuit(QStringList&);
 public:
-    void Open(QString path = QString());
+    void Open();
+    void OpenLocation();
     void PlayPause();
+    void Jump();
     void FitWindow(int percent = 0, bool msg = true);
     void Dim(bool dim);
     void About(QString what = QString());

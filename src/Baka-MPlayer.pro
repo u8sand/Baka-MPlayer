@@ -157,7 +157,6 @@ SOURCES += main.cpp\
     widgets/playlistwidget.cpp \
     widgets/seekbar.cpp \
     ui/aboutdialog.cpp \
-    ui/infodialog.cpp \
     ui/inputdialog.cpp \
     ui/jumpdialog.cpp \
     ui/locationdialog.cpp \
@@ -186,7 +185,6 @@ HEADERS  += \
     widgets/playlistwidget.h \
     widgets/seekbar.h \
     ui/aboutdialog.h \
-    ui/infodialog.h \
     ui/inputdialog.h \
     ui/jumpdialog.h \
     ui/locationdialog.h \

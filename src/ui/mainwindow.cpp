@@ -1,37 +1,17 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-#include <QCoreApplication>
-#include <QMessageBox>
-#include <QMimeData>
-#include <QTime>
-#include <QFileDialog>
-#include <QClipboard>
-#include <QDesktopServices>
-#include <QDir>
-#include <QFileInfo>
-#include <QDesktopWidget>
-#include <QAction>
-#include <QShortcut>
-#include <QProcess>
-#include <QIcon>
-#include <QWindow>
-#include <QCheckBox>
 #include <QLibraryInfo>
-#include <QCursor>
+#include <QMimeData>
+#include <QDesktopWidget>
 
-#include "aboutdialog.h"
-#include "infodialog.h"
-#include "locationdialog.h"
-#include "jumpdialog.h"
-#include "inputdialog.h"
-#include "updatedialog.h"
-#include "preferencesdialog.h"
-#include "screenshotdialog.h"
+#include "bakaengine.h"
+#include "mpvhandler.h"
 #include "util.h"
 #include "gesturehandler.h"
-#include "bakaengine.h"
 #include "widgets/dimdialog.h"
+#include "inputdialog.h"
+#include "screenshotdialog.h"
 
 MainWindow::MainWindow(QWidget *parent):
     QMainWindow(parent),
@@ -629,15 +609,13 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->openButton, &OpenButton::MiddleClick,                   // Playback: Open button (middle click)
             [=]
             {
-                int time = JumpDialog::getTime(mpv->getFileInfo().length,this);
-                if(time >= 0)
-                    mpv->Seek(time);
+                baka->Jump();
             });
 
     connect(ui->openButton, &OpenButton::RightClick,                    // Playback: Open button (right click)
             [=]
             {
-                mpv->LoadFile(LocationDialog::getUrl(mpv->getPath()+mpv->getFile(), this));
+                baka->OpenLocation();
             });
 
     connect(ui->remainingLabel, &CustomLabel::clicked,                  // Playback: Remaining Label

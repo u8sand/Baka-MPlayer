@@ -19,8 +19,10 @@ public:
     ~OverlayHandler();
 
 public slots:
-    void showText(QString text, int duration);
-    void showText(QString text, int duration, QPoint pos, int id = -1);
+    void showStatusText(const QString &text, int duration = 4000);
+    void showInfoText(bool show = true);
+
+    void showText(const QString &text, int duration, QPoint pos, int id = -1);
 private:
     BakaEngine *baka;
 
@@ -36,6 +38,8 @@ private:
     int min_overlay,
         max_overlay,
         overlay_id;
+
+    QString info;
 };
 
 #endif // OVERLAYHANDLER_H

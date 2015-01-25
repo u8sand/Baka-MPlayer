@@ -5,6 +5,7 @@
 #include <QFile>
 #include <QFileInfo>
 #include <QFileInfoList>
+#include <QDateTime>
 
 #include "util.h"
 
@@ -50,6 +51,64 @@ MpvHandler::~MpvHandler()
         mpv_terminate_destroy(mpv);
         mpv = NULL;
     }
+}
+
+QString MpvHandler::getMediaInfo()
+{
+    QString text;
+
+    QFileInfo fi(path+file);
+
+    QList<QPair<QString, QString>> items = {
+        {tr("File name"), fi.fileName()},
+        {tr("Media Title"), fileInfo.media_title},
+        {tr("File size"), Util::HumanSize(fi.size())},
+        {tr("Date created"), fi.created().toString()},
+        {tr("Media length"), Util::FormatTime(fileInfo.length, fileInfo.length)},
+    };
+
+    if(fileInfo.video_params.codec != QString())
+    {
+        QList<QPair<QString, QString>> video_items = {
+            {tr("[Video]"), QString()},
+            {tr("Video codec"), fileInfo.video_params.codec},
+            {tr("Video format"), fileInfo.video_params.format},
+            {tr("Video bitrate"), fileInfo.video_params.bitrate},
+            {tr("Video dimensions"), QString::number(fileInfo.video_params.width)+" x "+QString::number(fileInfo.video_params.height)}
+        };
+        items.append(video_items);
+    }
+
+    if(fileInfo.audio_params.codec != QString())
+    {
+        QList<QPair<QString, QString>> audio_items = {
+            {tr("[Audio]"), QString()},
+            {tr("Audio codec"), fileInfo.audio_params.codec},
+            {tr("Audio format"), fileInfo.audio_params.format},
+            {tr("Audio bitrate"), fileInfo.audio_params.bitrate},
+            {tr("Audio samplerate"), fileInfo.audio_params.samplerate},
+            {tr("Audio channels"), fileInfo.audio_params.channels}
+        };
+        items.append(audio_items);
+    }
+
+    if(fileInfo.tracks.length() > 0)
+    {
+        items.append({tr("[Track List]"), QString()});
+        for(auto &track : fileInfo.tracks)
+            items.append({QString::number(track.id), QString("%0[%1:%2] %3").arg(track.title, track.type, track.lang, track.external_filename)});
+    }
+    if(fileInfo.chapters.length() > 0)
+    {
+        items.append({tr("[Chapter List]"), QString()});
+        for(auto &chapter : fileInfo.chapters)
+            items.append({chapter.title, Util::FormatTime(chapter.time, fileInfo.length)});
+    }
+
+    for(auto iter = items.begin(); iter != items.end(); ++iter)
+        text += QString("%0\t%1\n").arg(iter->first, iter->second);
+
+    return text;
 }
 
 bool MpvHandler::event(QEvent *event)

@@ -35,6 +35,9 @@ public:
 
     int getOsdWidth()                       { return osdWidth; }
     int getOsdHeight()                      { return osdHeight; }
+
+    QString getMediaInfo();
+
 protected:
     virtual bool event(QEvent*);
 

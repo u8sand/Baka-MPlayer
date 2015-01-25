@@ -1,5 +1,8 @@
 #include "bakaengine.h"
 
+#include <QMessageBox>
+#include <QDir>
+
 #include "ui/mainwindow.h"
 #include "ui_mainwindow.h"
 #include "settings.h"
@@ -9,9 +12,6 @@
 #include "updatemanager.h"
 #include "widgets/dimdialog.h"
 #include "util.h"
-
-#include <QMessageBox>
-#include <QDir>
 
 
 BakaEngine::BakaEngine(QObject *parent):

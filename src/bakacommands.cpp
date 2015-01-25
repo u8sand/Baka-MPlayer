@@ -1,9 +1,17 @@
 #include "bakaengine.h"
 
+#include <QApplication>
+#include <QFileDialog>
+#include <QDesktopWidget>
+#include <QDesktopServices>
+#include <QProcess>
+#include <QDir>
+#include <QClipboard>
+#include <QMessageBox>
+
 #include "ui/mainwindow.h"
 #include "ui_mainwindow.h"
 #include "ui/aboutdialog.h"
-#include "ui/infodialog.h"
 #include "ui/locationdialog.h"
 #include "ui/jumpdialog.h"
 #include "ui/preferencesdialog.h"
@@ -13,15 +21,6 @@
 #include "overlayhandler.h"
 #include "updatemanager.h"
 #include "util.h"
-
-#include <QApplication>
-#include <QFileDialog>
-#include <QDesktopWidget>
-#include <QDesktopServices>
-#include <QProcess>
-#include <QDir>
-#include <QClipboard>
-#include <QMessageBox>
 
 
 void BakaEngine::BakaNew(QStringList &args)
@@ -54,10 +53,16 @@ void BakaEngine::BakaPlay(QStringList &args)
 void BakaEngine::BakaOpenLocation(QStringList &args)
 {
     if(args.empty())
-        mpv->LoadFile(LocationDialog::getUrl(mpv->getPath()+mpv->getFile(), window));
+        OpenLocation();
     else
         mpv->LoadFile(args.join(' '));
 }
+
+void BakaEngine::OpenLocation()
+{
+    mpv->LoadFile(LocationDialog::getUrl(mpv->getPath()+mpv->getFile(), window));
+}
+
 
 void BakaEngine::BakaOpenClipboard(QStringList &args)
 {
@@ -93,7 +98,7 @@ void BakaEngine::BakaAddSubtitles(QStringList &args)
 void BakaEngine::BakaMediaInfo(QStringList &args)
 {
     if(args.empty())
-        InfoDialog::info(mpv->getPath()+mpv->getFile(), mpv->getFileInfo(), window);
+        overlay->showInfoText(window->ui->actionMedia_Info->isChecked());
     else
         InvalidParameter(args.join(' '));
 }
@@ -201,21 +206,18 @@ void BakaEngine::BakaPlaylist(QStringList &args)
 void BakaEngine::BakaJump(QStringList &args)
 {
     if(args.empty())
-    {
-        int time = JumpDialog::getTime(mpv->getFileInfo().length, window);
-        if(time >= 0)
-            mpv->Seek(time);
-    }
+        Jump();
     else
-    {
-        QString arg = args.front();
-        args.pop_front();
-        if(args.empty())
-            mpv->CommandString(QString("seek %0").arg(arg));
-        else
-            InvalidParameter(arg);
-    }
+        InvalidParameter(args.join(' '));
 }
+
+void BakaEngine::Jump()
+{
+    int time = JumpDialog::getTime(mpv->getFileInfo().length, window);
+    if(time >= 0)
+        mpv->Seek(time);
+}
+
 
 void BakaEngine::BakaDim(QStringList &args)
 {
@@ -292,19 +294,17 @@ void BakaEngine::BakaOpen(QStringList &args)
     if(args.empty())
         Open();
     else
-        Open(args.join(' '));
+        mpv->LoadFile(args.join(' '));
 }
 
-void BakaEngine::Open(QString path)
+void BakaEngine::Open()
 {
-    mpv->LoadFile(path == QString() ?
-                   QFileDialog::getOpenFileName(window,
+    mpv->LoadFile(QFileDialog::getOpenFileName(window,
                    tr("Open File"),mpv->getPath(),
                    QString("%0 (%1);;").arg(tr("Media Files"), Mpv::media_filetypes.join(" "))+
                    QString("%0 (%1);;").arg(tr("Video Files"), Mpv::video_filetypes.join(" "))+
                    QString("%0 (%1)").arg(tr("Audio Files"), Mpv::audio_filetypes.join(" ")),
-                   0, QFileDialog::DontUseSheet) :
-                   path);
+                   0, QFileDialog::DontUseSheet));
 }
 
 

@@ -1253,11 +1253,14 @@ QSlider::handle:horizontal {
    </property>
   </action>
   <action name="actionMedia_Info">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="enabled">
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>Media &amp;Info</string>
+    <string>Show Playback &amp;Info</string>
    </property>
   </action>
   <action name="action_Play">
