@@ -86,7 +86,7 @@ bool UpdateManager::DownloadUpdate(const QString &url)
     emit messageSignal(tr("Downloading update...\n"));
 
     QNetworkRequest request(url);
-    QString filename = QString("%0/Baka-MPlayer.zip").arg(QCoreApplication::applicationDirPath());
+    QString filename = QDir::toNativeSeparators(QString("%0/Baka-MPlayer.zip").arg(QCoreApplication::applicationDirPath()));
     QFile *file = new QFile(filename);
     if(!file->open(QFile::WriteOnly | QFile::Truncate))
     {
@@ -188,17 +188,20 @@ void UpdateManager::ApplyUpdate(const QString &file)
     f.write(
         QString(
             "@echo off\r\n"
-            "echo %0\r\n"
-            "ping 127.0.0.1 -n 1 -w 1000 > NUL\r\n"
-            "cd \"%1\"\r\n"
-            "for %%i in (*) do move /Y \"%%i\" ..\r\n"
-            "for /d %%i in (*) do move /Y \"%%i\" ..\r\n"
-            "cd ..\r\n"
-            "rmdir /Q /S \"%1\""
-            "start /b \"\" \"%2\"\r\n"
-            "start /b \"\" cmd /c del \"%~f0\"&exit /b\"\"\r\n").arg(
+            "echo %0\r\n"                                               // status message
+            "ping 127.0.0.1 -n 1 -w 1000 > NUL\r\n"                     // wait while baka closes
+            "cd \"%1\"\r\n"                                             // go to extracted directory
+            "for %%i in (*) do move /Y \"%%i\" ..\r\n"                  // move all files up
+            "for /d %%i in (*) do move /Y \"%%i\" ..\r\n"               // move all directories up
+            "cd ..\r\n"                                                 // go up
+            "rmdir /Q /S \"%2\"\r\n"                                    // remove the tmp directory
+            "del /Q \"%3\"\r\n"                                         // delete the zip file
+            "start /b \"\" \"%4\"\r\n"                                  // start the new baka-mplayer
+            "start /b \"\" cmd /c del \"%~f0\"&exit /b\"\"\r\n").arg(   // remove the script itself and exit
             tr("Updating..."),
             path,
+            path,
+            file,
             exe).toUtf8());
     f.close();
 
