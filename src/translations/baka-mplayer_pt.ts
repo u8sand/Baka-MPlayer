@@ -16,10 +16,6 @@
         <translation>Baka MPlayer 0.0.0</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2014 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; é livre e open source, multiplataforma, player multimídia de &lt;b&gt;libmpv&lt;/b&gt;. O design simples reflecte a idéia para uma organizada, claro, e agradável ambiente para assistir a programas de TV.&lt;br&gt;&lt;br&gt;Copyright © 2014 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
         <source>Credits</source>
         <translation>Créditos</translation>
     </message>
@@ -118,10 +114,6 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
 </translation>
     </message>
     <message>
-        <source>screenshot%#04n</source>
-        <translation type="vanished">foto%#04n</translation>
-    </message>
-    <message>
         <source>Open Subtitle File</source>
         <translation>Arquivo de legenda aberta</translation>
     </message>
@@ -162,14 +154,6 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
         <translation>Para escurecer o ambiente de trabalho, transparência do desktop tem que ser ativado.</translation>
     </message>
     <message>
-        <source>Increase Playback Speed by 25%</source>
-        <translation type="vanished">Aumentar a velocidade de reprodução em 25%</translation>
-    </message>
-    <message>
-        <source>Show the file in it&apos;s folder</source>
-        <translation type="vanished">Vista na pasta</translation>
-    </message>
-    <message>
         <source>Fit Window: %0</source>
         <translation>Ajustar a Janela: %0</translation>
     </message>
@@ -184,10 +168,6 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     <message>
         <source>Restart playback</source>
         <translation>Reiniciar</translation>
-    </message>
-    <message>
-        <source>Decrease speed by 25%</source>
-        <translation type="vanished">Diminuir a velocidade de reprodução em 25%</translation>
     </message>
     <message>
         <source>Reset speed</source>
@@ -207,11 +187,11 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Seek backwards by 5 sec</source>
-        <translation type="unfinished"></translation>
+        <translation>Procurar para trás por 5 segundo</translation>
     </message>
     <message>
         <source>Go to previous chapter</source>
-        <translation type="unfinished">Vai pro prévio capítulo</translation>
+        <translation>Ir para o capítulo anterior</translation>
     </message>
     <message>
         <source>Increase playback speed by 25%</source>
@@ -223,63 +203,63 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Go to next chapter</source>
-        <translation type="unfinished">Vai pro próximo capítulo</translation>
+        <translation>Ir para o próximo capítulo</translation>
     </message>
     <message>
         <source>Seek forwards by 5 sec</source>
-        <translation type="unfinished"></translation>
+        <translation>Procurar para a frente por 5 segundo</translation>
     </message>
     <message>
         <source>Frame step backwards</source>
-        <translation type="unfinished"></translation>
+        <translation>Frame passo para trás</translation>
     </message>
     <message>
         <source>Frame step</source>
-        <translation type="unfinished"></translation>
+        <translation>Frame passo</translation>
     </message>
     <message>
         <source>Decrease volume</source>
-        <translation type="unfinished"></translation>
+        <translation>Diminuir o volume</translation>
     </message>
     <message>
         <source>Increase volume</source>
-        <translation type="unfinished"></translation>
+        <translation>Aumento de volume</translation>
     </message>
     <message>
         <source>Toggle fullscreen</source>
-        <translation type="unfinished"></translation>
+        <translation>Tela cheia de alternância</translation>
     </message>
     <message>
         <source>Dim lights</source>
-        <translation type="unfinished"></translation>
+        <translation>Luzes difusas</translation>
     </message>
     <message>
         <source>Show the file in its folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar o arquivo na pasta</translation>
     </message>
     <message>
         <source>View media information</source>
-        <translation type="unfinished"></translation>
+        <translation>Vista as informações sobre mídia</translation>
     </message>
     <message>
         <source>Show jump to time dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar diálogo de vá para o tempo</translation>
     </message>
     <message>
         <source>Show open file dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar diálogo de arquivo aberto</translation>
     </message>
     <message>
         <source>Show location dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar diálogo de localização</translation>
     </message>
     <message>
         <source>Toggle playlist visibility</source>
-        <translation type="unfinished"></translation>
+        <translation>Visibilidade lista alternar</translation>
     </message>
     <message>
         <source>Fit the window to the video</source>
-        <translation type="unfinished"></translation>
+        <translation>Janela de ajuste de vídeo</translation>
     </message>
     <message>
         <source>Fit window to 50%</source>
@@ -303,7 +283,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Boss key</source>
-        <translation type="unfinished"></translation>
+        <translation>Chave chefe</translation>
     </message>
     <message>
         <source>Play previous file</source>
@@ -311,11 +291,11 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Open a new window</source>
-        <translation type="unfinished">Abrir a nova janela</translation>
+        <translation>Abrir a nova janela</translation>
     </message>
     <message>
         <source>Quit</source>
-        <translation type="unfinished"></translation>
+        <translation>Saída</translation>
     </message>
     <message>
         <source>Play next file</source>
@@ -323,63 +303,43 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Stop playback</source>
-        <translation type="unfinished">Para reprodução</translation>
+        <translation>Para reprodução</translation>
     </message>
     <message>
         <source>Open clipboard location</source>
-        <translation type="unfinished"></translation>
+        <translation>Localização da área de transferência aberta</translation>
     </message>
     <message>
         <source>Open the last played file</source>
-        <translation type="unfinished"></translation>
+        <translation>Abrir o último arquivo reproduzido</translation>
     </message>
     <message>
         <source>Access command-line</source>
-        <translation type="unfinished"></translation>
+        <translation>Linha de comando acesso</translation>
     </message>
     <message>
         <source>Launch online help</source>
-        <translation type="unfinished"></translation>
+        <translation>Lançar a ajuda on-line</translation>
     </message>
     <message>
         <source>Play/Pause</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fit Window to 50%</source>
-        <translation type="vanished">Janela de Ajuste de 50%</translation>
-    </message>
-    <message>
-        <source>Fit Window to 75%</source>
-        <translation type="vanished">Janela de Ajuste de 75%</translation>
-    </message>
-    <message>
-        <source>Fit Window to 100%</source>
-        <translation type="vanished">Janela de Ajuste de 100%</translation>
-    </message>
-    <message>
-        <source>Fit Window to 150%</source>
-        <translation type="vanished">Janela de Ajuste de 150%</translation>
-    </message>
-    <message>
-        <source>Fit Window to 200%</source>
-        <translation type="vanished">Janela de Ajuste de 200%</translation>
+        <translation>Play/Pause</translation>
     </message>
     <message>
         <source>Select previous file on playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecionar o arquivo anterior na lista</translation>
     </message>
     <message>
         <source>Select next file on playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecionar o próximo arquivo na lista</translation>
     </message>
     <message>
         <source>Play selected file on playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Reproduzir o arquivo selecionado na lista</translation>
     </message>
     <message>
         <source>Remove selected file from playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Remover arquivo selecionado da lista</translation>
     </message>
     <message>
         <source>Saved to &quot;%0&quot;, with subs</source>
@@ -392,99 +352,6 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     <message>
         <source>./screenshot%#04</source>
         <translation>./foto%#04n</translation>
-    </message>
-</context>
-<context>
-    <name>InfoDialog</name>
-    <message>
-        <source>Media Info</source>
-        <translation type="vanished">Informação Mídia</translation>
-    </message>
-    <message>
-        <source>Info Type</source>
-        <translation type="vanished">Tipo de Informação</translation>
-    </message>
-    <message>
-        <source>Value</source>
-        <translatorcomment>Not sure....</translatorcomment>
-        <translation type="vanished">Valor</translation>
-    </message>
-    <message>
-        <source>&amp;CLOSE</source>
-        <translation type="vanished">&amp;FECHAR</translation>
-    </message>
-    <message>
-        <source>File name</source>
-        <translation type="vanished">Nome do arquivo</translation>
-    </message>
-    <message>
-        <source>Media Title</source>
-        <translation type="vanished">Título de Mídia</translation>
-    </message>
-    <message>
-        <source>File size</source>
-        <translatorcomment>Not entirely sure about &quot;Tamanho&quot;</translatorcomment>
-        <translation type="vanished">Tamanho do Arquivo</translation>
-    </message>
-    <message>
-        <source>Date created</source>
-        <translation type="vanished">Data de Criação</translation>
-    </message>
-    <message>
-        <source>Media length</source>
-        <translation type="vanished">Duração de Mídia</translation>
-    </message>
-    <message>
-        <source>[Video]</source>
-        <translation type="vanished">[Vídeo]</translation>
-    </message>
-    <message>
-        <source>Video codec</source>
-        <translation type="vanished">Codec de vídeo</translation>
-    </message>
-    <message>
-        <source>Video format</source>
-        <translation type="vanished">Formato de vídeo</translation>
-    </message>
-    <message>
-        <source>Video bitrate</source>
-        <translation type="vanished">Texa de bits de vídeo</translation>
-    </message>
-    <message>
-        <source>Video dimensions</source>
-        <translation type="vanished">dimensões do vídeo</translation>
-    </message>
-    <message>
-        <source>[Audio]</source>
-        <translation type="vanished">[Áudio]</translation>
-    </message>
-    <message>
-        <source>Audio codec</source>
-        <translation type="vanished">Codec de áudio</translation>
-    </message>
-    <message>
-        <source>Audio format</source>
-        <translation type="vanished">Formato de áudio</translation>
-    </message>
-    <message>
-        <source>Audio bitrate</source>
-        <translation type="vanished">Texa de bits de áudio</translation>
-    </message>
-    <message>
-        <source>Audio samplerate</source>
-        <translation type="vanished">Taxa de amostragem de áudio</translation>
-    </message>
-    <message>
-        <source>Audio channels</source>
-        <translation type="vanished">Canais de áudio</translation>
-    </message>
-    <message>
-        <source>[Track List]</source>
-        <translation type="vanished">[Lista de Pistas]</translation>
-    </message>
-    <message>
-        <source>[Chapter List]</source>
-        <translation type="vanished">[Lista de Capítulos]</translation>
     </message>
 </context>
 <context>
@@ -719,14 +586,6 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
         <translation>A&amp;juda</translation>
     </message>
     <message>
-        <source>Alt+6</source>
-        <translation type="vanished">Alt+6</translation>
-    </message>
-    <message>
-        <source>Ctrl+G</source>
-        <translation type="vanished">Ctrl+G</translation>
-    </message>
-    <message>
         <source>E&amp;xit</source>
         <translation>&amp;Fechar</translation>
     </message>
@@ -739,84 +598,32 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
         <translation>&amp;Nova Janela</translation>
     </message>
     <message>
-        <source>Ctrl+N</source>
-        <translation type="vanished">Ctrl+N</translation>
-    </message>
-    <message>
         <source>&amp;Open File...</source>
         <translation>&amp;Arquivo Aberto...</translation>
-    </message>
-    <message>
-        <source>Ctrl+O</source>
-        <translation type="vanished">Ctrl+O</translation>
-    </message>
-    <message>
-        <source>Open &amp;URL...</source>
-        <translation type="vanished">&amp;URL Aberto...</translation>
-    </message>
-    <message>
-        <source>Ctrl+U</source>
-        <translation type="vanished">Ctrl+U</translation>
     </message>
     <message>
         <source>Open Path from &amp;Clipboard</source>
         <translation>&amp;Caminho Aberto da Área de Transferência</translation>
     </message>
     <message>
-        <source>Ctrl+V</source>
-        <translation type="vanished">Ctrl+V</translation>
-    </message>
-    <message>
         <source>Show in &amp;Folder</source>
         <translation>Vista na &amp;pasta</translation>
-    </message>
-    <message>
-        <source>Ctrl+F</source>
-        <translation type="vanished">Ctrl+F</translation>
     </message>
     <message>
         <source>Play &amp;Next File</source>
         <translation>Play Arquivo &amp;Próximo</translation>
     </message>
     <message>
-        <source>Ctrl+Right</source>
-        <translation type="vanished">Ctrl+Right</translation>
-    </message>
-    <message>
         <source>Play &amp;Previous File</source>
         <translation>Play Arquivo &amp;Anterior</translation>
-    </message>
-    <message>
-        <source>Ctrl+Left</source>
-        <translation type="vanished">Ctrl+Left</translation>
-    </message>
-    <message>
-        <source>Ctrl+Q</source>
-        <translation type="vanished">Ctrl+Q</translation>
     </message>
     <message>
         <source>&amp;Full Screen</source>
         <translation>&amp;Tela Cheia</translation>
     </message>
     <message>
-        <source>Alt+Return</source>
-        <translation type="vanished">Alt+Return</translation>
-    </message>
-    <message>
         <source>Show S&amp;ubtitles</source>
         <translation>&amp;Mostrar legendas</translation>
-    </message>
-    <message>
-        <source>Ctrl+W</source>
-        <translation type="vanished">Ctrl+W</translation>
-    </message>
-    <message>
-        <source>Media &amp;Info</source>
-        <translation type="vanished">&amp;Informação Mídia</translation>
-    </message>
-    <message>
-        <source>Ctrl+I</source>
-        <translation type="vanished">Ctrl+I</translation>
     </message>
     <message>
         <source>&amp;Play</source>
@@ -824,24 +631,12 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
         <translation>&amp;Play</translation>
     </message>
     <message>
-        <source>Space</source>
-        <translation type="vanished">Space</translation>
-    </message>
-    <message>
         <source>&amp;Stop</source>
         <translation>&amp;Pare</translation>
     </message>
     <message>
-        <source>Ctrl+S</source>
-        <translation type="vanished">Ctrl+S</translation>
-    </message>
-    <message>
         <source>&amp;Restart</source>
         <translation>&amp;Reiniciar</translation>
-    </message>
-    <message>
-        <source>Ctrl+R</source>
-        <translation type="vanished">Ctrl+R</translation>
     </message>
     <message>
         <source>Sh&amp;uffle</source>
@@ -868,52 +663,24 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
         <translation>&amp;Próximo Capítulo</translation>
     </message>
     <message>
-        <source>PgDown</source>
-        <translation type="vanished">PgDown</translation>
-    </message>
-    <message>
         <source>&amp;Previous Chapter</source>
         <translation>P&amp;révio Capítulo</translation>
-    </message>
-    <message>
-        <source>PgUp</source>
-        <translation type="vanished">PgUp</translation>
     </message>
     <message>
         <source>&amp;Frame Step</source>
         <translation>&amp;Frame passo</translation>
     </message>
     <message>
-        <source>Shift+Right</source>
-        <translation type="vanished">Shift+Right</translation>
-    </message>
-    <message>
         <source>Frame &amp;Back Step</source>
         <translation>Frame passo para &amp;trás</translation>
-    </message>
-    <message>
-        <source>Shift+Left</source>
-        <translation type="vanished">Shift+Left</translation>
     </message>
     <message>
         <source>&amp;Jump to Time...</source>
         <translation>&amp;Vá para o tempo...</translation>
     </message>
     <message>
-        <source>Ctrl+J</source>
-        <translation type="vanished">Ctrl+J</translation>
-    </message>
-    <message>
-        <source>Ctrl+D</source>
-        <translation type="vanished">Ctrl+D</translation>
-    </message>
-    <message>
         <source>Online &amp;Help</source>
         <translation>&amp;Ajuda On-line</translation>
-    </message>
-    <message>
-        <source>F1</source>
-        <translation type="vanished">F1</translation>
     </message>
     <message>
         <source>&amp;Check for Updates</source>
@@ -932,32 +699,16 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
         <translation>Ao Tamanho &amp;Atual</translation>
     </message>
     <message>
-        <source>Alt+1</source>
-        <translation type="vanished">Alt+1</translation>
-    </message>
-    <message>
         <source>50%</source>
         <translation>50%</translation>
-    </message>
-    <message>
-        <source>Alt+2</source>
-        <translation type="vanished">Alt+2</translation>
     </message>
     <message>
         <source>75%</source>
         <translation>75%</translation>
     </message>
     <message>
-        <source>Alt+3</source>
-        <translation type="vanished">Alt+3</translation>
-    </message>
-    <message>
         <source>100%</source>
         <translation>100%</translation>
-    </message>
-    <message>
-        <source>Alt+4</source>
-        <translation type="vanished">Alt+4</translation>
     </message>
     <message>
         <source>200%</source>
@@ -966,10 +717,6 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     <message>
         <source>150%</source>
         <translation>150%</translation>
-    </message>
-    <message>
-        <source>Alt+5</source>
-        <translation type="vanished">Alt+5</translation>
     </message>
     <message>
         <source>&amp;Auto Detect</source>
@@ -1000,16 +747,8 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
         <translation>&amp;Tamanho +</translation>
     </message>
     <message>
-        <source>Ctrl++</source>
-        <translation type="vanished">Ctrl++</translation>
-    </message>
-    <message>
         <source>S&amp;ize -</source>
         <translation>T&amp;amanho -</translation>
-    </message>
-    <message>
-        <source>Ctrl+-</source>
-        <translation type="vanished">Ctrl+-</translation>
     </message>
     <message>
         <source>&amp;Reset Size</source>
@@ -1028,40 +767,20 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
         <translation>&amp;Esse arquivo</translation>
     </message>
     <message>
-        <source>Ctrl+E</source>
-        <translation type="vanished">Ctrl+E</translation>
-    </message>
-    <message>
         <source>&amp;Increase Volume</source>
         <translation>&amp;Aumento de Volume</translation>
-    </message>
-    <message>
-        <source>Ctrl+Up</source>
-        <translation type="vanished">Ctrl+Up</translation>
     </message>
     <message>
         <source>&amp;Decrease Volume</source>
         <translation>&amp;Diminuir o Volume</translation>
     </message>
     <message>
-        <source>Ctrl+Down</source>
-        <translation type="vanished">Ctrl+Down</translation>
-    </message>
-    <message>
         <source>With &amp;Subtitles...</source>
         <translation>Com &amp;Legendas...</translation>
     </message>
     <message>
-        <source>Ctrl+T</source>
-        <translation type="vanished">Ctrl+T</translation>
-    </message>
-    <message>
         <source>&amp;Without Subtitles...</source>
         <translation>Sem &amp;Legendas...</translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+T</source>
-        <translation type="vanished">Ctrl+Shift+T</translation>
     </message>
     <message>
         <source>&amp;Preferences...</source>
@@ -1072,24 +791,12 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
         <translation>&amp;Aumento</translation>
     </message>
     <message>
-        <source>Ctrl+Shift+Up</source>
-        <translation type="vanished">Ctrl+Shift+Up</translation>
-    </message>
-    <message>
         <source>&amp;Decrease</source>
         <translation>&amp;Diminuir</translation>
     </message>
     <message>
-        <source>Ctrl+Shift+Down</source>
-        <translation type="vanished">Ctrl+Shift+Down</translation>
-    </message>
-    <message>
         <source>&amp;Reset</source>
         <translation>&amp;Redefinição</translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+R</source>
-        <translation type="vanished">Ctrl+Shift+R</translation>
     </message>
     <message>
         <source>Playing</source>
@@ -1126,56 +833,12 @@ Nota: O valor deve ser de %0 - %1</translation>
         <translation>Nenhuma seleção</translation>
     </message>
     <message>
-        <source>Subtitle Files</source>
-        <translation type="vanished">Arquivos de Legendas</translation>
-    </message>
-    <message>
-        <source>Media Files</source>
-        <translation type="vanished">Arquivos de Mídia</translation>
-    </message>
-    <message>
-        <source>Video Files</source>
-        <translation type="vanished">Arquivos de Vídeo</translation>
-    </message>
-    <message>
-        <source>Audio Files</source>
-        <translation type="vanished">Arquivos de Áudio</translation>
-    </message>
-    <message>
         <source>Speed: %0x</source>
         <translation>Velocidade: %0x</translation>
     </message>
     <message>
         <source>File %0 of %1</source>
         <translation>Arquivo %0 de %1</translation>
-    </message>
-    <message>
-        <source>Open Subtitle File</source>
-        <translation type="vanished">Arquivo de legenda aberta</translation>
-    </message>
-    <message>
-        <source>http://bakamplayer.u8sand.net/help.php</source>
-        <translation type="vanished">http://bakamplayer.u8sand.net/help.php</translation>
-    </message>
-    <message>
-        <source>Dim Lights</source>
-        <translation type="vanished">Luzes Difusas</translation>
-    </message>
-    <message>
-        <source>In order to dim the lights, the desktop compositor has to be enabled. This can be done through Window Manager Desktop.</source>
-        <translation type="vanished">Para escurecer o ambiente de trabalho, transparência do desktop tem que ser ativado.</translation>
-    </message>
-    <message>
-        <source>Saved to &quot;%0&quot;, with subs</source>
-        <translation type="vanished">Salvos em &quot;%0&quot;, com legendas</translation>
-    </message>
-    <message>
-        <source>Saved to &quot;%0&quot;, without subs</source>
-        <translation type="vanished">Salvos em &quot;%0&quot;, sem legendas</translation>
-    </message>
-    <message>
-        <source>Open File</source>
-        <translation type="vanished">Arquivo Aberto</translation>
     </message>
     <message>
         <source>Open &amp;Location...</source>
@@ -1410,10 +1073,6 @@ Nota: O valor deve ser de %0 - %1</translation>
         <translation>Gestos do Mouse</translation>
     </message>
     <message>
-        <source>&amp;Enable</source>
-        <translation type="vanished">&amp;Possibilitar</translation>
-    </message>
-    <message>
         <source>Keys</source>
         <translation>Teclas</translation>
     </message>
@@ -1428,10 +1087,6 @@ Nota: O valor deve ser de %0 - %1</translation>
     <message>
         <source>Label</source>
         <translation>Legenda</translation>
-    </message>
-    <message>
-        <source>Label (optional)</source>
-        <translation type="vanished">Label (opcional)</translation>
     </message>
     <message>
         <source>&amp;ADD</source>
@@ -1551,12 +1206,6 @@ Version: %0</source>
     <message>
         <source>About %0 second(s) remaining</source>
         <translation>Sobre %0 segundo(s) mais</translation>
-    </message>
-    <message>
-        <source>error: %0
-</source>
-        <translation type="vanished">erro: %0
-</translation>
     </message>
     <message>
         <source>Download Complete</source>
