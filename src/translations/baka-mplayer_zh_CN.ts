@@ -196,7 +196,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Increase Playback Speed by 25%</source>
-        <translation>提高25%播放速度</translation>
+        <translation type="vanished">提高25%播放速度</translation>
     </message>
     <message>
         <source>Take a screenshot with subtitles</source>
@@ -260,7 +260,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Decrease speed by 25%</source>
-        <translation>降低25%播放速度</translation>
+        <translation type="vanished">降低25%播放速度</translation>
     </message>
     <message>
         <source>Reset speed</source>
@@ -285,6 +285,14 @@ Some features may not work and changed settings will not be saved.</source>
     <message>
         <source>Go to previous chapter</source>
         <translation>跳转到前一章节</translation>
+    </message>
+    <message>
+        <source>Increase playback speed by 25%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Decrease playback speed by 25%</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Go to next chapter</source>
@@ -315,16 +323,72 @@ Some features may not work and changed settings will not be saved.</source>
         <translation>切换全屏</translation>
     </message>
     <message>
+        <source>Dim lights</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show the file in its folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View media information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show jump to time dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show open file dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show location dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Toggle playlist visibility</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fit the window to the video</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fit window to 50%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fit window to 75%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fit window to 100%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fit window to 150%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fit window to 200%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Boss key</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Show the file in it&apos;s folder</source>
-        <translation>在文件夹中显示文件</translation>
+        <translation type="vanished">在文件夹中显示文件</translation>
     </message>
     <message>
         <source>View Media Information</source>
-        <translation>显示媒体信息</translation>
+        <translation type="vanished">显示媒体信息</translation>
     </message>
     <message>
         <source>Show Jump To Time dialog</source>
-        <translation>跳转到时间对话框</translation>
+        <translation type="vanished">跳转到时间对话框</translation>
     </message>
     <message>
         <source>Play previous file</source>
@@ -336,7 +400,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Show Open File dialog</source>
-        <translation>打开文件对话框</translation>
+        <translation type="vanished">打开文件对话框</translation>
     </message>
     <message>
         <source>Quit</source>
@@ -352,7 +416,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Show Location dialog</source>
-        <translation>显示路径对话框</translation>
+        <translation type="vanished">显示路径对话框</translation>
     </message>
     <message>
         <source>Open clipboard location</source>
@@ -360,11 +424,19 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Toggle Playlist visibility</source>
-        <translation>切换播放列表可见度</translation>
+        <translation type="vanished">切换播放列表可见度</translation>
     </message>
     <message>
         <source>Open the last played file</source>
         <translation>打开最近播放的文件</translation>
+    </message>
+    <message>
+        <source>Access command-line</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Launch online help</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Play/Pause</source>
@@ -372,31 +444,31 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Fit the Window to video</source>
-        <translation>根据视频适应窗口</translation>
+        <translation type="vanished">根据视频适应窗口</translation>
     </message>
     <message>
         <source>Fit Window to 50%</source>
-        <translation>适应窗口到50%</translation>
+        <translation type="vanished">适应窗口到50%</translation>
     </message>
     <message>
         <source>Fit Window to 75%</source>
-        <translation>适应窗口到75%</translation>
+        <translation type="vanished">适应窗口到75%</translation>
     </message>
     <message>
         <source>Fit Window to 100%</source>
-        <translation>适应窗口到100%</translation>
+        <translation type="vanished">适应窗口到100%</translation>
     </message>
     <message>
         <source>Fit Window to 150%</source>
-        <translation>适应窗口到150%</translation>
+        <translation type="vanished">适应窗口到150%</translation>
     </message>
     <message>
         <source>Fit Window to 200%</source>
-        <translation>适应窗口到200%</translation>
+        <translation type="vanished">适应窗口到200%</translation>
     </message>
     <message>
         <source>Boss Key</source>
-        <translation>老板键</translation>
+        <translation type="vanished">老板键</translation>
     </message>
     <message>
         <source>Select previous file on playlist</source>
@@ -460,11 +532,11 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Access Baka-MPlayer Command-line</source>
-        <translation>Baka-MPlayer命令行</translation>
+        <translation type="vanished">Baka-MPlayer命令行</translation>
     </message>
     <message>
         <source>Launch Online Help</source>
-        <translation>启动在线帮助</translation>
+        <translation type="vanished">启动在线帮助</translation>
     </message>
     <message>
         <source>Play/Pause Video</source>
@@ -521,6 +593,10 @@ Some features may not work and changed settings will not be saved.</source>
     <message>
         <source>Saved to &quot;%0&quot;, without subs</source>
         <translation>保存到 &quot;%0&quot;, 不附带字幕</translation>
+    </message>
+    <message>
+        <source>./screenshot%#04</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

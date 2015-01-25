@@ -159,26 +159,6 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
         <translation type="unfinished">Per poter abbassare le luci, il compositore del desktop deve essere abilitato. Questo può essere fatto dal gestore finestre desktop.</translation>
     </message>
     <message>
-        <source>Increase Playback Speed by 25%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Show the file in it&apos;s folder</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>View Media Information</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Access Baka-MPlayer Command-line</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Launch Online Help</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Fit Window: %0</source>
         <translation type="unfinished"></translation>
     </message>
@@ -192,10 +172,6 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>Restart playback</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Decrease speed by 25%</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -220,6 +196,14 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>Go to previous chapter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Increase playback speed by 25%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Decrease playback speed by 25%</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -251,7 +235,59 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Show Jump To Time dialog</source>
+        <source>Dim lights</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show the file in its folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View media information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show jump to time dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show open file dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show location dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Toggle playlist visibility</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fit the window to the video</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fit window to 50%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fit window to 75%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fit window to 100%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fit window to 150%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fit window to 200%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Boss key</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -260,10 +296,6 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>Open a new window</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Show Open File dialog</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -279,15 +311,7 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Show Location dialog</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Open clipboard location</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Toggle Playlist visibility</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -295,35 +319,15 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Access command-line</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Launch online help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Play/Pause</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fit the Window to video</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fit Window to 50%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fit Window to 75%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fit Window to 100%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fit Window to 150%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fit Window to 200%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Boss Key</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -349,6 +353,10 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     <message>
         <source>Saved to &quot;%0&quot;, without subs</source>
         <translation type="unfinished">Salvato su &quot;%0&quot;, senza sottotitoli</translation>
+    </message>
+    <message>
+        <source>./screenshot%#04</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

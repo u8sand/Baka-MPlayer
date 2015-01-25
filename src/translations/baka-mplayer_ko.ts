@@ -207,10 +207,6 @@ Some features may not work and changed settings will not be saved.</source>
         <translation>불 끄기 기는은 Desktop Compositor가 필요합니다. Window Manager Desktop을 통에서 키실수 있습니다.</translation>
     </message>
     <message>
-        <source>Increase Playback Speed by 25%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Increase sub size</source>
         <translation type="unfinished"></translation>
     </message>
@@ -220,10 +216,6 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Restart playback</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Decrease speed by 25%</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -248,6 +240,14 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Go to previous chapter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Increase playback speed by 25%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Decrease playback speed by 25%</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -279,15 +279,59 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Show the file in it&apos;s folder</source>
+        <source>Dim lights</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>View Media Information</source>
+        <source>Show the file in its folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Show Jump To Time dialog</source>
+        <source>View media information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show jump to time dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show open file dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show location dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Toggle playlist visibility</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fit the window to the video</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fit window to 50%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fit window to 75%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fit window to 100%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fit window to 150%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fit window to 200%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Boss key</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -296,10 +340,6 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Open a new window</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Show Open File dialog</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -315,15 +355,7 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Show Location dialog</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Open clipboard location</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Toggle Playlist visibility</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -331,35 +363,15 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Access command-line</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Launch online help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Play/Pause</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fit the Window to video</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fit Window to 50%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fit Window to 75%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fit Window to 100%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fit Window to 150%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fit Window to 200%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Boss Key</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -379,20 +391,16 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Access Baka-MPlayer Command-line</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Launch Online Help</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Saved to &quot;%0&quot;, with subs</source>
         <translation type="unfinished">자막없이 &quot;%0&quot;으로 저장됨</translation>
     </message>
     <message>
         <source>Saved to &quot;%0&quot;, without subs</source>
         <translation type="unfinished">자막과 함께 &quot;%0&quot;으로 저장됨</translation>
+    </message>
+    <message>
+        <source>./screenshot%#04</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

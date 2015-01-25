@@ -48,7 +48,7 @@ void BakaEngine::LoadMpv2_0_0()
         {
             QString temp = entry.value();
             if(entry.value().isEmpty()) // default screenshot template
-                temp = tr("./screenshot%04.jpg");
+                temp = tr("./screenshot%#04");
             int i = temp.lastIndexOf('/');
             if(i != -1)
             {
