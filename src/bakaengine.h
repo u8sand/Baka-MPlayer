@@ -105,6 +105,7 @@ protected slots:
     void BakaCommand(QStringList&);
     void BakaPrint(QString);
     void MpvPrint(QString);
+    void UpdatePrint(QString);
     void InvalidCommand(QString);
     void InvalidParameter(QString);
     void RequiresParameters(QString);

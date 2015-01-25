@@ -39,6 +39,8 @@ BakaEngine::BakaEngine(QObject *parent):
 
     connect(mpv, SIGNAL(messageSignal(QString)),
             this, SLOT(MpvPrint(QString)));
+    connect(update, SIGNAL(messageSignal(QString)),
+            this, SLOT(UpdatePrint(QString)));
 }
 
 BakaEngine::~BakaEngine()
@@ -217,6 +219,12 @@ void BakaEngine::MpvPrint(QString output)
 {
     window->ui->outputTextEdit->moveCursor(QTextCursor::End);
     window->ui->outputTextEdit->insertPlainText(QString("[mpv]: %0").arg(output));
+}
+
+void BakaEngine::UpdatePrint(QString output)
+{
+    window->ui->outputTextEdit->moveCursor(QTextCursor::End);
+    window->ui->outputTextEdit->insertPlainText(QString("[update]: %0").arg(output));
 }
 
 void BakaEngine::InvalidCommand(QString command)

@@ -78,7 +78,7 @@ bool UpdateManager::CheckForUpdates()
 }
 
 #if defined(Q_OS_WIN)
-bool UpdateManager::DownloadUpdate(const QString &url, const QString &version)
+bool UpdateManager::DownloadUpdate(const QString &url)
 {
     if(busy)
         return false;
@@ -86,20 +86,22 @@ bool UpdateManager::DownloadUpdate(const QString &url, const QString &version)
     emit messageSignal(tr("Downloading update...\n"));
 
     QNetworkRequest request(url);
-    QNetworkReply *reply = manager->get(request);
-    QString filename = QString("%0\\Baka-MPlayer-%1.exe").arg(QCoreApplication::applicationDirPath(), version);
+    QString filename = QString("%0/Baka-MPlayer.zip").arg(QCoreApplication::applicationDirPath());
     QFile *file = new QFile(filename);
     if(!file->open(QFile::WriteOnly | QFile::Truncate))
     {
         emit messageSignal(tr("fopen error\n"));
-        reply->abort();
         delete file;
+        busy = false;
+        return false;
     }
+
+    QNetworkReply *reply = manager->get(request);
 
     connect(reply, &QNetworkReply::downloadProgress,
             [=](qint64 received, qint64 total)
             {
-                emit progressSignal((int)(100.0*received/total));
+                emit progressSignal((int)(99.0*received/total));
             });
 
     connect(reply, &QNetworkReply::readyRead,
@@ -125,9 +127,20 @@ bool UpdateManager::DownloadUpdate(const QString &url, const QString &version)
                     file->flush();
                     file->close();
                     delete file;
-                    emit messageSignal(tr("Download complete\n"));
-                    busy = false;
-                    ApplyUpdate(filename);
+                    QUrl redirect = reply->attribute(QNetworkRequest::RedirectionTargetAttribute).toUrl();
+                    if(redirect.isEmpty())
+                    {
+                        busy = false;
+                        emit messageSignal(tr("Download complete\n"));
+                        ApplyUpdate(filename);
+                        emit progressSignal(100);
+                    }
+                    else
+                    {
+                        emit messageSignal(tr("Redirected...\n"));
+                        busy = false;
+                        DownloadUpdate(redirect.toString());
+                    }
                 }
                 reply->deleteLater();
             });
@@ -136,9 +149,10 @@ bool UpdateManager::DownloadUpdate(const QString &url, const QString &version)
 
 void UpdateManager::ApplyUpdate(const QString &file)
 {
-    emit messageSignal(tr("Extracting..."));
+    emit messageSignal(tr("Extracting...\n"));
     // create a temporary directory for baka
-    QString path = ".tmp/";
+    QString path = QString("%0/.tmp/").arg(QCoreApplication::applicationDirPath());
+    QString bat = QString("%0/updater.bat").arg(QCoreApplication::applicationDirPath());
     QDir dir;
     dir.mkpath(path);
     int err;
@@ -147,25 +161,25 @@ void UpdateManager::ApplyUpdate(const QString &file)
     for(int64_t i = 0; i < n; ++i)
     {
         // get file stats
-        struct zip_stat *s;
-        zip_stat_index(z, i, 0, s);
+        struct zip_stat s;
+        zip_stat_index(z, i, 0, &s);
         // extract file
-        char *buf = new char[s->size]; // allocate buffer
+        char *buf = new char[s.size]; // allocate buffer
         // extract file to buffer
         zip_file *zf = zip_fopen_index(z, i, 0);
-        zip_fread(zf, buf, s->size);
+        zip_fread(zf, buf, s.size);
         zip_fclose(zf);
         // write new file
-        QFile f(path + s->name);
-        f.open(QFile::Truncate);
-        f.write(buf, s->size);
+        QFile f(path + s.name);
+        f.open(QFile::WriteOnly | QFile::Truncate);
+        f.write(buf, s.size);
         f.close();
     }
     zip_close(z);
     // write updater batch script
-    QString bat = "updater.bat";
+    emit messageSignal(tr("Creating updater script...\n"));
     QFile f(bat);
-    if(!f.open(QFile::Truncate))
+    if(!f.open(QFile::WriteOnly | QFile::Truncate))
     {
         emit messageSignal(tr("Could not open file for writing..."));
         return;
@@ -183,7 +197,7 @@ void UpdateManager::ApplyUpdate(const QString &file)
     f.close();
 
     QProcess::startDetached(bat);
-    emit messageSignal(tr("Done."));
+    emit messageSignal(tr("Done. Restarting...\n"));
     baka->Quit();
 }
 #endif

@@ -21,7 +21,7 @@ public slots:
     bool CheckForUpdates();
 
 #if defined(Q_OS_WIN)
-    bool DownloadUpdate(const QString &url, const QString &version);
+    bool DownloadUpdate(const QString &url);
     void ApplyUpdate(const QString &file);
 #endif
 
