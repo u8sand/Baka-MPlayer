@@ -55,8 +55,6 @@ MpvHandler::~MpvHandler()
 
 QString MpvHandler::getMediaInfo()
 {
-    QString text;
-
     QFileInfo fi(path+file);
 
     QList<QPair<QString, QString>> items = {
@@ -68,29 +66,23 @@ QString MpvHandler::getMediaInfo()
     };
 
     if(fileInfo.video_params.codec != QString())
-    {
-        QList<QPair<QString, QString>> video_items = {
+        items.append({
             {tr("[Video]"), QString()},
             {tr("Video codec"), fileInfo.video_params.codec},
             {tr("Video format"), fileInfo.video_params.format},
             {tr("Video bitrate"), fileInfo.video_params.bitrate},
             {tr("Video dimensions"), QString::number(fileInfo.video_params.width)+" x "+QString::number(fileInfo.video_params.height)}
-        };
-        items.append(video_items);
-    }
+        });
 
     if(fileInfo.audio_params.codec != QString())
-    {
-        QList<QPair<QString, QString>> audio_items = {
+        items.append({
             {tr("[Audio]"), QString()},
             {tr("Audio codec"), fileInfo.audio_params.codec},
             {tr("Audio format"), fileInfo.audio_params.format},
             {tr("Audio bitrate"), fileInfo.audio_params.bitrate},
             {tr("Audio samplerate"), fileInfo.audio_params.samplerate},
             {tr("Audio channels"), fileInfo.audio_params.channels}
-        };
-        items.append(audio_items);
-    }
+        });
 
     if(fileInfo.tracks.length() > 0)
     {
@@ -105,10 +97,23 @@ QString MpvHandler::getMediaInfo()
             items.append({chapter.title, Util::FormatTime(chapter.time, fileInfo.length)});
     }
 
+    QString info;
+    int spacing = 0;
     for(auto iter = items.begin(); iter != items.end(); ++iter)
-        text += QString("%0\t%1\n").arg(iter->first, iter->second);
-
-    return text;
+    {
+        int len = iter->first.length();
+        if(len > spacing)
+            spacing = len;
+    }
+    for(auto iter = items.begin(); iter != items.end(); ++iter)
+    {
+        int len = iter->first.length();
+        info += iter->first + ": ";
+        while(len++ < spacing)
+            info += ' ';
+        info += iter->second + '\n';
+    }
+    return info;
 }
 
 bool MpvHandler::event(QEvent *event)
