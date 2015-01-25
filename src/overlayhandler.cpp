@@ -2,6 +2,7 @@
 
 #include "bakaengine.h"
 #include "mpvhandler.h"
+#include "ui/mainwindow.h"
 
 #include <QFileInfo>
 #include <QPainter>
@@ -61,8 +62,15 @@ void OverlayHandler::showInfoText(bool show)
     }
 }
 
+void OverlayHandler::setFont()
+{
+    overlay_font.setPointSize(0.022*std::min(baka->window->width()*0.75, baka->window->height()*1.0));
+    overlay_fm = QFontMetrics(overlay_font);
+}
+
 void OverlayHandler::showText(const QString &text, int duration, QPoint pos, int id)
 {
+    setFont();
     QStringList elements = text.split("\n");
     QPainterPath path(QPoint(0, 0));
     int h = overlay_fm.height();
@@ -73,7 +81,7 @@ void OverlayHandler::showText(const QString &text, int duration, QPoint pos, int
         p += QPoint(0, h);
     }
 
-    QImage *canvas = new QImage(path.boundingRect().width()+5, p.y(), QImage::Format_ARGB32); // make the canvas the right size
+    QImage *canvas = new QImage(path.boundingRect().width(), p.y(), QImage::Format_ARGB32); // make the canvas the right size
     canvas->fill(0); // fill it with nothing
 
     QPainter painter(canvas); // prepare to paint

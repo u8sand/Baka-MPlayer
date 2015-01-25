@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QStringList>
+#include <QResizeEvent>
 #include <QMouseEvent>
 #include <QWheelEvent>
 #include <QKeyEvent>
@@ -50,6 +51,7 @@ protected:
     bool eventFilter(QObject *obj, QEvent *event);  // event filter (get mouse move events from mpvFrame)
     void wheelEvent(QWheelEvent *event);            // the mouse wheel is used
     void keyPressEvent(QKeyEvent *event);
+    void resizeEvent(QResizeEvent *event);
     void SetIndexLabels(bool enable);
     void SetPlaybackControls(bool enable);          // macro to enable/disable playback controls
     void TogglePlaylist();                          // toggles playlist visibility

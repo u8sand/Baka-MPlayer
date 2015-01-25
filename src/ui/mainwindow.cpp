@@ -7,8 +7,9 @@
 
 #include "bakaengine.h"
 #include "mpvhandler.h"
-#include "util.h"
 #include "gesturehandler.h"
+#include "overlayhandler.h"
+#include "util.h"
 #include "widgets/dimdialog.h"
 #include "inputdialog.h"
 #include "screenshotdialog.h"
@@ -943,6 +944,13 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
         if(iter != baka->input.end())
             baka->Command(iter->first); // execute command
     }
+}
+
+void MainWindow::resizeEvent(QResizeEvent *event)
+{
+    if(ui->actionMedia_Info->isChecked())
+        baka->overlay->showInfoText();
+    QMainWindow::resizeEvent(event);
 }
 
 void MainWindow::mouseDoubleClickEvent(QMouseEvent *event)

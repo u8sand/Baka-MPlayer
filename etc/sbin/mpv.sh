@@ -30,7 +30,7 @@ unset `env | \
     cut -d '=' -f1 | tr '\n' ' '`
 
 # build mpv
-DEST_OS=win32 TARGET=$arch-w64-mingw32.static ./waf configure --enable-libmpv-static --disable-client-api-examples
+DEST_OS=win32 TARGET=$arch-w64-mingw32.static ./waf configure --enable-libmpv-static
 ./waf build
 
 # after building successfully we need to copy the files into the correct locations in mxe
