@@ -72,7 +72,7 @@ UpdateDialog::UpdateDialog(BakaEngine *baka, QWidget *parent) :
     connect(ui->updateButton, &QPushButton::clicked,
             [=]
             {
-                baka->update->DownloadUpdate(Util::DownloadFileUrl(), baka->update->getInfo()["version"]);
+                baka->update->DownloadUpdate(Util::DownloadFileUrl());
             });
 #endif
 
