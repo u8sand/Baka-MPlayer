@@ -50,7 +50,7 @@ bool IsValidLocation(QString loc)
 
 void ShowInFolder(QString path, QString file)
 {
-    QProcess::startDetached(QString("explorer.exe /select,\"%0\"").arg(path+file));
+    QProcess::startDetached("explorer.exe", QStringList{"/select,", path+file});
 }
 
 }
