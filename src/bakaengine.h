@@ -67,11 +67,11 @@ public:
         {"Ctrl+E",          {"baka show_in_folder",                 tr("Show the file in its folder")}},
         {"Tab",             {"baka media_info",                     tr("View media information")}},
         {"Ctrl+J",          {"baka jump",                           tr("Show jump to time dialog")}},
-        {"Ctrl+Left",       {"baka play -1",                        tr("Play previous file")}},
         {"Ctrl+N",          {"baka new",                            tr("Open a new window")}},
         {"Ctrl+O",          {"baka open",                           tr("Show open file dialog")}},
         {"Ctrl+Q",          {"baka quit",                           tr("Quit")}},
-        {"Ctrl+Right",      {"baka play +1",                        tr("Play next file")}},
+        {"Ctrl+Right",      {"baka playlist play +1",               tr("Play next file")}},
+        {"Ctrl+Left",       {"baka playlist play -1",               tr("Play previous file")}},
         {"Ctrl+S",          {"baka stop",                           tr("Stop playback")}},
         {"Ctrl+U",          {"baka open_location",                  tr("Show location dialog")}},
         {"Ctrl+V",          {"baka open_clipboard",                 tr("Open clipboard location")}},
@@ -80,15 +80,15 @@ public:
         {"Ctrl+G",          {"baka output",                         tr("Access command-line")}},
         {"F1",              {"baka online_help",                    tr("Launch online help")}},
         {"Space",           {"baka play_pause",                     tr("Play/Pause")}},
-        {"Alt+1",           {"baka fitwindow 0",                    tr("Fit the window to the video")}},
+        {"Alt+1",           {"baka fitwindow",                      tr("Fit the window to the video")}},
         {"Alt+2",           {"baka fitwindow 50",                   tr("Fit window to 50%")}},
         {"Alt+3",           {"baka fitwindow 75",                   tr("Fit window to 75%")}},
         {"Alt+4",           {"baka fitwindow 100",                  tr("Fit window to 100%")}},
         {"Alt+5",           {"baka fitwindow 150",                  tr("Fit window to 150%")}},
         {"Alt+6",           {"baka fitwindow 200",                  tr("Fit window to 200%")}},
         {"Esc",             {"baka boss",                           tr("Boss key")}},
-        {"Up",              {"baka playlist select prev",           tr("Select previous file on playlist")}},
-        {"Down",            {"baka playlist select next",           tr("Select next file on playlist")}},
+        {"Down",            {"baka playlist select +1",             tr("Select next file on playlist")}},
+        {"Up",              {"baka playlist select -1",             tr("Select previous file on playlist")}},
         {"Return",          {"baka playlist play",                  tr("Play selected file on playlist")}},
         {"Del",             {"baka playlist remove",                tr("Remove selected file from playlist")}}
     };
@@ -137,7 +137,6 @@ private:
     typedef void(BakaEngine::*BakaCommandFPtr)(QStringList&);
     const QHash<QString, BakaCommandFPtr> BakaCommandMap = {
         {"new", &BakaEngine::BakaNew},
-        {"play", &BakaEngine::BakaPlay},
         {"open_location", &BakaEngine::BakaOpenLocation},
         {"open_clipboard", &BakaEngine::BakaOpenClipboard},
         {"show_in_folder", &BakaEngine::BakaShowInFolder},
@@ -165,7 +164,6 @@ private:
     };
     // Baka Command Functions
     void BakaNew(QStringList&);
-    void BakaPlay(QStringList&);
     void BakaOpenLocation(QStringList&);
     void BakaOpenClipboard(QStringList&);
     void BakaShowInFolder(QStringList&);

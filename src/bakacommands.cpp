@@ -36,27 +36,12 @@ void BakaEngine::BakaNew(QStringList &args)
         InvalidParameter(args.join(' '));
 }
 
-void BakaEngine::BakaPlay(QStringList &args)
-{
-    if(!args.empty())
-    {
-        QString arg = args.front();
-        args.pop_front();
-        if(args.empty())
-            window->ui->playlistWidget->PlayIndex(arg.toInt(), true);
-        else
-            InvalidParameter(args.join(' '));
-    }
-    else
-        RequiresParameters("play");
-}
-
 void BakaEngine::BakaOpenLocation(QStringList &args)
 {
     if(args.empty())
         OpenLocation();
     else
-        mpv->LoadFile(args.join(' '));
+        InvalidParameter(args.join(' '));
 }
 
 void BakaEngine::OpenLocation()
@@ -161,14 +146,47 @@ void BakaEngine::BakaPlaylist(QStringList &args)
     {
         QString arg = args.front();
         args.pop_front();
-        if(args.empty())
+        if(arg == "play")
         {
-            if(arg == "play")
+            if(args.empty())
+                window->ui->playlistWidget->PlayIndex(window->ui->playlistWidget->currentRow());
+            else
             {
-                if(window->isPlaylistVisible() && !window->ui->inputLineEdit->hasFocus())
-                    window->ui->playlistWidget->PlayIndex(window->ui->playlistWidget->currentRow());
+                arg = args.front();
+                args.pop_front();
+                if(args.empty())
+                {
+                    if(arg.startsWith('+') || arg.startsWith('-'))
+                        window->ui->playlistWidget->PlayIndex(arg.toInt(), true);
+                    else
+                        window->ui->playlistWidget->PlayIndex(arg.toInt());
+                }
+                else
+                    InvalidParameter(args.join(' '));
             }
-            else if(arg == "remove")
+        }
+        else if(arg == "select")
+        {
+            if(args.empty())
+                window->ui->playlistWidget->SelectIndex(window->ui->playlistWidget->CurrentIndex());
+            else
+            {
+                arg = args.front();
+                args.pop_front();
+                if(args.empty())
+                {
+                    if(arg.startsWith('+') || arg.startsWith('-'))
+                        window->ui->playlistWidget->SelectIndex(arg.toInt(), true);
+                    else
+                        window->ui->playlistWidget->SelectIndex(arg.toInt());
+                }
+                else
+                    InvalidParameter(args.join(' '));
+            }
+        }
+        else if(args.empty())
+        {
+            if(arg == "remove")
             {
                 if(window->isPlaylistVisible() && !window->ui->inputLineEdit->hasFocus() && !window->ui->searchBox->hasFocus())
                     window->ui->playlistWidget->RemoveIndex(window->ui->playlistWidget->currentRow());
@@ -181,28 +199,6 @@ void BakaEngine::BakaPlaylist(QStringList &args)
                 window->HideAlbumArt(window->ui->action_Hide_Album_Art->isChecked());
             else
                 InvalidParameter(arg);
-        }
-        else if(arg == "select")
-        {
-            arg = args.front();
-            args.pop_front();
-            if(args.empty())
-            {
-                if(arg == "next")
-                {
-                    if(window->isPlaylistVisible())
-                        window->ui->playlistWidget->SelectIndex(1, true);
-                }
-                else if(arg == "prev")
-                {
-                    if(window->isPlaylistVisible())
-                        window->ui->playlistWidget->SelectIndex(-1, true);
-                }
-                else
-                    InvalidParameter(arg);
-            }
-            else
-                InvalidParameter(args.join(' '));
         }
         else if(arg == "repeat")
         {
@@ -323,10 +319,7 @@ void BakaEngine::BakaUpdate(QStringList &args)
         QString arg = args.front();
         args.pop_front();
         if(arg == "youtube-dl")
-        {
-            // update youtube-dl
             QProcess::startDetached("youtube-dl.exe --update");
-        }
         else
 #endif
             InvalidParameter(args.join(' '));

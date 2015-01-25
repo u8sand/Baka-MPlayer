@@ -7,6 +7,7 @@ Its simple design reflects the idea for an uncluttered, simple, and enjoyable en
 
 This manual is based on the status of the `master` branch (not the latest released version).
 
+
 ## Features
 
 ### Playlist
@@ -27,6 +28,7 @@ The screenshot template is passed into mpv as `screenshot-template` (see mpv's m
 ### Recent Files
 
 Your recently viewed files are stored in settings for easy access. It is located at the bottom of the file under `[baka-mplayer] -> recent`. To store more recently viewed files, set the `[baka-mplayer] -> maxRecent` value and the list will trim itself accordingly.
+
 
 ## Special functions
 
@@ -50,7 +52,8 @@ Some functionality that is not explained or is immediately obvious is written he
 		Middle Click - Jump to a specific time
 		Right Click - Open a location (including URLs)
 
-(Note: custom key bindings will be allowed soon)
+Most of these features are customizable through preferences, including key-binding customization and feature toggles.
+
 
 ## Settings
 
@@ -63,18 +66,22 @@ On Linux, they are saved in the Qt location `~/.config/bakamplayer.ini`.
 	[baka-mplayer]          # program options
 	autoFit=                # autoFit percentage (0 = no autofit)
 	debug=                  # debugging enabled (output box)
-	height=                 # height of the window
 	hidePopup=              # hide tray icon notifications
+	lang=                   # the language used by the program (auto selects from locale)
+	lastcheck=              # last time we checked for updates
 	maxRecent=              # the maximum files saved in recent
 	onTop=                  # on top setting (always, never, or playing)
 	recent=                 # recent file history
 	remaining=              # display remaining time or duration time label
 	screenshotDialog=       # always show the screenshot dialog when taking screenshots
-	showAll=                # Should we load files of different extensions
+	showAll=                # should we load files of different extensions
 	splitter=               # the normal splitter position (playlist size)
 	trayIcon=               # should we display the trayIcon
 	version=                # the settings version (do not modify)
-	width=                  # width of the window
+	
+	[input]                 # input macros
+	Ctrl+Q=baka quit        # Shortcut=Command
+	                        # for command information see Commands section
 
 	[mpv]                   # mpv specific options
 	screenshot-format=      # format of mpv's screenshots
@@ -85,7 +92,53 @@ On Linux, they are saved in the Qt location `~/.config/bakamplayer.ini`.
 
 Note that the `[mpv]` section is using mpv's options. See mpv's manual for a list of valid options.
 
-## Translation
+
+## Commands
+
+The command-line is handled on an argument basis by splitting commands up by spaces and getting more and more specific. The major command differentiation is between mpv and baka-mplayer.
+
+Baka-MPlayer commands should be prefixed with `baka` while mpv commands are prefixed with `mpv`. eg. `baka quit` vs `mpv quit`  Both will quit but one told mpv to quit (which then ended baka), while the other told baka to quit (which ended mpv).
+
+In general you'll want to use any available baka-mplayer command before you use an mpv command; this is because some aspects either are baka-mplayer specific or handle certain issues. For example: `baka volume +5` vs `mpv volume +5`; baka-mplayer will adjust the volume even if no video is playing and update mpv accordingly when it starts up; mpv volume will only work if a file is playing.
+
+The following is a list of the available `baka` commands (for `mpv` commands see mpv's manual):
+
+	new                             # creates a new instance of baka-mplayer
+	open_location                   # shows the open location dialog
+	open_clipboard                  # opens the clipboard
+	show_in_folder                  # shows the current file in folder
+	add_subtitles                   # add subtitles dialog
+	screenshot [subtitles]          # take a screenshot (with subs if specified)
+	media_info                      # toggles media info state
+	stop                            # stops the current playback
+	playlist <...>                  # playlist options (playlist ...)
+	  play [index]                  #  plays the selected file (or (relative)? index)
+	  remove                        #  removes the selected file from the playlist
+	  shuffle                       #  shuffles the playlist
+	  toggle                        #  toggles the playlist
+	  full                          #  expands fully the playlist (hide album art)
+	  select [index]                #  selects the index (can be relative) or currently playing file
+	  repeat <off|this|playlist>    #  sets repeat state
+	jump                            # opens jump dialog
+	dim                             # toggles dim desktop
+	output                          # toggles output textbox
+	preferences                     # opens preferences dialog
+	online_help                     # launches online help
+	update [youtube-dl]             # opens the update dialog or updates youtube-dl
+	open [file]                     # opens the open file dialog or the file specified
+	play_pause                      # toggle play/pause state
+	fitwindow [percent]             # fit the window
+	volume [value]                  # adjusts the volume (can be relative)
+	fullscreen                      # toggles fullscreen state
+	boss                            # pause and hide the window--run away from boss
+	help [command]                  # internal help menu
+	about [qt]                      # open about dialog
+	debug                           # toggle mpv debugging messages
+	quit                            # quit baka-mplayer
+
+More commands will be coming but please feel free to suggest modifications or additions.
+
+## Translations
 
 ### To add a new translation
 
