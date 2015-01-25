@@ -84,7 +84,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2015 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; é livre e open source, multiplataforma, player multimídia de &lt;b&gt;libmpv&lt;/b&gt;. O design simples reflecte a idéia para uma organizada, claro, e agradável ambiente para assistir a programas de TV.&lt;br&gt;&lt;br&gt;Copyright © 2014 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt; {2015 ?} {8s?} {8s?} {8s?}</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; é livre e open source, multiplataforma, player multimídia de &lt;b&gt;libmpv&lt;/b&gt;. O design simples reflecte a idéia para uma organizada, claro, e agradável ambiente para assistir a programas de TV.&lt;br&gt;&lt;br&gt;Copyright © 2015 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
@@ -123,51 +123,51 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Open Subtitle File</source>
-        <translation type="unfinished">Arquivo de legenda aberta</translation>
+        <translation>Arquivo de legenda aberta</translation>
     </message>
     <message>
         <source>Subtitle Files</source>
-        <translation type="unfinished">Arquivos de Legendas</translation>
+        <translation>Arquivos de Legendas</translation>
     </message>
     <message>
         <source>http://bakamplayer.u8sand.net/help.php</source>
-        <translation type="unfinished">http://bakamplayer.u8sand.net/help.php</translation>
+        <translation>http://bakamplayer.u8sand.net/help.php</translation>
     </message>
     <message>
         <source>Open File</source>
-        <translation type="unfinished">Arquivo Aberto</translation>
+        <translation>Arquivo Aberto</translation>
     </message>
     <message>
         <source>Media Files</source>
-        <translation type="unfinished">Arquivos de Mídia</translation>
+        <translation>Arquivos de Mídia</translation>
     </message>
     <message>
         <source>Video Files</source>
-        <translation type="unfinished">Arquivos de Vídeo</translation>
+        <translation>Arquivos de Vídeo</translation>
     </message>
     <message>
         <source>Audio Files</source>
-        <translation type="unfinished">Arquivos de Áudio</translation>
+        <translation>Arquivos de Áudio</translation>
     </message>
     <message>
         <source>autofit</source>
-        <translation type="unfinished"></translation>
+        <translation>auto ajuste</translation>
     </message>
     <message>
         <source>Dim Lights</source>
-        <translation type="unfinished">Luzes Difusas</translation>
+        <translation>Luzes Difusas</translation>
     </message>
     <message>
         <source>In order to dim the lights, the desktop compositor has to be enabled. This can be done through Window Manager Desktop.</source>
-        <translation type="unfinished">Para escurecer o ambiente de trabalho, transparência do desktop tem que ser ativado.</translation>
+        <translation>Para escurecer o ambiente de trabalho, transparência do desktop tem que ser ativado.</translation>
     </message>
     <message>
         <source>Increase Playback Speed by 25%</source>
-        <translation type="unfinished"></translation>
+        <translation>Aumentar a velocidade de reprodução em 25%</translation>
     </message>
     <message>
         <source>Show the file in it&apos;s folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Vista na pasta</translation>
     </message>
     <message>
         <source>View Media Information</source>
@@ -199,7 +199,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Decrease speed by 25%</source>
-        <translation type="unfinished"></translation>
+        <translation>Diminuir a velocidade de reprodução em 25%</translation>
     </message>
     <message>
         <source>Reset speed</source>
@@ -307,23 +307,23 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Fit Window to 50%</source>
-        <translation type="unfinished"></translation>
+        <translation>Janela de Ajuste de 50%</translation>
     </message>
     <message>
         <source>Fit Window to 75%</source>
-        <translation type="unfinished"></translation>
+        <translation>Janela de Ajuste de 75%</translation>
     </message>
     <message>
         <source>Fit Window to 100%</source>
-        <translation type="unfinished"></translation>
+        <translation>Janela de Ajuste de 100%</translation>
     </message>
     <message>
         <source>Fit Window to 150%</source>
-        <translation type="unfinished"></translation>
+        <translation>Janela de Ajuste de 150%</translation>
     </message>
     <message>
         <source>Fit Window to 200%</source>
-        <translation type="unfinished"></translation>
+        <translation>Janela de Ajuste de 200%</translation>
     </message>
     <message>
         <source>Boss Key</source>
@@ -347,11 +347,11 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Saved to &quot;%0&quot;, with subs</source>
-        <translation type="unfinished">Salvos em &quot;%0&quot;, com legendas</translation>
+        <translation>Salvos em &quot;%0&quot;, com legendas</translation>
     </message>
     <message>
         <source>Saved to &quot;%0&quot;, without subs</source>
-        <translation type="unfinished">Salvos em &quot;%0&quot;, sem legendas</translation>
+        <translation>Salvos em &quot;%0&quot;, sem legendas</translation>
     </message>
 </context>
 <context>
@@ -499,31 +499,31 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     <name>KeyDialog</name>
     <message>
         <source>Modify Shortcut Key</source>
-        <translation type="unfinished"></translation>
+        <translation>Modificar Tecla de Atalho</translation>
     </message>
     <message>
         <source>Command</source>
-        <translation type="unfinished">Comando</translation>
+        <translation>Comando</translation>
     </message>
     <message>
         <source>Label (optional)</source>
-        <translation type="unfinished">Label (opcional)</translation>
+        <translation>Label (opcional)</translation>
     </message>
     <message>
         <source>C&amp;LEAR SHORTCUT</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;REMOVER ATALHO</translation>
     </message>
     <message>
         <source>CHANG&amp;E</source>
-        <translation type="unfinished">ALT&amp;ERAÇÃO</translation>
+        <translation>ALT&amp;ERAÇÃO</translation>
     </message>
     <message>
         <source>&amp;ADD</source>
-        <translation type="unfinished">&amp;Adicionar</translation>
+        <translation>&amp;ADICIONAR</translation>
     </message>
     <message>
         <source>&amp;CANCEL</source>
-        <translation type="unfinished">&amp;CANCELAR</translation>
+        <translation>&amp;CANCELAR</translation>
     </message>
 </context>
 <context>
@@ -1139,15 +1139,15 @@ Nota: O valor deve ser de %0 - %1</translation>
     </message>
     <message>
         <source>Open &amp;Location...</source>
-        <translation type="unfinished"></translation>
+        <translation>Aberto &amp;Localização...</translation>
     </message>
     <message>
         <source>Update &amp;Streaming Support</source>
-        <translation type="unfinished"></translation>
+        <translation>Atualizar o Suporte Para &amp;Transmissão</translation>
     </message>
     <message>
         <source>Show Playback &amp;Info</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar &amp;Informações de Reprodução</translation>
     </message>
 </context>
 <context>
@@ -1160,75 +1160,75 @@ Nota: O valor deve ser de %0 - %1</translation>
     </message>
     <message>
         <source>File name</source>
-        <translation type="unfinished">Nome do arquivo</translation>
+        <translation>Nome do arquivo</translation>
     </message>
     <message>
         <source>Media Title</source>
-        <translation type="unfinished">Título de Mídia</translation>
+        <translation>Título de Mídia</translation>
     </message>
     <message>
         <source>File size</source>
-        <translation type="unfinished">Tamanho do Arquivo</translation>
+        <translation>Tamanho do Arquivo</translation>
     </message>
     <message>
         <source>Date created</source>
-        <translation type="unfinished">Data de Criação</translation>
+        <translation>Data de Criação</translation>
     </message>
     <message>
         <source>Media length</source>
-        <translation type="unfinished">Duração de Mídia</translation>
+        <translation>Duração de Mídia</translation>
     </message>
     <message>
         <source>[Video]</source>
-        <translation type="unfinished">[Vídeo]</translation>
+        <translation>[Vídeo]</translation>
     </message>
     <message>
         <source>Video codec</source>
-        <translation type="unfinished">Codec de vídeo</translation>
+        <translation>Codec de vídeo</translation>
     </message>
     <message>
         <source>Video format</source>
-        <translation type="unfinished">Formato de vídeo</translation>
+        <translation>Formato de vídeo</translation>
     </message>
     <message>
         <source>Video bitrate</source>
-        <translation type="unfinished">Texa de bits de vídeo</translation>
+        <translation>Texa de bits de vídeo</translation>
     </message>
     <message>
         <source>Video dimensions</source>
-        <translation type="unfinished">dimensões do vídeo</translation>
+        <translation>Dimensões do vídeo</translation>
     </message>
     <message>
         <source>[Audio]</source>
-        <translation type="unfinished">[Áudio]</translation>
+        <translation>[Áudio]</translation>
     </message>
     <message>
         <source>Audio codec</source>
-        <translation type="unfinished">Codec de áudio</translation>
+        <translation>Codec de áudio</translation>
     </message>
     <message>
         <source>Audio format</source>
-        <translation type="unfinished">Formato de áudio</translation>
+        <translation>Formato de áudio</translation>
     </message>
     <message>
         <source>Audio bitrate</source>
-        <translation type="unfinished">Texa de bits de áudio</translation>
+        <translation>Texa de bits de áudio</translation>
     </message>
     <message>
         <source>Audio samplerate</source>
-        <translation type="unfinished">Taxa de amostragem de áudio</translation>
+        <translation>Taxa de amostragem de áudio</translation>
     </message>
     <message>
         <source>Audio channels</source>
-        <translation type="unfinished">Canais de áudio</translation>
+        <translation>Canais de áudio</translation>
     </message>
     <message>
         <source>[Track List]</source>
-        <translation type="unfinished">[Lista de Pistas]</translation>
+        <translation>[Lista de Pistas]</translation>
     </message>
     <message>
         <source>[Chapter List]</source>
-        <translation type="unfinished">[Lista de Capítulos]</translation>
+        <translation>[Lista de Capítulos]</translation>
     </message>
 </context>
 <context>
@@ -1399,31 +1399,31 @@ Nota: O valor deve ser de %0 - %1</translation>
     </message>
     <message>
         <source>&amp;Enable Mouse Gesture support</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Permitir Gestos do Mouse</translation>
     </message>
     <message>
         <source>&amp;REMOVE</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;REMOVER</translation>
     </message>
     <message>
         <source>RESE&amp;T</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;REDEFINIÇÃO</translation>
     </message>
     <message>
         <source>Reset Keybinding</source>
-        <translation type="unfinished"></translation>
+        <translation>Redefinir Atalhos de Teclado</translation>
     </message>
     <message>
         <source>Are you sure you want to reset the shortcut keys to original bindings?</source>
-        <translation type="unfinished"></translation>
+        <translation>Tem certeza que você quer redefinir as teclas de atalho ao original?</translation>
     </message>
     <message>
         <source>Existing keybinding</source>
-        <translation type="unfinished"></translation>
+        <translation>Atalho de Teclado Existente</translation>
     </message>
     <message>
         <source>%0 is already being used. Would you like to change its function?</source>
-        <translation type="unfinished"></translation>
+        <translation>%0 está em uso. Que gostaria de modificar a função?</translation>
     </message>
 </context>
 <context>
@@ -1532,55 +1532,63 @@ Version: %0</source>
     <message>
         <source>Checking for updates...
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Verificando Atualizações...
+</translation>
     </message>
     <message>
         <source>Downloading update...
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Baixando Completado...
+</translation>
     </message>
     <message>
         <source>fopen error
 </source>
-        <translation type="unfinished"></translation>
+        <translation>fopen erro</translation>
     </message>
     <message>
         <source>write error
 </source>
-        <translation type="unfinished"></translation>
+        <translation>erro de gravação
+</translation>
     </message>
     <message>
         <source>Download complete
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Baixar completado
+</translation>
     </message>
     <message>
         <source>Could not open file for writing...</source>
-        <translation type="unfinished"></translation>
+        <translation>Não pôde abrir arquivo para gravação...</translation>
     </message>
     <message>
         <source>Redirected...
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Redirecionado...
+</translation>
     </message>
     <message>
         <source>Extracting...
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Extraindo...
+</translation>
     </message>
     <message>
         <source>Creating updater script...
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Criação de roteiro atualizador...
+</translation>
     </message>
     <message>
         <source>Updating...</source>
-        <translation type="unfinished"></translation>
+        <translation>Atualização...</translation>
     </message>
     <message>
         <source>Done. Restarting...
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Feito. Reiniciando...
+</translation>
     </message>
 </context>
 </TS>
