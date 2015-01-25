@@ -171,19 +171,19 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Fit Window: %0</source>
-        <translation type="unfinished"></translation>
+        <translation>Ajustar a Janela: %0</translation>
     </message>
     <message>
         <source>Increase sub size</source>
-        <translation type="unfinished"></translation>
+        <translation>Aumentar o tamanho da legenda</translation>
     </message>
     <message>
         <source>Decrease sub size</source>
-        <translation type="unfinished"></translation>
+        <translation>Diminuir o tamanho da legenda</translation>
     </message>
     <message>
         <source>Restart playback</source>
-        <translation type="unfinished"></translation>
+        <translation>Reiniciar</translation>
     </message>
     <message>
         <source>Decrease speed by 25%</source>
@@ -191,19 +191,19 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Reset speed</source>
-        <translation type="unfinished"></translation>
+        <translation>Velocidade Redefinição</translation>
     </message>
     <message>
         <source>Take screenshot without subtitles</source>
-        <translation type="unfinished"></translation>
+        <translation>Tirar foto sem legendas</translation>
     </message>
     <message>
         <source>Take screenshot with subtitles</source>
-        <translation type="unfinished"></translation>
+        <translation>Tirar foto com legendas</translation>
     </message>
     <message>
         <source>Toggle subtitle visibility</source>
-        <translation type="unfinished"></translation>
+        <translation>Visibilidade legenda alternar</translation>
     </message>
     <message>
         <source>Seek backwards by 5 sec</source>
@@ -211,19 +211,19 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Go to previous chapter</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vai pro prévio capítulo</translation>
     </message>
     <message>
         <source>Increase playback speed by 25%</source>
-        <translation type="unfinished"></translation>
+        <translation>Aumentar a velocidade de reprodução em 25%</translation>
     </message>
     <message>
         <source>Decrease playback speed by 25%</source>
-        <translation type="unfinished"></translation>
+        <translation>Diminuir a velocidade de reprodução em 25%</translation>
     </message>
     <message>
         <source>Go to next chapter</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vai pro próximo capítulo</translation>
     </message>
     <message>
         <source>Seek forwards by 5 sec</source>
@@ -283,23 +283,23 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Fit window to 50%</source>
-        <translation type="unfinished"></translation>
+        <translation>Janela de ajuste de 50%</translation>
     </message>
     <message>
         <source>Fit window to 75%</source>
-        <translation type="unfinished"></translation>
+        <translation>Janela de ajuste de 75%</translation>
     </message>
     <message>
         <source>Fit window to 100%</source>
-        <translation type="unfinished"></translation>
+        <translation>Janela de ajuste de 100%</translation>
     </message>
     <message>
         <source>Fit window to 150%</source>
-        <translation type="unfinished"></translation>
+        <translation>Janela de ajuste de 150%</translation>
     </message>
     <message>
         <source>Fit window to 200%</source>
-        <translation type="unfinished"></translation>
+        <translation>Janela de ajuste de 200%</translation>
     </message>
     <message>
         <source>Boss key</source>
@@ -307,11 +307,11 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Play previous file</source>
-        <translation type="unfinished"></translation>
+        <translation>Play arquivo anterior</translation>
     </message>
     <message>
         <source>Open a new window</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Abrir a nova janela</translation>
     </message>
     <message>
         <source>Quit</source>
@@ -319,11 +319,11 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Play next file</source>
-        <translation type="unfinished"></translation>
+        <translation>Play arquivo próximo</translation>
     </message>
     <message>
         <source>Stop playback</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Para reprodução</translation>
     </message>
     <message>
         <source>Open clipboard location</source>
@@ -391,7 +391,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>./screenshot%#04</source>
-        <translation type="unfinished"></translation>
+        <translation>./foto%#04n</translation>
     </message>
 </context>
 <context>
