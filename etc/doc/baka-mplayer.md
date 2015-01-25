@@ -78,9 +78,9 @@ On Linux, they are saved in the Qt location `~/.config/bakamplayer.ini`.
 	splitter=               # the normal splitter position (playlist size)
 	trayIcon=               # should we display the trayIcon
 	version=                # the settings version (do not modify)
-	
+
 	[input]                 # input macros
-	Ctrl+Q=baka quit        # Shortcut=Command
+	Ctrl+Q=baka quit # Quit # Shortcut=Command # Label
 	                        # for command information see Commands section
 
 	[mpv]                   # mpv specific options
@@ -137,6 +137,7 @@ The following is a list of the available `baka` commands (for `mpv` commands see
 	quit                            # quit baka-mplayer
 
 More commands will be coming but please feel free to suggest modifications or additions.
+
 
 ## Translations
 
