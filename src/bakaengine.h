@@ -50,8 +50,6 @@ public:
         {"Ctrl+Shift+R",    {"mpv osd-msg set speed 1",             tr("Reset speed")}},
         {"Ctrl+Shift+Up",   {"mpv osd-msg add speed +0.25",         tr("Increase Playback Speed by 25%")}},
         {"Ctrl+Shift+Down", {"mpv osd-msg add speed -0.25",         tr("Decrease speed by 25%")}},
-        {"Ctrl+Shift+T",    {"mpv osd-msg screenshot video",        tr("Take screenshot without subtitles")}},
-        {"Ctrl+T",          {"mpv osd-msg screenshot subtitles",    tr("Take screenshot with subtitles")}},
         {"Ctrl+W",          {"mpv osd-msg cycle sub-visibility",    tr("Toggle subtitle visibility")}},
         {"Ctrl+R",          {"mpv set time-pos 0",                  tr("Restart playback")}},
         {"PgDown",          {"mpv add chapter +1",                  tr("Go to next chapter")}},
@@ -60,6 +58,8 @@ public:
         {"Left",            {"mpv seek -5",                         tr("Seek backwards by 5 sec")}},
         {"Shift+Left",      {"mpv frame_back_step",                 tr("Frame step backwards")}},
         {"Shift+Right",     {"mpv frame_step",                      tr("Frame step")}},
+        {"Ctrl+T",          {"baka screenshot subtitles",           tr("Take screenshot with subtitles")}},
+        {"Ctrl+Shift+T",    {"baka screenshot",                     tr("Take screenshot without subtitles")}},
         {"Ctrl+Down",       {"baka volume -5",                      tr("Decrease volume")}},
         {"Ctrl+Up",         {"baka volume +5",                      tr("Increase volume")}},
         {"Alt+Return",      {"baka fullscreen",                     tr("Toggle fullscreen")}},
@@ -141,6 +141,7 @@ private:
         {"open_clipboard", &BakaEngine::BakaOpenClipboard},
         {"show_in_folder", &BakaEngine::BakaShowInFolder},
         {"add_subtitles", &BakaEngine::BakaAddSubtitles},
+        {"screenshot", &BakaEngine::BakaScreenshot},
         {"media_info", &BakaEngine::BakaMediaInfo},
         {"stop", &BakaEngine::BakaStop},
         {"playlist", &BakaEngine::BakaPlaylist},
@@ -168,6 +169,7 @@ private:
     void BakaOpenClipboard(QStringList&);
     void BakaShowInFolder(QStringList&);
     void BakaAddSubtitles(QStringList&);
+    void BakaScreenshot(QStringList&);
     void BakaMediaInfo(QStringList&);
     void BakaStop(QStringList&);
     void BakaPlaylist(QStringList&);
@@ -191,6 +193,8 @@ private:
 public:
     void Open();
     void OpenLocation();
+    void Screenshot(bool subs);
+    void MediaInfo(bool show);
     void PlayPause();
     void Jump();
     void FitWindow(int percent = 0, bool msg = true);

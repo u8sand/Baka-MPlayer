@@ -2,8 +2,8 @@
 #define PREFERENCESDIALOG_H
 
 #include <QDialog>
-#include <QPair>
 #include <QString>
+#include <QPair>
 
 namespace Ui {
 class PreferencesDialog;

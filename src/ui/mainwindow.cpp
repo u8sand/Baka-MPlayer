@@ -40,8 +40,6 @@ MainWindow::MainWindow(QWidget *parent):
         {"mpv set sub-scale 1", ui->action_Reset_Size},
         {"mpv add sub-scale +0.02", ui->action_Size},
         {"mpv add sub-scale -0.02", ui->actionS_ize},
-        {"mpv osd-msg screenshot subtitles", ui->actionWith_Subtitles},
-        {"mpv osd-msg screenshot video", ui->actionWithout_Subtitles},
         {"mpv osd-msg add speed +0.25", ui->action_Increase},
         {"mpv osd-msg add speed -0.25", ui->action_Decrease},
         {"mpv osd-msg set speed 1", ui->action_Reset},
@@ -53,6 +51,8 @@ MainWindow::MainWindow(QWidget *parent):
         {"mpv set time-pos 0", ui->action_Restart},
         {"mpv frame_step", ui->action_Frame_Step},
         {"mpv frame_back_step", ui->actionFrame_Back_Step},
+        {"baka screenshot subtitles", ui->actionWith_Subtitles},
+        {"baka screenshot", ui->actionWithout_Subtitles},
         {"baka add_subtitles", ui->action_Add_Subtitle_File},
         {"baka fitwindow 0", ui->action_To_Current_Size},
         {"baka fitwindow 50", ui->action50},
@@ -255,6 +255,9 @@ MainWindow::MainWindow(QWidget *parent):
 
                     // todo: deal with streamed input for which we do not know the length
                     ui->seekBar->setTracking(fileInfo.length);
+
+                    if(ui->actionMedia_Info->isChecked())
+                        baka->MediaInfo(true);
 
                     if(!remaining)
                         ui->remainingLabel->setText(Util::FormatTime(fileInfo.length, fileInfo.length));
@@ -1070,7 +1073,7 @@ void MainWindow::ShowPlaylist(bool visible)
     if(visible)
     {
         ui->splitter->setPosition(ui->splitter->normalPosition()); // bring splitter position to normal
-        ui->playlistWidget->SelectIndex(0, true);
+        ui->playlistWidget->SelectIndex(ui->playlistWidget->CurrentIndex());
     }
     else
     {
@@ -1091,31 +1094,6 @@ void MainWindow::HideAlbumArt(bool hide)
     }
     else
         ui->splitter->setPosition(ui->splitter->normalPosition()); // bring the splitter to normal position
-}
-
-void MainWindow::TakeScreenshot(bool subs)
-{
-    if(screenshotDialog)
-    {
-        mpv->Pause();
-        if(ScreenshotDialog::showScreenshotDialog(screenshotDialog, subs, mpv) != QDialog::Accepted)
-            return;
-    }
-    else
-        mpv->Screenshot(subs);
-    ShowScreenshotMessage(subs);
-}
-
-void MainWindow::ShowScreenshotMessage(bool subs)
-{
-    QString dir = mpv->getScreenshotDir();
-    int i = dir.lastIndexOf('/');
-    if(i != -1)
-        dir.remove(0, i+1);
-    if(subs)
-        mpv->ShowText(tr("Saved to \"%0\", with subs").arg(dir));
-    else
-        mpv->ShowText(tr("Saved to \"%0\", without subs").arg(dir));
 }
 
 void MainWindow::UpdateRecentFiles()

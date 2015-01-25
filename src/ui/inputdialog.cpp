@@ -1,8 +1,6 @@
 #include "inputdialog.h"
 #include "ui_inputdialog.h"
 
-#include <QString>
-
 InputDialog::InputDialog(QString prompt, QString title, const std::function<bool (QString)> &_validation, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::InputDialog),

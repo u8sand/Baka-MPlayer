@@ -9,6 +9,8 @@
 #include <QEvent>
 #include <QTimer>
 #include <QTranslator>
+#include <QHash>
+#include <QAction>
 
 namespace Ui {
 class MainWindow;
@@ -57,8 +59,6 @@ private slots:
     void FullScreen(bool fs);                       // makes window fullscreen
     void ShowPlaylist(bool visible);                // sets the playlist visibility
     void HideAlbumArt(bool hide);                   // hides the album art
-    void TakeScreenshot(bool subs);                 // take a screenshot
-    void ShowScreenshotMessage(bool subs);          // show the screenshot status message
     void UpdateRecentFiles();                       // populate recentFiles menu
 
 private:

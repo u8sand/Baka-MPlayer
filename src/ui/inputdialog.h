@@ -2,6 +2,7 @@
 #define INPUTDIALOG_H
 
 #include <QDialog>
+#include <QString>
 
 #include <functional>
 

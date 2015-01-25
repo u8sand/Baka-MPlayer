@@ -16,6 +16,7 @@
 #include "ui/jumpdialog.h"
 #include "ui/preferencesdialog.h"
 #include "ui/updatedialog.h"
+#include "ui/screenshotdialog.h"
 #include "widgets/dimdialog.h"
 #include "mpvhandler.h"
 #include "overlayhandler.h"
@@ -95,13 +96,56 @@ void BakaEngine::BakaAddSubtitles(QStringList &args)
     mpv->AddSubtitleTrack(trackFile);
 }
 
+void BakaEngine::BakaScreenshot(QStringList &args)
+{
+    if(args.empty())
+        Screenshot(false);
+    else
+    {
+        QString arg = args.front();
+        args.pop_front();
+        if(args.empty() && arg == "subtitles")
+            Screenshot(true);
+        else
+            InvalidParameter(arg);
+    }
+}
+
+void BakaEngine::Screenshot(bool subs)
+{
+    if(window->screenshotDialog)
+    {
+        mpv->Pause();
+        if(ScreenshotDialog::showScreenshotDialog(window->screenshotDialog, subs, mpv) != QDialog::Accepted)
+            return;
+    }
+    else
+        mpv->Screenshot(subs);
+
+    QString dir = mpv->getScreenshotDir();
+    int i = dir.lastIndexOf('/');
+    if(i != -1)
+        dir.remove(0, i+1);
+    if(subs)
+        mpv->ShowText(tr("Saved to \"%0\", with subs").arg(dir));
+    else
+        mpv->ShowText(tr("Saved to \"%0\", without subs").arg(dir));
+}
+
+
 void BakaEngine::BakaMediaInfo(QStringList &args)
 {
     if(args.empty())
-        overlay->showInfoText(window->ui->actionMedia_Info->isChecked());
+        MediaInfo(window->ui->actionMedia_Info->isChecked());
     else
         InvalidParameter(args.join(' '));
 }
+
+void BakaEngine::MediaInfo(bool show)
+{
+    overlay->showInfoText(show);
+}
+
 
 void BakaEngine::BakaStop(QStringList &args)
 {
