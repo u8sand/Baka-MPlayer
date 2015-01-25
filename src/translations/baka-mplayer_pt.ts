@@ -345,98 +345,106 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
         <source>Remove selected file from playlist</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Saved to &quot;%0&quot;, with subs</source>
+        <translation type="unfinished">Salvos em &quot;%0&quot;, com legendas</translation>
+    </message>
+    <message>
+        <source>Saved to &quot;%0&quot;, without subs</source>
+        <translation type="unfinished">Salvos em &quot;%0&quot;, sem legendas</translation>
+    </message>
 </context>
 <context>
     <name>InfoDialog</name>
     <message>
         <source>Media Info</source>
-        <translation>Informação Mídia</translation>
+        <translation type="vanished">Informação Mídia</translation>
     </message>
     <message>
         <source>Info Type</source>
-        <translation>Tipo de Informação</translation>
+        <translation type="vanished">Tipo de Informação</translation>
     </message>
     <message>
         <source>Value</source>
         <translatorcomment>Not sure....</translatorcomment>
-        <translation>Valor</translation>
+        <translation type="vanished">Valor</translation>
     </message>
     <message>
         <source>&amp;CLOSE</source>
-        <translation>&amp;FECHAR</translation>
+        <translation type="vanished">&amp;FECHAR</translation>
     </message>
     <message>
         <source>File name</source>
-        <translation>Nome do arquivo</translation>
+        <translation type="vanished">Nome do arquivo</translation>
     </message>
     <message>
         <source>Media Title</source>
-        <translation>Título de Mídia</translation>
+        <translation type="vanished">Título de Mídia</translation>
     </message>
     <message>
         <source>File size</source>
         <translatorcomment>Not entirely sure about &quot;Tamanho&quot;</translatorcomment>
-        <translation>Tamanho do Arquivo</translation>
+        <translation type="vanished">Tamanho do Arquivo</translation>
     </message>
     <message>
         <source>Date created</source>
-        <translation>Data de Criação</translation>
+        <translation type="vanished">Data de Criação</translation>
     </message>
     <message>
         <source>Media length</source>
-        <translation>Duração de Mídia</translation>
+        <translation type="vanished">Duração de Mídia</translation>
     </message>
     <message>
         <source>[Video]</source>
-        <translation>[Vídeo]</translation>
+        <translation type="vanished">[Vídeo]</translation>
     </message>
     <message>
         <source>Video codec</source>
-        <translation>Codec de vídeo</translation>
+        <translation type="vanished">Codec de vídeo</translation>
     </message>
     <message>
         <source>Video format</source>
-        <translation>Formato de vídeo</translation>
+        <translation type="vanished">Formato de vídeo</translation>
     </message>
     <message>
         <source>Video bitrate</source>
-        <translation>Texa de bits de vídeo</translation>
+        <translation type="vanished">Texa de bits de vídeo</translation>
     </message>
     <message>
         <source>Video dimensions</source>
-        <translation>dimensões do vídeo</translation>
+        <translation type="vanished">dimensões do vídeo</translation>
     </message>
     <message>
         <source>[Audio]</source>
-        <translation>[Áudio]</translation>
+        <translation type="vanished">[Áudio]</translation>
     </message>
     <message>
         <source>Audio codec</source>
-        <translation>Codec de áudio</translation>
+        <translation type="vanished">Codec de áudio</translation>
     </message>
     <message>
         <source>Audio format</source>
-        <translation>Formato de áudio</translation>
+        <translation type="vanished">Formato de áudio</translation>
     </message>
     <message>
         <source>Audio bitrate</source>
-        <translation>Texa de bits de áudio</translation>
+        <translation type="vanished">Texa de bits de áudio</translation>
     </message>
     <message>
         <source>Audio samplerate</source>
-        <translation>Taxa de amostragem de áudio</translation>
+        <translation type="vanished">Taxa de amostragem de áudio</translation>
     </message>
     <message>
         <source>Audio channels</source>
-        <translation>Canais de áudio</translation>
+        <translation type="vanished">Canais de áudio</translation>
     </message>
     <message>
         <source>[Track List]</source>
-        <translation>[Lista de Pistas]</translation>
+        <translation type="vanished">[Lista de Pistas]</translation>
     </message>
     <message>
         <source>[Chapter List]</source>
-        <translation>[Lista de Capítulos]</translation>
+        <translation type="vanished">[Lista de Capítulos]</translation>
     </message>
 </context>
 <context>
@@ -764,7 +772,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Media &amp;Info</source>
-        <translation>&amp;Informação Mídia</translation>
+        <translation type="vanished">&amp;Informação Mídia</translation>
     </message>
     <message>
         <source>Ctrl+I</source>
@@ -1119,11 +1127,11 @@ Nota: O valor deve ser de %0 - %1</translation>
     </message>
     <message>
         <source>Saved to &quot;%0&quot;, with subs</source>
-        <translation>Salvos em &quot;%0&quot;, com legendas</translation>
+        <translation type="vanished">Salvos em &quot;%0&quot;, com legendas</translation>
     </message>
     <message>
         <source>Saved to &quot;%0&quot;, without subs</source>
-        <translation>Salvos em &quot;%0&quot;, sem legendas</translation>
+        <translation type="vanished">Salvos em &quot;%0&quot;, sem legendas</translation>
     </message>
     <message>
         <source>Open File</source>
@@ -1137,6 +1145,10 @@ Nota: O valor deve ser de %0 - %1</translation>
         <source>Update &amp;Streaming Support</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Show Playback &amp;Info</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MpvHandler</name>
@@ -1145,6 +1157,78 @@ Nota: O valor deve ser de %0 - %1</translation>
 </source>
         <translation>mpv não foi inicializado
 </translation>
+    </message>
+    <message>
+        <source>File name</source>
+        <translation type="unfinished">Nome do arquivo</translation>
+    </message>
+    <message>
+        <source>Media Title</source>
+        <translation type="unfinished">Título de Mídia</translation>
+    </message>
+    <message>
+        <source>File size</source>
+        <translation type="unfinished">Tamanho do Arquivo</translation>
+    </message>
+    <message>
+        <source>Date created</source>
+        <translation type="unfinished">Data de Criação</translation>
+    </message>
+    <message>
+        <source>Media length</source>
+        <translation type="unfinished">Duração de Mídia</translation>
+    </message>
+    <message>
+        <source>[Video]</source>
+        <translation type="unfinished">[Vídeo]</translation>
+    </message>
+    <message>
+        <source>Video codec</source>
+        <translation type="unfinished">Codec de vídeo</translation>
+    </message>
+    <message>
+        <source>Video format</source>
+        <translation type="unfinished">Formato de vídeo</translation>
+    </message>
+    <message>
+        <source>Video bitrate</source>
+        <translation type="unfinished">Texa de bits de vídeo</translation>
+    </message>
+    <message>
+        <source>Video dimensions</source>
+        <translation type="unfinished">dimensões do vídeo</translation>
+    </message>
+    <message>
+        <source>[Audio]</source>
+        <translation type="unfinished">[Áudio]</translation>
+    </message>
+    <message>
+        <source>Audio codec</source>
+        <translation type="unfinished">Codec de áudio</translation>
+    </message>
+    <message>
+        <source>Audio format</source>
+        <translation type="unfinished">Formato de áudio</translation>
+    </message>
+    <message>
+        <source>Audio bitrate</source>
+        <translation type="unfinished">Texa de bits de áudio</translation>
+    </message>
+    <message>
+        <source>Audio samplerate</source>
+        <translation type="unfinished">Taxa de amostragem de áudio</translation>
+    </message>
+    <message>
+        <source>Audio channels</source>
+        <translation type="unfinished">Canais de áudio</translation>
+    </message>
+    <message>
+        <source>[Track List]</source>
+        <translation type="unfinished">[Lista de Pistas]</translation>
+    </message>
+    <message>
+        <source>[Chapter List]</source>
+        <translation type="unfinished">[Lista de Capítulos]</translation>
     </message>
 </context>
 <context>
@@ -1471,15 +1555,31 @@ Version: %0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Extracting...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Could not open file for writing...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Done.</source>
+        <source>Redirected...
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Extracting...
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Creating updater script...
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Updating...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Done. Restarting...
+</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

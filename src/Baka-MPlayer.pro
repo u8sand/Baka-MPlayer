@@ -196,7 +196,6 @@ HEADERS  += \
 
 FORMS    += \
     ui/aboutdialog.ui \
-    ui/infodialog.ui \
     ui/inputdialog.ui \
     ui/jumpdialog.ui \
     ui/locationdialog.ui \

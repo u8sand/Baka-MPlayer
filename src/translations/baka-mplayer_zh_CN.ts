@@ -527,19 +527,19 @@ Some features may not work and changed settings will not be saved.</source>
     <name>InfoDialog</name>
     <message>
         <source>Media Info</source>
-        <translation>媒体 信息</translation>
+        <translation type="vanished">媒体 信息</translation>
     </message>
     <message>
         <source>Info Type</source>
-        <translation>信息类型</translation>
+        <translation type="vanished">信息类型</translation>
     </message>
     <message>
         <source>Value</source>
-        <translation>值</translation>
+        <translation type="vanished">值</translation>
     </message>
     <message>
         <source>&amp;CLOSE</source>
-        <translation>关闭(&amp;C)</translation>
+        <translation type="vanished">关闭(&amp;C)</translation>
     </message>
     <message>
         <source>File name</source>
@@ -1773,7 +1773,7 @@ Version: %0</source>
     </message>
     <message>
         <source>Extracting...</source>
-        <translation>正在解压</translation>
+        <translation type="vanished">正在解压</translation>
     </message>
     <message>
         <source>Could not open file for writing...</source>
@@ -1781,7 +1781,31 @@ Version: %0</source>
     </message>
     <message>
         <source>Done.</source>
-        <translation>完成</translation>
+        <translation type="vanished">完成</translation>
+    </message>
+    <message>
+        <source>Redirected...
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Extracting...
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Creating updater script...
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Updating...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Done. Restarting...
+</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

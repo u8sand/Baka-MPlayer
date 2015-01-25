@@ -43,6 +43,7 @@ QPair<QString, QPair<QString, QString>> KeyDialog::SelectKey(bool add, QPair<QSt
     ui->keySequenceEdit->setKeySequence(QKeySequence(init.first));
     ui->commandLineEdit->setText(init.second.first);
     ui->labelLineEdit->setText(init.second.second);
+    SetButtons();
     if(exec() == QDialog::Rejected)
         return QPair<QString, QPair<QString, QString>>();
     return QPair<QString, QPair<QString, QString>>({

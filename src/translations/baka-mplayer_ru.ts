@@ -354,96 +354,104 @@ Some features may not work and changed settings will not be saved.</source>
         <source>Remove selected file from playlist</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Saved to &quot;%0&quot;, with subs</source>
+        <translation type="unfinished">Сохранено в «%0», с субтитрами</translation>
+    </message>
+    <message>
+        <source>Saved to &quot;%0&quot;, without subs</source>
+        <translation type="unfinished">Сохранено в «%0», без субтитров</translation>
+    </message>
 </context>
 <context>
     <name>InfoDialog</name>
     <message>
         <source>Media Info</source>
-        <translation>Информация о медиафайле</translation>
+        <translation type="vanished">Информация о медиафайле</translation>
     </message>
     <message>
         <source>Info Type</source>
-        <translation>Тип данных</translation>
+        <translation type="vanished">Тип данных</translation>
     </message>
     <message>
         <source>Value</source>
-        <translation>Значение</translation>
+        <translation type="vanished">Значение</translation>
     </message>
     <message>
         <source>&amp;CLOSE</source>
-        <translation>&amp;Закрыть</translation>
+        <translation type="vanished">&amp;Закрыть</translation>
     </message>
     <message>
         <source>File name</source>
-        <translation>Имя файла</translation>
+        <translation type="vanished">Имя файла</translation>
     </message>
     <message>
         <source>Media Title</source>
-        <translation>Медиазаголовок</translation>
+        <translation type="vanished">Медиазаголовок</translation>
     </message>
     <message>
         <source>File size</source>
-        <translation>Размер файла</translation>
+        <translation type="vanished">Размер файла</translation>
     </message>
     <message>
         <source>Date created</source>
-        <translation>Дата создания</translation>
+        <translation type="vanished">Дата создания</translation>
     </message>
     <message>
         <source>Media length</source>
-        <translation>Длина</translation>
+        <translation type="vanished">Длина</translation>
     </message>
     <message>
         <source>[Video]</source>
-        <translation>[Видео]</translation>
+        <translation type="vanished">[Видео]</translation>
     </message>
     <message>
         <source>Video codec</source>
-        <translation>Видеокодек</translation>
+        <translation type="vanished">Видеокодек</translation>
     </message>
     <message>
         <source>Video format</source>
-        <translation>Формат видео</translation>
+        <translation type="vanished">Формат видео</translation>
     </message>
     <message>
         <source>Video bitrate</source>
-        <translation>Битрейт видео</translation>
+        <translation type="vanished">Битрейт видео</translation>
     </message>
     <message>
         <source>Video dimensions</source>
-        <translation>Разрешение</translation>
+        <translation type="vanished">Разрешение</translation>
     </message>
     <message>
         <source>[Audio]</source>
-        <translation>[Аудио]</translation>
+        <translation type="vanished">[Аудио]</translation>
     </message>
     <message>
         <source>Audio codec</source>
-        <translation>Аудиокодек</translation>
+        <translation type="vanished">Аудиокодек</translation>
     </message>
     <message>
         <source>Audio format</source>
-        <translation>Формат аудио</translation>
+        <translation type="vanished">Формат аудио</translation>
     </message>
     <message>
         <source>Audio bitrate</source>
-        <translation>Битрейт аудио</translation>
+        <translation type="vanished">Битрейт аудио</translation>
     </message>
     <message>
         <source>Audio samplerate</source>
-        <translation>Частота дискретизации</translation>
+        <translation type="vanished">Частота дискретизации</translation>
     </message>
     <message>
         <source>Audio channels</source>
-        <translation>Аудиоканалы</translation>
+        <translation type="vanished">Аудиоканалы</translation>
     </message>
     <message>
         <source>[Track List]</source>
-        <translation>[Список дорожек]</translation>
+        <translation type="vanished">[Список дорожек]</translation>
     </message>
     <message>
         <source>[Chapter List]</source>
-        <translation>[Список глав]</translation>
+        <translation type="vanished">[Список глав]</translation>
     </message>
 </context>
 <context>
@@ -762,7 +770,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Media &amp;Info</source>
-        <translation>&amp;Информация о медиафайле</translation>
+        <translation type="vanished">&amp;Информация о медиафайле</translation>
     </message>
     <message>
         <source>Ctrl+I</source>
@@ -1115,11 +1123,11 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>Saved to &quot;%0&quot;, with subs</source>
-        <translation>Сохранено в «%0», с субтитрами</translation>
+        <translation type="vanished">Сохранено в «%0», с субтитрами</translation>
     </message>
     <message>
         <source>Saved to &quot;%0&quot;, without subs</source>
-        <translation>Сохранено в «%0», без субтитров</translation>
+        <translation type="vanished">Сохранено в «%0», без субтитров</translation>
     </message>
     <message>
         <source>Media Files</source>
@@ -1145,6 +1153,10 @@ Note: Value must be from %0 - %1</source>
         <source>Update &amp;Streaming Support</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Show Playback &amp;Info</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MpvHandler</name>
@@ -1160,6 +1172,78 @@ Note: Value must be from %0 - %1</source>
         <source>mpv was not initialized
 </source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>File name</source>
+        <translation type="unfinished">Имя файла</translation>
+    </message>
+    <message>
+        <source>Media Title</source>
+        <translation type="unfinished">Медиазаголовок</translation>
+    </message>
+    <message>
+        <source>File size</source>
+        <translation type="unfinished">Размер файла</translation>
+    </message>
+    <message>
+        <source>Date created</source>
+        <translation type="unfinished">Дата создания</translation>
+    </message>
+    <message>
+        <source>Media length</source>
+        <translation type="unfinished">Длина</translation>
+    </message>
+    <message>
+        <source>[Video]</source>
+        <translation type="unfinished">[Видео]</translation>
+    </message>
+    <message>
+        <source>Video codec</source>
+        <translation type="unfinished">Видеокодек</translation>
+    </message>
+    <message>
+        <source>Video format</source>
+        <translation type="unfinished">Формат видео</translation>
+    </message>
+    <message>
+        <source>Video bitrate</source>
+        <translation type="unfinished">Битрейт видео</translation>
+    </message>
+    <message>
+        <source>Video dimensions</source>
+        <translation type="unfinished">Разрешение</translation>
+    </message>
+    <message>
+        <source>[Audio]</source>
+        <translation type="unfinished">[Аудио]</translation>
+    </message>
+    <message>
+        <source>Audio codec</source>
+        <translation type="unfinished">Аудиокодек</translation>
+    </message>
+    <message>
+        <source>Audio format</source>
+        <translation type="unfinished">Формат аудио</translation>
+    </message>
+    <message>
+        <source>Audio bitrate</source>
+        <translation type="unfinished">Битрейт аудио</translation>
+    </message>
+    <message>
+        <source>Audio samplerate</source>
+        <translation type="unfinished">Частота дискретизации</translation>
+    </message>
+    <message>
+        <source>Audio channels</source>
+        <translation type="unfinished">Аудиоканалы</translation>
+    </message>
+    <message>
+        <source>[Track List]</source>
+        <translation type="unfinished">[Список дорожек]</translation>
+    </message>
+    <message>
+        <source>[Chapter List]</source>
+        <translation type="unfinished">[Список глав]</translation>
     </message>
 </context>
 <context>
@@ -1478,15 +1562,31 @@ Version: %0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Extracting...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Could not open file for writing...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Done.</source>
+        <source>Redirected...
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Extracting...
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Creating updater script...
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Updating...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Done. Restarting...
+</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

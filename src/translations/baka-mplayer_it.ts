@@ -342,96 +342,104 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
         <source>Remove selected file from playlist</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Saved to &quot;%0&quot;, with subs</source>
+        <translation type="unfinished">Salvato su &quot;%0&quot;, con sottotitoli</translation>
+    </message>
+    <message>
+        <source>Saved to &quot;%0&quot;, without subs</source>
+        <translation type="unfinished">Salvato su &quot;%0&quot;, senza sottotitoli</translation>
+    </message>
 </context>
 <context>
     <name>InfoDialog</name>
     <message>
         <source>Media Info</source>
-        <translation>Informazioni sul media</translation>
+        <translation type="vanished">Informazioni sul media</translation>
     </message>
     <message>
         <source>Info Type</source>
-        <translation>Tipo di informazione</translation>
+        <translation type="vanished">Tipo di informazione</translation>
     </message>
     <message>
         <source>Value</source>
-        <translation>Valore</translation>
+        <translation type="vanished">Valore</translation>
     </message>
     <message>
         <source>&amp;CLOSE</source>
-        <translation>&amp;CHIUDI</translation>
+        <translation type="vanished">&amp;CHIUDI</translation>
     </message>
     <message>
         <source>File name</source>
-        <translation>Nome del file</translation>
+        <translation type="vanished">Nome del file</translation>
     </message>
     <message>
         <source>Media Title</source>
-        <translation>Titolo del media</translation>
+        <translation type="vanished">Titolo del media</translation>
     </message>
     <message>
         <source>File size</source>
-        <translation>Dimensioni del file</translation>
+        <translation type="vanished">Dimensioni del file</translation>
     </message>
     <message>
         <source>Date created</source>
-        <translation>Data di creazione</translation>
+        <translation type="vanished">Data di creazione</translation>
     </message>
     <message>
         <source>Media length</source>
-        <translation>Durata del media</translation>
+        <translation type="vanished">Durata del media</translation>
     </message>
     <message>
         <source>[Video]</source>
-        <translation>[Video]</translation>
+        <translation type="vanished">[Video]</translation>
     </message>
     <message>
         <source>Video codec</source>
-        <translation>Codec video</translation>
+        <translation type="vanished">Codec video</translation>
     </message>
     <message>
         <source>Video format</source>
-        <translation>Formato video</translation>
+        <translation type="vanished">Formato video</translation>
     </message>
     <message>
         <source>Video bitrate</source>
-        <translation>Bitrate video</translation>
+        <translation type="vanished">Bitrate video</translation>
     </message>
     <message>
         <source>Video dimensions</source>
-        <translation>Dimensioni del video</translation>
+        <translation type="vanished">Dimensioni del video</translation>
     </message>
     <message>
         <source>[Audio]</source>
-        <translation>[Audio]</translation>
+        <translation type="vanished">[Audio]</translation>
     </message>
     <message>
         <source>Audio codec</source>
-        <translation>Codec audio</translation>
+        <translation type="vanished">Codec audio</translation>
     </message>
     <message>
         <source>Audio format</source>
-        <translation>Formato audio</translation>
+        <translation type="vanished">Formato audio</translation>
     </message>
     <message>
         <source>Audio bitrate</source>
-        <translation>Bitrate audio</translation>
+        <translation type="vanished">Bitrate audio</translation>
     </message>
     <message>
         <source>Audio samplerate</source>
-        <translation>Campionamento audio</translation>
+        <translation type="vanished">Campionamento audio</translation>
     </message>
     <message>
         <source>Audio channels</source>
-        <translation>Canali audio</translation>
+        <translation type="vanished">Canali audio</translation>
     </message>
     <message>
         <source>[Track List]</source>
-        <translation>Scaletta</translation>
+        <translation type="vanished">Scaletta</translation>
     </message>
     <message>
         <source>[Chapter List]</source>
-        <translation>Capitoli</translation>
+        <translation type="vanished">Capitoli</translation>
     </message>
 </context>
 <context>
@@ -742,7 +750,7 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>Media &amp;Info</source>
-        <translation>&amp;Informazioni sul media</translation>
+        <translation type="vanished">&amp;Informazioni sul media</translation>
     </message>
     <message>
         <source>&amp;Play</source>
@@ -1114,11 +1122,11 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>Saved to &quot;%0&quot;, with subs</source>
-        <translation>Salvato su &quot;%0&quot;, con sottotitoli</translation>
+        <translation type="vanished">Salvato su &quot;%0&quot;, con sottotitoli</translation>
     </message>
     <message>
         <source>Saved to &quot;%0&quot;, without subs</source>
-        <translation>Salvato su &quot;%0&quot;, senza sottotitoli</translation>
+        <translation type="vanished">Salvato su &quot;%0&quot;, senza sottotitoli</translation>
     </message>
     <message>
         <source>Open File</source>
@@ -1144,6 +1152,10 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
         <source>Update &amp;Streaming Support</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Show Playback &amp;Info</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MpvHandler</name>
@@ -1163,6 +1175,78 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
         <source>mpv was not initialized
 </source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>File name</source>
+        <translation type="unfinished">Nome del file</translation>
+    </message>
+    <message>
+        <source>Media Title</source>
+        <translation type="unfinished">Titolo del media</translation>
+    </message>
+    <message>
+        <source>File size</source>
+        <translation type="unfinished">Dimensioni del file</translation>
+    </message>
+    <message>
+        <source>Date created</source>
+        <translation type="unfinished">Data di creazione</translation>
+    </message>
+    <message>
+        <source>Media length</source>
+        <translation type="unfinished">Durata del media</translation>
+    </message>
+    <message>
+        <source>[Video]</source>
+        <translation type="unfinished">[Video]</translation>
+    </message>
+    <message>
+        <source>Video codec</source>
+        <translation type="unfinished">Codec video</translation>
+    </message>
+    <message>
+        <source>Video format</source>
+        <translation type="unfinished">Formato video</translation>
+    </message>
+    <message>
+        <source>Video bitrate</source>
+        <translation type="unfinished">Bitrate video</translation>
+    </message>
+    <message>
+        <source>Video dimensions</source>
+        <translation type="unfinished">Dimensioni del video</translation>
+    </message>
+    <message>
+        <source>[Audio]</source>
+        <translation type="unfinished">[Audio]</translation>
+    </message>
+    <message>
+        <source>Audio codec</source>
+        <translation type="unfinished">Codec audio</translation>
+    </message>
+    <message>
+        <source>Audio format</source>
+        <translation type="unfinished">Formato audio</translation>
+    </message>
+    <message>
+        <source>Audio bitrate</source>
+        <translation type="unfinished">Bitrate audio</translation>
+    </message>
+    <message>
+        <source>Audio samplerate</source>
+        <translation type="unfinished">Campionamento audio</translation>
+    </message>
+    <message>
+        <source>Audio channels</source>
+        <translation type="unfinished">Canali audio</translation>
+    </message>
+    <message>
+        <source>[Track List]</source>
+        <translation type="unfinished">Scaletta</translation>
+    </message>
+    <message>
+        <source>[Chapter List]</source>
+        <translation type="unfinished">Capitoli</translation>
     </message>
 </context>
 <context>
@@ -1481,15 +1565,31 @@ Versione: %0</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Extracting...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Could not open file for writing...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Done.</source>
+        <source>Redirected...
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Extracting...
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Creating updater script...
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Updating...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Done. Restarting...
+</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
