@@ -16,7 +16,7 @@ optdepends=(
 conflicts=('bakamplayer' 'baka-mplayer')
 provides=('baka-mplayer')
 
-_gitroot="git://github.com/u8sand/Baka-MPlayer.git"
+_gitroot="https://github.com/u8sand/Baka-MPlayer.git"
 _gitname="release"
 
 build() {
