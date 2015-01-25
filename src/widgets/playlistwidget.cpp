@@ -190,10 +190,12 @@ void PlaylistWidget::Search(const QString &s)
         item = file;
 
     QStringList newPlaylist;
+    QString suffix = item.split('.').last();
     for(QStringList::iterator item = playlist.begin(); item != playlist.end(); item++)
-        if(item->contains(s, Qt::CaseInsensitive))
+    {
+        if(item->contains(s, Qt::CaseInsensitive) && (showAll || item->endsWith(suffix)))
             newPlaylist.append(*item);
-
+    }
     clear();
     addItems(newPlaylist);
 
