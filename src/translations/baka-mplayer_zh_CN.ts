@@ -85,7 +85,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2015 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; 是一个基于 &lt;b&gt;libmpv&lt;/b&gt; 的自由开源跨平台的多媒体播放器。简单的设计致力于为观看视频提供一个整洁，简单，愉快的环境。&lt;br&gt;&lt;br&gt;Copyright © 2014 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt; {2015 ?} {8s?} {8s?} {8s?}</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; 是一个基于 &lt;b&gt;libmpv&lt;/b&gt; 的自由开源跨平台的多媒体播放器。简单的设计致力于为观看视频提供一个整洁，简单，愉快的环境。&lt;br&gt;&lt;br&gt;Copyright © 2014 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
@@ -514,6 +514,14 @@ Some features may not work and changed settings will not be saved.</source>
         <source>Remove Selected Item from Playlist</source>
         <translation type="vanished">移除在播放列表中选中的项目</translation>
     </message>
+    <message>
+        <source>Saved to &quot;%0&quot;, with subs</source>
+        <translation>保存到 &quot;%0&quot;, 附带字幕</translation>
+    </message>
+    <message>
+        <source>Saved to &quot;%0&quot;, without subs</source>
+        <translation>保存到 &quot;%0&quot;, 不附带字幕</translation>
+    </message>
 </context>
 <context>
     <name>InfoDialog</name>
@@ -535,75 +543,75 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>File name</source>
-        <translation>文件名</translation>
+        <translation type="vanished">文件名</translation>
     </message>
     <message>
         <source>Media Title</source>
-        <translation>媒体标题</translation>
+        <translation type="vanished">媒体标题</translation>
     </message>
     <message>
         <source>File size</source>
-        <translation>文件大小</translation>
+        <translation type="vanished">文件大小</translation>
     </message>
     <message>
         <source>Date created</source>
-        <translation>创建时间</translation>
+        <translation type="vanished">创建时间</translation>
     </message>
     <message>
         <source>Media length</source>
-        <translation>媒体时长</translation>
+        <translation type="vanished">媒体时长</translation>
     </message>
     <message>
         <source>[Video]</source>
-        <translation>视频</translation>
+        <translation type="vanished">视频</translation>
     </message>
     <message>
         <source>Video codec</source>
-        <translation>视频编解码器</translation>
+        <translation type="vanished">视频编解码器</translation>
     </message>
     <message>
         <source>Video format</source>
-        <translation>视频格式</translation>
+        <translation type="vanished">视频格式</translation>
     </message>
     <message>
         <source>Video bitrate</source>
-        <translation>视频比特率</translation>
+        <translation type="vanished">视频比特率</translation>
     </message>
     <message>
         <source>Video dimensions</source>
-        <translation>视频分辨率</translation>
+        <translation type="vanished">视频分辨率</translation>
     </message>
     <message>
         <source>[Audio]</source>
-        <translation>音频</translation>
+        <translation type="vanished">音频</translation>
     </message>
     <message>
         <source>Audio codec</source>
-        <translation>音频编解码器</translation>
+        <translation type="vanished">音频编解码器</translation>
     </message>
     <message>
         <source>Audio format</source>
-        <translation>音频格式</translation>
+        <translation type="vanished">音频格式</translation>
     </message>
     <message>
         <source>Audio bitrate</source>
-        <translation>音频比特率</translation>
+        <translation type="vanished">音频比特率</translation>
     </message>
     <message>
         <source>Audio samplerate</source>
-        <translation>音频采样率</translation>
+        <translation type="vanished">音频采样率</translation>
     </message>
     <message>
         <source>Audio channels</source>
-        <translation>音频通道</translation>
+        <translation type="vanished">音频通道</translation>
     </message>
     <message>
         <source>[Track List]</source>
-        <translation>曲目列表</translation>
+        <translation type="vanished">曲目列表</translation>
     </message>
     <message>
         <source>[Chapter List]</source>
-        <translation>章节列表</translation>
+        <translation type="vanished">章节列表</translation>
     </message>
 </context>
 <context>
@@ -656,31 +664,31 @@ Some features may not work and changed settings will not be saved.</source>
     <name>KeyDialog</name>
     <message>
         <source>Modify Shortcut Key</source>
-        <translation type="unfinished"></translation>
+        <translation>修改快捷键</translation>
     </message>
     <message>
         <source>Command</source>
-        <translation type="unfinished">命令</translation>
+        <translation>命令</translation>
     </message>
     <message>
         <source>Label (optional)</source>
-        <translation type="unfinished">标签（可选）</translation>
+        <translation>标签（可选）</translation>
     </message>
     <message>
         <source>C&amp;LEAR SHORTCUT</source>
-        <translation type="unfinished"></translation>
+        <translation>清除快捷键</translation>
     </message>
     <message>
         <source>CHANG&amp;E</source>
-        <translation type="unfinished">更改(&amp;E)</translation>
+        <translation>更改(&amp;E)</translation>
     </message>
     <message>
         <source>&amp;ADD</source>
-        <translation type="unfinished">添加</translation>
+        <translation>添加</translation>
     </message>
     <message>
         <source>&amp;CANCEL</source>
-        <translation type="unfinished"></translation>
+        <translation>取消</translation>
     </message>
 </context>
 <context>
@@ -930,7 +938,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Media &amp;Info</source>
-        <translation>媒体信息(&amp;I)</translation>
+        <translation type="vanished">媒体信息(&amp;I)</translation>
     </message>
     <message>
         <source>Ctrl+I</source>
@@ -1298,11 +1306,11 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Saved to &quot;%0&quot;, with subs</source>
-        <translation>保存到 &quot;%0&quot;, 附带字幕</translation>
+        <translation type="vanished">保存到 &quot;%0&quot;, 附带字幕</translation>
     </message>
     <message>
         <source>Saved to &quot;%0&quot;, without subs</source>
-        <translation>保存到 &quot;%0&quot;, 不附带字幕</translation>
+        <translation type="vanished">保存到 &quot;%0&quot;, 不附带字幕</translation>
     </message>
     <message>
         <source>Subtitle Files</source>
@@ -1338,7 +1346,11 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Update &amp;Streaming Support</source>
-        <translation type="unfinished"></translation>
+        <translation>更新流媒体支持</translation>
+    </message>
+    <message>
+        <source>Show Playback &amp;Info</source>
+        <translation>显示播放信息</translation>
     </message>
 </context>
 <context>
@@ -1359,6 +1371,78 @@ Some features may not work and changed settings will not be saved.</source>
         <source>mpv was not initialized
 </source>
         <translation>mpv未初始化</translation>
+    </message>
+    <message>
+        <source>File name</source>
+        <translation>文件名</translation>
+    </message>
+    <message>
+        <source>Media Title</source>
+        <translation>媒体标题</translation>
+    </message>
+    <message>
+        <source>File size</source>
+        <translation>文件大小</translation>
+    </message>
+    <message>
+        <source>Date created</source>
+        <translation>创建时间</translation>
+    </message>
+    <message>
+        <source>Media length</source>
+        <translation>媒体时长</translation>
+    </message>
+    <message>
+        <source>[Video]</source>
+        <translation>视频</translation>
+    </message>
+    <message>
+        <source>Video codec</source>
+        <translation>视频编解码器</translation>
+    </message>
+    <message>
+        <source>Video format</source>
+        <translation>视频格式</translation>
+    </message>
+    <message>
+        <source>Video bitrate</source>
+        <translation>视频比特率</translation>
+    </message>
+    <message>
+        <source>Video dimensions</source>
+        <translation>视频分辨率</translation>
+    </message>
+    <message>
+        <source>[Audio]</source>
+        <translation>音频</translation>
+    </message>
+    <message>
+        <source>Audio codec</source>
+        <translation>音频编解码器</translation>
+    </message>
+    <message>
+        <source>Audio format</source>
+        <translation>音频格式</translation>
+    </message>
+    <message>
+        <source>Audio bitrate</source>
+        <translation>音频比特率</translation>
+    </message>
+    <message>
+        <source>Audio samplerate</source>
+        <translation>音频采样率</translation>
+    </message>
+    <message>
+        <source>Audio channels</source>
+        <translation>音频通道</translation>
+    </message>
+    <message>
+        <source>[Track List]</source>
+        <translation>曲目列表</translation>
+    </message>
+    <message>
+        <source>[Chapter List]</source>
+        <translation>章节列表</translation>
     </message>
 </context>
 <context>
@@ -1552,7 +1636,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>%0 is already being used. Would you like to change its function?</source>
-        <translation type="unfinished">%0正在使用，是否更改其函数？</translation>
+        <translation>%0正在使用，是否更改其函数？</translation>
     </message>
 </context>
 <context>
@@ -1665,39 +1749,39 @@ Version: %0</source>
     <message>
         <source>Checking for updates...
 </source>
-        <translation type="unfinished"></translation>
+        <translation>正在检查更新</translation>
     </message>
     <message>
         <source>Downloading update...
 </source>
-        <translation type="unfinished"></translation>
+        <translation>正在下载更新</translation>
     </message>
     <message>
         <source>fopen error
 </source>
-        <translation type="unfinished"></translation>
+        <translation>打开文件失败</translation>
     </message>
     <message>
         <source>write error
 </source>
-        <translation type="unfinished"></translation>
+        <translation>写入失败</translation>
     </message>
     <message>
         <source>Download complete
 </source>
-        <translation type="unfinished"></translation>
+        <translation>下载完成</translation>
     </message>
     <message>
         <source>Extracting...</source>
-        <translation type="unfinished"></translation>
+        <translation>正在解压</translation>
     </message>
     <message>
         <source>Could not open file for writing...</source>
-        <translation type="unfinished"></translation>
+        <translation>无法打开文件以写入</translation>
     </message>
     <message>
         <source>Done.</source>
-        <translation type="unfinished"></translation>
+        <translation>完成</translation>
     </message>
 </context>
 </TS>
