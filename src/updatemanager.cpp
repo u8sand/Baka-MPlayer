@@ -139,25 +139,26 @@ void UpdateManager::ApplyUpdate(const QString &file)
     emit messageSignal(tr("Extracting..."));
     // create a temporary directory for baka
     QString path = ".tmp/";
-    QDir::mkpath(path);
+    QDir dir;
+    dir.mkpath(path);
     int err;
-    zip *z = zip_open(file, 0, &err);
+    struct zip *z = zip_open(file.toUtf8(), 0, &err);
     int n = zip_get_num_entries(z, 0);
     for(int64_t i = 0; i < n; ++i)
     {
         // get file stats
-        zip_stat s;
-        zip_stat_index(z, i, 0, &s);
+        struct zip_stat *s;
+        zip_stat_index(z, i, 0, s);
         // extract file
-        char *buf = new char[s.size]; // allocate buffer
+        char *buf = new char[s->size]; // allocate buffer
         // extract file to buffer
         zip_file *zf = zip_fopen_index(z, i, 0);
-        zip_fread(zf, buf, s.size);
+        zip_fread(zf, buf, s->size);
         zip_fclose(zf);
         // write new file
-        QFile f(path + s.name);
+        QFile f(path + s->name);
         f.open(QFile::Truncate);
-        f.write(buf, s.size);
+        f.write(buf, s->size);
         f.close();
     }
     zip_close(z);

@@ -72,7 +72,7 @@ UpdateDialog::UpdateDialog(BakaEngine *baka, QWidget *parent) :
     connect(ui->updateButton, &QPushButton::clicked,
             [=]
             {
-                baka->update->DownloadUpdate(Util::DownloadFileUrl(), baka->update->info["version"]);
+                baka->update->DownloadUpdate(Util::DownloadFileUrl(), baka->update->getInfo()["version"]);
             });
 #endif
 
@@ -118,7 +118,7 @@ void UpdateDialog::Prepare()
 
 void UpdateDialog::ShowInfo()
 {
-    auto info = baka->update->getInfo();
+    auto &info = baka->update->getInfo();
     ui->plainTextEdit->setPlainText(info["bugfixes"]);
     if(info["version"].trimmed() == BAKA_MPLAYER_VERSION)
     {
