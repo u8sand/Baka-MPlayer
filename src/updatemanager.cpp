@@ -151,8 +151,9 @@ void UpdateManager::ApplyUpdate(const QString &file)
 {
     emit messageSignal(tr("Extracting...\n"));
     // create a temporary directory for baka
-    QString path = QString("%0/.tmp/").arg(QCoreApplication::applicationDirPath());
-    QString bat = QString("%0/updater.bat").arg(QCoreApplication::applicationDirPath());
+    QString path = QDir::toNativeSeparators(QString("%0/.tmp/").arg(QCoreApplication::applicationDirPath()));
+    QString exe = QDir::toNativeSeparators(QString("%0/Baka MPlayer.exe").arg(QCoreApplication::applicationDirPath()));
+    QString bat = QDir::toNativeSeparators(QString("%0/updater.bat").arg(QCoreApplication::applicationDirPath()));
     QDir dir;
     dir.mkpath(path);
     int err;
@@ -186,14 +187,19 @@ void UpdateManager::ApplyUpdate(const QString &file)
     }
     f.write(
         QString(
-        "@echo off\r\n"
-        "echo Updating baka-mplayer...\r\n"
-        "ping 127.0.0.1 -n 1 -w 1000 > NUL\r\n"
-        "cd baka-mplayer-update\r\n"
-        "for %%i in (*) do move \"%%i\" ..\r\n"
-        "for /d %%i in (*) do move \"%%i\" ..\r\n"
-        "move /Y /r \"%0\" \".\" > NUL\r\n"
-        "start /b \"\" cmd /c del \"%%~f0\"&exit /b\"\"\r\n").arg(path).toUtf8());
+            "@echo off\r\n"
+            "echo %0\r\n"
+            "ping 127.0.0.1 -n 1 -w 1000 > NUL\r\n"
+            "cd \"%1\"\r\n"
+            "for %%i in (*) do move /Y \"%%i\" ..\r\n"
+            "for /d %%i in (*) do move /Y \"%%i\" ..\r\n"
+            "cd ..\r\n"
+            "rmdir /Q /S \"%1\""
+            "start /b \"\" \"%2\"\r\n"
+            "start /b \"\" cmd /c del \"%~f0\"&exit /b\"\"\r\n").arg(
+            tr("Updating..."),
+            path,
+            exe).toUtf8());
     f.close();
 
     QProcess::startDetached(bat);
