@@ -63,6 +63,7 @@ QString MpvHandler::getMediaInfo()
         {tr("File size"), Util::HumanSize(fi.size())},
         {tr("Date created"), fi.created().toString()},
         {tr("Media length"), Util::FormatTime(fileInfo.length, fileInfo.length)},
+        {QString(), QString()}
     };
 
     if(fileInfo.video_params.codec != QString())
@@ -71,7 +72,8 @@ QString MpvHandler::getMediaInfo()
             {tr("Video codec"), fileInfo.video_params.codec},
             {tr("Video format"), fileInfo.video_params.format},
             {tr("Video bitrate"), fileInfo.video_params.bitrate},
-            {tr("Video dimensions"), QString::number(fileInfo.video_params.width)+" x "+QString::number(fileInfo.video_params.height)}
+            {tr("Video dimensions"), QString::number(fileInfo.video_params.width)+" x "+QString::number(fileInfo.video_params.height)},
+            {QString(), QString()}
         });
 
     if(fileInfo.audio_params.codec != QString())
@@ -81,7 +83,8 @@ QString MpvHandler::getMediaInfo()
             {tr("Audio format"), fileInfo.audio_params.format},
             {tr("Audio bitrate"), fileInfo.audio_params.bitrate},
             {tr("Audio samplerate"), fileInfo.audio_params.samplerate},
-            {tr("Audio channels"), fileInfo.audio_params.channels}
+            {tr("Audio channels"), fileInfo.audio_params.channels},
+            {QString(), QString()}
         });
 
     if(fileInfo.tracks.length() > 0)
@@ -89,12 +92,14 @@ QString MpvHandler::getMediaInfo()
         items.append({tr("[Track List]"), QString()});
         for(auto &track : fileInfo.tracks)
             items.append({QString::number(track.id), QString("%0[%1:%2] %3").arg(track.title, track.type, track.lang, track.external_filename)});
+        items.append({QString(), QString()});
     }
     if(fileInfo.chapters.length() > 0)
     {
         items.append({tr("[Chapter List]"), QString()});
         for(auto &chapter : fileInfo.chapters)
             items.append({chapter.title, Util::FormatTime(chapter.time, fileInfo.length)});
+        items.append({QString(), QString()});
     }
 
     QString info;
@@ -108,7 +113,7 @@ QString MpvHandler::getMediaInfo()
     for(auto iter = items.begin(); iter != items.end(); ++iter)
     {
         int len = iter->first.length();
-        info += iter->first + ": ";
+        info += iter->first + (iter->second == QString() ? QString() : ": ");
         while(len++ < spacing)
             info += ' ';
         info += iter->second + '\n';
