@@ -864,7 +864,7 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
         }
         else
         {
-            playbackRect = qApp->desktop()->availableGeometry();
+            playbackRect = qApp->desktop()->availableGeometry(frameGeometry().center());
             playbackRect.setTop(playbackRect.bottom() - ui->playbackLayoutWidget->height() - 20);
 
             if(!playbackRect.contains(event->globalPos()))
