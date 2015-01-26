@@ -196,6 +196,7 @@ void PlaylistWidget::Search(const QString &s)
         if(item->contains(s, Qt::CaseInsensitive) && (showAll || item->endsWith(suffix)))
             newPlaylist.append(*item);
     }
+
     clear();
     addItems(newPlaylist);
 
@@ -231,7 +232,10 @@ void PlaylistWidget::Shuffle()
     else
         item = file;
 
-    QStringList newPlaylist = playlist;
+    QStringList newPlaylist;
+    for(int i = 0; i < count(); ++i)
+        newPlaylist.append(this->item(i)->text());
+
     std::random_shuffle(newPlaylist.begin(), newPlaylist.end());
     // make current playing item the first
     auto iter = std::find(newPlaylist.begin(), newPlaylist.end(), file);
