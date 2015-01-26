@@ -178,7 +178,7 @@ QStringList Settings::SplitQStringList(QString str)
     for(int i = 0; i < str.length(); ++i)
     {
         // revert escaped characters
-        if(str[i] == '\\')
+        if(str[i] == '\\' && (str[i+1] == ',' || str[i+1] == '\\')) // treat invalid escape sequences as normal '\'s
             entry += str[++i];
         else if(str[i] == ',')
         {
