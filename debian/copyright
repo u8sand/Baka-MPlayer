@@ -3,11 +3,11 @@ Upstream-Name: baka-mplayer
 Source: https://github.com/u8sand/Baka-MPlayer
 
 Files: *
-Copyright: 2012-2014 godly-devotion (azian.otaku@live.com) and u8sand (u8sand@gmail.com)
+Copyright: 2012-2015 godly-devotion (azian.otaku@live.com) and u8sand (u8sand@gmail.com)
 License: GPL-2.0+
 
 Files: debian/*
-Copyright: 2014 Joshua Park (godly-devotion) <azian.otaku@live.com>
+Copyright: 2015 Joshua Park (godly-devotion) <azian.otaku@live.com>
 License: GPL-2.0+
 
 License: GPL-2.0+

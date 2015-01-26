@@ -1,3 +1,28 @@
+baka-mplayer (2.0.2-1) unstable; urgency=low
+
+  * Fixed: Dim Desktop on multiple platforms
+  * Fixed: Playing files located in the root directory (Windows only)
+  * Fixed: Show parent folder under recently opened list (Windows only)
+  * Fixed: Show in Folder selects file (Windows only)
+  * Fixed: Gesture sensitivity is resolution independent
+  * Changed: Custom settings implementation
+  * Changed: File info shows up as overlay
+  * Changed: Some default key-bindings for easier workflow
+  * Improved: Major code refracting for efficiency
+  * Improved: Playlist
+  * Improved: Fit Window
+  * Improved: Settings
+  * Improved: Multiple-monitor support
+  * Improved: Tweaked interface colors for better visibility
+  * Added: Italian translation
+  * Added: Support for custom keyboard shortcuts
+  * Added: Playlist will auto show if cursor is near it in full screen
+  * Added: Automatic Updating (Windows only)
+  * Added: Command-Line engine
+  * Added: Support for easily updating youtube-dl
+
+ -- Joshua Park (godly-devotion) <azian.otaku@live.com>  Sun, 25 Jan 2015 22:42:00 -0500
+
 baka-mplayer (2.0.1-1) unstable; urgency=low
 
   * Windows Build Available!
@@ -22,7 +47,6 @@ baka-mplayer (2.0.1-1) unstable; urgency=low
   * Added Translations (Chinese, Korean, Portuguese, Russian)
 
  -- Joshua Park (godly-devotion) <azian.otaku@live.com>  Sun, 28 Dec 2014 20:30:00 -0500
-
 
 baka-mplayer (2.0.0-1) unstable; urgency=low
 
