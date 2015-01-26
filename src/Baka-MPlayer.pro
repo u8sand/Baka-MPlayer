@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-VERSION   = 2.0.1
+VERSION   = 2.0.2
 QT       += core gui network svg
 CODECFORSRC = UTF-8
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
