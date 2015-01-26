@@ -44,7 +44,7 @@ private:
     BakaEngine *baka;
 
     QStringList playlist;
-    QString file;
+    QString file, suffix;
     bool newPlaylist,
          refresh,
          showAll;

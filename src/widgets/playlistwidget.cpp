@@ -40,6 +40,8 @@ void PlaylistWidget::AttachEngine(BakaEngine *baka)
                 if(newPlaylist)
                 {
                     file = f;
+                    if(f != QString())
+                        suffix = file.split('.').last();
                     Populate();
                     BoldText(file, true);
                     newPlaylist = false;
@@ -78,8 +80,7 @@ void PlaylistWidget::Populate()
     }
     else
     {
-        // filter by suffix of current item
-        QString suffix = item.split('.').last();
+        // filter by suffix
         QStringList newPlaylist;
         for(auto i = playlist.begin(); i != playlist.end(); ++i)
             if(i->endsWith(suffix))
@@ -190,7 +191,6 @@ void PlaylistWidget::Search(const QString &s)
         item = file;
 
     QStringList newPlaylist;
-    QString suffix = item.split('.').last();
     for(QStringList::iterator item = playlist.begin(); item != playlist.end(); item++)
     {
         if(item->contains(s, Qt::CaseInsensitive) && (showAll || item->endsWith(suffix)))
