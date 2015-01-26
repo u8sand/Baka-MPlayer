@@ -468,14 +468,18 @@ MainWindow::MainWindow(QWidget *parent):
                 case Mpv::Idle:
                     if(init)
                     {
-                        if(ui->action_This_File->isChecked())
+                        if(ui->action_This_File->isChecked()) // repeat this file
                             ui->playlistWidget->PlayIndex(0, true); // restart file
-                        else if(ui->playlistWidget->currentRow() >= ui->playlistWidget->count()-1 ||
-                           ui->actionStop_after_Current->isChecked())
+                        else if(ui->actionStop_after_Current->isChecked() ||  // stop after playing this file
+                                ui->playlistWidget->CurrentIndex() >= ui->playlistWidget->count()-1) // end of the playlist
                         {
-                            if(ui->action_Playlist->isChecked() && ui->playlistWidget->count() > 0)
+                            if(!ui->actionStop_after_Current->isChecked() && // not supposed to stop after current
+                                ui->action_Playlist->isChecked() && // we're supposed to restart the playlist
+                                ui->playlistWidget->count() > 0) // playlist isn't empty
+                            {
                                 ui->playlistWidget->PlayIndex(0); // restart playlist
-                            else
+                            }
+                            else // stop
                             {
                                 setWindowTitle("Baka MPlayer");
                                 SetPlaybackControls(false);
