@@ -77,6 +77,8 @@ PreferencesDialog::PreferencesDialog(BakaEngine *baka, QWidget *parent) :
                 {
                     baka->input = baka->default_input;
                     ui->infoWidget->clearContents();
+                    while(numberOfShortcuts > 0)
+                        RemoveRow(0);
                     PopulateShortcuts();
                 }
             });
