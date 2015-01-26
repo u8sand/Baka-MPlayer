@@ -519,10 +519,17 @@ void BakaEngine::BakaAbout(QStringList &args)
 
 void BakaEngine::BakaDebug(QStringList &args)
 {
-    if(args.empty())
-        mpv->Debug(!mpv->getDebug());
+    if(!args.empty())
+    {
+        QString arg = args.front();
+        args.pop_front();
+        if(args.empty())
+            mpv->Debug(arg);
+        else
+            InvalidParameter(args.join(' '));
+    }
     else
-        InvalidParameter(args.join(' '));
+        RequiresParameters("debug");
 }
 
 void BakaEngine::About(QString what)

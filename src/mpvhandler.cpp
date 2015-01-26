@@ -557,12 +557,12 @@ void MpvHandler::SubtitleScale(double scale, bool relative)
     AsyncCommand(args);
 }
 
-void MpvHandler::Debug(bool b)
+void MpvHandler::Debug(QString level)
 {
     if(mpv)
     {
-        mpv_request_log_messages(mpv, b ? "debug" : "no");
-        setDebug(b);
+        QByteArray tmp = level.toUtf8();
+        mpv_request_log_messages(mpv, tmp.constData());
     }
 }
 

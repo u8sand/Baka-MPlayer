@@ -30,7 +30,6 @@ public:
     int getVid()                            { return vid; }
     int getAid()                            { return aid; }
     int getSid()                            { return sid; }
-    bool getDebug()                         { return debug; }
     bool getSubtitleVisibility()            { return subtitleVisibility; }
 
     int getOsdWidth()                       { return osdWidth; }
@@ -84,7 +83,7 @@ public slots:
     void ShowSubtitles(bool);
     void SubtitleScale(double scale, bool relative = false);
 
-    void Debug(bool);
+    void Debug(QString level);
 
     void ShowText(QString text, int duration = 4000, int level = 1);
 
@@ -122,7 +121,6 @@ private slots:
     void setVid(int i)                      { emit vidChanged(vid = i); }
     void setAid(int i)                      { emit aidChanged(aid = i); }
     void setSid(int i)                      { emit sidChanged(sid = i); }
-    void setDebug(bool b)                   { emit debugChanged(debug = b); }
     void setSubtitleVisibility(bool b)      { emit subtitleVisibilityChanged(subtitleVisibility = b); }
 
 signals:
@@ -170,7 +168,6 @@ private:
                 aid,
                 sid;
     bool        init = false,
-                debug = false,
                 playlistVisible = false,
                 subtitleVisibility = true;
 

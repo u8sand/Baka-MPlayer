@@ -49,7 +49,4 @@ void BakaEngine::LoadMpv1_9_9()
     mpv->Speed(settings->valueDouble("speed", 1.0));
     mpv->Volume(settings->valueInt("volume", 100));
     settings->endGroup();
-    settings->beginGroup("common");
-    mpv->Debug(settings->valueBool("debug", false));
-    settings->endGroup();
 }
