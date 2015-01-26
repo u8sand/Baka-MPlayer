@@ -3,6 +3,7 @@
 #include "bakaengine.h"
 #include "mpvhandler.h"
 #include "ui/mainwindow.h"
+#include "ui_mainwindow.h"
 
 #include <QFileInfo>
 #include <QPainter>
@@ -62,16 +63,19 @@ void OverlayHandler::showInfoText(bool show)
     }
 }
 
-void OverlayHandler::setFont()
+void OverlayHandler::setFont(int n)
 {
-    overlay_font.setPointSize(0.022*std::min(baka->window->width()*0.75, baka->window->height()*1.0));
+    // lets assume we want 75 chars wide
+    double w = baka->window->ui->mpvFrame->width() / 75,
+           h = baka->window->ui->mpvFrame->height() / (1.55*n+1);
+    overlay_font.setPointSizeF(std::min(w, h));
     overlay_fm = QFontMetrics(overlay_font);
 }
 
 void OverlayHandler::showText(const QString &text, int duration, QPoint pos, int id)
 {
-    setFont();
     QStringList elements = text.split("\n");
+    setFont(elements.length());
     QPainterPath path(QPoint(0, 0));
     int h = overlay_fm.height();
     QPoint p = QPoint(0, h);
@@ -116,7 +120,11 @@ void OverlayHandler::showText(const QString &text, int duration, QPoint pos, int
         delete overlays[id]->canvas; // delete the old canvas
         overlays[id]->canvas = canvas; // update the canvas
         if(duration > 0)
+        {
+            if(overlays[id]->timer == nullptr)
+                overlays[id]->timer = new QTimer(this);
             overlays[id]->timer->start(duration); // restart the timer
+        }
     }
     else // overlay doesn't exist yet
     {

@@ -25,7 +25,7 @@ public slots:
     void showText(const QString &text, int duration, QPoint pos, int id = -1);
 
 protected slots:
-    void setFont();
+    void setFont(int n);
 
 private:
     BakaEngine *baka;

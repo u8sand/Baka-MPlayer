@@ -688,6 +688,8 @@ MainWindow::MainWindow(QWidget *parent):
                     ui->action_Hide_Album_Art->setChecked(false);
                 }
                 blockSignals(false);
+                if(ui->actionMedia_Info->isChecked())
+                    baka->overlay->showInfoText();
             });
 
     connect(ui->searchBox, &QLineEdit::textChanged,                     // Playlist: Search box

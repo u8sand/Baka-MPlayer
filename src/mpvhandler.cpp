@@ -233,7 +233,7 @@ void MpvHandler::AddOverlay(int id, int x, int y, QString file, int offset, int 
                        tmp_h.constData(),
                        tmp_stride.constData(),
                        NULL};
-    AsyncCommand(args);
+    Command(args);
 }
 
 void MpvHandler::RemoveOverlay(int id)

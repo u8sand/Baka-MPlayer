@@ -37,6 +37,7 @@ public:
     bool getDebug()            { return debug; }
     bool getGestures()         { return gestures; }
 
+    Ui::MainWindow  *ui;
 public slots:
     void Load(QString f = QString());
     void MapShortcuts();
@@ -64,7 +65,6 @@ private slots:
     void UpdateRecentFiles();                       // populate recentFiles menu
 
 private:
-    Ui::MainWindow  *ui;
     BakaEngine      *baka;
     MpvHandler      *mpv;
 
