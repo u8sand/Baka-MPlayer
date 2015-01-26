@@ -4,6 +4,7 @@
 #include "mpvhandler.h"
 #include "ui/mainwindow.h"
 #include "ui_mainwindow.h"
+#include "util.h"
 
 #include <QFileInfo>
 #include <QPainter>
@@ -16,11 +17,11 @@
 OverlayHandler::OverlayHandler(QObject *parent):
     QObject(parent),
     baka(static_cast<BakaEngine*>(parent)),
-    overlay_font("Monospace", 14),
+    overlay_font(Util::MonospaceFont(), 14),
     overlay_fm(overlay_font),
     min_overlay(3),
     max_overlay(63),
-    overlay_id(min_overlay) // start at 1
+    overlay_id(min_overlay)
 {
     overlay_font.setBold(true);
 }

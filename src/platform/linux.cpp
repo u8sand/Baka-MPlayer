@@ -84,4 +84,9 @@ void ShowInFolder(QString path, QString)
     QDesktopServices::openUrl(QString("file:///%0").arg(path));
 }
 
+QString MonospaceFont()
+{
+    return "Monospace";
+}
+
 }

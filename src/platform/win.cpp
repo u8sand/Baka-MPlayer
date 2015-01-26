@@ -53,4 +53,9 @@ void ShowInFolder(QString path, QString file)
     QProcess::startDetached("explorer.exe", QStringList{"/select,", path+file});
 }
 
+QString MonospaceFont()
+{
+    return "Lucida Console";
+}
+
 }

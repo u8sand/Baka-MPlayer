@@ -22,6 +22,8 @@ bool IsValidLocation(QString loc); // combined file and url
 
 void ShowInFolder(QString path, QString file);
 
+QString MonospaceFont();
+
 // common
 bool IsValidUrl(QString url);
 
