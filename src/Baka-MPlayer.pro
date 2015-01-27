@@ -46,6 +46,7 @@ win32 {
     #RC_LANG +=
 
     SOURCES += platform/win.cpp
+    RESOURCES += win_rsclist.qrc
 
     # 32 bit
     contains(QMAKE_HOST.arch, x86): SOURCES += platform/win32.cpp

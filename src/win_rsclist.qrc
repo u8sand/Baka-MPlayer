@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="/">
+    <file>img/tool-play.ico</file>
+    <file>img/tool-previous.ico</file>
+    <file>img/tool-next.ico</file>
+    <file>img/tool-pause.ico</file>
+  </qresource>
+</RCC>
