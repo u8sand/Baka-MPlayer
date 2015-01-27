@@ -24,12 +24,12 @@ MainWindow::MainWindow(QWidget *parent):
     ui->actionUpdate_Streaming_Support->setEnabled(false);
 #elif defined(Q_OS_WIN)
     // add windows 7+ thubnail toolbar buttons
-    thumbbar = QWinThumbnailToolBar(this);
-    thumbbar->setWindow(widget->windowHandle());
+    thumbbar = new QWinThumbnailToolBar(this);
+    thumbbar->setWindow(this->windowHandle());
 
     prev_toolbutton = new QWinThumbnailToolButton(thumbbar);
     prev_toolbutton->setToolTip("Previous");
-    prev_toolbutton->setIcon(":/img/tool-next.ico");
+    prev_toolbutton->setIcon(QIcon(":/img/tool-next.ico"));
     connect(prev_toolbutton, &QWinThumbnailToolButton::clicked,
             [=]
             {
@@ -38,7 +38,7 @@ MainWindow::MainWindow(QWidget *parent):
 
     playpause_toolbutton = new QWinThumbnailToolButton(thumbbar);
     playpause_toolbutton->setToolTip("Play/Pause");
-    playpause_toolbutton->setIcon(":/img/tool-play.ico");
+    playpause_toolbutton->setIcon(QIcon(":/img/tool-play.ico"));
     connect(playpause_toolbutton, &QWinThumbnailToolButton::clicked,
             [=]
             {
@@ -47,8 +47,8 @@ MainWindow::MainWindow(QWidget *parent):
 
     next_toolbutton = new QWinThumbnailToolButton(thumbbar);
     next_toolbutton->setToolTip("Next");
-    next_toolbutton->setIcon(":/img/tool-next.ico");
-    connect(prev, &QWinThumbnailToolButton::clicked,
+    next_toolbutton->setIcon(QIcon(":/img/tool-next.ico"));
+    connect(next_toolbutton, &QWinThumbnailToolButton::clicked,
             [=]
             {
                 ui->playlistWidget->PlayIndex(1, true);
@@ -1189,7 +1189,7 @@ void MainWindow::SetPlayButtonIcon(bool play)
         ui->playButton->setIcon(QIcon(":/img/default_play.svg"));
         ui->action_Play->setText(tr("&Play"));
 #if defined(Q_WIN_OS)
-        playpause_toolbutton->setIcon(":/img/tool-play.ico");
+        playpause_toolbutton->setIcon(QIcon(":/img/tool-play.ico"));
 #endif
     }
     else // pause icon
@@ -1197,7 +1197,7 @@ void MainWindow::SetPlayButtonIcon(bool play)
         ui->playButton->setIcon(QIcon(":/img/default_pause.svg"));
         ui->action_Play->setText(tr("&Pause"));
 #if defined(Q_WIN_OS)
-        playpause_toolbutton->setIcon(":/img/tool-pause.ico");
+        playpause_toolbutton->setIcon(QIcon(":/img/tool-pause.ico"));
 #endif
     }
 }
