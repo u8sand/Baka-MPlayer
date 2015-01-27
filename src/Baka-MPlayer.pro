@@ -28,6 +28,7 @@ unix {
 }
 
 win32 {
+    QT += winextras
     PKGCONFIG += libzip
 
     # mxe fix:

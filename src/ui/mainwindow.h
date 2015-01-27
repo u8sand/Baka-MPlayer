@@ -13,6 +13,11 @@
 #include <QHash>
 #include <QAction>
 
+#if defined(Q_OS_WIN)
+#include <QWinThumbnailToolBar>
+#include <QWinThumbnailToolButton>
+#endif
+
 namespace Ui {
 class MainWindow;
 }
@@ -63,11 +68,20 @@ private slots:
     void ShowPlaylist(bool visible);                // sets the playlist visibility
     void HideAlbumArt(bool hide);                   // hides the album art
     void UpdateRecentFiles();                       // populate recentFiles menu
+    void SetPlayButtonIcon(bool play);
+    void SetNextButtonEnabled(bool enable);
+    void SetPreviousButtonEnabled(bool enable);
 
 private:
     BakaEngine      *baka;
     MpvHandler      *mpv;
 
+#if defined(Q_OS_WIN)
+    QWinThumbnailToolBar *thumbbar;
+    QWinThumbnailToolButton *prev_toolbutton,
+                            *playpause_toolbutton,
+                            *next_toolbutton;
+#endif
     bool            pathChanged,
                     menuVisible,
                     firstItem       = false,

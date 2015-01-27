@@ -22,6 +22,41 @@ MainWindow::MainWindow(QWidget *parent):
 #if defined(Q_OS_UNIX) || defined(Q_OS_LINUX)
     // update streaming support disabled on unix platforms
     ui->actionUpdate_Streaming_Support->setEnabled(false);
+#elif defined(Q_OS_WIN)
+    // add windows 7+ thubnail toolbar buttons
+    thumbbar = QWinThumbnailToolBar(this);
+    thumbbar->setWindow(widget->windowHandle());
+
+    prev_toolbutton = new QWinThumbnailToolButton(thumbbar);
+    prev_toolbutton->setToolTip("Previous");
+    prev_toolbutton->setIcon(":/img/tool-next.ico");
+    connect(prev_toolbutton, &QWinThumbnailToolButton::clicked,
+            [=]
+            {
+                ui->playlistWidget->PlayIndex(-1, true);
+            });
+
+    playpause_toolbutton = new QWinThumbnailToolButton(thumbbar);
+    playpause_toolbutton->setToolTip("Play/Pause");
+    playpause_toolbutton->setIcon(":/img/tool-play.ico");
+    connect(playpause_toolbutton, &QWinThumbnailToolButton::clicked,
+            [=]
+            {
+                baka->PlayPause();
+            });
+
+    next_toolbutton = new QWinThumbnailToolButton(thumbbar);
+    next_toolbutton->setToolTip("Next");
+    next_toolbutton->setIcon(":/img/tool-next.ico");
+    connect(prev, &QWinThumbnailToolButton::clicked,
+            [=]
+            {
+                ui->playlistWidget->PlayIndex(1, true);
+            });
+
+    thumbbar->addButton(prev_toolbutton);
+    thumbbar->addButton(playpause_toolbutton);
+    thumbbar->addButton(next_toolbutton);
 #endif
     ShowPlaylist(false);
     addActions(ui->menubar->actions()); // makes menubar shortcuts work even when menubar is hidden
@@ -439,6 +474,9 @@ MainWindow::MainWindow(QWidget *parent):
                     {
                         ui->action_Play->setEnabled(true);
                         ui->playButton->setEnabled(true);
+#if defined(Q_WIN_OS)
+                        playpause_toolbutton->setEnabled(true);
+#endif
                         ui->playlistButton->setEnabled(true);
                         ui->action_Show_Playlist->setEnabled(true);
                         init = true;
@@ -451,16 +489,14 @@ MainWindow::MainWindow(QWidget *parent):
                     SetPlaybackControls(true);
                     mpv->Play();
                 case Mpv::Playing:
-                    ui->playButton->setIcon(QIcon(":/img/default_pause.svg"));
-                    ui->action_Play->setText(tr("&Pause"));
+                    SetPlayButtonIcon(false);
                     if(onTop == "playing")
                         Util::SetAlwaysOnTop(winId(), true);
                     break;
 
                 case Mpv::Paused:
                 case Mpv::Stopped:
-                    ui->playButton->setIcon(QIcon(":/img/default_play.svg"));
-                    ui->action_Play->setText(tr("&Play"));
+                    SetPlayButtonIcon(true);
                     if(onTop == "playing")
                         Util::SetAlwaysOnTop(winId(), false);
                     break;
@@ -762,7 +798,12 @@ MainWindow::~MainWindow()
     // see: http://qt-project.org/doc/qt-4.8/objecttrees.html
 
     // but apparently they don't (https://github.com/u8sand/Baka-MPlayer/issues/47)
-
+#if defined(Q_OS_WIN)
+    delete prev_toolbutton;
+    delete playpause_toolbutton;
+    delete next_toolbutton;
+    delete thumbbar;
+#endif
     delete baka;
     delete ui;
 }
@@ -980,27 +1021,21 @@ void MainWindow::SetIndexLabels(bool enable)
     // next file
     if(enable && index+1 < ui->playlistWidget->count()) // not the last entry
     {
-        ui->nextButton->setEnabled(true);
+        SetNextButtonEnabled(true);
         ui->nextButton->setIndex(index+2); // starting at 1 instead of at 0 like actual index
-        ui->actionPlay_Next_File->setEnabled(true);
+
     }
     else
-    {
-        ui->nextButton->setEnabled(false);
-        ui->actionPlay_Next_File->setEnabled(false);
-    }
+        SetNextButtonEnabled(false);
+
     // previous file
     if(enable && index-1 >= 0) // not the first entry
     {
-        ui->previousButton->setEnabled(true);
+        SetPreviousButtonEnabled(true);
         ui->previousButton->setIndex(-index); // we use a negative index value for the left button
-        ui->actionPlay_Previous_File->setEnabled(true);
     }
     else
-    {
-        ui->previousButton->setEnabled(false);
-        ui->actionPlay_Previous_File->setEnabled(false);
-    }
+        SetPreviousButtonEnabled(false);
 
     if(i == -1) // no selection
     {
@@ -1126,5 +1161,43 @@ void MainWindow::UpdateRecentFiles()
                 {
                     mpv->LoadFile(f);
                 });
+    }
+}
+
+void MainWindow::SetNextButtonEnabled(bool enable)
+{
+    ui->nextButton->setEnabled(enable);
+    ui->actionPlay_Next_File->setEnabled(enable);
+#if defined(Q_OS_WIN)
+    next_toolbutton->setEnabled(enable);
+#endif
+}
+
+void MainWindow::SetPreviousButtonEnabled(bool enable)
+{
+    ui->previousButton->setEnabled(enable);
+    ui->actionPlay_Previous_File->setEnabled(enable);
+#if defined(Q_OS_WIN)
+    prev_toolbutton->setEnabled(enable);
+#endif
+}
+
+void MainWindow::SetPlayButtonIcon(bool play)
+{
+    if(play)
+    {
+        ui->playButton->setIcon(QIcon(":/img/default_play.svg"));
+        ui->action_Play->setText(tr("&Play"));
+#if defined(Q_WIN_OS)
+        playpause_toolbutton->setIcon(":/img/tool-play.ico");
+#endif
+    }
+    else // pause icon
+    {
+        ui->playButton->setIcon(QIcon(":/img/default_pause.svg"));
+        ui->action_Play->setText(tr("&Pause"));
+#if defined(Q_WIN_OS)
+        playpause_toolbutton->setIcon(":/img/tool-pause.ico");
+#endif
     }
 }
