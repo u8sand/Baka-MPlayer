@@ -24,11 +24,12 @@ MainWindow::MainWindow(QWidget *parent):
     ui->actionUpdate_Streaming_Support->setEnabled(false);
 #elif defined(Q_OS_WIN)
     // add windows 7+ thubnail toolbar buttons
-    thumbbar = new QWinThumbnailToolBar(this);
-    thumbbar->setWindow(this->windowHandle());
+    thumbnail_toolbar = new QWinThumbnailToolBar(this);
+    thumbnail_toolbar->setWindow(windowHandle());
 
-    prev_toolbutton = new QWinThumbnailToolButton(thumbbar);
-    prev_toolbutton->setToolTip("Previous");
+    prev_toolbutton = new QWinThumbnailToolButton(thumbnail_toolbar);
+    prev_toolbutton->setEnabled(false);
+    prev_toolbutton->setToolTip(tr("Previous"));
     prev_toolbutton->setIcon(QIcon(":/img/tool-next.ico"));
     connect(prev_toolbutton, &QWinThumbnailToolButton::clicked,
             [=]
@@ -36,8 +37,9 @@ MainWindow::MainWindow(QWidget *parent):
                 ui->playlistWidget->PlayIndex(-1, true);
             });
 
-    playpause_toolbutton = new QWinThumbnailToolButton(thumbbar);
-    playpause_toolbutton->setToolTip("Play/Pause");
+    playpause_toolbutton = new QWinThumbnailToolButton(thumbnail_toolbar);
+    playpause_toolbutton->setEnabled(false);
+    playpause_toolbutton->setToolTip(tr("Play"));
     playpause_toolbutton->setIcon(QIcon(":/img/tool-play.ico"));
     connect(playpause_toolbutton, &QWinThumbnailToolButton::clicked,
             [=]
@@ -45,8 +47,9 @@ MainWindow::MainWindow(QWidget *parent):
                 baka->PlayPause();
             });
 
-    next_toolbutton = new QWinThumbnailToolButton(thumbbar);
-    next_toolbutton->setToolTip("Next");
+    next_toolbutton = new QWinThumbnailToolButton(thumbnail_toolbar);
+    next_toolbutton->setEnabled(false);
+    next_toolbutton->setToolTip(tr("Next"));
     next_toolbutton->setIcon(QIcon(":/img/tool-next.ico"));
     connect(next_toolbutton, &QWinThumbnailToolButton::clicked,
             [=]
@@ -54,9 +57,9 @@ MainWindow::MainWindow(QWidget *parent):
                 ui->playlistWidget->PlayIndex(1, true);
             });
 
-    thumbbar->addButton(prev_toolbutton);
-    thumbbar->addButton(playpause_toolbutton);
-    thumbbar->addButton(next_toolbutton);
+    thumbnail_toolbar->addButton(prev_toolbutton);
+    thumbnail_toolbar->addButton(playpause_toolbutton);
+    thumbnail_toolbar->addButton(next_toolbutton);
 #endif
     ShowPlaylist(false);
     addActions(ui->menubar->actions()); // makes menubar shortcuts work even when menubar is hidden
@@ -802,7 +805,7 @@ MainWindow::~MainWindow()
     delete prev_toolbutton;
     delete playpause_toolbutton;
     delete next_toolbutton;
-    delete thumbbar;
+    delete thumbnail_toolbar;
 #endif
     delete baka;
     delete ui;
@@ -1189,6 +1192,7 @@ void MainWindow::SetPlayButtonIcon(bool play)
         ui->playButton->setIcon(QIcon(":/img/default_play.svg"));
         ui->action_Play->setText(tr("&Play"));
 #if defined(Q_WIN_OS)
+        playpause_toolbutton->setToolTip(tr("Play"));
         playpause_toolbutton->setIcon(QIcon(":/img/tool-play.ico"));
 #endif
     }
@@ -1197,6 +1201,7 @@ void MainWindow::SetPlayButtonIcon(bool play)
         ui->playButton->setIcon(QIcon(":/img/default_pause.svg"));
         ui->action_Play->setText(tr("&Pause"));
 #if defined(Q_WIN_OS)
+        playpause_toolbutton->setToolTip(tr("Pause"));
         playpause_toolbutton->setIcon(QIcon(":/img/tool-pause.ico"));
 #endif
     }

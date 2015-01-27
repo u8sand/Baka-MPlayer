@@ -77,7 +77,7 @@ private:
     MpvHandler      *mpv;
 
 #if defined(Q_OS_WIN)
-    QWinThumbnailToolBar *thumbbar;
+    QWinThumbnailToolBar    *thumbnail_toolbar;
     QWinThumbnailToolButton *prev_toolbutton,
                             *playpause_toolbutton,
                             *next_toolbutton;
