@@ -27,7 +27,7 @@ protected:
     void AddRow(QString first, QString second, QString third);
     void ModifyRow(int row, QString first, QString second, QString third);
     void RemoveRow(int row);
-    void SelectKey(bool add, QPair<QString, QPair<QString, QString>> init = QPair<QString, QPair<QString, QString>>());
+    void SelectKey(bool add, QPair<QString, QPair<QString, QString>> init = (QPair<QString, QPair<QString, QString>>()));
 
 private:
     Ui::PreferencesDialog *ui;
