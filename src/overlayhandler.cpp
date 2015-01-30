@@ -90,7 +90,7 @@ void OverlayHandler::showText(const QString &text, int duration, QPoint pos, int
     canvas->fill(0); // fill it with nothing
 
     QPainter painter(canvas); // prepare to paint
-    painter.setRenderHint(QPainter::Antialiasing);
+//    painter.setRenderHint(QPainter::Antialiasing);
     painter.setFont(overlay_font);
     painter.setPen(QColor(0, 0, 0));
     painter.setBrush(QColor(0xF3F300));
