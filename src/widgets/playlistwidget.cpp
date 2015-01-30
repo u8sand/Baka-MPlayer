@@ -52,6 +52,7 @@ void PlaylistWidget::AttachEngine(BakaEngine *baka)
                     BoldText(f, true);
                     file = f;
                 }
+                SelectIndex(CurrentIndex());
             });
 
     connect(this, &PlaylistWidget::doubleClicked,
