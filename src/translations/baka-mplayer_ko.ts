@@ -1354,7 +1354,7 @@ Note: Value must be from %0 - %1</source>
     <message>
         <location filename="../ui/mainwindow.ui" line="1582"/>
         <source>Update &amp;Streaming Support</source>
-        <translation>유튜브 지원 업데이트(&amp;)</translation>
+        <translation>유튜브 지원 업데이트(&amp;S)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1263"/>
