@@ -1114,7 +1114,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Online &amp;Help</source>
-        <translation>在线帮助&amp;H)</translation>
+        <translation>在线帮助(&amp;H)</translation>
     </message>
     <message>
         <source>F1</source>
