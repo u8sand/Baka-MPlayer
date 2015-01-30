@@ -29,7 +29,7 @@ void BakaEngine::BakaNew(QStringList &args)
     if(args.empty())
     {
         QProcess *p = new QProcess(0);
-        p->startDetached(QApplication::applicationFilePath());
+        p->startDetached(QDir::toNativeSeparators(QApplication::applicationFilePath()));
         delete p;
     }
     else
