@@ -101,6 +101,13 @@ QString MpvHandler::getMediaInfo()
             items.append({chapter.title, Util::FormatTime(chapter.time, fileInfo.length)});
         items.append({QString(), QString()});
     }
+    if(fileInfo.metadata.size() > 0)
+    {
+        items.append({tr("[Metadata]"), QString()});
+        for(auto data = fileInfo.metadata.begin(); data != fileInfo.metadata.end(); ++data)
+            items.append({data.key(), *data});
+        items.append({QString(), QString()});
+    }
 
     QString info;
     int spacing = 0;
@@ -599,6 +606,7 @@ void MpvHandler::LoadFileInfo()
     LoadTracks();
     LoadChapters();
     LoadVideoParams();
+    LoadMetadata();
 
     emit fileInfoChanged(fileInfo);
 }
@@ -705,8 +713,6 @@ void MpvHandler::LoadChapters()
             }
         }
     }
-
-    emit chaptersChanged(fileInfo.chapters);
 }
 
 void MpvHandler::LoadVideoParams()
@@ -718,6 +724,17 @@ void MpvHandler::LoadVideoParams()
     mpv_get_property(mpv, "video-aspect", MPV_FORMAT_INT64, &fileInfo.video_params.aspect);
 
     emit videoParamsChanged(fileInfo.video_params);
+}
+
+void MpvHandler::LoadMetadata()
+{
+    fileInfo.metadata.clear();
+    mpv_node node;
+    mpv_get_property(mpv, "metadata", MPV_FORMAT_NODE, &node);
+    if(node.format == MPV_FORMAT_NODE_MAP)
+        for(int n = 0; n < node.u.list->num; n++)
+            if(node.u.list->values[n].format == MPV_FORMAT_STRING)
+                fileInfo.metadata[node.u.list->keys[n]] = node.u.list->values[n].u.string;
 }
 
 void MpvHandler::LoadOsdSize()

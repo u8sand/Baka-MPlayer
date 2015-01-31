@@ -4,6 +4,7 @@
 #include <QMetaType>
 #include <QString>
 #include <QStringList>
+#include <QMap>
 #include <QList>
 
 namespace Mpv
@@ -65,6 +66,7 @@ namespace Mpv
     {
         QString media_title;
         int length = 0;
+        QMap<QString, QString> metadata;
         VideoParams video_params;
         AudioParams audio_params;
         QList<Track> tracks; // audio, video, and subs

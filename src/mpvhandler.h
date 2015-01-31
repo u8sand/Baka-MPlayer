@@ -90,6 +90,7 @@ public slots:
     void LoadTracks();
     void LoadChapters();
     void LoadVideoParams();
+    void LoadMetadata();
     void LoadOsdSize();
 
     void Command(const QStringList &strlist);
