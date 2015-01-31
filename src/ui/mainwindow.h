@@ -43,6 +43,7 @@ public:
     bool getGestures()         { return gestures; }
 
     Ui::MainWindow  *ui;
+    QImage albumArt;
 public slots:
     void Load(QString f = QString());
     void MapShortcuts();

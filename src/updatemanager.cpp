@@ -37,7 +37,7 @@ bool UpdateManager::CheckForUpdates()
     if(busy)
         return false;
     busy = true;
-    emit messageSignal(tr("Checking for updates...\n"));
+    emit messageSignal(tr("Checking for updates..."));
 
     QNetworkRequest request(Util::VersionFileUrl());
     QNetworkReply *reply = manager->get(request);
@@ -83,7 +83,7 @@ bool UpdateManager::DownloadUpdate(const QString &url)
     if(busy)
         return false;
     busy = true;
-    emit messageSignal(tr("Downloading update...\n"));
+    emit messageSignal(tr("Downloading update..."));
 
     QNetworkRequest request(url);
     QString filename = QDir::toNativeSeparators(QString("%0/Baka-MPlayer.zip").arg(QCoreApplication::applicationDirPath()));
@@ -110,7 +110,7 @@ bool UpdateManager::DownloadUpdate(const QString &url)
                 if(reply->error())
                     emit messageSignal(reply->errorString());
                 else if(file->write(reply->read(reply->bytesAvailable()), reply->bytesAvailable()) == -1)
-                    emit messageSignal(tr("write error\n"));
+                    emit messageSignal(tr("write error"));
             });
 
     connect(reply, &QNetworkReply::finished,
@@ -131,13 +131,13 @@ bool UpdateManager::DownloadUpdate(const QString &url)
                     if(redirect.isEmpty())
                     {
                         busy = false;
-                        emit messageSignal(tr("Download complete\n"));
+                        emit messageSignal(tr("Download complete"));
                         ApplyUpdate(filename);
                         emit progressSignal(100);
                     }
                     else
                     {
-                        emit messageSignal(tr("Redirected...\n"));
+                        emit messageSignal(tr("Redirected..."));
                         busy = false;
                         DownloadUpdate(redirect.toString());
                     }
@@ -149,7 +149,7 @@ bool UpdateManager::DownloadUpdate(const QString &url)
 
 void UpdateManager::ApplyUpdate(const QString &file)
 {
-    emit messageSignal(tr("Extracting...\n"));
+    emit messageSignal(tr("Extracting..."));
     // create a temporary directory for baka
     QString path = QDir::toNativeSeparators(QString("%0/.tmp/").arg(QCoreApplication::applicationDirPath()));
     QString exe = QDir::toNativeSeparators(QString("%0/Baka MPlayer.exe").arg(QCoreApplication::applicationDirPath()));
@@ -178,7 +178,7 @@ void UpdateManager::ApplyUpdate(const QString &file)
     }
     zip_close(z);
     // write updater batch script
-    emit messageSignal(tr("Creating updater script...\n"));
+    emit messageSignal(tr("Creating updater script..."));
     QFile f(bat);
     if(!f.open(QFile::WriteOnly | QFile::Truncate))
     {
@@ -206,7 +206,7 @@ void UpdateManager::ApplyUpdate(const QString &file)
     f.close();
 
     QProcess::startDetached(bat);
-    emit messageSignal(tr("Done. Restarting...\n"));
+    emit messageSignal(tr("Done. Restarting..."));
     baka->Quit();
 }
 #endif

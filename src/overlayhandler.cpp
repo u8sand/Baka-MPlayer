@@ -102,6 +102,7 @@ void OverlayHandler::showText(const QString &text, int duration, QPoint pos, int
         pos.x(), pos.y(),
         "&"+QString::number(quintptr(canvas->bits())),
         0, canvas->width(), canvas->height());
+
     // increase next overlay_id
     if(id == -1) // auto id
     {

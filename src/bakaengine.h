@@ -58,39 +58,39 @@ public:
         {"Left",            {"mpv seek -5",                         tr("Seek backwards by 5 sec")}},
         {"Shift+Left",      {"mpv frame_back_step",                 tr("Frame step backwards")}},
         {"Shift+Right",     {"mpv frame_step",                      tr("Frame step")}},
-        {"Ctrl+T",          {"baka screenshot subtitles",           tr("Take screenshot with subtitles")}},
-        {"Ctrl+Shift+T",    {"baka screenshot",                     tr("Take screenshot without subtitles")}},
-        {"Ctrl+Down",       {"baka volume -5",                      tr("Decrease volume")}},
-        {"Ctrl+Up",         {"baka volume +5",                      tr("Increase volume")}},
-        {"Alt+Return",      {"baka fullscreen",                     tr("Toggle fullscreen")}},
-        {"Ctrl+D",          {"baka dim",                            tr("Dim lights")}},
-        {"Ctrl+E",          {"baka show_in_folder",                 tr("Show the file in its folder")}},
-        {"Tab",             {"baka media_info",                     tr("View media information")}},
-        {"Ctrl+J",          {"baka jump",                           tr("Show jump to time dialog")}},
-        {"Ctrl+N",          {"baka new",                            tr("Open a new window")}},
-        {"Ctrl+O",          {"baka open",                           tr("Show open file dialog")}},
-        {"Ctrl+Q",          {"baka quit",                           tr("Quit")}},
-        {"Ctrl+Right",      {"baka playlist play +1",               tr("Play next file")}},
-        {"Ctrl+Left",       {"baka playlist play -1",               tr("Play previous file")}},
-        {"Ctrl+S",          {"baka stop",                           tr("Stop playback")}},
-        {"Ctrl+U",          {"baka open_location",                  tr("Show location dialog")}},
-        {"Ctrl+V",          {"baka open_clipboard",                 tr("Open clipboard location")}},
-        {"Ctrl+F",          {"baka playlist toggle",                tr("Toggle playlist visibility")}},
-        {"Ctrl+Z",          {"baka open_recent 0",                  tr("Open the last played file")}},
-        {"Ctrl+G",          {"baka output",                         tr("Access command-line")}},
-        {"F1",              {"baka online_help",                    tr("Launch online help")}},
-        {"Space",           {"baka play_pause",                     tr("Play/Pause")}},
-        {"Alt+1",           {"baka fitwindow",                      tr("Fit the window to the video")}},
-        {"Alt+2",           {"baka fitwindow 50",                   tr("Fit window to 50%")}},
-        {"Alt+3",           {"baka fitwindow 75",                   tr("Fit window to 75%")}},
-        {"Alt+4",           {"baka fitwindow 100",                  tr("Fit window to 100%")}},
-        {"Alt+5",           {"baka fitwindow 150",                  tr("Fit window to 150%")}},
-        {"Alt+6",           {"baka fitwindow 200",                  tr("Fit window to 200%")}},
-        {"Esc",             {"baka boss",                           tr("Boss key")}},
-        {"Down",            {"baka playlist select +1",             tr("Select next file on playlist")}},
-        {"Up",              {"baka playlist select -1",             tr("Select previous file on playlist")}},
-        {"Return",          {"baka playlist play",                  tr("Play selected file on playlist")}},
-        {"Del",             {"baka playlist remove",                tr("Remove selected file from playlist")}}
+        {"Ctrl+T",          {"screenshot subtitles",                tr("Take screenshot with subtitles")}},
+        {"Ctrl+Shift+T",    {"screenshot",                          tr("Take screenshot without subtitles")}},
+        {"Ctrl+Down",       {"volume -5",                           tr("Decrease volume")}},
+        {"Ctrl+Up",         {"volume +5",                           tr("Increase volume")}},
+        {"Alt+Return",      {"fullscreen",                          tr("Toggle fullscreen")}},
+        {"Ctrl+D",          {"dim",                                 tr("Dim lights")}},
+        {"Ctrl+E",          {"show_in_folder",                      tr("Show the file in its folder")}},
+        {"Tab",             {"media_info",                          tr("View media information")}},
+        {"Ctrl+J",          {"jump",                                tr("Show jump to time dialog")}},
+        {"Ctrl+N",          {"new",                                 tr("Open a new window")}},
+        {"Ctrl+O",          {"open",                                tr("Show open file dialog")}},
+        {"Ctrl+Q",          {"quit",                                tr("Quit")}},
+        {"Ctrl+Right",      {"playlist play +1",                    tr("Play next file")}},
+        {"Ctrl+Left",       {"playlist play -1",                    tr("Play previous file")}},
+        {"Ctrl+S",          {"stop",                                tr("Stop playback")}},
+        {"Ctrl+U",          {"open_location",                       tr("Show location dialog")}},
+        {"Ctrl+V",          {"open_clipboard",                      tr("Open clipboard location")}},
+        {"Ctrl+F",          {"playlist toggle",                     tr("Toggle playlist visibility")}},
+        {"Ctrl+Z",          {"open_recent 0",                       tr("Open the last played file")}},
+        {"Ctrl+G",          {"output",                              tr("Access command-line")}},
+        {"F1",              {"online_help",                         tr("Launch online help")}},
+        {"Space",           {"play_pause",                          tr("Play/Pause")}},
+        {"Alt+1",           {"fitwindow",                           tr("Fit the window to the video")}},
+        {"Alt+2",           {"fitwindow 50",                        tr("Fit window to 50%")}},
+        {"Alt+3",           {"fitwindow 75",                        tr("Fit window to 75%")}},
+        {"Alt+4",           {"fitwindow 100",                       tr("Fit window to 100%")}},
+        {"Alt+5",           {"fitwindow 150",                       tr("Fit window to 150%")}},
+        {"Alt+6",           {"fitwindow 200",                       tr("Fit window to 200%")}},
+        {"Esc",             {"boss",                                tr("Boss key")}},
+        {"Down",            {"playlist select +1",                  tr("Select next file on playlist")}},
+        {"Up",              {"playlist select -1",                  tr("Select previous file on playlist")}},
+        {"Return",          {"playlist play",                       tr("Play selected file on playlist")}},
+        {"Del",             {"playlist remove",                     tr("Remove selected file from playlist")}}
     };
 
 public slots:
@@ -101,8 +101,6 @@ public slots:
 
 protected slots:
     // Utility functions
-    void MpvCommand(QStringList&);
-    void BakaCommand(QStringList&);
     void BakaPrint(QString);
     void MpvPrint(QString);
     void UpdatePrint(QString);
@@ -134,35 +132,256 @@ private:
     //  by using a hash-table -> function pointer we acheive O(1) function lookups
     // Format: void BakaCommand(QStringList args)
     // See bakacommands.cpp for function definitions
+
+    // todo: write advanced information about commands
     typedef void(BakaEngine::*BakaCommandFPtr)(QStringList&);
-    const QHash<QString, BakaCommandFPtr> BakaCommandMap = {
-        {"new", &BakaEngine::BakaNew},
-        {"open_location", &BakaEngine::BakaOpenLocation},
-        {"open_clipboard", &BakaEngine::BakaOpenClipboard},
-        {"show_in_folder", &BakaEngine::BakaShowInFolder},
-        {"add_subtitles", &BakaEngine::BakaAddSubtitles},
-        {"screenshot", &BakaEngine::BakaScreenshot},
-        {"media_info", &BakaEngine::BakaMediaInfo},
-        {"stop", &BakaEngine::BakaStop},
-        {"playlist", &BakaEngine::BakaPlaylist},
-        {"jump", &BakaEngine::BakaJump},
-        {"dim", &BakaEngine::BakaDim},
-        {"output", &BakaEngine::BakaOutput},
-        {"preferences", &BakaEngine::BakaPreferences},
-        {"online_help", &BakaEngine::BakaOnlineHelp},
-        {"update", &BakaEngine::BakaUpdate},
-        {"open", &BakaEngine::BakaOpen},
-        {"play_pause", &BakaEngine::BakaPlayPause},
-        {"fitwindow", &BakaEngine::BakaFitWindow},
-        {"volume", &BakaEngine::BakaVolume},
-        {"fullscreen", &BakaEngine::BakaFullScreen},
-        {"boss", &BakaEngine::BakaBoss},
-        {"help", &BakaEngine::BakaHelp},
-        {"about", &BakaEngine::BakaAbout},
-        {"debug", &BakaEngine::BakaDebug},
-        {"quit", &BakaEngine::BakaQuit}
+    const QHash<QString, QPair<BakaCommandFPtr, QStringList>> BakaCommandMap = {
+        {"mpv", // command
+         {&BakaEngine::BakaMpv,
+          {
+           // params     description
+           QString(), tr("executes mpv command"),
+           QString() // advanced
+          }
+         }
+        },
+        {"sh",
+         {&BakaEngine::BakaSh,
+          {
+           QString(), tr("executes system shell command"),
+           QString()
+          }
+         }
+        },
+        {"new",
+         {&BakaEngine::BakaNew, // function pointer to command functionality
+          {
+           // params     description
+           QString(), tr("creates a new instance of baka-mplayer"),
+           QString()
+          }
+         }
+        },
+        {"open_location",
+         {&BakaEngine::BakaOpenLocation,
+          {
+           QString(),
+           tr("shows the open location dialog"),
+           QString()
+          }
+         }
+        },
+        {"open_clipboard",
+         {&BakaEngine::BakaOpenClipboard,
+          {
+           QString(),
+           tr("opens the clipboard"),
+           QString()
+          }
+         }
+        },
+        {"show_in_folder",
+         {&BakaEngine::BakaShowInFolder,
+          {
+           QString(),
+           tr("shows the current file in folder"),
+           QString()
+          }
+         }
+        },
+        {"add_subtitles",
+         {&BakaEngine::BakaAddSubtitles,
+          {
+           QString(),
+           tr("add subtitles dialog"),
+           QString()
+          }
+         }
+        },
+        {"screenshot",
+         {&BakaEngine::BakaScreenshot,
+          {
+           tr("[subs]"),
+           tr("take a screenshot (with subtitles if specified)"),
+           QString()
+          }
+         }
+        },
+        {"media_info",
+         {&BakaEngine::BakaMediaInfo,
+          {
+           QString(),
+           tr("toggles media info display"),
+           QString()
+          }
+         }
+        },
+        {"stop",
+         {&BakaEngine::BakaStop,
+          {
+           QString(),
+           tr("stops the current playback"),
+           QString()
+          }
+         }
+        },
+        {"playlist",
+         {&BakaEngine::BakaPlaylist,
+          {
+           tr("[...]"),
+           tr("playlist options"),
+           QString()
+          }
+         }
+        },
+        {"jump",
+         {&BakaEngine::BakaJump,
+          {
+           QString(),
+           tr("opens jump dialog"),
+           QString()
+          }
+         }
+        },
+        {"dim",
+         {&BakaEngine::BakaDim,
+          {
+           QString(),
+           tr("toggles dim desktop"),
+           QString()
+          }
+         }
+        },
+        {"output",
+         {&BakaEngine::BakaOutput,
+          {
+           QString(),
+           tr("toggles output textbox"),
+           QString()
+          }
+         }
+        },
+        {"preferences",
+         {&BakaEngine::BakaPreferences,
+          {
+           QString(),
+           tr("opens preferences dialog"),
+           QString()
+          }
+         }
+        },
+        {"online_help",
+         {&BakaEngine::BakaOnlineHelp,
+          {
+           QString(),
+           tr("launches online help"),
+           QString()
+          }
+         }
+        },
+        {"update",
+         {&BakaEngine::BakaUpdate,
+          {
+           QString(),
+           tr("opens the update dialog or updates youtube-dl"),
+           QString()
+          }
+         }
+        },
+        {"open",
+         {&BakaEngine::BakaOpen,
+          {
+           tr("[file]"),
+           tr("opens the open file dialog or the file specified"),
+           QString()
+          }
+         }
+        },
+        {"play_pause",
+         {&BakaEngine::BakaPlayPause,
+          {
+           QString(),
+           tr("toggle play/pause state"),
+           QString()
+          }
+         }
+        },
+        {"fitwindow",
+         {&BakaEngine::BakaFitWindow,
+          {
+           tr("[percent]"),
+           tr("fit the window"),
+           QString()
+          }
+         }
+        },
+        {"volume",
+         {&BakaEngine::BakaVolume,
+          {
+           tr("[level]"),
+           tr("adjusts the volume"),
+           QString()
+          }
+         }
+        },
+        {"fullscreen",
+         {&BakaEngine::BakaFullScreen,
+          {
+           QString(),
+           tr("toggles fullscreen state"),
+           QString()
+          }
+         }
+        },
+        {"boss",
+         {&BakaEngine::BakaBoss,
+          {
+           QString(),
+           tr("pause and hide the window"),
+           QString()
+          }
+         }
+        },
+        {"help",
+         {&BakaEngine::BakaHelp,
+          {
+           tr("[command]"),
+           tr("internal help menu"),
+           QString()
+          }
+         }
+        },
+        {"about",
+         {&BakaEngine::BakaAbout,
+          {
+           tr("[qt]"),
+           tr("open about dialog"),
+           QString()
+          }
+         }
+        },
+        {"debug",
+         {&BakaEngine::BakaDebug,
+          {
+           tr("[level]"),
+           tr("set mpv debugging level"),
+           QString()
+          }
+         }
+        },
+        {"quit",
+         {&BakaEngine::BakaQuit,
+          {
+           QString(),
+           tr("quit baka-mplayer"),
+           QString()
+          }
+         }
+        }
     };
     // Baka Command Functions
+    void BakaMpv(QStringList&);
+    void BakaSh(QStringList&);
     void BakaNew(QStringList&);
     void BakaOpenLocation(QStringList&);
     void BakaOpenClipboard(QStringList&);

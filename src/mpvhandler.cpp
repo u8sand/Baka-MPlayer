@@ -726,16 +726,15 @@ void MpvHandler::LoadOsdSize()
     mpv_get_property(mpv, "osd-height", MPV_FORMAT_INT64, &osdHeight);
 }
 
-void MpvHandler::CommandString(QString str)
+void MpvHandler::Command(const QStringList &strlist)
 {
     // convert input string into char array
-    QStringList tmp = str.split(" ");
-    int len = tmp.length();
+    int len = strlist.length();
     char **data = new char*[len+1];
     for(int i = 0; i < len; ++i)
     {
-        data[i] = new char[tmp[i].length()+1];
-        memcpy(data[i], QByteArray(tmp[i].toUtf8()).begin(), tmp[i].length()+1);
+        data[i] = new char[strlist[i].length()+1];
+        memcpy(data[i], QByteArray(strlist[i].toUtf8()).begin(), strlist[i].length()+1);
     }
     data[len] = NULL;
     AsyncCommand(const_cast<const char**>(data));

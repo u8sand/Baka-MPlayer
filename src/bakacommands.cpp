@@ -24,14 +24,33 @@
 #include "util.h"
 
 
+void BakaEngine::BakaMpv(QStringList &args)
+{
+    if(mpv->playState > 0)
+        BakaPrint(tr("mpv not yet initialized"));
+
+    if(!args.empty())
+        mpv->Command(args);
+    else
+        RequiresParameters("mpv");
+}
+
+void BakaEngine::BakaSh(QStringList &args)
+{
+    if(!args.empty())
+    {
+        QString arg = args.front();
+        args.pop_front();
+        QProcess::startDetached(arg, args);
+    }
+    else
+        RequiresParameters("mpv");
+}
+
 void BakaEngine::BakaNew(QStringList &args)
 {
     if(args.empty())
-    {
-        QProcess *p = new QProcess(0);
-        p->startDetached(QDir::toNativeSeparators(QApplication::applicationFilePath()));
-        delete p;
-    }
+        QProcess::startDetached(QDir::toNativeSeparators(QApplication::applicationFilePath()));
     else
         InvalidParameter(args.join(' '));
 }
@@ -507,9 +526,47 @@ void BakaEngine::BakaBoss(QStringList &args)
         InvalidParameter(args.join(' '));
 }
 
-void BakaEngine::BakaHelp(QStringList &)
+void BakaEngine::BakaHelp(QStringList &args)
 {
-    BakaPrint("This feature is coming soon...\n");
+    if(args.empty())
+    {
+        BakaPrint(tr("usage: baka <command> [...]"));
+        BakaPrint(tr("commands:"));
+        int len, max_len = 22;
+        for(auto command = BakaCommandMap.begin(); command != BakaCommandMap.end(); ++command)
+        {
+            QString str = QString("  %0 %1").arg(command.key(), command->second[0]);
+            len = str.length();
+            while(len++ <= max_len)
+                str += ' ';
+            str += command->second[1];
+            BakaPrint(str);
+        }
+    }
+    else
+    {
+        QString arg = args.front();
+        args.pop_front();
+        if(args.empty())
+        {
+            auto command = BakaCommandMap.find(arg);
+            if(command != BakaCommandMap.end()) //found
+            {
+                BakaPrint(tr("usage: %0 %1").arg(arg, command->second[0]));
+                BakaPrint(tr("description:"));
+                BakaPrint(QString("  %0").arg(command->second[1]));
+                if(command->second.length() > 2 && command->second[2] != QString())
+                {
+                    BakaPrint(tr("advanced:"));
+                    BakaPrint(QString("  %0").arg(command->second[2]));
+                }
+            }
+            else
+                InvalidParameter(arg);
+        }
+        else
+            InvalidParameter(args.join(' '));
+    }
 }
 
 void BakaEngine::BakaAbout(QStringList &args)

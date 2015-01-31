@@ -167,52 +167,31 @@ void BakaEngine::Command(QString command)
     QStringList args = command.split(" ");
     if(!args.empty())
     {
-        if(args.front() == "mpv")
-        {
+        if(args.front() == "baka") // implicitly understood
             args.pop_front();
-            if(mpv->playState > 0)
-                MpvCommand(args);
-        }
-        else// if(args.front() == "baka")
+
+        if(!args.empty())
         {
-            if(args.front() == "baka")
+            auto iter = BakaCommandMap.find(args.front());
+            if(iter != BakaCommandMap.end())
+            {
                 args.pop_front();
-            BakaCommand(args);
+                (this->*(iter->first))(args); // execute command
+            }
+            else
+                InvalidCommand(args.join(' '));
         }
+        else
+            RequiresParameters("baka");
     }
     else
         InvalidCommand(args.join(' '));
 }
 
-void BakaEngine::MpvCommand(QStringList &args)
-{
-    if(!args.empty())
-        mpv->CommandString(args.join(" "));
-    else
-        RequiresParameters("mpv");
-}
-
-void BakaEngine::BakaCommand(QStringList &args)
-{
-    if(!args.empty())
-    {
-        auto iter = BakaCommandMap.find(args.front());
-        if(iter != BakaCommandMap.end())
-        {
-            args.pop_front();
-            (this->*(*iter))(args); // execute command
-        }
-        else
-            InvalidCommand(args.join(' '));
-    }
-    else
-        RequiresParameters("baka");
-}
-
 void BakaEngine::BakaPrint(QString output)
 {
     window->ui->outputTextEdit->moveCursor(QTextCursor::End);
-    window->ui->outputTextEdit->insertPlainText(QString("[baka]: %0").arg(output));
+    window->ui->outputTextEdit->insertPlainText(QString("[baka]: %0\n").arg(output));
 }
 
 void BakaEngine::MpvPrint(QString output)
@@ -224,20 +203,20 @@ void BakaEngine::MpvPrint(QString output)
 void BakaEngine::UpdatePrint(QString output)
 {
     window->ui->outputTextEdit->moveCursor(QTextCursor::End);
-    window->ui->outputTextEdit->insertPlainText(QString("[update]: %0").arg(output));
+    window->ui->outputTextEdit->insertPlainText(QString("[update]: %0\n").arg(output));
 }
 
 void BakaEngine::InvalidCommand(QString command)
 {
-    BakaPrint(tr("invalid command '%0'\n").arg(command));
+    BakaPrint(tr("invalid command '%0'").arg(command));
 }
 
 void BakaEngine::InvalidParameter(QString parameter)
 {
-    BakaPrint(tr("invalid parameter '%0'\n").arg(parameter));
+    BakaPrint(tr("invalid parameter '%0'").arg(parameter));
 }
 
 void BakaEngine::RequiresParameters(QString what)
 {
-    BakaPrint(tr("'%0'' requires parameters\n").arg(what));
+    BakaPrint(tr("'%0' requires parameters").arg(what));
 }

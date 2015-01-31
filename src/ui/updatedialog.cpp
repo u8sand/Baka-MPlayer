@@ -65,7 +65,7 @@ UpdateDialog::UpdateDialog(BakaEngine *baka, QWidget *parent) :
     connect(baka->update, &UpdateManager::messageSignal,
             [=](QString msg)
             {
-                ui->plainTextEdit->appendPlainText(msg);
+                ui->plainTextEdit->appendPlainText(msg+"\n");
             });
 
 #if defined(Q_OS_WIN)

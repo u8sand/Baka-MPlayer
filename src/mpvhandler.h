@@ -92,7 +92,7 @@ public slots:
     void LoadVideoParams();
     void LoadOsdSize();
 
-    void CommandString(QString);
+    void Command(const QStringList &strlist);
     void SetOption(QString key, QString val);
 
 protected slots:
