@@ -1186,15 +1186,15 @@ Neke značajke možda neće raditi i promijenjene postavke neće biti spremljene
     <name>MpvHandler</name>
     <message>
         <source>Setting type was parsed as %0</source>
-        <translation type="obsolete">Il tipo di impostazione è stato interpretato come %0</translation>
+        <translation type="obsolete">Vrsta postavke je analizirana kao %0</translation>
     </message>
     <message>
         <source>screenshot%#04n</source>
-        <translation type="obsolete">istantanea%#04n</translation>
+        <translation type="obsolete">snimka zaslona%#04n</translation>
     </message>
     <message>
         <source>mpv was not initialized</source>
-        <translation type="obsolete">mpv non era inizializzato</translation>
+        <translation type="obsolete">mpv nije pokrenut</translation>
     </message>
     <message>
         <source>mpv was not initialized
@@ -1433,7 +1433,7 @@ Neke značajke možda neće raditi i promijenjene postavke neće biti spremljene
     </message>
     <message>
         <source>&amp;Enable Mouse Gesture support</source>
-        <translation type="unfinished">&amp;Omogući poduršku gesta miša </translation>
+        <translation type="unfinished">&amp;Omogući podršku gesta miša </translation>
     </message>
     <message>
         <source>&amp;REMOVE</source>
