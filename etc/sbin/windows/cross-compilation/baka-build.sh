@@ -75,8 +75,8 @@ function do_patch {
   echo "Patching $1..."
   cd "$BUILD/$1.$ARCH"
   for p in "$SRC/patches/$1"*; do
-    if [ -f "$p" ] && [ ! `patch -p1 < "$p"`]; then
-      return 1
+    if [ -f "$p" ]; then
+      ( patch -p1 < "$p" ) || return 1
     fi
   done
   return 0
@@ -93,7 +93,7 @@ function build_mxe {
 
 function prepare_mxe_env {
   echo "Preparing mxe environment variables..."
-  MXEROOT="$BUILD/mxe.$ARCH"
+  MXEROOT=$BUILD/mxe.$ARCH
   export PATH="$MXEROOT/usr/bin:$PATH"
   export PKG_CONFIG_PATH="$MXEROOT/usr/$ARCH-w64-mingw32.static/lib/pkgconfig"
   unset `env | \
@@ -113,7 +113,7 @@ function build_mpv {
       --enable-libmpv-static || return 1
   ./waf build -j $JOBS || return 1
 
-  INSTROOT="$MXEROOT/usr/$ARCH-w64-mingw32.static"
+  INSTROOT=$MXEROOT/usr/$ARCH-w64-mingw32.static
   cp build/libmpv.a "$INSTROOT/lib"
   mkdir -p "$INSTROOT/include/mpv"
   cp libmpv/client.h "$INSTROOT/include/mpv/"
@@ -213,22 +213,31 @@ if [ ! -d "$BUILD" ]; then
   mkdir -p "$BUILD"
 fi
 
-if [ ! -d "$BUILD/mxe.$ARCH" ] && [ wait $mxe_pid ] && [ wait $patches_pid ]; then
+if [ ! -d "$BUILD/mxe.$ARCH" ] &&
+   [ wait $mxe_pid ] &&
+   [ wait $patches_pid ]; then
   update mxe && copy mxe && do_patch mxe && build_mxe || exit 1
 fi
 
 wait $mxe_pid && prepare_mxe_env || exit 1
 
-if [ ! -d "$BUILD/mpv.$ARCH" ] && [ wait $mpv_pid ] && [ wait $patches_pid ]; then
+if [ ! -d "$BUILD/mpv.$ARCH" ] &&
+   [ wait $mpv_pid ] &&
+   [ wait $patches_pid ]; then
   update mpv && copy mpv && do_patch mpv && build_mpv || exit 1
 fi
 
-if [ ! -d "$BUILD/Baka-MPlayer.$ARCH" ] && [ wait $baka_pid ] && [ wait $patches_pid ]; then
+if [ ! -d "$BUILD/Baka-MPlayer.$ARCH" ] &&
+   [ wait $baka_pid ] &&
+   [ wait $patches_pid ]; then
   update "Baka-MPlayer" && copy "Baka-MPlayer" && do_patch "Baka-MPlayer" && build_baka || exit 1
 fi
 
 # check releases
 
-if [ ! -f "$DIR/Baka-MPlayer.$ARCH.zip" ] && [ wait $fonts_pid ] && [ wait $font_conf_pid ] && [ wait $youtube_dl_pid ]; then
+if [ ! -f "$DIR/Baka-MPlayer.$ARCH.zip" ] &&
+   [ wait $fonts_pid ] &&
+   [ wait $font_conf_pid ] &&
+   [ wait $youtube_dl_pid ]; then
   build_release || exit 1
 fi
