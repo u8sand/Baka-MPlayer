@@ -2,9 +2,12 @@
 
 # usage:
 #  just delete the directory of what you want rebuilt.
-
 # this script keeps an untouched copy of the source tree which it updates with git pull
 #  this is useful for preserving bandwidth (no need to do full clones for rebuilding anymore).
+
+# for systems with python pointing to python3, many packages in mxe use python and expect python2
+#  the easy way to get around this issue is by uncommenting out the line below.
+#alias python=python2
 
 if [[ $1 == 'x86_64' ]]; then
 	ARCH=x86_64
@@ -15,34 +18,68 @@ else
 	exit;
 fi
 
-SRC=$(pwd)/src
-BUILD=$(pwd)/build
-RELEASE=$(pwd)/release.$ARCH
+DIR=`pwd`
+SRC=$DIR/src
+BUILD=$DIR/build
+RELEASE=$DIR/release.$ARCH
 JOBS=`grep -c ^processor /proc/cpuinfo`
 
 function download_mxe {
-  cd "$SRC" && git clone https://github.com/mxe/mxe.git mxe
+  cd "$SRC" && git clone https://github.com/mxe/mxe.git mxe || return 1
+  return 0
 }
 
 function download_mpv {
-  cd "$SRC" && git clone https://github.com/mpv-player/mpv.git mpv
+  cd "$SRC" && git clone https://github.com/mpv-player/mpv.git mpv || return 1
+  return 0
 }
 
 function download_baka {
-  cd "$SRC" && git clone https://github.com/u8sand/Baka-MPlayer.git Baka-MPlayer
+  cd "$SRC" && git clone https://github.com/u8sand/Baka-MPlayer.git Baka-MPlayer || return 1
+  return 0
+}
+
+function download_patches { # todo
+  mkdir -p "$SRC/patches" || return 1
+  return 0
+}
+
+function download_font_conf {
+  cd "$SRC" && wget https://raw.githubusercontent.com/lachs0r/mingw-w64-cmake/master/packages/mpv/mpv/fonts.conf || return 1
+  return 0
+}
+
+function download_fonts { # todo
+  mkdir -p "$SRC/fonts" || return 1
+  return 0
 }
 
 function download_youtube_dl {
-  cd "$SRC" && wget https://yt-dl.org/downloads/2015.01.25/youtube-dl.exe
+  cd "$SRC" && wget https://yt-dl.org/downloads/2015.01.25/youtube-dl.exe || return 1
+  return 0
 }
+
 
 function update {
   echo "Updating $1..."
-  cd "$SRC/$1" && git pull
+  cd "$SRC/$1" && git pull || return 1
+  return 0
 }
 
 function copy {
-  cp -r "$SRC/$1" "$BUILD/$1.$ARCH"
+  cp -r "$SRC/$1" "$BUILD/$1.$ARCH" || return 1
+  return 0
+}
+
+function do_patch {
+  echo "Patching $1..."
+  cd "$BUILD/$1.$ARCH"
+  for p in "$SRC/patches/$1"*; do
+    if [ -f "$p" ] && [ ! `patch -p1 < "$p"`]; then
+      return 1
+    fi
+  done
+  return 0
 }
 
 function build_mxe {
@@ -50,7 +87,8 @@ function build_mxe {
   echo "Building mxe..."
   echo "JOBS := $JOBS" > settings.mk
   echo "MXE_TARGETS := $ARCH-w64-mingw32.static" >> settings.mk
-  make gcc ffmpeg libass lua jpeg pthreads qt5 libzip
+  make gcc ffmpeg libass lua jpeg pthreads qt5 libzip || return 1
+  return 0
 }
 
 function prepare_mxe_env {
@@ -62,14 +100,18 @@ function prepare_mxe_env {
       grep -vi '^EDITOR=\|^HOME=\|^LANG=\|MXE\|^PATH=' | \
       grep -vi 'PKG_CONFIG\|PROXY\|^PS1=\|^TERM=' | \
       cut -d '=' -f1 | tr '\n' ' '`
+  return 0
 }
 
 function build_mpv {
   cd "$BUILD/mpv.$ARCH"
   echo "Building mpv..."
   ./bootstrap.py
-  DEST_OS=win32 TARGET=$ARCH-w64-mingw32.static ./waf configure --enable-libmpv-static
-  ./waf build -j $JOBS
+  DEST_OS=win32 TARGET=$ARCH-w64-mingw32.static \
+  LDFLAGS=-Wl,--image-base,0x140000000,--high-entropy-va \
+    ./waf configure \
+      --enable-libmpv-static || return 1
+  ./waf build -j $JOBS || return 1
 
   INSTROOT="$MXEROOT/usr/$ARCH-w64-mingw32.static"
   cp build/libmpv.a "$INSTROOT/lib"
@@ -80,26 +122,39 @@ function build_mpv {
 	  sed "s,^exec_prefix=.*$,exec_prefix=\${prefix},g" |
 	  sed "s,^libdir=.*$,libdir=\${prefix}/lib,g" |
 	  sed "s,^includedir=.*$,includedir=\${prefix}/include,g" > "$INSTROOT/lib/pkgconfig/mpv.pc"
+	return 0
 }
 
 function build_baka {
   cd "$BUILD/Baka-MPlayer.$ARCH"
   echo "Building Baka-MPlayer..."
-  QTROOT="$MXEROOT/usr/$ARCH-w64-mingw32.static/qt5/bin"
+  QTROOT=$MXEROOT/usr/$ARCH-w64-mingw32.static/qt5/bin
   QMAKE="$QTROOT/qmake" \
     ./configure \
     "CONFIG+=embed_translations" \
     "lupdate=$QTROOT/lupdate" \
     "lrelease=$QTROOT/lrelease"
-  make -j $JOBS
+  make -j $JOBS || return 1
+  return 0
 }
 
 function build_release {
   echo "Creating release..."
-  upx "$BUILD/Baka-MPlayer.$ARCH/build/baka-mplayer.exe" -o "$RELEASE/Baka MPlayer.exe"
+  mkdir -p "$RELEASE"
+  #upx "$BUILD/Baka-MPlayer.$ARCH/build/baka-mplayer.exe" -o "$RELEASE/Baka MPlayer.exe"
+  cp "$BUILD/Baka-MPlayer.$ARCH/build/baka-mplayer.exe" "$RELEASE/Baka MPlayer.exe"
+  # add fonts
+  mkdir -p "$RELEASE/fonts"
+  cp "$SRC/fonts/"* "$RELEASE/fonts"
+  # add fonts.conf
+  mkdir -p "$RELEASE/mpv"
+  cp "$SRC/fonts.conf" "$RELEASE/mpv"
+  # add youtube-dl
   cp "$SRC/youtube-dl.exe" "$RELEASE"
+  # compress
   cd "$RELEASE" && zip "../Baka-MPlayer.$ARCH.zip" -r *
   rm -r "$RELEASE"
+  return 0
 }
 
 
@@ -127,6 +182,24 @@ if [ ! -d "$SRC/Baka-MPlayer" ]; then
   baka_pid=$!
 fi
 
+if [ ! -d "$SRC/patches" ]; then
+  echo "Downloading patches..."
+  download_patches &
+  patches_pid=$!
+fi
+
+if [ ! -d "$SRC/fonts" ]; then
+  echo "Downloading fonts..."
+  download_fonts &
+  fonts_pid=$!
+fi
+
+if [ ! -f "$SRC/fonts.conf" ]; then
+  echo "Downloading fonts.conf..."
+  download_font_conf &
+  font_conf_pid=$!
+fi
+
 if [ ! -f "$SRC/youtube-dl.exe" ]; then
   echo "Downloading youtube-dl.exe..."
   download_youtube_dl &
@@ -140,35 +213,22 @@ if [ ! -d "$BUILD" ]; then
   mkdir -p "$BUILD"
 fi
 
-if [ ! -d "$BUILD/mxe.$ARCH" ]; then
-  wait $mxe_pid
-  update mxe
-  copy mxe
-  build_mxe
+if [ ! -d "$BUILD/mxe.$ARCH" ] && [ wait $mxe_pid ] && [ wait $patches_pid ]; then
+  update mxe && copy mxe && do_patch mxe && build_mxe || exit 1
 fi
 
-wait $mxe_pid
-prepare_mxe_env
+wait $mxe_pid && prepare_mxe_env || exit 1
 
-if [ ! -d "$BUILD/mpv.$ARCH" ]; then
-  wait $mpv_pid
-  update mpv
-  copy mpv
-  build_mpv
+if [ ! -d "$BUILD/mpv.$ARCH" ] && [ wait $mpv_pid ] && [ wait $patches_pid ]; then
+  update mpv && copy mpv && do_patch mpv && build_mpv || exit 1
 fi
 
-if [ ! -d "$BUILD/Baka-MPlayer.$ARCH" ]; then
-  wait $baka_pid
-  update "Baka-MPlayer"
-  copy "Baka-MPlayer"
-  build_baka
+if [ ! -d "$BUILD/Baka-MPlayer.$ARCH" ] && [ wait $baka_pid ] && [ wait $patches_pid ]; then
+  update "Baka-MPlayer" && copy "Baka-MPlayer" && do_patch "Baka-MPlayer" && build_baka || exit 1
 fi
-
 
 # check releases
 
-if [ ! -f "$PWD/Baka-MPlayer.$ARCH.zip" ]; then
-  wait $youtube_dl_pid
-  mkdir -p "$RELEASE"
-  build_release
+if [ ! -f "$DIR/Baka-MPlayer.$ARCH.zip" ] && [ wait $fonts_pid ] && [ wait $font_conf_pid ] && [ wait $youtube_dl_pid ]; then
+  build_release || exit 1
 fi
