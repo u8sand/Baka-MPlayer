@@ -102,7 +102,6 @@ function build_mpv {
   echo "Building mpv..."
   ./bootstrap.py
   DEST_OS=win32 TARGET=$ARCH-w64-mingw32.static \
-  LDFLAGS=-Wl,--image-base,0x140000000,--high-entropy-va \
     ./waf configure \
       --enable-libmpv-static || return 1
   ./waf build -j $JOBS || return 1
