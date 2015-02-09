@@ -27,29 +27,35 @@ Note: Packages may be named slightly different for each distro
 
 These instructions are for cross-compiling for Windows on a Linux system. (Note: the architecture can be either `x86_64` or `i686` depending on which platform you're compiling for)
 
-	arch=x86_64
 	git clone -b release https://github.com/u8sand/Baka-MPlayer.git
 	cd "Baka-MPlayer"
 	mkdir build
-	cp etc/sbin/* build/
+	cp -r etc/sbin/windows/cross-compilation/{baka-build.sh,src} build/
 	cd build
-	./mxe.sh $arch
-	./mpv.sh $arch
-	./bakamplayer.sh $arch
-
-This is a very long process because you'll need to build the mingw32 toolchain `mxe` and all dependent libraries, `libmpv.a`, and finally `baka-mplayer.exe`. If everything succeeded without error, `baka-mplayer.exe` will be built under `Baka-MPlayer.x86_64/build/`
-
-The next time you build the executable it will be as simple as
-
 	arch=x86_64
-	./mpv.sh $arch
-	./bakamplayer.sh $arch
+	./baka-build.sh $arch
 
-These scripts will pull the new version and compile them again using the existing mxe toolchain. To update your mxe toolchain, use `./mxe.sh $arch`.
+This is a very long process because you'll need to build the mingw32 toolchain `mxe` and all dependent libraries, `libmpv.a`, and finally `baka-mplayer.exe`. If everything succeeded without error, you'll get `Baka-MPlayer.$arch.zip` which should contain everything you need.
+
+To rebuild simply delete the directory (in build) or the .zip file of what you need to rebuild and re-run `./baka-build.sh $arch`
+
+To add custom patches, put them in `src/patches/` prefixed with the name of what you're patching.
 
 ### Linux
 
 If your distribution does not provide a package, you can compile it from source.
+
+We've made scripts for some of the distributions... See `etc/sbin/linux/`
+
+	git clone -b release https://github.com/u8sand/Baka-MPlayer.git
+	cd "Baka-MPlayer"
+	mkdir build
+	cp -r etc/sbin/linux/* build/
+	cd build
+	distro=debian_based
+	./$distro.sh
+
+If this doesn't work or you do not have a distro listed here, you're on your own. You'll need to build mpv and then Baka-MPlayer, (the dependencies above are Baka-MPlayer). For help building mpv see `https://github.com/mpv-player/mpv-build`. Building and making Baka-MPlayer from source can be done like so:
 
 	git clone -b release https://github.com/u8sand/Baka-MPlayer.git
 	cd "Baka-MPlayer"
