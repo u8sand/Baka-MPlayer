@@ -44,21 +44,15 @@ function download_patches { # todo
   return 0
 }
 
-function download_font_conf {
-  cd "$SRC" && wget https://raw.githubusercontent.com/lachs0r/mingw-w64-cmake/master/packages/mpv/mpv/fonts.conf || return 1
-  return 0
+function download_extras {
+  mkdir -p "$SRC/release"
+  cd "$SRC/release"
+  wget https://yt-dl.org/downloads/2015.01.25/youtube-dl.exe || return 1
+  mkdir -p mpv
+  cd mpv && wget https://raw.githubusercontent.com/lachs0r/mingw-w64-cmake/master/packages/mpv/mpv/fonts.conf || return 1
+  mkdir -p fonts
+  # todo: download fonts
 }
-
-function download_fonts { # todo
-  mkdir -p "$SRC/fonts" || return 1
-  return 0
-}
-
-function download_youtube_dl {
-  cd "$SRC" && wget https://yt-dl.org/downloads/2015.01.25/youtube-dl.exe || return 1
-  return 0
-}
-
 
 function update {
   echo "Updating $1..."
@@ -141,16 +135,10 @@ function build_baka {
 function build_release {
   echo "Creating release..."
   mkdir -p "$RELEASE"
-  #upx "$BUILD/Baka-MPlayer.$ARCH/build/baka-mplayer.exe" -o "$RELEASE/Baka MPlayer.exe"
-  cp "$BUILD/Baka-MPlayer.$ARCH/build/baka-mplayer.exe" "$RELEASE/Baka MPlayer.exe"
-  # add fonts
-  mkdir -p "$RELEASE/fonts"
-  cp "$SRC/fonts/"* "$RELEASE/fonts"
-  # add fonts.conf
-  mkdir -p "$RELEASE/mpv"
-  cp "$SRC/fonts.conf" "$RELEASE/mpv"
-  # add youtube-dl
-  cp "$SRC/youtube-dl.exe" "$RELEASE"
+  upx "$BUILD/Baka-MPlayer.$ARCH/build/baka-mplayer.exe" -o "$RELEASE/Baka MPlayer.exe" ||
+    cp "$BUILD/Baka-MPlayer.$ARCH/build/baka-mplayer.exe" "$RELEASE/Baka MPlayer.exe"
+  # add release stuff
+  cp -r "$SRC/release/"* "$RELEASE"
   # compress
   cd "$RELEASE" && zip "../Baka-MPlayer.$ARCH.zip" -r *
   rm -r "$RELEASE"
@@ -161,7 +149,7 @@ function build_release {
 # check sources
 
 if [ ! -d "$SRC" ]; then
-  mkdir -p "$SRC"
+  mkdir -p "$SRC" "$SRC/release"
 fi
 
 if [ ! -d "$SRC/mxe" ]; then
@@ -188,24 +176,10 @@ if [ ! -d "$SRC/patches" ]; then
   patches_pid=$!
 fi
 
-if [ ! -d "$SRC/fonts" ]; then
-  echo "Downloading fonts..."
-  download_fonts &
-  fonts_pid=$!
+if [ ! -d "$SRC/release" ]; then
+  download_extras
+  extras_pid=$!
 fi
-
-if [ ! -f "$SRC/fonts.conf" ]; then
-  echo "Downloading fonts.conf..."
-  download_font_conf &
-  font_conf_pid=$!
-fi
-
-if [ ! -f "$SRC/youtube-dl.exe" ]; then
-  echo "Downloading youtube-dl.exe..."
-  download_youtube_dl &
-  youtube_dl_pid=$!
-fi
-
 
 # check builds
 
@@ -236,8 +210,6 @@ fi
 # check releases
 
 if [ ! -f "$DIR/Baka-MPlayer.$ARCH.zip" ] &&
-   [ wait $fonts_pid ] &&
-   [ wait $font_conf_pid ] &&
-   [ wait $youtube_dl_pid ]; then
+   [ wait $extras_pid ]; then
   build_release || exit 1
 fi
