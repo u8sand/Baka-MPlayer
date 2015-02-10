@@ -323,7 +323,11 @@ void MpvHandler::PlayFile(QString f)
             Play();
         }
         else
+        {
+            ShowText(tr("File no longer exists")); // tell the user
+            // todo: refresh the playlist?
             Stop();
+        }
     }
 }
 
