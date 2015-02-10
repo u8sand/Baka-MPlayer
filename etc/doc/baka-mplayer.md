@@ -5,9 +5,6 @@
 Baka MPlayer is a free and open source, cross-platform, **libmpv** based multimedia player.
 Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.
 
-This manual is based on the status of the `master` branch (not the latest released version).
-
-
 ## Features
 
 ### Playlist
