@@ -319,7 +319,7 @@ MainWindow::MainWindow(QWidget *parent):
             {
                 if(track.type == "sub")
                 {
-                    action = ui->menuSubtitle_Track->addAction(QString("%0: %1 (%2)").arg(QString::number(track.id), track.title, track.lang).replace("&", "&&"));
+                    action = ui->menuSubtitle_Track->addAction(QString("%0: %1 (%2)").arg(QString::number(track.id), track.title, track.external ? "external" : track.lang).replace("&", "&&"));
                     connect(action, &QAction::triggered,
                             [=]
                             {
@@ -338,7 +338,7 @@ MainWindow::MainWindow(QWidget *parent):
                                 else if(!mpv->getSubtitleVisibility())
                                     mpv->ShowSubtitles(true);
                                 mpv->Sid(track.id);
-                                mpv->ShowText(QString("%0 %1: %2 (%3)").arg(tr("Sub"), QString::number(track.id), track.title, track.lang));
+                                mpv->ShowText(QString("%0 %1: %2 (%3)").arg(tr("Sub"), QString::number(track.id), track.title, track.external ? "external" : track.lang));
                             });
                 }
                 else if(track.type == "audio")

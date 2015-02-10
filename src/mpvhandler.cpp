@@ -564,13 +564,7 @@ void MpvHandler::AddSubtitleTrack(QString f)
     for(auto track : old) // remove the old tracks in current
         current.removeOne(track);
     Mpv::Track &track = current.first();
-    ShowText(
-        QString("%0: %1 %2").arg(
-            QString::number(track.id),
-            track.title,
-            track.external ?
-                tr("(external)") :
-                QString()));
+    ShowText(QString("%0: %1 (%2)").arg(QString::number(track.id), track.title, track.external ? "external" : track.lang));
 }
 
 void MpvHandler::ShowSubtitles(bool b)
