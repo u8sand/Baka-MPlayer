@@ -61,11 +61,7 @@ void BakaEngine::BakaSh(QStringList &args)
 void BakaEngine::BakaNew(QStringList &args)
 {
     if(args.empty())
-    {
-        QProcess *p = new QProcess(0);
-        p->startDetached(QApplication::applicationFilePath());
-        delete p;
-    }
+        QProcess::startDetached(QApplication::applicationFilePath());
     else
         InvalidParameter(args.join(' '));
 }
@@ -353,7 +349,7 @@ void BakaEngine::BakaUpdate(QStringList &args)
         QString arg = args.front();
         args.pop_front();
         if(arg == "youtube-dl")
-            QProcess::startDetached("youtube-dl.exe --update");
+            QProcess::startDetached("youtube-dl.exe", {"--update"});
         else
 #endif
             InvalidParameter(args.join(' '));

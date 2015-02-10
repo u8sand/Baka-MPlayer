@@ -205,9 +205,7 @@ void UpdateManager::ApplyUpdate(const QString &file)
             exe).toUtf8());
     f.close();
 
-    QProcess *p = new QProcess(0);
-    p->startDetached(bat);
-    delete p;
+    QProcess::startDetached(bat);
     emit messageSignal(tr("Done. Restarting..."));
     baka->Quit();
 }

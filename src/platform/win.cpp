@@ -50,9 +50,7 @@ bool IsValidLocation(QString loc)
 
 void ShowInFolder(QString path, QString file)
 {
-    QProcess *p = new QProcess(0);
-    p->startDetached("explorer.exe", QStringList{"/select,", path+file});
-    delete p;
+    QProcess::startDetached("explorer.exe", QStringList{"/select,", path+file});
 }
 
 QString MonospaceFont()
