@@ -37,10 +37,16 @@ BakaEngine::BakaEngine(QObject *parent):
         window->ui->action_Dim_Lights->setEnabled(false);
     }
 
-    connect(mpv, SIGNAL(messageSignal(QString)),
-            this, SLOT(MpvPrint(QString)));
-    connect(update, SIGNAL(messageSignal(QString)),
-            this, SLOT(UpdatePrint(QString)));
+    connect(mpv, &MpvHandler::messageSignal,
+            [=](QString msg)
+            {
+                Print(msg, "mpv");
+            });
+    connect(update, &UpdateManager::messageSignal,
+            [=](QString msg)
+            {
+                Print(msg, "update");
+            });
 }
 
 BakaEngine::~BakaEngine()
@@ -188,35 +194,23 @@ void BakaEngine::Command(QString command)
         InvalidCommand(args.join(' '));
 }
 
-void BakaEngine::BakaPrint(QString output)
+void BakaEngine::Print(QString what, QString who)
 {
     window->ui->outputTextEdit->moveCursor(QTextCursor::End);
-    window->ui->outputTextEdit->insertPlainText(QString("[baka]: %0\n").arg(output));
-}
-
-void BakaEngine::MpvPrint(QString output)
-{
-    window->ui->outputTextEdit->moveCursor(QTextCursor::End);
-    window->ui->outputTextEdit->insertPlainText(QString("[mpv]: %0").arg(output));
-}
-
-void BakaEngine::UpdatePrint(QString output)
-{
-    window->ui->outputTextEdit->moveCursor(QTextCursor::End);
-    window->ui->outputTextEdit->insertPlainText(QString("[update]: %0\n").arg(output));
+    window->ui->outputTextEdit->insertPlainText(QString("[%0]: %1\n").arg(who, what));
 }
 
 void BakaEngine::InvalidCommand(QString command)
 {
-    BakaPrint(tr("invalid command '%0'").arg(command));
+    Print(tr("invalid command '%0'").arg(command));
 }
 
 void BakaEngine::InvalidParameter(QString parameter)
 {
-    BakaPrint(tr("invalid parameter '%0'").arg(parameter));
+    Print(tr("invalid parameter '%0'").arg(parameter));
 }
 
 void BakaEngine::RequiresParameters(QString what)
 {
-    BakaPrint(tr("'%0' requires parameters").arg(what));
+    Print(tr("'%0' requires parameters").arg(what));
 }

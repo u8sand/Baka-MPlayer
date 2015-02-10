@@ -27,7 +27,7 @@
 void BakaEngine::BakaMpv(QStringList &args)
 {
     if(mpv->playState > 0)
-        BakaPrint(tr("mpv not yet initialized"));
+        Print(tr("mpv not yet initialized"));
 
     if(!args.empty())
         mpv->Command(args);
@@ -41,7 +41,18 @@ void BakaEngine::BakaSh(QStringList &args)
     {
         QString arg = args.front();
         args.pop_front();
-        QProcess::startDetached(arg, args);
+        QProcess *p = new QProcess(this);
+        p->start(arg, args);
+        connect(p, &QProcess::readyRead,
+                [=]
+                {
+                    Print(p->readAll(), QString("%0(%1))").arg(p->program(), QString::number(quintptr(p))));
+                });
+//        connect(p, &QProcess::finished,
+//                [=](int, QProcess::ExitStatus)
+//                {
+//                    delete p;
+//                });
     }
     else
         RequiresParameters("mpv");
@@ -50,7 +61,11 @@ void BakaEngine::BakaSh(QStringList &args)
 void BakaEngine::BakaNew(QStringList &args)
 {
     if(args.empty())
-        QProcess::startDetached(QDir::toNativeSeparators(QApplication::applicationFilePath()));
+    {
+        QProcess *p = new QProcess(0);
+        p->startDetached(QApplication::applicationFilePath());
+        delete p;
+    }
     else
         InvalidParameter(args.join(' '));
 }
@@ -282,7 +297,7 @@ void BakaEngine::BakaDim(QStringList &args)
 {
     if(dimDialog == nullptr)
     {
-        BakaPrint("DimDialog not supported on this platform");
+        Print(tr("DimDialog not supported on this platform"));
         return;
     }
     if(args.empty())
@@ -530,8 +545,8 @@ void BakaEngine::BakaHelp(QStringList &args)
 {
     if(args.empty())
     {
-        BakaPrint(tr("usage: baka <command> [...]"));
-        BakaPrint(tr("commands:"));
+        Print(tr("usage: baka <command> [...]"));
+        Print(tr("commands:"));
         int len, max_len = 22;
         for(auto command = BakaCommandMap.begin(); command != BakaCommandMap.end(); ++command)
         {
@@ -540,7 +555,7 @@ void BakaEngine::BakaHelp(QStringList &args)
             while(len++ <= max_len)
                 str += ' ';
             str += command->second[1];
-            BakaPrint(str);
+            Print(str);
         }
     }
     else
@@ -552,13 +567,13 @@ void BakaEngine::BakaHelp(QStringList &args)
             auto command = BakaCommandMap.find(arg);
             if(command != BakaCommandMap.end()) //found
             {
-                BakaPrint(tr("usage: %0 %1").arg(arg, command->second[0]));
-                BakaPrint(tr("description:"));
-                BakaPrint(QString("  %0").arg(command->second[1]));
+                Print(tr("usage: %0 %1").arg(arg, command->second[0]));
+                Print(tr("description:"));
+                Print(QString("  %0").arg(command->second[1]));
                 if(command->second.length() > 2 && command->second[2] != QString())
                 {
-                    BakaPrint(tr("advanced:"));
-                    BakaPrint(QString("  %0").arg(command->second[2]));
+                    Print(tr("advanced:"));
+                    Print(QString("  %0").arg(command->second[2]));
                 }
             }
             else

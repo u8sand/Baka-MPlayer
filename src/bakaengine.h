@@ -101,9 +101,7 @@ public slots:
 
 protected slots:
     // Utility functions
-    void BakaPrint(QString);
-    void MpvPrint(QString);
-    void UpdatePrint(QString);
+    void Print(QString what, QString who = "baka");
     void InvalidCommand(QString);
     void InvalidParameter(QString);
     void RequiresParameters(QString);
