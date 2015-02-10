@@ -1068,7 +1068,7 @@ void MainWindow::SetPlaybackControls(bool enable)
     ui->menuS_peed->setEnabled(enable);
     ui->action_Jump_to_Time->setEnabled(enable);
     ui->actionMedia_Info->setEnabled(enable);
-    ui->actionShow_in_Folder->setEnabled(enable);
+    ui->actionShow_in_Folder->setEnabled(enable && baka->mpv->getPath() != QString());
     ui->action_Full_Screen->setEnabled(enable);
     if(!enable)
     {
