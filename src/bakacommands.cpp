@@ -61,7 +61,7 @@ void BakaEngine::BakaSh(QStringList &args)
 void BakaEngine::BakaNew(QStringList &args)
 {
     if(args.empty())
-        QProcess::startDetached(QApplication::applicationFilePath());
+        QProcess::startDetached(QApplication::applicationFilePath(), {});
     else
         InvalidParameter(args.join(' '));
 }
