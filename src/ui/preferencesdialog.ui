@@ -381,6 +381,21 @@ QTabBar::tab:!selected {
         <number>0</number>
        </property>
        <item>
+        <widget class="QLabel" name="label_6">
+         <property name="styleSheet">
+          <string notr="true">QLabel {
+	color: #B8B8B8;
+}</string>
+         </property>
+         <property name="text">
+          <string>Note: Prefix a command with 'mpv' to run as input command.</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QTableWidget" name="infoWidget">
          <property name="styleSheet">
           <string notr="true">/* QHeaderView set under main stylesheet (QDialog) */
