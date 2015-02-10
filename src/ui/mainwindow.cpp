@@ -469,7 +469,8 @@ MainWindow::MainWindow(QWidget *parent):
             {
                 switch(playState)
                 {
-                case Mpv::Loaded: // todo: show the user we are loading their file?
+                case Mpv::Loaded:
+                    baka->overlay->showStatusText("Loading...", 0);
                     break;
 
                 case Mpv::Started:
@@ -491,6 +492,7 @@ MainWindow::MainWindow(QWidget *parent):
                     }
                     SetPlaybackControls(true);
                     mpv->Play();
+                    baka->overlay->showStatusText(QString(), 0);
                 case Mpv::Playing:
                     SetPlayButtonIcon(false);
                     if(onTop == "playing")
