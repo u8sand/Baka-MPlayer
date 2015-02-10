@@ -141,7 +141,10 @@ bool MpvHandler::event(QEvent *event)
                 break;
             }
             if(event->error < 0)
+            {
+                ShowText(mpv_error_string(event->error));
                 emit messageSignal(mpv_error_string(event->error));
+            }
             switch (event->event_id)
             {
             case MPV_EVENT_PROPERTY_CHANGE:
@@ -259,14 +262,12 @@ bool MpvHandler::FileExists(QString f)
 
 void MpvHandler::LoadFile(QString f)
 {
-    if(f == "")
-        return;
     PlayFile(LoadPlaylist(f));
 }
 
 QString MpvHandler::LoadPlaylist(QString f)
 {
-    if(f == "") // ignore empty file name
+    if(f == QString()) // ignore empty file name
         return QString();
 
     if(f == "-")
@@ -282,8 +283,11 @@ QString MpvHandler::LoadPlaylist(QString f)
     else // local file
     {
         QFileInfo fi(f);
-        if(!fi.exists()) // ignore if file doesn't exist
-            return QString();
+        if(!fi.exists()) // file doesn't exist
+        {
+            ShowText(tr("File does not exist")); // tell the user
+            return QString(); // don't do anything more
+        }
         else if(fi.isDir()) // if directory
         {
             setPath(QDir::toNativeSeparators(fi.absoluteFilePath()+"/")); // set new path
@@ -301,7 +305,10 @@ QString MpvHandler::LoadPlaylist(QString f)
 
 void MpvHandler::PlayFile(QString f)
 {
-    if(path == "") // web url
+    if(f == QString()) // ignore if file doesn't exist
+        return;
+
+    if(path == QString()) // web url
     {
         OpenFile(f);
         setFile(f);
@@ -787,7 +794,7 @@ void MpvHandler::OpenFile(QString f)
 {
     const QByteArray tmp = f.toUtf8();
     const char *args[] = {"loadfile", tmp.constData(), NULL};
-    AsyncCommand(args);
+    Command(args);
 }
 
 QString MpvHandler::PopulatePlaylist()
