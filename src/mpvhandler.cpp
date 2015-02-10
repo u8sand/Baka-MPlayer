@@ -548,7 +548,20 @@ void MpvHandler::AddSubtitleTrack(QString f)
     const QByteArray tmp = f.toUtf8();
     const char *args[] = {"sub_add", tmp.constData(), NULL};
     Command(args);
-    LoadTracks(); // reload track list
+    // this could be more efficient if we saved tracks in a bst
+    auto old = fileInfo.tracks; // save the current track-list
+    LoadTracks(); // load the new track list
+    auto current = fileInfo.tracks;
+    for(auto track : old) // remove the old tracks in current
+        current.removeOne(track);
+    Mpv::Track &track = current.first();
+    ShowText(
+        QString("%0: %1 %2").arg(
+            QString::number(track.id),
+            track.title,
+            track.external ?
+                tr("(external)") :
+                QString()));
 }
 
 void MpvHandler::ShowSubtitles(bool b)

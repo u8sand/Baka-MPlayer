@@ -41,6 +41,11 @@ namespace Mpv
                  external : 1;
         QString external_filename;
         QString codec;
+
+        bool operator==(const Track &t)
+        {
+            return (id == t.id);
+        }
     };
     struct VideoParams
     {
