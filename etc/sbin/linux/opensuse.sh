@@ -12,13 +12,13 @@ echo --prefix=/usr --libdir=/usr/lib64 --enable-libmpv-shared > mpv_options
 ./rebuild -j${JOBS}
 # install mpv
 sudo ./install
-sudo mv /usr/lib/pkgconfig/mpv.pc /usr/share/pkgconfig/
+sudo mv /usr/lib64/pkgconfig/mpv.pc /usr/share/pkgconfig/
 cd ..
 
 # build baka-mplayer
 git clone https://github.com/u8sand/Baka-MPlayer.git
 cd Baka-MPlayer
-QMAKE=/usr/lib/x86_64-linux-gnu/qt5/bin/qmake ./configure
+QMAKE=/usr/lib64/x86_64-linux-gnu/qt5/bin/qmake ./configure
 make -j${JOBS}
 # install baka-mplayer
 sudo make install
