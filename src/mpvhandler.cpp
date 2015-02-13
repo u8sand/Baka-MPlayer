@@ -727,6 +727,7 @@ void MpvHandler::LoadChapters()
             }
         }
     }
+    emit chaptersChanged(fileInfo.chapters);
 }
 
 void MpvHandler::LoadVideoParams()

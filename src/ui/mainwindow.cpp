@@ -305,164 +305,164 @@ MainWindow::MainWindow(QWidget *parent):
 
     connect(mpv, &MpvHandler::trackListChanged,
             [=](const QList<Mpv::Track> &trackList)
-    {
-        if(mpv->getPlayState() > 0)
-        {
-            QAction *action;
-            bool video = false,
-                 albumArt = false;
-
-            ui->menuSubtitle_Track->clear();
-            ui->menuSubtitle_Track->addAction(ui->action_Add_Subtitle_File);
-            ui->menuAudio_Tracks->clear();
-            for(auto &track : trackList)
             {
-                if(track.type == "sub")
+                if(mpv->getPlayState() > 0)
                 {
-                    action = ui->menuSubtitle_Track->addAction(QString("%0: %1 (%2)").arg(QString::number(track.id), track.title, track.external ? "external" : track.lang).replace("&", "&&"));
-                    connect(action, &QAction::triggered,
-                            [=]
-                            {
-                                // basically, if you uncheck the selected subtitle id, we hide subtitles
-                                // when you check a subtitle id, we make sure subtitles are showing and set it
-                                if(mpv->getSid() == track.id)
-                                {
-                                    if(mpv->getSubtitleVisibility())
+                    QAction *action;
+                    bool video = false,
+                         albumArt = false;
+
+                    ui->menuSubtitle_Track->clear();
+                    ui->menuSubtitle_Track->addAction(ui->action_Add_Subtitle_File);
+                    ui->menuAudio_Tracks->clear();
+                    for(auto &track : trackList)
+                    {
+                        if(track.type == "sub")
+                        {
+                            action = ui->menuSubtitle_Track->addAction(QString("%0: %1 (%2)").arg(QString::number(track.id), track.title, track.external ? "external" : track.lang).replace("&", "&&"));
+                            connect(action, &QAction::triggered,
+                                    [=]
                                     {
-                                        mpv->ShowSubtitles(false);
-                                        return;
-                                    }
-                                    else
-                                        mpv->ShowSubtitles(true);
-                                }
-                                else if(!mpv->getSubtitleVisibility())
-                                    mpv->ShowSubtitles(true);
-                                mpv->Sid(track.id);
-                                mpv->ShowText(QString("%0 %1: %2 (%3)").arg(tr("Sub"), QString::number(track.id), track.title, track.external ? "external" : track.lang));
-                            });
-                }
-                else if(track.type == "audio")
-                {
-                    action = ui->menuAudio_Tracks->addAction(QString("%0: %1 (%2)").arg(QString::number(track.id), track.title, track.lang).replace("&", "&&"));
-                    connect(action, &QAction::triggered,
-                            [=]
-                            {
-                                if(mpv->getAid() != track.id) // don't allow selection of the same track
-                                {
-                                    mpv->Aid(track.id);
-                                    mpv->ShowText(QString("%0 %1: %2 (%3)").arg(tr("Audio"), QString::number(track.id), track.title, track.lang));
-                                }
-                                else
-                                    action->setChecked(true); // recheck the track
-                            });
-                }
-                else if(track.type == "video") // video track
-                {
-                    if(!track.albumart) // isn't album art
-                        video = true;
+                                        // basically, if you uncheck the selected subtitle id, we hide subtitles
+                                        // when you check a subtitle id, we make sure subtitles are showing and set it
+                                        if(mpv->getSid() == track.id)
+                                        {
+                                            if(mpv->getSubtitleVisibility())
+                                            {
+                                                mpv->ShowSubtitles(false);
+                                                return;
+                                            }
+                                            else
+                                                mpv->ShowSubtitles(true);
+                                        }
+                                        else if(!mpv->getSubtitleVisibility())
+                                            mpv->ShowSubtitles(true);
+                                        mpv->Sid(track.id);
+                                        mpv->ShowText(QString("%0 %1: %2 (%3)").arg(tr("Sub"), QString::number(track.id), track.title, track.external ? "external" : track.lang));
+                                    });
+                        }
+                        else if(track.type == "audio")
+                        {
+                            action = ui->menuAudio_Tracks->addAction(QString("%0: %1 (%2)").arg(QString::number(track.id), track.title, track.lang).replace("&", "&&"));
+                            connect(action, &QAction::triggered,
+                                    [=]
+                                    {
+                                        if(mpv->getAid() != track.id) // don't allow selection of the same track
+                                        {
+                                            mpv->Aid(track.id);
+                                            mpv->ShowText(QString("%0 %1: %2 (%3)").arg(tr("Audio"), QString::number(track.id), track.title, track.lang));
+                                        }
+                                        else
+                                            action->setChecked(true); // recheck the track
+                                    });
+                        }
+                        else if(track.type == "video") // video track
+                        {
+                            if(!track.albumart) // isn't album art
+                                video = true;
+                            else
+                                albumArt = true;
+                        }
+                    }
+                    if(video)
+                    {
+                        // if we were hiding album art, show it--we've gone to a video
+                        if(ui->mpvFrame->styleSheet() != QString()) // remove filler album art
+                            ui->mpvFrame->setStyleSheet("");
+                        if(ui->action_Hide_Album_Art->isChecked())
+                            HideAlbumArt(false);
+                        ui->action_Hide_Album_Art->setEnabled(false);
+                        ui->menuSubtitle_Track->setEnabled(true);
+                        if(ui->menuSubtitle_Track->actions().count() > 1)
+                        {
+                            ui->menuFont_Si_ze->setEnabled(true);
+                            ui->actionShow_Subtitles->setEnabled(true);
+                            ui->actionShow_Subtitles->setChecked(mpv->getSubtitleVisibility());
+                        }
+                        else
+                        {
+                            ui->menuFont_Si_ze->setEnabled(false);
+                            ui->actionShow_Subtitles->setEnabled(false);
+                            ui->actionShow_Subtitles->setChecked(false);
+                        }
+                        ui->menuAudio_Tracks->setEnabled((ui->menuAudio_Tracks->actions().count() > 0));
+                        if(ui->menuAudio_Tracks->actions().count() == 1)
+                            ui->menuAudio_Tracks->actions().first()->setEnabled(false);
+                        ui->menuTake_Screenshot->setEnabled(true);
+                        ui->menuFit_Window->setEnabled(true);
+                        ui->menuAspect_Ratio->setEnabled(true);
+                        ui->action_Frame_Step->setEnabled(true);
+                        ui->actionFrame_Back_Step->setEnabled(true);
+                    }
                     else
-                        albumArt = true;
-                }
-            }
-            if(video)
-            {
-                // if we were hiding album art, show it--we've gone to a video
-                if(ui->mpvFrame->styleSheet() != QString()) // remove filler album art
-                    ui->mpvFrame->setStyleSheet("");
-                if(ui->action_Hide_Album_Art->isChecked())
-                    HideAlbumArt(false);
-                ui->action_Hide_Album_Art->setEnabled(false);
-                ui->menuSubtitle_Track->setEnabled(true);
-                if(ui->menuSubtitle_Track->actions().count() > 1)
-                {
-                    ui->menuFont_Si_ze->setEnabled(true);
-                    ui->actionShow_Subtitles->setEnabled(true);
-                    ui->actionShow_Subtitles->setChecked(mpv->getSubtitleVisibility());
-                }
-                else
-                {
-                    ui->menuFont_Si_ze->setEnabled(false);
-                    ui->actionShow_Subtitles->setEnabled(false);
-                    ui->actionShow_Subtitles->setChecked(false);
-                }
-                ui->menuAudio_Tracks->setEnabled((ui->menuAudio_Tracks->actions().count() > 0));
-                if(ui->menuAudio_Tracks->actions().count() == 1)
-                    ui->menuAudio_Tracks->actions().first()->setEnabled(false);
-                ui->menuTake_Screenshot->setEnabled(true);
-                ui->menuFit_Window->setEnabled(true);
-                ui->menuAspect_Ratio->setEnabled(true);
-                ui->action_Frame_Step->setEnabled(true);
-                ui->actionFrame_Back_Step->setEnabled(true);
-            }
-            else
-            {
-                if(!albumArt)
-                {
-                    // put in filler albumArt
-                    if(ui->mpvFrame->styleSheet() == QString())
-                        ui->mpvFrame->setStyleSheet("background-image:url(:/img/album_art.png);background-repeat:no-repeat;background-position:center;");
-                }
-                ui->action_Hide_Album_Art->setEnabled(true);
-                ui->menuAudio_Tracks->setEnabled((ui->menuAudio_Tracks->actions().count() > 1));
-                ui->menuSubtitle_Track->setEnabled(false);
-                ui->menuFont_Si_ze->setEnabled(false);
-                ui->actionShow_Subtitles->setEnabled(false);
-                ui->actionShow_Subtitles->setChecked(false);
-                ui->menuTake_Screenshot->setEnabled(false);
-                ui->menuFit_Window->setEnabled(false);
-                ui->menuAspect_Ratio->setEnabled(false);
-                ui->action_Frame_Step->setEnabled(false);
-                ui->actionFrame_Back_Step->setEnabled(false);
+                    {
+                        if(!albumArt)
+                        {
+                            // put in filler albumArt
+                            if(ui->mpvFrame->styleSheet() == QString())
+                                ui->mpvFrame->setStyleSheet("background-image:url(:/img/album_art.png);background-repeat:no-repeat;background-position:center;");
+                        }
+                        ui->action_Hide_Album_Art->setEnabled(true);
+                        ui->menuAudio_Tracks->setEnabled((ui->menuAudio_Tracks->actions().count() > 1));
+                        ui->menuSubtitle_Track->setEnabled(false);
+                        ui->menuFont_Si_ze->setEnabled(false);
+                        ui->actionShow_Subtitles->setEnabled(false);
+                        ui->actionShow_Subtitles->setChecked(false);
+                        ui->menuTake_Screenshot->setEnabled(false);
+                        ui->menuFit_Window->setEnabled(false);
+                        ui->menuAspect_Ratio->setEnabled(false);
+                        ui->action_Frame_Step->setEnabled(false);
+                        ui->actionFrame_Back_Step->setEnabled(false);
 
 
-                if(baka->sysTrayIcon->isVisible() && !hidePopup)
-                {
-                    // todo: use {artist} - {title}
-                    baka->sysTrayIcon->showMessage("Baka MPlayer", mpv->getFileInfo().media_title, QSystemTrayIcon::NoIcon, 4000);
+                        if(baka->sysTrayIcon->isVisible() && !hidePopup)
+                        {
+                            // todo: use {artist} - {title}
+                            baka->sysTrayIcon->showMessage("Baka MPlayer", mpv->getFileInfo().media_title, QSystemTrayIcon::NoIcon, 4000);
+                        }
+                    }
                 }
-            }
-        }
-    });
+            });
 
     connect(mpv, &MpvHandler::chaptersChanged,
             [=](const QList<Mpv::Chapter> &chapters)
-    {
-        if(mpv->getPlayState() > 0)
-        {
-            QAction *action;
-            QList<int> ticks;
-            int n = 1,
-                N = chapters.length();
-            ui->menu_Chapters->clear();
-            for(auto &ch : chapters)
             {
-                action = ui->menu_Chapters->addAction(QString("%0: %1").arg(Util::FormatNumberWithAmpersand(n, N), ch.title));
-                if(n <= 9)
-                    action->setShortcut(QKeySequence("Ctrl+"+QString::number(n)));
-                connect(action, &QAction::triggered,
-                        [=]
-                        {
-                            mpv->Seek(ch.time);
-                        });
-                ticks.push_back(ch.time);
-                n++;
-            }
-            if(ui->menu_Chapters->actions().count() == 0)
-            {
-                ui->menu_Chapters->setEnabled(false);
-                ui->action_Next_Chapter->setEnabled(false);
-                ui->action_Previous_Chapter->setEnabled(false);
-            }
-            else
-            {
-                ui->menu_Chapters->setEnabled(true);
-                ui->action_Next_Chapter->setEnabled(true);
-                ui->action_Previous_Chapter->setEnabled(true);
-            }
+                if(mpv->getPlayState() > 0)
+                {
+                    QAction *action;
+                    QList<int> ticks;
+                    int n = 1,
+                        N = chapters.length();
+                    ui->menu_Chapters->clear();
+                    for(auto &ch : chapters)
+                    {
+                        action = ui->menu_Chapters->addAction(QString("%0: %1").arg(Util::FormatNumberWithAmpersand(n, N), ch.title));
+                        if(n <= 9)
+                            action->setShortcut(QKeySequence("Ctrl+"+QString::number(n)));
+                        connect(action, &QAction::triggered,
+                                [=]
+                                {
+                                    mpv->Seek(ch.time);
+                                });
+                        ticks.push_back(ch.time);
+                        n++;
+                    }
+                    if(ui->menu_Chapters->actions().count() == 0)
+                    {
+                        ui->menu_Chapters->setEnabled(false);
+                        ui->action_Next_Chapter->setEnabled(false);
+                        ui->action_Previous_Chapter->setEnabled(false);
+                    }
+                    else
+                    {
+                        ui->menu_Chapters->setEnabled(true);
+                        ui->action_Next_Chapter->setEnabled(true);
+                        ui->action_Previous_Chapter->setEnabled(true);
+                    }
 
-            ui->seekBar->setTicks(ticks);
-        }
-    });
+                    ui->seekBar->setTicks(ticks);
+                }
+            });
 
     connect(mpv, &MpvHandler::playStateChanged,
             [=](Mpv::PlayState playState)
