@@ -388,7 +388,7 @@ QTabBar::tab:!selected {
 }</string>
          </property>
          <property name="text">
-          <string>Note: Prefix a command with 'mpv' to make it run an input command.</string>
+          <string>Note: Prefix a command with 'mpv' to make it run as an input command.</string>
          </property>
          <property name="wordWrap">
           <bool>true</bool>
