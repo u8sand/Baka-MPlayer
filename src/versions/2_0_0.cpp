@@ -47,18 +47,19 @@ void BakaEngine::LoadMpv2_0_0()
         else if(entry.key() == "screenshot-template")
         {
             QString temp = entry.value();
-            if(entry.value().isEmpty()) // default screenshot template
-                temp = tr("./screenshot%#04");
-            int i = temp.lastIndexOf('/');
-            if(i != -1)
+            if(!entry.value().isEmpty()) // default screenshot template
             {
-                mpv->ScreenshotDirectory(QDir::toNativeSeparators(temp.mid(0, i)));
-                mpv->ScreenshotTemplate(temp.mid(i+1));
-            }
-            else
-            {
-                mpv->ScreenshotDirectory(".");
-                mpv->ScreenshotTemplate(temp);
+                int i = temp.lastIndexOf('/');
+                if(i != -1)
+                {
+                    mpv->ScreenshotDirectory(QDir::toNativeSeparators(temp.mid(0, i)));
+                    mpv->ScreenshotTemplate(temp.mid(i+1));
+                }
+                else
+                {
+                    mpv->ScreenshotDirectory(".");
+                    mpv->ScreenshotTemplate(temp);
+                }
             }
         }
         else if(entry.key() != QString() && entry.value() != QString())

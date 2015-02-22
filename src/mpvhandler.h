@@ -22,8 +22,20 @@ public:
     QString getFile()                       { return file; }
     QString getPath()                       { return path; }
     QString getScreenshotFormat()           { return screenshotFormat; }
-    QString getScreenshotTemplate()         { return screenshotTemplate; }
-    QString getScreenshotDir()              { return screenshotDir; }
+    QString getScreenshotTemplate()
+    {
+        if(screenshotTemplate==QString())
+            return (screenshotTemplate = "screenshot%#04");
+        else
+            return screenshotTemplate;
+    }
+    QString getScreenshotDir()
+    {
+        if(screenshotTemplate == QString())
+            return (screenshotDir = ".");
+        else
+            return screenshotDir;
+    }
     double getSpeed()                       { return speed; }
     int getTime()                           { return time; }
     int getVolume()                         { return volume; }
