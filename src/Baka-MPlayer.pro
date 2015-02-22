@@ -42,7 +42,7 @@ win32 {
     # application information
     RC_ICONS += img/logo.ico
     QMAKE_TARGET_PRODUCT += Baka MPlayer
-    QMAKE_TARGET_DESCRIPTION += The libmpv based media player.
+    QMAKE_TARGET_DESCRIPTION += Baka MPlayer
     #RC_LANG +=
 
     SOURCES += platform/win.cpp
