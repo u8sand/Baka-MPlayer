@@ -513,6 +513,27 @@ void BakaEngine::BakaVolume(QStringList &args)
         RequiresParameters("volume");
 }
 
+void BakaEngine::BakaSpeed(QStringList &args)
+{
+    if(!args.empty())
+    {
+        QString arg = args.front();
+        args.pop_front();
+        if(args.empty())
+        {
+            if(arg.startsWith('+') || arg.startsWith('-'))
+                mpv->Speed(mpv->getSpeed()+arg.toDouble());
+            else
+                mpv->Speed(arg.toDouble());
+            mpv->ShowText(tr("Speed: x%0").arg(QString::number(mpv->getSpeed(), 'f', 2)));
+        }
+        else
+            InvalidParameter(args.join(' '));
+    }
+    else
+        RequiresParameters("speed");
+}
+
 void BakaEngine::BakaFullScreen(QStringList &args)
 {
     if(args.empty())

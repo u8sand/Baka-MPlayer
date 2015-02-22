@@ -47,9 +47,6 @@ public:
     const QHash<QString, QPair<QString, QString>> default_input = {
         {"Ctrl++",          {"mpv add sub-scale +0.02",             tr("Increase sub size")}},
         {"Ctrl+-",          {"mpv add sub-scale -0.02",             tr("Decrease sub size")}},
-        {"Ctrl+Shift+R",    {"mpv osd-msg set speed 1",             tr("Reset speed")}},
-        {"Ctrl+Shift+Up",   {"mpv osd-msg add speed +0.25",         tr("Increase playback speed by 25%")}},
-        {"Ctrl+Shift+Down", {"mpv osd-msg add speed -0.25",         tr("Decrease playback speed by 25%")}},
         {"Ctrl+W",          {"mpv osd-msg cycle sub-visibility",    tr("Toggle subtitle visibility")}},
         {"Ctrl+R",          {"mpv set time-pos 0",                  tr("Restart playback")}},
         {"PgDown",          {"mpv add chapter +1",                  tr("Go to next chapter")}},
@@ -62,6 +59,9 @@ public:
         {"Ctrl+Shift+T",    {"screenshot",                          tr("Take screenshot without subtitles")}},
         {"Ctrl+Down",       {"volume -5",                           tr("Decrease volume")}},
         {"Ctrl+Up",         {"volume +5",                           tr("Increase volume")}},
+        {"Ctrl+Shift+Up",   {"speed +0.25",                         tr("Increase playback speed by 25%")}},
+        {"Ctrl+Shift+Down", {"speed -0.25",                         tr("Decrease playback speed by 25%")}},
+        {"Ctrl+Shift+R",    {"speed 1.0",                           tr("Reset speed")}},
         {"Alt+Return",      {"fullscreen",                          tr("Toggle fullscreen")}},
         {"Ctrl+D",          {"dim",                                 tr("Dim lights")}},
         {"Ctrl+E",          {"show_in_folder",                      tr("Show the file in its folder")}},
@@ -322,6 +322,15 @@ private:
           }
          }
         },
+        {"speed",
+         {&BakaEngine::BakaSpeed,
+          {
+           tr("[ratio]"),
+           tr("adjusts the speed"),
+           QString()
+          }
+         }
+        },
         {"fullscreen",
          {&BakaEngine::BakaFullScreen,
           {
@@ -400,6 +409,7 @@ private:
     void BakaFitWindow(QStringList&);
     void BakaAspect(QStringList&);
     void BakaVolume(QStringList&);
+    void BakaSpeed(QStringList&);
     void BakaFullScreen(QStringList&);
     void BakaBoss(QStringList&);
     void BakaHelp(QStringList&);
