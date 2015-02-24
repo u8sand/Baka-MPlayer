@@ -972,9 +972,9 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
 void MainWindow::wheelEvent(QWheelEvent *event)
 {
     if(event->delta() > 0)
-        mpv->Volume(mpv->getVolume()+5);
+        mpv->Volume(mpv->getVolume()+5, true);
     else
-        mpv->Volume(mpv->getVolume()-5);
+        mpv->Volume(mpv->getVolume()-5, true);
     QMainWindow::wheelEvent(event);
 }
 
