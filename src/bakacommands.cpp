@@ -370,7 +370,8 @@ void BakaEngine::Open()
                    tr("Open File"),mpv->getPath(),
                    QString("%0 (%1);;").arg(tr("Media Files"), Mpv::media_filetypes.join(" "))+
                    QString("%0 (%1);;").arg(tr("Video Files"), Mpv::video_filetypes.join(" "))+
-                   QString("%0 (%1)").arg(tr("Audio Files"), Mpv::audio_filetypes.join(" ")),
+                   QString("%0 (%1);;").arg(tr("Audio Files"), Mpv::audio_filetypes.join(" "))+
+                   QString("%0 (*.*)").arg(tr("All Files")),
                    0, QFileDialog::DontUseSheet));
 }
 

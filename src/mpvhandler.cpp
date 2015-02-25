@@ -798,8 +798,11 @@ QString MpvHandler::PopulatePlaylist()
     {
         QStringList playlist;
         QDir root(path);
+        QStringList filter = Mpv::media_filetypes;
+        if(path != QString() && file != QString())
+            filter.append(QString("*.%1").arg(file.split(".").last()));
         QFileInfoList flist;
-        flist = root.entryInfoList(Mpv::media_filetypes, QDir::Files);
+        flist = root.entryInfoList(filter, QDir::Files);
         for(auto &i : flist)
             playlist.push_back(i.fileName()); // add files to the list
         setPlaylist(playlist);
