@@ -4,6 +4,8 @@
 #include <QLocale>
 #include <QString>
 
+#include <locale.h>
+
 #if defined(Q_OS_WIN)
 #include <windows.h>
 #endif

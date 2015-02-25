@@ -15,7 +15,7 @@ public:
     explicit KeyDialog(QWidget *parent = 0);
     ~KeyDialog();
 
-    QPair<QString, QPair<QString, QString>> SelectKey(bool add, QPair<QString, QPair<QString, QString>> init = QPair<QString, QPair<QString, QString>>());
+    QPair<QString, QPair<QString, QString>> SelectKey(bool add, QPair<QString, QPair<QString, QString>> init = (QPair<QString, QPair<QString, QString>>()));
 
 protected:
     void SetButtons();
