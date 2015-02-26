@@ -1429,7 +1429,7 @@ Version: %0</source>
     </message>
     <message>
         <source>Could not open file for writing...</source>
-        <translation>Kan bestand niet open om te bewerken...</translation>
+        <translation>Kan bestand niet openen om te bewerken...</translation>
     </message>
     <message>
         <source>Updating...</source>
