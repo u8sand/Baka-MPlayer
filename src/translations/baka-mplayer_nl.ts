@@ -78,7 +78,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>&amp;CLOSE</source>
@@ -117,7 +117,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     </message>
     <message>
         <source>In order to dim the lights, the desktop compositor has to be enabled. This can be done through Window Manager Desktop.</source>
-        <translation>Voor het dimmen van de lichten moet een desktop compositor aanstaan. Dit kan door middel van het Window Manager Desktop</translation>
+        <translation>Voor het dimmen van de lichten moet een desktop compositor aanstaan. Dit kan door middel van het Window Manager Desktop.</translation>
     </message>
     <message>
         <source>http://bakamplayer.u8sand.net/help.php</source>
@@ -267,7 +267,7 @@ Sommige functies kunnen niet werken en veranderde instellingen worden niet opges
     </message>
     <message>
         <source>Toggle fullscreen</source>
-        <translation type="unfinished"></translation>
+        <translation>Volledig scherm</translation>
     </message>
     <message>
         <source>Dim lights</source>
@@ -319,7 +319,7 @@ Sommige functies kunnen niet werken en veranderde instellingen worden niet opges
     </message>
     <message>
         <source>Toggle playlist visibility</source>
-        <translation type="unfinished"></translation>
+        <translation>Wijzig afspeellijst zichtbaarheid</translation>
     </message>
     <message>
         <source>Open the last played file</source>
@@ -327,11 +327,11 @@ Sommige functies kunnen niet werken en veranderde instellingen worden niet opges
     </message>
     <message>
         <source>Access command-line</source>
-        <translation type="unfinished"></translation>
+        <translation>Benader opdrachtprompt</translation>
     </message>
     <message>
         <source>Launch online help</source>
-        <translation type="unfinished"></translation>
+        <translation>Start online-hulp</translation>
     </message>
     <message>
         <source>Play/Pause</source>
@@ -339,99 +339,99 @@ Sommige functies kunnen niet werken en veranderde instellingen worden niet opges
     </message>
     <message>
         <source>Fit the window to the video</source>
-        <translation type="unfinished"></translation>
+        <translation>Vul het venster met de video</translation>
     </message>
     <message>
         <source>Fit window to 50%</source>
-        <translation type="unfinished"></translation>
+        <translation>Vul venster naar 50%</translation>
     </message>
     <message>
         <source>Fit window to 75%</source>
-        <translation type="unfinished"></translation>
+        <translation>Vul venster naar 75%</translation>
     </message>
     <message>
         <source>Fit window to 100%</source>
-        <translation type="unfinished"></translation>
+        <translation>Vul venster naar 100%</translation>
     </message>
     <message>
         <source>Fit window to 150%</source>
-        <translation type="unfinished"></translation>
+        <translation>Vul venster naar 150%</translation>
     </message>
     <message>
         <source>Fit window to 200%</source>
-        <translation type="unfinished"></translation>
+        <translation>Vul venster naar 200%</translation>
     </message>
     <message>
         <source>Boss key</source>
-        <translation type="unfinished"></translation>
+        <translation>Hoofdtoets</translation>
     </message>
     <message>
         <source>Select next file on playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Speel geselecteerde bestand af op afspeellijst</translation>
     </message>
     <message>
         <source>Select previous file on playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer vorige bestand in afspeellijst</translation>
     </message>
     <message>
         <source>Play selected file on playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Speel geselecteerd bestand af op afspeellijst</translation>
     </message>
     <message>
         <source>Remove selected file from playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder geselecteerd bestand van afspeellijst</translation>
     </message>
     <message>
         <source>executes mpv command</source>
-        <translation type="unfinished"></translation>
+        <translation>voer mpv-commando uit</translation>
     </message>
     <message>
         <source>executes system shell command</source>
-        <translation type="unfinished"></translation>
+        <translation>voer systeem-shellcommando uit</translation>
     </message>
     <message>
         <source>creates a new instance of baka-mplayer</source>
-        <translation type="unfinished"></translation>
+        <translation>creëert een nieuwe instantie van baka-mplayer</translation>
     </message>
     <message>
         <source>shows the open location dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>weergeef het open-locatie-venster</translation>
     </message>
     <message>
         <source>opens the clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>opent het klembord</translation>
     </message>
     <message>
         <source>shows the current file in folder</source>
-        <translation type="unfinished"></translation>
+        <translation>weergeef het huidige bestand in de map</translation>
     </message>
     <message>
         <source>add subtitles dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>voeg-ondertiteling-toe-dialoog</translation>
     </message>
     <message>
         <source>[subs]</source>
-        <translation type="unfinished"></translation>
+        <translation>[ondertiteling]</translation>
     </message>
     <message>
         <source>take a screenshot (with subtitles if specified)</source>
-        <translation type="unfinished"></translation>
+        <translation>maak een schermafdruk (met ondertiteling, mits aangegeven)</translation>
     </message>
     <message>
         <source>toggles media info display</source>
-        <translation type="unfinished"></translation>
+        <translation>Schakel mediainformatie-scherm in/uit</translation>
     </message>
     <message>
         <source>stops the current playback</source>
-        <translation type="unfinished"></translation>
+        <translation>stop het huidige afspelen</translation>
     </message>
     <message>
         <source>[...]</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>playlist options</source>
-        <translation type="unfinished"></translation>
+        <translation>afspeellijst-opties</translation>
     </message>
     <message>
         <source>opens jump dialog</source>
@@ -439,7 +439,7 @@ Sommige functies kunnen niet werken en veranderde instellingen worden niet opges
     </message>
     <message>
         <source>toggles dim desktop</source>
-        <translation type="unfinished"></translation>
+        <translation>schakel dim-desktop in/uit</translation>
     </message>
     <message>
         <source>toggles output textbox</source>
@@ -447,7 +447,7 @@ Sommige functies kunnen niet werken en veranderde instellingen worden niet opges
     </message>
     <message>
         <source>opens preferences dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>open voorkeuren-dialoog</translation>
     </message>
     <message>
         <source>launches online help</source>
@@ -455,7 +455,7 @@ Sommige functies kunnen niet werken en veranderde instellingen worden niet opges
     </message>
     <message>
         <source>opens the update dialog or updates youtube-dl</source>
-        <translation type="unfinished"></translation>
+        <translation>opent het update-dialoog of update youtube-dl</translation>
     </message>
     <message>
         <source>[file]</source>
@@ -475,7 +475,7 @@ Sommige functies kunnen niet werken en veranderde instellingen worden niet opges
     </message>
     <message>
         <source>fit the window</source>
-        <translation type="unfinished"></translation>
+        <translation>vul het venster</translation>
     </message>
     <message>
         <source>[level]</source>
@@ -483,7 +483,7 @@ Sommige functies kunnen niet werken en veranderde instellingen worden niet opges
     </message>
     <message>
         <source>adjusts the volume</source>
-        <translation type="unfinished"></translation>
+        <translation>verandert het volume</translation>
     </message>
     <message>
         <source>[ratio]</source>
@@ -491,15 +491,15 @@ Sommige functies kunnen niet werken en veranderde instellingen worden niet opges
     </message>
     <message>
         <source>adjusts the speed</source>
-        <translation type="unfinished"></translation>
+        <translation>verandert de snelheid</translation>
     </message>
     <message>
         <source>toggles fullscreen state</source>
-        <translation type="unfinished"></translation>
+        <translation>schakel volledig scherm in/uit</translation>
     </message>
     <message>
         <source>pause and hide the window</source>
-        <translation type="unfinished"></translation>
+        <translation>pauzeer en verberg het venster</translation>
     </message>
     <message>
         <source>[command]</source>
@@ -507,15 +507,15 @@ Sommige functies kunnen niet werken en veranderde instellingen worden niet opges
     </message>
     <message>
         <source>internal help menu</source>
-        <translation type="unfinished"></translation>
+        <translation>intern helpmenu</translation>
     </message>
     <message>
         <source>[qt]</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>open about dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>open over-dialoog</translation>
     </message>
     <message>
         <source>set mpv debugging level</source>
@@ -530,11 +530,11 @@ Sommige functies kunnen niet werken en veranderde instellingen worden niet opges
     <name>InputDialog</name>
     <message>
         <source>Dialog</source>
-        <translation type="unfinished">Dialoog</translation>
+        <translation>Dialoog</translation>
     </message>
     <message>
         <source>Please enter a value:</source>
-        <translation>Voer een waarde in</translation>
+        <translation>Voer een waarde in:</translation>
     </message>
     <message>
         <source>&amp;OK</source>
@@ -650,7 +650,7 @@ Sommige functies kunnen niet werken en veranderde instellingen worden niet opges
     </message>
     <message>
         <source>Click to play a file by index</source>
-        <translation type="unfinished"></translation>
+        <translation>Klik om een bestand af te spelen door de index</translation>
     </message>
     <message>
         <source>File 0 of 0</source>
@@ -670,7 +670,7 @@ Sommige functies kunnen niet werken en veranderde instellingen worden niet opges
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Left Click to Open File&lt;br&gt;Mouse Wheel Click to Jump&lt;br&gt;Right Click to Open URL&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Links Klikken om Bestand te Openen&lt;br&gt;Muiswiel drukken om te ...&lt;br&gt;Rechtermuisknop om URL te openen&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Links Klikken om Bestand te Openen&lt;br&gt;Muiswiel drukken om te Springen&lt;br&gt;Rechtermuisknop om URL te openen&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>0:00:00</source>
@@ -702,7 +702,7 @@ Sommige functies kunnen niet werken en veranderde instellingen worden niet opges
     </message>
     <message>
         <source>Fit &amp;Window</source>
-        <translation type="unfinished"></translation>
+        <translation>Vul &amp;Venster</translation>
     </message>
     <message>
         <source>Aspect &amp;Ratio</source>
@@ -714,7 +714,7 @@ Sommige functies kunnen niet werken en veranderde instellingen worden niet opges
     </message>
     <message>
         <source>Font Si&amp;ze</source>
-        <translation>Lettergrootte</translation>
+        <translation>&amp;Lettergrootte</translation>
     </message>
     <message>
         <source>Take &amp;Screenshot</source>
@@ -730,11 +730,11 @@ Sommige functies kunnen niet werken en veranderde instellingen worden niet opges
     </message>
     <message>
         <source>Audio &amp;Tracks</source>
-        <translation>Audio en Sporen</translation>
+        <translation>Audio en &amp;Sporen</translation>
     </message>
     <message>
         <source>S&amp;peed</source>
-        <translation>Snelheid</translation>
+        <translation>&amp;Snelheid</translation>
     </message>
     <message>
         <source>&amp;Navigate</source>
@@ -754,11 +754,11 @@ Sommige functies kunnen niet werken en veranderde instellingen worden niet opges
     </message>
     <message>
         <source>&amp;New Player</source>
-        <translation>&amp; Nieuwe Speler</translation>
+        <translation>&amp;Nieuwe Speler</translation>
     </message>
     <message>
         <source>&amp;Open File...</source>
-        <translation>&amp;Open Bestand</translation>
+        <translation>&amp;Open Bestand...</translation>
     </message>
     <message>
         <source>Open &amp;Location...</source>
@@ -794,7 +794,7 @@ Sommige functies kunnen niet werken en veranderde instellingen worden niet opges
     </message>
     <message>
         <source>Show Playback &amp;Info</source>
-        <translation>Weergeef Afspeelinfo</translation>
+        <translation>Weergeef &amp;Afspeelinfo</translation>
     </message>
     <message>
         <source>&amp;Play</source>
@@ -934,7 +934,7 @@ Sommige functies kunnen niet werken en veranderde instellingen worden niet opges
     </message>
     <message>
         <source>Show &amp;Command Line</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Weergeef Opdrachtprompt</translation>
     </message>
     <message>
         <source>&amp;Increase Volume</source>
@@ -966,7 +966,7 @@ Sommige functies kunnen niet werken en veranderde instellingen worden niet opges
     </message>
     <message>
         <source>&amp;Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Herstel</translation>
     </message>
     <message>
         <source>150%</source>
@@ -974,7 +974,7 @@ Sommige functies kunnen niet werken en veranderde instellingen worden niet opges
     </message>
     <message>
         <source>Update &amp;Streaming Support</source>
-        <translation type="unfinished"></translation>
+        <translation>Update- en &amp;Streamingondersteuning</translation>
     </message>
     <message>
         <source>Previous</source>
@@ -1011,11 +1011,12 @@ Sommige functies kunnen niet werken en veranderde instellingen worden niet opges
     <message>
         <source>Enter the file number you want to play:
 Note: Value must be from %0 - %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Voer het bestandsnummer dat u wilt afspelen in:
+Opmerking: Waarde moet tussen %0 en %1 zijn</translation>
     </message>
     <message>
         <source>Enter File Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Voer Bestandsnummer in</translation>
     </message>
     <message>
         <source>No selection</source>
@@ -1070,7 +1071,7 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>Dimensions</source>
-        <translation type="unfinished"></translation>
+        <translation>Dimensies</translation>
     </message>
     <message>
         <source>[Audio]</source>
@@ -1078,7 +1079,7 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>Samplerate</source>
-        <translation type="unfinished"></translation>
+        <translation>Samplefrequentie</translation>
     </message>
     <message>
         <source>Channels</source>
@@ -1086,15 +1087,15 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>[Track List]</source>
-        <translation type="unfinished"></translation>
+        <translation>[Tracklijst]</translation>
     </message>
     <message>
         <source>[Chapter List]</source>
-        <translation type="unfinished"></translation>
+        <translation>[Hoofdstuklijst]</translation>
     </message>
     <message>
         <source>[Metadata]</source>
-        <translation type="unfinished"></translation>
+        <translation>[Metagegevens]</translation>
     </message>
     <message>
         <source>File does not exist</source>
@@ -1165,11 +1166,11 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>&amp;Enable Mouse Gesture support</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Schakel Muisgebaren in</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Click &amp;amp; drag cursor up/down to change volume&lt;br&gt;Click &amp;amp; drag cursor left/right to seek&lt;/b&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Klik &amp;amp; sleep cursor omhoog/omlaag om volume te veranderen&lt;br&gt;Klik &amp;amp; sleep cursor links/rechts om te zoeken&lt;/b&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Language:</source>
@@ -1177,87 +1178,87 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>Keys</source>
-        <translation type="unfinished"></translation>
+        <translation>Toetsen</translation>
     </message>
     <message>
         <source>Note: Prefix a command with &apos;mpv&apos; to make it run as an input command.</source>
-        <translation type="unfinished"></translation>
+        <translation>Opmerking: Zet &apos;mpv&apos; achter het commando om het uit te laten voeren as een invoercommando.</translation>
     </message>
     <message>
         <source>Key</source>
-        <translation type="unfinished"></translation>
+        <translation>Toets</translation>
     </message>
     <message>
         <source>Command</source>
-        <translation type="unfinished">Commando</translation>
+        <translation>Commando</translation>
     </message>
     <message>
         <source>Label</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>CHANG&amp;E</source>
-        <translation type="unfinished">BIJW&amp;ERKEN</translation>
+        <translation>BIJW&amp;ERKEN</translation>
     </message>
     <message>
         <source>&amp;ADD</source>
-        <translation type="unfinished">&amp;TOEVOEGEN</translation>
+        <translation>&amp;TOEVOEGEN</translation>
     </message>
     <message>
         <source>&amp;REMOVE</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;VERWIJDEREN</translation>
     </message>
     <message>
         <source>RESE&amp;T</source>
-        <translation type="unfinished"></translation>
+        <translation>HERS&amp;TEL</translation>
     </message>
     <message>
         <source>Video</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>&amp;Auto-Fit Window:</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Vul Venster Automatisch:</translation>
     </message>
     <message>
         <source>50%</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>75%</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>100%</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>200%</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Screenshot</source>
-        <translation type="unfinished"></translation>
+        <translation>Schermafbeelding</translation>
     </message>
     <message>
         <source>&amp;Always show the dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Altijd het dialoog laten zien</translation>
     </message>
     <message>
         <source>jpg</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>png</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>tga</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>File Name Template:</source>
-        <translation type="unfinished"></translation>
+        <translation>Bestandsnaam Template:</translation>
     </message>
     <message>
         <source>File Format:</source>
@@ -1269,7 +1270,7 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>Default Save Location:</source>
-        <translation>Standaard Opslaglocatie</translation>
+        <translation>Standaard Opslaglocatie:</translation>
     </message>
     <message>
         <source>&amp;CLOSE</source>
