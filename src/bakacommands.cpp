@@ -526,7 +526,7 @@ void BakaEngine::BakaSpeed(QStringList &args)
                 mpv->Speed(mpv->getSpeed()+arg.toDouble());
             else
                 mpv->Speed(arg.toDouble());
-            mpv->ShowText(tr("Speed: x%0").arg(QString::number(mpv->getSpeed(), 'f', 2)));
+            mpv->ShowText(tr("Speed: %0x").arg(QString::number(mpv->getSpeed(), 'f', 2)));
         }
         else
             InvalidParameter(args.join(' '));
