@@ -114,6 +114,9 @@ QSplitter::handle,
 
 /* QListView */
 
+QListView {
+	outline: none;
+}
 QListView::item {
 	padding: 2px 0px;
 	background: #141414;
@@ -133,11 +136,12 @@ QListWidget:item:selected:!active {
 /* QScrollBar */
 
 QScrollBar:vertical {
+	margin-left: 1px;
 	border: none;
 	width: 5px;
 }
 QScrollBar::handle:vertical {
-	background: gray;
+	background: #5A5A5A;
 	border-radius: 2px;
 	min-height: 10px;
 }
@@ -150,11 +154,12 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
 }
 
 QScrollBar:horizontal {
+	margin-bottom: 1px;
 	border: none;
 	height: 5px;
 }
 QScrollBar::handle:horizontal {
-	background: gray;
+	background: #5A5A5A;
 	border-radius: 2px;
 	min-width: 10px;
 }
