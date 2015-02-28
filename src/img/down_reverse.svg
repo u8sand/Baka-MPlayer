@@ -2,14 +2,10 @@
 <!-- Generator: Adobe Illustrator 17.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1"
-	 id="Layer_1" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:version="0.48.4 r9939" sodipodi:docname="down_reverse.svg" inkscape:export-xdpi="36.713268" inkscape:export-filename="D:\Files\Programming\Baka MPlayer (Git)\Baka MPlayer\Resources\MainForm\reverseButton\_down_reverse.png" inkscape:export-ydpi="36.713268"
+	 id="Layer_1" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"
 	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25.127px" height="20px"
-	 viewBox="18.349 14.605 25.127 20" enable-background="new 18.349 14.605 25.127 20" xml:space="preserve">
-<sodipodi:namedview  id="namedview3009" bordercolor="#666666" pagecolor="#ffffff" borderopacity="1" objecttolerance="10" gridtolerance="10" guidetolerance="10" showgrid="false" showguides="true" inkscape:zoom="4.2992092" inkscape:cx="27.566282" inkscape:cy="29.433509" inkscape:pageopacity="0" inkscape:pageshadow="2" inkscape:window-width="1920" inkscape:window-height="1017" inkscape:guide-bbox="true" inkscape:snap-global="true" inkscape:snap-page="true" inkscape:snap-bbox="true" inkscape:snap-center="true" inkscape:window-x="-8" inkscape:window-y="-8" inkscape:window-maximized="1" inkscape:current-layer="Layer_1" inkscape:snap-bbox-edge-midpoints="true" fit-margin-right="0" inkscape:snap-object-midpoints="false" inkscape:bbox-nodes="true" inkscape:snap-bbox-midpoints="true" inkscape:bbox-paths="true" fit-margin-bottom="0" fit-margin-top="0" fit-margin-left="0">
-	</sodipodi:namedview>
-<path id="path2984" inkscape:transform-center-x="7.1028513" inkscape:rounded="0" inkscape:flatsided="false" inkscape:randomized="0" sodipodi:r1="38.904896" sodipodi:arg1="-1.0471976" sodipodi:cx="22.097088" sodipodi:r2="19.452448" sodipodi:type="star" sodipodi:cy="15.948419" sodipodi:sides="3" sodipodi:arg2="0" fill="#F5F5F5" d="
-	M35.669,14.605v10v10l-8.66-5l-8.66-5l8.66-5L35.669,14.605z"/>
-<path id="rect3754" inkscape:connector-curvature="0" fill="#F5F5F5" d="M39.748,14.605h2.937c0.437,0,0.791,0.474,0.791,1.059
-	v17.883c0,0.585-0.354,1.059-0.791,1.059h-2.937c-0.437,0-0.791-0.474-0.791-1.059V15.664
-	C38.957,15.079,39.311,14.605,39.748,14.605z"/>
+	 viewBox="0 0 25.127 20" enable-background="new 0 0 25.127 20" xml:space="preserve">
+<path fill="#F5F5F5" d="M17.32,0v10v10l-8.66-5L0,10l8.66-5L17.32,0z"/>
+<path fill="#F5F5F5" d="M21.399,0h2.937c0.437,0,0.791,0.474,0.791,1.059v17.883c0,0.585-0.354,1.059-0.791,1.059h-2.937
+	c-0.437,0-0.791-0.474-0.791-1.059V1.059C20.608,0.474,20.962,0,21.399,0z"/>
 </svg>

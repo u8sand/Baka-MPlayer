@@ -2,12 +2,10 @@
 <!-- Generator: Adobe Illustrator 17.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1"
-	 id="Layer_1" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:version="0.48.4 r9939" sodipodi:docname="default_previous.svg" inkscape:export-xdpi="36.713268" inkscape:export-filename="D:\Files\Programming\Baka MPlayer (Git)\Baka MPlayer\Resources\MainForm\previousButton\default_previous.png" inkscape:export-ydpi="36.713268"
+	 id="Layer_1" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"
 	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28.888px" height="20px"
-	 viewBox="21.103 14.61 28.888 20" enable-background="new 21.103 14.61 28.888 20" xml:space="preserve">
-<sodipodi:namedview  id="namedview3009" bordercolor="#666666" pagecolor="#ffffff" borderopacity="1" objecttolerance="10" gridtolerance="10" guidetolerance="10" showgrid="false" showguides="true" inkscape:zoom="4.2992092" inkscape:cx="78.796677" inkscape:cy="26.008587" inkscape:pageopacity="0" inkscape:pageshadow="2" inkscape:window-width="1920" inkscape:window-height="1017" inkscape:guide-bbox="true" inkscape:snap-global="true" inkscape:snap-page="true" inkscape:snap-bbox="true" inkscape:snap-center="true" inkscape:window-x="-8" inkscape:window-y="-8" inkscape:window-maximized="1" inkscape:current-layer="Layer_1" inkscape:snap-bbox-edge-midpoints="true" fit-margin-right="0" inkscape:snap-object-midpoints="false" inkscape:bbox-nodes="true" inkscape:snap-bbox-midpoints="true" inkscape:bbox-paths="true" fit-margin-bottom="0" fit-margin-top="0" fit-margin-left="0">
-	</sodipodi:namedview>
-<path id="path2983" inkscape:connector-curvature="0" fill="#808080" d="M49.991,34.609v-9.993V14.61l-8.66,5.003V14.61l-8.66,5.003
-	l-5.739,3.314v-7.073c0-0.689-0.555-1.245-1.245-1.245h-3.339c-0.689,0-1.245,0.555-1.245,1.245v17.511
-	c0,0.689,0.555,1.245,1.245,1.245h3.339c0.689,0,1.245-0.555,1.245-1.245v-7.06l5.739,3.301l8.66,5.003v-5.003L49.991,34.609z"/>
+	 viewBox="0 0 28.888 20" enable-background="new 0 0 28.888 20" xml:space="preserve">
+<path fill="#808080" d="M28.888,20v-9.993V0.001l-8.66,5.003V0.001l-8.66,5.003L5.829,8.318V1.245
+	C5.829,0.556,5.274,0,4.584,0H1.245C0.556,0,0,0.555,0,1.245v17.511C0,19.444,0.555,20,1.245,20h3.339
+	c0.689,0,1.245-0.555,1.245-1.245v-7.06l5.739,3.301L20.228,20v-5.003L28.888,20z"/>
 </svg>
