@@ -24,24 +24,6 @@
         <translation>贡献名单</translation>
     </message>
     <message>
-        <source>mpv - video player based on MPlayer/mplayer2
-GPLv2 &lt;mpv.io&gt;
-
-Noto Sans -  font family with many supported characters
-Apache License, version 2.0 &lt;Google&gt;
-
-Download icon
-CC BY 3.0 &lt;Sasha Mescheryakov&gt;
-
-Translations
-- Chinese &lt;amazingfate, Antares95&gt;
-- Italian &lt;Aloysius&gt;
-- Korean &lt;godly-devotion&gt;
-- Portuguese &lt;u8sand&gt;
-- Russian &lt;suhr&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>License</source>
         <translation>许可证</translation>
     </message>
@@ -87,6 +69,26 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2015 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; 是一个基于 &lt;b&gt;libmpv&lt;/b&gt; 的自由开源跨平台的多媒体播放器。简单的设计致力于为观看视频提供一个整洁，简单，愉快的环境。&lt;br&gt;&lt;br&gt;Copyright © 2014 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
+    <message>
+        <source>mpv - video player based on MPlayer/mplayer2
+GPLv2 &lt;mpv.io&gt;
+
+Noto Sans -  font family with many supported characters
+Apache License, version 2.0 &lt;Google&gt;
+
+Download icon
+CC BY 3.0 &lt;Sasha Mescheryakov&gt;
+
+Translations
+- Chinese &lt;amazingfate, Antares95&gt;
+- Croatian &lt;gogo&gt;
+- Dutch &lt;robin007bond&gt;
+- Italian &lt;Aloysius&gt;
+- Korean &lt;godly-devotion&gt;
+- Portuguese &lt;u8sand&gt;
+- Russian &lt;suhr&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>BakaEngine</name>
@@ -103,19 +105,19 @@ Some features may not work and changed settings will not be saved.</source>
     <message>
         <source>invalid command &apos;%0&apos;
 </source>
-        <translation>无效命令 &apos;%0&apos;
+        <translation type="vanished">无效命令 &apos;%0&apos;
 </translation>
     </message>
     <message>
         <source>invalid parameter &apos;%0&apos;
 </source>
-        <translation>无效参数 &apos;%0&apos;
+        <translation type="vanished">无效参数 &apos;%0&apos;
 </translation>
     </message>
     <message>
         <source>&apos;%0&apos;&apos; requires parameters
 </source>
-        <translation>&apos;%0&apos;&apos; 需要参数
+        <translation type="vanished">&apos;%0&apos;&apos; 需要参数
 </translation>
     </message>
     <message>
@@ -148,7 +150,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>autofit</source>
-        <translation>自动适应</translation>
+        <translation type="vanished">自动适应</translation>
     </message>
     <message>
         <source>Open Subtitle File</source>
@@ -160,7 +162,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>http://bakamplayer.u8sand.net/help.php</source>
-        <translation type="unfinished">http://bakamplayer.u8sand.net/help.php</translation>
+        <translation>http://bakamplayer.u8sand.net/help.php</translation>
     </message>
     <message>
         <source>Dim Lights</source>
@@ -595,8 +597,200 @@ Some features may not work and changed settings will not be saved.</source>
         <translation>保存到 &quot;%0&quot;, 不附带字幕</translation>
     </message>
     <message>
-        <source>./screenshot%#04</source>
-        <translation type="unfinished"></translation>
+        <source>mpv not yet initialized</source>
+        <translation>mpv未初始化</translation>
+    </message>
+    <message>
+        <source>DimDialog not supported on this platform</source>
+        <translation>此平台不支持昏暗灯光</translation>
+    </message>
+    <message>
+        <source>All Files</source>
+        <translation>所有文件</translation>
+    </message>
+    <message>
+        <source>To Current Size</source>
+        <translation>到目前大小</translation>
+    </message>
+    <message>
+        <source>Speed: %0x</source>
+        <translation>速度: %0x</translation>
+    </message>
+    <message>
+        <source>usage: baka &lt;command&gt; [...]</source>
+        <translation>用法: baka &lt;command&gt; [...]</translation>
+    </message>
+    <message>
+        <source>commands:</source>
+        <translation>命令:</translation>
+    </message>
+    <message>
+        <source>usage: %0 %1</source>
+        <translation>用法: %0 %1</translation>
+    </message>
+    <message>
+        <source>description:</source>
+        <translation>描述</translation>
+    </message>
+    <message>
+        <source>advanced:</source>
+        <translation>高级:</translation>
+    </message>
+    <message>
+        <source>invalid command &apos;%0&apos;</source>
+        <translation>无效命令 &apos;%0&apos;</translation>
+    </message>
+    <message>
+        <source>invalid parameter &apos;%0&apos;</source>
+        <translation>无效参数:&apos;%0&apos;</translation>
+    </message>
+    <message>
+        <source>&apos;%0&apos; requires parameters</source>
+        <translation>&apos;%0&apos; 需要参数</translation>
+    </message>
+    <message>
+        <source>executes mpv command</source>
+        <translation>执行mpv命令</translation>
+    </message>
+    <message>
+        <source>executes system shell command</source>
+        <translation>执行系统shell命令</translation>
+    </message>
+    <message>
+        <source>creates a new instance of baka-mplayer</source>
+        <translation>打开一个新的baka-mplayer实例</translation>
+    </message>
+    <message>
+        <source>shows the open location dialog</source>
+        <translation>显示打开路径对话框</translation>
+    </message>
+    <message>
+        <source>opens the clipboard</source>
+        <translation>打开剪贴板</translation>
+    </message>
+    <message>
+        <source>shows the current file in folder</source>
+        <translation>在文件夹中显示当前文件</translation>
+    </message>
+    <message>
+        <source>add subtitles dialog</source>
+        <translation>添加字幕对话框</translation>
+    </message>
+    <message>
+        <source>[subs]</source>
+        <translation>[字幕]</translation>
+    </message>
+    <message>
+        <source>take a screenshot (with subtitles if specified)</source>
+        <translation>截图(带字幕)</translation>
+    </message>
+    <message>
+        <source>toggles media info display</source>
+        <translation>显示媒体信息</translation>
+    </message>
+    <message>
+        <source>stops the current playback</source>
+        <translation>停止目前播放</translation>
+    </message>
+    <message>
+        <source>[...]</source>
+        <translation>[...]</translation>
+    </message>
+    <message>
+        <source>playlist options</source>
+        <translation>播放列表选项</translation>
+    </message>
+    <message>
+        <source>opens jump dialog</source>
+        <translation>打开跳转对话框</translation>
+    </message>
+    <message>
+        <source>toggles dim desktop</source>
+        <translation>暗淡桌面</translation>
+    </message>
+    <message>
+        <source>toggles output textbox</source>
+        <translation>切换输出文本框</translation>
+    </message>
+    <message>
+        <source>opens preferences dialog</source>
+        <translation>打开首选项对话框</translation>
+    </message>
+    <message>
+        <source>launches online help</source>
+        <translation>在线帮助</translation>
+    </message>
+    <message>
+        <source>opens the update dialog or updates youtube-dl</source>
+        <translation>打开更新对话框或更新youtube-dl</translation>
+    </message>
+    <message>
+        <source>[file]</source>
+        <translation>[文件]</translation>
+    </message>
+    <message>
+        <source>opens the open file dialog or the file specified</source>
+        <translation>显示打开文件对话框或被指定文件</translation>
+    </message>
+    <message>
+        <source>toggle play/pause state</source>
+        <translation>切换 播放/暂停</translation>
+    </message>
+    <message>
+        <source>[percent]</source>
+        <translation>[百分比]</translation>
+    </message>
+    <message>
+        <source>fit the window</source>
+        <translation>适应窗口</translation>
+    </message>
+    <message>
+        <source>[level]</source>
+        <translation>[级别]</translation>
+    </message>
+    <message>
+        <source>adjusts the volume</source>
+        <translation>调整音量</translation>
+    </message>
+    <message>
+        <source>[ratio]</source>
+        <translation type="unfinished">[比率]</translation>
+    </message>
+    <message>
+        <source>adjusts the speed</source>
+        <translation>调整速度</translation>
+    </message>
+    <message>
+        <source>toggles fullscreen state</source>
+        <translation>切换全屏</translation>
+    </message>
+    <message>
+        <source>pause and hide the window</source>
+        <translation>暂停并隐藏窗口</translation>
+    </message>
+    <message>
+        <source>[command]</source>
+        <translation>[命令]</translation>
+    </message>
+    <message>
+        <source>internal help menu</source>
+        <translation>内置帮助菜单</translation>
+    </message>
+    <message>
+        <source>[qt]</source>
+        <translation>[qt]</translation>
+    </message>
+    <message>
+        <source>open about dialog</source>
+        <translation>打开关于对话框</translation>
+    </message>
+    <message>
+        <source>set mpv debugging level</source>
+        <translation>设置mpv调试级别</translation>
+    </message>
+    <message>
+        <source>quit baka-mplayer</source>
+        <translation>退出baka-mplayer</translation>
     </message>
 </context>
 <context>
@@ -1428,6 +1622,22 @@ Some features may not work and changed settings will not be saved.</source>
         <source>Show Playback &amp;Info</source>
         <translation>显示播放信息</translation>
     </message>
+    <message>
+        <source>Previous</source>
+        <translation>上一个文件</translation>
+    </message>
+    <message>
+        <source>Play</source>
+        <translation>播放</translation>
+    </message>
+    <message>
+        <source>Next</source>
+        <translation>下一个文件</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>暂停</translation>
+    </message>
 </context>
 <context>
     <name>MpvHandler</name>
@@ -1474,19 +1684,19 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Video codec</source>
-        <translation>视频编解码器</translation>
+        <translation type="vanished">视频编解码器</translation>
     </message>
     <message>
         <source>Video format</source>
-        <translation>视频格式</translation>
+        <translation type="vanished">视频格式</translation>
     </message>
     <message>
         <source>Video bitrate</source>
-        <translation>视频比特率</translation>
+        <translation type="vanished">视频比特率</translation>
     </message>
     <message>
         <source>Video dimensions</source>
-        <translation>视频分辨率</translation>
+        <translation type="vanished">视频分辨率</translation>
     </message>
     <message>
         <source>[Audio]</source>
@@ -1494,23 +1704,23 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Audio codec</source>
-        <translation>音频编解码器</translation>
+        <translation type="vanished">音频编解码器</translation>
     </message>
     <message>
         <source>Audio format</source>
-        <translation>音频格式</translation>
+        <translation type="vanished">音频格式</translation>
     </message>
     <message>
         <source>Audio bitrate</source>
-        <translation>音频比特率</translation>
+        <translation type="vanished">音频比特率</translation>
     </message>
     <message>
         <source>Audio samplerate</source>
-        <translation>音频采样率</translation>
+        <translation type="vanished">音频采样率</translation>
     </message>
     <message>
         <source>Audio channels</source>
-        <translation>音频通道</translation>
+        <translation type="vanished">音频通道</translation>
     </message>
     <message>
         <source>[Track List]</source>
@@ -1519,6 +1729,38 @@ Some features may not work and changed settings will not be saved.</source>
     <message>
         <source>[Chapter List]</source>
         <translation>章节列表</translation>
+    </message>
+    <message>
+        <source>Codec</source>
+        <translation>编解码器</translation>
+    </message>
+    <message>
+        <source>Bitrate</source>
+        <translation>比特率</translation>
+    </message>
+    <message>
+        <source>Dimensions</source>
+        <translation>尺寸</translation>
+    </message>
+    <message>
+        <source>Samplerate</source>
+        <translation> 采样率</translation>
+    </message>
+    <message>
+        <source>Channels</source>
+        <translation>频道</translation>
+    </message>
+    <message>
+        <source>[Metadata]</source>
+        <translation>[元数据]</translation>
+    </message>
+    <message>
+        <source>File does not exist</source>
+        <translation>文件不存在</translation>
+    </message>
+    <message>
+        <source>File no longer exists</source>
+        <translation>文件已不存在</translation>
     </message>
 </context>
 <context>
@@ -1714,6 +1956,10 @@ Some features may not work and changed settings will not be saved.</source>
         <source>%0 is already being used. Would you like to change its function?</source>
         <translation>%0正在使用，是否更改其函数？</translation>
     </message>
+    <message>
+        <source>Note: Prefix a command with &apos;mpv&apos; to make it run as an input command.</source>
+        <translation>注意:在命令前加上&apos;mpv&apos;以让它以一个输入命令运行</translation>
+    </message>
 </context>
 <context>
     <name>ScreenshotDialog</name>
@@ -1825,12 +2071,12 @@ Version: %0</source>
     <message>
         <source>Checking for updates...
 </source>
-        <translation>正在检查更新</translation>
+        <translation type="vanished">正在检查更新</translation>
     </message>
     <message>
         <source>Downloading update...
 </source>
-        <translation>正在下载更新</translation>
+        <translation type="vanished">正在下载更新</translation>
     </message>
     <message>
         <source>fopen error
@@ -1840,16 +2086,16 @@ Version: %0</source>
     <message>
         <source>write error
 </source>
-        <translation>写入失败</translation>
+        <translation type="vanished">写入失败</translation>
     </message>
     <message>
         <source>Download complete
 </source>
-        <translation>下载完成</translation>
+        <translation type="vanished">下载完成</translation>
     </message>
     <message>
         <source>Extracting...</source>
-        <translation type="vanished">正在解压</translation>
+        <translation>正在解压</translation>
     </message>
     <message>
         <source>Could not open file for writing...</source>
@@ -1862,17 +2108,17 @@ Version: %0</source>
     <message>
         <source>Redirected...
 </source>
-        <translation>正在重定向...</translation>
+        <translation type="vanished">正在重定向...</translation>
     </message>
     <message>
         <source>Extracting...
 </source>
-        <translation>正在解压...</translation>
+        <translation type="vanished">正在解压...</translation>
     </message>
     <message>
         <source>Creating updater script...
 </source>
-        <translation>正在创建更新脚本...</translation>
+        <translation type="vanished">正在创建更新脚本...</translation>
     </message>
     <message>
         <source>Updating...</source>
@@ -1881,7 +2127,35 @@ Version: %0</source>
     <message>
         <source>Done. Restarting...
 </source>
-        <translation>完成，正在重新启动...</translation>
+        <translation type="vanished">完成，正在重新启动...</translation>
+    </message>
+    <message>
+        <source>Checking for updates...</source>
+        <translation>正在检查更新...</translation>
+    </message>
+    <message>
+        <source>Downloading update...</source>
+        <translation>正在下载更新...</translation>
+    </message>
+    <message>
+        <source>write error</source>
+        <translation>写入错误</translation>
+    </message>
+    <message>
+        <source>Download complete</source>
+        <translation>下载完成</translation>
+    </message>
+    <message>
+        <source>Redirected...</source>
+        <translation>重定向...</translation>
+    </message>
+    <message>
+        <source>Creating updater script...</source>
+        <translation>正在创建更新脚本...</translation>
+    </message>
+    <message>
+        <source>Done. Restarting...</source>
+        <translation>完成,正在重新启动...</translation>
     </message>
 </context>
 </TS>
