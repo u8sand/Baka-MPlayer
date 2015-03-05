@@ -754,7 +754,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>[ratio]</source>
-        <translation>[比例]</translation>
+        <translation type="unfinished">[比率]</translation>
     </message>
     <message>
         <source>adjusts the speed</source>
