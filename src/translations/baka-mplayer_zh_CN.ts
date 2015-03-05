@@ -1744,7 +1744,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Samplerate</source>
-        <translation> 采样率</translation>
+        <translation type="unfinished">采样率</translation>
     </message>
     <message>
         <source>Channels</source>
