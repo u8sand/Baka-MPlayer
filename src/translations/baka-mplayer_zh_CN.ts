@@ -288,11 +288,11 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Increase playback speed by 25%</source>
-        <translation type="unfinished"></translation>
+        <translation>提高播放速度25%</translation>
     </message>
     <message>
         <source>Decrease playback speed by 25%</source>
-        <translation type="unfinished"></translation>
+        <translation>降低播放速度25%</translation>
     </message>
     <message>
         <source>Go to next chapter</source>
@@ -324,59 +324,59 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Dim lights</source>
-        <translation type="unfinished"></translation>
+        <translation>昏暗灯光</translation>
     </message>
     <message>
         <source>Show the file in its folder</source>
-        <translation type="unfinished"></translation>
+        <translation>在文件夹中显示</translation>
     </message>
     <message>
         <source>View media information</source>
-        <translation type="unfinished"></translation>
+        <translation>查看媒体信息</translation>
     </message>
     <message>
         <source>Show jump to time dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>显示跳转时间对话框</translation>
     </message>
     <message>
         <source>Show open file dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>显示打开文件对话框</translation>
     </message>
     <message>
         <source>Show location dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>显示位置对话框</translation>
     </message>
     <message>
         <source>Toggle playlist visibility</source>
-        <translation type="unfinished"></translation>
+        <translation>切换播放列表可见</translation>
     </message>
     <message>
         <source>Fit the window to the video</source>
-        <translation type="unfinished"></translation>
+        <translation>根据视频适应窗口大小</translation>
     </message>
     <message>
         <source>Fit window to 50%</source>
-        <translation type="unfinished"></translation>
+        <translation>适应窗口到50%</translation>
     </message>
     <message>
         <source>Fit window to 75%</source>
-        <translation type="unfinished"></translation>
+        <translation>适应窗口到75%</translation>
     </message>
     <message>
         <source>Fit window to 100%</source>
-        <translation type="unfinished"></translation>
+        <translation>适应窗口到100%</translation>
     </message>
     <message>
         <source>Fit window to 150%</source>
-        <translation type="unfinished"></translation>
+        <translation>适应窗口到150%</translation>
     </message>
     <message>
         <source>Fit window to 200%</source>
-        <translation type="unfinished"></translation>
+        <translation>适应窗口到200%</translation>
     </message>
     <message>
         <source>Boss key</source>
-        <translation type="unfinished"></translation>
+        <translation>老板键</translation>
     </message>
     <message>
         <source>Show the file in it&apos;s folder</source>
@@ -432,11 +432,11 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Access command-line</source>
-        <translation type="unfinished"></translation>
+        <translation>打开命令行</translation>
     </message>
     <message>
         <source>Launch online help</source>
-        <translation type="unfinished"></translation>
+        <translation>在线帮助</translation>
     </message>
     <message>
         <source>Play/Pause</source>
@@ -1862,26 +1862,26 @@ Version: %0</source>
     <message>
         <source>Redirected...
 </source>
-        <translation type="unfinished"></translation>
+        <translation>正在重定向...</translation>
     </message>
     <message>
         <source>Extracting...
 </source>
-        <translation type="unfinished"></translation>
+        <translation>正在解压...</translation>
     </message>
     <message>
         <source>Creating updater script...
 </source>
-        <translation type="unfinished"></translation>
+        <translation>正在创建更新脚本...</translation>
     </message>
     <message>
         <source>Updating...</source>
-        <translation type="unfinished"></translation>
+        <translation>正在更新...</translation>
     </message>
     <message>
         <source>Done. Restarting...
 </source>
-        <translation type="unfinished"></translation>
+        <translation>完成，正在重新启动...</translation>
     </message>
 </context>
 </TS>
