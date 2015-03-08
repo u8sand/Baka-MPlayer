@@ -22,44 +22,6 @@ MainWindow::MainWindow(QWidget *parent):
 #if defined(Q_OS_UNIX) || defined(Q_OS_LINUX)
     // update streaming support disabled on unix platforms
     ui->actionUpdate_Streaming_Support->setEnabled(false);
-#elif defined(Q_OS_WIN)
-    // add windows 7+ thubnail toolbar buttons
-    thumbnail_toolbar = new QWinThumbnailToolBar(this);
-    thumbnail_toolbar->setWindow(windowHandle());
-
-    prev_toolbutton = new QWinThumbnailToolButton(thumbnail_toolbar);
-    prev_toolbutton->setEnabled(false);
-    prev_toolbutton->setToolTip(tr("Previous"));
-    prev_toolbutton->setIcon(QIcon(":/img/tool-next.ico"));
-    connect(prev_toolbutton, &QWinThumbnailToolButton::clicked,
-            [=]
-            {
-                ui->playlistWidget->PlayIndex(-1, true);
-            });
-
-    playpause_toolbutton = new QWinThumbnailToolButton(thumbnail_toolbar);
-    playpause_toolbutton->setEnabled(false);
-    playpause_toolbutton->setToolTip(tr("Play"));
-    playpause_toolbutton->setIcon(QIcon(":/img/tool-play.ico"));
-    connect(playpause_toolbutton, &QWinThumbnailToolButton::clicked,
-            [=]
-            {
-                baka->PlayPause();
-            });
-
-    next_toolbutton = new QWinThumbnailToolButton(thumbnail_toolbar);
-    next_toolbutton->setEnabled(false);
-    next_toolbutton->setToolTip(tr("Next"));
-    next_toolbutton->setIcon(QIcon(":/img/tool-next.ico"));
-    connect(next_toolbutton, &QWinThumbnailToolButton::clicked,
-            [=]
-            {
-                ui->playlistWidget->PlayIndex(1, true);
-            });
-
-    thumbnail_toolbar->addButton(prev_toolbutton);
-    thumbnail_toolbar->addButton(playpause_toolbutton);
-    thumbnail_toolbar->addButton(next_toolbutton);
 #endif
     ShowPlaylist(false);
     addActions(ui->menubar->actions()); // makes menubar shortcuts work even when menubar is hidden
@@ -818,6 +780,45 @@ void MainWindow::Load(QString file)
     // load the settings here--the constructor has already been called
     // this solves some issues with setting things before the constructor has ended
     menuVisible = ui->menubar->isVisible(); // does the OS use a menubar? (appmenu doesn't)
+#if defined(Q_OS_WIN)
+    // add windows 7+ thubnail toolbar buttons
+    thumbnail_toolbar = new QWinThumbnailToolBar(this);
+    thumbnail_toolbar->setWindow(this->windowHandle());
+
+    prev_toolbutton = new QWinThumbnailToolButton(thumbnail_toolbar);
+    prev_toolbutton->setEnabled(false);
+    prev_toolbutton->setToolTip(tr("Previous"));
+    prev_toolbutton->setIcon(QIcon(":/img/tool-previous.ico"));
+    connect(prev_toolbutton, &QWinThumbnailToolButton::clicked,
+            [=]
+            {
+                ui->playlistWidget->PlayIndex(-1, true);
+            });
+
+    playpause_toolbutton = new QWinThumbnailToolButton(thumbnail_toolbar);
+    playpause_toolbutton->setEnabled(false);
+    playpause_toolbutton->setToolTip(tr("Play"));
+    playpause_toolbutton->setIcon(QIcon(":/img/tool-play.ico"));
+    connect(playpause_toolbutton, &QWinThumbnailToolButton::clicked,
+            [=]
+            {
+                baka->PlayPause();
+            });
+
+    next_toolbutton = new QWinThumbnailToolButton(thumbnail_toolbar);
+    next_toolbutton->setEnabled(false);
+    next_toolbutton->setToolTip(tr("Next"));
+    next_toolbutton->setIcon(QIcon(":/img/tool-next.ico"));
+    connect(next_toolbutton, &QWinThumbnailToolButton::clicked,
+            [=]
+            {
+                ui->playlistWidget->PlayIndex(1, true);
+            });
+
+    thumbnail_toolbar->addButton(prev_toolbutton);
+    thumbnail_toolbar->addButton(playpause_toolbutton);
+    thumbnail_toolbar->addButton(next_toolbutton);
+#endif
     baka->LoadSettings();
     mpv->LoadFile(file);
 }
