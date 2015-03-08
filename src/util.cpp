@@ -89,6 +89,8 @@ QString HumanSize(qint64 size)
 
 QString ShortenPathToParent(const QString &path)
 {
+    if(Util::IsValidLocation(path))
+        return path;
     QString p = QDir::fromNativeSeparators(path);
     int pos = p.lastIndexOf('/');
     if(pos != -1)
@@ -104,7 +106,12 @@ QStringList ToNativeSeparators(QStringList list)
 {
     QStringList ret;
     for(auto element : list)
-        ret.push_back(QDir::toNativeSeparators(element));
+    {
+        if(Util::IsValidLocation(element))
+            ret.push_back(element);
+        else
+            ret.push_back(QDir::toNativeSeparators(element));
+    }
     return ret;
 }
 
