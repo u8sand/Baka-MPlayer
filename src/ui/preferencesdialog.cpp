@@ -101,30 +101,36 @@ PreferencesDialog::PreferencesDialog(BakaEngine *baka, QWidget *parent) :
                 ui->removeKeyButton->setEnabled(r != -1);
             });
 
-    connect(ui->closeButton, SIGNAL(clicked()),
-            this, SLOT(close()));
+    connect(ui->okButton, SIGNAL(clicked()),
+            this, SLOT(accept()));
+
+    connect(ui->cancelButton, SIGNAL(clicked()),
+            this, SLOT(reject()));
 }
 
 PreferencesDialog::~PreferencesDialog()
 {
-    if(ui->neverRadioButton->isChecked())
-        baka->window->setOnTop("never");
-    else if(ui->playingRadioButton->isChecked())
-        baka->window->setOnTop("playing");
-    else if(ui->alwaysRadioButton->isChecked())
-        baka->window->setOnTop("always");
-    baka->sysTrayIcon->setVisible(ui->groupBox_2->isChecked());
-    baka->window->setHidePopup(ui->hidePopupCheckBox->isChecked());
-    baka->window->setGestures(ui->gestureCheckBox->isChecked());
-    baka->window->setLang(ui->langComboBox->currentText());
-    if(ui->autoFitCheckBox->isChecked())
-        baka->window->setAutoFit(ui->comboBox->currentText().left(ui->comboBox->currentText().length()-1).toInt());
-    else
-        baka->window->setAutoFit(0);
-    baka->mpv->ScreenshotFormat(ui->formatComboBox->currentText());
-    baka->mpv->ScreenshotDirectory(screenshotDir);
-    baka->mpv->ScreenshotTemplate(ui->templateLineEdit->text());
-    baka->window->MapShortcuts();
+    if(result() == QDialog::Accepted)
+    {
+        if(ui->neverRadioButton->isChecked())
+            baka->window->setOnTop("never");
+        else if(ui->playingRadioButton->isChecked())
+            baka->window->setOnTop("playing");
+        else if(ui->alwaysRadioButton->isChecked())
+            baka->window->setOnTop("always");
+        baka->sysTrayIcon->setVisible(ui->groupBox_2->isChecked());
+        baka->window->setHidePopup(ui->hidePopupCheckBox->isChecked());
+        baka->window->setGestures(ui->gestureCheckBox->isChecked());
+        baka->window->setLang(ui->langComboBox->currentText());
+        if(ui->autoFitCheckBox->isChecked())
+            baka->window->setAutoFit(ui->comboBox->currentText().left(ui->comboBox->currentText().length()-1).toInt());
+        else
+            baka->window->setAutoFit(0);
+        baka->mpv->ScreenshotFormat(ui->formatComboBox->currentText());
+        baka->mpv->ScreenshotDirectory(screenshotDir);
+        baka->mpv->ScreenshotTemplate(ui->templateLineEdit->text());
+        baka->window->MapShortcuts();
+    }
     delete ui;
 }
 
