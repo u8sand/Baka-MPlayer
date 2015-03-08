@@ -440,7 +440,7 @@ MainWindow::MainWindow(QWidget *parent):
                     {
                         ui->action_Play->setEnabled(true);
                         ui->playButton->setEnabled(true);
-#if defined(Q_WIN_OS)
+#if defined(Q_OS_WIN)
                         playpause_toolbutton->setEnabled(true);
 #endif
                         ui->playlistButton->setEnabled(true);
@@ -1191,7 +1191,7 @@ void MainWindow::SetPlayButtonIcon(bool play)
     {
         ui->playButton->setIcon(QIcon(":/img/default_play.svg"));
         ui->action_Play->setText(tr("&Play"));
-#if defined(Q_WIN_OS)
+#if defined(Q_OS_WIN)
         playpause_toolbutton->setToolTip(tr("Play"));
         playpause_toolbutton->setIcon(QIcon(":/img/tool-play.ico"));
 #endif
@@ -1200,7 +1200,7 @@ void MainWindow::SetPlayButtonIcon(bool play)
     {
         ui->playButton->setIcon(QIcon(":/img/default_pause.svg"));
         ui->action_Play->setText(tr("&Pause"));
-#if defined(Q_WIN_OS)
+#if defined(Q_OS_WIN)
         playpause_toolbutton->setToolTip(tr("Pause"));
         playpause_toolbutton->setIcon(QIcon(":/img/tool-pause.ico"));
 #endif
