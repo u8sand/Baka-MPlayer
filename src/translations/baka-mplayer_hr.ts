@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="hr_HR">
+<TS version="2.1" language="hr_HR">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -17,7 +17,7 @@
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2014 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; je slobodan i otvorenog kôda, višeplatformski &lt;b&gt;libmpv&lt;/b&gt;. temeljen multimedijski reproduktor. Jednostavnog dizajna odražava ideju preglednog jednostavnog i ugodnog okruženja za gledanje TV emisija.&lt;br&gt;&lt;br&gt;Autorsko pravo © 2014 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; je slobodan i otvorenog kôda, višeplatformski &lt;b&gt;libmpv&lt;/b&gt;. temeljen multimedijski reproduktor. Jednostavnog dizajna odražava ideju preglednog jednostavnog i ugodnog okruženja za gledanje TV emisija.&lt;br&gt;&lt;br&gt;Autorsko pravo © 2014 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Credits</source>
@@ -40,7 +40,7 @@ Translations
 - Korean &lt;godly-devotion&gt;
 - Portuguese &lt;u8sand&gt;
 - Russian &lt;suhr&gt;</source>
-        <translation type="unfinished">mpv - video reproduktor temeljen na MPlayer/mplayer2
+        <translation type="obsolete">mpv - video reproduktor temeljen na MPlayer/mplayer2
 GPLv2 &lt;mpv.io&gt;
 
 Noto Sans -  vrsta slova s mnogo podržanih znakova
@@ -103,6 +103,27 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2015 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; je slobodan i otvorenog kôda, višeplatformski &lt;b&gt;libmpv&lt;/b&gt;. temeljen multimedijski reproduktor. Jednostavnog dizajna odražava ideju preglednog jednostavnog i ugodnog okruženja za gledanje TV emisija.&lt;br&gt;&lt;br&gt;Autorsko pravo © 2014 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
+    <message>
+        <source>mpv - video player based on MPlayer/mplayer2
+GPLv2 &lt;mpv.io&gt;
+
+Noto Sans -  font family with many supported characters
+Apache License, version 2.0 &lt;Google&gt;
+
+Download icon
+CC BY 3.0 &lt;Sasha Mescheryakov&gt;
+
+Translations
+- Chinese &lt;amazingfate, Antares95&gt;
+- Croatian &lt;gogo&gt;
+- Dutch &lt;robin007bond&gt;
+- Italian &lt;Aloysius&gt;
+- Korean &lt;godly-devotion&gt;
+- Portuguese &lt;u8sand&gt;
+- Russian &lt;suhr&gt;
+- Spanish &lt;Alfredo Ramos&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>BakaEngine</name>
@@ -119,17 +140,17 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     <message>
         <source>invalid command &apos;%0&apos;
 </source>
-        <translation type="unfinished">neispravna naredba &apos;%0</translation>
+        <translation type="obsolete">neispravna naredba &apos;%0</translation>
     </message>
     <message>
         <source>invalid parameter &apos;%0&apos;
 </source>
-        <translation type="unfinished">neispravan parameter &apos;%0</translation>
+        <translation type="obsolete">neispravan parameter &apos;%0</translation>
     </message>
     <message>
         <source>&apos;%0&apos;&apos; requires parameters
 </source>
-        <translation type="unfinished">&apos;%0&apos;&apos; zahtijeva parameter</translation>
+        <translation type="obsolete">&apos;%0&apos;&apos; zahtijeva parameter</translation>
     </message>
     <message>
         <source>screenshot%#04n</source>
@@ -165,7 +186,7 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>autofit</source>
-        <translation type="unfinished">automatska prilagodba</translation>
+        <translation type="obsolete">automatska prilagodba</translation>
     </message>
     <message>
         <source>Dim Lights</source>
@@ -373,98 +394,290 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>./screenshot%#04</source>
-        <translation type="unfinished">./snimak zaslona%#04</translation>
+        <translation type="obsolete">./snimak zaslona%#04</translation>
+    </message>
+    <message>
+        <source>DimDialog not supported on this platform</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>All Files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>To Current Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Speed: %0x</source>
+        <translation type="unfinished">Brzina: %0x</translation>
+    </message>
+    <message>
+        <source>usage: baka &lt;command&gt; [...]</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>commands:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>usage: %0 %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>description:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>advanced:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>invalid command &apos;%0&apos;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>invalid parameter &apos;%0&apos;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&apos;%0&apos; requires parameters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>executes mpv command</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>executes system shell command</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>creates a new instance of baka-mplayer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>shows the open location dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>opens the clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>shows the current file in folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>add subtitles dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>[subs]</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>take a screenshot (with subtitles if specified)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>toggles media info display</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>stops the current playback</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>[...]</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>playlist options</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>opens jump dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>toggles dim desktop</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>toggles output textbox</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>opens preferences dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>launches online help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>opens the update dialog or updates youtube-dl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>[file]</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>opens the open file dialog or the file specified</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>toggle play/pause state</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>[percent]</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>fit the window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>[level]</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>adjusts the volume</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>[ratio]</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>adjusts the speed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>toggles fullscreen state</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>pause and hide the window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>[command]</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>internal help menu</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>[qt]</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>open about dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>set mpv debugging level</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>quit baka-mplayer</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>InfoDialog</name>
     <message>
         <source>Media Info</source>
-        <translation type="unfinished">Informacije medija</translation>
+        <translation type="obsolete">Informacije medija</translation>
     </message>
     <message>
         <source>Info Type</source>
-        <translation type="unfinished">Vrsta informacije</translation>
+        <translation type="obsolete">Vrsta informacije</translation>
     </message>
     <message>
         <source>Value</source>
-        <translation type="unfinished">Vrijednost</translation>
+        <translation type="obsolete">Vrijednost</translation>
     </message>
     <message>
         <source>&amp;CLOSE</source>
-        <translation type="unfinished">&amp;ZATVORI</translation>
+        <translation type="obsolete">&amp;ZATVORI</translation>
     </message>
     <message>
         <source>File name</source>
-        <translation type="unfinished">Naziv datoteke</translation>
+        <translation type="obsolete">Naziv datoteke</translation>
     </message>
     <message>
         <source>Media Title</source>
-        <translation type="unfinished">Naslov medija</translation>
+        <translation type="obsolete">Naslov medija</translation>
     </message>
     <message>
         <source>File size</source>
-        <translation type="unfinished">Veličina datoteke</translation>
+        <translation type="obsolete">Veličina datoteke</translation>
     </message>
     <message>
         <source>Date created</source>
-        <translation type="unfinished">Datum stvaranja</translation>
+        <translation type="obsolete">Datum stvaranja</translation>
     </message>
     <message>
         <source>Media length</source>
-        <translation type="unfinished">Trajanje medija</translation>
+        <translation type="obsolete">Trajanje medija</translation>
     </message>
     <message>
         <source>[Video]</source>
-        <translation>[Video]</translation>
+        <translation type="vanished">[Video]</translation>
     </message>
     <message>
         <source>Video codec</source>
-        <translation type="unfinished">Kôdek videa</translation>
+        <translation type="obsolete">Kôdek videa</translation>
     </message>
     <message>
         <source>Video format</source>
-        <translation type="unfinished">Format videa</translation>
+        <translation type="obsolete">Format videa</translation>
     </message>
     <message>
         <source>Video bitrate</source>
-        <translation type="unfinished">Brzina prijenosa videa</translation>
+        <translation type="obsolete">Brzina prijenosa videa</translation>
     </message>
     <message>
         <source>Video dimensions</source>
-        <translation type="unfinished">Dimenzije videa</translation>
+        <translation type="obsolete">Dimenzije videa</translation>
     </message>
     <message>
         <source>[Audio]</source>
-        <translation type="unfinished">[Zvuk]</translation>
+        <translation type="obsolete">[Zvuk]</translation>
     </message>
     <message>
         <source>Audio codec</source>
-        <translation type="unfinished">Kôdek zvuka</translation>
+        <translation type="obsolete">Kôdek zvuka</translation>
     </message>
     <message>
         <source>Audio format</source>
-        <translation type="unfinished">Format zvuka</translation>
+        <translation type="obsolete">Format zvuka</translation>
     </message>
     <message>
         <source>Audio bitrate</source>
-        <translation type="unfinished">Brzina prijenosa zvuka</translation>
+        <translation type="obsolete">Brzina prijenosa zvuka</translation>
     </message>
     <message>
         <source>Audio samplerate</source>
-        <translation type="unfinished">Frekvencija zvuka</translation>
+        <translation type="obsolete">Frekvencija zvuka</translation>
     </message>
     <message>
         <source>Audio channels</source>
-        <translation type="unfinished">Kanali zvuka</translation>
+        <translation type="obsolete">Kanali zvuka</translation>
     </message>
     <message>
         <source>[Track List]</source>
-        <translation type="unfinished">[Popis zapisa]</translation>
+        <translation type="obsolete">[Popis zapisa]</translation>
     </message>
     <message>
         <source>[Chapter List]</source>
-        <translation type="unfinished">[Popis poglavlja]</translation>
+        <translation type="obsolete">[Popis poglavlja]</translation>
     </message>
 </context>
 <context>
@@ -699,7 +912,7 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>Ctrl+N</source>
-        <translation>Ctrl+N</translation>
+        <translation type="vanished">Ctrl+N</translation>
     </message>
     <message>
         <source>&amp;Open File...</source>
@@ -707,15 +920,15 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>Ctrl+O</source>
-        <translation>Ctrl+O</translation>
+        <translation type="vanished">Ctrl+O</translation>
     </message>
     <message>
         <source>Open &amp;URL...</source>
-        <translation type="unfinished">Otvori &amp;URL...</translation>
+        <translation type="obsolete">Otvori &amp;URL...</translation>
     </message>
     <message>
         <source>Ctrl+U</source>
-        <translation>Ctrl+U</translation>
+        <translation type="vanished">Ctrl+U</translation>
     </message>
     <message>
         <source>Open Path from &amp;Clipboard</source>
@@ -723,7 +936,7 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>Ctrl+V</source>
-        <translation>Ctrl+V</translation>
+        <translation type="vanished">Ctrl+V</translation>
     </message>
     <message>
         <source>Show in &amp;Folder</source>
@@ -731,7 +944,7 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>Ctrl+E</source>
-        <translation>Ctrl+E</translation>
+        <translation type="vanished">Ctrl+E</translation>
     </message>
     <message>
         <source>Play &amp;Next File</source>
@@ -739,7 +952,7 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>Ctrl+Right</source>
-        <translation type="unfinished">Ctrl+Right</translation>
+        <translation type="obsolete">Ctrl+Right</translation>
     </message>
     <message>
         <source>Play &amp;Previous File</source>
@@ -747,7 +960,7 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>Ctrl+Left</source>
-        <translation type="unfinished">Ctrl+Left</translation>
+        <translation type="obsolete">Ctrl+Left</translation>
     </message>
     <message>
         <source>E&amp;xit</source>
@@ -755,7 +968,7 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>Ctrl+Q</source>
-        <translation>Ctrl+Q</translation>
+        <translation type="vanished">Ctrl+Q</translation>
     </message>
     <message>
         <source>&amp;Full Screen</source>
@@ -763,7 +976,7 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>Alt+Return</source>
-        <translation type="unfinished">Alt+Return</translation>
+        <translation type="obsolete">Alt+Return</translation>
     </message>
     <message>
         <source>Show S&amp;ubtitles</source>
@@ -771,11 +984,11 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>Ctrl+W</source>
-        <translation>Ctrl+W</translation>
+        <translation type="vanished">Ctrl+W</translation>
     </message>
     <message>
         <source>Media &amp;Info</source>
-        <translation type="unfinished">Informacije &amp;medija</translation>
+        <translation type="obsolete">Informacije &amp;medija</translation>
     </message>
     <message>
         <source>&amp;Play</source>
@@ -783,7 +996,7 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>Space</source>
-        <translation type="unfinished">Space</translation>
+        <translation type="obsolete">Space</translation>
     </message>
     <message>
         <source>&amp;Stop</source>
@@ -791,7 +1004,7 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>Ctrl+S</source>
-        <translation>Ctrl+S</translation>
+        <translation type="vanished">Ctrl+S</translation>
     </message>
     <message>
         <source>&amp;Restart</source>
@@ -799,7 +1012,7 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>Ctrl+R</source>
-        <translation>Ctrl+R</translation>
+        <translation type="vanished">Ctrl+R</translation>
     </message>
     <message>
         <source>Sh&amp;uffle</source>
@@ -815,7 +1028,7 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>PgDown</source>
-        <translation type="unfinished">PgDown</translation>
+        <translation type="obsolete">PgDown</translation>
     </message>
     <message>
         <source>&amp;Previous Chapter</source>
@@ -823,7 +1036,7 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>PgUp</source>
-        <translation type="unfinished">PgUp</translation>
+        <translation type="obsolete">PgUp</translation>
     </message>
     <message>
         <source>&amp;Frame Step</source>
@@ -831,7 +1044,7 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>Shift+Right</source>
-        <translation type="unfinished">Shift+Lijeva strelica</translation>
+        <translation type="obsolete">Shift+Lijeva strelica</translation>
     </message>
     <message>
         <source>Frame &amp;Back Step</source>
@@ -839,7 +1052,7 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>Shift+Left</source>
-        <translation type="unfinished">Shift+Desna strelica</translation>
+        <translation type="obsolete">Shift+Desna strelica</translation>
     </message>
     <message>
         <source>&amp;Jump to Time...</source>
@@ -847,7 +1060,7 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>Ctrl+J</source>
-        <translation>Ctrl+J</translation>
+        <translation type="vanished">Ctrl+J</translation>
     </message>
     <message>
         <source>&amp;Show Playlist</source>
@@ -855,7 +1068,7 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>Ctrl+F</source>
-        <translation>Ctrl+F</translation>
+        <translation type="vanished">Ctrl+F</translation>
     </message>
     <message>
         <source>&amp;Hide Album Art</source>
@@ -867,7 +1080,7 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>Ctrl+D</source>
-        <translation>Ctrl+D</translation>
+        <translation type="vanished">Ctrl+D</translation>
     </message>
     <message>
         <source>Online &amp;Help</source>
@@ -875,7 +1088,7 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>F1</source>
-        <translation>F1</translation>
+        <translation type="vanished">F1</translation>
     </message>
     <message>
         <source>&amp;Check for Updates</source>
@@ -895,7 +1108,7 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>Alt+1</source>
-        <translation>Alt+1</translation>
+        <translation type="vanished">Alt+1</translation>
     </message>
     <message>
         <source>50%</source>
@@ -903,7 +1116,7 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>Alt+2</source>
-        <translation>Alt+2</translation>
+        <translation type="vanished">Alt+2</translation>
     </message>
     <message>
         <source>75%</source>
@@ -911,7 +1124,7 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>Alt+3</source>
-        <translation>Alt+3</translation>
+        <translation type="vanished">Alt+3</translation>
     </message>
     <message>
         <source>100%</source>
@@ -919,7 +1132,7 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>Alt+4</source>
-        <translation>Alt+4</translation>
+        <translation type="vanished">Alt+4</translation>
     </message>
     <message>
         <source>200%</source>
@@ -927,7 +1140,7 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>Alt+6</source>
-        <translation>Alt+6</translation>
+        <translation type="vanished">Alt+6</translation>
     </message>
     <message>
         <source>&amp;Auto Detect</source>
@@ -959,7 +1172,7 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>Ctrl++</source>
-        <translation>Ctrl++</translation>
+        <translation type="vanished">Ctrl++</translation>
     </message>
     <message>
         <source>S&amp;ize -</source>
@@ -967,7 +1180,7 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>Ctrl+-</source>
-        <translation>Ctrl+-</translation>
+        <translation type="vanished">Ctrl+-</translation>
     </message>
     <message>
         <source>&amp;Reset Size</source>
@@ -991,7 +1204,7 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>Ctrl+G</source>
-        <translation>Ctrl+G</translation>
+        <translation type="vanished">Ctrl+G</translation>
     </message>
     <message>
         <source>&amp;Increase Volume</source>
@@ -999,7 +1212,7 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>Ctrl+Up</source>
-        <translation type="unfinished">Ctrl+Up</translation>
+        <translation type="obsolete">Ctrl+Up</translation>
     </message>
     <message>
         <source>&amp;Decrease Volume</source>
@@ -1007,7 +1220,7 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>Ctrl+Down</source>
-        <translation type="unfinished">Ctrl+Down</translation>
+        <translation type="obsolete">Ctrl+Down</translation>
     </message>
     <message>
         <source>With &amp;Subtitles...</source>
@@ -1015,7 +1228,7 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>Ctrl+T</source>
-        <translation>Ctrl+T</translation>
+        <translation type="vanished">Ctrl+T</translation>
     </message>
     <message>
         <source>&amp;Without Subtitles...</source>
@@ -1023,7 +1236,7 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>Ctrl+Shift+T</source>
-        <translation type="unfinished">Ctrl+Shift+T</translation>
+        <translation type="obsolete">Ctrl+Shift+T</translation>
     </message>
     <message>
         <source>&amp;Preferences...</source>
@@ -1035,7 +1248,7 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>Ctrl+Shift+Up</source>
-        <translation type="unfinished">Ctrl+Shift+Up</translation>
+        <translation type="obsolete">Ctrl+Shift+Up</translation>
     </message>
     <message>
         <source>&amp;Decrease</source>
@@ -1043,7 +1256,7 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>Ctrl+Shift+Down</source>
-        <translation type="unfinished">Ctrl+Shift+Down</translation>
+        <translation type="obsolete">Ctrl+Shift+Down</translation>
     </message>
     <message>
         <source>&amp;Reset</source>
@@ -1051,7 +1264,7 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>Ctrl+Shift+R</source>
-        <translation type="unfinished">Ctrl+Shift+R</translation>
+        <translation type="obsolete">Ctrl+Shift+R</translation>
     </message>
     <message>
         <source>150%</source>
@@ -1059,7 +1272,7 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>Alt+5</source>
-        <translation>Alt+5</translation>
+        <translation type="vanished">Alt+5</translation>
     </message>
     <message>
         <source>Playing</source>
@@ -1117,15 +1330,15 @@ Napomena: vrijednost mora biti %0 - %1</translation>
     </message>
     <message>
         <source>Open Subtitle File</source>
-        <translation>Otvori datoteku podnaslova</translation>
+        <translation type="vanished">Otvori datoteku podnaslova</translation>
     </message>
     <message>
         <source>Subtitle Files</source>
-        <translation>Datoteke podnaslova</translation>
+        <translation type="vanished">Datoteke podnaslova</translation>
     </message>
     <message>
         <source>http://bakamplayer.u8sand.net/help.php</source>
-        <translation>http://bakamplayer.u8sand.net/help.php</translation>
+        <translation type="vanished">http://bakamplayer.u8sand.net/help.php</translation>
     </message>
     <message>
         <source>Settings version not recognized</source>
@@ -1139,35 +1352,35 @@ Neke značajke možda neće raditi i promijenjene postavke neće biti spremljene
     </message>
     <message>
         <source>Dim Lights</source>
-        <translation type="unfinished">Zatamnjenje osvjetljenja</translation>
+        <translation type="obsolete">Zatamnjenje osvjetljenja</translation>
     </message>
     <message>
         <source>In order to dim the lights, the desktop compositor has to be enabled. This can be done through Window Manager Desktop.</source>
-        <translation type="unfinished">Za zatamnjenje osvjetljenja, kompozitor radne površine mora biti omogućen. To možete omogućiti u Upravitelju radne provršine</translation>
+        <translation type="obsolete">Za zatamnjenje osvjetljenja, kompozitor radne površine mora biti omogućen. To možete omogućiti u Upravitelju radne provršine</translation>
     </message>
     <message>
         <source>Saved to &quot;%0&quot;, with subs</source>
-        <translation type="unfinished">Spremljeno u &quot;%0&quot;, s podnaslovima</translation>
+        <translation type="obsolete">Spremljeno u &quot;%0&quot;, s podnaslovima</translation>
     </message>
     <message>
         <source>Saved to &quot;%0&quot;, without subs</source>
-        <translation type="unfinished">Spremljeno u &quot;%0&quot;, bez podnaslova</translation>
+        <translation type="obsolete">Spremljeno u &quot;%0&quot;, bez podnaslova</translation>
     </message>
     <message>
         <source>Open File</source>
-        <translation type="unfinished">Otvori datoteku</translation>
+        <translation type="obsolete">Otvori datoteku</translation>
     </message>
     <message>
         <source>Media Files</source>
-        <translation type="unfinished">Medijske datoteke</translation>
+        <translation type="obsolete">Medijske datoteke</translation>
     </message>
     <message>
         <source>Video Files</source>
-        <translation type="unfinished">Video datoteke</translation>
+        <translation type="obsolete">Video datoteke</translation>
     </message>
     <message>
         <source>Audio Files</source>
-        <translation type="unfinished">Zvučne datoteke</translation>
+        <translation type="obsolete">Zvučne datoteke</translation>
     </message>
     <message>
         <source>Open &amp;Location...</source>
@@ -1180,6 +1393,22 @@ Neke značajke možda neće raditi i promijenjene postavke neće biti spremljene
     <message>
         <source>Show Playback &amp;Info</source>
         <translation type="unfinished">Prikaži informacije &amp;reprodukcije</translation>
+    </message>
+    <message>
+        <source>Previous</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Play</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Next</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1199,7 +1428,7 @@ Neke značajke možda neće raditi i promijenjene postavke neće biti spremljene
     <message>
         <source>mpv was not initialized
 </source>
-        <translation type="unfinished">mpv nije pokrenut</translation>
+        <translation type="obsolete">mpv nije pokrenut</translation>
     </message>
     <message>
         <source>File name</source>
@@ -1227,19 +1456,19 @@ Neke značajke možda neće raditi i promijenjene postavke neće biti spremljene
     </message>
     <message>
         <source>Video codec</source>
-        <translation type="unfinished">Kôdek videa</translation>
+        <translation type="obsolete">Kôdek videa</translation>
     </message>
     <message>
         <source>Video format</source>
-        <translation type="unfinished">Format videa</translation>
+        <translation type="obsolete">Format videa</translation>
     </message>
     <message>
         <source>Video bitrate</source>
-        <translation type="unfinished">Brzina prijenosa videa</translation>
+        <translation type="obsolete">Brzina prijenosa videa</translation>
     </message>
     <message>
         <source>Video dimensions</source>
-        <translation type="unfinished">Dimenzije videa</translation>
+        <translation type="obsolete">Dimenzije videa</translation>
     </message>
     <message>
         <source>[Audio]</source>
@@ -1247,23 +1476,23 @@ Neke značajke možda neće raditi i promijenjene postavke neće biti spremljene
     </message>
     <message>
         <source>Audio codec</source>
-        <translation type="unfinished">Kôdek zvuka</translation>
+        <translation type="obsolete">Kôdek zvuka</translation>
     </message>
     <message>
         <source>Audio format</source>
-        <translation type="unfinished">Format zvuka</translation>
+        <translation type="obsolete">Format zvuka</translation>
     </message>
     <message>
         <source>Audio bitrate</source>
-        <translation type="unfinished">Brzina prijenosa zvuka</translation>
+        <translation type="obsolete">Brzina prijenosa zvuka</translation>
     </message>
     <message>
         <source>Audio samplerate</source>
-        <translation type="unfinished">Frekvencija zvuka</translation>
+        <translation type="obsolete">Frekvencija zvuka</translation>
     </message>
     <message>
         <source>Audio channels</source>
-        <translation type="unfinished">Kanali zvuka</translation>
+        <translation type="obsolete">Kanali zvuka</translation>
     </message>
     <message>
         <source>[Track List]</source>
@@ -1272,6 +1501,38 @@ Neke značajke možda neće raditi i promijenjene postavke neće biti spremljene
     <message>
         <source>[Chapter List]</source>
         <translation type="unfinished">[Popis poglavlja]</translation>
+    </message>
+    <message>
+        <source>Codec</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bitrate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dimensions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Samplerate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Channels</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>[Metadata]</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>File does not exist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>File no longer exists</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1305,7 +1566,7 @@ Neke značajke možda neće raditi i promijenjene postavke neće biti spremljene
     </message>
     <message>
         <source>&amp;Always</source>
-        <translation type="unfinished">&amp;Uvijek</translation>
+        <translation type="obsolete">&amp;Uvijek</translation>
     </message>
     <message>
         <source>&amp;When Playing</source>
@@ -1401,7 +1662,7 @@ Neke značajke možda neće raditi i promijenjene postavke neće biti spremljene
     </message>
     <message>
         <source>&amp;CLOSE</source>
-        <translation type="unfinished">&amp;ZATVORI</translation>
+        <translation type="obsolete">&amp;ZATVORI</translation>
     </message>
     <message>
         <source>Choose screenshot directory</source>
@@ -1458,6 +1719,22 @@ Neke značajke možda neće raditi i promijenjene postavke neće biti spremljene
     <message>
         <source>%0 is already being used. Would you like to change its function?</source>
         <translation type="unfinished">%0 se već koristi. Želite li promijeniti njegovu funkciju?</translation>
+    </message>
+    <message>
+        <source>A&amp;lways</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Note: Prefix a command with &apos;mpv&apos; to make it run as an input command.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation type="unfinished">&amp;U REDU</translation>
+    </message>
+    <message>
+        <source>&amp;CANCEL</source>
+        <translation type="unfinished">&amp;PONIŠTI</translation>
     </message>
 </context>
 <context>
@@ -1558,7 +1835,7 @@ Inačica: %0</translation>
     <message>
         <source>error: %0
 </source>
-        <translation type="unfinished">greška: %0
+        <translation type="obsolete">greška: %0
 </translation>
     </message>
 </context>
@@ -1567,12 +1844,12 @@ Inačica: %0</translation>
     <message>
         <source>Checking for updates...
 </source>
-        <translation type="unfinished">Provjeravanje nadopuna...</translation>
+        <translation type="obsolete">Provjeravanje nadopuna...</translation>
     </message>
     <message>
         <source>Downloading update...
 </source>
-        <translation type="unfinished">Preuzimanje nadopune...</translation>
+        <translation type="obsolete">Preuzimanje nadopune...</translation>
     </message>
     <message>
         <source>fopen error
@@ -1583,13 +1860,13 @@ Inačica: %0</translation>
     <message>
         <source>write error
 </source>
-        <translation type="unfinished">greška zapisivanja
+        <translation type="obsolete">greška zapisivanja
 </translation>
     </message>
     <message>
         <source>Download complete
 </source>
-        <translation type="unfinished">Preuzimanje završeno
+        <translation type="obsolete">Preuzimanje završeno
 </translation>
     </message>
     <message>
@@ -1599,19 +1876,19 @@ Inačica: %0</translation>
     <message>
         <source>Redirected...
 </source>
-        <translation type="unfinished">Preusmjereno...
+        <translation type="obsolete">Preusmjereno...
 </translation>
     </message>
     <message>
         <source>Extracting...
 </source>
-        <translation type="unfinished">Raspakiravanje...
+        <translation type="obsolete">Raspakiravanje...
 </translation>
     </message>
     <message>
         <source>Creating updater script...
 </source>
-        <translation type="unfinished">Stvaranje skripte nadopuna...
+        <translation type="obsolete">Stvaranje skripte nadopuna...
 </translation>
     </message>
     <message>
@@ -1621,8 +1898,40 @@ Inačica: %0</translation>
     <message>
         <source>Done. Restarting...
 </source>
-        <translation type="unfinished">Završeno. Ponovno pokrećem...
+        <translation type="obsolete">Završeno. Ponovno pokrećem...
 </translation>
+    </message>
+    <message>
+        <source>Checking for updates...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Downloading update...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>write error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Download complete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Redirected...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Extracting...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Creating updater script...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Done. Restarting...</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

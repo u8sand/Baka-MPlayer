@@ -86,7 +86,8 @@ Translations
 - Italian &lt;Aloysius&gt;
 - Korean &lt;godly-devotion&gt;
 - Portuguese &lt;u8sand&gt;
-- Russian &lt;suhr&gt;</source>
+- Russian &lt;suhr&gt;
+- Spanish &lt;Alfredo Ramos&gt;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -598,7 +599,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>mpv not yet initialized</source>
-        <translation>mpv未初始化</translation>
+        <translation type="vanished">mpv未初始化</translation>
     </message>
     <message>
         <source>DimDialog not supported on this platform</source>
@@ -1656,7 +1657,7 @@ Some features may not work and changed settings will not be saved.</source>
     <message>
         <source>mpv was not initialized
 </source>
-        <translation>mpv未初始化</translation>
+        <translation type="vanished">mpv未初始化</translation>
     </message>
     <message>
         <source>File name</source>
@@ -1794,7 +1795,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>&amp;Always</source>
-        <translation>&amp;总是</translation>
+        <translation type="vanished">&amp;总是</translation>
     </message>
     <message>
         <source>&amp;When Playing</source>
@@ -1890,7 +1891,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>&amp;CLOSE</source>
-        <translation>关闭(&amp;C)</translation>
+        <translation type="vanished">关闭(&amp;C)</translation>
     </message>
     <message>
         <source>Choose screenshot directory</source>
@@ -1959,6 +1960,18 @@ Some features may not work and changed settings will not be saved.</source>
     <message>
         <source>Note: Prefix a command with &apos;mpv&apos; to make it run as an input command.</source>
         <translation>注意:在命令前加上&apos;mpv&apos;以让它以一个输入命令运行</translation>
+    </message>
+    <message>
+        <source>A&amp;lways</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation type="unfinished">确定(&amp;O)</translation>
+    </message>
+    <message>
+        <source>&amp;CANCEL</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

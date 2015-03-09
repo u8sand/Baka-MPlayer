@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>345</width>
-    <height>430</height>
+    <width>343</width>
+    <height>428</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -113,7 +113,7 @@ QTabBar::tab:!selected {
 }</string>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="tab">
       <attribute name="title">
@@ -234,7 +234,8 @@ Translations
 - Italian &lt;Aloysius&gt;
 - Korean &lt;godly-devotion&gt;
 - Portuguese &lt;u8sand&gt;
-- Russian &lt;suhr&gt;</string>
+- Russian &lt;suhr&gt;
+- Spanish &lt;Alfredo Ramos&gt;</string>
          </property>
         </widget>
        </item>
