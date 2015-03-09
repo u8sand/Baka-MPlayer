@@ -26,9 +26,6 @@
 
 void BakaEngine::BakaMpv(QStringList &args)
 {
-    if(mpv->playState > 0)
-        Print(tr("mpv not yet initialized"));
-
     if(!args.empty())
         mpv->Command(args);
     else

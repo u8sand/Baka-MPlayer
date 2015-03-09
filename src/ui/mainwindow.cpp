@@ -992,6 +992,11 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
         if(event->modifiers() & Qt::ShiftModifier)   key += "Shift+";
         key += QKeySequence(event->key()).toString();
 
+        // TODO: Add more protection/find a better way to protect edit boxes from executing commands
+        if(focusWidget() == ui->inputLineEdit &&
+           key == "Return")
+            return;
+
         // find shortcut in input hash table
         auto iter = baka->input.find(key);
         if(iter != baka->input.end())
