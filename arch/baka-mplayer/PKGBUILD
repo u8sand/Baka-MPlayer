@@ -1,33 +1,49 @@
 # Maintainer: u8sand <u8sand@gmail.com>
+# Contributor: Alfredo Ramos <alfredo dot ramos at yandex dot com>
+
 pkgname=baka-mplayer
 pkgver=2.0.2
-pkgrel=1
-pkgdesc="Baka MPlayer is a free and open source, cross-platform, libmpv based multimedia player."
-url="http://bakamplayer.u8sand.net/"
-arch=('x86_64' 'i686')
-license=('GPLv2')
-depends=('mpv' 'qt5-base' 'qt5-declarative' 'qt5-svg' 'qt5-x11extras')
-makedepends=('git' 'make' 'pkg-config' 'qt5-tools')
+pkgrel=2
+pkgdesc='A free, open source and cross-platform mpv based media player. Qt5 build.'
+arch=('i686' 'x86_64')
+url='http://bakamplayer.u8sand.net/'
+license=('GPL')
+
+depends=('mpv' 'qt5-declarative' 'qt5-svg' 'qt5-x11extras')
 optdepends=(
-  'qt5-translations: qt5 dialog translations'
-  'mpv-git: bleeding-edge mpv features'
-  'youtube-dl: support for remote video streaming'
+	'mpv-git: for bleeding-edge mpv features'
+	'qt5-translations: for Qt5 dialog translations'
+	'youtube-dl: for remote video streaming'
 )
-conflicts=('bakamplayer' 'baka-mplayer')
-provides=('baka-mplayer')
+makedepends=('git' 'qt5-tools')
+provides=("${pkgname}=${pkgver}")
+conflicts=("${pkgname}-git")
+replaces=("${pkgname}-git")
 
-_gitroot="https://github.com/u8sand/Baka-MPlayer.git"
-_gitname="release"
+source=(
+	"${pkgname}-${pkgver}.tar.gz::https://github.com/u8sand/Baka-MPlayer/archive/v${pkgver}.tar.gz"
+)
+sha512sums=(
+	"3a134b60eca00ebe53223d6d2a12b7fa09902615d0a71522f2bb2bc6d818539ab93a46744de9fc554a4ee8b0918378cf28cd1f096136dffef37547d2fae67259"
+)
 
-build() {
-  cd "$srcdir"
-  git clone ${_gitroot} -b ${_gitname} ${pkgname}
-  cd "$pkgname"
-  ./configure INSTROOT="$pkgdir" CONFIG+=install_translations
-  make -j `grep -c ^processor /proc/cpuinfo`
+prepare() {
+	# Make build directory
+	mkdir ${srcdir}/build
+}
+
+build() {	
+	# Building package
+	cd ${srcdir}/build
+	qmake-qt5 ../Baka-MPlayer-${pkgver}/src \
+		CONFIG+=release \
+		CONFIG+=embed_translations \
+		-spec linux-g++
+	make -j $(grep -c ^processor /proc/cpuinfo)
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  make install
+	# Installing package
+	cd ${srcdir}/build
+	make INSTALL_ROOT=${pkgdir} install
 }
