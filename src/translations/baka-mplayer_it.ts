@@ -39,7 +39,7 @@ Translations
 - Korean &lt;godly-devotion&gt;
 - Portuguese &lt;u8sand&gt;
 - Russian &lt;suhr&gt;</source>
-        <translation>mpv - lettore multimediale basato su MPlayer/mplayer2
+        <translation type="vanished">mpv - lettore multimediale basato su MPlayer/mplayer2
 GPLv2 &lt;mpv.io&gt;
 
 Noto Sans -  famiglia di font con molti caratteri supportati
@@ -86,6 +86,27 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2015 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; è un lettore multimediale libero e a sorgente aperto, multipiattaforma, basato su &lt;b&gt;libmpv&lt;/b&gt;. Il suo design semplice riflette l&apos;idea di un ambiente semplice, ordinato e piacevole per guardare programmi TV.&lt;br&gt;&lt;br&gt;Copyright © 2014 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt; {2015 ?} {8s?} {8s?} {8s?}</translation>
     </message>
+    <message>
+        <source>mpv - video player based on MPlayer/mplayer2
+GPLv2 &lt;mpv.io&gt;
+
+Noto Sans -  font family with many supported characters
+Apache License, version 2.0 &lt;Google&gt;
+
+Download icon
+CC BY 3.0 &lt;Sasha Mescheryakov&gt;
+
+Translations
+- Chinese &lt;amazingfate, Antares95&gt;
+- Croatian &lt;gogo&gt;
+- Dutch &lt;robin007bond&gt;
+- Italian &lt;Aloysius&gt;
+- Korean &lt;godly-devotion&gt;
+- Portuguese &lt;u8sand&gt;
+- Russian &lt;suhr&gt;
+- Spanish &lt;Alfredo Ramos&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>BakaEngine</name>
@@ -98,21 +119,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
 Some features may not work and changed settings will not be saved.</source>
         <translation type="unfinished">Il file di impostazioni è stato creato da una versione di baka-mplayer più recente; aggiorna questa versione o richiedi assistenza agli sviluppatori.
 Alcune funzionalità potrebbero non essere disponibili e le impostazioni modificate non verranno salvate.</translation>
-    </message>
-    <message>
-        <source>invalid command &apos;%0&apos;
-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>invalid parameter &apos;%0&apos;
-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&apos;%0&apos;&apos; requires parameters
-</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>screenshot%#04n</source>
@@ -145,10 +151,6 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     <message>
         <source>Audio Files</source>
         <translation type="unfinished">File audio</translation>
-    </message>
-    <message>
-        <source>autofit</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Dim Lights</source>
@@ -355,7 +357,195 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
         <translation type="unfinished">Salvato su &quot;%0&quot;, senza sottotitoli</translation>
     </message>
     <message>
-        <source>./screenshot%#04</source>
+        <source>DimDialog not supported on this platform</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>All Files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>To Current Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Speed: %0x</source>
+        <translation type="unfinished">Velocità: %0x</translation>
+    </message>
+    <message>
+        <source>usage: baka &lt;command&gt; [...]</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>commands:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>usage: %0 %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>description:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>advanced:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>invalid command &apos;%0&apos;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>invalid parameter &apos;%0&apos;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&apos;%0&apos; requires parameters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>executes mpv command</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>executes system shell command</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>creates a new instance of baka-mplayer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>shows the open location dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>opens the clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>shows the current file in folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>add subtitles dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>[subs]</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>take a screenshot (with subtitles if specified)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>toggles media info display</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>stops the current playback</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>[...]</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>playlist options</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>opens jump dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>toggles dim desktop</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>toggles output textbox</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>opens preferences dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>launches online help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>opens the update dialog or updates youtube-dl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>[file]</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>opens the open file dialog or the file specified</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>toggle play/pause state</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>[percent]</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>fit the window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>[level]</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>adjusts the volume</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>[ratio]</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>adjusts the speed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>toggles fullscreen state</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>pause and hide the window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>[command]</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>internal help menu</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>[qt]</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>open about dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>set mpv debugging level</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>quit baka-mplayer</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1164,6 +1354,22 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
         <source>Show Playback &amp;Info</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Previous</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Play</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Next</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MpvHandler</name>
@@ -1178,11 +1384,6 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     <message>
         <source>mpv was not initialized</source>
         <translation type="obsolete">mpv non era inizializzato</translation>
-    </message>
-    <message>
-        <source>mpv was not initialized
-</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>File name</source>
@@ -1210,19 +1411,19 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>Video codec</source>
-        <translation type="unfinished">Codec video</translation>
+        <translation type="obsolete">Codec video</translation>
     </message>
     <message>
         <source>Video format</source>
-        <translation type="unfinished">Formato video</translation>
+        <translation type="obsolete">Formato video</translation>
     </message>
     <message>
         <source>Video bitrate</source>
-        <translation type="unfinished">Bitrate video</translation>
+        <translation type="obsolete">Bitrate video</translation>
     </message>
     <message>
         <source>Video dimensions</source>
-        <translation type="unfinished">Dimensioni del video</translation>
+        <translation type="obsolete">Dimensioni del video</translation>
     </message>
     <message>
         <source>[Audio]</source>
@@ -1230,23 +1431,23 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>Audio codec</source>
-        <translation type="unfinished">Codec audio</translation>
+        <translation type="obsolete">Codec audio</translation>
     </message>
     <message>
         <source>Audio format</source>
-        <translation type="unfinished">Formato audio</translation>
+        <translation type="obsolete">Formato audio</translation>
     </message>
     <message>
         <source>Audio bitrate</source>
-        <translation type="unfinished">Bitrate audio</translation>
+        <translation type="obsolete">Bitrate audio</translation>
     </message>
     <message>
         <source>Audio samplerate</source>
-        <translation type="unfinished">Campionamento audio</translation>
+        <translation type="obsolete">Campionamento audio</translation>
     </message>
     <message>
         <source>Audio channels</source>
-        <translation type="unfinished">Canali audio</translation>
+        <translation type="obsolete">Canali audio</translation>
     </message>
     <message>
         <source>[Track List]</source>
@@ -1255,6 +1456,38 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     <message>
         <source>[Chapter List]</source>
         <translation type="unfinished">Capitoli</translation>
+    </message>
+    <message>
+        <source>Codec</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bitrate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dimensions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Samplerate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Channels</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>[Metadata]</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>File does not exist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>File no longer exists</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1288,7 +1521,7 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>&amp;Always</source>
-        <translation>&amp;Sempre</translation>
+        <translation type="vanished">&amp;Sempre</translation>
     </message>
     <message>
         <source>&amp;When Playing</source>
@@ -1384,7 +1617,7 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     </message>
     <message>
         <source>&amp;CLOSE</source>
-        <translation>&amp;CHIUDI</translation>
+        <translation type="vanished">&amp;CHIUDI</translation>
     </message>
     <message>
         <source>Choose screenshot directory</source>
@@ -1441,6 +1674,22 @@ Alcune funzionalità potrebbero non essere disponibili e le impostazioni modific
     <message>
         <source>%0 is already being used. Would you like to change its function?</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A&amp;lways</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Note: Prefix a command with &apos;mpv&apos; to make it run as an input command.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation type="unfinished">&amp;OK</translation>
+    </message>
+    <message>
+        <source>&amp;CANCEL</source>
+        <translation type="unfinished">&amp;ANNULLA</translation>
     </message>
 </context>
 <context>
@@ -1548,27 +1797,7 @@ Versione: %0</translation>
 <context>
     <name>UpdateManager</name>
     <message>
-        <source>Checking for updates...
-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Downloading update...
-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>fopen error
-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>write error
-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Download complete
 </source>
         <translation type="unfinished"></translation>
     </message>
@@ -1577,27 +1806,39 @@ Versione: %0</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Redirected...
-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Extracting...
-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Creating updater script...
-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Updating...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Done. Restarting...
-</source>
+        <source>Checking for updates...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Downloading update...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>write error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Download complete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Redirected...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Extracting...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Creating updater script...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Done. Restarting...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
