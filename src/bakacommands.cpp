@@ -407,7 +407,7 @@ void BakaEngine::BakaFitWindow(QStringList &args)
 
 void BakaEngine::FitWindow(int percent, bool msg)
 {
-    if(window->isFullScreen() || window->isMaximized())
+    if(window->isFullScreen() || window->isMaximized() || !window->ui->menuFit_Window->isEnabled())
         return;
 
     mpv->LoadVideoParams();

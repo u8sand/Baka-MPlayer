@@ -331,7 +331,7 @@ void MpvHandler::PlayFile(QString f)
 
 void MpvHandler::Play()
 {
-    if(playState > 0)
+    if(playState > 0 && mpv)
     {
         int f = 0;
         mpv_set_property_async(mpv, 0, "pause", MPV_FORMAT_FLAG, &f);
@@ -340,7 +340,7 @@ void MpvHandler::Play()
 
 void MpvHandler::Pause()
 {
-    if(playState > 0)
+    if(playState > 0 && mpv)
     {
         int f = 1;
         mpv_set_property_async(mpv, 0, "pause", MPV_FORMAT_FLAG, &f);
@@ -442,7 +442,8 @@ void MpvHandler::FrameBackStep()
 
 void MpvHandler::Chapter(int c)
 {
-    mpv_set_property_async(mpv, 0, "chapter", MPV_FORMAT_INT64, &c);
+    if(mpv)
+        mpv_set_property_async(mpv, 0, "chapter", MPV_FORMAT_INT64, &c);
 //    const QByteArray tmp = QString::number(c).toUtf8();
 //    const char *args[] = {"set", "chapter", tmp.constData(), NULL};
 //    AsyncCommand(args);
@@ -591,14 +592,11 @@ void MpvHandler::Debug(QString level)
 
 void MpvHandler::ShowText(QString text, int duration, int level)
 {
-    if(mpv)
-    {
-        const QByteArray tmp1 = text.toUtf8(),
-                         tmp2 = QString::number(duration).toUtf8(),
-                         tmp3 = QString::number(level).toUtf8();
-        const char *args[] = {"show_text", tmp1.constData(), tmp2.constData(), tmp3.constData(), NULL};
-        AsyncCommand(args);
-    }
+    const QByteArray tmp1 = text.toUtf8(),
+                     tmp2 = QString::number(duration).toUtf8(),
+                     tmp3 = QString::number(level).toUtf8();
+    const char *args[] = {"show_text", tmp1.constData(), tmp2.constData(), tmp3.constData(), NULL};
+    AsyncCommand(args);
 }
 
 void MpvHandler::LoadFileInfo()
@@ -754,8 +752,11 @@ void MpvHandler::LoadMetadata()
 
 void MpvHandler::LoadOsdSize()
 {
-    mpv_get_property(mpv, "osd-width", MPV_FORMAT_INT64, &osdWidth);
-    mpv_get_property(mpv, "osd-height", MPV_FORMAT_INT64, &osdHeight);
+    if(mpv)
+    {
+        mpv_get_property(mpv, "osd-width", MPV_FORMAT_INT64, &osdWidth);
+        mpv_get_property(mpv, "osd-height", MPV_FORMAT_INT64, &osdHeight);
+    }
 }
 
 void MpvHandler::Command(const QStringList &strlist)
@@ -780,9 +781,12 @@ void MpvHandler::Command(const QStringList &strlist)
 
 void MpvHandler::SetOption(QString key, QString val)
 {
-    QByteArray tmp1 = key.toUtf8(),
-               tmp2 = val.toUtf8();
-    mpv_set_option_string(mpv, tmp1.constData(), tmp2.constData());
+    if(mpv)
+    {
+        QByteArray tmp1 = key.toUtf8(),
+                   tmp2 = val.toUtf8();
+        mpv_set_option_string(mpv, tmp1.constData(), tmp2.constData());
+    }
 }
 
 void MpvHandler::OpenFile(QString f)
@@ -837,5 +841,5 @@ void MpvHandler::Command(const char *args[])
 
 void MpvHandler::NotInitialized()
 {
-    emit messageSignal(tr("mpv was not initialized\n"));
+    //emit messageSignal(tr("mpv was not initialized\n"));
 }
