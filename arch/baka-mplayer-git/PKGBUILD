@@ -5,7 +5,7 @@ _pkgname=baka-mplayer
 pkgname=${_pkgname}-git
 pkgver=2.0.2.r83.gcf0d075
 pkgrel=1
-pkgdesc='A free, open source and cross-platform mpv based media player. Qt5 build. Development version.'
+pkgdesc='A free and open source, cross-platform, libmpv based multimedia player. Qt5 build. Development version.'
 arch=('i686' 'x86_64')
 url='http://bakamplayer.u8sand.net/'
 license=('GPL')
@@ -48,7 +48,7 @@ build() {
 	cd ${srcdir}/build
 	qmake-qt5 ../${_pkgname}/src \
 		CONFIG+=release \
-		CONFIG+=embed_translations \
+		CONFIG+=install_translations \
 		-spec linux-g++
 	make -j $(grep -c ^processor /proc/cpuinfo)
 }

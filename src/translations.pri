@@ -5,5 +5,5 @@ TRANSLATIONS += \
     translations/baka-mplayer_ru.ts \
     translations/baka-mplayer_ko.ts \
     translations/baka-mplayer_zh_CN.ts \
-	translations/baka-mplayer_it.ts \
-	translations/baka-mplayer_es.ts
+    translations/baka-mplayer_it.ts \
+    translations/baka-mplayer_es.ts
