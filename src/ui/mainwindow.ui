@@ -75,18 +75,22 @@ QSplitter::handle,
 
 #outputTextEdit {
 	font: 12px &quot;Courier New&quot;, monospace;
-	border-top: 2px solid #1A1A1A;
+	border-top: 1px solid #353535;
 }
 
 #inputLineEdit {
 	font: 12px &quot;Courier New&quot;,monospace;
 	padding: 2px;
-	border-style: solid;
-	border-width: 1px;
-	border-color: #1A1A1A black;
+	border-top: 1px solid #353535;
 }
 #inputLineEdit:focus {
 	border-color: #008098;
+}
+
+/* playlistLayoutWidget */
+
+#playlistLayoutWidget {
+	border-left: 1px solid #353535
 }
 
 /* searchBox */
@@ -94,9 +98,8 @@ QSplitter::handle,
 #searchBox {
 	font-size: 12px;
 	padding: 2px;
-	border-style: solid;
-	border-width: 2px;
-	border-color: black #1A1A1A;
+	border: 1px solid #5A5A5A;
+	border-radius: 2px;
 }
 #searchBox:focus {
 	border-color: #008098;
@@ -979,7 +982,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>580</width>
-     <height>23</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
