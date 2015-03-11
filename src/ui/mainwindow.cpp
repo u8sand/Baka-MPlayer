@@ -1217,7 +1217,7 @@ void MainWindow::SetRemainingLabels(int time)
         if(mpv->getSpeed() != 1)
         {
             double speed = mpv->getSpeed();
-            text += QString(" (-%0)").arg(Util::FormatTime(int(remainingTime/speed), int(fi.length/speed)));
+            text += QString("  (-%0)").arg(Util::FormatTime(int(remainingTime/speed), int(fi.length/speed)));
         }
         ui->remainingLabel->setText(text);
     }
