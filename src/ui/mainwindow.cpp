@@ -383,6 +383,12 @@ MainWindow::MainWindow(QWidget *parent):
                             baka->sysTrayIcon->showMessage("Baka MPlayer", mpv->getFileInfo().media_title, QSystemTrayIcon::NoIcon, 4000);
                         }
                     }
+
+                    if(pathChanged && autoFit)
+                    {
+                        baka->FitWindow(autoFit, false);
+                        pathChanged = false;
+                    }
                 }
             });
 
@@ -446,11 +452,6 @@ MainWindow::MainWindow(QWidget *parent):
                         ui->playlistButton->setEnabled(true);
                         ui->action_Show_Playlist->setEnabled(true);
                         init = true;
-                    }
-                    if(pathChanged && autoFit)
-                    {
-                        baka->FitWindow(autoFit, false);
-                        pathChanged = false;
                     }
                     SetPlaybackControls(true);
                     mpv->Play();
