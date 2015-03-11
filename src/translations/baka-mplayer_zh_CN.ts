@@ -2032,7 +2032,7 @@ Some features may not work and changed settings will not be saved.</source>
     <message>
         <location filename="../mpvhandler.cpp" line="477"/>
         <source>Volume: %0%</source>
-        <translation type="unfinished">音量: %0%</translation>
+        <translation>音量: %0%</translation>
     </message>
 </context>
 <context>
