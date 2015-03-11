@@ -470,9 +470,11 @@ void MpvHandler::Volume(int level, bool osd)
     {
         if(osd)
         {
-            const QByteArray tmp = QString::number(level).toUtf8();
-            const char *args[] = {"osd-msg", "set", "volume", tmp.constData(), NULL};
+            QString levelStr = QString::number(level);
+            const QByteArray tmp = levelStr.toUtf8();
+            const char *args[] = {"set", "volume", tmp.constData(), NULL};
             AsyncCommand(args);
+            ShowText(tr("Volume: %0%").arg(levelStr));
         }
         else
         {
