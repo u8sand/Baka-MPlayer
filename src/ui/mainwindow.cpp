@@ -164,12 +164,9 @@ MainWindow::MainWindow(QWidget *parent):
             });
 
     connect(this, &MainWindow::remainingChanged,
-            [=](bool b)
+            [=]
             {
-                if(!b)
-                    ui->remainingLabel->setText(Util::FormatTime(mpv->getFileInfo().length, mpv->getFileInfo().length));
-                else
-                    ui->remainingLabel->setText("-"+Util::FormatTime(mpv->getFileInfo().length - mpv->getTime(), mpv->getFileInfo().length));
+                SetRemainingLabels(mpv->getTime());
             });
 
     connect(this, &MainWindow::debugChanged,
@@ -260,8 +257,7 @@ MainWindow::MainWindow(QWidget *parent):
                     if(ui->actionMedia_Info->isChecked())
                         baka->MediaInfo(true);
 
-                    if(!remaining)
-                        ui->remainingLabel->setText(Util::FormatTime(fileInfo.length, fileInfo.length));
+                    SetRemainingLabels(fileInfo.length);
                 }
             });
 
@@ -530,10 +526,7 @@ MainWindow::MainWindow(QWidget *parent):
                 // the formula is a simple ratio seekBar's max * time/totalTime
                 ui->seekBar->setValueNoSignal(ui->seekBar->maximum()*((double)i/fi.length));
 
-                // set duration and remaining labels, QDateTime takes care of formatting for us
-                ui->durationLabel->setText(Util::FormatTime(i, mpv->getFileInfo().length));
-                if(remaining)
-                    ui->remainingLabel->setText("-"+Util::FormatTime(fi.length-i, mpv->getFileInfo().length));
+                SetRemainingLabels(i);
 
                 // set next/previous chapter's enabled state
                 if(fi.chapters.length() > 0)
@@ -1210,5 +1203,22 @@ void MainWindow::SetPlayButtonIcon(bool play)
         playpause_toolbutton->setToolTip(tr("Pause"));
         playpause_toolbutton->setIcon(QIcon(":/img/tool-pause.ico"));
 #endif
+    }
+}
+
+void MainWindow::SetRemainingLabels(int time)
+{
+    const Mpv::FileInfo &fi = mpv->getFileInfo();
+    ui->durationLabel->setText(Util::FormatTime(time, fi.length));
+    if(remaining)
+    {
+        int remainingTime = fi.length - time;
+        QString text ="-" + Util::FormatTime(remainingTime, fi.length);
+        if(mpv->getSpeed() != 1)
+        {
+            double speed = mpv->getSpeed();
+            text += QString(" (-%0)").arg(Util::FormatTime(int(remainingTime/speed), int(fi.length/speed)));
+        }
+        ui->remainingLabel->setText(text);
     }
 }

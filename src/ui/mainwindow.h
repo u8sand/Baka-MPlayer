@@ -72,6 +72,7 @@ private slots:
     void SetPlayButtonIcon(bool play);
     void SetNextButtonEnabled(bool enable);
     void SetPreviousButtonEnabled(bool enable);
+    void SetRemainingLabels(int time);
 
 private:
     BakaEngine      *baka;
