@@ -71,7 +71,9 @@ QString MpvHandler::getMediaInfo()
             {tr("[Video]"), QString()},
             {tr("Codec"), fileInfo.video_params.codec},
             {tr("Bitrate"), fileInfo.video_params.bitrate},
-            {tr("Dimensions"), QString::number(fileInfo.video_params.width)+" x "+QString::number(fileInfo.video_params.height)},
+            {tr("Dimensions"), QString("%0 x %1 (%2)").arg(QString::number(fileInfo.video_params.width),
+                                                           QString::number(fileInfo.video_params.height),
+                                                           Util::Ratio(fileInfo.video_params.width, fileInfo.video_params.height))},
             {QString(), QString()}
         });
 
@@ -736,6 +738,7 @@ void MpvHandler::LoadVideoParams()
     mpv_get_property(mpv, "height",       MPV_FORMAT_INT64, &fileInfo.video_params.height);
     mpv_get_property(mpv, "dwidth",       MPV_FORMAT_INT64, &fileInfo.video_params.dwidth);
     mpv_get_property(mpv, "dheight",      MPV_FORMAT_INT64, &fileInfo.video_params.dheight);
+    // though this has become useless, removing it causes a segfault--no clue:
     mpv_get_property(mpv, "video-aspect", MPV_FORMAT_INT64, &fileInfo.video_params.aspect);
 
     emit videoParamsChanged(fileInfo.video_params);

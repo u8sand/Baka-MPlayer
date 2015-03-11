@@ -123,4 +123,39 @@ QStringList FromNativeSeparators(QStringList list)
     return ret;
 }
 
+int GCD(int u, int v)
+{
+    int shift;
+    if(u == 0) return v;
+    if(v == 0) return u;
+    for(shift = 0; ((u | v) & 1) == 0; ++shift)
+    {
+       u >>= 1;
+       v >>= 1;
+    }
+    while((u & 1) == 0)
+        u >>= 1;
+    do
+    {
+        while ((v & 1) == 0)
+            v >>= 1;
+        if (u > v)
+        {
+            unsigned int t = v;
+            v = u;
+            u = t;
+        }
+        v = v - u;
+    } while (v != 0);
+    return u << shift;
+}
+
+QString Ratio(int w, int h)
+{
+    int gcd=GCD(w, h);
+    if(gcd == 0)
+        return "0:0";
+    return QString("%0:%1").arg(QString::number(w/gcd), QString::number(h/gcd));
+}
+
 }

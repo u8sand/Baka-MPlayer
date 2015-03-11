@@ -35,6 +35,8 @@ QString HumanSize(qint64);
 QString ShortenPathToParent(const QString &path);
 QStringList ToNativeSeparators(QStringList list);
 QStringList FromNativeSeparators(QStringList list);
+int GCD(int v, int u);
+QString Ratio(int w, int h);
 
 }
 
