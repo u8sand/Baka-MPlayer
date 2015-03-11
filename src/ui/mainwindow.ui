@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>580</width>
+    <width>622</width>
     <height>400</height>
    </rect>
   </property>
@@ -87,13 +87,11 @@ QSplitter::handle,
 	border-color: #008098;
 }
 
-/* playlistLayoutWidget */
+/* Playlist group */
 
 #playlistLayoutWidget {
 	border-left: 1px solid #353535
 }
-
-/* searchBox */
 
 #searchBox {
 	font-size: 12px;
@@ -542,13 +540,13 @@ QSlider::sub-page:horizontal {
         <widget class="QWidget" name="timeLayoutWidget" native="true">
          <property name="minimumSize">
           <size>
-           <width>150</width>
+           <width>200</width>
            <height>0</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>150</width>
+           <width>200</width>
            <height>16777215</height>
           </size>
          </property>
@@ -904,7 +902,7 @@ QSlider::handle:horizontal {
            </property>
            <property name="sizeHint" stdset="0">
             <size>
-             <width>50</width>
+             <width>100</width>
              <height>20</height>
             </size>
            </property>
@@ -981,7 +979,7 @@ QSlider::handle:horizontal {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>580</width>
+     <width>622</width>
      <height>23</height>
     </rect>
    </property>
