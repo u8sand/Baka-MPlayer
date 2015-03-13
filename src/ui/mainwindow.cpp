@@ -358,7 +358,7 @@ MainWindow::MainWindow(QWidget *parent):
                         {
                             // put in filler albumArt
                             if(ui->mpvFrame->styleSheet() == QString())
-                                ui->mpvFrame->setStyleSheet("background-image:url(:/img/album_art.png);background-repeat:no-repeat;background-position:center;");
+                                ui->mpvFrame->setStyleSheet("background-image:url(:/img/album-art.png);background-repeat:no-repeat;background-position:center;");
                         }
                         ui->action_Hide_Album_Art->setEnabled(true);
                         ui->menuAudio_Tracks->setEnabled((ui->menuAudio_Tracks->actions().count() > 1));
