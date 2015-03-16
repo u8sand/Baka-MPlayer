@@ -484,7 +484,7 @@ void BakaEngine::FitWindow(int percent, bool msg)
     // finally set the geometry of the window
     window->setGeometry(rect);
 
-    // note: the above block is required because there is not setFrameGeometry function
+    // note: the above block is required because there is no setFrameGeometry function
 
     if(msg)
         mpv->ShowText(tr("Fit Window: %0").arg(percent == 0 ? tr("To Current Size") : (QString::number(percent)+"%")));
@@ -549,7 +549,7 @@ void BakaEngine::BakaBoss(QStringList &args)
         else
         {
             mpv->Pause();
-            window->setWindowState(window->windowState() | Qt::WindowMinimized); // minimze window
+            window->setWindowState(window->windowState() | Qt::WindowMinimized); // minimize window
         }
     }
     else
