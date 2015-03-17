@@ -103,7 +103,7 @@ void OverlayHandler::showText(const QString &text, int duration, QPoint pos, int
     painter.setCompositionMode(QPainter::CompositionMode_Overlay);
     painter.setFont(overlay_font);
     painter.setPen(QColor(0, 0, 0));
-    painter.setBrush(QColor(0xF3F300));
+    painter.setBrush(QColor(0xFFFF00));
     painter.drawPath(path);
 
     // add as mpv overlay
