@@ -656,7 +656,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(ui->volumeSlider, &CustomSlider::valueChanged,              // Playback: Volume slider adjusted
             [=](int i)
             {
-                mpv->Volume(i);
+                mpv->Volume(i, true);
             });
 
     connect(ui->playlistButton, &QPushButton::clicked,                  // Playback: Clicked the playlist button
