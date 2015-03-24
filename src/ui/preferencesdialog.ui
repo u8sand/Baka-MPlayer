@@ -368,7 +368,7 @@ QTabBar::tab:!selected {
      </widget>
      <widget class="QWidget" name="tab_3">
       <attribute name="title">
-       <string>Keys</string>
+       <string>Key Bindings</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_5">
        <property name="leftMargin">
@@ -391,7 +391,7 @@ QTabBar::tab:!selected {
 }</string>
          </property>
          <property name="text">
-          <string>Note: Prefix a command with 'mpv' to make it run as an input command.</string>
+          <string>Hint: Prefix a command with 'mpv' to make it run as an input command.</string>
          </property>
          <property name="wordWrap">
           <bool>true</bool>
