@@ -28,25 +28,26 @@
 /* QPushButton */
 
 QPushButton {
-    background: #008098;
-	color: whitesmoke;
-	border: 1px solid black;
+	background: #454A4D;
+	border: 1px solid #454A4D;
+	border-bottom: 1px solid black;
 	border-radius: 2px;
-	padding: 4px 6px;
-    min-width: 76px;
+	color: whitesmoke;
+	min-width: 76px;
 	min-height: 17px;
+	padding: 4px 6px;
 }
 QPushButton:focus {
 	border: 1px solid whitesmoke;
 	outline: none;
 }
 QPushButton:pressed {
-    background: #005A6A;
+	background: #2E3133;
 }
 QPushButton:disabled {
 	background: black;
-	border: 1px solid #4C4C4C;
-    color: #B8B8B8;
+	border: 1px solid #454A4D;
+	color: #B8B8B8;
 }
 
 /* QScrollBar */
