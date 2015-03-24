@@ -37,7 +37,7 @@ QPushButton {
 	padding: 4px 6px;
 }
 QPushButton:focus {
-	border: 1px solid whitesmoke;
+	border: 1px solid #008098;
 	outline: none;
 }
 QPushButton:pressed {
