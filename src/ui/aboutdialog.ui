@@ -96,7 +96,7 @@ QScrollBar::left-arrow:horizontal, QScrollBar::right-arrow:horizontal {
     <widget class="QTabWidget" name="tabWidget">
      <property name="styleSheet">
       <string notr="true">QTabWidget::pane { /* The tab widget frame */
-    border-top: 1px solid #454A4D;
+	border-top: 1px solid #454A4D;
 	padding: 5px 0px;
 }
 
@@ -105,16 +105,18 @@ QTabWidget::tab-bar { alignment: center; }
 /* Style the tab using the tab sub-control. Note that
     it reads QTabBar _not_ QTabWidget */
 QTabBar::tab {
-    border-style: none;
-    min-width: 100px;
-    padding-bottom: 5px;
+	border-style: none;
+	padding-bottom: 5px;
+	min-width: 100px;
 }
 QTabBar::tab:selected {
-    border-bottom: 1px solid #008098;
+	border-bottom: 1px solid #008098;
+	font-weight: bold;
 }
 QTabBar::tab:!selected {
 	color: #B8B8B8;
-    margin-bottom: 1px;
+	font-weight: normal;
+	margin-bottom: 1px;
 }</string>
      </property>
      <property name="currentIndex">
