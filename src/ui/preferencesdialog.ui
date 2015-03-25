@@ -70,16 +70,18 @@ QGroupBox::indicator:checked {
 /* QComboBox */
 
 QComboBox {
-	background: #008098;
+	background: #454A4D;
 	border: 1px solid black;
 	border-radius: 2px;
 	padding: 2px;
 }
 QComboBox:focus {
-	border: 1px solid whitesmoke;
+	border: 1px solid #008098;
 }
 QComboBox::drop-down {
-    border: none;
+	background: #008098;
+	border-top-right-radius: 2px;
+	border-bottom-right-radius: 2px;
 }
 QComboBox::down-arrow {
 	image: url(:/img/down-arrow.svg);
