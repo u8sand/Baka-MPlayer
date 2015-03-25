@@ -20,11 +20,6 @@
 	color: whitesmoke;
 }
 
-#plainTextEdit {
-	border-top: 1px solid #008098;
-	border-bottom: 1px solid #008098;
-}
-
 /* QPushButton */
 
 QPushButton {
@@ -53,38 +48,42 @@ QPushButton:disabled {
 /* QScrollBar */
 
 QScrollBar:vertical {
-	margin-left: 1px;
-	border: none;
-	width: 5px;
+	padding-left: 1px;
+	width: 6px;
 }
 QScrollBar::handle:vertical {
-	background: #5A5A5A;
+	background: #008098;
 	border-radius: 2px;
 	min-height: 10px;
 }
 QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
 	border: none;
 }
-QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical,
-QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical  {
+	background: #5A5A5A;
+	margin: 0 2px;
+}
+QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
 	background: transparent;
 }
 
 QScrollBar:horizontal {
-	margin-bottom: 1px;
-	border: none;
-	height: 5px;
+	padding-top: 1px;
+	height: 6px;
 }
 QScrollBar::handle:horizontal {
-	background: #5A5A5A;
+	background: #008098;
 	border-radius: 2px;
 	min-width: 10px;
 }
 QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {
 	border: none;
 }
-QScrollBar::left-arrow:horizontal, QScrollBar::right-arrow:horizontal,
 QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
+	background: #5A5A5A;
+	margin: 2px 0;
+}
+QScrollBar::left-arrow:horizontal, QScrollBar::right-arrow:horizontal {
 	background: transparent;
 }</string>
   </property>
