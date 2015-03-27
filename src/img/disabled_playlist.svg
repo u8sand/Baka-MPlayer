@@ -5,7 +5,7 @@
 	 id="Layer_1" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"
 	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="20px" height="20px"
 	 viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
-<path fill="#808080" d="M10,0C4.477,0,0,4.477,0,10s4.477,10,10,10s10-4.477,10-10S15.523,0,10,0z M10,1.763
+<path fill="#353535" d="M10,0C4.477,0,0,4.477,0,10s4.477,10,10,10s10-4.477,10-10S15.523,0,10,0z M10,1.763
 	c4.549,0,8.237,3.687,8.237,8.237S14.549,18.237,10,18.237S1.763,14.549,1.763,10S5.451,1.763,10,1.763z"/>
 <polygon points="14.357,7.545 15.817,7.545 15.817,5.938 4.183,5.938 4.183,6.972 4.183,7.545 "/>
 <polygon points="4.183,9.084 4.183,10.231 4.183,10.804 13.571,10.804 13.571,10.231 13.571,9.084 "/>

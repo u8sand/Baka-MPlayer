@@ -5,5 +5,9 @@
 	 id="Layer_1" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"
 	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="39px"
 	 viewBox="0 0 30 39" enable-background="new 0 0 30 39" xml:space="preserve">
-<path fill="#808080" d="M30,19.5l-15,9.75L0,39V19.5V0l15,9.75L30,19.5z"/>
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="15" y1="-6.739356e-010" x2="15" y2="39">
+	<stop  offset="0" style="stop-color:#D1D1D1"/>
+	<stop  offset="1" style="stop-color:#B7B7B7"/>
+</linearGradient>
+<path fill="url(#SVGID_1_)" d="M30,19.5l-15,9.75L0,39V19.5V0l15,9.75L30,19.5z"/>
 </svg>

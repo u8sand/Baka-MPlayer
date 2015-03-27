@@ -5,7 +5,11 @@
 	 id="Layer_1" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"
 	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28.888px" height="20px"
 	 viewBox="0 0 28.888 20" enable-background="new 0 0 28.888 20" xml:space="preserve">
-<path fill="#808080" d="M28.888,20v-9.993V0.001l-8.66,5.003V0.001l-8.66,5.003L5.829,8.318V1.245
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="14.444" y1="-5.929905e-010" x2="14.444" y2="20">
+	<stop  offset="0" style="stop-color:#D1D1D1"/>
+	<stop  offset="1" style="stop-color:#B7B7B7"/>
+</linearGradient>
+<path fill="url(#SVGID_1_)" d="M28.888,20v-9.993V0.001l-8.66,5.003V0.001l-8.66,5.003L5.829,8.318V1.245
 	C5.829,0.556,5.274,0,4.584,0H1.245C0.556,0,0,0.555,0,1.245v17.511C0,19.444,0.555,20,1.245,20h3.339
 	c0.689,0,1.245-0.555,1.245-1.245v-7.06l5.739,3.301L20.228,20v-5.003L28.888,20z"/>
 </svg>

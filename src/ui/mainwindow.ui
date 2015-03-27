@@ -80,8 +80,8 @@ QSplitter::handle,
 
 #inputLineEdit {
 	font: 12px &quot;Courier New&quot;,monospace;
-	padding: 2px;
 	border-top: 1px solid #353535;
+	padding: 2px;
 }
 #inputLineEdit:focus {
 	border-color: #008098;
@@ -94,9 +94,9 @@ QSplitter::handle,
 }
 
 #searchBox {
-	font-size: 12px;
-	background: #222222;
+	background: #353535;
 	border: 1px solid #353535;
+	font-size: 12px;
 	padding: 2px;
 }
 #searchBox:focus {
@@ -119,9 +119,9 @@ QListView {
 	outline: none;
 }
 QListView::item {
-	padding: 2px 0px;
-	background: #141414;
 	alternate-background-color: #1A1A1A;
+	background: #141414;
+	padding: 2px 0px;
 }
 QListView::item:alternate {
     background: #1A1A1A;
@@ -157,8 +157,8 @@ QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
 }
 
 QScrollBar:horizontal {
-	padding-top: 1px;
 	height: 6px;
+	padding-top: 1px;
 }
 QScrollBar::handle:horizontal {
 	background: #008098;
@@ -872,7 +872,7 @@ QSlider::sub-page:horizontal {
 }
 QSlider::handle:horizontal {
 	background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-					stop: 0 silver, stop: 1 darkgray);
+					stop: 0 #D1D1D1, stop: 1 #B7B7B7);
 	border: 2px solid #1A1A1A;
 	border-radius: 7px;
 	margin: -7px 0;
@@ -984,7 +984,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>622</width>
-     <height>23</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">

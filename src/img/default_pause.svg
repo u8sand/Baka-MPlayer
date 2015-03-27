@@ -5,8 +5,16 @@
 	 id="Layer_1" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"
 	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="27.74px" height="39px"
 	 viewBox="0 0 27.74 39" enable-background="new 0 0 27.74 39" xml:space="preserve">
-<path fill="#808080" d="M10.638,33.783c0,2.882-2.382,5.217-5.319,5.217l0,0C2.382,39,0,36.664,0,33.783V5.217
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="5.319" y1="0" x2="5.319" y2="39">
+	<stop  offset="0" style="stop-color:#D1D1D1"/>
+	<stop  offset="1" style="stop-color:#B7B7B7"/>
+</linearGradient>
+<path fill="url(#SVGID_1_)" d="M10.638,33.783c0,2.882-2.382,5.217-5.319,5.217l0,0C2.382,39,0,36.664,0,33.783V5.217
 	C0,2.335,2.382,0,5.319,0l0,0c2.937,0,5.319,2.336,5.319,5.217V33.783z"/>
-<path fill="#808080" d="M27.74,33.783c0,2.882-2.382,5.217-5.319,5.217l0,0c-2.937,0-5.319-2.336-5.319-5.217V5.217
+<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="22.421" y1="0" x2="22.421" y2="39">
+	<stop  offset="0" style="stop-color:#D1D1D1"/>
+	<stop  offset="1" style="stop-color:#B7B7B7"/>
+</linearGradient>
+<path fill="url(#SVGID_2_)" d="M27.74,33.783c0,2.882-2.382,5.217-5.319,5.217l0,0c-2.937,0-5.319-2.336-5.319-5.217V5.217
 	C17.101,2.335,19.482,0,22.421,0l0,0c2.937,0,5.319,2.336,5.319,5.217V33.783z"/>
 </svg>

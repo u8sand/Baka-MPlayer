@@ -5,6 +5,10 @@
 	 id="Layer_1" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"
 	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="19px" height="19px"
 	 viewBox="0 0 19 19" enable-background="new 0 0 19 19" xml:space="preserve">
-<path fill="#808080" d="M9.5,0C4.253,0,0,4.253,0,9.5S4.253,19,9.5,19S19,14.747,19,9.5S14.747,0,9.5,0z"/>
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="9.5" y1="0" x2="9.5" y2="19">
+	<stop  offset="0" style="stop-color:#D1D1D1"/>
+	<stop  offset="1" style="stop-color:#B7B7B7"/>
+</linearGradient>
+<path fill="url(#SVGID_1_)" d="M9.5,0C4.253,0,0,4.253,0,9.5S4.253,19,9.5,19S19,14.747,19,9.5S14.747,0,9.5,0z"/>
 <polygon points="9.5,12.369 5.089,12.369 7.295,8.55 9.5,4.731 11.705,8.55 13.911,12.369 "/>
 </svg>
