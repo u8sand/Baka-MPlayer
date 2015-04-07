@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="fr_FR">
+<TS version="2.1" language="fr">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -15,58 +15,13 @@
         <source>Baka MPlayer 0.0.0</source>
         <translation>Baka MPlayer 0.0.0</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2015 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; est un lecteur multimédia multiplateforme libre et open source basé sur &lt;b&gt;libmpv&lt;/b&gt;. Son design simple reflète l&apos;idée d&apos;un environnement épuré et agréable pour regarder des séries TV.&lt;br&gt;&lt;br&gt;Copyright © 2015 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Credits</source>
         <translation>Remerciements</translation>
-    </message>
-    <message>
-        <source>mpv - video player based on MPlayer/mplayer2
-GPLv2 &lt;mpv.io&gt;
-
-Noto Sans -  font family with many supported characters
-Apache License, version 2.0 &lt;Google&gt;
-
-Retro Cassette image
-&lt;Lukas Troup&gt;
-
-Download icon
-CC BY 3.0 &lt;Sasha Mescheryakov&gt;
-
-Translations
-- Chinese &lt;amazingfate, Antares95&gt;
-- Croatian &lt;gogo&gt;
-- Dutch &lt;robin007bond&gt;
-- Italian &lt;Aloysius&gt;
-- Korean &lt;godly-devotion&gt;
-- Portuguese &lt;u8sand&gt;
-- Russian &lt;suhr&gt;
-- Spanish &lt;Alfredo Ramos&gt;</source>
-        <translation>mpv - lecteur vidéo basé sur MPlayer/mplayer2
-GPLv2 &lt;mpv.io&gt;
-
-Noto Sans - famille de fontes supportant de nombreux caractères
-Apache License, version 2.0 &lt;Google&gt;
-
-Image Retro Cassette 
-&lt;Lukas Troup&gt;
-
-Icone Download
-CC BY 3.0 &lt;Sasha Mescheryakov&gt;
-
-Traductions
-- Chinese &lt;amazingfate, Antares95&gt;
-- Croatian &lt;gogo&gt;
-- Dutch &lt;robin007bond&gt;
-- Italian &lt;Aloysius&gt;
-- Korean &lt;godly-devotion&gt;
-- Portuguese &lt;u8sand&gt;
-- Russian &lt;suhr&gt;
-- Spanish &lt;Alfredo Ramos&gt;
-- French &lt;Chapouvalpin&gt;</translation>
     </message>
     <message>
         <source>License</source>
@@ -94,6 +49,52 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <source>&amp;CLOSE</source>
         <translation>&amp;FERMER</translation>
+    </message>
+    <message>
+        <source>mpv - video player based on MPlayer/mplayer2
+GPLv2 &lt;mpv.io&gt;
+
+Noto Sans -  font family with many supported characters
+Apache License, version 2.0 &lt;Google&gt;
+
+Retro Cassette image
+&lt;Lukas Troup&gt;
+
+Download icon
+CC BY 3.0 &lt;Sasha Mescheryakov&gt;
+
+Translations
+- Chinese &lt;amazingfate, Antares95&gt;
+- Croatian &lt;gogo&gt;
+- Dutch &lt;robin007bond&gt;
+- French &lt;chapouvalpin&gt;
+- Italian &lt;Aloysius&gt;
+- Korean &lt;godly-devotion&gt;
+- Portuguese &lt;u8sand&gt;
+- Russian &lt;suhr&gt;
+- Spanish &lt;Alfredo Ramos&gt;</source>
+        <translation>mpv - lecteur vidéo basé sur MPlayer/mplayer2
+GPLv2 &lt;mpv.io&gt;
+
+Noto Sans - famille de fontes supportant de nombreux caractères
+Apache License, version 2.0 &lt;Google&gt;
+
+Image Retro Cassette 
+&lt;Lukas Troup&gt;
+
+Icone Download
+CC BY 3.0 &lt;Sasha Mescheryakov&gt;
+
+Traductions
+- Chinese &lt;amazingfate, Antares95&gt;
+- Croatian &lt;gogo&gt;
+- Dutch &lt;robin007bond&gt;
+- Italian &lt;Aloysius&gt;
+- Korean &lt;godly-devotion&gt;
+- Portuguese &lt;u8sand&gt;
+- Russian &lt;suhr&gt;
+- Spanish &lt;Alfredo Ramos&gt;
+- French &lt;Chapouvalpin&gt;</translation>
     </message>
 </context>
 <context>
@@ -556,7 +557,7 @@ Certaines fonctionnalités peuvent ne plus fonctionner et les changements de par
     <name>JumpDialog</name>
     <message>
         <source>Dialog</source>
-        <translation></translation>
+        <translation>Sauter au temps</translation>
     </message>
     <message>
         <source> hr</source>
@@ -665,7 +666,7 @@ Certaines fonctionnalités peuvent ne plus fonctionner et les changements de par
     </message>
     <message>
         <source>Click to play a file by index</source>
-        <translation>Cliquer pour lire les fichier par indice</translation>
+        <translation>Cliquer pour lire les fichiers par indice</translation>
     </message>
     <message>
         <source>File 0 of 0</source>
@@ -685,7 +686,7 @@ Certaines fonctionnalités peuvent ne plus fonctionner et les changements de par
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Left Click to Open File&lt;br&gt;Mouse Wheel Click to Jump&lt;br&gt;Right Click to Open URL&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Clic gauche pour ouvrir un fichier&lt;br&gt;Molette de la souris pour passer rapidement&lt;br&gt;Clic droit pour ouvrir une URL&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Clic gauche pour ouvrir un fichier&lt;br&gt;Clic milieu pour sauter dans le temps&lt;br&gt;Clic droit pour ouvrir une URL&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>0:00:00</source>
@@ -745,7 +746,7 @@ Certaines fonctionnalités peuvent ne plus fonctionner et les changements de par
     </message>
     <message>
         <source>Audio &amp;Tracks</source>
-        <translation>&amp;Pistes audio</translation>
+        <translation>Pistes audi&amp;o</translation>
     </message>
     <message>
         <source>S&amp;peed</source>
@@ -781,7 +782,7 @@ Certaines fonctionnalités peuvent ne plus fonctionner et les changements de par
     </message>
     <message>
         <source>Open Path from &amp;Clipboard</source>
-        <translation>Ouvrir un chemin depuis le &amp;presse-papiers</translation>
+        <translation>Ouvrir un &amp;chemin depuis le presse-papiers</translation>
     </message>
     <message>
         <source>Show in &amp;Folder</source>
@@ -825,11 +826,11 @@ Certaines fonctionnalités peuvent ne plus fonctionner et les changements de par
     </message>
     <message>
         <source>Sh&amp;uffle</source>
-        <translation>Lecture &amp;aléatoire</translation>
+        <translation>Lecture aléa&amp;toire</translation>
     </message>
     <message>
         <source>Stop after &amp;Current</source>
-        <translation>&amp;Arrêter après lecture actuelle</translation>
+        <translation>Arrêter après lecture act&amp;uelle</translation>
     </message>
     <message>
         <source>&amp;Next Chapter</source>
@@ -961,7 +962,7 @@ Certaines fonctionnalités peuvent ne plus fonctionner et les changements de par
     </message>
     <message>
         <source>With &amp;Subtitles...</source>
-        <translation>Avec les &amp;sous-titres...</translation>
+        <translation>&amp;Avec les sous-titres...</translation>
     </message>
     <message>
         <source>&amp;Without Subtitles...</source>
@@ -1014,7 +1015,7 @@ Certaines fonctionnalités peuvent ne plus fonctionner et les changements de par
     <message>
         <source>Enter the file number you want to play:
 Note: Value must be from %0 - %1</source>
-        <translation>Entrer le numéro de fichier que vous voulez lire :
+        <translation>Entrer le numéro du fichier que vous voulez lire :
 Information : la valeur doit être comprise entre %0 et %1</translation>
     </message>
     <message>
@@ -1054,23 +1055,23 @@ Information : la valeur doit être comprise entre %0 et %1</translation>
     <name>MpvHandler</name>
     <message>
         <source>File name</source>
-        <translation>Nom de fichier</translation>
+        <translation>Nom de fichier </translation>
     </message>
     <message>
         <source>Media Title</source>
-        <translation>Titre du média</translation>
+        <translation>Titre du média </translation>
     </message>
     <message>
         <source>File size</source>
-        <translation>Taille du fichier</translation>
+        <translation>Taille du fichier </translation>
     </message>
     <message>
         <source>Date created</source>
-        <translation>Date de création</translation>
+        <translation>Date de création </translation>
     </message>
     <message>
         <source>Media length</source>
-        <translation>Taille du média</translation>
+        <translation>Taille du média </translation>
     </message>
     <message>
         <source>[Video]</source>
@@ -1078,15 +1079,15 @@ Information : la valeur doit être comprise entre %0 et %1</translation>
     </message>
     <message>
         <source>Codec</source>
-        <translation>Codec</translation>
+        <translation>Codec </translation>
     </message>
     <message>
         <source>Bitrate</source>
-        <translation>Débit</translation>
+        <translation>Débit </translation>
     </message>
     <message>
         <source>Dimensions</source>
-        <translation>Dimensions</translation>
+        <translation>Dimensions </translation>
     </message>
     <message>
         <source>[Audio]</source>
@@ -1094,11 +1095,11 @@ Information : la valeur doit être comprise entre %0 et %1</translation>
     </message>
     <message>
         <source>Samplerate</source>
-        <translation>Fréquence d&apos;échantillonnage</translation>
+        <translation>Fréquence d&apos;échantillonnage </translation>
     </message>
     <message>
         <source>Channels</source>
-        <translation>Canaux</translation>
+        <translation>Canaux </translation>
     </message>
     <message>
         <source>[Track List]</source>
@@ -1196,7 +1197,7 @@ Information : la valeur doit être comprise entre %0 et %1</translation>
     </message>
     <message>
         <source>Hint: Prefix a command with &apos;mpv&apos; to make it run as an input command.</source>
-        <translation>Astuce : faites précéder une commande avec &apos;mpv&apos; pour la lancer en tant que commande d&apos;entrée.</translation>
+        <translation>Astuce : faites précéder la commande par &apos;mpv&apos; pour la lancer en tant que commande d&apos;entrée.</translation>
     </message>
     <message>
         <source>Key</source>
@@ -1272,7 +1273,7 @@ Information : la valeur doit être comprise entre %0 et %1</translation>
     </message>
     <message>
         <source>File Name Template:</source>
-        <translation>Motif de nom de fichier :</translation>
+        <translation>Motif du nom des fichiers :</translation>
     </message>
     <message>
         <source>File Format:</source>
