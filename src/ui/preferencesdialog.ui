@@ -151,14 +151,17 @@ QScrollBar::handle:vertical {
 	border-radius: 2px;
 	min-height: 10px;
 }
-QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
 	border: none;
 }
-QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical  {
+QScrollBar::add-page:vertical,
+QScrollBar::sub-page:vertical  {
 	background: #5A5A5A;
 	margin: 0 2px;
 }
-QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
+QScrollBar::up-arrow:vertical,
+QScrollBar::down-arrow:vertical {
 	background: transparent;
 }
 
@@ -171,14 +174,17 @@ QScrollBar::handle:horizontal {
 	border-radius: 2px;
 	min-width: 10px;
 }
-QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {
+QScrollBar::add-line:horizontal,
+QScrollBar::sub-line:horizontal {
 	border: none;
 }
-QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
+QScrollBar::add-page:horizontal,
+QScrollBar::sub-page:horizontal {
 	background: #5A5A5A;
 	margin: 2px 0;
 }
-QScrollBar::left-arrow:horizontal, QScrollBar::right-arrow:horizontal {
+QScrollBar::left-arrow:horizontal,
+QScrollBar::right-arrow:horizontal {
 	background: transparent;
 }</string>
   </property>
