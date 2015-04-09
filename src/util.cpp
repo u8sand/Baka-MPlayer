@@ -89,15 +89,38 @@ QString HumanSize(qint64 size)
 
 QString ShortenPathToParent(const QString &path)
 {
-    if(Util::IsValidLocation(path))
+    const int long_name = 20;
+    if(!Util::IsValidLocation(path))
         return path;
     QString p = QDir::fromNativeSeparators(path);
-    int pos = p.lastIndexOf('/');
-    if(pos != -1)
+    int i = p.lastIndexOf('/');
+    if(i != -1)
     {
-        pos = p.lastIndexOf('/', pos-1);
-        if(pos != -1)
-            return QDir::toNativeSeparators(p.mid(pos+1));
+        int j = p.lastIndexOf('/', i-1);
+        if(j != -1)
+        {
+            QString parent = p.mid(j+1, i-j-1),
+                    file = p.mid(i+1);
+            // todo: smarter trimming
+            if(parent.length() > long_name)
+            {
+                parent.truncate(long_name);
+                parent += "..";
+            }
+            if(file.length() > long_name)
+            {
+                file.truncate(long_name);
+                i = p.lastIndexOf('.');
+                file += "..";
+                if(i != -1)
+                {
+                    QString ext = p.mid(i);
+                    file.truncate(file.length()-ext.length());
+                    file += ext; // add the extension back
+                }
+            }
+            return QDir::toNativeSeparators(parent+"/"+file);
+        }
     }
     return QDir::toNativeSeparators(path);
 }
