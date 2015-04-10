@@ -73,7 +73,7 @@ PreferencesDialog::PreferencesDialog(BakaEngine *baka, QWidget *parent) :
     connect(ui->resetKeyButton, &QPushButton::clicked,
             [=]
             {
-                if(QMessageBox::question(this, tr("Reset Keybinding"), tr("Are you sure you want to reset the shortcut keys to original bindings?")) == QMessageBox::Yes)
+                if(QMessageBox::question(this, tr("Reset All Key Bindings?"), tr("Are you sure you want to reset all shortcut keys to it's original bindings?")) == QMessageBox::Yes)
                 {
                     baka->input = baka->default_input;
                     ui->infoWidget->clearContents();

@@ -541,7 +541,7 @@ QPushButton:pressed {
 }</string>
            </property>
            <property name="text">
-            <string>RESE&amp;T</string>
+            <string>RESE&amp;T ALL</string>
            </property>
           </widget>
          </item>
