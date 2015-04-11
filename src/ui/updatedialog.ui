@@ -40,7 +40,7 @@ QPushButton:pressed {
 	background: #2E3133;
 }
 QPushButton:disabled {
-	background: black;
+	background: transparent;
 	border: 1px solid #454A4D;
 	color: #B8B8B8;
 }
