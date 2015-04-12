@@ -58,6 +58,9 @@ GPLv2 &lt;mpv.io&gt;
 Noto Sans -  font family with many supported characters
 Apache License, version 2.0 &lt;Google&gt;
 
+Retro Cassette image
+&lt;Lukas Troup&gt;
+
 Download icon
 CC BY 3.0 &lt;Sasha Mescheryakov&gt;
 
@@ -65,6 +68,8 @@ Translations
 - Chinese &lt;amazingfate, Antares95&gt;
 - Croatian &lt;gogo&gt;
 - Dutch &lt;robin007bond&gt;
+- French &lt;chapouvalpin&gt;
+- German: &lt;yiip87&gt;
 - Italian &lt;Aloysius&gt;
 - Korean &lt;godly-devotion&gt;
 - Portuguese &lt;u8sand&gt;
@@ -75,6 +80,9 @@ GPLv2 &lt;mpv.io&gt;
  
 Noto Sans - Tipografía con soporte unicode
 Apache License, version 2.0 &lt;Google&gt;
+
+Imagen Cassette retro
+&lt;Lukas Troup&gt;
  
 Icono de descarga
 CC BY 3.0 &lt;Sasha Mescheryakov&gt;
@@ -83,6 +91,8 @@ Traducciones
 - Chino &lt;amazingfate, Antares95&gt;
 - Croata &lt;gogo&gt;
 - Holandés &lt;robin007bond&gt;
+- Francés &lt;chapouvalpin&gt;
+- Alemán: &lt;yiip87&gt;
 - Italiano &lt;Aloysius&gt;
 - Coreano &lt;godly-devotion&gt;
 - Portugués &lt;u8sand&gt;
@@ -252,14 +262,6 @@ Some features may not work and changed settings will not be saved.</source>
     <message>
         <source>Increase volume</source>
         <translation>Aumentar volúmen</translation>
-    </message>
-    <message>
-        <source>Increase playback speed by 25%</source>
-        <translation>Aumentar velocidad de reproducción un 25%</translation>
-    </message>
-    <message>
-        <source>Decrease playback speed by 25%</source>
-        <translation>Disminuir velocidad de reproducción un 25%</translation>
     </message>
     <message>
         <source>Reset speed</source>
@@ -525,6 +527,14 @@ Some features may not work and changed settings will not be saved.</source>
         <source>quit baka-mplayer</source>
         <translation>salir de baka-mplayer</translation>
     </message>
+    <message>
+        <source>Increase playback speed by 10%</source>
+        <translation>Aumentar velocidad de reproducción 10%</translation>
+    </message>
+    <message>
+        <source>Decrease playback speed by 10%</source>
+        <translation>Disminuir velocidad de reproducción 10%</translation>
+    </message>
 </context>
 <context>
     <name>InputDialog</name>
@@ -576,19 +586,11 @@ Some features may not work and changed settings will not be saved.</source>
     <name>KeyDialog</name>
     <message>
         <source>Modify Shortcut Key</source>
-        <translation>Modificar combinación de teclas</translation>
-    </message>
-    <message>
-        <source>Command</source>
-        <translation>Comando</translation>
-    </message>
-    <message>
-        <source>Label (optional)</source>
-        <translation>Etiqueta (opcional)</translation>
+        <translation>Modificar atajo de teclado</translation>
     </message>
     <message>
         <source>C&amp;LEAR SHORTCUT</source>
-        <translation>&amp;Limpiar combinación</translation>
+        <translation>&amp;Limpiar atajo</translation>
     </message>
     <message>
         <source>CHANG&amp;E</source>
@@ -601,6 +603,22 @@ Some features may not work and changed settings will not be saved.</source>
     <message>
         <source>&amp;CANCEL</source>
         <translation>Ca&amp;ncelar</translation>
+    </message>
+    <message>
+        <source>(optional)</source>
+        <translation>(opcional)</translation>
+    </message>
+    <message>
+        <source>Shortcut:</source>
+        <translation>Atajo:</translation>
+    </message>
+    <message>
+        <source>Command:</source>
+        <translation>Comando:</translation>
+    </message>
+    <message>
+        <source>Label:</source>
+        <translation>Etiqueta:</translation>
     </message>
 </context>
 <context>
@@ -1105,6 +1123,10 @@ Nota: El valor debe estar en el rango %0 - %1</translation>
         <source>File no longer exists</source>
         <translation>El fichero ya no existe</translation>
     </message>
+    <message>
+        <source>Volume: %0%</source>
+        <translation>Volúmen: %0%</translation>
+    </message>
 </context>
 <context>
     <name>PlaylistWidget</name>
@@ -1172,14 +1194,6 @@ Nota: El valor debe estar en el rango %0 - %1</translation>
         <translation>Idioma:</translation>
     </message>
     <message>
-        <source>Keys</source>
-        <translation>Teclas</translation>
-    </message>
-    <message>
-        <source>Note: Prefix a command with &apos;mpv&apos; to make it run as an input command.</source>
-        <translation>Nota: Prefije un comando con &apos;mpv&apos; para que funcione como comando de entrada.</translation>
-    </message>
-    <message>
         <source>Key</source>
         <translation>Tecla</translation>
     </message>
@@ -1202,10 +1216,6 @@ Nota: El valor debe estar en el rango %0 - %1</translation>
     <message>
         <source>&amp;REMOVE</source>
         <translation>&amp;Eliminar</translation>
-    </message>
-    <message>
-        <source>RESE&amp;T</source>
-        <translation>&amp;Reiniciar</translation>
     </message>
     <message>
         <source>Video</source>
@@ -1280,20 +1290,32 @@ Nota: El valor debe estar en el rango %0 - %1</translation>
         <translation>Elige un directorio para las capturas</translation>
     </message>
     <message>
-        <source>Reset Keybinding</source>
-        <translation>Restablecer combinación de teclas</translation>
-    </message>
-    <message>
-        <source>Are you sure you want to reset the shortcut keys to original bindings?</source>
-        <translation>¿Seguro que deseas remplazar las combinaciones de teclas con las originales?</translation>
-    </message>
-    <message>
         <source>Existing keybinding</source>
         <translation>Combinaciones de teclas existentes</translation>
     </message>
     <message>
         <source>%0 is already being used. Would you like to change its function?</source>
         <translation>%0 está en uso actualmente. ¿Deseas cambiar su función?</translation>
+    </message>
+    <message>
+        <source>Key Bindings</source>
+        <translation>Combinación de teclas</translation>
+    </message>
+    <message>
+        <source>Hint: Prefix a command with &apos;mpv&apos; to make it run as an input command.</source>
+        <translation>Consejo: Prefija un comando con &apos;mpv&apos; para ejecutarlo como entrada de comando.</translation>
+    </message>
+    <message>
+        <source>RESE&amp;T ALL</source>
+        <translation>Restablecer &amp;Todo</translation>
+    </message>
+    <message>
+        <source>Reset All Key Bindings?</source>
+        <translation>¿Reiniciar todas las combinaciones de teclado?</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to reset all shortcut keys to its original bindings?</source>
+        <translation>¿Seguro deseas reiniciar todos los atajos de teclado a su estado original?</translation>
     </message>
 </context>
 <context>
