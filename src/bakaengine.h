@@ -45,8 +45,8 @@ public:
     // they are loaded into the input before parsing the settings file
     // when saving the settings file we don't save things that appear here
     const QHash<QString, QPair<QString, QString>> default_input = {
-        {"Ctrl++",          {"mpv add sub-scale +0.02",             tr("Increase sub size")}},
-        {"Ctrl+-",          {"mpv add sub-scale -0.02",             tr("Decrease sub size")}},
+        {"Ctrl++",          {"mpv add sub-scale +0.1",              tr("Increase sub size")}},
+        {"Ctrl+-",          {"mpv add sub-scale -0.1",              tr("Decrease sub size")}},
         {"Ctrl+W",          {"mpv osd-msg cycle sub-visibility",    tr("Toggle subtitle visibility")}},
         {"Ctrl+R",          {"mpv set time-pos 0",                  tr("Restart playback")}},
         {"PgDown",          {"mpv add chapter +1",                  tr("Go to next chapter")}},
