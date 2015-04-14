@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="fr">
+<TS version="2.0" language="fr">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -15,13 +15,61 @@
         <source>Baka MPlayer 0.0.0</source>
         <translation>Baka MPlayer 0.0.0</translation>
     </message>
-    <message>
+    <message utf8="true">
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2015 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; est un lecteur multimédia multiplateforme libre et open source basé sur &lt;b&gt;libmpv&lt;/b&gt;. Son design simple reflète l&apos;idée d&apos;un environnement épuré et agréable pour regarder des séries TV.&lt;br&gt;&lt;br&gt;Copyright © 2015 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Credits</source>
         <translation>Remerciements</translation>
+    </message>
+    <message>
+        <source>mpv - video player based on MPlayer/mplayer2
+GPLv2 &lt;mpv.io&gt;
+
+Noto Sans -  font family with many supported characters
+Apache License, version 2.0 &lt;Google&gt;
+
+Retro Cassette image
+&lt;Lukas Troup&gt;
+
+Download icon
+CC BY 3.0 &lt;Sasha Mescheryakov&gt;
+
+Translations
+- Chinese &lt;amazingfate, Antares95&gt;
+- Croatian &lt;gogo&gt;
+- Dutch &lt;robin007bond&gt;
+- French &lt;chapouvalpin&gt;
+- German: &lt;yiip87&gt;
+- Italian &lt;Aloysius&gt;
+- Korean &lt;godly-devotion&gt;
+- Portuguese &lt;u8sand&gt;
+- Russian &lt;suhr&gt;
+- Spanish &lt;Alfredo Ramos&gt;</source>
+        <translation>mpv - lecteur vidéo basé sur MPlayer/mplayer2
+GPLv2 &lt;mpv.io&gt;
+
+Noto Sans - famille de fontes supportant de nombreux caractères
+Apache License, version 2.0 &lt;Google&gt;
+
+Image Retro Cassette 
+&lt;Lukas Troup&gt;
+
+Icone Download
+CC BY 3.0 &lt;Sasha Mescheryakov&gt;
+
+Traductions
+- Chinois &lt;amazingfate, Antares95&gt;
+- Croate &lt;gogo&gt;
+- Néerlandais &lt;robin007bond&gt;
+- Français &lt;chapouvalpin&gt;
+- Allemand &lt;yiip87&gt;
+- Italien &lt;Aloysius&gt;
+- Coréen &lt;godly-devotion&gt;
+- Portugais &lt;u8sand&gt;
+- Russe &lt;suhr&gt;
+- Espagnol &lt;Alfredo Ramos&gt;</translation>
     </message>
     <message>
         <source>License</source>
@@ -49,52 +97,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <source>&amp;CLOSE</source>
         <translation>&amp;FERMER</translation>
-    </message>
-    <message>
-        <source>mpv - video player based on MPlayer/mplayer2
-GPLv2 &lt;mpv.io&gt;
-
-Noto Sans -  font family with many supported characters
-Apache License, version 2.0 &lt;Google&gt;
-
-Retro Cassette image
-&lt;Lukas Troup&gt;
-
-Download icon
-CC BY 3.0 &lt;Sasha Mescheryakov&gt;
-
-Translations
-- Chinese &lt;amazingfate, Antares95&gt;
-- Croatian &lt;gogo&gt;
-- Dutch &lt;robin007bond&gt;
-- French &lt;chapouvalpin&gt;
-- Italian &lt;Aloysius&gt;
-- Korean &lt;godly-devotion&gt;
-- Portuguese &lt;u8sand&gt;
-- Russian &lt;suhr&gt;
-- Spanish &lt;Alfredo Ramos&gt;</source>
-        <translation>mpv - lecteur vidéo basé sur MPlayer/mplayer2
-GPLv2 &lt;mpv.io&gt;
-
-Noto Sans - famille de fontes supportant de nombreux caractères
-Apache License, version 2.0 &lt;Google&gt;
-
-Image Retro Cassette 
-&lt;Lukas Troup&gt;
-
-Icone Download
-CC BY 3.0 &lt;Sasha Mescheryakov&gt;
-
-Traductions
-- Chinese &lt;amazingfate, Antares95&gt;
-- Croatian &lt;gogo&gt;
-- Dutch &lt;robin007bond&gt;
-- Italian &lt;Aloysius&gt;
-- Korean &lt;godly-devotion&gt;
-- Portuguese &lt;u8sand&gt;
-- Russian &lt;suhr&gt;
-- Spanish &lt;Alfredo Ramos&gt;
-- French &lt;Chapouvalpin&gt;</translation>
     </message>
 </context>
 <context>
@@ -1224,7 +1226,7 @@ Information : la valeur doit être comprise entre %0 et %1</translation>
         <translation>RE&amp;TIRER</translation>
     </message>
     <message>
-        <source>RESE&amp;T</source>
+        <source>RESE&amp;T ALL</source>
         <translation>&amp;RÉINITIALISER</translation>
     </message>
     <message>
@@ -1300,12 +1302,12 @@ Information : la valeur doit être comprise entre %0 et %1</translation>
         <translation>Choisir le dossier de capture d&apos;écran</translation>
     </message>
     <message>
-        <source>Reset Keybinding</source>
-        <translation>Réinitialiser les raccourcis clavier</translation>
+        <source>Reset All Key Bindings?</source>
+        <translation>Réinitialiser tous les raccourcis clavier ?</translation>
     </message>
     <message>
-        <source>Are you sure you want to reset the shortcut keys to original bindings?</source>
-        <translation>Êtes-vous sûr de vouloir réinitialiser les raccourcis claviers ?</translation>
+        <source>Are you sure you want to reset all shortcut keys to its original bindings?</source>
+        <translation>Êtes-vous sûr de vouloir réinitialiser tous les raccourcis claviers ?</translation>
     </message>
     <message>
         <source>Existing keybinding</source>
