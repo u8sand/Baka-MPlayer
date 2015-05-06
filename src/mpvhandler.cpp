@@ -58,8 +58,8 @@ QString MpvHandler::getMediaInfo()
     QFileInfo fi(path+file);
 
     QList<QPair<QString, QString>> items = {
-        {tr("File name"), fi.fileName()},
         {tr("Media Title"), fileInfo.media_title},
+        {tr("File name"), fi.fileName()},
         {tr("File size"), Util::HumanSize(fi.size())},
         {tr("Date created"), fi.created().toString()},
         {tr("Media length"), Util::FormatTime(fileInfo.length, fileInfo.length)},
