@@ -43,7 +43,7 @@ MainWindow::MainWindow(QWidget *parent):
         {"mpv add sub-scale -0.1", ui->actionS_ize},
         {"mpv osd-msg set video-aspect -1", ui->action_Auto_Detect},
         {"mpv osd-msg set video-aspect 16:9", ui->actionForce_16_9},
-        {"mpv osd-msg set video-aspect 2_35:1", ui->actionForce_2_35_1},
+        {"mpv osd-msg set video-aspect 2.35:1", ui->actionForce_2_35_1},
         {"mpv osd-msg set video-aspect 4:3", ui->actionForce_4_3},
         {"mpv osd-msg cycle sub-visibility", ui->actionShow_Subtitles},
         {"mpv set time-pos 0", ui->action_Restart},
