@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 17.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1"
-	 id="Layer_1" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"
-	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28.889px" height="20px"
-	 viewBox="0 0 28.889 20" enable-background="new 0 0 28.889 20" xml:space="preserve">
-<path fill="#353535" d="M26.857,2.032v15.937h-1.765V11.67V8.148V2.032H26.857 M10.679,3.516l5.611,3.233l5.61,3.244l-5.609,3.244
-	l-5.612,3.242v-1.483v-3.523L7.63,13.237l-5.598,3.239V9.992V3.517l5.6,3.232l3.047,1.759V4.99V3.516 M27.644,0h-3.34
-	c-0.689,0-1.245,0.555-1.245,1.245v7.073l-5.752-3.327l-8.66-4.99v4.99L0,0.001v9.994V20l8.647-5.003V20l8.66-5.003l5.752-3.327
-	v7.086c0,0.689,0.555,1.245,1.245,1.245h3.34c0.689,0,1.245-0.555,1.245-1.245V1.245C28.889,0.556,28.333,0,27.644,0L27.644,0z"/>
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="25.33px" height="16px" viewBox="0 0 25.33 16" enable-background="new 0 0 25.33 16" xml:space="preserve">
+<path fill="#353535" d="M25.325,8l-11.33,8H0.005c1.47-2.31,2.32-5.06,2.32-8s-0.85-5.69-2.32-8h13.99L25.325,8z"/>
 </svg>
