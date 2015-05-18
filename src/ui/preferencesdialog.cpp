@@ -64,6 +64,9 @@ PreferencesDialog::PreferencesDialog(BakaEngine *baka, QWidget *parent) :
             [=]
             {
                 int i = ui->infoWidget->currentRow();
+                if(i == -1)
+                    return;
+
                 SelectKey(false,
                     {ui->infoWidget->item(i, 0)->text(),
                     {ui->infoWidget->item(i, 1)->text(),

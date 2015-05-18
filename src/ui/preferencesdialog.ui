@@ -505,6 +505,9 @@ QTableWidget::item:selected {
          </item>
          <item>
           <widget class="QPushButton" name="changeKeyButton">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="text">
             <string>CHANG&amp;E</string>
            </property>
@@ -519,6 +522,9 @@ QTableWidget::item:selected {
          </item>
          <item>
           <widget class="QPushButton" name="removeKeyButton">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="text">
             <string>&amp;REMOVE</string>
            </property>
