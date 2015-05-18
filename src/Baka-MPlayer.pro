@@ -57,6 +57,7 @@ win32 {
 # INSTROOT is the installation root directory, leave empty if not using a package management system
 isEmpty(BINDIR):BINDIR=/usr/bin
 isEmpty(MEDIADIR):MEDIADIR=/usr/share/pixmaps
+isEmpty(ICONDIR):ICONDIR=/usr/share/icons/hicolor/scalable/apps
 isEmpty(APPDIR):APPDIR=/usr/share/applications
 isEmpty(DOCDIR):DOCDIR=/usr/share/doc
 isEmpty(MANDIR):MANDIR=/usr/share/man
@@ -65,6 +66,7 @@ isEmpty(BAKADIR):BAKADIR=/usr/share/baka-mplayer
 
 target.path = $$INSTROOT$$BINDIR
 logo.path = $$INSTROOT$$MEDIADIR
+icon.path = $$INSTROOT$$ICONDIR
 desktop.path = $$INSTROOT$$APPDIR
 manual.path = $$INSTROOT$$DOCDIR/baka-mplayer
 man.path = $$INSTROOT$$MANDIR/man1
@@ -72,12 +74,13 @@ license.path = $$INSTROOT$$LICENSEDIR/baka-mplayer
 translations.path = $$INSTROOT$$BAKADIR/translations
 
 logo.files = ../etc/logo/baka-mplayer.svg
+icon.files = ../etc/logo/baka-mplayer.svg
 desktop.files = ../etc/baka-mplayer.desktop
 manual.files = ../etc/doc/baka-mplayer.md
 man.files = ../etc/doc/baka-mplayer.1.gz
 license.files = ../LICENSE
 
-INSTALLS += target logo desktop manual man license
+INSTALLS += target icon logo desktop manual man license
 
 RESOURCES += rsclist.qrc
 
