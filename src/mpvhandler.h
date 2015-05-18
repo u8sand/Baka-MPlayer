@@ -43,6 +43,7 @@ public:
     int getAid()                            { return aid; }
     int getSid()                            { return sid; }
     bool getSubtitleVisibility()            { return subtitleVisibility; }
+    bool getMute()                          { return mute; }
 
     int getOsdWidth()                       { return osdWidth; }
     int getOsdHeight()                      { return osdHeight; }
@@ -68,6 +69,7 @@ public slots:
     void PlayPause(QString fileIfStopped);
     void Restart();
     void Rewind();
+    void Mute(bool);
 
     void Seek(int pos, bool relative = false, bool osd = false);
     int Relative(int pos);
@@ -135,6 +137,7 @@ private slots:
     void setAid(int i)                      { emit aidChanged(aid = i); }
     void setSid(int i)                      { emit sidChanged(sid = i); }
     void setSubtitleVisibility(bool b)      { emit subtitleVisibilityChanged(subtitleVisibility = b); }
+    void setMute(bool b)                    { emit muteChanged(mute = b); }
 
 signals:
     void playlistChanged(const QStringList&);
@@ -157,6 +160,7 @@ signals:
     void sidChanged(int);
     void debugChanged(bool);
     void subtitleVisibilityChanged(bool);
+    void muteChanged(bool);
 
     void messageSignal(QString m);
 
@@ -182,8 +186,8 @@ private:
                 sid;
     bool        init = false,
                 playlistVisible = false,
-                subtitleVisibility = true;
-
+                subtitleVisibility = true,
+                mute = false;
     int         osdWidth,
                 osdHeight;
 };

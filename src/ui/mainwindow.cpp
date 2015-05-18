@@ -49,6 +49,7 @@ MainWindow::MainWindow(QWidget *parent):
         {"mpv set time-pos 0", ui->action_Restart},
         {"mpv frame_step", ui->action_Frame_Step},
         {"mpv frame_back_step", ui->actionFrame_Back_Step},
+        {"mpv cycle mute", ui->action_Mute},
         {"screenshot subtitles", ui->actionWith_Subtitles},
         {"screenshot", ui->actionWithout_Subtitles},
         {"add_subtitles", ui->action_Add_Subtitle_File},
@@ -597,6 +598,15 @@ MainWindow::MainWindow(QWidget *parent):
                     ui->actionShow_Subtitles->setChecked(b);
             });
 
+    connect(mpv, &MpvHandler::muteChanged,
+            [=](bool b)
+            {
+                if(b)
+                    ui->muteButton->setIcon(QIcon(":/img/default_mute.svg"));
+                else
+                    ui->muteButton->setIcon(QIcon(":/img/default_unmute.svg"));
+            });
+
     // ui
 
     connect(ui->seekBar, &SeekBar::valueChanged,                        // Playback: Seekbar clicked
@@ -645,6 +655,12 @@ MainWindow::MainWindow(QWidget *parent):
             [=]
             {
                 ui->playlistWidget->PlayIndex(1, true);
+            });
+
+    connect(ui->muteButton, &QPushButton::clicked,
+            [=]
+            {
+                mpv->Mute(!mpv->getMute());
             });
 
     connect(ui->volumeSlider, &CustomSlider::valueChanged,              // Playback: Volume slider adjusted

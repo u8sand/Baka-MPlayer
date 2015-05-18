@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>622</width>
+    <width>646</width>
     <height>400</height>
    </rect>
   </property>
@@ -853,6 +853,35 @@ QSlider::sub-page:horizontal {
           </widget>
          </item>
          <item>
+          <widget class="QPushButton" name="muteButton">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>:/img/default_unmute.svg</normaloff>:/img/default_unmute.svg</iconset>
+           </property>
+           <property name="flat">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
           <widget class="CustomSlider" name="volumeSlider">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -990,7 +1019,7 @@ QSlider::handle:horizontal {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>622</width>
+     <width>646</width>
      <height>24</height>
     </rect>
    </property>
@@ -1142,6 +1171,7 @@ QSlider::handle:horizontal {
     <addaction name="menuAudio_Tracks"/>
     <addaction name="action_Increase_Volume"/>
     <addaction name="action_Decrease_Volume"/>
+    <addaction name="action_Mute"/>
    </widget>
    <widget class="QMenu" name="menu_Navigate">
     <property name="title">
@@ -1597,6 +1627,14 @@ QSlider::handle:horizontal {
   <action name="actionUpdate_Streaming_Support">
    <property name="text">
     <string>Update &amp;Streaming Support</string>
+   </property>
+  </action>
+  <action name="action_Mute">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>&amp;Mute</string>
    </property>
   </action>
  </widget>

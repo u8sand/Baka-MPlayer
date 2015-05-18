@@ -35,6 +35,7 @@ MpvHandler::MpvHandler(int64_t wid, QObject *parent):
     mpv_observe_property(mpv, 0, "sid", MPV_FORMAT_INT64);
     mpv_observe_property(mpv, 0, "aid", MPV_FORMAT_INT64);
     mpv_observe_property(mpv, 0, "sub-visibility", MPV_FORMAT_FLAG);
+    mpv_observe_property(mpv, 0, "mute", MPV_FORMAT_FLAG);
 
     // setup callback event handling
     mpv_set_wakeup_callback(mpv, wakeup, this);
@@ -177,6 +178,11 @@ bool MpvHandler::event(QEvent *event)
                 {
                     if(prop->format == MPV_FORMAT_FLAG)
                         setSubtitleVisibility((bool)*(unsigned*)prop->data);
+                }
+                else if(QString(prop->name) == "mute")
+                {
+                    if(prop->format == MPV_FORMAT_FLAG)
+                        setMute((bool)*(unsigned*)prop->data);
                 }
                 break;
             }
@@ -386,6 +392,17 @@ void MpvHandler::Rewind()
         else
             Stop();
     }
+}
+
+void MpvHandler::Mute(bool m)
+{
+    if(playState > 0)
+    {
+        const char *args[] = {"set", "mute", m ? "yes" : "no", NULL};
+        AsyncCommand(args);
+    }
+    else
+        setMute(m);
 }
 
 void MpvHandler::Seek(int pos, bool relative, bool osd)
@@ -826,6 +843,7 @@ void MpvHandler::SetProperties()
 {
     Volume(volume);
     Speed(speed);
+    Mute(mute);
 }
 
 void MpvHandler::AsyncCommand(const char *args[])
