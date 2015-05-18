@@ -623,12 +623,6 @@ MainWindow::MainWindow(QWidget *parent):
                 baka->OpenLocation();
             });
 
-    connect(ui->remainingLabel, &CustomLabel::clicked,                  // Playback: Remaining Label
-            [=]
-            {
-                setRemaining(!remaining);
-            });
-
     connect(ui->rewindButton, &QPushButton::clicked,                    // Playback: Rewind button
             [=]
             {
@@ -864,18 +858,21 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
     {
         if(gestures)
         {
-            if(ui->mpvFrame->rect().contains(event->pos())) // mouse is in the mpvFrame
+            if(ui->mpvFrame->geometry().contains(event->pos())) // mouse is in the mpvFrame
                 baka->gesture->Begin(GestureHandler::HSEEK_VVOLUME, event->globalPos(), pos());
             else if(!isFullScreen()) // not fullscreen
                 baka->gesture->Begin(GestureHandler::MOVE, event->globalPos(), pos());
         }
         else if(!isFullScreen()) // not fullscreen
             baka->gesture->Begin(GestureHandler::MOVE, event->globalPos(), pos());
+
+        if(ui->timeLayoutWidget->rect().contains(ui->timeLayoutWidget->mapFrom(this, event->pos()))) // clicked timeLayoutWidget
+            setRemaining(!remaining); // todo: use a bakacommand
     }
     else if(event->button() == Qt::RightButton &&
             !isFullScreen() &&  // not fullscreen
             mpv->getPlayState() > 0 &&  // playing
-            ui->mpvFrame->rect().contains(event->pos())) // mouse is in the mpvFrame
+            ui->mpvFrame->geometry().contains(event->pos())) // mouse is in the mpvFrame
     {
         mpv->PlayPause(ui->playlistWidget->CurrentItem());
     }
@@ -1213,11 +1210,21 @@ void MainWindow::SetRemainingLabels(int time)
     if(remaining)
     {
         int remainingTime = fi.length - time;
-        QString text ="-" + Util::FormatTime(remainingTime, fi.length);
+        QString text = "-" + Util::FormatTime(remainingTime, fi.length);
         if(mpv->getSpeed() != 1)
         {
             double speed = mpv->getSpeed();
             text += QString("  (-%0)").arg(Util::FormatTime(int(remainingTime/speed), int(fi.length/speed)));
+        }
+        ui->remainingLabel->setText(text);
+    }
+    else
+    {
+        QString text = Util::FormatTime(fi.length, fi.length);
+        if(mpv->getSpeed() != 1)
+        {
+            double speed = mpv->getSpeed();
+            text += QString("  (%0)").arg(Util::FormatTime(int(fi.length/speed), int(fi.length/speed)));
         }
         ui->remainingLabel->setText(text);
     }

@@ -561,6 +561,9 @@ QSlider::sub-page:horizontal {
            <height>16777215</height>
           </size>
          </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
          <layout class="QHBoxLayout" name="horizontalLayout_4">
           <property name="spacing">
            <number>8</number>
@@ -639,15 +642,12 @@ QSlider::sub-page:horizontal {
            </widget>
           </item>
           <item>
-           <widget class="CustomLabel" name="remainingLabel">
+           <widget class="QLabel" name="remainingLabel">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
-            </property>
-            <property name="cursor">
-             <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
              <string>Click to change between total and remaining time</string>
@@ -991,7 +991,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>622</width>
-     <height>23</height>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
@@ -1231,7 +1231,7 @@ QSlider::handle:horizontal {
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>Play &amp;Next File</string>
+    <string>Pla&amp;y Next File</string>
    </property>
   </action>
   <action name="actionPlay_Previous_File">
@@ -1421,22 +1421,22 @@ QSlider::handle:horizontal {
   </action>
   <action name="action50">
    <property name="text">
-    <string>50%</string>
+    <string>&amp;50%</string>
    </property>
   </action>
   <action name="action75">
    <property name="text">
-    <string>75%</string>
+    <string>&amp;75%</string>
    </property>
   </action>
   <action name="action100">
    <property name="text">
-    <string>100%</string>
+    <string>&amp;100%</string>
    </property>
   </action>
   <action name="action200">
    <property name="text">
-    <string>200%</string>
+    <string>&amp;200%</string>
    </property>
   </action>
   <action name="action_Auto_Detect">
@@ -1472,7 +1472,7 @@ QSlider::handle:horizontal {
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>[ none ]</string>
+    <string>[ &amp;none ]</string>
    </property>
   </action>
   <action name="action_Size">
@@ -1522,7 +1522,7 @@ QSlider::handle:horizontal {
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>[ none ]</string>
+    <string>[ &amp;none ]</string>
    </property>
   </action>
   <action name="actionShow_D_ebug_Output">
@@ -1563,7 +1563,7 @@ QSlider::handle:horizontal {
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>[ none ]</string>
+    <string>[ &amp;none ]</string>
    </property>
   </action>
   <action name="action_Increase">
@@ -1586,12 +1586,12 @@ QSlider::handle:horizontal {
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>[ none ]</string>
+    <string>[ &amp;none ]</string>
    </property>
   </action>
   <action name="action150">
    <property name="text">
-    <string>150%</string>
+    <string>15&amp;0%</string>
    </property>
   </action>
   <action name="actionUpdate_Streaming_Support">
