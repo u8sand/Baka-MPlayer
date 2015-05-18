@@ -344,9 +344,6 @@ MainWindow::MainWindow(QWidget *parent):
                             ui->actionShow_Subtitles->setEnabled(false);
                             ui->actionShow_Subtitles->setChecked(false);
                         }
-                        ui->menuAudio_Tracks->setEnabled((ui->menuAudio_Tracks->actions().count() > 0));
-                        if(ui->menuAudio_Tracks->actions().count() == 1)
-                            ui->menuAudio_Tracks->actions().first()->setEnabled(false);
                         ui->menuTake_Screenshot->setEnabled(true);
                         ui->menuFit_Window->setEnabled(true);
                         ui->menuAspect_Ratio->setEnabled(true);
@@ -362,7 +359,6 @@ MainWindow::MainWindow(QWidget *parent):
                                 ui->mpvFrame->setStyleSheet("background-image:url(:/img/album-art.png);background-repeat:no-repeat;background-position:center;");
                         }
                         ui->action_Hide_Album_Art->setEnabled(true);
-                        ui->menuAudio_Tracks->setEnabled((ui->menuAudio_Tracks->actions().count() > 1));
                         ui->menuSubtitle_Track->setEnabled(false);
                         ui->menuFont_Si_ze->setEnabled(false);
                         ui->actionShow_Subtitles->setEnabled(false);
@@ -373,13 +369,15 @@ MainWindow::MainWindow(QWidget *parent):
                         ui->action_Frame_Step->setEnabled(false);
                         ui->actionFrame_Back_Step->setEnabled(false);
 
-
                         if(baka->sysTrayIcon->isVisible() && !hidePopup)
                         {
                             // todo: use {artist} - {title}
                             baka->sysTrayIcon->showMessage("Baka MPlayer", mpv->getFileInfo().media_title, QSystemTrayIcon::NoIcon, 4000);
                         }
                     }
+
+                    if(ui->menuAudio_Tracks->actions().count() == 1)
+                        ui->menuAudio_Tracks->actions().first()->setEnabled(false);
 
                     if(pathChanged && autoFit)
                     {
@@ -448,6 +446,7 @@ MainWindow::MainWindow(QWidget *parent):
 #endif
                         ui->playlistButton->setEnabled(true);
                         ui->action_Show_Playlist->setEnabled(true);
+                        ui->menuAudio_Tracks->setEnabled(true);
                         init = true;
                     }
                     SetPlaybackControls(true);
@@ -1087,7 +1086,6 @@ void MainWindow::SetPlaybackControls(bool enable)
     {
         ui->action_Hide_Album_Art->setEnabled(false);
         ui->menuSubtitle_Track->setEnabled(false);
-        ui->menuAudio_Tracks->setEnabled(false);
         ui->menuFont_Si_ze->setEnabled(false);
     }
 }
