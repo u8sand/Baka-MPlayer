@@ -170,6 +170,7 @@ void PreferencesDialog::PopulateShortcuts()
         ui->infoWidget->setItem(numberOfShortcuts, 2, new QTableWidgetItem(iter->second));
         ++numberOfShortcuts;
     }
+    ui->infoWidget->sortByColumn(0, Qt::AscendingOrder);
 }
 
 void PreferencesDialog::AddRow(QString first, QString second, QString third)
