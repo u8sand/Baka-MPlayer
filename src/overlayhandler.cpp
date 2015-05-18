@@ -34,6 +34,7 @@ OverlayHandler::~OverlayHandler()
         {
             delete (*overlay_iter)->timer;
             delete (*overlay_iter)->canvas;
+            delete (*overlay_iter)->label;
             delete (*overlay_iter);
         }
     }
@@ -44,6 +45,7 @@ void OverlayHandler::showStatusText(const QString &text, int duration)
     if(duration == 0 && text == QString())
     {
         baka->mpv->RemoveOverlay(1); // remove the overlay
+        delete overlays[1]->label; // delete the label
         delete overlays[1]->canvas; // delete the canvas
         delete overlays[1]->timer; // delete the timer
         delete overlays[1]; // delete the overlay itself
@@ -66,6 +68,7 @@ void OverlayHandler::showInfoText(bool show)
         if(overlays[2] != nullptr)
         {
             baka->mpv->RemoveOverlay(2); // remove the overlay
+            delete overlays[2]->label; // delete the label
             delete overlays[2]->canvas; // delete the canvas
             delete overlays[2]; // delete the overlay itself
             overlays[2] = nullptr; // set it to nullptr
@@ -112,6 +115,15 @@ void OverlayHandler::showText(const QString &text, int duration, QPoint pos, int
         pos.x(), pos.y(),
         "&"+QString::number(quintptr(canvas->bits())),
         0, canvas->width(), canvas->height());
+    // add over mpv as label
+    QLabel *label = new QLabel(baka->window);
+    label->setStyleSheet("background-color:rgb(0,0,0,0);");
+    label->setGeometry(baka->window->ui->mpvFrame->pos().x()+pos.x(),
+                       baka->window->ui->mpvFrame->pos().y()+pos.y(),
+                       canvas->width(),
+                       canvas->height());
+    label->setPixmap(QPixmap::fromImage(*canvas));
+    label->show();
 
     // increase next overlay_id
     if(id == -1) // auto id
@@ -129,7 +141,9 @@ void OverlayHandler::showText(const QString &text, int duration, QPoint pos, int
         overlays[id] = nullptr;
     if(overlays[id] != nullptr) // this overlay already exists
     {
+        delete overlays[id]->label; // delete the old label
         delete overlays[id]->canvas; // delete the old canvas
+        overlays[id]->label = label; // update the label
         overlays[id]->canvas = canvas; // update the canvas
         if(duration > 0)
         {
@@ -142,6 +156,7 @@ void OverlayHandler::showText(const QString &text, int duration, QPoint pos, int
     {
         // allocate a new overlay structure
         overlays[id] = new overlay{
+            label,
             canvas,
             duration > 0 ? new QTimer(this) : nullptr
         };
@@ -152,6 +167,7 @@ void OverlayHandler::showText(const QString &text, int duration, QPoint pos, int
                     [=]
                     {
                         baka->mpv->RemoveOverlay(id); // remove the overlay
+                        delete overlays[id]->label; // delete the label
                         delete overlays[id]->canvas; // delete the canvas
                         delete overlays[id]->timer; // delete the timer
                         delete overlays[id]; // delete the overlay itself

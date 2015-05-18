@@ -8,6 +8,7 @@
 #include <QHash>
 #include <QFontMetrics>
 #include <QFont>
+#include <QLabel>
 
 class BakaEngine;
 
@@ -32,6 +33,7 @@ private:
 
     struct overlay
     {
+        QLabel *label;
         QImage *canvas;
         QTimer *timer;
     };
