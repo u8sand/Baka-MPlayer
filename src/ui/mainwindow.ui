@@ -692,7 +692,7 @@ QSlider::sub-page:horizontal {
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_2">
          <property name="spacing">
-          <number>8</number>
+          <number>14</number>
          </property>
          <item>
           <widget class="QPushButton" name="rewindButton">
@@ -707,7 +707,7 @@ QSlider::sub-page:horizontal {
            </property>
            <property name="maximumSize">
             <size>
-             <width>24</width>
+             <width>16</width>
              <height>16</height>
             </size>
            </property>
@@ -725,7 +725,7 @@ QSlider::sub-page:horizontal {
            </property>
            <property name="iconSize">
             <size>
-             <width>20</width>
+             <width>16</width>
              <height>16</height>
             </size>
            </property>
@@ -747,7 +747,7 @@ QSlider::sub-page:horizontal {
            </property>
            <property name="maximumSize">
             <size>
-             <width>26</width>
+             <width>17</width>
              <height>16</height>
             </size>
            </property>
@@ -765,7 +765,7 @@ QSlider::sub-page:horizontal {
            </property>
            <property name="iconSize">
             <size>
-             <width>22</width>
+             <width>17</width>
              <height>16</height>
             </size>
            </property>
@@ -787,8 +787,8 @@ QSlider::sub-page:horizontal {
            </property>
            <property name="maximumSize">
             <size>
-             <width>28</width>
-             <height>30</height>
+             <width>32</width>
+             <height>32</height>
             </size>
            </property>
            <property name="cursor">
@@ -799,12 +799,14 @@ QSlider::sub-page:horizontal {
            </property>
            <property name="icon">
             <iconset resource="../rsclist.qrc">
-             <normaloff>:/img/disabled_play.svg</normaloff>:/img/disabled_play.svg</iconset>
+             <normaloff>:/img/default_play.svg</normaloff>
+             <disabledoff>:/img/disabled_play.svg</disabledoff>
+             <disabledon>:/img/disabled_play.svg</disabledon>:/img/default_play.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
-             <width>23</width>
-             <height>30</height>
+             <width>32</width>
+             <height>32</height>
             </size>
            </property>
            <property name="flat">
@@ -825,7 +827,7 @@ QSlider::sub-page:horizontal {
            </property>
            <property name="maximumSize">
             <size>
-             <width>26</width>
+             <width>17</width>
              <height>16</height>
             </size>
            </property>
@@ -843,7 +845,7 @@ QSlider::sub-page:horizontal {
            </property>
            <property name="iconSize">
             <size>
-             <width>22</width>
+             <width>17</width>
              <height>16</height>
             </size>
            </property>
@@ -873,7 +875,7 @@ QSlider::sub-page:horizontal {
             <enum>Qt::NoFocus</enum>
            </property>
            <property name="icon">
-            <iconset>
+            <iconset resource="../rsclist.qrc">
              <normaloff>:/img/default_unmute.svg</normaloff>:/img/default_unmute.svg</iconset>
            </property>
            <property name="flat">
@@ -942,7 +944,7 @@ QSlider::handle:horizontal {
            </property>
            <property name="sizeHint" stdset="0">
             <size>
-             <width>100</width>
+             <width>55</width>
              <height>20</height>
             </size>
            </property>
@@ -1020,7 +1022,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>646</width>
-     <height>24</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">

@@ -1,5 +1,8 @@
 <RCC>
   <qresource prefix="/">
+    <file>img/disabled_next.svg</file>
+    <file>img/disabled_previous.svg</file>
+    <file>img/disabled_reverse.svg</file>
     <file>img/default_mute.svg</file>
     <file>img/default_unmute.svg</file>
     <file>img/checked.svg</file>
@@ -19,13 +22,10 @@
     <file>img/not_exists.svg</file>
     <file>img/default_open.svg</file>
     <file>img/default_next.svg</file>
-    <file>img/disabled_reverse.svg</file>
     <file>img/default_reverse.svg</file>
-    <file>img/disabled_previous.svg</file>
     <file>img/default_previous.svg</file>
     <file>img/disabled_playlist.svg</file>
     <file>img/default_playlist.svg</file>
-    <file>img/disabled_next.svg</file>
     <file>img/disabled_play.svg</file>
     <file>img/default_play.svg</file>
     <file>img/disabled_pause.svg</file>
