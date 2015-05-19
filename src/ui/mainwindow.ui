@@ -878,6 +878,12 @@ QSlider::sub-page:horizontal {
             <iconset resource="../rsclist.qrc">
              <normaloff>:/img/default_unmute.svg</normaloff>:/img/default_unmute.svg</iconset>
            </property>
+           <property name="iconSize">
+            <size>
+             <width>16</width>
+             <height>16</height>
+            </size>
+           </property>
            <property name="flat">
             <bool>true</bool>
            </property>
@@ -1022,7 +1028,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>646</width>
-     <height>23</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
