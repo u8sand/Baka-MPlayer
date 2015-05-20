@@ -38,6 +38,7 @@ PreferencesDialog::PreferencesDialog(BakaEngine *baka, QWidget *parent) :
     ui->templateLineEdit->setText(baka->mpv->getScreenshotTemplate());
 
     // add shortcuts
+    saved = baka->input;
     PopulateShortcuts();
 
     connect(ui->autoFitCheckBox, &QCheckBox::clicked,
@@ -134,6 +135,8 @@ PreferencesDialog::~PreferencesDialog()
         baka->mpv->ScreenshotTemplate(ui->templateLineEdit->text());
         baka->window->MapShortcuts();
     }
+    else
+        baka->input = saved;
     delete ui;
 }
 
