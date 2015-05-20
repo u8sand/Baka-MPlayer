@@ -91,15 +91,18 @@ void OverlayHandler::showText(const QString &text, int duration, QPoint pos, int
     setFont(elements.length());
     QPainterPath path(QPoint(0, 0));
     int h = overlay_fm.height();
+    int w = 0;
     QPoint p = QPoint(0, h);
     for(auto element : elements)
     {
         path.addText(p, overlay_font, element);
+        if(path.currentPosition().x()+h > w)
+            w = path.currentPosition().x()+h;
         p += QPoint(0, h);
     }
 
-    QImage *canvas = new QImage(path.boundingRect().width(), p.y(), QImage::Format_ARGB32); // make the canvas the right size
-    canvas->fill(0); // fill it with nothing
+    QImage *canvas = new QImage(w, p.y(), QImage::Format_ARGB32); // make the canvas the right size
+    canvas->fill(QColor(0,0,0,0)); // fill it with nothing
 
     QPainter painter(canvas); // prepare to paint
     painter.setRenderHint(QPainter::Antialiasing);
@@ -117,7 +120,7 @@ void OverlayHandler::showText(const QString &text, int duration, QPoint pos, int
         0, canvas->width(), canvas->height());
     // add over mpv as label
     QLabel *label = new QLabel(baka->window->ui->mpvFrame);
-    label->setStyleSheet("background-color:rgb(0,0,0,0);");
+    label->setStyleSheet("background-color:rgb(0,0,0,0);background-image:url();");
     label->setGeometry(pos.x(),
                        pos.y(),
                        canvas->width(),

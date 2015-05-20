@@ -203,7 +203,8 @@ MainWindow::MainWindow(QWidget *parent):
             [=]
             {
                 setCursor(QCursor(Qt::BlankCursor));
-                autohide->stop();
+                if(autohide)
+                    autohide->stop();
             });
 
     // dimDialog
@@ -950,7 +951,7 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
                 in = true;
         }
 
-        if(!in)
+        if(!in && autohide)
             autohide->start(500);
     }
     QMainWindow::mouseMoveEvent(event);
@@ -971,7 +972,8 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
     else if(obj == ui->splitter->handle(1) && event->type() == QEvent::Enter && !isPlaylistVisible())
     {
         ShowPlaylist(true);
-        autohide->stop();
+        if(autohide)
+            autohide->stop();
     }
     return false;
 }
