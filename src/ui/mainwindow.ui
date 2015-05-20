@@ -725,7 +725,7 @@ QSlider::sub-page:horizontal {
            </property>
            <property name="iconSize">
             <size>
-             <width>16</width>
+             <width>14</width>
              <height>16</height>
             </size>
            </property>
@@ -747,7 +747,7 @@ QSlider::sub-page:horizontal {
            </property>
            <property name="maximumSize">
             <size>
-             <width>17</width>
+             <width>18</width>
              <height>16</height>
             </size>
            </property>
@@ -765,7 +765,7 @@ QSlider::sub-page:horizontal {
            </property>
            <property name="iconSize">
             <size>
-             <width>17</width>
+             <width>18</width>
              <height>16</height>
             </size>
            </property>
@@ -827,7 +827,7 @@ QSlider::sub-page:horizontal {
            </property>
            <property name="maximumSize">
             <size>
-             <width>17</width>
+             <width>18</width>
              <height>16</height>
             </size>
            </property>
@@ -845,7 +845,7 @@ QSlider::sub-page:horizontal {
            </property>
            <property name="iconSize">
             <size>
-             <width>17</width>
+             <width>18</width>
              <height>16</height>
             </size>
            </property>
@@ -1028,7 +1028,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>646</width>
-     <height>26</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
