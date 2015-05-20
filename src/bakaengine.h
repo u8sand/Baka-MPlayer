@@ -55,7 +55,7 @@ public:
         {"Left",            {"mpv seek -5",                         tr("Seek backwards by 5 sec")}},
         {"Shift+Left",      {"mpv frame_back_step",                 tr("Frame step backwards")}},
         {"Shift+Right",     {"mpv frame_step",                      tr("Frame step")}},
-        {"Ctrl+M",          {"mpv cycle mute",                      tr("Toggle mute audio")}},
+        {"Ctrl+M",          {"mpv osd-msg cycle mute",              tr("Toggle mute audio")}},
         {"Ctrl+T",          {"screenshot subtitles",                tr("Take screenshot with subtitles")}},
         {"Ctrl+Shift+T",    {"screenshot",                          tr("Take screenshot without subtitles")}},
         {"Ctrl+Down",       {"volume -5",                           tr("Decrease volume")}},
