@@ -32,6 +32,7 @@ protected:
 private:
     Ui::PreferencesDialog *ui;
     BakaEngine *baka;
+    QHash<QString, QPair<QString, QString>> saved;
 
     QString screenshotDir;
     int numberOfShortcuts;

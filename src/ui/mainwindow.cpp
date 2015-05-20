@@ -49,7 +49,7 @@ MainWindow::MainWindow(QWidget *parent):
         {"mpv set time-pos 0", ui->action_Restart},
         {"mpv frame_step", ui->action_Frame_Step},
         {"mpv frame_back_step", ui->actionFrame_Back_Step},
-        {"mpv cycle mute", ui->action_Mute},
+        {"mpv osd-msg cycle mute", ui->action_Mute},
         {"screenshot subtitles", ui->actionWith_Subtitles},
         {"screenshot", ui->actionWithout_Subtitles},
         {"add_subtitles", ui->action_Add_Subtitle_File},
@@ -203,7 +203,8 @@ MainWindow::MainWindow(QWidget *parent):
             [=]
             {
                 setCursor(QCursor(Qt::BlankCursor));
-                autohide->stop();
+                if(autohide)
+                    autohide->stop();
             });
 
     // dimDialog
@@ -950,7 +951,7 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
                 in = true;
         }
 
-        if(!in)
+        if(!in && autohide)
             autohide->start(500);
     }
     QMainWindow::mouseMoveEvent(event);
@@ -971,7 +972,8 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
     else if(obj == ui->splitter->handle(1) && event->type() == QEvent::Enter && !isPlaylistVisible())
     {
         ShowPlaylist(true);
-        autohide->stop();
+        if(autohide)
+            autohide->stop();
     }
     return false;
 }
