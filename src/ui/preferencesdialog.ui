@@ -217,7 +217,7 @@ QTabBar::tab:!selected {
 }</string>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tab">
       <attribute name="title">
@@ -504,19 +504,19 @@ QTableWidget::item:selected {
           </spacer>
          </item>
          <item>
+          <widget class="QPushButton" name="addKeyButton">
+           <property name="text">
+            <string>&amp;ADD</string>
+           </property>
+          </widget>
+         </item>
+         <item>
           <widget class="QPushButton" name="changeKeyButton">
            <property name="enabled">
             <bool>false</bool>
            </property>
            <property name="text">
             <string>CHANG&amp;E</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="addKeyButton">
-           <property name="text">
-            <string>&amp;ADD</string>
            </property>
           </widget>
          </item>
@@ -823,8 +823,8 @@ QPushButton:pressed {
   <tabstop>okButton</tabstop>
   <tabstop>cancelButton</tabstop>
   <tabstop>infoWidget</tabstop>
-  <tabstop>changeKeyButton</tabstop>
   <tabstop>addKeyButton</tabstop>
+  <tabstop>changeKeyButton</tabstop>
   <tabstop>removeKeyButton</tabstop>
   <tabstop>resetKeyButton</tabstop>
   <tabstop>autoFitCheckBox</tabstop>
