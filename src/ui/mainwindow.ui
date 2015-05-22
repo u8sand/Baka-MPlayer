@@ -539,13 +539,13 @@ QSlider::sub-page:horizontal {
         <number>14</number>
        </property>
        <property name="topMargin">
-        <number>6</number>
+        <number>5</number>
        </property>
        <property name="rightMargin">
         <number>14</number>
        </property>
        <property name="bottomMargin">
-        <number>6</number>
+        <number>5</number>
        </property>
        <item>
         <widget class="QWidget" name="timeLayoutWidget" native="true">
@@ -787,8 +787,8 @@ QSlider::sub-page:horizontal {
            </property>
            <property name="maximumSize">
             <size>
-             <width>32</width>
-             <height>32</height>
+             <width>34</width>
+             <height>34</height>
             </size>
            </property>
            <property name="cursor">
@@ -805,8 +805,8 @@ QSlider::sub-page:horizontal {
            </property>
            <property name="iconSize">
             <size>
-             <width>32</width>
-             <height>32</height>
+             <width>34</width>
+             <height>34</height>
             </size>
            </property>
            <property name="flat">
@@ -1028,7 +1028,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>646</width>
-     <height>23</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
