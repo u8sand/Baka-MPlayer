@@ -41,15 +41,15 @@ MainWindow::MainWindow(QWidget *parent):
         {"mpv set sub-scale 1", ui->action_Reset_Size},
         {"mpv add sub-scale +0.1", ui->action_Size},
         {"mpv add sub-scale -0.1", ui->actionS_ize},
-        {"mpv osd-msg set video-aspect -1", ui->action_Auto_Detect},
-        {"mpv osd-msg set video-aspect 16:9", ui->actionForce_16_9},
-        {"mpv osd-msg set video-aspect 2.35:1", ui->actionForce_2_35_1},
-        {"mpv osd-msg set video-aspect 4:3", ui->actionForce_4_3},
-        {"mpv osd-msg cycle sub-visibility", ui->actionShow_Subtitles},
+        {"mpv set video-aspect -1", ui->action_Auto_Detect},
+        {"mpv set video-aspect 16:9", ui->actionForce_16_9},
+        {"mpv set video-aspect 2.35:1", ui->actionForce_2_35_1},
+        {"mpv set video-aspect 4:3", ui->actionForce_4_3},
+        {"mpv cycle sub-visibility", ui->actionShow_Subtitles},
         {"mpv set time-pos 0", ui->action_Restart},
         {"mpv frame_step", ui->action_Frame_Step},
         {"mpv frame_back_step", ui->actionFrame_Back_Step},
-        {"mpv osd-msg cycle mute", ui->action_Mute},
+        {"mute", ui->action_Mute},
         {"screenshot subtitles", ui->actionWith_Subtitles},
         {"screenshot", ui->actionWithout_Subtitles},
         {"add_subtitles", ui->action_Add_Subtitle_File},
@@ -602,6 +602,7 @@ MainWindow::MainWindow(QWidget *parent):
             {
                 if(ui->actionShow_Subtitles->isEnabled())
                     ui->actionShow_Subtitles->setChecked(b);
+                mpv->ShowText(b ? tr("Subtitles visible") : tr("Subtitles hidden"));
             });
 
     connect(mpv, &MpvHandler::muteChanged,
@@ -611,6 +612,7 @@ MainWindow::MainWindow(QWidget *parent):
                     ui->muteButton->setIcon(QIcon(":/img/default_mute.svg"));
                 else
                     ui->muteButton->setIcon(QIcon(":/img/default_unmute.svg"));
+                mpv->ShowText(b ? tr("Muted") : tr("Unmuted"));
             });
 
     // ui

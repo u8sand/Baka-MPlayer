@@ -40,19 +40,19 @@ OverlayHandler::~OverlayHandler()
     }
 }
 
-void OverlayHandler::showStatusText(const QString &text, int duration)
+void OverlayHandler::showStatusText(const QString &text, int duration, int level)
 {
     if(duration == 0 && text == QString())
     {
-        baka->mpv->RemoveOverlay(1); // remove the overlay
-        delete overlays[1]->label; // delete the label
-        delete overlays[1]->canvas; // delete the canvas
-        delete overlays[1]->timer; // delete the timer
-        delete overlays[1]; // delete the overlay itself
-        overlays[1] = nullptr; // set it to nullptr
+        baka->mpv->RemoveOverlay(level); // remove the overlay
+        delete overlays[level]->label; // delete the label
+        delete overlays[level]->canvas; // delete the canvas
+        delete overlays[level]->timer; // delete the timer
+        delete overlays[level]; // delete the overlay itself
+        overlays[level] = nullptr; // set it to nullptr
     }
     else
-        showText(text, duration, QPoint(20, 20), 1);
+        showText(text, duration, QPoint(20, 20), level);
 }
 
 void OverlayHandler::showInfoText(bool show)

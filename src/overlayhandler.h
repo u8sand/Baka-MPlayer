@@ -20,7 +20,7 @@ public:
     ~OverlayHandler();
 
 public slots:
-    void showStatusText(const QString &text, int duration = 4000);
+    void showStatusText(const QString &text, int duration = 4000, int level = 1);
     void showInfoText(bool show = true);
 
     void showText(const QString &text, int duration, QPoint pos, int id = -1);

@@ -9,6 +9,8 @@
 
 #include "mpvtypes.h"
 
+class BakaEngine;
+
 class MpvHandler : public QObject
 {
 friend class BakaEngine;
@@ -165,6 +167,7 @@ signals:
     void messageSignal(QString m);
 
 private:
+    BakaEngine *baka;
     mpv_handle *mpv = nullptr;
 
     // variables

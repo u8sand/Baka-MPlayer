@@ -7,6 +7,8 @@
 #include <QFileInfoList>
 #include <QDateTime>
 
+#include "bakaengine.h"
+#include "overlayhandler.h"
 #include "util.h"
 
 static void wakeup(void *ctx)
@@ -16,7 +18,8 @@ static void wakeup(void *ctx)
 }
 
 MpvHandler::MpvHandler(int64_t wid, QObject *parent):
-    QObject(parent)
+    QObject(parent),
+    baka(static_cast<BakaEngine*>(parent))
 {
     // create mpv
     mpv = mpv_create();
@@ -401,7 +404,7 @@ void MpvHandler::Mute(bool m)
 
     if(playState > 0)
     {
-        const char *args[] = {"osd-msg", "set", "mute", m ? "yes" : "no", NULL};
+        const char *args[] = {"set", "mute", m ? "yes" : "no", NULL};
         AsyncCommand(args);
     }
     else
@@ -616,11 +619,14 @@ void MpvHandler::Debug(QString level)
 
 void MpvHandler::ShowText(QString text, int duration, int level)
 {
+    baka->overlay->showStatusText(text, duration, level);
+    /*
     const QByteArray tmp1 = text.toUtf8(),
                      tmp2 = QString::number(duration).toUtf8(),
                      tmp3 = QString::number(level).toUtf8();
     const char *args[] = {"show_text", tmp1.constData(), tmp2.constData(), tmp3.constData(), NULL};
     AsyncCommand(args);
+    */
 }
 
 void MpvHandler::LoadFileInfo()

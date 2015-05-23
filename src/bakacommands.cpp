@@ -490,6 +490,13 @@ void BakaEngine::FitWindow(int percent, bool msg)
         mpv->ShowText(tr("Fit Window: %0").arg(percent == 0 ? tr("To Current Size") : (QString::number(percent)+"%")));
 }
 
+void BakaEngine::BakaMute(QStringList &args)
+{
+    if(args.empty())
+        mpv->Mute(!mpv->getMute());
+    else
+        InvalidParameter(args.join(' '));
+}
 
 void BakaEngine::BakaVolume(QStringList &args)
 {
