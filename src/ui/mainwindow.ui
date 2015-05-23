@@ -915,8 +915,7 @@ QSlider::sub-page:horizontal {
 	background: #008098;
 }
 QSlider::handle:horizontal {
-	background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-					stop: 0 #D1D1D1, stop: 1 #B7B7B7);
+	background: #F5F5F5;
 	border: 2px solid #1A1A1A;
 	border-radius: 7px;
 	margin: -7px 0;
@@ -1028,7 +1027,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>646</width>
-     <height>26</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
