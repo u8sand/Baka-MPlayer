@@ -602,7 +602,8 @@ MainWindow::MainWindow(QWidget *parent):
             {
                 if(ui->actionShow_Subtitles->isEnabled())
                     ui->actionShow_Subtitles->setChecked(b);
-                mpv->ShowText(b ? tr("Subtitles visible") : tr("Subtitles hidden"));
+                if(init)
+                    mpv->ShowText(b ? tr("Subtitles visible") : tr("Subtitles hidden"));
             });
 
     connect(mpv, &MpvHandler::muteChanged,

@@ -399,9 +399,6 @@ void MpvHandler::Rewind()
 
 void MpvHandler::Mute(bool m)
 {
-    if(mute == m)
-        return;
-
     if(playState > 0)
     {
         const char *args[] = {"set", "mute", m ? "yes" : "no", NULL};

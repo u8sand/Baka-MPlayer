@@ -139,7 +139,7 @@ private slots:
     void setAid(int i)                      { emit aidChanged(aid = i); }
     void setSid(int i)                      { emit sidChanged(sid = i); }
     void setSubtitleVisibility(bool b)      { emit subtitleVisibilityChanged(subtitleVisibility = b); }
-    void setMute(bool b)                    { emit muteChanged(mute = b); }
+    void setMute(bool b)                    { if(mute != b) emit muteChanged(mute = b); }
 
 signals:
     void playlistChanged(const QStringList&);

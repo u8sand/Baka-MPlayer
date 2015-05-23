@@ -5,6 +5,7 @@
 #include "ui/mainwindow.h"
 #include "ui_mainwindow.h"
 #include "util.h"
+#include "overlay.h"
 
 #include <QFileInfo>
 #include <QPainter>
@@ -14,11 +15,14 @@
 #include <QTimer>
 #include <QFontMetrics>
 
+#define OVERLAY_INFO 62
+#define OVERLAY_STATUS 63
+
 OverlayHandler::OverlayHandler(QObject *parent):
     QObject(parent),
     baka(static_cast<BakaEngine*>(parent)),
-    min_overlay(4),
-    max_overlay(63),
+    min_overlay(1),
+    max_overlay(60),
     overlay_id(min_overlay)
 {
 }
@@ -35,13 +39,10 @@ void OverlayHandler::showStatusText(const QString &text, int duration)
         showText({text},
                  QFont(Util::MonospaceFont(),
                        14,
-                       QFont::Bold),
-                 QColor(0xFFFFFF),
-                 QPoint(20, 20),
-                 duration,
-                 1);
+                       QFont::Bold), QColor(0xFFFFFF),
+                 QPoint(20, 20), duration, OVERLAY_STATUS);
     else
-        remove(1);
+        remove(OVERLAY_STATUS);
 }
 
 void OverlayHandler::showInfoText(bool show)
@@ -53,14 +54,11 @@ void OverlayHandler::showInfoText(bool show)
                  QFont(Util::MonospaceFont(),
                        int(std::min(double(baka->window->ui->mpvFrame->width() / 75),
                                     double(baka->window->ui->mpvFrame->height() / (1.55*text.length()+1)))),
-                       QFont::Bold),
-                 QColor(0xFFFF00),
-                 QPoint(20, 20),
-                 0,
-                 2);
+                       QFont::Bold), QColor(0xFFFF00),
+                 QPoint(20, 20), 0, OVERLAY_INFO);
     }
     else // hide media info
-        remove(1);
+        remove(OVERLAY_INFO);
 }
 
 void OverlayHandler::showText(const QStringList &text, QFont font, QColor color, QPoint pos, int duration, int id)
@@ -110,16 +108,15 @@ void OverlayHandler::showText(const QStringList &text, QFont font, QColor color,
     label->setPixmap(QPixmap::fromImage(*canvas));
     label->show();
 
-    QTimer *timer = nullptr;
-    if(duration != 0)
+    QTimer *timer;
+    if(duration == 0)
+        timer = nullptr;
+    else
     {
         timer = new QTimer(this);
         timer->start(duration);
         connect(timer, &QTimer::timeout, // on timeout
-                [=]
-                {
-                    remove(id);
-                });
+                [=] { remove(id); });
     }
 
     // add as mpv overlay
@@ -129,7 +126,9 @@ void OverlayHandler::showText(const QStringList &text, QFont font, QColor color,
         "&"+QString::number(quintptr(canvas->bits())),
         0, canvas->width(), canvas->height());
 
-    overlays[id] = new OverlayHandler::Overlay(label, canvas, timer, this);
+    if(overlays.find(id) != overlays.end())
+        delete overlays[id];
+    overlays[id] = new Overlay(label, canvas, timer, this);
 }
 
 void OverlayHandler::remove(int id)
@@ -140,20 +139,4 @@ void OverlayHandler::remove(int id)
         delete overlays[id];
         overlays.remove(id);
     }
-}
-
-OverlayHandler::Overlay::Overlay(QLabel *label, QImage *canvas, QTimer *timer, QObject *parent):
-    QObject(parent)
-{
-    this->label = label;
-    this->canvas = canvas;
-    this->timer = timer;
-}
-
-OverlayHandler::Overlay::~Overlay()
-{
-    delete label;
-    delete canvas;
-    if(timer != nullptr)
-        delete timer;
 }

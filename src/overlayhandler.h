@@ -11,6 +11,7 @@
 #include <QLabel>
 
 class BakaEngine;
+class Overlay;
 
 class OverlayHandler : public QObject
 {
@@ -29,18 +30,6 @@ protected slots:
 
 private:
     BakaEngine *baka;
-
-    class Overlay : public QObject
-    {
-    public:
-        Overlay(QLabel *label, QImage *canvas, QTimer *timer, QObject *parent = 0);
-        ~Overlay();
-\
-    private:
-        QLabel *label;
-        QImage *canvas;
-        QTimer *timer;
-    };
 
     QHash<int, Overlay*> overlays;
 
