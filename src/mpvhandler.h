@@ -9,6 +9,8 @@
 
 #include "mpvtypes.h"
 
+class BakaEngine;
+
 class MpvHandler : public QObject
 {
 friend class BakaEngine;
@@ -99,7 +101,7 @@ public slots:
 
     void Debug(QString level);
 
-    void ShowText(QString text, int duration = 4000, int level = 1);
+    void ShowText(QString text, int duration = 4000);
 
     void LoadTracks();
     void LoadChapters();
@@ -137,7 +139,7 @@ private slots:
     void setAid(int i)                      { emit aidChanged(aid = i); }
     void setSid(int i)                      { emit sidChanged(sid = i); }
     void setSubtitleVisibility(bool b)      { emit subtitleVisibilityChanged(subtitleVisibility = b); }
-    void setMute(bool b)                    { emit muteChanged(mute = b); }
+    void setMute(bool b)                    { if(mute != b) emit muteChanged(mute = b); }
 
 signals:
     void playlistChanged(const QStringList&);
@@ -165,6 +167,7 @@ signals:
     void messageSignal(QString m);
 
 private:
+    BakaEngine *baka;
     mpv_handle *mpv = nullptr;
 
     // variables

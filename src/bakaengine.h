@@ -47,7 +47,7 @@ public:
     const QHash<QString, QPair<QString, QString>> default_input = {
         {"Ctrl++",          {"mpv add sub-scale +0.1",              tr("Increase sub size")}},
         {"Ctrl+-",          {"mpv add sub-scale -0.1",              tr("Decrease sub size")}},
-        {"Ctrl+W",          {"mpv osd-msg cycle sub-visibility",    tr("Toggle subtitle visibility")}},
+        {"Ctrl+W",          {"mpv cycle sub-visibility",            tr("Toggle subtitle visibility")}},
         {"Ctrl+R",          {"mpv set time-pos 0",                  tr("Restart playback")}},
         {"PgDown",          {"mpv add chapter +1",                  tr("Go to next chapter")}},
         {"PgUp",            {"mpv add chapter -1",                  tr("Go to previous chapter")}},
@@ -55,7 +55,7 @@ public:
         {"Left",            {"mpv seek -5",                         tr("Seek backwards by 5 sec")}},
         {"Shift+Left",      {"mpv frame_back_step",                 tr("Frame step backwards")}},
         {"Shift+Right",     {"mpv frame_step",                      tr("Frame step")}},
-        {"Ctrl+M",          {"mpv osd-msg cycle mute",              tr("Toggle mute audio")}},
+        {"Ctrl+M",          {"mute",                                tr("Toggle mute audio")}},
         {"Ctrl+T",          {"screenshot subtitles",                tr("Take screenshot with subtitles")}},
         {"Ctrl+Shift+T",    {"screenshot",                          tr("Take screenshot without subtitles")}},
         {"Ctrl+Down",       {"volume -5",                           tr("Decrease volume")}},
@@ -314,6 +314,15 @@ private:
           }
          }
         },
+        {"mute",
+         {&BakaEngine::BakaMute,
+          {
+           QString(),
+           tr("mutes the audio"),
+           QString()
+          },
+         }
+        },
         {"volume",
          {&BakaEngine::BakaVolume,
           {
@@ -409,6 +418,7 @@ private:
     void BakaPlayPause(QStringList&);
     void BakaFitWindow(QStringList&);
     void BakaAspect(QStringList&);
+    void BakaMute(QStringList&);
     void BakaVolume(QStringList&);
     void BakaSpeed(QStringList&);
     void BakaFullScreen(QStringList&);
