@@ -309,10 +309,10 @@ QString MpvHandler::LoadPlaylist(QString f)
     return f;
 }
 
-void MpvHandler::PlayFile(QString f)
+bool MpvHandler::PlayFile(QString f)
 {
     if(f == QString()) // ignore if file doesn't exist
-        return;
+        return false;
 
     if(path == QString()) // web url
     {
@@ -331,10 +331,10 @@ void MpvHandler::PlayFile(QString f)
         else
         {
             ShowText(tr("File no longer exists")); // tell the user
-            // todo: refresh the playlist?
-            Stop();
+            return false;
         }
     }
+    return true;
 }
 
 void MpvHandler::Play()

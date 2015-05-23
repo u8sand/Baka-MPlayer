@@ -58,7 +58,7 @@ protected:
 public slots:
     void LoadFile(QString);
     QString LoadPlaylist(QString);
-    void PlayFile(QString);
+    bool PlayFile(QString);
 
     void AddOverlay(int id, int x, int y, QString file, int offset, int w, int h);
     void RemoveOverlay(int id);
