@@ -1137,6 +1137,9 @@ void MainWindow::TogglePlaylist()
 
 void MainWindow::ShowPlaylist(bool visible)
 {
+    if(ui->splitter->position() != 0 && visible) // ignore showing if it's already visible as it resets original position
+        return;
+
     if(visible)
         ui->splitter->setPosition(ui->splitter->normalPosition()); // bring splitter position to normal
     else
