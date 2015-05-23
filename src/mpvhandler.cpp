@@ -617,9 +617,9 @@ void MpvHandler::Debug(QString level)
     }
 }
 
-void MpvHandler::ShowText(QString text, int duration, int level)
+void MpvHandler::ShowText(QString text, int duration)
 {
-    baka->overlay->showStatusText(text, duration, level);
+    baka->overlay->showStatusText(text, duration);
     /*
     const QByteArray tmp1 = text.toUtf8(),
                      tmp2 = QString::number(duration).toUtf8(),

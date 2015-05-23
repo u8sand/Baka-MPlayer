@@ -41,7 +41,7 @@ MainWindow::MainWindow(QWidget *parent):
         {"mpv set sub-scale 1", ui->action_Reset_Size},
         {"mpv add sub-scale +0.1", ui->action_Size},
         {"mpv add sub-scale -0.1", ui->actionS_ize},
-        {"mpv set video-aspect -1", ui->action_Auto_Detect},
+        {"mpv set video-aspect -1", ui->action_Auto_Detect}, // todo: make these baka-commands so we can output messages when they change
         {"mpv set video-aspect 16:9", ui->actionForce_16_9},
         {"mpv set video-aspect 2.35:1", ui->actionForce_2_35_1},
         {"mpv set video-aspect 4:3", ui->actionForce_4_3},

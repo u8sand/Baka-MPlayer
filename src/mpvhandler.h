@@ -101,7 +101,7 @@ public slots:
 
     void Debug(QString level);
 
-    void ShowText(QString text, int duration = 4000, int level = 1);
+    void ShowText(QString text, int duration = 4000);
 
     void LoadTracks();
     void LoadChapters();

@@ -6,8 +6,8 @@
 #include <QImage>
 #include <QPoint>
 #include <QHash>
-#include <QFontMetrics>
 #include <QFont>
+#include <QColor>
 #include <QLabel>
 
 class BakaEngine;
@@ -20,32 +20,33 @@ public:
     ~OverlayHandler();
 
 public slots:
-    void showStatusText(const QString &text, int duration = 4000, int level = 1);
+    void showStatusText(const QString &text, int duration = 4000);
     void showInfoText(bool show = true);
-
-    void showText(const QString &text, int duration, QPoint pos, int id = -1);
+    void showText(const QStringList &text, QFont font, QColor color, QPoint pos, int duration, int id = -1);
 
 protected slots:
-    void setFont(int n);
+    void remove(int id);
 
 private:
     BakaEngine *baka;
 
-    struct overlay
+    class Overlay : public QObject
     {
+    public:
+        Overlay(QLabel *label, QImage *canvas, QTimer *timer, QObject *parent = 0);
+        ~Overlay();
+\
+    private:
         QLabel *label;
         QImage *canvas;
         QTimer *timer;
     };
-    QHash<int, overlay*> overlays;
 
-    QFont overlay_font;
-    QFontMetrics overlay_fm;
+    QHash<int, Overlay*> overlays;
+
     int min_overlay,
         max_overlay,
         overlay_id;
-
-    QString info;
 };
 
 #endif // OVERLAYHANDLER_H
