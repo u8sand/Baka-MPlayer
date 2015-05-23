@@ -253,7 +253,13 @@ MainWindow::MainWindow(QWidget *parent):
                     else
                         setWindowTitle(fileInfo.media_title);
 
-                    // todo: deal with streamed input for which we do not know the length
+                    // reset speed if length isn't known and we have a streaming video
+                    // todo: don't save this reset, put their speed back when a normal video comes on
+                    // todo: disable speed alteration during streaming media
+                    if(fileInfo.length == 0)
+                        if(mpv->getSpeed() != 1)
+                            mpv->Speed(1);
+
                     ui->seekBar->setTracking(fileInfo.length);
 
                     if(ui->actionMedia_Info->isChecked())
@@ -1224,27 +1230,40 @@ void MainWindow::SetPlayButtonIcon(bool play)
 
 void MainWindow::SetRemainingLabels(int time)
 {
+    // todo: move setVisible functions outside of this function which gets called every second and somewhere at the start of a video
     const Mpv::FileInfo &fi = mpv->getFileInfo();
-    ui->durationLabel->setText(Util::FormatTime(time, fi.length));
-    if(remaining)
+    if(fi.length == 0)
     {
-        int remainingTime = fi.length - time;
-        QString text = "-" + Util::FormatTime(remainingTime, fi.length);
-        if(mpv->getSpeed() != 1)
-        {
-            double speed = mpv->getSpeed();
-            text += QString("  (-%0)").arg(Util::FormatTime(int(remainingTime/speed), int(fi.length/speed)));
-        }
-        ui->remainingLabel->setText(text);
+        ui->durationLabel->setText(Util::FormatTime(time, time));
+        ui->remainingLabel->setVisible(false);
+        ui->seperatorLabel->setVisible(false);
     }
     else
     {
-        QString text = Util::FormatTime(fi.length, fi.length);
-        if(mpv->getSpeed() != 1)
+        ui->remainingLabel->setVisible(true);
+        ui->seperatorLabel->setVisible(true);
+
+        ui->durationLabel->setText(Util::FormatTime(time, fi.length));
+        if(remaining)
         {
-            double speed = mpv->getSpeed();
-            text += QString("  (%0)").arg(Util::FormatTime(int(fi.length/speed), int(fi.length/speed)));
+            int remainingTime = fi.length - time;
+            QString text = "-" + Util::FormatTime(remainingTime, fi.length);
+            if(mpv->getSpeed() != 1)
+            {
+                double speed = mpv->getSpeed();
+                text += QString("  (-%0)").arg(Util::FormatTime(int(remainingTime/speed), int(fi.length/speed)));
+            }
+            ui->remainingLabel->setText(text);
         }
-        ui->remainingLabel->setText(text);
+        else
+        {
+            QString text = Util::FormatTime(fi.length, fi.length);
+            if(mpv->getSpeed() != 1)
+            {
+                double speed = mpv->getSpeed();
+                text += QString("  (%0)").arg(Util::FormatTime(int(fi.length/speed), int(fi.length/speed)));
+            }
+            ui->remainingLabel->setText(text);
+        }
     }
 }

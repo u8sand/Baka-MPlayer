@@ -30,7 +30,7 @@ MpvHandler::MpvHandler(int64_t wid, QObject *parent):
     mpv_set_option_string(mpv, "ytdl", "yes"); // youtube-dl support
 
     // get updates when these properties change
-    mpv_observe_property(mpv, 0, "time-pos", MPV_FORMAT_DOUBLE);
+    mpv_observe_property(mpv, 0, "playback-time", MPV_FORMAT_DOUBLE);
     mpv_observe_property(mpv, 0, "volume", MPV_FORMAT_DOUBLE);
     mpv_observe_property(mpv, 0, "sid", MPV_FORMAT_INT64);
     mpv_observe_property(mpv, 0, "aid", MPV_FORMAT_INT64);
@@ -151,7 +151,7 @@ bool MpvHandler::event(QEvent *event)
             case MPV_EVENT_PROPERTY_CHANGE:
             {
                 mpv_event_property *prop = (mpv_event_property*)event->data;
-                if(QString(prop->name) == "time-pos")
+                if(QString(prop->name) == "playback-time") // playback-time does the same thing as time-pos but works for streaming media
                 {
                     if(prop->format == MPV_FORMAT_DOUBLE)
                     {
