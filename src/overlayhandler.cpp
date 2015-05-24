@@ -17,10 +17,12 @@
 
 #define OVERLAY_INFO 62
 #define OVERLAY_STATUS 63
+#define OVERLAY_REFRESH_RATE 250
 
 OverlayHandler::OverlayHandler(QObject *parent):
     QObject(parent),
     baka(static_cast<BakaEngine*>(parent)),
+    refresh_timer(nullptr),
     min_overlay(1),
     max_overlay(60),
     overlay_id(min_overlay)
@@ -48,13 +50,27 @@ void OverlayHandler::showInfoText(bool show)
 {
     if(show) // show media info
     {
+        // todo: use a double buffer instead
+
+        if(refresh_timer == nullptr)
+        {
+            refresh_timer = new QTimer(this);
+            refresh_timer->setSingleShot(true);
+            connect(refresh_timer, &QTimer::timeout, // on timeout
+                    [=] { showInfoText(); });
+        }
+        refresh_timer->start(OVERLAY_REFRESH_RATE);
         showText(baka->mpv->getMediaInfo(),
                  QFont(Util::MonospaceFont(),
                        14, QFont::Bold), QColor(0xFFFF00),
                  QPoint(20, 20), 0, OVERLAY_INFO);
     }
     else // hide media info
+    {
+        delete refresh_timer;
+        refresh_timer = nullptr;
         remove(OVERLAY_INFO);
+    }
 }
 
 void OverlayHandler::showText(const QString &text, QFont font, QColor color, QPoint pos, int duration, int id)

@@ -61,6 +61,10 @@ QString MpvHandler::getMediaInfo()
 {
     QFileInfo fi(path+file);
 
+    double avsync=0, fps=0;
+    mpv_get_property(mpv, "avsync", MPV_FORMAT_DOUBLE, &avsync);
+    mpv_get_property(mpv, "estimated-vf-fps", MPV_FORMAT_DOUBLE, &fps);
+
     QList<QPair<QString, QString>> items = {
         {tr("Media Title"), fileInfo.media_title},
         {tr("File name"), fi.fileName()},
@@ -78,6 +82,8 @@ QString MpvHandler::getMediaInfo()
             {tr("Dimensions"), QString("%0 x %1 (%2)").arg(QString::number(fileInfo.video_params.width),
                                                            QString::number(fileInfo.video_params.height),
                                                            Util::Ratio(fileInfo.video_params.width, fileInfo.video_params.height))},
+            {tr("A/V Sync"), QString::number(avsync)},
+            {tr("Estimated FPS"), QString::number(fps)},
             {QString(), QString()}
         });
 

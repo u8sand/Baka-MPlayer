@@ -33,6 +33,7 @@ private:
 
     QHash<int, Overlay*> overlays;
 
+    QTimer *refresh_timer;
     int min_overlay,
         max_overlay,
         overlay_id;
