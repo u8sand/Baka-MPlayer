@@ -36,10 +36,9 @@ OverlayHandler::~OverlayHandler()
 void OverlayHandler::showStatusText(const QString &text, int duration)
 {
     if(text != QString() && duration != 0)
-        showText({text},
+        showText(text,
                  QFont(Util::MonospaceFont(),
-                       14,
-                       QFont::Bold), QColor(0xFFFFFF),
+                       14, QFont::Bold), QColor(0xFFFFFF),
                  QPoint(20, 20), duration, OVERLAY_STATUS);
     else
         remove(OVERLAY_STATUS);
@@ -49,19 +48,16 @@ void OverlayHandler::showInfoText(bool show)
 {
     if(show) // show media info
     {
-        QStringList text = baka->mpv->getMediaInfo().split('\n');
-        showText(text,
+        showText(baka->mpv->getMediaInfo(),
                  QFont(Util::MonospaceFont(),
-                       int(std::min(double(baka->window->ui->mpvFrame->width() / 75),
-                                    double(baka->window->ui->mpvFrame->height() / (1.55*text.length()+1)))),
-                       QFont::Bold), QColor(0xFFFF00),
+                       14, QFont::Bold), QColor(0xFFFF00),
                  QPoint(20, 20), 0, OVERLAY_INFO);
     }
     else // hide media info
         remove(OVERLAY_INFO);
 }
 
-void OverlayHandler::showText(const QStringList &text, QFont font, QColor color, QPoint pos, int duration, int id)
+void OverlayHandler::showText(const QString &text, QFont font, QColor color, QPoint pos, int duration, int id)
 {
     // increase next overlay_id
     if(id == -1) // auto id
@@ -73,17 +69,25 @@ void OverlayHandler::showText(const QStringList &text, QFont font, QColor color,
             ++overlay_id;
     }
 
-    // draw text to image
-    QPainterPath path(QPoint(0, 0));
     QFontMetrics fm(font);
-    int h = fm.height();
-    int w = 0;
+    QStringList lines = text.split('\n');
+    int w = 0,
+        h = fm.height()*lines.length();
+    for(auto line : lines)
+        w = std::max(fm.width(line), w);
+    float xF = float(baka->window->ui->mpvFrame->width()-2*pos.x()) / (float(1.1)*w); // the 1.1 was pretty much determined through trial and error; this formula isn't perfect
+    float yF = float(baka->window->ui->mpvFrame->height()-2*pos.y()) / h;
+    font.setPointSizeF(std::min(font.pointSizeF()*std::min(xF, yF), font.pointSizeF()));
+
+    fm = QFontMetrics(font);
+    h = fm.height();
+    w = 0;
+    QPainterPath path(QPoint(0, 0));
     QPoint p = QPoint(0, h);
-    for(auto element : text)
+    for(auto line : lines)
     {
-        path.addText(p, font, element);
-        if(path.currentPosition().x()+h > w)
-            w = path.currentPosition().x()+h;
+        path.addText(p, font, line);
+        w = std::max(int(1.1*path.currentPosition().x()), w);
         p += QPoint(0, h);
     }
 

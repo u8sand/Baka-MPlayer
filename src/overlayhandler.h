@@ -23,7 +23,7 @@ public:
 public slots:
     void showStatusText(const QString &text, int duration = 4000);
     void showInfoText(bool show = true);
-    void showText(const QStringList &text, QFont font, QColor color, QPoint pos, int duration, int id = -1);
+    void showText(const QString &text, QFont font, QColor color, QPoint pos, int duration, int id = -1);
 
 protected slots:
     void remove(int id);
