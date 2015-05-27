@@ -50,7 +50,8 @@ namespace Mpv
     struct VideoParams
     {
         QString codec,
-                bitrate;
+                bitrate,
+                pixelformat;
         int width = 0,
             height = 0,
             dwidth = 0,
