@@ -6,6 +6,7 @@
 #include <QListWidgetItem>
 #include <QMenu>
 #include <QFont>
+#include <QMessageBox>
 
 #include <algorithm> // for std::random_shuffle and std::sort
 
@@ -280,6 +281,35 @@ void PlaylistWidget::RemoveFromPlaylist(QListWidgetItem *item)
 void PlaylistWidget::DeleteFromDisk(QListWidgetItem *item)
 {
     playlist.removeOne(item->text());
+    QString r = item->text().left(item->text().lastIndexOf('.')+1); // get file root (no extension)
+    // check and remove all subtitle_files with the same root as the video
+    for(auto ext : Mpv::subtitle_filetypes)
+    {
+        QFile subf(r+ext.mid(2));
+        if(subf.exists() &&
+           QMessageBox::question(
+            parentWidget(),
+            tr("Delete sub-file?"),
+            tr("Would you like to delete the associated sub file [%0]?").arg(
+                subf.fileName())) == QMessageBox::Yes)
+            subf.remove();
+    }
+    // check and remove all external subtitle files in the video
+    for(auto track : baka->mpv->getFileInfo().tracks)
+    {
+        if(track.external)
+        {
+            QFile subf(track.external_filename);
+            if(subf.exists() &&
+               QMessageBox::question(
+                parentWidget(),
+                tr("Delete external sub-file?"),
+                tr("Would you like to delete the associated sub file [%0]?").arg(
+                    subf.fileName())) == QMessageBox::Yes)
+                subf.remove();
+        }
+    }
+    // remove the actual file
     QFile f(baka->mpv->getPath()+item->text());
     f.remove();
     delete item;
