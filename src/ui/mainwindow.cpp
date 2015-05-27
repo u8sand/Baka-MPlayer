@@ -978,7 +978,7 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
         QKeyEvent *keyEvent = static_cast<QKeyEvent*>(event);
         keyPressEvent(keyEvent);
     }
-    else if(obj == ui->splitter->handle(1) && event->type() == QEvent::Enter && !isPlaylistVisible())
+    else if(event->type() == QEvent::Enter && !isPlaylistVisible() && obj == ui->splitter->handle(1))
     {
         ShowPlaylist(true);
         if(autohide)

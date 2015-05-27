@@ -65,77 +65,57 @@ QString MpvHandler::getMediaInfo()
     mpv_get_property(mpv, "avsync", MPV_FORMAT_DOUBLE, &avsync);
     mpv_get_property(mpv, "estimated-vf-fps", MPV_FORMAT_DOUBLE, &fps);
 
-    QList<QPair<QString, QString>> items = {
-        {tr("Media Title"), fileInfo.media_title},
-        {tr("File name"), fi.fileName()},
-        {tr("File size"), Util::HumanSize(fi.size())},
-        {tr("Date created"), fi.created().toString()},
-        {tr("Media length"), Util::FormatTime(fileInfo.length, fileInfo.length)},
-        {QString(), QString()}
-    };
+    int vtracks = 0,
+        atracks = 0;
 
-    if(fileInfo.video_params.codec != QString())
-        items.append({
-            {tr("[Video]"), QString()},
-            {tr("Codec"), fileInfo.video_params.codec},
-            {tr("Bitrate"), fileInfo.video_params.bitrate},
-            {tr("Dimensions"), QString("%0 x %1 (%2)").arg(QString::number(fileInfo.video_params.width),
-                                                           QString::number(fileInfo.video_params.height),
-                                                           Util::Ratio(fileInfo.video_params.width, fileInfo.video_params.height))},
-            {tr("A/V Sync"), QString::number(avsync)},
-            {tr("Estimated FPS"), QString::number(fps)},
-            {QString(), QString()}
-        });
-
-    if(fileInfo.audio_params.codec != QString())
-        items.append({
-            {tr("[Audio]"), QString()},
-            {tr("Codec"), fileInfo.audio_params.codec},
-            {tr("Bitrate"), fileInfo.audio_params.bitrate},
-            {tr("Samplerate"), fileInfo.audio_params.samplerate},
-            {tr("Channels"), fileInfo.audio_params.channels},
-            {QString(), QString()}
-        });
-
-    if(fileInfo.tracks.length() > 0)
+    for(auto &track : fileInfo.tracks)
     {
-        items.append({tr("[Track List]"), QString()});
-        for(auto &track : fileInfo.tracks)
-            items.append({QString::number(track.id), QString("%0[%1:%2] %3").arg(track.title, track.type, track.lang, track.external_filename)});
-        items.append({QString(), QString()});
+        if(track.type == "video")
+            ++vtracks;
+        else if(track.type == "audio")
+            ++atracks;
     }
+
+    const QString outer = "%0: %1\n", inner = "    %0: %1\n";
+
+    QString out = outer.arg(tr("File"), fi.fileName()) +
+            inner.arg(tr("Title"), fileInfo.media_title) +
+            inner.arg(tr("File size"), Util::HumanSize(fi.size())) +
+            inner.arg(tr("Date created"), fi.created().toString()) +
+            inner.arg(tr("Media length"), Util::FormatTime(fileInfo.length, fileInfo.length)) + '\n';
+    if(fileInfo.video_params.codec != QString())
+        out += outer.arg(tr("Video (%0)").arg(QString::number(vtracks)), fileInfo.video_params.codec) +
+            inner.arg(tr("Resolution"), QString("%0 x %1 (%2)").arg(QString::number(fileInfo.video_params.width),
+                                                                    QString::number(fileInfo.video_params.height),
+                                                                    Util::Ratio(fileInfo.video_params.width, fileInfo.video_params.height))) +
+            inner.arg(tr("FPS"), QString::number(fps)) +
+            inner.arg(tr("A/V Sync"), QString::number(avsync)) +
+            inner.arg(tr("Pixel format"), fileInfo.video_params.pixelformat) +
+            inner.arg(tr("Bitrate"), tr("%0 kbps").arg(fileInfo.video_params.bitrate)) + '\n';
+    if(fileInfo.audio_params.codec != QString())
+        out += outer.arg(tr("Audio (%0)").arg(QString::number(atracks)), fileInfo.audio_params.codec) +
+            inner.arg(tr("Sample Rate"), fileInfo.audio_params.samplerate) +
+            inner.arg(tr("Channels"), fileInfo.audio_params.channels) +
+            inner.arg(tr("Bitrate"), tr("%0 kbps").arg(fileInfo.audio_params.bitrate)) + '\n';
+
     if(fileInfo.chapters.length() > 0)
     {
-        items.append({tr("[Chapter List]"), QString()});
+        out += outer.arg(tr("Chapters"), QString());
+        int n = 1;
         for(auto &chapter : fileInfo.chapters)
-            items.append({chapter.title, Util::FormatTime(chapter.time, fileInfo.length)});
-        items.append({QString(), QString()});
-    }
-    if(fileInfo.metadata.size() > 0)
-    {
-        items.append({tr("[Metadata]"), QString()});
-        for(auto data = fileInfo.metadata.begin(); data != fileInfo.metadata.end(); ++data)
-            items.append({data.key(), *data});
-        items.append({QString(), QString()});
+            out += inner.arg(QString::number(n++), chapter.title);
+        out += '\n';
     }
 
-    QString info;
-    int spacing = 0;
-    for(auto iter = items.begin(); iter != items.end(); ++iter)
+    if(fileInfo.metadata.size() > 0)
     {
-        int len = iter->first.length();
-        if(len > spacing)
-            spacing = len;
+        out += outer.arg(tr("Metadata"), QString());
+        for(auto data = fileInfo.metadata.begin(); data != fileInfo.metadata.end(); ++data)
+            out += inner.arg(data.key(), *data);
+        out += '\n';
     }
-    for(auto iter = items.begin(); iter != items.end(); ++iter)
-    {
-        int len = iter->first.length();
-        info += iter->first + (iter->second == QString() ? QString() : ": ");
-        while(len++ < spacing)
-            info += ' ';
-        info += iter->second + '\n';
-    }
-    return info;
+
+    return out;
 }
 
 bool MpvHandler::event(QEvent *event)
@@ -641,12 +621,13 @@ void MpvHandler::LoadFileInfo()
     mpv_get_property(mpv, "length", MPV_FORMAT_DOUBLE, &len);
     fileInfo.length                  = (int)len;
 
-    fileInfo.video_params.codec      = mpv_get_property_string(mpv, "video-codec");
-    fileInfo.video_params.bitrate    = mpv_get_property_string(mpv, "video-bitrate");
-    fileInfo.audio_params.codec      = mpv_get_property_string(mpv, "audio-codec");
-    fileInfo.audio_params.bitrate    = mpv_get_property_string(mpv, "audio-bitrate");
-    fileInfo.audio_params.samplerate = mpv_get_property_string(mpv, "audio-samplerate");
-    fileInfo.audio_params.channels   = mpv_get_property_string(mpv, "audio-channels");
+    fileInfo.video_params.codec       = mpv_get_property_string(mpv, "video-codec");
+    fileInfo.video_params.bitrate     = mpv_get_property_string(mpv, "video-bitrate");
+    fileInfo.video_params.pixelformat = mpv_get_property_string(mpv, "pixelformat");
+    fileInfo.audio_params.codec       = mpv_get_property_string(mpv, "audio-codec");
+    fileInfo.audio_params.bitrate     = mpv_get_property_string(mpv, "audio-bitrate");
+    fileInfo.audio_params.samplerate  = mpv_get_property_string(mpv, "audio-samplerate");
+    fileInfo.audio_params.channels    = mpv_get_property_string(mpv, "audio-channels");
 
     LoadTracks();
     LoadChapters();
