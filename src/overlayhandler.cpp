@@ -18,7 +18,7 @@
 
 #define OVERLAY_INFO 62
 #define OVERLAY_STATUS 63
-#define OVERLAY_REFRESH_RATE 250
+#define OVERLAY_REFRESH_RATE 1000
 
 OverlayHandler::OverlayHandler(QObject *parent):
     QObject(parent),
