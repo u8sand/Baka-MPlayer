@@ -9,6 +9,7 @@
 #include <QFont>
 #include <QColor>
 #include <QLabel>
+#include <QMutex>
 
 class BakaEngine;
 class Overlay;
@@ -32,6 +33,7 @@ private:
     BakaEngine *baka;
 
     QHash<int, Overlay*> overlays;
+    QMutex overlay_mutex;
 
     QTimer *refresh_timer;
     int min_overlay,

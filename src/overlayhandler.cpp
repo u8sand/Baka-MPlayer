@@ -14,6 +14,7 @@
 #include <QBrush>
 #include <QTimer>
 #include <QFontMetrics>
+#include <QThread>
 
 #define OVERLAY_INFO 62
 #define OVERLAY_STATUS 63
@@ -50,8 +51,6 @@ void OverlayHandler::showInfoText(bool show)
 {
     if(show) // show media info
     {
-        // todo: use a double buffer instead
-
         if(refresh_timer == nullptr)
         {
             refresh_timer = new QTimer(this);
@@ -118,6 +117,13 @@ void OverlayHandler::showText(const QString &text, QFont font, QColor color, QPo
     painter.setBrush(color);
     painter.drawPath(path);
 
+    // add as mpv overlay
+    baka->mpv->AddOverlay(
+        id == -1 ? overlay_id : id,
+        pos.x(), pos.y(),
+        "&"+QString::number(quintptr(canvas->bits())),
+        0, canvas->width(), canvas->height());
+
     // add over mpv as label
     QLabel *label = new QLabel(baka->window->ui->mpvFrame);
     label->setStyleSheet("background-color:rgb(0,0,0,0);background-image:url();");
@@ -139,24 +145,21 @@ void OverlayHandler::showText(const QString &text, QFont font, QColor color, QPo
                 [=] { remove(id); });
     }
 
-    // add as mpv overlay
-    baka->mpv->AddOverlay(
-        id == -1 ? overlay_id : id,
-        pos.x(), pos.y(),
-        "&"+QString::number(quintptr(canvas->bits())),
-        0, canvas->width(), canvas->height());
-
+    overlay_mutex.lock();
     if(overlays.find(id) != overlays.end())
         delete overlays[id];
     overlays[id] = new Overlay(label, canvas, timer, this);
+    overlay_mutex.unlock();
 }
 
 void OverlayHandler::remove(int id)
 {
+    overlay_mutex.lock();
     baka->mpv->RemoveOverlay(id);
     if(overlays.find(id) != overlays.end())
     {
         delete overlays[id];
         overlays.remove(id);
     }
+    overlay_mutex.unlock();
 }
