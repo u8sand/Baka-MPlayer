@@ -25,6 +25,60 @@
         <translation>Créditos</translation>
     </message>
     <message>
+        <source>mpv - video player based on MPlayer/mplayer2
+GPLv2 &lt;mpv.io&gt;
+
+Material Design icons
+Attribution 4.0 International &lt;Google&gt;
+
+Noto Sans -  font family with many supported characters
+Apache License, version 2.0 &lt;Google&gt;
+
+Retro Cassette image
+&lt;Lukas Troup&gt;
+
+Download icon
+CC BY 3.0 &lt;Sasha Mescheryakov&gt;
+
+Translations
+- Chinese &lt;amazingfate, Antares95&gt;
+- Croatian &lt;gogo&gt;
+- Dutch &lt;robin007bond&gt;
+- French &lt;chapouvalpin&gt;
+- German: &lt;yiip87&gt;
+- Italian &lt;Aloysius&gt;
+- Korean &lt;godly-devotion&gt;
+- Portuguese &lt;u8sand&gt;
+- Russian &lt;suhr&gt;
+- Spanish &lt;Alfredo Ramos&gt;</source>
+        <translation>mpv - Reproductor multimedia basado en MPlayer/mplayer2
+GPLv2 &lt;mpv.io&gt;
+
+Iconos Material Design
+Attribution 4.0 International &lt;Google&gt;
+ 
+Noto Sans - Tipografía con soporte unicode
+Apache License, version 2.0 &lt;Google&gt;
+
+Imagen Cassette retro
+&lt;Lukas Troup&gt;
+ 
+Icono de descarga
+CC BY 3.0 &lt;Sasha Mescheryakov&gt;
+ 
+Traducciones
+- Chino &lt;amazingfate, Antares95&gt;
+- Croata &lt;gogo&gt;
+- Holandés &lt;robin007bond&gt;
+- Francés &lt;chapouvalpin&gt;
+- Alemán: &lt;yiip87&gt;
+- Italiano &lt;Aloysius&gt;
+- Coreano &lt;godly-devotion&gt;
+- Portugués &lt;u8sand&gt;
+- Ruso &lt;suhr&gt;
+- Español &lt;Alfredo Ramos&gt;</translation>
+    </message>
+    <message>
         <source>License</source>
         <translation>Licencia</translation>
     </message>
@@ -50,54 +104,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <source>&amp;CLOSE</source>
         <translation>&amp;Cerrar</translation>
-    </message>
-    <message>
-        <source>mpv - video player based on MPlayer/mplayer2
-GPLv2 &lt;mpv.io&gt;
-
-Noto Sans -  font family with many supported characters
-Apache License, version 2.0 &lt;Google&gt;
-
-Retro Cassette image
-&lt;Lukas Troup&gt;
-
-Download icon
-CC BY 3.0 &lt;Sasha Mescheryakov&gt;
-
-Translations
-- Chinese &lt;amazingfate, Antares95&gt;
-- Croatian &lt;gogo&gt;
-- Dutch &lt;robin007bond&gt;
-- French &lt;chapouvalpin&gt;
-- German: &lt;yiip87&gt;
-- Italian &lt;Aloysius&gt;
-- Korean &lt;godly-devotion&gt;
-- Portuguese &lt;u8sand&gt;
-- Russian &lt;suhr&gt;
-- Spanish &lt;Alfredo Ramos&gt;</source>
-        <translation>mpv - Reproductor multimedia basado en MPlayer/mplayer2
-GPLv2 &lt;mpv.io&gt;
- 
-Noto Sans - Tipografía con soporte unicode
-Apache License, version 2.0 &lt;Google&gt;
-
-Imagen Cassette retro
-&lt;Lukas Troup&gt;
- 
-Icono de descarga
-CC BY 3.0 &lt;Sasha Mescheryakov&gt;
- 
-Traducciones
-- Chino &lt;amazingfate, Antares95&gt;
-- Croata &lt;gogo&gt;
-- Holandés &lt;robin007bond&gt;
-- Francés &lt;chapouvalpin&gt;
-- Alemán: &lt;yiip87&gt;
-- Italiano &lt;Aloysius&gt;
-- Coreano &lt;godly-devotion&gt;
-- Portugués &lt;u8sand&gt;
-- Ruso &lt;suhr&gt;
-- Español &lt;Alfredo Ramos&gt;</translation>
     </message>
 </context>
 <context>
@@ -246,6 +252,10 @@ Some features may not work and changed settings will not be saved.</source>
     <message>
         <source>Frame step</source>
         <translation>Avanzar fotograma</translation>
+    </message>
+    <message>
+        <source>Toggle mute audio</source>
+        <translation>Alternar silenciar audio</translation>
     </message>
     <message>
         <source>Take screenshot with subtitles</source>
@@ -478,6 +488,10 @@ Some features may not work and changed settings will not be saved.</source>
     <message>
         <source>fit the window</source>
         <translation>ajusta la ventana</translation>
+    </message>
+    <message>
+        <source>mutes the audio</source>
+        <translation>silencia el audio</translation>
     </message>
     <message>
         <source>[level]</source>
@@ -791,8 +805,36 @@ Some features may not work and changed settings will not be saved.</source>
         <translation>Mostrar en &amp;directorio</translation>
     </message>
     <message>
-        <source>Play &amp;Next File</source>
+        <source>Pla&amp;y Next File</source>
         <translation>Reproducir fichero &amp;siguiente</translation>
+    </message>
+    <message>
+        <source>&amp;50%</source>
+        <translation>&amp;50%</translation>
+    </message>
+    <message>
+        <source>&amp;75%</source>
+        <translation>&amp;75%</translation>
+    </message>
+    <message>
+        <source>&amp;100%</source>
+        <translation>&amp;100%</translation>
+    </message>
+    <message>
+        <source>&amp;200%</source>
+        <translation>&amp;200%</translation>
+    </message>
+    <message>
+        <source>[ &amp;none ]</source>
+        <translation>[ ningun&amp;o ]</translation>
+    </message>
+    <message>
+        <source>15&amp;0%</source>
+        <translation>15&amp;0%</translation>
+    </message>
+    <message>
+        <source>&amp;Mute</source>
+        <translation>&amp;Silenciar</translation>
     </message>
     <message>
         <source>Play &amp;Previous File</source>
@@ -887,22 +929,6 @@ Some features may not work and changed settings will not be saved.</source>
         <translation>Al tamaño &amp;actual</translation>
     </message>
     <message>
-        <source>50%</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>75%</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>100%</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>200%</source>
-        <translation></translation>
-    </message>
-    <message>
         <source>&amp;Auto Detect</source>
         <translation>&amp;Autodetectar</translation>
     </message>
@@ -921,10 +947,6 @@ Some features may not work and changed settings will not be saved.</source>
     <message>
         <source>&amp;Add Subtitle File...</source>
         <translation>Añadir fichero de &amp;subtítulos...</translation>
-    </message>
-    <message>
-        <source>[ none ]</source>
-        <translation>[ ninguno ]</translation>
     </message>
     <message>
         <source>&amp;Size +</source>
@@ -987,10 +1009,6 @@ Some features may not work and changed settings will not be saved.</source>
         <translation>&amp;Restablecer</translation>
     </message>
     <message>
-        <source>150%</source>
-        <translation></translation>
-    </message>
-    <message>
         <source>Update &amp;Streaming Support</source>
         <translation>Actualizar soporte de &amp;streaming</translation>
     </message>
@@ -1027,6 +1045,22 @@ Some features may not work and changed settings will not be saved.</source>
         <translation>Velocidad: %0x</translation>
     </message>
     <message>
+        <source>Subtitles visible</source>
+        <translation>Subtítulos visibles</translation>
+    </message>
+    <message>
+        <source>Subtitles hidden</source>
+        <translation>Subtítulos ocultos</translation>
+    </message>
+    <message>
+        <source>Muted</source>
+        <translation>Silenciado</translation>
+    </message>
+    <message>
+        <source>Unmuted</source>
+        <translation>Desilenciado</translation>
+    </message>
+    <message>
         <source>Enter the file number you want to play:
 Note: Value must be from %0 - %1</source>
         <translation>Ingresa el número de fichero que deseas reproducir:
@@ -1056,11 +1090,11 @@ Nota: El valor debe estar en el rango %0 - %1</translation>
 <context>
     <name>MpvHandler</name>
     <message>
-        <source>File name</source>
-        <translation>Nombre del fichero</translation>
+        <source>File</source>
+        <translation>Archivo</translation>
     </message>
     <message>
-        <source>Media Title</source>
+        <source>Title</source>
         <translation>Título</translation>
     </message>
     <message>
@@ -1076,44 +1110,52 @@ Nota: El valor debe estar en el rango %0 - %1</translation>
         <translation>Duración</translation>
     </message>
     <message>
-        <source>[Video]</source>
-        <translation></translation>
+        <source>Video (%0)</source>
+        <translation>Video (%0)</translation>
     </message>
     <message>
-        <source>Codec</source>
-        <translation></translation>
+        <source>Resolution</source>
+        <translation>Resolución</translation>
+    </message>
+    <message>
+        <source>FPS</source>
+        <translation>FPS</translation>
+    </message>
+    <message>
+        <source>A/V Sync</source>
+        <translation>Sincronización A/V</translation>
+    </message>
+    <message>
+        <source>Pixel format</source>
+        <translation>Formato de pixel</translation>
+    </message>
+    <message>
+        <source>%0 kbps</source>
+        <translation>%0 kbps</translation>
+    </message>
+    <message>
+        <source>Audio (%0)</source>
+        <translation>Audio (%0)</translation>
+    </message>
+    <message>
+        <source>Sample Rate</source>
+        <translation>Frecuencia de muestreo</translation>
+    </message>
+    <message>
+        <source>Chapters</source>
+        <translation>Capítulos</translation>
+    </message>
+    <message>
+        <source>Metadata</source>
+        <translation>Metadatos</translation>
     </message>
     <message>
         <source>Bitrate</source>
         <translation>Tasa de bits</translation>
     </message>
     <message>
-        <source>Dimensions</source>
-        <translation>Dimensiones</translation>
-    </message>
-    <message>
-        <source>[Audio]</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Samplerate</source>
-        <translation>Frecuencia de muestreo</translation>
-    </message>
-    <message>
         <source>Channels</source>
         <translation>Canales</translation>
-    </message>
-    <message>
-        <source>[Track List]</source>
-        <translation>[Lista de pistas]</translation>
-    </message>
-    <message>
-        <source>[Chapter List]</source>
-        <translation>[Lista de capítulos]</translation>
-    </message>
-    <message>
-        <source>[Metadata]</source>
-        <translation>[Metadatos]</translation>
     </message>
     <message>
         <source>File does not exist</source>
@@ -1130,6 +1172,18 @@ Nota: El valor debe estar en el rango %0 - %1</translation>
 </context>
 <context>
     <name>PlaylistWidget</name>
+    <message>
+        <source>Delete sub-file?</source>
+        <translation>¿Deseas eliminar el archivo de subtítulo?</translation>
+    </message>
+    <message>
+        <source>Would you like to delete the associated sub file [%0]?</source>
+        <translation>¿Deseas eliminar el archivo de subtítulo asociado [%0]?</translation>
+    </message>
+    <message>
+        <source>Delete external sub-file?</source>
+        <translation>¿Deseas eliminar el archivo de subtítulo externo?</translation>
+    </message>
     <message>
         <source>R&amp;emove from Playlist</source>
         <translation>&amp;Eliminar de la lista de reproducción</translation>
