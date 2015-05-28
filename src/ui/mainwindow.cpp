@@ -440,7 +440,7 @@ MainWindow::MainWindow(QWidget *parent):
                 switch(playState)
                 {
                 case Mpv::Loaded:
-                    baka->overlay->showStatusText("Loading...", 0);
+                    baka->mpv->ShowText("Loading...", 0);
                     break;
 
                 case Mpv::Started:
@@ -891,7 +891,7 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
         else if(!isFullScreen()) // not fullscreen
             baka->gesture->Begin(GestureHandler::MOVE, event->globalPos(), pos());
 
-        if(ui->timeLayoutWidget->rect().contains(ui->timeLayoutWidget->mapFrom(this, event->pos()))) // clicked timeLayoutWidget
+        if(ui->remainingLabel->rect().contains(ui->remainingLabel->mapFrom(this, event->pos()))) // clicked timeLayoutWidget
             setRemaining(!remaining); // todo: use a bakacommand
     }
     else if(event->button() == Qt::RightButton &&
