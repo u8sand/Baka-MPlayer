@@ -10,13 +10,13 @@ arch=('i686' 'x86_64')
 url='http://bakamplayer.u8sand.net/'
 license=('GPL2')
 
-depends=('mpv' 'qt5-x11extras' 'xdg-utils')
+depends=('mpv' 'qt5-x11extras' 'qt5-svg' 'xdg-utils')
 optdepends=(
 	'mpv-git: for bleeding-edge mpv features'
 	'qt5-translations: for Qt5 dialog translations'
 	'youtube-dl: for remote video streaming'
 )
-makedepends=('git' 'qt5-tools' 'qt5-declarative' 'qt5-svg')
+makedepends=('git' 'qt5-tools' 'qt5-declarative')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 
