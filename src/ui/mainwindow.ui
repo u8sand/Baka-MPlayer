@@ -120,12 +120,8 @@ QListView {
 	outline: none;
 }
 QListView::item {
-	alternate-background-color: #1A1A1A;
-	background: #141414;
+	background: #1A1A1A;
 	padding: 2px 0px;
-}
-QListView::item:alternate {
-    background: #1A1A1A;
 }
 QListView::item:selected {
 	background: #008098;
@@ -355,9 +351,6 @@ QScrollBar::right-arrow:horizontal {
           </property>
           <property name="dragDropMode">
            <enum>QAbstractItemView::InternalMove</enum>
-          </property>
-          <property name="alternatingRowColors">
-           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -1027,7 +1020,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>646</width>
-     <height>23</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
