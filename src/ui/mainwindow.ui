@@ -1027,7 +1027,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>646</width>
-     <height>24</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
@@ -1166,6 +1166,14 @@ QSlider::handle:horizontal {
      <addaction name="separator"/>
      <addaction name="action_Reset"/>
     </widget>
+    <widget class="QMenu" name="menu_Volume">
+     <property name="title">
+      <string>&amp;Volume</string>
+     </property>
+     <addaction name="action_Increase_Volume"/>
+     <addaction name="action_Decrease_Volume"/>
+     <addaction name="action_Mute"/>
+    </widget>
     <addaction name="action_Play"/>
     <addaction name="action_Stop"/>
     <addaction name="action_Restart"/>
@@ -1176,9 +1184,7 @@ QSlider::handle:horizontal {
     <addaction name="actionStop_after_Current"/>
     <addaction name="separator"/>
     <addaction name="menuAudio_Tracks"/>
-    <addaction name="action_Increase_Volume"/>
-    <addaction name="action_Decrease_Volume"/>
-    <addaction name="action_Mute"/>
+    <addaction name="menu_Volume"/>
    </widget>
    <widget class="QMenu" name="menu_Navigate">
     <property name="title">
