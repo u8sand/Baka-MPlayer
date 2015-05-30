@@ -35,7 +35,10 @@ void BakaEngine::Load2_0_3()
     window->setScreenshotDialog(root["screenshotDialog"].toBool(true));
     window->recent.clear();
     for(auto entry : root["recent"].toArray())
-        window->recent.append(entry.toString());
+    {
+        QJsonObject entry_json = entry.toObject();
+        window->recent.append(Recent(entry_json["path"].toString(), entry_json["title"].toString(), entry_json["time"].toInt(0)));
+    }
     window->maxRecent = root["maxRecent"].toInt(5);
     window->gestures = root["gestures"].toBool(true);
     window->setLang(root["lang"].toString("auto"));
@@ -108,14 +111,22 @@ void BakaEngine::SaveSettings()
     root["showAll"] = !window->ui->hideFilesButton->isChecked();
     root["screenshotDialog"] = window->screenshotDialog;
     root["debug"] = window->debug;
-    QJsonArray recent_json;
-    for(auto &entry : Util::FromNativeSeparators(window->recent))
-        recent_json.append(entry);
-    root["recent"] = recent_json;
     root["maxRecent"] = window->maxRecent;
     root["lang"] = window->lang;
     root["gestures"] = window->gestures;
     root["version"] = "2.0.2";
+
+    QJsonArray recent_json;
+    for(auto &entry : window->recent)
+    {
+        QJsonObject recent_sub_object_json;
+        recent_sub_object_json["path"] = QDir::fromNativeSeparators(entry.path);
+        if(entry.title != QString())
+            recent_sub_object_json["title"] = entry.title;
+        recent_sub_object_json["time"] = entry.time;
+        recent_json.append(recent_sub_object_json);
+    }
+    root["recent"] = recent_json;
 
     QJsonObject input_json;
     for(auto input_iter = input.begin(); input_iter != input.end(); ++input_iter)

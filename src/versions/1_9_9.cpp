@@ -33,7 +33,7 @@ void BakaEngine::LoadBaka1_9_9(Settings *settings)
     settings->beginGroup("mpv");
     QString lf = settings->value("mpv/lastFile");
     if(lf != QString())
-        window->recent.push_front(QDir::toNativeSeparators(lf));
+        window->recent.push_back(QDir::toNativeSeparators(lf));
     settings->endGroup();
     window->gestures = true;
     window->setLang("auto");

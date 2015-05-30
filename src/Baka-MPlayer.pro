@@ -200,7 +200,8 @@ HEADERS  += \
     ui/preferencesdialog.h \
     ui/screenshotdialog.h \
     ui/updatedialog.h \
-    ui/keydialog.h
+    ui/keydialog.h \
+    recent.h
 
 FORMS    += \
     ui/aboutdialog.ui \

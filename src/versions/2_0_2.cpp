@@ -29,7 +29,8 @@ void BakaEngine::LoadBaka2_0_2(Settings *settings)
     window->setDebug(settings->valueBool("debug", false));
     window->ui->hideFilesButton->setChecked(!settings->valueBool("showAll", true));
     window->setScreenshotDialog(settings->valueBool("screenshotDialog", true));
-    window->recent = Util::ToNativeSeparators(settings->valueQStringList("recent"));
+    for(auto &entry : Util::ToNativeSeparators(settings->valueQStringList("recent")))
+        window->recent.push_back(entry);
     window->maxRecent = settings->valueInt("maxRecent", 5);
     window->gestures = settings->valueBool("gestures", true);
     window->setLang(settings->value("lang", "auto"));
