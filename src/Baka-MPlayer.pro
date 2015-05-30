@@ -119,17 +119,17 @@ CONFIG(install_translations) {
 
 CONFIG(begin_translations) {
     isEmpty(lupdate):lupdate=lupdate
-    system($$lupdate -locations absolute $$_PRO_FILE_)
+    system($$lupdate -locations absolute -no-obsolete $$_PRO_FILE_)
 }
 
 CONFIG(update_translations) {
     isEmpty(lupdate):lupdate=lupdate
-    system($$lupdate -locations none $$_PRO_FILE_)
+    system($$lupdate -locations none -no-obsolete $$_PRO_FILE_)
 }
 
 CONFIG(release_translations) {
     isEmpty(lrelease):lrelease=lrelease
-    system($$lrelease $$_PRO_FILE_)
+    system($$lrelease -compress -nounfinished -removeidentical $$_PRO_FILE_)
 }
 
 

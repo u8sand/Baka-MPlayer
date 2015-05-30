@@ -3,28 +3,31 @@
 
 pkgname=baka-mplayer
 pkgver=2.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc='A free and open source, cross-platform, libmpv based multimedia player. Qt5 build.'
 arch=('i686' 'x86_64')
 url='http://bakamplayer.u8sand.net/'
-license=('GPL')
+license=('GPL2')
 
-depends=('mpv' 'qt5-declarative' 'qt5-svg' 'qt5-x11extras')
+depends=('mpv' 'qt5-x11extras' 'qt5-svg' 'xdg-utils')
 optdepends=(
 	'mpv-git: for bleeding-edge mpv features'
 	'qt5-translations: for Qt5 dialog translations'
 	'youtube-dl: for remote video streaming'
 )
-makedepends=('git' 'qt5-tools')
+makedepends=('qt5-tools' 'qt5-declarative')
 provides=("${pkgname}=${pkgver}")
 conflicts=("${pkgname}-git")
-replaces=("${pkgname}-git")
+
+install=${pkgname}.install
 
 source=(
 	"${pkgname}-${pkgver}.tar.gz::https://github.com/u8sand/Baka-MPlayer/archive/v${pkgver}.tar.gz"
+	"${pkgname}.install"
 )
 sha512sums=(
-	"3a134b60eca00ebe53223d6d2a12b7fa09902615d0a71522f2bb2bc6d818539ab93a46744de9fc554a4ee8b0918378cf28cd1f096136dffef37547d2fae67259"
+	'3a134b60eca00ebe53223d6d2a12b7fa09902615d0a71522f2bb2bc6d818539ab93a46744de9fc554a4ee8b0918378cf28cd1f096136dffef37547d2fae67259'
+	'd590345e9b87e4350b7420eebf8f69e4ad65a53415257573b569ed1c85568a40b4f65fc8df5925f7c03af75d340c52a10a4d1389e5d868816aef9711102ebef1'
 )
 
 prepare() {

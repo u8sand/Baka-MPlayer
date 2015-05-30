@@ -3,29 +3,32 @@
 
 _pkgname=baka-mplayer
 pkgname=${_pkgname}-git
-pkgver=2.0.2.r83.gcf0d075
-pkgrel=1
+pkgver=2.0.2.r188.g0b6ee2e
+pkgrel=2
 pkgdesc='A free and open source, cross-platform, libmpv based multimedia player. Qt5 build. Development version.'
 arch=('i686' 'x86_64')
 url='http://bakamplayer.u8sand.net/'
-license=('GPL')
+license=('GPL2')
 
-depends=('mpv' 'qt5-declarative' 'qt5-svg' 'qt5-x11extras')
+depends=('mpv' 'qt5-x11extras' 'qt5-svg' 'xdg-utils')
 optdepends=(
 	'mpv-git: for bleeding-edge mpv features'
 	'qt5-translations: for Qt5 dialog translations'
 	'youtube-dl: for remote video streaming'
 )
-makedepends=('git' 'qt5-tools')
+makedepends=('git' 'qt5-tools' 'qt5-declarative')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
-replaces=("${_pkgname}")
+
+install=${pkgname}.install
 
 source=(
 	"${_pkgname}::git+https://github.com/u8sand/Baka-MPlayer.git"
+	"${pkgname}.install"
 )
 sha512sums=(
-	"SKIP"
+	'SKIP'
+	'd590345e9b87e4350b7420eebf8f69e4ad65a53415257573b569ed1c85568a40b4f65fc8df5925f7c03af75d340c52a10a4d1389e5d868816aef9711102ebef1'
 )
 
 pkgver() {
@@ -33,7 +36,7 @@ pkgver() {
 	cd ${srcdir}/${_pkgname}
 	(
 		set -o pipefail
-		git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g' ||
+		git describe --long --tags 2>/dev/null | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g' ||
 		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	)
 }
