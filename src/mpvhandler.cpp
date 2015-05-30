@@ -61,9 +61,12 @@ QString MpvHandler::getMediaInfo()
 {
     QFileInfo fi(path+file);
 
-    double avsync=0, fps=0;
+    double avsync, fps, vbitrate, abitrate;
+
     mpv_get_property(mpv, "avsync", MPV_FORMAT_DOUBLE, &avsync);
     mpv_get_property(mpv, "estimated-vf-fps", MPV_FORMAT_DOUBLE, &fps);
+    mpv_get_property(mpv, "video-bitrate", MPV_FORMAT_DOUBLE, &vbitrate);
+    mpv_get_property(mpv, "audio-bitrate", MPV_FORMAT_DOUBLE, &abitrate);
 
     int vtracks = 0,
         atracks = 0;
@@ -90,13 +93,12 @@ QString MpvHandler::getMediaInfo()
                                                                     Util::Ratio(fileInfo.video_params.width, fileInfo.video_params.height))) +
             inner.arg(tr("FPS"), QString::number(fps)) +
             inner.arg(tr("A/V Sync"), QString::number(avsync)) +
-            inner.arg(tr("Pixel format"), fileInfo.video_params.pixelformat) +
-            inner.arg(tr("Bitrate"), tr("%0 kbps").arg(fileInfo.video_params.bitrate)) + '\n';
+            inner.arg(tr("Bitrate"), tr("%0 kbps").arg(vbitrate)) + '\n';
     if(fileInfo.audio_params.codec != QString())
         out += outer.arg(tr("Audio (%0)").arg(QString::number(atracks)), fileInfo.audio_params.codec) +
             inner.arg(tr("Sample Rate"), fileInfo.audio_params.samplerate) +
             inner.arg(tr("Channels"), fileInfo.audio_params.channels) +
-            inner.arg(tr("Bitrate"), tr("%0 kbps").arg(fileInfo.audio_params.bitrate)) + '\n';
+            inner.arg(tr("Bitrate"), tr("%0 kbps").arg(abitrate)) + '\n';
 
     if(fileInfo.chapters.length() > 0)
     {
@@ -622,10 +624,7 @@ void MpvHandler::LoadFileInfo()
     fileInfo.length                  = (int)len;
 
     fileInfo.video_params.codec       = mpv_get_property_string(mpv, "video-codec");
-    fileInfo.video_params.bitrate     = mpv_get_property_string(mpv, "video-bitrate");
-    fileInfo.video_params.pixelformat = mpv_get_property_string(mpv, "pixelformat");
     fileInfo.audio_params.codec       = mpv_get_property_string(mpv, "audio-codec");
-    fileInfo.audio_params.bitrate     = mpv_get_property_string(mpv, "audio-bitrate");
     fileInfo.audio_params.samplerate  = mpv_get_property_string(mpv, "audio-samplerate");
     fileInfo.audio_params.channels    = mpv_get_property_string(mpv, "audio-channels");
 
