@@ -87,7 +87,7 @@ QString MpvHandler::getMediaInfo()
             inner.arg(tr("Date created"), fi.created().toString()) +
             inner.arg(tr("Media length"), Util::FormatTime(fileInfo.length, fileInfo.length)) + '\n';
     if(fileInfo.video_params.codec != QString())
-        out += outer.arg(tr("Video (%0)").arg(QString::number(vtracks)), fileInfo.video_params.codec) +
+        out += outer.arg(tr("Video (x%0)").arg(QString::number(vtracks)), fileInfo.video_params.codec) +
             inner.arg(tr("Resolution"), QString("%0 x %1 (%2)").arg(QString::number(fileInfo.video_params.width),
                                                                     QString::number(fileInfo.video_params.height),
                                                                     Util::Ratio(fileInfo.video_params.width, fileInfo.video_params.height))) +
@@ -95,7 +95,7 @@ QString MpvHandler::getMediaInfo()
             inner.arg(tr("A/V Sync"), QString::number(avsync)) +
             inner.arg(tr("Bitrate"), tr("%0 kbps").arg(vbitrate)) + '\n';
     if(fileInfo.audio_params.codec != QString())
-        out += outer.arg(tr("Audio (%0)").arg(QString::number(atracks)), fileInfo.audio_params.codec) +
+        out += outer.arg(tr("Audio (x%0)").arg(QString::number(atracks)), fileInfo.audio_params.codec) +
             inner.arg(tr("Sample Rate"), fileInfo.audio_params.samplerate) +
             inner.arg(tr("Channels"), fileInfo.audio_params.channels) +
             inner.arg(tr("Bitrate"), tr("%0 kbps").arg(abitrate)) + '\n';
