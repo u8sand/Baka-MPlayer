@@ -8,13 +8,13 @@
 
 #include <QDir>
 
-void BakaEngine::Load1_9_9()
+void BakaEngine::Load1_9_9(Settings *settings)
 {
-    LoadBaka1_9_9();
-    LoadMpv1_9_9();
+    LoadBaka1_9_9(settings);
+    LoadMpv1_9_9(settings);
 }
 
-void BakaEngine::LoadBaka1_9_9()
+void BakaEngine::LoadBaka1_9_9(Settings *settings)
 {
     settings->beginGroup("window");
     window->setOnTop(settings->value("onTop", "never"));
@@ -40,7 +40,7 @@ void BakaEngine::LoadBaka1_9_9()
     window->UpdateRecentFiles();
 }
 
-void BakaEngine::LoadMpv1_9_9()
+void BakaEngine::LoadMpv1_9_9(Settings *settings)
 {
     settings->beginGroup("mpv");
     mpv->ScreenshotFormat(settings->value("screenshotFormat", "jpg"));

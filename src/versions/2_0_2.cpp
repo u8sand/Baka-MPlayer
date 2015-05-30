@@ -10,14 +10,14 @@
 #include "updatemanager.h"
 #endif
 
-void BakaEngine::Load2_0_2()
+void BakaEngine::Load2_0_2(Settings *settings)
 {
-    LoadBaka2_0_2();
-    LoadMpv2_0_0();
-    LoadInput2_0_2();
+    LoadBaka2_0_2(settings);
+    LoadMpv2_0_0(settings);
+    LoadInput2_0_2(settings);
 }
 
-void BakaEngine::LoadBaka2_0_2()
+void BakaEngine::LoadBaka2_0_2(Settings *settings)
 {
     settings->beginGroup("baka-mplayer");
     window->setOnTop(settings->value("onTop", "never"));
@@ -45,7 +45,7 @@ void BakaEngine::LoadBaka2_0_2()
     window->UpdateRecentFiles();
 }
 
-void BakaEngine::LoadInput2_0_2()
+void BakaEngine::LoadInput2_0_2(Settings *settings)
 {
     settings->beginGroup("input");
 

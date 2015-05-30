@@ -5,13 +5,13 @@
 #include "settings.h"
 #include "util.h"
 
-void BakaEngine::Load2_0_1()
+void BakaEngine::Load2_0_1(Settings *settings)
 {
-    LoadBaka2_0_1();
-    LoadMpv2_0_0();
+    LoadBaka2_0_1(settings);
+    LoadMpv2_0_0(settings);
 }
 
-void BakaEngine::LoadBaka2_0_1()
+void BakaEngine::LoadBaka2_0_1(Settings *settings)
 {
     settings->beginGroup("baka-mplayer");
     window->setOnTop(settings->value("onTop", "never"));

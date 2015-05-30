@@ -152,6 +152,7 @@ SOURCES += main.cpp\
     versions/2_0_0.cpp \
     versions/2_0_1.cpp \
     versions/2_0_2.cpp \
+    versions/2_0_3.cpp \
     widgets/customlabel.cpp \
     widgets/customlineedit.cpp \
     widgets/customslider.cpp \
@@ -179,6 +180,7 @@ HEADERS  += \
     updatemanager.h \
     gesturehandler.h \
     overlayhandler.h \
+    overlay.h \
     util.h \
     settings.h \
     widgets/customlabel.h \
@@ -198,8 +200,7 @@ HEADERS  += \
     ui/preferencesdialog.h \
     ui/screenshotdialog.h \
     ui/updatedialog.h \
-    ui/keydialog.h \
-    overlay.h
+    ui/keydialog.h
 
 FORMS    += \
     ui/aboutdialog.ui \

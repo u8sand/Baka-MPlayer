@@ -15,7 +15,7 @@ QString DownloadFileUrl();
 
 bool DimLightsSupported();
 void SetAlwaysOnTop(WId wid, bool);
-Settings *InitializeSettings(QObject *parent);
+QString SettingsLocation();
 
 bool IsValidFile(QString path);
 bool IsValidLocation(QString loc); // combined file and url

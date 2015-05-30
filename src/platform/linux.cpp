@@ -55,16 +55,14 @@ void SetAlwaysOnTop(WId wid, bool ontop)
                            SubstructureRedirectMask|SubstructureNotifyMask, &event);
 }
 
-Settings *InitializeSettings(QObject *parent)
+QString SettingsLocation()
 {
     // saves to  ~/.config/${SETTINGS_FILE}.ini
     QString s1  = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation);
     QString s2 = SETTINGS_FILE;
-    return new Settings(
-        QString("%0/%1.ini").arg(
+    return QString("%0/%1.ini").arg(
             QStandardPaths::writableLocation(QStandardPaths::ConfigLocation),
-            SETTINGS_FILE),
-        parent);
+            SETTINGS_FILE);
 }
 
 bool IsValidFile(QString path)

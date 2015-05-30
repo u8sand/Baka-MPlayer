@@ -7,13 +7,13 @@
 
 #include <QDir>
 
-void BakaEngine::Load2_0_0()
+void BakaEngine::Load2_0_0(Settings *settings)
 {
-    LoadBaka2_0_0();
-    LoadMpv2_0_0();
+    LoadBaka2_0_0(settings);
+    LoadMpv2_0_0(settings);
 }
 
-void BakaEngine::LoadBaka2_0_0()
+void BakaEngine::LoadBaka2_0_0(Settings *settings)
 {
     settings->beginGroup("baka-mplayer");
     window->setOnTop(QString(settings->value("onTop", "never")));
@@ -35,7 +35,7 @@ void BakaEngine::LoadBaka2_0_0()
     window->UpdateRecentFiles();
 }
 
-void BakaEngine::LoadMpv2_0_0()
+void BakaEngine::LoadMpv2_0_0(Settings *settings)
 {
     settings->beginGroup("mpv");
     for(Settings::SettingsGroupData::iterator entry = settings->map().begin(); entry != settings->map().end(); ++entry)
