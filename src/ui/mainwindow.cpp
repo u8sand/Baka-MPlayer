@@ -259,13 +259,21 @@ MainWindow::MainWindow(QWidget *parent):
                        maxRecent > 0)
                     {
                         UpdateRecentFiles(); // update after initialization and only if the current file is different from the first recent
-                        recent.removeAll(file);
+                        int i = recent.indexOf(file);
+                        if(i >= 0)
+                        {
+                            int t = recent.at(i).time;
+                            if(t > 0)
+                                mpv->Seek(t);
+                            recent.removeAt(i);
+                        }
                         while(recent.length() > maxRecent-1)
                             recent.removeLast();
                         recent.push_front(
                             Recent(file,
                                    (mpv->getPath() == QString() || !Util::IsValidFile(file)) ?
                                        fileInfo.media_title : QString()));
+                        current = &recent.front();
                     }
 
                     // reset speed if length isn't known and we have a streaming video
@@ -524,6 +532,13 @@ MainWindow::MainWindow(QWidget *parent):
                 pathChanged = true;
             });
 
+      connect(mpv, &MpvHandler::fileChanging,
+              [=](int t)
+              {
+                  if(current != nullptr)
+                    current->time = t;
+              });
+
 //    connect(mpv, &MpvHandler::fileChanged,
 //            [=](QString f)
 //            {
@@ -775,6 +790,8 @@ MainWindow::MainWindow(QWidget *parent):
 
 MainWindow::~MainWindow()
 {
+    if(current != nullptr)
+        current->time = mpv->getTime();
     baka->SaveSettings();
 
     // Note: child objects _should_ not need to be deleted because

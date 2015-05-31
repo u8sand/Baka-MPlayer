@@ -94,6 +94,7 @@ private:
 
     // variables
     QList<Recent> recent;
+    Recent *current = nullptr;
     QString lang,
             onTop;
     int autoFit,
