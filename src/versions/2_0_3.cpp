@@ -96,7 +96,7 @@ void BakaEngine::Load2_0_3()
 
 
 
-void BakaEngine::SaveSettings()
+void BakaEngine::SaveSettings(bool init)
 {
     QJsonObject root;
     root["onTop"] = window->onTop;
@@ -155,6 +155,14 @@ void BakaEngine::SaveSettings()
         mpv_json["screenshot-format"] = mpv->screenshotFormat;
     if(mpv->screenshotTemplate != "")
         mpv_json["screenshot-template"] = QDir::fromNativeSeparators(mpv->screenshotDir)+"/"+mpv->screenshotTemplate;
+#if defined(Q_OS_UNIX) || defined(Q_OS_LINUX)
+    if(init)
+    {
+        mpv_json["af"] = "scaletempo";
+        mpv_json["vo"] = "vdpau,opengl-hq";
+        mpv_json["hwdec"] = "auto";
+    }
+#endif
     root["mpv"] = mpv_json;
 
     // write

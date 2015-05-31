@@ -148,9 +148,6 @@ SOURCES += main.cpp\
     overlayhandler.cpp \
     util.cpp \
     settings.cpp \
-    versions/1_9_9.cpp \
-    versions/2_0_0.cpp \
-    versions/2_0_1.cpp \
     versions/2_0_2.cpp \
     versions/2_0_3.cpp \
     widgets/customlabel.cpp \

@@ -95,7 +95,7 @@ public:
 
 public slots:
     void LoadSettings();
-    void SaveSettings();
+    void SaveSettings(bool init = false);
 
     void Command(QString command);
 
@@ -108,19 +108,10 @@ protected slots:
 
     // Settings Loading
     void Load2_0_3();
+
     void Load2_0_2(Settings*);
-    void Load2_0_1(Settings*);
-    void Load2_0_0(Settings*);
-    void Load1_9_9(Settings*);
-
     void LoadBaka2_0_2(Settings*);
-    void LoadBaka2_0_1(Settings*);
-    void LoadBaka2_0_0(Settings*);
-    void LoadBaka1_9_9(Settings*);
-
     void LoadMpv2_0_0(Settings*);
-    void LoadMpv1_9_9(Settings*);
-
     void LoadInput2_0_2(Settings*);
 
 signals:

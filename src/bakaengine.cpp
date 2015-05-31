@@ -64,47 +64,25 @@ BakaEngine::~BakaEngine()
 void BakaEngine::LoadSettings()
 {
     QFile f(Util::SettingsLocation());
-    f.open(QIODevice::ReadOnly | QIODevice::Text);
-    QString l = f.readLine();
-    f.close();
-    if(l.startsWith("{"))
+    if(f.exists())
+    {
+        f.open(QIODevice::ReadOnly | QIODevice::Text);
+        QString l = f.readLine();
+        f.close();
+        if(!l.startsWith("{"))
+        {
+            Settings *settings = new Settings(Util::SettingsLocation(), this);
+            settings->Load();
+            Load2_0_2(settings);
+            delete settings;
+            SaveSettings();
+        }
         Load2_0_3();
+    }
     else
     {
-        Settings *settings = new Settings(Util::SettingsLocation(), this);
-        settings->Load();
-        QString version;
-        if(settings->isEmpty()) // empty settings
-        {
-            version = "2.0.2"; // current version
-
-            // populate initially
-    #if defined(Q_OS_LINUX) || defined(Q_OS_UNIX)
-            settings->beginGroup("mpv");
-            settings->setValue("af", "scaletempo");
-            settings->setValue("vo", "vdpau,opengl-hq");
-            settings->setValue("hwdec", "auto");
-            settings->endGroup();
-    #endif
-        }
-        else
-        {
-            settings->beginGroup("baka-mplayer");
-            version = settings->value("version", "1.9.9"); // defaults to the first version without version info in settings
-            settings->endGroup();
-        }
-
-        if(version == "2.0.2") Load2_0_2(settings);
-        else if(version == "2.0.1") { Load2_0_1(settings); settings->clear(); SaveSettings(); }
-        else if(version == "2.0.0") { Load2_0_0(settings); settings->clear(); SaveSettings(); }
-        else if(version == "1.9.9") { Load1_9_9(settings); settings->clear(); SaveSettings(); }
-        else
-        {
-            Load2_0_2(settings);
-            window->ui->action_Preferences->setEnabled(false);
-            QMessageBox::information(window, tr("Settings version not recognized"), tr("The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.\nSome features may not work and changed settings will not be saved."));
-        }
-        delete settings;
+        Load2_0_3();
+        SaveSettings(true);
     }
 }
 
