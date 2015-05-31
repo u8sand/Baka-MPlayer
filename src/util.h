@@ -3,7 +3,7 @@
 
 #include <QWidget>
 #include <QString>
-
+#include "recent.h"
 
 class Settings;
 
@@ -32,7 +32,7 @@ QString FormatRelativeTime(int time);
 QString FormatNumber(int val, int length);
 QString FormatNumberWithAmpersand(int val, int length);
 QString HumanSize(qint64);
-QString ShortenPathToParent(const QString &path);
+QString ShortenPathToParent(const Recent &recent);
 QStringList ToNativeSeparators(QStringList list);
 QStringList FromNativeSeparators(QStringList list);
 int GCD(int v, int u);

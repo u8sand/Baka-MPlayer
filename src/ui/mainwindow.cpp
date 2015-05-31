@@ -253,6 +253,21 @@ MainWindow::MainWindow(QWidget *parent):
                     else
                         setWindowTitle(fileInfo.media_title);
 
+                    QString file = mpv->getPath()+mpv->getFile();
+                    if((recent.isEmpty() || recent.front() != file) &&
+                       mpv->getFile() != QString() &&
+                       maxRecent > 0)
+                    {
+                        UpdateRecentFiles(); // update after initialization and only if the current file is different from the first recent
+                        recent.removeAll(file);
+                        while(recent.length() > maxRecent-1)
+                            recent.removeLast();
+                        recent.push_front(
+                            Recent(file,
+                                   (mpv->getPath() == QString() || !Util::IsValidFile(file)) ?
+                                       fileInfo.media_title : QString()));
+                    }
+
                     // reset speed if length isn't known and we have a streaming video
                     // todo: don't save this reset, put their speed back when a normal video comes on
                     // todo: disable speed alteration during streaming media
@@ -509,21 +524,10 @@ MainWindow::MainWindow(QWidget *parent):
                 pathChanged = true;
             });
 
-    connect(mpv, &MpvHandler::fileChanged,
-            [=](QString f)
-            {
-                QString file = mpv->getPath()+f;
-                if((recent.isEmpty() || recent.front() != file) &&
-                   f != QString() &&
-                   maxRecent > 0)
-                {
-                    UpdateRecentFiles(); // update after initialization and only if the current file is different from the first recent
-                    recent.removeAll(file);
-                    while(recent.length() > maxRecent-1)
-                        recent.removeLast();
-                    recent.push_front(file);
-                }
-            });
+//    connect(mpv, &MpvHandler::fileChanged,
+//            [=](QString f)
+//            {
+//            });
 
     connect(mpv, &MpvHandler::timeChanged,
             [=](int i)

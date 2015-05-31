@@ -123,7 +123,8 @@ void BakaEngine::SaveSettings()
         recent_sub_object_json["path"] = QDir::fromNativeSeparators(entry.path);
         if(entry.title != QString())
             recent_sub_object_json["title"] = entry.title;
-        recent_sub_object_json["time"] = entry.time;
+        if(entry.time > 0)
+            recent_sub_object_json["time"] = entry.time;
         recent_json.append(recent_sub_object_json);
     }
     root["recent"] = recent_json;

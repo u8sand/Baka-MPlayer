@@ -87,12 +87,12 @@ QString HumanSize(qint64 size)
     return QString().setNum(num,'f',2)+" "+unit;
 }
 
-QString ShortenPathToParent(const QString &path)
+QString ShortenPathToParent(const Recent &recent)
 {
-    const int long_name = 20;
-    if(!Util::IsValidLocation(path))
-        return path;
-    QString p = QDir::fromNativeSeparators(path);
+    const int long_name = 100;
+    if(recent.title != QString())
+        return QString("%0 (%1)").arg(recent.title, recent.path);
+    QString p = QDir::fromNativeSeparators(recent.path);
     int i = p.lastIndexOf('/');
     if(i != -1)
     {
@@ -122,7 +122,7 @@ QString ShortenPathToParent(const QString &path)
             return QDir::toNativeSeparators(parent+"/"+file);
         }
     }
-    return QDir::toNativeSeparators(path);
+    return QDir::toNativeSeparators(recent.path);
 }
 
 QStringList ToNativeSeparators(QStringList list)
