@@ -49,6 +49,8 @@ MainWindow::MainWindow(QWidget *parent):
         {"mpv set time-pos 0", ui->action_Restart},
         {"mpv frame_step", ui->action_Frame_Step},
         {"mpv frame_back_step", ui->actionFrame_Back_Step},
+        {"deinterlace", ui->action_Deinterlace},
+        {"interpolate", ui->action_Motion_Interpolation},
         {"mute", ui->action_Mute},
         {"screenshot subtitles", ui->actionWith_Subtitles},
         {"screenshot", ui->actionWithout_Subtitles},
@@ -253,6 +255,29 @@ MainWindow::MainWindow(QWidget *parent):
                     else
                         setWindowTitle(fileInfo.media_title);
 
+                    QString file = mpv->getPath()+mpv->getFile();
+                    if((recent.isEmpty() || recent.front() != file) &&
+                       mpv->getFile() != QString() &&
+                       maxRecent > 0)
+                    {
+                        UpdateRecentFiles(); // update after initialization and only if the current file is different from the first recent
+                        int i = recent.indexOf(file);
+                        if(i >= 0)
+                        {
+                            int t = recent.at(i).time;
+                            if(t > 0)
+                                mpv->Seek(t);
+                            recent.removeAt(i);
+                        }
+                        while(recent.length() > maxRecent-1)
+                            recent.removeLast();
+                        recent.push_front(
+                            Recent(file,
+                                   (mpv->getPath() == QString() || !Util::IsValidFile(file)) ?
+                                       fileInfo.media_title : QString()));
+                        current = &recent.front();
+                    }
+
                     // reset speed if length isn't known and we have a streaming video
                     // todo: don't save this reset, put their speed back when a normal video comes on
                     // todo: disable speed alteration during streaming media
@@ -356,6 +381,8 @@ MainWindow::MainWindow(QWidget *parent):
                         ui->menuAspect_Ratio->setEnabled(true);
                         ui->action_Frame_Step->setEnabled(true);
                         ui->actionFrame_Back_Step->setEnabled(true);
+                        ui->action_Deinterlace->setEnabled(true);
+                        ui->action_Motion_Interpolation->setEnabled(true);
                     }
                     else
                     {
@@ -375,6 +402,8 @@ MainWindow::MainWindow(QWidget *parent):
                         ui->menuAspect_Ratio->setEnabled(false);
                         ui->action_Frame_Step->setEnabled(false);
                         ui->actionFrame_Back_Step->setEnabled(false);
+                        ui->action_Deinterlace->setEnabled(false);
+                        ui->action_Motion_Interpolation->setEnabled(false);
 
                         if(baka->sysTrayIcon->isVisible() && !hidePopup)
                         {
@@ -509,21 +538,17 @@ MainWindow::MainWindow(QWidget *parent):
                 pathChanged = true;
             });
 
-    connect(mpv, &MpvHandler::fileChanged,
-            [=](QString f)
-            {
-                QString file = mpv->getPath()+f;
-                if((recent.isEmpty() || recent.front() != file) &&
-                   f != QString() &&
-                   maxRecent > 0)
-                {
-                    UpdateRecentFiles(); // update after initialization and only if the current file is different from the first recent
-                    recent.removeAll(file);
-                    while(recent.length() > maxRecent-1)
-                        recent.removeLast();
-                    recent.push_front(file);
-                }
-            });
+      connect(mpv, &MpvHandler::fileChanging,
+              [=](int t)
+              {
+                  if(current != nullptr)
+                    current->time = t;
+              });
+
+//    connect(mpv, &MpvHandler::fileChanged,
+//            [=](QString f)
+//            {
+//            });
 
     connect(mpv, &MpvHandler::timeChanged,
             [=](int i)
@@ -616,6 +641,11 @@ MainWindow::MainWindow(QWidget *parent):
                 mpv->ShowText(b ? tr("Muted") : tr("Unmuted"));
             });
 
+    connect(mpv, &MpvHandler::voChanged,
+            [=](QString vo)
+            {
+                ui->action_Motion_Interpolation->setChecked(vo.contains("interpolation"));
+            });
     // ui
 
     connect(ui->seekBar, &SeekBar::valueChanged,                        // Playback: Seekbar clicked
@@ -771,6 +801,8 @@ MainWindow::MainWindow(QWidget *parent):
 
 MainWindow::~MainWindow()
 {
+    if(current != nullptr)
+        current->time = mpv->getTime();
     baka->SaveSettings();
 
     // Note: child objects _should_ not need to be deleted because

@@ -18,6 +18,8 @@
 #include <QWinThumbnailToolButton>
 #endif
 
+#include "recent.h"
+
 namespace Ui {
 class MainWindow;
 }
@@ -91,7 +93,8 @@ private:
     QTimer          *autohide       = nullptr;
 
     // variables
-    QStringList recent;
+    QList<Recent> recent;
+    Recent *current = nullptr;
     QString lang,
             onTop;
     int autoFit,

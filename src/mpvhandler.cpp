@@ -593,6 +593,38 @@ void MpvHandler::SubtitleScale(double scale, bool relative)
     AsyncCommand(args);
 }
 
+void MpvHandler::Deinterlace(bool deinterlace)
+{
+    if(mpv)
+        mpv_set_property_string(mpv, "deinterlace", deinterlace ? "yes" : "auto");
+}
+
+void MpvHandler::Interpolate(bool interpolate)
+{
+    if(!mpv)
+        return;
+
+    if(vo == QString())
+        vo = mpv_get_property_string(mpv, "current-vo");
+    QStringList vos = vo.split(',');
+    for(auto &o : vos)
+    {
+        int i = o.indexOf(":interpolation");
+        if(interpolate && i == -1)
+            o.append(":interpolation");
+        else if(i != -1)
+            o.remove(i, QString(":interpolation").length());
+    }
+    setVo(vos.join(','));
+    SetOption("vo", vo);
+}
+
+void MpvHandler::Vo(QString o)
+{
+    setVo(o);
+    SetOption("vo", vo);
+}
+
 void MpvHandler::Debug(QString level)
 {
     if(mpv)
@@ -805,6 +837,8 @@ void MpvHandler::SetOption(QString key, QString val)
 
 void MpvHandler::OpenFile(QString f)
 {
+    emit fileChanging(time);
+
     const QByteArray tmp = f.toUtf8();
     const char *args[] = {"loadfile", tmp.constData(), NULL};
     Command(args);

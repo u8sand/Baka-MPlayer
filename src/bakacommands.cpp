@@ -490,6 +490,22 @@ void BakaEngine::FitWindow(int percent, bool msg)
         mpv->ShowText(tr("Fit Window: %0").arg(percent == 0 ? tr("To Current Size") : (QString::number(percent)+"%")));
 }
 
+void BakaEngine::BakaDeinterlace(QStringList &args)
+{
+    if(args.empty())
+        mpv->Deinterlace(window->ui->action_Deinterlace->isChecked());
+    else
+        InvalidParameter(args.join(' '));
+}
+
+void BakaEngine::BakaInterpolate(QStringList &args)
+{
+    if(args.empty())
+        mpv->Interpolate(window->ui->action_Motion_Interpolation->isChecked());
+    else
+        InvalidParameter(args.join(' '));
+}
+
 void BakaEngine::BakaMute(QStringList &args)
 {
     if(args.empty())

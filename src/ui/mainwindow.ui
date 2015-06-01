@@ -1119,6 +1119,9 @@ QSlider::handle:horizontal {
     <addaction name="menuSubtitle_Track"/>
     <addaction name="menuFont_Si_ze"/>
     <addaction name="separator"/>
+    <addaction name="action_Motion_Interpolation"/>
+    <addaction name="action_Deinterlace"/>
+    <addaction name="separator"/>
     <addaction name="actionMedia_Info"/>
    </widget>
    <widget class="QMenu" name="menu_Playback">
@@ -1641,6 +1644,31 @@ QSlider::handle:horizontal {
    </property>
    <property name="text">
     <string>&amp;Mute</string>
+   </property>
+  </action>
+  <action name="action_Motion_Interpolation">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>&amp;Motion Interpolation</string>
+   </property>
+   <property name="statusTip">
+    <string>Reduce video studder</string>
+   </property>
+  </action>
+  <action name="action_Deinterlace">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>&amp;Deinterlace</string>
    </property>
   </action>
  </widget>

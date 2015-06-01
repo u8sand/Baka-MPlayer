@@ -30,10 +30,10 @@ void SetAlwaysOnTop(WId wid, bool ontop)
                  SWP_NOSIZE | SWP_NOMOVE | SWP_SHOWWINDOW);
 }
 
-Settings *InitializeSettings(QObject *parent)
+QString SettingsLocation()
 {
     // saves to $(application directory)\${SETTINGS_FILE}.ini
-    return new Settings(QString("%0\\%1.ini").arg(QApplication::applicationDirPath(), SETTINGS_FILE), parent);
+    return QString("%0\\%1.ini").arg(QApplication::applicationDirPath(), SETTINGS_FILE);
 }
 
 bool IsValidFile(QString path)
