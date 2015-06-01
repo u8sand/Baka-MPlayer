@@ -148,7 +148,6 @@ SOURCES += main.cpp\
     overlayhandler.cpp \
     util.cpp \
     settings.cpp \
-    versions/2_0_2.cpp \
     versions/2_0_3.cpp \
     widgets/customlabel.cpp \
     widgets/customlineedit.cpp \

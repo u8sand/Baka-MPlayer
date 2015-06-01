@@ -26,6 +26,7 @@ public:
 
     MainWindow     *window;
     MpvHandler     *mpv;
+    Settings       *settings;
     GestureHandler *gesture;
     OverlayHandler *overlay;
     UpdateManager  *update;
@@ -95,7 +96,7 @@ public:
 
 public slots:
     void LoadSettings();
-    void SaveSettings(bool init = false);
+    void SaveSettings();
 
     void Command(QString command);
 
@@ -108,11 +109,6 @@ protected slots:
 
     // Settings Loading
     void Load2_0_3();
-
-    void Load2_0_2(Settings*);
-    void LoadBaka2_0_2(Settings*);
-    void LoadMpv2_0_0(Settings*);
-    void LoadInput2_0_2(Settings*);
 
 signals:
 

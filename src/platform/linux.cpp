@@ -1,4 +1,5 @@
 #include "util.h"
+#include "settings.h"
 
 #include <QRegExp>
 #include <QStandardPaths>
@@ -8,9 +9,6 @@
 
 #include <QX11Info>
 #include <X11/Xlib.h>
-
-#include "settings.h"
-
 
 namespace Util {
 

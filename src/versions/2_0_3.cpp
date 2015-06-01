@@ -20,10 +20,7 @@
 
 void BakaEngine::Load2_0_3()
 {
-    QFile f(Util::SettingsLocation());
-    f.open(QIODevice::ReadOnly | QIODevice::Text);
-    QJsonDocument json = QJsonDocument::fromJson(QString(f.readAll()).toUtf8());
-    QJsonObject root = json.object();
+    QJsonObject root = settings->getRoot();
     window->setOnTop(root["onTop"].toString("never"));
     window->setAutoFit(root["autoFit"].toInt(100));
     sysTrayIcon->setVisible(root["trayIcon"].toBool(false));
@@ -96,11 +93,9 @@ void BakaEngine::Load2_0_3()
             mpv->SetOption(key, mpv_json[key].toString());
 }
 
-
-
-void BakaEngine::SaveSettings(bool init)
+void BakaEngine::SaveSettings()
 {
-    QJsonObject root;
+    QJsonObject root = settings->getRoot();
     root["onTop"] = window->onTop;
     root["autoFit"] = window->autoFit;
     root["trayIcon"] = sysTrayIcon->isVisible();
@@ -116,7 +111,7 @@ void BakaEngine::SaveSettings(bool init)
     root["maxRecent"] = window->maxRecent;
     root["lang"] = window->lang;
     root["gestures"] = window->gestures;
-    root["version"] = "2.0.2";
+    root["version"] = "2.0.3";
 
     QJsonArray recent_json;
     for(auto &entry : window->recent)
@@ -150,7 +145,7 @@ void BakaEngine::SaveSettings(bool init)
     }
     root["input"] = input_json;
 
-    QJsonObject mpv_json;
+    QJsonObject mpv_json = root["mpv"].toObject();
     mpv_json["volume"] = mpv->volume;
     mpv_json["speed"] = mpv->speed;
     mpv_json["vo"] = mpv->vo;
@@ -158,21 +153,8 @@ void BakaEngine::SaveSettings(bool init)
         mpv_json["screenshot-format"] = mpv->screenshotFormat;
     if(mpv->screenshotTemplate != "")
         mpv_json["screenshot-template"] = QDir::fromNativeSeparators(mpv->screenshotDir)+"/"+mpv->screenshotTemplate;
-#if defined(Q_OS_UNIX) || defined(Q_OS_LINUX)
-    if(init)
-    {
-        mpv_json["af"] = "scaletempo";
-        mpv_json["vo"] = "vdpau,opengl-hq";
-        mpv_json["hwdec"] = "auto";
-    }
-#endif
     root["mpv"] = mpv_json;
 
-    // write
-    QJsonDocument json;
-    json.setObject(root);
-    QFile f(Util::SettingsLocation());
-    f.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Truncate);
-    f.write(json.toJson());
-    f.close();
+    settings->setRoot(root);
+    settings->Save();
 }

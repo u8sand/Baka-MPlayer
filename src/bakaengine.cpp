@@ -17,6 +17,7 @@ BakaEngine::BakaEngine(QObject *parent):
     QObject(parent),
     window(static_cast<MainWindow*>(parent)),
     mpv(new MpvHandler(window->ui->mpvFrame->winId(), this)),
+    settings(new Settings(Util::SettingsLocation(), this)),
     gesture(new GestureHandler(this)),
     overlay(new OverlayHandler(this)),
     update(new UpdateManager(this)),
@@ -58,32 +59,14 @@ BakaEngine::~BakaEngine()
     delete update;
     delete overlay;
     delete gesture;
+    delete settings;
     delete mpv;
 }
 
 void BakaEngine::LoadSettings()
 {
-    QFile f(Util::SettingsLocation());
-    if(f.exists())
-    {
-        f.open(QIODevice::ReadOnly | QIODevice::Text);
-        QString l = f.readLine();
-        f.close();
-        if(!l.startsWith("{"))
-        {
-            Settings *settings = new Settings(Util::SettingsLocation(), this);
-            settings->Load();
-            Load2_0_2(settings);
-            delete settings;
-            SaveSettings();
-        }
-        Load2_0_3();
-    }
-    else
-    {
-        Load2_0_3();
-        SaveSettings(true);
-    }
+    settings->Load();
+    Load2_0_3();
 }
 
 void BakaEngine::Command(QString command)

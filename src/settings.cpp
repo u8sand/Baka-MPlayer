@@ -16,23 +16,93 @@ Settings::~Settings()
 void Settings::Load()
 {
     QFile f(file);
+    if(f.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        QString l = f.readLine();
+        f.close();
+        if(l.startsWith("{"))
+        {
+            if(f.open(QIODevice::ReadOnly | QIODevice::Text))
+                document = QJsonDocument::fromJson(f.readAll());
+        }
+        else
+            LoadIni();
+    }
+}
+
+void Settings::LoadIni()
+{
+    QFile f(file);
     if(f.open(QFile::ReadOnly | QIODevice::Text))
     {
         QTextStream fin(&f);
         fin.setCodec("UTF-8");
         QString line;
         int i;
-        group = QString(); // reset the group
+        QString group;
+        QJsonObject group_obj,
+                    root = getRoot();
         do
         {
             line = fin.readLine().trimmed();
             if(line.startsWith('[') && line.endsWith(']')) // group
+            {
+                if(group != QString())
+                    root[group] = group_obj;
                 group = line.mid(1, line.length()-2); // [...] <- get ...
+                group_obj = QJsonObject();
+            }
             else if((i = ParseLine(line)) != -1) // foo=bar
-                data[group][FixKeyOnLoad(line.left(i))] = line.mid(i+1); // data[group][foo]=bar
+            {
+                QString key = FixKeyOnLoad(line.left(i)),
+                        val = line.mid(i+1);
+                bool    b = (val == "true" || val == "false");
+                bool    iok;
+                int     ival = val.toInt(&iok);
+                bool    dok;
+                double  dval = val.toDouble(&dok);
+                if(group == "baka-mplayer")
+                    root[key] = b ? QJsonValue(val=="true") : (iok ? (dok ? QJsonValue(dval) : QJsonValue(ival)) : QJsonValue(val));
+                else
+                    group_obj[key] = b ? QJsonValue(val=="true") : (iok ? (dok ? QJsonValue(dval) : QJsonValue(ival)) : QJsonValue(val));
+            }
         } while(!line.isNull());
         f.close();
-        group = QString(); // reset the group
+
+        if(group != QString())
+            root[group] = group_obj;
+
+        // fix input
+        auto input = root.find("input");
+        if(input != root.end())
+        {
+            QJsonObject input_obj = input->toObject();
+            for(auto in : input_obj)
+            {
+                QJsonArray opts;
+                for(auto &o : in.toString().split('#'))
+                    opts.append(o.trimmed());
+                in = opts;
+            }
+            root["input"] = input_obj;
+        }
+
+        // fix recent
+        auto recent = root.find("recent");
+        if(recent != root.end())
+        {
+            QStringList rec = SplitQStringList(recent->toString());
+            QJsonArray R;
+            for(auto str : rec)
+            {
+                QJsonObject r;
+                r["path"] = str;
+                R.append(r);
+            }
+            root["recent"] = R;
+        }
+
+        setRoot(root);
     }
 }
 
@@ -41,84 +111,19 @@ void Settings::Save()
     QFile f(file);
     if(f.open(QFile::WriteOnly | QFile::Truncate | QIODevice::Text))
     {
-        QTextStream fout(&f);
-        fout.setCodec("UTF-8");
-        fout.setGenerateByteOrderMark(true);
-        for(SettingsData::iterator group_iter = data.begin(); group_iter != data.end(); ++group_iter)
-        {
-            if(group_iter->empty()) // skip empty groups
-                continue;
-            fout << "[" << group_iter.key() << "]" << endl; // output: [foo]
-            for(SettingsGroupData::iterator entry_iter = group_iter->begin(); entry_iter != group_iter->end(); ++entry_iter)
-                fout << FixKeyOnSave(entry_iter.key()) << "=" << entry_iter.value() << endl;
-            if(&*group_iter != &data.last())
-                fout << endl;
-        }
+        f.write(document.toJson());
         f.close();
     }
 }
 
-QString Settings::value(QString key, QString default_value)
+QJsonObject Settings::getRoot()
 {
-    SettingsGroupData::iterator iter = data[group].find(key);
-    if(iter == data[group].end())
-        data[group][key] = default_value;
-    return data[group][key];
+    return document.object();
 }
 
-QStringList Settings::valueQStringList(QString key, QStringList default_value)
+void Settings::setRoot(QJsonObject root)
 {
-    return SplitQStringList(value(key, FixQStringListOnSave(default_value).join(",")));
-}
-
-QDate Settings::valueQDate(QString key, QDate default_value)
-{
-    return QDate::fromString(value(key, default_value.toString()));
-}
-
-bool Settings::valueBool(QString key, bool default_value)
-{
-    return !(value(key, default_value ? "true" : "false") == "false");
-}
-
-int Settings::valueInt(QString key, int default_value)
-{
-    return value(key, QString::number(default_value)).toInt();
-}
-
-double Settings::valueDouble(QString key, double default_value)
-{
-    return value(key, QString::number(default_value)).toDouble();
-}
-
-void Settings::setValue(QString key, QString val)
-{
-    data[group][key] = val;
-}
-
-void Settings::setValueQStringList(QString key, QStringList val)
-{
-    setValue(key, FixQStringListOnSave(val).join(","));
-}
-
-void Settings::setValueQDate(QString key, QDate val)
-{
-    setValue(key, val.toString());
-}
-
-void Settings::setValueBool(QString key, bool val)
-{
-    setValue(key, val ? "true" : "false");
-}
-
-void Settings::setValueInt(QString key, int val)
-{
-    setValue(key, QString::number(val));
-}
-
-void Settings::setValueDouble(QString key, double val)
-{
-    setValue(key, QString::number(val));
+    document.setObject(root);
 }
 
 int Settings::ParseLine(QString line)
@@ -133,18 +138,6 @@ int Settings::ParseLine(QString line)
     return -1;
 }
 
-QString Settings::FixKeyOnSave(QString key)
-{
-    for(int i = 0; i < key.length(); ++i)
-    {
-        // escape special chars
-        if(key[i] == '=' ||
-           key[i] == '\\')
-            key.insert(i++, '\\');
-    }
-    return key;
-}
-
 QString Settings::FixKeyOnLoad(QString key)
 {
     for(int i = 0; i < key.length(); ++i)
@@ -154,21 +147,6 @@ QString Settings::FixKeyOnLoad(QString key)
             key.remove(i, 1);
     }
     return key;
-}
-
-QStringList Settings::FixQStringListOnSave(QStringList list)
-{
-    for(auto &str : list)
-    {
-        for(int i = 0; i < str.length(); ++i)
-        {
-            // escape special chars
-            if(str[i] == ',' ||
-               str[i] == '\\')
-                str.insert(i++, '\\');
-        }
-    }
-    return list;
 }
 
 QStringList Settings::SplitQStringList(QString str)
