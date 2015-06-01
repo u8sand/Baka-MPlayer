@@ -1,0 +1,13 @@
+diff -Naur mxe/src/ffmpeg.mk "mxe (copy 1)/src/ffmpeg.mk"
+--- mxe/src/ffmpeg.mk	2015-02-22 11:38:02.912177047 -0500
++++ "mxe (copy 1)/src/ffmpeg.mk"	2015-02-22 11:38:32.248037974 -0500
+@@ -64,7 +64,8 @@
+         --enable-libvorbis \
+         --enable-libvpx \
+         --enable-libx264 \
+-        --enable-libxvid
++        --enable-libxvid \
++        --enable-dxva2
+     $(MAKE) -C '$(1)' -j '$(JOBS)'
+     $(MAKE) -C '$(1)' -j 1 install
+ endef

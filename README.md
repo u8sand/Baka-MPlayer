@@ -30,7 +30,7 @@ These instructions are for cross-compiling for Windows on a Linux system. (Note:
 	git clone -b release https://github.com/u8sand/Baka-MPlayer.git
 	cd "Baka-MPlayer"
 	mkdir build
-	cp -r etc/sbin/windows/cross-compilation/{baka-build.sh,src} build/
+	cp -r windows/cross-compilation/* build/
 	cd build
 	arch=x86_64
 	./baka-build.sh $arch
@@ -50,7 +50,7 @@ We've made scripts for some of the distributions... See `etc/sbin/linux/`
 	git clone -b release https://github.com/u8sand/Baka-MPlayer.git
 	cd "Baka-MPlayer"
 	mkdir build
-	cp -r etc/sbin/linux/* build/
+	cp -r linux/* build/
 	cd build
 	distro=debian_based
 	./$distro.sh

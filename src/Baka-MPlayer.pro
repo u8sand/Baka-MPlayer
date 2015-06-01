@@ -76,8 +76,8 @@ translations.path = $$INSTROOT$$BAKADIR/translations
 logo.files = ../etc/logo/baka-mplayer.svg
 icon.files = ../etc/logo/baka-mplayer.svg
 desktop.files = ../etc/baka-mplayer.desktop
-manual.files = ../etc/doc/baka-mplayer.md
-man.files = ../etc/doc/baka-mplayer.1.gz
+manual.files = ../DOCS/baka-mplayer.md
+man.files = ../DOCS/baka-mplayer.1.gz
 license.files = ../LICENSE
 
 INSTALLS += target icon logo desktop manual man license
