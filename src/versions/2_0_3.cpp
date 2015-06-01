@@ -73,6 +73,8 @@ void BakaEngine::Load2_0_3()
     mpv_json.remove("volume");
     mpv->Speed(mpv_json["speed"].toDouble(1.0));
     mpv_json.remove("speed");
+    mpv->Vo(mpv_json["vo"].toString());
+    mpv_json.remove("vo");
     QString temp = mpv_json["screenshot-template"].toString();
     if(!temp.isEmpty()) // default screenshot template
     {
@@ -151,6 +153,7 @@ void BakaEngine::SaveSettings(bool init)
     QJsonObject mpv_json;
     mpv_json["volume"] = mpv->volume;
     mpv_json["speed"] = mpv->speed;
+    mpv_json["vo"] = mpv->vo;
     if(mpv->screenshotFormat != "")
         mpv_json["screenshot-format"] = mpv->screenshotFormat;
     if(mpv->screenshotTemplate != "")

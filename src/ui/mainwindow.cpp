@@ -49,6 +49,8 @@ MainWindow::MainWindow(QWidget *parent):
         {"mpv set time-pos 0", ui->action_Restart},
         {"mpv frame_step", ui->action_Frame_Step},
         {"mpv frame_back_step", ui->actionFrame_Back_Step},
+        {"deinterlace", ui->action_Deinterlace},
+        {"interpolate", ui->action_Motion_Interpolation},
         {"mute", ui->action_Mute},
         {"screenshot subtitles", ui->actionWith_Subtitles},
         {"screenshot", ui->actionWithout_Subtitles},
@@ -379,6 +381,8 @@ MainWindow::MainWindow(QWidget *parent):
                         ui->menuAspect_Ratio->setEnabled(true);
                         ui->action_Frame_Step->setEnabled(true);
                         ui->actionFrame_Back_Step->setEnabled(true);
+                        ui->action_Deinterlace->setEnabled(true);
+                        ui->action_Motion_Interpolation->setEnabled(true);
                     }
                     else
                     {
@@ -398,6 +402,8 @@ MainWindow::MainWindow(QWidget *parent):
                         ui->menuAspect_Ratio->setEnabled(false);
                         ui->action_Frame_Step->setEnabled(false);
                         ui->actionFrame_Back_Step->setEnabled(false);
+                        ui->action_Deinterlace->setEnabled(false);
+                        ui->action_Motion_Interpolation->setEnabled(false);
 
                         if(baka->sysTrayIcon->isVisible() && !hidePopup)
                         {
@@ -635,6 +641,11 @@ MainWindow::MainWindow(QWidget *parent):
                 mpv->ShowText(b ? tr("Muted") : tr("Unmuted"));
             });
 
+    connect(mpv, &MpvHandler::voChanged,
+            [=](QString vo)
+            {
+                ui->action_Motion_Interpolation->setChecked(vo.contains("interpolation"));
+            });
     // ui
 
     connect(ui->seekBar, &SeekBar::valueChanged,                        // Playback: Seekbar clicked

@@ -38,6 +38,7 @@ public:
         else
             return screenshotDir;
     }
+    QString getVo()                         { return vo; }
     double getSpeed()                       { return speed; }
     int getTime()                           { return time; }
     int getVolume()                         { return volume; }
@@ -99,6 +100,10 @@ public slots:
     void ShowSubtitles(bool);
     void SubtitleScale(double scale, bool relative = false);
 
+    void Deinterlace(bool);
+    void Interpolate(bool);
+    void Vo(QString);
+
     void Debug(QString level);
 
     void ShowText(QString text, int duration = 4000);
@@ -131,6 +136,7 @@ private slots:
     void setScreenshotFormat(QString s)     { emit screenshotFormatChanged(screenshotFormat = s); }
     void setScreenshotTemplate(QString s)   { emit screenshotTemplateChanged(screenshotTemplate = s); }
     void setScreenshotDir(QString s)        { emit screenshotDirChanged(screenshotDir = s); }
+    void setVo(QString s)                   { emit voChanged(vo = s); }
     void setSpeed(double d)                 { emit speedChanged(speed = d); }
     void setTime(int i)                     { emit timeChanged(time = i); }
     void setVolume(int i)                   { emit volumeChanged(volume = i); }
@@ -154,6 +160,7 @@ signals:
     void screenshotFormatChanged(QString);
     void screenshotTemplateChanged(QString);
     void screenshotDirChanged(QString);
+    void voChanged(QString);
     void speedChanged(double);
     void timeChanged(int);
     void volumeChanged(int);
@@ -179,7 +186,8 @@ private:
                 screenshotFormat,
                 screenshotTemplate,
                 screenshotDir,
-                suffix;
+                suffix,
+                vo;
     double      speed = 1;
     int         time = 0,
                 lastTime = 0,

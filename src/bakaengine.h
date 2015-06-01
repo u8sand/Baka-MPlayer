@@ -305,6 +305,24 @@ private:
           }
          }
         },
+        {"deinterlace",
+         {&BakaEngine::BakaDeinterlace,
+          {
+           QString(),
+           tr("toggle deinterlace"),
+           QString()
+          }
+         }
+        },
+        {"interpolate",
+         {&BakaEngine::BakaInterpolate,
+          {
+           QString(),
+           tr("toggle motion interpolation"),
+           QString()
+          }
+         }
+        },
         {"mute",
          {&BakaEngine::BakaMute,
           {
@@ -409,6 +427,8 @@ private:
     void BakaPlayPause(QStringList&);
     void BakaFitWindow(QStringList&);
     void BakaAspect(QStringList&);
+    void BakaDeinterlace(QStringList&);
+    void BakaInterpolate(QStringList&);
     void BakaMute(QStringList&);
     void BakaVolume(QStringList&);
     void BakaSpeed(QStringList&);
