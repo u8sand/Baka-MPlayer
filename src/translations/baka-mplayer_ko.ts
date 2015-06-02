@@ -16,6 +16,60 @@
         <translation>Baka MPlayer 0.0.0</translation>
     </message>
     <message>
+        <source>mpv - video player based on MPlayer/mplayer2
+GPLv2 &lt;mpv.io&gt;
+
+Material Design icons
+Attribution 4.0 International &lt;Google&gt;
+
+Noto Sans -  font family with many supported characters
+Apache License, version 2.0 &lt;Google&gt;
+
+Retro Cassette image
+&lt;Lukas Troup&gt;
+
+Download icon
+CC BY 3.0 &lt;Sasha Mescheryakov&gt;
+
+Translations
+- Chinese &lt;amazingfate, Antares95&gt;
+- Croatian &lt;gogo&gt;
+- Dutch &lt;robin007bond&gt;
+- French &lt;chapouvalpin&gt;
+- German: &lt;yiip87&gt;
+- Italian &lt;Aloysius&gt;
+- Korean &lt;godly-devotion&gt;
+- Portuguese &lt;u8sand&gt;
+- Russian &lt;suhr&gt;
+- Spanish &lt;Alfredo Ramos&gt;</source>
+        <translation>mpv - video player based on MPlayer/mplayer2
+GPLv2 &lt;mpv.io&gt;
+
+Material Design icons
+Attribution 4.0 International &lt;Google&gt;
+
+Noto Sans -  font family with many supported characters
+Apache License, version 2.0 &lt;Google&gt;
+
+Retro Cassette image
+&lt;Lukas Troup&gt;
+
+Download icon
+CC BY 3.0 &lt;Sasha Mescheryakov&gt;
+
+Translations
+- Chinese &lt;amazingfate, Antares95&gt;
+- Croatian &lt;gogo&gt;
+- Dutch &lt;robin007bond&gt;
+- French &lt;chapouvalpin&gt;
+- German: &lt;yiip87&gt;
+- Italian &lt;Aloysius&gt;
+- Korean &lt;godly-devotion&gt;
+- Portuguese &lt;u8sand&gt;
+- Russian &lt;suhr&gt;
+- Spanish &lt;Alfredo Ramos&gt;</translation>
+    </message>
+    <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2014 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2014 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -131,39 +185,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2015 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2015 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message>
-        <source>mpv - video player based on MPlayer/mplayer2
-GPLv2 &lt;mpv.io&gt;
-
-Noto Sans -  font family with many supported characters
-Apache License, version 2.0 &lt;Google&gt;
-
-Download icon
-CC BY 3.0 &lt;Sasha Mescheryakov&gt;
-
-Translations
-- Chinese &lt;amazingfate, Antares95&gt;
-- Croatian &lt;gogo&gt;
-- Dutch &lt;robin007bond&gt;
-- Italian &lt;Aloysius&gt;
-- Korean &lt;godly-devotion&gt;
-- Portuguese &lt;u8sand&gt;
-- Russian &lt;suhr&gt;
-- Spanish &lt;Alfredo Ramos&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>BakaEngine</name>
-    <message>
-        <source>Settings version not recognized</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.
-Some features may not work and changed settings will not be saved.</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>screenshot%#04n</source>
         <translation type="obsolete">screenshot%#04n</translation>
@@ -249,14 +273,6 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Increase playback speed by 25%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Decrease playback speed by 25%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Go to next chapter</source>
         <translation type="unfinished"></translation>
     </message>
@@ -273,11 +289,23 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Toggle mute audio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Decrease volume</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Increase volume</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Increase playback speed by 10%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Decrease playback speed by 10%</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -414,15 +442,15 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>All Files</source>
-        <translation type="unfinished"></translation>
+        <translation>모든 파일</translation>
     </message>
     <message>
         <source>To Current Size</source>
-        <translation type="unfinished"></translation>
+        <translation>현재 크기로</translation>
     </message>
     <message>
         <source>Speed: %0x</source>
-        <translation type="unfinished">속도: %0x</translation>
+        <translation>속도: %0x</translation>
     </message>
     <message>
         <source>usage: baka &lt;command&gt; [...]</source>
@@ -486,7 +514,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>[subs]</source>
-        <translation type="unfinished"></translation>
+        <translation>[자막]</translation>
     </message>
     <message>
         <source>take a screenshot (with subtitles if specified)</source>
@@ -502,7 +530,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>[...]</source>
-        <translation type="unfinished"></translation>
+        <translation>[...]</translation>
     </message>
     <message>
         <source>playlist options</source>
@@ -534,7 +562,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>[file]</source>
-        <translation type="unfinished"></translation>
+        <translation>[파일]</translation>
     </message>
     <message>
         <source>opens the open file dialog or the file specified</source>
@@ -546,15 +574,27 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>[percent]</source>
-        <translation type="unfinished"></translation>
+        <translation>[퍼센트]</translation>
     </message>
     <message>
         <source>fit the window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>[level]</source>
+        <source>toggle deinterlace</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>toggle motion interpolation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>mutes the audio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>[level]</source>
+        <translation>[정도]</translation>
     </message>
     <message>
         <source>adjusts the volume</source>
@@ -562,7 +602,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>[ratio]</source>
-        <translation type="unfinished"></translation>
+        <translation>[비율]</translation>
     </message>
     <message>
         <source>adjusts the speed</source>
@@ -578,7 +618,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>[command]</source>
-        <translation type="unfinished"></translation>
+        <translation>[명령]</translation>
     </message>
     <message>
         <source>internal help menu</source>
@@ -586,7 +626,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>[qt]</source>
-        <translation type="unfinished"></translation>
+        <translation>[qt]</translation>
     </message>
     <message>
         <source>open about dialog</source>
@@ -670,11 +710,27 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Command</source>
-        <translation>명령</translation>
+        <translation type="vanished">명령</translation>
     </message>
     <message>
         <source>Label (optional)</source>
-        <translation>레이블 (옵셔널)</translation>
+        <translation type="vanished">레이블 (옵셔널)</translation>
+    </message>
+    <message>
+        <source>(optional)</source>
+        <translation>(옵셔널)</translation>
+    </message>
+    <message>
+        <source>Shortcut:</source>
+        <translation>단축키:</translation>
+    </message>
+    <message>
+        <source>Command:</source>
+        <translation>명령:</translation>
+    </message>
+    <message>
+        <source>Label:</source>
+        <translation>레이블:</translation>
     </message>
     <message>
         <source>C&amp;LEAR SHORTCUT</source>
@@ -827,6 +883,10 @@ Some features may not work and changed settings will not be saved.</source>
         <translation>속도(&amp;P)</translation>
     </message>
     <message>
+        <source>&amp;Volume</source>
+        <translation>볼륨(&amp;V)</translation>
+    </message>
+    <message>
         <source>&amp;Navigate</source>
         <translation>이동(&amp;N)</translation>
     </message>
@@ -847,12 +907,56 @@ Some features may not work and changed settings will not be saved.</source>
         <translation>주소 열기(&amp;L)...</translation>
     </message>
     <message>
+        <source>Pla&amp;y Next File</source>
+        <translation>다음 파일 열기(&amp;Y)</translation>
+    </message>
+    <message>
+        <source>15&amp;0%</source>
+        <translation>15&amp;0%</translation>
+    </message>
+    <message>
+        <source>&amp;Mute</source>
+        <translation>음소거(&amp;M)</translation>
+    </message>
+    <message>
+        <source>&amp;Motion Interpolation</source>
+        <translation>비디오 모션 스무딩(&amp;M)</translation>
+    </message>
+    <message>
+        <source>Reduce video studder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Deinterlace</source>
+        <translation>디인터레이스(&amp;D)</translation>
+    </message>
+    <message>
         <source>Alt+6</source>
         <translation type="obsolete">Alt+6</translation>
     </message>
     <message>
         <source>E&amp;xit</source>
         <translation>끝내기(&amp;X)</translation>
+    </message>
+    <message>
+        <source>&amp;50%</source>
+        <translation>&amp;50%</translation>
+    </message>
+    <message>
+        <source>&amp;75%</source>
+        <translation>&amp;75%</translation>
+    </message>
+    <message>
+        <source>&amp;100%</source>
+        <translation>&amp;100%</translation>
+    </message>
+    <message>
+        <source>&amp;200%</source>
+        <translation>&amp;200%</translation>
+    </message>
+    <message>
+        <source>[ &amp;none ]</source>
+        <translation>[ 없음 ]</translation>
     </message>
     <message>
         <source>Show &amp;Command Line</source>
@@ -900,7 +1004,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Play &amp;Next File</source>
-        <translation>다음 파일 열기(&amp;N)</translation>
+        <translation type="vanished">다음 파일 열기(&amp;N)</translation>
     </message>
     <message>
         <source>Ctrl+Right</source>
@@ -1064,7 +1168,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>50%</source>
-        <translation>50%</translation>
+        <translation type="vanished">50%</translation>
     </message>
     <message>
         <source>Alt+2</source>
@@ -1072,7 +1176,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>75%</source>
-        <translation>75%</translation>
+        <translation type="vanished">75%</translation>
     </message>
     <message>
         <source>Alt+3</source>
@@ -1080,7 +1184,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>100%</source>
-        <translation>100%</translation>
+        <translation type="vanished">100%</translation>
     </message>
     <message>
         <source>Alt+4</source>
@@ -1088,11 +1192,11 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>200%</source>
-        <translation>200%</translation>
+        <translation type="vanished">200%</translation>
     </message>
     <message>
         <source>150%</source>
-        <translation>150%</translation>
+        <translation type="vanished">150%</translation>
     </message>
     <message>
         <source>Alt+5</source>
@@ -1120,7 +1224,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>[ none ]</source>
-        <translation>[ 없음 ]</translation>
+        <translation type="vanished">[ 없음 ]</translation>
     </message>
     <message>
         <source>&amp;Size +</source>
@@ -1237,6 +1341,22 @@ Some features may not work and changed settings will not be saved.</source>
     <message>
         <source>Audio</source>
         <translation>오디오</translation>
+    </message>
+    <message>
+        <source>Subtitles visible</source>
+        <translation>자막 보임</translation>
+    </message>
+    <message>
+        <source>Subtitles hidden</source>
+        <translation>자막 숨김</translation>
+    </message>
+    <message>
+        <source>Muted</source>
+        <translation>음소거</translation>
+    </message>
+    <message>
+        <source>Unmuted</source>
+        <translation>음소거 해제</translation>
     </message>
     <message>
         <source>&amp;Pause</source>
@@ -1373,76 +1493,96 @@ Note: Value must be from %0 - %1</source>
         <translation type="vanished">mpv가 실행 되지 않았습니다</translation>
     </message>
     <message>
-        <source>File name</source>
-        <translation type="unfinished"></translation>
+        <source>File</source>
+        <translation>파일</translation>
     </message>
     <message>
-        <source>Media Title</source>
-        <translation type="unfinished"></translation>
+        <source>Title</source>
+        <translation>타이틀</translation>
     </message>
     <message>
         <source>File size</source>
-        <translation type="unfinished"></translation>
+        <translation>파일 크기</translation>
     </message>
     <message>
         <source>Date created</source>
-        <translation type="unfinished"></translation>
+        <translation>만든 날짜</translation>
     </message>
     <message>
         <source>Media length</source>
-        <translation type="unfinished"></translation>
+        <translation>전체 시간</translation>
     </message>
     <message>
-        <source>[Video]</source>
-        <translation type="unfinished"></translation>
+        <source>Video (x%0)</source>
+        <translation>비디오 (x%0)</translation>
     </message>
     <message>
-        <source>[Audio]</source>
-        <translation type="unfinished"></translation>
+        <source>Resolution</source>
+        <translation>해상도</translation>
     </message>
     <message>
-        <source>[Track List]</source>
-        <translation type="unfinished"></translation>
+        <source>FPS</source>
+        <translation>초당 프레임 수</translation>
     </message>
     <message>
-        <source>[Chapter List]</source>
-        <translation type="unfinished"></translation>
+        <source>A/V Sync</source>
+        <translation>오디오/비디오 싱크</translation>
     </message>
     <message>
-        <source>Codec</source>
-        <translation type="unfinished"></translation>
+        <source>%0 kbps</source>
+        <translation>%0 kbps</translation>
+    </message>
+    <message>
+        <source>Audio (x%0)</source>
+        <translation>오디오 (x%0)</translation>
+    </message>
+    <message>
+        <source>Sample Rate</source>
+        <translation>샘플레이트</translation>
+    </message>
+    <message>
+        <source>Chapters</source>
+        <translation>챕터</translation>
+    </message>
+    <message>
+        <source>Metadata</source>
+        <translation>메타데이터</translation>
+    </message>
+    <message>
+        <source>Volume: %0%</source>
+        <translation>볼륨: %0%</translation>
     </message>
     <message>
         <source>Bitrate</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Dimensions</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Samplerate</source>
-        <translation type="unfinished"></translation>
+        <translation>비트레이트</translation>
     </message>
     <message>
         <source>Channels</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>[Metadata]</source>
-        <translation type="unfinished"></translation>
+        <translation>채널</translation>
     </message>
     <message>
         <source>File does not exist</source>
-        <translation type="unfinished"></translation>
+        <translation>파일이 존재하지 않습니다</translation>
     </message>
     <message>
         <source>File no longer exists</source>
-        <translation type="unfinished"></translation>
+        <translation>파일이 존재하지 않습니다</translation>
     </message>
 </context>
 <context>
     <name>PlaylistWidget</name>
+    <message>
+        <source>Delete sub-file?</source>
+        <translation>자막 파일 지움?</translation>
+    </message>
+    <message>
+        <source>Would you like to delete the associated sub file [%0]?</source>
+        <translation>관련된 자막 파일 [%0] 도 같이 지울까요?</translation>
+    </message>
+    <message>
+        <source>Delete external sub-file?</source>
+        <translation>자막 파일 지움?</translation>
+    </message>
     <message>
         <source>R&amp;emove from Playlist</source>
         <translation>선택 제거하기(&amp;R)</translation>
@@ -1497,6 +1637,18 @@ Note: Value must be from %0 - %1</source>
     <message>
         <source>Language:</source>
         <translation>언어 선택:</translation>
+    </message>
+    <message>
+        <source>Key Bindings</source>
+        <translation>키보드 단축키</translation>
+    </message>
+    <message>
+        <source>Hint: Prefix a command with &apos;mpv&apos; to make it run as an input command.</source>
+        <translation>암시: 입력 명령으로 실행하기 위해서는 명령 앞에 &apos;mpv&apos;를 쓰세요.</translation>
+    </message>
+    <message>
+        <source>RESE&amp;T ALL</source>
+        <translation>모두 초기화(&amp;T)</translation>
     </message>
     <message>
         <source>Video</source>
@@ -1580,7 +1732,7 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>Keys</source>
-        <translation>키보드 단축키</translation>
+        <translation type="vanished">키보드 단축키</translation>
     </message>
     <message>
         <source>Key</source>
@@ -1608,15 +1760,23 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>RESE&amp;T</source>
-        <translation>초기화(&amp;T)</translation>
+        <translation type="vanished">초기화(&amp;T)</translation>
     </message>
     <message>
         <source>Reset Keybinding</source>
-        <translation>단축키 초기화</translation>
+        <translation type="vanished">단축키 초기화</translation>
     </message>
     <message>
         <source>Are you sure you want to reset the shortcut keys to original bindings?</source>
-        <translation>단축키의 기능을 초기화 할까요?</translation>
+        <translation type="vanished">단축키의 기능을 초기화 할까요?</translation>
+    </message>
+    <message>
+        <source>Reset All Key Bindings?</source>
+        <translation>단축키를 초기화?</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to reset all shortcut keys to its original bindings?</source>
+        <translation>모든 단축키들의 기능을 초기화 할까요?</translation>
     </message>
     <message>
         <source>Existing keybinding</source>
@@ -1628,19 +1788,15 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>A&amp;lways</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Note: Prefix a command with &apos;mpv&apos; to make it run as an input command.</source>
-        <translation type="unfinished"></translation>
+        <translation>항상(&amp;L)</translation>
     </message>
     <message>
         <source>&amp;OK</source>
-        <translation type="unfinished">확인(&amp;O)</translation>
+        <translation>확인(&amp;O)</translation>
     </message>
     <message>
         <source>&amp;CANCEL</source>
-        <translation type="unfinished">취소(&amp;C)</translation>
+        <translation>취소(&amp;C)</translation>
     </message>
 </context>
 <context>
@@ -1779,7 +1935,7 @@ Version: %0</source>
     </message>
     <message>
         <source>Updating...</source>
-        <translation type="unfinished"></translation>
+        <translation>업데이트중...</translation>
     </message>
     <message>
         <source>Done. Restarting...
@@ -1789,11 +1945,11 @@ Version: %0</source>
     </message>
     <message>
         <source>Checking for updates...</source>
-        <translation type="unfinished"></translation>
+        <translation>업데이트 확인중...</translation>
     </message>
     <message>
         <source>Downloading update...</source>
-        <translation type="unfinished">업데이트를 다운로드중...</translation>
+        <translation>업데이트를 다운로드중...</translation>
     </message>
     <message>
         <source>write error</source>
@@ -1801,7 +1957,7 @@ Version: %0</source>
     </message>
     <message>
         <source>Download complete</source>
-        <translation type="unfinished"></translation>
+        <translation>다운로드 완료</translation>
     </message>
     <message>
         <source>Redirected...</source>
@@ -1809,7 +1965,7 @@ Version: %0</source>
     </message>
     <message>
         <source>Extracting...</source>
-        <translation type="unfinished"></translation>
+        <translation>압축 해제중...</translation>
     </message>
     <message>
         <source>Creating updater script...</source>
@@ -1817,7 +1973,7 @@ Version: %0</source>
     </message>
     <message>
         <source>Done. Restarting...</source>
-        <translation type="unfinished"></translation>
+        <translation>완료됨. 다시 시작중...</translation>
     </message>
 </context>
 </TS>
