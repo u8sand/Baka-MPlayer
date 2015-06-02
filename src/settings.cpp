@@ -73,10 +73,9 @@ void Settings::LoadIni()
             root[group] = group_obj;
 
         // fix input
-        auto input = root.find("input");
-        if(input != root.end())
+        if(root.find("input") != root.end())
         {
-            QJsonObject input_obj = input->toObject();
+            QJsonObject input_obj = root["input"].toObject();
             for(auto in : input_obj)
             {
                 QJsonArray opts;
@@ -88,12 +87,11 @@ void Settings::LoadIni()
         }
 
         // fix recent
-        auto recent = root.find("recent");
-        if(recent != root.end())
+        if(root.find("recent") != root.end())
         {
-            QStringList rec = SplitQStringList(recent->toString());
+            QStringList recent = SplitQStringList(root["recent"].toString());
             QJsonArray R;
-            for(auto str : rec)
+            for(auto str : recent)
             {
                 QJsonObject r;
                 r["path"] = str;
