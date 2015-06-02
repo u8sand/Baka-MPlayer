@@ -9,12 +9,12 @@
         <translation>关于 Baka MPlayer</translation>
     </message>
     <message>
-        <location filename="../ui/aboutdialog.ui" line="120"/>
+        <location filename="../ui/aboutdialog.ui" line="133"/>
         <source>About</source>
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="../ui/aboutdialog.ui" line="173"/>
+        <location filename="../ui/aboutdialog.ui" line="186"/>
         <source>Baka MPlayer 0.0.0</source>
         <translation>Baka MPlayer 0.0.0</translation>
     </message>
@@ -23,17 +23,47 @@
         <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; 是一个基于 &lt;b&gt;libmpv&lt;/b&gt; 的自由开源跨平台的多媒体播放器。简单的设计致力于为观看视频提供一个整洁，简单，愉快的环境。&lt;br&gt;&lt;br&gt;Copyright © 2014 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/aboutdialog.ui" line="197"/>
+        <location filename="../ui/aboutdialog.ui" line="210"/>
         <source>Credits</source>
         <translation>贡献名单</translation>
     </message>
     <message>
-        <location filename="../ui/aboutdialog.ui" line="246"/>
+        <location filename="../ui/aboutdialog.ui" line="234"/>
+        <source>mpv - video player based on MPlayer/mplayer2
+GPLv2 &lt;mpv.io&gt;
+
+Material Design icons
+Attribution 4.0 International &lt;Google&gt;
+
+Noto Sans -  font family with many supported characters
+Apache License, version 2.0 &lt;Google&gt;
+
+Retro Cassette image
+&lt;Lukas Troup&gt;
+
+Download icon
+CC BY 3.0 &lt;Sasha Mescheryakov&gt;
+
+Translations
+- Chinese &lt;amazingfate, Antares95&gt;
+- Croatian &lt;gogo&gt;
+- Dutch &lt;robin007bond&gt;
+- French &lt;chapouvalpin&gt;
+- German: &lt;yiip87&gt;
+- Italian &lt;Aloysius&gt;
+- Korean &lt;godly-devotion&gt;
+- Portuguese &lt;u8sand&gt;
+- Russian &lt;suhr&gt;
+- Spanish &lt;Alfredo Ramos&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/aboutdialog.ui" line="267"/>
         <source>License</source>
         <translation>许可证</translation>
     </message>
     <message>
-        <location filename="../ui/aboutdialog.ui" line="270"/>
+        <location filename="../ui/aboutdialog.ui" line="291"/>
         <source>                GNU GENERAL PUBLIC LICENSE
                    Version 2, June 1991
 
@@ -68,50 +98,26 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</translation>
     </message>
     <message>
-        <location filename="../ui/aboutdialog.ui" line="311"/>
+        <location filename="../ui/aboutdialog.ui" line="332"/>
         <source>&amp;CLOSE</source>
         <translation>关闭(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../ui/aboutdialog.ui" line="183"/>
+        <location filename="../ui/aboutdialog.ui" line="196"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2015 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; 是一个基于 &lt;b&gt;libmpv&lt;/b&gt; 的自由开源跨平台的多媒体播放器。简单的设计致力于为观看视频提供一个整洁，简单，愉快的环境。&lt;br&gt;&lt;br&gt;Copyright © 2014 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <location filename="../ui/aboutdialog.ui" line="221"/>
-        <source>mpv - video player based on MPlayer/mplayer2
-GPLv2 &lt;mpv.io&gt;
-
-Noto Sans -  font family with many supported characters
-Apache License, version 2.0 &lt;Google&gt;
-
-Download icon
-CC BY 3.0 &lt;Sasha Mescheryakov&gt;
-
-Translations
-- Chinese &lt;amazingfate, Antares95&gt;
-- Croatian &lt;gogo&gt;
-- Dutch &lt;robin007bond&gt;
-- Italian &lt;Aloysius&gt;
-- Korean &lt;godly-devotion&gt;
-- Portuguese &lt;u8sand&gt;
-- Russian &lt;suhr&gt;
-- Spanish &lt;Alfredo Ramos&gt;</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>BakaEngine</name>
     <message>
-        <location filename="../bakaengine.cpp" line="103"/>
         <source>Settings version not recognized</source>
-        <translation>配置文件版本无法被识别</translation>
+        <translation type="vanished">配置文件版本无法被识别</translation>
     </message>
     <message>
-        <location filename="../bakaengine.cpp" line="103"/>
         <source>The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.
 Some features may not work and changed settings will not be saved.</source>
-        <translation>配置文件是由更新版本的baka-mplayer创建的，请更新此版本或者向开发者寻求帮助
+        <translation type="vanished">配置文件是由更新版本的baka-mplayer创建的，请更新此版本或者向开发者寻求帮助
 一些特性可能无法工作且更改的设置无法被保存</translation>
     </message>
     <message>
@@ -290,17 +296,17 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">降低25%播放速度</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="64"/>
+        <location filename="../bakaengine.h" line="65"/>
         <source>Reset speed</source>
         <translation>重置播放速度</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="59"/>
+        <location filename="../bakaengine.h" line="60"/>
         <source>Take screenshot without subtitles</source>
         <translation>无字幕截图</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="58"/>
+        <location filename="../bakaengine.h" line="59"/>
         <source>Take screenshot with subtitles</source>
         <translation>有字幕截图</translation>
     </message>
@@ -320,14 +326,12 @@ Some features may not work and changed settings will not be saved.</source>
         <translation>跳转到前一章节</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="62"/>
         <source>Increase playback speed by 25%</source>
-        <translation>提高播放速度25%</translation>
+        <translation type="vanished">提高播放速度25%</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="63"/>
         <source>Decrease playback speed by 25%</source>
-        <translation>降低播放速度25%</translation>
+        <translation type="vanished">降低播放速度25%</translation>
     </message>
     <message>
         <location filename="../bakaengine.h" line="52"/>
@@ -350,87 +354,102 @@ Some features may not work and changed settings will not be saved.</source>
         <translation>逐帧</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="60"/>
+        <location filename="../bakaengine.h" line="58"/>
+        <source>Toggle mute audio</source>
+        <translation>静音</translation>
+    </message>
+    <message>
+        <location filename="../bakaengine.h" line="61"/>
         <source>Decrease volume</source>
         <translation>降低音量</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="61"/>
+        <location filename="../bakaengine.h" line="62"/>
         <source>Increase volume</source>
         <translation>提高音量</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="65"/>
+        <location filename="../bakaengine.h" line="63"/>
+        <source>Increase playback speed by 10%</source>
+        <translation>提高播放速度10%</translation>
+    </message>
+    <message>
+        <location filename="../bakaengine.h" line="64"/>
+        <source>Decrease playback speed by 10%</source>
+        <translation>降低播放速度10%</translation>
+    </message>
+    <message>
+        <location filename="../bakaengine.h" line="66"/>
         <source>Toggle fullscreen</source>
         <translation>切换全屏</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="66"/>
+        <location filename="../bakaengine.h" line="67"/>
         <source>Dim lights</source>
         <translation>昏暗灯光</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="67"/>
+        <location filename="../bakaengine.h" line="68"/>
         <source>Show the file in its folder</source>
         <translation>在文件夹中显示</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="68"/>
+        <location filename="../bakaengine.h" line="69"/>
         <source>View media information</source>
         <translation>查看媒体信息</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="69"/>
+        <location filename="../bakaengine.h" line="70"/>
         <source>Show jump to time dialog</source>
         <translation>显示跳转时间对话框</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="71"/>
+        <location filename="../bakaengine.h" line="72"/>
         <source>Show open file dialog</source>
         <translation>显示打开文件对话框</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="76"/>
+        <location filename="../bakaengine.h" line="77"/>
         <source>Show location dialog</source>
         <translation>显示位置对话框</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="78"/>
+        <location filename="../bakaengine.h" line="79"/>
         <source>Toggle playlist visibility</source>
         <translation>切换播放列表可见</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="83"/>
+        <location filename="../bakaengine.h" line="84"/>
         <source>Fit the window to the video</source>
         <translation>根据视频适应窗口大小</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="84"/>
+        <location filename="../bakaengine.h" line="85"/>
         <source>Fit window to 50%</source>
         <translation>适应窗口到50%</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="85"/>
+        <location filename="../bakaengine.h" line="86"/>
         <source>Fit window to 75%</source>
         <translation>适应窗口到75%</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="86"/>
+        <location filename="../bakaengine.h" line="87"/>
         <source>Fit window to 100%</source>
         <translation>适应窗口到100%</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="87"/>
+        <location filename="../bakaengine.h" line="88"/>
         <source>Fit window to 150%</source>
         <translation>适应窗口到150%</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="88"/>
+        <location filename="../bakaengine.h" line="89"/>
         <source>Fit window to 200%</source>
         <translation>适应窗口到200%</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="89"/>
+        <location filename="../bakaengine.h" line="90"/>
         <source>Boss key</source>
         <translation>老板键</translation>
     </message>
@@ -447,12 +466,12 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">跳转到时间对话框</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="74"/>
+        <location filename="../bakaengine.h" line="75"/>
         <source>Play previous file</source>
         <translation>播放前一个文件</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="70"/>
+        <location filename="../bakaengine.h" line="71"/>
         <source>Open a new window</source>
         <translation>打开新的窗口</translation>
     </message>
@@ -461,17 +480,17 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">打开文件对话框</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="72"/>
+        <location filename="../bakaengine.h" line="73"/>
         <source>Quit</source>
         <translation>离开</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="73"/>
+        <location filename="../bakaengine.h" line="74"/>
         <source>Play next file</source>
         <translation>播放下一文件</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="75"/>
+        <location filename="../bakaengine.h" line="76"/>
         <source>Stop playback</source>
         <translation>停止播放</translation>
     </message>
@@ -480,7 +499,7 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">显示路径对话框</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="77"/>
+        <location filename="../bakaengine.h" line="78"/>
         <source>Open clipboard location</source>
         <translation>打开剪贴板路径</translation>
     </message>
@@ -489,22 +508,22 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">切换播放列表可见度</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="79"/>
+        <location filename="../bakaengine.h" line="80"/>
         <source>Open the last played file</source>
         <translation>打开最近播放的文件</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="80"/>
+        <location filename="../bakaengine.h" line="81"/>
         <source>Access command-line</source>
         <translation>打开命令行</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="81"/>
+        <location filename="../bakaengine.h" line="82"/>
         <source>Launch online help</source>
         <translation>在线帮助</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="82"/>
+        <location filename="../bakaengine.h" line="83"/>
         <source>Play/Pause</source>
         <translation>播放/暂停</translation>
     </message>
@@ -537,22 +556,22 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">老板键</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="91"/>
+        <location filename="../bakaengine.h" line="92"/>
         <source>Select previous file on playlist</source>
         <translation>选择播放列表的前一个文件</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="90"/>
+        <location filename="../bakaengine.h" line="91"/>
         <source>Select next file on playlist</source>
         <translation>选择播放列表的下一个文件</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="92"/>
+        <location filename="../bakaengine.h" line="93"/>
         <source>Play selected file on playlist</source>
         <translation>播放在播放列表选中的文件</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="93"/>
+        <location filename="../bakaengine.h" line="94"/>
         <source>Remove selected file from playlist</source>
         <translation>把选中文件移出播放列表</translation>
     </message>
@@ -686,228 +705,243 @@ Some features may not work and changed settings will not be saved.</source>
         <translation>到目前大小</translation>
     </message>
     <message>
-        <location filename="../bakacommands.cpp" line="526"/>
+        <location filename="../bakacommands.cpp" line="549"/>
         <source>Speed: %0x</source>
         <translation>速度: %0x</translation>
     </message>
     <message>
-        <location filename="../bakacommands.cpp" line="563"/>
+        <location filename="../bakacommands.cpp" line="586"/>
         <source>usage: baka &lt;command&gt; [...]</source>
         <translation>用法: baka &lt;command&gt; [...]</translation>
     </message>
     <message>
-        <location filename="../bakacommands.cpp" line="564"/>
+        <location filename="../bakacommands.cpp" line="587"/>
         <source>commands:</source>
         <translation>命令:</translation>
     </message>
     <message>
-        <location filename="../bakacommands.cpp" line="585"/>
+        <location filename="../bakacommands.cpp" line="608"/>
         <source>usage: %0 %1</source>
         <translation>用法: %0 %1</translation>
     </message>
     <message>
-        <location filename="../bakacommands.cpp" line="586"/>
+        <location filename="../bakacommands.cpp" line="609"/>
         <source>description:</source>
         <translation>描述</translation>
     </message>
     <message>
-        <location filename="../bakacommands.cpp" line="590"/>
+        <location filename="../bakacommands.cpp" line="613"/>
         <source>advanced:</source>
         <translation>高级:</translation>
     </message>
     <message>
-        <location filename="../bakaengine.cpp" line="205"/>
+        <location filename="../bakaengine.cpp" line="108"/>
         <source>invalid command &apos;%0&apos;</source>
         <translation>无效命令 &apos;%0&apos;</translation>
     </message>
     <message>
-        <location filename="../bakaengine.cpp" line="210"/>
+        <location filename="../bakaengine.cpp" line="113"/>
         <source>invalid parameter &apos;%0&apos;</source>
         <translation>无效参数:&apos;%0&apos;</translation>
     </message>
     <message>
-        <location filename="../bakaengine.cpp" line="215"/>
+        <location filename="../bakaengine.cpp" line="118"/>
         <source>&apos;%0&apos; requires parameters</source>
         <translation>&apos;%0&apos; 需要参数</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="141"/>
+        <location filename="../bakaengine.h" line="129"/>
         <source>executes mpv command</source>
         <translation>执行mpv命令</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="149"/>
+        <location filename="../bakaengine.h" line="137"/>
         <source>executes system shell command</source>
         <translation>执行系统shell命令</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="158"/>
+        <location filename="../bakaengine.h" line="146"/>
         <source>creates a new instance of baka-mplayer</source>
         <translation>打开一个新的baka-mplayer实例</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="167"/>
+        <location filename="../bakaengine.h" line="155"/>
         <source>shows the open location dialog</source>
         <translation>显示打开路径对话框</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="176"/>
+        <location filename="../bakaengine.h" line="164"/>
         <source>opens the clipboard</source>
         <translation>打开剪贴板</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="185"/>
+        <location filename="../bakaengine.h" line="173"/>
         <source>shows the current file in folder</source>
         <translation>在文件夹中显示当前文件</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="194"/>
+        <location filename="../bakaengine.h" line="182"/>
         <source>add subtitles dialog</source>
         <translation>添加字幕对话框</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="202"/>
+        <location filename="../bakaengine.h" line="190"/>
         <source>[subs]</source>
         <translation>[字幕]</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="203"/>
+        <location filename="../bakaengine.h" line="191"/>
         <source>take a screenshot (with subtitles if specified)</source>
         <translation>截图(带字幕)</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="212"/>
+        <location filename="../bakaengine.h" line="200"/>
         <source>toggles media info display</source>
         <translation>显示媒体信息</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="221"/>
+        <location filename="../bakaengine.h" line="209"/>
         <source>stops the current playback</source>
         <translation>停止目前播放</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="229"/>
+        <location filename="../bakaengine.h" line="217"/>
         <source>[...]</source>
         <translation>[...]</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="230"/>
+        <location filename="../bakaengine.h" line="218"/>
         <source>playlist options</source>
         <translation>播放列表选项</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="239"/>
+        <location filename="../bakaengine.h" line="227"/>
         <source>opens jump dialog</source>
         <translation>打开跳转对话框</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="248"/>
+        <location filename="../bakaengine.h" line="236"/>
         <source>toggles dim desktop</source>
         <translation>暗淡桌面</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="257"/>
+        <location filename="../bakaengine.h" line="245"/>
         <source>toggles output textbox</source>
         <translation>切换输出文本框</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="266"/>
+        <location filename="../bakaengine.h" line="254"/>
         <source>opens preferences dialog</source>
         <translation>打开首选项对话框</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="275"/>
+        <location filename="../bakaengine.h" line="263"/>
         <source>launches online help</source>
         <translation>在线帮助</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="284"/>
+        <location filename="../bakaengine.h" line="272"/>
         <source>opens the update dialog or updates youtube-dl</source>
         <translation>打开更新对话框或更新youtube-dl</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="292"/>
+        <location filename="../bakaengine.h" line="280"/>
         <source>[file]</source>
         <translation>[文件]</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="293"/>
+        <location filename="../bakaengine.h" line="281"/>
         <source>opens the open file dialog or the file specified</source>
         <translation>显示打开文件对话框或被指定文件</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="302"/>
+        <location filename="../bakaengine.h" line="290"/>
         <source>toggle play/pause state</source>
         <translation>切换 播放/暂停</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="310"/>
+        <location filename="../bakaengine.h" line="298"/>
         <source>[percent]</source>
         <translation>[百分比]</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="311"/>
+        <location filename="../bakaengine.h" line="299"/>
         <source>fit the window</source>
         <translation>适应窗口</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="319"/>
-        <location filename="../bakaengine.h" line="373"/>
+        <location filename="../bakaengine.h" line="308"/>
+        <source>toggle deinterlace</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../bakaengine.h" line="317"/>
+        <source>toggle motion interpolation</source>
+        <translation>切换运动插值</translation>
+    </message>
+    <message>
+        <location filename="../bakaengine.h" line="326"/>
+        <source>mutes the audio</source>
+        <translation>静音</translation>
+    </message>
+    <message>
+        <location filename="../bakaengine.h" line="334"/>
+        <location filename="../bakaengine.h" line="388"/>
         <source>[level]</source>
         <translation>[级别]</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="320"/>
+        <location filename="../bakaengine.h" line="335"/>
         <source>adjusts the volume</source>
         <translation>调整音量</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="328"/>
+        <location filename="../bakaengine.h" line="343"/>
         <source>[ratio]</source>
         <translation>[比例]</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="329"/>
+        <location filename="../bakaengine.h" line="344"/>
         <source>adjusts the speed</source>
         <translation>调整速度</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="338"/>
+        <location filename="../bakaengine.h" line="353"/>
         <source>toggles fullscreen state</source>
         <translation>切换全屏</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="347"/>
+        <location filename="../bakaengine.h" line="362"/>
         <source>pause and hide the window</source>
         <translation>暂停并隐藏窗口</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="355"/>
+        <location filename="../bakaengine.h" line="370"/>
         <source>[command]</source>
         <translation>[命令]</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="356"/>
+        <location filename="../bakaengine.h" line="371"/>
         <source>internal help menu</source>
         <translation>内置帮助菜单</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="364"/>
+        <location filename="../bakaengine.h" line="379"/>
         <source>[qt]</source>
         <translation>[qt]</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="365"/>
+        <location filename="../bakaengine.h" line="380"/>
         <source>open about dialog</source>
         <translation>打开关于对话框</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="374"/>
+        <location filename="../bakaengine.h" line="389"/>
         <source>set mpv debugging level</source>
         <translation>设置mpv调试级别</translation>
     </message>
     <message>
-        <location filename="../bakaengine.h" line="383"/>
+        <location filename="../bakaengine.h" line="398"/>
         <source>quit baka-mplayer</source>
         <translation>退出baka-mplayer</translation>
     </message>
@@ -1011,17 +1045,17 @@ Some features may not work and changed settings will not be saved.</source>
         <translation>对话框</translation>
     </message>
     <message>
-        <location filename="../ui/inputdialog.ui" line="71"/>
+        <location filename="../ui/inputdialog.ui" line="72"/>
         <source>Please enter a value:</source>
         <translation>请输入一个值:</translation>
     </message>
     <message>
-        <location filename="../ui/inputdialog.ui" line="118"/>
+        <location filename="../ui/inputdialog.ui" line="119"/>
         <source>&amp;OK</source>
         <translation>确定(&amp;O)</translation>
     </message>
     <message>
-        <location filename="../ui/inputdialog.ui" line="134"/>
+        <location filename="../ui/inputdialog.ui" line="135"/>
         <source>&amp;CANCEL</source>
         <translation>取消(&amp;C)</translation>
     </message>
@@ -1034,28 +1068,28 @@ Some features may not work and changed settings will not be saved.</source>
         <translation>对话框</translation>
     </message>
     <message>
-        <location filename="../ui/jumpdialog.ui" line="116"/>
+        <location filename="../ui/jumpdialog.ui" line="117"/>
         <source> hr</source>
         <translation>时</translation>
     </message>
     <message>
-        <location filename="../ui/jumpdialog.ui" line="134"/>
-        <location filename="../ui/jumpdialog.ui" line="165"/>
+        <location filename="../ui/jumpdialog.ui" line="135"/>
+        <location filename="../ui/jumpdialog.ui" line="166"/>
         <source>:</source>
         <translation>:</translation>
     </message>
     <message>
-        <location filename="../ui/jumpdialog.ui" line="147"/>
+        <location filename="../ui/jumpdialog.ui" line="148"/>
         <source> min</source>
         <translation>分</translation>
     </message>
     <message>
-        <location filename="../ui/jumpdialog.ui" line="178"/>
+        <location filename="../ui/jumpdialog.ui" line="179"/>
         <source> sec</source>
         <translation>秒</translation>
     </message>
     <message>
-        <location filename="../ui/jumpdialog.ui" line="197"/>
+        <location filename="../ui/jumpdialog.ui" line="198"/>
         <source>&amp;OK</source>
         <translation>确定(&amp;O)</translation>
     </message>
@@ -1068,32 +1102,50 @@ Some features may not work and changed settings will not be saved.</source>
         <translation>修改快捷键</translation>
     </message>
     <message>
-        <location filename="../ui/keydialog.ui" line="72"/>
         <source>Command</source>
+        <translation type="vanished">命令</translation>
+    </message>
+    <message>
+        <source>Label (optional)</source>
+        <translation type="vanished">标签（可选）</translation>
+    </message>
+    <message>
+        <location filename="../ui/keydialog.ui" line="76"/>
+        <source>(optional)</source>
+        <translation>(可选)</translation>
+    </message>
+    <message>
+        <location filename="../ui/keydialog.ui" line="86"/>
+        <source>Shortcut:</source>
+        <translation>快捷键</translation>
+    </message>
+    <message>
+        <location filename="../ui/keydialog.ui" line="93"/>
+        <source>Command:</source>
         <translation>命令</translation>
     </message>
     <message>
-        <location filename="../ui/keydialog.ui" line="82"/>
-        <source>Label (optional)</source>
-        <translation>标签（可选）</translation>
+        <location filename="../ui/keydialog.ui" line="100"/>
+        <source>Label:</source>
+        <translation>标签</translation>
     </message>
     <message>
-        <location filename="../ui/keydialog.ui" line="109"/>
+        <location filename="../ui/keydialog.ui" line="124"/>
         <source>C&amp;LEAR SHORTCUT</source>
         <translation>清除快捷键</translation>
     </message>
     <message>
-        <location filename="../ui/keydialog.ui" line="116"/>
+        <location filename="../ui/keydialog.ui" line="131"/>
         <source>CHANG&amp;E</source>
         <translation>更改(&amp;E)</translation>
     </message>
     <message>
-        <location filename="../ui/keydialog.ui" line="123"/>
+        <location filename="../ui/keydialog.ui" line="138"/>
         <source>&amp;ADD</source>
         <translation>添加</translation>
     </message>
     <message>
-        <location filename="../ui/keydialog.ui" line="136"/>
+        <location filename="../ui/keydialog.ui" line="151"/>
         <source>&amp;CANCEL</source>
         <translation>取消</translation>
     </message>
@@ -1106,32 +1158,32 @@ Some features may not work and changed settings will not be saved.</source>
         <translation>打开位置</translation>
     </message>
     <message>
-        <location filename="../ui/locationdialog.ui" line="84"/>
+        <location filename="../ui/locationdialog.ui" line="85"/>
         <source>Type URL or location here</source>
         <translation>请输入URL</translation>
     </message>
     <message>
-        <location filename="../ui/locationdialog.ui" line="110"/>
+        <location filename="../ui/locationdialog.ui" line="111"/>
         <source>&amp;OK</source>
         <translation>确定(&amp;O)</translation>
     </message>
     <message>
-        <location filename="../ui/locationdialog.ui" line="139"/>
+        <location filename="../ui/locationdialog.ui" line="140"/>
         <source>&amp;PASTE</source>
         <translation>粘贴(&amp;P)</translation>
     </message>
     <message>
-        <location filename="../ui/locationdialog.ui" line="155"/>
+        <location filename="../ui/locationdialog.ui" line="156"/>
         <source>&amp;COPY</source>
         <translation>复制(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../ui/locationdialog.ui" line="171"/>
+        <location filename="../ui/locationdialog.ui" line="172"/>
         <source>CLEA&amp;R</source>
         <translation>清空(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../ui/locationdialog.ui" line="200"/>
+        <location filename="../ui/locationdialog.ui" line="201"/>
         <source>CANC&amp;EL</source>
         <translation>取消(&amp;E)</translation>
     </message>
@@ -1144,149 +1196,184 @@ Some features may not work and changed settings will not be saved.</source>
         <translation>Baka MPlayer</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="268"/>
+        <location filename="../ui/mainwindow.ui" line="273"/>
         <source>&gt;</source>
         <translation>&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="310"/>
+        <location filename="../ui/mainwindow.ui" line="315"/>
         <source>Search Playlist</source>
         <translation>搜索播放列表</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="323"/>
+        <location filename="../ui/mainwindow.ui" line="328"/>
         <source>Click to play a file by index</source>
         <translation>点击通过索引播放文件</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="326"/>
+        <location filename="../ui/mainwindow.ui" line="331"/>
         <source>File 0 of 0</source>
         <translation>文件 0 总数 0</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="379"/>
+        <location filename="../ui/mainwindow.ui" line="381"/>
         <source>Select the Current File</source>
         <translation>选择当前文件</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="415"/>
+        <location filename="../ui/mainwindow.ui" line="417"/>
         <source>Hide files with different extensions</source>
         <translation>隐藏不同扩展名的文件</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="445"/>
+        <location filename="../ui/mainwindow.ui" line="447"/>
         <source>Refresh Playlist</source>
         <translation>刷新播放列表</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="592"/>
+        <location filename="../ui/mainwindow.ui" line="594"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Left Click to Open File&lt;br&gt;Mouse Wheel Click to Jump&lt;br&gt;Right Click to Open URL&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;鼠标左键打开文件&lt;br&gt;中键跳转&lt;br&gt;右键打开URL&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="618"/>
+        <location filename="../ui/mainwindow.ui" line="620"/>
         <source>0:00:00</source>
         <translation>0:00:00</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="628"/>
+        <location filename="../ui/mainwindow.ui" line="630"/>
         <source>/</source>
         <translation>/</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="644"/>
+        <location filename="../ui/mainwindow.ui" line="646"/>
         <source>Click to change between total and remaining time</source>
         <translation>点击切换总时间和剩余时间</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="647"/>
+        <location filename="../ui/mainwindow.ui" line="649"/>
         <source>-0:00:00</source>
         <translation>-0:00:00</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="990"/>
+        <location filename="../ui/mainwindow.ui" line="1028"/>
         <source>&amp;File</source>
         <translation>文件(&amp;F)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="994"/>
+        <location filename="../ui/mainwindow.ui" line="1032"/>
         <source>&amp;Recently Opened</source>
         <translation>最近打开(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1014"/>
+        <location filename="../ui/mainwindow.ui" line="1052"/>
         <source>&amp;View</source>
         <translation>视图(&amp;V)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1021"/>
+        <location filename="../ui/mainwindow.ui" line="1059"/>
         <source>Fit &amp;Window</source>
         <translation>适应窗口大小(&amp;W)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1035"/>
+        <location filename="../ui/mainwindow.ui" line="1073"/>
         <source>Aspect &amp;Ratio</source>
         <translation>高宽比(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1047"/>
+        <location filename="../ui/mainwindow.ui" line="1085"/>
         <source>Subtitle &amp;Track</source>
         <translation>字幕轨道(&amp;T)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1058"/>
+        <location filename="../ui/mainwindow.ui" line="1096"/>
         <source>Font Si&amp;ze</source>
         <translation>字体大小(&amp;Z)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1069"/>
+        <location filename="../ui/mainwindow.ui" line="1107"/>
         <source>Take &amp;Screenshot</source>
         <translation>截图(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1088"/>
+        <location filename="../ui/mainwindow.ui" line="1129"/>
         <source>&amp;Playback</source>
         <translation>播放(&amp;P)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1092"/>
+        <location filename="../ui/mainwindow.ui" line="1133"/>
         <source>R&amp;epeat</source>
         <translation>重复(&amp;E)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1108"/>
+        <location filename="../ui/mainwindow.ui" line="1149"/>
         <source>Audio &amp;Tracks</source>
         <translation>音频轨道(&amp;T)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1117"/>
+        <location filename="../ui/mainwindow.ui" line="1158"/>
         <source>S&amp;peed</source>
         <translation>速度(&amp;P)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1139"/>
+        <location filename="../ui/mainwindow.ui" line="1167"/>
+        <source>&amp;Volume</source>
+        <translation>音量</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="1187"/>
         <source>&amp;Navigate</source>
         <translation>导航(&amp;N)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1146"/>
+        <location filename="../ui/mainwindow.ui" line="1194"/>
         <source>&amp;Chapters</source>
         <translation>章节(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1161"/>
+        <location filename="../ui/mainwindow.ui" line="1209"/>
         <source>&amp;Settings</source>
         <translation>设置(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1173"/>
+        <location filename="../ui/mainwindow.ui" line="1221"/>
         <source>&amp;Help</source>
         <translation>帮助(&amp;H)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1204"/>
+        <location filename="../ui/mainwindow.ui" line="1252"/>
         <source>Open &amp;Location...</source>
         <translation>打开路径</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="1273"/>
+        <source>Pla&amp;y Next File</source>
+        <translation>播放下一个文件</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="1633"/>
+        <source>15&amp;0%</source>
+        <translation>150%</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="1646"/>
+        <source>&amp;Mute</source>
+        <translation>静音</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="1657"/>
+        <source>&amp;Motion Interpolation</source>
+        <translation>运动插值</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="1660"/>
+        <source>Reduce video studder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="1671"/>
+        <source>&amp;Deinterlace</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Alt+6</source>
@@ -1297,17 +1384,45 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">Ctrl+G</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1238"/>
+        <location filename="../ui/mainwindow.ui" line="1286"/>
         <source>E&amp;xit</source>
         <translation>离开(&amp;X)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1524"/>
+        <location filename="../ui/mainwindow.ui" line="1463"/>
+        <source>&amp;50%</source>
+        <translation>50%</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="1468"/>
+        <source>&amp;75%</source>
+        <translation>75%</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="1473"/>
+        <source>&amp;100%</source>
+        <translation>100%</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="1478"/>
+        <source>&amp;200%</source>
+        <translation>200%</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="1514"/>
+        <location filename="../ui/mainwindow.ui" line="1564"/>
+        <location filename="../ui/mainwindow.ui" line="1605"/>
+        <location filename="../ui/mainwindow.ui" line="1628"/>
+        <source>[ &amp;none ]</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="1572"/>
         <source>Show &amp;Command Line</source>
         <translation>显示命令行</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1191"/>
+        <location filename="../ui/mainwindow.ui" line="1239"/>
         <source>&amp;New Player</source>
         <translation>打开新播放器(&amp;N)</translation>
     </message>
@@ -1316,7 +1431,7 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">Ctrl+N</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1199"/>
+        <location filename="../ui/mainwindow.ui" line="1247"/>
         <source>&amp;Open File...</source>
         <translation>打开文件(&amp;O)...</translation>
     </message>
@@ -1333,7 +1448,7 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">Ctrl+U</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1209"/>
+        <location filename="../ui/mainwindow.ui" line="1257"/>
         <source>Open Path from &amp;Clipboard</source>
         <translation>打开剪贴板的路径(&amp;C)</translation>
     </message>
@@ -1342,7 +1457,7 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">Ctrl+V</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1217"/>
+        <location filename="../ui/mainwindow.ui" line="1265"/>
         <source>Show in &amp;Folder</source>
         <translation>在文件夹中显示(&amp;F)</translation>
     </message>
@@ -1351,16 +1466,15 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">Ctrl+F</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1225"/>
         <source>Play &amp;Next File</source>
-        <translation>播放下一文件(&amp;N)</translation>
+        <translation type="vanished">播放下一文件(&amp;N)</translation>
     </message>
     <message>
         <source>Ctrl+Right</source>
         <translation type="vanished">Ctrl+Right</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1233"/>
+        <location filename="../ui/mainwindow.ui" line="1281"/>
         <source>Play &amp;Previous File</source>
         <translation>播放前一个文件(&amp;P)</translation>
     </message>
@@ -1373,7 +1487,7 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1246"/>
+        <location filename="../ui/mainwindow.ui" line="1294"/>
         <source>&amp;Full Screen</source>
         <translation>全屏(&amp;F)</translation>
     </message>
@@ -1382,7 +1496,7 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">Alt+Return</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1260"/>
+        <location filename="../ui/mainwindow.ui" line="1308"/>
         <source>Show S&amp;ubtitles</source>
         <translation>显示字幕(&amp;U)</translation>
     </message>
@@ -1399,8 +1513,8 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">Ctrl+I</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1279"/>
-        <location filename="../ui/mainwindow.cpp" line="1192"/>
+        <location filename="../ui/mainwindow.ui" line="1327"/>
+        <location filename="../ui/mainwindow.cpp" line="1249"/>
         <source>&amp;Play</source>
         <translation>播放(&amp;P)</translation>
     </message>
@@ -1409,7 +1523,7 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">空格</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1287"/>
+        <location filename="../ui/mainwindow.ui" line="1335"/>
         <source>&amp;Stop</source>
         <translation>停止(&amp;S)</translation>
     </message>
@@ -1418,7 +1532,7 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">Ctrl+S</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1295"/>
+        <location filename="../ui/mainwindow.ui" line="1343"/>
         <source>&amp;Restart</source>
         <translation>重新开始(&amp;R)</translation>
     </message>
@@ -1427,32 +1541,32 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">Ctrl+R</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1307"/>
+        <location filename="../ui/mainwindow.ui" line="1355"/>
         <source>Sh&amp;uffle</source>
         <translation>随机顺序(&amp;U)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1315"/>
+        <location filename="../ui/mainwindow.ui" line="1363"/>
         <source>Stop after &amp;Current</source>
         <translation>当前播放完毕后停止(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1366"/>
+        <location filename="../ui/mainwindow.ui" line="1414"/>
         <source>&amp;Show Playlist</source>
         <translation>显示播放列表(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1377"/>
+        <location filename="../ui/mainwindow.ui" line="1425"/>
         <source>&amp;Hide Album Art</source>
         <translation>隐藏专辑封面(&amp;H)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1385"/>
+        <location filename="../ui/mainwindow.ui" line="1433"/>
         <source>&amp;Dim Lights</source>
         <translation>昏暗灯光(&amp;D)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1323"/>
+        <location filename="../ui/mainwindow.ui" line="1371"/>
         <source>&amp;Next Chapter</source>
         <translation>下一章节(&amp;N)</translation>
     </message>
@@ -1461,7 +1575,7 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">向下翻页</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1331"/>
+        <location filename="../ui/mainwindow.ui" line="1379"/>
         <source>&amp;Previous Chapter</source>
         <translation>上一章节(&amp;P)</translation>
     </message>
@@ -1470,7 +1584,7 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">向上翻页</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1339"/>
+        <location filename="../ui/mainwindow.ui" line="1387"/>
         <source>&amp;Frame Step</source>
         <translation>逐帧播放(&amp;F)</translation>
     </message>
@@ -1479,7 +1593,7 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">Shift+Right</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1347"/>
+        <location filename="../ui/mainwindow.ui" line="1395"/>
         <source>Frame &amp;Back Step</source>
         <translation>向后逐帧(&amp;F)</translation>
     </message>
@@ -1488,7 +1602,7 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">Shift+Left</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1355"/>
+        <location filename="../ui/mainwindow.ui" line="1403"/>
         <source>&amp;Jump to Time...</source>
         <translation>跳转到时间(&amp;J)...</translation>
     </message>
@@ -1505,7 +1619,7 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">Ctrl+D</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1390"/>
+        <location filename="../ui/mainwindow.ui" line="1438"/>
         <source>Online &amp;Help</source>
         <translation>在线帮助(&amp;H)</translation>
     </message>
@@ -1514,22 +1628,22 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">F1</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1395"/>
+        <location filename="../ui/mainwindow.ui" line="1443"/>
         <source>&amp;Check for Updates</source>
         <translation>检查更新(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1400"/>
+        <location filename="../ui/mainwindow.ui" line="1448"/>
         <source>About &amp;Qt</source>
         <translation>关于Qt(&amp;Q)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1405"/>
+        <location filename="../ui/mainwindow.ui" line="1453"/>
         <source>About &amp;Baka MPlayer</source>
         <translation>关于 Baka MPlayer (&amp;B)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1410"/>
+        <location filename="../ui/mainwindow.ui" line="1458"/>
         <source>To &amp;Current Size</source>
         <translation>到当前尺寸(&amp;C)</translation>
     </message>
@@ -1538,81 +1652,72 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">Alt+1</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1415"/>
         <source>50%</source>
-        <translation>50%</translation>
+        <translation type="vanished">50%</translation>
     </message>
     <message>
         <source>Alt+2</source>
         <translation type="vanished">Alt+2</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1420"/>
         <source>75%</source>
-        <translation>75%</translation>
+        <translation type="vanished">75%</translation>
     </message>
     <message>
         <source>Alt+3</source>
         <translation type="vanished">Alt+3</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1425"/>
         <source>100%</source>
-        <translation>100%</translation>
+        <translation type="vanished">100%</translation>
     </message>
     <message>
         <source>Alt+4</source>
         <translation type="vanished">Alt+4</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1430"/>
         <source>200%</source>
-        <translation>200%</translation>
+        <translation type="vanished">200%</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1585"/>
         <source>150%</source>
-        <translation>150%</translation>
+        <translation type="vanished">150%</translation>
     </message>
     <message>
         <source>Alt+5</source>
         <translation type="vanished">Alt+5</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1435"/>
+        <location filename="../ui/mainwindow.ui" line="1483"/>
         <source>&amp;Auto Detect</source>
         <translation>自动探测(&amp;A)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1440"/>
+        <location filename="../ui/mainwindow.ui" line="1488"/>
         <source>Force &amp;4:3</source>
         <translation>强制 &amp;4:3</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1445"/>
+        <location filename="../ui/mainwindow.ui" line="1493"/>
         <source>Force 16:&amp;9</source>
         <translation>强制 16:&amp;9</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1450"/>
+        <location filename="../ui/mainwindow.ui" line="1498"/>
         <source>Force &amp;2.35:1</source>
         <translation>强制 &amp;2.35:1</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1458"/>
+        <location filename="../ui/mainwindow.ui" line="1506"/>
         <source>&amp;Add Subtitle File...</source>
         <translation>添加字幕文件(&amp;A)...</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1466"/>
-        <location filename="../ui/mainwindow.ui" line="1516"/>
-        <location filename="../ui/mainwindow.ui" line="1557"/>
-        <location filename="../ui/mainwindow.ui" line="1580"/>
         <source>[ none ]</source>
-        <translation>[ 无 ]</translation>
+        <translation type="vanished">[ 无 ]</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1471"/>
+        <location filename="../ui/mainwindow.ui" line="1519"/>
         <source>&amp;Size +</source>
         <translation>尺寸(&amp;S) +</translation>
     </message>
@@ -1621,7 +1726,7 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">Ctrl++</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1476"/>
+        <location filename="../ui/mainwindow.ui" line="1524"/>
         <source>S&amp;ize -</source>
         <translation>尺寸(&amp;S) -</translation>
     </message>
@@ -1630,22 +1735,22 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">Ctrl+-</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1481"/>
+        <location filename="../ui/mainwindow.ui" line="1529"/>
         <source>&amp;Reset Size</source>
         <translation>重置尺寸(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1492"/>
+        <location filename="../ui/mainwindow.ui" line="1540"/>
         <source>&amp;Off</source>
         <translation>关闭(&amp;O)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1500"/>
+        <location filename="../ui/mainwindow.ui" line="1548"/>
         <source>&amp;Playlist</source>
         <translation>播放列表(&amp;P)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1508"/>
+        <location filename="../ui/mainwindow.ui" line="1556"/>
         <source>&amp;This File</source>
         <translation>本文件(&amp;T)</translation>
     </message>
@@ -1658,7 +1763,7 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">Ctrl+E</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1529"/>
+        <location filename="../ui/mainwindow.ui" line="1577"/>
         <source>&amp;Increase Volume</source>
         <translation>提高音量(&amp;I)</translation>
     </message>
@@ -1667,7 +1772,7 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">Ctrl+Up</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1534"/>
+        <location filename="../ui/mainwindow.ui" line="1582"/>
         <source>&amp;Decrease Volume</source>
         <translation>降低音量(&amp;D)</translation>
     </message>
@@ -1676,7 +1781,7 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">Ctrl+Down</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1539"/>
+        <location filename="../ui/mainwindow.ui" line="1587"/>
         <source>With &amp;Subtitles...</source>
         <translation>打开字幕(&amp;S)...</translation>
     </message>
@@ -1685,7 +1790,7 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">Ctrl+T</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1544"/>
+        <location filename="../ui/mainwindow.ui" line="1592"/>
         <source>&amp;Without Subtitles...</source>
         <translation>关闭字幕(&amp;W)...</translation>
     </message>
@@ -1694,12 +1799,12 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">Ctrl+Shift+T</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1549"/>
+        <location filename="../ui/mainwindow.ui" line="1597"/>
         <source>&amp;Preferences...</source>
         <translation>首选项(&amp;P)...</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1562"/>
+        <location filename="../ui/mainwindow.ui" line="1610"/>
         <source>&amp;Increase</source>
         <translation>提高(&amp;I)</translation>
     </message>
@@ -1708,7 +1813,7 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">Ctrl+Shift+Up</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1567"/>
+        <location filename="../ui/mainwindow.ui" line="1615"/>
         <source>&amp;Decrease</source>
         <translation>降低(&amp;D)</translation>
     </message>
@@ -1717,7 +1822,7 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">Ctrl+Shift+Down</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1572"/>
+        <location filename="../ui/mainwindow.ui" line="1620"/>
         <source>&amp;Reset</source>
         <translation>重置(&amp;R)</translation>
     </message>
@@ -1726,54 +1831,74 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">Ctrl+Shift+R</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="187"/>
+        <location filename="../ui/mainwindow.cpp" line="190"/>
         <source>Playing</source>
         <translation>播放</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="189"/>
+        <location filename="../ui/mainwindow.cpp" line="192"/>
         <source>Paused</source>
         <translation>暂停</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="299"/>
+        <location filename="../ui/mainwindow.cpp" line="332"/>
         <source>Sub</source>
         <translation>字幕</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="311"/>
+        <location filename="../ui/mainwindow.cpp" line="344"/>
         <source>Audio</source>
         <translation>音频</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1201"/>
+        <location filename="../ui/mainwindow.cpp" line="631"/>
+        <source>Subtitles visible</source>
+        <translation>显示字幕</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.cpp" line="631"/>
+        <source>Subtitles hidden</source>
+        <translation>隐藏字幕</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.cpp" line="641"/>
+        <source>Muted</source>
+        <translation>静音</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.cpp" line="641"/>
+        <source>Unmuted</source>
+        <translation>解除静音</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.cpp" line="1258"/>
         <source>&amp;Pause</source>
         <translation>暂停(&amp;P)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="701"/>
+        <location filename="../ui/mainwindow.cpp" line="750"/>
         <source>Enter the file number you want to play:
 Note: Value must be from %0 - %1</source>
         <translation>输入你想要播放的文件编号:
 注意: 编号必须在以下范围%0 - %1</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="702"/>
+        <location filename="../ui/mainwindow.cpp" line="751"/>
         <source>Enter File Number</source>
         <translation>输入文件编号</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1047"/>
+        <location filename="../ui/mainwindow.cpp" line="1102"/>
         <source>No selection</source>
         <translation>无选择</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="552"/>
+        <location filename="../ui/mainwindow.cpp" line="584"/>
         <source>Speed: %0x</source>
         <translation>速度: %0x</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1053"/>
+        <location filename="../ui/mainwindow.cpp" line="1108"/>
         <source>File %0 of %1</source>
         <translation>文件 %0 总数 %1</translation>
     </message>
@@ -1856,33 +1981,33 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">音频文件</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1590"/>
+        <location filename="../ui/mainwindow.ui" line="1638"/>
         <source>Update &amp;Streaming Support</source>
         <translation>更新流媒体支持</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1271"/>
+        <location filename="../ui/mainwindow.ui" line="1319"/>
         <source>Show Playback &amp;Info</source>
         <translation>显示播放信息</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="784"/>
+        <location filename="../ui/mainwindow.cpp" line="835"/>
         <source>Previous</source>
         <translation>上一个文件</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="794"/>
-        <location filename="../ui/mainwindow.cpp" line="1194"/>
+        <location filename="../ui/mainwindow.cpp" line="845"/>
+        <location filename="../ui/mainwindow.cpp" line="1251"/>
         <source>Play</source>
         <translation>播放</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="804"/>
+        <location filename="../ui/mainwindow.cpp" line="855"/>
         <source>Next</source>
         <translation>下一个文件</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1203"/>
+        <location filename="../ui/mainwindow.cpp" line="1260"/>
         <source>Pause</source>
         <translation>暂停</translation>
     </message>
@@ -1907,34 +2032,87 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">mpv未初始化</translation>
     </message>
     <message>
-        <location filename="../mpvhandler.cpp" line="61"/>
         <source>File name</source>
-        <translation>文件名</translation>
+        <translation type="vanished">文件名</translation>
     </message>
     <message>
-        <location filename="../mpvhandler.cpp" line="62"/>
         <source>Media Title</source>
-        <translation>媒体标题</translation>
+        <translation type="vanished">媒体标题</translation>
     </message>
     <message>
-        <location filename="../mpvhandler.cpp" line="63"/>
+        <location filename="../mpvhandler.cpp" line="84"/>
+        <source>File</source>
+        <translation>文件</translation>
+    </message>
+    <message>
+        <location filename="../mpvhandler.cpp" line="85"/>
+        <source>Title</source>
+        <translation>标题</translation>
+    </message>
+    <message>
+        <location filename="../mpvhandler.cpp" line="86"/>
         <source>File size</source>
         <translation>文件大小</translation>
     </message>
     <message>
-        <location filename="../mpvhandler.cpp" line="64"/>
+        <location filename="../mpvhandler.cpp" line="87"/>
         <source>Date created</source>
         <translation>创建时间</translation>
     </message>
     <message>
-        <location filename="../mpvhandler.cpp" line="65"/>
+        <location filename="../mpvhandler.cpp" line="88"/>
         <source>Media length</source>
         <translation>媒体时长</translation>
     </message>
     <message>
-        <location filename="../mpvhandler.cpp" line="71"/>
+        <location filename="../mpvhandler.cpp" line="90"/>
+        <source>Video (x%0)</source>
+        <translation>视频 (x%0)</translation>
+    </message>
+    <message>
+        <location filename="../mpvhandler.cpp" line="91"/>
+        <source>Resolution</source>
+        <translation>分辨率</translation>
+    </message>
+    <message>
+        <location filename="../mpvhandler.cpp" line="94"/>
+        <source>FPS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mpvhandler.cpp" line="95"/>
+        <source>A/V Sync</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mpvhandler.cpp" line="96"/>
+        <location filename="../mpvhandler.cpp" line="101"/>
+        <source>%0 kbps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mpvhandler.cpp" line="98"/>
+        <source>Audio (x%0)</source>
+        <translation>音频 (x%0)</translation>
+    </message>
+    <message>
+        <location filename="../mpvhandler.cpp" line="99"/>
+        <source>Sample Rate</source>
+        <translation>采样率</translation>
+    </message>
+    <message>
+        <location filename="../mpvhandler.cpp" line="105"/>
+        <source>Chapters</source>
+        <translation>章节</translation>
+    </message>
+    <message>
+        <location filename="../mpvhandler.cpp" line="114"/>
+        <source>Metadata</source>
+        <translation>元数据</translation>
+    </message>
+    <message>
         <source>[Video]</source>
-        <translation>视频</translation>
+        <translation type="vanished">视频</translation>
     </message>
     <message>
         <source>Video codec</source>
@@ -1953,9 +2131,8 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">视频分辨率</translation>
     </message>
     <message>
-        <location filename="../mpvhandler.cpp" line="80"/>
         <source>[Audio]</source>
-        <translation>音频</translation>
+        <translation type="vanished">音频</translation>
     </message>
     <message>
         <source>Audio codec</source>
@@ -1978,59 +2155,52 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">音频通道</translation>
     </message>
     <message>
-        <location filename="../mpvhandler.cpp" line="90"/>
         <source>[Track List]</source>
-        <translation>曲目列表</translation>
+        <translation type="vanished">曲目列表</translation>
     </message>
     <message>
-        <location filename="../mpvhandler.cpp" line="97"/>
         <source>[Chapter List]</source>
-        <translation>章节列表</translation>
+        <translation type="vanished">章节列表</translation>
     </message>
     <message>
-        <location filename="../mpvhandler.cpp" line="72"/>
-        <location filename="../mpvhandler.cpp" line="81"/>
         <source>Codec</source>
-        <translation>编解码器</translation>
+        <translation type="vanished">编解码器</translation>
     </message>
     <message>
-        <location filename="../mpvhandler.cpp" line="73"/>
-        <location filename="../mpvhandler.cpp" line="82"/>
+        <location filename="../mpvhandler.cpp" line="96"/>
+        <location filename="../mpvhandler.cpp" line="101"/>
         <source>Bitrate</source>
         <translation>比特率</translation>
     </message>
     <message>
-        <location filename="../mpvhandler.cpp" line="74"/>
         <source>Dimensions</source>
-        <translation>尺寸</translation>
+        <translation type="vanished">尺寸</translation>
     </message>
     <message>
-        <location filename="../mpvhandler.cpp" line="83"/>
         <source>Samplerate</source>
-        <translation>采样率</translation>
+        <translation type="vanished">采样率</translation>
     </message>
     <message>
-        <location filename="../mpvhandler.cpp" line="84"/>
+        <location filename="../mpvhandler.cpp" line="100"/>
         <source>Channels</source>
         <translation>频道</translation>
     </message>
     <message>
-        <location filename="../mpvhandler.cpp" line="104"/>
         <source>[Metadata]</source>
-        <translation>[元数据]</translation>
+        <translation type="vanished">[元数据]</translation>
     </message>
     <message>
-        <location filename="../mpvhandler.cpp" line="286"/>
+        <location filename="../mpvhandler.cpp" line="285"/>
         <source>File does not exist</source>
         <translation>文件不存在</translation>
     </message>
     <message>
-        <location filename="../mpvhandler.cpp" line="325"/>
+        <location filename="../mpvhandler.cpp" line="324"/>
         <source>File no longer exists</source>
         <translation>文件已不存在</translation>
     </message>
     <message>
-        <location filename="../mpvhandler.cpp" line="477"/>
+        <location filename="../mpvhandler.cpp" line="487"/>
         <source>Volume: %0%</source>
         <translation>音量: %0%</translation>
     </message>
@@ -2038,17 +2208,33 @@ Some features may not work and changed settings will not be saved.</source>
 <context>
     <name>PlaylistWidget</name>
     <message>
-        <location filename="../widgets/playlistwidget.cpp" line="290"/>
+        <location filename="../widgets/playlistwidget.cpp" line="292"/>
+        <source>Delete sub-file?</source>
+        <translation>删除字幕文件？</translation>
+    </message>
+    <message>
+        <location filename="../widgets/playlistwidget.cpp" line="293"/>
+        <location filename="../widgets/playlistwidget.cpp" line="307"/>
+        <source>Would you like to delete the associated sub file [%0]?</source>
+        <translation>是否删除相关字幕文件[%0]？</translation>
+    </message>
+    <message>
+        <location filename="../widgets/playlistwidget.cpp" line="306"/>
+        <source>Delete external sub-file?</source>
+        <translation>删除外部字幕文件？</translation>
+    </message>
+    <message>
+        <location filename="../widgets/playlistwidget.cpp" line="325"/>
         <source>R&amp;emove from Playlist</source>
         <translation>移出播放列表(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../widgets/playlistwidget.cpp" line="295"/>
+        <location filename="../widgets/playlistwidget.cpp" line="330"/>
         <source>&amp;Delete from Disk</source>
         <translation>从磁盘删除(&amp;D)</translation>
     </message>
     <message>
-        <location filename="../widgets/playlistwidget.cpp" line="300"/>
+        <location filename="../widgets/playlistwidget.cpp" line="335"/>
         <source>&amp;Refresh</source>
         <translation>刷新(&amp;R)</translation>
     </message>
@@ -2061,12 +2247,12 @@ Some features may not work and changed settings will not be saved.</source>
         <translation>首选项</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="209"/>
+        <location filename="../ui/preferencesdialog.ui" line="224"/>
         <source>Player</source>
         <translation>播放器</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="227"/>
+        <location filename="../ui/preferencesdialog.ui" line="242"/>
         <source>On Top</source>
         <translation>窗口置顶</translation>
     </message>
@@ -2075,22 +2261,22 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">&amp;总是</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="240"/>
+        <location filename="../ui/preferencesdialog.ui" line="255"/>
         <source>&amp;When Playing</source>
         <translation>&amp;播放时置顶</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="247"/>
+        <location filename="../ui/preferencesdialog.ui" line="262"/>
         <source>&amp;Never</source>
         <translation>&amp;从不置顶</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="260"/>
+        <location filename="../ui/preferencesdialog.ui" line="275"/>
         <source>Tray Icon</source>
         <translation>托盘图标</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="269"/>
+        <location filename="../ui/preferencesdialog.ui" line="284"/>
         <source>&amp;Hide Popup</source>
         <translation>&amp;隐藏弹出</translation>
     </message>
@@ -2099,93 +2285,108 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="obsolete">鼠标手势支持</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="303"/>
+        <location filename="../ui/preferencesdialog.ui" line="318"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Click &amp;amp; drag cursor up/down to change volume&lt;br&gt;Click &amp;amp; drag cursor left/right to seek&lt;/b&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;点击画面 &amp;amp; 上下拖动光标以控制音量&lt;br&gt;点击画面 &amp;amp; 左右拖动光标来控制进度&lt;/b&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="324"/>
+        <location filename="../ui/preferencesdialog.ui" line="339"/>
         <source>Language:</source>
         <translation>语言：</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="545"/>
+        <location filename="../ui/preferencesdialog.ui" line="385"/>
+        <source>Key Bindings</source>
+        <translation>快捷键</translation>
+    </message>
+    <message>
+        <location filename="../ui/preferencesdialog.ui" line="408"/>
+        <source>Hint: Prefix a command with &apos;mpv&apos; to make it run as an input command.</source>
+        <translation>提示: 在命令前加上&apos;mpv&apos;以让其作为命令输入</translation>
+    </message>
+    <message>
+        <location filename="../ui/preferencesdialog.ui" line="550"/>
+        <source>RESE&amp;T ALL</source>
+        <translation>重置所有设置</translation>
+    </message>
+    <message>
+        <location filename="../ui/preferencesdialog.ui" line="573"/>
         <source>Video</source>
         <translation>视频</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="565"/>
+        <location filename="../ui/preferencesdialog.ui" line="593"/>
         <source>&amp;Auto-Fit Window:</source>
         <translation>&amp;自动适应窗口:</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="579"/>
+        <location filename="../ui/preferencesdialog.ui" line="607"/>
         <source>50%</source>
         <translation>50%</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="584"/>
+        <location filename="../ui/preferencesdialog.ui" line="612"/>
         <source>75%</source>
         <translation>75%</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="589"/>
+        <location filename="../ui/preferencesdialog.ui" line="617"/>
         <source>100%</source>
         <translation>100%</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="594"/>
+        <location filename="../ui/preferencesdialog.ui" line="622"/>
         <source>200%</source>
         <translation>200%</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="617"/>
+        <location filename="../ui/preferencesdialog.ui" line="645"/>
         <source>Screenshot</source>
         <translation>截图</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="659"/>
+        <location filename="../ui/preferencesdialog.ui" line="687"/>
         <source>File Format:</source>
         <translation>图片格式:</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="634"/>
+        <location filename="../ui/preferencesdialog.ui" line="662"/>
         <source>jpg</source>
         <translation>jpg</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="639"/>
+        <location filename="../ui/preferencesdialog.ui" line="667"/>
         <source>png</source>
         <translation>png</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="644"/>
+        <location filename="../ui/preferencesdialog.ui" line="672"/>
         <source>tga</source>
         <translation>tga</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="652"/>
+        <location filename="../ui/preferencesdialog.ui" line="680"/>
         <source>File Name Template:</source>
         <translation>文件名模板：</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="680"/>
+        <location filename="../ui/preferencesdialog.ui" line="708"/>
         <source>Default Save Location:</source>
         <translation>默认保存目录:</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="673"/>
+        <location filename="../ui/preferencesdialog.ui" line="701"/>
         <source>screenshot%#04n</source>
         <translation>screenshot%#04n</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="491"/>
-        <location filename="../ui/preferencesdialog.ui" line="666"/>
+        <location filename="../ui/preferencesdialog.ui" line="519"/>
+        <location filename="../ui/preferencesdialog.ui" line="694"/>
         <source>CHANG&amp;E</source>
         <translation>更改(&amp;E)</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="623"/>
+        <location filename="../ui/preferencesdialog.ui" line="651"/>
         <source>&amp;Always show the dialog</source>
         <translation>&amp;总是显示此对话框</translation>
     </message>
@@ -2194,12 +2395,12 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">关闭(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.cpp" line="52"/>
+        <location filename="../ui/preferencesdialog.cpp" line="53"/>
         <source>Choose screenshot directory</source>
         <translation>选择截图目录</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="279"/>
+        <location filename="../ui/preferencesdialog.ui" line="294"/>
         <source>Mouse Gesture</source>
         <translation>鼠标手势</translation>
     </message>
@@ -2208,22 +2409,21 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">启用</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="370"/>
         <source>Keys</source>
-        <translation>快捷键</translation>
+        <translation type="vanished">快捷键</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="458"/>
+        <location filename="../ui/preferencesdialog.ui" line="476"/>
         <source>Key</source>
         <translation>快捷键</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="463"/>
+        <location filename="../ui/preferencesdialog.ui" line="481"/>
         <source>Command</source>
         <translation>命令</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="468"/>
+        <location filename="../ui/preferencesdialog.ui" line="486"/>
         <source>Label</source>
         <translation>标签</translation>
     </message>
@@ -2232,62 +2432,68 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="vanished">标签（可选）</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="498"/>
+        <location filename="../ui/preferencesdialog.ui" line="509"/>
         <source>&amp;ADD</source>
         <translation>添加</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="288"/>
+        <location filename="../ui/preferencesdialog.ui" line="303"/>
         <source>&amp;Enable Mouse Gesture support</source>
         <translation>启用鼠标手势支持</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="505"/>
+        <location filename="../ui/preferencesdialog.ui" line="529"/>
         <source>&amp;REMOVE</source>
         <translation>移除</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="522"/>
         <source>RESE&amp;T</source>
-        <translation>重置</translation>
+        <translation type="vanished">重置</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.cpp" line="76"/>
         <source>Reset Keybinding</source>
-        <translation>重置快捷键</translation>
+        <translation type="vanished">重置快捷键</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.cpp" line="76"/>
         <source>Are you sure you want to reset the shortcut keys to original bindings?</source>
-        <translation>确定要快捷键重置到初始设置吗？</translation>
+        <translation type="vanished">确定要快捷键重置到初始设置吗？</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.cpp" line="216"/>
+        <location filename="../ui/preferencesdialog.cpp" line="80"/>
+        <source>Reset All Key Bindings?</source>
+        <translation>重置所有快捷键？</translation>
+    </message>
+    <message>
+        <location filename="../ui/preferencesdialog.cpp" line="80"/>
+        <source>Are you sure you want to reset all shortcut keys to its original bindings?</source>
+        <translation>确定要将所有快捷键恢复到初始设置吗？</translation>
+    </message>
+    <message>
+        <location filename="../ui/preferencesdialog.cpp" line="223"/>
         <source>Existing keybinding</source>
         <translation>现有快捷键</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.cpp" line="217"/>
+        <location filename="../ui/preferencesdialog.cpp" line="224"/>
         <source>%0 is already being used. Would you like to change its function?</source>
         <translation>%0正在使用，是否更改其函数？</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="393"/>
         <source>Note: Prefix a command with &apos;mpv&apos; to make it run as an input command.</source>
-        <translation>注意:在命令前加上&apos;mpv&apos;以让它以一个输入命令运行</translation>
+        <translation type="vanished">注意:在命令前加上&apos;mpv&apos;以让它以一个输入命令运行</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="233"/>
+        <location filename="../ui/preferencesdialog.ui" line="248"/>
         <source>A&amp;lways</source>
         <translation>总是置顶</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="768"/>
+        <location filename="../ui/preferencesdialog.ui" line="796"/>
         <source>&amp;OK</source>
         <translation>确定</translation>
     </message>
     <message>
-        <location filename="../ui/preferencesdialog.ui" line="775"/>
+        <location filename="../ui/preferencesdialog.ui" line="803"/>
         <source>&amp;CANCEL</source>
         <translation>取消</translation>
     </message>
@@ -2300,47 +2506,47 @@ Some features may not work and changed settings will not be saved.</source>
         <translation>截图</translation>
     </message>
     <message>
-        <location filename="../ui/screenshotdialog.ui" line="116"/>
+        <location filename="../ui/screenshotdialog.ui" line="119"/>
         <source>...</source>
         <translation>...</translation>
     </message>
     <message>
-        <location filename="../ui/screenshotdialog.ui" line="126"/>
+        <location filename="../ui/screenshotdialog.ui" line="129"/>
         <source>Save Location</source>
         <translation>保存目录</translation>
     </message>
     <message>
-        <location filename="../ui/screenshotdialog.ui" line="133"/>
+        <location filename="../ui/screenshotdialog.ui" line="136"/>
         <source>File Name Template</source>
         <translation>文件名模板</translation>
     </message>
     <message>
-        <location filename="../ui/screenshotdialog.ui" line="153"/>
+        <location filename="../ui/screenshotdialog.ui" line="156"/>
         <source>jpg</source>
         <translation>jpg</translation>
     </message>
     <message>
-        <location filename="../ui/screenshotdialog.ui" line="158"/>
+        <location filename="../ui/screenshotdialog.ui" line="161"/>
         <source>png</source>
         <translation>png</translation>
     </message>
     <message>
-        <location filename="../ui/screenshotdialog.ui" line="163"/>
+        <location filename="../ui/screenshotdialog.ui" line="166"/>
         <source>tga</source>
         <translation>tga</translation>
     </message>
     <message>
-        <location filename="../ui/screenshotdialog.ui" line="175"/>
+        <location filename="../ui/screenshotdialog.ui" line="178"/>
         <source>Sho&amp;w subtitles</source>
         <translation>显示字幕(&amp;W)</translation>
     </message>
     <message>
-        <location filename="../ui/screenshotdialog.ui" line="182"/>
+        <location filename="../ui/screenshotdialog.ui" line="185"/>
         <source>Always show this dialog</source>
         <translation>总是显示此对话框</translation>
     </message>
     <message>
-        <location filename="../ui/screenshotdialog.ui" line="211"/>
+        <location filename="../ui/screenshotdialog.ui" line="214"/>
         <source>&amp;SAVE</source>
         <translation>保存(&amp;S)</translation>
     </message>
@@ -2358,22 +2564,22 @@ Some features may not work and changed settings will not be saved.</source>
         <translation>检查更新</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.ui" line="125"/>
+        <location filename="../ui/updatedialog.ui" line="134"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Checking for updates...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;正在检查更新...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.ui" line="148"/>
+        <location filename="../ui/updatedialog.ui" line="157"/>
         <source>About 0 second(s) remaining</source>
         <translation>剩余大约 0 秒</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.ui" line="196"/>
+        <location filename="../ui/updatedialog.ui" line="205"/>
         <source>&amp;UPDATE</source>
         <translation>&amp;更新(&amp;U)</translation>
     </message>
     <message>
-        <location filename="../ui/updatedialog.ui" line="215"/>
+        <location filename="../ui/updatedialog.ui" line="224"/>
         <source>&amp;CANCEL</source>
         <translation>&amp;取消(&amp;C)</translation>
     </message>
