@@ -1033,13 +1033,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
     // keyboard shortcuts
     if(!baka->input.empty())
     {
-        // Convert KeyEvent to Shortcut:
-        QString key = QString();
-        if(event->modifiers() & Qt::MetaModifier)    key += "Meta+";
-        if(event->modifiers() & Qt::ControlModifier) key += "Ctrl+";
-        if(event->modifiers() & Qt::AltModifier)     key += "Alt+";
-        if(event->modifiers() & Qt::ShiftModifier)   key += "Shift+";
-        key += QKeySequence(event->key()).toString();
+        QString key = QKeySequence(event->modifiers()|event->key()).toString();
 
         // TODO: Add more protection/find a better way to protect edit boxes from executing commands
         if(focusWidget() == ui->inputLineEdit &&
