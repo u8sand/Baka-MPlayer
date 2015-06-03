@@ -8,37 +8,40 @@ In general you'll want to use any available baka-mplayer command before you use 
 
 The following is a list of the available `baka` commands (for `mpv` commands see mpv's manual):
 
-	new                             # creates a new instance of baka-mplayer
-	open_location                   # shows the open location dialog
-	open_clipboard                  # opens the clipboard
-	show_in_folder                  # shows the current file in folder
-	add_subtitles                   # add subtitles dialog
-	screenshot [subtitles]          # take a screenshot (with subs if specified)
-	media_info                      # toggles media info state
-	stop                            # stops the current playback
-	playlist <...>                  # playlist options (playlist ...)
-	  play [index]                  #  plays the selected file (or (relative)? index)
-	  remove                        #  removes the selected file from the playlist
-	  shuffle                       #  shuffles the playlist
-	  toggle                        #  toggles the playlist
-	  full                          #  expands fully the playlist (hide album art)
-	  select [index]                #  selects the index (can be relative) or currently playing file
-	  repeat <off|this|playlist>    #  sets repeat state
-	jump                            # opens jump dialog
-	dim                             # toggles dim desktop
-	output                          # toggles output textbox
-	preferences                     # opens preferences dialog
-	online_help                     # launches online help
-	update [youtube-dl]             # opens the update dialog or updates youtube-dl
-	open [file]                     # opens the open file dialog or the file specified
-	play_pause                      # toggle play/pause state
-	fitwindow [percent]             # fit the window
-	volume [value]                  # adjusts the volume (can be relative)
-	fullscreen                      # toggles fullscreen state
-	boss                            # pause and hide the window--run away from boss
-	help [command]                  # internal help menu
-	about [qt]                      # open about dialog
-	debug                           # toggle mpv debugging messages
-	quit                            # quit baka-mplayer
+    new                             # creates a new instance of baka-mplayer
+    open_location                   # shows the open location dialog
+    open_clipboard                  # opens the clipboard
+    show_in_folder                  # shows the current file in folder
+    add_subtitles                   # add subtitles dialog
+    screenshot [subtitles]          # take a screenshot (with subs if specified)
+    media_info                      # toggles media info state
+    stop                            # stops the current playback
+    playlist <...>                  # playlist options (playlist ...)
+      play [index]                  #  plays the selected file (or (relative)? index)
+      remove                        #  removes the selected file from the playlist
+      shuffle                       #  shuffles the playlist
+      toggle                        #  toggles the playlist
+      full                          #  expands fully the playlist (hide album art)
+      select [index]                #  selects the index (can be relative) or currently playing file
+      repeat <off|this|playlist>    #  sets repeat state
+    jump                            # opens jump dialog
+    dim                             # toggles dim desktop
+    output                          # toggles output textbox
+    preferences                     # opens preferences dialog
+    online_help                     # launches online help
+    update [youtube-dl]             # opens the update dialog or updates youtube-dl
+    open [file]                     # opens the open file dialog or the file specified
+    play_pause                      # toggle play/pause state
+    fitwindow [percent]             # fit the window
+    deinterlace                     # toggles deinterlation
+    interpolate                     # toggles vo interpolation
+    mute                            # toggles mute
+    volume [value]                  # adjusts the volume (can be relative)
+    fullscreen                      # toggles fullscreen state
+    boss                            # pause and hide the window--run away from boss
+    help [command]                  # internal help menu
+    about [qt]                      # open about dialog
+    debug                           # toggle mpv debugging messages
+    quit                            # quit baka-mplayer
 
 More commands will be coming but please feel free to suggest modifications or additions.

@@ -27,13 +27,13 @@ Note: Packages may be named slightly different for each distro
 
 These instructions are for cross-compiling for Windows on a Linux system. (Note: the architecture can be either `x86_64` or `i686` depending on which platform you're compiling for)
 
-	git clone -b release https://github.com/u8sand/Baka-MPlayer.git
-	cd "Baka-MPlayer"
-	mkdir build
-	cp -r windows/cross-compilation/* build/
-	cd build
-	arch=x86_64
-	./baka-build.sh $arch
+    git clone -b release https://github.com/u8sand/Baka-MPlayer.git
+    cd "Baka-MPlayer"
+    mkdir build
+    cp -r windows/cross-compilation/* build/
+    cd build
+    arch=x86_64
+    ./baka-build.sh $arch
 
 This is a very long process because you'll need to build the mingw32 toolchain `mxe` and all dependent libraries, `libmpv.a`, and finally `baka-mplayer.exe`. If everything succeeded without error, you'll get `Baka-MPlayer.$arch.zip` which should contain everything you need.
 
@@ -47,21 +47,21 @@ If your distribution does not provide a package, you can compile it from source.
 
 We've made scripts for some of the distributions... See `etc/sbin/linux/`
 
-	git clone -b release https://github.com/u8sand/Baka-MPlayer.git
-	cd "Baka-MPlayer"
-	mkdir build
-	cp -r linux/* build/
-	cd build
-	distro=debian_based
-	./$distro.sh
+    git clone -b release https://github.com/u8sand/Baka-MPlayer.git
+    cd "Baka-MPlayer"
+    mkdir build
+    cp -r linux/* build/
+    cd build
+    distro=debian_based
+    ./$distro.sh
 
 If this doesn't work or you do not have a distro listed here, you're on your own. You'll need to build mpv and then Baka-MPlayer, (the dependencies above are Baka-MPlayer). For help building mpv see `https://github.com/mpv-player/mpv-build`. Building and making Baka-MPlayer from source can be done like so:
 
-	git clone -b release https://github.com/u8sand/Baka-MPlayer.git
-	cd "Baka-MPlayer"
-	./configure
-	make -j `grep -c ^processor /proc/cpuinfo`
-	sudo make install
+    git clone -b release https://github.com/u8sand/Baka-MPlayer.git
+    cd "Baka-MPlayer"
+    ./configure
+    make -j `grep -c ^processor /proc/cpuinfo`
+    sudo make install
 
 The configuration file will be created on first run and will be written to `~/.config/bakamplayer.ini`.
 
@@ -69,7 +69,7 @@ The configuration file will be created on first run and will be written to `~/.c
 
 By default, Baka MPlayer will compile in English if no language is specified during compilation. To compile a multi-lingual version of baka-mplayer, configure it like so:
 
-	./configure CONFIG+=install_translations
+    ./configure CONFIG+=install_translations
 
 For more configuration options see the `configure` source file or read the manual.
 

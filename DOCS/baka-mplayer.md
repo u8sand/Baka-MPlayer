@@ -31,22 +31,22 @@ Your recently viewed files are stored in settings for easy access. It is located
 
 Some functionality that is not explained or is immediately obvious is written here.
 
-	Hotkeys
-		Left                    Seek backwards 5 seconds
-		Right                   Seek forwards 5 seconds
-		Esc                     Exit fullscreen mode or Boss Key (pause and minimize)
-		MediaPlay               Triggers Play/Pause
-		MediaStop               Triggers Stop
-		MediaNext               Triggers Play Next File
-		MediaPrevious           Triggers Play Previous File
-	Clicking and Dragging
-		the main window         Triggers gesture or Moves the main window
-	Right Clicking the video
-		In Fullscreen           Shows the menubar actions in context menu form
-		Outside of Fullscreen   Triggers Play/Pause
-	Quick Open Button
-		Left Click - Show the open file dialog
-		Middle Click - Jump to a specific time
-		Right Click - Open a location (including URLs)
+    Hotkeys
+      Left                    Seek backwards 5 seconds
+      Right                   Seek forwards 5 seconds
+      Esc                     Exit fullscreen mode or Boss Key (pause and minimize)
+      MediaPlay               Triggers Play/Pause
+      MediaStop               Triggers Stop
+      MediaNext               Triggers Play Next File
+      MediaPrevious           Triggers Play Previous File
+    Clicking and Dragging
+      the main window         Triggers gesture or Moves the main window
+    Right Clicking the video
+      In Fullscreen           Shows the menubar actions in context menu form
+      Outside of Fullscreen   Triggers Play/Pause
+    Quick Open Button
+      Left Click - Show the open file dialog
+      Middle Click - Jump to a specific time
+      Right Click - Open a location (including URLs)
 
 Most of these features are customizable through preferences, including key-binding customization and feature toggles.
