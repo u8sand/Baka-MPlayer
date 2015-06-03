@@ -81,7 +81,7 @@ function build_mxe {
   echo "Building mxe..."
   echo "JOBS := $JOBS" > settings.mk
   echo "MXE_TARGETS := $ARCH-w64-mingw32.static" >> settings.mk
-  make gcc ffmpeg libass lua jpeg pthreads qt5 libzip || return 1
+  make gcc ffmpeg libass lua luajit jpeg pthreads qt5 libzip || return 1
   return 0
 }
 
