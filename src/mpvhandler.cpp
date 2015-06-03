@@ -837,7 +837,7 @@ void MpvHandler::SetOption(QString key, QString val)
 
 void MpvHandler::OpenFile(QString f)
 {
-    emit fileChanging(time);
+    emit fileChanging(time, fileInfo.length);
 
     const QByteArray tmp = f.toUtf8();
     const char *args[] = {"loadfile", tmp.constData(), NULL};

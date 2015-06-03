@@ -154,7 +154,7 @@ signals:
     void chaptersChanged(const QList<Mpv::Chapter>&);
     void videoParamsChanged(const Mpv::VideoParams&);
     void playStateChanged(Mpv::PlayState);
-    void fileChanging(int);
+    void fileChanging(int, int);
     void fileChanged(QString);
     void pathChanged(QString);
     void screenshotFormatChanged(QString);

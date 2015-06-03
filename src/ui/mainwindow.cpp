@@ -539,10 +539,15 @@ MainWindow::MainWindow(QWidget *parent):
             });
 
       connect(mpv, &MpvHandler::fileChanging,
-              [=](int t)
+              [=](int t, int l)
               {
                   if(current != nullptr)
-                    current->time = t;
+                  {
+                      if(t > 0.05*l && t < 0.95*l) // only save if within the middle 90%
+                          current->time = t;
+                      else
+                          current->time = 0;
+                  }
               });
 
 //    connect(mpv, &MpvHandler::fileChanged,
@@ -802,7 +807,14 @@ MainWindow::MainWindow(QWidget *parent):
 MainWindow::~MainWindow()
 {
     if(current != nullptr)
-        current->time = mpv->getTime();
+    {
+        int t = mpv->getTime(),
+            l = mpv->getFileInfo().length;
+        if(t > 0.05*l && t < 0.95*l) // only save if within the middle 90%
+            current->time = t;
+        else
+            current->time = 0;
+    }
     baka->SaveSettings();
 
     // Note: child objects _should_ not need to be deleted because
