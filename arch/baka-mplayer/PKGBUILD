@@ -2,8 +2,8 @@
 # Contributor: Alfredo Ramos <alfredo dot ramos at yandex dot com>
 
 pkgname=baka-mplayer
-pkgver=2.0.2
-pkgrel=2
+pkgver=2.0.3
+pkgrel=1
 pkgdesc='A free and open source, cross-platform, libmpv based multimedia player. Qt5 build.'
 arch=('i686' 'x86_64')
 url='http://bakamplayer.u8sand.net/'
@@ -23,9 +23,7 @@ replaces=("${pkgname}-git")
 source=(
 	"${pkgname}-${pkgver}.tar.gz::https://github.com/u8sand/Baka-MPlayer/archive/v${pkgver}.tar.gz"
 )
-sha512sums=(
-	"3a134b60eca00ebe53223d6d2a12b7fa09902615d0a71522f2bb2bc6d818539ab93a46744de9fc554a4ee8b0918378cf28cd1f096136dffef37547d2fae67259"
-)
+md5sums=('e43ffffc1b21e29ba5fefcb123475363')
 
 prepare() {
 	# Make build directory
