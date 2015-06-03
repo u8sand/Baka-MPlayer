@@ -1,3 +1,31 @@
+baka-mplayer (2.0.3-1) unstable; urgency=low
+
+  * Hint: If you speed up the video, Baka will display how much real time you have remaining.
+  * Fixed: Status info is now displayed with audio files without album art
+  * Fixed: Disable Show in Folder for online files
+  * Fixed: Key Bindings table is, and can be, sorted alphabetically
+  * Changed: Logo :D
+  * Changed: Settings file uses JSON
+  * Changed: Currently playing file is selected in playlist (old behavior)
+  * Changed: External subtitles will be labeled as so
+  * Changed: Volume level shown on mouse scroll
+  * Changed: Speed is increased/decreased by interval of 10%
+  * Changed: Sub font size is increased/decreased by 0.1
+  * Improved: Overall design
+  * Improved: Playback Info display
+  * Added: Croatian translation
+  * Added: Dutch translation
+  * Added: French translation
+  * Added: Spanish translation
+  * Added: Mute (different from setting volume to 0)
+  * Added: Thumbnail buttons (Windows only)
+  * Added: Metadata (ex. ID3 Tags) to playback info
+  * Added: Delete external sub file along with video file (optional)
+  * Added: Motion Interpolation option (previously called "smoothmotion")
+  * Added: "help" command
+
+ -- Joshua Park (godly-devotion) <azian.otaku@live.com>  Wed, 3 Jun 2015 16:00:00 -0500
+
 baka-mplayer (2.0.2-1) unstable; urgency=low
 
   * Fixed: Dim Desktop on multiple platforms
