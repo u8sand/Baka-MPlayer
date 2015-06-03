@@ -107,8 +107,14 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
         <source>mpv - video player based on MPlayer/mplayer2
 GPLv2 &lt;mpv.io&gt;
 
+Material Design icons
+Attribution 4.0 International &lt;Google&gt;
+
 Noto Sans -  font family with many supported characters
 Apache License, version 2.0 &lt;Google&gt;
+
+Retro Cassette image
+&lt;Lukas Troup&gt;
 
 Download icon
 CC BY 3.0 &lt;Sasha Mescheryakov&gt;
@@ -117,6 +123,8 @@ Translations
 - Chinese &lt;amazingfate, Antares95&gt;
 - Croatian &lt;gogo&gt;
 - Dutch &lt;robin007bond&gt;
+- French &lt;chapouvalpin&gt;
+- German: &lt;yiip87&gt;
 - Italian &lt;Aloysius&gt;
 - Korean &lt;godly-devotion&gt;
 - Portuguese &lt;u8sand&gt;
@@ -129,12 +137,12 @@ Translations
     <name>BakaEngine</name>
     <message>
         <source>Settings version not recognized</source>
-        <translation type="unfinished">Inačica postavki nije prepoznata</translation>
+        <translation type="obsolete">Inačica postavki nije prepoznata</translation>
     </message>
     <message>
         <source>The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.
 Some features may not work and changed settings will not be saved.</source>
-        <translation type="unfinished">Datoteka postavki je napravljena s novijom inačicom Baka-mplayera; nadogradite na noviju inačicu ili potražite pomoć razvijatelja.
+        <translation type="obsolete">Datoteka postavki je napravljena s novijom inačicom Baka-mplayera; nadogradite na noviju inačicu ili potražite pomoć razvijatelja.
 Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.</translation>
     </message>
     <message>
@@ -238,11 +246,11 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>Increase playback speed by 25%</source>
-        <translation type="unfinished">Povećaj brzinu reprodukcije za 25%</translation>
+        <translation type="obsolete">Povećaj brzinu reprodukcije za 25%</translation>
     </message>
     <message>
         <source>Decrease playback speed by 25%</source>
-        <translation type="unfinished">Smanji brzinu reprodukcije za 25%</translation>
+        <translation type="obsolete">Smanji brzinu reprodukcije za 25%</translation>
     </message>
     <message>
         <source>Go to next chapter</source>
@@ -588,6 +596,30 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
         <source>quit baka-mplayer</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Toggle mute audio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Increase playback speed by 10%</source>
+        <translation type="unfinished">Povećaj brzinu reprodukcije za 25% {10%?}</translation>
+    </message>
+    <message>
+        <source>Decrease playback speed by 10%</source>
+        <translation type="unfinished">Smanji brzinu reprodukcije za 25% {10%?}</translation>
+    </message>
+    <message>
+        <source>toggle deinterlace</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>toggle motion interpolation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>mutes the audio</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>InfoDialog</name>
@@ -734,11 +766,11 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>Command</source>
-        <translation type="unfinished">Naredba</translation>
+        <translation type="obsolete">Naredba</translation>
     </message>
     <message>
         <source>Label (optional)</source>
-        <translation type="unfinished">Oznaka (neobavezno)</translation>
+        <translation type="obsolete">Oznaka (neobavezno)</translation>
     </message>
     <message>
         <source>C&amp;LEAR SHORTCUT</source>
@@ -755,6 +787,22 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     <message>
         <source>&amp;CANCEL</source>
         <translation type="unfinished">&amp;PONIŠTI</translation>
+    </message>
+    <message>
+        <source>(optional)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Shortcut:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Command:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Label:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -948,7 +996,7 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>Play &amp;Next File</source>
-        <translation type="unfinished">Reproduciraj &amp;sljedeću datoteku</translation>
+        <translation type="obsolete">Reproduciraj &amp;sljedeću datoteku</translation>
     </message>
     <message>
         <source>Ctrl+Right</source>
@@ -1112,7 +1160,7 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>50%</source>
-        <translation>50%</translation>
+        <translation type="vanished">50%</translation>
     </message>
     <message>
         <source>Alt+2</source>
@@ -1120,7 +1168,7 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>75%</source>
-        <translation>75%</translation>
+        <translation type="vanished">75%</translation>
     </message>
     <message>
         <source>Alt+3</source>
@@ -1128,7 +1176,7 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>100%</source>
-        <translation>100%</translation>
+        <translation type="vanished">100%</translation>
     </message>
     <message>
         <source>Alt+4</source>
@@ -1136,7 +1184,7 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>200%</source>
-        <translation>200%</translation>
+        <translation type="vanished">200%</translation>
     </message>
     <message>
         <source>Alt+6</source>
@@ -1164,7 +1212,7 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>[ none ]</source>
-        <translation type="unfinished">[ nepoznato ]</translation>
+        <translation type="obsolete">[ nepoznato ]</translation>
     </message>
     <message>
         <source>&amp;Size +</source>
@@ -1268,7 +1316,7 @@ Neke značajke možda neće raditi i promjenjene postavke neće biti spremljene.
     </message>
     <message>
         <source>150%</source>
-        <translation>150%</translation>
+        <translation type="vanished">150%</translation>
     </message>
     <message>
         <source>Alt+5</source>
@@ -1410,6 +1458,70 @@ Neke značajke možda neće raditi i promijenjene postavke neće biti spremljene
         <source>Pause</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>&amp;Volume</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pla&amp;y Next File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;50%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;75%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;100%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;200%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>[ &amp;none ]</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>15&amp;0%</source>
+        <translation type="unfinished">200% {15&amp;0%?}</translation>
+    </message>
+    <message>
+        <source>&amp;Mute</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Motion Interpolation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reduce video studder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Deinterlace</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Subtitles visible</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Subtitles hidden</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Muted</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unmuted</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MpvHandler</name>
@@ -1432,11 +1544,11 @@ Neke značajke možda neće raditi i promijenjene postavke neće biti spremljene
     </message>
     <message>
         <source>File name</source>
-        <translation type="unfinished">Naziv datoteke</translation>
+        <translation type="obsolete">Naziv datoteke</translation>
     </message>
     <message>
         <source>Media Title</source>
-        <translation type="unfinished">Naslov medija</translation>
+        <translation type="obsolete">Naslov medija</translation>
     </message>
     <message>
         <source>File size</source>
@@ -1452,7 +1564,7 @@ Neke značajke možda neće raditi i promijenjene postavke neće biti spremljene
     </message>
     <message>
         <source>[Video]</source>
-        <translation type="unfinished">[Video]</translation>
+        <translation type="obsolete">[Video]</translation>
     </message>
     <message>
         <source>Video codec</source>
@@ -1472,7 +1584,7 @@ Neke značajke možda neće raditi i promijenjene postavke neće biti spremljene
     </message>
     <message>
         <source>[Audio]</source>
-        <translation type="unfinished">[Zvuk]</translation>
+        <translation type="obsolete">[Zvuk]</translation>
     </message>
     <message>
         <source>Audio codec</source>
@@ -1496,34 +1608,18 @@ Neke značajke možda neće raditi i promijenjene postavke neće biti spremljene
     </message>
     <message>
         <source>[Track List]</source>
-        <translation type="unfinished">[Popis zapisa]</translation>
+        <translation type="obsolete">[Popis zapisa]</translation>
     </message>
     <message>
         <source>[Chapter List]</source>
-        <translation type="unfinished">[Popis poglavlja]</translation>
-    </message>
-    <message>
-        <source>Codec</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">[Popis poglavlja]</translation>
     </message>
     <message>
         <source>Bitrate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Dimensions</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Samplerate</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Channels</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>[Metadata]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1532,6 +1628,54 @@ Neke značajke možda neće raditi i promijenjene postavke neće biti spremljene
     </message>
     <message>
         <source>File no longer exists</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Video (x%0)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Resolution</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>FPS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A/V Sync</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%0 kbps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Audio (x%0)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sample Rate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Chapters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Metadata</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Volume: %0%</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1548,6 +1692,18 @@ Neke značajke možda neće raditi i promijenjene postavke neće biti spremljene
     <message>
         <source>&amp;Refresh</source>
         <translation type="unfinished">&amp;Osvježi</translation>
+    </message>
+    <message>
+        <source>Delete sub-file?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Would you like to delete the associated sub file [%0]?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete external sub-file?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1674,7 +1830,7 @@ Neke značajke možda neće raditi i promijenjene postavke neće biti spremljene
     </message>
     <message>
         <source>Keys</source>
-        <translation type="unfinished">Tipke</translation>
+        <translation type="obsolete">Tipke</translation>
     </message>
     <message>
         <source>Key</source>
@@ -1702,15 +1858,15 @@ Neke značajke možda neće raditi i promijenjene postavke neće biti spremljene
     </message>
     <message>
         <source>RESE&amp;T</source>
-        <translation type="unfinished">VRATI &amp;ZADANO</translation>
+        <translation type="obsolete">VRATI &amp;ZADANO</translation>
     </message>
     <message>
         <source>Reset Keybinding</source>
-        <translation type="unfinished">Vrati zadane prečace tipkovnice</translation>
+        <translation type="obsolete">Vrati zadane prečace tipkovnice</translation>
     </message>
     <message>
         <source>Are you sure you want to reset the shortcut keys to original bindings?</source>
-        <translation type="unfinished">Sigurno želite vratiti zadane prečace tipkovnica?</translation>
+        <translation type="obsolete">Sigurno želite vratiti zadane prečace tipkovnica?</translation>
     </message>
     <message>
         <source>Existing keybinding</source>
@@ -1725,16 +1881,32 @@ Neke značajke možda neće raditi i promijenjene postavke neće biti spremljene
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Note: Prefix a command with &apos;mpv&apos; to make it run as an input command.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&amp;OK</source>
         <translation type="unfinished">&amp;U REDU</translation>
     </message>
     <message>
         <source>&amp;CANCEL</source>
         <translation type="unfinished">&amp;PONIŠTI</translation>
+    </message>
+    <message>
+        <source>Key Bindings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hint: Prefix a command with &apos;mpv&apos; to make it run as an input command.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RESE&amp;T ALL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reset All Key Bindings?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Are you sure you want to reset all shortcut keys to its original bindings?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

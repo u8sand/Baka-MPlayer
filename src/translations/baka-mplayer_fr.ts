@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="fr">
+<TS version="2.1" language="fr">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -15,7 +15,7 @@
         <source>Baka MPlayer 0.0.0</source>
         <translation>Baka MPlayer 0.0.0</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2015 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; est un lecteur multimédia multiplateforme libre et open source basé sur &lt;b&gt;libmpv&lt;/b&gt;. Son design simple reflète l&apos;idée d&apos;un environnement épuré et agréable pour regarder des séries TV.&lt;br&gt;&lt;br&gt;Copyright © 2015 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -47,7 +47,7 @@ Translations
 - Portuguese &lt;u8sand&gt;
 - Russian &lt;suhr&gt;
 - Spanish &lt;Alfredo Ramos&gt;</source>
-        <translation>mpv - lecteur vidéo basé sur MPlayer/mplayer2
+        <translation type="vanished">mpv - lecteur vidéo basé sur MPlayer/mplayer2
 GPLv2 &lt;mpv.io&gt;
 
 Noto Sans - famille de fontes supportant de nombreux caractères
@@ -97,6 +97,35 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <source>&amp;CLOSE</source>
         <translation>&amp;FERMER</translation>
+    </message>
+    <message>
+        <source>mpv - video player based on MPlayer/mplayer2
+GPLv2 &lt;mpv.io&gt;
+
+Material Design icons
+Attribution 4.0 International &lt;Google&gt;
+
+Noto Sans -  font family with many supported characters
+Apache License, version 2.0 &lt;Google&gt;
+
+Retro Cassette image
+&lt;Lukas Troup&gt;
+
+Download icon
+CC BY 3.0 &lt;Sasha Mescheryakov&gt;
+
+Translations
+- Chinese &lt;amazingfate, Antares95&gt;
+- Croatian &lt;gogo&gt;
+- Dutch &lt;robin007bond&gt;
+- French &lt;chapouvalpin&gt;
+- German: &lt;yiip87&gt;
+- Italian &lt;Aloysius&gt;
+- Korean &lt;godly-devotion&gt;
+- Portuguese &lt;u8sand&gt;
+- Russian &lt;suhr&gt;
+- Spanish &lt;Alfredo Ramos&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -187,12 +216,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     </message>
     <message>
         <source>Settings version not recognized</source>
-        <translation>Version des paramètres non reconnue</translation>
+        <translation type="vanished">Version des paramètres non reconnue</translation>
     </message>
     <message>
         <source>The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.
 Some features may not work and changed settings will not be saved.</source>
-        <translation>Le fichier de configuration a été écrit par une version supérieure de Baka-MPlayer. Veuillez mettre à jour votre version ou demander de l&apos;aide aux développeurs.
+        <translation type="vanished">Le fichier de configuration a été écrit par une version supérieure de Baka-MPlayer. Veuillez mettre à jour votre version ou demander de l&apos;aide aux développeurs.
 Certaines fonctionnalités peuvent ne plus fonctionner et les changements de paramètres ne seront pas sauvegardés.</translation>
     </message>
     <message>
@@ -535,6 +564,22 @@ Certaines fonctionnalités peuvent ne plus fonctionner et les changements de par
         <source>quit baka-mplayer</source>
         <translation>quitter Baka-MPlayer</translation>
     </message>
+    <message>
+        <source>Toggle mute audio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>toggle deinterlace</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>toggle motion interpolation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>mutes the audio</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>InputDialog</name>
@@ -792,7 +837,7 @@ Certaines fonctionnalités peuvent ne plus fonctionner et les changements de par
     </message>
     <message>
         <source>Play &amp;Next File</source>
-        <translation>Lire le fichier &amp;suivant</translation>
+        <translation type="vanished">Lire le fichier &amp;suivant</translation>
     </message>
     <message>
         <source>Play &amp;Previous File</source>
@@ -888,19 +933,19 @@ Certaines fonctionnalités peuvent ne plus fonctionner et les changements de par
     </message>
     <message>
         <source>50%</source>
-        <translation>50 %</translation>
+        <translation type="vanished">50 %</translation>
     </message>
     <message>
         <source>75%</source>
-        <translation>75 %</translation>
+        <translation type="vanished">75 %</translation>
     </message>
     <message>
         <source>100%</source>
-        <translation>100 %</translation>
+        <translation type="vanished">100 %</translation>
     </message>
     <message>
         <source>200%</source>
-        <translation>200 %</translation>
+        <translation type="vanished">200 %</translation>
     </message>
     <message>
         <source>&amp;Auto Detect</source>
@@ -924,7 +969,7 @@ Certaines fonctionnalités peuvent ne plus fonctionner et les changements de par
     </message>
     <message>
         <source>[ none ]</source>
-        <translation>[ aucun ]</translation>
+        <translation type="vanished">[ aucun ]</translation>
     </message>
     <message>
         <source>&amp;Size +</source>
@@ -988,7 +1033,7 @@ Certaines fonctionnalités peuvent ne plus fonctionner et les changements de par
     </message>
     <message>
         <source>150%</source>
-        <translation>150 %</translation>
+        <translation type="vanished">150 %</translation>
     </message>
     <message>
         <source>Update &amp;Streaming Support</source>
@@ -1052,16 +1097,80 @@ Information : la valeur doit être comprise entre %0 et %1</translation>
         <source>Pause</source>
         <translation>Pause</translation>
     </message>
+    <message>
+        <source>&amp;Volume</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pla&amp;y Next File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;50%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;75%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;100%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;200%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>[ &amp;none ]</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>15&amp;0%</source>
+        <translation type="unfinished">200 % {15&amp;0%?}</translation>
+    </message>
+    <message>
+        <source>&amp;Mute</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Motion Interpolation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reduce video studder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Deinterlace</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Subtitles visible</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Subtitles hidden</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Muted</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unmuted</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MpvHandler</name>
     <message>
         <source>File name</source>
-        <translation>Nom de fichier </translation>
+        <translation type="vanished">Nom de fichier </translation>
     </message>
     <message>
         <source>Media Title</source>
-        <translation>Titre du média </translation>
+        <translation type="vanished">Titre du média </translation>
     </message>
     <message>
         <source>File size</source>
@@ -1077,11 +1186,11 @@ Information : la valeur doit être comprise entre %0 et %1</translation>
     </message>
     <message>
         <source>[Video]</source>
-        <translation>[Vidéo]</translation>
+        <translation type="vanished">[Vidéo]</translation>
     </message>
     <message>
         <source>Codec</source>
-        <translation>Codec </translation>
+        <translation type="vanished">Codec </translation>
     </message>
     <message>
         <source>Bitrate</source>
@@ -1089,15 +1198,15 @@ Information : la valeur doit être comprise entre %0 et %1</translation>
     </message>
     <message>
         <source>Dimensions</source>
-        <translation>Dimensions </translation>
+        <translation type="vanished">Dimensions </translation>
     </message>
     <message>
         <source>[Audio]</source>
-        <translation>[Audio]</translation>
+        <translation type="vanished">[Audio]</translation>
     </message>
     <message>
         <source>Samplerate</source>
-        <translation>Fréquence d&apos;échantillonnage </translation>
+        <translation type="vanished">Fréquence d&apos;échantillonnage </translation>
     </message>
     <message>
         <source>Channels</source>
@@ -1105,15 +1214,15 @@ Information : la valeur doit être comprise entre %0 et %1</translation>
     </message>
     <message>
         <source>[Track List]</source>
-        <translation>[Liste des pistes]</translation>
+        <translation type="vanished">[Liste des pistes]</translation>
     </message>
     <message>
         <source>[Chapter List]</source>
-        <translation>[Liste des chapitres]</translation>
+        <translation type="vanished">[Liste des chapitres]</translation>
     </message>
     <message>
         <source>[Metadata]</source>
-        <translation>[Métadonnées]</translation>
+        <translation type="vanished">[Métadonnées]</translation>
     </message>
     <message>
         <source>File does not exist</source>
@@ -1126,6 +1235,50 @@ Information : la valeur doit être comprise entre %0 et %1</translation>
     <message>
         <source>Volume: %0%</source>
         <translation>Volume : %0 %</translation>
+    </message>
+    <message>
+        <source>File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Video (x%0)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Resolution</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>FPS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A/V Sync</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%0 kbps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Audio (x%0)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sample Rate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Chapters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Metadata</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1141,6 +1294,18 @@ Information : la valeur doit être comprise entre %0 et %1</translation>
     <message>
         <source>&amp;Refresh</source>
         <translation>&amp;Rafraichir</translation>
+    </message>
+    <message>
+        <source>Delete sub-file?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Would you like to delete the associated sub file [%0]?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete external sub-file?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

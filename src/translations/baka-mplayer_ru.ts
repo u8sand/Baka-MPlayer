@@ -85,8 +85,14 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
         <source>mpv - video player based on MPlayer/mplayer2
 GPLv2 &lt;mpv.io&gt;
 
+Material Design icons
+Attribution 4.0 International &lt;Google&gt;
+
 Noto Sans -  font family with many supported characters
 Apache License, version 2.0 &lt;Google&gt;
+
+Retro Cassette image
+&lt;Lukas Troup&gt;
 
 Download icon
 CC BY 3.0 &lt;Sasha Mescheryakov&gt;
@@ -95,6 +101,8 @@ Translations
 - Chinese &lt;amazingfate, Antares95&gt;
 - Croatian &lt;gogo&gt;
 - Dutch &lt;robin007bond&gt;
+- French &lt;chapouvalpin&gt;
+- German: &lt;yiip87&gt;
 - Italian &lt;Aloysius&gt;
 - Korean &lt;godly-devotion&gt;
 - Portuguese &lt;u8sand&gt;
@@ -105,15 +113,6 @@ Translations
 </context>
 <context>
     <name>BakaEngine</name>
-    <message>
-        <source>Settings version not recognized</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.
-Some features may not work and changed settings will not be saved.</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>screenshot%#04n</source>
         <translation type="obsolete">скриншот%#04n</translation>
@@ -192,14 +191,6 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Go to previous chapter</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Increase playback speed by 25%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Decrease playback speed by 25%</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -542,6 +533,30 @@ Some features may not work and changed settings will not be saved.</source>
         <source>quit baka-mplayer</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Toggle mute audio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Increase playback speed by 10%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Decrease playback speed by 10%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>toggle deinterlace</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>toggle motion interpolation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>mutes the audio</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>InfoDialog</name>
@@ -687,14 +702,6 @@ Some features may not work and changed settings will not be saved.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Command</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Label (optional)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>C&amp;LEAR SHORTCUT</source>
         <translation type="unfinished"></translation>
     </message>
@@ -709,6 +716,22 @@ Some features may not work and changed settings will not be saved.</source>
     <message>
         <source>&amp;CANCEL</source>
         <translation type="unfinished">&amp;Отмена</translation>
+    </message>
+    <message>
+        <source>(optional)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Shortcut:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Command:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Label:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -910,7 +933,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>Play &amp;Next File</source>
-        <translation>Играть &amp;следующий файл</translation>
+        <translation type="vanished">Играть &amp;следующий файл</translation>
     </message>
     <message>
         <source>Ctrl+Right</source>
@@ -1078,7 +1101,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>50%</source>
-        <translation>50%</translation>
+        <translation type="vanished">50%</translation>
     </message>
     <message>
         <source>Alt+2</source>
@@ -1086,7 +1109,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>75%</source>
-        <translation>75%</translation>
+        <translation type="vanished">75%</translation>
     </message>
     <message>
         <source>Alt+3</source>
@@ -1094,7 +1117,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>100%</source>
-        <translation>100%</translation>
+        <translation type="vanished">100%</translation>
     </message>
     <message>
         <source>Alt+4</source>
@@ -1102,11 +1125,11 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>200%</source>
-        <translation>200%</translation>
+        <translation type="vanished">200%</translation>
     </message>
     <message>
         <source>150%</source>
-        <translation type="unfinished">200% {150%?}</translation>
+        <translation type="obsolete">200% {150%?}</translation>
     </message>
     <message>
         <source>Alt+5</source>
@@ -1134,7 +1157,7 @@ Some features may not work and changed settings will not be saved.</source>
     </message>
     <message>
         <source>[ none ]</source>
-        <translation>[ пусто ]</translation>
+        <translation type="vanished">[ пусто ]</translation>
     </message>
     <message>
         <source>&amp;Size +</source>
@@ -1353,6 +1376,70 @@ Note: Value must be from %0 - %1</source>
         <source>Pause</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>&amp;Volume</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pla&amp;y Next File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;50%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;75%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;100%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;200%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>[ &amp;none ]</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>15&amp;0%</source>
+        <translation type="unfinished">200% {15&amp;0%?}</translation>
+    </message>
+    <message>
+        <source>&amp;Mute</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Motion Interpolation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reduce video studder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Deinterlace</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Subtitles visible</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Subtitles hidden</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Muted</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unmuted</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MpvHandler</name>
@@ -1366,11 +1453,11 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>File name</source>
-        <translation type="unfinished">Имя файла</translation>
+        <translation type="obsolete">Имя файла</translation>
     </message>
     <message>
         <source>Media Title</source>
-        <translation type="unfinished">Медиазаголовок</translation>
+        <translation type="obsolete">Медиазаголовок</translation>
     </message>
     <message>
         <source>File size</source>
@@ -1386,7 +1473,7 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>[Video]</source>
-        <translation type="unfinished">[Видео]</translation>
+        <translation type="obsolete">[Видео]</translation>
     </message>
     <message>
         <source>Video codec</source>
@@ -1406,7 +1493,7 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>[Audio]</source>
-        <translation type="unfinished">[Аудио]</translation>
+        <translation type="obsolete">[Аудио]</translation>
     </message>
     <message>
         <source>Audio codec</source>
@@ -1430,34 +1517,18 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>[Track List]</source>
-        <translation type="unfinished">[Список дорожек]</translation>
+        <translation type="obsolete">[Список дорожек]</translation>
     </message>
     <message>
         <source>[Chapter List]</source>
-        <translation type="unfinished">[Список глав]</translation>
-    </message>
-    <message>
-        <source>Codec</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">[Список глав]</translation>
     </message>
     <message>
         <source>Bitrate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Dimensions</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Samplerate</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Channels</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>[Metadata]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1466,6 +1537,54 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>File no longer exists</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Video (x%0)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Resolution</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>FPS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A/V Sync</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%0 kbps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Audio (x%0)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sample Rate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Chapters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Metadata</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Volume: %0%</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1482,6 +1601,18 @@ Note: Value must be from %0 - %1</source>
     <message>
         <source>&amp;Refresh</source>
         <translation type="unfinished">&amp;Обновить</translation>
+    </message>
+    <message>
+        <source>Delete sub-file?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Would you like to delete the associated sub file [%0]?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete external sub-file?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1603,10 +1734,6 @@ Note: Value must be from %0 - %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Keys</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Key</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1631,18 +1758,6 @@ Note: Value must be from %0 - %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>RESE&amp;T</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Reset Keybinding</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Are you sure you want to reset the shortcut keys to original bindings?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Existing keybinding</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1655,16 +1770,32 @@ Note: Value must be from %0 - %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Note: Prefix a command with &apos;mpv&apos; to make it run as an input command.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&amp;OK</source>
         <translation type="unfinished">&amp;ОК</translation>
     </message>
     <message>
         <source>&amp;CANCEL</source>
         <translation type="unfinished">&amp;Отмена</translation>
+    </message>
+    <message>
+        <source>Key Bindings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hint: Prefix a command with &apos;mpv&apos; to make it run as an input command.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RESE&amp;T ALL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reset All Key Bindings?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Are you sure you want to reset all shortcut keys to its original bindings?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

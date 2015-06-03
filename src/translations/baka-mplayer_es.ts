@@ -194,12 +194,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     </message>
     <message>
         <source>Settings version not recognized</source>
-        <translation>Version de ajustes no reconocida</translation>
+        <translation type="vanished">Version de ajustes no reconocida</translation>
     </message>
     <message>
         <source>The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.
 Some features may not work and changed settings will not be saved.</source>
-        <translation>El fichero de ajustes fué creda desde una versión de baka-mplayer más reciente; por favor, actualice la aplicación o solicite soporte a los desarrolladores.</translation>
+        <translation type="vanished">El fichero de ajustes fué creda desde una versión de baka-mplayer más reciente; por favor, actualice la aplicación o solicite soporte a los desarrolladores.</translation>
     </message>
     <message>
         <source>invalid command &apos;%0&apos;</source>
@@ -548,6 +548,14 @@ Some features may not work and changed settings will not be saved.</source>
     <message>
         <source>Decrease playback speed by 10%</source>
         <translation>Disminuir velocidad de reproducción 10%</translation>
+    </message>
+    <message>
+        <source>toggle deinterlace</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>toggle motion interpolation</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1086,6 +1094,22 @@ Nota: El valor debe estar en el rango %0 - %1</translation>
         <source>Pause</source>
         <translation>Pausa</translation>
     </message>
+    <message>
+        <source>&amp;Volume</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Motion Interpolation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reduce video studder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Deinterlace</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MpvHandler</name>
@@ -1111,7 +1135,7 @@ Nota: El valor debe estar en el rango %0 - %1</translation>
     </message>
     <message>
         <source>Video (%0)</source>
-        <translation>Video (%0)</translation>
+        <translation type="vanished">Video (%0)</translation>
     </message>
     <message>
         <source>Resolution</source>
@@ -1127,7 +1151,7 @@ Nota: El valor debe estar en el rango %0 - %1</translation>
     </message>
     <message>
         <source>Pixel format</source>
-        <translation>Formato de pixel</translation>
+        <translation type="vanished">Formato de pixel</translation>
     </message>
     <message>
         <source>%0 kbps</source>
@@ -1135,7 +1159,7 @@ Nota: El valor debe estar en el rango %0 - %1</translation>
     </message>
     <message>
         <source>Audio (%0)</source>
-        <translation>Audio (%0)</translation>
+        <translation type="vanished">Audio (%0)</translation>
     </message>
     <message>
         <source>Sample Rate</source>
@@ -1168,6 +1192,14 @@ Nota: El valor debe estar en el rango %0 - %1</translation>
     <message>
         <source>Volume: %0%</source>
         <translation>Volúmen: %0%</translation>
+    </message>
+    <message>
+        <source>Video (x%0)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Audio (x%0)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

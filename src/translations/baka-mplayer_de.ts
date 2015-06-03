@@ -46,7 +46,7 @@ Translations
 - Portuguese &lt;u8sand&gt;
 - Russian &lt;suhr&gt;
 - Spanish &lt;Alfredo Ramos&gt;</source>
-        <translation>mpv - auf MPlayer/mplayer2 basierender Video Player
+        <translation type="vanished">mpv - auf MPlayer/mplayer2 basierender Video Player
 GPLv2 &lt;mpv.io&gt;
 
 Noto Sans -  Schriftart mit vielen unterstützten Zeichen
@@ -118,6 +118,35 @@ Fifth Floor, Boston, MA 02110, USA</translation>
     <message>
         <source>&amp;CLOSE</source>
         <translation>&amp;Schließen</translation>
+    </message>
+    <message>
+        <source>mpv - video player based on MPlayer/mplayer2
+GPLv2 &lt;mpv.io&gt;
+
+Material Design icons
+Attribution 4.0 International &lt;Google&gt;
+
+Noto Sans -  font family with many supported characters
+Apache License, version 2.0 &lt;Google&gt;
+
+Retro Cassette image
+&lt;Lukas Troup&gt;
+
+Download icon
+CC BY 3.0 &lt;Sasha Mescheryakov&gt;
+
+Translations
+- Chinese &lt;amazingfate, Antares95&gt;
+- Croatian &lt;gogo&gt;
+- Dutch &lt;robin007bond&gt;
+- French &lt;chapouvalpin&gt;
+- German: &lt;yiip87&gt;
+- Italian &lt;Aloysius&gt;
+- Korean &lt;godly-devotion&gt;
+- Portuguese &lt;u8sand&gt;
+- Russian &lt;suhr&gt;
+- Spanish &lt;Alfredo Ramos&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -208,12 +237,12 @@ Fifth Floor, Boston, MA 02110, USA</translation>
     </message>
     <message>
         <source>Settings version not recognized</source>
-        <translation>Konfigurationsversion nicht erkannt</translation>
+        <translation type="vanished">Konfigurationsversion nicht erkannt</translation>
     </message>
     <message>
         <source>The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.
 Some features may not work and changed settings will not be saved.</source>
-        <translation>Die Konfigurationsdatei wurde von einer neueren Version von Baka-MPlayer erstellt. Bitte aktualisieren Sie diese Version oder kontaktieren Sie den Entwickler für Unterstützung.
+        <translation type="vanished">Die Konfigurationsdatei wurde von einer neueren Version von Baka-MPlayer erstellt. Bitte aktualisieren Sie diese Version oder kontaktieren Sie den Entwickler für Unterstützung.
 Einige Features könnten nicht funktionieren und geänderte Einstellungen werden nicht gespeichert.</translation>
     </message>
     <message>
@@ -556,6 +585,22 @@ Einige Features könnten nicht funktionieren und geänderte Einstellungen werden
         <source>quit baka-mplayer</source>
         <translation>Baka-MPlayer beenden</translation>
     </message>
+    <message>
+        <source>Toggle mute audio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>toggle deinterlace</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>toggle motion interpolation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>mutes the audio</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>InputDialog</name>
@@ -813,7 +858,7 @@ Einige Features könnten nicht funktionieren und geänderte Einstellungen werden
     </message>
     <message>
         <source>Play &amp;Next File</source>
-        <translation>N&amp;ächste Datei wiedergeben</translation>
+        <translation type="vanished">N&amp;ächste Datei wiedergeben</translation>
     </message>
     <message>
         <source>Play &amp;Previous File</source>
@@ -909,19 +954,19 @@ Einige Features könnten nicht funktionieren und geänderte Einstellungen werden
     </message>
     <message>
         <source>50%</source>
-        <translation>50%</translation>
+        <translation type="vanished">50%</translation>
     </message>
     <message>
         <source>75%</source>
-        <translation>75%</translation>
+        <translation type="vanished">75%</translation>
     </message>
     <message>
         <source>100%</source>
-        <translation>100%</translation>
+        <translation type="vanished">100%</translation>
     </message>
     <message>
         <source>200%</source>
-        <translation>200%</translation>
+        <translation type="vanished">200%</translation>
     </message>
     <message>
         <source>&amp;Auto Detect</source>
@@ -945,7 +990,7 @@ Einige Features könnten nicht funktionieren und geänderte Einstellungen werden
     </message>
     <message>
         <source>[ none ]</source>
-        <translation>[ keine ]</translation>
+        <translation type="vanished">[ keine ]</translation>
     </message>
     <message>
         <source>&amp;Size +</source>
@@ -1009,7 +1054,7 @@ Einige Features könnten nicht funktionieren und geänderte Einstellungen werden
     </message>
     <message>
         <source>150%</source>
-        <translation>150%</translation>
+        <translation type="vanished">150%</translation>
     </message>
     <message>
         <source>Update &amp;Streaming Support</source>
@@ -1073,16 +1118,80 @@ Hinweis: Wert muss zwischen %0 und %1 liegen</translation>
         <source>Pause</source>
         <translation>Pause</translation>
     </message>
+    <message>
+        <source>&amp;Volume</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pla&amp;y Next File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;50%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;75%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;100%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;200%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>[ &amp;none ]</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>15&amp;0%</source>
+        <translation type="unfinished">200% {15&amp;0%?}</translation>
+    </message>
+    <message>
+        <source>&amp;Mute</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Motion Interpolation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reduce video studder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Deinterlace</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Subtitles visible</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Subtitles hidden</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Muted</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unmuted</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MpvHandler</name>
     <message>
         <source>File name</source>
-        <translation>Dateiname</translation>
+        <translation type="vanished">Dateiname</translation>
     </message>
     <message>
         <source>Media Title</source>
-        <translation>Titel</translation>
+        <translation type="vanished">Titel</translation>
     </message>
     <message>
         <source>File size</source>
@@ -1098,11 +1207,11 @@ Hinweis: Wert muss zwischen %0 und %1 liegen</translation>
     </message>
     <message>
         <source>[Video]</source>
-        <translation>[Video]</translation>
+        <translation type="vanished">[Video]</translation>
     </message>
     <message>
         <source>Codec</source>
-        <translation>Codec</translation>
+        <translation type="vanished">Codec</translation>
     </message>
     <message>
         <source>Bitrate</source>
@@ -1110,15 +1219,15 @@ Hinweis: Wert muss zwischen %0 und %1 liegen</translation>
     </message>
     <message>
         <source>Dimensions</source>
-        <translation>Abmessungen</translation>
+        <translation type="vanished">Abmessungen</translation>
     </message>
     <message>
         <source>[Audio]</source>
-        <translation>[Audio]</translation>
+        <translation type="vanished">[Audio]</translation>
     </message>
     <message>
         <source>Samplerate</source>
-        <translation>Samplerate</translation>
+        <translation type="vanished">Samplerate</translation>
     </message>
     <message>
         <source>Channels</source>
@@ -1126,15 +1235,15 @@ Hinweis: Wert muss zwischen %0 und %1 liegen</translation>
     </message>
     <message>
         <source>[Track List]</source>
-        <translation>[Spurliste]</translation>
+        <translation type="vanished">[Spurliste]</translation>
     </message>
     <message>
         <source>[Chapter List]</source>
-        <translation>[Kapitelliste]</translation>
+        <translation type="vanished">[Kapitelliste]</translation>
     </message>
     <message>
         <source>[Metadata]</source>
-        <translation>[Metadaten]</translation>
+        <translation type="vanished">[Metadaten]</translation>
     </message>
     <message>
         <source>File does not exist</source>
@@ -1147,6 +1256,50 @@ Hinweis: Wert muss zwischen %0 und %1 liegen</translation>
     <message>
         <source>Volume: %0%</source>
         <translation>Lautstärke: %0%</translation>
+    </message>
+    <message>
+        <source>File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Video (x%0)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Resolution</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>FPS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A/V Sync</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%0 kbps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Audio (x%0)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sample Rate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Chapters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Metadata</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1162,6 +1315,18 @@ Hinweis: Wert muss zwischen %0 und %1 liegen</translation>
     <message>
         <source>&amp;Refresh</source>
         <translation>&amp;Aktualisieren</translation>
+    </message>
+    <message>
+        <source>Delete sub-file?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Would you like to delete the associated sub file [%0]?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete external sub-file?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1248,7 +1413,7 @@ Hinweis: Wert muss zwischen %0 und %1 liegen</translation>
     </message>
     <message>
         <source>RESE&amp;T</source>
-        <translation>&amp;Zurücksetzen</translation>
+        <translation type="vanished">&amp;Zurücksetzen</translation>
     </message>
     <message>
         <source>Video</source>
@@ -1324,11 +1489,11 @@ Hinweis: Wert muss zwischen %0 und %1 liegen</translation>
     </message>
     <message>
         <source>Reset Keybinding</source>
-        <translation>Tastenkürzel zurücksetzen</translation>
+        <translation type="vanished">Tastenkürzel zurücksetzen</translation>
     </message>
     <message>
         <source>Are you sure you want to reset the shortcut keys to original bindings?</source>
-        <translation>Sind Sie sicher, dass Sie die Originaleinstellung wiederherstellen möchten?</translation>
+        <translation type="vanished">Sind Sie sicher, dass Sie die Originaleinstellung wiederherstellen möchten?</translation>
     </message>
     <message>
         <source>Existing keybinding</source>
@@ -1337,6 +1502,18 @@ Hinweis: Wert muss zwischen %0 und %1 liegen</translation>
     <message>
         <source>%0 is already being used. Would you like to change its function?</source>
         <translation>%0 wird bereits verwendet. Möchten Sie seine Funktion ändern?</translation>
+    </message>
+    <message>
+        <source>RESE&amp;T ALL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reset All Key Bindings?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Are you sure you want to reset all shortcut keys to its original bindings?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

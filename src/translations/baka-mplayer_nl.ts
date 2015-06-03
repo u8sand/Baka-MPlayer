@@ -88,8 +88,14 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
         <source>mpv - video player based on MPlayer/mplayer2
 GPLv2 &lt;mpv.io&gt;
 
+Material Design icons
+Attribution 4.0 International &lt;Google&gt;
+
 Noto Sans -  font family with many supported characters
 Apache License, version 2.0 &lt;Google&gt;
+
+Retro Cassette image
+&lt;Lukas Troup&gt;
 
 Download icon
 CC BY 3.0 &lt;Sasha Mescheryakov&gt;
@@ -98,6 +104,8 @@ Translations
 - Chinese &lt;amazingfate, Antares95&gt;
 - Croatian &lt;gogo&gt;
 - Dutch &lt;robin007bond&gt;
+- French &lt;chapouvalpin&gt;
+- German: &lt;yiip87&gt;
 - Italian &lt;Aloysius&gt;
 - Korean &lt;godly-devotion&gt;
 - Portuguese &lt;u8sand&gt;
@@ -198,12 +206,12 @@ Translations
     </message>
     <message>
         <source>Settings version not recognized</source>
-        <translation>Configuratieversie niet herkend</translation>
+        <translation type="vanished">Configuratieversie niet herkend</translation>
     </message>
     <message>
         <source>The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.
 Some features may not work and changed settings will not be saved.</source>
-        <translation>Het configuratiebestand was gemaakt met een nieuwe versie van baka-mplayer. Update deze versie alstublieft of zoek hulp bij de ontwikkelaars.
+        <translation type="vanished">Het configuratiebestand was gemaakt met een nieuwe versie van baka-mplayer. Update deze versie alstublieft of zoek hulp bij de ontwikkelaars.
 Sommige functies kunnen niet werken en veranderde instellingen worden niet opgeslagen.</translation>
     </message>
     <message>
@@ -276,11 +284,11 @@ Sommige functies kunnen niet werken en veranderde instellingen worden niet opges
     </message>
     <message>
         <source>Increase playback speed by 25%</source>
-        <translation>Verhoog afspeelsnelheid met 25%</translation>
+        <translation type="vanished">Verhoog afspeelsnelheid met 25%</translation>
     </message>
     <message>
         <source>Decrease playback speed by 25%</source>
-        <translation>Verlaag afspeelsnelheid met 25%</translation>
+        <translation type="vanished">Verlaag afspeelsnelheid met 25%</translation>
     </message>
     <message>
         <source>Reset speed</source>
@@ -550,6 +558,30 @@ Sommige functies kunnen niet werken en veranderde instellingen worden niet opges
         <source>Speed: %0x</source>
         <translation type="unfinished">Snelheid: %0x</translation>
     </message>
+    <message>
+        <source>Toggle mute audio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Increase playback speed by 10%</source>
+        <translation type="unfinished">Verhoog afspeelsnelheid met 25% {10%?}</translation>
+    </message>
+    <message>
+        <source>Decrease playback speed by 10%</source>
+        <translation type="unfinished">Verlaag afspeelsnelheid met 25% {10%?}</translation>
+    </message>
+    <message>
+        <source>toggle deinterlace</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>toggle motion interpolation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>mutes the audio</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>InputDialog</name>
@@ -605,11 +637,11 @@ Sommige functies kunnen niet werken en veranderde instellingen worden niet opges
     </message>
     <message>
         <source>Command</source>
-        <translation>Commando</translation>
+        <translation type="vanished">Commando</translation>
     </message>
     <message>
         <source>Label (optional)</source>
-        <translation>Label (optioneel)</translation>
+        <translation type="vanished">Label (optioneel)</translation>
     </message>
     <message>
         <source>C&amp;LEAR SHORTCUT</source>
@@ -626,6 +658,22 @@ Sommige functies kunnen niet werken en veranderde instellingen worden niet opges
     <message>
         <source>&amp;CANCEL</source>
         <translation>&amp;ANNULEREN</translation>
+    </message>
+    <message>
+        <source>(optional)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Shortcut:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Command:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Label:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -799,7 +847,7 @@ Sommige functies kunnen niet werken en veranderde instellingen worden niet opges
     </message>
     <message>
         <source>Play &amp;Next File</source>
-        <translation>Speel &amp;Volgende Bestand</translation>
+        <translation type="vanished">Speel &amp;Volgende Bestand</translation>
     </message>
     <message>
         <source>Play &amp;Previous File</source>
@@ -894,22 +942,6 @@ Sommige functies kunnen niet werken en veranderde instellingen worden niet opges
         <translation>Naar &amp;Huidige Grootte</translation>
     </message>
     <message>
-        <source>50%</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>75%</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>100%</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>200%</source>
-        <translation></translation>
-    </message>
-    <message>
         <source>&amp;Auto Detect</source>
         <translation>&amp;Automatische Detectie</translation>
     </message>
@@ -931,7 +963,7 @@ Sommige functies kunnen niet werken en veranderde instellingen worden niet opges
     </message>
     <message>
         <source>[ none ]</source>
-        <translation>[ geen ]</translation>
+        <translation type="vanished">[ geen ]</translation>
     </message>
     <message>
         <source>&amp;Size +</source>
@@ -992,10 +1024,6 @@ Sommige functies kunnen niet werken en veranderde instellingen worden niet opges
     <message>
         <source>&amp;Reset</source>
         <translation>&amp;Herstel</translation>
-    </message>
-    <message>
-        <source>150%</source>
-        <translation></translation>
     </message>
     <message>
         <source>Update &amp;Streaming Support</source>
@@ -1059,16 +1087,80 @@ Opmerking: Waarde moet tussen %0 en %1 zijn</translation>
         <source>Pause</source>
         <translation>Pauze</translation>
     </message>
+    <message>
+        <source>&amp;Volume</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pla&amp;y Next File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;50%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;75%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;100%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;200%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>[ &amp;none ]</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>15&amp;0%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Mute</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Motion Interpolation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reduce video studder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Deinterlace</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Subtitles visible</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Subtitles hidden</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Muted</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unmuted</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MpvHandler</name>
     <message>
         <source>File name</source>
-        <translation>Bestandsnaam</translation>
+        <translation type="vanished">Bestandsnaam</translation>
     </message>
     <message>
         <source>Media Title</source>
-        <translation>Mediatitel</translation>
+        <translation type="vanished">Mediatitel</translation>
     </message>
     <message>
         <source>File size</source>
@@ -1083,28 +1175,20 @@ Opmerking: Waarde moet tussen %0 en %1 zijn</translation>
         <translation>Medialengte</translation>
     </message>
     <message>
-        <source>[Video]</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Codec</source>
-        <translation></translation>
-    </message>
-    <message>
         <source>Bitrate</source>
         <translation></translation>
     </message>
     <message>
         <source>Dimensions</source>
-        <translation>Dimensies</translation>
+        <translation type="vanished">Dimensies</translation>
     </message>
     <message>
         <source>[Audio]</source>
-        <translation>[Geluid]</translation>
+        <translation type="vanished">[Geluid]</translation>
     </message>
     <message>
         <source>Samplerate</source>
-        <translation>Samplefrequentie</translation>
+        <translation type="vanished">Samplefrequentie</translation>
     </message>
     <message>
         <source>Channels</source>
@@ -1112,15 +1196,15 @@ Opmerking: Waarde moet tussen %0 en %1 zijn</translation>
     </message>
     <message>
         <source>[Track List]</source>
-        <translation>[Tracklijst]</translation>
+        <translation type="vanished">[Tracklijst]</translation>
     </message>
     <message>
         <source>[Chapter List]</source>
-        <translation>[Hoofdstuklijst]</translation>
+        <translation type="vanished">[Hoofdstuklijst]</translation>
     </message>
     <message>
         <source>[Metadata]</source>
-        <translation>[Metagegevens]</translation>
+        <translation type="vanished">[Metagegevens]</translation>
     </message>
     <message>
         <source>File does not exist</source>
@@ -1134,6 +1218,54 @@ Opmerking: Waarde moet tussen %0 en %1 zijn</translation>
         <source>mpv was not initialized
 </source>
         <translation type="vanished">mpv was niet gestart</translation>
+    </message>
+    <message>
+        <source>File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Video (x%0)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Resolution</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>FPS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A/V Sync</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%0 kbps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Audio (x%0)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sample Rate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Chapters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Metadata</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Volume: %0%</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1149,6 +1281,18 @@ Opmerking: Waarde moet tussen %0 en %1 zijn</translation>
     <message>
         <source>&amp;Refresh</source>
         <translation>&amp;Ververs</translation>
+    </message>
+    <message>
+        <source>Delete sub-file?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Would you like to delete the associated sub file [%0]?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete external sub-file?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1203,11 +1347,11 @@ Opmerking: Waarde moet tussen %0 en %1 zijn</translation>
     </message>
     <message>
         <source>Keys</source>
-        <translation>Toetsen</translation>
+        <translation type="vanished">Toetsen</translation>
     </message>
     <message>
         <source>Note: Prefix a command with &apos;mpv&apos; to make it run as an input command.</source>
-        <translation>Opmerking: Zet &apos;mpv&apos; achter het commando om het uit te laten voeren as een invoercommando.</translation>
+        <translation type="vanished">Opmerking: Zet &apos;mpv&apos; achter het commando om het uit te laten voeren as een invoercommando.</translation>
     </message>
     <message>
         <source>Key</source>
@@ -1235,7 +1379,7 @@ Opmerking: Waarde moet tussen %0 en %1 zijn</translation>
     </message>
     <message>
         <source>RESE&amp;T</source>
-        <translation>HERS&amp;TEL</translation>
+        <translation type="vanished">HERS&amp;TEL</translation>
     </message>
     <message>
         <source>Video</source>
@@ -1307,11 +1451,11 @@ Opmerking: Waarde moet tussen %0 en %1 zijn</translation>
     </message>
     <message>
         <source>Reset Keybinding</source>
-        <translation>Herstel Sneltoets</translation>
+        <translation type="vanished">Herstel Sneltoets</translation>
     </message>
     <message>
         <source>Are you sure you want to reset the shortcut keys to original bindings?</source>
-        <translation>Weet u zeker dat u de sneltoetsen naar de oorspronkelijke waarden wilt herstellen?</translation>
+        <translation type="vanished">Weet u zeker dat u de sneltoetsen naar de oorspronkelijke waarden wilt herstellen?</translation>
     </message>
     <message>
         <source>Existing keybinding</source>
@@ -1332,6 +1476,26 @@ Opmerking: Waarde moet tussen %0 en %1 zijn</translation>
     <message>
         <source>&amp;CANCEL</source>
         <translation type="unfinished">&amp;ANNULEREN</translation>
+    </message>
+    <message>
+        <source>Key Bindings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hint: Prefix a command with &apos;mpv&apos; to make it run as an input command.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RESE&amp;T ALL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reset All Key Bindings?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Are you sure you want to reset all shortcut keys to its original bindings?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
