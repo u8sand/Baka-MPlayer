@@ -44,6 +44,21 @@ UpdateDialog::UpdateDialog(BakaEngine *baka, QWidget *parent) :
                         init = false;
                     }
                 }
+                else if(percent == 0)
+                {
+                    avgSpeed = 0;
+                    lastSpeed = 0;
+                    lastProgress = 0;
+                    lastTime = 0;
+                    ui->progressBar->setValue(0);
+                    ui->progressBar->setVisible(true);
+                    ui->timeRemainingLabel->setText(QString());
+                    ui->timeRemainingLabel->setVisible(true);
+                    if(timer != nullptr)
+                        delete timer;
+                    timer = new QTime();
+                    timer->start();
+                }
                 else if(timer) // don't execute this if timer is not defined--this shouldn't happen though.. but it does
                 {
                     avgSpeed = 0.005*lastSpeed + 0.995*avgSpeed;
@@ -72,7 +87,7 @@ UpdateDialog::UpdateDialog(BakaEngine *baka, QWidget *parent) :
     connect(ui->updateButton, &QPushButton::clicked,
             [=]
             {
-                Prepare();
+                ui->plainTextEdit->setPlainText(QString());
                 baka->update->DownloadUpdate(Util::DownloadFileUrl());
             });
 #endif
@@ -81,10 +96,7 @@ UpdateDialog::UpdateDialog(BakaEngine *baka, QWidget *parent) :
             this, SLOT(reject()));
 
     if(baka->update->getInfo().empty())
-    {
-        Prepare();
         baka->update->CheckForUpdates();
-    }
     else
     {
         init = false;
@@ -103,18 +115,6 @@ void UpdateDialog::CheckForUpdates(BakaEngine *baka, QWidget *parent)
 {
     UpdateDialog *dialog = new UpdateDialog(baka, parent);
     dialog->exec();
-}
-
-void UpdateDialog::Prepare()
-{
-    avgSpeed = 0;
-    lastSpeed = 0;
-    lastProgress = 0;
-    lastTime = 0;
-    if(timer != nullptr)
-        delete timer;
-    timer = new QTime();
-    timer->start();
 }
 
 void UpdateDialog::ShowInfo()

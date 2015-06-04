@@ -38,7 +38,7 @@ bool UpdateManager::CheckForUpdates()
         return false;
     busy = true;
     emit messageSignal(tr("Checking for updates..."));
-
+    emit progressSignal(0);
     QNetworkRequest request(Util::VersionFileUrl());
     QNetworkReply *reply = manager->get(request);
 
@@ -84,7 +84,7 @@ bool UpdateManager::DownloadUpdate(const QString &url)
         return false;
     busy = true;
     emit messageSignal(tr("Downloading update..."));
-
+    emit progressSignal(0);
     QNetworkRequest request(url);
     QString filename = QDir::toNativeSeparators(QString("%0/Baka-MPlayer.zip").arg(QCoreApplication::applicationDirPath()));
     QFile *file = new QFile(filename);

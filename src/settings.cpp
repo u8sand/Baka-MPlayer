@@ -72,6 +72,9 @@ void Settings::LoadIni()
         if(group != QString())
             root[group] = group_obj;
 
+        // remove excess baka-mplayer group
+        root.remove("baka-mplayer");
+
         // fix input
         if(root.find("input") != root.end())
         {

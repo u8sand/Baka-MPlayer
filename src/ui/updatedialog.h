@@ -22,7 +22,6 @@ public:
     static void CheckForUpdates(BakaEngine *baka, QWidget *parent = 0);
 
 protected slots:
-    void Prepare();
     void ShowInfo();
 
 private:
@@ -31,7 +30,7 @@ private:
 
     QTime *timer;
     double avgSpeed = 1,
-           lastSpeed=0;
+           lastSpeed = 0;
     int lastProgress,
         lastTime,
         state;
