@@ -18,27 +18,59 @@
 #include "updatemanager.h"
 #endif
 
+#if QT_VERSION < QT_VERSION_CHECK(5, 4, 2)
+class QJsonValueRef2
+{
+public:
+    QJsonValueRef2(const QJsonValueRef &v):
+        val(v)
+    {
+    }
+
+    QString toString(const QString &defaultValue) const
+    {
+        return val.isString() ? val.toString() : defaultValue;
+    }
+    bool toBool(bool defaultValue = false) const
+    {
+        return val.isBool() ? val.toBool() : defaultValue;
+    }
+    double toDouble(double defaultValue = 0) const
+    {
+        return val.isDouble() ? val.toDouble() : defaultValue;
+    }
+    int toInt(int defaultValue = 0) const
+    {
+        return val.isDouble() && val.toDouble() == val.toInt() ? val.toInt() : defaultValue;
+    }
+private:
+    const QJsonValueRef &val;
+};
+#else
+typedef QJsonValueRef QJsonValueRef2;
+#endif
+
 void BakaEngine::Load2_0_3()
 {
     QJsonObject root = settings->getRoot();
-    window->setOnTop(root["onTop"].toString("never"));
-    window->setAutoFit(root["autoFit"].toInt(100));
-    sysTrayIcon->setVisible(root["trayIcon"].toBool(false));
-    window->setHidePopup(root["hidePopup"].toBool(false));
-    window->setRemaining(root["remaining"].toBool(true));
-    window->ui->splitter->setNormalPosition(root["splitter"].toInt(window->ui->splitter->max()*1.0/8));
-    window->setDebug(root["debug"].toBool(false));
-    window->ui->hideFilesButton->setChecked(!root["showAll"].toBool(true));
-    window->setScreenshotDialog(root["screenshotDialog"].toBool(true));
+    window->setOnTop(QJsonValueRef2(root["onTop"]).toString("never"));
+    window->setAutoFit(QJsonValueRef2(root["autoFit"]).toInt(100));
+    sysTrayIcon->setVisible(QJsonValueRef2(root["trayIcon"]).toBool(false));
+    window->setHidePopup(QJsonValueRef2(root["hidePopup"]).toBool(false));
+    window->setRemaining(QJsonValueRef2(root["remaining"]).toBool(true));
+    window->ui->splitter->setNormalPosition(QJsonValueRef2(root["splitter"]).toInt(window->ui->splitter->max()*1.0/8));
+    window->setDebug(QJsonValueRef2(root["debug"]).toBool(false));
+    window->ui->hideFilesButton->setChecked(!QJsonValueRef2(root["showAll"]).toBool(true));
+    window->setScreenshotDialog(QJsonValueRef2(root["screenshotDialog"]).toBool(true));
     window->recent.clear();
     for(auto entry : root["recent"].toArray())
     {
         QJsonObject entry_json = entry.toObject();
         window->recent.append(Recent(entry_json["path"].toString(), entry_json["title"].toString(), entry_json["time"].toInt(0)));
     }
-    window->maxRecent = root["maxRecent"].toInt(5);
-    window->gestures = root["gestures"].toBool(true);
-    window->setLang(root["lang"].toString("auto"));
+    window->maxRecent = QJsonValueRef2(root["maxRecent"]).toInt(5);
+    window->gestures = QJsonValueRef2(root["gestures"]).toBool(true);
+    window->setLang(QJsonValueRef2(root["lang"]).toString("auto"));
 #if defined(Q_OS_WIN)
     QDate last = QDate::fromString(root["lastcheck"].toString()); // convert to date
     if(last.daysTo(QDate::currentDate()) > 7) // been a week since we last checked?
@@ -66,9 +98,9 @@ void BakaEngine::Load2_0_3()
     window->MapShortcuts();
 
     QJsonObject mpv_json = root["mpv"].toObject();
-    mpv->Volume(mpv_json["volume"].toInt(100));
+    mpv->Volume(QJsonValueRef2(mpv_json["volume"]).toInt(100));
     mpv_json.remove("volume");
-    mpv->Speed(mpv_json["speed"].toDouble(1.0));
+    mpv->Speed(QJsonValueRef2(mpv_json["speed"]).toDouble(1.0));
     mpv_json.remove("speed");
     mpv->Vo(mpv_json["vo"].toString());
     mpv_json.remove("vo");
