@@ -66,7 +66,7 @@ void BakaEngine::Load2_0_3()
     for(auto entry : root["recent"].toArray())
     {
         QJsonObject entry_json = entry.toObject();
-        window->recent.append(Recent(entry_json["path"].toString(), entry_json["title"].toString(), entry_json["time"].toInt(0)));
+        window->recent.append(Recent(entry_json["path"].toString(), entry_json["title"].toString(), QJsonValueRef2(entry_json["time"]).toInt(0)));
     }
     window->maxRecent = QJsonValueRef2(root["maxRecent"]).toInt(5);
     window->gestures = QJsonValueRef2(root["gestures"]).toBool(true);
@@ -127,6 +127,7 @@ void BakaEngine::Load2_0_3()
 
 void BakaEngine::SaveSettings()
 {
+    QString version = "2.0.3";
     QJsonObject root = settings->getRoot();
     root["onTop"] = window->onTop;
     root["autoFit"] = window->autoFit;
@@ -143,7 +144,7 @@ void BakaEngine::SaveSettings()
     root["maxRecent"] = window->maxRecent;
     root["lang"] = window->lang;
     root["gestures"] = window->gestures;
-    root["version"] = "2.0.3";
+    root["version"] = version;
 
     QJsonArray recent_json;
     for(auto &entry : window->recent)
@@ -173,7 +174,10 @@ void BakaEngine::SaveSettings()
             if(*input_iter == QPair<QString, QString>({QString(), QString()})) // skip empty entries
                 continue;
         }
-        input_json[input_iter.key()] = QJsonArray{input_iter->first, input_iter->second};
+        QJsonArray arr;
+        arr.append(input_iter->first);
+        arr.append(input_iter->second);
+        input_json[input_iter.key()] = arr;
     }
     root["input"] = input_json;
 
