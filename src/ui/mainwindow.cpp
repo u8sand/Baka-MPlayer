@@ -32,6 +32,7 @@ MainWindow::MainWindow(QWidget *parent):
 
     ui->playlistWidget->AttachEngine(baka);
     ui->mpvFrame->installEventFilter(this); // capture events on mpvFrame in the eventFilter function
+    ui->mpvFrame->setMouseTracking(true);
     autohide = new QTimer(this);
 
     // command action mappings (action (right) performs command (left))
@@ -727,6 +728,7 @@ MainWindow::MainWindow(QWidget *parent):
                 {
                     ui->action_Show_Playlist->setChecked(false);
                     ui->action_Hide_Album_Art->setChecked(false);
+                    ui->playlistLayoutWidget->setVisible(false);
                 }
                 else if(i == ui->splitter->max()) // left-most, album art is hidden, playlist is visible
                 {
@@ -738,6 +740,7 @@ MainWindow::MainWindow(QWidget *parent):
                     ui->action_Show_Playlist->setChecked(true);
                     ui->action_Hide_Album_Art->setChecked(false);
                 }
+                ui->playlistLayoutWidget->setVisible(ui->action_Show_Playlist->isChecked());
                 blockSignals(false);
                 if(ui->actionMedia_Info->isChecked())
                     baka->overlay->showInfoText();
@@ -957,9 +960,6 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *event)
 
 void MainWindow::mouseMoveEvent(QMouseEvent *event)
 {
-    static QRect playbackRect,
-                 playlistRect;
-
     if(baka->gesture->Process(event->globalPos()))
         event->accept();
     else if(isFullScreen())
@@ -998,11 +998,16 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
             playlistRect.setLeft(playlistRect.left()-20);
             playlistRect.setRight(playlistRect.right()+5);
             playlistRect.setHeight(height());
-
             if(!playlistRect.contains(event->globalPos()))
                 ShowPlaylist(false);
             else
                 in = true;
+        }
+        else
+        {
+            playlistRect.setLeft(playlistRect.right()-5);
+            if(playlistRect.contains(event->globalPos()))
+                ShowPlaylist(true);
         }
 
         if(!in && autohide)

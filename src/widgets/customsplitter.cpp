@@ -4,13 +4,13 @@ CustomSplitter::CustomSplitter(QWidget *parent) :
     QSplitter(parent),
     normalPos(0)
 {
+    this->setHandleWidth(0);
     connect(this, &CustomSplitter::splitterMoved,
             [=](int pos, int index)
             {
                 if(index == 1)
                     emit positionChanged(max()-pos);
             });
-
 }
 
 int CustomSplitter::position() const

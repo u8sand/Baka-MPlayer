@@ -12,6 +12,7 @@
 #include <QTranslator>
 #include <QHash>
 #include <QAction>
+#include <QRect>
 
 #if defined(Q_OS_WIN)
 #include <QWinThumbnailToolBar>
@@ -106,7 +107,8 @@ private:
          debug,
          gestures,
          resume;
-
+    QRect playbackRect,
+          playlistRect;
     QHash<QString, QAction*> commandActionMap;
 
 public slots:
