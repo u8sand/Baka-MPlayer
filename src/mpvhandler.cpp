@@ -155,7 +155,7 @@ bool MpvHandler::event(QEvent *event)
                 else if(QString(prop->name) == "volume")
                 {
                     if(prop->format == MPV_FORMAT_DOUBLE)
-                        setVolume((int)*(double*)prop->data);
+                        setVolume(int(*static_cast<double*>(prop->data)*double(softvolMax)/100));
                 }
                 else if(QString(prop->name) == "sid")
                 {
@@ -480,19 +480,10 @@ void MpvHandler::Volume(int level, bool osd)
 
     if(playState > 0)
     {
+        double v = double(level*100)/double(softvolMax);
+        mpv_set_property_async(mpv, 0, "volume", MPV_FORMAT_DOUBLE, &v);
         if(osd)
-        {
-            QString levelStr = QString::number(level);
-            const QByteArray tmp = levelStr.toUtf8();
-            const char *args[] = {"set", "volume", tmp.constData(), NULL};
-            AsyncCommand(args);
-            ShowText(tr("Volume: %0%").arg(levelStr));
-        }
-        else
-        {
-            double v = level;
-            mpv_set_property_async(mpv, 0, "volume", MPV_FORMAT_DOUBLE, &v);
-        }
+            ShowText(tr("Volume: %0%").arg(QString::number(level)));
     }
     else
         setVolume(level);
