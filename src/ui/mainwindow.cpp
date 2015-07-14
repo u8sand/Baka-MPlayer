@@ -265,7 +265,7 @@ MainWindow::MainWindow(QWidget *parent):
                         if(i >= 0)
                         {
                             int t = recent.at(i).time;
-                            if(t > 0)
+                            if(t > 0 && resume)
                                 mpv->Seek(t);
                             recent.removeAt(i);
                         }

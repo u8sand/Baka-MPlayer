@@ -103,7 +103,8 @@ private:
          remaining,
          screenshotDialog,
          debug,
-         gestures;
+         gestures,
+         resume;
 
     QHash<QString, QAction*> commandActionMap;
 
