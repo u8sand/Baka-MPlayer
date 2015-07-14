@@ -2,7 +2,6 @@
 #define SEEKBAR_H
 
 #include <QMouseEvent>
-#include <QPaintEvent>
 #include <QList>
 
 #include "customslider.h"
@@ -15,17 +14,13 @@ public:
 
 public slots:
     void setTracking(int _totalTime);
-    void setTicks(QList<int> values);
 
 protected:
     QString formatTrackingTime(int _time);
 
     void mouseMoveEvent(QMouseEvent* event);
-    void paintEvent(QPaintEvent *event);
 
 private:
-    QList<int> ticks;
-    bool tickReady;
     int totalTime;
 };
 

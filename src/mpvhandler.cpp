@@ -475,7 +475,7 @@ void MpvHandler::PreviousChapter()
 
 void MpvHandler::Volume(int level, bool osd)
 {
-    if(level > 100) level = 100;
+    if(level > softvolMax) level = softvolMax;
     else if(level < 0) level = 0;
 
     if(playState > 0)

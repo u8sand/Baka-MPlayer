@@ -627,6 +627,17 @@ MainWindow::MainWindow(QWidget *parent):
                 }
             });
 
+    connect(mpv, &MpvHandler::softvolMaxChanged,
+            [=](int softvolMax)
+            {
+                ui->volumeSlider->setMaximum(softvolMax);
+                if(softvolMax != 100)
+                {
+                    ui->volumeSlider->setTicks({100});
+                    ui->volumeSlider->readyTicks();
+                }
+            });
+
     connect(mpv, &MpvHandler::subtitleVisibilityChanged,
             [=](bool b)
             {
@@ -651,6 +662,7 @@ MainWindow::MainWindow(QWidget *parent):
             {
                 ui->action_Motion_Interpolation->setChecked(vo.contains("interpolation"));
             });
+
     // ui
 
     connect(ui->seekBar, &SeekBar::valueChanged,                        // Playback: Seekbar clicked
@@ -836,6 +848,9 @@ void MainWindow::Load(QString file)
 {
     // load the settings here--the constructor has already been called
     // this solves some issues with setting things before the constructor has ended
+    baka->LoadSettings();
+    mpv->Initialize();
+
     menuVisible = ui->menubar->isVisible(); // does the OS use a menubar? (appmenu doesn't)
 #if defined(Q_OS_WIN)
     // add windows 7+ thubnail toolbar buttons
@@ -876,8 +891,6 @@ void MainWindow::Load(QString file)
     thumbnail_toolbar->addButton(playpause_toolbutton);
     thumbnail_toolbar->addButton(next_toolbutton);
 #endif
-    baka->LoadSettings();
-    mpv->Initialize();
     mpv->LoadFile(file);
 }
 

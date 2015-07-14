@@ -54,6 +54,8 @@ public:
 
     QString getMediaInfo();
 
+    int getSoftvolMax()                     { return softvolMax; }
+
 protected:
     virtual bool event(QEvent*);
 
@@ -145,6 +147,7 @@ private slots:
     void setVid(int i)                      { emit vidChanged(vid = i); }
     void setAid(int i)                      { emit aidChanged(aid = i); }
     void setSid(int i)                      { emit sidChanged(sid = i); }
+    void setSoftvolMax(int i)               { emit softvolMaxChanged(softvolMax = i); }
     void setSubtitleVisibility(bool b)      { emit subtitleVisibilityChanged(subtitleVisibility = b); }
     void setMute(bool b)                    { if(mute != b) emit muteChanged(mute = b); }
 
@@ -169,6 +172,7 @@ signals:
     void vidChanged(int);
     void aidChanged(int);
     void sidChanged(int);
+    void softvolMaxChanged(int);
     void debugChanged(bool);
     void subtitleVisibilityChanged(bool);
     void muteChanged(bool);
@@ -196,7 +200,8 @@ private:
                 index = 0,
                 vid,
                 aid,
-                sid;
+                sid,
+                softvolMax;
     bool        init = false,
                 playlistVisible = false,
                 subtitleVisibility = true,
