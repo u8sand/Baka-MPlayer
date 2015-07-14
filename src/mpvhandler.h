@@ -19,6 +19,7 @@ public:
     explicit MpvHandler(int64_t wid, QObject *parent = 0);
     ~MpvHandler();
 
+    void Initialize();
     const Mpv::FileInfo &getFileInfo()      { return fileInfo; }
     Mpv::PlayState getPlayState()           { return playState; }
     QString getFile()                       { return file; }

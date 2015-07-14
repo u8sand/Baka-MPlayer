@@ -42,10 +42,6 @@ MpvHandler::MpvHandler(int64_t wid, QObject *parent):
 
     // setup callback event handling
     mpv_set_wakeup_callback(mpv, wakeup, this);
-
-    // initialize mpv
-    if(mpv_initialize(mpv) < 0)
-        throw "Could not initialize mpv";
 }
 
 MpvHandler::~MpvHandler()
@@ -55,6 +51,12 @@ MpvHandler::~MpvHandler()
         mpv_terminate_destroy(mpv);
         mpv = NULL;
     }
+}
+
+void MpvHandler::Initialize()
+{
+    if(mpv_initialize(mpv) < 0)
+        throw "Could not initialize mpv";
 }
 
 QString MpvHandler::getMediaInfo()

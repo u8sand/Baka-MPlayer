@@ -877,6 +877,7 @@ void MainWindow::Load(QString file)
     thumbnail_toolbar->addButton(next_toolbutton);
 #endif
     baka->LoadSettings();
+    mpv->Initialize();
     mpv->LoadFile(file);
 }
 
