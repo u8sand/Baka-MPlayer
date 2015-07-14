@@ -43,6 +43,7 @@ public:
     bool getScreenshotDialog() { return screenshotDialog; }
     bool getDebug()            { return debug; }
     bool getGestures()         { return gestures; }
+    bool getResume()           { return resume; }
 
     Ui::MainWindow  *ui;
     QImage albumArt;
@@ -117,6 +118,7 @@ public slots:
     void setScreenshotDialog(bool b) { emit screenshotDialogChanged(screenshotDialog = b); }
     void setDebug(bool b)            { emit debugChanged(debug = b); }
     void setGestures(bool b)         { emit gesturesChanged(gestures = b); }
+    void setResume(bool b)           { emit resumeChanged(resume = b); }
 
 signals:
     void langChanged(QString);
@@ -127,6 +129,7 @@ signals:
     void screenshotDialogChanged(bool);
     void debugChanged(bool);
     void gesturesChanged(bool);
+    void resumeChanged(bool);
 };
 
 #endif // MAINWINDOW_H

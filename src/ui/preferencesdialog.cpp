@@ -26,6 +26,7 @@ PreferencesDialog::PreferencesDialog(BakaEngine *baka, QWidget *parent) :
         ui->playingRadioButton->setChecked(true);
     else if(ontop == "always")
         ui->alwaysRadioButton->setChecked(true);
+    ui->resumeCheckBox->setChecked(baka->window->getResume());
     ui->groupBox_2->setChecked(baka->sysTrayIcon->isVisible());
     ui->hidePopupCheckBox->setChecked(baka->window->getHidePopup());
     ui->gestureCheckBox->setChecked(baka->window->getGestures());
@@ -116,6 +117,7 @@ PreferencesDialog::~PreferencesDialog()
 {
     if(result() == QDialog::Accepted)
     {
+        baka->window->setResume(ui->resumeCheckBox->isChecked());
         if(ui->neverRadioButton->isChecked())
             baka->window->setOnTop("never");
         else if(ui->playingRadioButton->isChecked())

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>460</width>
-    <height>420</height>
+    <height>470</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -188,7 +188,7 @@ QScrollBar::right-arrow:horizontal {
 	background: transparent;
 }</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_6">
+  <layout class="QVBoxLayout" name="verticalLayout_9">
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="styleSheet">
@@ -223,7 +223,7 @@ QTabBar::tab:!selected {
       <attribute name="title">
        <string>Player</string>
       </attribute>
-      <layout class="QVBoxLayout" name="verticalLayout">
+      <layout class="QVBoxLayout" name="verticalLayout_8">
        <property name="leftMargin">
         <number>5</number>
        </property>
@@ -236,6 +236,62 @@ QTabBar::tab:!selected {
        <property name="bottomMargin">
         <number>5</number>
        </property>
+       <item>
+        <widget class="QGroupBox" name="groupBox_5">
+         <property name="title">
+          <string>Playback</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_6">
+          <item>
+           <widget class="QCheckBox" name="resumeCheckBox">
+            <property name="text">
+             <string>&amp;Restore Playback Position</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_4">
+         <property name="title">
+          <string>Mouse Gesture</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_7">
+          <property name="spacing">
+           <number>4</number>
+          </property>
+          <item>
+           <widget class="QCheckBox" name="gestureCheckBox">
+            <property name="text">
+             <string>&amp;Enable Mouse Gesture support</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_5">
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+	color: #B8B8B8;
+}</string>
+            </property>
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Click &amp;amp; drag cursor up/down to change volume&lt;br&gt;Click &amp;amp; drag cursor left/right to seek&lt;/b&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
        <item>
         <widget class="QGroupBox" name="groupBox">
          <property name="title">
@@ -289,81 +345,36 @@ QTabBar::tab:!selected {
         </widget>
        </item>
        <item>
-        <widget class="QGroupBox" name="groupBox_4">
+        <widget class="QGroupBox" name="groupBox_6">
          <property name="title">
-          <string>Mouse Gesture</string>
+          <string>Language</string>
          </property>
-         <layout class="QVBoxLayout" name="verticalLayout_7">
-          <property name="spacing">
-           <number>4</number>
-          </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
           <item>
-           <widget class="QCheckBox" name="gestureCheckBox">
-            <property name="text">
-             <string>&amp;Enable Mouse Gesture support</string>
-            </property>
-            <property name="checked">
-             <bool>true</bool>
+           <widget class="QComboBox" name="langComboBox">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="label_5">
-            <property name="styleSheet">
-             <string notr="true">QLabel {
-	color: #B8B8B8;
-}</string>
+           <spacer name="horizontalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
             </property>
-            <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Click &amp;amp; drag cursor up/down to change volume&lt;br&gt;Click &amp;amp; drag cursor left/right to seek&lt;/b&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
             </property>
-            <property name="wordWrap">
-             <bool>true</bool>
-            </property>
-           </widget>
+           </spacer>
           </item>
          </layout>
         </widget>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_3">
-         <item>
-          <widget class="QLabel" name="label_4">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="text">
-            <string>Language:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="langComboBox">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_4">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>0</width>
-             <height>0</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
        </item>
        <item>
         <spacer name="verticalSpacer_2">
@@ -813,15 +824,14 @@ QPushButton:pressed {
  </widget>
  <tabstops>
   <tabstop>tabWidget</tabstop>
+  <tabstop>resumeCheckBox</tabstop>
+  <tabstop>gestureCheckBox</tabstop>
   <tabstop>alwaysRadioButton</tabstop>
   <tabstop>playingRadioButton</tabstop>
   <tabstop>neverRadioButton</tabstop>
   <tabstop>groupBox_2</tabstop>
   <tabstop>hidePopupCheckBox</tabstop>
-  <tabstop>gestureCheckBox</tabstop>
   <tabstop>langComboBox</tabstop>
-  <tabstop>okButton</tabstop>
-  <tabstop>cancelButton</tabstop>
   <tabstop>infoWidget</tabstop>
   <tabstop>addKeyButton</tabstop>
   <tabstop>changeKeyButton</tabstop>
@@ -833,6 +843,8 @@ QPushButton:pressed {
   <tabstop>formatComboBox</tabstop>
   <tabstop>templateLineEdit</tabstop>
   <tabstop>changeButton</tabstop>
+  <tabstop>okButton</tabstop>
+  <tabstop>cancelButton</tabstop>
  </tabstops>
  <resources/>
  <connections/>
