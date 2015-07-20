@@ -98,6 +98,8 @@ void BakaEngine::Load2_0_3()
     window->MapShortcuts();
 
     QJsonObject mpv_json = root["mpv"].toObject();
+    mpv->setSoftvolMax(QJsonValueRef2(mpv_json["softvol-max"]).toInt(130));
+    mpv_json.remove("softvol-max");
     mpv->Volume(QJsonValueRef2(mpv_json["volume"]).toInt(100));
     mpv_json.remove("volume");
     mpv->Speed(QJsonValueRef2(mpv_json["speed"]).toDouble(1.0));
@@ -120,8 +122,6 @@ void BakaEngine::Load2_0_3()
         }
     }
     mpv_json.remove("screenshot-template");
-    mpv->setSoftvolMax(QJsonValueRef2(mpv_json["softvol-max"]).toInt(130));
-    mpv_json.remove("softvol-max");
     for(auto &key : mpv_json.keys())
         if(key != QString() && mpv_json[key].toString() != QString())
             mpv->SetOption(key, mpv_json[key].toString());
