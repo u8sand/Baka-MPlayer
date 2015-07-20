@@ -106,6 +106,16 @@ PreferencesDialog::PreferencesDialog(BakaEngine *baka, QWidget *parent) :
                 ui->removeKeyButton->setEnabled(r != -1);
             });
 
+    connect(ui->infoWidget, &QTableWidget::doubleClicked,
+            [=](const QModelIndex &index)
+            {
+                int i = index.row();
+                SelectKey(false,
+                    {ui->infoWidget->item(i, 0)->text(),
+                    {ui->infoWidget->item(i, 1)->text(),
+                     ui->infoWidget->item(i, 2)->text()}});
+            });
+
     connect(ui->okButton, SIGNAL(clicked()),
             this, SLOT(accept()));
 
