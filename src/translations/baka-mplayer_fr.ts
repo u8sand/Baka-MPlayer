@@ -24,54 +24,6 @@
         <translation>Remerciements</translation>
     </message>
     <message>
-        <source>mpv - video player based on MPlayer/mplayer2
-GPLv2 &lt;mpv.io&gt;
-
-Noto Sans -  font family with many supported characters
-Apache License, version 2.0 &lt;Google&gt;
-
-Retro Cassette image
-&lt;Lukas Troup&gt;
-
-Download icon
-CC BY 3.0 &lt;Sasha Mescheryakov&gt;
-
-Translations
-- Chinese &lt;amazingfate, Antares95&gt;
-- Croatian &lt;gogo&gt;
-- Dutch &lt;robin007bond&gt;
-- French &lt;chapouvalpin&gt;
-- German: &lt;yiip87&gt;
-- Italian &lt;Aloysius&gt;
-- Korean &lt;godly-devotion&gt;
-- Portuguese &lt;u8sand&gt;
-- Russian &lt;suhr&gt;
-- Spanish &lt;Alfredo Ramos&gt;</source>
-        <translation type="vanished">mpv - lecteur vidéo basé sur MPlayer/mplayer2
-GPLv2 &lt;mpv.io&gt;
-
-Noto Sans - famille de fontes supportant de nombreux caractères
-Apache License, version 2.0 &lt;Google&gt;
-
-Image Retro Cassette 
-&lt;Lukas Troup&gt;
-
-Icone Download
-CC BY 3.0 &lt;Sasha Mescheryakov&gt;
-
-Traductions
-- Chinois &lt;amazingfate, Antares95&gt;
-- Croate &lt;gogo&gt;
-- Néerlandais &lt;robin007bond&gt;
-- Français &lt;chapouvalpin&gt;
-- Allemand &lt;yiip87&gt;
-- Italien &lt;Aloysius&gt;
-- Coréen &lt;godly-devotion&gt;
-- Portugais &lt;u8sand&gt;
-- Russe &lt;suhr&gt;
-- Espagnol &lt;Alfredo Ramos&gt;</translation>
-    </message>
-    <message>
         <source>License</source>
         <translation>License</translation>
     </message>
@@ -125,7 +77,32 @@ Translations
 - Portuguese &lt;u8sand&gt;
 - Russian &lt;suhr&gt;
 - Spanish &lt;Alfredo Ramos&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>mpv - lecteur vidéo basé sur MPlayer/mplayer2
+GPLv2 &lt;mpv.io&gt;
+
+Icones Material Design
+Attribution 4.0 International &lt;Google&gt;
+
+Noto Sans -  Famille de fontes supportant de nombreux caratères
+Apache License, version 2.0 &lt;Google&gt;
+
+Image Retro Cassette
+&lt;Lukas Troup&gt;
+
+Icone Download
+CC BY 3.0 &lt;Sasha Mescheryakov&gt;
+
+Traductions
+- Chinois &lt;amazingfate, Antares95&gt;
+- Croate &lt;gogo&gt;
+- Néerlandais &lt;robin007bond&gt;
+- Français &lt;chapouvalpin&gt;
+- Allemand &lt;yiip87&gt;
+- Italien &lt;Aloysius&gt;
+- Coréen &lt;godly-devotion&gt;
+- Portugais &lt;u8sand&gt;
+- Russe &lt;suhr&gt;
+- Espagnol &lt;Alfredo Ramos&gt;</translation>
     </message>
 </context>
 <context>
@@ -215,16 +192,6 @@ Translations
         <translation>avancé :</translation>
     </message>
     <message>
-        <source>Settings version not recognized</source>
-        <translation type="vanished">Version des paramètres non reconnue</translation>
-    </message>
-    <message>
-        <source>The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.
-Some features may not work and changed settings will not be saved.</source>
-        <translation type="vanished">Le fichier de configuration a été écrit par une version supérieure de Baka-MPlayer. Veuillez mettre à jour votre version ou demander de l&apos;aide aux développeurs.
-Certaines fonctionnalités peuvent ne plus fonctionner et les changements de paramètres ne seront pas sauvegardés.</translation>
-    </message>
-    <message>
         <source>invalid command &apos;%0&apos;</source>
         <translation>commande invalide &apos;%0&apos;</translation>
     </message>
@@ -261,14 +228,6 @@ Certaines fonctionnalités peuvent ne plus fonctionner et les changements de par
         <translation>Permet d&apos;aller au chapitre précédent</translation>
     </message>
     <message>
-        <source>Seek forwards by 5 sec</source>
-        <translation>Avance de 5 sec</translation>
-    </message>
-    <message>
-        <source>Seek backwards by 5 sec</source>
-        <translation>Recule de 5 sec</translation>
-    </message>
-    <message>
         <source>Frame step backwards</source>
         <translation>Image précédente</translation>
     </message>
@@ -291,14 +250,6 @@ Certaines fonctionnalités peuvent ne plus fonctionner et les changements de par
     <message>
         <source>Increase volume</source>
         <translation>Augmente le volume</translation>
-    </message>
-    <message>
-        <source>Increase playback speed by 10%</source>
-        <translation>Augmente la vitesse de lecture de 10 %</translation>
-    </message>
-    <message>
-        <source>Decrease playback speed by 10%</source>
-        <translation>Diminue la vitesse de lecture de 10 %</translation>
     </message>
     <message>
         <source>Reset speed</source>
@@ -381,26 +332,6 @@ Certaines fonctionnalités peuvent ne plus fonctionner et les changements de par
         <translation>Ajuste la fenêtre à la vidéo</translation>
     </message>
     <message>
-        <source>Fit window to 50%</source>
-        <translation>Ajuste la fenêtre à 50 %</translation>
-    </message>
-    <message>
-        <source>Fit window to 75%</source>
-        <translation>Ajuste la fenêtre à 75 %</translation>
-    </message>
-    <message>
-        <source>Fit window to 100%</source>
-        <translation>Ajuste la fenêtre à 100 %</translation>
-    </message>
-    <message>
-        <source>Fit window to 150%</source>
-        <translation>Ajuste la fenêtre à 150 %</translation>
-    </message>
-    <message>
-        <source>Fit window to 200%</source>
-        <translation>Ajuste la fenêtre à 200 %</translation>
-    </message>
-    <message>
         <source>Boss key</source>
         <translation>Boss key</translation>
     </message>
@@ -463,10 +394,6 @@ Certaines fonctionnalités peuvent ne plus fonctionner et les changements de par
     <message>
         <source>stops the current playback</source>
         <translation>arrête la lecture en cours</translation>
-    </message>
-    <message>
-        <source>[...]</source>
-        <translation>[...]</translation>
     </message>
     <message>
         <source>playlist options</source>
@@ -566,19 +493,39 @@ Certaines fonctionnalités peuvent ne plus fonctionner et les changements de par
     </message>
     <message>
         <source>Toggle mute audio</source>
-        <translation type="unfinished"></translation>
+        <translation>Bascule en mode muet</translation>
+    </message>
+    <message>
+        <source>Seek forwards by %0 sec</source>
+        <translation>Avancer de %0 s</translation>
+    </message>
+    <message>
+        <source>Seek backwards by %0 sec</source>
+        <translation>Reculer de %0 s</translation>
+    </message>
+    <message>
+        <source>Increase playback speed by %0</source>
+        <translation>Augmenter la vitesse de lecture de %0</translation>
+    </message>
+    <message>
+        <source>Decrease playback speed by %0</source>
+        <translation>Diminuer la vitesse de lecture de %0</translation>
+    </message>
+    <message>
+        <source>Fit window to %0%</source>
+        <translation>Ajuster la fenêtre à %0 %</translation>
     </message>
     <message>
         <source>toggle deinterlace</source>
-        <translation type="unfinished"></translation>
+        <translation>Basculer le désentrelacement</translation>
     </message>
     <message>
         <source>toggle motion interpolation</source>
-        <translation type="unfinished"></translation>
+        <translation>Basculer l&apos;interpolation du mouvement</translation>
     </message>
     <message>
         <source>mutes the audio</source>
-        <translation type="unfinished"></translation>
+        <translation>mode muet</translation>
     </message>
 </context>
 <context>
@@ -836,10 +783,6 @@ Certaines fonctionnalités peuvent ne plus fonctionner et les changements de par
         <translation>Afficher dans le &amp;dossier</translation>
     </message>
     <message>
-        <source>Play &amp;Next File</source>
-        <translation type="vanished">Lire le fichier &amp;suivant</translation>
-    </message>
-    <message>
         <source>Play &amp;Previous File</source>
         <translation>Lire le fichier &amp;précédent</translation>
     </message>
@@ -932,22 +875,6 @@ Certaines fonctionnalités peuvent ne plus fonctionner et les changements de par
         <translation>À la taille &amp;actuelle</translation>
     </message>
     <message>
-        <source>50%</source>
-        <translation type="vanished">50 %</translation>
-    </message>
-    <message>
-        <source>75%</source>
-        <translation type="vanished">75 %</translation>
-    </message>
-    <message>
-        <source>100%</source>
-        <translation type="vanished">100 %</translation>
-    </message>
-    <message>
-        <source>200%</source>
-        <translation type="vanished">200 %</translation>
-    </message>
-    <message>
         <source>&amp;Auto Detect</source>
         <translation>&amp;Détection automatique</translation>
     </message>
@@ -966,10 +893,6 @@ Certaines fonctionnalités peuvent ne plus fonctionner et les changements de par
     <message>
         <source>&amp;Add Subtitle File...</source>
         <translation>&amp;Ajouter un fichier de sous-titres...</translation>
-    </message>
-    <message>
-        <source>[ none ]</source>
-        <translation type="vanished">[ aucun ]</translation>
     </message>
     <message>
         <source>&amp;Size +</source>
@@ -1030,10 +953,6 @@ Certaines fonctionnalités peuvent ne plus fonctionner et les changements de par
     <message>
         <source>&amp;Reset</source>
         <translation>&amp;Réinitialiser</translation>
-    </message>
-    <message>
-        <source>150%</source>
-        <translation type="vanished">150 %</translation>
     </message>
     <message>
         <source>Update &amp;Streaming Support</source>
@@ -1099,79 +1018,71 @@ Information : la valeur doit être comprise entre %0 et %1</translation>
     </message>
     <message>
         <source>&amp;Volume</source>
-        <translation type="unfinished"></translation>
+        <translation>V&amp;olume</translation>
     </message>
     <message>
         <source>Pla&amp;y Next File</source>
-        <translation type="unfinished"></translation>
+        <translation>Lire le fichier &amp;suivant</translation>
     </message>
     <message>
         <source>&amp;50%</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;50 %</translation>
     </message>
     <message>
         <source>&amp;75%</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;75 %</translation>
     </message>
     <message>
         <source>&amp;100%</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;100 %</translation>
     </message>
     <message>
         <source>&amp;200%</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;200 %</translation>
     </message>
     <message>
         <source>[ &amp;none ]</source>
-        <translation type="unfinished"></translation>
+        <translation>[ &amp;aucun ]</translation>
     </message>
     <message>
         <source>15&amp;0%</source>
-        <translation type="unfinished">200 % {15&amp;0%?}</translation>
+        <translation>15&amp;0 %</translation>
     </message>
     <message>
         <source>&amp;Mute</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Muet</translation>
     </message>
     <message>
         <source>&amp;Motion Interpolation</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Interpolation du mouvement</translation>
     </message>
     <message>
         <source>Reduce video studder</source>
-        <translation type="unfinished"></translation>
+        <translation>Réduire le saccadement de la vidéo</translation>
     </message>
     <message>
         <source>&amp;Deinterlace</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Désentrelacer</translation>
     </message>
     <message>
         <source>Subtitles visible</source>
-        <translation type="unfinished"></translation>
+        <translation>Sous-titres visibles</translation>
     </message>
     <message>
         <source>Subtitles hidden</source>
-        <translation type="unfinished"></translation>
+        <translation>Sous-titres masqués</translation>
     </message>
     <message>
         <source>Muted</source>
-        <translation type="unfinished"></translation>
+        <translation>Son désactivé</translation>
     </message>
     <message>
         <source>Unmuted</source>
-        <translation type="unfinished"></translation>
+        <translation>Son activé</translation>
     </message>
 </context>
 <context>
     <name>MpvHandler</name>
-    <message>
-        <source>File name</source>
-        <translation type="vanished">Nom de fichier </translation>
-    </message>
-    <message>
-        <source>Media Title</source>
-        <translation type="vanished">Titre du média </translation>
-    </message>
     <message>
         <source>File size</source>
         <translation>Taille du fichier </translation>
@@ -1185,44 +1096,12 @@ Information : la valeur doit être comprise entre %0 et %1</translation>
         <translation>Taille du média </translation>
     </message>
     <message>
-        <source>[Video]</source>
-        <translation type="vanished">[Vidéo]</translation>
-    </message>
-    <message>
-        <source>Codec</source>
-        <translation type="vanished">Codec </translation>
-    </message>
-    <message>
         <source>Bitrate</source>
         <translation>Débit </translation>
     </message>
     <message>
-        <source>Dimensions</source>
-        <translation type="vanished">Dimensions </translation>
-    </message>
-    <message>
-        <source>[Audio]</source>
-        <translation type="vanished">[Audio]</translation>
-    </message>
-    <message>
-        <source>Samplerate</source>
-        <translation type="vanished">Fréquence d&apos;échantillonnage </translation>
-    </message>
-    <message>
         <source>Channels</source>
         <translation>Canaux </translation>
-    </message>
-    <message>
-        <source>[Track List]</source>
-        <translation type="vanished">[Liste des pistes]</translation>
-    </message>
-    <message>
-        <source>[Chapter List]</source>
-        <translation type="vanished">[Liste des chapitres]</translation>
-    </message>
-    <message>
-        <source>[Metadata]</source>
-        <translation type="vanished">[Métadonnées]</translation>
     </message>
     <message>
         <source>File does not exist</source>
@@ -1238,47 +1117,47 @@ Information : la valeur doit être comprise entre %0 et %1</translation>
     </message>
     <message>
         <source>File</source>
-        <translation type="unfinished"></translation>
+        <translation>Fichier</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Titre</translation>
     </message>
     <message>
         <source>Video (x%0)</source>
-        <translation type="unfinished"></translation>
+        <translation>Vidéo (x%0)</translation>
     </message>
     <message>
         <source>Resolution</source>
-        <translation type="unfinished"></translation>
+        <translation>Résolution</translation>
     </message>
     <message>
         <source>FPS</source>
-        <translation type="unfinished"></translation>
+        <translation>IPS</translation>
     </message>
     <message>
         <source>A/V Sync</source>
-        <translation type="unfinished"></translation>
+        <translation>Synchronisation audio/vidéo</translation>
     </message>
     <message>
         <source>%0 kbps</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Audio (x%0)</source>
-        <translation type="unfinished"></translation>
+        <translation>Audio (x%0)</translation>
     </message>
     <message>
         <source>Sample Rate</source>
-        <translation type="unfinished"></translation>
+        <translation>Taux d&apos;échantillonage</translation>
     </message>
     <message>
         <source>Chapters</source>
-        <translation type="unfinished"></translation>
+        <translation>Chapitres</translation>
     </message>
     <message>
         <source>Metadata</source>
-        <translation type="unfinished"></translation>
+        <translation>Métadonnées</translation>
     </message>
 </context>
 <context>
@@ -1297,15 +1176,15 @@ Information : la valeur doit être comprise entre %0 et %1</translation>
     </message>
     <message>
         <source>Delete sub-file?</source>
-        <translation type="unfinished"></translation>
+        <translation>Supprimer le fichier de sous-titre (.sub) ?</translation>
     </message>
     <message>
         <source>Would you like to delete the associated sub file [%0]?</source>
-        <translation type="unfinished"></translation>
+        <translation>Voulez-vous supprimer le fichier de sous-titres (.sub) associé [%0] ?</translation>
     </message>
     <message>
         <source>Delete external sub-file?</source>
-        <translation type="unfinished"></translation>
+        <translation>Supprimer le fichier de sous-titre (.sub) externe ?</translation>
     </message>
 </context>
 <context>
@@ -1355,10 +1234,6 @@ Information : la valeur doit être comprise entre %0 et %1</translation>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Cliquer &amp;amp; glisser le curseur de haut en bas pour changer le volume&lt;br&gt;Cliquer &amp;amp; glisser le curseur de gauche à droite pour rechercher&lt;/b&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <source>Language:</source>
-        <translation>Langue :</translation>
-    </message>
-    <message>
         <source>Key Bindings</source>
         <translation>Raccourcis clavier</translation>
     </message>
@@ -1385,6 +1260,18 @@ Information : la valeur doit être comprise entre %0 et %1</translation>
     <message>
         <source>&amp;ADD</source>
         <translation>&amp;AJOUTER</translation>
+    </message>
+    <message>
+        <source>Playback</source>
+        <translation>Lecture</translation>
+    </message>
+    <message>
+        <source>&amp;Restore Playback Position</source>
+        <translation>&amp;Restaurer la position de lecture</translation>
+    </message>
+    <message>
+        <source>Language</source>
+        <translation>Langue</translation>
     </message>
     <message>
         <source>&amp;REMOVE</source>
