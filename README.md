@@ -21,9 +21,11 @@ Its simple design reflects the idea for an uncluttered, simple, and enjoyable en
 
 Note: Packages may be named slightly different for each distro
 
-### Get Noto Sans Font
+### Get the font
 
-Baka MPlayer was designed around Noto Sans font. Having the correct font installed insures that what you see is what was intended. Noto Sans was used because of its open source nature and its broad support for Unicode characters. [Get it here.](https://www.google.com/get/noto/#sans)
+Baka MPlayer was designed around the font called Noto Sans. Noto Sans was used because of its open source nature and its broad support for Unicode characters. Having the correct font installed insures that what you see is what was intended.
+
+[Get it here.](https://www.google.com/get/noto/#sans)
 
 ## Compilation
 
@@ -69,7 +71,7 @@ If this doesn't work or you do not have a distro listed here, you're on your own
 
 The configuration file will be created on first run and will be written to `~/.config/bakamplayer.ini`.
 
-### Other Languages
+### Other languages
 
 By default, Baka MPlayer will compile in English if no language is specified during compilation. To compile a multi-lingual version of baka-mplayer, configure it like so:
 
