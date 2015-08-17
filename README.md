@@ -21,6 +21,10 @@ Its simple design reflects the idea for an uncluttered, simple, and enjoyable en
 
 Note: Packages may be named slightly different for each distro
 
+### Get Noto Sans Font
+
+Baka MPlayer was designed around Noto Sans font. Having the correct font installed insures that what you see is what was intended. Noto Sans was used because of its open source nature and its broad support for Unicode characters. [Get it here.](https://www.google.com/get/noto/#sans)
+
 ## Compilation
 
 ### Windows

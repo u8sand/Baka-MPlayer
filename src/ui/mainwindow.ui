@@ -98,7 +98,7 @@ QSplitter::handle,
 	background: #353535;
 	border: 1px solid #353535;
 	font-size: 12px;
-	padding: 4px 2px;
+	padding: 3px 2px;
 }
 #searchBox:focus {
 	border-color: #008098;
@@ -121,7 +121,7 @@ QListView {
 }
 #playlistWidget::item {
 	background: #1A1A1A;
-	padding: 4px 1px;
+	padding: 3px 0px;
 }
 #playlistWidget::item:selected {
 	background: #008098;
@@ -1020,7 +1020,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>646</width>
-     <height>20</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
