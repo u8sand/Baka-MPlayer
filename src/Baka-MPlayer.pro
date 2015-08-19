@@ -5,7 +5,6 @@
 #-------------------------------------------------
 
 VERSION   = 2.0.3
-QT_CONFIG -= no-pkg-config
 QT       += core gui network svg
 CODECFORSRC = UTF-8
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -13,7 +12,6 @@ TARGET = baka-mplayer
 TEMPLATE = app
 
 CONFIG += c++11 link_pkgconfig
-PKGCONFIG += mpv
 
 DESTDIR = build
 OBJECTS_DIR = $${DESTDIR}/obj
@@ -22,7 +20,8 @@ RCC_DIR = $${DESTDIR}/rcc
 UI_DIR = $${DESTDIR}/ui
 
 macx {
-  PKGCONFIG += x11
+  QT_CONFIG -= no-pkg-config
+#  PKGCONFIG += x11
   SOURCES += platform/osx.cpp
   ICON = img/logo.icns
 }
@@ -33,6 +32,8 @@ unix:!macx {
 
     SOURCES += platform/linux.cpp
 }
+
+PKGCONFIG += mpv
 
 win32 {
     QT += winextras

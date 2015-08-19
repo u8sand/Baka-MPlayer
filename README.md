@@ -74,14 +74,13 @@ The configuration file will be created on first run and will be written to `~/.c
 ### Mac OS X
 
 For the minute, you have to compile from source.
-You require some more dependencies which you can get from homebrew, and homebrew cask:
+You require some more dependencies which you can get from homebrew:
 ```
 git clone -b release https://github.com/u8sand/Baka-MPlayer.git
 cd "Baka-MPlayer"
 brew tap mpv/mpv-player
 brew install mpv --with-libmpv
-brew cask install xquartz
-export PKG_CONFIG_PATH=/opt/X11/lib/pkgconfig:/usr/local/lib/pkgconfig
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 ./configure
 make
 open build
