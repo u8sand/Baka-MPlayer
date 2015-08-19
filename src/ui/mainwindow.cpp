@@ -828,13 +828,8 @@ MainWindow::~MainWindow()
     delete next_toolbutton;
     delete thumbnail_toolbar;
 #endif
-#if defined(Q_OS_MACX)
     delete baka;
     delete ui;
-#else
-    delete ui;
-    delete baka;
-#endif
 }
 
 void MainWindow::Load(QString file)

@@ -21,7 +21,6 @@ UI_DIR = $${DESTDIR}/ui
 
 macx {
   QT_CONFIG -= no-pkg-config
-#  PKGCONFIG += x11
   SOURCES += platform/osx.cpp
   ICON = img/logo.icns
 }
