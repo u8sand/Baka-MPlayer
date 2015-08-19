@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 VERSION   = 2.0.3
+QT_CONFIG -= no-pkg-config
 QT       += core gui network svg
 CODECFORSRC = UTF-8
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -20,7 +21,13 @@ MOC_DIR = $${DESTDIR}/moc
 RCC_DIR = $${DESTDIR}/rcc
 UI_DIR = $${DESTDIR}/ui
 
-unix {
+macx {
+  PKGCONFIG += x11
+  SOURCES += platform/osx.cpp
+  ICON = img/logo.icns
+}
+
+unix:!macx {
     QT += x11extras
     PKGCONFIG += x11
 
