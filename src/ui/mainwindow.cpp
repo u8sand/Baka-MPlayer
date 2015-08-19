@@ -828,8 +828,8 @@ MainWindow::~MainWindow()
     delete next_toolbutton;
     delete thumbnail_toolbar;
 #endif
-    delete ui;
     delete baka;
+    delete ui;
 }
 
 void MainWindow::Load(QString file)

@@ -1,4 +1,4 @@
-﻿# [Baka MPlayer](http://bakamplayer.u8sand.net)
+# [Baka MPlayer](http://bakamplayer.u8sand.net)
 
 ## Overview
 
@@ -70,6 +70,25 @@ If this doesn't work or you do not have a distro listed here, you're on your own
     sudo make install
 
 The configuration file will be created on first run and will be written to `~/.config/bakamplayer.ini`.
+
+### Mac OS X
+
+For the minute, you have to compile from source.
+You require some more dependencies which you can get from homebrew:
+```
+git clone -b release https://github.com/u8sand/Baka-MPlayer.git
+cd "Baka-MPlayer"
+brew tap mpv/mpv-player
+brew install mpv --with-libmpv
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+./configure
+make
+open build
+```
+Then drag the app to your applications folder.
+In the future there will be a brew formula
+
+Similarly to on linux, the configuration file will be created on first run and will be written to `~/.config/bakamplayer.ini`.
 
 ### Other languages
 

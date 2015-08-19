@@ -12,7 +12,6 @@ TARGET = baka-mplayer
 TEMPLATE = app
 
 CONFIG += c++11 link_pkgconfig
-PKGCONFIG += mpv
 
 DESTDIR = build
 OBJECTS_DIR = $${DESTDIR}/obj
@@ -20,12 +19,20 @@ MOC_DIR = $${DESTDIR}/moc
 RCC_DIR = $${DESTDIR}/rcc
 UI_DIR = $${DESTDIR}/ui
 
-unix {
+macx {
+  QT_CONFIG -= no-pkg-config
+  SOURCES += platform/osx.cpp
+  ICON = img/logo.icns
+}
+
+unix:!macx {
     QT += x11extras
     PKGCONFIG += x11
 
     SOURCES += platform/linux.cpp
 }
+
+PKGCONFIG += mpv
 
 win32 {
     QT += winextras
