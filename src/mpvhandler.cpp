@@ -63,12 +63,16 @@ QString MpvHandler::getMediaInfo()
 {
     QFileInfo fi(path+file);
 
+
     double avsync, fps, vbitrate, abitrate;
 
     mpv_get_property(mpv, "avsync", MPV_FORMAT_DOUBLE, &avsync);
     mpv_get_property(mpv, "estimated-vf-fps", MPV_FORMAT_DOUBLE, &fps);
     mpv_get_property(mpv, "video-bitrate", MPV_FORMAT_DOUBLE, &vbitrate);
     mpv_get_property(mpv, "audio-bitrate", MPV_FORMAT_DOUBLE, &abitrate);
+    QString current_vo = mpv_get_property_string(mpv, "current-vo"),
+            current_ao = mpv_get_property_string(mpv, "current-ao"),
+            hwdec_active = mpv_get_property_string(mpv, "hwdec-active");
 
     int vtracks = 0,
         atracks = 0;
@@ -90,6 +94,7 @@ QString MpvHandler::getMediaInfo()
             inner.arg(tr("Media length"), Util::FormatTime(fileInfo.length, fileInfo.length)) + '\n';
     if(fileInfo.video_params.codec != QString())
         out += outer.arg(tr("Video (x%0)").arg(QString::number(vtracks)), fileInfo.video_params.codec) +
+            inner.arg(tr("Video Output"), QString("%0 (hwdec %1)").arg(current_vo, hwdec_active)) +
             inner.arg(tr("Resolution"), QString("%0 x %1 (%2)").arg(QString::number(fileInfo.video_params.width),
                                                                     QString::number(fileInfo.video_params.height),
                                                                     Util::Ratio(fileInfo.video_params.width, fileInfo.video_params.height))) +
@@ -98,6 +103,7 @@ QString MpvHandler::getMediaInfo()
             inner.arg(tr("Bitrate"), tr("%0 kbps").arg(vbitrate)) + '\n';
     if(fileInfo.audio_params.codec != QString())
         out += outer.arg(tr("Audio (x%0)").arg(QString::number(atracks)), fileInfo.audio_params.codec) +
+            inner.arg(tr("Audio Output"), current_ao) +
             inner.arg(tr("Sample Rate"), fileInfo.audio_params.samplerate) +
             inner.arg(tr("Channels"), fileInfo.audio_params.channels) +
             inner.arg(tr("Bitrate"), tr("%0 kbps").arg(abitrate)) + '\n';
