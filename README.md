@@ -78,7 +78,7 @@ You require some more dependencies which you can get from homebrew:
 ```
 git clone -b release https://github.com/u8sand/Baka-MPlayer.git
 cd "Baka-MPlayer"
-brew tap mpv/mpv-player
+brew tap mpv-player/mpv
 brew install mpv --with-libmpv
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 ./configure
