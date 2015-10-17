@@ -38,9 +38,9 @@ void IndexButton::paintEvent(QPaintEvent *event)
         painter.setPen(QColor(0,0,0));
         painter.setFont(QFont("Noto Sans", 6));
         if(index > 0)   // next button
-            painter.drawText(region.adjusted(-2, -1, -2, 0), Qt::AlignCenter, QString::number(index));
+            painter.drawText(region.adjusted(-2, -1, -2, 1), Qt::AlignCenter, QString::number(index));
         else            // previous button
-            painter.drawText(region.adjusted(2, -1, 2, 0), Qt::AlignCenter, QString::number(-index));
+            painter.drawText(region.adjusted(2, -1, 2, 1), Qt::AlignCenter, QString::number(-index));
     }
 }
 
