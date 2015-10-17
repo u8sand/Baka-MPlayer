@@ -275,7 +275,11 @@ void PreferencesDialog::SelectKey(bool add, QPair<QString, QPair<QString, QStrin
             if(add) // add
                 AddRow(result.first, result.second.first, result.second.second);
             else // change
+            {
+                if(result.first != init.first)
+                    baka->input[init.first] = {QString(), QString()};
                 ModifyRow(ui->infoWidget->currentRow(), result.first, result.second.first, result.second.second);
+            }
             baka->input[result.first] = result.second;
             status = 2;
         }
