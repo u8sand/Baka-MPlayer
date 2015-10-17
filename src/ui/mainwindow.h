@@ -39,6 +39,7 @@ public:
     QString getLang()          { return lang; }
     QString getOnTop()         { return onTop; }
     int getAutoFit()           { return autoFit; }
+    int getMaxRecent()         { return maxRecent; }
     bool getHidePopup()        { return hidePopup; }
     bool getRemaining()        { return remaining; }
     bool getScreenshotDialog() { return screenshotDialog; }
@@ -114,7 +115,8 @@ private:
 public slots:
     void setLang(QString s)          { emit langChanged(lang = s); }
     void setOnTop(QString s)         { emit onTopChanged(onTop = s); }
-    void setAutoFit(int b)           { emit autoFitChanged(autoFit = b); }
+    void setAutoFit(int i)           { emit autoFitChanged(autoFit = i); }
+    void setMaxRecent(int i)         { emit maxRecentChanged(maxRecent = i); }
     void setHidePopup(bool b)        { emit hidePopupChanged(hidePopup = b); }
     void setRemaining(bool b)        { emit remainingChanged(remaining = b); }
     void setScreenshotDialog(bool b) { emit screenshotDialogChanged(screenshotDialog = b); }
@@ -126,6 +128,7 @@ signals:
     void langChanged(QString);
     void onTopChanged(QString);
     void autoFitChanged(int);
+    void maxRecentChanged(int);
     void hidePopupChanged(bool);
     void remainingChanged(bool);
     void screenshotDialogChanged(bool);

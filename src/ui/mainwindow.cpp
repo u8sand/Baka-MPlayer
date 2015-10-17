@@ -256,12 +256,9 @@ MainWindow::MainWindow(QWidget *parent):
                     else
                         setWindowTitle(fileInfo.media_title);
 
-                    QString file = mpv->getPath()+mpv->getFile();
-                    if((recent.isEmpty() || recent.front() != file) &&
-                       mpv->getFile() != QString() &&
-                       maxRecent > 0)
+                    QString f = mpv->getFile(), file = mpv->getPath()+f;
+                    if(f != QString() && maxRecent > 0)
                     {
-                        UpdateRecentFiles(); // update after initialization and only if the current file is different from the first recent
                         int i = recent.indexOf(file);
                         if(i >= 0)
                         {
@@ -270,13 +267,17 @@ MainWindow::MainWindow(QWidget *parent):
                                 mpv->Seek(t);
                             recent.removeAt(i);
                         }
-                        while(recent.length() > maxRecent-1)
-                            recent.removeLast();
-                        recent.push_front(
-                            Recent(file,
-                                   (mpv->getPath() == QString() || !Util::IsValidFile(file)) ?
-                                       fileInfo.media_title : QString()));
-                        current = &recent.front();
+                        if(recent.isEmpty() || recent.front() != file)
+                        {
+                            UpdateRecentFiles(); // update after initialization and only if the current file is different from the first recent
+                            while(recent.length() > maxRecent-1)
+                                recent.removeLast();
+                            recent.push_front(
+                                Recent(file,
+                                       (mpv->getPath() == QString() || !Util::IsValidFile(file)) ?
+                                           fileInfo.media_title : QString()));
+                            current = &recent.front();
+                        }
                     }
 
                     // reset speed if length isn't known and we have a streaming video
@@ -831,8 +832,8 @@ MainWindow::~MainWindow()
     delete next_toolbutton;
     delete thumbnail_toolbar;
 #endif
-    delete ui;
     delete baka;
+    delete ui;
 }
 
 void MainWindow::Load(QString file)

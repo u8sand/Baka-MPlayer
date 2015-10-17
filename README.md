@@ -1,4 +1,4 @@
-﻿# [Baka MPlayer](http://bakamplayer.u8sand.net)
+# [Baka MPlayer](http://bakamplayer.u8sand.net)
 
 ## Overview
 
@@ -20,6 +20,12 @@ Its simple design reflects the idea for an uncluttered, simple, and enjoyable en
 * youtube-dl (optional, for streaming youtube videos)
 
 Note: Packages may be named slightly different for each distro
+
+### Get the font
+
+Baka MPlayer was designed around the font called Noto Sans. Noto Sans was used because of its open source nature and its broad support for Unicode characters. Having the correct font installed insures that what you see is what was intended.
+
+[Get it here.](https://www.google.com/get/noto/#sans)
 
 ## Compilation
 
@@ -65,7 +71,26 @@ If this doesn't work or you do not have a distro listed here, you're on your own
 
 The configuration file will be created on first run and will be written to `~/.config/bakamplayer.ini`.
 
-### Other Languages
+### Mac OS X
+
+For the minute, you have to compile from source.
+You require some more dependencies which you can get from homebrew:
+```
+git clone -b release https://github.com/u8sand/Baka-MPlayer.git
+cd "Baka-MPlayer"
+brew tap mpv-player/mpv
+brew install mpv --with-libmpv
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+./configure
+make
+open build
+```
+Then drag the app to your applications folder.
+In the future there will be a brew formula
+
+Similarly to on linux, the configuration file will be created on first run and will be written to `~/.config/bakamplayer.ini`.
+
+### Other languages
 
 By default, Baka MPlayer will compile in English if no language is specified during compilation. To compile a multi-lingual version of baka-mplayer, configure it like so:
 

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>460</width>
-    <height>470</height>
+    <width>487</width>
+    <height>450</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -124,6 +124,26 @@ QPushButton:disabled {
 	color: #B8B8B8;
 }
 
+/* QSpinBox */
+
+QSpinBox {
+	background: #005A6A;
+}
+QSpinBox::disabled {
+	color: #B8B8B8;
+}
+QSpinBox::up-button,
+QSpinBox::down-button {
+	border: none;
+	width: 10px;
+}
+QSpinBox::up-arrow {
+	background: url(:/img/up-arrow.svg);
+}
+QSpinBox::down-arrow {
+	background: url(:/img/down-arrow.svg);
+}
+
 /* QGroupBox */
 
 QGroupBox {
@@ -188,7 +208,7 @@ QScrollBar::right-arrow:horizontal {
 	background: transparent;
 }</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_9">
+  <layout class="QVBoxLayout" name="verticalLayout_8">
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="styleSheet">
@@ -223,7 +243,7 @@ QTabBar::tab:!selected {
       <attribute name="title">
        <string>Player</string>
       </attribute>
-      <layout class="QVBoxLayout" name="verticalLayout_8">
+      <layout class="QHBoxLayout" name="horizontalLayout_5">
        <property name="leftMargin">
         <number>5</number>
        </property>
@@ -237,157 +257,151 @@ QTabBar::tab:!selected {
         <number>5</number>
        </property>
        <item>
-        <widget class="QGroupBox" name="groupBox_5">
-         <property name="title">
-          <string>Playback</string>
-         </property>
-         <layout class="QVBoxLayout" name="verticalLayout_6">
-          <item>
-           <widget class="QCheckBox" name="resumeCheckBox">
-            <property name="text">
-             <string>&amp;Restore Playback Position</string>
-            </property>
-            <property name="checked">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <widget class="QGroupBox" name="groupBox">
+           <property name="title">
+            <string>On Top</string>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_2">
+            <item>
+             <widget class="QRadioButton" name="alwaysRadioButton">
+              <property name="text">
+               <string>A&amp;lways</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="playingRadioButton">
+              <property name="text">
+               <string>&amp;When Playing</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="neverRadioButton">
+              <property name="text">
+               <string>&amp;Never</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="groupBox_2">
+           <property name="title">
+            <string>Tray Icon</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_3">
+            <item>
+             <widget class="QCheckBox" name="hidePopupCheckBox">
+              <property name="text">
+               <string>&amp;Hide Popup</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="groupBox_6">
+           <property name="title">
+            <string>Language</string>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <item>
+             <widget class="QComboBox" name="langComboBox">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
        </item>
        <item>
-        <widget class="QGroupBox" name="groupBox_4">
-         <property name="title">
-          <string>Mouse Gesture</string>
-         </property>
-         <layout class="QVBoxLayout" name="verticalLayout_7">
-          <property name="spacing">
-           <number>4</number>
-          </property>
-          <item>
-           <widget class="QCheckBox" name="gestureCheckBox">
-            <property name="text">
-             <string>&amp;Enable Mouse Gesture support</string>
+        <layout class="QVBoxLayout" name="verticalLayout_9">
+         <item>
+          <widget class="QGroupBox" name="groupBox_4">
+           <property name="title">
+            <string>Mouse Gesture</string>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_7">
+            <property name="spacing">
+             <number>4</number>
             </property>
-            <property name="checked">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_5">
-            <property name="styleSheet">
-             <string notr="true">QLabel {
+            <item>
+             <widget class="QCheckBox" name="gestureCheckBox">
+              <property name="text">
+               <string>&amp;Enable Mouse Gesture support</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_5">
+              <property name="styleSheet">
+               <string notr="true">QLabel {
 	color: #B8B8B8;
 }</string>
-            </property>
-            <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Click &amp;amp; drag cursor up/down to change volume&lt;br&gt;Click &amp;amp; drag cursor left/right to seek&lt;/b&gt;&lt;/body&gt;&lt;/html&gt;</string>
-            </property>
-            <property name="wordWrap">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item>
-        <widget class="QGroupBox" name="groupBox">
-         <property name="title">
-          <string>On Top</string>
-         </property>
-         <layout class="QVBoxLayout" name="verticalLayout_2">
-          <item>
-           <widget class="QRadioButton" name="alwaysRadioButton">
-            <property name="text">
-             <string>A&amp;lways</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QRadioButton" name="playingRadioButton">
-            <property name="text">
-             <string>&amp;When Playing</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QRadioButton" name="neverRadioButton">
-            <property name="text">
-             <string>&amp;Never</string>
-            </property>
-            <property name="checked">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item>
-        <widget class="QGroupBox" name="groupBox_2">
-         <property name="title">
-          <string>Tray Icon</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-         <layout class="QVBoxLayout" name="verticalLayout_3">
-          <item>
-           <widget class="QCheckBox" name="hidePopupCheckBox">
-            <property name="text">
-             <string>&amp;Hide Popup</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item>
-        <widget class="QGroupBox" name="groupBox_6">
-         <property name="title">
-          <string>Language</string>
-         </property>
-         <layout class="QHBoxLayout" name="horizontalLayout_3">
-          <item>
-           <widget class="QComboBox" name="langComboBox">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_4">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item>
-        <spacer name="verticalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
+              </property>
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Click &amp;amp; drag mouse up/down to change volume&lt;br&gt;Click &amp;amp; drag mouse left/right to seek&lt;/b&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="groupBox_5">
+           <property name="title">
+            <string>History</string>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_6">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_6">
+              <item>
+               <widget class="QCheckBox" name="recentCheckBox">
+                <property name="text">
+                 <string>Remember &amp;recently opened files up to</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSpinBox" name="recentSpinBox">
+                <property name="minimum">
+                 <number>1</number>
+                </property>
+                <property name="maximum">
+                 <number>20</number>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="resumeCheckBox">
+              <property name="text">
+               <string>Remember Playback &amp;Position</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
        </item>
       </layout>
      </widget>
@@ -416,7 +430,7 @@ QTabBar::tab:!selected {
 }</string>
          </property>
          <property name="text">
-          <string>Hint: Prefix a command with 'mpv' to make it run as an input command.</string>
+          <string>Prefix a command with 'mpv' to make it run as an input command.</string>
          </property>
          <property name="wordWrap">
           <bool>true</bool>
@@ -603,9 +617,6 @@ QPushButton:pressed {
            <property name="text">
             <string>&amp;Auto-Fit Window:</string>
            </property>
-           <property name="checked">
-            <bool>true</bool>
-           </property>
           </widget>
          </item>
          <item>
@@ -661,9 +672,6 @@ QPushButton:pressed {
             <property name="text">
              <string>&amp;Always show the dialog</string>
             </property>
-            <property name="checked">
-             <bool>true</bool>
-            </property>
            </widget>
           </item>
           <item row="1" column="1">
@@ -690,12 +698,18 @@ QPushButton:pressed {
             <property name="text">
              <string>File Name Template:</string>
             </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
            </widget>
           </item>
           <item row="1" column="0">
            <widget class="QLabel" name="label">
             <property name="text">
              <string>File Format:</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
             </property>
            </widget>
           </item>
@@ -717,6 +731,9 @@ QPushButton:pressed {
            <widget class="QLabel" name="label_3">
             <property name="text">
              <string>Default Save Location:</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
             </property>
            </widget>
           </item>
@@ -824,14 +841,16 @@ QPushButton:pressed {
  </widget>
  <tabstops>
   <tabstop>tabWidget</tabstop>
-  <tabstop>resumeCheckBox</tabstop>
-  <tabstop>gestureCheckBox</tabstop>
   <tabstop>alwaysRadioButton</tabstop>
   <tabstop>playingRadioButton</tabstop>
   <tabstop>neverRadioButton</tabstop>
   <tabstop>groupBox_2</tabstop>
   <tabstop>hidePopupCheckBox</tabstop>
   <tabstop>langComboBox</tabstop>
+  <tabstop>gestureCheckBox</tabstop>
+  <tabstop>recentCheckBox</tabstop>
+  <tabstop>recentSpinBox</tabstop>
+  <tabstop>resumeCheckBox</tabstop>
   <tabstop>infoWidget</tabstop>
   <tabstop>addKeyButton</tabstop>
   <tabstop>changeKeyButton</tabstop>
