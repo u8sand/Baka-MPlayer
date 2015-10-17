@@ -136,6 +136,11 @@ void BakaEngine::Screenshot(bool subs)
 
     QString dir = mpv->getScreenshotDir();
     int i = dir.lastIndexOf('/');
+    if(i == dir.length()-1)
+    {
+        dir.remove(i, 1);
+        i = dir.lastIndexOf('/');
+    }
     if(i != -1)
         dir.remove(0, i+1);
     if(subs)
