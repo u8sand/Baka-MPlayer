@@ -68,9 +68,9 @@ void BakaEngine::Load2_0_3()
         QJsonObject entry_json = entry.toObject();
         window->recent.append(Recent(entry_json["path"].toString(), entry_json["title"].toString(), QJsonValueRef2(entry_json["time"]).toInt(0)));
     }
-    window->maxRecent = QJsonValueRef2(root["maxRecent"]).toInt(5);
-    window->gestures = QJsonValueRef2(root["gestures"]).toBool(true);
-    window->resume = QJsonValueRef2(root["resume"]).toBool(true);
+    window->setMaxRecent(QJsonValueRef2(root["maxRecent"]).toInt(5));
+    window->setGestures(QJsonValueRef2(root["gestures"]).toBool(true));
+    window->setResume(QJsonValueRef2(root["resume"]).toBool(true));
     window->setLang(QJsonValueRef2(root["lang"]).toString("auto"));
 #if defined(Q_OS_WIN)
     QDate last = QDate::fromString(root["lastcheck"].toString()); // convert to date

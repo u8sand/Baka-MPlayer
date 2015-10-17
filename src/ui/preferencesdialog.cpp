@@ -34,6 +34,11 @@ PreferencesDialog::PreferencesDialog(BakaEngine *baka, QWidget *parent) :
     int autofit = baka->window->getAutoFit();
     ui->autoFitCheckBox->setChecked((bool)autofit);
     ui->comboBox->setCurrentText(QString::number(autofit)+"%");
+    ui->gestureCheckBox->setChecked(baka->window->getGestures());
+    int maxRecent= baka->window->getMaxRecent();
+    ui->recentCheckBox->setChecked(maxRecent > 0);
+    ui->recentSpinBox->setValue(maxRecent);
+    ui->resumeCheckBox->setChecked(baka->window->getResume());
     ui->formatComboBox->setCurrentText(baka->mpv->getScreenshotFormat());
     screenshotDir = QDir::toNativeSeparators(baka->mpv->getScreenshotDir());
     ui->templateLineEdit->setText(baka->mpv->getScreenshotTemplate());
@@ -116,6 +121,9 @@ PreferencesDialog::PreferencesDialog(BakaEngine *baka, QWidget *parent) :
                      ui->infoWidget->item(i, 2)->text()}});
             });
 
+    connect(ui->recentCheckBox, SIGNAL(toggled(bool)),
+            ui->recentSpinBox, SLOT(setEnabled(bool)));
+
     connect(ui->okButton, SIGNAL(clicked()),
             this, SLOT(accept()));
 
@@ -142,6 +150,9 @@ PreferencesDialog::~PreferencesDialog()
             baka->window->setAutoFit(ui->comboBox->currentText().left(ui->comboBox->currentText().length()-1).toInt());
         else
             baka->window->setAutoFit(0);
+        baka->window->setMaxRecent(ui->recentCheckBox->isChecked() ? ui->recentSpinBox->value() : 0);
+        baka->window->setGestures(ui->gestureCheckBox->isChecked());
+        baka->window->setResume(ui->resumeCheckBox->isChecked());
         baka->mpv->ScreenshotFormat(ui->formatComboBox->currentText());
         baka->mpv->ScreenshotDirectory(screenshotDir);
         baka->mpv->ScreenshotTemplate(ui->templateLineEdit->text());
