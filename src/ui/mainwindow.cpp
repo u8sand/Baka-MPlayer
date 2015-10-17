@@ -180,6 +180,12 @@ MainWindow::MainWindow(QWidget *parent):
                 ui->verticalWidget->setVisible(b);
             });
 
+    connect(this, &MainWindow::windowedChanged,
+            [=](bool b)
+            {
+                SetWindowed(b);
+            });
+
     connect(baka->sysTrayIcon, &QSystemTrayIcon::activated,
             [=](QSystemTrayIcon::ActivationReason reason)
             {
@@ -944,7 +950,7 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
             setRemaining(!remaining); // todo: use a bakacommand
     }
     else if(event->button() == Qt::RightButton &&
-            !isFullScreen() &&  // not fullscreen
+            !isFullScreenMode() &&  // not fullscreen mode
             mpv->getPlayState() > 0 &&  // playing
             ui->mpvFrame->geometry().contains(event->pos())) // mouse is in the mpvFrame
     {
@@ -963,7 +969,7 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
 {
     if(baka->gesture->Process(event->globalPos()))
         event->accept();
-    else if(isFullScreen())
+    else if(isFullScreenMode())
     {
         bool in = false;
         setCursor(QCursor(Qt::ArrowCursor)); // show the cursor
@@ -1019,7 +1025,7 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
 
 bool MainWindow::eventFilter(QObject *obj, QEvent *event)
 {
-    if(obj == ui->mpvFrame && isFullScreen() && event->type() == QEvent::MouseMove)
+    if(obj == ui->mpvFrame && isFullScreenMode() && event->type() == QEvent::MouseMove)
     {
         QMouseEvent *mouseEvent = static_cast<QMouseEvent*>(event);
         mouseMoveEvent(mouseEvent);
@@ -1146,13 +1152,10 @@ void MainWindow::SetPlaybackControls(bool enable)
     }
 }
 
-void MainWindow::FullScreen(bool fs)
+void MainWindow::SetWindowed(bool w)
 {
-    if(fs)
+    if(w)
     {
-        if(baka->dimDialog && baka->dimDialog->isVisible())
-            baka->Dim(false);
-        setWindowState(windowState() | Qt::WindowFullScreen);
         ui->menubar->setVisible(false);
         ui->splitter->handle(1)->installEventFilter(this); // capture events for the splitter
         setMouseTracking(true); // register mouse move event
@@ -1165,7 +1168,6 @@ void MainWindow::FullScreen(bool fs)
     }
     else
     {
-        setWindowState(windowState() & ~Qt::WindowFullScreen);
         if(menuVisible)
             ui->menubar->setVisible(true);
         ui->seekBar->setVisible(true);
@@ -1175,6 +1177,24 @@ void MainWindow::FullScreen(bool fs)
         setContextMenuPolicy(Qt::NoContextMenu);
         setCursor(QCursor(Qt::ArrowCursor)); // show cursor
         autohide->stop();
+    }
+}
+
+void MainWindow::FullScreen(bool fs)
+{
+    if(fs)
+    {
+        if(baka->dimDialog && baka->dimDialog->isVisible())
+            baka->Dim(false);
+        setWindowState(windowState() | Qt::WindowFullScreen);
+        if(!windowed)
+            SetWindowed(true);
+    }
+    else
+    {
+        setWindowState(windowState() & ~Qt::WindowFullScreen);
+        if(!windowed)
+            SetWindowed(false);
     }
 }
 

@@ -46,6 +46,8 @@ public:
     bool getDebug()            { return debug; }
     bool getGestures()         { return gestures; }
     bool getResume()           { return resume; }
+    bool getWindowed()         { return windowed; }
+    bool isFullScreenMode()    { return windowed || isFullScreen(); }
 
     Ui::MainWindow  *ui;
     QImage albumArt;
@@ -70,6 +72,7 @@ protected:
     bool isPlaylistVisible();                       // is the playlist visible?
 
 private slots:
+    void SetWindowed(bool w);
     void FullScreen(bool fs);                       // makes window fullscreen
     void ShowPlaylist(bool visible);                // sets the playlist visibility
     void HideAlbumArt(bool hide);                   // hides the album art
@@ -107,7 +110,8 @@ private:
          screenshotDialog,
          debug,
          gestures,
-         resume;
+         resume,
+         windowed;
     QRect playbackRect,
           playlistRect;
     QHash<QString, QAction*> commandActionMap;
@@ -123,6 +127,7 @@ public slots:
     void setDebug(bool b)            { emit debugChanged(debug = b); }
     void setGestures(bool b)         { emit gesturesChanged(gestures = b); }
     void setResume(bool b)           { emit resumeChanged(resume = b); }
+    void setWindowed(bool b)         { emit windowedChanged(windowed = b); }
 
 signals:
     void langChanged(QString);
@@ -135,6 +140,7 @@ signals:
     void debugChanged(bool);
     void gesturesChanged(bool);
     void resumeChanged(bool);
+    void windowedChanged(bool);
 };
 
 #endif // MAINWINDOW_H
