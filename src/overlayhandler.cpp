@@ -86,11 +86,14 @@ void OverlayHandler::showText(const QString &text, QFont font, QColor color, QPo
 
     QFontMetrics fm(font);
     QStringList lines = text.split('\n');
+    // the 1.3 was pretty much determined through trial and error; this formula isn't perfect
+    // apparently, QFontMetrics doesn't work that well
+    const float fm_correction = 1.3;
     int w = 0,
         h = fm.height()*lines.length();
     for(auto line : lines)
         w = std::max(fm.width(line), w);
-    float xF = float(baka->window->ui->mpvFrame->width()-2*pos.x()) / (float(1.1)*w); // the 1.1 was pretty much determined through trial and error; this formula isn't perfect
+    float xF = float(baka->window->ui->mpvFrame->width()-2*pos.x()) / (fm_correction*w);
     float yF = float(baka->window->ui->mpvFrame->height()-2*pos.y()) / h;
     font.setPointSizeF(std::min(font.pointSizeF()*std::min(xF, yF), font.pointSizeF()));
 
@@ -102,7 +105,7 @@ void OverlayHandler::showText(const QString &text, QFont font, QColor color, QPo
     for(auto line : lines)
     {
         path.addText(p, font, line);
-        w = std::max(int(1.1*path.currentPosition().x()), w);
+        w = std::max(int(fm_correction*path.currentPosition().x()), w);
         p += QPoint(0, h);
     }
 
