@@ -25,20 +25,8 @@ public:
     QString getFile()                       { return file; }
     QString getPath()                       { return path; }
     QString getScreenshotFormat()           { return screenshotFormat; }
-    QString getScreenshotTemplate()
-    {
-        if(screenshotTemplate==QString())
-            return (screenshotTemplate = "screenshot%#04");
-        else
-            return screenshotTemplate;
-    }
-    QString getScreenshotDir()
-    {
-        if(screenshotTemplate == QString())
-            return (screenshotDir = ".");
-        else
-            return screenshotDir;
-    }
+    QString getScreenshotTemplate()         { return screenshotTemplate; }
+    QString getScreenshotDir()              { return screenshotDir; }
     QString getVo()                         { return vo; }
     double getSpeed()                       { return speed; }
     int getTime()                           { return time; }
