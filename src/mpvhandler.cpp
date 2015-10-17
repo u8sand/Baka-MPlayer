@@ -604,7 +604,10 @@ void MpvHandler::SubtitleScale(double scale, bool relative)
 void MpvHandler::Deinterlace(bool deinterlace)
 {
     if(mpv)
+    {
         mpv_set_property_string(mpv, "deinterlace", deinterlace ? "yes" : "auto");
+        ShowText(tr("Deinterlacing: %0").arg(deinterlace ? tr("enabled") : tr("disabled")));
+    }
 }
 
 void MpvHandler::Interpolate(bool interpolate)
@@ -625,6 +628,7 @@ void MpvHandler::Interpolate(bool interpolate)
     }
     setVo(vos.join(','));
     SetOption("vo", vo);
+    ShowText(tr("Motion Interpolation: %0").arg(interpolate ? tr("enabled") : tr("disabled")));
 }
 
 void MpvHandler::Vo(QString o)
