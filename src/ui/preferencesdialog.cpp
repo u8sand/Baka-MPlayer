@@ -246,7 +246,7 @@ void PreferencesDialog::SelectKey(bool add, QPair<QString, QPair<QString, QStrin
     {
         QPair<QString, QPair<QString, QString>> result = dialog.SelectKey(add, init);
         if(result == QPair<QString, QPair<QString, QString>>()) // cancel
-            return;
+            break;
         for(int i = 0; i < numberOfShortcuts; ++i)
         {
             if(!add && i == ui->infoWidget->currentRow()) // don't compare selected row if we're changing
