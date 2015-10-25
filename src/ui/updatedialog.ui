@@ -202,7 +202,7 @@ QScrollBar::right-arrow:horizontal {
         </sizepolicy>
        </property>
        <property name="text">
-        <string>&amp;UPDATE</string>
+        <string>&amp;Update</string>
        </property>
        <property name="autoDefault">
         <bool>false</bool>
@@ -221,7 +221,7 @@ QScrollBar::right-arrow:horizontal {
         </sizepolicy>
        </property>
        <property name="text">
-        <string>&amp;CANCEL</string>
+        <string>&amp;Cancel</string>
        </property>
        <property name="autoDefault">
         <bool>false</bool>

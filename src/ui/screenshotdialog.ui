@@ -211,7 +211,7 @@ QPushButton:disabled {
         </sizepolicy>
        </property>
        <property name="text">
-        <string>&amp;SAVE</string>
+        <string>&amp;Save</string>
        </property>
        <property name="default">
         <bool>true</bool>

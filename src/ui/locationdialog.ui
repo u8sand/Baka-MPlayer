@@ -137,7 +137,7 @@ QPushButton:disabled {
         </sizepolicy>
        </property>
        <property name="text">
-        <string>&amp;PASTE</string>
+        <string>&amp;Paste</string>
        </property>
        <property name="autoDefault">
         <bool>false</bool>
@@ -153,7 +153,7 @@ QPushButton:disabled {
         </sizepolicy>
        </property>
        <property name="text">
-        <string>&amp;COPY</string>
+        <string>&amp;Copy</string>
        </property>
        <property name="autoDefault">
         <bool>false</bool>
@@ -169,7 +169,7 @@ QPushButton:disabled {
         </sizepolicy>
        </property>
        <property name="text">
-        <string>CLEA&amp;R</string>
+        <string>Clea&amp;r</string>
        </property>
        <property name="autoDefault">
         <bool>false</bool>
@@ -198,7 +198,7 @@ QPushButton:disabled {
         </sizepolicy>
        </property>
        <property name="text">
-        <string>CANC&amp;EL</string>
+        <string>Canc&amp;el</string>
        </property>
        <property name="autoDefault">
         <bool>false</bool>
