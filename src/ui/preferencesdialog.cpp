@@ -70,19 +70,6 @@ PreferencesDialog::PreferencesDialog(BakaEngine *baka, QWidget *parent) :
                 SelectKey(true);
             });
 
-    connect(ui->changeKeyButton, &QPushButton::clicked,
-            [=]
-            {
-                int i = ui->infoWidget->currentRow();
-                if(i == -1)
-                    return;
-
-                SelectKey(false,
-                    {ui->infoWidget->item(i, 0)->text(),
-                    {ui->infoWidget->item(i, 1)->text(),
-                     ui->infoWidget->item(i, 2)->text()}});
-            });
-
     connect(ui->resetKeyButton, &QPushButton::clicked,
             [=]
             {
@@ -109,7 +96,6 @@ PreferencesDialog::PreferencesDialog(BakaEngine *baka, QWidget *parent) :
     connect(ui->infoWidget, &QTableWidget::currentCellChanged,
             [=](int r,int,int,int)
             {
-                ui->changeKeyButton->setEnabled(r != -1);
                 ui->removeKeyButton->setEnabled(r != -1);
             });
 

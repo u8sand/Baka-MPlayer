@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>487</width>
+    <width>489</width>
     <height>450</height>
    </rect>
   </property>
@@ -545,6 +545,25 @@ QTableWidget::item:selected {
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_4">
          <item>
+          <widget class="QPushButton" name="addKeyButton">
+           <property name="icon">
+            <iconset resource="../rsclist.qrc">
+             <normaloff>:/img/add.svg</normaloff>:/img/add.svg</iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="removeKeyButton">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="icon">
+            <iconset resource="../rsclist.qrc">
+             <normaloff>:/img/remove.svg</normaloff>:/img/remove.svg</iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
           <spacer name="horizontalSpacer_5">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
@@ -556,33 +575,6 @@ QTableWidget::item:selected {
             </size>
            </property>
           </spacer>
-         </item>
-         <item>
-          <widget class="QPushButton" name="addKeyButton">
-           <property name="text">
-            <string>&amp;Add...</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="changeKeyButton">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="text">
-            <string>Chang&amp;e...</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="removeKeyButton">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="text">
-            <string>&amp;Remove</string>
-           </property>
-          </widget>
          </item>
          <item>
           <widget class="QPushButton" name="resetKeyButton">
@@ -604,19 +596,6 @@ QPushButton:pressed {
             <string>Rese&amp;t All</string>
            </property>
           </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_6">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
          </item>
         </layout>
        </item>
@@ -882,7 +861,6 @@ QPushButton:pressed {
   <tabstop>resumeCheckBox</tabstop>
   <tabstop>infoWidget</tabstop>
   <tabstop>addKeyButton</tabstop>
-  <tabstop>changeKeyButton</tabstop>
   <tabstop>removeKeyButton</tabstop>
   <tabstop>resetKeyButton</tabstop>
   <tabstop>autoFitCheckBox</tabstop>

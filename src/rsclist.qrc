@@ -1,5 +1,7 @@
 <RCC>
   <qresource prefix="/">
+    <file>img/add.svg</file>
+    <file>img/remove.svg</file>
     <file>img/disabled_next.svg</file>
     <file>img/disabled_previous.svg</file>
     <file>img/disabled_reverse.svg</file>
