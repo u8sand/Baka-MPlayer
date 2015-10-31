@@ -546,6 +546,11 @@ QTableWidget::item:selected {
         <layout class="QHBoxLayout" name="horizontalLayout_4">
          <item>
           <widget class="QPushButton" name="addKeyButton">
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+    min-width: 40px;
+}</string>
+           </property>
            <property name="icon">
             <iconset resource="../rsclist.qrc">
              <normaloff>:/img/add.svg</normaloff>:/img/add.svg</iconset>
@@ -556,6 +561,11 @@ QTableWidget::item:selected {
           <widget class="QPushButton" name="removeKeyButton">
            <property name="enabled">
             <bool>false</bool>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+    min-width: 40px;
+}</string>
            </property>
            <property name="icon">
             <iconset resource="../rsclist.qrc">
