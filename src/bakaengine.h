@@ -184,6 +184,15 @@ private:
           }
          }
         },
+        {"add_audio",
+         {&BakaEngine::BakaAddAudio,
+          {
+           QString(),
+           tr("add audio track dialog"),
+           QString()
+          }
+         }
+        },
         {"screenshot",
          {&BakaEngine::BakaScreenshot,
           {
@@ -409,6 +418,7 @@ private:
     void BakaOpenClipboard(QStringList&);
     void BakaShowInFolder(QStringList&);
     void BakaAddSubtitles(QStringList&);
+    void BakaAddAudio(QStringList&);
     void BakaScreenshot(QStringList&);
     void BakaMediaInfo(QStringList&);
     void BakaStop(QStringList&);

@@ -581,13 +581,29 @@ void MpvHandler::AddSubtitleTrack(QString f)
     if(f == QString())
         return;
     const QByteArray tmp = f.toUtf8();
-    const char *args[] = {"sub_add", tmp.constData(), NULL};
+    const char *args[] = {"sub-add", tmp.constData(), NULL};
     Command(args);
     // this could be more efficient if we saved tracks in a bst
     auto old = fileInfo.tracks; // save the current track-list
     LoadTracks(); // load the new track list
     auto current = fileInfo.tracks;
     for(auto track : old) // remove the old tracks in current
+        current.removeOne(track);
+    Mpv::Track &track = current.first();
+    ShowText(QString("%0: %1 (%2)").arg(QString::number(track.id), track.title, track.external ? "external" : track.lang));
+}
+
+void MpvHandler::AddAudioTrack(QString f)
+{
+    if(f == QString())
+        return;
+    const QByteArray tmp = f.toUtf8();
+    const char *args[] = {"audio-add", tmp.constData(), NULL};
+    Command(args);
+    auto old = fileInfo.tracks;
+    LoadTracks();
+    auto current = fileInfo.tracks;
+    for(auto track : old)
         current.removeOne(track);
     Mpv::Track &track = current.first();
     ShowText(QString("%0: %1 (%2)").arg(QString::number(track.id), track.title, track.external ? "external" : track.lang));

@@ -1148,6 +1148,8 @@ QSlider::handle:horizontal {
      <property name="title">
       <string>Audio &amp;Tracks</string>
      </property>
+     <addaction name="action_Add_Audio_File"/>
+     <addaction name="separator"/>
      <addaction name="action_none_3"/>
     </widget>
     <widget class="QMenu" name="menuS_peed">
@@ -1669,6 +1671,11 @@ QSlider::handle:horizontal {
    </property>
    <property name="text">
     <string>&amp;Deinterlace</string>
+   </property>
+  </action>
+  <action name="action_Add_Audio_File">
+   <property name="text">
+    <string>&amp;Add Audio File...</string>
    </property>
   </action>
  </widget>

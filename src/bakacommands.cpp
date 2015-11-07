@@ -108,6 +108,21 @@ void BakaEngine::BakaAddSubtitles(QStringList &args)
     mpv->AddSubtitleTrack(trackFile);
 }
 
+void BakaEngine::BakaAddAudio(QStringList &args)
+{
+    QString trackFile;
+    if(args.empty())
+    {
+        trackFile = QFileDialog::getOpenFileName(window, tr("Open Audio File"), mpv->getPath(),
+                                                 QString("%0 (%1)").arg(tr("Audio Files"), Mpv::audio_filetypes.join(" ")),
+                                                 0, QFileDialog::DontUseSheet);
+    }
+    else
+        trackFile = args.join(' ');
+
+    mpv->AddAudioTrack(trackFile);
+}
+
 void BakaEngine::BakaScreenshot(QStringList &args)
 {
     if(args.empty())

@@ -86,6 +86,7 @@ public slots:
     void ScreenshotDirectory(QString);
 
     void AddSubtitleTrack(QString);
+    void AddAudioTrack(QString);
     void ShowSubtitles(bool);
     void SubtitleScale(double scale, bool relative = false);
 
