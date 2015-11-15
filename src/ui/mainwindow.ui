@@ -1256,7 +1256,7 @@ QSlider::handle:horizontal {
   </action>
   <action name="actionOpen_Path_from_Clipboard">
    <property name="text">
-    <string>Open Path from &amp;Clipboard</string>
+    <string>Open &amp;Copied Link</string>
    </property>
   </action>
   <action name="actionShow_in_Folder">
