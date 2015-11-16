@@ -23,13 +23,12 @@
 /* QLineEdit */
 
 QLineEdit {
-	background: black;
-	border: 1px solid #454A4D;
-	border-radius: 2px;
+	background: #263238;
+	border: 1px solid black;
 	padding: 2px;
 }
 QLineEdit:focus {
-	border: 1px solid #008098;
+	border: 1px solid #7FCAC3;
 }
 
 /* QPushButton */
@@ -45,7 +44,7 @@ QPushButton {
 	padding: 4px 6px;
 }
 QPushButton:focus {
-	border: 1px solid #008098;
+	border: 1px solid #7FCAC3;
 	outline: none;
 }
 QPushButton:pressed {
@@ -54,7 +53,7 @@ QPushButton:pressed {
 QPushButton:disabled {
 	background: transparent;
 	border: 1px solid #454A4D;
-	color: #B8B8B8;
+	color: #6F6F6F;
 }</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">

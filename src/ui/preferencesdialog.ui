@@ -41,7 +41,7 @@ QRadioButton::indicator:unchecked {
 	image: none;
 }
 QRadioButton::indicator:checked {
-	border: 1px solid #008098;
+	border: 1px solid #7FCAC3;
 	image: url(:/img/selected.svg);
 }
 
@@ -51,7 +51,7 @@ QCheckBox::indicator,
 QGroupBox::indicator{
 	width: 11px;
 	height: 11px;
-	border: 1px solid #008098;
+	border: 1px solid #7FCAC3;
 	border-radius: 2px;
 }
 QCheckBox::indicator:unchecked,
@@ -62,24 +62,23 @@ QGroupBox::indicator:unchecked {
 }
 QCheckBox::indicator:checked,
 QGroupBox::indicator:checked {
-	border: 1px solid #008098;
-	background: #008098;
+	border: 1px solid #7FCAC3;
+	background: #7FCAC3;
 	image: url(:/img/checked.svg);
 }
 
 /* QComboBox */
 
 QComboBox {
-	background: #454A4D;
+	background: #263238;
 	border: 1px solid black;
 	border-radius: 2px;
 	padding: 2px;
 }
 QComboBox:focus {
-	border: 1px solid #008098;
+	border: 1px solid #7FCAC3;
 }
 QComboBox::drop-down {
-	background: #008098;
 	border-top-right-radius: 2px;
 	border-bottom-right-radius: 2px;
 }
@@ -90,13 +89,12 @@ QComboBox::down-arrow {
 /* QLineEdit */
 
 QLineEdit {
-	background: black;
-	border: 1px solid #454A4D;
-	border-radius: 2px;
+	background: #263238;
+	border: 1px solid black;
 	padding: 2px;
 }
 QLineEdit:focus {
-	border: 1px solid #008098;
+	border: 1px solid #7FCAC3;
 }
 
 /* QPushButton */
@@ -112,7 +110,7 @@ QPushButton {
 	padding: 4px 6px;
 }
 QPushButton:focus {
-	border: 1px solid #008098;
+	border: 1px solid #7FCAC3;
 	outline: none;
 }
 QPushButton:pressed {
@@ -121,19 +119,22 @@ QPushButton:pressed {
 QPushButton:disabled {
 	background: transparent;
 	border: 1px solid #454A4D;
-	color: #B8B8B8;
+	color: #6F6F6F;
 }
 
 /* QSpinBox */
 
 QSpinBox {
-	background: #005A6A;
+	background: #263238;
 	border: 1px solid black;
 	border-radius: 2px;
 	padding: 2px;
 }
+QSpinBox:focus {
+	border: 1px solid #7FCAC3;
+}
 QSpinBox::disabled {
-	color: #B8B8B8;
+	color: #6F6F6F;
 }
 QSpinBox::up-button,
 QSpinBox::down-button {
@@ -150,15 +151,15 @@ QSpinBox::down-arrow {
 /* QGroupBox */
 
 QGroupBox {
-	border: 1px solid #424242;
+	border: 1px solid #454A4D;
 	border-radius: 2px;
 	margin-top: 0.5em;
 }
 QGroupBox::title {
 	subcontrol-origin: margin;
 	subcontrol-position: top center;
-	background: #424242;
-	border: 1px solid #424242;
+	background: #454A4D;
+	border: 1px solid #454A4D;
 	border-radius: 2px;
 	padding: 0 2px;
 }
@@ -170,7 +171,7 @@ QScrollBar:vertical {
 	width: 6px;
 }
 QScrollBar::handle:vertical {
-	background: #008098;
+	background: #7FCAC3;
 	border-radius: 2px;
 	min-height: 10px;
 }
@@ -180,7 +181,7 @@ QScrollBar::sub-line:vertical {
 }
 QScrollBar::add-page:vertical,
 QScrollBar::sub-page:vertical  {
-	background: #5A5A5A;
+	background: #383838;
 	margin: 0 2px;
 }
 QScrollBar::up-arrow:vertical,
@@ -189,11 +190,11 @@ QScrollBar::down-arrow:vertical {
 }
 
 QScrollBar:horizontal {
-	padding-top: 1px;
 	height: 6px;
+	padding-top: 1px;
 }
 QScrollBar::handle:horizontal {
-	background: #008098;
+	background: #7FCAC3;
 	border-radius: 2px;
 	min-width: 10px;
 }
@@ -203,7 +204,7 @@ QScrollBar::sub-line:horizontal {
 }
 QScrollBar::add-page:horizontal,
 QScrollBar::sub-page:horizontal {
-	background: #5A5A5A;
+	background: #383838;
 	margin: 2px 0;
 }
 QScrollBar::left-arrow:horizontal,
@@ -230,11 +231,11 @@ QTabBar::tab {
 	min-width: 100px;
 }
 QTabBar::tab:selected {
-	border-bottom: 1px solid #008098;
+	border-bottom: 1px solid #7FCAC3;
 	font-weight: bold;
 }
 QTabBar::tab:!selected {
-	color: #B8B8B8;
+	color: #6F6F6F;
 	font-weight: normal;
 	margin-bottom: 1px;
 }</string>
@@ -366,7 +367,7 @@ QTabBar::tab:!selected {
              <widget class="QLabel" name="label_5">
               <property name="styleSheet">
                <string notr="true">QLabel {
-	color: #B8B8B8;
+	color: #6F6F6F;
 }</string>
               </property>
               <property name="text">
@@ -455,7 +456,7 @@ QTabBar::tab:!selected {
         <widget class="QLabel" name="label_6">
          <property name="styleSheet">
           <string notr="true">QLabel {
-	color: #B8B8B8;
+	color: #6F6F6F;
 }</string>
          </property>
          <property name="text">
@@ -483,7 +484,7 @@ QTableWidget::item:alternate {
     background: #141414;
 }
 QTableWidget::item:selected {
-	background: #008098;
+	background: #7FCAC3;
 }</string>
          </property>
          <property name="editTriggers">
@@ -592,14 +593,14 @@ QTableWidget::item:selected {
             <string notr="true">/* resetKeyButton */
 
 QPushButton {
-	background: #A51051;
-	border: 1px solid #A51051
+	background: #F44336;
+	border: 1px solid #F44336;
 }
 QPushButton:focus {
-	border: 1px solid #008098;
+	border: 1px solid #7FCAC3;
 }
 QPushButton:pressed {
-	background: #720B38;
+	background: #74201A;
 }</string>
            </property>
            <property name="text">
@@ -688,7 +689,7 @@ QPushButton:pressed {
           <item row="0" column="0">
            <widget class="QCheckBox" name="checkBox">
             <property name="text">
-             <string>&amp;Always show the dialog</string>
+             <string>Always show the &amp;dialog</string>
             </property>
            </widget>
           </item>

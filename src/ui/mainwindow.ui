@@ -40,27 +40,27 @@ QMenuBar::item {
 	background: #1A1A1A;
 }
 QMenuBar::item:selected {
-	background: #008098;
+	background: #383838;
 }
 
 QMenu {
-	background: #353535;
-    border: 1px solid #5A5A5A;
+	background: #1A1A1A;
+    border: 1px solid #383838;
 }
 QMenu::item:selected {
-	background: #008098;
+	background: #383838;
  }
 QMenu::item:checked {
 	/* distinguish check state for menu item's with images */
 }
 QMenu::item::disabled {
-	color: gray;
+	color: #6F6F6F;
 }
 QMenu::item::disabled:selected {
 	color: black;
 }
 QMenu::separator {
-	background: #5A5A5A;
+	background: #383838;
 	height: 1px;
 	margin: 2px 0;
 }
@@ -76,32 +76,32 @@ QSplitter::handle,
 
 #outputTextEdit {
 	font: 12px &quot;Courier New&quot;, monospace;
-	border-top: 1px solid #353535;
+	border-top: 1px solid #383838;
 }
 
 #inputLineEdit {
 	font: 12px &quot;Courier New&quot;,monospace;
-	border-top: 1px solid #353535;
+	border-top: 1px solid #383838;
 	padding: 2px;
 }
 #inputLineEdit:focus {
-	border-color: #008098;
+	border-color: #7FCAC3;
 }
 
 /* Playlist group */
 
 #playlistLayoutWidget {
-	border-left: 1px solid #353535
+	border-left: 1px solid #383838;
 }
 
 #searchBox {
-	background: #353535;
-	border: 1px solid #353535;
+	background: #383838;
+	border: 1px solid #383838;
 	font-size: 12px;
 	padding: 3px 2px;
 }
 #searchBox:focus {
-	border-color: #008098;
+	border-color: #7FCAC3;
 }
 
 /* time labels */
@@ -124,7 +124,7 @@ QListView {
 	padding: 3px 0px;
 }
 #playlistWidget::item:selected {
-	background: #008098;
+	background: #383838;
 }
 #playlistWidget:item:selected:active,
 #playlistWidget:item:selected:!active {
@@ -138,7 +138,7 @@ QScrollBar:vertical {
 	width: 6px;
 }
 QScrollBar::handle:vertical {
-	background: #008098;
+	background: #7FCAC3;
 	border-radius: 2px;
 	min-height: 10px;
 }
@@ -148,7 +148,7 @@ QScrollBar::sub-line:vertical {
 }
 QScrollBar::add-page:vertical,
 QScrollBar::sub-page:vertical  {
-	background: #5A5A5A;
+	background: #383838;
 	margin: 0 2px;
 }
 QScrollBar::up-arrow:vertical,
@@ -161,7 +161,7 @@ QScrollBar:horizontal {
 	padding-top: 1px;
 }
 QScrollBar::handle:horizontal {
-	background: #008098;
+	background: #7FCAC3;
 	border-radius: 2px;
 	min-width: 10px;
 }
@@ -171,7 +171,7 @@ QScrollBar::sub-line:horizontal {
 }
 QScrollBar::add-page:horizontal,
 QScrollBar::sub-page:horizontal {
-	background: #5A5A5A;
+	background: #383838;
 	margin: 2px 0;
 }
 QScrollBar::left-arrow:horizontal,
@@ -491,21 +491,21 @@ QScrollBar::right-arrow:horizontal {
 }
 QSlider::handle:horizontal:disabled,
 QSlider::sub-page:horizontal:disabled {
-	background: #353535;
+	background: #383838;
 }
 QSlider::handle:horizontal {
 	/* handle color */
-	background: #008098;
+	background: #7FCAC3;
 	width: 9px;
 	border-radius: 4px;
 }
 QSlider::groove:horizontal {
 	/* the non-progressed color */
-	background: #353535;
+	background: #383838;
 }
 QSlider::sub-page:horizontal {
 	/* the progress color */
-	background: #008098;
+	background: #7FCAC3;
 }</string>
       </property>
       <property name="maximum">
@@ -905,10 +905,10 @@ QSlider::sub-page:horizontal {
 	height: 1px;
 }
 QSlider::sub-page:horizontal {
-	background: #008098;
+	background: #7FCAC3;
 }
 QSlider::handle:horizontal {
-	background: #F5F5F5;
+	background: whitesmoke;
 	border: 2px solid #1A1A1A;
 	border-radius: 7px;
 	margin: -7px 0;
