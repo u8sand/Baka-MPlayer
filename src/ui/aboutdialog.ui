@@ -120,7 +120,6 @@ QTabBar::tab:selected {
 	font-weight: bold;
 }
 QTabBar::tab:!selected {
-	color: #6F6F6F;
 	font-weight: normal;
 	margin-bottom: 1px;
 }</string>
