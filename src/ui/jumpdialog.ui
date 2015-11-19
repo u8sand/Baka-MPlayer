@@ -21,7 +21,7 @@
 }
 
 #horizontalLayoutWidget {
-	background: #263238;
+	background: #454A4D;
 	border: 1px solid black;
 	border-radius: 2px;
 }
@@ -29,7 +29,7 @@
 /* QSpinBox */
 
 QSpinBox {
-	background: #263238;
+	background: #454A4D;
 }
 QSpinBox::disabled {
 	color: #6F6F6F;

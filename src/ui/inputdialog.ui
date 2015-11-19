@@ -23,8 +23,8 @@
 /* QLineEdit */
 
 QLineEdit {
-	background: #263238;
-	border: 1px solid black;
+	background: #000;
+	border: 1px solid #454A4D;
 	padding: 2px;
 }
 QLineEdit:focus {

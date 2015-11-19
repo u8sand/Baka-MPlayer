@@ -70,8 +70,8 @@ QGroupBox::indicator:checked {
 /* QComboBox */
 
 QComboBox {
-	background: #263238;
-	border: 1px solid black;
+	background: #454A4D;
+	border: 1px solid #000;
 	border-radius: 2px;
 	padding: 2px;
 }
@@ -79,6 +79,7 @@ QComboBox:focus {
 	border: 1px solid #7FCAC3;
 }
 QComboBox::drop-down {
+	background: #7FCAC3;
 	border-top-right-radius: 2px;
 	border-bottom-right-radius: 2px;
 }
@@ -89,8 +90,8 @@ QComboBox::down-arrow {
 /* QLineEdit */
 
 QLineEdit {
-	background: #263238;
-	border: 1px solid black;
+	background: #000;
+	border: 1px solid #454A4D;
 	padding: 2px;
 }
 QLineEdit:focus {
@@ -125,10 +126,9 @@ QPushButton:disabled {
 /* QSpinBox */
 
 QSpinBox {
-	background: #263238;
-	border: 1px solid black;
+	background: #454A4D;
+	border: 1px solid #000;
 	border-radius: 2px;
-	padding: 2px;
 }
 QSpinBox:focus {
 	border: 1px solid #7FCAC3;
@@ -138,7 +138,10 @@ QSpinBox::disabled {
 }
 QSpinBox::up-button,
 QSpinBox::down-button {
+	background: #7FCAC3;
 	border: none;
+	border-top-right-radius: 2px;
+	border-bottom-right-radius: 2px;
 	width: 10px;
 }
 QSpinBox::up-arrow {
