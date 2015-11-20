@@ -577,6 +577,22 @@ QTableWidget::item:selected {
           </widget>
          </item>
          <item>
+          <widget class="QPushButton" name="editKeyButton">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+    min-width: 40px;
+}</string>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>../img/edit.svg</normaloff>../img/edit.svg</iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
           <spacer name="horizontalSpacer_5">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
@@ -875,6 +891,7 @@ QPushButton:pressed {
   <tabstop>infoWidget</tabstop>
   <tabstop>addKeyButton</tabstop>
   <tabstop>removeKeyButton</tabstop>
+  <tabstop>editKeyButton</tabstop>
   <tabstop>resetKeyButton</tabstop>
   <tabstop>autoFitCheckBox</tabstop>
   <tabstop>comboBox</tabstop>
