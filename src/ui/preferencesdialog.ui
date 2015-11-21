@@ -587,8 +587,8 @@ QTableWidget::item:selected {
 }</string>
            </property>
            <property name="icon">
-            <iconset>
-             <normaloff>../img/edit.svg</normaloff>../img/edit.svg</iconset>
+            <iconset resource="../rsclist.qrc">
+             <normaloff>:/img/edit.svg</normaloff>:/img/edit.svg</iconset>
            </property>
           </widget>
          </item>
