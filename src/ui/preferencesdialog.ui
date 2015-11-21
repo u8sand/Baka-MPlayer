@@ -243,7 +243,7 @@ QTabBar::tab:!selected {
 }</string>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="tab">
       <attribute name="title">
@@ -611,8 +611,8 @@ QTableWidget::item:selected {
             <string notr="true">/* resetKeyButton */
 
 QPushButton {
-	background: #F44336;
-	border: 1px solid #F44336;
+	background: #E91E63;
+	border: 1px solid #E91E63;
 }
 QPushButton:focus {
 	border: 1px solid #7FCAC3;
