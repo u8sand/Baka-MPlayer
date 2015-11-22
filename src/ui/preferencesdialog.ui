@@ -361,7 +361,7 @@ QTabBar::tab:!selected {
             <item>
              <widget class="QCheckBox" name="gestureCheckBox">
               <property name="text">
-               <string>&amp;Enable Mouse Gesture support</string>
+               <string>&amp;Enable Mouse &amp;&amp; Touch Gesture support</string>
               </property>
              </widget>
             </item>

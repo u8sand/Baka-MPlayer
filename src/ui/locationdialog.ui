@@ -101,12 +101,15 @@ QPushButton:pressed {
 	background: #2E3133;
 }</string>
      </property>
-     <property name="text">
-      <string>&gt;</string>
-     </property>
      <property name="icon">
       <iconset resource="../rsclist.qrc">
        <normaloff>:/img/paste.svg</normaloff>:/img/paste.svg</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>20</width>
+       <height>16</height>
+      </size>
      </property>
      <property name="autoDefault">
       <bool>false</bool>
