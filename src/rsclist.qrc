@@ -2,6 +2,7 @@
   <qresource prefix="/">
     <file>img/add.svg</file>
     <file>img/album-art.png</file>
+    <file>img/gestures_info.svg</file>
     <file>img/checked.svg</file>
     <file>img/default_mute.svg</file>
     <file>img/default_next.svg</file>
