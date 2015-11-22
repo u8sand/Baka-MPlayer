@@ -26,7 +26,7 @@ QCheckBox::indicator,
 QGroupBox::indicator{
 	width: 11px;
 	height: 11px;
-	border: 1px solid #7FCAC3;
+	border: 1px solid #008098;
 	border-radius: 2px;
 }
 QCheckBox::indicator:unchecked,
@@ -37,8 +37,8 @@ QGroupBox::indicator:unchecked {
 }
 QCheckBox::indicator:checked,
 QGroupBox::indicator:checked {
-	border: 1px solid #7FCAC3;
-	background: #7FCAC3;
+	border: 1px solid #008098;
+	background: #008098;
 	image: url(:/img/checked.svg);
 }
 
@@ -51,10 +51,10 @@ QComboBox {
 	padding: 2px;
 }
 QComboBox:focus {
-	border: 1px solid #7FCAC3;
+	border: 1px solid #008098;
 }
 QComboBox::drop-down {
-	background: #7FCAC3;
+	background: #008098;
 	border-top-right-radius: 2px;
 	border-bottom-right-radius: 2px;
 }
@@ -70,7 +70,7 @@ QLineEdit {
 	padding: 2px;
 }
 QLineEdit:focus {
-	border: 1px solid #7FCAC3;
+	border: 1px solid #008098;
 }
 
 /* QPushButton */
@@ -86,7 +86,7 @@ QPushButton {
 	padding: 4px 6px;
 }
 QPushButton:focus {
-	border: 1px solid #7FCAC3;
+	border: 1px solid #008098;
 	outline: none;
 }
 QPushButton:pressed {
