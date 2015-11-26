@@ -51,14 +51,12 @@ QMenu::item:selected {
 	background: #383838;
  }
 QMenu::item:checked {
-	/* distinguish check state for menu item's with images */
+	/* distinguish check state for menu item's with images here */
 }
 QMenu::item::disabled {
 	color: #6F6F6F;
 }
-QMenu::item::disabled:selected {
-	color: black;
-}
+/* QMenu::item::disabled:selected { } */
 QMenu::separator {
 	background: #383838;
 	height: 1px;
@@ -380,6 +378,19 @@ QScrollBar::right-arrow:horizontal {
              <property name="toolTip">
               <string>Select the Current File</string>
              </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+	padding: 2px;
+	margin: 1px;
+}
+QPushButton:flat {
+    border: none; /* no border for a flat push button */
+}
+QPushButton:flat:pressed {
+	background: #383838;
+	border-radius: 2px;
+}</string>
+             </property>
              <property name="icon">
               <iconset resource="../rsclist.qrc">
                <normaloff>:/img/select_current.svg</normaloff>:/img/select_current.svg</iconset>
@@ -416,6 +427,19 @@ QScrollBar::right-arrow:horizontal {
              <property name="toolTip">
               <string>Hide files with different extensions</string>
              </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+	padding: 2px;
+	margin: 1px;
+}
+QPushButton:flat {
+    border: none; /* no border for a flat push button */
+}
+QPushButton:flat:pressed {
+	background: #383838;
+	border-radius: 2px;
+}</string>
+             </property>
              <property name="icon">
               <iconset resource="../rsclist.qrc">
                <normaloff>:/img/disabled_hide_files.svg</normaloff>
@@ -445,6 +469,19 @@ QScrollBar::right-arrow:horizontal {
              </property>
              <property name="toolTip">
               <string>Refresh Playlist</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+	padding: 2px;
+	margin: 1px;
+}
+QPushButton:flat {
+    border: none; /* no border for a flat push button */
+}
+QPushButton:flat:pressed {
+	background: #383838;
+	border-radius: 2px;
+}</string>
              </property>
              <property name="icon">
               <iconset resource="../rsclist.qrc">
