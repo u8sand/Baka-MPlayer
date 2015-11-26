@@ -323,7 +323,7 @@ QScrollBar::right-arrow:horizontal {
            <cursorShape>PointingHandCursor</cursorShape>
           </property>
           <property name="toolTip">
-           <string>Click to play a file by index</string>
+           <string>Click to select a specific file by index</string>
           </property>
           <property name="text">
            <string>File 0 of 0</string>
@@ -372,6 +372,9 @@ QScrollBar::right-arrow:horizontal {
            </property>
            <item>
             <widget class="QPushButton" name="currentFileButton">
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
              <property name="focusPolicy">
               <enum>Qt::NoFocus</enum>
              </property>
@@ -421,6 +424,9 @@ QPushButton:flat:pressed {
            </item>
            <item>
             <widget class="QPushButton" name="hideFilesButton">
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
              <property name="focusPolicy">
               <enum>Qt::NoFocus</enum>
              </property>
@@ -464,6 +470,9 @@ QPushButton:flat:pressed {
            </item>
            <item>
             <widget class="QPushButton" name="refreshButton">
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
              <property name="focusPolicy">
               <enum>Qt::NoFocus</enum>
              </property>
