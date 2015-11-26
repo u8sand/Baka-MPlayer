@@ -80,12 +80,6 @@ QPushButton:disabled {
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
-     <property name="minimumSize">
-      <size>
-       <width>8</width>
-       <height>8</height>
-      </size>
-     </property>
      <property name="pixmap">
       <pixmap resource="../rsclist.qrc">:/img/exists.svg</pixmap>
      </property>

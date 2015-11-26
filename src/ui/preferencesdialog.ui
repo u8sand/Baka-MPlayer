@@ -603,14 +603,14 @@ QTableWidget::item:selected {
             <string notr="true">/* resetKeyButton */
 
 QPushButton {
-	background: #E91E63;
-	border: 1px solid #E91E63;
+	background: #A51051;
+	border: 1px solid #A51051;
 }
 QPushButton:focus {
 	border: 1px solid #008098;
 }
 QPushButton:pressed {
-	background: #74201A;
+	background: #650A32;
 }</string>
            </property>
            <property name="text">
