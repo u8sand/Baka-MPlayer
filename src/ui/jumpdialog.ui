@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>342</width>
+    <width>330</width>
     <height>45</height>
    </rect>
   </property>
@@ -59,7 +59,7 @@ QPushButton {
 	padding: 4px 6px;
 }
 QPushButton:focus {
-	border: 1px solid #7FCAC3;
+	border: 1px solid #008098;
 	outline: none;
 }
 QPushButton:pressed {
@@ -79,12 +79,6 @@ QPushButton:disabled {
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
-     </property>
-     <property name="minimumSize">
-      <size>
-       <width>8</width>
-       <height>8</height>
-      </size>
      </property>
      <property name="pixmap">
       <pixmap resource="../rsclist.qrc">:/img/exists.svg</pixmap>
@@ -187,7 +181,7 @@ QPushButton:disabled {
    <item>
     <widget class="QPushButton" name="okButton">
      <property name="sizePolicy">
-      <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>

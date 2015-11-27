@@ -28,7 +28,7 @@ QLineEdit {
 	padding: 2px;
 }
 QLineEdit:focus {
-	border: 1px solid #7FCAC3;
+	border: 1px solid #008098;
 }
 
 /* QPushButton */
@@ -44,7 +44,7 @@ QPushButton {
 	padding: 4px 6px;
 }
 QPushButton:focus {
-	border: 1px solid #7FCAC3;
+	border: 1px solid #008098;
 	outline: none;
 }
 QPushButton:pressed {
@@ -65,12 +65,6 @@ QPushButton:disabled {
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
-     <property name="minimumSize">
-      <size>
-       <width>8</width>
-       <height>8</height>
-      </size>
-     </property>
      <property name="pixmap">
       <pixmap resource="../rsclist.qrc">:/img/not_exists.svg</pixmap>
      </property>
@@ -87,6 +81,12 @@ QPushButton:disabled {
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="toolTip">
+      <string>Paste copied link</string>
+     </property>
      <property name="styleSheet">
       <string notr="true">QPushButton {
 	background: none;
@@ -94,19 +94,22 @@ QPushButton:disabled {
     min-width: 20px;
 }
 QPushButton:focus {
-	border: 1px solid #7FCAC3;
+	border: 1px solid #008098;
 	outline: none;
 }
 QPushButton:pressed {
 	background: #2E3133;
 }</string>
      </property>
-     <property name="text">
-      <string>&gt;</string>
-     </property>
      <property name="icon">
       <iconset resource="../rsclist.qrc">
        <normaloff>:/img/paste.svg</normaloff>:/img/paste.svg</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>20</width>
+       <height>16</height>
+      </size>
      </property>
      <property name="autoDefault">
       <bool>false</bool>
@@ -129,7 +132,7 @@ QPushButton:pressed {
       <bool>false</bool>
      </property>
      <property name="sizePolicy">
-      <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>

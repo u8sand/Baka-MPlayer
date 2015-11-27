@@ -37,7 +37,7 @@ QPushButton {
 	padding: 4px 6px;
 }
 QPushButton:focus {
-	border: 1px solid #7FCAC3;
+	border: 1px solid #008098;
 	outline: none;
 }
 QPushButton:pressed {
@@ -56,7 +56,7 @@ QScrollBar:vertical {
 	width: 6px;
 }
 QScrollBar::handle:vertical {
-	background: #7FCAC3;
+	background: #008098;
 	border-radius: 2px;
 	min-height: 10px;
 }
@@ -79,7 +79,7 @@ QScrollBar:horizontal {
 	padding-top: 1px;
 }
 QScrollBar::handle:horizontal {
-	background: #7FCAC3;
+	background: #008098;
 	border-radius: 2px;
 	min-width: 10px;
 }
@@ -116,7 +116,7 @@ QTabBar::tab {
 	min-width: 100px;
 }
 QTabBar::tab:selected {
-	border-bottom: 1px solid #7FCAC3;
+	border-bottom: 1px solid #008098;
 	font-weight: bold;
 }
 QTabBar::tab:!selected {
@@ -192,7 +192,7 @@ QTabBar::tab:!selected {
        <item>
         <widget class="QLabel" name="infoLabel">
          <property name="text">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2015 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#7FCAC3;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2015 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#008098;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -241,6 +241,9 @@ Apache License, version 2.0 &lt;Google&gt;
 
 Retro Cassette image
 &lt;Lukas Troup&gt;
+
+Gesture icons
+CC License &lt;Jeff Portaro&gt;
 
 Download icon
 CC BY 3.0 &lt;Sasha Mescheryakov&gt;
