@@ -106,22 +106,10 @@ void BakaEngine::Load2_0_3()
     mpv_json.remove("speed");
     mpv->Vo(mpv_json["vo"].toString());
     mpv_json.remove("vo");
-    QString temp = mpv_json["screenshot-template"].toString();
-    if(!temp.isEmpty()) // default screenshot template
-    {
-        int i = temp.lastIndexOf('/');
-        if(i != -1)
-        {
-            mpv->ScreenshotDirectory(QDir::toNativeSeparators(temp.mid(0, i)));
-            mpv->ScreenshotTemplate(temp.mid(i+1));
-        }
-        else
-        {
-            mpv->ScreenshotDirectory(".");
-            mpv->ScreenshotTemplate(temp);
-        }
-    }
+    mpv->ScreenshotTemplate(QJsonValueRef2(mpv_json["screenshot-template"]).toString("screenshot%#04n"));
     mpv_json.remove("screenshot-template");
+    mpv->ScreenshotDirectory(QJsonValueRef2(mpv_json["screenshot-directory"]).toString("."));
+    mpv_json.remove("screenshot-directory");
     for(auto &key : mpv_json.keys())
         if(key != QString() && mpv_json[key].toString() != QString())
             mpv->SetOption(key, mpv_json[key].toString());
@@ -189,10 +177,9 @@ void BakaEngine::SaveSettings()
     mpv_json["volume"] = mpv->volume;
     mpv_json["speed"] = mpv->speed;
     mpv_json["vo"] = mpv->vo;
-    if(mpv->screenshotFormat != "")
-        mpv_json["screenshot-format"] = mpv->screenshotFormat;
-    if(mpv->screenshotTemplate != "")
-        mpv_json["screenshot-template"] = QDir::fromNativeSeparators(mpv->screenshotDir)+"/"+mpv->screenshotTemplate;
+    mpv_json["screenshot-format"] = mpv->screenshotFormat;
+    mpv_json["screenshot-template"] = mpv->screenshotTemplate;
+    mpv_json["screenshot-directory"] = QDir::fromNativeSeparators(mpv->screenshotDir);
     root["mpv"] = mpv_json;
 
     settings->setRoot(root);

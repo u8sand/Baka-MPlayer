@@ -4,6 +4,8 @@
 #include <QDialog>
 #include <QString>
 #include <QPair>
+#include <QMutex>
+#include <QTableWidget>
 
 namespace Ui {
 class PreferencesDialog;
@@ -14,7 +16,6 @@ class BakaEngine;
 class PreferencesDialog : public QDialog
 {
     Q_OBJECT
-
 public:
     explicit PreferencesDialog(BakaEngine *baka, QWidget *parent = 0);
     ~PreferencesDialog();
@@ -36,6 +37,17 @@ private:
 
     QString screenshotDir;
     int numberOfShortcuts;
+
+    class SortLock : public QMutex
+    {
+    public:
+        SortLock(QTableWidget *parent);
+
+        void lock();
+        void unlock();
+    private:
+        QTableWidget *parent;
+    } *sortLock;
 };
 
 #endif // PREFERENCESDIALOG_H

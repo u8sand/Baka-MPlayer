@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>342</width>
+    <width>330</width>
     <height>45</height>
    </rect>
   </property>
@@ -21,17 +21,18 @@
 }
 
 #horizontalLayoutWidget {
-	background: #005A6A;
+	background: #454A4D;
+	border: 1px solid black;
 	border-radius: 2px;
 }
 
 /* QSpinBox */
 
 QSpinBox {
-	background: #005A6A;
+	background: #454A4D;
 }
 QSpinBox::disabled {
-	color: #B8B8B8;
+	color: #6F6F6F;
 }
 QSpinBox::up-button, 
 QSpinBox::down-button {
@@ -67,7 +68,7 @@ QPushButton:pressed {
 QPushButton:disabled {
 	background: transparent;
 	border: 1px solid #454A4D;
-	color: #B8B8B8;
+	color: #6F6F6F;
 }</string>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -78,12 +79,6 @@ QPushButton:disabled {
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
-     </property>
-     <property name="minimumSize">
-      <size>
-       <width>16</width>
-       <height>16</height>
-      </size>
      </property>
      <property name="pixmap">
       <pixmap resource="../rsclist.qrc">:/img/exists.svg</pixmap>
@@ -185,11 +180,8 @@ QPushButton:disabled {
    </item>
    <item>
     <widget class="QPushButton" name="okButton">
-     <property name="enabled">
-      <bool>true</bool>
-     </property>
      <property name="sizePolicy">
-      <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>

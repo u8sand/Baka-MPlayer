@@ -56,6 +56,7 @@ MainWindow::MainWindow(QWidget *parent):
         {"screenshot subtitles", ui->actionWith_Subtitles},
         {"screenshot", ui->actionWithout_Subtitles},
         {"add_subtitles", ui->action_Add_Subtitle_File},
+        {"add_audio", ui->action_Add_Audio_File},
         {"fitwindow", ui->action_To_Current_Size},
         {"fitwindow 50", ui->action50},
         {"fitwindow 75", ui->action75},
@@ -314,6 +315,7 @@ MainWindow::MainWindow(QWidget *parent):
                     ui->menuSubtitle_Track->clear();
                     ui->menuSubtitle_Track->addAction(ui->action_Add_Subtitle_File);
                     ui->menuAudio_Tracks->clear();
+                    ui->menuAudio_Tracks->addAction(ui->action_Add_Audio_File);
                     for(auto &track : trackList)
                     {
                         if(track.type == "sub")
@@ -1064,6 +1066,13 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
         if(focusWidget() == ui->inputLineEdit &&
            key == "Return")
             return;
+
+        // Escape exits fullscreen
+        if(isFullScreen() &&
+           key == "ESC") {
+            FullScreen(false);
+            return;
+        }
 
         // find shortcut in input hash table
         auto iter = baka->input.find(key);

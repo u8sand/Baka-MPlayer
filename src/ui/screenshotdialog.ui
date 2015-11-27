@@ -46,7 +46,7 @@ QGroupBox::indicator:checked {
 
 QComboBox {
 	background: #454A4D;
-	border: 1px solid black;
+	border: 1px solid #000;
 	border-radius: 2px;
 	padding: 2px;
 }
@@ -65,9 +65,8 @@ QComboBox::down-arrow {
 /* QLineEdit */
 
 QLineEdit {
-	background: black;
+	background: #000;
 	border: 1px solid #454A4D;
-	border-radius: 2px;
 	padding: 2px;
 }
 QLineEdit:focus {
@@ -96,7 +95,7 @@ QPushButton:pressed {
 QPushButton:disabled {
 	background: transparent;
 	border: 1px solid #454A4D;
-	color: #B8B8B8;
+	color: #6F6F6F;
 }</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
@@ -211,7 +210,7 @@ QPushButton:disabled {
         </sizepolicy>
        </property>
        <property name="text">
-        <string>&amp;SAVE</string>
+        <string>&amp;Save</string>
        </property>
        <property name="default">
         <bool>true</bool>

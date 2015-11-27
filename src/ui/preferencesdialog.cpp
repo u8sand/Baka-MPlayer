@@ -17,6 +17,9 @@ PreferencesDialog::PreferencesDialog(BakaEngine *baka, QWidget *parent) :
 {
     ui->setupUi(this);
 
+    ui->infoWidget->sortByColumn(0, Qt::AscendingOrder);
+    sortLock = new SortLock(ui->infoWidget);
+
     PopulateLangs();
 
     QString ontop = baka->window->getOnTop();
@@ -67,7 +70,7 @@ PreferencesDialog::PreferencesDialog(BakaEngine *baka, QWidget *parent) :
                 SelectKey(true);
             });
 
-    connect(ui->changeKeyButton, &QPushButton::clicked,
+    connect(ui->editKeyButton, &QPushButton::clicked,
             [=]
             {
                 int i = ui->infoWidget->currentRow();
@@ -86,9 +89,8 @@ PreferencesDialog::PreferencesDialog(BakaEngine *baka, QWidget *parent) :
                 if(QMessageBox::question(this, tr("Reset All Key Bindings?"), tr("Are you sure you want to reset all shortcut keys to its original bindings?")) == QMessageBox::Yes)
                 {
                     baka->input = baka->default_input;
-                    ui->infoWidget->clearContents();
                     while(numberOfShortcuts > 0)
-                        RemoveRow(0);
+                        RemoveRow(numberOfShortcuts-1);
                     PopulateShortcuts();
                 }
             });
@@ -107,7 +109,7 @@ PreferencesDialog::PreferencesDialog(BakaEngine *baka, QWidget *parent) :
     connect(ui->infoWidget, &QTableWidget::currentCellChanged,
             [=](int r,int,int,int)
             {
-                ui->changeKeyButton->setEnabled(r != -1);
+                ui->editKeyButton->setEnabled(r != -1);
                 ui->removeKeyButton->setEnabled(r != -1);
             });
 
@@ -160,6 +162,7 @@ PreferencesDialog::~PreferencesDialog()
     }
     else
         baka->input = saved;
+    delete sortLock;
     delete ui;
 }
 
@@ -188,54 +191,62 @@ void PreferencesDialog::PopulateLangs()
 
 void PreferencesDialog::PopulateShortcuts()
 {
+    sortLock->lock();
     numberOfShortcuts = 0;
     for(auto iter = baka->input.begin(); iter != baka->input.end(); ++iter)
     {
-        if(iter->first == QString() || iter->second == QString())
+        QPair<QString, QString> p = iter.value();
+        if(p.first == QString() || p.second == QString())
             continue;
-        ui->infoWidget->insertRow(numberOfShortcuts);
-        ui->infoWidget->setItem(numberOfShortcuts, 0, new QTableWidgetItem(iter.key()));
-        ui->infoWidget->setItem(numberOfShortcuts, 1, new QTableWidgetItem(iter->first));
-        ui->infoWidget->setItem(numberOfShortcuts, 2, new QTableWidgetItem(iter->second));
-        ++numberOfShortcuts;
+        AddRow(iter.key(), p.first, p.second);
     }
-    ui->infoWidget->sortByColumn(0, Qt::AscendingOrder);
+    sortLock->unlock();
 }
 
 void PreferencesDialog::AddRow(QString first, QString second, QString third)
 {
+    bool locked = sortLock->tryLock();
     ui->infoWidget->insertRow(numberOfShortcuts);
     ui->infoWidget->setItem(numberOfShortcuts, 0, new QTableWidgetItem(first));
     ui->infoWidget->setItem(numberOfShortcuts, 1, new QTableWidgetItem(second));
     ui->infoWidget->setItem(numberOfShortcuts, 2, new QTableWidgetItem(third));
     ++numberOfShortcuts;
+    if(locked)
+        sortLock->unlock();
 }
 
 void PreferencesDialog::ModifyRow(int row, QString first, QString second, QString third)
 {
+    bool locked = sortLock->tryLock();
     ui->infoWidget->item(row, 0)->setText(first);
     ui->infoWidget->item(row, 1)->setText(second);
     ui->infoWidget->item(row, 2)->setText(third);
+    if(locked)
+        sortLock->unlock();
 }
 
 void PreferencesDialog::RemoveRow(int row)
 {
-    delete ui->infoWidget->item(row, 0);
-    delete ui->infoWidget->item(row, 1);
-    delete ui->infoWidget->item(row, 2);
+    bool locked = sortLock->tryLock();
+    ui->infoWidget->removeCellWidget(row, 0);
+    ui->infoWidget->removeCellWidget(row, 1);
+    ui->infoWidget->removeCellWidget(row, 2);
     ui->infoWidget->removeRow(row);
     --numberOfShortcuts;
+    if(locked)
+        sortLock->unlock();
 }
 
 void PreferencesDialog::SelectKey(bool add, QPair<QString, QPair<QString, QString>> init)
 {
+    sortLock->lock();
     KeyDialog dialog(this);
     int status = 0;
     while(status != 2)
     {
         QPair<QString, QPair<QString, QString>> result = dialog.SelectKey(add, init);
         if(result == QPair<QString, QPair<QString, QString>>()) // cancel
-            return;
+            break;
         for(int i = 0; i < numberOfShortcuts; ++i)
         {
             if(!add && i == ui->infoWidget->currentRow()) // don't compare selected row if we're changing
@@ -264,11 +275,30 @@ void PreferencesDialog::SelectKey(bool add, QPair<QString, QPair<QString, QStrin
             if(add) // add
                 AddRow(result.first, result.second.first, result.second.second);
             else // change
+            {
+                if(result.first != init.first)
+                    baka->input[init.first] = {QString(), QString()};
                 ModifyRow(ui->infoWidget->currentRow(), result.first, result.second.first, result.second.second);
+            }
             baka->input[result.first] = result.second;
             status = 2;
         }
         else
             status = 0;
     }
+    sortLock->unlock();
+}
+
+PreferencesDialog::SortLock::SortLock(QTableWidget *parent):parent(parent) {}
+
+void PreferencesDialog::SortLock::lock()
+{
+    parent->setSortingEnabled(false);
+    QMutex::lock();
+}
+
+void PreferencesDialog::SortLock::unlock()
+{
+    QMutex::unlock();
+    parent->setSortingEnabled(true);
 }

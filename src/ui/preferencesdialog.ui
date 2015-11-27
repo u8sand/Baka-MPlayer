@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>487</width>
-    <height>450</height>
+    <width>447</width>
+    <height>420</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -71,7 +71,7 @@ QGroupBox::indicator:checked {
 
 QComboBox {
 	background: #454A4D;
-	border: 1px solid black;
+	border: 1px solid #000;
 	border-radius: 2px;
 	padding: 2px;
 }
@@ -90,9 +90,8 @@ QComboBox::down-arrow {
 /* QLineEdit */
 
 QLineEdit {
-	background: black;
+	background: #000;
 	border: 1px solid #454A4D;
-	border-radius: 2px;
 	padding: 2px;
 }
 QLineEdit:focus {
@@ -121,20 +120,28 @@ QPushButton:pressed {
 QPushButton:disabled {
 	background: transparent;
 	border: 1px solid #454A4D;
-	color: #B8B8B8;
+	color: #6F6F6F;
 }
 
 /* QSpinBox */
 
 QSpinBox {
-	background: #005A6A;
+	background: #454A4D;
+	border: 1px solid #000;
+	border-radius: 2px;
+}
+QSpinBox:focus {
+	border: 1px solid #008098;
 }
 QSpinBox::disabled {
-	color: #B8B8B8;
+	color: #6F6F6F;
 }
 QSpinBox::up-button,
 QSpinBox::down-button {
+	background: #008098;
 	border: none;
+	border-top-right-radius: 2px;
+	border-bottom-right-radius: 2px;
 	width: 10px;
 }
 QSpinBox::up-arrow {
@@ -147,15 +154,15 @@ QSpinBox::down-arrow {
 /* QGroupBox */
 
 QGroupBox {
-	border: 1px solid #424242;
+	border: 1px solid #454A4D;
 	border-radius: 2px;
 	margin-top: 0.5em;
 }
 QGroupBox::title {
 	subcontrol-origin: margin;
 	subcontrol-position: top center;
-	background: #424242;
-	border: 1px solid #424242;
+	background: #454A4D;
+	border: 1px solid #454A4D;
 	border-radius: 2px;
 	padding: 0 2px;
 }
@@ -177,7 +184,7 @@ QScrollBar::sub-line:vertical {
 }
 QScrollBar::add-page:vertical,
 QScrollBar::sub-page:vertical  {
-	background: #5A5A5A;
+	background: #383838;
 	margin: 0 2px;
 }
 QScrollBar::up-arrow:vertical,
@@ -186,8 +193,8 @@ QScrollBar::down-arrow:vertical {
 }
 
 QScrollBar:horizontal {
-	padding-top: 1px;
 	height: 6px;
+	padding-top: 1px;
 }
 QScrollBar::handle:horizontal {
 	background: #008098;
@@ -200,7 +207,7 @@ QScrollBar::sub-line:horizontal {
 }
 QScrollBar::add-page:horizontal,
 QScrollBar::sub-page:horizontal {
-	background: #5A5A5A;
+	background: #383838;
 	margin: 2px 0;
 }
 QScrollBar::left-arrow:horizontal,
@@ -231,7 +238,6 @@ QTabBar::tab:selected {
 	font-weight: bold;
 }
 QTabBar::tab:!selected {
-	color: #B8B8B8;
 	font-weight: normal;
 	margin-bottom: 1px;
 }</string>
@@ -340,26 +346,44 @@ QTabBar::tab:!selected {
              <number>4</number>
             </property>
             <item>
-             <widget class="QCheckBox" name="gestureCheckBox">
-              <property name="text">
-               <string>&amp;Enable Mouse Gesture support</string>
+             <spacer name="verticalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_4">
+              <property name="pixmap">
+               <pixmap resource="../rsclist.qrc">:/img/gestures_info.svg</pixmap>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="label_5">
-              <property name="styleSheet">
-               <string notr="true">QLabel {
-	color: #B8B8B8;
-}</string>
-              </property>
+             <widget class="QCheckBox" name="gestureCheckBox">
               <property name="text">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Click &amp;amp; drag mouse up/down to change volume&lt;br&gt;Click &amp;amp; drag mouse left/right to seek&lt;/b&gt;&lt;/body&gt;&lt;/html&gt;</string>
-              </property>
-              <property name="wordWrap">
-               <bool>true</bool>
+               <string>&amp;Use Mouse &amp;&amp; Touch Gestures</string>
               </property>
              </widget>
+            </item>
+            <item>
+             <spacer name="verticalSpacer_3">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
             </item>
            </layout>
           </widget>
@@ -394,7 +418,7 @@ QTabBar::tab:!selected {
             <item>
              <widget class="QCheckBox" name="resumeCheckBox">
               <property name="text">
-               <string>Remember Playback &amp;Position</string>
+               <string>Remember playback &amp;position</string>
               </property>
              </widget>
             </item>
@@ -426,7 +450,7 @@ QTabBar::tab:!selected {
         <widget class="QLabel" name="label_6">
          <property name="styleSheet">
           <string notr="true">QLabel {
-	color: #B8B8B8;
+	color: #6F6F6F;
 }</string>
          </property>
          <property name="text">
@@ -516,6 +540,51 @@ QTableWidget::item:selected {
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_4">
          <item>
+          <widget class="QPushButton" name="addKeyButton">
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+    min-width: 40px;
+}</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../rsclist.qrc">
+             <normaloff>:/img/add.svg</normaloff>:/img/add.svg</iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="removeKeyButton">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+    min-width: 40px;
+}</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../rsclist.qrc">
+             <normaloff>:/img/remove.svg</normaloff>:/img/remove.svg</iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="editKeyButton">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+    min-width: 40px;
+}</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../rsclist.qrc">
+             <normaloff>:/img/edit.svg</normaloff>:/img/edit.svg</iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
           <spacer name="horizontalSpacer_5">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
@@ -529,65 +598,25 @@ QTableWidget::item:selected {
           </spacer>
          </item>
          <item>
-          <widget class="QPushButton" name="addKeyButton">
-           <property name="text">
-            <string>&amp;ADD</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="changeKeyButton">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="text">
-            <string>CHANG&amp;E</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="removeKeyButton">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="text">
-            <string>&amp;REMOVE</string>
-           </property>
-          </widget>
-         </item>
-         <item>
           <widget class="QPushButton" name="resetKeyButton">
            <property name="styleSheet">
             <string notr="true">/* resetKeyButton */
 
 QPushButton {
 	background: #A51051;
-	border: 1px solid #A51051
+	border: 1px solid #A51051;
 }
 QPushButton:focus {
 	border: 1px solid #008098;
 }
 QPushButton:pressed {
-	background: #720B38;
+	background: #650A32;
 }</string>
            </property>
            <property name="text">
-            <string>RESE&amp;T ALL</string>
+            <string>Rese&amp;t All</string>
            </property>
           </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_6">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
          </item>
         </layout>
        </item>
@@ -667,14 +696,17 @@ QPushButton:pressed {
           <string>Screenshot</string>
          </property>
          <layout class="QGridLayout" name="gridLayout">
-          <item row="0" column="0">
-           <widget class="QCheckBox" name="checkBox">
+          <item row="3" column="0">
+           <widget class="QLabel" name="label_2">
             <property name="text">
-             <string>&amp;Always show the dialog</string>
+             <string>File Name Template:</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
             </property>
            </widget>
           </item>
-          <item row="1" column="1">
+          <item row="2" column="1">
            <widget class="QComboBox" name="formatComboBox">
             <item>
              <property name="text">
@@ -693,17 +725,14 @@ QPushButton:pressed {
             </item>
            </widget>
           </item>
-          <item row="2" column="0">
-           <widget class="QLabel" name="label_2">
+          <item row="4" column="1">
+           <widget class="QPushButton" name="changeButton">
             <property name="text">
-             <string>File Name Template:</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             <string>Chang&amp;e...</string>
             </property>
            </widget>
           </item>
-          <item row="1" column="0">
+          <item row="2" column="0">
            <widget class="QLabel" name="label">
             <property name="text">
              <string>File Format:</string>
@@ -714,20 +743,13 @@ QPushButton:pressed {
            </widget>
           </item>
           <item row="3" column="1">
-           <widget class="QPushButton" name="changeButton">
-            <property name="text">
-             <string>CHANG&amp;E</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="1">
            <widget class="QLineEdit" name="templateLineEdit">
             <property name="text">
              <string>screenshot%#04n</string>
             </property>
            </widget>
           </item>
-          <item row="3" column="0">
+          <item row="4" column="0">
            <widget class="QLabel" name="label_3">
             <property name="text">
              <string>Default Save Location:</string>
@@ -737,7 +759,7 @@ QPushButton:pressed {
             </property>
            </widget>
           </item>
-          <item row="1" column="2">
+          <item row="2" column="2">
            <spacer name="horizontalSpacer">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
@@ -750,7 +772,7 @@ QPushButton:pressed {
             </property>
            </spacer>
           </item>
-          <item row="2" column="2">
+          <item row="3" column="2">
            <spacer name="horizontalSpacer_2">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
@@ -763,7 +785,7 @@ QPushButton:pressed {
             </property>
            </spacer>
           </item>
-          <item row="3" column="2">
+          <item row="4" column="2">
            <spacer name="horizontalSpacer_3">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
@@ -775,6 +797,13 @@ QPushButton:pressed {
              </size>
             </property>
            </spacer>
+          </item>
+          <item row="0" column="0">
+           <widget class="QCheckBox" name="checkBox">
+            <property name="text">
+             <string>Always show the &amp;save window</string>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>
@@ -828,7 +857,7 @@ QPushButton:pressed {
      <item>
       <widget class="QPushButton" name="cancelButton">
        <property name="text">
-        <string>&amp;CANCEL</string>
+        <string>&amp;Cancel</string>
        </property>
        <property name="default">
         <bool>true</bool>
@@ -853,18 +882,19 @@ QPushButton:pressed {
   <tabstop>resumeCheckBox</tabstop>
   <tabstop>infoWidget</tabstop>
   <tabstop>addKeyButton</tabstop>
-  <tabstop>changeKeyButton</tabstop>
   <tabstop>removeKeyButton</tabstop>
+  <tabstop>editKeyButton</tabstop>
   <tabstop>resetKeyButton</tabstop>
   <tabstop>autoFitCheckBox</tabstop>
   <tabstop>comboBox</tabstop>
-  <tabstop>checkBox</tabstop>
   <tabstop>formatComboBox</tabstop>
   <tabstop>templateLineEdit</tabstop>
   <tabstop>changeButton</tabstop>
   <tabstop>okButton</tabstop>
   <tabstop>cancelButton</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="../rsclist.qrc"/>
+ </resources>
  <connections/>
 </ui>

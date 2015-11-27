@@ -40,27 +40,25 @@ QMenuBar::item {
 	background: #1A1A1A;
 }
 QMenuBar::item:selected {
-	background: #008098;
+	background: #383838;
 }
 
 QMenu {
-	background: #353535;
-    border: 1px solid #5A5A5A;
+	background: #1A1A1A;
+    border: 1px solid #383838;
 }
 QMenu::item:selected {
-	background: #008098;
+	background: #383838;
  }
 QMenu::item:checked {
-	/* distinguish check state for menu item's with images */
+	/* distinguish check state for menu item's with images here */
 }
 QMenu::item::disabled {
-	color: gray;
+	color: #6F6F6F;
 }
-QMenu::item::disabled:selected {
-	color: black;
-}
+/* QMenu::item::disabled:selected { } */
 QMenu::separator {
-	background: #5A5A5A;
+	background: #383838;
 	height: 1px;
 	margin: 2px 0;
 }
@@ -76,12 +74,12 @@ QSplitter::handle,
 
 #outputTextEdit {
 	font: 12px &quot;Courier New&quot;, monospace;
-	border-top: 1px solid #353535;
+	border-top: 1px solid #383838;
 }
 
 #inputLineEdit {
 	font: 12px &quot;Courier New&quot;,monospace;
-	border-top: 1px solid #353535;
+	border-top: 1px solid #383838;
 	padding: 2px;
 }
 #inputLineEdit:focus {
@@ -91,12 +89,12 @@ QSplitter::handle,
 /* Playlist group */
 
 #playlistLayoutWidget {
-	border-left: 1px solid #353535
+	border-left: 1px solid #383838;
 }
 
 #searchBox {
-	background: #353535;
-	border: 1px solid #353535;
+	background: #383838;
+	border: 1px solid #383838;
 	font-size: 12px;
 	padding: 3px 2px;
 }
@@ -124,7 +122,7 @@ QListView {
 	padding: 3px 0px;
 }
 #playlistWidget::item:selected {
-	background: #008098;
+	background: #383838;
 }
 #playlistWidget:item:selected:active,
 #playlistWidget:item:selected:!active {
@@ -148,7 +146,7 @@ QScrollBar::sub-line:vertical {
 }
 QScrollBar::add-page:vertical,
 QScrollBar::sub-page:vertical  {
-	background: #5A5A5A;
+	background: #383838;
 	margin: 0 2px;
 }
 QScrollBar::up-arrow:vertical,
@@ -171,7 +169,7 @@ QScrollBar::sub-line:horizontal {
 }
 QScrollBar::add-page:horizontal,
 QScrollBar::sub-page:horizontal {
-	background: #5A5A5A;
+	background: #383838;
 	margin: 2px 0;
 }
 QScrollBar::left-arrow:horizontal,
@@ -325,7 +323,7 @@ QScrollBar::right-arrow:horizontal {
            <cursorShape>PointingHandCursor</cursorShape>
           </property>
           <property name="toolTip">
-           <string>Click to play a file by index</string>
+           <string>Click to select a specific file by index</string>
           </property>
           <property name="text">
            <string>File 0 of 0</string>
@@ -374,11 +372,27 @@ QScrollBar::right-arrow:horizontal {
            </property>
            <item>
             <widget class="QPushButton" name="currentFileButton">
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
              <property name="focusPolicy">
               <enum>Qt::NoFocus</enum>
              </property>
              <property name="toolTip">
               <string>Select the Current File</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+	padding: 2px;
+	margin: 1px;
+}
+QPushButton:flat {
+    border: none; /* no border for a flat push button */
+}
+QPushButton:flat:pressed {
+	background: #383838;
+	border-radius: 2px;
+}</string>
              </property>
              <property name="icon">
               <iconset resource="../rsclist.qrc">
@@ -410,11 +424,27 @@ QScrollBar::right-arrow:horizontal {
            </item>
            <item>
             <widget class="QPushButton" name="hideFilesButton">
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
              <property name="focusPolicy">
               <enum>Qt::NoFocus</enum>
              </property>
              <property name="toolTip">
               <string>Hide files with different extensions</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+	padding: 2px;
+	margin: 1px;
+}
+QPushButton:flat {
+    border: none; /* no border for a flat push button */
+}
+QPushButton:flat:pressed {
+	background: #383838;
+	border-radius: 2px;
+}</string>
              </property>
              <property name="icon">
               <iconset resource="../rsclist.qrc">
@@ -440,11 +470,27 @@ QScrollBar::right-arrow:horizontal {
            </item>
            <item>
             <widget class="QPushButton" name="refreshButton">
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
              <property name="focusPolicy">
               <enum>Qt::NoFocus</enum>
              </property>
              <property name="toolTip">
               <string>Refresh Playlist</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+	padding: 2px;
+	margin: 1px;
+}
+QPushButton:flat {
+    border: none; /* no border for a flat push button */
+}
+QPushButton:flat:pressed {
+	background: #383838;
+	border-radius: 2px;
+}</string>
              </property>
              <property name="icon">
               <iconset resource="../rsclist.qrc">
@@ -491,7 +537,7 @@ QScrollBar::right-arrow:horizontal {
 }
 QSlider::handle:horizontal:disabled,
 QSlider::sub-page:horizontal:disabled {
-	background: #353535;
+	background: #383838;
 }
 QSlider::handle:horizontal {
 	/* handle color */
@@ -501,7 +547,7 @@ QSlider::handle:horizontal {
 }
 QSlider::groove:horizontal {
 	/* the non-progressed color */
-	background: #353535;
+	background: #383838;
 }
 QSlider::sub-page:horizontal {
 	/* the progress color */
@@ -908,7 +954,7 @@ QSlider::sub-page:horizontal {
 	background: #008098;
 }
 QSlider::handle:horizontal {
-	background: #F5F5F5;
+	background: whitesmoke;
 	border: 2px solid #1A1A1A;
 	border-radius: 7px;
 	margin: -7px 0;
@@ -1148,6 +1194,8 @@ QSlider::handle:horizontal {
      <property name="title">
       <string>Audio &amp;Tracks</string>
      </property>
+     <addaction name="action_Add_Audio_File"/>
+     <addaction name="separator"/>
      <addaction name="action_none_3"/>
     </widget>
     <widget class="QMenu" name="menuS_peed">
@@ -1254,7 +1302,7 @@ QSlider::handle:horizontal {
   </action>
   <action name="actionOpen_Path_from_Clipboard">
    <property name="text">
-    <string>Open Path from &amp;Clipboard</string>
+    <string>Open &amp;Copied Link</string>
    </property>
   </action>
   <action name="actionShow_in_Folder">
@@ -1574,12 +1622,12 @@ QSlider::handle:horizontal {
   </action>
   <action name="action_Increase_Volume">
    <property name="text">
-    <string>&amp;Increase Volume</string>
+    <string>&amp;Increase by 5%</string>
    </property>
   </action>
   <action name="action_Decrease_Volume">
    <property name="text">
-    <string>&amp;Decrease Volume</string>
+    <string>&amp;Decrease by 5%</string>
    </property>
   </action>
   <action name="actionWith_Subtitles">
@@ -1607,12 +1655,12 @@ QSlider::handle:horizontal {
   </action>
   <action name="action_Increase">
    <property name="text">
-    <string>&amp;Increase</string>
+    <string>&amp;Increase by 0.1%</string>
    </property>
   </action>
   <action name="action_Decrease">
    <property name="text">
-    <string>&amp;Decrease</string>
+    <string>&amp;Decrease by 0.1%</string>
    </property>
   </action>
   <action name="action_Reset">
@@ -1669,6 +1717,11 @@ QSlider::handle:horizontal {
    </property>
    <property name="text">
     <string>&amp;Deinterlace</string>
+   </property>
+  </action>
+  <action name="action_Add_Audio_File">
+   <property name="text">
+    <string>&amp;Add Audio File...</string>
    </property>
   </action>
  </widget>

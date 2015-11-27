@@ -23,9 +23,8 @@
 /* QLineEdit */
 
 QLineEdit {
-	background: black;
+	background: #000;
 	border: 1px solid #454A4D;
-	border-radius: 2px;
 	padding: 2px;
 }
 QLineEdit:focus {
@@ -54,7 +53,7 @@ QPushButton:pressed {
 QPushButton:disabled {
 	background: transparent;
 	border: 1px solid #454A4D;
-	color: #B8B8B8;
+	color: #6F6F6F;
 }</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
@@ -121,21 +120,21 @@ QPushButton:disabled {
      <item>
       <widget class="QPushButton" name="clearButton">
        <property name="text">
-        <string>C&amp;LEAR SHORTCUT</string>
+        <string>C&amp;lear Shorcut</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="changeButton">
        <property name="text">
-        <string>CHANG&amp;E</string>
+        <string>Chang&amp;e</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="addButton">
        <property name="text">
-        <string>&amp;ADD</string>
+        <string>&amp;Add</string>
        </property>
       </widget>
      </item>
@@ -148,7 +147,7 @@ QPushButton:disabled {
         </size>
        </property>
        <property name="text">
-        <string>&amp;CANCEL</string>
+        <string>&amp;Cancel</string>
        </property>
       </widget>
      </item>

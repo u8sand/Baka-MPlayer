@@ -20,10 +20,6 @@ public:
 private slots:
     void validate(QString input);
 
-    void on_pasteButton_clicked();
-    void on_copyButton_clicked();
-    void on_clearButton_clicked();
-
 private:
     Ui::LocationDialog *ui;
 };

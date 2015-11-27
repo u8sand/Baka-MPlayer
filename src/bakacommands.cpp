@@ -108,6 +108,21 @@ void BakaEngine::BakaAddSubtitles(QStringList &args)
     mpv->AddSubtitleTrack(trackFile);
 }
 
+void BakaEngine::BakaAddAudio(QStringList &args)
+{
+    QString trackFile;
+    if(args.empty())
+    {
+        trackFile = QFileDialog::getOpenFileName(window, tr("Open Audio File"), mpv->getPath(),
+                                                 QString("%0 (%1)").arg(tr("Audio Files"), Mpv::audio_filetypes.join(" ")),
+                                                 0, QFileDialog::DontUseSheet);
+    }
+    else
+        trackFile = args.join(' ');
+
+    mpv->AddAudioTrack(trackFile);
+}
+
 void BakaEngine::BakaScreenshot(QStringList &args)
 {
     if(args.empty())
@@ -136,6 +151,11 @@ void BakaEngine::Screenshot(bool subs)
 
     QString dir = mpv->getScreenshotDir();
     int i = dir.lastIndexOf('/');
+    if(i == dir.length()-1)
+    {
+        dir.remove(i, 1);
+        i = dir.lastIndexOf('/');
+    }
     if(i != -1)
         dir.remove(0, i+1);
     if(subs)
@@ -558,7 +578,10 @@ void BakaEngine::BakaSpeed(QStringList &args)
 void BakaEngine::BakaFullScreen(QStringList &args)
 {
     if(args.empty())
+    {
         window->FullScreen(!window->isFullScreen());
+        mpv->ShowText(tr("Press ESC or double-click to leave full screen"));
+    }
     else
         InvalidParameter(args.join(' '));
 }
@@ -567,13 +590,8 @@ void BakaEngine::BakaBoss(QStringList &args)
 {
     if(args.empty())
     {
-        if(window->isFullScreen()) // exit fullscreen if in fullscreen
-            window->FullScreen(false);
-        else
-        {
-            mpv->Pause();
-            window->setWindowState(window->windowState() | Qt::WindowMinimized); // minimize window
-        }
+        mpv->Pause();
+        window->setWindowState(window->windowState() | Qt::WindowMinimized); // minimize window
     }
     else
         InvalidParameter(args.join(' '));

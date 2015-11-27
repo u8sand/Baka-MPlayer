@@ -12,12 +12,15 @@ LocationDialog::LocationDialog(QString path, QWidget *parent) :
 {
     ui->setupUi(this);
 
-    connect(ui->okButton, SIGNAL(clicked()),    // ok button clicked
-            this, SLOT(accept()));              // accept
-    connect(ui->cancelButton, SIGNAL(clicked()),// cancel button clicked
-            this, SLOT(reject()));              // reject
+    connect(ui->okButton, SIGNAL(clicked()),
+            this, SLOT(accept()));
     connect(ui->urlEdit, SIGNAL(textChanged(QString)),
             this, SLOT(validate(QString)));
+    connect(ui->pasteButton, &QPushButton::clicked,
+            [=]
+            {
+                ui->urlEdit->setText(QApplication::clipboard()->text());
+            });
 
     if(Util::IsValidFile(path))
         ui->urlEdit->setText(QDir::toNativeSeparators(path));
@@ -37,23 +40,6 @@ QString LocationDialog::getUrl(QString path, QWidget *parent)
         return dialog.ui->urlEdit->text();
     else
         return QString();
-}
-
-void LocationDialog::on_pasteButton_clicked()
-{
-    QClipboard *clipboard = QApplication::clipboard();
-    ui->urlEdit->setText(clipboard->text());
-}
-
-void LocationDialog::on_copyButton_clicked()
-{
-    QClipboard *clipboard = QApplication::clipboard();
-    clipboard->setText(ui->urlEdit->text());
-}
-
-void LocationDialog::on_clearButton_clicked()
-{
-    ui->urlEdit->setText("");
 }
 
 void LocationDialog::validate(QString input)

@@ -78,7 +78,7 @@ public:
         {"Ctrl+V",          {"open_clipboard",                      tr("Open clipboard location")}},
         {"Ctrl+F",          {"playlist toggle",                     tr("Toggle playlist visibility")}},
         {"Ctrl+Z",          {"open_recent 0",                       tr("Open the last played file")}},
-        {"Ctrl+G",          {"output",                              tr("Access command-line")}},
+        {"Ctrl+`",          {"output",                              tr("Access command-line")}},
         {"F1",              {"online_help",                         tr("Launch online help")}},
         {"Space",           {"play_pause",                          tr("Play/Pause")}},
         {"Alt+1",           {"fitwindow",                           tr("Fit the window to the video")}},
@@ -180,6 +180,15 @@ private:
           {
            QString(),
            tr("add subtitles dialog"),
+           QString()
+          }
+         }
+        },
+        {"add_audio",
+         {&BakaEngine::BakaAddAudio,
+          {
+           QString(),
+           tr("add audio track dialog"),
            QString()
           }
          }
@@ -409,6 +418,7 @@ private:
     void BakaOpenClipboard(QStringList&);
     void BakaShowInFolder(QStringList&);
     void BakaAddSubtitles(QStringList&);
+    void BakaAddAudio(QStringList&);
     void BakaScreenshot(QStringList&);
     void BakaMediaInfo(QStringList&);
     void BakaStop(QStringList&);
