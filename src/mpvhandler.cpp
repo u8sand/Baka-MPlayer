@@ -142,8 +142,33 @@ bool MpvHandler::event(QEvent *event)
             }
             if(event->error < 0)
             {
-                ShowText(mpv_error_string(event->error));
-                emit messageSignal(mpv_error_string(event->error));
+                switch(event->error)
+                {
+                case MPV_ERROR_LOADING_FAILED:
+                case MPV_ERROR_AO_INIT_FAILED:
+                case MPV_ERROR_VO_INIT_FAILED:
+                case MPV_ERROR_UNKNOWN_FORMAT:
+                    ShowText(tr("File couldn't be opened"));
+                    break;
+                case MPV_ERROR_EVENT_QUEUE_FULL:
+                case MPV_ERROR_NOMEM:
+                case MPV_ERROR_UNINITIALIZED:
+                    ShowText(tr("Memory error"));
+                case MPV_ERROR_INVALID_PARAMETER:
+                case MPV_ERROR_OPTION_NOT_FOUND:
+                case MPV_ERROR_OPTION_FORMAT:
+                case MPV_ERROR_OPTION_ERROR:
+                case MPV_ERROR_PROPERTY_NOT_FOUND:
+                case MPV_ERROR_PROPERTY_FORMAT:
+                case MPV_ERROR_PROPERTY_UNAVAILABLE:
+                case MPV_ERROR_PROPERTY_ERROR:
+                case MPV_ERROR_COMMAND:
+                case MPV_ERROR_NOTHING_TO_PLAY:
+                case MPV_ERROR_UNSUPPORTED:
+                case MPV_ERROR_NOT_IMPLEMENTED:
+                    emit messageSignal(mpv_error_string(event->error));
+                    break;
+                }
             }
             switch (event->event_id)
             {
