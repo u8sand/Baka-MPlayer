@@ -115,7 +115,7 @@ protected slots:
 
     void AsyncCommand(const char *args[]);
     void Command(const char *args[]);
-    void NotInitialized();
+    void HandleErrorCode(int);
 
 private slots:
     void setPlaylist(const QStringList& l)  { emit playlistChanged(l); }

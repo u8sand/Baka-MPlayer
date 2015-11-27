@@ -74,6 +74,7 @@ void OverlayHandler::showInfoText(bool show)
 
 void OverlayHandler::showText(const QString &text, QFont font, QColor color, QPoint pos, int duration, int id)
 {
+    overlay_mutex.lock();
     // increase next overlay_id
     if(id == -1) // auto id
     {
@@ -148,7 +149,6 @@ void OverlayHandler::showText(const QString &text, QFont font, QColor color, QPo
                 [=] { remove(id); });
     }
 
-    overlay_mutex.lock();
     if(overlays.find(id) != overlays.end())
         delete overlays[id];
     overlays[id] = new Overlay(label, canvas, timer, this);

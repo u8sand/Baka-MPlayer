@@ -39,6 +39,8 @@ MpvHandler::MpvHandler(int64_t wid, QObject *parent):
     mpv_observe_property(mpv, 0, "aid", MPV_FORMAT_INT64);
     mpv_observe_property(mpv, 0, "sub-visibility", MPV_FORMAT_FLAG);
     mpv_observe_property(mpv, 0, "mute", MPV_FORMAT_FLAG);
+    mpv_observe_property(mpv, 0, "core-idle", MPV_FORMAT_FLAG);
+    mpv_observe_property(mpv, 0, "paused-for-cache", MPV_FORMAT_FLAG);
 
     // setup callback event handling
     mpv_set_wakeup_callback(mpv, wakeup, this);
@@ -62,7 +64,6 @@ void MpvHandler::Initialize()
 QString MpvHandler::getMediaInfo()
 {
     QFileInfo fi(path+file);
-
 
     double avsync, fps, vbitrate, abitrate;
 
@@ -141,35 +142,7 @@ bool MpvHandler::event(QEvent *event)
                 break;
             }
             if(event->error < 0)
-            {
-                switch(event->error)
-                {
-                case MPV_ERROR_LOADING_FAILED:
-                case MPV_ERROR_AO_INIT_FAILED:
-                case MPV_ERROR_VO_INIT_FAILED:
-                case MPV_ERROR_UNKNOWN_FORMAT:
-                    ShowText(tr("File couldn't be opened"));
-                    break;
-                case MPV_ERROR_EVENT_QUEUE_FULL:
-                case MPV_ERROR_NOMEM:
-                case MPV_ERROR_UNINITIALIZED:
-                    ShowText(tr("Memory error"));
-                case MPV_ERROR_INVALID_PARAMETER:
-                case MPV_ERROR_OPTION_NOT_FOUND:
-                case MPV_ERROR_OPTION_FORMAT:
-                case MPV_ERROR_OPTION_ERROR:
-                case MPV_ERROR_PROPERTY_NOT_FOUND:
-                case MPV_ERROR_PROPERTY_FORMAT:
-                case MPV_ERROR_PROPERTY_UNAVAILABLE:
-                case MPV_ERROR_PROPERTY_ERROR:
-                case MPV_ERROR_COMMAND:
-                case MPV_ERROR_NOTHING_TO_PLAY:
-                case MPV_ERROR_UNSUPPORTED:
-                case MPV_ERROR_NOT_IMPLEMENTED:
-                    emit messageSignal(mpv_error_string(event->error));
-                    break;
-                }
-            }
+                HandleErrorCode(event->error);
             switch (event->event_id)
             {
             case MPV_EVENT_PROPERTY_CHANGE:
@@ -208,6 +181,26 @@ bool MpvHandler::event(QEvent *event)
                     if(prop->format == MPV_FORMAT_FLAG)
                         setMute((bool)*(unsigned*)prop->data);
                 }
+                else if(QString(prop->name) == "core-idle")
+                {
+                    if(prop->format == MPV_FORMAT_FLAG)
+                    {
+                        if((bool)*(unsigned*)prop->data && playState == Mpv::Playing)
+                            ShowText(tr("Buffering..."), 0);
+                        else
+                            ShowText(QString(), 0);
+                    }
+                }
+                else if(QString(prop->name) == "paused-for-cache")
+                {
+                    if(prop->format == MPV_FORMAT_FLAG)
+                    {
+                        if((bool)*(unsigned*)prop->data && playState == Mpv::Playing)
+                            ShowText(tr("Your network is slow or stuck, please wait a bit"), 0);
+                        else
+                            ShowText(QString(), 0);
+                    }
+                }
                 break;
             }
             case MPV_EVENT_IDLE:
@@ -228,6 +221,7 @@ bool MpvHandler::event(QEvent *event)
                 break;
             case MPV_EVENT_PAUSE:
                 setPlayState(Mpv::Paused);
+                ShowText(QString(), 0);
                 break;
             case MPV_EVENT_END_FILE:
                 setPlayState(Mpv::Stopped);
@@ -485,8 +479,7 @@ void MpvHandler::FrameBackStep()
 
 void MpvHandler::Chapter(int c)
 {
-    if(mpv)
-        mpv_set_property_async(mpv, 0, "chapter", MPV_FORMAT_INT64, &c);
+    mpv_set_property_async(mpv, 0, "chapter", MPV_FORMAT_INT64, &c);
 //    const QByteArray tmp = QString::number(c).toUtf8();
 //    const char *args[] = {"set", "chapter", tmp.constData(), NULL};
 //    AsyncCommand(args);
@@ -573,31 +566,19 @@ void MpvHandler::Screenshot(bool withSubs)
 
 void MpvHandler::ScreenshotFormat(QString s)
 {
-    if(mpv)
-    {
-        const QByteArray tmp = s.toUtf8();
-        mpv_set_option_string(mpv, "screenshot-format", tmp.data());
-    }
+    SetOption("screenshot-format", s);
     setScreenshotFormat(s);
 }
 
 void MpvHandler::ScreenshotTemplate(QString s)
 {
-    if(mpv)
-    {
-        const QByteArray tmp = s.toUtf8();
-        mpv_set_option_string(mpv, "screenshot-template", tmp.data());
-    }
+    SetOption("screenshot-template", s);
     setScreenshotTemplate(s);
 }
 
 void MpvHandler::ScreenshotDirectory(QString s)
 {
-    if(mpv)
-    {
-        const QByteArray tmp = s.toUtf8();
-        mpv_set_option_string(mpv, "screenshot-directory", tmp.data());
-    }
+    SetOption("screenshot-directory", s);
     setScreenshotDir(s);
 }
 
@@ -649,18 +630,12 @@ void MpvHandler::SubtitleScale(double scale, bool relative)
 
 void MpvHandler::Deinterlace(bool deinterlace)
 {
-    if(mpv)
-    {
-        mpv_set_property_string(mpv, "deinterlace", deinterlace ? "yes" : "auto");
-        ShowText(tr("Deinterlacing: %0").arg(deinterlace ? tr("enabled") : tr("disabled")));
-    }
+    HandleErrorCode(mpv_set_property_string(mpv, "deinterlace", deinterlace ? "yes" : "auto"));
+    ShowText(tr("Deinterlacing: %0").arg(deinterlace ? tr("enabled") : tr("disabled")));
 }
 
 void MpvHandler::Interpolate(bool interpolate)
 {
-    if(!mpv)
-        return;
-
     if(vo == QString())
         vo = mpv_get_property_string(mpv, "current-vo");
     QStringList vos = vo.split(',');
@@ -685,11 +660,8 @@ void MpvHandler::Vo(QString o)
 
 void MpvHandler::Debug(QString level)
 {
-    if(mpv)
-    {
-        QByteArray tmp = level.toUtf8();
-        mpv_request_log_messages(mpv, tmp.constData());
-    }
+    QByteArray tmp = level.toUtf8();
+    mpv_request_log_messages(mpv, tmp.constData());
 }
 
 void MpvHandler::ShowText(QString text, int duration)
@@ -856,11 +828,8 @@ void MpvHandler::LoadMetadata()
 
 void MpvHandler::LoadOsdSize()
 {
-    if(mpv)
-    {
-        mpv_get_property(mpv, "osd-width", MPV_FORMAT_INT64, &osdWidth);
-        mpv_get_property(mpv, "osd-height", MPV_FORMAT_INT64, &osdHeight);
-    }
+    mpv_get_property(mpv, "osd-width", MPV_FORMAT_INT64, &osdWidth);
+    mpv_get_property(mpv, "osd-height", MPV_FORMAT_INT64, &osdHeight);
 }
 
 void MpvHandler::Command(const QStringList &strlist)
@@ -885,12 +854,9 @@ void MpvHandler::Command(const QStringList &strlist)
 
 void MpvHandler::SetOption(QString key, QString val)
 {
-    if(mpv)
-    {
-        QByteArray tmp1 = key.toUtf8(),
-                   tmp2 = val.toUtf8();
-        mpv_set_option_string(mpv, tmp1.constData(), tmp2.constData());
-    }
+    QByteArray tmp1 = key.toUtf8(),
+               tmp2 = val.toUtf8();
+    HandleErrorCode(mpv_set_option_string(mpv, tmp1.constData(), tmp2.constData()));
 }
 
 void MpvHandler::OpenFile(QString f)
@@ -932,21 +898,42 @@ void MpvHandler::SetProperties()
 
 void MpvHandler::AsyncCommand(const char *args[])
 {
-    if(mpv)
-        mpv_command_async(mpv, 0, args);
-    else
-        NotInitialized();
+    mpv_command_async(mpv, 0, args);
 }
 
 void MpvHandler::Command(const char *args[])
 {
-    if(mpv)
-        mpv_command(mpv, args);
-    else
-        NotInitialized();
+    HandleErrorCode(mpv_command(mpv, args));
 }
 
-void MpvHandler::NotInitialized()
+void MpvHandler::HandleErrorCode(int error_code)
 {
-    //emit messageSignal(tr("mpv was not initialized\n"));
+    switch(error_code)
+    {
+    case MPV_ERROR_UNINITIALIZED:
+        return;
+    case MPV_ERROR_LOADING_FAILED:
+    case MPV_ERROR_AO_INIT_FAILED:
+    case MPV_ERROR_VO_INIT_FAILED:
+    case MPV_ERROR_UNKNOWN_FORMAT:
+        ShowText(tr("File couldn't be opened"));
+        break;
+    case MPV_ERROR_EVENT_QUEUE_FULL:
+    case MPV_ERROR_NOMEM:
+        ShowText(tr("Memory error"));
+    case MPV_ERROR_INVALID_PARAMETER:
+    case MPV_ERROR_OPTION_NOT_FOUND:
+    case MPV_ERROR_OPTION_FORMAT:
+    case MPV_ERROR_OPTION_ERROR:
+    case MPV_ERROR_PROPERTY_NOT_FOUND:
+    case MPV_ERROR_PROPERTY_FORMAT:
+    case MPV_ERROR_PROPERTY_UNAVAILABLE:
+    case MPV_ERROR_PROPERTY_ERROR:
+    case MPV_ERROR_COMMAND:
+    case MPV_ERROR_NOTHING_TO_PLAY:
+    case MPV_ERROR_UNSUPPORTED:
+    case MPV_ERROR_NOT_IMPLEMENTED:
+        emit messageSignal(mpv_error_string(error_code));
+        break;
+    }
 }
