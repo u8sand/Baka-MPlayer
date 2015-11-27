@@ -38,12 +38,12 @@ OverlayHandler::~OverlayHandler()
 
 void OverlayHandler::showStatusText(const QString &text, int duration)
 {
-    if(text != QString() && duration != 0)
+    if(text != QString())
         showText(text,
                  QFont(Util::MonospaceFont(),
                        14, QFont::Bold), QColor(0xFFFFFF),
                  QPoint(20, 20), duration, OVERLAY_STATUS);
-    else
+    else if(duration == 0)
         remove(OVERLAY_STATUS);
 }
 

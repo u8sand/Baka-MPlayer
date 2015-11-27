@@ -578,7 +578,10 @@ void BakaEngine::BakaSpeed(QStringList &args)
 void BakaEngine::BakaFullScreen(QStringList &args)
 {
     if(args.empty())
+    {
         window->FullScreen(!window->isFullScreen());
+        mpv->ShowText(tr("Press ESC or double-click to leave full screen"));
+    }
     else
         InvalidParameter(args.join(' '));
 }
@@ -587,13 +590,8 @@ void BakaEngine::BakaBoss(QStringList &args)
 {
     if(args.empty())
     {
-        if(window->isFullScreen()) // exit fullscreen if in fullscreen
-            window->FullScreen(false);
-        else
-        {
-            mpv->Pause();
-            window->setWindowState(window->windowState() | Qt::WindowMinimized); // minimize window
-        }
+        mpv->Pause();
+        window->setWindowState(window->windowState() | Qt::WindowMinimized); // minimize window
     }
     else
         InvalidParameter(args.join(' '));

@@ -1061,6 +1061,13 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
            key == "Return")
             return;
 
+        // Escape exits fullscreen
+        if(isFullScreen() &&
+           key == "ESC") {
+            FullScreen(false);
+            return;
+        }
+
         // find shortcut in input hash table
         auto iter = baka->input.find(key);
         if(iter != baka->input.end())
