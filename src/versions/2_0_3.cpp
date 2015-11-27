@@ -71,7 +71,7 @@ void BakaEngine::Load2_0_3()
     window->setMaxRecent(QJsonValueRef2(root["maxRecent"]).toInt(5));
     window->setGestures(QJsonValueRef2(root["gestures"]).toBool(true));
     window->setResume(QJsonValueRef2(root["resume"]).toBool(true));
-    window->setWindowed(QJsonValueRef2(root["windowed"]).toBool(false));
+    window->setHideAllControls(QJsonValueRef2(root["hideAllControls"]).toBool(false));
     window->setLang(QJsonValueRef2(root["lang"]).toString("auto"));
 #if defined(Q_OS_WIN)
     QDate last = QDate::fromString(root["lastcheck"].toString()); // convert to date
@@ -135,7 +135,7 @@ void BakaEngine::SaveSettings()
     root["lang"] = window->lang;
     root["gestures"] = window->gestures;
     root["resume"] = window->resume;
-    root["windowed"] = window->windowed;
+    root["hideAllControls"] = window->hideAllControls;
     root["version"] = version;
 
     QJsonArray recent_json;

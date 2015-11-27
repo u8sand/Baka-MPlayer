@@ -364,6 +364,15 @@ private:
           }
          }
         },
+        {"hide_all_controls",
+         {&BakaEngine::BakaHideAllControls,
+          {
+           QString(),
+           tr("toggles hide all controls state"),
+           QString()
+          }
+         }
+        },
         {"boss",
          {&BakaEngine::BakaBoss,
           {
@@ -439,6 +448,7 @@ private:
     void BakaVolume(QStringList&);
     void BakaSpeed(QStringList&);
     void BakaFullScreen(QStringList&);
+    void BakaHideAllControls(QStringList&);
     void BakaBoss(QStringList&);
     void BakaHelp(QStringList&);
     void BakaAbout(QStringList&);

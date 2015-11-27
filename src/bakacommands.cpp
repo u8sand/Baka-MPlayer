@@ -586,6 +586,17 @@ void BakaEngine::BakaFullScreen(QStringList &args)
         InvalidParameter(args.join(' '));
 }
 
+void BakaEngine::BakaHideAllControls(QStringList &args)
+{
+    if(args.empty())
+    {
+        window->HideAllControls(!window->hideAllControls);
+        mpv->ShowText(tr("Press Ctrl+H to show all controls again"));
+    }
+    else
+        InvalidParameter(args.join(' '));
+}
+
 void BakaEngine::BakaBoss(QStringList &args)
 {
     if(args.empty())

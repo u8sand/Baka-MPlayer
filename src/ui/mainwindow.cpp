@@ -181,10 +181,10 @@ MainWindow::MainWindow(QWidget *parent):
                 ui->verticalWidget->setVisible(b);
             });
 
-    connect(this, &MainWindow::windowedChanged,
+    connect(this, &MainWindow::hideAllControlsChanged,
             [=](bool b)
             {
-                SetWindowed(b);
+                HideAllControls(b);
             });
 
     connect(baka->sysTrayIcon, &QSystemTrayIcon::activated,
@@ -1161,7 +1161,7 @@ void MainWindow::SetPlaybackControls(bool enable)
     }
 }
 
-void MainWindow::SetWindowed(bool w)
+void MainWindow::HideAllControls(bool w)
 {
     if(w)
     {
@@ -1169,7 +1169,6 @@ void MainWindow::SetWindowed(bool w)
         ui->splitter->handle(1)->installEventFilter(this); // capture events for the splitter
         setMouseTracking(true); // register mouse move event
         setContextMenuPolicy(Qt::ActionsContextMenu);
-
         // post a mouseMoveEvent to autohide
         QCoreApplication::postEvent(this, new QMouseEvent(QMouseEvent::MouseMove,
                                                           QCursor::pos(),
@@ -1196,14 +1195,14 @@ void MainWindow::FullScreen(bool fs)
         if(baka->dimDialog && baka->dimDialog->isVisible())
             baka->Dim(false);
         setWindowState(windowState() | Qt::WindowFullScreen);
-        if(!windowed)
-            SetWindowed(true);
+        if(!hideAllControls)
+            HideAllControls(true);
     }
     else
     {
         setWindowState(windowState() & ~Qt::WindowFullScreen);
-        if(!windowed)
-            SetWindowed(false);
+        if(!hideAllControls)
+            HideAllControls(false);
     }
 }
 
