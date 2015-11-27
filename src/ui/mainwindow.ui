@@ -1622,12 +1622,12 @@ QSlider::handle:horizontal {
   </action>
   <action name="action_Increase_Volume">
    <property name="text">
-    <string>&amp;Increase Volume</string>
+    <string>&amp;Increase by 5%</string>
    </property>
   </action>
   <action name="action_Decrease_Volume">
    <property name="text">
-    <string>&amp;Decrease Volume</string>
+    <string>&amp;Decrease by 5%</string>
    </property>
   </action>
   <action name="actionWith_Subtitles">
@@ -1655,12 +1655,12 @@ QSlider::handle:horizontal {
   </action>
   <action name="action_Increase">
    <property name="text">
-    <string>&amp;Increase</string>
+    <string>&amp;Increase by 0.1%</string>
    </property>
   </action>
   <action name="action_Decrease">
    <property name="text">
-    <string>&amp;Decrease</string>
+    <string>&amp;Decrease by 0.1%</string>
    </property>
   </action>
   <action name="action_Reset">
