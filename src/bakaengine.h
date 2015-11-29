@@ -64,6 +64,7 @@ public:
         {"Ctrl+Shift+Down", {"speed -0.1",                          tr("Decrease playback speed by %0").arg("10")}},
         {"Ctrl+Shift+R",    {"speed 1.0",                           tr("Reset speed")}},
         {"Alt+Return",      {"fullscreen",                          tr("Toggle fullscreen")}},
+        {"Ctrl+H",          {"hide_all_controls",                   tr("Toggle hide all controls mode")}},
         {"Ctrl+D",          {"dim",                                 tr("Dim lights")}},
         {"Ctrl+E",          {"show_in_folder",                      tr("Show the file in its folder")}},
         {"Tab",             {"media_info",                          tr("View media information")}},

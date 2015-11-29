@@ -64,6 +64,7 @@ MainWindow::MainWindow(QWidget *parent):
         {"fitwindow 150", ui->action150},
         {"fitwindow 200", ui->action200},
         {"fullscreen", ui->action_Full_Screen},
+        {"hide_all_controls", ui->actionHide_All_Controls},
         {"jump", ui->action_Jump_to_Time},
         {"media_info", ui->actionMedia_Info},
         {"new", ui->action_New_Player},
@@ -184,7 +185,7 @@ MainWindow::MainWindow(QWidget *parent):
     connect(this, &MainWindow::hideAllControlsChanged,
             [=](bool b)
             {
-                HideAllControls(b);
+                ui->actionHide_All_Controls->setChecked(b);
             });
 
     connect(baka->sysTrayIcon, &QSystemTrayIcon::activated,
@@ -1163,6 +1164,7 @@ void MainWindow::SetPlaybackControls(bool enable)
 
 void MainWindow::HideAllControls(bool w)
 {
+    hideAllControls = w;
     if(w)
     {
         ui->menubar->setVisible(false);

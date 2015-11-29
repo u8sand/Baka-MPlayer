@@ -1066,7 +1066,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>646</width>
-     <height>23</height>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
@@ -1203,7 +1203,7 @@ QSlider::handle:horizontal {
       <bool>false</bool>
      </property>
      <property name="title">
-      <string>S&amp;peed</string>
+      <string>Spee&amp;d</string>
      </property>
      <addaction name="action_Increase"/>
      <addaction name="action_Decrease"/>
@@ -1260,6 +1260,7 @@ QSlider::handle:horizontal {
     <addaction name="action_Hide_Album_Art"/>
     <addaction name="separator"/>
     <addaction name="action_Dim_Lights"/>
+    <addaction name="actionHide_All_Controls"/>
     <addaction name="actionShow_D_ebug_Output"/>
     <addaction name="separator"/>
     <addaction name="action_Preferences"/>
@@ -1722,6 +1723,11 @@ QSlider::handle:horizontal {
   <action name="action_Add_Audio_File">
    <property name="text">
     <string>&amp;Add Audio File...</string>
+   </property>
+  </action>
+  <action name="actionHide_All_Controls">
+   <property name="text">
+    <string>Hide All &amp;Controls</string>
    </property>
   </action>
  </widget>
