@@ -591,7 +591,15 @@ void BakaEngine::BakaHideAllControls(QStringList &args)
     if(args.empty())
     {
         window->HideAllControls(!window->hideAllControls);
-        mpv->ShowText(tr("Press Ctrl+H to show all controls again"));
+        // this is horribly inefficient, I picked the data structure never expecting
+        //  the need to do an inverse lookup; I personally don't believe it's at all
+        //  necessary to show this message.
+        for(auto i = input.begin(); i != input.end(); ++i)
+            if(i->first == "hide_all_controls")
+            {
+                mpv->ShowText(tr("Press %0 to show all controls again").arg(i.key()));
+                break;
+            }
     }
     else
         InvalidParameter(args.join(' '));
