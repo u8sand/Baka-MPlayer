@@ -110,6 +110,8 @@ void BakaEngine::Load2_0_3()
     mpv_json.remove("screenshot-template");
     mpv->ScreenshotDirectory(QJsonValueRef2(mpv_json["screenshot-directory"]).toString("."));
     mpv_json.remove("screenshot-directory");
+    mpv->MsgLevel(QJsonValueRef2(mpv_json["msg-level"]).toString("status"));
+    mpv_json.remove("msg-level");
     for(auto &key : mpv_json.keys())
         if(key != QString() && mpv_json[key].toString() != QString())
             mpv->SetOption(key, mpv_json[key].toString());
@@ -180,6 +182,7 @@ void BakaEngine::SaveSettings()
     mpv_json["screenshot-format"] = mpv->screenshotFormat;
     mpv_json["screenshot-template"] = mpv->screenshotTemplate;
     mpv_json["screenshot-directory"] = QDir::fromNativeSeparators(mpv->screenshotDir);
+    mpv_json["msg-level"] = mpv->msgLevel;
     root["mpv"] = mpv_json;
 
     settings->setRoot(root);

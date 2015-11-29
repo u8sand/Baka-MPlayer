@@ -670,19 +670,19 @@ void BakaEngine::BakaAbout(QStringList &args)
     About(args.join(' '));
 }
 
-void BakaEngine::BakaDebug(QStringList &args)
+void BakaEngine::BakaMsgLevel(QStringList &args)
 {
     if(!args.empty())
     {
         QString arg = args.front();
         args.pop_front();
         if(args.empty())
-            mpv->Debug(arg);
+            mpv->MsgLevel(arg);
         else
             InvalidParameter(args.join(' '));
     }
     else
-        RequiresParameters("debug");
+        RequiresParameters("msg_level");
 }
 
 void BakaEngine::About(QString what)
