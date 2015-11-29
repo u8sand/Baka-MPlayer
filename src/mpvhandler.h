@@ -9,6 +9,9 @@
 
 #include "mpvtypes.h"
 
+#define MPV_REPLY_COMMAND 1
+#define MPV_REPLY_PROPERTY 2
+
 class BakaEngine;
 
 class MpvHandler : public QObject

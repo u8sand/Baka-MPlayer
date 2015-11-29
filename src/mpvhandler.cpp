@@ -141,8 +141,7 @@ bool MpvHandler::event(QEvent *event)
             {
                 break;
             }
-            if(event->error < 0)
-                HandleErrorCode(event->error);
+            HandleErrorCode(event->error);
             switch (event->event_id)
             {
             case MPV_EVENT_PROPERTY_CHANGE:
@@ -224,6 +223,8 @@ bool MpvHandler::event(QEvent *event)
                 ShowText(QString(), 0);
                 break;
             case MPV_EVENT_END_FILE:
+                if(playState == Mpv::Loaded)
+                    ShowText(tr("File couldn't be opened"));
                 setPlayState(Mpv::Stopped);
                 break;
             case MPV_EVENT_SHUTDOWN:
@@ -360,7 +361,7 @@ void MpvHandler::Play()
     if(playState > 0 && mpv)
     {
         int f = 0;
-        mpv_set_property_async(mpv, 0, "pause", MPV_FORMAT_FLAG, &f);
+        mpv_set_property_async(mpv, MPV_REPLY_PROPERTY, "pause", MPV_FORMAT_FLAG, &f);
     }
 }
 
@@ -369,7 +370,7 @@ void MpvHandler::Pause()
     if(playState > 0 && mpv)
     {
         int f = 1;
-        mpv_set_property_async(mpv, 0, "pause", MPV_FORMAT_FLAG, &f);
+        mpv_set_property_async(mpv, MPV_REPLY_PROPERTY, "pause", MPV_FORMAT_FLAG, &f);
     }
 }
 
@@ -479,7 +480,7 @@ void MpvHandler::FrameBackStep()
 
 void MpvHandler::Chapter(int c)
 {
-    mpv_set_property_async(mpv, 0, "chapter", MPV_FORMAT_INT64, &c);
+    mpv_set_property_async(mpv, MPV_REPLY_PROPERTY, "chapter", MPV_FORMAT_INT64, &c);
 //    const QByteArray tmp = QString::number(c).toUtf8();
 //    const char *args[] = {"set", "chapter", tmp.constData(), NULL};
 //    AsyncCommand(args);
@@ -504,19 +505,10 @@ void MpvHandler::Volume(int level, bool osd)
 
     if(playState > 0)
     {
+        double v = level;
+        mpv_set_property_async(mpv, MPV_REPLY_PROPERTY, "volume", MPV_FORMAT_DOUBLE, &v);
         if(osd)
-        {
-            QString levelStr = QString::number(level);
-            const QByteArray tmp = levelStr.toUtf8();
-            const char *args[] = {"set", "volume", tmp.constData(), NULL};
-            AsyncCommand(args);
-            ShowText(tr("Volume: %0%").arg(levelStr));
-        }
-        else
-        {
-            double v = level;
-            mpv_set_property_async(mpv, 0, "volume", MPV_FORMAT_DOUBLE, &v);
-        }
+            ShowText(tr("Volume: %0%").arg(QString::number(level)));
     }
     else
         setVolume(level);
@@ -525,7 +517,7 @@ void MpvHandler::Volume(int level, bool osd)
 void MpvHandler::Speed(double d)
 {
     if(playState > 0)
-        mpv_set_property_async(mpv, 0, "speed", MPV_FORMAT_DOUBLE, &d);
+        mpv_set_property_async(mpv, MPV_REPLY_PROPERTY, "speed", MPV_FORMAT_DOUBLE, &d);
     setSpeed(d);
 }
 
@@ -899,7 +891,7 @@ void MpvHandler::SetProperties()
 
 void MpvHandler::AsyncCommand(const char *args[])
 {
-    mpv_command_async(mpv, 0, args);
+    mpv_command_async(mpv, MPV_REPLY_COMMAND, args);
 }
 
 void MpvHandler::Command(const char *args[])
@@ -909,32 +901,9 @@ void MpvHandler::Command(const char *args[])
 
 void MpvHandler::HandleErrorCode(int error_code)
 {
-    switch(error_code)
-    {
-    case MPV_ERROR_UNINITIALIZED:
+    if(error_code >= 0)
         return;
-    case MPV_ERROR_LOADING_FAILED:
-    case MPV_ERROR_AO_INIT_FAILED:
-    case MPV_ERROR_VO_INIT_FAILED:
-    case MPV_ERROR_UNKNOWN_FORMAT:
-        ShowText(tr("File couldn't be opened"));
-        break;
-    case MPV_ERROR_EVENT_QUEUE_FULL:
-    case MPV_ERROR_NOMEM:
-        ShowText(tr("Memory error"));
-    case MPV_ERROR_INVALID_PARAMETER:
-    case MPV_ERROR_OPTION_NOT_FOUND:
-    case MPV_ERROR_OPTION_FORMAT:
-    case MPV_ERROR_OPTION_ERROR:
-    case MPV_ERROR_PROPERTY_NOT_FOUND:
-    case MPV_ERROR_PROPERTY_FORMAT:
-    case MPV_ERROR_PROPERTY_UNAVAILABLE:
-    case MPV_ERROR_PROPERTY_ERROR:
-    case MPV_ERROR_COMMAND:
-    case MPV_ERROR_NOTHING_TO_PLAY:
-    case MPV_ERROR_UNSUPPORTED:
-    case MPV_ERROR_NOT_IMPLEMENTED:
-        emit messageSignal(mpv_error_string(error_code));
-        break;
-    }
+    QString error = mpv_error_string(error_code);
+    if(error != QString())
+        emit messageSignal(error+"\n");
 }
