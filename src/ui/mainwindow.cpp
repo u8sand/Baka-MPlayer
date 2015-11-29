@@ -185,7 +185,10 @@ MainWindow::MainWindow(QWidget *parent):
     connect(this, &MainWindow::hideAllControlsChanged,
             [=](bool b)
             {
+                HideAllControls(b);
+                blockSignals(true);
                 ui->actionHide_All_Controls->setChecked(b);
+                blockSignals(false);
             });
 
     connect(baka->sysTrayIcon, &QSystemTrayIcon::activated,
@@ -974,53 +977,24 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
         event->accept();
     else if(isFullScreenMode())
     {
-        bool in = false;
+        bool in = true;
         setCursor(QCursor(Qt::ArrowCursor)); // show the cursor
         autohide->stop();
 
-        if(!ui->playbackLayoutWidget->isVisible())
-        {
-            if(playbackRect.contains(event->globalPos()))
-            {
-                ui->playbackLayoutWidget->setVisible(true);
-                ui->seekBar->setVisible(true);
-                in = true;
-            }
-        }
-        else
-        {
-            playbackRect = qApp->desktop()->availableGeometry(frameGeometry().center());
-            playbackRect.setTop(playbackRect.bottom() - ui->playbackLayoutWidget->height() - 20);
+        QRect playbackRect = frameGeometry();
+        playbackRect.setTop(playbackRect.bottom() - 60);
+        bool showPlayback = playbackRect.contains(event->globalPos());
+        ui->playbackLayoutWidget->setVisible(showPlayback);
+        ui->seekBar->setVisible(showPlayback);
+        in = !showPlayback;
 
-            if(!playbackRect.contains(event->globalPos()))
-            {
-                ui->playbackLayoutWidget->setVisible(false);
-                ui->seekBar->setVisible(false);
-            }
-            else
-                in = true;
-        }
+        QRect playlistRect = frameGeometry();
+        playlistRect.setLeft(playlistRect.right() - playlistRect.width()/5);
+        bool showPlaylist = playlistRect.contains(event->globalPos());
+        ShowPlaylist(showPlaylist);
+        in = in || !showPlaylist;
 
-        if(isPlaylistVisible())
-        {
-            playlistRect = ui->playlistLayoutWidget->geometry();
-            playlistRect.moveTo(ui->playlistLayoutWidget->pos());
-            playlistRect.setLeft(playlistRect.left()-20);
-            playlistRect.setRight(playlistRect.right()+5);
-            playlistRect.setHeight(height());
-            if(!playlistRect.contains(event->globalPos()))
-                ShowPlaylist(false);
-            else
-                in = true;
-        }
-        else
-        {
-            playlistRect.setLeft(playlistRect.right()-5);
-            if(playlistRect.contains(event->globalPos()))
-                ShowPlaylist(true);
-        }
-
-        if(!in && autohide)
+        if(in && autohide)
             autohide->start(500);
     }
     QMainWindow::mouseMoveEvent(event);
@@ -1070,7 +1044,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
 
         // Escape exits fullscreen
         if(isFullScreen() &&
-           key == "ESC") {
+           key == "Esc") {
             FullScreen(false);
             return;
         }
@@ -1162,9 +1136,14 @@ void MainWindow::SetPlaybackControls(bool enable)
     }
 }
 
-void MainWindow::HideAllControls(bool w)
+void MainWindow::HideAllControls(bool w, bool s)
 {
-    hideAllControls = w;
+    if(s)
+    {
+        hideAllControls = w;
+        if(isFullScreen())
+            return;
+    }
     if(w)
     {
         ui->menubar->setVisible(false);
@@ -1198,13 +1177,13 @@ void MainWindow::FullScreen(bool fs)
             baka->Dim(false);
         setWindowState(windowState() | Qt::WindowFullScreen);
         if(!hideAllControls)
-            HideAllControls(true);
+            HideAllControls(true, false);
     }
     else
     {
         setWindowState(windowState() & ~Qt::WindowFullScreen);
         if(!hideAllControls)
-            HideAllControls(false);
+            HideAllControls(false, false);
     }
 }
 

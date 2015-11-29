@@ -580,7 +580,8 @@ void BakaEngine::BakaFullScreen(QStringList &args)
     if(args.empty())
     {
         window->FullScreen(!window->isFullScreen());
-        mpv->ShowText(tr("Press ESC or double-click to leave full screen"));
+        if(window->isFullScreen())
+            mpv->ShowText(tr("Press ESC or double-click to leave full screen"));
     }
     else
         InvalidParameter(args.join(' '));
@@ -594,12 +595,17 @@ void BakaEngine::BakaHideAllControls(QStringList &args)
         // this is horribly inefficient, I picked the data structure never expecting
         //  the need to do an inverse lookup; I personally don't believe it's at all
         //  necessary to show this message.
-        for(auto i = input.begin(); i != input.end(); ++i)
-            if(i->first == "hide_all_controls")
+        if(window->hideAllControls)
+        {
+            for(auto i = input.begin(); i != input.end(); ++i)
             {
-                mpv->ShowText(tr("Press %0 to show all controls again").arg(i.key()));
-                break;
+                if(i->first == "hide_all_controls")
+                {
+                    mpv->ShowText(tr("Press %0 to show all controls again").arg(i.key()));
+                    break;
+                }
             }
+        }
     }
     else
         InvalidParameter(args.join(' '));

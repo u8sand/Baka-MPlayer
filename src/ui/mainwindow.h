@@ -72,7 +72,7 @@ protected:
     bool isPlaylistVisible();                       // is the playlist visible?
 
 private slots:
-    void HideAllControls(bool h);
+    void HideAllControls(bool h, bool s = true);    // hideAllControls--s option is used by fullscreen
     void FullScreen(bool fs);                       // makes window fullscreen
     void ShowPlaylist(bool visible);                // sets the playlist visibility
     void HideAlbumArt(bool hide);                   // hides the album art
@@ -111,9 +111,7 @@ private:
          debug,
          gestures,
          resume,
-         hideAllControls;
-    QRect playbackRect,
-          playlistRect;
+         hideAllControls = false;
     QHash<QString, QAction*> commandActionMap;
 
 public slots:
