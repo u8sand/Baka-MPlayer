@@ -61,6 +61,7 @@ protected:
     void mousePressEvent(QMouseEvent *event);       // pressed mouse down
     void mouseReleaseEvent(QMouseEvent *event);     // released mouse up
     void mouseMoveEvent(QMouseEvent *event);        // moved mouse on the form
+    void leaveEvent(QEvent *event);                 // mouse left the form
     void mouseDoubleClickEvent(QMouseEvent *event); // double clicked the form
     bool eventFilter(QObject *obj, QEvent *event);  // event filter (get mouse move events from mpvFrame)
     void wheelEvent(QWheelEvent *event);            // the mouse wheel is used

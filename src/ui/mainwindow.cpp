@@ -977,27 +977,32 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
         event->accept();
     else if(isFullScreenMode())
     {
-        bool in = true;
         setCursor(QCursor(Qt::ArrowCursor)); // show the cursor
         autohide->stop();
 
-        QRect playbackRect = frameGeometry();
+        QRect playbackRect = geometry();
         playbackRect.setTop(playbackRect.bottom() - 60);
         bool showPlayback = playbackRect.contains(event->globalPos());
         ui->playbackLayoutWidget->setVisible(showPlayback);
         ui->seekBar->setVisible(showPlayback);
-        in = !showPlayback;
 
-        QRect playlistRect = frameGeometry();
-        playlistRect.setLeft(playlistRect.right() - playlistRect.width()/5);
+        QRect playlistRect = geometry();
+        playlistRect.setLeft(playlistRect.right() - ceil(playlistRect.width()/7.0));
         bool showPlaylist = playlistRect.contains(event->globalPos());
         ShowPlaylist(showPlaylist);
-        in = in || !showPlaylist;
 
-        if(in && autohide)
+        if(!(showPlayback || showPlaylist) && autohide)
             autohide->start(500);
     }
     QMainWindow::mouseMoveEvent(event);
+}
+
+void MainWindow::leaveEvent(QEvent *event)
+{
+    QCoreApplication::postEvent(this, new QMouseEvent(QMouseEvent::MouseMove,
+                                                      QCursor::pos(),
+                                                      Qt::NoButton,Qt::NoButton,Qt::NoModifier));
+    QMainWindow::leaveEvent(event);
 }
 
 bool MainWindow::eventFilter(QObject *obj, QEvent *event)
