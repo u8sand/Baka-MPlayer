@@ -105,6 +105,7 @@ public slots:
     void LoadTracks();
     void LoadChapters();
     void LoadVideoParams();
+    void LoadAudioParams();
     void LoadMetadata();
     void LoadOsdSize();
 
@@ -148,6 +149,7 @@ signals:
     void trackListChanged(const QList<Mpv::Track>&);
     void chaptersChanged(const QList<Mpv::Chapter>&);
     void videoParamsChanged(const Mpv::VideoParams&);
+    void audioParamsChanged(const Mpv::AudioParams&);
     void playStateChanged(Mpv::PlayState);
     void fileChanging(int, int);
     void fileChanged(QString);

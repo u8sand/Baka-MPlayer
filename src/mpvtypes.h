@@ -58,9 +58,9 @@ namespace Mpv
     };
     struct AudioParams
     {
-        QString codec,
-                samplerate,
-                channels;
+        QString codec;
+        int samplerate,
+            channels;
     };
 
     struct FileInfo

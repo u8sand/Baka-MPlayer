@@ -105,8 +105,8 @@ QString MpvHandler::getMediaInfo()
     if(fileInfo.audio_params.codec != QString())
         out += outer.arg(tr("Audio (x%0)").arg(QString::number(atracks)), fileInfo.audio_params.codec) +
             inner.arg(tr("Audio Output"), current_ao) +
-            inner.arg(tr("Sample Rate"), fileInfo.audio_params.samplerate) +
-            inner.arg(tr("Channels"), fileInfo.audio_params.channels) +
+            inner.arg(tr("Sample Rate"), QString::number(fileInfo.audio_params.samplerate)) +
+            inner.arg(tr("Channels"), QString::number(fileInfo.audio_params.channels)) +
             inner.arg(tr("Bitrate"), tr("%0 kbps").arg(abitrate)) + '\n';
 
     if(fileInfo.chapters.length() > 0)
@@ -678,14 +678,10 @@ void MpvHandler::LoadFileInfo()
     mpv_get_property(mpv, "length", MPV_FORMAT_DOUBLE, &len);
     fileInfo.length                  = (int)len;
 
-    fileInfo.video_params.codec       = mpv_get_property_string(mpv, "video-codec");
-    fileInfo.audio_params.codec       = mpv_get_property_string(mpv, "audio-codec");
-    fileInfo.audio_params.samplerate  = mpv_get_property_string(mpv, "audio-samplerate");
-    fileInfo.audio_params.channels    = mpv_get_property_string(mpv, "audio-channels");
-
     LoadTracks();
     LoadChapters();
     LoadVideoParams();
+    LoadAudioParams();
     LoadMetadata();
 
     emit fileInfoChanged(fileInfo);
@@ -798,6 +794,7 @@ void MpvHandler::LoadChapters()
 
 void MpvHandler::LoadVideoParams()
 {
+    fileInfo.video_params.codec = mpv_get_property_string(mpv, "video-codec");
     mpv_get_property(mpv, "width",        MPV_FORMAT_INT64, &fileInfo.video_params.width);
     mpv_get_property(mpv, "height",       MPV_FORMAT_INT64, &fileInfo.video_params.height);
     mpv_get_property(mpv, "dwidth",       MPV_FORMAT_INT64, &fileInfo.video_params.dwidth);
@@ -806,6 +803,31 @@ void MpvHandler::LoadVideoParams()
     mpv_get_property(mpv, "video-aspect", MPV_FORMAT_INT64, &fileInfo.video_params.aspect);
 
     emit videoParamsChanged(fileInfo.video_params);
+}
+
+void MpvHandler::LoadAudioParams()
+{
+    fileInfo.audio_params.codec = mpv_get_property_string(mpv, "audio-codec");
+    mpv_node node;
+    mpv_get_property(mpv, "audio-params", MPV_FORMAT_NODE, &node);
+    if(node.format == MPV_FORMAT_NODE_MAP)
+    {
+        for(int i = 0; i < node.u.list->num; i++)
+        {
+            if(QString(node.u.list->keys[i]) == "samplerate")
+            {
+                if(node.u.list->values[i].format == MPV_FORMAT_INT64)
+                    fileInfo.audio_params.samplerate = node.u.list->values[i].u.int64;
+            }
+            else if(QString(node.u.list->keys[i]) == "channel-count")
+            {
+                if(node.u.list->values[i].format == MPV_FORMAT_INT64)
+                    fileInfo.audio_params.channels = node.u.list->values[i].u.int64;
+            }
+        }
+    }
+
+    emit audioParamsChanged(fileInfo.audio_params);
 }
 
 void MpvHandler::LoadMetadata()
