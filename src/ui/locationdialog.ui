@@ -81,9 +81,6 @@ QPushButton:disabled {
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
-     <property name="cursor">
-      <cursorShape>PointingHandCursor</cursorShape>
-     </property>
      <property name="toolTip">
       <string>Paste copied link</string>
      </property>
