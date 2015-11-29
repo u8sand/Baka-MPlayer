@@ -90,7 +90,7 @@ QPushButton:disabled {
      <property name="styleSheet">
       <string notr="true">QPushButton {
 	background: none;
-	border: 1px solid #1A1A1A; /* make border &quot;invisible&quot; */
+	border: 1px solid #454A4D;
     min-width: 20px;
 }
 QPushButton:focus {
