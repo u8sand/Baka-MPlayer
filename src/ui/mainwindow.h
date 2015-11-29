@@ -95,7 +95,8 @@ private:
     bool            pathChanged,
                     menuVisible,
                     firstItem       = false,
-                    init            = false;
+                    init            = false,
+                    playlistState   = false;
     QTimer          *autohide       = nullptr;
 
     // variables

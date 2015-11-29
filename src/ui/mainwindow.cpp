@@ -1146,6 +1146,8 @@ void MainWindow::HideAllControls(bool w, bool s)
     }
     if(w)
     {
+        if(s || !hideAllControls)
+            playlistState = ui->playlistLayoutWidget->isVisible();
         ui->menubar->setVisible(false);
         ui->splitter->handle(1)->installEventFilter(this); // capture events for the splitter
         setMouseTracking(true); // register mouse move event
@@ -1166,6 +1168,7 @@ void MainWindow::HideAllControls(bool w, bool s)
         setContextMenuPolicy(Qt::NoContextMenu);
         setCursor(QCursor(Qt::ArrowCursor)); // show cursor
         autohide->stop();
+        ShowPlaylist(playlistState);
     }
 }
 
