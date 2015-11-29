@@ -180,6 +180,9 @@ MainWindow::MainWindow(QWidget *parent):
             {
                 ui->actionShow_D_ebug_Output->setChecked(b);
                 ui->verticalWidget->setVisible(b);
+                QCoreApplication::postEvent(this, new QMouseEvent(QMouseEvent::MouseMove,
+                                                                  QCursor::pos(),
+                                                                  Qt::NoButton,Qt::NoButton,Qt::NoModifier));
             });
 
     connect(this, &MainWindow::hideAllControlsChanged,
@@ -216,7 +219,8 @@ MainWindow::MainWindow(QWidget *parent):
     connect(autohide, &QTimer::timeout, // cursor autohide
             [=]
             {
-                setCursor(QCursor(Qt::BlankCursor));
+                if(ui->mpvFrame->geometry().contains(ui->mpvFrame->mapFromGlobal(cursor().pos())))
+                    setCursor(QCursor(Qt::BlankCursor));
                 if(autohide)
                     autohide->stop();
             });
@@ -983,8 +987,8 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
         QRect playbackRect = geometry();
         playbackRect.setTop(playbackRect.bottom() - 60);
         bool showPlayback = playbackRect.contains(event->globalPos());
-        ui->playbackLayoutWidget->setVisible(showPlayback);
-        ui->seekBar->setVisible(showPlayback);
+        ui->playbackLayoutWidget->setVisible(showPlayback || ui->outputTextEdit->isVisible());
+        ui->seekBar->setVisible(showPlayback || ui->outputTextEdit->isVisible());
 
         QRect playlistRect = geometry();
         playlistRect.setLeft(playlistRect.right() - ceil(playlistRect.width()/7.0));
