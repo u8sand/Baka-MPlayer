@@ -45,6 +45,7 @@ PreferencesDialog::PreferencesDialog(BakaEngine *baka, QWidget *parent) :
     ui->formatComboBox->setCurrentText(baka->mpv->getScreenshotFormat());
     screenshotDir = QDir::toNativeSeparators(baka->mpv->getScreenshotDir());
     ui->templateLineEdit->setText(baka->mpv->getScreenshotTemplate());
+    ui->msgLvlComboBox->setCurrentText(baka->mpv->getMsgLevel());
 
     // add shortcuts
     saved = baka->input;
@@ -158,6 +159,7 @@ PreferencesDialog::~PreferencesDialog()
         baka->mpv->ScreenshotFormat(ui->formatComboBox->currentText());
         baka->mpv->ScreenshotDirectory(screenshotDir);
         baka->mpv->ScreenshotTemplate(ui->templateLineEdit->text());
+        baka->mpv->MsgLevel(ui->msgLvlComboBox->currentText());
         baka->window->MapShortcuts();
     }
     else

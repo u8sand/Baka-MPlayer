@@ -100,20 +100,25 @@ void BakaEngine::Command(QString command)
 void BakaEngine::Print(QString what, QString who)
 {
     window->ui->outputTextEdit->moveCursor(QTextCursor::End);
-    window->ui->outputTextEdit->insertPlainText(QString("[%0]: %1\n").arg(who, what));
+    window->ui->outputTextEdit->insertPlainText(QString("[%0]: %1").arg(who, what));
+}
+
+void BakaEngine::PrintLn(QString what, QString who)
+{
+    Print(what+"\n", who);
 }
 
 void BakaEngine::InvalidCommand(QString command)
 {
-    Print(tr("invalid command '%0'").arg(command));
+    PrintLn(tr("invalid command '%0'").arg(command));
 }
 
 void BakaEngine::InvalidParameter(QString parameter)
 {
-    Print(tr("invalid parameter '%0'").arg(parameter));
+    PrintLn(tr("invalid parameter '%0'").arg(parameter));
 }
 
 void BakaEngine::RequiresParameters(QString what)
 {
-    Print(tr("'%0' requires parameters").arg(what));
+    PrintLn(tr("'%0' requires parameters").arg(what));
 }

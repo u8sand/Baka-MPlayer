@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>447</width>
-    <height>420</height>
+    <height>402</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -215,7 +215,7 @@ QScrollBar::right-arrow:horizontal {
 	background: transparent;
 }</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_8">
+  <layout class="QVBoxLayout" name="verticalLayout_10">
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="styleSheet">
@@ -823,6 +823,94 @@ QPushButton:pressed {
        </item>
       </layout>
      </widget>
+     <widget class="QWidget" name="tab_4">
+      <attribute name="title">
+       <string>Advanced</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_8">
+       <item>
+        <widget class="QGroupBox" name="groupBox_7">
+         <property name="title">
+          <string>Command Line</string>
+         </property>
+         <layout class="QFormLayout" name="formLayout">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_5">
+            <property name="text">
+             <string>mpv msg-level:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QComboBox" name="msgLvlComboBox">
+            <property name="currentIndex">
+             <number>5</number>
+            </property>
+            <item>
+             <property name="text">
+              <string>none</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>fatal</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>error</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>warn</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>info</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>status</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>verbose</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>debug</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>trace</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
     </widget>
    </item>
    <item>
@@ -887,9 +975,11 @@ QPushButton:pressed {
   <tabstop>resetKeyButton</tabstop>
   <tabstop>autoFitCheckBox</tabstop>
   <tabstop>comboBox</tabstop>
+  <tabstop>checkBox</tabstop>
   <tabstop>formatComboBox</tabstop>
   <tabstop>templateLineEdit</tabstop>
   <tabstop>changeButton</tabstop>
+  <tabstop>msgLvlComboBox</tabstop>
   <tabstop>okButton</tabstop>
   <tabstop>cancelButton</tabstop>
  </tabstops>

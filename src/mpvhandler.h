@@ -28,6 +28,7 @@ public:
     QString getScreenshotTemplate()         { return screenshotTemplate; }
     QString getScreenshotDir()              { return screenshotDir; }
     QString getVo()                         { return vo; }
+    QString getMsgLevel()                   { return msgLevel; }
     double getSpeed()                       { return speed; }
     int getTime()                           { return time; }
     int getVolume()                         { return volume; }
@@ -94,7 +95,7 @@ public slots:
     void Interpolate(bool);
     void Vo(QString);
 
-    void Debug(QString level);
+    void MsgLevel(QString level);
 
     void ShowText(QString text, int duration = 4000);
 
@@ -127,6 +128,7 @@ private slots:
     void setScreenshotTemplate(QString s)   { emit screenshotTemplateChanged(screenshotTemplate = s); }
     void setScreenshotDir(QString s)        { emit screenshotDirChanged(screenshotDir = s); }
     void setVo(QString s)                   { emit voChanged(vo = s); }
+    void setMsgLevel(QString s)             { emit msgLevelChanged(msgLevel = s); }
     void setSpeed(double d)                 { emit speedChanged(speed = d); }
     void setTime(int i)                     { emit timeChanged(time = i); }
     void setVolume(int i)                   { emit volumeChanged(volume = i); }
@@ -151,6 +153,7 @@ signals:
     void screenshotTemplateChanged(QString);
     void screenshotDirChanged(QString);
     void voChanged(QString);
+    void msgLevelChanged(QString);
     void speedChanged(double);
     void timeChanged(int);
     void volumeChanged(int);
@@ -177,7 +180,8 @@ private:
                 screenshotTemplate,
                 screenshotDir,
                 suffix,
-                vo;
+                vo,
+                msgLevel;
     double      speed = 1;
     int         time = 0,
                 lastTime = 0,

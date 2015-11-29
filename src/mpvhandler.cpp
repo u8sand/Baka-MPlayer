@@ -658,10 +658,11 @@ void MpvHandler::Vo(QString o)
     SetOption("vo", vo);
 }
 
-void MpvHandler::Debug(QString level)
+void MpvHandler::MsgLevel(QString level)
 {
     QByteArray tmp = level.toUtf8();
     mpv_request_log_messages(mpv, tmp.constData());
+    setMsgLevel(level);
 }
 
 void MpvHandler::ShowText(QString text, int duration)

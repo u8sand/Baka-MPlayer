@@ -103,6 +103,7 @@ public slots:
 protected slots:
     // Utility functions
     void Print(QString what, QString who = "baka");
+    void PrintLn(QString what, QString who = "baka");
     void InvalidCommand(QString);
     void InvalidParameter(QString);
     void RequiresParameters(QString);
@@ -391,11 +392,11 @@ private:
           }
          }
         },
-        {"debug",
-         {&BakaEngine::BakaDebug,
+        {"msg_level",
+         {&BakaEngine::BakaMsgLevel,
           {
            tr("[level]"),
-           tr("set mpv debugging level"),
+           tr("set mpv msg-level"),
            QString()
           }
          }
@@ -442,7 +443,7 @@ private:
     void BakaBoss(QStringList&);
     void BakaHelp(QStringList&);
     void BakaAbout(QStringList&);
-    void BakaDebug(QStringList&);
+    void BakaMsgLevel(QStringList&);
     void BakaQuit(QStringList&);
 public:
     void Open();
