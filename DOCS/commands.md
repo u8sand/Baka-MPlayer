@@ -38,10 +38,12 @@ The following is a list of the available `baka` commands (for `mpv` commands see
     mute                            # toggles mute
     volume [value]                  # adjusts the volume (can be relative)
     fullscreen                      # toggles fullscreen state
+    hide_all_controls               # toggles hide all controls state
     boss                            # pause and hide the window--run away from boss
+    clear                           # clears the output text
     help [command]                  # internal help menu
     about [qt]                      # open about dialog
-    debug                           # toggle mpv debugging messages
+    msg_level [level]               # set mpv debugging message level
     quit                            # quit baka-mplayer
 
 More commands will be coming but please feel free to suggest modifications or additions.
