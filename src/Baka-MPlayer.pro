@@ -134,6 +134,11 @@ CONFIG(update_translations) {
     system($$lupdate -locations none $$_PRO_FILE_)
 }
 
+CONFIG(strip_translations) {
+    isEmpty(lupdate):lupdate=lupdate
+    system($$lupdate -no-obsolete -locations none $$_PRO_FILE_)
+}
+
 CONFIG(release_translations) {
     isEmpty(lrelease):lrelease=lrelease
     system($$lrelease $$_PRO_FILE_)

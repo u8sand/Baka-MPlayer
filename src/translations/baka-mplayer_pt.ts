@@ -16,8 +16,70 @@
         <translation>Baka MPlayer 0.0.0</translation>
     </message>
     <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2015 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#008098;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; é livre e open source, multiplataforma, player multimídia de &lt;b&gt;libmpv&lt;/b&gt;. O design simples reflecte a idéia para uma organizada, claro, e agradável ambiente para assistir a programas de TV.&lt;br&gt;&lt;br&gt;Copyright © 2015 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
         <source>Credits</source>
         <translation>Créditos</translation>
+    </message>
+    <message>
+        <source>mpv - video player based on MPlayer/mplayer2
+GPLv2 &lt;mpv.io&gt;
+
+Material Design icons
+Attribution 4.0 International &lt;Google&gt;
+
+Noto Sans -  font family with many supported characters
+Apache License, version 2.0 &lt;Google&gt;
+
+Retro Cassette image
+&lt;Lukas Troup&gt;
+
+Gesture icons
+CC License &lt;Jeff Portaro&gt;
+
+Download icon
+CC BY 3.0 &lt;Sasha Mescheryakov&gt;
+
+Translations
+- Chinese &lt;amazingfate, Antares95&gt;
+- Croatian &lt;gogo&gt;
+- Dutch &lt;robin007bond&gt;
+- French &lt;chapouvalpin&gt;
+- German: &lt;yiip87&gt;
+- Italian &lt;Aloysius&gt;
+- Korean &lt;godly-devotion&gt;
+- Portuguese &lt;u8sand&gt;
+- Russian &lt;suhr&gt;
+- Spanish &lt;Alfredo Ramos&gt;</source>
+        <translation>mpv - aparelho de vídeo de MPlayer/mplayer2
+GPLv2 &lt;mpv.io&gt;
+
+Noto Sans -  família de fontes com muitos caracteres suportados
+Apache Licença, versão 2.0 &lt;Google&gt;
+
+Imagem gaveta retro
+&lt;Lukas Troup&gt;
+
+Baixar ícone
+CC BY 3.0 &lt;Sasha Mescheryakov&gt;
+
+Traduções
+- Chinês &lt;amazingfate&gt;
+- Croata &lt;gogo&gt;
+- Holandês &lt;robin007bond&gt;
+- Francês &lt;chapouvalpin&gt;
+- Alemão: &lt;yiip87&gt;
+- Italiano &lt;Aloysius&gt;
+- Coreano &lt;godly-devotion&gt;
+- Português &lt;u8sand&gt;
+- Russo &lt;suhr&gt;
+- Eespanhol &lt;Alfredo Ramos&gt;</translation>
+    </message>
+    <message>
+        <source>&amp;Close</source>
+        <translation>&amp;Fechar</translation>
     </message>
     <message>
         <source>mpv - video player based on MPlayer/mplayer2
@@ -46,7 +108,7 @@ Translations
 - Portuguese &lt;u8sand&gt;
 - Russian &lt;suhr&gt;
 - Spanish &lt;Alfredo Ramos&gt;</source>
-        <translation>mpv - aparelho de vídeo de MPlayer/mplayer2
+        <translation type="vanished">mpv - aparelho de vídeo de MPlayer/mplayer2
 GPLv2 &lt;mpv.io&gt;
 
 Noto Sans -  família de fontes com muitos caracteres suportados
@@ -105,7 +167,7 @@ Traduções
     </message>
     <message>
         <source>&amp;CLOSE</source>
-        <translation>&amp;FECHAR</translation>
+        <translation type="vanished">&amp;FECHAR</translation>
     </message>
     <message>
         <source>                GNU GENERAL PUBLIC LICENSE
@@ -128,7 +190,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2015 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; é livre e open source, multiplataforma, player multimídia de &lt;b&gt;libmpv&lt;/b&gt;. O design simples reflecte a idéia para uma organizada, claro, e agradável ambiente para assistir a programas de TV.&lt;br&gt;&lt;br&gt;Copyright © 2015 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; é livre e open source, multiplataforma, player multimídia de &lt;b&gt;libmpv&lt;/b&gt;. O design simples reflecte a idéia para uma organizada, claro, e agradável ambiente para assistir a programas de TV.&lt;br&gt;&lt;br&gt;Copyright © 2015 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>mpv - video player based on MPlayer/mplayer2
@@ -208,6 +270,10 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
         <translation>Arquivos de Legendas</translation>
     </message>
     <message>
+        <source>Open Audio File</source>
+        <translation>Arquivo de Áudio Aberto</translation>
+    </message>
+    <message>
         <source>http://bakamplayer.u8sand.net/help.php</source>
         <translation>http://bakamplayer.u8sand.net/help.php</translation>
     </message>
@@ -273,7 +339,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Seek backwards by 5 sec</source>
-        <translation>Procurar para trás por 5 segundo</translation>
+        <translation type="vanished">Procurar para trás por 5 segundo</translation>
     </message>
     <message>
         <source>Go to previous chapter</source>
@@ -293,7 +359,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Seek forwards by 5 sec</source>
-        <translation>Procurar para a frente por 5 segundo</translation>
+        <translation type="vanished">Procurar para a frente por 5 segundo</translation>
     </message>
     <message>
         <source>Frame step backwards</source>
@@ -317,11 +383,11 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Increase playback speed by 10%</source>
-        <translation>Aumentar a velocidade de reprodução em 10%</translation>
+        <translation type="vanished">Aumentar a velocidade de reprodução em 10%</translation>
     </message>
     <message>
         <source>Decrease playback speed by 10%</source>
-        <translation>Diminuir a velocidade de reprodução em 10%</translation>
+        <translation type="vanished">Diminuir a velocidade de reprodução em 10%</translation>
     </message>
     <message>
         <source>Toggle fullscreen</source>
@@ -361,23 +427,23 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Fit window to 50%</source>
-        <translation>Janela de ajuste de 50%</translation>
+        <translation type="vanished">Janela de ajuste de 50%</translation>
     </message>
     <message>
         <source>Fit window to 75%</source>
-        <translation>Janela de ajuste de 75%</translation>
+        <translation type="vanished">Janela de ajuste de 75%</translation>
     </message>
     <message>
         <source>Fit window to 100%</source>
-        <translation>Janela de ajuste de 100%</translation>
+        <translation type="vanished">Janela de ajuste de 100%</translation>
     </message>
     <message>
         <source>Fit window to 150%</source>
-        <translation>Janela de ajuste de 150%</translation>
+        <translation type="vanished">Janela de ajuste de 150%</translation>
     </message>
     <message>
         <source>Fit window to 200%</source>
-        <translation>Janela de ajuste de 200%</translation>
+        <translation type="vanished">Janela de ajuste de 200%</translation>
     </message>
     <message>
         <source>Boss key</source>
@@ -386,6 +452,26 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     <message>
         <source>Play previous file</source>
         <translation>Play arquivo anterior</translation>
+    </message>
+    <message>
+        <source>Seek forwards by %0 sec</source>
+        <translation>Procurar para a frente por %0 segundo</translation>
+    </message>
+    <message>
+        <source>Seek backwards by %0 sec</source>
+        <translation>Procurar para trás por %0 segundo</translation>
+    </message>
+    <message>
+        <source>Increase playback speed by %0</source>
+        <translation>Aumentar a velocidade de reprodução em %0</translation>
+    </message>
+    <message>
+        <source>Decrease playback speed by %0</source>
+        <translation>Diminuir a velocidade de reprodução em %0</translation>
+    </message>
+    <message>
+        <source>Toggle hide all controls mode</source>
+        <translation>Alterna o modo de ocultar controles</translation>
     </message>
     <message>
         <source>Open a new window</source>
@@ -422,6 +508,10 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     <message>
         <source>Play/Pause</source>
         <translation>Play/Pause</translation>
+    </message>
+    <message>
+        <source>Fit window to %0%</source>
+        <translation>Janela de ajuste de %0%</translation>
     </message>
     <message>
         <source>Select previous file on playlist</source>
@@ -466,6 +556,14 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     <message>
         <source>Speed: %0x</source>
         <translation>Velocidade: %0x</translation>
+    </message>
+    <message>
+        <source>Press ESC or double-click to leave full screen</source>
+        <translation>Pressione ESC ou clique duas vezes para sair de tela cheia</translation>
+    </message>
+    <message>
+        <source>Press %0 to show all controls again</source>
+        <translation>%0 imprensa para mostrar os controles novamente</translation>
     </message>
     <message>
         <source>usage: baka &lt;command&gt; [...]</source>
@@ -525,7 +623,11 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>add subtitles dialog</source>
-        <translation>diálogo para adicionar as legendas</translation>
+        <translation>adicionar diálogo legendas</translation>
+    </message>
+    <message>
+        <source>add audio track dialog</source>
+        <translation>adicionar diálogo de faixa de áudio</translation>
     </message>
     <message>
         <source>[subs]</source>
@@ -545,7 +647,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>[...]</source>
-        <translation>[...]</translation>
+        <translation type="vanished">[...]</translation>
     </message>
     <message>
         <source>playlist options</source>
@@ -628,8 +730,16 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
         <translation>alterna tela cheia</translation>
     </message>
     <message>
+        <source>toggles hide all controls state</source>
+        <translation>alterna o modo de ocultar controles</translation>
+    </message>
+    <message>
         <source>pause and hide the window</source>
         <translation>pausar e ocultar a janela</translation>
+    </message>
+    <message>
+        <source>clears the output textbox</source>
+        <translation>limpa a caixa de texto de saída</translation>
     </message>
     <message>
         <source>[command]</source>
@@ -648,8 +758,12 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
         <translation>aberto sobre diálogo</translation>
     </message>
     <message>
-        <source>set mpv debugging level</source>
+        <source>set mpv msg-level</source>
         <translation>conjunto de nível de depuração do mpv</translation>
+    </message>
+    <message>
+        <source>set mpv debugging level</source>
+        <translation type="vanished">conjunto de nível de depuração do mpv</translation>
     </message>
     <message>
         <source>quit baka-mplayer</source>
@@ -673,8 +787,12 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
         <translation>&amp;OK</translation>
     </message>
     <message>
+        <source>&amp;Cancel</source>
+        <translation>&amp;Cancelar</translation>
+    </message>
+    <message>
         <source>&amp;CANCEL</source>
-        <translation>&amp;CANCELAR</translation>
+        <translation type="vanished">&amp;CANCELAR</translation>
     </message>
 </context>
 <context>
@@ -735,20 +853,36 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
         <translation>Legenda:</translation>
     </message>
     <message>
+        <source>C&amp;lear Shorcut</source>
+        <translation>&amp;Remover Atalho</translation>
+    </message>
+    <message>
+        <source>Chang&amp;e</source>
+        <translation>Alt&amp;eração</translation>
+    </message>
+    <message>
+        <source>&amp;Add</source>
+        <translation>&amp;Adicionar</translation>
+    </message>
+    <message>
+        <source>&amp;Cancel</source>
+        <translation>&amp;Cancelar</translation>
+    </message>
+    <message>
         <source>C&amp;LEAR SHORTCUT</source>
-        <translation>&amp;REMOVER ATALHO</translation>
+        <translation type="vanished">&amp;REMOVER ATALHO</translation>
     </message>
     <message>
         <source>CHANG&amp;E</source>
-        <translation>ALT&amp;ERAÇÃO</translation>
+        <translation type="vanished">ALT&amp;ERAÇÃO</translation>
     </message>
     <message>
         <source>&amp;ADD</source>
-        <translation>&amp;ADICIONAR</translation>
+        <translation type="vanished">&amp;ADICIONAR</translation>
     </message>
     <message>
         <source>&amp;CANCEL</source>
-        <translation>&amp;CANCELAR</translation>
+        <translation type="vanished">&amp;CANCELAR</translation>
     </message>
 </context>
 <context>
@@ -757,6 +891,10 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
         <source>Open Location</source>
         <translatorcomment>Not sure of any good way to say Open Location.</translatorcomment>
         <translation>URL Aberto</translation>
+    </message>
+    <message>
+        <source>Paste copied link</source>
+        <translation>Pasta ligação copiado</translation>
     </message>
     <message>
         <source>Type URL or location here</source>
@@ -769,19 +907,19 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     <message>
         <source>&amp;PASTE</source>
         <translatorcomment>This made me laugh ^</translatorcomment>
-        <translation>&amp;PASTA</translation>
+        <translation type="vanished">&amp;PASTA</translation>
     </message>
     <message>
         <source>&amp;COPY</source>
-        <translation>&amp;CÓPIA</translation>
+        <translation type="vanished">&amp;CÓPIA</translation>
     </message>
     <message>
         <source>CLEA&amp;R</source>
-        <translation>&amp;REMOVER</translation>
+        <translation type="vanished">&amp;REMOVER</translation>
     </message>
     <message>
         <source>CANC&amp;EL</source>
-        <translation>CANC&amp;ELAR</translation>
+        <translation type="vanished">CANC&amp;ELAR</translation>
     </message>
 </context>
 <context>
@@ -800,7 +938,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Click to play a file by index</source>
-        <translation>Clique para selecionar um arquivo de índice</translation>
+        <translation type="vanished">Clique para selecionar um arquivo de índice</translation>
     </message>
     <message>
         <source>File 0 of 0</source>
@@ -885,7 +1023,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>S&amp;peed</source>
-        <translation>&amp;Velocidade</translation>
+        <translation type="vanished">&amp;Velocidade</translation>
     </message>
     <message>
         <source>&amp;Volume</source>
@@ -908,12 +1046,20 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
         <translation>A&amp;juda</translation>
     </message>
     <message>
+        <source>Open &amp;Copied Link</source>
+        <translation>Pasta ligação &amp;copiado</translation>
+    </message>
+    <message>
         <source>Pla&amp;y Next File</source>
         <translation>Pla&amp;y Arquivo Próximo</translation>
     </message>
     <message>
         <source>E&amp;xit</source>
         <translation>&amp;Fechar</translation>
+    </message>
+    <message>
+        <source>Hide &amp;Album Art</source>
+        <translation>&amp;Esconder Arte do Álbum</translation>
     </message>
     <message>
         <source>&amp;50%</source>
@@ -940,6 +1086,22 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
         <translation>Mostrar Linha de &amp;Comando</translation>
     </message>
     <message>
+        <source>&amp;Increase by 5%</source>
+        <translation>&amp;Aumento por 5%</translation>
+    </message>
+    <message>
+        <source>&amp;Decrease by 5%</source>
+        <translation>&amp;Diminuir por 5%</translation>
+    </message>
+    <message>
+        <source>&amp;Increase by 0.1%</source>
+        <translation>&amp;Aumento por 0.1%</translation>
+    </message>
+    <message>
+        <source>&amp;Decrease by 0.1%</source>
+        <translation>&amp;Diminuir por 0.1%</translation>
+    </message>
+    <message>
         <source>&amp;Mute</source>
         <translation>&amp;Silenciar</translation>
     </message>
@@ -956,6 +1118,14 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
         <translation>&amp;Desentrelaçamento</translation>
     </message>
     <message>
+        <source>&amp;Add Audio File...</source>
+        <translation>&amp;Adicionar Arquivo de Áudio...</translation>
+    </message>
+    <message>
+        <source>&amp;Hide All Controls</source>
+        <translation>&amp;Ocultar controles</translation>
+    </message>
+    <message>
         <source>&amp;New Player</source>
         <translation>&amp;Nova Janela</translation>
     </message>
@@ -965,7 +1135,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>Open Path from &amp;Clipboard</source>
-        <translation>&amp;Caminho Aberto da Área de Transferência</translation>
+        <translation type="vanished">&amp;Caminho Aberto da Área de Transferência</translation>
     </message>
     <message>
         <source>Show in &amp;Folder</source>
@@ -1014,7 +1184,7 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>&amp;Hide Album Art</source>
-        <translation>&amp;Esconder arte do álbum</translation>
+        <translation type="vanished">&amp;Esconder arte do álbum</translation>
     </message>
     <message>
         <source>&amp;Dim Lights</source>
@@ -1023,6 +1193,14 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     <message>
         <source>&amp;Next Chapter</source>
         <translation>&amp;Próximo Capítulo</translation>
+    </message>
+    <message>
+        <source>Click to select a specific file by index</source>
+        <translation>Clique para selecionar um arquivo de índice</translation>
+    </message>
+    <message>
+        <source>Spee&amp;d</source>
+        <translation>&amp;Velocidade</translation>
     </message>
     <message>
         <source>&amp;Previous Chapter</source>
@@ -1130,11 +1308,11 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>&amp;Increase Volume</source>
-        <translation>&amp;Aumento de Volume</translation>
+        <translation type="vanished">&amp;Aumento de Volume</translation>
     </message>
     <message>
         <source>&amp;Decrease Volume</source>
-        <translation>&amp;Diminuir o Volume</translation>
+        <translation type="vanished">&amp;Diminuir o Volume</translation>
     </message>
     <message>
         <source>With &amp;Subtitles...</source>
@@ -1150,11 +1328,11 @@ Alguns recursos podem não funcionar e configurações alteradas não serão sal
     </message>
     <message>
         <source>&amp;Increase</source>
-        <translation>&amp;Aumento</translation>
+        <translation type="vanished">&amp;Aumento</translation>
     </message>
     <message>
         <source>&amp;Decrease</source>
-        <translation>&amp;Diminuir</translation>
+        <translation type="vanished">&amp;Diminuir</translation>
     </message>
     <message>
         <source>&amp;Reset</source>
@@ -1292,6 +1470,10 @@ Nota: O valor deve ser de %0 - %1</translation>
         <translation>Vídeo (x%0)</translation>
     </message>
     <message>
+        <source>Video Output</source>
+        <translation>Saída de Vídeo</translation>
+    </message>
+    <message>
         <source>Resolution</source>
         <translation>Resolução</translation>
     </message>
@@ -1312,6 +1494,10 @@ Nota: O valor deve ser de %0 - %1</translation>
         <translation>Áudio (x%0)</translation>
     </message>
     <message>
+        <source>Audio Output</source>
+        <translation>Saída de Áudio</translation>
+    </message>
+    <message>
         <source>Sample Rate</source>
         <translation>Taxa de Amostragem</translation>
     </message>
@@ -1324,8 +1510,36 @@ Nota: O valor deve ser de %0 - %1</translation>
         <translation>Metadados</translation>
     </message>
     <message>
+        <source>Buffering...</source>
+        <translation>Tamponamento...</translation>
+    </message>
+    <message>
+        <source>Your network is slow or stuck, please wait a bit</source>
+        <translation>Sua rede é lenta ou preso, por favor, espere um pouco</translation>
+    </message>
+    <message>
+        <source>File couldn&apos;t be opened</source>
+        <translation>Arquivo não pôde ser aberto</translation>
+    </message>
+    <message>
         <source>Volume: %0%</source>
         <translation>Volume: %0%</translation>
+    </message>
+    <message>
+        <source>Deinterlacing: %0</source>
+        <translation>Desentrelaçamentando: %0</translation>
+    </message>
+    <message>
+        <source>enabled</source>
+        <translation>ativado</translation>
+    </message>
+    <message>
+        <source>disabled</source>
+        <translation>desativado</translation>
+    </message>
+    <message>
+        <source>Motion Interpolation: %0</source>
+        <translation>Interpolação de Movimento: %0</translation>
     </message>
     <message>
         <source>[Video]</source>
@@ -1477,11 +1691,11 @@ Nota: O valor deve ser de %0 - %1</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Click &amp;amp; drag cursor up/down to change volume&lt;br&gt;Click &amp;amp; drag cursor left/right to seek&lt;/b&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Clique e arraste o cursor para cima e para baixo para alterar o volume&lt;br/&gt;Clique e arraste o cursor para a esquerda e direita para buscar&lt;/b&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Clique e arraste o cursor para cima e para baixo para alterar o volume&lt;br/&gt;Clique e arraste o cursor para a esquerda e direita para buscar&lt;/b&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Language:</source>
-        <translation>Língua:</translation>
+        <translation type="vanished">Língua:</translation>
     </message>
     <message>
         <source>Key Bindings</source>
@@ -1489,11 +1703,11 @@ Nota: O valor deve ser de %0 - %1</translation>
     </message>
     <message>
         <source>Hint: Prefix a command with &apos;mpv&apos; to make it run as an input command.</source>
-        <translation>Dica: Prefixo um comando com &apos;mpv&apos; para fazê-lo funcionar como um comando de entrada.</translation>
+        <translation type="vanished">Dica: Prefixo um comando com &apos;mpv&apos; para fazê-lo funcionar como um comando de entrada.</translation>
     </message>
     <message>
         <source>RESE&amp;T ALL</source>
-        <translation>&amp;REDEFINIÇÃO TUDO</translation>
+        <translation type="vanished">&amp;REDEFINIÇÃO TUDO</translation>
     </message>
     <message>
         <source>Video</source>
@@ -1525,6 +1739,10 @@ Nota: O valor deve ser de %0 - %1</translation>
         <translation>Foto</translation>
     </message>
     <message>
+        <source>Chang&amp;e...</source>
+        <translation>Alt&amp;eração...</translation>
+    </message>
+    <message>
         <source>File Format:</source>
         <translation>Formato de arquivo:</translation>
     </message>
@@ -1533,12 +1751,104 @@ Nota: O valor deve ser de %0 - %1</translation>
         <translation>jpg</translation>
     </message>
     <message>
+        <source>Language</source>
+        <translation>Língua</translation>
+    </message>
+    <message>
+        <source>Change Volume</source>
+        <translation>Alterar Volume</translation>
+    </message>
+    <message>
+        <source>Seek Position</source>
+        <translation>Buscar Posição</translation>
+    </message>
+    <message>
+        <source>&amp;Use Mouse &amp;&amp; Touch Gestures</source>
+        <translation>&amp;Usar o Mouse &amp;&amp; Gestos de Toque</translation>
+    </message>
+    <message>
+        <source>History</source>
+        <translation>História</translation>
+    </message>
+    <message>
+        <source>Remember &amp;recently opened files up to</source>
+        <translation>Lembre-se arquivos abertos &amp;recentemente até</translation>
+    </message>
+    <message>
+        <source>Remember playback &amp;position</source>
+        <translation>Lembre-se &amp;posição de reprodução</translation>
+    </message>
+    <message>
+        <source>Prefix a command with &apos;mpv&apos; to make it run as an input command.</source>
+        <translation>Prefixo um comando com &apos;mpv&apos; para fazê-lo funcionar como um comando de entrada.</translation>
+    </message>
+    <message>
+        <source>Rese&amp;t All</source>
+        <translation>&amp;Redefinição Tudo</translation>
+    </message>
+    <message>
         <source>png</source>
         <translation>png</translation>
     </message>
     <message>
         <source>tga</source>
         <translation>tga</translation>
+    </message>
+    <message>
+        <source>Always show the &amp;save window</source>
+        <translation>Sempre mostrar a janela de &amp;salvar</translation>
+    </message>
+    <message>
+        <source>Advanced</source>
+        <translation>Avançado</translation>
+    </message>
+    <message>
+        <source>Command Line</source>
+        <translation>Linha de Comando</translation>
+    </message>
+    <message>
+        <source>mpv msg-level:</source>
+        <translation>mpv nível de mensagem:</translation>
+    </message>
+    <message>
+        <source>none</source>
+        <translation>nada</translation>
+    </message>
+    <message>
+        <source>fatal</source>
+        <translation>fatal</translation>
+    </message>
+    <message>
+        <source>error</source>
+        <translation>erro</translation>
+    </message>
+    <message>
+        <source>warn</source>
+        <translation>advertir</translation>
+    </message>
+    <message>
+        <source>info</source>
+        <translation>info</translation>
+    </message>
+    <message>
+        <source>status</source>
+        <translation>posição</translation>
+    </message>
+    <message>
+        <source>verbose</source>
+        <translation>verboso</translation>
+    </message>
+    <message>
+        <source>debug</source>
+        <translation>depurar</translation>
+    </message>
+    <message>
+        <source>trace</source>
+        <translation>traço</translation>
+    </message>
+    <message>
+        <source>&amp;Cancel</source>
+        <translation>&amp;Cancelar</translation>
     </message>
     <message>
         <source>File Name Template:</source>
@@ -1556,11 +1866,11 @@ Nota: O valor deve ser de %0 - %1</translation>
     </message>
     <message>
         <source>CHANG&amp;E</source>
-        <translation>ALT&amp;ERAÇÃO</translation>
+        <translation type="vanished">ALT&amp;ERAÇÃO</translation>
     </message>
     <message>
         <source>&amp;Always show the dialog</source>
-        <translation>&amp;Sempre mostrar a janela</translation>
+        <translation type="vanished">&amp;Sempre mostrar a janela</translation>
     </message>
     <message>
         <source>&amp;CLOSE</source>
@@ -1592,15 +1902,15 @@ Nota: O valor deve ser de %0 - %1</translation>
     </message>
     <message>
         <source>&amp;ADD</source>
-        <translation>&amp;Adicionar</translation>
+        <translation type="vanished">&amp;Adicionar</translation>
     </message>
     <message>
         <source>&amp;Enable Mouse Gesture support</source>
-        <translation>&amp;Permitir Gestos do Mouse</translation>
+        <translation type="vanished">&amp;Permitir Gestos do Mouse</translation>
     </message>
     <message>
         <source>&amp;REMOVE</source>
-        <translation>&amp;REMOVER</translation>
+        <translation type="vanished">&amp;REMOVER</translation>
     </message>
     <message>
         <source>RESE&amp;T</source>
@@ -1644,7 +1954,7 @@ Nota: O valor deve ser de %0 - %1</translation>
     </message>
     <message>
         <source>&amp;CANCEL</source>
-        <translation>&amp;CANCELAR</translation>
+        <translation type="vanished">&amp;CANCELAR</translation>
     </message>
 </context>
 <context>
@@ -1686,8 +1996,12 @@ Nota: O valor deve ser de %0 - %1</translation>
         <translation>Sempre mostrar a janela</translation>
     </message>
     <message>
+        <source>&amp;Save</source>
+        <translation>&amp;Salvar</translation>
+    </message>
+    <message>
         <source>&amp;SAVE</source>
-        <translation>&amp;SALVAR</translation>
+        <translation type="vanished">&amp;SALVAR</translation>
     </message>
     <message>
         <source>Choose screenshot directory</source>
@@ -1709,12 +2023,20 @@ Nota: O valor deve ser de %0 - %1</translation>
         <translation>Cerca de 0 segundos mais</translation>
     </message>
     <message>
+        <source>&amp;Update</source>
+        <translation>&amp;Atualizar</translation>
+    </message>
+    <message>
+        <source>&amp;Cancel</source>
+        <translation>&amp;Cancelar</translation>
+    </message>
+    <message>
         <source>&amp;UPDATE</source>
-        <translation>&amp;ATUALIZAR</translation>
+        <translation type="vanished">&amp;ATUALIZAR</translation>
     </message>
     <message>
         <source>&amp;CANCEL</source>
-        <translation>&amp;CANCELAR</translation>
+        <translation type="vanished">&amp;CANCELAR</translation>
     </message>
     <message>
         <source>&amp;CLOSE</source>

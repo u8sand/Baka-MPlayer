@@ -7,6 +7,7 @@
 # "CONFIG+=install_translations"                    - make install will install .qm files on your system
 # "CONFIG+=begin_translations"                      - .ts files will be updated based on project changes
 # "CONFIG+=update_translations"                     - .ts files will be trimmed to bare minimum for commits
+# "CONFIG+=strip_translations"                      - obsolete translations will be stripped from .ts files
 # "CONFIG+=release_translations"                    - .qm files will be compiled from .ts files
 # "INSTROOT="                                       - installation root directory
 # "BINDIR=/usr/bin"                                 - installation binary directory
