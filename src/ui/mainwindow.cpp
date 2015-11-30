@@ -180,9 +180,11 @@ MainWindow::MainWindow(QWidget *parent):
             {
                 ui->actionShow_D_ebug_Output->setChecked(b);
                 ui->verticalWidget->setVisible(b);
-                QCoreApplication::postEvent(this, new QMouseEvent(QMouseEvent::MouseMove,
-                                                                  QCursor::pos(),
-                                                                  Qt::NoButton,Qt::NoButton,Qt::NoModifier));
+                mouseMoveEvent(new QMouseEvent(QMouseEvent::MouseMove,
+                                               QCursor::pos(),
+                                               Qt::NoButton,Qt::NoButton,Qt::NoModifier));
+                if(b)
+                    ui->inputLineEdit->setFocus();
             });
 
     connect(this, &MainWindow::hideAllControlsChanged,
@@ -1003,9 +1005,9 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
 
 void MainWindow::leaveEvent(QEvent *event)
 {
-    QCoreApplication::postEvent(this, new QMouseEvent(QMouseEvent::MouseMove,
-                                                      QCursor::pos(),
-                                                      Qt::NoButton,Qt::NoButton,Qt::NoModifier));
+    mouseMoveEvent(new QMouseEvent(QMouseEvent::MouseMove,
+                                   QCursor::pos(),
+                                   Qt::NoButton,Qt::NoButton,Qt::NoModifier));
     QMainWindow::leaveEvent(event);
 }
 
@@ -1020,12 +1022,6 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
     {
         QKeyEvent *keyEvent = static_cast<QKeyEvent*>(event);
         keyPressEvent(keyEvent);
-    }
-    else if(event->type() == QEvent::Enter && !isPlaylistVisible() && obj == ui->splitter->handle(1))
-    {
-        ShowPlaylist(true);
-        if(autohide)
-            autohide->stop();
     }
     return false;
 }
@@ -1158,13 +1154,10 @@ void MainWindow::HideAllControls(bool w, bool s)
         if(s || !hideAllControls)
             playlistState = ui->playlistLayoutWidget->isVisible();
         ui->menubar->setVisible(false);
-        ui->splitter->handle(1)->installEventFilter(this); // capture events for the splitter
-        setMouseTracking(true); // register mouse move event
         setContextMenuPolicy(Qt::ActionsContextMenu);
-        // post a mouseMoveEvent to autohide
-        QCoreApplication::postEvent(this, new QMouseEvent(QMouseEvent::MouseMove,
-                                                          QCursor::pos(),
-                                                          Qt::NoButton,Qt::NoButton,Qt::NoModifier));
+        mouseMoveEvent(new QMouseEvent(QMouseEvent::MouseMove,
+                                       QCursor::pos(),
+                                       Qt::NoButton,Qt::NoButton,Qt::NoModifier));
     }
     else
     {
@@ -1172,8 +1165,6 @@ void MainWindow::HideAllControls(bool w, bool s)
             ui->menubar->setVisible(true);
         ui->seekBar->setVisible(true);
         ui->playbackLayoutWidget->setVisible(true);
-        ui->splitter->handle(1)->removeEventFilter(this);
-        setMouseTracking(false); // stop registering mouse move event
         setContextMenuPolicy(Qt::NoContextMenu);
         setCursor(QCursor(Qt::ArrowCursor)); // show cursor
         autohide->stop();

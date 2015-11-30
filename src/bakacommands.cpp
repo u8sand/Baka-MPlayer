@@ -622,6 +622,14 @@ void BakaEngine::BakaBoss(QStringList &args)
         InvalidParameter(args.join(' '));
 }
 
+void BakaEngine::BakaClear(QStringList &args)
+{
+    if(args.empty())
+        window->ui->outputTextEdit->setPlainText(QString());
+    else
+        InvalidParameter(args.join(' '));
+}
+
 void BakaEngine::BakaHelp(QStringList &args)
 {
     if(args.empty())

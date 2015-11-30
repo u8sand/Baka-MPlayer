@@ -384,6 +384,15 @@ private:
           }
          }
         },
+        {"clear",
+         {&BakaEngine::BakaClear,
+          {
+           QString(),
+           tr("clears the output textbox"),
+           QString()
+          }
+         }
+        },
         {"help",
          {&BakaEngine::BakaHelp,
           {
@@ -452,6 +461,7 @@ private:
     void BakaFullScreen(QStringList&);
     void BakaHideAllControls(QStringList&);
     void BakaBoss(QStringList&);
+    void BakaClear(QStringList&);
     void BakaHelp(QStringList&);
     void BakaAbout(QStringList&);
     void BakaMsgLevel(QStringList&);
