@@ -131,11 +131,6 @@ CONFIG(begin_translations) {
 
 CONFIG(update_translations) {
     isEmpty(lupdate):lupdate=lupdate
-    system($$lupdate -locations none $$_PRO_FILE_)
-}
-
-CONFIG(strip_translations) {
-    isEmpty(lupdate):lupdate=lupdate
     system($$lupdate -no-obsolete -locations none $$_PRO_FILE_)
 }
 
