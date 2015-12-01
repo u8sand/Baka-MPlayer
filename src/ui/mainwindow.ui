@@ -121,6 +121,10 @@ QListView {
 #playlistWidget::item:selected {
 	background: #383838;
 }
+#playlistWidget:item:selected:active,
+#playlistWidget:item:selected:!active {
+	color: whitesmoke;
+}
 
 /* QScrollBar */
 
@@ -1059,7 +1063,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>646</width>
-     <height>24</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
