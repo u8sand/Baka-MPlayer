@@ -669,7 +669,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
     </message>
     <message>
         <source>Click to select a specific file by index</source>
-        <translation type="unfinished"></translation>
+        <translation>点击以按照列表顺序选择一个文件</translation>
     </message>
     <message>
         <source>File 0 of 0</source>
@@ -829,7 +829,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
     </message>
     <message>
         <source>Reduce video studder</source>
-        <translation type="unfinished"></translation>
+        <translation>降低视频卡顿</translation>
     </message>
     <message>
         <source>&amp;Deinterlace</source>
@@ -857,7 +857,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
     </message>
     <message>
         <source>[ &amp;none ]</source>
-        <translation type="unfinished"></translation>
+        <translation>[无]</translation>
     </message>
     <message>
         <source>Show &amp;Command Line</source>
