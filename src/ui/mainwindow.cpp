@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-#include <cmath>
+#include <QtMath>
 #include <QLibraryInfo>
 #include <QMimeData>
 #include <QDesktopWidget>
@@ -994,7 +994,7 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
         ui->seekBar->setVisible(showPlayback || ui->outputTextEdit->isVisible());
 
         QRect playlistRect = geometry();
-        playlistRect.setLeft(playlistRect.right() - std::ceil(playlistRect.width()/7.0));
+        playlistRect.setLeft(playlistRect.right() - qCeil(playlistRect.width()/7.0));
         bool showPlaylist = playlistRect.contains(event->globalPos());
         ShowPlaylist(showPlaylist);
 
