@@ -904,7 +904,7 @@ QPushButton:pressed {
             </property>
             <item>
              <property name="text">
-              <string>none</string>
+              <string>no</string>
              </property>
             </item>
             <item>
@@ -934,7 +934,7 @@ QPushButton:pressed {
             </item>
             <item>
              <property name="text">
-              <string>verbose</string>
+              <string>v</string>
              </property>
             </item>
             <item>

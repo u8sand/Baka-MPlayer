@@ -81,7 +81,7 @@ QPushButton:disabled {
       </sizepolicy>
      </property>
      <property name="pixmap">
-      <pixmap resource="../rsclist.qrc">:/img/exists.svg</pixmap>
+      <pixmap resource="../rsclist.qrc">:/img/not_exists.svg</pixmap>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
