@@ -16,22 +16,24 @@
         <translation>Baka MPlayer 0.0.0</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2015 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; ist ein freier, auf &lt;b&gt;libmpv&lt;/b&gt; basierender Cross Platform Multimedia-Player. Sein schlichtes Design spiegelt die Idee für eine übersichtliche, einfache und angenehme Umgebung für das Ansehen von TV-Shows wieder.&lt;br&gt;&lt;br&gt;Copyright © 2015 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:dodgerblue;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>Credits</source>
-        <translation>Credits</translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2015 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#008098;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>mpv - video player based on MPlayer/mplayer2
 GPLv2 &lt;mpv.io&gt;
+
+Material Design icons
+Attribution 4.0 International &lt;Google&gt;
 
 Noto Sans -  font family with many supported characters
 Apache License, version 2.0 &lt;Google&gt;
 
 Retro Cassette image
 &lt;Lukas Troup&gt;
+
+Gesture icons
+CC License &lt;Jeff Portaro&gt;
 
 Download icon
 CC BY 3.0 &lt;Sasha Mescheryakov&gt;
@@ -41,34 +43,21 @@ Translations
 - Croatian &lt;gogo&gt;
 - Dutch &lt;robin007bond&gt;
 - French &lt;chapouvalpin&gt;
+- German: &lt;yiip87&gt;
 - Italian &lt;Aloysius&gt;
 - Korean &lt;godly-devotion&gt;
 - Portuguese &lt;u8sand&gt;
 - Russian &lt;suhr&gt;
 - Spanish &lt;Alfredo Ramos&gt;</source>
-        <translation type="vanished">mpv - auf MPlayer/mplayer2 basierender Video Player
-GPLv2 &lt;mpv.io&gt;
-
-Noto Sans -  Schriftart mit vielen unterstützten Zeichen
-Apache License, version 2.0 &lt;Google&gt;
-
-Retro Kassettenbild
-&lt;Lukas Troup&gt;
-
-Download Symbol
-CC BY 3.0 &lt;Sasha Mescheryakov&gt;
-
-Übersetzungen
-- Chinesisch &lt;amazingfate, Antares95&gt;
-- Deutsch &lt;yiip87&gt;
-- Französisch &lt;chapouvalpin&gt;
-- Italienisch &lt;Aloysius&gt;
-- Koreanisch &lt;godly-devotion&gt;
-- Kroatisch &lt;gogo&gt;
-- Niederländisch &lt;robin007bond&gt;
-- Portugiesisch &lt;u8sand&gt;
-- Russisch &lt;suhr&gt;
-- Spanisch &lt;Alfredo Ramos&gt;</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Close</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Credits</source>
+        <translation>Credits</translation>
     </message>
     <message>
         <source>License</source>
@@ -115,39 +104,6 @@ Falls nicht, schreiben Sie an die
 Free Software Foundation, Inc., 51 Franklin St,
 Fifth Floor, Boston, MA 02110, USA</translation>
     </message>
-    <message>
-        <source>&amp;CLOSE</source>
-        <translation>&amp;Schließen</translation>
-    </message>
-    <message>
-        <source>mpv - video player based on MPlayer/mplayer2
-GPLv2 &lt;mpv.io&gt;
-
-Material Design icons
-Attribution 4.0 International &lt;Google&gt;
-
-Noto Sans -  font family with many supported characters
-Apache License, version 2.0 &lt;Google&gt;
-
-Retro Cassette image
-&lt;Lukas Troup&gt;
-
-Download icon
-CC BY 3.0 &lt;Sasha Mescheryakov&gt;
-
-Translations
-- Chinese &lt;amazingfate, Antares95&gt;
-- Croatian &lt;gogo&gt;
-- Dutch &lt;robin007bond&gt;
-- French &lt;chapouvalpin&gt;
-- German: &lt;yiip87&gt;
-- Italian &lt;Aloysius&gt;
-- Korean &lt;godly-devotion&gt;
-- Portuguese &lt;u8sand&gt;
-- Russian &lt;suhr&gt;
-- Spanish &lt;Alfredo Ramos&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>BakaEngine</name>
@@ -158,6 +114,10 @@ Translations
     <message>
         <source>Subtitle Files</source>
         <translation>Untertiteldateien</translation>
+    </message>
+    <message>
+        <source>Open Audio File</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Saved to &quot;%0&quot;, with subs</source>
@@ -216,6 +176,14 @@ Translations
         <translation>Geschwindigkeit: %0x</translation>
     </message>
     <message>
+        <source>Press ESC or double-click to leave full screen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Press %0 to show all controls again</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>usage: baka &lt;command&gt; [...]</source>
         <translation>Aufruf: baka &lt;befehl&gt; [...]</translation>
     </message>
@@ -234,16 +202,6 @@ Translations
     <message>
         <source>advanced:</source>
         <translation>Erweitert:</translation>
-    </message>
-    <message>
-        <source>Settings version not recognized</source>
-        <translation type="vanished">Konfigurationsversion nicht erkannt</translation>
-    </message>
-    <message>
-        <source>The settings file was made by a newer version of baka-mplayer; please upgrade this version or seek assistance from the developers.
-Some features may not work and changed settings will not be saved.</source>
-        <translation type="vanished">Die Konfigurationsdatei wurde von einer neueren Version von Baka-MPlayer erstellt. Bitte aktualisieren Sie diese Version oder kontaktieren Sie den Entwickler für Unterstützung.
-Einige Features könnten nicht funktionieren und geänderte Einstellungen werden nicht gespeichert.</translation>
     </message>
     <message>
         <source>invalid command &apos;%0&apos;</source>
@@ -282,14 +240,6 @@ Einige Features könnten nicht funktionieren und geänderte Einstellungen werden
         <translation>Kapitel zurück</translation>
     </message>
     <message>
-        <source>Seek forwards by 5 sec</source>
-        <translation>5 Sekunden vorwärts</translation>
-    </message>
-    <message>
-        <source>Seek backwards by 5 sec</source>
-        <translation>5 Sekunden rückwärts</translation>
-    </message>
-    <message>
         <source>Frame step backwards</source>
         <translation>Frame rückwärts</translation>
     </message>
@@ -314,20 +264,16 @@ Einige Features könnten nicht funktionieren und geänderte Einstellungen werden
         <translation>lauter</translation>
     </message>
     <message>
-        <source>Increase playback speed by 10%</source>
-        <translation>Wiedergabegeschwindigkeit +10%</translation>
-    </message>
-    <message>
-        <source>Decrease playback speed by 10%</source>
-        <translation>Wiedergabegeschwindigkeit -10%</translation>
-    </message>
-    <message>
         <source>Reset speed</source>
         <translation>Wiedergabegeschwindigkeit zurücksetzen</translation>
     </message>
     <message>
         <source>Toggle fullscreen</source>
         <translation>Vollbild ein/aus</translation>
+    </message>
+    <message>
+        <source>Toggle hide all controls mode</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Dim lights</source>
@@ -402,26 +348,6 @@ Einige Features könnten nicht funktionieren und geänderte Einstellungen werden
         <translation>Auf Videogröße skalieren</translation>
     </message>
     <message>
-        <source>Fit window to 50%</source>
-        <translation>Auf 50% skalieren</translation>
-    </message>
-    <message>
-        <source>Fit window to 75%</source>
-        <translation>Auf 75% skalieren</translation>
-    </message>
-    <message>
-        <source>Fit window to 100%</source>
-        <translation>Auf 100% skalieren</translation>
-    </message>
-    <message>
-        <source>Fit window to 150%</source>
-        <translation>Auf 150% skalieren</translation>
-    </message>
-    <message>
-        <source>Fit window to 200%</source>
-        <translation>Auf 200% skalieren</translation>
-    </message>
-    <message>
         <source>Boss key</source>
         <translation>Boss Taste</translation>
     </message>
@@ -470,6 +396,10 @@ Einige Features könnten nicht funktionieren und geänderte Einstellungen werden
         <translation>Untertitel Fenster hinzufügen</translation>
     </message>
     <message>
+        <source>add audio track dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>[subs]</source>
         <translation>[Untertitel]</translation>
     </message>
@@ -484,10 +414,6 @@ Einige Features könnten nicht funktionieren und geänderte Einstellungen werden
     <message>
         <source>stops the current playback</source>
         <translation>hält die aktuelle Wiedergabe an</translation>
-    </message>
-    <message>
-        <source>[...]</source>
-        <translation>[...]</translation>
     </message>
     <message>
         <source>playlist options</source>
@@ -558,8 +484,16 @@ Einige Features könnten nicht funktionieren und geänderte Einstellungen werden
         <translation>Vollbild ein/aus</translation>
     </message>
     <message>
+        <source>toggles hide all controls state</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>pause and hide the window</source>
         <translation>Pause und Fenster verstecken</translation>
+    </message>
+    <message>
+        <source>clears the output textbox</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>[command]</source>
@@ -578,8 +512,8 @@ Einige Features könnten nicht funktionieren und geänderte Einstellungen werden
         <translation>Über Baka-MPlayer</translation>
     </message>
     <message>
-        <source>set mpv debugging level</source>
-        <translation>mpv Debug Level einstellen</translation>
+        <source>set mpv msg-level</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>quit baka-mplayer</source>
@@ -587,6 +521,26 @@ Einige Features könnten nicht funktionieren und geänderte Einstellungen werden
     </message>
     <message>
         <source>Toggle mute audio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Seek forwards by %0 sec</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Seek backwards by %0 sec</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Increase playback speed by %0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Decrease playback speed by %0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fit window to %0%</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -617,8 +571,8 @@ Einige Features könnten nicht funktionieren und geänderte Einstellungen werden
         <translation>&amp;OK</translation>
     </message>
     <message>
-        <source>&amp;CANCEL</source>
-        <translation>&amp;Abbrechen</translation>
+        <source>&amp;Cancel</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -671,20 +625,20 @@ Einige Features könnten nicht funktionieren und geänderte Einstellungen werden
         <translation>Bezeichnung:</translation>
     </message>
     <message>
-        <source>C&amp;LEAR SHORTCUT</source>
-        <translation>&amp;Tastenkürzel leeren</translation>
+        <source>C&amp;lear Shorcut</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>CHANG&amp;E</source>
-        <translation>Ä&amp;ndern</translation>
+        <source>Chang&amp;e</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&amp;ADD</source>
-        <translation>&amp;Hinzufügen</translation>
+        <source>&amp;Add</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&amp;CANCEL</source>
-        <translation>&amp;Abbrechen</translation>
+        <source>&amp;Cancel</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -694,28 +648,16 @@ Einige Features könnten nicht funktionieren und geänderte Einstellungen werden
         <translation>Ort öffnen</translation>
     </message>
     <message>
+        <source>Paste copied link</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Type URL or location here</source>
         <translation>URL oder Ort eingeben</translation>
     </message>
     <message>
         <source>&amp;OK</source>
         <translation>&amp;OK</translation>
-    </message>
-    <message>
-        <source>&amp;PASTE</source>
-        <translation>&amp;Einfügen</translation>
-    </message>
-    <message>
-        <source>&amp;COPY</source>
-        <translation>&amp;Kopieren</translation>
-    </message>
-    <message>
-        <source>CLEA&amp;R</source>
-        <translation>&amp;Zurücksetzen</translation>
-    </message>
-    <message>
-        <source>CANC&amp;EL</source>
-        <translation>&amp;Abbrechen</translation>
     </message>
 </context>
 <context>
@@ -733,8 +675,8 @@ Einige Features könnten nicht funktionieren und geänderte Einstellungen werden
         <translation>Wiedergabeliste durchsuchen</translation>
     </message>
     <message>
-        <source>Click to play a file by index</source>
-        <translation>Klicken Sie, um eine Datei aus der Liste abzuspielen</translation>
+        <source>Click to select a specific file by index</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>File 0 of 0</source>
@@ -817,8 +759,16 @@ Einige Features könnten nicht funktionieren und geänderte Einstellungen werden
         <translation>&amp;Tonspuren</translation>
     </message>
     <message>
-        <source>S&amp;peed</source>
-        <translation>&amp;Geschwindigkeit</translation>
+        <source>Spee&amp;d</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Add Audio File...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Hide All Controls</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>&amp;Navigate</source>
@@ -849,16 +799,8 @@ Einige Features könnten nicht funktionieren und geänderte Einstellungen werden
         <translation>&amp;Ort öffnen...</translation>
     </message>
     <message>
-        <source>Open Path from &amp;Clipboard</source>
-        <translation>&amp;Aus Zwischenablage öffnen</translation>
-    </message>
-    <message>
         <source>Show in &amp;Folder</source>
         <translation>&amp;In Verzeichnis anzeigen</translation>
-    </message>
-    <message>
-        <source>Play &amp;Next File</source>
-        <translation type="vanished">N&amp;ächste Datei wiedergeben</translation>
     </message>
     <message>
         <source>Play &amp;Previous File</source>
@@ -925,10 +867,6 @@ Einige Features könnten nicht funktionieren und geänderte Einstellungen werden
         <translation>&amp;Wiedergabeliste anzeigen</translation>
     </message>
     <message>
-        <source>&amp;Hide Album Art</source>
-        <translation>&amp;Albumcover verstecken</translation>
-    </message>
-    <message>
         <source>&amp;Dim Lights</source>
         <translation>&amp;Licht aus</translation>
     </message>
@@ -953,22 +891,6 @@ Einige Features könnten nicht funktionieren und geänderte Einstellungen werden
         <translation>&amp;Fenstergröße</translation>
     </message>
     <message>
-        <source>50%</source>
-        <translation type="vanished">50%</translation>
-    </message>
-    <message>
-        <source>75%</source>
-        <translation type="vanished">75%</translation>
-    </message>
-    <message>
-        <source>100%</source>
-        <translation type="vanished">100%</translation>
-    </message>
-    <message>
-        <source>200%</source>
-        <translation type="vanished">200%</translation>
-    </message>
-    <message>
         <source>&amp;Auto Detect</source>
         <translation>&amp;automatisch erkennen</translation>
     </message>
@@ -987,10 +909,6 @@ Einige Features könnten nicht funktionieren und geänderte Einstellungen werden
     <message>
         <source>&amp;Add Subtitle File...</source>
         <translation>Untertiteldatei &amp;hinzufügen...</translation>
-    </message>
-    <message>
-        <source>[ none ]</source>
-        <translation type="vanished">[ keine ]</translation>
     </message>
     <message>
         <source>&amp;Size +</source>
@@ -1021,14 +939,6 @@ Einige Features könnten nicht funktionieren und geänderte Einstellungen werden
         <translation>&amp;Kommandozeile anzeigen</translation>
     </message>
     <message>
-        <source>&amp;Increase Volume</source>
-        <translation>Lauter &amp;+</translation>
-    </message>
-    <message>
-        <source>&amp;Decrease Volume</source>
-        <translation>Leiser &amp;-</translation>
-    </message>
-    <message>
         <source>With &amp;Subtitles...</source>
         <translation>&amp;Mit Untertitel...</translation>
     </message>
@@ -1041,20 +951,8 @@ Einige Features könnten nicht funktionieren und geänderte Einstellungen werden
         <translation>&amp;Voreinstellungen...</translation>
     </message>
     <message>
-        <source>&amp;Increase</source>
-        <translation>S&amp;chneller</translation>
-    </message>
-    <message>
-        <source>&amp;Decrease</source>
-        <translation>&amp;Langsamer</translation>
-    </message>
-    <message>
         <source>&amp;Reset</source>
         <translation>Z&amp;urücksetzen</translation>
-    </message>
-    <message>
-        <source>150%</source>
-        <translation type="vanished">150%</translation>
     </message>
     <message>
         <source>Update &amp;Streaming Support</source>
@@ -1123,7 +1021,15 @@ Hinweis: Wert muss zwischen %0 und %1 liegen</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Open &amp;Copied Link</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Pla&amp;y Next File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hide &amp;Album Art</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1144,6 +1050,22 @@ Hinweis: Wert muss zwischen %0 und %1 liegen</translation>
     </message>
     <message>
         <source>[ &amp;none ]</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Increase by 5%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Decrease by 5%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Increase by 0.1%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Decrease by 0.1%</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1186,14 +1108,6 @@ Hinweis: Wert muss zwischen %0 und %1 liegen</translation>
 <context>
     <name>MpvHandler</name>
     <message>
-        <source>File name</source>
-        <translation type="vanished">Dateiname</translation>
-    </message>
-    <message>
-        <source>Media Title</source>
-        <translation type="vanished">Titel</translation>
-    </message>
-    <message>
         <source>File size</source>
         <translation>Dateigröße</translation>
     </message>
@@ -1206,44 +1120,12 @@ Hinweis: Wert muss zwischen %0 und %1 liegen</translation>
         <translation>Spielzeit</translation>
     </message>
     <message>
-        <source>[Video]</source>
-        <translation type="vanished">[Video]</translation>
-    </message>
-    <message>
-        <source>Codec</source>
-        <translation type="vanished">Codec</translation>
-    </message>
-    <message>
         <source>Bitrate</source>
         <translation>Bitrate</translation>
     </message>
     <message>
-        <source>Dimensions</source>
-        <translation type="vanished">Abmessungen</translation>
-    </message>
-    <message>
-        <source>[Audio]</source>
-        <translation type="vanished">[Audio]</translation>
-    </message>
-    <message>
-        <source>Samplerate</source>
-        <translation type="vanished">Samplerate</translation>
-    </message>
-    <message>
         <source>Channels</source>
         <translation>Kanäle</translation>
-    </message>
-    <message>
-        <source>[Track List]</source>
-        <translation type="vanished">[Spurliste]</translation>
-    </message>
-    <message>
-        <source>[Chapter List]</source>
-        <translation type="vanished">[Kapitelliste]</translation>
-    </message>
-    <message>
-        <source>[Metadata]</source>
-        <translation type="vanished">[Metadaten]</translation>
     </message>
     <message>
         <source>File does not exist</source>
@@ -1270,6 +1152,10 @@ Hinweis: Wert muss zwischen %0 und %1 liegen</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Video Output</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Resolution</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1290,6 +1176,10 @@ Hinweis: Wert muss zwischen %0 und %1 liegen</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Audio Output</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Sample Rate</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1299,6 +1189,34 @@ Hinweis: Wert muss zwischen %0 und %1 liegen</translation>
     </message>
     <message>
         <source>Metadata</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Buffering...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Your network is slow or stuck, please wait a bit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>File couldn&apos;t be opened</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deinterlacing: %0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>enabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>disabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Motion Interpolation: %0</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1364,28 +1282,16 @@ Hinweis: Wert muss zwischen %0 und %1 liegen</translation>
         <translation>&amp;Popup verstecken</translation>
     </message>
     <message>
+        <source>Language</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Mouse Gesture</source>
         <translation>Mausgesten</translation>
     </message>
     <message>
-        <source>&amp;Enable Mouse Gesture support</source>
-        <translation>&amp;Unterstützung für Mausgesten aktivieren</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Click &amp;amp; drag cursor up/down to change volume&lt;br&gt;Click &amp;amp; drag cursor left/right to seek&lt;/b&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Klicken und Mauszeiger nach oben/unten ziehen um die Lautstärke zu ändern&lt;br&gt;Klicken und Mauszeiger nach links/rechts ziehen um vor/zurück zu springen&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>Language:</source>
-        <translation>Sprache:</translation>
-    </message>
-    <message>
         <source>Key Bindings</source>
         <translation>Tastenkürzel</translation>
-    </message>
-    <message>
-        <source>Hint: Prefix a command with &apos;mpv&apos; to make it run as an input command.</source>
-        <translation>Hinweis: Schreiben Sie &apos;mpv&apos; vor den Befehl um diesen als Eingabebefehl auszuführen.</translation>
     </message>
     <message>
         <source>Key</source>
@@ -1398,22 +1304,6 @@ Hinweis: Wert muss zwischen %0 und %1 liegen</translation>
     <message>
         <source>Label</source>
         <translation>Bezeichnung</translation>
-    </message>
-    <message>
-        <source>CHANG&amp;E</source>
-        <translation>Ä&amp;ndern</translation>
-    </message>
-    <message>
-        <source>&amp;ADD</source>
-        <translation>&amp;Hinzufügen</translation>
-    </message>
-    <message>
-        <source>&amp;REMOVE</source>
-        <translation>&amp;Entfernen</translation>
-    </message>
-    <message>
-        <source>RESE&amp;T</source>
-        <translation type="vanished">&amp;Zurücksetzen</translation>
     </message>
     <message>
         <source>Video</source>
@@ -1444,10 +1334,6 @@ Hinweis: Wert muss zwischen %0 und %1 liegen</translation>
         <translation>Bildschirmfoto</translation>
     </message>
     <message>
-        <source>&amp;Always show the dialog</source>
-        <translation>&amp;Dialog immer anzeigen</translation>
-    </message>
-    <message>
         <source>jpg</source>
         <translation>jpg</translation>
     </message>
@@ -1464,6 +1350,42 @@ Hinweis: Wert muss zwischen %0 und %1 liegen</translation>
         <translation>Vorlage für Dateinamen:</translation>
     </message>
     <message>
+        <source>Change Volume</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Seek Position</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Use Mouse &amp;&amp; Touch Gestures</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>History</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remember &amp;recently opened files up to</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remember playback &amp;position</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Prefix a command with &apos;mpv&apos; to make it run as an input command.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rese&amp;t All</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Chang&amp;e...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>File Format:</source>
         <translation>Dateiformat:</translation>
     </message>
@@ -1476,24 +1398,68 @@ Hinweis: Wert muss zwischen %0 und %1 liegen</translation>
         <translation>Standard Speicherort:</translation>
     </message>
     <message>
+        <source>Always show the &amp;save window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Advanced</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Command Line</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>mpv msg-level:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>no</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>fatal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>warn</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>status</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>v</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>debug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>trace</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>&amp;OK</source>
         <translation>&amp;OK</translation>
     </message>
     <message>
-        <source>&amp;CANCEL</source>
-        <translation>&amp;Abbrechen</translation>
+        <source>&amp;Cancel</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Choose screenshot directory</source>
         <translation>Wählen Sie ein Verzeichnis aus</translation>
-    </message>
-    <message>
-        <source>Reset Keybinding</source>
-        <translation type="vanished">Tastenkürzel zurücksetzen</translation>
-    </message>
-    <message>
-        <source>Are you sure you want to reset the shortcut keys to original bindings?</source>
-        <translation type="vanished">Sind Sie sicher, dass Sie die Originaleinstellung wiederherstellen möchten?</translation>
     </message>
     <message>
         <source>Existing keybinding</source>
@@ -1502,10 +1468,6 @@ Hinweis: Wert muss zwischen %0 und %1 liegen</translation>
     <message>
         <source>%0 is already being used. Would you like to change its function?</source>
         <translation>%0 wird bereits verwendet. Möchten Sie seine Funktion ändern?</translation>
-    </message>
-    <message>
-        <source>RESE&amp;T ALL</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Reset All Key Bindings?</source>
@@ -1555,8 +1517,8 @@ Hinweis: Wert muss zwischen %0 und %1 liegen</translation>
         <translation>Dialog immer anzeigen</translation>
     </message>
     <message>
-        <source>&amp;SAVE</source>
-        <translation>&amp;Speichern</translation>
+        <source>&amp;Save</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Choose screenshot directory</source>
@@ -1578,12 +1540,12 @@ Hinweis: Wert muss zwischen %0 und %1 liegen</translation>
         <translation>Ungefähr 0 Sekunde(n) verbleiben</translation>
     </message>
     <message>
-        <source>&amp;UPDATE</source>
-        <translation>Akt&amp;ualisieren</translation>
+        <source>&amp;Update</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&amp;CANCEL</source>
-        <translation>&amp;Abbrechen</translation>
+        <source>&amp;Cancel</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>&amp;CLOSE</source>
