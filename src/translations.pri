@@ -8,4 +8,5 @@ TRANSLATIONS += \
     translations/baka-mplayer_it.ts \
     translations/baka-mplayer_es.ts \
     translations/baka-mplayer_fr.ts \
-    translations/baka-mplayer_de.ts
+    translations/baka-mplayer_de.ts \
+    translations/baka-mplayer_ka.ts 
