@@ -17,7 +17,7 @@
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2015 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#008098;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is een gratis en open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; gebaseerde multimedia speler. Zijn eenvoudige ontwerp weerspiegelt het idee voor een overzichtelijke, eenvoudige en aangename omgeving voor het bekijken van tv-shows.&lt;br&gt;&lt;br&gt;Copyright © 2015 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#008098;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>mpv - video player based on MPlayer/mplayer2
@@ -49,11 +49,39 @@ Translations
 - Portuguese &lt;u8sand&gt;
 - Russian &lt;suhr&gt;
 - Spanish &lt;Alfredo Ramos&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>mpv - video speler gebaseerd op MPlayer/mplayer2
+GPLv2 &lt;mpv.io&gt;
+
+Material Design iconen
+Attribution 4.0 International &lt;Google&gt;
+
+Noto Sans - lettertype met veel ondersteunde karakters
+Apache License, version 2.0 &lt;Google&gt;
+
+Retro Cassette afbeelding
+&lt;Lukas Troup&gt;
+
+Gesture iconen
+CC License &lt;Jeff Portaro&gt;
+
+Download icoon
+CC BY 3.0 &lt;Sasha Mescheryakov&gt;
+
+Vertalingen
+- Chinees &lt;amazingfate, Antares95&gt;
+- Kroatisch &lt;gogo&gt;
+- Nederlands &lt;robin007bond&gt;
+- Frans &lt;chapouvalpin&gt;
+- Duits: &lt;yiip87&gt;
+- Italiaans &lt;Aloysius&gt;
+- Koreaans &lt;godly-devotion&gt;
+- Portugees &lt;u8sand&gt;
+- Russisch &lt;suhr&gt;
+- Spaans &lt;Alfredo Ramos&gt;</translation>
     </message>
     <message>
         <source>&amp;Close</source>
-        <translation type="unfinished"></translation>
+        <translation>Sluiten</translation>
     </message>
     <message>
         <source>Credits</source>
@@ -95,7 +123,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     </message>
     <message>
         <source>Open Audio File</source>
-        <translation type="unfinished"></translation>
+        <translation>Open Audio Bestand</translation>
     </message>
     <message>
         <source>Saved to &quot;%0&quot;, with subs</source>
@@ -135,11 +163,11 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     </message>
     <message>
         <source>Press ESC or double-click to leave full screen</source>
-        <translation type="unfinished"></translation>
+        <translation>Druk op ESC of dubbelklik om volledig scherm te verlaten</translation>
     </message>
     <message>
         <source>Press %0 to show all controls again</source>
-        <translation type="unfinished"></translation>
+        <translation>Druk op %0 om de besturingen opnieuw weer te geven</translation>
     </message>
     <message>
         <source>Audio Files</source>
@@ -159,7 +187,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     </message>
     <message>
         <source>usage: baka &lt;command&gt; [...]</source>
-        <translation>Gebruik: baka &lt;commando&gt; [...]</translation>
+        <translation>gebruik: baka &lt;commando&gt; [...]</translation>
     </message>
     <message>
         <source>commands:</source>
@@ -383,19 +411,19 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     </message>
     <message>
         <source>Seek forwards by %0 sec</source>
-        <translation type="unfinished"></translation>
+        <translation>Zoek vooruit bij %0 sec</translation>
     </message>
     <message>
         <source>Seek backwards by %0 sec</source>
-        <translation type="unfinished"></translation>
+        <translation>Zoek achteruit bij %0 sec</translation>
     </message>
     <message>
         <source>Increase playback speed by %0</source>
-        <translation type="unfinished"></translation>
+        <translation>Verhoog afspeelsnelheid met %0</translation>
     </message>
     <message>
         <source>Decrease playback speed by %0</source>
-        <translation type="unfinished"></translation>
+        <translation>Verlaag afspeelsnelheid met %0</translation>
     </message>
     <message>
         <source>Toggle hide all controls mode</source>
@@ -407,7 +435,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     </message>
     <message>
         <source>add audio track dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>voeg audio track dialoog toe</translation>
     </message>
     <message>
         <source>playlist options</source>
@@ -415,7 +443,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     </message>
     <message>
         <source>opens jump dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>opent spring dialoog</translation>
     </message>
     <message>
         <source>toggles dim desktop</source>
@@ -431,7 +459,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     </message>
     <message>
         <source>launches online help</source>
-        <translation type="unfinished"></translation>
+        <translation>lanceert online help</translation>
     </message>
     <message>
         <source>opens the update dialog or updates youtube-dl</source>
@@ -443,11 +471,11 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     </message>
     <message>
         <source>opens the open file dialog or the file specified</source>
-        <translation type="unfinished"></translation>
+        <translation>opent het open bestand dialoog of het gespecificeerde bestand</translation>
     </message>
     <message>
         <source>toggle play/pause state</source>
-        <translation type="unfinished"></translation>
+        <translation>verander play/pauze staat</translation>
     </message>
     <message>
         <source>[percent]</source>
@@ -487,7 +515,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     </message>
     <message>
         <source>clears the output textbox</source>
-        <translation type="unfinished"></translation>
+        <translation>leegt de output tekstbox</translation>
     </message>
     <message>
         <source>[command]</source>
@@ -515,7 +543,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     </message>
     <message>
         <source>Speed: %0x</source>
-        <translation type="unfinished">Snelheid: %0x</translation>
+        <translation>Snelheid: %0x</translation>
     </message>
     <message>
         <source>Toggle mute audio</source>
@@ -531,7 +559,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     </message>
     <message>
         <source>mutes the audio</source>
-        <translation type="unfinished"></translation>
+        <translation>dempt het geluid</translation>
     </message>
 </context>
 <context>
@@ -550,7 +578,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     </message>
     <message>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Annuleren</translation>
     </message>
 </context>
 <context>
@@ -588,19 +616,19 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     </message>
     <message>
         <source>(optional)</source>
-        <translation type="unfinished"></translation>
+        <translation>(optioneel)</translation>
     </message>
     <message>
         <source>Shortcut:</source>
-        <translation type="unfinished"></translation>
+        <translation>Snelkoppeling:</translation>
     </message>
     <message>
         <source>Command:</source>
-        <translation type="unfinished"></translation>
+        <translation>Commando:</translation>
     </message>
     <message>
         <source>Label:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>C&amp;lear Shorcut</source>
@@ -608,7 +636,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     </message>
     <message>
         <source>Chang&amp;e</source>
-        <translation type="unfinished"></translation>
+        <translation>Verand&amp;er</translation>
     </message>
     <message>
         <source>&amp;Add</source>
@@ -627,7 +655,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     </message>
     <message>
         <source>Paste copied link</source>
-        <translation type="unfinished"></translation>
+        <translation>Plak gekopieerde link</translation>
     </message>
     <message>
         <source>Type URL or location here</source>
@@ -654,7 +682,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     </message>
     <message>
         <source>Click to select a specific file by index</source>
-        <translation type="unfinished"></translation>
+        <translation>Klik om een gespecificeerd bestand te selecteren bij index</translation>
     </message>
     <message>
         <source>File 0 of 0</source>
@@ -738,11 +766,11 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     </message>
     <message>
         <source>Spee&amp;d</source>
-        <translation type="unfinished"></translation>
+        <translation>Snelhei&amp;d</translation>
     </message>
     <message>
         <source>&amp;Add Audio File...</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg Audio Bestand Toe...</translation>
     </message>
     <message>
         <source>&amp;Hide All Controls</source>
@@ -934,7 +962,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     </message>
     <message>
         <source>Update &amp;Streaming Support</source>
-        <translation>Update- en &amp;Streamingondersteuning</translation>
+        <translation>Update &amp;Streamingondersteuning</translation>
     </message>
     <message>
         <source>Previous</source>
@@ -996,11 +1024,11 @@ Opmerking: Waarde moet tussen %0 en %1 zijn</translation>
     </message>
     <message>
         <source>&amp;Volume</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Open &amp;Copied Link</source>
-        <translation type="unfinished"></translation>
+        <translation>Open &amp;Gekopieerde Link</translation>
     </message>
     <message>
         <source>Pla&amp;y Next File</source>
@@ -1012,19 +1040,19 @@ Opmerking: Waarde moet tussen %0 en %1 zijn</translation>
     </message>
     <message>
         <source>&amp;50%</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>&amp;75%</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>&amp;100%</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>&amp;200%</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>[ &amp;none ]</source>
@@ -1048,7 +1076,7 @@ Opmerking: Waarde moet tussen %0 en %1 zijn</translation>
     </message>
     <message>
         <source>15&amp;0%</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>&amp;Mute</source>
@@ -1068,15 +1096,15 @@ Opmerking: Waarde moet tussen %0 en %1 zijn</translation>
     </message>
     <message>
         <source>Subtitles visible</source>
-        <translation type="unfinished"></translation>
+        <translation>Ondertiteling zichtbaar</translation>
     </message>
     <message>
         <source>Subtitles hidden</source>
-        <translation type="unfinished"></translation>
+        <translation>Ondertiteling onzichtbaar</translation>
     </message>
     <message>
         <source>Muted</source>
-        <translation type="unfinished"></translation>
+        <translation>Gedempt</translation>
     </message>
     <message>
         <source>Unmuted</source>
@@ -1115,27 +1143,27 @@ Opmerking: Waarde moet tussen %0 en %1 zijn</translation>
     </message>
     <message>
         <source>File</source>
-        <translation type="unfinished"></translation>
+        <translation>Bestand</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Titel</translation>
     </message>
     <message>
         <source>Video (x%0)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Video Output</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Resolution</source>
-        <translation type="unfinished"></translation>
+        <translation>Resolutie</translation>
     </message>
     <message>
         <source>FPS</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>A/V Sync</source>
@@ -1143,15 +1171,15 @@ Opmerking: Waarde moet tussen %0 en %1 zijn</translation>
     </message>
     <message>
         <source>%0 kbps</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Audio (x%0)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Audio Output</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Sample Rate</source>
@@ -1159,7 +1187,7 @@ Opmerking: Waarde moet tussen %0 en %1 zijn</translation>
     </message>
     <message>
         <source>Chapters</source>
-        <translation type="unfinished"></translation>
+        <translation>Hoofdstukken</translation>
     </message>
     <message>
         <source>Metadata</source>
@@ -1167,19 +1195,19 @@ Opmerking: Waarde moet tussen %0 en %1 zijn</translation>
     </message>
     <message>
         <source>Buffering...</source>
-        <translation type="unfinished"></translation>
+        <translation>Bufferen...</translation>
     </message>
     <message>
         <source>Your network is slow or stuck, please wait a bit</source>
-        <translation type="unfinished"></translation>
+        <translation>Je netwerk is sloom, wacht even</translation>
     </message>
     <message>
         <source>File couldn&apos;t be opened</source>
-        <translation type="unfinished"></translation>
+        <translation>Bestand kan niet geopend worden</translation>
     </message>
     <message>
         <source>Volume: %0%</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Deinterlacing: %0</source>
@@ -1187,11 +1215,11 @@ Opmerking: Waarde moet tussen %0 en %1 zijn</translation>
     </message>
     <message>
         <source>enabled</source>
-        <translation type="unfinished"></translation>
+        <translation>aan</translation>
     </message>
     <message>
         <source>disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>uit</translation>
     </message>
     <message>
         <source>Motion Interpolation: %0</source>
@@ -1214,15 +1242,15 @@ Opmerking: Waarde moet tussen %0 en %1 zijn</translation>
     </message>
     <message>
         <source>Delete sub-file?</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder sub-bestand?</translation>
     </message>
     <message>
         <source>Would you like to delete the associated sub file [%0]?</source>
-        <translation type="unfinished"></translation>
+        <translation>Wil je het geassocieerde sub-bestand verwijderen?</translation>
     </message>
     <message>
         <source>Delete external sub-file?</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder extern sub-bestand</translation>
     </message>
 </context>
 <context>
@@ -1257,7 +1285,7 @@ Opmerking: Waarde moet tussen %0 en %1 zijn</translation>
     </message>
     <message>
         <source>Language</source>
-        <translation type="unfinished"></translation>
+        <translation>Taal</translation>
     </message>
     <message>
         <source>Mouse Gesture</source>
@@ -1321,11 +1349,11 @@ Opmerking: Waarde moet tussen %0 en %1 zijn</translation>
     </message>
     <message>
         <source>Change Volume</source>
-        <translation type="unfinished"></translation>
+        <translation>Verander Volume</translation>
     </message>
     <message>
         <source>Seek Position</source>
-        <translation type="unfinished"></translation>
+        <translation>Zoek Positie</translation>
     </message>
     <message>
         <source>&amp;Use Mouse &amp;&amp; Touch Gestures</source>
@@ -1333,15 +1361,15 @@ Opmerking: Waarde moet tussen %0 en %1 zijn</translation>
     </message>
     <message>
         <source>History</source>
-        <translation type="unfinished"></translation>
+        <translation>Geschiedenis</translation>
     </message>
     <message>
         <source>Remember &amp;recently opened files up to</source>
-        <translation type="unfinished"></translation>
+        <translation>Onthoud &amp;recent geopende bestanden tot</translation>
     </message>
     <message>
         <source>Remember playback &amp;position</source>
-        <translation type="unfinished"></translation>
+        <translation>Onthoud afspeel &amp;positie</translation>
     </message>
     <message>
         <source>Prefix a command with &apos;mpv&apos; to make it run as an input command.</source>
@@ -1353,7 +1381,7 @@ Opmerking: Waarde moet tussen %0 en %1 zijn</translation>
     </message>
     <message>
         <source>Chang&amp;e...</source>
-        <translation type="unfinished"></translation>
+        <translation>Verand&amp;er</translation>
     </message>
     <message>
         <source>File Format:</source>
@@ -1381,7 +1409,7 @@ Opmerking: Waarde moet tussen %0 en %1 zijn</translation>
     </message>
     <message>
         <source>A&amp;lways</source>
-        <translation type="unfinished"></translation>
+        <translation>A&amp;ltijd</translation>
     </message>
     <message>
         <source>Always show the &amp;save window</source>
@@ -1389,55 +1417,55 @@ Opmerking: Waarde moet tussen %0 en %1 zijn</translation>
     </message>
     <message>
         <source>Advanced</source>
-        <translation type="unfinished"></translation>
+        <translation=>Geavanceerd</translation>
     </message>
     <message>
         <source>Command Line</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>mpv msg-level:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>no</source>
-        <translation type="unfinished"></translation>
+        <translation>geen</translation>
     </message>
     <message>
         <source>fatal</source>
-        <translation type="unfinished"></translation>
+        <translation>fataal</translation>
     </message>
     <message>
         <source>error</source>
-        <translation type="unfinished"></translation>
+        <translation>fout</translation>
     </message>
     <message>
         <source>warn</source>
-        <translation type="unfinished"></translation>
+        <translation>waarschuwing</translation>
     </message>
     <message>
         <source>info</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>status</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>v</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>debug</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>trace</source>
-        <translation type="unfinished"></translation>
+        <translation>traceer</translation>
     </message>
     <message>
         <source>&amp;OK</source>
-        <translation type="unfinished">&amp;OK</translation>
+        <translation></translation>
     </message>
     <message>
         <source>&amp;Cancel</source>
@@ -1496,7 +1524,7 @@ Opmerking: Waarde moet tussen %0 en %1 zijn</translation>
     </message>
     <message>
         <source>&amp;Save</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Sla op</translation>
     </message>
     <message>
         <source>Choose screenshot directory</source>
@@ -1519,7 +1547,7 @@ Opmerking: Waarde moet tussen %0 en %1 zijn</translation>
     </message>
     <message>
         <source>&amp;Update</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>&amp;Cancel</source>
