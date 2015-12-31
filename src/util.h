@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QString>
+#include <QTextStream>
 #include "recent.h"
 
 class Settings;
@@ -38,6 +39,12 @@ QStringList FromNativeSeparators(QStringList list);
 int GCD(int v, int u);
 QString Ratio(int w, int h);
 
+}
+
+inline QTextStream& qStdout()
+{
+    static QTextStream r{stdout};
+    return r;
 }
 
 #endif // UTIL_H

@@ -99,8 +99,10 @@ void BakaEngine::Command(QString command)
 
 void BakaEngine::Print(QString what, QString who)
 {
+    QString out = QString("[%0]: %1").arg(who, what);
+    (qStdout() << out).flush();
     window->ui->outputTextEdit->moveCursor(QTextCursor::End);
-    window->ui->outputTextEdit->insertPlainText(QString("[%0]: %1").arg(who, what));
+    window->ui->outputTextEdit->insertPlainText(out);
 }
 
 void BakaEngine::PrintLn(QString what, QString who)
