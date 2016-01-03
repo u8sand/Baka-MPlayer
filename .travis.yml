@@ -11,8 +11,8 @@ compiler:
 addons:
   apt:
     sources:
-    - deadsnakes
     - ubuntu-toolchain-r-test
+    - sid
     packages:
     - git
     - gcc
@@ -32,11 +32,11 @@ addons:
     - qtdeclarative5-dev
     - libqt5svg5-dev
     - libqt5network5
-#    - libqt5x11extras5-dev
-#    - libmpv-dev
+    - libqt5x11extras5-dev
+    - libmpv-dev
 
 script:
-  - "sudo apt-get install libqt5x11extras5-dev libmpv-dev"
+#  - "sudo apt-get install libqt5x11extras5-dev libmpv-dev"
   - ./travis.sh
 
 notifications:
