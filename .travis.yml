@@ -1,0 +1,45 @@
+language: cpp
+
+os:
+  - linux
+
+compiler:
+  - gcc
+
+addons:
+  apt:
+    sources:
+    - deadsnakes
+    - ubuntu-toolchain-r-test
+    packages:
+    - git
+    - gcc
+    - g++
+    - autoconf
+    - automake
+    - libtool
+    - yasm
+    - devscripts
+    - libfreetype6-dev
+    - libfribidi-dev
+    - libfontconfig1-dev
+    - pkg-config
+    - qtbase5-dev
+    - qt5-qmake
+    - qttools5-dev-tools
+    - qtdeclarative5-dev
+    - libqt5svg5-dev
+    - libqt5x11extras5-dev
+    - libqt5network5
+    - libmpv-dev
+
+script:
+  - ./make.sh
+
+notifications:
+  email: false
+  irc:
+    channels:
+      - "irc.freenode.org#baka-mplayer-dev"
+    on_success: change
+    on_failure: always
