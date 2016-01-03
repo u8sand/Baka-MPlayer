@@ -1,3 +1,5 @@
+sudo: required
+
 language: cpp
 
 os:
@@ -29,12 +31,12 @@ addons:
     - qttools5-dev-tools
     - qtdeclarative5-dev
     - libqt5svg5-dev
-    - libqt5x11extras5-dev
     - libqt5network5
-    - libmpv-dev
+#    - libqt5x11extras5-dev
+#    - libmpv-dev
 
 script:
-  - ./make.sh
+  - ./travis.sh
 
 notifications:
   email: false
