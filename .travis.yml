@@ -36,6 +36,7 @@ addons:
 #    - libmpv-dev
 
 script:
+  - "sudo apt-get install libqt5x11extras5-dev libmpv-dev"
   - ./travis.sh
 
 notifications:
