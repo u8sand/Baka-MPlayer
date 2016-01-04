@@ -35,13 +35,13 @@ addons:
 #    - libmpv-dev
 
 script:
-  - "sudo apt-get install libmpv-dev"
-  - ./travis.sh
+  - "sudo apt-get install -f libmpv-dev"
+  - "./travis.sh"
 
 notifications:
   email: false
   irc:
     channels:
-      - "irc.freenode.org#baka-mplayer-dev"
+      - "irc.freenode.org#baka-mplayer"
     on_success: change
     on_failure: always
