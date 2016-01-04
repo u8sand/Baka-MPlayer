@@ -35,6 +35,7 @@ addons:
 #    - libmpv-dev
 
 script:
+  - "sudo apt-get install libmpv-dev"
   - ./travis.sh
 
 notifications:
