@@ -32,7 +32,7 @@ addons:
     - libqt5svg5-dev
     - libqt5network5
     - libqt5x11extras5-dev
-    - libmpv-dev
+#    - libmpv-dev
 
 script:
   - ./travis.sh
