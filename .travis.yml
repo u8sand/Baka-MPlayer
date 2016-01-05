@@ -1,5 +1,3 @@
-sudo: required
-
 language: cpp
 
 os:
@@ -35,7 +33,7 @@ addons:
     - libmpv-dev
 
 script:
-  - "./travis.sh"
+  - bash travis.sh
 
 notifications:
   email: false
