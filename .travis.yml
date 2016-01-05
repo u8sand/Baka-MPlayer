@@ -41,7 +41,7 @@ cache:
   directories:
   - build
 
-before-install
+before-install:
   - sudo apt-get purge --auto-remove libc-bin
 
 script:
