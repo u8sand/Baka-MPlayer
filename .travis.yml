@@ -33,7 +33,8 @@ addons:
     - libmpv-dev
 
 script:
-  - bash travis.sh
+  - bash configure
+  - make -j $(grep -c ^processor /proc/cpuinfo)
 
 notifications:
   email: false
