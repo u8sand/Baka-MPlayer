@@ -36,6 +36,7 @@ addons:
     - libmpv-dev
 
 script:
+  - find / -name qmake -print
   - bash configure
   - make -j $(grep -c ^processor /proc/cpuinfo)
 
