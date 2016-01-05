@@ -1,5 +1,7 @@
 language: cpp
 
+sudo: true
+
 os:
   - linux
 
@@ -35,8 +37,14 @@ addons:
     - libqt5x11extras5-dev
     - libmpv-dev
 
+cache:
+  directories:
+  - build
+
+before-install
+  - sudo apt-get purge --auto-remove libc-bin
+
 script:
-  - find / -name qmake -print
   - bash configure
   - make -j $(grep -c ^processor /proc/cpuinfo)
 
