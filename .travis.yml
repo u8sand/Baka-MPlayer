@@ -20,7 +20,7 @@ arch:
     - noto-fonts
   script:
     - "bash configure"
-    - "make -j $(grep -c ^processor/proc/cpuinfo)"
+    - "make -j $(grep -c ^processor /proc/cpuinfo)"
 
 script:
   - "curl -s https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh | bash"
