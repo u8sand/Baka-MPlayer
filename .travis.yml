@@ -1,0 +1,26 @@
+sudo: required
+
+env:
+  - ARCH_TRAVIS_VERBOSE=1
+
+language: cpp
+
+compiler:
+  - gcc
+
+arch:
+  packages:
+    - mpv
+    - qt5-declarative
+    - qt5-svg
+    - qt5-x11extras
+    - qt5-translations
+    - qt5-tools
+    - youtube-dl
+    - noto-fonts
+  script:
+    - "bash configure"
+    - "make -j $(grep -c ^processor/proc/cpuinfo)"
+
+script:
+  - "curl -s https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh | bash"
