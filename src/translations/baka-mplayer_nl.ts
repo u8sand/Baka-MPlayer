@@ -1417,7 +1417,7 @@ Opmerking: Waarde moet tussen %0 en %1 zijn</translation>
     </message>
     <message>
         <source>Advanced</source>
-        <translation=>Geavanceerd</translation>
+        <translation>Geavanceerd</translation>
     </message>
     <message>
         <source>Command Line</source>
