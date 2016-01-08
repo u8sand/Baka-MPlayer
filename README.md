@@ -1,9 +1,15 @@
 # [Baka MPlayer](http://bakamplayer.u8sand.net)
 
+[![Build Status](https://travis-ci.org/u8sand/Baka-MPlayer.svg?branch=master)](https://travis-ci.org/u8sand/Baka-MPlayer)
+
+--------------
+
+
 ## Overview
 
 Baka MPlayer is a free and open source, cross-platform, **libmpv** based multimedia player.
 Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.
+
 
 ## Requirements
 
@@ -26,6 +32,7 @@ Note: Packages may be named slightly different for each distro
 Baka MPlayer was designed around the font called Noto Sans. Noto Sans was used because of its open source nature and its broad support for Unicode characters. Having the correct font installed insures that what you see is what was intended.
 
 [Get it here.](https://www.google.com/get/noto/#sans-lgc)
+
 
 ## Compilation
 
@@ -99,9 +106,11 @@ For more configuration options see the `configure` source file or read the manua
 
 You can check out which languages we currently support by checking out `Baka-MPlayer/src/translations/`.
 
+
 ## Bug reports
 
 Please use the [issues tracker](https://github.com/u8sand/Baka-MPlayer/issues) provided by GitHub to send us bug reports or feature requests.
+
 
 ## Contact
 
