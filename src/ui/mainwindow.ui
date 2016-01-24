@@ -116,7 +116,7 @@ QListView {
 }
 #playlistWidget::item {
 	background: #1A1A1A;
-	padding: 3px 0px;
+	padding: 4px 0px;
 }
 #playlistWidget::item:selected {
 	background: #383838;
