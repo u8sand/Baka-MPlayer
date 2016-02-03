@@ -47,7 +47,7 @@ function download_patches { # todo
 function download_extras {
   mkdir -p "$SRC/release"
   cd "$SRC/release"
-  wget https://yt-dl.org/downloads/2015.01.25/youtube-dl.exe || return 1
+  wget https://yt-dl.org/downloads/latest/youtube-dl.exe || return 1
   mkdir -p mpv
   cd mpv && wget https://raw.githubusercontent.com/lachs0r/mingw-w64-cmake/master/packages/mpv/mpv/fonts.conf || return 1
   mkdir -p fonts
