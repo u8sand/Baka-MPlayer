@@ -101,7 +101,7 @@ QString MpvHandler::getMediaInfo()
                                                                     Util::Ratio(fileInfo.video_params.width, fileInfo.video_params.height))) +
             inner.arg(tr("FPS"), QString::number(fps)) +
             inner.arg(tr("A/V Sync"), QString::number(avsync)) +
-            inner.arg(tr("Bitrate"), tr("%0 kbps").arg(vbitrate)) + '\n';
+            inner.arg(tr("Bitrate"), tr("%0 kbps").arg(vbitrate/1000)) + '\n';
     if(fileInfo.audio_params.codec != QString())
         out += outer.arg(tr("Audio (x%0)").arg(QString::number(atracks)), fileInfo.audio_params.codec) +
             inner.arg(tr("Audio Output"), current_ao) +
