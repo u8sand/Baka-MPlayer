@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>646</width>
+    <width>636</width>
     <height>400</height>
    </rect>
   </property>
@@ -599,7 +599,7 @@ QSlider::sub-page:horizontal {
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_4">
           <property name="spacing">
-           <number>8</number>
+           <number>10</number>
           </property>
           <property name="leftMargin">
            <number>0</number>
@@ -728,7 +728,7 @@ QSlider::sub-page:horizontal {
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_2">
          <property name="spacing">
-          <number>14</number>
+          <number>18</number>
          </property>
          <item>
           <widget class="QPushButton" name="rewindButton">
@@ -985,7 +985,7 @@ QSlider::handle:horizontal {
            </property>
            <property name="sizeHint" stdset="0">
             <size>
-             <width>55</width>
+             <width>48</width>
              <height>20</height>
             </size>
            </property>
@@ -1062,7 +1062,7 @@ QSlider::handle:horizontal {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>646</width>
+     <width>636</width>
      <height>23</height>
     </rect>
    </property>
