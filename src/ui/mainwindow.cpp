@@ -801,12 +801,6 @@ MainWindow::MainWindow(QWidget *parent):
                 ui->playlistWidget->SelectIndex(ui->playlistWidget->CurrentIndex());
             });
 
-    connect(ui->hideFilesButton, &QPushButton::clicked,                 // Playlist: Hide files button
-            [=](bool b)
-            {
-                ui->playlistWidget->ShowAll(!b);
-            });
-
     connect(ui->refreshButton, &QPushButton::clicked,                   // Playlist: Refresh playlist button
             [=]
             {
