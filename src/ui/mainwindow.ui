@@ -89,7 +89,7 @@ QSplitter::handle,
 	background: #383838;
 	border: 1px solid #383838;
 	font-size: 12px;
-	padding: 3px 2px;
+	padding: 4px 2px;
 }
 #searchBox:focus {
 	border-color: #008098;
@@ -112,7 +112,7 @@ QListView {
 }
 #playlistWidget::item {
 	background: #1A1A1A;
-	padding: 4px 0px;
+	padding: 4px 2px;
 }
 #playlistWidget::item:selected {
 	background: #383838;
@@ -292,7 +292,7 @@ QScrollBar::right-arrow:horizontal {
          <number>0</number>
         </property>
         <property name="bottomMargin">
-         <number>0</number>
+         <number>1</number>
         </property>
         <item>
          <widget class="QLineEdit" name="searchBox">
