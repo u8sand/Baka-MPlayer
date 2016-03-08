@@ -85,10 +85,6 @@ QSplitter::handle,
 
 /* Playlist group */
 
-#playlistLayoutWidget {
-	border-left: 1px solid #383838;
-}
-
 #searchBox {
 	background: #383838;
 	border: 1px solid #383838;
@@ -287,7 +283,7 @@ QScrollBar::right-arrow:horizontal {
          <number>0</number>
         </property>
         <property name="leftMargin">
-         <number>2</number>
+         <number>0</number>
         </property>
         <property name="topMargin">
          <number>0</number>
