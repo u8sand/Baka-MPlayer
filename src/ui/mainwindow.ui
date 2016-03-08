@@ -599,7 +599,7 @@ QSlider::sub-page:horizontal {
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_4">
           <property name="spacing">
-           <number>10</number>
+           <number>8</number>
           </property>
           <property name="leftMargin">
            <number>0</number>
