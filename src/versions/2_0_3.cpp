@@ -60,7 +60,8 @@ void BakaEngine::Load2_0_3()
     window->setRemaining(QJsonValueRef2(root["remaining"]).toBool(true));
     window->ui->splitter->setNormalPosition(QJsonValueRef2(root["splitter"]).toInt(window->ui->splitter->max()*1.0/8));
     window->setDebug(QJsonValueRef2(root["debug"]).toBool(false));
-    window->ui->hideFilesButton->setChecked(!QJsonValueRef2(root["showAll"]).toBool(true));
+    //window->ui->hideFilesButton->setChecked(!QJsonValueRef2(root["showAll"]).toBool(true));
+    root["showAll"] = true;
     window->setScreenshotDialog(QJsonValueRef2(root["screenshotDialog"]).toBool(true));
     window->recent.clear();
     for(auto entry : root["recent"].toArray())
@@ -130,7 +131,7 @@ void BakaEngine::SaveSettings()
                                     window->ui->splitter->position() == window->ui->splitter->max()) ?
                                     window->ui->splitter->normalPosition() :
                                     window->ui->splitter->position();
-    root["showAll"] = !window->ui->hideFilesButton->isChecked();
+    root["showAll"] = true; //!window->ui->hideFilesButton->isChecked();
     root["screenshotDialog"] = window->screenshotDialog;
     root["debug"] = window->debug;
     root["maxRecent"] = window->maxRecent;

@@ -1114,7 +1114,7 @@ void MainWindow::SetIndexLabels(bool enable)
     else
     {
         ui->indexLabel->setEnabled(true);
-        ui->indexLabel->setText(tr("File %0 of %1").arg(QString::number(i+1), QString::number(ui->playlistWidget->count())));
+        ui->indexLabel->setText(tr("%0 / %1").arg(QString::number(i+1), QString::number(ui->playlistWidget->count())));
     }
 }
 
