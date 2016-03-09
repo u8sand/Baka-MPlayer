@@ -3,10 +3,10 @@
 #include <QTextStream>
 #include <QFile>
 
-Settings::Settings(QString file, QObject *parent):
+Settings::Settings(QString location, QObject *parent):
     QObject(parent)
 {
-    this->file = file;
+    this->location = location;
 }
 
 Settings::~Settings()
@@ -15,15 +15,18 @@ Settings::~Settings()
 
 void Settings::Load()
 {
-    QFile f(file);
-    if(f.open(QIODevice::ReadOnly | QIODevice::Text))
+    QFile c(QString("%0/%1.ini").arg(location, SETTINGS_FILE));
+    QFile r(QString("%0/%1").arg(location, QString("recent.json")));
+    if(c.open(QIODevice::ReadOnly | QIODevice::Text))
     {
-        QString l = f.readLine();
-        f.close();
+        QString l = c.readLine();
+        c.close();
         if(l.startsWith("{"))
         {
-            if(f.open(QIODevice::ReadOnly | QIODevice::Text))
-                document = QJsonDocument::fromJson(f.readAll());
+            if(c.open(QIODevice::ReadOnly | QIODevice::Text))
+                config = QJsonDocument::fromJson(c.readAll());
+            if(r.open(QIODevice::ReadOnly | QIODevice::Text))
+                recent = QJsonDocument::fromJson(r.readAll());
         }
         else
             LoadIni();
@@ -32,7 +35,7 @@ void Settings::Load()
 
 void Settings::LoadIni()
 {
-    QFile f(file);
+    QFile f(QString("%0/%1.ini").arg(location, SETTINGS_FILE));
     if(f.open(QFile::ReadOnly | QIODevice::Text))
     {
         QTextStream fin(&f);
@@ -41,7 +44,7 @@ void Settings::LoadIni()
         int i;
         QString group;
         QJsonObject group_obj,
-                    root = getRoot();
+                    root = getConfigRoot();
         do
         {
             line = fin.readLine().trimmed();
@@ -103,28 +106,44 @@ void Settings::LoadIni()
             root["recent"] = R;
         }
 
-        setRoot(root);
+        setConfigRoot(root);
     }
 }
 
 void Settings::Save()
 {
-    QFile f(file);
-    if(f.open(QFile::WriteOnly | QFile::Truncate | QIODevice::Text))
+    QFile c(QString("%0/%1.ini").arg(location, SETTINGS_FILE));
+    if(c.open(QFile::WriteOnly | QFile::Truncate | QIODevice::Text))
     {
-        f.write(document.toJson());
-        f.close();
+        c.write(config.toJson());
+        c.close();
+    }
+    QFile r(QString("%0/%1").arg(location, QString("recent.json")));
+    if(r.open(QFile::WriteOnly | QFile::Truncate | QIODevice::Text))
+    {
+        r.write(recent.toJson());
+        r.close();
     }
 }
 
-QJsonObject Settings::getRoot()
+QJsonObject Settings::getConfigRoot()
 {
-    return document.object();
+    return config.object();
 }
 
-void Settings::setRoot(QJsonObject root)
+void Settings::setConfigRoot(QJsonObject root)
 {
-    document.setObject(root);
+    config.setObject(root);
+}
+
+QJsonObject Settings::getRecentRoot()
+{
+    return recent.object();
+}
+
+void Settings::setRecentRoot(QJsonObject root)
+{
+    recent.setObject(root);
 }
 
 int Settings::ParseLine(QString line)

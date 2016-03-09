@@ -55,12 +55,14 @@ void SetAlwaysOnTop(WId wid, bool ontop)
 
 QString SettingsLocation()
 {
-    // saves to  ~/.config/${SETTINGS_FILE}.ini
-    QString s1  = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation);
-    QString s2 = SETTINGS_FILE;
-    return QString("%0/%1.ini").arg(
-            QStandardPaths::writableLocation(QStandardPaths::ConfigLocation),
-            SETTINGS_FILE);
+    // saves to  ~/.config/${SETTINGS_FILE}/${SETTINGS_FILE}.ini
+    QString location = QString("%0/%1").arg(
+                QStandardPaths::writableLocation(QStandardPaths::ConfigLocation),
+                SETTINGS_FILE);
+    QDir dir(location);
+    if(!dir.exists())
+        dir.mkpath(".");
+    return (location);
 }
 
 bool IsValidFile(QString path)

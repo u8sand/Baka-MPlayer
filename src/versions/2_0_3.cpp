@@ -52,7 +52,7 @@ typedef QJsonValueRef QJsonValueRef2;
 
 void BakaEngine::Load2_0_3()
 {
-    QJsonObject root = settings->getRoot();
+    QJsonObject root = settings->getConfigRoot();
     window->setOnTop(QJsonValueRef2(root["onTop"]).toString("never"));
     window->setAutoFit(QJsonValueRef2(root["autoFit"]).toInt(100));
     sysTrayIcon->setVisible(QJsonValueRef2(root["trayIcon"]).toBool(false));
@@ -62,12 +62,6 @@ void BakaEngine::Load2_0_3()
     window->setDebug(QJsonValueRef2(root["debug"]).toBool(false));
     window->ui->hideFilesButton->setChecked(!QJsonValueRef2(root["showAll"]).toBool(true));
     window->setScreenshotDialog(QJsonValueRef2(root["screenshotDialog"]).toBool(true));
-    window->recent.clear();
-    for(auto entry : root["recent"].toArray())
-    {
-        QJsonObject entry_json = entry.toObject();
-        window->recent.append(Recent(entry_json["path"].toString(), entry_json["title"].toString(), QJsonValueRef2(entry_json["time"]).toInt(0)));
-    }
     window->setMaxRecent(QJsonValueRef2(root["maxRecent"]).toInt(5));
     window->setGestures(QJsonValueRef2(root["gestures"]).toBool(true));
     window->setResume(QJsonValueRef2(root["resume"]).toBool(true));
@@ -81,6 +75,15 @@ void BakaEngine::Load2_0_3()
         root["lastcheck"] = QDate::currentDate().toString();
     }
 #endif
+
+    QJsonObject recent_root = settings->getRecentRoot();
+    window->recent.clear();
+    for(auto entry : recent_root["recent"].toArray())
+    {
+        QJsonObject entry_json = entry.toObject();
+        window->recent.append(Recent(entry_json["path"].toString(), entry_json["title"].toString(), QJsonValueRef2(entry_json["time"]).toInt(0)));
+    }
+
     window->UpdateRecentFiles();
 
     // apply default shortcut mappings
@@ -120,7 +123,7 @@ void BakaEngine::Load2_0_3()
 void BakaEngine::SaveSettings()
 {
     QString version = "2.0.3";
-    QJsonObject root = settings->getRoot();
+    QJsonObject root = settings->getConfigRoot();
     root["onTop"] = window->onTop;
     root["autoFit"] = window->autoFit;
     root["trayIcon"] = sysTrayIcon->isVisible();
@@ -140,6 +143,7 @@ void BakaEngine::SaveSettings()
     root["hideAllControls"] = window->hideAllControls;
     root["version"] = version;
 
+    QJsonObject recent_root;
     QJsonArray recent_json;
     for(auto &entry : window->recent)
     {
@@ -151,7 +155,7 @@ void BakaEngine::SaveSettings()
             recent_sub_object_json["time"] = entry.time;
         recent_json.append(recent_sub_object_json);
     }
-    root["recent"] = recent_json;
+    recent_root["recent"] = recent_json;
 
     QJsonObject input_json;
     for(auto input_iter = input.begin(); input_iter != input.end(); ++input_iter)
@@ -185,6 +189,7 @@ void BakaEngine::SaveSettings()
     mpv_json["msg-level"] = mpv->msgLevel;
     root["mpv"] = mpv_json;
 
-    settings->setRoot(root);
+    settings->setConfigRoot(root);
+    settings->setRecentRoot(recent_root);
     settings->Save();
 }

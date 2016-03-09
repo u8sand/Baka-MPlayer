@@ -17,15 +17,17 @@ class Settings : public QObject
 {
     Q_OBJECT
 public:
-    explicit Settings(QString file, QObject *parent = 0);
+    explicit Settings(QString location, QObject *parent = 0);
     ~Settings();
 
 public slots:
     void Load();
     void Save();
 
-    QJsonObject getRoot();
-    void setRoot(QJsonObject);
+    QJsonObject getConfigRoot();
+    void setConfigRoot(QJsonObject);
+    QJsonObject getRecentRoot();
+    void setRecentRoot(QJsonObject);
 
 protected:
     void LoadIni();
@@ -35,8 +37,9 @@ protected:
 
 private:
     BakaEngine *baka;
-    QJsonDocument document;
-    QString file;
+    QJsonDocument config;
+    QJsonDocument recent;
+    QString location;
 };
 
 #endif // SETTINGS_H
