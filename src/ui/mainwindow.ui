@@ -85,15 +85,11 @@ QSplitter::handle,
 
 /* Playlist group */
 
-#playlistLayoutWidget {
-	border-left: 1px solid #383838;
-}
-
 #searchBox {
 	background: #383838;
 	border: 1px solid #383838;
 	font-size: 12px;
-	padding: 3px 2px;
+	padding: 4px 2px;
 }
 #searchBox:focus {
 	border-color: #008098;
@@ -116,7 +112,7 @@ QListView {
 }
 #playlistWidget::item {
 	background: #1A1A1A;
-	padding: 4px 0px;
+	padding: 4px 2px;
 }
 #playlistWidget::item:selected {
 	background: #383838;
@@ -287,7 +283,7 @@ QScrollBar::right-arrow:horizontal {
          <number>0</number>
         </property>
         <property name="leftMargin">
-         <number>2</number>
+         <number>0</number>
         </property>
         <property name="topMargin">
          <number>0</number>
@@ -296,7 +292,7 @@ QScrollBar::right-arrow:horizontal {
          <number>0</number>
         </property>
         <property name="bottomMargin">
-         <number>0</number>
+         <number>1</number>
         </property>
         <item>
          <widget class="QLineEdit" name="searchBox">
@@ -311,41 +307,6 @@ QScrollBar::right-arrow:horizontal {
           </property>
           <property name="clearButtonEnabled">
            <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="CustomLabel" name="indexLabel">
-          <property name="cursor">
-           <cursorShape>PointingHandCursor</cursorShape>
-          </property>
-          <property name="toolTip">
-           <string>Click to select a specific file by index</string>
-          </property>
-          <property name="text">
-           <string>File 0 of 0</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-          <property name="margin">
-           <number>4</number>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="PlaylistWidget" name="playlistWidget">
-          <property name="focusPolicy">
-           <enum>Qt::ClickFocus</enum>
-          </property>
-          <property name="contextMenuPolicy">
-           <enum>Qt::DefaultContextMenu</enum>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::NoFrame</enum>
-          </property>
-          <property name="dragDropMode">
-           <enum>QAbstractItemView::InternalMove</enum>
           </property>
          </widget>
         </item>
@@ -397,8 +358,8 @@ QPushButton:flat:pressed {
              </property>
              <property name="iconSize">
               <size>
-               <width>16</width>
-               <height>16</height>
+               <width>12</width>
+               <height>12</height>
               </size>
              </property>
              <property name="flat">
@@ -420,50 +381,36 @@ QPushButton:flat:pressed {
             </spacer>
            </item>
            <item>
-            <widget class="QPushButton" name="hideFilesButton">
+            <widget class="CustomLabel" name="indexLabel">
              <property name="cursor">
               <cursorShape>PointingHandCursor</cursorShape>
              </property>
-             <property name="focusPolicy">
-              <enum>Qt::NoFocus</enum>
-             </property>
              <property name="toolTip">
-              <string>Hide files with different extensions</string>
+              <string>Click to play a specific file by index</string>
              </property>
-             <property name="styleSheet">
-              <string notr="true">QPushButton {
-	padding: 2px;
-	margin: 1px;
-}
-QPushButton:flat {
-    border: none; /* no border for a flat push button */
-}
-QPushButton:flat:pressed {
-	background: #383838;
-	border-radius: 2px;
-}</string>
+             <property name="text">
+              <string>0 / 0</string>
              </property>
-             <property name="icon">
-              <iconset resource="../rsclist.qrc">
-               <normaloff>:/img/disabled_hide_files.svg</normaloff>
-               <normalon>:/img/enabled_hide_files.svg</normalon>
-               <disabledon>:/img/enabled_hide_files.svg</disabledon>
-               <activeon>:/img/enabled_hide_files.svg</activeon>
-               <selectedon>:/img/enabled_hide_files.svg</selectedon>:/img/disabled_hide_files.svg</iconset>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
              </property>
-             <property name="iconSize">
-              <size>
-               <width>16</width>
-               <height>16</height>
-              </size>
-             </property>
-             <property name="checkable">
-              <bool>true</bool>
-             </property>
-             <property name="flat">
-              <bool>true</bool>
+             <property name="margin">
+              <number>4</number>
              </property>
             </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_6">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
            </item>
            <item>
             <widget class="QPushButton" name="refreshButton">
@@ -495,8 +442,8 @@ QPushButton:flat:pressed {
              </property>
              <property name="iconSize">
               <size>
-               <width>16</width>
-               <height>16</height>
+               <width>12</width>
+               <height>12</height>
               </size>
              </property>
              <property name="flat">
@@ -505,6 +452,22 @@ QPushButton:flat:pressed {
             </widget>
            </item>
           </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="PlaylistWidget" name="playlistWidget">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
+          <property name="contextMenuPolicy">
+           <enum>Qt::DefaultContextMenu</enum>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::NoFrame</enum>
+          </property>
+          <property name="dragDropMode">
+           <enum>QAbstractItemView::InternalMove</enum>
+          </property>
          </widget>
         </item>
        </layout>
@@ -599,7 +562,7 @@ QSlider::sub-page:horizontal {
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_4">
           <property name="spacing">
-           <number>10</number>
+           <number>8</number>
           </property>
           <property name="leftMargin">
            <number>0</number>

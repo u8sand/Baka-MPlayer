@@ -801,12 +801,6 @@ MainWindow::MainWindow(QWidget *parent):
                 ui->playlistWidget->SelectIndex(ui->playlistWidget->CurrentIndex());
             });
 
-    connect(ui->hideFilesButton, &QPushButton::clicked,                 // Playlist: Hide files button
-            [=](bool b)
-            {
-                ui->playlistWidget->ShowAll(!b);
-            });
-
     connect(ui->refreshButton, &QPushButton::clicked,                   // Playlist: Refresh playlist button
             [=]
             {
@@ -1114,7 +1108,7 @@ void MainWindow::SetIndexLabels(bool enable)
     else
     {
         ui->indexLabel->setEnabled(true);
-        ui->indexLabel->setText(tr("File %0 of %1").arg(QString::number(i+1), QString::number(ui->playlistWidget->count())));
+        ui->indexLabel->setText(tr("%0 / %1").arg(QString::number(i+1), QString::number(ui->playlistWidget->count())));
     }
 }
 
