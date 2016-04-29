@@ -16,16 +16,8 @@
         <translation>Baka MPlayer 0.0.0</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2015 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#008098;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Close</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Credits</source>
-        <translation>Remerciements</translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2016 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#008098;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; est un logiciel libre et open-source, multiplate-forme, basé sur le lecteur multimédia &lt;b&gt;libmpv&lt;/b&gt;. Son design reflète un environnement simple, épuré et agréable pour visionner vos séries.&lt;br&gt;&lt;br&gt;Copyright © 2016 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#008098;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>mpv - video player based on MPlayer/mplayer2
@@ -49,15 +41,52 @@ CC BY 3.0 &lt;Sasha Mescheryakov&gt;
 Translations
 - Chinese &lt;amazingfate, Antares95&gt;
 - Croatian &lt;gogo&gt;
-- Dutch &lt;robin007bond&gt;
+- Dutch &lt;robin007bond, wb9688&gt;
 - French &lt;chapouvalpin&gt;
-- German: &lt;yiip87&gt;
+- Georgian &lt;arabuli&gt;
+- German &lt;yiip87&gt;
 - Italian &lt;Aloysius&gt;
 - Korean &lt;godly-devotion&gt;
 - Portuguese &lt;u8sand&gt;
 - Russian &lt;suhr&gt;
 - Spanish &lt;Alfredo Ramos&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>mpv - lecteur vidéo basé sur MPlayer/mplayer2
+GPLv2 &lt;mpv.io&gt;
+
+Material Design icons
+Attribution 4.0 International &lt;Google&gt;
+Noto Sans -  font family with many supported characters
+Apache License, version 2.0 &lt;Google&gt;
+
+Retro Cassette image
+&lt;Lukas Troup&gt;
+
+Gesture icons
+CC License &lt;Jeff Portaro&gt;
+
+Download icon
+CC BY 3.0 &lt;Sasha Mescheryakov&gt;
+
+Translations
+- Chinois &lt;amazingfate, Antares95&gt;
+- Croate &lt;gogo&gt;
+- Néerlandais &lt;robin007bond, wb9688&gt;
+- Français &lt;chapouvalpin&gt;
+- Géorgien &lt;arabuli&gt;
+- Allemand &lt;yiip87&gt;
+- Italien &lt;Aloysius&gt;
+- Coréen &lt;godly-devotion&gt;
+- Portugais &lt;u8sand&gt;
+- Russe &lt;suhr&gt;
+- Espagnol &lt;Alfredo Ramos&gt; </translation>
+    </message>
+    <message>
+        <source>&amp;Close</source>
+        <translation>&amp;Fermer</translation>
+    </message>
+    <message>
+        <source>Credits</source>
+        <translation>Remerciements</translation>
     </message>
     <message>
         <source>License</source>
@@ -95,7 +124,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     </message>
     <message>
         <source>Open Audio File</source>
-        <translation type="unfinished"></translation>
+        <translation>Ouvrir un fichier audio</translation>
     </message>
     <message>
         <source>Saved to &quot;%0&quot;, with subs</source>
@@ -155,11 +184,11 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     </message>
     <message>
         <source>Press ESC or double-click to leave full screen</source>
-        <translation type="unfinished"></translation>
+        <translation>Appuyez sur Echap ou double-cliquez pour quitter le plein écran</translation>
     </message>
     <message>
         <source>Press %0 to show all controls again</source>
-        <translation type="unfinished"></translation>
+        <translation>Appuyez sur %0 pour revoir les contrôles</translation>
     </message>
     <message>
         <source>usage: baka &lt;command&gt; [...]</source>
@@ -251,7 +280,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     </message>
     <message>
         <source>Toggle hide all controls mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Bascule l&apos;affichage de tous les contrôles</translation>
     </message>
     <message>
         <source>Dim lights</source>
@@ -375,7 +404,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     </message>
     <message>
         <source>add audio track dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>boite de dialogue d&apos;ajout de piste audio</translation>
     </message>
     <message>
         <source>[subs]</source>
@@ -463,7 +492,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     </message>
     <message>
         <source>toggles hide all controls state</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Pas certain de la traduction</translatorcomment>
+        <translation>Bascule l&apos;affichage des contôles d&apos;état </translation>
     </message>
     <message>
         <source>pause and hide the window</source>
@@ -471,7 +501,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     </message>
     <message>
         <source>clears the output textbox</source>
-        <translation type="unfinished"></translation>
+        <translation>vide la boite de texte</translation>
     </message>
     <message>
         <source>[command]</source>
@@ -491,7 +521,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     </message>
     <message>
         <source>set mpv msg-level</source>
-        <translation type="unfinished"></translation>
+        <translation>renseigne le niveau de message de mpv</translation>
     </message>
     <message>
         <source>quit baka-mplayer</source>
@@ -546,11 +576,11 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     </message>
     <message>
         <source>&amp;OK</source>
-        <translation></translation>
+        <translation>&amp;OK</translation>
     </message>
     <message>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Annuler</translation>
     </message>
 </context>
 <context>
@@ -604,19 +634,19 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     </message>
     <message>
         <source>C&amp;lear Shorcut</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Supprimer raccourcis </translation>
     </message>
     <message>
         <source>Chang&amp;e</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Changer</translation>
     </message>
     <message>
         <source>&amp;Add</source>
-        <translation type="unfinished"></translation>
+        <translation>A&amp;jouter</translation>
     </message>
     <message>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Annuler</translation>
     </message>
 </context>
 <context>
@@ -627,7 +657,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     </message>
     <message>
         <source>Paste copied link</source>
-        <translation type="unfinished"></translation>
+        <translation>Coller le lien copié</translation>
     </message>
     <message>
         <source>Type URL or location here</source>
@@ -653,20 +683,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
         <translation>Rechercher une liste de lecture</translation>
     </message>
     <message>
-        <source>Click to select a specific file by index</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>File 0 of 0</source>
-        <translation>Fichier 0 sur 0</translation>
-    </message>
-    <message>
         <source>Select the Current File</source>
         <translation>Sélectionner le fichier courant</translation>
-    </message>
-    <message>
-        <source>Hide files with different extensions</source>
-        <translation>Masquer les fichiers avec des extensions différentes</translation>
     </message>
     <message>
         <source>Refresh Playlist</source>
@@ -738,19 +756,27 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     </message>
     <message>
         <source>Spee&amp;d</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Vitesse</translation>
     </message>
     <message>
         <source>&amp;Add Audio File...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Ajouter un fichier audio...</translation>
     </message>
     <message>
         <source>&amp;Hide All Controls</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Masquer tous les contôles</translation>
     </message>
     <message>
         <source>&amp;Navigate</source>
         <translation>&amp;Naviguer</translation>
+    </message>
+    <message>
+        <source>Click to play a specific file by index</source>
+        <translation>Cliquer pour lier un fichier spécifique par index</translation>
+    </message>
+    <message>
+        <source>0 / 0</source>
+        <translation>0 / 0</translation>
     </message>
     <message>
         <source>&amp;Chapters</source>
@@ -983,8 +1009,8 @@ Information : la valeur doit être comprise entre %0 et %1</translation>
         <translation>Aucune sélection</translation>
     </message>
     <message>
-        <source>File %0 of %1</source>
-        <translation>Fichier %0 sur %1</translation>
+        <source>%0 / %1</source>
+        <translation>%0 / %1</translation>
     </message>
     <message>
         <source>&amp;Pause</source>
@@ -1000,7 +1026,7 @@ Information : la valeur doit être comprise entre %0 et %1</translation>
     </message>
     <message>
         <source>Open &amp;Copied Link</source>
-        <translation type="unfinished"></translation>
+        <translation>Ouvrir le lien &amp;copié</translation>
     </message>
     <message>
         <source>Pla&amp;y Next File</source>
@@ -1008,7 +1034,7 @@ Information : la valeur doit être comprise entre %0 et %1</translation>
     </message>
     <message>
         <source>Hide &amp;Album Art</source>
-        <translation type="unfinished"></translation>
+        <translation>Masquer la &amp;vignette de l&apos;album</translation>
     </message>
     <message>
         <source>&amp;50%</source>
@@ -1032,19 +1058,19 @@ Information : la valeur doit être comprise entre %0 et %1</translation>
     </message>
     <message>
         <source>&amp;Increase by 5%</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Augmenter de 5 %</translation>
     </message>
     <message>
         <source>&amp;Decrease by 5%</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Diminuer de 5 %</translation>
     </message>
     <message>
         <source>&amp;Increase by 0.1%</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Augmenter de 0.1 %</translation>
     </message>
     <message>
         <source>&amp;Decrease by 0.1%</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Diminuer de 0.1 %</translation>
     </message>
     <message>
         <source>15&amp;0%</source>
@@ -1107,15 +1133,15 @@ Information : la valeur doit être comprise entre %0 et %1</translation>
     </message>
     <message>
         <source>Buffering...</source>
-        <translation type="unfinished"></translation>
+        <translation>Mise en cache...</translation>
     </message>
     <message>
         <source>Your network is slow or stuck, please wait a bit</source>
-        <translation type="unfinished"></translation>
+        <translation>Votre réseau est lent ou bloqué, veuillez patienter</translation>
     </message>
     <message>
         <source>File couldn&apos;t be opened</source>
-        <translation type="unfinished"></translation>
+        <translation>Le fichier ne peut être ouvert</translation>
     </message>
     <message>
         <source>File does not exist</source>
@@ -1143,7 +1169,7 @@ Information : la valeur doit être comprise entre %0 et %1</translation>
     </message>
     <message>
         <source>Video Output</source>
-        <translation type="unfinished"></translation>
+        <translation>Sortie vidéo</translation>
     </message>
     <message>
         <source>Resolution</source>
@@ -1167,7 +1193,7 @@ Information : la valeur doit être comprise entre %0 et %1</translation>
     </message>
     <message>
         <source>Audio Output</source>
-        <translation type="unfinished"></translation>
+        <translation>Sortie audio</translation>
     </message>
     <message>
         <source>Sample Rate</source>
@@ -1183,19 +1209,19 @@ Information : la valeur doit être comprise entre %0 et %1</translation>
     </message>
     <message>
         <source>Deinterlacing: %0</source>
-        <translation type="unfinished"></translation>
+        <translation>Désentrelacement : %0</translation>
     </message>
     <message>
         <source>enabled</source>
-        <translation type="unfinished"></translation>
+        <translation>activé</translation>
     </message>
     <message>
         <source>disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>désactivé</translation>
     </message>
     <message>
         <source>Motion Interpolation: %0</source>
-        <translation type="unfinished"></translation>
+        <translation>Interpolation du mouvement : %0</translation>
     </message>
 </context>
 <context>
@@ -1329,39 +1355,39 @@ Information : la valeur doit être comprise entre %0 et %1</translation>
     </message>
     <message>
         <source>Change Volume</source>
-        <translation type="unfinished"></translation>
+        <translation>Modifier le volume</translation>
     </message>
     <message>
         <source>Seek Position</source>
-        <translation type="unfinished"></translation>
+        <translation>Modifier la position</translation>
     </message>
     <message>
         <source>&amp;Use Mouse &amp;&amp; Touch Gestures</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Utilier la souris et les mouvements tactiles</translation>
     </message>
     <message>
         <source>History</source>
-        <translation type="unfinished"></translation>
+        <translation>Historique</translation>
     </message>
     <message>
         <source>Remember &amp;recently opened files up to</source>
-        <translation type="unfinished"></translation>
+        <translation>Se souvenir des fichiers &amp;récement ouverts jusqu&apos;à</translation>
     </message>
     <message>
         <source>Remember playback &amp;position</source>
-        <translation type="unfinished"></translation>
+        <translation>Se souvenir de la &amp;position de lecture</translation>
     </message>
     <message>
         <source>Prefix a command with &apos;mpv&apos; to make it run as an input command.</source>
-        <translation type="unfinished"></translation>
+        <translation>Préfixez une commande par &apos;mpv&apos; pour la considérer comme une commande d&apos;entrée. </translation>
     </message>
     <message>
         <source>Rese&amp;t All</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Tout effacer</translation>
     </message>
     <message>
         <source>Chang&amp;e...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Modifier...</translation>
     </message>
     <message>
         <source>File Format:</source>
@@ -1377,55 +1403,55 @@ Information : la valeur doit être comprise entre %0 et %1</translation>
     </message>
     <message>
         <source>Always show the &amp;save window</source>
-        <translation type="unfinished"></translation>
+        <translation>Toujours voir la fenêtre de &amp;sauvegarde</translation>
     </message>
     <message>
         <source>Advanced</source>
-        <translation type="unfinished"></translation>
+        <translation>Avancé</translation>
     </message>
     <message>
         <source>Command Line</source>
-        <translation type="unfinished"></translation>
+        <translation>Ligne de commande</translation>
     </message>
     <message>
         <source>mpv msg-level:</source>
-        <translation type="unfinished"></translation>
+        <translation>niveau de message mpv :</translation>
     </message>
     <message>
         <source>no</source>
-        <translation type="unfinished"></translation>
+        <translation>aucun</translation>
     </message>
     <message>
         <source>fatal</source>
-        <translation type="unfinished"></translation>
+        <translation>fatal</translation>
     </message>
     <message>
         <source>error</source>
-        <translation type="unfinished"></translation>
+        <translation>erreur</translation>
     </message>
     <message>
         <source>warn</source>
-        <translation type="unfinished"></translation>
+        <translation>alerte</translation>
     </message>
     <message>
         <source>info</source>
-        <translation type="unfinished"></translation>
+        <translation>info</translation>
     </message>
     <message>
         <source>status</source>
-        <translation type="unfinished"></translation>
+        <translation>status</translation>
     </message>
     <message>
         <source>v</source>
-        <translation type="unfinished"></translation>
+        <translation>v</translation>
     </message>
     <message>
         <source>debug</source>
-        <translation type="unfinished"></translation>
+        <translation>debug</translation>
     </message>
     <message>
         <source>trace</source>
-        <translation type="unfinished"></translation>
+        <translation>trace</translation>
     </message>
     <message>
         <source>&amp;OK</source>
@@ -1433,7 +1459,7 @@ Information : la valeur doit être comprise entre %0 et %1</translation>
     </message>
     <message>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Annuler</translation>
     </message>
     <message>
         <source>Choose screenshot directory</source>
@@ -1496,7 +1522,7 @@ Information : la valeur doit être comprise entre %0 et %1</translation>
     </message>
     <message>
         <source>&amp;Save</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Enregistrer</translation>
     </message>
     <message>
         <source>Choose screenshot directory</source>
@@ -1519,11 +1545,11 @@ Information : la valeur doit être comprise entre %0 et %1</translation>
     </message>
     <message>
         <source>&amp;Update</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Mettre à jour</translation>
     </message>
     <message>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Annuler</translation>
     </message>
     <message>
         <source>&amp;CLOSE</source>
