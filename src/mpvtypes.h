@@ -9,10 +9,11 @@
 
 namespace Mpv
 {
-    const QStringList audio_filetypes = {"*.mp3","*.ogg","*.wav","*.wma","*.m4a","*.aac","*.ac3","*.ape","*.flac","*.ra","*.mka"},
+    // filetypes supported by mpv: https://github.com/mpv-player/mpv/blob/master/player/external_files.c
+    const QStringList audio_filetypes = {"*.mp3","*.ogg","*.wav","*.wma","*.m4a","*.aac","*.ac3","*.ape","*.flac","*.ra","*.mka","*.dts","*.opus"},
                       video_filetypes = {"*.avi","*.divx","*.mpg","*.mpeg","*.m1v","*.m2v","*.mpv","*.dv","*.3gp","*.mov","*.mp4","*.m4v","*.mqv","*.dat","*.vcd","*.ogm","*.ogv","*.asf","*.wmv","*.vob","*.mkv","*.ram","*.flv","*.rm","*.ts","*.rmvb","*.dvr-ms","*.m2t","*.m2ts","*.rec","*.f4v","*.hdmov","*.webm","*.vp8","*.letv","*.hlv"},
                       media_filetypes = audio_filetypes + video_filetypes,
-                      subtitle_filetypes = {"*.sub","*.srt","*.ass","*.ssa"};
+                      subtitle_filetypes = {"*.sub","*.srt","*.ass","*.ssa","*.smi","*.rt","*.txt","*.mks","*.vtt","*.sup"};
 
     enum PlayState
     {
