@@ -1,5 +1,7 @@
 # [Baka MPlayer](http://bakamplayer.u8sand.net)
 
+[![Join the chat at https://gitter.im/u8sand/Baka-MPlayer](https://badges.gitter.im/u8sand/Baka-MPlayer.svg)](https://gitter.im/u8sand/Baka-MPlayer?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Build Status](https://travis-ci.org/u8sand/Baka-MPlayer.svg?branch=master)](https://travis-ci.org/u8sand/Baka-MPlayer)
 
 --------------
