@@ -12,5 +12,7 @@ void CustomLabel::mousePressEvent(QMouseEvent *event)
         emit clicked();
         event->accept();
     }
-    QLabel::mousePressEvent(event);
+    else {
+        QLabel::mousePressEvent(event);
+    }
 }
