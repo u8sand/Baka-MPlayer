@@ -17,7 +17,7 @@
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2015 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#008098;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; è un riproduttore multimediale gratuito e a sorgente aperto, multipiattaforma, basato su  &lt;b&gt;libmpv&lt;/b&gt;. Il suo semplice design riflette l&apos;idea di un ambiente ordinato, semplice e piacevole per guardare programmi tv.&lt;br&gt;&lt;br&gt;Copyright © 2015 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#008098;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>mpv - video player based on MPlayer/mplayer2
@@ -49,11 +49,39 @@ Translations
 - Portuguese &lt;u8sand&gt;
 - Russian &lt;suhr&gt;
 - Spanish &lt;Alfredo Ramos&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>mpv - riproduttore video basato su MPlayer/mplayer2
+GPLv2 &lt;mpv.io&gt;
+
+Icone Material Design
+Attribuzione 4.0 Internazionale &lt;Google&gt;
+
+Noto Sans -  famiglia di font con molti caratteri supportati
+Licenza Apache, versione 2.0 &lt;Google&gt;
+
+Immagine Cassetta Rétro
+&lt;Lukas Troup&gt;
+
+Icone Gesti
+CC License &lt;Jeff Portaro&gt;
+
+Icona Download
+CC BY 3.0 &lt;Sasha Mescheryakov&gt;
+
+Traduzioni
+- Chinese &lt;amazingfate, Antares95&gt;
+- Croatian &lt;gogo&gt;
+- Dutch &lt;robin007bond&gt;
+- French &lt;chapouvalpin&gt;
+- German: &lt;yiip87&gt;
+- Italian &lt;Aloysius&gt;
+- Korean &lt;godly-devotion&gt;
+- Portuguese &lt;u8sand&gt;
+- Russian &lt;suhr&gt;
+- Spanish &lt;Alfredo Ramos&gt;</translation>
     </message>
     <message>
         <source>&amp;Close</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Chiudi</translation>
     </message>
     <message>
         <source>Credits</source>
@@ -87,462 +115,462 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <name>BakaEngine</name>
     <message>
         <source>Open Subtitle File</source>
-        <translation type="unfinished">Apri file sottotitoli</translation>
+        <translation>Apri file sottotitoli</translation>
     </message>
     <message>
         <source>Subtitle Files</source>
-        <translation type="unfinished">File sottotitoli</translation>
+        <translation>File sottotitoli</translation>
     </message>
     <message>
         <source>Open Audio File</source>
-        <translation type="unfinished"></translation>
+        <translation>Apri file audio</translation>
     </message>
     <message>
         <source>http://bakamplayer.u8sand.net/help.php</source>
-        <translation type="unfinished">http://bakamplayer.u8sand.net/help.php</translation>
+        <translation>http://bakamplayer.u8sand.net/help.php</translation>
     </message>
     <message>
         <source>Open File</source>
-        <translation type="unfinished">Apri file</translation>
+        <translation>Apri file</translation>
     </message>
     <message>
         <source>Media Files</source>
-        <translation type="unfinished">File multimediali</translation>
+        <translation>File multimediali</translation>
     </message>
     <message>
         <source>Video Files</source>
-        <translation type="unfinished">File video</translation>
+        <translation>File video</translation>
     </message>
     <message>
         <source>Audio Files</source>
-        <translation type="unfinished">File audio</translation>
+        <translation>File audio</translation>
     </message>
     <message>
         <source>Dim Lights</source>
-        <translation type="unfinished">Abbassa le luci</translation>
+        <translation>Abbassa le luci</translation>
     </message>
     <message>
         <source>In order to dim the lights, the desktop compositor has to be enabled. This can be done through Window Manager Desktop.</source>
-        <translation type="unfinished">Per poter abbassare le luci, il compositore del desktop deve essere abilitato. Questo può essere fatto dal gestore finestre desktop.</translation>
+        <translation>Per poter abbassare le luci, il compositore del desktop deve essere attivato. Questo può essere fatto dal gestore finestre desktop.</translation>
     </message>
     <message>
         <source>Fit Window: %0</source>
-        <translation type="unfinished"></translation>
+        <translation>Adatta alla finestra: %0</translation>
     </message>
     <message>
         <source>Increase sub size</source>
-        <translation type="unfinished"></translation>
+        <translation>Aumenta dimensione sottotitoli</translation>
     </message>
     <message>
         <source>Decrease sub size</source>
-        <translation type="unfinished"></translation>
+        <translation>Diminuisci dimensione sottotitoli</translation>
     </message>
     <message>
         <source>Restart playback</source>
-        <translation type="unfinished"></translation>
+        <translation>Ricomincia riproduzione</translation>
     </message>
     <message>
         <source>Reset speed</source>
-        <translation type="unfinished"></translation>
+        <translation>Reimposta velocità</translation>
     </message>
     <message>
         <source>Take screenshot without subtitles</source>
-        <translation type="unfinished"></translation>
+        <translation>Cattura schermata senza sottotitoli</translation>
     </message>
     <message>
         <source>Take screenshot with subtitles</source>
-        <translation type="unfinished"></translation>
+        <translation>Cattura schermata con sottotitoli</translation>
     </message>
     <message>
         <source>Toggle subtitle visibility</source>
-        <translation type="unfinished"></translation>
+        <translation>Commuta visibilità sottotitoli</translation>
     </message>
     <message>
         <source>Go to previous chapter</source>
-        <translation type="unfinished"></translation>
+        <translation>Vai al capitolo precedente</translation>
     </message>
     <message>
         <source>Go to next chapter</source>
-        <translation type="unfinished"></translation>
+        <translation>Vai al capitolo successivo</translation>
     </message>
     <message>
         <source>Frame step backwards</source>
-        <translation type="unfinished"></translation>
+        <translation>Indietro per fotogramma</translation>
     </message>
     <message>
         <source>Frame step</source>
-        <translation type="unfinished"></translation>
+        <translation>Avanza per fotogramma</translation>
     </message>
     <message>
         <source>Decrease volume</source>
-        <translation type="unfinished"></translation>
+        <translation>Abbassa il volume</translation>
     </message>
     <message>
         <source>Increase volume</source>
-        <translation type="unfinished"></translation>
+        <translation>Alza il volume</translation>
     </message>
     <message>
         <source>Increase playback speed by %0</source>
-        <translation type="unfinished"></translation>
+        <translation>Aumenta la velocità di riproduzione di %0</translation>
     </message>
     <message>
         <source>Decrease playback speed by %0</source>
-        <translation type="unfinished"></translation>
+        <translation>Diminuisci la velocità di riproduzione di %0</translation>
     </message>
     <message>
         <source>Toggle fullscreen</source>
-        <translation type="unfinished"></translation>
+        <translation>Commuta schermo intero</translation>
     </message>
     <message>
         <source>Toggle hide all controls mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Commuta modalità nascondi tutti i controlli</translation>
     </message>
     <message>
         <source>Dim lights</source>
-        <translation type="unfinished"></translation>
+        <translation>Abbassa le luci</translation>
     </message>
     <message>
         <source>Show the file in its folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostra il file nella sua cartella</translation>
     </message>
     <message>
         <source>View media information</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostra informazioni supporto</translation>
     </message>
     <message>
         <source>Show jump to time dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostra finestrella salto temporale</translation>
     </message>
     <message>
         <source>Show open file dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostra finestrella apri file</translation>
     </message>
     <message>
         <source>Show location dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostra finestrella posizione</translation>
     </message>
     <message>
         <source>Toggle playlist visibility</source>
-        <translation type="unfinished"></translation>
+        <translation>Commuta visibilità scaletta</translation>
     </message>
     <message>
         <source>Fit the window to the video</source>
-        <translation type="unfinished"></translation>
+        <translation>Adatta la finestra al video</translation>
     </message>
     <message>
         <source>Boss key</source>
-        <translation type="unfinished"></translation>
+        <translation>Tasto primario</translation>
     </message>
     <message>
         <source>Play previous file</source>
-        <translation type="unfinished"></translation>
+        <translation>Riproduci file precedente</translation>
     </message>
     <message>
         <source>Seek forwards by %0 sec</source>
-        <translation type="unfinished"></translation>
+        <translation>Vai avanti di %0 s</translation>
     </message>
     <message>
         <source>Seek backwards by %0 sec</source>
-        <translation type="unfinished"></translation>
+        <translation>Vai indietro di %0 s</translation>
     </message>
     <message>
         <source>Open a new window</source>
-        <translation type="unfinished"></translation>
+        <translation>Apri una nuova finestra</translation>
     </message>
     <message>
         <source>Quit</source>
-        <translation type="unfinished"></translation>
+        <translation>Esci</translation>
     </message>
     <message>
         <source>Play next file</source>
-        <translation type="unfinished"></translation>
+        <translation>Riproduci file successivo</translation>
     </message>
     <message>
         <source>Stop playback</source>
-        <translation type="unfinished"></translation>
+        <translation>Ferma riproduzione</translation>
     </message>
     <message>
         <source>Open clipboard location</source>
-        <translation type="unfinished"></translation>
+        <translation>Apri posizione appunti</translation>
     </message>
     <message>
         <source>Open the last played file</source>
-        <translation type="unfinished"></translation>
+        <translation>Apri ultimo file riprodotto</translation>
     </message>
     <message>
         <source>Access command-line</source>
-        <translation type="unfinished"></translation>
+        <translation>Accedi alla linea di comando</translation>
     </message>
     <message>
         <source>Launch online help</source>
-        <translation type="unfinished"></translation>
+        <translation>Lancia aiuto in linea</translation>
     </message>
     <message>
         <source>Play/Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Riproduci/Metti in pausa</translation>
     </message>
     <message>
         <source>Fit window to %0%</source>
-        <translation type="unfinished"></translation>
+        <translation>Adatta alla finestra allo %0%</translation>
     </message>
     <message>
         <source>Select previous file on playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Seleziona file precedente sulla scaletta</translation>
     </message>
     <message>
         <source>Select next file on playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Seleziona file successivo sulla scaletta</translation>
     </message>
     <message>
         <source>Play selected file on playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Riproduci file selezionati sulla scaletta</translation>
     </message>
     <message>
         <source>Remove selected file from playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Rimuovi file selezionati dalla scaletta</translation>
     </message>
     <message>
         <source>Saved to &quot;%0&quot;, with subs</source>
-        <translation type="unfinished">Salvato su &quot;%0&quot;, con sottotitoli</translation>
+        <translation>Salvato su &quot;%0&quot;, con sottotitoli</translation>
     </message>
     <message>
         <source>Saved to &quot;%0&quot;, without subs</source>
-        <translation type="unfinished">Salvato su &quot;%0&quot;, senza sottotitoli</translation>
+        <translation>Salvato su &quot;%0&quot;, senza sottotitoli</translation>
     </message>
     <message>
         <source>DimDialog not supported on this platform</source>
-        <translation type="unfinished"></translation>
+        <translation>Finestrella abbassa luci non supportata su questa piattaforma</translation>
     </message>
     <message>
         <source>All Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Tutti i file</translation>
     </message>
     <message>
         <source>To Current Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Alla dimensione corrente</translation>
     </message>
     <message>
         <source>Speed: %0x</source>
-        <translation type="unfinished">Velocità: %0x</translation>
+        <translation>Velocità: %0x</translation>
     </message>
     <message>
         <source>Press ESC or double-click to leave full screen</source>
-        <translation type="unfinished"></translation>
+        <translation>Premi ESC o fai doppio clic per uscire da schermo intero</translation>
     </message>
     <message>
         <source>Press %0 to show all controls again</source>
-        <translation type="unfinished"></translation>
+        <translation>Premi %0 per mostrare di nuovo tutti i controlli</translation>
     </message>
     <message>
         <source>usage: baka &lt;command&gt; [...]</source>
-        <translation type="unfinished"></translation>
+        <translation>uso: baka &lt;comando&gt; [...]</translation>
     </message>
     <message>
         <source>commands:</source>
-        <translation type="unfinished"></translation>
+        <translation>comandi:</translation>
     </message>
     <message>
         <source>usage: %0 %1</source>
-        <translation type="unfinished"></translation>
+        <translation>uso: %0 %1</translation>
     </message>
     <message>
         <source>description:</source>
-        <translation type="unfinished"></translation>
+        <translation>descrizione:</translation>
     </message>
     <message>
         <source>advanced:</source>
-        <translation type="unfinished"></translation>
+        <translation>avanzate:</translation>
     </message>
     <message>
         <source>invalid command &apos;%0&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>comando &apos;%0&apos; non valido</translation>
     </message>
     <message>
         <source>invalid parameter &apos;%0&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>parametro &apos;%0&apos; non valido</translation>
     </message>
     <message>
         <source>&apos;%0&apos; requires parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>&apos;%0&apos; richiede parametri</translation>
     </message>
     <message>
         <source>executes mpv command</source>
-        <translation type="unfinished"></translation>
+        <translation>esegue comando mpv</translation>
     </message>
     <message>
         <source>executes system shell command</source>
-        <translation type="unfinished"></translation>
+        <translation>esegue comando shell di sistema</translation>
     </message>
     <message>
         <source>creates a new instance of baka-mplayer</source>
-        <translation type="unfinished"></translation>
+        <translation>crea una nuova istanza di baka mplayer</translation>
     </message>
     <message>
         <source>shows the open location dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>mostra la finestrella apri posizione</translation>
     </message>
     <message>
         <source>opens the clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>apre gli appunti</translation>
     </message>
     <message>
         <source>shows the current file in folder</source>
-        <translation type="unfinished"></translation>
+        <translation>mostra il file corrente nella cartella</translation>
     </message>
     <message>
         <source>add subtitles dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>aggiungi finestrella sottotitoli</translation>
     </message>
     <message>
         <source>add audio track dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>aggiungi finestrella traccia audio</translation>
     </message>
     <message>
         <source>[subs]</source>
-        <translation type="unfinished"></translation>
+        <translation>[sottotitoli]</translation>
     </message>
     <message>
         <source>take a screenshot (with subtitles if specified)</source>
-        <translation type="unfinished"></translation>
+        <translation>cattura schermata (con sottotitoli se specificato)</translation>
     </message>
     <message>
         <source>toggles media info display</source>
-        <translation type="unfinished"></translation>
+        <translation>commuta visualizzazione informazioni supporto</translation>
     </message>
     <message>
         <source>stops the current playback</source>
-        <translation type="unfinished"></translation>
+        <translation>ferma la riproduzione corrente</translation>
     </message>
     <message>
         <source>playlist options</source>
-        <translation type="unfinished"></translation>
+        <translation>opzioni scaletta</translation>
     </message>
     <message>
         <source>opens jump dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>apre finestrella salto temporale</translation>
     </message>
     <message>
         <source>toggles dim desktop</source>
-        <translation type="unfinished"></translation>
+        <translation>commuta abbassa luci</translation>
     </message>
     <message>
         <source>toggles output textbox</source>
-        <translation type="unfinished"></translation>
+        <translation>commuta la casella di testo di uscita</translation>
     </message>
     <message>
         <source>opens preferences dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>apre finestrella preferenze</translation>
     </message>
     <message>
         <source>launches online help</source>
-        <translation type="unfinished"></translation>
+        <translation>lancia aiuto in linea</translation>
     </message>
     <message>
         <source>opens the update dialog or updates youtube-dl</source>
-        <translation type="unfinished"></translation>
+        <translation>apre la finestrella di aggiornamento o aggiorna youtube-dl</translation>
     </message>
     <message>
         <source>[file]</source>
-        <translation type="unfinished"></translation>
+        <translation>[file]</translation>
     </message>
     <message>
         <source>opens the open file dialog or the file specified</source>
-        <translation type="unfinished"></translation>
+        <translation>apre la finestrella apri file o il file specificato</translation>
     </message>
     <message>
         <source>toggle play/pause state</source>
-        <translation type="unfinished"></translation>
+        <translation>commuta lo stato riproduci/metti in pausa</translation>
     </message>
     <message>
         <source>[percent]</source>
-        <translation type="unfinished"></translation>
+        <translation>[per cento]</translation>
     </message>
     <message>
         <source>fit the window</source>
-        <translation type="unfinished"></translation>
+        <translation>adatta alla finestra</translation>
     </message>
     <message>
         <source>[level]</source>
-        <translation type="unfinished"></translation>
+        <translation>[livello]</translation>
     </message>
     <message>
         <source>adjusts the volume</source>
-        <translation type="unfinished"></translation>
+        <translation>regola il volume</translation>
     </message>
     <message>
         <source>[ratio]</source>
-        <translation type="unfinished"></translation>
+        <translation>[proporzione]</translation>
     </message>
     <message>
         <source>adjusts the speed</source>
-        <translation type="unfinished"></translation>
+        <translation>regola la velocità</translation>
     </message>
     <message>
         <source>toggles fullscreen state</source>
-        <translation type="unfinished"></translation>
+        <translation>commuta lo stato schermo intero</translation>
     </message>
     <message>
         <source>toggles hide all controls state</source>
-        <translation type="unfinished"></translation>
+        <translation>commuta lo stato nascondi tutti i controlli</translation>
     </message>
     <message>
         <source>pause and hide the window</source>
-        <translation type="unfinished"></translation>
+        <translation>metti in pausa e nascondi la finestra</translation>
     </message>
     <message>
         <source>clears the output textbox</source>
-        <translation type="unfinished"></translation>
+        <translation>pulisce la casella di testo di uscita</translation>
     </message>
     <message>
         <source>[command]</source>
-        <translation type="unfinished"></translation>
+        <translation>[comando]</translation>
     </message>
     <message>
         <source>internal help menu</source>
-        <translation type="unfinished"></translation>
+        <translation>menu interno di aiuto</translation>
     </message>
     <message>
         <source>[qt]</source>
-        <translation type="unfinished"></translation>
+        <translation>[qt]</translation>
     </message>
     <message>
         <source>open about dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>apri la finestrella informazioni</translation>
     </message>
     <message>
         <source>set mpv msg-level</source>
-        <translation type="unfinished"></translation>
+        <translation>imposta msg-level di mpv</translation>
     </message>
     <message>
         <source>quit baka-mplayer</source>
-        <translation type="unfinished"></translation>
+        <translation>esci da baka mplayer</translation>
     </message>
     <message>
         <source>Toggle mute audio</source>
-        <translation type="unfinished"></translation>
+        <translation>Commuta silenzia audio</translation>
     </message>
     <message>
         <source>toggle deinterlace</source>
-        <translation type="unfinished"></translation>
+        <translation>commuta deinterlaccia</translation>
     </message>
     <message>
         <source>toggle motion interpolation</source>
-        <translation type="unfinished"></translation>
+        <translation>commuta interpolazione movimento</translation>
     </message>
     <message>
         <source>mutes the audio</source>
-        <translation type="unfinished"></translation>
+        <translation>silenzia l&apos;audio</translation>
     </message>
 </context>
 <context>
     <name>InputDialog</name>
     <message>
         <source>Dialog</source>
-        <translation>Finestra di dialogo</translation>
+        <translation>Finestrella</translation>
     </message>
     <message>
         <source>Please enter a value:</source>
-        <translation>Inserisci un valore</translation>
+        <translation>Inserisci un valore:</translation>
     </message>
     <message>
         <source>&amp;OK</source>
@@ -550,14 +578,14 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     </message>
     <message>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Annulla</translation>
     </message>
 </context>
 <context>
     <name>JumpDialog</name>
     <message>
         <source>Dialog</source>
-        <translation>Finestra di dialogo</translation>
+        <translation>Finestrella</translation>
     </message>
     <message>
         <source> hr</source>
@@ -584,39 +612,39 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <name>KeyDialog</name>
     <message>
         <source>Modify Shortcut Key</source>
-        <translation type="unfinished"></translation>
+        <translation>Motifica tasto scorciatoia</translation>
     </message>
     <message>
         <source>(optional)</source>
-        <translation type="unfinished"></translation>
+        <translation>(opzionale)</translation>
     </message>
     <message>
         <source>Shortcut:</source>
-        <translation type="unfinished"></translation>
+        <translation>Scorciatoia:</translation>
     </message>
     <message>
         <source>Command:</source>
-        <translation type="unfinished"></translation>
+        <translation>Comando:</translation>
     </message>
     <message>
         <source>Label:</source>
-        <translation type="unfinished"></translation>
+        <translation>Etichetta:</translation>
     </message>
     <message>
         <source>C&amp;lear Shorcut</source>
-        <translation type="unfinished"></translation>
+        <translation>A&amp;zzera scorciatoia</translation>
     </message>
     <message>
         <source>Chang&amp;e</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Modifica</translation>
     </message>
     <message>
         <source>&amp;Add</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Aggiungi</translation>
     </message>
     <message>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>A&amp;nnulla</translation>
     </message>
 </context>
 <context>
@@ -627,7 +655,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     </message>
     <message>
         <source>Paste copied link</source>
-        <translation type="unfinished"></translation>
+        <translation>Incolla collegamento copiato</translation>
     </message>
     <message>
         <source>Type URL or location here</source>
@@ -654,7 +682,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     </message>
     <message>
         <source>Click to select a specific file by index</source>
-        <translation type="unfinished"></translation>
+        <translation>Clic per scegliere uno specifico file per indice</translation>
     </message>
     <message>
         <source>File 0 of 0</source>
@@ -738,15 +766,15 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     </message>
     <message>
         <source>Spee&amp;d</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Velocità</translation>
     </message>
     <message>
         <source>&amp;Add Audio File...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Aggiungi file audio...</translation>
     </message>
     <message>
         <source>&amp;Hide All Controls</source>
-        <translation type="unfinished"></translation>
+        <translation>Na&amp;scondi tutti i controlli</translation>
     </message>
     <message>
         <source>&amp;Navigate</source>
@@ -762,7 +790,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     </message>
     <message>
         <source>&amp;Help</source>
-        <translation>&amp;Aiuto</translation>
+        <translation>Ai&amp;uto</translation>
     </message>
     <message>
         <source>&amp;New Player</source>
@@ -951,7 +979,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <source>Enter the file number you want to play:
 Note: Value must be from %0 - %1</source>
-        <translation>Inserisci il numero del file che vuoi riprodurre:
+        <translation>Inserire il numero del file da riprodurre:
 Nota: Il valore deve essere compreso tra %0 e %1</translation>
     </message>
     <message>
@@ -968,261 +996,261 @@ Nota: Il valore deve essere compreso tra %0 e %1</translation>
     </message>
     <message>
         <source>Open &amp;Location...</source>
-        <translation type="unfinished"></translation>
+        <translation>Apri &amp;Posizione...</translation>
     </message>
     <message>
         <source>Update &amp;Streaming Support</source>
-        <translation type="unfinished"></translation>
+        <translation>Aggiornamento supporto &amp;flussi multimediali</translation>
     </message>
     <message>
         <source>Show Playback &amp;Info</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostra &amp;informazioni di riproduzione</translation>
     </message>
     <message>
         <source>Previous</source>
-        <translation type="unfinished"></translation>
+        <translation>Precedente</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation type="unfinished"></translation>
+        <translation>Riproduci</translation>
     </message>
     <message>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation>Successivo</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Pausa</translation>
     </message>
     <message>
         <source>&amp;Volume</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Volume</translation>
     </message>
     <message>
         <source>Open &amp;Copied Link</source>
-        <translation type="unfinished"></translation>
+        <translation>Apri &amp;collegamento copiato</translation>
     </message>
     <message>
         <source>Pla&amp;y Next File</source>
-        <translation type="unfinished"></translation>
+        <translation>Riproduci file &amp;successivo</translation>
     </message>
     <message>
         <source>Hide &amp;Album Art</source>
-        <translation type="unfinished"></translation>
+        <translation>Nascondi copertina &amp;album</translation>
     </message>
     <message>
         <source>&amp;50%</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;50%</translation>
     </message>
     <message>
         <source>&amp;75%</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;75%</translation>
     </message>
     <message>
         <source>&amp;100%</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;100%</translation>
     </message>
     <message>
         <source>&amp;200%</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;200%</translation>
     </message>
     <message>
         <source>[ &amp;none ]</source>
-        <translation type="unfinished"></translation>
+        <translation>[ &amp;nessuno ]</translation>
     </message>
     <message>
         <source>&amp;Increase by 5%</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Aumenta del 5%</translation>
     </message>
     <message>
         <source>&amp;Decrease by 5%</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Diminuisci del 5%</translation>
     </message>
     <message>
         <source>&amp;Increase by 0.1%</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Aumenta dello 0.1%</translation>
     </message>
     <message>
         <source>&amp;Decrease by 0.1%</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Diminuisci dello 0.1%</translation>
     </message>
     <message>
         <source>15&amp;0%</source>
-        <translation type="unfinished">200% {15&amp;0%?}</translation>
+        <translation>15&amp;0%</translation>
     </message>
     <message>
         <source>&amp;Mute</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Silenzia</translation>
     </message>
     <message>
         <source>&amp;Motion Interpolation</source>
-        <translation type="unfinished"></translation>
+        <translation>Interpolazione &amp;movimento</translation>
     </message>
     <message>
         <source>Reduce video studder</source>
-        <translation type="unfinished"></translation>
+        <translation>Riduci scatti nel video</translation>
     </message>
     <message>
         <source>&amp;Deinterlace</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Deinterlaccia</translation>
     </message>
     <message>
         <source>Subtitles visible</source>
-        <translation type="unfinished"></translation>
+        <translation>Sottotitoli visibili</translation>
     </message>
     <message>
         <source>Subtitles hidden</source>
-        <translation type="unfinished"></translation>
+        <translation>Sottotitoli nascosti</translation>
     </message>
     <message>
         <source>Muted</source>
-        <translation type="unfinished"></translation>
+        <translation>Silenziato</translation>
     </message>
     <message>
         <source>Unmuted</source>
-        <translation type="unfinished"></translation>
+        <translation>Desilenziato</translation>
     </message>
 </context>
 <context>
     <name>MpvHandler</name>
     <message>
         <source>File size</source>
-        <translation type="unfinished">Dimensioni del file</translation>
+        <translation>Dimensioni del file</translation>
     </message>
     <message>
         <source>Date created</source>
-        <translation type="unfinished">Data di creazione</translation>
+        <translation>Data di creazione</translation>
     </message>
     <message>
         <source>Media length</source>
-        <translation type="unfinished">Durata del media</translation>
+        <translation>Durata del supporto</translation>
     </message>
     <message>
         <source>Bitrate</source>
-        <translation type="unfinished"></translation>
+        <translation>Bitrate</translation>
     </message>
     <message>
         <source>Channels</source>
-        <translation type="unfinished"></translation>
+        <translation>Canali</translation>
     </message>
     <message>
         <source>File does not exist</source>
-        <translation type="unfinished"></translation>
+        <translation>Il file non esiste</translation>
     </message>
     <message>
         <source>File no longer exists</source>
-        <translation type="unfinished"></translation>
+        <translation>Il file non esiste più</translation>
     </message>
     <message>
         <source>File</source>
-        <translation type="unfinished"></translation>
+        <translation>File</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Titolo</translation>
     </message>
     <message>
         <source>Video (x%0)</source>
-        <translation type="unfinished"></translation>
+        <translation>Video (x%0)</translation>
     </message>
     <message>
         <source>Video Output</source>
-        <translation type="unfinished"></translation>
+        <translation>Uscita video</translation>
     </message>
     <message>
         <source>Resolution</source>
-        <translation type="unfinished"></translation>
+        <translation>Risoluzione</translation>
     </message>
     <message>
         <source>FPS</source>
-        <translation type="unfinished"></translation>
+        <translation>FPS</translation>
     </message>
     <message>
         <source>A/V Sync</source>
-        <translation type="unfinished"></translation>
+        <translation>Sincronizzazione A/V</translation>
     </message>
     <message>
         <source>%0 kbps</source>
-        <translation type="unfinished"></translation>
+        <translation>%0 kbps</translation>
     </message>
     <message>
         <source>Audio (x%0)</source>
-        <translation type="unfinished"></translation>
+        <translation>Audio (x%0)</translation>
     </message>
     <message>
         <source>Audio Output</source>
-        <translation type="unfinished"></translation>
+        <translation>Uscita audio</translation>
     </message>
     <message>
         <source>Sample Rate</source>
-        <translation type="unfinished"></translation>
+        <translation>Velocità di campionamento</translation>
     </message>
     <message>
         <source>Chapters</source>
-        <translation type="unfinished"></translation>
+        <translation>Capitoli</translation>
     </message>
     <message>
         <source>Metadata</source>
-        <translation type="unfinished"></translation>
+        <translation>Metadati</translation>
     </message>
     <message>
         <source>Buffering...</source>
-        <translation type="unfinished"></translation>
+        <translation>Riempimento buffer...</translation>
     </message>
     <message>
         <source>Your network is slow or stuck, please wait a bit</source>
-        <translation type="unfinished"></translation>
+        <translation>La rete è lenta o bloccata, attendere qualche istante</translation>
     </message>
     <message>
         <source>File couldn&apos;t be opened</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossibile aprire il file</translation>
     </message>
     <message>
         <source>Volume: %0%</source>
-        <translation type="unfinished"></translation>
+        <translation>Volume: %0%</translation>
     </message>
     <message>
         <source>Deinterlacing: %0</source>
-        <translation type="unfinished"></translation>
+        <translation>Deinterlacciamento: %0</translation>
     </message>
     <message>
         <source>enabled</source>
-        <translation type="unfinished"></translation>
+        <translation>attivato</translation>
     </message>
     <message>
         <source>disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>disattivato</translation>
     </message>
     <message>
         <source>Motion Interpolation: %0</source>
-        <translation type="unfinished"></translation>
+        <translation>Interpolazione movimento %0</translation>
     </message>
 </context>
 <context>
     <name>PlaylistWidget</name>
     <message>
         <source>R&amp;emove from Playlist</source>
-        <translation type="unfinished">&amp;Rimuovi da scaletta</translation>
+        <translation>&amp;Rimuovi dalla scaletta</translation>
     </message>
     <message>
         <source>&amp;Delete from Disk</source>
-        <translation type="unfinished">&amp;Elimina da disco</translation>
+        <translation>&amp;Elimina da disco</translation>
     </message>
     <message>
         <source>&amp;Refresh</source>
-        <translation type="unfinished">A&amp;ggiorna</translation>
+        <translation>A&amp;ggiorna</translation>
     </message>
     <message>
         <source>Delete sub-file?</source>
-        <translation type="unfinished"></translation>
+        <translation>Cancellare file sottotitoli?</translation>
     </message>
     <message>
         <source>Would you like to delete the associated sub file [%0]?</source>
-        <translation type="unfinished"></translation>
+        <translation>Si vuole cancellare il file sottotitoli associato [%0]?</translation>
     </message>
     <message>
         <source>Delete external sub-file?</source>
-        <translation type="unfinished"></translation>
+        <translation>Cancellare file sottotitoli esterno?</translation>
     </message>
 </context>
 <context>
@@ -1285,7 +1313,7 @@ Nota: Il valore deve essere compreso tra %0 e %1</translation>
     </message>
     <message>
         <source>Chang&amp;e...</source>
-        <translation type="unfinished"></translation>
+        <translation>Cam&amp;bia...</translation>
     </message>
     <message>
         <source>File Format:</source>
@@ -1297,39 +1325,39 @@ Nota: Il valore deve essere compreso tra %0 e %1</translation>
     </message>
     <message>
         <source>Language</source>
-        <translation type="unfinished"></translation>
+        <translation>Lingua</translation>
     </message>
     <message>
         <source>Change Volume</source>
-        <translation type="unfinished"></translation>
+        <translation>Modifica volume</translation>
     </message>
     <message>
         <source>Seek Position</source>
-        <translation type="unfinished"></translation>
+        <translation>Vai a posizione</translation>
     </message>
     <message>
         <source>&amp;Use Mouse &amp;&amp; Touch Gestures</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Usa mouse &amp;&amp; gesti a tocco</translation>
     </message>
     <message>
         <source>History</source>
-        <translation type="unfinished"></translation>
+        <translation>Cronologia</translation>
     </message>
     <message>
         <source>Remember &amp;recently opened files up to</source>
-        <translation type="unfinished"></translation>
+        <translation>Ricorda file aperti di &amp;recente fino a</translation>
     </message>
     <message>
         <source>Remember playback &amp;position</source>
-        <translation type="unfinished"></translation>
+        <translation>Ricorda &amp;posizione di riproduzione</translation>
     </message>
     <message>
         <source>Prefix a command with &apos;mpv&apos; to make it run as an input command.</source>
-        <translation type="unfinished"></translation>
+        <translation>Anteporre &apos;mpv&apos; a un comando per farlo eseguire come comando input.</translation>
     </message>
     <message>
         <source>Rese&amp;t All</source>
-        <translation type="unfinished"></translation>
+        <translation>Ripris&amp;tina tutto</translation>
     </message>
     <message>
         <source>png</source>
@@ -1357,103 +1385,103 @@ Nota: Il valore deve essere compreso tra %0 e %1</translation>
     </message>
     <message>
         <source>Mouse Gesture</source>
-        <translation type="unfinished"></translation>
+        <translation>Gesto mouse</translation>
     </message>
     <message>
         <source>Key</source>
-        <translation type="unfinished"></translation>
+        <translation>Tasto</translation>
     </message>
     <message>
         <source>Command</source>
-        <translation type="unfinished"></translation>
+        <translation>Comando</translation>
     </message>
     <message>
         <source>Label</source>
-        <translation type="unfinished"></translation>
+        <translation>Etichetta</translation>
     </message>
     <message>
         <source>Existing keybinding</source>
-        <translation type="unfinished"></translation>
+        <translation>Scorciatoia esistente</translation>
     </message>
     <message>
         <source>%0 is already being used. Would you like to change its function?</source>
-        <translation type="unfinished"></translation>
+        <translation>%0 è già utilizzato. Se ne vuole cambiare la funzione?</translation>
     </message>
     <message>
         <source>A&amp;lways</source>
-        <translation type="unfinished"></translation>
+        <translation>S&amp;empre</translation>
     </message>
     <message>
         <source>Always show the &amp;save window</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostra sempre la finestra di &amp;salvataggio</translation>
     </message>
     <message>
         <source>Advanced</source>
-        <translation type="unfinished"></translation>
+        <translation>Avanzate</translation>
     </message>
     <message>
         <source>Command Line</source>
-        <translation type="unfinished"></translation>
+        <translation>Linea di comando</translation>
     </message>
     <message>
         <source>mpv msg-level:</source>
-        <translation type="unfinished"></translation>
+        <translation>msg-level di mpv:</translation>
     </message>
     <message>
         <source>no</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>fatal</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>error</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>warn</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>info</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>status</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>v</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>debug</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>trace</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>&amp;OK</source>
-        <translation type="unfinished">&amp;OK</translation>
+        <translation>&amp;OK</translation>
     </message>
     <message>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Annulla</translation>
     </message>
     <message>
         <source>Key Bindings</source>
-        <translation type="unfinished"></translation>
+        <translation>Scorciatoie</translation>
     </message>
     <message>
         <source>Reset All Key Bindings?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ripristinare tutte le scorciatoie?</translation>
     </message>
     <message>
         <source>Are you sure you want to reset all shortcut keys to its original bindings?</source>
-        <translation type="unfinished"></translation>
+        <translation>Si vogliono davvero ripristinare tutte le scorciatoie alle loro impostazioni originarie?</translation>
     </message>
 </context>
 <context>
@@ -1492,11 +1520,11 @@ Nota: Il valore deve essere compreso tra %0 e %1</translation>
     </message>
     <message>
         <source>Always show this dialog</source>
-        <translation>Mostra sempre questa finestra di dialogo</translation>
+        <translation>Mostra sempre questa finestrella</translation>
     </message>
     <message>
         <source>&amp;Save</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Salva</translation>
     </message>
     <message>
         <source>Choose screenshot directory</source>
@@ -1519,11 +1547,11 @@ Nota: Il valore deve essere compreso tra %0 e %1</translation>
     </message>
     <message>
         <source>&amp;Update</source>
-        <translation type="unfinished"></translation>
+        <translation>A&amp;ggiorna</translation>
     </message>
     <message>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Annulla</translation>
     </message>
     <message>
         <source>&amp;CLOSE</source>
@@ -1557,47 +1585,48 @@ Versione: %0</translation>
     <message>
         <source>fopen error
 </source>
-        <translation type="unfinished"></translation>
+        <translation>errore fopen
+</translation>
     </message>
     <message>
         <source>Could not open file for writing...</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossibile aprire il file in scrittura...</translation>
     </message>
     <message>
         <source>Updating...</source>
-        <translation type="unfinished"></translation>
+        <translation>Aggiornamento in corso...</translation>
     </message>
     <message>
         <source>Checking for updates...</source>
-        <translation type="unfinished"></translation>
+        <translation>Ricerca aggiornamenti in corso...</translation>
     </message>
     <message>
         <source>Downloading update...</source>
-        <translation type="unfinished"></translation>
+        <translation>Scaricamento aggiornamento in corso...</translation>
     </message>
     <message>
         <source>write error</source>
-        <translation type="unfinished"></translation>
+        <translation>errore in scrittura</translation>
     </message>
     <message>
         <source>Download complete</source>
-        <translation type="unfinished"></translation>
+        <translation>Scaricamento completato</translation>
     </message>
     <message>
         <source>Redirected...</source>
-        <translation type="unfinished"></translation>
+        <translation>Rediretto...</translation>
     </message>
     <message>
         <source>Extracting...</source>
-        <translation type="unfinished"></translation>
+        <translation>Estrazione in corso...</translation>
     </message>
     <message>
         <source>Creating updater script...</source>
-        <translation type="unfinished"></translation>
+        <translation>Creazione script di aggiornamento in corso...</translation>
     </message>
     <message>
         <source>Done. Restarting...</source>
-        <translation type="unfinished"></translation>
+        <translation>Fatto. Riavvio in corso...</translation>
     </message>
 </context>
 </TS>
