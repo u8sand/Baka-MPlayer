@@ -503,15 +503,19 @@ void MpvHandler::Volume(int level, bool osd)
     if(level > 100) level = 100;
     else if(level < 0) level = 0;
 
+    double v = level;
+
     if(playState > 0)
     {
-        double v = level;
         mpv_set_property_async(mpv, MPV_REPLY_PROPERTY, "ao-volume", MPV_FORMAT_DOUBLE, &v);
         if(osd)
             ShowText(tr("Volume: %0%").arg(QString::number(level)));
     }
     else
+    {
+        mpv_set_option(mpv, "volume", MPV_FORMAT_DOUBLE, &v);
         setVolume(level);
+    }
 }
 
 void MpvHandler::Speed(double d)
