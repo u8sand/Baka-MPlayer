@@ -181,7 +181,7 @@ QTabBar::tab:!selected {
        <item>
         <widget class="QLabel" name="versionLabel">
          <property name="text">
-          <string>Baka MPlayer 0.0.0</string>
+          <string notr="true">Baka MPlayer 0.0.0</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -229,7 +229,7 @@ QTabBar::tab:!selected {
           <bool>true</bool>
          </property>
          <property name="plainText">
-          <string>mpv - video player based on MPlayer/mplayer2
+          <string notr="true">mpv - video player based on MPlayer/mplayer2
 GPLv2 &lt;mpv.io&gt;
 
 Material Design icons
@@ -290,7 +290,7 @@ Translations
           <bool>true</bool>
          </property>
          <property name="plainText">
-          <string>                GNU GENERAL PUBLIC LICENSE
+          <string notr="true">                GNU GENERAL PUBLIC LICENSE
                    Version 2, June 1991
 
 This program is free software; you can redistribute it and/or modify
