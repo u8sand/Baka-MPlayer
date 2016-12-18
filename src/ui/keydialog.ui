@@ -119,7 +119,7 @@ QPushButton:disabled {
      <item>
       <widget class="QPushButton" name="clearButton">
        <property name="text">
-        <string>C&amp;lear Shorcut</string>
+        <string>C&amp;lear Shortcut</string>
        </property>
       </widget>
      </item>
