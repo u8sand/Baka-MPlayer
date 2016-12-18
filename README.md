@@ -77,17 +77,19 @@ sudo make install
 ```
 The configuration file will be created on first run and will be written to `~/.config/bakamplayer.ini`.
 
-### Mac OS X
+### macOS
 
 As of right now you have to compile from source.
 You require some more dependencies which you can get from homebrew:
 ```
-git clone -b release https://github.com/u8sand/Baka-MPlayer.git
-cd "Baka-MPlayer"
-brew tap mpv-player/mpv
+brew install youtube-dl
 brew install mpv --with-libmpv
+git clone -b release https://github.com/u8sand/Baka-MPlayer.git
+cd Baka-MPlayer
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
-./configure
+brew install qt5
+export QMAKE=/usr/local/Cellar/qt5/5*/bin/qmake
+./configure CONFIG+=install_translations
 make
 open build
 ```
