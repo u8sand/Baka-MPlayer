@@ -34,6 +34,7 @@ MpvHandler::MpvHandler(int64_t wid, QObject *parent):
 
     // get updates when these properties change
     mpv_observe_property(mpv, 0, "playback-time", MPV_FORMAT_DOUBLE);
+    mpv_observe_property(mpv, 0, "playback-time", MPV_FORMAT_DOUBLE);
     mpv_observe_property(mpv, 0, "ao-volume", MPV_FORMAT_DOUBLE);
     mpv_observe_property(mpv, 0, "sid", MPV_FORMAT_INT64);
     mpv_observe_property(mpv, 0, "aid", MPV_FORMAT_INT64);
@@ -679,7 +680,7 @@ void MpvHandler::LoadFileInfo()
     fileInfo.media_title = mpv_get_property_string(mpv, "media-title");
     // get length
     double len;
-    mpv_get_property(mpv, "length", MPV_FORMAT_DOUBLE, &len);
+    mpv_get_property(mpv, "duration", MPV_FORMAT_DOUBLE, &len);
     fileInfo.length                  = (int)len;
 
     LoadTracks();
