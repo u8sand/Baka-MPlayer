@@ -25,7 +25,7 @@ source=(
 	"${pkgname}-${pkgver}.tar.gz::https://github.com/u8sand/Baka-MPlayer/archive/v${pkgver}.tar.gz"
 )
 
-sha512sums=('af2e79a318c8a119ef20c8721e42fa3a6c4900b5baf50613ba9de7c64cdaabbb08f0a31fc589460b544a8b67d662088cac2cdf3cc808ae128948a84882df13ab')
+sha512sums=('7898d65e87540bcb528d429dc70daefc7d4c0711b2983326cf6fa3a14e566c2742334378befdb710b8cc59452f960bc17b290058ba9e6878e830de6dbafce55a')
 
 prepare() {
 	# Make build directory
@@ -47,3 +47,4 @@ package() {
 	cd ${srcdir}/build
 	make INSTALL_ROOT=${pkgdir} install
 }
+
