@@ -12,46 +12,6 @@
         <translation>关于</translation>
     </message>
     <message>
-        <source>Baka MPlayer 0.0.0</source>
-        <translation>Baka MPlayer 0.0.0</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2015 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#008098;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt;是一个自由开源跨平台的基于 &lt;b&gt;libmpv&lt;/b&gt;的多媒体播放器。简单的设计致力于为观看视频提供一个整洁，简单，愉快的环境。&lt;br&gt;&lt;br&gt;Copyright © 2015 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#008098;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>mpv - video player based on MPlayer/mplayer2
-GPLv2 &lt;mpv.io&gt;
-
-Material Design icons
-Attribution 4.0 International &lt;Google&gt;
-
-Noto Sans -  font family with many supported characters
-Apache License, version 2.0 &lt;Google&gt;
-
-Retro Cassette image
-&lt;Lukas Troup&gt;
-
-Gesture icons
-CC License &lt;Jeff Portaro&gt;
-
-Download icon
-CC BY 3.0 &lt;Sasha Mescheryakov&gt;
-
-Translations
-- Chinese &lt;amazingfate, Antares95&gt;
-- Croatian &lt;gogo&gt;
-- Dutch &lt;robin007bond&gt;
-- French &lt;chapouvalpin&gt;
-- German: &lt;yiip87&gt;
-- Italian &lt;Aloysius&gt;
-- Korean &lt;godly-devotion&gt;
-- Portuguese &lt;u8sand&gt;
-- Russian &lt;suhr&gt;
-- Spanish &lt;Alfredo Ramos&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&amp;Close</source>
         <translation>关闭</translation>
     </message>
@@ -64,38 +24,8 @@ Translations
         <translation>许可证</translation>
     </message>
     <message>
-        <source>                GNU GENERAL PUBLIC LICENSE
-                   Version 2, June 1991
-
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source>
-        <translation>                GNU GENERAL PUBLIC LICENSE
-                   Version 2, June 1991
-
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2016 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#008098;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt;是一个自由开源跨平台的基于 &lt;b&gt;libmpv&lt;/b&gt;的多媒体播放器。简单的设计致力于为观看视频提供一个整洁，简单，愉快的环境。&lt;br&gt;&lt;br&gt;Copyright © 2015 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#008098;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt; {2016 ?} {8s?} {8s?} {008098;?} {8s?}</translation>
     </message>
 </context>
 <context>
@@ -618,10 +548,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
         <translation>标签</translation>
     </message>
     <message>
-        <source>C&amp;lear Shorcut</source>
-        <translation>清除快捷键</translation>
-    </message>
-    <message>
         <source>Chang&amp;e</source>
         <translation>更改</translation>
     </message>
@@ -632,6 +558,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
     <message>
         <source>&amp;Cancel</source>
         <translation>取消</translation>
+    </message>
+    <message>
+        <source>C&amp;lear Shortcut</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -668,20 +598,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</transl
         <translation>搜索播放列表</translation>
     </message>
     <message>
-        <source>Click to select a specific file by index</source>
-        <translation>点击以按照列表顺序选择一个文件</translation>
-    </message>
-    <message>
-        <source>File 0 of 0</source>
-        <translation>文件 0 总数 0</translation>
-    </message>
-    <message>
         <source>Select the Current File</source>
         <translation>选择当前文件</translation>
-    </message>
-    <message>
-        <source>Hide files with different extensions</source>
-        <translation>隐藏不同扩展名的文件</translation>
     </message>
     <message>
         <source>Refresh Playlist</source>
@@ -1070,10 +988,6 @@ Note: Value must be from %0 - %1</source>
         <translation>速度: %0x</translation>
     </message>
     <message>
-        <source>File %0 of %1</source>
-        <translation>文件 %0 总数 %1</translation>
-    </message>
-    <message>
         <source>Update &amp;Streaming Support</source>
         <translation>更新流媒体支持</translation>
     </message>
@@ -1096,6 +1010,18 @@ Note: Value must be from %0 - %1</source>
     <message>
         <source>Pause</source>
         <translation>暂停</translation>
+    </message>
+    <message>
+        <source>Click to play a specific file by index</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>0 / 0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%0 / %1</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

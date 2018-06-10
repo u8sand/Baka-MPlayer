@@ -12,74 +12,6 @@
         <translation>Over</translation>
     </message>
     <message>
-        <source>Baka MPlayer 0.0.0</source>
-        <translation>Baka Mplayer 0.0.0</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2015 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#008098;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is een gratis en open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; gebaseerde multimedia speler. Zijn eenvoudige ontwerp weerspiegelt het idee voor een overzichtelijke, eenvoudige en aangename omgeving voor het bekijken van tv-shows.&lt;br&gt;&lt;br&gt;Copyright © 2015 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#008098;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>mpv - video player based on MPlayer/mplayer2
-GPLv2 &lt;mpv.io&gt;
-
-Material Design icons
-Attribution 4.0 International &lt;Google&gt;
-
-Noto Sans -  font family with many supported characters
-Apache License, version 2.0 &lt;Google&gt;
-
-Retro Cassette image
-&lt;Lukas Troup&gt;
-
-Gesture icons
-CC License &lt;Jeff Portaro&gt;
-
-Download icon
-CC BY 3.0 &lt;Sasha Mescheryakov&gt;
-
-Translations
-- Chinese &lt;amazingfate, Antares95&gt;
-- Croatian &lt;gogo&gt;
-- Dutch &lt;robin007bond&gt;
-- French &lt;chapouvalpin&gt;
-- German: &lt;yiip87&gt;
-- Italian &lt;Aloysius&gt;
-- Korean &lt;godly-devotion&gt;
-- Portuguese &lt;u8sand&gt;
-- Russian &lt;suhr&gt;
-- Spanish &lt;Alfredo Ramos&gt;</source>
-        <translation>mpv - video speler gebaseerd op MPlayer/mplayer2
-GPLv2 &lt;mpv.io&gt;
-
-Material Design iconen
-Attribution 4.0 International &lt;Google&gt;
-
-Noto Sans - lettertype met veel ondersteunde karakters
-Apache License, version 2.0 &lt;Google&gt;
-
-Retro Cassette afbeelding
-&lt;Lukas Troup&gt;
-
-Gesture iconen
-CC License &lt;Jeff Portaro&gt;
-
-Download icoon
-CC BY 3.0 &lt;Sasha Mescheryakov&gt;
-
-Vertalingen
-- Chinees &lt;amazingfate, Antares95&gt;
-- Kroatisch &lt;gogo&gt;
-- Nederlands &lt;robin007bond&gt;
-- Frans &lt;chapouvalpin&gt;
-- Duits: &lt;yiip87&gt;
-- Italiaans &lt;Aloysius&gt;
-- Koreaans &lt;godly-devotion&gt;
-- Portugees &lt;u8sand&gt;
-- Russisch &lt;suhr&gt;
-- Spaans &lt;Alfredo Ramos&gt;</translation>
-    </message>
-    <message>
         <source>&amp;Close</source>
         <translation>Sluiten</translation>
     </message>
@@ -92,23 +24,8 @@ Vertalingen
         <translation>Licentie</translation>
     </message>
     <message>
-        <source>                GNU GENERAL PUBLIC LICENSE
-                   Version 2, June 1991
-
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source>
-        <translation></translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2016 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#008098;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is een gratis en open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; gebaseerde multimedia speler. Zijn eenvoudige ontwerp weerspiegelt het idee voor een overzichtelijke, eenvoudige en aangename omgeving voor het bekijken van tv-shows.&lt;br&gt;&lt;br&gt;Copyright © 2015 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#008098;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt; {2016 ?} {8s?} {8s?} {008098;?} {8s?}</translation>
     </message>
 </context>
 <context>
@@ -631,10 +548,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
         <translation></translation>
     </message>
     <message>
-        <source>C&amp;lear Shorcut</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Chang&amp;e</source>
         <translation>Verand&amp;er</translation>
     </message>
@@ -644,6 +557,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     </message>
     <message>
         <source>&amp;Cancel</source>
+        <translation type="unfinished">&amp;Annuleren</translation>
+    </message>
+    <message>
+        <source>C&amp;lear Shortcut</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -681,20 +598,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
         <translation>Zoek Afspeellijst</translation>
     </message>
     <message>
-        <source>Click to select a specific file by index</source>
-        <translation>Klik om een gespecificeerd bestand te selecteren bij index</translation>
-    </message>
-    <message>
-        <source>File 0 of 0</source>
-        <translation>Bestand 0 van 0</translation>
-    </message>
-    <message>
         <source>Select the Current File</source>
         <translation>Selecteer het Huidige Bestand</translation>
-    </message>
-    <message>
-        <source>Hide files with different extensions</source>
-        <translation>Verberg bestanden met andere extensies</translation>
     </message>
     <message>
         <source>Refresh Playlist</source>
@@ -1011,10 +916,6 @@ Opmerking: Waarde moet tussen %0 en %1 zijn</translation>
         <translation>Geen selectie</translation>
     </message>
     <message>
-        <source>File %0 of %1</source>
-        <translation>Bestand %0 van %1</translation>
-    </message>
-    <message>
         <source>&amp;Pause</source>
         <translation>&amp;Pauze</translation>
     </message>
@@ -1108,6 +1009,18 @@ Opmerking: Waarde moet tussen %0 en %1 zijn</translation>
     </message>
     <message>
         <source>Unmuted</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Click to play a specific file by index</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>0 / 0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%0 / %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1469,7 +1382,7 @@ Opmerking: Waarde moet tussen %0 en %1 zijn</translation>
     </message>
     <message>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Annuleren</translation>
     </message>
     <message>
         <source>Key Bindings</source>
@@ -1551,7 +1464,7 @@ Opmerking: Waarde moet tussen %0 en %1 zijn</translation>
     </message>
     <message>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Annuleren</translation>
     </message>
     <message>
         <source>&amp;CLOSE</source>

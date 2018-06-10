@@ -12,73 +12,8 @@
         <translation>À propos</translation>
     </message>
     <message>
-        <source>Baka MPlayer 0.0.0</source>
-        <translation>Baka MPlayer 0.0.0</translation>
-    </message>
-    <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2016 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#008098;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; est un logiciel libre et open-source, multiplate-forme, basé sur le lecteur multimédia &lt;b&gt;libmpv&lt;/b&gt;. Son design reflète un environnement simple, épuré et agréable pour visionner vos séries.&lt;br&gt;&lt;br&gt;Copyright © 2016 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#008098;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>mpv - video player based on MPlayer/mplayer2
-GPLv2 &lt;mpv.io&gt;
-
-Material Design icons
-Attribution 4.0 International &lt;Google&gt;
-
-Noto Sans -  font family with many supported characters
-Apache License, version 2.0 &lt;Google&gt;
-
-Retro Cassette image
-&lt;Lukas Troup&gt;
-
-Gesture icons
-CC License &lt;Jeff Portaro&gt;
-
-Download icon
-CC BY 3.0 &lt;Sasha Mescheryakov&gt;
-
-Translations
-- Chinese &lt;amazingfate, Antares95&gt;
-- Croatian &lt;gogo&gt;
-- Dutch &lt;robin007bond, wb9688&gt;
-- French &lt;chapouvalpin&gt;
-- Georgian &lt;arabuli&gt;
-- German &lt;yiip87&gt;
-- Italian &lt;Aloysius&gt;
-- Korean &lt;godly-devotion&gt;
-- Portuguese &lt;u8sand&gt;
-- Russian &lt;suhr&gt;
-- Spanish &lt;Alfredo Ramos&gt;</source>
-        <translation>mpv - lecteur vidéo basé sur MPlayer/mplayer2
-GPLv2 &lt;mpv.io&gt;
-
-Material Design icons
-Attribution 4.0 International &lt;Google&gt;
-Noto Sans -  font family with many supported characters
-Apache License, version 2.0 &lt;Google&gt;
-
-Retro Cassette image
-&lt;Lukas Troup&gt;
-
-Gesture icons
-CC License &lt;Jeff Portaro&gt;
-
-Download icon
-CC BY 3.0 &lt;Sasha Mescheryakov&gt;
-
-Translations
-- Chinois &lt;amazingfate, Antares95&gt;
-- Croate &lt;gogo&gt;
-- Néerlandais &lt;robin007bond, wb9688&gt;
-- Français &lt;chapouvalpin&gt;
-- Géorgien &lt;arabuli&gt;
-- Allemand &lt;yiip87&gt;
-- Italien &lt;Aloysius&gt;
-- Coréen &lt;godly-devotion&gt;
-- Portugais &lt;u8sand&gt;
-- Russe &lt;suhr&gt;
-- Espagnol &lt;Alfredo Ramos&gt; </translation>
     </message>
     <message>
         <source>&amp;Close</source>
@@ -91,25 +26,6 @@ Translations
     <message>
         <source>License</source>
         <translation>License</translation>
-    </message>
-    <message>
-        <source>                GNU GENERAL PUBLIC LICENSE
-                   Version 2, June 1991
-
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source>
-        <translation></translation>
     </message>
 </context>
 <context>
@@ -633,10 +549,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
         <translation>Étiquette :</translation>
     </message>
     <message>
-        <source>C&amp;lear Shorcut</source>
-        <translation>&amp;Supprimer raccourcis </translation>
-    </message>
-    <message>
         <source>Chang&amp;e</source>
         <translation>&amp;Changer</translation>
     </message>
@@ -647,6 +559,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <source>&amp;Cancel</source>
         <translation>&amp;Annuler</translation>
+    </message>
+    <message>
+        <source>C&amp;lear Shortcut</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="de_DE">
+<TS version="2.1" language="de_DE">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -10,46 +10,6 @@
     <message>
         <source>About</source>
         <translation>Über</translation>
-    </message>
-    <message>
-        <source>Baka MPlayer 0.0.0</source>
-        <translation>Baka MPlayer 0.0.0</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2015 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#008098;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>mpv - video player based on MPlayer/mplayer2
-GPLv2 &lt;mpv.io&gt;
-
-Material Design icons
-Attribution 4.0 International &lt;Google&gt;
-
-Noto Sans -  font family with many supported characters
-Apache License, version 2.0 &lt;Google&gt;
-
-Retro Cassette image
-&lt;Lukas Troup&gt;
-
-Gesture icons
-CC License &lt;Jeff Portaro&gt;
-
-Download icon
-CC BY 3.0 &lt;Sasha Mescheryakov&gt;
-
-Translations
-- Chinese &lt;amazingfate, Antares95&gt;
-- Croatian &lt;gogo&gt;
-- Dutch &lt;robin007bond&gt;
-- French &lt;chapouvalpin&gt;
-- German: &lt;yiip87&gt;
-- Italian &lt;Aloysius&gt;
-- Korean &lt;godly-devotion&gt;
-- Portuguese &lt;u8sand&gt;
-- Russian &lt;suhr&gt;
-- Spanish &lt;Alfredo Ramos&gt;</source>
-        <translation>&amp;Schließen</translation>
     </message>
     <message>
         <source>&amp;Close</source>
@@ -64,45 +24,8 @@ Translations
         <translation>Lizenz</translation>
     </message>
     <message>
-        <source>                GNU GENERAL PUBLIC LICENSE
-                   Version 2, June 1991
-
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source>
-        <translatorcomment>Official translation from http://www.gnu.de/documents/gpl-2.0.de.html</translatorcomment>
-        <translation>                GNU GENERAL PUBLIC LICENSE
-                   Version 2, June 1991
-
-Dieses Programm ist freie Software. Sie können es unter
-den Bedingungen der GNU General Public License, wie
-von der Free Software Foundation veröffentlicht, weiter-
-geben und/oder modifizieren, entweder gemäß Version 2
-der Lizenz oder (nach Ihrer Option) jeder späteren Ver-
-sion.
-
-Die Veröffentlichung dieses Programms erfolgt in der Hof-
-fnung, daß es Ihnen von Nutzen sein wird, aber OHNE IR-
-GENDEINE GARANTIE, sogar ohne die implizite Garan-
-tie der MARKTREIFE oder der VERWENDBARKEIT FÜR
-EINEN BESTIMMTEN ZWECK. Details finden Sie in der
-GNU General Public License.
-
-Sie sollten ein Exemplar der GNU General Public Li-
-cense zusammen mit diesem Programm erhalten haben.
-Falls nicht, schreiben Sie an die
-Free Software Foundation, Inc., 51 Franklin St,
-Fifth Floor, Boston, MA 02110, USA</translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2016 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#008098;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -625,10 +548,6 @@ Fifth Floor, Boston, MA 02110, USA</translation>
         <translation>Bezeichnung:</translation>
     </message>
     <message>
-        <source>C&amp;lear Shorcut</source>
-        <translation>&amp;Lösche Shortcut</translation>
-    </message>
-    <message>
         <source>Chang&amp;e</source>
         <translation>Ändern</translation>
     </message>
@@ -639,6 +558,10 @@ Fifth Floor, Boston, MA 02110, USA</translation>
     <message>
         <source>&amp;Cancel</source>
         <translation>&amp;Abbrechen</translation>
+    </message>
+    <message>
+        <source>C&amp;lear Shortcut</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -675,20 +598,8 @@ Fifth Floor, Boston, MA 02110, USA</translation>
         <translation>Wiedergabeliste durchsuchen</translation>
     </message>
     <message>
-        <source>Click to select a specific file by index</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>File 0 of 0</source>
-        <translation>Datei 0 von 0</translation>
-    </message>
-    <message>
         <source>Select the Current File</source>
         <translation>Aktuelle Datei auswählen</translation>
-    </message>
-    <message>
-        <source>Hide files with different extensions</source>
-        <translation>Bestimmte Dateierweiterungen ausblenden</translation>
     </message>
     <message>
         <source>Refresh Playlist</source>
@@ -1005,10 +916,6 @@ Hinweis: Wert muss zwischen %0 und %1 liegen</translation>
         <translation>Keine Auswahl</translation>
     </message>
     <message>
-        <source>File %0 of %1</source>
-        <translation>Datei %0 von %1</translation>
-    </message>
-    <message>
         <source>&amp;Pause</source>
         <translation>&amp;Pause</translation>
     </message>
@@ -1054,11 +961,11 @@ Hinweis: Wert muss zwischen %0 und %1 liegen</translation>
     </message>
     <message>
         <source>&amp;Increase by 5%</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Erhöhe um 0.1% {5%?}</translation>
     </message>
     <message>
         <source>&amp;Decrease by 5%</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Verlangsame um 0.1% {5%?}</translation>
     </message>
     <message>
         <source>&amp;Increase by 0.1%</source>
@@ -1103,6 +1010,18 @@ Hinweis: Wert muss zwischen %0 und %1 liegen</translation>
     </message>
     <message>
         <source>Unmuted</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Click to play a specific file by index</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>0 / 0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%0 / %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1546,7 +1465,7 @@ Hinweis: Wert muss zwischen %0 und %1 liegen</translation>
     </message>
     <message>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Abbrechen</translation>
     </message>
     <message>
         <source>&amp;CLOSE</source>

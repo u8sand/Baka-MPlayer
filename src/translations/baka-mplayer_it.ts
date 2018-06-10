@@ -12,74 +12,6 @@
         <translation>Informazioni</translation>
     </message>
     <message>
-        <source>Baka MPlayer 0.0.0</source>
-        <translation>Baka MPlayer 0.0.0</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2015 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#008098;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; è un riproduttore multimediale gratuito e a sorgente aperto, multipiattaforma, basato su  &lt;b&gt;libmpv&lt;/b&gt;. Il suo semplice design riflette l&apos;idea di un ambiente ordinato, semplice e piacevole per guardare programmi tv.&lt;br&gt;&lt;br&gt;Copyright © 2015 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#008098;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>mpv - video player based on MPlayer/mplayer2
-GPLv2 &lt;mpv.io&gt;
-
-Material Design icons
-Attribution 4.0 International &lt;Google&gt;
-
-Noto Sans -  font family with many supported characters
-Apache License, version 2.0 &lt;Google&gt;
-
-Retro Cassette image
-&lt;Lukas Troup&gt;
-
-Gesture icons
-CC License &lt;Jeff Portaro&gt;
-
-Download icon
-CC BY 3.0 &lt;Sasha Mescheryakov&gt;
-
-Translations
-- Chinese &lt;amazingfate, Antares95&gt;
-- Croatian &lt;gogo&gt;
-- Dutch &lt;robin007bond&gt;
-- French &lt;chapouvalpin&gt;
-- German: &lt;yiip87&gt;
-- Italian &lt;Aloysius&gt;
-- Korean &lt;godly-devotion&gt;
-- Portuguese &lt;u8sand&gt;
-- Russian &lt;suhr&gt;
-- Spanish &lt;Alfredo Ramos&gt;</source>
-        <translation>mpv - riproduttore video basato su MPlayer/mplayer2
-GPLv2 &lt;mpv.io&gt;
-
-Icone Material Design
-Attribuzione 4.0 Internazionale &lt;Google&gt;
-
-Noto Sans -  famiglia di font con molti caratteri supportati
-Licenza Apache, versione 2.0 &lt;Google&gt;
-
-Immagine Cassetta Rétro
-&lt;Lukas Troup&gt;
-
-Icone Gesti
-CC License &lt;Jeff Portaro&gt;
-
-Icona Download
-CC BY 3.0 &lt;Sasha Mescheryakov&gt;
-
-Traduzioni
-- Chinese &lt;amazingfate, Antares95&gt;
-- Croatian &lt;gogo&gt;
-- Dutch &lt;robin007bond&gt;
-- French &lt;chapouvalpin&gt;
-- German: &lt;yiip87&gt;
-- Italian &lt;Aloysius&gt;
-- Korean &lt;godly-devotion&gt;
-- Portuguese &lt;u8sand&gt;
-- Russian &lt;suhr&gt;
-- Spanish &lt;Alfredo Ramos&gt;</translation>
-    </message>
-    <message>
         <source>&amp;Close</source>
         <translation>&amp;Chiudi</translation>
     </message>
@@ -92,23 +24,8 @@ Traduzioni
         <translation>Licenza</translation>
     </message>
     <message>
-        <source>                GNU GENERAL PUBLIC LICENSE
-                   Version 2, June 1991
-
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source>
-        <translation></translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2016 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#008098;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; è un riproduttore multimediale gratuito e a sorgente aperto, multipiattaforma, basato su  &lt;b&gt;libmpv&lt;/b&gt;. Il suo semplice design riflette l&apos;idea di un ambiente ordinato, semplice e piacevole per guardare programmi tv.&lt;br&gt;&lt;br&gt;Copyright © 2015 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#008098;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt; {2016 ?} {8s?} {8s?} {008098;?} {8s?}</translation>
     </message>
 </context>
 <context>
@@ -631,10 +548,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
         <translation>Etichetta:</translation>
     </message>
     <message>
-        <source>C&amp;lear Shorcut</source>
-        <translation>A&amp;zzera scorciatoia</translation>
-    </message>
-    <message>
         <source>Chang&amp;e</source>
         <translation>&amp;Modifica</translation>
     </message>
@@ -645,6 +558,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
     <message>
         <source>&amp;Cancel</source>
         <translation>A&amp;nnulla</translation>
+    </message>
+    <message>
+        <source>C&amp;lear Shortcut</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -681,20 +598,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source
         <translation>Cerca nella scaletta</translation>
     </message>
     <message>
-        <source>Click to select a specific file by index</source>
-        <translation>Clic per scegliere uno specifico file per indice</translation>
-    </message>
-    <message>
-        <source>File 0 of 0</source>
-        <translation>File 0 di 0</translation>
-    </message>
-    <message>
         <source>Select the Current File</source>
         <translation>Seleziona file corrente</translation>
-    </message>
-    <message>
-        <source>Hide files with different extensions</source>
-        <translation>Nascondi file con estensioni diverse</translation>
     </message>
     <message>
         <source>Refresh Playlist</source>
@@ -991,10 +896,6 @@ Nota: Il valore deve essere compreso tra %0 e %1</translation>
         <translation>Nessuna selezione</translation>
     </message>
     <message>
-        <source>File %0 of %1</source>
-        <translation>File %0 di %1</translation>
-    </message>
-    <message>
         <source>Open &amp;Location...</source>
         <translation>Apri &amp;Posizione...</translation>
     </message>
@@ -1109,6 +1010,18 @@ Nota: Il valore deve essere compreso tra %0 e %1</translation>
     <message>
         <source>Unmuted</source>
         <translation>Desilenziato</translation>
+    </message>
+    <message>
+        <source>Click to play a specific file by index</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>0 / 0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%0 / %1</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

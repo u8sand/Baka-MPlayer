@@ -12,10 +12,6 @@
         <translation>Giới thiệu</translation>
     </message>
     <message>
-        <source>Baka MPlayer 0.0.0</source>
-        <translation></translation>
-    </message>
-    <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2016 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#008098;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; là một chương trình chơi đa phương tiện dựa trên &lt;b&gt;libmpv&lt;/b&gt;, miễn phí và mã nguồn mở, đa nền tảng. Thiết kế đơn giản của nó thể hiện ý tưởng về một môi trường gọn gàng, đơn giản và đầy thú vị để thưởng thức các show truyền hình.&lt;br&gt;&lt;br&gt;Bản quyền © 2016 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#008098;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -24,96 +20,8 @@
         <translation>Công trạng</translation>
     </message>
     <message>
-        <source>mpv - video player based on MPlayer/mplayer2
-GPLv2 &lt;mpv.io&gt;
-
-Material Design icons
-Attribution 4.0 International &lt;Google&gt;
-
-Noto Sans -  font family with many supported characters
-Apache License, version 2.0 &lt;Google&gt;
-
-Retro Cassette image
-&lt;Lukas Troup&gt;
-
-Gesture icons
-CC License &lt;Jeff Portaro&gt;
-
-Download icon
-CC BY 3.0 &lt;Sasha Mescheryakov&gt;
-
-Translations
-- Chinese &lt;amazingfate, Antares95&gt;
-- Croatian &lt;gogo&gt;
-- Dutch &lt;robin007bond, wb9688&gt;
-- French &lt;chapouvalpin&gt;
-- Georgian &lt;arabuli&gt;
-- German &lt;yiip87&gt;
-- Italian &lt;Aloysius&gt;
-- Korean &lt;godly-devotion&gt;
-- Portuguese &lt;u8sand&gt;
-- Russian &lt;suhr&gt;
-- Spanish &lt;Alfredo Ramos&gt;</source>
-        <translation>mpv - trình xem phim dựa trên MPlayer/mplayer2
-GPLv2 &lt;mpv.io&gt;
-
-Biểu tượng Material Design
-Attribution 4.0 International &lt;Google&gt;
-
-Noto Sans -  họ phông hỗ trợ nhiều dạng ký tự
-Giấy phép Apache, phiên bản 2.0 &lt;Google&gt;
-
-Ảnh Retro Cassette
-&lt;Lukas Troup&gt;
-
-Biểu tượng Gesture
-CC License &lt;Jeff Portaro&gt;
-
-Biểu tượng Download
-CC BY 3.0 &lt;Sasha Mescheryakov&gt;
-
-Chuyển ngữ:
-- Tiếng Trung &lt;amazingfate, Antares95&gt;
-- Tiếng Croatia &lt;gogo&gt;
-- Tiếng Hà Lan &lt;robin007bond, wb9688&gt;
-- Tiếng Pháp &lt;chapouvalpin&gt;
-- Tiếng Gruzia &lt;arabuli&gt;
-- Tiếng Đức &lt;yiip87&gt;
-- Tiếng Ý &lt;Aloysius&gt;
-- Tiếng Hàn &lt;godly-devotion&gt;
-- Tiếng Bồ Đào Nha &lt;u8sand&gt;
-- Tiếng Nga &lt;suhr&gt;
-- Tiếng Tây Ban Nha &lt;Alfredo Ramos&gt;</translation>
-    </message>
-    <message>
         <source>License</source>
         <translation>Giấy phép</translation>
-    </message>
-    <message>
-        <source>                GNU GENERAL PUBLIC LICENSE
-                   Version 2, June 1991
-
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source>
-        <translation>                GIẤY PHÉP CÔNG CỘNG GNU
-                   Phiên bản 2, tháng 06 1991
-
-Chương trìnnh là phần mềm tự do, bạn có thể tái phân phối nó hoặc/và chỉnh sửa nó dưới các điều khoản của Giấy Phép Công Cộng GNU như đã được công bố bởi Quỹ Phần Mềm Tự Do; phiên bản 2 của giấy phép, hoặc (tuỳ bạn chọn) bất kỳ phiên bản kế tiếp nào.
-
-Chương trình này được phân phối với hi vọng rằng nó sẽ có ích nhưng KHÔNG KÈM THEO BẤT KỲ BẢO ĐẢM NÀO; kể cả ngụ ý sự ĐẢM BẢO VỀ TÍNH THƯƠNG MẠI CŨNG NHƯ TÍNH THÍCH HỢP CHO MỘT MỤC ĐÍCH CỤ THỂ. Theo dõi Giấy Phép Công Cộng GNU để biết thêm chi tiết.
-
-Bạn có thể được nhận một bản sao của Giấy Phép Công Cộng GNU kèm theo chương trình này; nếu chưa, hãy gửi yêu cầu đến Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</translation>
     </message>
     <message>
         <source>&amp;Close</source>
@@ -641,10 +549,6 @@ Bạn có thể được nhận một bản sao của Giấy Phép Công Cộng 
         <translation>Nhãn:</translation>
     </message>
     <message>
-        <source>C&amp;lear Shorcut</source>
-        <translation>&amp;Xoá phím tắt</translation>
-    </message>
-    <message>
         <source>Chang&amp;e</source>
         <translation>&amp;Thay đổi</translation>
     </message>
@@ -655,6 +559,10 @@ Bạn có thể được nhận một bản sao của Giấy Phép Công Cộng 
     <message>
         <source>&amp;Cancel</source>
         <translation>&amp;Huỷ</translation>
+    </message>
+    <message>
+        <source>C&amp;lear Shortcut</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
