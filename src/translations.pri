@@ -7,7 +7,7 @@ TRANSLATIONS += \
     translations/baka-mplayer_ka.ts \
     translations/baka-mplayer_ko.ts \
     translations/baka-mplayer_nl.ts \
-    translations/baka-mplayer_pt.ts \
+    translations/baka-mplayer_pt_BR.ts \
     translations/baka-mplayer_ru.ts \
     translations/baka-mplayer_tr.ts \
     translations/baka-mplayer_vi.ts \
