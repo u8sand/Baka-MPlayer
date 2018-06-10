@@ -1,12 +1,15 @@
 <RCC><qresource prefix="/">
+<file>translations/baka-mplayer_de.qm</file>
+<file>translations/baka-mplayer_es.qm</file>
+<file>translations/baka-mplayer_fr.qm</file>
 <file>translations/baka-mplayer_hr.qm</file>
+<file>translations/baka-mplayer_it.qm</file>
+<file>translations/baka-mplayer_ka.qm</file>
+<file>translations/baka-mplayer_ko.qm</file>
 <file>translations/baka-mplayer_nl.qm</file>
 <file>translations/baka-mplayer_pt.qm</file>
 <file>translations/baka-mplayer_ru.qm</file>
-<file>translations/baka-mplayer_ko.qm</file>
+<file>translations/baka-mplayer_tr.qm</file>
+<file>translations/baka-mplayer_vi.qm</file>
 <file>translations/baka-mplayer_zh_CN.qm</file>
-<file>translations/baka-mplayer_it.qm</file>
-<file>translations/baka-mplayer_es.qm</file>
-<file>translations/baka-mplayer_fr.qm</file>
-<file>translations/baka-mplayer_de.qm</file>
 </qresource></RCC>
