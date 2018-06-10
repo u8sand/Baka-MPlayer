@@ -84,7 +84,7 @@
     </message>
     <message>
         <source>Restart playback</source>
-        <translation></translation>
+        <translation>Oynatmayı yeniden başlat</translation>
     </message>
     <message>
         <source>Reset speed</source>
@@ -96,11 +96,11 @@
     </message>
     <message>
         <source>Take screenshot with subtitles</source>
-        <translation></translation>
+        <translation>Altyazılı ekran görüntüsü al</translation>
     </message>
     <message>
         <source>Toggle subtitle visibility</source>
-        <translation></translation>
+        <translation>Altyazı görünürlüğünü değiştir</translation>
     </message>
     <message>
         <source>Go to previous chapter</source>
@@ -112,11 +112,11 @@
     </message>
     <message>
         <source>Frame step backwards</source>
-        <translation></translation>
+        <translation>Çerçeve adımı geriye doğru</translation>
     </message>
     <message>
         <source>Frame step</source>
-        <translation>Kare adımı</translation>
+        <translation>Çerçeve adımı</translation>
     </message>
     <message>
         <source>Decrease volume</source>
@@ -128,11 +128,11 @@
     </message>
     <message>
         <source>Increase playback speed by %0</source>
-        <translation></translation>
+        <translation>Oynatma hızını %0 artır</translation>
     </message>
     <message>
         <source>Decrease playback speed by %0</source>
-        <translation></translation>
+        <translation>Oynatma hızını %0 azalt</translation>
     </message>
     <message>
         <source>Toggle fullscreen</source>
@@ -148,27 +148,27 @@
     </message>
     <message>
         <source>Show the file in its folder</source>
-        <translation></translation>
+        <translation>Dosyayı klasöründe göster</translation>
     </message>
     <message>
         <source>View media information</source>
-        <translation></translation>
+        <translation>Medya bilgilerini görüntüle</translation>
     </message>
     <message>
         <source>Show jump to time dialog</source>
-        <translation></translation>
+        <translation>Zamana atla iletişim kutusunu göster</translation>
     </message>
     <message>
         <source>Show open file dialog</source>
-        <translation></translation>
+        <translation>Açık dosya iletişimini göster</translation>
     </message>
     <message>
         <source>Show location dialog</source>
-        <translation></translation>
+        <translation>Konum iletişimini göster</translation>
     </message>
     <message>
         <source>Toggle playlist visibility</source>
-        <translation></translation>
+        <translation>Oynatma listesi görünürlüğünü değiştir</translation>
     </message>
     <message>
         <source>Fit the window to the video</source>
@@ -176,7 +176,7 @@
     </message>
     <message>
         <source>Boss key</source>
-        <translation></translation>
+        <translation>Patron anahtarı</translation>
     </message>
     <message>
         <source>Play previous file</source>
@@ -200,23 +200,23 @@
     </message>
     <message>
         <source>Play next file</source>
-        <translation></translation>
+        <translation>Sonraki dosyayı oynat</translation>
     </message>
     <message>
         <source>Stop playback</source>
-        <translation></translation>
+        <translation>Oynatmayı durdur</translation>
     </message>
     <message>
         <source>Open clipboard location</source>
-        <translation></translation>
+        <translation>Pano konumunu aç</translation>
     </message>
     <message>
         <source>Open the last played file</source>
-        <translation></translation>
+        <translation>Son çalınan dosyayı aç</translation>
     </message>
     <message>
         <source>Access command-line</source>
-        <translation></translation>
+        <translation>Erişim komut satırı</translation>
     </message>
     <message>
         <source>Launch online help</source>
@@ -232,19 +232,19 @@
     </message>
     <message>
         <source>Select previous file on playlist</source>
-        <translation></translation>
+        <translation>Oynatma listesinde önceki dosyayı seç</translation>
     </message>
     <message>
         <source>Select next file on playlist</source>
-        <translation></translation>
+        <translation>Oynatma listesinde sonraki dosyayı seç</translation>
     </message>
     <message>
         <source>Play selected file on playlist</source>
-        <translation></translation>
+        <translation>Oynatma listesinde seçilen dosyayı oynat</translation>
     </message>
     <message>
         <source>Remove selected file from playlist</source>
-        <translation></translation>
+        <translation>Oynatma listesinden seçilen dosyayı çıkar</translation>
     </message>
     <message>
         <source>Saved to &quot;%0&quot;, with subs</source>
@@ -264,7 +264,7 @@
     </message>
     <message>
         <source>To Current Size</source>
-        <translation></translation>
+        <translation>Mevcut boyuta</translation>
     </message>
     <message>
         <source>Speed: %0x</source>
@@ -595,11 +595,11 @@
     </message>
     <message>
         <source>Search Playlist</source>
-        <translation>Cerca nella scaletta</translation>
+        <translation>Oynatma Listesinde Ara</translation>
     </message>
     <message>
         <source>Select the Current File</source>
-        <translation></translation>
+        <translation>Geçerli dosyayı seç</translation>
     </message>
     <message>
         <source>Refresh Playlist</source>
@@ -619,7 +619,7 @@
     </message>
     <message>
         <source>Click to change between total and remaining time</source>
-        <translation></translation>
+        <translation>Toplam ve kalan zaman arasında geçiş yapmak için tıklayın</translation>
     </message>
     <message>
         <source>-0:00:00</source>
@@ -855,15 +855,15 @@
     </message>
     <message>
         <source>Playing</source>
-        <translation></translation>
+        <translation>Oynatılıyor</translation>
     </message>
     <message>
         <source>Paused</source>
-        <translation></translation>
+        <translation>Durduruldu</translation>
     </message>
     <message>
         <source>Sub</source>
-        <translation></translation>
+        <translation>Alt</translation>
     </message>
     <message>
         <source>Audio</source>
@@ -900,7 +900,7 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>Show Playback &amp;Info</source>
-        <translation></translation>
+        <translation>Oynatma Bilgisini Göster</translation>
     </message>
     <message>
         <source>Previous</source>
@@ -984,7 +984,7 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>Reduce video studder</source>
-        <translation></translation>
+        <translation>Video takılmasını azaltın</translation>
     </message>
     <message>
         <source>&amp;Deinterlace</source>
@@ -1047,11 +1047,11 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>File does not exist</source>
-        <translation></translation>
+        <translation>Dosya bulunmuyor</translation>
     </message>
     <message>
         <source>File no longer exists</source>
-        <translation></translation>
+        <translation>Dosya artık mevcut değil</translation>
     </message>
     <message>
         <source>File</source>
@@ -1087,7 +1087,7 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>Audio (x%0)</source>
-        <translation>Audio (x%0)</translation>
+        <translation>Ses (x%0)</translation>
     </message>
     <message>
         <source>Audio Output</source>
@@ -1095,7 +1095,7 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>Sample Rate</source>
-        <translation></translation>
+        <translation>Aynı oran</translation>
     </message>
     <message>
         <source>Chapters</source>
@@ -1107,7 +1107,7 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>Buffering...</source>
-        <translation></translation>
+        <translation>Arabelleğe Alınıyor...</translation>
     </message>
     <message>
         <source>Your network is slow or stuck, please wait a bit</source>
@@ -1135,7 +1135,7 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>Motion Interpolation: %0</source>
-        <translation></translation>
+        <translation>Hareket İnterpolasyonu: %0</translation>
     </message>
 </context>
 <context>
@@ -1189,11 +1189,11 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>Tray Icon</source>
-        <translation></translation>
+        <translation>Sistem Tepsisi</translation>
     </message>
     <message>
         <source>&amp;Hide Popup</source>
-        <translation></translation>
+        <translation>Popup gizle</translation>
     </message>
     <message>
         <source>Video</source>
@@ -1281,11 +1281,11 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>File Name Template:</source>
-        <translation></translation>
+        <translation>Dosya Adı Şablonu:</translation>
     </message>
     <message>
         <source>Default Save Location:</source>
-        <translation></translation>
+        <translation>Varsayılan kayıt yeri</translation>
     </message>
     <message>
         <source>screenshot%#04n</source>
@@ -1293,11 +1293,11 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>Choose screenshot directory</source>
-        <translation></translation>
+        <translation>Ekran resmi dizini seçin</translation>
     </message>
     <message>
         <source>Mouse Gesture</source>
-        <translation></translation>
+        <translation>Fare hareketi</translation>
     </message>
     <message>
         <source>Key</source>
@@ -1313,11 +1313,11 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>Existing keybinding</source>
-        <translation></translation>
+        <translation>Mevcut tuş vuruşu</translation>
     </message>
     <message>
         <source>%0 is already being used. Would you like to change its function?</source>
-        <translation></translation>
+        <translation>%0 zaten kullanılıyor. İşlevi değiştirmek ister misiniz?</translation>
     </message>
     <message>
         <source>A&amp;lways</source>
@@ -1345,7 +1345,7 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>fatal</source>
-        <translation></translation>
+        <translation>ölümcül</translation>
     </message>
     <message>
         <source>error</source>
@@ -1353,7 +1353,7 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>warn</source>
-        <translation></translation>
+        <translation>uyarı</translation>
     </message>
     <message>
         <source>info</source>
@@ -1385,11 +1385,11 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>Key Bindings</source>
-        <translation></translation>
+        <translation>Anahtar Bağlamalar</translation>
     </message>
     <message>
         <source>Reset All Key Bindings?</source>
-        <translation></translation>
+        <translation>Tüm Anahtar Bağlamaları Sıfırla</translation>
     </message>
     <message>
         <source>Are you sure you want to reset all shortcut keys to its original bindings?</source>
@@ -1530,7 +1530,7 @@ Sürüm: %0</translation>
     </message>
     <message>
         <source>Extracting...</source>
-        <translation></translation>
+        <translation>Açılıyor...</translation>
     </message>
     <message>
         <source>Creating updater script...</source>
@@ -1538,7 +1538,7 @@ Sürüm: %0</translation>
     </message>
     <message>
         <source>Done. Restarting...</source>
-        <translation></translation>
+        <translation>Bitti. Yeniden başlatılıyor ...</translation>
     </message>
 </context>
 </TS>
