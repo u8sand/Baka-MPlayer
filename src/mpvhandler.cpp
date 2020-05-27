@@ -35,11 +35,11 @@ MpvHandler::MpvHandler(int64_t wid, QObject *parent):
 
     // get updates when these properties change
     mpv_observe_property(mpv, 0, "playback-time", MPV_FORMAT_DOUBLE);
-    mpv_observe_property(mpv, 0, "ao-volume", MPV_FORMAT_DOUBLE);
+    mpv_observe_property(mpv, 0, "volume", MPV_FORMAT_DOUBLE);
     mpv_observe_property(mpv, 0, "sid", MPV_FORMAT_INT64);
     mpv_observe_property(mpv, 0, "aid", MPV_FORMAT_INT64);
     mpv_observe_property(mpv, 0, "sub-visibility", MPV_FORMAT_FLAG);
-    mpv_observe_property(mpv, 0, "ao-mute", MPV_FORMAT_FLAG);
+    mpv_observe_property(mpv, 0, "mute", MPV_FORMAT_FLAG);
     mpv_observe_property(mpv, 0, "core-idle", MPV_FORMAT_FLAG);
     mpv_observe_property(mpv, 0, "paused-for-cache", MPV_FORMAT_FLAG);
 
@@ -156,7 +156,7 @@ bool MpvHandler::event(QEvent *event)
                         lastTime = time;
                     }
                 }
-                else if(QString(prop->name) == "ao-volume")
+                else if(QString(prop->name) == "volume")
                 {
                     if(prop->format == MPV_FORMAT_DOUBLE)
                         setVolume((int)*(double*)prop->data);
@@ -176,7 +176,7 @@ bool MpvHandler::event(QEvent *event)
                     if(prop->format == MPV_FORMAT_FLAG)
                         setSubtitleVisibility((bool)*(unsigned*)prop->data);
                 }
-                else if(QString(prop->name) == "ao-mute")
+                else if(QString(prop->name) == "mute")
                 {
                     if(prop->format == MPV_FORMAT_FLAG)
                         setMute((bool)*(unsigned*)prop->data);
@@ -418,7 +418,7 @@ void MpvHandler::Mute(bool m)
 {
     if(playState > 0)
     {
-        const char *args[] = {"set", "ao-mute", m ? "yes" : "no", NULL};
+        const char *args[] = {"set", "mute", m ? "yes" : "no", NULL};
         AsyncCommand(args);
     }
     else
@@ -503,12 +503,11 @@ void MpvHandler::Volume(int level, bool osd)
 {
     if(level > 100) level = 100;
     else if(level < 0) level = 0;
-
     double v = level;
 
     if(playState > 0)
     {
-        mpv_set_property_async(mpv, MPV_REPLY_PROPERTY, "ao-volume", MPV_FORMAT_DOUBLE, &v);
+        mpv_set_property_async(mpv, MPV_REPLY_PROPERTY, "volume", MPV_FORMAT_DOUBLE, &v);
         if(osd)
             ShowText(tr("Volume: %0%").arg(QString::number(level)));
     }
