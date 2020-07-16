@@ -12,6 +12,75 @@
         <translation>Hakkında</translation>
     </message>
     <message>
+        <source>Baka MPlayer 0.0.0</source>
+        <translation>Baka MPlayer 0.0.0</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2015 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#008098;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2015 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#008098;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>mpv - video player based on MPlayer/mplayer2
+GPLv2 &lt;mpv.io&gt;
+
+Material Design icons
+Attribution 4.0 International &lt;Google&gt;
+
+Noto Sans -  font family with many supported characters
+Apache License, version 2.0 &lt;Google&gt;
+
+Retro Cassette image
+&lt;Lukas Troup&gt;
+
+Gesture icons
+CC License &lt;Jeff Portaro&gt;
+
+Download icon
+CC BY 3.0 &lt;Sasha Mescheryakov&gt;
+
+Translations
+- Chinese &lt;amazingfate, Antares95&gt;
+- Croatian &lt;gogo&gt;
+- Dutch &lt;robin007bond&gt;
+- French &lt;chapouvalpin&gt;
+- German: &lt;yiip87&gt;
+- Italian &lt;Aloysius&gt;
+- Korean &lt;godly-devotion&gt;
+- Portuguese &lt;u8sand&gt;
+- Russian &lt;suhr&gt;
+- Spanish &lt;Alfredo Ramos&gt;</source>
+        <translation>mpv - riproduttore video basato su MPlayer/mplayer2
+GPLv2 &lt;mpv.io&gt;
+
+Icone Material Design
+Attribuzione 4.0 Internazionale &lt;Google&gt;
+
+Noto Sans -  famiglia di font con molti caratteri supportati
+Licenza Apache, versione 2.0 &lt;Google&gt;
+
+Immagine Cassetta Rétro
+&lt;Lukas Troup&gt;
+
+Icone Gesti
+CC License &lt;Jeff Portaro&gt;
+
+Icona Download
+CC BY 3.0 &lt;Sasha Mescheryakov&gt;
+
+Çeviri
+- Çince &lt;amazingfate, Antares95&gt;
+- Croatian &lt;gogo&gt;
+- Dutch &lt;robin007bond&gt;
+- Fransızca &lt;chapouvalpin&gt;
+- Almanca: &lt;yiip87&gt;
+- İtalyanca &lt;Aloysius&gt;
+- Korece &lt;godly-devotion&gt;
+- Portekizce &lt;u8sand&gt;
+- Rusça &lt;suhr&gt;
+- Türkçe &lt;Cihan Alkan&gt;
+- İspanyolca &lt;Alfredo Ramos&gt;</translation>
+    </message>
+    <message>
         <source>&amp;Close</source>
         <translation>&amp;Kapat</translation>
     </message>
@@ -24,8 +93,38 @@
         <translation>Lisans</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2016 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#008098;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2015 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#008098;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt; {2016 ?} {8s?} {8s?} {008098;?} {8s?}</translation>
+        <source>                GNU GENERAL PUBLIC LICENSE
+                   Version 2, June 1991
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</source>
+        <translation>                GNU GENEL KAMU LİSANSI
+                   Versiyon 2, Haziran 1991
+
+Bu program özgür bir yazılımdır; yeniden dağıtabilir ve / veya değiştirebilirsiniz
+tarafından yayınlanan GNU Genel Kamu Lisansı koşulları uyarınca
+Özgür Yazılım Vakfı; Lisansın 2. sürümü veya
+(kendi isteğinize göre) daha sonraki bir sürüm.
+
+Bu program faydalı olacağı ümidiyle dağıtılmaktadır,
+ancak HERHANGİ BİR GARANTİ OLMADAN; zımni garanti olmadan
+BELİRLİ BİR AMACA UYGUNLUK veya FITNESS. Bkz.
+Daha fazla bilgi için GNU Genel Kamu Lisansı.
+
+GNU Genel Kamu Lisansının bir kopyasını almış olmalısınız
+bu programla birlikte; değilse, Özgür Yazılıma yazın
+Foundation, Inc., 51 Franklin St, Beşinci Kat, Boston, MA 02110-1301 ABD</translation>
     </message>
 </context>
 <context>
@@ -96,11 +195,11 @@
     </message>
     <message>
         <source>Take screenshot with subtitles</source>
-        <translation>Altyazılı ekran görüntüsü al</translation>
+        <translation>Altyazılı ekran görüntüsü alma</translation>
     </message>
     <message>
         <source>Toggle subtitle visibility</source>
-        <translation>Altyazı görünürlüğünü değiştir</translation>
+        <translation>Altyazı görünürlüğünü aç/kapat</translation>
     </message>
     <message>
         <source>Go to previous chapter</source>
@@ -112,11 +211,11 @@
     </message>
     <message>
         <source>Frame step backwards</source>
-        <translation>Çerçeve adımı geriye doğru</translation>
+        <translation>Geri adım at</translation>
     </message>
     <message>
         <source>Frame step</source>
-        <translation>Çerçeve adımı</translation>
+        <translation>Kare adımı</translation>
     </message>
     <message>
         <source>Decrease volume</source>
@@ -128,11 +227,11 @@
     </message>
     <message>
         <source>Increase playback speed by %0</source>
-        <translation>Oynatma hızını %0 artır</translation>
+        <translation>Oynatma hızını %0 artırın</translation>
     </message>
     <message>
         <source>Decrease playback speed by %0</source>
-        <translation>Oynatma hızını %0 azalt</translation>
+        <translation>Oynatma hızını %0 azaltın</translation>
     </message>
     <message>
         <source>Toggle fullscreen</source>
@@ -156,19 +255,19 @@
     </message>
     <message>
         <source>Show jump to time dialog</source>
-        <translation>Zamana atla iletişim kutusunu göster</translation>
+        <translation>Zamana atlama iletişim kutusunu göster</translation>
     </message>
     <message>
         <source>Show open file dialog</source>
-        <translation>Açık dosya iletişimini göster</translation>
+        <translation>Açık dosya iletişim kutusunu göster</translation>
     </message>
     <message>
         <source>Show location dialog</source>
-        <translation>Konum iletişimini göster</translation>
+        <translation>Konum iletişim kutusunu göster</translation>
     </message>
     <message>
         <source>Toggle playlist visibility</source>
-        <translation>Oynatma listesi görünürlüğünü değiştir</translation>
+        <translation>Oynatma listesinin görünürlüğünü aç / kapat</translation>
     </message>
     <message>
         <source>Fit the window to the video</source>
@@ -184,11 +283,11 @@
     </message>
     <message>
         <source>Seek forwards by %0 sec</source>
-        <translation></translation>
+        <translation>%0 sn ileriye doğru arama</translation>
     </message>
     <message>
         <source>Seek backwards by %0 sec</source>
-        <translation></translation>
+        <translation>%0 sn geriye doğru arama</translation>
     </message>
     <message>
         <source>Open a new window</source>
@@ -212,11 +311,11 @@
     </message>
     <message>
         <source>Open the last played file</source>
-        <translation>Son çalınan dosyayı aç</translation>
+        <translation>En son çalınan dosyayı aç</translation>
     </message>
     <message>
         <source>Access command-line</source>
-        <translation>Erişim komut satırı</translation>
+        <translation>Komut satırına eriş</translation>
     </message>
     <message>
         <source>Launch online help</source>
@@ -228,23 +327,23 @@
     </message>
     <message>
         <source>Fit window to %0%</source>
-        <translation></translation>
+        <translation>Pencereyi %0% olarak sığdır</translation>
     </message>
     <message>
         <source>Select previous file on playlist</source>
-        <translation>Oynatma listesinde önceki dosyayı seç</translation>
+        <translation>Çalma listesindeki önceki dosyayı seç</translation>
     </message>
     <message>
         <source>Select next file on playlist</source>
-        <translation>Oynatma listesinde sonraki dosyayı seç</translation>
+        <translation>Çalma listesindeki sonraki dosyayı seç</translation>
     </message>
     <message>
         <source>Play selected file on playlist</source>
-        <translation>Oynatma listesinde seçilen dosyayı oynat</translation>
+        <translation>Seçilen dosyayı çalma listesinde çal</translation>
     </message>
     <message>
         <source>Remove selected file from playlist</source>
-        <translation>Oynatma listesinden seçilen dosyayı çıkar</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Saved to &quot;%0&quot;, with subs</source>
@@ -264,7 +363,7 @@
     </message>
     <message>
         <source>To Current Size</source>
-        <translation>Mevcut boyuta</translation>
+        <translation></translation>
     </message>
     <message>
         <source>Speed: %0x</source>
@@ -412,7 +511,7 @@
     </message>
     <message>
         <source>adjusts the volume</source>
-        <translation></translation>
+        <translation>ses seviyesini ayarlar</translation>
     </message>
     <message>
         <source>[ratio]</source>
@@ -444,7 +543,7 @@
     </message>
     <message>
         <source>internal help menu</source>
-        <translation></translation>
+        <translation>dahili yardım menüsü</translation>
     </message>
     <message>
         <source>[qt]</source>
@@ -452,7 +551,7 @@
     </message>
     <message>
         <source>open about dialog</source>
-        <translation></translation>
+        <translation>ihakkında letişim kutusunu aç</translation>
     </message>
     <message>
         <source>set mpv msg-level</source>
@@ -514,7 +613,7 @@
     </message>
     <message>
         <source> min</source>
-        <translation> dk.</translation>
+        <translation> dk</translation>
     </message>
     <message>
         <source> sec</source>
@@ -548,6 +647,10 @@
         <translation>Etiket:</translation>
     </message>
     <message>
+        <source>C&amp;lear Shorcut</source>
+        <translation>Kısayolu &amp;Temizle</translation>
+    </message>
+    <message>
         <source>Chang&amp;e</source>
         <translation>&amp;Değiştir</translation>
     </message>
@@ -558,10 +661,6 @@
     <message>
         <source>&amp;Cancel</source>
         <translation>&amp;İptal</translation>
-    </message>
-    <message>
-        <source>C&amp;lear Shortcut</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -576,7 +675,7 @@
     </message>
     <message>
         <source>Type URL or location here</source>
-        <translation>URL veya yeri yaz </translation>
+        <translation>URL veya yeri yaz</translation>
     </message>
     <message>
         <source>&amp;OK</source>
@@ -598,8 +697,20 @@
         <translation>Oynatma Listesinde Ara</translation>
     </message>
     <message>
+        <source>Click to select a specific file by index</source>
+        <translation>Dizine göre belirli bir dosyayı seçmek için tıklayın</translation>
+    </message>
+    <message>
+        <source>File 0 of 0</source>
+        <translation>Dosya 0 de 0</translation>
+    </message>
+    <message>
         <source>Select the Current File</source>
-        <translation>Geçerli dosyayı seç</translation>
+        <translation>Geçerli Dosyayı Seç</translation>
+    </message>
+    <message>
+        <source>Hide files with different extensions</source>
+        <translation>Farklı uzantılara sahip dosyaları gizle</translation>
     </message>
     <message>
         <source>Refresh Playlist</source>
@@ -607,7 +718,7 @@
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Left Click to Open File&lt;br&gt;Mouse Wheel Click to Jump&lt;br&gt;Right Click to Open URL&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Left Click to Open File&lt;br&gt;Mouse Wheel Click to Jump&lt;br&gt;Right Click to Open URL&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dosya Açmak İçin Sol Tıklayın&lt;br&gt;Fare Tekerleği Atlamak için tıklayın&lt;br&gt;URL&apos;yi açmak için sağ tıklayın&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>0:00:00</source>
@@ -619,7 +730,7 @@
     </message>
     <message>
         <source>Click to change between total and remaining time</source>
-        <translation>Toplam ve kalan zaman arasında geçiş yapmak için tıklayın</translation>
+        <translation>Toplam ve kalan süre arasında geçiş yapmak için tıklayın</translation>
     </message>
     <message>
         <source>-0:00:00</source>
@@ -631,7 +742,7 @@
     </message>
     <message>
         <source>&amp;Recently Opened</source>
-        <translation>Geçmiş Dosyalar</translation>
+        <translation>&amp;Geçmiş Dosyalar</translation>
     </message>
     <message>
         <source>&amp;View</source>
@@ -643,7 +754,7 @@
     </message>
     <message>
         <source>Aspect &amp;Ratio</source>
-        <translation></translation>
+        <translation>En Boy &amp;Oranı</translation>
     </message>
     <message>
         <source>Subtitle &amp;Track</source>
@@ -663,7 +774,7 @@
     </message>
     <message>
         <source>R&amp;epeat</source>
-        <translation>Tekrarla</translation>
+        <translation>T&amp;ekrarla</translation>
     </message>
     <message>
         <source>Audio &amp;Tracks</source>
@@ -755,15 +866,15 @@
     </message>
     <message>
         <source>&amp;Frame Step</source>
-        <translation></translation>
+        <translation>&amp;Çerçeve adımı</translation>
     </message>
     <message>
         <source>Frame &amp;Back Step</source>
-        <translation></translation>
+        <translation>Çerçeve ve Geri Adım</translation>
     </message>
     <message>
         <source>&amp;Jump to Time...</source>
-        <translation>Zamana Atla...</translation>
+        <translation>Zamana &amp;Atla...</translation>
     </message>
     <message>
         <source>&amp;Show Playlist</source>
@@ -771,7 +882,7 @@
     </message>
     <message>
         <source>&amp;Dim Lights</source>
-        <translation>Loş Işık</translation>
+        <translation>&amp;Loş Işık</translation>
     </message>
     <message>
         <source>Online &amp;Help</source>
@@ -791,7 +902,7 @@
     </message>
     <message>
         <source>To &amp;Current Size</source>
-        <translation></translation>
+        <translation>Mevcut Boyut</translation>
     </message>
     <message>
         <source>&amp;Auto Detect</source>
@@ -811,7 +922,7 @@
     </message>
     <message>
         <source>&amp;Add Subtitle File...</source>
-        <translation>&amp;Altyazı Dosyası Ekle</translation>
+        <translation>&amp;Altyazı Dosyası Ekle...</translation>
     </message>
     <message>
         <source>&amp;Size +</source>
@@ -839,11 +950,15 @@
     </message>
     <message>
         <source>Show &amp;Command Line</source>
-        <translation>Komut Satırını Göster</translation>
+        <translation>&amp;Komut Satırını Göster</translation>
     </message>
     <message>
         <source>With &amp;Subtitles...</source>
-        <translation>Altyazı ile...</translation>
+        <translation>&amp;Altyazı ile...</translation>
+    </message>
+    <message>
+        <source>&amp;Altyazısız...</source>
+        <translation>Sen&amp;za sottotitoli...</translation>
     </message>
     <message>
         <source>&amp;Preferences...</source>
@@ -855,15 +970,15 @@
     </message>
     <message>
         <source>Playing</source>
-        <translation>Oynatılıyor</translation>
+        <translation>Oynama</translation>
     </message>
     <message>
         <source>Paused</source>
-        <translation>Durduruldu</translation>
+        <translation>Beklertildi</translation>
     </message>
     <message>
         <source>Sub</source>
-        <translation>Alt</translation>
+        <translation>Altyazı</translation>
     </message>
     <message>
         <source>Audio</source>
@@ -880,7 +995,8 @@
     <message>
         <source>Enter the file number you want to play:
 Note: Value must be from %0 - %1</source>
-        <translation></translation>
+        <translation>Oynatmak istediğiniz dosya numarasını girin:
+Not: Değer %0 -.%1 arasında olmalıdır</translation>
     </message>
     <message>
         <source>Enter File Number</source>
@@ -891,16 +1007,20 @@ Note: Value must be from %0 - %1</source>
         <translation>Seçim Yok</translation>
     </message>
     <message>
+        <source>File %0 of %1</source>
+        <translation>Dosya %0 de %1</translation>
+    </message>
+    <message>
         <source>Open &amp;Location...</source>
         <translation>&amp;Bilgisayardan Aç...</translation>
     </message>
     <message>
         <source>Update &amp;Streaming Support</source>
-        <translation></translation>
+        <translation>Güncelleme ve Akış Desteği</translation>
     </message>
     <message>
         <source>Show Playback &amp;Info</source>
-        <translation>Oynatma Bilgisini Göster</translation>
+        <translation>Oynatmayı ve Bilgileri Göster</translation>
     </message>
     <message>
         <source>Previous</source>
@@ -924,15 +1044,15 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>Open &amp;Copied Link</source>
-        <translation>Kopyalanan Adresi Aç</translation>
+        <translation>&amp;Kopyalanan Adresi Aç</translation>
     </message>
     <message>
         <source>Pla&amp;y Next File</source>
-        <translation>Sonrki Dosyayı Oynat</translation>
+        <translation>Sonraki Dosyayı &amp;Oynat</translation>
     </message>
     <message>
         <source>Hide &amp;Album Art</source>
-        <translation>Albüm Reimlerini Gizle</translation>
+        <translation>&amp;Albüm Resimlerini Gizle</translation>
     </message>
     <message>
         <source>&amp;50%</source>
@@ -956,19 +1076,19 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>&amp;Increase by 5%</source>
-        <translation></translation>
+        <translation>%5 artır</translation>
     </message>
     <message>
         <source>&amp;Decrease by 5%</source>
-        <translation></translation>
+        <translation>%5 azalt</translation>
     </message>
     <message>
         <source>&amp;Increase by 0.1%</source>
-        <translation></translation>
+        <translation>% 0,1 artır</translation>
     </message>
     <message>
         <source>&amp;Decrease by 0.1%</source>
-        <translation></translation>
+        <translation>% 0,1 azalt</translation>
     </message>
     <message>
         <source>15&amp;0%</source>
@@ -980,15 +1100,15 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>&amp;Motion Interpolation</source>
-        <translation></translation>
+        <translation>Hareket İnterpolasyonu</translation>
     </message>
     <message>
         <source>Reduce video studder</source>
-        <translation>Video takılmasını azaltın</translation>
+        <translation>Video studder&apos;ı azaltın</translation>
     </message>
     <message>
         <source>&amp;Deinterlace</source>
-        <translation>Çözücü</translation>
+        <translation>&amp;Çözücü</translation>
     </message>
     <message>
         <source>Subtitles visible</source>
@@ -1006,22 +1126,6 @@ Note: Value must be from %0 - %1</source>
         <source>Unmuted</source>
         <translation>Ses Açık</translation>
     </message>
-    <message>
-        <source>Click to play a specific file by index</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>0 / 0</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Without Subtitles...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>%0 / %1</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>MpvHandler</name>
@@ -1031,11 +1135,11 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>Date created</source>
-        <translation></translation>
+        <translation>Tarih oluşturuldu</translation>
     </message>
     <message>
         <source>Media length</source>
-        <translation></translation>
+        <translation>Ortam uzunluğu</translation>
     </message>
     <message>
         <source>Bitrate</source>
@@ -1087,7 +1191,7 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>Audio (x%0)</source>
-        <translation>Ses (x%0)</translation>
+        <translation>Audio (x%0)</translation>
     </message>
     <message>
         <source>Audio Output</source>
@@ -1103,11 +1207,11 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>Metadata</source>
-        <translation></translation>
+        <translation>Meta veri</translation>
     </message>
     <message>
         <source>Buffering...</source>
-        <translation>Arabelleğe Alınıyor...</translation>
+        <translation>Tamponlama ...</translation>
     </message>
     <message>
         <source>Your network is slow or stuck, please wait a bit</source>
@@ -1115,7 +1219,7 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>File couldn&apos;t be opened</source>
-        <translation></translation>
+        <translation>Dosya açılamadı</translation>
     </message>
     <message>
         <source>Volume: %0%</source>
@@ -1135,7 +1239,7 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>Motion Interpolation: %0</source>
-        <translation>Hareket İnterpolasyonu: %0</translation>
+        <translation>Hareket İnterpolasyonu:%0</translation>
     </message>
 </context>
 <context>
@@ -1154,15 +1258,15 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>Delete sub-file?</source>
-        <translation></translation>
+        <translation>Alt dosya silinsin mi?</translation>
     </message>
     <message>
         <source>Would you like to delete the associated sub file [%0]?</source>
-        <translation></translation>
+        <translation>İlişkili alt dosyayı [%0] silmek ister misiniz?</translation>
     </message>
     <message>
         <source>Delete external sub-file?</source>
-        <translation></translation>
+        <translation>Harici alt dosya silinsin mi?</translation>
     </message>
 </context>
 <context>
@@ -1189,11 +1293,11 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>Tray Icon</source>
-        <translation>Sistem Tepsisi</translation>
+        <translation>Tepsi ikonu</translation>
     </message>
     <message>
         <source>&amp;Hide Popup</source>
-        <translation>Popup gizle</translation>
+        <translation>Açılır Pencereyi &amp;Gizle</translation>
     </message>
     <message>
         <source>Video</source>
@@ -1201,7 +1305,7 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>&amp;Auto-Fit Window:</source>
-        <translation></translation>
+        <translation>Otomatik Sığdırma Penceresi:</translation>
     </message>
     <message>
         <source>50%</source>
@@ -1225,7 +1329,7 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>Chang&amp;e...</source>
-        <translation>Değiştir...</translation>
+        <translation>D&amp;eğiştir...</translation>
     </message>
     <message>
         <source>File Format:</source>
@@ -1249,7 +1353,7 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>&amp;Use Mouse &amp;&amp; Touch Gestures</source>
-        <translation>Fare ve Dokunma Hareketlerini Kullan</translation>
+        <translation>Fare ve Dokunma Hareketlerini K&amp;ullan</translation>
     </message>
     <message>
         <source>History</source>
@@ -1257,11 +1361,11 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>Remember &amp;recently opened files up to</source>
-        <translation></translation>
+        <translation>En son açılan dosyaları hatırla</translation>
     </message>
     <message>
         <source>Remember playback &amp;position</source>
-        <translation></translation>
+        <translation>Oynatmayı ve konumu hatırla</translation>
     </message>
     <message>
         <source>Prefix a command with &apos;mpv&apos; to make it run as an input command.</source>
@@ -1269,7 +1373,7 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>Rese&amp;t All</source>
-        <translation>Tümünü Sıfırla</translation>
+        <translation>&amp;Tümünü Sıfırla</translation>
     </message>
     <message>
         <source>png</source>
@@ -1285,7 +1389,7 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>Default Save Location:</source>
-        <translation>Varsayılan kayıt yeri</translation>
+        <translation>Varsayılan Kayıt Yeri:</translation>
     </message>
     <message>
         <source>screenshot%#04n</source>
@@ -1293,11 +1397,11 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>Choose screenshot directory</source>
-        <translation>Ekran resmi dizini seçin</translation>
+        <translation>Ekran görüntüsü dizinini seçin</translation>
     </message>
     <message>
         <source>Mouse Gesture</source>
-        <translation>Fare hareketi</translation>
+        <translation>Fare Hareketi</translation>
     </message>
     <message>
         <source>Key</source>
@@ -1313,19 +1417,19 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>Existing keybinding</source>
-        <translation>Mevcut tuş vuruşu</translation>
+        <translation>Mevcut tuş bağlama</translation>
     </message>
     <message>
         <source>%0 is already being used. Would you like to change its function?</source>
-        <translation>%0 zaten kullanılıyor. İşlevi değiştirmek ister misiniz?</translation>
+        <translation>%0 zaten kullanılıyor. İşlevini değiştirmek ister misiniz?</translation>
     </message>
     <message>
         <source>A&amp;lways</source>
-        <translation>Her zaman</translation>
+        <translation>&amp;Her zaman</translation>
     </message>
     <message>
         <source>Always show the &amp;save window</source>
-        <translation></translation>
+        <translation>Her zaman &amp;kaydet penceresini göster</translation>
     </message>
     <message>
         <source>Advanced</source>
@@ -1337,7 +1441,7 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>mpv msg-level:</source>
-        <translation></translation>
+        <translation>mpv msj düzeyi:</translation>
     </message>
     <message>
         <source>no</source>
@@ -1373,7 +1477,7 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>trace</source>
-        <translation></translation>
+        <translation>iz</translation>
     </message>
     <message>
         <source>&amp;OK</source>
@@ -1385,11 +1489,11 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>Key Bindings</source>
-        <translation>Anahtar Bağlamalar</translation>
+        <translation>Anahtar Bağlamaları</translation>
     </message>
     <message>
         <source>Reset All Key Bindings?</source>
-        <translation>Tüm Anahtar Bağlamaları Sıfırla</translation>
+        <translation>Tüm Anahtar Bağlantıları Sıfırlansın mı?</translation>
     </message>
     <message>
         <source>Are you sure you want to reset all shortcut keys to its original bindings?</source>
@@ -1408,11 +1512,11 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>Save Location</source>
-        <translation></translation>
+        <translation>Konumu kaydet</translation>
     </message>
     <message>
         <source>File Name Template</source>
-        <translation></translation>
+        <translation>Dosya Adı Şablonu</translation>
     </message>
     <message>
         <source>jpg</source>
@@ -1432,7 +1536,7 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>Always show this dialog</source>
-        <translation></translation>
+        <translation>Her zaman bu iletişim kutusunu göster</translation>
     </message>
     <message>
         <source>&amp;Save</source>
@@ -1440,7 +1544,7 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>Choose screenshot directory</source>
-        <translation></translation>
+        <translation>Ekran görüntüsü dizinini seçin</translation>
     </message>
 </context>
 <context>
@@ -1451,11 +1555,11 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Checking for updates...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Checking for updates...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Güncellemeler kontrol ediliyor...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>About 0 second(s) remaining</source>
-        <translation></translation>
+        <translation>Yaklaşık 0 saniye kaldı</translation>
     </message>
     <message>
         <source>&amp;Update</source>
@@ -1471,25 +1575,25 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>You have the latest version!</source>
-        <translation></translation>
+        <translation>En son sürüme sahipsiniz!</translation>
     </message>
     <message>
         <source>Update Available!
 Version: %0</source>
-        <translation>Update Available!
+        <translation>Yeni sürüm var!
 Sürüm: %0</translation>
     </message>
     <message>
         <source>Download Complete</source>
-        <translation></translation>
+        <translation>İndirme tamamlandı</translation>
     </message>
     <message>
         <source>About %0 second(s) remaining</source>
-        <translation></translation>
+        <translation>Yaklaşık %0 saniye kaldı</translation>
     </message>
     <message>
         <source>Calculating...</source>
-        <translation></translation>
+        <translation>Hesaplanıyor...</translation>
     </message>
 </context>
 <context>
@@ -1497,24 +1601,24 @@ Sürüm: %0</translation>
     <message>
         <source>fopen error
 </source>
-        <translation>
+        <translation>fopen hatası
 </translation>
     </message>
     <message>
         <source>Could not open file for writing...</source>
-        <translation></translation>
+        <translation>Dosya yazmak için açılamadı ...</translation>
     </message>
     <message>
         <source>Updating...</source>
-        <translation></translation>
+        <translation>Güncelleniyor...</translation>
     </message>
     <message>
         <source>Checking for updates...</source>
-        <translation></translation>
+        <translation>Güncellemeler kontrol ediliyor...</translation>
     </message>
     <message>
         <source>Downloading update...</source>
-        <translation></translation>
+        <translation>Güncelleme indiriliyor...</translation>
     </message>
     <message>
         <source>write error</source>
@@ -1526,19 +1630,19 @@ Sürüm: %0</translation>
     </message>
     <message>
         <source>Redirected...</source>
-        <translation></translation>
+        <translation>Yönlendirildi ...</translation>
     </message>
     <message>
         <source>Extracting...</source>
-        <translation>Açılıyor...</translation>
+        <translation>Ayıklanıyor...</translation>
     </message>
     <message>
         <source>Creating updater script...</source>
-        <translation></translation>
+        <translation>Güncelleyici komut dosyası oluşturuluyor ...</translation>
     </message>
     <message>
         <source>Done. Restarting...</source>
-        <translation>Bitti. Yeniden başlatılıyor ...</translation>
+        <translation>Bitti. Yeniden başlatılıyor...</translation>
     </message>
 </context>
 </TS>
