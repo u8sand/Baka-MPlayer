@@ -1,0 +1,13 @@
+/* Baka MPlayer site stylesheet
+
+   Author: Joshua Park
+*/
+
+table.simple-table {
+    border-spacing: 0;
+    width: 100%;
+}
+table.simple-table td {
+    padding: 0.2em 0;
+    border-top: 1px solid #dddddd;
+}

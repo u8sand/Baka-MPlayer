@@ -1,0 +1,214 @@
+/* Baka MPlayer site stylesheet
+
+   Author: Joshua Park
+   Some code borrowed from Goldilocks Approach project
+*/
+
+/* RESET */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size:100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+ul, ol { margin-left: 1.5em; }
+b, strong { font-weight: bold; }
+i, em { font-style: italic; }
+small { font-size: 80%; }
+
+/* LINKS */
+
+a,
+a:visited {
+    outline: none;
+    color: #008098;
+    text-decoration: underline;
+}  
+a:hover {
+    outline: none;
+    text-decoration:none;
+}
+a:active,
+a:focus {
+    outline: none;
+}
+
+/* LAYOUT STYLE */
+
+/* Clear Fix Hack: http://css-tricks.com/snippets/css/clear-fix/ */
+.group:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.container {
+    margin: auto;
+    padding: 0 15px;
+    max-width: 940px;
+}
+
+.caption {
+    color: #808080;
+}
+
+p, ul, ol, table, pre, .button {
+    margin-bottom: 0.5em;
+}
+
+.button {
+    display: inline-block;
+    padding: 0.25em 0.5em;
+    background: #7D7D7D;
+}
+.button.default {
+    display: inline-block;
+    margin-bottom: 0.5em;
+    padding: 0.25em 0.5em;
+    background: #008098;
+}
+a.button {
+    outline: none;
+    text-decoration: none;
+    color: white;
+}
+a.button:hover {
+    background: #3D3D3D;
+}
+a.button:hover.default {
+    background: #00677F;
+}
+
+nav {
+    padding-top: 0.4em;
+    background: #008098;
+}
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    display: -webkit-box; /* needed for Safari on iOS */
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+nav a, nav a:visited, nav a:active {
+    display: block;
+    padding-top: 0.4em;
+    padding-bottom: 0.1em;
+    padding-right: 2.5em;
+    padding-left: 2.5em;
+    outline: none;
+    text-decoration:none;
+    color: white;
+    background: #008098;
+}
+@media all and (max-width: 550px) {
+    nav ul {
+        -webkit-flex-flow: column wrap;
+        flex-flow: column wrap;
+        padding: 0;
+    }
+    nav a, nav a:visited, nav a:active {
+        text-align: center;
+        padding: 0.2em;
+        background: #008098;
+    }
+}
+
+div.banner {
+    background: #E4CF0B;
+    padding: 0.2em 0;
+    text-align: center;
+}
+
+#jumbotron {
+    padding: 1em 0;
+    margin-bottom: 0.5em;
+    text-align: center;
+    width: 100%;
+    min-height: 0.4em;
+    background: #222222;
+}
+
+body {
+    font: normal 18px 'Noto Sans', sans-serif;
+    color: black;
+    background: white;
+}
+
+h1 {
+    font-size: 2.8em;
+    color: white;
+}
+h2 {
+    margin-bottom: 0.2em;
+    font-size: 1.6em;
+    color: #008098;
+}
+h3 {
+    margin-bottom: 0.2em;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+pre {
+    padding: 0px 4px;
+    white-space: pre-wrap;
+    border: 1px solid #ddd;
+    background-color: #f7f7f7;
+    border-radius: 3px;
+}
+code {
+    font: 0.9em Consolas, 'Lucida Console', monospace;
+    padding: 0.05em 0.2em;
+    border: 1px solid #ddd;
+    background-color: #f7f7f7;
+    border-radius: 3px;
+}
+pre code {
+    padding-left: 0;
+    padding-right: 0;
+    border: 0px;
+}
+
+footer {
+    clear: both;
+    padding-top: 1em;
+    font-size: 0.8em;
+    text-align: center;
+}
+
+/* select active "tab" */
+nav a.active {
+    background: #222222;
+}
+@media all and (max-width: 550px) {
+    nav a.active {
+        background: #008098;
+    }
+}

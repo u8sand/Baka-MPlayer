@@ -1,0 +1,12 @@
+/* Baka MPlayer site stylesheet
+
+   Author: Joshua Park
+*/
+
+#jumbotron {
+    padding: 0;
+}
+
+img.screenshot {
+    padding-bottom: 1em;
+}
