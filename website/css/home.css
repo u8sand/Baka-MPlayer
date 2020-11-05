@@ -4,16 +4,6 @@
    Some code borrowed from Goldilocks Approach project
 */
 
-/* select active "tab" */
-nav a[href="/"] {
-    background: #222222;
-}
-@media all and (max-width: 550px) {
-    nav a[href="/"] {
-        background: #008098;
-    }
-}
-
 #logo {
     margin-right: 0.2em;
     width: 40px;

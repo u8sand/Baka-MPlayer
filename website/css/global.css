@@ -202,3 +202,13 @@ footer {
     font-size: 0.8em;
     text-align: center;
 }
+
+/* select active "tab" */
+nav a.active {
+    background: #222222;
+}
+@media all and (max-width: 550px) {
+    nav a.active {
+        background: #008098;
+    }
+}

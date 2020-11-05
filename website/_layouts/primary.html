@@ -9,12 +9,12 @@
     <meta name="description" content="The mpv based media player">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Noto+Sans'>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="/css/global.css" media="all">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Noto+Sans'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="{{ '/favicon.ico' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/css/global.css' | relative_url }}" media="all">
     {% if page.style %}
-    <link rel='stylesheet' href="{{ '/css/'|append:page.style }}" media="all">
+    <link rel='stylesheet' href="{{ '/css/'|append:page.style | relative_url }}" media="all">
     {% endif %}
    
     <script type="text/javascript">
@@ -33,16 +33,31 @@
     <nav>
         <div class="container">
             <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/installation/">Installation</a></li>
-                <li><a href="/help/">Help</a></li>
+                <li>
+                    <a
+                        href="{{ '/' | relative_url }}"
+                        {% if page.permalink == '/' %}class="active"{% endif %}
+                    >Home</a>
+                </li>
+                <li>
+                    <a
+                        href="{{ '/installation/' | relative_url }}"
+                        {% if page.permalink == '/installation/' %}class="active"{% endif %}
+                    >Installation</a>
+                </li>
+                <li>
+                    <a
+                        href="{{ '/help/' | relative_url }}"
+                        {% if page.permalink == '/help/' %}class="active"{% endif %}
+                    >Help</a>
+                </li>
             </ul>
         </div>
     </nav>
     {{ content }}
     <footer>
         <div class="container">
-            <p>Copyright © 2020 - <a href="/about/">About Us</a> / <a href="/history/">History</a></p>
+            <p>Copyright © 2020 - <a href="{{ '/about/' | relative_url }}">About Us</a> / <a href="{{ '/history/' | relative_url }}">History</a></p>
         </div>
     </footer>
 </body>
