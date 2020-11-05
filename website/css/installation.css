@@ -1,0 +1,22 @@
+/* Baka MPlayer site stylesheet
+
+   Author: Joshua Park
+*/
+
+nav a[href="installation.php"] {
+    background: #222222;
+}
+@media all and (max-width: 550px) {
+    nav a[href="installation.php"] {
+        background: #008098;
+    }
+}
+
+table.simple-table {
+    border-spacing: 0;
+    width: 100%;
+}
+table.simple-table td {
+    padding: 0.2em 0;
+    border-top: 1px solid #dddddd;
+}

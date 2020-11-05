@@ -1,0 +1,46 @@
+/* Baka MPlayer site stylesheet
+
+   Author: Joshua Park
+   Some code borrowed from Goldilocks Approach project
+*/
+
+/* select active "tab" */
+nav a[href="index.php"], nav a[href="home.php"] {
+    background: #222222;
+}
+@media all and (max-width: 550px) {
+    nav a[href="index.php"], nav a[href="home.php"] {
+        background: #008098;
+    }
+}
+
+#logo {
+    margin-right: 0.2em;
+    width: 40px;
+    height: 40px;
+}
+#screenshot {
+    width: 100%;
+    height: auto;
+}
+
+#content #section_get_it {
+    float: left;
+    margin-right: 6%;
+    width: 47%;
+}
+#content #section_overview {
+    float: right;
+    width: 47%;
+}
+@media all and (max-width: 700px) {
+    #content #section_get_it {
+        float: none;
+        margin-right: 0;
+        width: 100%;
+    }
+    #content #section_overview {
+        float: none;
+        width: 100%;
+    }
+}

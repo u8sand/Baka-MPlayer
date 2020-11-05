@@ -1,0 +1,50 @@
+<?php
+$title='Baka MPlayer';
+$style='<link rel="stylesheet" href="css/home.css" media="all">';
+$content='
+    <div id="jumbotron">
+        <div id="header">
+            <div class="container">
+                <h1><img id="logo" src="baka-mplayer.svg" alt="Baka MPlayer Logo">Baka MPlayer</h1>
+                <p class="caption">The mpv based media player</p>
+            </div>
+        </div>
+        <div class="container">
+            <img id="screenshot" src="screenshots/preview.png" alt="Program Screenshot">
+        </div>
+    </div>
+    <div id="content">
+        <div class="container">
+            <div id="section_get_it">
+                <h2>Get It</h2>
+                <h3>For Windows</h3>
+                <a class="button default" href="Baka.MPlayer.64-bit.zip">Download for Windows (64-bit)</a>
+                <a class="button default" href="Baka.MPlayer.32-bit.zip">Download for Windows (32-bit)</a><br>
+                <a href="https://www.google.com/get/noto/#sans-lgc" target="_blank">Also get Noto Sans font for best experience</a><br><br>
+                
+                <h3>For Linux</h3>
+                <p>There are many flavors of linux.</p>
+                <a class="button default" href="installation.php#linux">What are you using? <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+            <div id="section_overview">
+                <h2>Overview</h2>
+                <p>Baka MPlayer is a free and open source, cross-platform, <b>libmpv</b> based multimedia player.
+                Its simple design reflects the idea for an uncluttered and enjoyable environment for
+                watching tv shows.</p>
+
+                <h2>Features</h2>
+                <ul class="fa-ul">
+                    <li><i class="fa-li fa fa-hand-o-up"></i>Gesture seeking.</li>
+                    <li><i class="fa-li fa fa-list"></i>Smart playlist.</li>
+                    <li><i class="fa-li fa fa-lightbulb-o"></i>Dim Desktop.</li>
+                    <li><i class="fa-li fa fa-tachometer"></i>Hardware accelerated playback (vdpau, vaapi, vda).</li>
+                    <li><i class="fa-li fa fa-youtube-play"></i>Youtube playback support (<a href="http://rg3.github.io/youtube-dl/supportedsites.html" target="_blank">and others</a>).</li>
+                    <li><i class="fa-li fa fa-globe"></i>Multilingual support (<a href="https://github.com/u8sand/Baka-MPlayer/blob/master/DOCS/translations.md" target="_blank">we are looking for translators!</a>).</li>
+                    <li>And more...</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+';
+require 'layout.php';
+?>

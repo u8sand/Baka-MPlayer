@@ -1,0 +1,29 @@
+<?php
+$title='Baka MPlayer | Help';
+$style='<link rel="stylesheet" href="css/help.css" media="all">';
+$content='
+    <div id="jumbotron"></div>
+    <div class="container">
+
+    <h2>Info</h2>
+
+    <p><a href="https://github.com/u8sand/Baka-MPlayer/blob/master/DOCS/baka-mplayer.md" target="_blank">Main Manual</a><br>
+    <a href="https://github.com/u8sand/Baka-MPlayer/blob/master/DOCS/commands.md" target="_blank">Baka Input Commands</a><br>
+    <a href="https://github.com/u8sand/Baka-MPlayer/blob/master/DOCS/settings.md" target="_blank">Settings</a><br>
+    <a href="https://github.com/u8sand/Baka-MPlayer/blob/master/DOCS/translations.md" target="_blank">For Translating</a></p>
+
+    <h2>Bug reports</h2>
+
+    <p>Please use the <a href="https://github.com/u8sand/Baka-MPlayer/issues">issues tracker</a> provided by GitHub to send us bug reports or feature requests.</p>
+
+    <h2>Contact</h2>
+
+    <p><b>IRC Channel</b>: <code>#baka-mplayer</code> on <code>irc.freenode.net</code></p>
+
+    <p>You can ask us questions about using Baka MPlayer, give feedback, or discuss its development.
+    However, if possible, please avoid posting bugs there and use the <a href="https://github.com/u8sand/Baka-MPlayer/issues">issue tracker</a> instead.</p>
+    
+    </div>
+';
+require 'layout.php';
+?>
