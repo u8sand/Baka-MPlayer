@@ -1,91 +1,94 @@
-<?php
-require 'version.php';
-$linux=version_parse('version_linux');
-$title='Baka MPlayer | Installation';
-$style='<link rel="stylesheet" href="css/installation.css" media="all">';
-$content='
-    <div id="jumbotron">
-        <p style="color:white;">Latest Version: '.$linux['version'].'</p>
-        <a href="https://github.com/u8sand/Baka-MPlayer/releases">Click here to view Changelog</a>
-    </div>
-    <div class="container">
-        <table class="simple-table">
-        <h2><i class="fa fa-github-alt"></i> Source Code</h2>
-            <tr>
-                <td>git repository (bleeding edge)</td>
-                <td><a href="https://github.com/u8sand/Baka-MPlayer">https://github.com/u8sand/Baka-MPlayer</a></td>
-            </tr>
-            <tr>
-                <td>Latest stable release</td>
-                <td><a href="https://github.com/u8sand/Baka-MPlayer/releases">https://github.com/u8sand/Baka-MPlayer/releases</a></td>
-            </tr>
-        </table>
-        
-        <h2 id="windows"><i class="fa fa-windows"></i> Windows</h2>
-        <table style="borders:none;">
-            <tr>
-                <td><a class="button default" href="Baka.MPlayer.64-bit.zip">Download for Windows (64-bit)</a></td>
-                <td style="padding-left: 1em;"><a class="button" href="https://db.tt/atVrokcn">Download for Windows (64-bit) Old</a></td>
-            </tr>
-            <tr>
-                <td><a class="button default" href="Baka.MPlayer.32-bit.zip">Download for Windows (32-bit)</a></td>
-                <td style="padding-left: 1em;"><a class="button" href="https://db.tt/mugEmygb">Download for Windows (32-bit) Old</a></td>
-            </tr>
-        </table>
-        <a href="https://www.google.com/get/noto/#sans-lgc" target="_blank">Also get Noto Sans font for best experience</a><br><br>
-        
-        <h2 id="linux"><i class="fa fa-linux"></i> Linux</h2>
+---
+title: Installation
+style: installation.css
+permalink: /installation/
+layout: primary
+redirect_from:
+  - /downloads/
+---
 
-        <h3>Package List</h3>
-        <table class="simple-table">
-            <tr>
-                <td>Arch (x86_64)</td>
-                <td><a href="https://www.archlinux.org/packages/community/x86_64/baka-mplayer/">https://www.archlinux.org/packages/community/x86_64/baka-mplayer/</a></td>
-            </tr>
-            <tr>
-                <td>Arch (i686)</td>
-                <td><a href="https://www.archlinux.org/packages/community/i686/baka-mplayer/">https://www.archlinux.org/packages/community/i686/baka-mplayer/</a></td>
-            </tr>
-            <tr>
-                <td>Arch (aur, git package)</td>
-                <td><a href="https://aur.archlinux.org/packages/baka-mplayer-git/">https://aur.archlinux.org/packages/baka-mplayer-git/</a></td>
-            </tr>
-            <tr>
-                <td>Debian (amd64)</td>
-                <td><a href="https://github.com/u8sand/Baka-MPlayer/releases/download/v2.0.4/baka-mplayer_2.0.4-1_amd64.deb">baka-mplayer_2.0.4-1_amd64.deb</a></td>
-            </tr>
-            <tr>
-                <td>Debian (i386)</td>
-                <td><a href="https://github.com/u8sand/Baka-MPlayer/releases/download/v2.0.4/baka-mplayer_2.0.4-1_i386.deb">baka-mplayer_2.0.4-1_i386.deb</a></td>
-            </tr>
-            <tr>
-                <td>Fedora *</td>
-                <td><a href="http://repo.fdzh.org/FZUG">http://repo.fdzh.org/FZUG</td>
-            </tr>
-            <tr>
-                <td>FreeBSD *</td>
-                <td><a href="https://freshports.org/multimedia/baka-mplayer">https://freshports.org/multimedia/baka-mplayer</a></td>
-            </tr>
-            <tr>
-                <td>Gentoo *</td>
-                <td><a href="http://packages.gentoo.org/package/media-video/baka-mplayer">http://packages.gentoo.org/package/media-video/baka-mplayer</a></td>
-            </tr>
-            <tr>
-                <td>openSUSE (Packman team) *</td>
-                <td><a href="http://packman.links2linux.org/package/baka-mplayer">http://packman.links2linux.org/package/baka-mplayer</td>
-            </tr>
-            <tr>
-                <td>Ubuntu *</td>
-                <td><a href="https://launchpad.net/~mc3man/+archive/ubuntu/ffmpeg-test1">https://launchpad.net/~mc3man/+archive/ubuntu/ffmpeg-test1</a></td>
-            </tr>
-        </table>
-        <p style="font-style:italic">* Unofficial ports (may be out of date)</p>
-        
-        <h3>Compilation</h3>
-        
-        <p>Don\'t see a package for your flavor of linux? That\'s okay, compiling is easy!</p>
-        <p>First, make sure you have the following dependencies (packages may be named slightly different for each distro):</p>
-        <pre><code>gcc
+<div id="jumbotron">
+    <p style="color:white;">Latest Version: {{ site.version }}</p>
+    <a href="https://github.com/u8sand/Baka-MPlayer/releases">Click here to view Changelog</a>
+</div>
+<div class="container">
+    <table class="simple-table">
+    <h2><i class="fa fa-github-alt"></i> Source Code</h2>
+        <tr>
+            <td>git repository (bleeding edge)</td>
+            <td><a href="https://github.com/u8sand/Baka-MPlayer">https://github.com/u8sand/Baka-MPlayer</a></td>
+        </tr>
+        <tr>
+            <td>Latest stable release</td>
+            <td><a href="https://github.com/u8sand/Baka-MPlayer/releases">https://github.com/u8sand/Baka-MPlayer/releases</a></td>
+        </tr>
+    </table>
+
+    <h2 id="windows"><i class="fa fa-windows"></i> Windows</h2>
+    <table style="borders:none;">
+        <tr>
+            <td><a class="button default" href="https://github.com/u8sand/Baka-MPlayer/releases/latest/download/Baka-MPlayer.x86_64.zip">Download for Windows (64-bit)</a></td>
+            <td style="padding-left: 1em;"><a class="button" href="https://db.tt/atVrokcn">Download for Windows (64-bit) Old</a></td>
+        </tr>
+        <tr>
+            <td><a class="button default" href="https://github.com/u8sand/Baka-MPlayer/releases/latest/download/Baka-MPlayer.i686.zip">Download for Windows (32-bit)</a></td>
+            <td style="padding-left: 1em;"><a class="button" href="https://db.tt/mugEmygb">Download for Windows (32-bit) Old</a></td>
+        </tr>
+    </table>
+    <a href="https://www.google.com/get/noto/#sans-lgc" target="_blank">Also get Noto Sans font for best experience</a><br><br>
+
+    <h2 id="linux"><i class="fa fa-linux"></i> Linux</h2>
+
+    <h3>Package List</h3>
+    <table class="simple-table">
+        <tr>
+            <td>Arch (x86_64)</td>
+            <td><a href="https://www.archlinux.org/packages/community/x86_64/baka-mplayer/">https://www.archlinux.org/packages/community/x86_64/baka-mplayer/</a></td>
+        </tr>
+        <tr>
+            <td>Arch (i686)</td>
+            <td><a href="https://www.archlinux.org/packages/community/i686/baka-mplayer/">https://www.archlinux.org/packages/community/i686/baka-mplayer/</a></td>
+        </tr>
+        <tr>
+            <td>Arch (aur, git package)</td>
+            <td><a href="https://aur.archlinux.org/packages/baka-mplayer-git/">https://aur.archlinux.org/packages/baka-mplayer-git/</a></td>
+        </tr>
+        <tr>
+            <td>Debian (amd64)</td>
+            <td><a href="https://github.com/u8sand/Baka-MPlayer/releases/download/v2.0.4/baka-mplayer_2.0.4-1_amd64.deb">baka-mplayer_2.0.4-1_amd64.deb</a></td>
+        </tr>
+        <tr>
+            <td>Debian (i386)</td>
+            <td><a href="https://github.com/u8sand/Baka-MPlayer/releases/download/v2.0.4/baka-mplayer_2.0.4-1_i386.deb">baka-mplayer_2.0.4-1_i386.deb</a></td>
+        </tr>
+        <tr>
+            <td>Fedora *</td>
+            <td><a href="http://repo.fdzh.org/FZUG">http://repo.fdzh.org/FZUG</td>
+        </tr>
+        <tr>
+            <td>FreeBSD *</td>
+            <td><a href="https://freshports.org/multimedia/baka-mplayer">https://freshports.org/multimedia/baka-mplayer</a></td>
+        </tr>
+        <tr>
+            <td>Gentoo *</td>
+            <td><a href="http://packages.gentoo.org/package/media-video/baka-mplayer">http://packages.gentoo.org/package/media-video/baka-mplayer</a></td>
+        </tr>
+        <tr>
+            <td>openSUSE (Packman team) *</td>
+            <td><a href="http://packman.links2linux.org/package/baka-mplayer">http://packman.links2linux.org/package/baka-mplayer</td>
+        </tr>
+        <tr>
+            <td>Ubuntu *</td>
+            <td><a href="https://launchpad.net/~mc3man/+archive/ubuntu/ffmpeg-test1">https://launchpad.net/~mc3man/+archive/ubuntu/ffmpeg-test1</a></td>
+        </tr>
+    </table>
+    <p style="font-style:italic">* Unofficial ports (may be out of date)</p>
+
+    <h3>Compilation</h3>
+
+    <p>Don't see a package for your flavor of linux? That's okay, compiling is easy!</p>
+    <p>First, make sure you have the following dependencies (packages may be named slightly different for each distro):</p>
+    <pre><code>gcc
 pkg-config
 libmpv (<a href="https://github.com/mpv-player/mpv-build#building-libmpv">or compile mpv with libmpv support</a>)
 youtube-dl (optional, for streaming youtube videos)
@@ -97,13 +100,10 @@ qt5-svg
 qt5-network
 qt5-x11extras</code></pre>
 
-        <p>Then run the following commands:</p>
-        <pre><code>$ git clone -b release https://github.com/u8sand/Baka-MPlayer.git
+    <p>Then run the following commands:</p>
+    <pre><code>$ git clone -b release https://github.com/u8sand/Baka-MPlayer.git
 $ cd "Baka-MPlayer"
 $ ./configure CONFIG+=install_translations
 $ make -j `grep -c ^processor /proc/cpuinfo`
 $ sudo make install</code></pre>
-    </div>
-';
-require 'layout.php';
-?>
+</div>

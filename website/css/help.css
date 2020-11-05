@@ -3,11 +3,11 @@
    Author: Joshua Park
 */
 
-nav a[href="help.php"] {
+nav a[href="/help/"] {
     background: #222222;
 }
 @media all and (max-width: 550px) {
-    nav a[href="help.php"] {
+    nav a[href="/help/"] {
         background: #008098;
     }
 }

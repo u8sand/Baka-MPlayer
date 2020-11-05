@@ -5,11 +5,11 @@
 */
 
 /* select active "tab" */
-nav a[href="index.php"], nav a[href="home.php"] {
+nav a[href="/"] {
     background: #222222;
 }
 @media all and (max-width: 550px) {
-    nav a[href="index.php"], nav a[href="home.php"] {
+    nav a[href="/"] {
         background: #008098;
     }
 }
