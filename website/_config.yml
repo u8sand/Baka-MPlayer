@@ -1,0 +1,12 @@
+title: bakamplayer.u8sand.net
+subtitle: The mpv based media player
+description: >
+  Baka MPlayer is a free and open source, cross-platform, libmpv based multimedia player.
+  Its simple design reflects the idea for an uncluttered and enjoyable environment for watching tv shows.
+version: 2.0.4
+plugins:
+  - jekyll-redirect-from
+exclude:
+  - vendor
+  - Gemfile
+  - Gemfile.lock
