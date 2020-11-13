@@ -6,6 +6,7 @@
 #include <QDesktopServices>
 #include <QDir>
 #include <QUrl>
+#include <QGuiApplication>
 
 #include <QX11Info>
 #include <X11/Xlib.h>
@@ -24,6 +25,8 @@ QString DownloadFileUrl()
 
 bool DimLightsSupported()
 {
+    if(QGuiApplication::platformName().contains("wayland"))
+        return false;
     QString tmp = "_NET_WM_CM_S"+QString::number(QX11Info::appScreen());
     Atom a = XInternAtom(QX11Info::display(), tmp.toUtf8().constData(), false);
     if(a && XGetSelectionOwner(QX11Info::display(), a)) // hack for QX11Info::isCompositingManagerRunning()
@@ -33,6 +36,8 @@ bool DimLightsSupported()
 
 void SetAlwaysOnTop(WId wid, bool ontop)
 {
+    if(QGuiApplication::platformName().contains("wayland"))
+        return;
     Display *display = QX11Info::display();
     XEvent event;
     event.xclient.type = ClientMessage;
