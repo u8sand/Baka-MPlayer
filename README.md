@@ -1,8 +1,8 @@
-# [Baka MPlayer](http://bakamplayer.u8sand.net)
+# [Baka MPlayer](https://u8sand.github.io/Baka-MPlayer/)
+
+![screenshot](https://github.com/u8sand/Baka-MPlayer/raw/master/website/screenshots/img-2.png)
 
 [![Build Status](https://travis-ci.org/u8sand/Baka-MPlayer.svg?branch=master)](https://travis-ci.org/u8sand/Baka-MPlayer)
-
---------------
 
 
 ## Overview
