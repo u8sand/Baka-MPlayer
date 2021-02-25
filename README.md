@@ -1,6 +1,6 @@
 # [Baka MPlayer](https://u8sand.github.io/Baka-MPlayer/)
 
-![screenshot](https://github.com/u8sand/Baka-MPlayer/raw/master/website/screenshots/img-2.png)
+![](https://github.com/u8sand/Baka-MPlayer/raw/master/website/screenshots/img-2.png "Main Screenshot")
 
 [![Build Status](https://travis-ci.org/u8sand/Baka-MPlayer.svg?branch=master)](https://travis-ci.org/u8sand/Baka-MPlayer)
 
