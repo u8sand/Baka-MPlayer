@@ -1,12 +1,13 @@
 [Desktop Entry]
 Type=Application
 Version=1.0
-Name=Baka-MPlayer
-Name[hr]=Baka MPlayer
-GenericName=Media player
-GenericName[hr]=Medijski reproduktor
-Comment=Baka MPlayer is a free and open source, cross-platform, **libmpv** based multimedia player.
-Comment[hr]=Baka MPlayer je slobodan i otvorenog kôda, višeplatformski, **libmpv** temeljen reproduktor.
+Name=Baka MPlayer
+GenericName=Baka MPlayer Media player
+GenericName[hr]=Medijski reproduktor Baka MPlayer
+GenericName[ru]=Медиапроигрыватель Baka MPlayer
+Comment=Baka MPlayer is a free and open source, cross-platform, libmpv based multimedia player
+Comment[hr]=Baka MPlayer je slobodan i otvorenog kôda, višeplatformski, libmpv temeljen reproduktor
+Comment[ru]=Baka MPlayer — это свободный медиапроигрыватель, основанный на libmpv
 Icon=baka-mplayer
 Exec=baka-mplayer %U
 Terminal=false
