@@ -473,7 +473,7 @@
     </message>
     <message>
         <source>set mpv msg-level</source>
-        <translation>Установить уровень msg mpv</translation>
+        <translation>Установить уровень сообщений mpv</translation>
     </message>
     <message>
         <source>quit baka-mplayer</source>
@@ -1339,7 +1339,7 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>mpv msg-level:</source>
-        <translation>Уровень msg mpv:</translation>
+        <translation>Уровень сообщений mpv:</translation>
     </message>
     <message>
         <source>no</source>
