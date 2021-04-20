@@ -21,7 +21,7 @@
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; is a free and open source, cross-platform, &lt;b&gt;libmpv&lt;/b&gt; based multimedia player. Its simple design reflects the idea for an uncluttered, simple, and enjoyable environment for watching tv shows.&lt;br&gt;&lt;br&gt;Copyright © 2016 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#008098;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; - свободный, открытый и кроссплатформенный медиаплеер, основанный на &lt;b&gt;libmpv&lt;/b&gt;. Его простой дизайн прекрасно отражает идею о лаконичном, простом и приятном окружении для просмотра телешоу.&lt;br&gt;&lt;br&gt;Авторские права © 2015 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#008098;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt; {2016 ?} {8s?} {8s?} {008098;?} {8s?}</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Baka MPlayer&lt;/b&gt; - свободный, открытый и кроссплатформенный медиаплеер, основанный на &lt;b&gt;libmpv&lt;/b&gt;. Его простой дизайн прекрасно отражает идею о лаконичном, простом и приятном окружении для просмотра телешоу.&lt;br&gt;&lt;br&gt;Авторские права © 2016 godly-devotion, u8sand&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/u8sand/Baka-MPlayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#008098;&quot;&gt;https://github.com/u8sand/Baka-MPlayer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>License</source>
@@ -68,7 +68,7 @@
     </message>
     <message>
         <source>In order to dim the lights, the desktop compositor has to be enabled. This can be done through Window Manager Desktop.</source>
-        <translation></translation>
+        <translation>Чтобы приглушить свет, необходимо включить композитор рабочего стола. Это можно сделать через менеджер окон рабочего стола.</translation>
     </message>
     <message>
         <source>Fit Window: %0</source>
@@ -165,7 +165,7 @@
     </message>
     <message>
         <source>Boss key</source>
-        <translation></translation>
+        <translation>Клавиша «Босс!»</translation>
     </message>
     <message>
         <source>Play previous file</source>
@@ -205,7 +205,7 @@
     </message>
     <message>
         <source>Access command-line</source>
-        <translation></translation>
+        <translation>Доступ к командной строке</translation>
     </message>
     <message>
         <source>Launch online help</source>
@@ -381,7 +381,7 @@
     </message>
     <message>
         <source>opens jump dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>открывает диалоговое окно перехода</translation>
     </message>
     <message>
         <source>toggles dim desktop</source>
@@ -389,7 +389,7 @@
     </message>
     <message>
         <source>toggles output textbox</source>
-        <translation type="unfinished"></translation>
+        <translation>переключает текстовое поле  вывода</translation>
     </message>
     <message>
         <source>opens preferences dialog</source>
@@ -453,7 +453,7 @@
     </message>
     <message>
         <source>clears the output textbox</source>
-        <translation type="unfinished"></translation>
+        <translation>очищает текстовое поле  выхода</translation>
     </message>
     <message>
         <source>[command]</source>
@@ -473,7 +473,7 @@
     </message>
     <message>
         <source>set mpv msg-level</source>
-        <translation type="unfinished"></translation>
+        <translation>Установить уровень msg mpv</translation>
     </message>
     <message>
         <source>quit baka-mplayer</source>
@@ -550,7 +550,7 @@
     </message>
     <message>
         <source>C&amp;lear Shortcut</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Очистить комбинацию клавиш</translation>
     </message>
     <message>
         <source>Chang&amp;e</source>
@@ -573,7 +573,7 @@
     </message>
     <message>
         <source>Paste copied link</source>
-        <translation type="unfinished">Вставить скопированную ссылку</translation>
+        <translation>Вставить скопированную ссылку</translation>
     </message>
     <message>
         <source>Type URL or location here</source>
@@ -720,11 +720,11 @@
     </message>
     <message>
         <source>Click to play a specific file by index</source>
-        <translation type="unfinished"></translation>
+        <translation>Нажмите, чтобы воспроизвести определенный файл по индексу</translation>
     </message>
     <message>
         <source>0 / 0</source>
-        <translation type="unfinished"></translation>
+        <translation>0 / 0</translation>
     </message>
     <message>
         <source>E&amp;xit</source>
@@ -901,7 +901,8 @@
     <message>
         <source>Enter the file number you want to play:
 Note: Value must be from %0 - %1</source>
-        <translation></translation>
+        <translation>Введите номер файла, который вы хотите воспроизвести:
+Примечание: значение должно быть от %0 - %1</translation>
     </message>
     <message>
         <source>Open &amp;Location...</source>
@@ -909,7 +910,7 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>Update &amp;Streaming Support</source>
-        <translation></translation>
+        <translation>Обновление поддержки потоковой передачи</translation>
     </message>
     <message>
         <source>Show Playback &amp;Info</source>
@@ -929,7 +930,7 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>%0 / %1</source>
-        <translation type="unfinished"></translation>
+        <translation>%0 / %1</translation>
     </message>
     <message>
         <source>Pause</source>
@@ -1338,31 +1339,31 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>mpv msg-level:</source>
-        <translation type="unfinished"></translation>
+        <translation>Уровень msg mpv:</translation>
     </message>
     <message>
         <source>no</source>
-        <translation type="unfinished"></translation>
+        <translation>нет</translation>
     </message>
     <message>
         <source>fatal</source>
-        <translation type="unfinished"></translation>
+        <translation>фатальная</translation>
     </message>
     <message>
         <source>error</source>
-        <translation type="unfinished"></translation>
+        <translation>ошибка</translation>
     </message>
     <message>
         <source>warn</source>
-        <translation type="unfinished"></translation>
+        <translation>предупреждать</translation>
     </message>
     <message>
         <source>info</source>
-        <translation type="unfinished"></translation>
+        <translation>информация</translation>
     </message>
     <message>
         <source>status</source>
-        <translation type="unfinished"></translation>
+        <translation>состояние</translation>
     </message>
     <message>
         <source>v</source>
@@ -1370,11 +1371,11 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>debug</source>
-        <translation type="unfinished"></translation>
+        <translation>отладка</translation>
     </message>
     <message>
         <source>trace</source>
-        <translation type="unfinished"></translation>
+        <translation>трассировать</translation>
     </message>
     <message>
         <source>&amp;OK</source>
@@ -1464,7 +1465,7 @@ Note: Value must be from %0 - %1</source>
     </message>
     <message>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>О&amp;тмена</translation>
     </message>
     <message>
         <source>&amp;CLOSE</source>
@@ -1498,7 +1499,7 @@ Version: %0</source>
     <message>
         <source>fopen error
 </source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Could not open file for writing...</source>
