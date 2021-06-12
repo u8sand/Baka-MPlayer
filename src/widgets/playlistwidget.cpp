@@ -152,9 +152,8 @@ void PlaylistWidget::PlayIndex(int index, bool relative)
     QListWidgetItem *current = item(newIndex);
     if(current != nullptr)
     {
-        if(baka->mpv->PlayFile(current->text()))
-            scrollToItem(current);
-        else
+        scrollToItem(current);
+        if(!baka->mpv->PlayFile(current->text()))
         {
             PlayIndex(newIndex+1);
             RemoveIndex(newIndex);
