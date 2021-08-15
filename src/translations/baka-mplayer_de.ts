@@ -275,14 +275,6 @@
         <translation>Boss Taste</translation>
     </message>
     <message>
-        <source>Select next file on playlist</source>
-        <translation>Nächste Datei aus Wiedergabeliste</translation>
-    </message>
-    <message>
-        <source>Select previous file on playlist</source>
-        <translation>Vorherige Datei aus Wiedergabeliste</translation>
-    </message>
-    <message>
         <source>Play selected file on playlist</source>
         <translation>Markierte Datei abspielen</translation>
     </message>

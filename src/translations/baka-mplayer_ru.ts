@@ -216,14 +216,6 @@
         <translation>Воспроизведение/пауза</translation>
     </message>
     <message>
-        <source>Select previous file on playlist</source>
-        <translation>Выбрать предыдущий файл в плейлисте</translation>
-    </message>
-    <message>
-        <source>Select next file on playlist</source>
-        <translation>Выбрать следующий файл в плейлисте</translation>
-    </message>
-    <message>
         <source>Play selected file on playlist</source>
         <translation>Воспроизвести выбранныей файл в плейлисте</translation>
     </message>

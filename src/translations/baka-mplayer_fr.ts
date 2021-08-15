@@ -275,14 +275,6 @@
         <translation>Boss key</translation>
     </message>
     <message>
-        <source>Select next file on playlist</source>
-        <translation>Sélectionne le prochain fichier dans la liste de lecture</translation>
-    </message>
-    <message>
-        <source>Select previous file on playlist</source>
-        <translation>Selectionne le fichier précédent dans la liste de lecture</translation>
-    </message>
-    <message>
         <source>Play selected file on playlist</source>
         <translation>Lit le fichier sélectionné dans la liste de lecture</translation>
     </message>

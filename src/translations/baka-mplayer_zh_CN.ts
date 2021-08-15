@@ -215,14 +215,6 @@
         <translation>播放/暂停</translation>
     </message>
     <message>
-        <source>Select previous file on playlist</source>
-        <translation>选择播放列表的前一个文件</translation>
-    </message>
-    <message>
-        <source>Select next file on playlist</source>
-        <translation>选择播放列表的下一个文件</translation>
-    </message>
-    <message>
         <source>Seek forwards by %0 sec</source>
         <translation>快进 %0 秒</translation>
     </message>

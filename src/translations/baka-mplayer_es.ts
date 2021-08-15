@@ -303,14 +303,6 @@
         <translation>Tecla del pánico</translation>
     </message>
     <message>
-        <source>Select next file on playlist</source>
-        <translation>Seleccionar el archivo siguiente en la lista de reproducción</translation>
-    </message>
-    <message>
-        <source>Select previous file on playlist</source>
-        <translation>Seleccionar el archivo anterior en la lista de reproducción</translation>
-    </message>
-    <message>
         <source>Play selected file on playlist</source>
         <translation>Reproducir el archivo seleccionado en la lista de reproducción</translation>
     </message>

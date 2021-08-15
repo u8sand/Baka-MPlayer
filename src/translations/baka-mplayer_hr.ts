@@ -231,14 +231,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Select previous file on playlist</source>
-        <translation type="unfinished">Odaberi prijašnju datoteku na popisu izvođenja</translation>
-    </message>
-    <message>
-        <source>Select next file on playlist</source>
-        <translation type="unfinished">Odaberi sljedeću datoteku na popisu izvođenja</translation>
-    </message>
-    <message>
         <source>Play selected file on playlist</source>
         <translation type="unfinished">Reproduciraj odabranu datoteku na popisu izvođenja</translation>
     </message>

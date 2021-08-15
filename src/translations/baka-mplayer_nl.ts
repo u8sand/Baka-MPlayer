@@ -267,14 +267,6 @@
         <translation>Hoofdtoets</translation>
     </message>
     <message>
-        <source>Select next file on playlist</source>
-        <translation>Speel geselecteerde bestand af op afspeellijst</translation>
-    </message>
-    <message>
-        <source>Select previous file on playlist</source>
-        <translation>Selecteer vorige bestand in afspeellijst</translation>
-    </message>
-    <message>
         <source>Play selected file on playlist</source>
         <translation>Speel geselecteerd bestand af op afspeellijst</translation>
     </message>

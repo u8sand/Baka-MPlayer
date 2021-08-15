@@ -299,14 +299,6 @@
         <translation>ბოს ღილაკი</translation>
     </message>
     <message>
-        <source>Select next file on playlist</source>
-        <translation>დასაკრავ სიაში შემდეგი ფაილის არჩევა</translation>
-    </message>
-    <message>
-        <source>Select previous file on playlist</source>
-        <translation>დასაკრავ სიაში წინა ფაილის არჩევა</translation>
-    </message>
-    <message>
         <source>Play selected file on playlist</source>
         <translation>დასაკრავ სიაში არჩეული ფაილის დაკვრა</translation>
     </message>
