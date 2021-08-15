@@ -53,6 +53,8 @@ public:
         {"PgUp",            {"mpv add chapter -1",                  tr("Go to previous chapter")}},
         {"Right",           {"mpv seek +5",                         tr("Seek forwards by %0 sec").arg("5")}},
         {"Left",            {"mpv seek -5",                         tr("Seek backwards by %0 sec").arg("5")}},
+        {"Up",              {"mpv seek +30",                        tr("Seek forwards by %0 sec").arg("30")}},
+        {"Down",            {"mpv seek -30",                        tr("Seek backwards by %0 sec").arg("30")}},
         {"Shift+Left",      {"mpv frame_back_step",                 tr("Frame step backwards")}},
         {"Shift+Right",     {"mpv frame_step",                      tr("Frame step")}},
         {"Ctrl+M",          {"mute",                                tr("Toggle mute audio")}},
@@ -89,8 +91,6 @@ public:
         {"Alt+5",           {"fitwindow 150",                       tr("Fit window to %0%").arg("150")}},
         {"Alt+6",           {"fitwindow 200",                       tr("Fit window to %0%").arg("200")}},
         {"Esc",             {"boss",                                tr("Boss key")}},
-        {"Down",            {"playlist select +1",                  tr("Select next file on playlist")}},
-        {"Up",              {"playlist select -1",                  tr("Select previous file on playlist")}},
         {"Return",          {"playlist play",                       tr("Play selected file on playlist")}},
         {"Del",             {"playlist remove",                     tr("Remove selected file from playlist")}}
     };
