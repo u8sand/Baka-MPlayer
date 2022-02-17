@@ -65,6 +65,7 @@ mkdir build
 cp -r linux/* build/
 cd build
 distro=debian_based
+chmod +x $distro.sh 
 ./$distro.sh
 ```
 If this doesn't work or the distro you use is not listed here, you'll need to build mpv and then Baka MPlayer (the dependencies above are for Baka MPlayer). For help building mpv see `https://github.com/mpv-player/mpv-build`. Compiling Baka MPlayer from source can be done like so:
