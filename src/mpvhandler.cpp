@@ -238,6 +238,8 @@ bool MpvHandler::event(QEvent *event)
                 setPlayState(Mpv::Started);
                 LoadFileInfo();
                 SetProperties();
+                setPlayState(Mpv::Playing);
+                break;
             case MPV_EVENT_END_FILE:
                 if(playState == Mpv::Loaded)
                     ShowText(tr("File couldn't be opened"));
