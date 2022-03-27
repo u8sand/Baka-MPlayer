@@ -486,13 +486,13 @@ int MpvHandler::Relative(int pos)
 
 void MpvHandler::FrameStep()
 {
-    const char *args[] = {"frame_step", NULL};
+    const char *args[] = {"frame-step", NULL};
     AsyncCommand(args);
 }
 
 void MpvHandler::FrameBackStep()
 {
-    const char *args[] = {"frame_back_step", NULL};
+    const char *args[] = {"frame-back-step", NULL};
     AsyncCommand(args);
 }
 
