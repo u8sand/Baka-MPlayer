@@ -32,6 +32,7 @@ MpvHandler::MpvHandler(int64_t wid, QObject *parent):
     mpv_set_option_string(mpv, "cursor-autohide", "no");// no cursor-autohide, we handle that
     mpv_set_option_string(mpv, "ytdl", "yes"); // youtube-dl support
     mpv_set_option_string(mpv, "sub-auto", "fuzzy"); // Automatic subfile detection
+    mpv_set_option_string(mpv, "audio-client-name", "baka-mplayer"); // show correct icon in e.g. pavucontrol
 
     // get updates when these properties change
     mpv_observe_property(mpv, 0, "playback-time", MPV_FORMAT_DOUBLE);
