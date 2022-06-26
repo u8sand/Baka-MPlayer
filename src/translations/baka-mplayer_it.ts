@@ -231,14 +231,6 @@
         <translation>Adatta alla finestra allo %0%</translation>
     </message>
     <message>
-        <source>Select previous file on playlist</source>
-        <translation>Seleziona file precedente sulla scaletta</translation>
-    </message>
-    <message>
-        <source>Select next file on playlist</source>
-        <translation>Seleziona file successivo sulla scaletta</translation>
-    </message>
-    <message>
         <source>Play selected file on playlist</source>
         <translation>Riproduci file selezionati sulla scaletta</translation>
     </message>

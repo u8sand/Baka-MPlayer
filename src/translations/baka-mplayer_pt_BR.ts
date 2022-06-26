@@ -237,14 +237,6 @@
         <translation>Ajustar janela em %0%</translation>
     </message>
     <message>
-        <source>Select previous file on playlist</source>
-        <translation>Selecionar arquivo anterior na lista de reprodução</translation>
-    </message>
-    <message>
-        <source>Select next file on playlist</source>
-        <translation>Selecionar próximo arquivo na lista de reprodução</translation>
-    </message>
-    <message>
         <source>Play selected file on playlist</source>
         <translation>Reproduzir arquivo selecionado na lista de reprodução</translation>
     </message>

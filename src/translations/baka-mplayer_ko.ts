@@ -235,14 +235,6 @@
         <translation>창 크기를 %0에 맞추기</translation>
     </message>
     <message>
-        <source>Select previous file on playlist</source>
-        <translation>재생 목록의 이전 파일 선택</translation>
-    </message>
-    <message>
-        <source>Select next file on playlist</source>
-        <translation>재생 목록의 다음 파일 선택</translation>
-    </message>
-    <message>
         <source>Play selected file on playlist</source>
         <translation>재생 목록의 선택한 파일 열기</translation>
     </message>
