@@ -13,7 +13,7 @@ TEMPLATE = app
 
 CONFIG += c++11 link_pkgconfig
 
-!isEmpty(DESTDIR):DESTDIR=build
+isEmpty(DESTDIR):DESTDIR=build
 OBJECTS_DIR = $${DESTDIR}/obj
 MOC_DIR = $${DESTDIR}/moc
 RCC_DIR = $${DESTDIR}/rcc
