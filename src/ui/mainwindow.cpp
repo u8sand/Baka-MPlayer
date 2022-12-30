@@ -29,7 +29,7 @@ MainWindow::MainWindow(QWidget *parent):
 
     // initialize managers/handlers
     baka = new BakaEngine(this);
-    mpv = baka->mpv;
+    mpv = this->ui->mpvFrame;
 
     ui->playlistWidget->AttachEngine(baka);
     ui->mpvFrame->installEventFilter(this); // capture events on mpvFrame in the eventFilter function
@@ -894,7 +894,7 @@ void MainWindow::Load(QString file)
     thumbnail_toolbar->addButton(next_toolbutton);
 #endif
     baka->LoadSettings();
-    mpv->Initialize();
+    mpv->Initialize(baka);
     mpv->LoadFile(file);
 }
 

@@ -16,7 +16,7 @@
 BakaEngine::BakaEngine(QObject *parent):
     QObject(parent),
     window(static_cast<MainWindow*>(parent)),
-    mpv(new MpvHandler(window->ui->mpvFrame->winId(), this)),
+    mpv(window->ui->mpvFrame),
     settings(new Settings(Util::SettingsLocation(), this)),
     gesture(new GestureHandler(this)),
     overlay(new OverlayHandler(this)),
