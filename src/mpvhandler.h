@@ -1,11 +1,11 @@
 #ifndef MPVHANDLER_H
 #define MPVHANDLER_H
 
-#include <QObject>
+#include <QtWidgets/QOpenGLWidget>
 #include <QString>
 #include <QStringList>
-
 #include <mpv/client.h>
+#include <mpv/render_gl.h>
 
 #include "mpvtypes.h"
 
@@ -14,15 +14,15 @@
 
 class BakaEngine;
 
-class MpvHandler : public QObject
+class MpvHandler Q_DECL_FINAL: public QOpenGLWidget
 {
 friend class BakaEngine;
     Q_OBJECT
 public:
-    explicit MpvHandler(int64_t wid, QObject *parent = 0);
+    explicit MpvHandler(QWidget *parent = 0, Qt::WindowFlags f = 0);
     ~MpvHandler();
 
-    void Initialize();
+    void Initialize(BakaEngine *baka);
     const Mpv::FileInfo &getFileInfo()      { return fileInfo; }
     Mpv::PlayState getPlayState()           { return playState; }
     QString getFile()                       { return file; }
@@ -47,7 +47,8 @@ public:
     QString getMediaInfo();
 
 protected:
-    virtual bool event(QEvent*);
+    void initializeGL() Q_DECL_OVERRIDE;
+    void paintGL() Q_DECL_OVERRIDE;
 
     bool FileExists(QString);
 
@@ -122,7 +123,10 @@ protected slots:
     void Command(const char *args[]);
     void HandleErrorCode(int);
 
-private slots:
+private Q_SLOTS:
+    void on_mpv_events();
+    void maybeUpdate();
+
     void setPlaylist(const QStringList& l)  { emit playlistChanged(l); }
     void setFileInfo()                      { emit fileInfoChanged(fileInfo); }
     void setPlayState(Mpv::PlayState s)     { emit playStateChanged(playState = s); }
@@ -173,8 +177,11 @@ signals:
     void messageSignal(QString m);
 
 private:
+    static void on_update(void *ctx);
+
     BakaEngine *baka;
-    mpv_handle *mpv = nullptr;
+    mpv_handle *mpv;
+    mpv_render_context *mpv_gl;
 
     // variables
     Mpv::PlayState playState = Mpv::Idle;
