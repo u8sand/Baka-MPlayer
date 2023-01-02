@@ -41,6 +41,7 @@ MpvHandler::MpvHandler(QWidget *parent):
     mpv_set_option_string(mpv, "ytdl", "yes"); // youtube-dl support
     mpv_set_option_string(mpv, "sub-auto", "fuzzy"); // Automatic subfile detection
     mpv_set_option_string(mpv, "audio-client-name", "baka-mplayer"); // show correct icon in e.g. pavucontrol
+    mpv_set_option_string(mpv, "hwdec", "auto");
 
     // get updates when these properties change
     mpv_observe_property(mpv, 0, "playback-time", MPV_FORMAT_DOUBLE);
@@ -56,6 +57,21 @@ MpvHandler::MpvHandler(QWidget *parent):
 
     // setup callback event handling
     mpv_set_wakeup_callback(mpv, wakeup, this);
+
+    connect(this, &MpvHandler::playStateChanged,
+            [=](Mpv::PlayState playState)
+            {
+                switch(playState)
+                {
+                case Mpv::Started:
+                    this->LoadFileInfo();
+                    this->SetProperties();
+                    setPlayState(Mpv::Playing);
+                    break;
+                default:
+                    break;
+                }
+            });
 }
 
 MpvHandler::~MpvHandler()
@@ -77,10 +93,11 @@ void MpvHandler::Initialize(BakaEngine *baka)
 void MpvHandler::initializeGL()
 {
     mpv_opengl_init_params gl_init_params{get_proc_address, nullptr};
+    int advancedControlEnable = 0;
     mpv_render_param params[]{
         {MPV_RENDER_PARAM_API_TYPE, const_cast<char *>(MPV_RENDER_API_TYPE_OPENGL)},
         {MPV_RENDER_PARAM_OPENGL_INIT_PARAMS, &gl_init_params},
-        {MPV_RENDER_PARAM_INVALID, nullptr}
+        {MPV_RENDER_PARAM_ADVANCED_CONTROL, &advancedControlEnable}
     };
 
     if (mpv_render_context_create(&mpv_gl, mpv, params) < 0)
@@ -182,119 +199,121 @@ void MpvHandler::on_mpv_events()
             break;
         }
         HandleErrorCode(event->error);
-        switch (event->event_id)
+        handle_mpv_event(event);
+    }
+}
+
+void MpvHandler::handle_mpv_event(mpv_event *event)
+{
+    switch (event->event_id)
+    {
+    case MPV_EVENT_PROPERTY_CHANGE:
+    {
+        mpv_event_property *prop = (mpv_event_property*)event->data;
+        if(QString(prop->name) == "playback-time") // playback-time does the same thing as time-pos but works for streaming media
         {
-        case MPV_EVENT_PROPERTY_CHANGE:
+            if(prop->format == MPV_FORMAT_DOUBLE)
+            {
+                setTime((int)*(double*)prop->data);
+                lastTime = time;
+            }
+        }
+        else if(QString(prop->name) == "volume")
         {
-            mpv_event_property *prop = (mpv_event_property*)event->data;
-            if(QString(prop->name) == "playback-time") // playback-time does the same thing as time-pos but works for streaming media
-            {
-                if(prop->format == MPV_FORMAT_DOUBLE)
-                {
-                    setTime((int)*(double*)prop->data);
-                    lastTime = time;
-                }
-            }
-            else if(QString(prop->name) == "volume")
-            {
-                if(prop->format == MPV_FORMAT_DOUBLE)
-                    setVolume((int)*(double*)prop->data);
-            }
-            else if(QString(prop->name) == "sid")
-            {
-                if(prop->format == MPV_FORMAT_INT64)
-                    setSid(*(int*)prop->data);
-            }
-            else if(QString(prop->name) == "aid")
-            {
-                if(prop->format == MPV_FORMAT_INT64)
-                    setAid(*(int*)prop->data);
-            }
-            else if(QString(prop->name) == "sub-visibility")
-            {
-                if(prop->format == MPV_FORMAT_FLAG)
-                    setSubtitleVisibility((bool)*(unsigned*)prop->data);
-            }
-            else if(QString(prop->name) == "mute")
-            {
-                if(prop->format == MPV_FORMAT_FLAG)
-                    setMute((bool)*(unsigned*)prop->data);
-            }
-            else if(QString(prop->name) == "core-idle")
-            {
-                if(prop->format == MPV_FORMAT_FLAG)
-                {
-                    if((bool)*(unsigned*)prop->data && playState == Mpv::Playing)
-                        ShowText(tr("Buffering..."), 0);
-                    else
-                        ShowText(QString(), 0);
-                }
-            }
-            else if(QString(prop->name) == "idle-active")
-            {
-                if(prop->format == MPV_FORMAT_FLAG)
-                {
-                    if((bool)*(unsigned*)prop->data)
-                    {
-                        fileInfo.length = 0;
-                        setTime(0);
-                        setPlayState(Mpv::Idle);
-                    }
-                }
-            }
-            else if(QString(prop->name) == "pause")
-            {
-                if(prop->format == MPV_FORMAT_FLAG)
-                {
-                    if((bool)*(unsigned*)prop->data)
-                    {
-                        setPlayState(Mpv::Paused);
-                        ShowText(QString(), 0);
-                    }
-                    else
-                        setPlayState(Mpv::Playing);
-                }
-            }
-            else if(QString(prop->name) == "paused-for-cache")
-            {
-                if(prop->format == MPV_FORMAT_FLAG)
-                {
-                    if((bool)*(unsigned*)prop->data && playState == Mpv::Playing)
-                        ShowText(tr("Your network is slow or stuck, please wait a bit"), 0);
-                    else
-                        ShowText(QString(), 0);
-                }
-            }
-            break;
+            if(prop->format == MPV_FORMAT_DOUBLE)
+                setVolume((int)*(double*)prop->data);
         }
-        // these two look like they're reversed but they aren't. the names are misleading.
-        case MPV_EVENT_START_FILE:
-            setPlayState(Mpv::Loaded);
-            break;
-        case MPV_EVENT_FILE_LOADED:
-            setPlayState(Mpv::Started);
-            LoadFileInfo();
-            SetProperties();
-            setPlayState(Mpv::Playing);
-            break;
-        case MPV_EVENT_END_FILE:
-            if(playState == Mpv::Loaded)
-                ShowText(tr("File couldn't be opened"));
-            setPlayState(Mpv::Stopped);
-            break;
-        case MPV_EVENT_SHUTDOWN:
-            QCoreApplication::quit();
-            break;
-        case MPV_EVENT_LOG_MESSAGE:
+        else if(QString(prop->name) == "sid")
         {
-            mpv_event_log_message *message = static_cast<mpv_event_log_message*>(event->data);
-            if(message != nullptr)
-                emit messageSignal(message->text);
-            break;
+            if(prop->format == MPV_FORMAT_INT64)
+                setSid(*(int*)prop->data);
         }
-        default: // unhandled events
-            break;
+        else if(QString(prop->name) == "aid")
+        {
+            if(prop->format == MPV_FORMAT_INT64)
+                setAid(*(int*)prop->data);
         }
+        else if(QString(prop->name) == "sub-visibility")
+        {
+            if(prop->format == MPV_FORMAT_FLAG)
+                setSubtitleVisibility((bool)*(unsigned*)prop->data);
+        }
+        else if(QString(prop->name) == "mute")
+        {
+            if(prop->format == MPV_FORMAT_FLAG)
+                setMute((bool)*(unsigned*)prop->data);
+        }
+        else if(QString(prop->name) == "core-idle")
+        {
+            if(prop->format == MPV_FORMAT_FLAG)
+            {
+                if((bool)*(unsigned*)prop->data && playState == Mpv::Playing)
+                    ShowText(tr("Buffering..."), 0);
+                else
+                    ShowText(QString(), 0);
+            }
+        }
+        else if(QString(prop->name) == "idle-active")
+        {
+            if(prop->format == MPV_FORMAT_FLAG)
+            {
+                if((bool)*(unsigned*)prop->data)
+                {
+                    fileInfo.length = 0;
+                    setTime(0);
+                    setPlayState(Mpv::Idle);
+                }
+            }
+        }
+        else if(QString(prop->name) == "pause")
+        {
+            if(prop->format == MPV_FORMAT_FLAG)
+            {
+                if((bool)*(unsigned*)prop->data)
+                {
+                    setPlayState(Mpv::Paused);
+                    ShowText(QString(), 0);
+                }
+                else
+                    setPlayState(Mpv::Playing);
+            }
+        }
+        else if(QString(prop->name) == "paused-for-cache")
+        {
+            if(prop->format == MPV_FORMAT_FLAG)
+            {
+                if((bool)*(unsigned*)prop->data && playState == Mpv::Playing)
+                    ShowText(tr("Your network is slow or stuck, please wait a bit"), 0);
+                else
+                    ShowText(QString(), 0);
+            }
+        }
+        break;
+    }
+    // these two look like they're reversed but they aren't. the names are misleading.
+    case MPV_EVENT_START_FILE:
+        setPlayState(Mpv::Loaded);
+        break;
+    case MPV_EVENT_FILE_LOADED:
+        setPlayState(Mpv::Started);
+        break;
+    case MPV_EVENT_END_FILE:
+        if(playState == Mpv::Loaded)
+            ShowText(tr("File couldn't be opened"));
+        setPlayState(Mpv::Stopped);
+        break;
+    case MPV_EVENT_SHUTDOWN:
+        QCoreApplication::quit();
+        break;
+    case MPV_EVENT_LOG_MESSAGE:
+    {
+        mpv_event_log_message *message = static_cast<mpv_event_log_message*>(event->data);
+        if(message != nullptr)
+            emit messageSignal(message->text);
+        break;
+    }
+    default: // unhandled events
+        break;
     }
 }
 

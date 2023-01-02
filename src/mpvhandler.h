@@ -131,6 +131,7 @@ protected slots:
 
 private Q_SLOTS:
     void on_mpv_events();
+    void handle_mpv_event(mpv_event *event);
     void maybeUpdate();
 
     void setPlaylist(const QStringList& l)  { emit playlistChanged(l); }
