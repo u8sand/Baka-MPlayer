@@ -1,7 +1,13 @@
 #ifndef MPVHANDLER_H
 #define MPVHANDLER_H
 
+#include <QtGlobal>
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#include <QtOpenGLWidgets/QOpenGLWidget>
+#else
 #include <QtWidgets/QOpenGLWidget>
+#endif
+
 #include <QString>
 #include <QStringList>
 #include <mpv/client.h>
@@ -19,7 +25,7 @@ class MpvHandler Q_DECL_FINAL: public QOpenGLWidget
 friend class BakaEngine;
     Q_OBJECT
 public:
-    explicit MpvHandler(QWidget *parent = 0, Qt::WindowFlags f = 0);
+    MpvHandler(QWidget *parent = 0);
     ~MpvHandler();
 
     void Initialize(BakaEngine *baka);

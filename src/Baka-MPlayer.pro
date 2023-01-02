@@ -7,7 +7,8 @@
 VERSION   = 2.0.4
 QT       += core gui network svg
 CODECFORSRC = UTF-8
-greaterThan(QT_MAJOR_VERSION, 5): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 5): QT += widgets openglwidgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = baka-mplayer
 TEMPLATE = app
 

@@ -1,11 +1,10 @@
 #include "dimdialog.h"
 
 #include "ui/mainwindow.h"
-#include "ui_mainwindow.h"
-#include "util.h"
 
 #include <QApplication>
 #include <QWindow>
+#include <QScreen>
 
 DimDialog::DimDialog(MainWindow *window, QWidget *parent) :
     QDialog(parent),
@@ -37,7 +36,7 @@ DimDialog::DimDialog(MainWindow *window, QWidget *parent) :
 void DimDialog::show()
 {
     // set the geometry in the show so that we can fill the desktop (even on another monitor)
-    setGeometry(qApp->activeWindow()->windowHandle()->screen()->geometry());
+    setGeometry(qApp->screenAt(window->frameGeometry().center())->geometry());
     emit visbilityChanged(true);
     QDialog::show();
 }
