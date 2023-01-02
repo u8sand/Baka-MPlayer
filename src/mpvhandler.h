@@ -19,7 +19,7 @@ class MpvHandler Q_DECL_FINAL: public QOpenGLWidget
 friend class BakaEngine;
     Q_OBJECT
 public:
-    explicit MpvHandler(QWidget *parent = 0, Qt::WindowFlags f = 0);
+    MpvHandler(QWidget *parent = 0);
     ~MpvHandler();
 
     void Initialize(BakaEngine *baka);

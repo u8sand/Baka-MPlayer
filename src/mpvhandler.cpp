@@ -27,8 +27,8 @@ static void *get_proc_address(void *ctx, const char *name) {
     return reinterpret_cast<void *>(glctx->getProcAddress(QByteArray(name)));
 }
 
-MpvHandler::MpvHandler(QWidget *parent, Qt::WindowFlags f):
-    QOpenGLWidget(parent, f)
+MpvHandler::MpvHandler(QWidget *parent):
+    QOpenGLWidget(parent)
 {
     // create mpv
     mpv = mpv_create();
@@ -133,7 +133,7 @@ QString MpvHandler::getMediaInfo()
     QString out = outer.arg(tr("File"), fi.fileName()) +
             inner.arg(tr("Title"), fileInfo.media_title) +
             inner.arg(tr("File size"), Util::HumanSize(fi.size())) +
-            inner.arg(tr("Date created"), fi.created().toString()) +
+            inner.arg(tr("Date created"), fi.birthTime().toString()) +
             inner.arg(tr("Media length"), Util::FormatTime(fileInfo.length, fileInfo.length)) + '\n';
     if(fileInfo.video_params.codec != QString())
         out += outer.arg(tr("Video (x%0)").arg(QString::number(vtracks)), fileInfo.video_params.codec) +
@@ -604,7 +604,7 @@ void MpvHandler::Speed(double d)
 void MpvHandler::Aspect(QString aspect)
 {
     const QByteArray tmp = aspect.toUtf8();
-    const char *args[] = {"set", "video-aspect", tmp.constData(), NULL};
+    const char *args[] = {"set", "video-aspect-override", tmp.constData(), NULL};
     AsyncCommand(args);
 }
 
@@ -880,7 +880,7 @@ void MpvHandler::LoadVideoParams()
     mpv_get_property(mpv, "dwidth",       MPV_FORMAT_INT64, &fileInfo.video_params.dwidth);
     mpv_get_property(mpv, "dheight",      MPV_FORMAT_INT64, &fileInfo.video_params.dheight);
     // though this has become useless, removing it causes a segfault--no clue:
-    mpv_get_property(mpv, "video-aspect", MPV_FORMAT_INT64, &fileInfo.video_params.aspect);
+    mpv_get_property(mpv, "video-params/aspect", MPV_FORMAT_INT64, &fileInfo.video_params.aspect);
 
     emit videoParamsChanged(fileInfo.video_params);
 }
