@@ -33,6 +33,7 @@ PreferencesDialog::PreferencesDialog(BakaEngine *baka, QWidget *parent) :
     ui->groupBox_2->setChecked(baka->sysTrayIcon->isVisible());
     ui->hidePopupCheckBox->setChecked(baka->window->getHidePopup());
     ui->gestureCheckBox->setChecked(baka->window->getGestures());
+    ui->leftClickPlayPauseCheckBox->setChecked(baka->window->getLeftClickPlayPause());
     ui->langComboBox->setCurrentText(baka->window->getLang());
     int autofit = baka->window->getAutoFit();
     ui->autoFitCheckBox->setChecked((bool)autofit);
@@ -148,6 +149,7 @@ PreferencesDialog::~PreferencesDialog()
         baka->sysTrayIcon->setVisible(ui->groupBox_2->isChecked());
         baka->window->setHidePopup(ui->hidePopupCheckBox->isChecked());
         baka->window->setGestures(ui->gestureCheckBox->isChecked());
+        baka->window->setLeftClickPlayPause(ui->leftClickPlayPauseCheckBox->isChecked());
         baka->window->setLang(ui->langComboBox->currentText());
         if(ui->autoFitCheckBox->isChecked())
             baka->window->setAutoFit(ui->comboBox->currentText().left(ui->comboBox->currentText().length()-1).toInt());

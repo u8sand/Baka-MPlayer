@@ -45,6 +45,7 @@ public:
     bool getScreenshotDialog() { return screenshotDialog; }
     bool getDebug()            { return debug; }
     bool getGestures()         { return gestures; }
+    bool getLeftClickPlayPause() { return leftClickPlayPause; }
     bool getResume()           { return resume; }
     bool getHideAllControls()  { return hideAllControls; }
     bool isFullScreenMode()    { return hideAllControls || isFullScreen(); }
@@ -112,6 +113,7 @@ private:
          screenshotDialog,
          debug,
          gestures,
+         leftClickPlayPause,
          resume,
          hideAllControls = false;
     QHash<QString, QAction*> commandActionMap;
@@ -126,6 +128,7 @@ public slots:
     void setScreenshotDialog(bool b) { emit screenshotDialogChanged(screenshotDialog = b); }
     void setDebug(bool b)            { emit debugChanged(debug = b); }
     void setGestures(bool b)         { emit gesturesChanged(gestures = b); }
+    void setLeftClickPlayPause(bool b) { emit leftClickPlayPauseChanged(leftClickPlayPause = b); }
     void setResume(bool b)           { emit resumeChanged(resume = b); }
     void setHideAllControls(bool b)  { emit hideAllControlsChanged(hideAllControls = b); }
 
@@ -139,6 +142,7 @@ signals:
     void screenshotDialogChanged(bool);
     void debugChanged(bool);
     void gesturesChanged(bool);
+    void leftClickPlayPauseChanged(bool);
     void resumeChanged(bool);
     void hideAllControlsChanged(bool);
 };

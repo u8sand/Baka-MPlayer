@@ -959,7 +959,8 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
     else if(event->button() == Qt::RightButton &&
             !isFullScreenMode() &&  // not fullscreen mode
             mpv->getPlayState() > 0 &&  // playing
-            ui->mpvFrame->geometry().contains(event->pos())) // mouse is in the mpvFrame
+            ui->mpvFrame->geometry().contains(event->pos()) && // mouse is in the mpvFrame
+            !leftClickPlayPause)
     {
         mpv->PlayPause(ui->playlistWidget->CurrentItem());
     }
@@ -968,7 +969,10 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
 
 void MainWindow::mouseReleaseEvent(QMouseEvent *event)
 {
-    baka->gesture->End();
+    bool gestureCaptured = baka->gesture->End();
+    if (!gestureCaptured && leftClickPlayPause && event->button() == Qt::LeftButton) {
+        mpv->PlayPause(ui->playlistWidget->CurrentItem());
+    }
     QMainWindow::mouseReleaseEvent(event);
 }
 
