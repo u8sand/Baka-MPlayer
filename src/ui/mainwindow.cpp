@@ -197,6 +197,15 @@ MainWindow::MainWindow(QWidget *parent):
                 blockSignals(false);
             });
 
+    connect(this, &MainWindow::leftClickPlayPauseChanged,
+            [=](bool b)
+            {
+                if(b)
+                    setContextMenuPolicy(Qt::ActionsContextMenu);
+                else if(!isFullScreen())
+                    setContextMenuPolicy(Qt::NoContextMenu);
+            });
+
     connect(baka->sysTrayIcon, &QSystemTrayIcon::activated,
             [=](QSystemTrayIcon::ActivationReason reason)
             {
@@ -1164,7 +1173,9 @@ void MainWindow::HideAllControls(bool w, bool s)
             ui->menubar->setVisible(true);
         ui->seekBar->setVisible(true);
         ui->playbackLayoutWidget->setVisible(true);
-        setContextMenuPolicy(Qt::NoContextMenu);
+        if(!leftClickPlayPause) {
+            setContextMenuPolicy(Qt::NoContextMenu);
+        }
         setCursor(QCursor(Qt::ArrowCursor)); // show cursor
         autohide->stop();
         ShowPlaylist(playlistState);
