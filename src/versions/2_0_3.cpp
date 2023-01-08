@@ -71,6 +71,7 @@ void BakaEngine::Load2_0_3()
     }
     window->setMaxRecent(QJsonValueRef2(root["maxRecent"]).toInt(5));
     window->setGestures(QJsonValueRef2(root["gestures"]).toBool(true));
+    window->setLeftClickPlayPause(QJsonValueRef2(root["leftClickPlayPause"]).toBool(false));
     window->setResume(QJsonValueRef2(root["resume"]).toBool(true));
     window->setHideAllControls(QJsonValueRef2(root["hideAllControls"]).toBool(false));
     window->setLang(QJsonValueRef2(root["lang"]).toString("auto"));
@@ -137,6 +138,7 @@ void BakaEngine::SaveSettings()
     root["maxRecent"] = window->maxRecent;
     root["lang"] = window->lang;
     root["gestures"] = window->gestures;
+    root["leftClickPlayPause"] = window->leftClickPlayPause;
     root["resume"] = window->resume;
     root["hideAllControls"] = window->hideAllControls;
     root["version"] = version;

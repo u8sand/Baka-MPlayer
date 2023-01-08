@@ -197,6 +197,15 @@ MainWindow::MainWindow(QWidget *parent):
                 blockSignals(false);
             });
 
+    connect(this, &MainWindow::leftClickPlayPauseChanged,
+            [=](bool b)
+            {
+                if(b)
+                    setContextMenuPolicy(Qt::ActionsContextMenu);
+                else if(!isFullScreen())
+                    setContextMenuPolicy(Qt::NoContextMenu);
+            });
+
     connect(baka->sysTrayIcon, &QSystemTrayIcon::activated,
             [=](QSystemTrayIcon::ActivationReason reason)
             {
@@ -959,7 +968,8 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
     else if(event->button() == Qt::RightButton &&
             !isFullScreenMode() &&  // not fullscreen mode
             mpv->getPlayState() > 0 &&  // playing
-            ui->mpvFrame->geometry().contains(event->pos())) // mouse is in the mpvFrame
+            ui->mpvFrame->geometry().contains(event->pos()) && // mouse is in the mpvFrame
+            !leftClickPlayPause)
     {
         mpv->PlayPause(ui->playlistWidget->CurrentItem());
     }
@@ -968,7 +978,10 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
 
 void MainWindow::mouseReleaseEvent(QMouseEvent *event)
 {
-    baka->gesture->End();
+    bool gestureCaptured = baka->gesture->End();
+    if (!gestureCaptured && leftClickPlayPause && event->button() == Qt::LeftButton) {
+        mpv->PlayPause(ui->playlistWidget->CurrentItem());
+    }
     QMainWindow::mouseReleaseEvent(event);
 }
 
@@ -1160,7 +1173,9 @@ void MainWindow::HideAllControls(bool w, bool s)
             ui->menubar->setVisible(true);
         ui->seekBar->setVisible(true);
         ui->playbackLayoutWidget->setVisible(true);
-        setContextMenuPolicy(Qt::NoContextMenu);
+        if(!leftClickPlayPause) {
+            setContextMenuPolicy(Qt::NoContextMenu);
+        }
         setCursor(QCursor(Qt::ArrowCursor)); // show cursor
         autohide->stop();
         ShowPlaylist(playlistState);

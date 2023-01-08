@@ -100,5 +100,5 @@ bool GestureHandler::End()
     }
     else
         return false;
-    return true;
+    return gesture_state != NONE;
 }
