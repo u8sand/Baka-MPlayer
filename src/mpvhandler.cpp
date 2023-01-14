@@ -17,7 +17,7 @@ static void wakeup(void *ctx)
     QCoreApplication::postEvent(mpvhandler, new QEvent(QEvent::User));
 }
 
-MpvHandler::MpvHandler(int64_t wid, QObject *parent):
+MpvHandler::MpvHandler(QWidget *widget, QObject *parent):
     QObject(parent),
     baka(static_cast<BakaEngine*>(parent))
 {
@@ -26,8 +26,18 @@ MpvHandler::MpvHandler(int64_t wid, QObject *parent):
     if(!mpv)
         throw "Could not create mpv object";
 
-    // set mpv options
+    // hand widget to mpv
+    widget->setAttribute(Qt::WA_DontCreateNativeAncestors);
+    widget->setAttribute(Qt::WA_NativeWindow);
+    WId _wid = widget->winId();
+#ifdef _WIN32
+    int64_t wid = static_cast<uint32_t>(_wid);
+#else
+    int64_t wid = _wid;
+#endif
     mpv_set_option(mpv, "wid", MPV_FORMAT_INT64, &wid);
+
+    // set mpv options
     mpv_set_option_string(mpv, "input-cursor", "no");   // no mouse handling
     mpv_set_option_string(mpv, "cursor-autohide", "no");// no cursor-autohide, we handle that
     mpv_set_option_string(mpv, "ytdl", "yes"); // youtube-dl support
