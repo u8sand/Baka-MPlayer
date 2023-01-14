@@ -105,7 +105,7 @@ QString MpvHandler::getMediaInfo()
     QString out = outer.arg(tr("File"), fi.fileName()) +
             inner.arg(tr("Title"), fileInfo.media_title) +
             inner.arg(tr("File size"), Util::HumanSize(fi.size())) +
-            inner.arg(tr("Date created"), fi.created().toString()) +
+            inner.arg(tr("Date created"), fi.birthTime().toString()) +
             inner.arg(tr("Media length"), Util::FormatTime(fileInfo.length, fileInfo.length)) + '\n';
     if(fileInfo.video_params.codec != QString())
         out += outer.arg(tr("Video (x%0)").arg(QString::number(vtracks)), fileInfo.video_params.codec) +
