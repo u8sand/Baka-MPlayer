@@ -130,7 +130,7 @@ void OverlayHandler::showText(const QString &text, QFont font, QColor color, QPo
 
     // add over mpv as label
     QLabel *label = new QLabel(baka->window->ui->mpvFrame);
-    label->setStyleSheet("background-color:rgb(0,0,0,0);background-image:url();");
+    label->setStyleSheet("background-color:rgba(0,0,0,0);background-image:url();");
     label->setGeometry(pos.x(),
                        pos.y(),
                        canvas->width(),
