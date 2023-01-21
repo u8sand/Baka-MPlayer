@@ -1,6 +1,5 @@
 #include "overlay.h"
 
-Overlay::Overlay(QScopedPointer<QLabel> &label, QScopedPointer<QTimer> &timer):
-    label(label.take()),
-    timer(timer.take())
-{}
+Overlay::Overlay():label(nullptr), timer(new QTimer()) {}
+Overlay::Overlay(const Overlay &overlay):label(overlay.label), timer(overlay.timer) {}
+Overlay::~Overlay() {}

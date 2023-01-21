@@ -3,13 +3,20 @@
 
 #include <QLabel>
 #include <QTimer>
-#include <QScopedPointer>
+#include <QSharedPointer>
 
 struct Overlay {
-    Overlay(QScopedPointer<QLabel> &label, QScopedPointer<QTimer> &timer);
+public:
+    Overlay();
+    Overlay(const Overlay &overlay);
+    ~Overlay();
 
-    QScopedPointer<QLabel> label;
-    QScopedPointer<QTimer> timer;
+    // we use a ptr because this label needs to have a parent of another object
+    //  and that object will try to delete it
+    QLabel *label;
+
+    // sharing this pointer seems simpler for dealing with the copy constructor
+    QSharedPointer<QTimer> timer;
 };
 
 #endif // OVERLAY_H
