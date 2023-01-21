@@ -37,12 +37,12 @@ BakaEngine::BakaEngine(QObject *parent):
     }
 
     connect(mpv, &MpvHandler::messageSignal,
-            [=](QString msg)
+            mpv, [=](QString msg)
             {
                 Print(msg, "mpv");
             });
     connect(update, &UpdateManager::messageSignal,
-            [=](QString msg)
+            update, [=](QString msg)
             {
                 Print(msg, "update");
             });

@@ -7,8 +7,11 @@
 #include <QMenu>
 #include <QFont>
 #include <QMessageBox>
+#include <QScopedPointer>
 
-#include <algorithm> // for std::random_shuffle and std::sort
+// for std::shuffle and std::sort
+#include <algorithm>
+#include <random>
 
 PlaylistWidget::PlaylistWidget(QWidget *parent) :
     QListWidget(parent),
@@ -23,7 +26,7 @@ void PlaylistWidget::AttachEngine(BakaEngine *baka)
 {
     this->baka = baka;
     connect(baka->mpv, &MpvHandler::playlistChanged,
-            [=](const QStringList &list)
+            this, [=](const QStringList &list)
             {
                 playlist = list;
                 newPlaylist = true;
@@ -36,7 +39,7 @@ void PlaylistWidget::AttachEngine(BakaEngine *baka)
             });
 
     connect(baka->mpv, &MpvHandler::fileChanged,
-            [=](QString f)
+            this, [=](QString f)
             {
                 if(newPlaylist)
                 {
@@ -242,7 +245,9 @@ void PlaylistWidget::Shuffle()
     for(int i = 0; i < count(); ++i)
         newPlaylist.append(this->item(i)->text());
 
-    std::random_shuffle(newPlaylist.begin(), newPlaylist.end());
+    std::random_device rd;
+    std::mt19937 g(rd());
+    std::shuffle(newPlaylist.begin(), newPlaylist.end(), g);
     // make current playing item the first
     auto iter = std::find(newPlaylist.begin(), newPlaylist.end(), file);
     std::swap(*iter, *newPlaylist.begin());
@@ -282,7 +287,7 @@ void PlaylistWidget::DeleteFromDisk(QListWidgetItem *item)
     playlist.removeOne(item->text());
     QString r = item->text().left(item->text().lastIndexOf('.')+1); // get file root (no extension)
     // check and remove all subtitle_files with the same root as the video
-    for(auto ext : Mpv::subtitle_filetypes)
+    for(auto &ext : Mpv::subtitle_filetypes)
     {
         QFile subf(r+ext.mid(2));
         if(subf.exists() &&
@@ -294,7 +299,7 @@ void PlaylistWidget::DeleteFromDisk(QListWidgetItem *item)
             subf.remove();
     }
     // check and remove all external subtitle files in the video
-    for(auto track : baka->mpv->getFileInfo().tracks)
+    for(auto &track : baka->mpv->getFileInfo().tracks)
     {
         if(track.external)
         {
@@ -320,24 +325,26 @@ void PlaylistWidget::contextMenuEvent(QContextMenuEvent *event)
     QListWidgetItem *item = itemAt(event->pos());
     if(item != nullptr)
     {
-        QMenu *menu = new QMenu();
-        connect(menu->addAction(tr("R&emove from Playlist")), &QAction::triggered, // Playlist: Remove from playlist (right-click)
-                [=]
+        QScopedPointer<QMenu> menu(new QMenu());
+        QAction *removeFromPlaylist = menu->addAction(tr("R&emove from Playlist"));
+        connect(removeFromPlaylist, &QAction::triggered, // Playlist: Remove from playlist (right-click)
+                removeFromPlaylist, [=]
                 {
                     RemoveFromPlaylist(item);
                 });
-        connect(menu->addAction(tr("&Delete from Disk")), &QAction::triggered,     // Playlist: Delete from Disk (right-click)
-                [=]
+        QAction *deleteFromDisk = menu->addAction(tr("&Delete from Disk"));
+        connect(deleteFromDisk, &QAction::triggered,     // Playlist: Delete from Disk (right-click)
+                deleteFromDisk, [=]
                 {
                     DeleteFromDisk(item);
                 });
-        connect(menu->addAction(tr("&Refresh")), &QAction::triggered,              // Playlist: Refresh (right-click)
-                [=]
+        QAction *refresh = menu->addAction(tr("&Refresh"));
+        connect(refresh, &QAction::triggered,              // Playlist: Refresh (right-click)
+                refresh, [=]
                 {
                     RefreshPlaylist();
                 });
         menu->exec(viewport()->mapToGlobal(event->pos()));
-        delete menu;
     }
 }
 

@@ -3,12 +3,10 @@
 
 #include <QObject>
 #include <QString>
-#include <QImage>
 #include <QPoint>
 #include <QHash>
 #include <QFont>
 #include <QColor>
-#include <QLabel>
 #include <QMutex>
 
 class BakaEngine;

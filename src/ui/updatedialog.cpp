@@ -3,7 +3,6 @@
 
 #include "bakaengine.h"
 #include "updatemanager.h"
-#include "util.h"
 
 #include <QDesktopServices>
 
@@ -24,7 +23,7 @@ UpdateDialog::UpdateDialog(BakaEngine *baka, QWidget *parent) :
 #endif
 
     connect(baka->update, &UpdateManager::progressSignal,
-            [=](int percent)
+            this, [=](int percent)
             {
                 ui->progressBar->setValue(percent);
                 if(percent == 100)
@@ -78,14 +77,14 @@ UpdateDialog::UpdateDialog(BakaEngine *baka, QWidget *parent) :
             });
 
     connect(baka->update, &UpdateManager::messageSignal,
-            [=](QString msg)
+            this, [=](QString msg)
             {
                 ui->plainTextEdit->appendPlainText(msg+"\n");
             });
 
 #if defined(Q_OS_WIN)
     connect(ui->updateButton, &QPushButton::clicked,
-            [=]
+            this, [=]
             {
                 ui->plainTextEdit->setPlainText(QString());
                 baka->update->DownloadUpdate(Util::DownloadFileUrl());

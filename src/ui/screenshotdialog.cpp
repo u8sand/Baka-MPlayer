@@ -21,7 +21,7 @@ ScreenshotDialog::ScreenshotDialog(bool &_always, bool &_screenshot, MpvHandler 
     ui->templateEdit->setText(mpv->getScreenshotTemplate());
 
     connect(ui->browseButton, &QPushButton::clicked,
-            [=]
+            this, [=]
             {
                 QString dir = QFileDialog::getExistingDirectory(this, tr("Choose screenshot directory"), ui->locationEdit->text());
                 if(dir != QString())
@@ -29,7 +29,7 @@ ScreenshotDialog::ScreenshotDialog(bool &_always, bool &_screenshot, MpvHandler 
             });
 
     connect(ui->saveButton, &QPushButton::clicked,
-            [=]
+            this, [=]
             {
                 mpv->ScreenshotFormat(ui->formatComboBox->currentText());
                 mpv->ScreenshotDirectory(QDir::fromNativeSeparators(ui->locationEdit->text()));

@@ -43,13 +43,13 @@ bool UpdateManager::CheckForUpdates()
     QNetworkReply *reply = manager->get(request);
 
     connect(reply, &QNetworkReply::downloadProgress,
-            [=](qint64 received, qint64 total)
+            reply, [=](qint64 received, qint64 total)
             {
                 emit progressSignal((int)(50.0*received/total));
             });
 
     connect(reply, &QNetworkReply::finished,
-            [=]
+            reply, [=]
             {
                 if(reply->error())
                     emit messageSignal(reply->errorString());
@@ -61,7 +61,7 @@ bool UpdateManager::CheckForUpdates()
                     // go through the next 50% incrementally during parsing
                     double amnt = 50.0/lines.length(),
                            cur = 50+amnt;
-                    for(auto line : lines)
+                    for(auto &line : lines)
                     {
                         if((pair = line.split('=')).size() != 2)
                             info[lastPair].append(line);
@@ -99,13 +99,13 @@ bool UpdateManager::DownloadUpdate(const QString &url)
     QNetworkReply *reply = manager->get(request);
 
     connect(reply, &QNetworkReply::downloadProgress,
-            [=](qint64 received, qint64 total)
+            reply, [=](qint64 received, qint64 total)
             {
                 emit progressSignal((int)(99.0*received/total));
             });
 
     connect(reply, &QNetworkReply::readyRead,
-            [=]
+            reply, [=]
             {
                 if(reply->error())
                     emit messageSignal(reply->errorString());
@@ -114,7 +114,7 @@ bool UpdateManager::DownloadUpdate(const QString &url)
             });
 
     connect(reply, &QNetworkReply::finished,
-            [=]
+            reply, [=]
             {
                 if(reply->error())
                 {
@@ -205,7 +205,7 @@ void UpdateManager::ApplyUpdate(const QString &file)
             exe).toUtf8());
     f.close();
 
-    QProcess::startDetached(bat);
+    QProcess::startDetached(bat, QStringList());
     emit messageSignal(tr("Done. Restarting..."));
     baka->Quit();
 }

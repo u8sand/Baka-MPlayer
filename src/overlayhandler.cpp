@@ -56,7 +56,7 @@ void OverlayHandler::showInfoText(bool show)
             refresh_timer = new QTimer(this);
             refresh_timer->setSingleShot(true);
             connect(refresh_timer, &QTimer::timeout, // on timeout
-                    [=] { showInfoText(); });
+                    refresh_timer, [=] { showInfoText(); });
         }
         refresh_timer->start(OVERLAY_REFRESH_RATE);
         showText(baka->mpv->getMediaInfo(),
@@ -92,8 +92,8 @@ void OverlayHandler::showText(const QString &text, QFont font, QColor color, QPo
     const float fm_correction = 1.3;
     int w = 0,
         h = fm.height()*lines.length();
-    for(auto line : lines)
-        w = std::max(fm.width(line), w);
+    for(auto &line : lines)
+        w = std::max(fm.horizontalAdvance(line), w);
     float xF = float(baka->window->ui->mpvFrame->width()-2*pos.x()) / (fm_correction*w);
     float yF = float(baka->window->ui->mpvFrame->height()-2*pos.y()) / h;
     font.setPointSizeF(std::min(font.pointSizeF()*std::min(xF, yF), font.pointSizeF()));
@@ -103,7 +103,7 @@ void OverlayHandler::showText(const QString &text, QFont font, QColor color, QPo
     w = 0;
     QPainterPath path(QPoint(0, 0));
     QPoint p = QPoint(0, h);
-    for(auto line : lines)
+    for(auto &line : lines)
     {
         path.addText(p, font, line);
         w = std::max(int(fm_correction*path.currentPosition().x()), w);
@@ -143,10 +143,9 @@ void OverlayHandler::showText(const QString &text, QFont font, QColor color, QPo
         timer = nullptr;
     else
     {
-        timer = new QTimer(this);
         timer->start(duration);
         connect(timer, &QTimer::timeout, // on timeout
-                [=] { remove(id); });
+                timer, [=] { remove(id); });
     }
 
     if(overlays.find(id) != overlays.end())

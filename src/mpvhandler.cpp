@@ -617,7 +617,7 @@ void MpvHandler::AddSubtitleTrack(QString f)
     auto old = fileInfo.tracks; // save the current track-list
     LoadTracks(); // load the new track list
     auto current = fileInfo.tracks;
-    for(auto track : old) // remove the old tracks in current
+    for(auto &track : old) // remove the old tracks in current
         current.removeOne(track);
     Mpv::Track &track = current.first();
     ShowText(QString("%0: %1 (%2)").arg(QString::number(track.id), track.title, track.external ? "external" : track.lang));
@@ -633,7 +633,7 @@ void MpvHandler::AddAudioTrack(QString f)
     auto old = fileInfo.tracks;
     LoadTracks();
     auto current = fileInfo.tracks;
-    for(auto track : old)
+    for(auto &track : old)
         current.removeOne(track);
     Mpv::Track &track = current.first();
     ShowText(QString("%0: %1 (%2)").arg(QString::number(track.id), track.title, track.external ? "external" : track.lang));

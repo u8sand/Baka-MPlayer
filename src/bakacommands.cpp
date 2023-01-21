@@ -2,12 +2,12 @@
 
 #include <QApplication>
 #include <QFileDialog>
-#include <QDesktopWidget>
 #include <QDesktopServices>
 #include <QProcess>
 #include <QDir>
 #include <QClipboard>
 #include <QMessageBox>
+#include <QScreen>
 
 #include "ui/mainwindow.h"
 #include "ui_mainwindow.h"
@@ -20,7 +20,6 @@
 #include "widgets/dimdialog.h"
 #include "mpvhandler.h"
 #include "overlayhandler.h"
-#include "updatemanager.h"
 #include "util.h"
 
 
@@ -41,7 +40,7 @@ void BakaEngine::BakaSh(QStringList &args)
         QProcess *p = new QProcess(this);
         p->start(arg, args);
         connect(p, &QProcess::readyRead,
-                [=]
+                p, [=]
                 {
                     Print(p->readAll(), QString("%0(%1))").arg(p->program(), QString::number(quintptr(p))));
                 });
@@ -100,7 +99,7 @@ void BakaEngine::BakaAddSubtitles(QStringList &args)
     {
         trackFile = QFileDialog::getOpenFileName(window, tr("Open Subtitle File"), mpv->getPath(),
                                                  QString("%0 (%1)").arg(tr("Subtitle Files"), Mpv::subtitle_filetypes.join(" ")),
-                                                 0, QFileDialog::DontUseSheet);
+                                                 0);
     }
     else
         trackFile = args.join(' ');
@@ -115,7 +114,7 @@ void BakaEngine::BakaAddAudio(QStringList &args)
     {
         trackFile = QFileDialog::getOpenFileName(window, tr("Open Audio File"), mpv->getPath(),
                                                  QString("%0 (%1)").arg(tr("Audio Files"), Mpv::audio_filetypes.join(" ")),
-                                                 0, QFileDialog::DontUseSheet);
+                                                 0);
     }
     else
         trackFile = args.join(' ');
@@ -389,7 +388,7 @@ void BakaEngine::Open()
                    QString("%0 (%1);;").arg(tr("Video Files"), Mpv::video_filetypes.join(" "))+
                    QString("%0 (%1);;").arg(tr("Audio Files"), Mpv::audio_filetypes.join(" "))+
                    QString("%0 (*.*)").arg(tr("All Files")),
-                   0, QFileDialog::DontUseSheet));
+                   0));
 }
 
 
@@ -433,7 +432,7 @@ void BakaEngine::FitWindow(int percent, bool msg)
     QRect mG = window->ui->mpvFrame->geometry(),                  // mpv geometry
           wfG = window->frameGeometry(),                          // frame geometry of window (window geometry + window frame)
           wG = window->geometry(),                                // window geometry
-          aG = qApp->desktop()->availableGeometry(wfG.center());  // available geometry of the screen we're in--(geometry not including the taskbar)
+          aG = qApp->screenAt(wfG.center())->availableGeometry(); // available geometry of the screen we're in--(geometry not including the taskbar)
 
     double a, // aspect ratio
            w, // width of vid we want
