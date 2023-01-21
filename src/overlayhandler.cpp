@@ -32,12 +32,6 @@ OverlayHandler::OverlayHandler(QObject *parent):
             this, [=] { showInfoText(); });
 }
 
-OverlayHandler::~OverlayHandler()
-{
-    for(auto o : overlays)
-        delete o;
-}
-
 void OverlayHandler::showStatusText(const QString &text, int duration)
 {
     if(text != QString())
@@ -73,10 +67,7 @@ void OverlayHandler::showText(const QString &text, QFont font, QColor color, QPo
     if(id == -1) // auto id
     {
         id = overlay_id;
-        if(overlay_id+1 > max_overlay)
-            overlay_id = min_overlay;
-        else
-            ++overlay_id;
+        overlay_id = std::max(min_overlay, (overlay_id + 1) % max_overlay);
     }
 
     QFontMetrics fm(font);
@@ -104,10 +95,10 @@ void OverlayHandler::showText(const QString &text, QFont font, QColor color, QPo
         p += QPoint(0, h);
     }
 
-    QImage *canvas = new QImage(w, p.y(), QImage::Format_ARGB32); // make the canvas the right size
-    canvas->fill(QColor(0,0,0,0)); // fill it with nothing
+    QImage canvas(w, p.y(), QImage::Format_ARGB32); // make the canvas the right size
+    canvas.fill(QColor(0,0,0,0)); // fill it with nothing
 
-    QPainter painter(canvas); // prepare to paint
+    QPainter painter(&canvas); // prepare to paint
     painter.setRenderHint(QPainter::Antialiasing);
     painter.setCompositionMode(QPainter::CompositionMode_Overlay);
     painter.setFont(font);
@@ -115,47 +106,39 @@ void OverlayHandler::showText(const QString &text, QFont font, QColor color, QPo
     painter.setBrush(color);
     painter.drawPath(path);
 
-    // add as mpv overlay
-    baka->mpv->AddOverlay(
-        id == -1 ? overlay_id : id,
-        pos.x(), pos.y(),
-        "&"+QString::number(quintptr(canvas->bits())),
-        0, canvas->width(), canvas->height());
 
     // add over mpv as label
-    QLabel *label = new QLabel(baka->window->ui->mpvFrame);
+    QScopedPointer<QLabel> label(new QLabel(baka->window->ui->mpvFrame));
     label->setStyleSheet("background-color:rgba(0,0,0,0);background-image:url();");
     label->setGeometry(pos.x(),
                        pos.y(),
-                       canvas->width(),
-                       canvas->height());
-    label->setPixmap(QPixmap::fromImage(*canvas));
+                       canvas.width(),
+                       canvas.height());
+    label->setPixmap(QPixmap::fromImage(canvas));
     label->show();
 
-    QTimer *timer;
-    if(duration == 0)
-        timer = nullptr;
-    else
+    QScopedPointer<QTimer> timer(new QTimer);
+    if(duration > 0)
     {
         timer->start(duration);
-        connect(timer, &QTimer::timeout, // on timeout
-                timer, [=] { remove(id); });
+        connect(timer.get(), &QTimer::timeout, // on timeout
+                timer.get(), [this, id] { remove(id); });
     }
 
-    if(overlays.find(id) != overlays.end())
-        delete overlays[id];
-    overlays[id] = new Overlay(label, canvas, timer, this);
+    // add as mpv overlay
+    baka->mpv->AddOverlay(
+        id,
+        pos.x(), pos.y(),
+        "&"+QString::number(quintptr(canvas.bits())),
+        0, canvas.width(), canvas.height());
+
+    overlays[id].reset(new Overlay(label, timer));
     overlay_mutex.unlock();
 }
 
 void OverlayHandler::remove(int id)
 {
-    overlay_mutex.lock();
-    baka->mpv->RemoveOverlay(id);
-    if(overlays.find(id) != overlays.end())
-    {
-        delete overlays[id];
-        overlays.remove(id);
+    if (overlays.remove(id)) {
+        baka->mpv->RemoveOverlay(id);
     }
-    overlay_mutex.unlock();
 }

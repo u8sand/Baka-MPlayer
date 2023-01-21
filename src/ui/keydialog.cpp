@@ -32,10 +32,7 @@ KeyDialog::KeyDialog(QWidget *parent) :
             this, SLOT(reject()));
 }
 
-KeyDialog::~KeyDialog()
-{
-    delete ui;
-}
+KeyDialog::~KeyDialog() {}
 
 QPair<QString, QPair<QString, QString>> KeyDialog::SelectKey(bool add, QPair<QString, QPair<QString, QString>> init)
 {

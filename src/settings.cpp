@@ -9,10 +9,6 @@ Settings::Settings(QString file, QObject *parent):
     this->file = file;
 }
 
-Settings::~Settings()
-{
-}
-
 void Settings::Load()
 {
     QFile f(file);

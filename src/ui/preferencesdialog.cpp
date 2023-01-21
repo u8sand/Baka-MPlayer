@@ -5,6 +5,7 @@
 #include "ui/mainwindow.h"
 #include "mpvhandler.h"
 #include "ui/keydialog.h"
+#include "ui_keydialog.h"
 
 #include <QFileDialog>
 #include <QMessageBox>
@@ -18,7 +19,7 @@ PreferencesDialog::PreferencesDialog(BakaEngine *baka, QWidget *parent) :
     ui->setupUi(this);
 
     ui->infoWidget->sortByColumn(0, Qt::AscendingOrder);
-    sortLock = new SortLock(ui->infoWidget);
+    sortLock.reset(new SortLock(ui->infoWidget));
 
     PopulateLangs();
 
@@ -166,8 +167,6 @@ PreferencesDialog::~PreferencesDialog()
     }
     else
         baka->input = saved;
-    delete sortLock;
-    delete ui;
 }
 
 void PreferencesDialog::showPreferences(BakaEngine *baka, QWidget *parent)

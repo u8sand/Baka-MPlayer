@@ -174,7 +174,7 @@ signals:
 
 private:
     BakaEngine *baka;
-    mpv_handle *mpv = nullptr;
+    mpv_handle *mpv;
 
     // variables
     Mpv::PlayState playState = Mpv::Idle;

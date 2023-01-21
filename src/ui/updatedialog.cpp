@@ -95,16 +95,12 @@ UpdateDialog::UpdateDialog(BakaEngine *baka, QWidget *parent) :
         ShowInfo();
     }
 }
-
-UpdateDialog::~UpdateDialog()
-{
-    delete ui;
-}
+UpdateDialog::~UpdateDialog() {}
 
 void UpdateDialog::CheckForUpdates(BakaEngine *baka, QWidget *parent)
 {
-    UpdateDialog *dialog = new UpdateDialog(baka, parent);
-    dialog->exec();
+    UpdateDialog dialog(baka, parent);
+    dialog.exec();
 }
 
 void UpdateDialog::ShowInfo()

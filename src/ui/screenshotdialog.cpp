@@ -41,10 +41,7 @@ ScreenshotDialog::ScreenshotDialog(bool &_always, bool &_screenshot, MpvHandler 
             });
 }
 
-ScreenshotDialog::~ScreenshotDialog()
-{
-    delete ui;
-}
+ScreenshotDialog::~ScreenshotDialog() {}
 
 int ScreenshotDialog::showScreenshotDialog(bool &always, bool &screenshot, MpvHandler *mpv, QWidget *parent)
 {

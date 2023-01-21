@@ -9,6 +9,7 @@
 #include <QColor>
 #include <QMutex>
 #include <QTimer>
+#include <QSharedPointer>
 
 class BakaEngine;
 class Overlay;
@@ -18,7 +19,6 @@ class OverlayHandler : public QObject
     Q_OBJECT
 public:
     explicit OverlayHandler(QObject *parent = 0);
-    ~OverlayHandler();
 
 public slots:
     void showStatusText(const QString &text, int duration = 4000);
@@ -31,7 +31,7 @@ protected slots:
 private:
     BakaEngine *baka;
 
-    QHash<int, Overlay*> overlays;
+    QHash<int, QSharedPointer<Overlay>> overlays;
     QMutex overlay_mutex;
 
     QTimer refresh_timer;

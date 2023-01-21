@@ -16,10 +16,6 @@ GestureHandler::GestureHandler(QObject *parent):
     gesture_threshold = 15; // 15 pixels is probably fine for anything
 }
 
-GestureHandler::~GestureHandler()
-{
-}
-
 bool GestureHandler::Begin(int gesture_type, QPoint mousePos, QPoint windowPos)
 {
     if(!elapsedTimer.isValid())

@@ -20,7 +20,7 @@ public:
 
     static int showScreenshotDialog(bool &always, bool &screenshot, MpvHandler *mpv, QWidget *parent = 0);
 private:
-    Ui::ScreenshotDialog *ui;
+    QScopedPointer<Ui::ScreenshotDialog> ui;
     bool &always,
          &screenshot;
 };

@@ -9,6 +9,7 @@
 #include <QStringList>
 #include <QFile>
 #include <QProcess>
+#include <QSharedPointer>
 
 #if defined(Q_OS_WIN)
 #include <QDir>
@@ -24,12 +25,6 @@ UpdateManager::UpdateManager(QObject *parent) :
     manager(new QNetworkAccessManager(this)),
     busy(false)
 {
-
-}
-
-UpdateManager::~UpdateManager()
-{
-    delete manager;
 }
 
 bool UpdateManager::CheckForUpdates()
@@ -87,11 +82,10 @@ bool UpdateManager::DownloadUpdate(const QString &url)
     emit progressSignal(0);
     QNetworkRequest request(url);
     QString filename = QDir::toNativeSeparators(QString("%0/Baka-MPlayer.zip").arg(QCoreApplication::applicationDirPath()));
-    QFile *file = new QFile(filename);
+    QSharedPointer<QFile> file(new QFile(filename));
     if(!file->open(QFile::WriteOnly | QFile::Truncate))
     {
         emit messageSignal(tr("fopen error\n"));
-        delete file;
         busy = false;
         return false;
     }
@@ -120,13 +114,13 @@ bool UpdateManager::DownloadUpdate(const QString &url)
                 {
                     emit messageSignal(reply->errorString());
                     file->close();
-                    delete file;
+                    file->deleteLater();
                 }
                 else
                 {
                     file->flush();
                     file->close();
-                    delete file;
+                    file->deleteLater();
                     QUrl redirect = reply->attribute(QNetworkRequest::RedirectionTargetAttribute).toUrl();
                     if(redirect.isEmpty())
                     {

@@ -1,22 +1,15 @@
 #ifndef OVERLAY_H
 #define OVERLAY_H
 
-#include <QObject>
 #include <QLabel>
-#include <QImage>
 #include <QTimer>
+#include <QScopedPointer>
 
-class Overlay : public QObject
-{
-    Q_OBJECT
-public:
-    explicit Overlay(QLabel *label, QImage *canvas, QTimer *timer, QObject *parent = 0);
-    ~Overlay();
+struct Overlay {
+    Overlay(QScopedPointer<QLabel> &label, QScopedPointer<QTimer> &timer);
 
-private:
-    QLabel *label;
-    QImage *canvas;
-    QTimer *timer;
+    QScopedPointer<QLabel> label;
+    QScopedPointer<QTimer> timer;
 };
 
 #endif // OVERLAY_H

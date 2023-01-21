@@ -8,6 +8,7 @@
 #include <QSystemTrayIcon>
 #include <QMenu>
 #include <QTranslator>
+#include <QScopedPointer>
 
 class MainWindow;
 class MpvHandler;
@@ -22,7 +23,6 @@ class BakaEngine : public QObject
     Q_OBJECT
 public:
     explicit BakaEngine(QObject *parent = 0);
-    ~BakaEngine();
 
     MainWindow     *window;
     MpvHandler     *mpv;
@@ -35,8 +35,8 @@ public:
     QSystemTrayIcon *sysTrayIcon;
     QMenu           *trayIconMenu;
 
-    QTranslator     *translator,
-                    *qtTranslator;
+    QScopedPointer<QTranslator> translator,
+                                qtTranslator;
 
     // input hash-table provides O(1) input-command lookups
     QHash<QString, QPair<QString, QString>> input; // [shortcut] = QPair<command, comment>

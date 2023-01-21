@@ -12,10 +12,7 @@ AboutDialog::AboutDialog(QString version, QWidget *parent) :
             this, SLOT(close()));
 }
 
-AboutDialog::~AboutDialog()
-{
-    delete ui;
-}
+AboutDialog::~AboutDialog() {}
 
 void AboutDialog::about(QString version, QWidget *parent)
 {

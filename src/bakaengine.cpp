@@ -29,7 +29,7 @@ BakaEngine::BakaEngine(QObject *parent):
     qtTranslator(nullptr)
 {
     if(Util::DimLightsSupported())
-        dimDialog = new DimDialog(window, nullptr);
+        dimDialog = new DimDialog(window);
     else
     {
         dimDialog = nullptr;
@@ -46,21 +46,6 @@ BakaEngine::BakaEngine(QObject *parent):
             {
                 Print(msg, "update");
             });
-}
-
-BakaEngine::~BakaEngine()
-{
-    if(translator != nullptr)
-        delete translator;
-    if(qtTranslator != nullptr)
-        delete qtTranslator;
-    if(dimDialog != nullptr)
-        delete dimDialog;
-    delete update;
-    delete overlay;
-    delete gesture;
-    delete settings;
-    delete mpv;
 }
 
 void BakaEngine::LoadSettings()

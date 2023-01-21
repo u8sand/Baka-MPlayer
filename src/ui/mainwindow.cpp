@@ -118,30 +118,28 @@ MainWindow::MainWindow(QWidget *parent):
 
                 if(lang != "en")
                 {
-                    QTranslator *tmp;
-
                     // load the system translations provided by Qt
-                    tmp = baka->qtTranslator;
-                    baka->qtTranslator = new QTranslator();
-                    baka->qtTranslator->load(QString("qt_%0").arg(lang), QLibraryInfo::location(QLibraryInfo::TranslationsPath));
-                    qApp->installTranslator(baka->qtTranslator);
-                    if(tmp != nullptr)
-                        delete tmp;
+                    {
+                        QScopedPointer<QTranslator> _qtTranslator(baka->qtTranslator.take());
+                        baka->qtTranslator.reset(new QTranslator());
+                        baka->qtTranslator->load(QString("qt_%0").arg(lang), QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+                        qApp->installTranslator(baka->qtTranslator.get());
+                    }
 
                     // load the application translations
-                    tmp = baka->translator;
-                    baka->translator = new QTranslator();
-                    baka->translator->load(QString("baka-mplayer_%0").arg(lang), BAKA_MPLAYER_LANG_PATH);
-                    qApp->installTranslator(baka->translator);
-                    if(tmp != nullptr)
-                        delete tmp;
+                    {
+                        QScopedPointer<QTranslator> _translator(baka->translator.take());
+                        baka->translator.reset(new QTranslator());
+                        baka->translator->load(QString("baka-mplayer_%0").arg(lang), BAKA_MPLAYER_LANG_PATH);
+                        qApp->installTranslator(baka->translator.get());
+                    }
                 }
                 else
                 {
-                    if(baka->qtTranslator != nullptr)
-                        qApp->removeTranslator(baka->qtTranslator);
-                    if(baka->translator != nullptr)
-                        qApp->removeTranslator(baka->translator);
+                    if (baka->qtTranslator)
+                        qApp->removeTranslator(baka->qtTranslator.take());
+                    if (baka->translator)
+                        qApp->removeTranslator(baka->translator.take());
                 }
 
                 // save strings we want to keep
@@ -284,24 +282,28 @@ MainWindow::MainWindow(QWidget *parent):
                     QString f = mpv->getFile(), file = mpv->getPath()+f;
                     if(f != QString() && maxRecent > 0)
                     {
-                        int i = recent.indexOf(file);
-                        if(i >= 0)
+                        int i;
+                        for (i = 0; i < recent.length(); i++)
                         {
-                            int t = recent.at(i).time;
+                            if (recent.at(i)->path == file)
+                                break;
+                        }
+                        if(i < recent.length())
+                        {
+                            int t = recent.at(i)->time;
                             if(t > 0 && resume)
                                 mpv->Seek(t);
                             recent.removeAt(i);
                         }
-                        if(recent.isEmpty() || recent.front() != file)
+                        if(recent.isEmpty() || recent.front()->path != file)
                         {
                             UpdateRecentFiles(); // update after initialization and only if the current file is different from the first recent
                             while(recent.length() > maxRecent-1)
                                 recent.removeLast();
-                            recent.push_front(
-                                Recent(file,
+                            recent.push_front(QSharedPointer<Recent>(new Recent(file,
                                        (mpv->getPath() == QString() || !Util::IsValidFile(file)) ?
-                                           fileInfo.media_title : QString()));
-                            current = &recent.front();
+                                           fileInfo.media_title : QString())));
+                            current = recent.front().toWeakRef().toStrongRef();
                         }
                     }
 
@@ -831,7 +833,7 @@ MainWindow::MainWindow(QWidget *parent):
 
 MainWindow::~MainWindow()
 {
-    if(current != nullptr)
+    if(current)
     {
         int t = mpv->getTime(),
             l = mpv->getFileInfo().length;
@@ -841,20 +843,6 @@ MainWindow::~MainWindow()
             current->time = 0;
     }
     baka->SaveSettings();
-
-    // Note: child objects _should_ not need to be deleted because
-    // all children should get deleted when mainwindow is deleted
-    // see: http://qt-project.org/doc/qt-4.8/objecttrees.html
-
-    // but apparently they don't (https://github.com/u8sand/Baka-MPlayer/issues/47)
-#if defined(Q_OS_WIN)
-    delete prev_toolbutton;
-    delete playpause_toolbutton;
-    delete next_toolbutton;
-    delete thumbnail_toolbar;
-#endif
-    delete baka;
-    delete ui;
 }
 
 void MainWindow::Load(QString file)
@@ -1246,13 +1234,13 @@ void MainWindow::UpdateRecentFiles()
         N = recent.length();
     for(auto &f : recent)
     {
-        action = ui->menu_Recently_Opened->addAction(QString("%0. %1").arg(Util::FormatNumberWithAmpersand(n, N), Util::ShortenPathToParent(f).replace("&","&&")));
+        action = ui->menu_Recently_Opened->addAction(QString("%0. %1").arg(Util::FormatNumberWithAmpersand(n, N), Util::ShortenPathToParent(*f.get()).replace("&","&&")));
         if(n++ == 1)
             action->setShortcut(QKeySequence("Ctrl+Z"));
         connect(action, &QAction::triggered,
                 action, [=]
                 {
-                    mpv->LoadFile(f);
+                    mpv->LoadFile(f->path);
                 });
     }
 }

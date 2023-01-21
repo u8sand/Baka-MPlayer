@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QString>
+#include <QScopedPointer>
 
 namespace Ui {
 class AboutDialog;
@@ -19,7 +20,7 @@ public:
     static void about(QString version, QWidget *parent = 0);
 
 private:
-    Ui::AboutDialog *ui;
+    QScopedPointer<Ui::AboutDialog> ui;
 };
 
 #endif // ABOUTDIALOG_H

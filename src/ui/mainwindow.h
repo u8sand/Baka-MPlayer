@@ -13,6 +13,8 @@
 #include <QHash>
 #include <QAction>
 #include <QRect>
+#include <QScopedPointer>
+#include <QSharedPointer>
 
 #if defined(Q_OS_WIN)
 #include <QWinThumbnailToolBar>
@@ -50,7 +52,7 @@ public:
     bool getHideAllControls()  { return hideAllControls; }
     bool isFullScreenMode()    { return hideAllControls || isFullScreen(); }
 
-    Ui::MainWindow  *ui;
+    QScopedPointer<Ui::MainWindow> ui;
     QImage albumArt;
 public slots:
     void Load(QString f = QString());
@@ -102,8 +104,8 @@ private:
     QTimer          autohide;
 
     // variables
-    QList<Recent> recent;
-    Recent *current = nullptr;
+    QList<QSharedPointer<Recent>> recent;
+    QSharedPointer<Recent> current;
     QString lang,
             onTop;
     int autoFit,
@@ -118,6 +120,7 @@ private:
          hideAllControls = false;
     QHash<QString, QAction*> commandActionMap;
 
+    // Q_DISABLE_COPY(Ui::MainWindow)
 public slots:
     void setLang(QString s)          { emit langChanged(lang = s); }
     void setOnTop(QString s)         { emit onTopChanged(onTop = s); }

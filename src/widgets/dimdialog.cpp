@@ -6,9 +6,9 @@
 #include <QWindow>
 #include <QScreen>
 
-DimDialog::DimDialog(MainWindow *window, QWidget *parent) :
+DimDialog::DimDialog(QWidget *parent) :
     QDialog(parent),
-    window(window)
+    window(static_cast<MainWindow*>(parent))
 {
     setWindowFlags(Qt::Tool | Qt::FramelessWindowHint);
     setWindowOpacity(.6);

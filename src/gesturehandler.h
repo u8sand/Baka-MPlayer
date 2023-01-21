@@ -23,7 +23,6 @@ public:
     };
 
     explicit GestureHandler(QObject *parent = 0);
-    ~GestureHandler();
 
 public slots:
     bool Begin(int gesture_type, QPoint mousePos, QPoint windowPos);

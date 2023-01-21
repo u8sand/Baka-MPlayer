@@ -24,7 +24,7 @@ protected slots:
     void ShowInfo();
 
 private:
-    Ui::UpdateDialog *ui;
+    QScopedPointer<Ui::UpdateDialog> ui;
     BakaEngine *baka;
 
     QElapsedTimer timer;
@@ -34,6 +34,8 @@ private:
         lastTime,
         state;
     bool init;
+
+    // Q_DISABLE_COPY(Ui::UpdateDialog)
 };
 
 #endif // UPDATEDIALOG_H

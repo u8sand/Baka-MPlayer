@@ -6,6 +6,7 @@
 #include <QPair>
 #include <QMutex>
 #include <QTableWidget>
+#include <QScopedPointer>
 
 namespace Ui {
 class PreferencesDialog;
@@ -31,7 +32,7 @@ protected:
     void SelectKey(bool add, QPair<QString, QPair<QString, QString>> init = (QPair<QString, QPair<QString, QString>>()));
 
 private:
-    Ui::PreferencesDialog *ui;
+    QScopedPointer<Ui::PreferencesDialog> ui;
     BakaEngine *baka;
     QHash<QString, QPair<QString, QString>> saved;
 
@@ -47,7 +48,9 @@ private:
         void unlock();
     private:
         QTableWidget *parent;
-    } *sortLock;
+    };
+
+    QScopedPointer<SortLock> sortLock;
 };
 
 #endif // PREFERENCESDIALOG_H
