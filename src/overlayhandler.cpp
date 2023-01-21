@@ -12,7 +12,6 @@
 #include <QPainterPath>
 #include <QPen>
 #include <QBrush>
-#include <QTimer>
 #include <QFontMetrics>
 #include <QThread>
 
@@ -23,11 +22,14 @@
 OverlayHandler::OverlayHandler(QObject *parent):
     QObject(parent),
     baka(static_cast<BakaEngine*>(parent)),
-    refresh_timer(nullptr),
+    refresh_timer(this),
     min_overlay(1),
     max_overlay(60),
     overlay_id(min_overlay)
 {
+    refresh_timer.setSingleShot(true);
+    connect(&refresh_timer, &QTimer::timeout, // on timeout
+            this, [=] { showInfoText(); });
 }
 
 OverlayHandler::~OverlayHandler()
@@ -51,14 +53,7 @@ void OverlayHandler::showInfoText(bool show)
 {
     if(show) // show media info
     {
-        if(refresh_timer == nullptr)
-        {
-            refresh_timer = new QTimer(this);
-            refresh_timer->setSingleShot(true);
-            connect(refresh_timer, &QTimer::timeout, // on timeout
-                    refresh_timer, [=] { showInfoText(); });
-        }
-        refresh_timer->start(OVERLAY_REFRESH_RATE);
+        refresh_timer.start(OVERLAY_REFRESH_RATE);
         showText(baka->mpv->getMediaInfo(),
                  QFont(Util::MonospaceFont(),
                        14, QFont::Bold), QColor(0xFFFF00),
@@ -66,8 +61,7 @@ void OverlayHandler::showInfoText(bool show)
     }
     else // hide media info
     {
-        delete refresh_timer;
-        refresh_timer = nullptr;
+        refresh_timer.stop();
         remove(OVERLAY_INFO);
     }
 }

@@ -99,7 +99,7 @@ private:
                     firstItem       = false,
                     init            = false,
                     playlistState   = false;
-    QTimer          *autohide       = nullptr;
+    QTimer          autohide;
 
     // variables
     QList<Recent> recent;

@@ -33,7 +33,7 @@ public slots:
 private:
     BakaEngine *baka;
 
-    QElapsedTimer *elapsedTimer;
+    QElapsedTimer elapsedTimer;
 
     double hRatio,
            vRatio;

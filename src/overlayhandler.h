@@ -8,6 +8,7 @@
 #include <QFont>
 #include <QColor>
 #include <QMutex>
+#include <QTimer>
 
 class BakaEngine;
 class Overlay;
@@ -33,7 +34,7 @@ private:
     QHash<int, Overlay*> overlays;
     QMutex overlay_mutex;
 
-    QTimer *refresh_timer;
+    QTimer refresh_timer;
     int min_overlay,
         max_overlay,
         overlay_id;

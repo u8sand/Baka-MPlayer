@@ -6,12 +6,11 @@
 #include "bakaengine.h"
 #include "ui/mainwindow.h"
 #include "mpvhandler.h"
-#include "util.h"
 
 GestureHandler::GestureHandler(QObject *parent):
     QObject(parent),
     baka(static_cast<BakaEngine*>(parent)),
-    elapsedTimer(nullptr)
+    elapsedTimer()
 {
     timer_threshold = 10; // 10ms works quite well
     gesture_threshold = 15; // 15 pixels is probably fine for anything
@@ -19,19 +18,13 @@ GestureHandler::GestureHandler(QObject *parent):
 
 GestureHandler::~GestureHandler()
 {
-    if(elapsedTimer)
-    {
-        delete elapsedTimer;
-        elapsedTimer = nullptr;
-    }
 }
 
 bool GestureHandler::Begin(int gesture_type, QPoint mousePos, QPoint windowPos)
 {
-    if(!elapsedTimer)
+    if(!elapsedTimer.isValid())
     {
-        elapsedTimer = new QElapsedTimer();
-        elapsedTimer->start();
+        elapsedTimer.start();
         this->gesture_type = gesture_type;
         this->gesture_state = NONE;
         // calculate pixel ratios based on physical dpi
@@ -55,7 +48,7 @@ bool GestureHandler::Begin(int gesture_type, QPoint mousePos, QPoint windowPos)
 
 bool GestureHandler::Process(QPoint mousePos)
 {
-    if(elapsedTimer && elapsedTimer->elapsed() > timer_threshold) // 10ms seems pretty good for all purposes
+    if(elapsedTimer.isValid() && elapsedTimer.hasExpired(timer_threshold)) // 10ms seems pretty good for all purposes
     {
         QPoint delta = mousePos - start.mousePos;
 
@@ -83,7 +76,7 @@ bool GestureHandler::Process(QPoint mousePos)
             }
         }
 
-        elapsedTimer->restart();
+        elapsedTimer.restart();
         return true;
     }
     else
@@ -92,10 +85,9 @@ bool GestureHandler::Process(QPoint mousePos)
 
 bool GestureHandler::End()
 {
-    if(elapsedTimer)
+    if(elapsedTimer.isValid())
     {
-        delete elapsedTimer;
-        elapsedTimer = nullptr;
+        elapsedTimer.invalidate();
         QApplication::restoreOverrideCursor();
     }
     else

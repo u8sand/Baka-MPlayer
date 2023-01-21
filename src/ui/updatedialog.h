@@ -27,7 +27,7 @@ private:
     Ui::UpdateDialog *ui;
     BakaEngine *baka;
 
-    QElapsedTimer *timer;
+    QElapsedTimer timer;
     double avgSpeed = 1,
            lastSpeed = 0;
     int lastProgress,

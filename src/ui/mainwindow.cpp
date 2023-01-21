@@ -16,7 +16,8 @@
 
 MainWindow::MainWindow(QWidget *parent):
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::MainWindow),
+    autohide(this)
 {
     ui->setupUi(this);
 #if defined(Q_OS_UNIX) || defined(Q_OS_LINUX)
@@ -29,11 +30,11 @@ MainWindow::MainWindow(QWidget *parent):
     // initialize managers/handlers
     baka = new BakaEngine(this);
     mpv = baka->mpv;
+    autohide.setSingleShot(true);
 
     ui->playlistWidget->AttachEngine(baka);
     ui->mpvFrame->installEventFilter(this); // capture events on mpvFrame in the eventFilter function
     ui->mpvFrame->setMouseTracking(true);
-    autohide = new QTimer(this);
 
     // command action mappings (action (right) performs command (left))
     commandActionMap = {
@@ -227,13 +228,11 @@ MainWindow::MainWindow(QWidget *parent):
     //    {
     //    });
 
-    connect(autohide, &QTimer::timeout, // cursor autohide
-            autohide, [=]
+    connect(&autohide, &QTimer::timeout, // cursor autohide
+            this, [=]
             {
                 if(ui->mpvFrame->geometry().contains(ui->mpvFrame->mapFromGlobal(cursor().pos())))
                     setCursor(QCursor(Qt::BlankCursor));
-                if(autohide)
-                    autohide->stop();
             });
 
     // dimDialog
@@ -992,7 +991,7 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
     else if(isFullScreenMode())
     {
         setCursor(QCursor(Qt::ArrowCursor)); // show the cursor
-        autohide->stop();
+        autohide.stop();
 
         QRect playbackRect = geometry();
         playbackRect.setTop(playbackRect.bottom() - 60);
@@ -1005,8 +1004,8 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
         bool showPlaylist = playlistRect.contains(event->globalPos());
         ShowPlaylist(showPlaylist);
 
-        if(!(showPlayback || showPlaylist) && autohide)
-            autohide->start(500);
+        if(!(showPlayback || showPlaylist))
+            autohide.start(500);
     }
     QMainWindow::mouseMoveEvent(event);
 }
@@ -1177,7 +1176,7 @@ void MainWindow::HideAllControls(bool w, bool s)
             setContextMenuPolicy(Qt::NoContextMenu);
         }
         setCursor(QCursor(Qt::ArrowCursor)); // show cursor
-        autohide->stop();
+        autohide.stop();
         ShowPlaylist(playlistState);
     }
 }
