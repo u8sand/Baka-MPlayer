@@ -556,7 +556,7 @@ void MpvHandler::Speed(double d)
 void MpvHandler::Aspect(QString aspect)
 {
     const QByteArray tmp = aspect.toUtf8();
-    const char *args[] = {"set", "video-aspect", tmp.constData(), NULL};
+    const char *args[] = {"set", "video-aspect-override", tmp.constData(), NULL};
     AsyncCommand(args);
 }
 
@@ -827,12 +827,12 @@ void MpvHandler::LoadChapters()
 void MpvHandler::LoadVideoParams()
 {
     fileInfo.video_params.codec = mpv_get_property_string(mpv, "video-codec");
-    mpv_get_property(mpv, "width",        MPV_FORMAT_INT64, &fileInfo.video_params.width);
-    mpv_get_property(mpv, "height",       MPV_FORMAT_INT64, &fileInfo.video_params.height);
-    mpv_get_property(mpv, "dwidth",       MPV_FORMAT_INT64, &fileInfo.video_params.dwidth);
-    mpv_get_property(mpv, "dheight",      MPV_FORMAT_INT64, &fileInfo.video_params.dheight);
+    mpv_get_property(mpv, "width",               MPV_FORMAT_INT64, &fileInfo.video_params.width);
+    mpv_get_property(mpv, "height",              MPV_FORMAT_INT64, &fileInfo.video_params.height);
+    mpv_get_property(mpv, "dwidth",              MPV_FORMAT_INT64, &fileInfo.video_params.dwidth);
+    mpv_get_property(mpv, "dheight",             MPV_FORMAT_INT64, &fileInfo.video_params.dheight);
     // though this has become useless, removing it causes a segfault--no clue:
-    mpv_get_property(mpv, "video-aspect", MPV_FORMAT_INT64, &fileInfo.video_params.aspect);
+    mpv_get_property(mpv, "video-params/aspect", MPV_FORMAT_INT64, &fileInfo.video_params.aspect);
 
     emit videoParamsChanged(fileInfo.video_params);
 }
