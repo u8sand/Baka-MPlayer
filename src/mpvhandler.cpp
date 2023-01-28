@@ -371,16 +371,11 @@ void MpvHandler::maybeUpdate()
     // Note: Qt doesn't seem to provide a way to query whether update() will
     //       be skipped, and the following code still fails when e.g. switching
     //       to a different workspace with a reparenting window manager.
-    if (window()->isVisible()) {
-        if (mpv_render_context_update(mpv_gl) & MPV_RENDER_UPDATE_FRAME) {
-            makeCurrent();
-            paintGL();
-            context()->swapBuffers(context()->surface());
-            doneCurrent();
-        }
-    } else {
-        update();
-    }
+    makeCurrent();
+    mpv_render_context_update(mpv_gl);
+    paintGL();
+    context()->swapBuffers(context()->surface());
+    doneCurrent();
 }
 
 void MpvHandler::on_update(void *ctx)
