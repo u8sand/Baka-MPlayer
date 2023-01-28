@@ -52,7 +52,7 @@ void BakaEngine::BakaSh(QStringList &args)
 //                });
     }
     else
-        RequiresParameters("mpv");
+        RequiresParameters("sh");
 }
 
 void BakaEngine::BakaNew(QStringList &args)
@@ -287,7 +287,7 @@ void BakaEngine::BakaPlaylist(QStringList &args)
             InvalidParameter(arg);
     }
     else
-        RequiresParameters("baka playlist");
+        RequiresParameters("playlist");
 }
 
 void BakaEngine::BakaJump(QStringList &args)
