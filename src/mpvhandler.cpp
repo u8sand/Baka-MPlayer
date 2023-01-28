@@ -361,21 +361,10 @@ void MpvHandler::handle_mpv_event(mpv_event *event)
     }
 }
 
-// Make Qt invoke mpv_render_context_render() to draw a new/updated video frame.
 void MpvHandler::maybeUpdate()
 {
-    // If the Qt window is not visible, Qt's update() will just skip rendering.
-    // This confuses mpv's render API, and may lead to small occasional
-    // freezes due to video rendering timing out.
-    // Handle this by manually redrawing.
-    // Note: Qt doesn't seem to provide a way to query whether update() will
-    //       be skipped, and the following code still fails when e.g. switching
-    //       to a different workspace with a reparenting window manager.
-    makeCurrent();
     mpv_render_context_update(mpv_gl);
-    paintGL();
-    context()->swapBuffers(context()->surface());
-    doneCurrent();
+    update();
 }
 
 void MpvHandler::on_update(void *ctx)
