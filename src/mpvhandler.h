@@ -4,6 +4,8 @@
 #include <QtWidgets/QOpenGLWidget>
 #include <QString>
 #include <QStringList>
+#include <QVariantMap>
+#include <QSharedPointer>
 #include <mpv/client.h>
 #include <mpv/render_gl.h>
 
@@ -44,7 +46,7 @@ public:
     int getOsdWidth()                       { return osdWidth; }
     int getOsdHeight()                      { return osdHeight; }
 
-    QString getMediaInfo();
+    void getMediaInfo(std::function<void (QString)> cb);
 
 protected:
     void initializeGL() Q_DECL_OVERRIDE;
@@ -104,27 +106,23 @@ public slots:
     void ShowText(QString text, int duration = 4000);
 
     void LoadTracks();
-    void LoadChapters();
-    void LoadVideoParams();
-    void LoadAudioParams();
-    void LoadMetadata();
-    void LoadOsdSize();
+    void LoadVideoParams(std::function<void ()> cb);
 
-    void Command(const QStringList &strlist);
+    void Command(const QStringList &strlist, std::function<void (mpv_event *)> on_event = nullptr);
     void SetOption(QString key, QString val);
 
 protected slots:
     void OpenFile(QString);
     QString PopulatePlaylist();
     void LoadFileInfo();
-    void SetProperties();
 
-    void AsyncCommand(const char *args[]);
-    void Command(const char *args[]);
-    void HandleErrorCode(int);
+    void ObserveProperty(const char *name, mpv_format format, std::function<void (QVariant &)> on_property);
+    void GetProperty(const char *name, mpv_format format, std::function<void (QVariant &)> on_property);
+    void GetProperties(const QList<Mpv::Property> &properties, std::function<void (QSharedPointer<QVariantMap>)> on_event);
+    bool HandleErrorCode(int,  QString ctx = "unknown");
 
 private Q_SLOTS:
-    void on_mpv_events();
+    void onMpvEvents();
     void handle_mpv_event(mpv_event *event);
     void maybeUpdate();
 
@@ -209,6 +207,8 @@ private:
                 mute = false;
     int         osdWidth,
                 osdHeight;
+    unsigned long long                                                reply_userdata = 0;
+    QHash<unsigned long long, std::function<void (mpv_event *event)>> reply_callbacks;
 };
 
 #endif // MPVHANDLER_H

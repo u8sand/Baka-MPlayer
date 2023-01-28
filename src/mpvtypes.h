@@ -6,6 +6,7 @@
 #include <QStringList>
 #include <QMap>
 #include <QList>
+#include <mpv/client.h>
 
 namespace Mpv
 {
@@ -74,6 +75,12 @@ namespace Mpv
         QList<Track> tracks; // audio, video, and subs
         QList<Chapter> chapters;
     };
+        
+    struct Property
+    {
+        const char *name;
+        mpv_format format;
+    };
 }
 Q_DECLARE_METATYPE(Mpv::PlayState) // so we can pass it with signals & slots
 Q_DECLARE_METATYPE(Mpv::Chapter)
@@ -81,6 +88,7 @@ Q_DECLARE_METATYPE(Mpv::Track)
 Q_DECLARE_METATYPE(Mpv::VideoParams)
 Q_DECLARE_METATYPE(Mpv::AudioParams)
 Q_DECLARE_METATYPE(Mpv::FileInfo)
+Q_DECLARE_METATYPE(Mpv::Property)
 
 
 #endif // MPVTYPES_H
