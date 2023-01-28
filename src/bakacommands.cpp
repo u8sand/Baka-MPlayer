@@ -32,6 +32,25 @@ void BakaEngine::BakaMpv(QStringList &args)
         RequiresParameters("mpv");
 }
 
+void BakaEngine::BakaGet(QStringList &args)
+{
+    if(!args.empty())
+    {
+        QString arg = args.front();
+        args.pop_front();
+        if(args.empty())
+        {
+            mpv->Command({"expand-properties", "print-text", QString("${%0}").arg(arg)});
+        }
+        else
+        {
+            InvalidParameter(args.join(' '));
+        }
+    }
+    else
+        RequiresParameters("get");
+}
+
 void BakaEngine::BakaSh(QStringList &args)
 {
     if(!args.empty())
