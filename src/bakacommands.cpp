@@ -177,9 +177,9 @@ void BakaEngine::Screenshot(bool subs)
     if(i != -1)
         dir.remove(0, i+1);
     if(subs)
-        mpv->ShowText(tr("Saved to \"%0\", with subs").arg(dir));
+        overlay->showStatusText(tr("Saved to \"%0\", with subs").arg(dir));
     else
-        mpv->ShowText(tr("Saved to \"%0\", without subs").arg(dir));
+        overlay->showStatusText(tr("Saved to \"%0\", without subs").arg(dir));
 }
 
 
@@ -524,7 +524,7 @@ void BakaEngine::FitWindow(int percent, bool msg)
         // note: the above block is required because there is no setFrameGeometry function
 
         if(msg)
-            mpv->ShowText(tr("Fit Window: %0").arg(percent == 0 ? tr("To Current Size") : (QString::number(percent)+"%")));
+            overlay->showStatusText(tr("Fit Window: %0").arg(percent == 0 ? tr("To Current Size") : (QString::number(percent)+"%")));
     });
 }
 
@@ -584,7 +584,7 @@ void BakaEngine::BakaSpeed(QStringList &args)
                 mpv->Speed(mpv->getSpeed()+arg.toDouble());
             else
                 mpv->Speed(arg.toDouble());
-            mpv->ShowText(tr("Speed: %0x").arg(QString::number(mpv->getSpeed(), 'f', 2)));
+            overlay->showStatusText(tr("Speed: %0x").arg(QString::number(mpv->getSpeed(), 'f', 2)));
         }
         else
             InvalidParameter(args.join(' '));
@@ -599,7 +599,7 @@ void BakaEngine::BakaFullScreen(QStringList &args)
     {
         window->FullScreen(!window->isFullScreen());
         if(window->isFullScreen())
-            mpv->ShowText(tr("Press ESC or double-click to leave full screen"));
+            overlay->showStatusText(tr("Press ESC or double-click to leave full screen"));
     }
     else
         InvalidParameter(args.join(' '));
@@ -619,7 +619,7 @@ void BakaEngine::BakaHideAllControls(QStringList &args)
             {
                 if(i->first == "hide_all_controls")
                 {
-                    mpv->ShowText(tr("Press %0 to show all controls again").arg(i.key()));
+                    overlay->showStatusText(tr("Press %0 to show all controls again").arg(i.key()));
                     break;
                 }
             }

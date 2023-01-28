@@ -359,7 +359,7 @@ MainWindow::MainWindow(QWidget *parent):
                                         else if(!mpv->getSubtitleVisibility())
                                             mpv->ShowSubtitles(true);
                                         mpv->Sid(track.id);
-                                        mpv->ShowText(QString("%0 %1: %2 (%3)").arg(tr("Sub"), QString::number(track.id), track.title, track.lang + (track.external ? "*" : "")));
+                                        baka->overlay->showStatusText(QString("%0 %1: %2 (%3)").arg(tr("Sub"), QString::number(track.id), track.title, track.lang + (track.external ? "*" : "")));
                                     });
                         }
                         else if(track.type == "audio")
@@ -371,7 +371,7 @@ MainWindow::MainWindow(QWidget *parent):
                                         if(mpv->getAid() != track.id) // don't allow selection of the same track
                                         {
                                             mpv->Aid(track.id);
-                                            mpv->ShowText(QString("%0 %1: %2 (%3)").arg(tr("Audio"), QString::number(track.id), track.title, track.lang));
+                                            baka->overlay->showStatusText(QString("%0 %1: %2 (%3)").arg(tr("Audio"), QString::number(track.id), track.title, track.lang));
                                         }
                                         else
                                             action->setChecked(true); // recheck the track
@@ -499,7 +499,7 @@ MainWindow::MainWindow(QWidget *parent):
                 switch(playState)
                 {
                 case Mpv::Loaded:
-                    baka->mpv->ShowText("Loading...", 0);
+                    baka->overlay->showStatusText("Loading...", 0);
                     break;
 
                 case Mpv::Started:
@@ -617,7 +617,7 @@ MainWindow::MainWindow(QWidget *parent):
                 if(last != speed)
                 {
                     if(init)
-                        mpv->ShowText(tr("Speed: %0x").arg(QString::number(speed)));
+                        baka->overlay->showStatusText(tr("Speed: %0x").arg(QString::number(speed)));
                     if(speed <= 0.25)
                         ui->action_Decrease->setEnabled(false);
                     else
@@ -664,7 +664,7 @@ MainWindow::MainWindow(QWidget *parent):
                 if(ui->actionShow_Subtitles->isEnabled())
                     ui->actionShow_Subtitles->setChecked(b);
                 if(init)
-                    mpv->ShowText(b ? tr("Subtitles visible") : tr("Subtitles hidden"));
+                    baka->overlay->showStatusText(b ? tr("Subtitles visible") : tr("Subtitles hidden"));
             });
 
     connect(mpv, &MpvHandler::muteChanged,
@@ -674,7 +674,7 @@ MainWindow::MainWindow(QWidget *parent):
                     ui->muteButton->setIcon(QIcon(":/img/default_mute.svg"));
                 else
                     ui->muteButton->setIcon(QIcon(":/img/default_unmute.svg"));
-                mpv->ShowText(b ? tr("Muted") : tr("Unmuted"));
+                baka->overlay->showStatusText(b ? tr("Muted") : tr("Unmuted"));
             });
 
     connect(mpv, &MpvHandler::voChanged,
@@ -890,7 +890,7 @@ void MainWindow::Load(QString file)
     thumbnail_toolbar->addButton(next_toolbutton);
 #endif
     baka->LoadSettings();
-    mpv->Initialize(baka);
+    mpv->Initialize();
     mpv->LoadFile(file);
 }
 

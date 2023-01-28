@@ -14,8 +14,6 @@
 #define MPV_REPLY_COMMAND 1
 #define MPV_REPLY_PROPERTY 2
 
-class BakaEngine;
-
 class MpvHandler Q_DECL_FINAL: public QOpenGLWidget
 {
 friend class BakaEngine;
@@ -24,7 +22,7 @@ public:
     explicit MpvHandler(QWidget *parent = 0);
     ~MpvHandler();
 
-    void Initialize(BakaEngine *baka);
+    void Initialize();
     const Mpv::FileInfo &getFileInfo()      { return fileInfo; }
     Mpv::PlayState getPlayState()           { return playState; }
     QString getFile()                       { return file; }
@@ -103,8 +101,6 @@ public slots:
 
     void MsgLevel(QString level);
 
-    void ShowText(QString text, int duration = 4000);
-
     void LoadTracks();
     void LoadVideoParams(std::function<void ()> cb);
 
@@ -173,12 +169,12 @@ signals:
     void subtitleVisibilityChanged(bool);
     void muteChanged(bool);
 
+    void showText(QString m, int duration = 4000);
     void messageSignal(QString m);
 
 private:
     static void on_update(void *ctx);
 
-    BakaEngine *baka;
     mpv_handle *mpv;
     mpv_render_context *mpv_gl;
 

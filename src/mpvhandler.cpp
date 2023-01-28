@@ -5,7 +5,6 @@
 #include <QFileInfoList>
 #include <QDateTime>
 
-#include "bakaengine.h"
 #include "mpvtypes.h"
 #include "overlayhandler.h"
 #include "util.h"
@@ -83,8 +82,7 @@ static inline QVariant mpv_data_as_variant(void *data, mpv_format format) {
 }
 
 MpvHandler::MpvHandler(QWidget *parent):
-    QOpenGLWidget(parent),
-    baka(nullptr)
+    QOpenGLWidget(parent)
 {
     // create mpv
     mpv = mpv_create();
@@ -126,9 +124,9 @@ MpvHandler::MpvHandler(QWidget *parent):
     ObserveProperty("core-idle", MPV_FORMAT_FLAG, [=](QVariant &prop) {
         bool coreIdle = prop.toBool();
         if(coreIdle && playState == Mpv::Playing)
-            ShowText(tr("Buffering..."), 0);
+            emit showText(tr("Buffering..."), 0);
         else
-            ShowText(QString(), 0);
+            emit showText(QString(), 0);
     });
     ObserveProperty("idle-active", MPV_FORMAT_FLAG, [=](QVariant &prop) {
         bool idleActive = prop.toBool();
@@ -144,7 +142,7 @@ MpvHandler::MpvHandler(QWidget *parent):
         if(pause)
         {
             setPlayState(Mpv::Paused);
-            ShowText(QString(), 0);
+            emit showText(QString(), 0);
         }
         else
             setPlayState(Mpv::Playing);
@@ -152,9 +150,9 @@ MpvHandler::MpvHandler(QWidget *parent):
     ObserveProperty("paused-for-cache", MPV_FORMAT_FLAG, [=](QVariant &prop) {
         bool pausedForCache = prop.toBool();
         if(pausedForCache && playState == Mpv::Playing)
-            ShowText(tr("Your network is slow or stuck, please wait a bit"), 0);
+            emit showText(tr("Your network is slow or stuck, please wait a bit"), 0);
         else
-            ShowText(QString(), 0);
+            emit showText(QString(), 0);
     });
 
     // setup callback event handling
@@ -183,12 +181,10 @@ MpvHandler::~MpvHandler()
     mpv_terminate_destroy(mpv);
 }
 
-void MpvHandler::Initialize(BakaEngine *baka)
+void MpvHandler::Initialize()
 {
     if(mpv_initialize(mpv) < 0)
         throw "Could not initialize mpv";
-
-    this->baka = baka;
 }
 
 void MpvHandler::initializeGL()
@@ -344,7 +340,7 @@ void MpvHandler::handle_mpv_event(mpv_event *event)
         break;
     case MPV_EVENT_END_FILE:
         if(playState == Mpv::Loaded)
-            ShowText(tr("File couldn't be opened"));
+            emit showText(tr("File couldn't be opened"));
         setPlayState(Mpv::Stopped);
         break;
     case MPV_EVENT_SHUTDOWN:
@@ -426,7 +422,7 @@ QString MpvHandler::LoadPlaylist(QString f)
         QFileInfo fi(f);
         if(!fi.exists()) // file doesn't exist
         {
-            ShowText(tr("File does not exist")); // tell the user
+            emit showText(tr("File does not exist")); // tell the user
             return QString(); // don't do anything more
         }
         else if(fi.isDir()) // if directory
@@ -465,7 +461,7 @@ bool MpvHandler::PlayFile(QString f)
         }
         else
         {
-            ShowText(tr("File no longer exists")); // tell the user
+            emit showText(tr("File no longer exists")); // tell the user
             return false;
         }
     }
@@ -611,7 +607,7 @@ void MpvHandler::Volume(int level, bool osd)
     {
         mpv_set_property_async(mpv, reply_userdata++, "volume", MPV_FORMAT_DOUBLE, &v);
         if(osd)
-            ShowText(tr("Volume: %0%").arg(QString::number(level)));
+            emit showText(tr("Volume: %0%").arg(QString::number(level)));
     }
     else
     {
@@ -683,7 +679,7 @@ void MpvHandler::AddSubtitleTrack(QString f)
     for(auto &track : old) // remove the old tracks in current
         current.removeOne(track);
     Mpv::Track &track = current.first();
-    ShowText(QString("%0: %1 (%2)").arg(QString::number(track.id), track.title, track.external ? "external" : track.lang));
+    emit showText(QString("%0: %1 (%2)").arg(QString::number(track.id), track.title, track.external ? "external" : track.lang));
 }
 
 void MpvHandler::AddAudioTrack(QString f)
@@ -697,7 +693,7 @@ void MpvHandler::AddAudioTrack(QString f)
     for(auto &track : old)
         current.removeOne(track);
     Mpv::Track &track = current.first();
-    ShowText(QString("%0: %1 (%2)").arg(QString::number(track.id), track.title, track.external ? "external" : track.lang));
+    emit showText(QString("%0: %1 (%2)").arg(QString::number(track.id), track.title, track.external ? "external" : track.lang));
 }
 
 void MpvHandler::ShowSubtitles(bool b)
@@ -713,7 +709,7 @@ void MpvHandler::SubtitleScale(double scale, bool relative)
 void MpvHandler::Deinterlace(bool deinterlace)
 {
     HandleErrorCode(mpv_set_property_string(mpv, "deinterlace", deinterlace ? "yes" : "auto"), "deinterlace");
-    ShowText(tr("Deinterlacing: %0").arg(deinterlace ? tr("enabled") : tr("disabled")));
+    emit showText(tr("Deinterlacing: %0").arg(deinterlace ? tr("enabled") : tr("disabled")));
 }
 
 void MpvHandler::Interpolate(bool interpolate)
@@ -731,7 +727,7 @@ void MpvHandler::Interpolate(bool interpolate)
         }
         setVo(vos.join(','));
         SetOption("vo", vo);
-        ShowText(tr("Motion Interpolation: %0").arg(interpolate ? tr("enabled") : tr("disabled")));
+        emit showText(tr("Motion Interpolation: %0").arg(interpolate ? tr("enabled") : tr("disabled")));
     });
 }
 
@@ -746,18 +742,6 @@ void MpvHandler::MsgLevel(QString level)
     QByteArray tmp = level.toUtf8();
     mpv_request_log_messages(mpv, tmp.constData());
     setMsgLevel(level);
-}
-
-void MpvHandler::ShowText(QString text, int duration)
-{
-    baka->overlay->showStatusText(text, duration);
-    /*
-    const QByteArray tmp1 = text.toUtf8(),
-                     tmp2 = QString::number(duration).toUtf8(),
-                     tmp3 = QString::number(level).toUtf8();
-    const char *args[] = {"show_text", tmp1.constData(), tmp2.constData(), tmp3.constData(), NULL};
-    Command(args);
-    */
 }
 
 void MpvHandler::LoadFileInfo()

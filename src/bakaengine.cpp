@@ -46,6 +46,10 @@ BakaEngine::BakaEngine(QObject *parent):
             {
                 Print(msg, "update");
             });
+    connect(mpv, &MpvHandler::showText,
+            overlay, [=](QString msg, int duration) {
+                overlay->showStatusText(msg, duration);
+            });
 }
 
 void BakaEngine::LoadSettings()
