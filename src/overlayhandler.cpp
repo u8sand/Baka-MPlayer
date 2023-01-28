@@ -50,10 +50,12 @@ void OverlayHandler::showInfoText(bool show)
     if(show) // show media info
     {
         refresh_timer.start(OVERLAY_REFRESH_RATE);
-        showText(baka->mpv->getMediaInfo(),
-                 QFont(Util::MonospaceFont(),
-                       14, QFont::Bold), QColor(0xFFFF00),
-                 QPoint(20, 20), 0, OVERLAY_INFO);
+        baka->mpv->getMediaInfo([=](QString mediaInfo) {
+            showText(mediaInfo,
+                    QFont(Util::MonospaceFont(),
+                          14, QFont::Bold), QColor(0xFFFF00),
+                    QPoint(20, 20), 0, OVERLAY_INFO);
+        });
     }
     else // hide media info
     {

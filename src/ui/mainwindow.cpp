@@ -29,7 +29,7 @@ MainWindow::MainWindow(QWidget *parent):
 
     // initialize managers/handlers
     baka = new BakaEngine(this);
-    mpv = baka->mpv;
+    mpv = this->ui->mpvFrame;
     autohide.setSingleShot(true);
 
     ui->playlistWidget->AttachEngine(baka);
@@ -890,7 +890,7 @@ void MainWindow::Load(QString file)
     thumbnail_toolbar->addButton(next_toolbutton);
 #endif
     baka->LoadSettings();
-    mpv->Initialize();
+    mpv->Initialize(baka);
     mpv->LoadFile(file);
 }
 

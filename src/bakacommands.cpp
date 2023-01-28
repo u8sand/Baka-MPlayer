@@ -31,6 +31,25 @@ void BakaEngine::BakaMpv(QStringList &args)
         RequiresParameters("mpv");
 }
 
+void BakaEngine::BakaGet(QStringList &args)
+{
+    if(!args.empty())
+    {
+        QString arg = args.front();
+        args.pop_front();
+        if(args.empty())
+        {
+            mpv->Command({"expand-properties", "print-text", QString("${%0}").arg(arg)});
+        }
+        else
+        {
+            InvalidParameter(args.join(' '));
+        }
+    }
+    else
+        RequiresParameters("get");
+}
+
 void BakaEngine::BakaSh(QStringList &args)
 {
     if(!args.empty())
@@ -51,7 +70,7 @@ void BakaEngine::BakaSh(QStringList &args)
 //                });
     }
     else
-        RequiresParameters("mpv");
+        RequiresParameters("sh");
 }
 
 void BakaEngine::BakaNew(QStringList &args)
@@ -286,7 +305,7 @@ void BakaEngine::BakaPlaylist(QStringList &args)
             InvalidParameter(arg);
     }
     else
-        RequiresParameters("baka playlist");
+        RequiresParameters("playlist");
 }
 
 void BakaEngine::BakaJump(QStringList &args)
@@ -426,87 +445,87 @@ void BakaEngine::FitWindow(int percent, bool msg)
     if(window->isFullScreen() || window->isMaximized() || !window->ui->menuFit_Window->isEnabled())
         return;
 
-    mpv->LoadVideoParams();
+    mpv->LoadVideoParams([=]() {
+        const Mpv::VideoParams &vG = mpv->getFileInfo().video_params; // video geometry
+        QRect mG = window->ui->mpvFrame->geometry(),                  // mpv geometry
+              wfG = window->frameGeometry(),                          // frame geometry of window (window geometry + window frame)
+              wG = window->geometry(),                                // window geometry
+              aG = qApp->screenAt(wfG.center())->availableGeometry();  // available geometry of the screen we're in--(geometry not including the taskbar)
 
-    const Mpv::VideoParams &vG = mpv->getFileInfo().video_params; // video geometry
-    QRect mG = window->ui->mpvFrame->geometry(),                  // mpv geometry
-          wfG = window->frameGeometry(),                          // frame geometry of window (window geometry + window frame)
-          wG = window->geometry(),                                // window geometry
-          aG = qApp->screenAt(wfG.center())->availableGeometry(); // available geometry of the screen we're in--(geometry not including the taskbar)
+        double a, // aspect ratio
+               w, // width of vid we want
+               h; // height of vid we want
 
-    double a, // aspect ratio
-           w, // width of vid we want
-           h; // height of vid we want
+        // obtain natural video aspect ratio
+        if(vG.width == 0 || vG.height == 0) // width/height are 0 when there is no output
+            return;
+        if(vG.dwidth == 0 || vG.dheight == 0) // dwidth/height are 0 on load
+            a = double(vG.width)/vG.height; // use video width and height for aspect ratio
+        else
+            a = double(vG.dwidth)/vG.dheight; // use display width and height for aspect ratio
 
-    // obtain natural video aspect ratio
-    if(vG.width == 0 || vG.height == 0) // width/height are 0 when there is no output
-        return;
-    if(vG.dwidth == 0 || vG.dheight == 0) // dwidth/height are 0 on load
-        a = double(vG.width)/vG.height; // use video width and height for aspect ratio
-    else
-        a = double(vG.dwidth)/vG.dheight; // use display width and height for aspect ratio
+        // calculate resulting display:
+        if(percent == 0) // fit to window
+        {
+            // set our current mpv frame dimensions
+            w = mG.width();
+            h = mG.height();
 
-    // calculate resulting display:
-    if(percent == 0) // fit to window
-    {
-        // set our current mpv frame dimensions
-        w = mG.width();
-        h = mG.height();
+            double cmp = w/h - a, // comparison
+                   eps = 0.01;  // epsilon (deal with rounding errors) we consider -eps < 0 < eps ==> 0
 
-        double cmp = w/h - a, // comparison
-               eps = 0.01;  // epsilon (deal with rounding errors) we consider -eps < 0 < eps ==> 0
+            if(cmp > eps) // too wide
+                w = h * a; // calculate width based on the correct height
+            else if(cmp < -eps) // too long
+                h = w / a; // calculate height based on the correct width
+        }
+        else // fit into desired dimensions
+        {
+            double scale = percent / 100.0; // get scale
 
-        if(cmp > eps) // too wide
-            w = h * a; // calculate width based on the correct height
-        else if(cmp < -eps) // too long
-            h = w / a; // calculate height based on the correct width
-    }
-    else // fit into desired dimensions
-    {
-        double scale = percent / 100.0; // get scale
+            w = vG.width * scale;  // get scaled width
+            h = vG.height * scale; // get scaled height
+        }
 
-        w = vG.width * scale;  // get scaled width
-        h = vG.height * scale; // get scaled height
-    }
+        double dW = w + (wfG.width() - mG.width()),   // calculate display width of the window
+               dH = h + (wfG.height() - mG.height()); // calculate display height of the window
 
-    double dW = w + (wfG.width() - mG.width()),   // calculate display width of the window
-           dH = h + (wfG.height() - mG.height()); // calculate display height of the window
+        if(dW > aG.width()) // if the width is bigger than the available area
+        {
+            dW = aG.width(); // set the width equal to the available area
+            w = dW - (wfG.width() - mG.width());    // calculate the width
+            h = w / a;                              // calculate height
+            dH = h + (wfG.height() - mG.height());  // calculate new display height
+        }
+        if(dH > aG.height()) // if the height is bigger than the available area
+        {
+            dH = aG.height(); // set the height equal to the available area
+            h = dH - (wfG.height() - mG.height()); // calculate the height
+            w = h * a;                             // calculate the width accordingly
+            dW = w + (wfG.width() - mG.width());   // calculate new display width
+        }
 
-    if(dW > aG.width()) // if the width is bigger than the available area
-    {
-        dW = aG.width(); // set the width equal to the available area
-        w = dW - (wfG.width() - mG.width());    // calculate the width
-        h = w / a;                              // calculate height
-        dH = h + (wfG.height() - mG.height());  // calculate new display height
-    }
-    if(dH > aG.height()) // if the height is bigger than the available area
-    {
-        dH = aG.height(); // set the height equal to the available area
-        h = dH - (wfG.height() - mG.height()); // calculate the height
-        w = h * a;                             // calculate the width accordingly
-        dW = w + (wfG.width() - mG.width());   // calculate new display width
-    }
+        // get the centered rectangle we want
+        QRect rect = QStyle::alignedRect(Qt::LeftToRight,
+                                         Qt::AlignCenter,
+                                         QSize(dW,
+                                               dH),
+                                         percent == 0 ? wfG : aG); // center in window (autofit) or on our screen
 
-    // get the centered rectangle we want
-    QRect rect = QStyle::alignedRect(Qt::LeftToRight,
-                                     Qt::AlignCenter,
-                                     QSize(dW,
-                                           dH),
-                                     percent == 0 ? wfG : aG); // center in window (autofit) or on our screen
+        // adjust the rect to compensate for the frame
+        rect.setLeft(rect.left() + (wG.left() - wfG.left()));
+        rect.setTop(rect.top() + (wG.top() - wfG.top()));
+        rect.setRight(rect.right() - (wfG.right() - wG.right()));
+        rect.setBottom(rect.bottom() - (wfG.bottom() - wG.bottom()));
 
-    // adjust the rect to compensate for the frame
-    rect.setLeft(rect.left() + (wG.left() - wfG.left()));
-    rect.setTop(rect.top() + (wG.top() - wfG.top()));
-    rect.setRight(rect.right() - (wfG.right() - wG.right()));
-    rect.setBottom(rect.bottom() - (wfG.bottom() - wG.bottom()));
+        // finally set the geometry of the window
+        window->setGeometry(rect);
 
-    // finally set the geometry of the window
-    window->setGeometry(rect);
+        // note: the above block is required because there is no setFrameGeometry function
 
-    // note: the above block is required because there is no setFrameGeometry function
-
-    if(msg)
-        mpv->ShowText(tr("Fit Window: %0").arg(percent == 0 ? tr("To Current Size") : (QString::number(percent)+"%")));
+        if(msg)
+            mpv->ShowText(tr("Fit Window: %0").arg(percent == 0 ? tr("To Current Size") : (QString::number(percent)+"%")));
+    });
 }
 
 void BakaEngine::BakaDeinterlace(QStringList &args)

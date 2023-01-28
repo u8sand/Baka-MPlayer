@@ -1,11 +1,13 @@
 #ifndef MPVHANDLER_H
 #define MPVHANDLER_H
 
-#include <QObject>
+#include <QtWidgets/QOpenGLWidget>
 #include <QString>
 #include <QStringList>
-
+#include <QVariantMap>
+#include <QSharedPointer>
 #include <mpv/client.h>
+#include <mpv/render_gl.h>
 
 #include "mpvtypes.h"
 
@@ -14,15 +16,15 @@
 
 class BakaEngine;
 
-class MpvHandler : public QObject
+class MpvHandler Q_DECL_FINAL: public QOpenGLWidget
 {
 friend class BakaEngine;
     Q_OBJECT
 public:
-    explicit MpvHandler(QWidget *container, QObject *parent = 0);
+    explicit MpvHandler(QWidget *parent = 0);
     ~MpvHandler();
 
-    void Initialize();
+    void Initialize(BakaEngine *baka);
     const Mpv::FileInfo &getFileInfo()      { return fileInfo; }
     Mpv::PlayState getPlayState()           { return playState; }
     QString getFile()                       { return file; }
@@ -44,10 +46,11 @@ public:
     int getOsdWidth()                       { return osdWidth; }
     int getOsdHeight()                      { return osdHeight; }
 
-    QString getMediaInfo();
+    void getMediaInfo(std::function<void (QString)> cb);
 
 protected:
-    virtual bool event(QEvent*);
+    void initializeGL() Q_DECL_OVERRIDE;
+    void paintGL() Q_DECL_OVERRIDE;
 
     bool FileExists(QString);
 
@@ -103,26 +106,26 @@ public slots:
     void ShowText(QString text, int duration = 4000);
 
     void LoadTracks();
-    void LoadChapters();
-    void LoadVideoParams();
-    void LoadAudioParams();
-    void LoadMetadata();
-    void LoadOsdSize();
+    void LoadVideoParams(std::function<void ()> cb);
 
-    void Command(const QStringList &strlist);
+    void Command(const QStringList &strlist, std::function<void (mpv_event *)> on_event = nullptr);
     void SetOption(QString key, QString val);
 
 protected slots:
     void OpenFile(QString);
     QString PopulatePlaylist();
     void LoadFileInfo();
-    void SetProperties();
 
-    void AsyncCommand(const char *args[]);
-    void Command(const char *args[]);
-    void HandleErrorCode(int);
+    void ObserveProperty(const char *name, mpv_format format, std::function<void (QVariant &)> on_property);
+    void GetProperty(const char *name, mpv_format format, std::function<void (QVariant &)> on_property);
+    void GetProperties(const QList<Mpv::Property> &properties, std::function<void (QSharedPointer<QVariantMap>)> on_event);
+    bool HandleErrorCode(int,  QString ctx = "unknown");
 
-private slots:
+private Q_SLOTS:
+    void onMpvEvents();
+    void handle_mpv_event(mpv_event *event);
+    void maybeUpdate();
+
     void setPlaylist(const QStringList& l)  { emit playlistChanged(l); }
     void setFileInfo()                      { emit fileInfoChanged(fileInfo); }
     void setPlayState(Mpv::PlayState s)     { emit playStateChanged(playState = s); }
@@ -173,8 +176,11 @@ signals:
     void messageSignal(QString m);
 
 private:
+    static void on_update(void *ctx);
+
     BakaEngine *baka;
     mpv_handle *mpv;
+    mpv_render_context *mpv_gl;
 
     // variables
     Mpv::PlayState playState = Mpv::Idle;
@@ -201,6 +207,8 @@ private:
                 mute = false;
     int         osdWidth,
                 osdHeight;
+    unsigned long long                                                reply_userdata = 0;
+    QHash<unsigned long long, std::function<void (mpv_event *event)>> reply_callbacks;
 };
 
 #endif // MPVHANDLER_H

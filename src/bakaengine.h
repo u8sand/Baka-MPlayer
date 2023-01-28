@@ -133,6 +133,15 @@ private:
           }
          }
         },
+        {"get", // command
+         {&BakaEngine::BakaGet,
+          {
+           // params     description
+           QString(), tr("prints mpv property"),
+           QString() // advanced
+          }
+         }
+        },
         {"sh",
          {&BakaEngine::BakaSh,
           {
@@ -432,6 +441,7 @@ private:
     };
     // Baka Command Functions
     void BakaMpv(QStringList&);
+    void BakaGet(QStringList&);
     void BakaSh(QStringList&);
     void BakaNew(QStringList&);
     void BakaOpenLocation(QStringList&);
