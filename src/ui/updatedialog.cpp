@@ -6,6 +6,10 @@
 
 #include <QDesktopServices>
 
+#if defined(Q_OS_WIN)
+#include "util.h"
+#endif
+
 UpdateDialog::UpdateDialog(BakaEngine *baka, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::UpdateDialog),
