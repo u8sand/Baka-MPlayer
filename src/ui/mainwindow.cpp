@@ -234,15 +234,17 @@ MainWindow::MainWindow(QWidget *parent):
             });
 
     // dimDialog
-    connect(baka->dimDialog, &DimDialog::visbilityChanged,
-            baka->dimDialog, [=](bool dim)
-            {
-                ui->action_Dim_Lights->setChecked(dim);
-                if(dim)
-                    Util::SetAlwaysOnTop(winId(), true);
-                else if(onTop == "never" || (onTop == "playing" && mpv->getPlayState() > 0))
-                    Util::SetAlwaysOnTop(winId(), false);
-            });
+    if (baka->dimDialog) {
+        connect(baka->dimDialog, &DimDialog::visbilityChanged,
+                baka->dimDialog, [=](bool dim)
+                {
+                    ui->action_Dim_Lights->setChecked(dim);
+                    if(dim)
+                        Util::SetAlwaysOnTop(winId(), true);
+                    else if(onTop == "never" || (onTop == "playing" && mpv->getPlayState() > 0))
+                        Util::SetAlwaysOnTop(winId(), false);
+                });
+    }
 
     // mpv
 
