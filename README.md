@@ -114,10 +114,3 @@ You can check out which languages we currently support by checking out `Baka-MPl
 
 Please use the [issues tracker](https://github.com/u8sand/Baka-MPlayer/issues) provided by GitHub to send us bug reports or feature requests.
 
-
-## Contact
-
-**IRC Channel**: `#baka-mplayer` on `irc.freenode.net`
-
-You can ask us questions about using Baka MPlayer, give feedback, or discuss its development.
-However, if possible, please avoid posting bugs there and use the [issue tracker](https://github.com/u8sand/Baka-MPlayer/issues) instead.
