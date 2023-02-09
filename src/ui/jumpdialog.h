@@ -2,6 +2,7 @@
 #define JUMPDIALOG_H
 
 #include <QDialog>
+#include <QScopedPointer>
 
 namespace Ui {
 class JumpDialog;
@@ -21,7 +22,7 @@ private slots:
     void validate();
 
 private:
-    Ui::JumpDialog *ui;
+    QScopedPointer<Ui::JumpDialog> ui;
 
     int time,
         maxTime;

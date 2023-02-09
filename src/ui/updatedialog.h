@@ -2,8 +2,7 @@
 #define UPDATEDIALOG_H
 
 #include <QDialog>
-#include <QTime>
-
+#include <QElapsedTimer>
 
 namespace Ui {
 class UpdateDialog;
@@ -25,16 +24,18 @@ protected slots:
     void ShowInfo();
 
 private:
-    Ui::UpdateDialog *ui;
+    QScopedPointer<Ui::UpdateDialog> ui;
     BakaEngine *baka;
 
-    QTime *timer;
+    QElapsedTimer timer;
     double avgSpeed = 1,
            lastSpeed = 0;
     int lastProgress,
         lastTime,
         state;
     bool init;
+
+    // Q_DISABLE_COPY(Ui::UpdateDialog)
 };
 
 #endif // UPDATEDIALOG_H

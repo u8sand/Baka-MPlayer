@@ -33,10 +33,7 @@ JumpDialog::JumpDialog(int _maxTime, QWidget *parent) :
     }
 }
 
-JumpDialog::~JumpDialog()
-{
-    delete ui;
-}
+JumpDialog::~JumpDialog() {}
 
 int JumpDialog::getTime(int maxTime, QWidget *parent)
 {

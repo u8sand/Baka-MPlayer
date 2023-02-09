@@ -9,7 +9,7 @@ class DimDialog : public QDialog
 {
     Q_OBJECT
 public:
-    explicit DimDialog(MainWindow *window, QWidget *parent = 0);
+    explicit DimDialog(QWidget *parent = 0);
 
     void show();
     bool close();

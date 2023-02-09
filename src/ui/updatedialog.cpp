@@ -3,15 +3,18 @@
 
 #include "bakaengine.h"
 #include "updatemanager.h"
-#include "util.h"
 
 #include <QDesktopServices>
+
+#if defined(Q_OS_WIN)
+#include "util.h"
+#endif
 
 UpdateDialog::UpdateDialog(BakaEngine *baka, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::UpdateDialog),
     baka(baka),
-    timer(nullptr),
+    timer(),
     init(false)
 {
     ui->setupUi(this);
@@ -24,7 +27,7 @@ UpdateDialog::UpdateDialog(BakaEngine *baka, QWidget *parent) :
 #endif
 
     connect(baka->update, &UpdateManager::progressSignal,
-            [=](int percent)
+            this, [=](int percent)
             {
                 ui->progressBar->setValue(percent);
                 if(percent == 100)
@@ -32,11 +35,7 @@ UpdateDialog::UpdateDialog(BakaEngine *baka, QWidget *parent) :
                     ui->updateLabel->setText(tr("Download Complete"));
                     ui->progressBar->setVisible(false);
                     ui->timeRemainingLabel->setVisible(false);
-                    if(timer != nullptr)
-                    {
-                        delete timer;
-                        timer = nullptr;
-                    }
+                    timer.invalidate();
 
                     if(!init)
                     {
@@ -54,12 +53,9 @@ UpdateDialog::UpdateDialog(BakaEngine *baka, QWidget *parent) :
                     ui->progressBar->setVisible(true);
                     ui->timeRemainingLabel->setText(QString());
                     ui->timeRemainingLabel->setVisible(true);
-                    if(timer != nullptr)
-                        delete timer;
-                    timer = new QTime();
-                    timer->start();
+                    timer.start();
                 }
-                else if(timer) // don't execute this if timer is not defined--this shouldn't happen though.. but it does
+                else if(timer.isValid())
                 {
                     avgSpeed = 0.005*lastSpeed + 0.995*avgSpeed;
 
@@ -68,7 +64,7 @@ UpdateDialog::UpdateDialog(BakaEngine *baka, QWidget *parent) :
                     else
                         ui->timeRemainingLabel->setText(tr("Calculating..."));
 
-                    int time = timer->elapsed();
+                    int time = timer.elapsed();
                     if(time != lastTime) // prevent cases when we're too fast haha
                         lastSpeed = (percent-lastProgress)/(time-lastTime);
 
@@ -78,14 +74,14 @@ UpdateDialog::UpdateDialog(BakaEngine *baka, QWidget *parent) :
             });
 
     connect(baka->update, &UpdateManager::messageSignal,
-            [=](QString msg)
+            this, [=](QString msg)
             {
                 ui->plainTextEdit->appendPlainText(msg+"\n");
             });
 
 #if defined(Q_OS_WIN)
     connect(ui->updateButton, &QPushButton::clicked,
-            [=]
+            this, [=]
             {
                 ui->plainTextEdit->setPlainText(QString());
                 baka->update->DownloadUpdate(Util::DownloadFileUrl());
@@ -103,18 +99,12 @@ UpdateDialog::UpdateDialog(BakaEngine *baka, QWidget *parent) :
         ShowInfo();
     }
 }
-
-UpdateDialog::~UpdateDialog()
-{
-    if(timer != nullptr)
-        delete timer;
-    delete ui;
-}
+UpdateDialog::~UpdateDialog() {}
 
 void UpdateDialog::CheckForUpdates(BakaEngine *baka, QWidget *parent)
 {
-    UpdateDialog *dialog = new UpdateDialog(baka, parent);
-    dialog->exec();
+    UpdateDialog dialog(baka, parent);
+    dialog.exec();
 }
 
 void UpdateDialog::ShowInfo()

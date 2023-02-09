@@ -12,7 +12,6 @@
 #include <QPainterPath>
 #include <QPen>
 #include <QBrush>
-#include <QTimer>
 #include <QFontMetrics>
 #include <QThread>
 
@@ -23,18 +22,17 @@
 OverlayHandler::OverlayHandler(QObject *parent):
     QObject(parent),
     baka(static_cast<BakaEngine*>(parent)),
-    refresh_timer(nullptr),
+    refresh_timer(this),
     min_overlay(1),
     max_overlay(60),
     overlay_id(min_overlay)
 {
+    refresh_timer.setSingleShot(true);
+    connect(&refresh_timer, &QTimer::timeout, // on timeout
+            this, [=] { showInfoText(); });
 }
 
-OverlayHandler::~OverlayHandler()
-{
-    for(auto o : overlays)
-        delete o;
-}
+OverlayHandler::~OverlayHandler() {}
 
 void OverlayHandler::showStatusText(const QString &text, int duration)
 {
@@ -51,23 +49,17 @@ void OverlayHandler::showInfoText(bool show)
 {
     if(show) // show media info
     {
-        if(refresh_timer == nullptr)
-        {
-            refresh_timer = new QTimer(this);
-            refresh_timer->setSingleShot(true);
-            connect(refresh_timer, &QTimer::timeout, // on timeout
-                    [=] { showInfoText(); });
-        }
-        refresh_timer->start(OVERLAY_REFRESH_RATE);
-        showText(baka->mpv->getMediaInfo(),
-                 QFont(Util::MonospaceFont(),
-                       14, QFont::Bold), QColor(0xFFFF00),
-                 QPoint(20, 20), 0, OVERLAY_INFO);
+        refresh_timer.start(OVERLAY_REFRESH_RATE);
+        baka->mpv->getMediaInfo([=](QString mediaInfo) {
+            showText(mediaInfo,
+                    QFont(Util::MonospaceFont(),
+                          14, QFont::Bold), QColor(0xFFFF00),
+                    QPoint(20, 20), 0, OVERLAY_INFO);
+        });
     }
     else // hide media info
     {
-        delete refresh_timer;
-        refresh_timer = nullptr;
+        refresh_timer.stop();
         remove(OVERLAY_INFO);
     }
 }
@@ -79,10 +71,16 @@ void OverlayHandler::showText(const QString &text, QFont font, QColor color, QPo
     if(id == -1) // auto id
     {
         id = overlay_id;
-        if(overlay_id+1 > max_overlay)
-            overlay_id = min_overlay;
-        else
-            ++overlay_id;
+        overlay_id = std::max(min_overlay, (overlay_id + 1) % max_overlay);
+    }
+
+    Overlay &overlay = overlays[id];
+    if (overlay.label == nullptr)
+    {
+        // this label is owned by baka->window->ui->mpvFrame which will try to
+        //  delete it when it is destroyed
+        overlay.label = new QLabel(baka->window->ui->mpvFrame);
+        overlay.label->setStyleSheet("background-color:rgba(0,0,0,0);background-image:url();");
     }
 
     QFontMetrics fm(font);
@@ -92,8 +90,8 @@ void OverlayHandler::showText(const QString &text, QFont font, QColor color, QPo
     const float fm_correction = 1.3;
     int w = 0,
         h = fm.height()*lines.length();
-    for(auto line : lines)
-        w = std::max(fm.width(line), w);
+    for(auto &line : lines)
+        w = std::max(fm.horizontalAdvance(line), w);
     float xF = float(baka->window->ui->mpvFrame->width()-2*pos.x()) / (fm_correction*w);
     float yF = float(baka->window->ui->mpvFrame->height()-2*pos.y()) / h;
     font.setPointSizeF(std::min(font.pointSizeF()*std::min(xF, yF), font.pointSizeF()));
@@ -103,17 +101,17 @@ void OverlayHandler::showText(const QString &text, QFont font, QColor color, QPo
     w = 0;
     QPainterPath path(QPoint(0, 0));
     QPoint p = QPoint(0, h);
-    for(auto line : lines)
+    for(auto &line : lines)
     {
         path.addText(p, font, line);
         w = std::max(int(fm_correction*path.currentPosition().x()), w);
         p += QPoint(0, h);
     }
 
-    QImage *canvas = new QImage(w, p.y(), QImage::Format_ARGB32); // make the canvas the right size
-    canvas->fill(QColor(0,0,0,0)); // fill it with nothing
+    QImage canvas(w, p.y(), QImage::Format_ARGB32); // make the canvas the right size
+    canvas.fill(QColor(0,0,0,0)); // fill it with nothing
 
-    QPainter painter(canvas); // prepare to paint
+    QPainter painter(&canvas); // prepare to paint
     painter.setRenderHint(QPainter::Antialiasing);
     painter.setCompositionMode(QPainter::CompositionMode_Overlay);
     painter.setFont(font);
@@ -121,48 +119,43 @@ void OverlayHandler::showText(const QString &text, QFont font, QColor color, QPo
     painter.setBrush(color);
     painter.drawPath(path);
 
-    // add as mpv overlay
-    baka->mpv->AddOverlay(
-        id == -1 ? overlay_id : id,
-        pos.x(), pos.y(),
-        "&"+QString::number(quintptr(canvas->bits())),
-        0, canvas->width(), canvas->height());
-
     // add over mpv as label
-    QLabel *label = new QLabel(baka->window->ui->mpvFrame);
-    label->setStyleSheet("background-color:rgb(0,0,0,0);background-image:url();");
-    label->setGeometry(pos.x(),
+    overlay.label->setGeometry(pos.x(),
                        pos.y(),
-                       canvas->width(),
-                       canvas->height());
-    label->setPixmap(QPixmap::fromImage(*canvas));
-    label->show();
+                       canvas.width(),
+                       canvas.height());
+    overlay.label->setPixmap(QPixmap::fromImage(canvas));
+    overlay.label->show();
 
-    QTimer *timer;
-    if(duration == 0)
-        timer = nullptr;
-    else
+    if(duration > 0)
     {
-        timer = new QTimer(this);
-        timer->start(duration);
-        connect(timer, &QTimer::timeout, // on timeout
-                [=] { remove(id); });
+        overlay.timer->start(duration);
+        connect(overlay.timer.get(), &QTimer::timeout, // on timeout
+                overlay.timer.get(), [this, id] { remove(id); });
     }
 
-    if(overlays.find(id) != overlays.end())
-        delete overlays[id];
-    overlays[id] = new Overlay(label, canvas, timer, this);
+    // add as mpv overlay
+    baka->mpv->AddOverlay(
+        id,
+        pos.x(), pos.y(),
+        "&"+QString::number(quintptr(canvas.bits())),
+        0, canvas.width(), canvas.height());
+
     overlay_mutex.unlock();
 }
 
 void OverlayHandler::remove(int id)
 {
     overlay_mutex.lock();
-    baka->mpv->RemoveOverlay(id);
-    if(overlays.find(id) != overlays.end())
-    {
-        delete overlays[id];
-        overlays.remove(id);
+    if (overlays.contains(id)) {
+      baka->mpv->RemoveOverlay(id);
+      {
+        Overlay &overlay = overlays[id];
+        overlay.timer->stop();
+        overlay.label->hide();
+        overlay.label->deleteLater();
+      }
+      overlays.remove(id);
     }
     overlay_mutex.unlock();
 }

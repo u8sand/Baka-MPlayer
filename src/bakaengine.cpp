@@ -16,7 +16,7 @@
 BakaEngine::BakaEngine(QObject *parent):
     QObject(parent),
     window(static_cast<MainWindow*>(parent)),
-    mpv(new MpvHandler(window->ui->mpvFrame->winId(), this)),
+    mpv(window->ui->mpvFrame),
     settings(new Settings(Util::SettingsLocation(), this)),
     gesture(new GestureHandler(this)),
     overlay(new OverlayHandler(this)),
@@ -29,7 +29,7 @@ BakaEngine::BakaEngine(QObject *parent):
     qtTranslator(nullptr)
 {
     if(Util::DimLightsSupported())
-        dimDialog = new DimDialog(window, nullptr);
+        dimDialog = new DimDialog(window);
     else
     {
         dimDialog = nullptr;
@@ -37,30 +37,19 @@ BakaEngine::BakaEngine(QObject *parent):
     }
 
     connect(mpv, &MpvHandler::messageSignal,
-            [=](QString msg)
+            mpv, [=](QString msg)
             {
                 Print(msg, "mpv");
             });
     connect(update, &UpdateManager::messageSignal,
-            [=](QString msg)
+            update, [=](QString msg)
             {
                 Print(msg, "update");
             });
-}
-
-BakaEngine::~BakaEngine()
-{
-    if(translator != nullptr)
-        delete translator;
-    if(qtTranslator != nullptr)
-        delete qtTranslator;
-    if(dimDialog != nullptr)
-        delete dimDialog;
-    delete update;
-    delete overlay;
-    delete gesture;
-    delete settings;
-    delete mpv;
+    connect(mpv, &MpvHandler::showText,
+            overlay, [=](QString msg, int duration) {
+                overlay->showStatusText(msg, duration);
+            });
 }
 
 void BakaEngine::LoadSettings()
