@@ -2,12 +2,13 @@
 
 #include <QApplication>
 #include <QFileDialog>
-#include <QDesktopWidget>
 #include <QDesktopServices>
 #include <QProcess>
 #include <QDir>
 #include <QClipboard>
 #include <QMessageBox>
+#include <QScreen>
+#include <QWindow>
 
 #include "ui/mainwindow.h"
 #include "ui_mainwindow.h"
@@ -100,7 +101,7 @@ void BakaEngine::BakaAddSubtitles(QStringList &args)
     {
         trackFile = QFileDialog::getOpenFileName(window, tr("Open Subtitle File"), mpv->getPath(),
                                                  QString("%0 (%1)").arg(tr("Subtitle Files"), Mpv::subtitle_filetypes.join(" ")),
-                                                 0, QFileDialog::DontUseSheet);
+                                                 0);
     }
     else
         trackFile = args.join(' ');
@@ -115,7 +116,7 @@ void BakaEngine::BakaAddAudio(QStringList &args)
     {
         trackFile = QFileDialog::getOpenFileName(window, tr("Open Audio File"), mpv->getPath(),
                                                  QString("%0 (%1)").arg(tr("Audio Files"), Mpv::audio_filetypes.join(" ")),
-                                                 0, QFileDialog::DontUseSheet);
+                                                 0);
     }
     else
         trackFile = args.join(' ');
@@ -389,7 +390,7 @@ void BakaEngine::Open()
                    QString("%0 (%1);;").arg(tr("Video Files"), Mpv::video_filetypes.join(" "))+
                    QString("%0 (%1);;").arg(tr("Audio Files"), Mpv::audio_filetypes.join(" "))+
                    QString("%0 (*.*)").arg(tr("All Files")),
-                   0, QFileDialog::DontUseSheet));
+                   0));
 }
 
 
@@ -426,14 +427,14 @@ void BakaEngine::FitWindow(int percent, bool msg)
 {
     if(window->isFullScreen() || window->isMaximized() || !window->ui->menuFit_Window->isEnabled())
         return;
-
+  
     mpv->LoadVideoParams();
 
     const Mpv::VideoParams &vG = mpv->getFileInfo().video_params; // video geometry
     QRect mG = window->ui->mpvFrame->geometry(),                  // mpv geometry
           wfG = window->frameGeometry(),                          // frame geometry of window (window geometry + window frame)
           wG = window->geometry(),                                // window geometry
-          aG = qApp->desktop()->availableGeometry(wfG.center());  // available geometry of the screen we're in--(geometry not including the taskbar)
+	  aG = window->windowHandle()->screen()->availableGeometry(); // available geometry of the screen we're in--(geometry not including the taskbar)
 
     double a, // aspect ratio
            w, // width of vid we want

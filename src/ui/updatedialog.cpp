@@ -56,7 +56,7 @@ UpdateDialog::UpdateDialog(BakaEngine *baka, QWidget *parent) :
                     ui->timeRemainingLabel->setVisible(true);
                     if(timer != nullptr)
                         delete timer;
-                    timer = new QTime();
+                    timer = new QElapsedTimer();
                     timer->start();
                 }
                 else if(timer) // don't execute this if timer is not defined--this shouldn't happen though.. but it does

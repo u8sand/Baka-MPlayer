@@ -7,7 +7,9 @@
 #include <QMenu>
 #include <QFont>
 #include <QMessageBox>
+#include <QFile>
 
+#include <random>
 #include <algorithm> // for std::random_shuffle and std::sort
 
 PlaylistWidget::PlaylistWidget(QWidget *parent) :
@@ -241,8 +243,11 @@ void PlaylistWidget::Shuffle()
     QStringList newPlaylist;
     for(int i = 0; i < count(); ++i)
         newPlaylist.append(this->item(i)->text());
-
-    std::random_shuffle(newPlaylist.begin(), newPlaylist.end());
+    
+    std::random_device rd;
+    std::mt19937 gen(rd());
+	    
+    std::shuffle(newPlaylist.begin(), newPlaylist.end(), gen);
     // make current playing item the first
     auto iter = std::find(newPlaylist.begin(), newPlaylist.end(), file);
     std::swap(*iter, *newPlaylist.begin());

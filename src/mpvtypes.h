@@ -43,9 +43,9 @@ namespace Mpv
         QString external_filename;
         QString codec;
 
-        bool operator==(const Track &t)
+        bool operator==(const Track &t) const
         {
-            return (id == t.id);
+            return (this->id == t.id);
         }
     };
     struct VideoParams
@@ -81,6 +81,5 @@ Q_DECLARE_METATYPE(Mpv::Track)
 Q_DECLARE_METATYPE(Mpv::VideoParams)
 Q_DECLARE_METATYPE(Mpv::AudioParams)
 Q_DECLARE_METATYPE(Mpv::FileInfo)
-
 
 #endif // MPVTYPES_H

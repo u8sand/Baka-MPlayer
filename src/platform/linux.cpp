@@ -1,14 +1,14 @@
 #include "util.h"
 #include "settings.h"
 
-#include <QRegExp>
+#include <QRegularExpression>
 #include <QStandardPaths>
 #include <QDesktopServices>
 #include <QDir>
 #include <QUrl>
 #include <QGuiApplication>
 
-#include <QX11Info>
+#include <QtGui/private/qtx11extras_p.h>
 #include <X11/Xlib.h>
 
 namespace Util {
@@ -70,14 +70,14 @@ QString SettingsLocation()
 
 bool IsValidFile(QString path)
 {
-    QRegExp rx("^\\.{1,2}|/", Qt::CaseInsensitive); // relative path, network location, drive
-    return (rx.indexIn(path) != -1);
+    QRegularExpression rx("^\\.{1,2}|/", QRegularExpression::CaseInsensitiveOption); // relative path, network location, drive
+    return rx.match(path).hasMatch();
 }
 
 bool IsValidLocation(QString loc)
 {
-    QRegExp rx("^([a-z]{2,}://|\\.{1,2}|/)", Qt::CaseInsensitive); // url, relative path, drive
-    return (rx.indexIn(loc) != -1);
+    QRegularExpression rx("^([a-z]{2,}://|\\.{1,2}|/)", QRegularExpression::CaseInsensitiveOption); // url, relative path, drive
+    return rx.match(loc).hasMatch();
 }
 
 void ShowInFolder(QString path, QString)

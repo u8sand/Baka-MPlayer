@@ -36,7 +36,7 @@ void Settings::LoadIni()
     if(f.open(QFile::ReadOnly | QIODevice::Text))
     {
         QTextStream fin(&f);
-        fin.setCodec("UTF-8");
+        fin.setEncoding(QStringConverter::Utf8);
         QString line;
         int i;
         QString group;

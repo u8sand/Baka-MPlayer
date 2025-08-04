@@ -2,8 +2,7 @@
 #define UPDATEDIALOG_H
 
 #include <QDialog>
-#include <QTime>
-
+#include <QElapsedTimer>
 
 namespace Ui {
 class UpdateDialog;
@@ -28,7 +27,7 @@ private:
     Ui::UpdateDialog *ui;
     BakaEngine *baka;
 
-    QTime *timer;
+    QElapsedTimer *timer;
     double avgSpeed = 1,
            lastSpeed = 0;
     int lastProgress,

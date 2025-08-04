@@ -7,7 +7,7 @@
 VERSION   = 2.0.4
 QT       += core gui network svg
 CODECFORSRC = UTF-8
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 5): QT += widgets
 TARGET = baka-mplayer
 TEMPLATE = app
 
@@ -19,6 +19,8 @@ MOC_DIR = $${DESTDIR}/moc
 RCC_DIR = $${DESTDIR}/rcc
 UI_DIR = $${DESTDIR}/ui
 
+DEFINES += QT_DISABLE_DEPRECATED_UP_TO=0x050F00
+              
 macx {
   QT_CONFIG -= no-pkg-config
   SOURCES += platform/osx.cpp
@@ -26,7 +28,7 @@ macx {
 }
 
 unix:!macx {
-    QT += x11extras
+    QT += gui-private
     PKGCONFIG += x11
 
     SOURCES += platform/linux.cpp

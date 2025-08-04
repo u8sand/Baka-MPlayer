@@ -4,7 +4,6 @@
 #include <QtMath>
 #include <QLibraryInfo>
 #include <QMimeData>
-#include <QDesktopWidget>
 
 #include "bakaengine.h"
 #include "mpvhandler.h"
@@ -123,16 +122,23 @@ MainWindow::MainWindow(QWidget *parent):
                     // load the system translations provided by Qt
                     tmp = baka->qtTranslator;
                     baka->qtTranslator = new QTranslator();
-                    baka->qtTranslator->load(QString("qt_%0").arg(lang), QLibraryInfo::location(QLibraryInfo::TranslationsPath));
-                    qApp->installTranslator(baka->qtTranslator);
+		    if(baka->qtTranslator->load(QLocale(lang), "qtbase", "_",
+						QLibraryInfo::path(QLibraryInfo::TranslationsPath)))
+		    {
+			qApp->installTranslator(baka->qtTranslator);
+		    }
+                    
                     if(tmp != nullptr)
                         delete tmp;
 
                     // load the application translations
                     tmp = baka->translator;
                     baka->translator = new QTranslator();
-                    baka->translator->load(QString("baka-mplayer_%0").arg(lang), BAKA_MPLAYER_LANG_PATH);
-                    qApp->installTranslator(baka->translator);
+                    if(baka->translator->load(QString("baka-mplayer").arg(lang), BAKA_MPLAYER_LANG_PATH,
+					      "", ".ts"))
+		    {
+			    qApp->installTranslator(baka->translator);
+		    }
                     if(tmp != nullptr)
                         delete tmp;
                 }
@@ -182,7 +188,7 @@ MainWindow::MainWindow(QWidget *parent):
                 ui->actionShow_D_ebug_Output->setChecked(b);
                 ui->verticalWidget->setVisible(b);
                 mouseMoveEvent(new QMouseEvent(QMouseEvent::MouseMove,
-                                               QCursor::pos(),
+                                               QCursor::pos(), QCursor::pos(), //todo: local and global pos
                                                Qt::NoButton,Qt::NoButton,Qt::NoModifier));
                 if(b)
                     ui->inputLineEdit->setFocus();
@@ -955,12 +961,12 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
         if(gestures)
         {
             if(ui->mpvFrame->geometry().contains(event->pos())) // mouse is in the mpvFrame
-                baka->gesture->Begin(GestureHandler::HSEEK_VVOLUME, event->globalPos(), pos());
+                baka->gesture->Begin(GestureHandler::HSEEK_VVOLUME, event->globalPosition().toPoint(), pos());
             else if(!isFullScreen()) // not fullscreen
-                baka->gesture->Begin(GestureHandler::MOVE, event->globalPos(), pos());
+                baka->gesture->Begin(GestureHandler::MOVE, event->globalPosition().toPoint(), pos());
         }
         else if(!isFullScreen()) // not fullscreen
-            baka->gesture->Begin(GestureHandler::MOVE, event->globalPos(), pos());
+            baka->gesture->Begin(GestureHandler::MOVE, event->globalPosition().toPoint(), pos());
 
         if(ui->remainingLabel->rect().contains(ui->remainingLabel->mapFrom(this, event->pos()))) // clicked timeLayoutWidget
             setRemaining(!remaining); // todo: use a bakacommand
@@ -987,7 +993,7 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *event)
 
 void MainWindow::mouseMoveEvent(QMouseEvent *event)
 {
-    if(baka->gesture->Process(event->globalPos()))
+    if(baka->gesture->Process(event->globalPosition().toPoint()))
         event->accept();
     else if(isFullScreenMode())
     {
@@ -996,13 +1002,13 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
 
         QRect playbackRect = geometry();
         playbackRect.setTop(playbackRect.bottom() - 60);
-        bool showPlayback = playbackRect.contains(event->globalPos());
+        bool showPlayback = playbackRect.contains(event->globalPosition().toPoint());
         ui->playbackLayoutWidget->setVisible(showPlayback || ui->outputTextEdit->isVisible());
         ui->seekBar->setVisible(showPlayback || ui->outputTextEdit->isVisible());
 
         QRect playlistRect = geometry();
         playlistRect.setLeft(playlistRect.right() - qCeil(playlistRect.width()/7.0));
-        bool showPlaylist = playlistRect.contains(event->globalPos());
+        bool showPlaylist = playlistRect.contains(event->globalPosition().toPoint());
         ShowPlaylist(showPlaylist);
 
         if(!(showPlayback || showPlaylist) && autohide)
@@ -1014,7 +1020,7 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
 void MainWindow::leaveEvent(QEvent *event)
 {
     mouseMoveEvent(new QMouseEvent(QMouseEvent::MouseMove,
-                                   QCursor::pos(),
+                                   QCursor::pos(), QCursor::pos(), //todo: local and global pos
                                    Qt::NoButton,Qt::NoButton,Qt::NoModifier));
     QMainWindow::leaveEvent(event);
 }
@@ -1036,7 +1042,7 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
 
 void MainWindow::wheelEvent(QWheelEvent *event)
 {
-    if(event->delta() > 0)
+    if(event->angleDelta().y() > 0)
         mpv->Volume(mpv->getVolume()+5, true);
     else
         mpv->Volume(mpv->getVolume()-5, true);
@@ -1164,7 +1170,7 @@ void MainWindow::HideAllControls(bool w, bool s)
         ui->menubar->setVisible(false);
         setContextMenuPolicy(Qt::ActionsContextMenu);
         mouseMoveEvent(new QMouseEvent(QMouseEvent::MouseMove,
-                                       QCursor::pos(),
+                                       QCursor::pos(), QCursor::pos(), //todo: local and global pos
                                        Qt::NoButton,Qt::NoButton,Qt::NoModifier));
     }
     else

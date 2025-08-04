@@ -1,7 +1,8 @@
 #include "util.h"
 
+#include <QRegularExpression>
 #include <QTime>
-#include <QStringListIterator>
+#include <QStringList>
 #include <QDir>
 
 namespace Util {
@@ -9,8 +10,8 @@ namespace Util {
 
 bool IsValidUrl(QString url)
 {
-    QRegExp rx("^[a-z]{2,}://", Qt::CaseInsensitive); // url
-    return (rx.indexIn(url) != -1);
+    QRegularExpression rx("^[a-z]{2,}://", QRegularExpression::CaseInsensitiveOption); // url
+    return rx.match(url).hasMatch();
 }
 
 QString FormatTime(int _time, int _totalTime)

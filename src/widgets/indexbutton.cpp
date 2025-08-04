@@ -48,7 +48,7 @@ void IndexButton::mouseMoveEvent(QMouseEvent *event)
 {
     if(isEnabled() && index > 0)
     {
-        QToolTip::showText(event->globalPos(),
+	QToolTip::showText(event->globalPosition().toPoint(),
                            QString::number(abs(index)),
                            this, rect());
     }

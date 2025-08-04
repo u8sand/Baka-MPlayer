@@ -18,7 +18,7 @@ void CustomSlider::mousePressEvent(QMouseEvent *event)
 {
   if (event->button() == Qt::LeftButton)
   {
-      setValue(QStyle::sliderValueFromPosition(minimum(), maximum(), event->x(), width()));
+      setValue(QStyle::sliderValueFromPosition(minimum(), maximum(), event->position().x(), width()));
       event->accept();
   }
   QSlider::mousePressEvent(event);

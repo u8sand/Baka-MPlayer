@@ -15,8 +15,13 @@ struct Recent
 
     bool operator==(const Recent &recent) const
     {
-        return (path == recent.path);
+	return (this->path == recent.path);
     }
+
+    bool operator==(const QString &s) const
+    {
+	return (this->path == s);
+    }	
 
     QString path,
             title;
