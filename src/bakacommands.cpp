@@ -452,7 +452,7 @@ void BakaEngine::FitWindow(int percent, bool msg)
         QRect mG = window->ui->mpvFrame->geometry(),                  // mpv geometry
               wfG = window->frameGeometry(),                          // frame geometry of window (window geometry + window frame)
               wG = window->geometry(),                                // window geometry
-              aG = window->windowHandle()->screen->availableGeometry();  // available geometry of the screen we're in--(geometry not including the taskbar)
+              aG = window->windowHandle()->screen()->availableGeometry();  // available geometry of the screen we're in--(geometry not including the taskbar)
 
         double a, // aspect ratio
                w, // width of vid we want
