@@ -5,15 +5,23 @@ on:
     - master
     paths:
     - 'website/**'
+permissions:
+  pages: write
+  id-token: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Ruby 2.6
-      uses: actions/setup-ruby@v1
+    - uses: actions/checkout@v7
+
+    - uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 2.6
+        ruby-version: '2.7'
+
     - name: Install & build
       run: |
         cd website
@@ -21,10 +29,12 @@ jobs:
         bundle install
         bundle exec jekyll build
         cd ..
-    - name: Deploy to gh-pages
-      uses: JamesIves/github-pages-deploy-action@3.7.1
+
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
       with:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        FOLDER: website/_site
-        BRANCH: gh-pages
-        CLEAN: true
+        path: website/_site
+
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
