@@ -1,5 +1,6 @@
 name: Deploy website to gh-pages
 on:
+  workflow_dispatch:
   push:
     branches:
     - master
