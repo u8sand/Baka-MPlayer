@@ -6,16 +6,10 @@ on:
     - master
     paths:
     - 'website/**'
-permissions:
-  pages: write
-  id-token: write
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
     - uses: actions/checkout@v7
 
@@ -31,11 +25,9 @@ jobs:
         bundle exec jekyll build
         cd ..
 
-    - name: Upload artifact
-      uses: actions/upload-pages-artifact@v3
+    - uses: JamesIves/github-pages-deploy-action@3.7.1
       with:
-        path: website/_site
-
-    - name: Deploy to GitHub Pages
-      id: deployment
-      uses: actions/deploy-pages@v4
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        FOLDER: website/_site
+        BRANCH: gh-pages
+        CLEAN: true
