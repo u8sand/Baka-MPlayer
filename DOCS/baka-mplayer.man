@@ -23,7 +23,7 @@ cat myvideo.mkv | \fBbaka-mplayer\fP -
 Please use the issues tracker provided by GitHub to send us bug reports or feature requests. (https://github.com/u8sand/Baka-MPlayer/issues)
 
 .SH AUTHORS
-\fBBaka-MPlayer\fP was written by \fBu8sand\fP <u8sand@gmail.com> and \fBgodly-devotion\fP <azian.otaku@live.com>.
+\fBBaka-MPlayer\fP was written by \fBu8sand\fP <u8sand@gmail.com> and \fBitsjoshpark\fP <jpark@duck.com>.
 
 .SH COPYRIGHT
 GPLv2+
