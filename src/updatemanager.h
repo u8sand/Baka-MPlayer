@@ -13,7 +13,6 @@ class UpdateManager : public QObject
     Q_OBJECT
 public:
     explicit UpdateManager(QObject *parent = 0);
-    ~UpdateManager();
 
     const QMap<QString, QString> &getInfo() { return info; }
 

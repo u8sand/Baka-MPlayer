@@ -67,7 +67,7 @@ void BakaEngine::Load2_0_3()
     for(auto entry : root["recent"].toArray())
     {
         QJsonObject entry_json = entry.toObject();
-        window->recent.append(Recent(entry_json["path"].toString(), entry_json["title"].toString(), QJsonValueRef2(entry_json["time"]).toInt(0)));
+        window->recent.append(QSharedPointer<Recent>(new Recent(entry_json["path"].toString(), entry_json["title"].toString(), QJsonValueRef2(entry_json["time"]).toInt(0))));
     }
     window->setMaxRecent(QJsonValueRef2(root["maxRecent"]).toInt(5));
     window->setGestures(QJsonValueRef2(root["gestures"]).toBool(true));
@@ -147,11 +147,11 @@ void BakaEngine::SaveSettings()
     for(auto &entry : window->recent)
     {
         QJsonObject recent_sub_object_json;
-        recent_sub_object_json["path"] = QDir::fromNativeSeparators(entry.path);
-        if(entry.title != QString())
-            recent_sub_object_json["title"] = entry.title;
-        if(entry.time > 0)
-            recent_sub_object_json["time"] = entry.time;
+        recent_sub_object_json["path"] = QDir::fromNativeSeparators(entry->path);
+        if(entry->title != QString())
+            recent_sub_object_json["title"] = entry->title;
+        if(entry->time > 0)
+            recent_sub_object_json["time"] = entry->time;
         recent_json.append(recent_sub_object_json);
     }
     root["recent"] = recent_json;

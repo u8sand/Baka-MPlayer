@@ -28,10 +28,7 @@ LocationDialog::LocationDialog(QString path, QWidget *parent) :
         ui->urlEdit->setText(path);
 }
 
-LocationDialog::~LocationDialog()
-{
-    delete ui;
-}
+LocationDialog::~LocationDialog() {}
 
 QString LocationDialog::getUrl(QString path, QWidget *parent)
 {

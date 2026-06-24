@@ -11,14 +11,11 @@
 #include <QJsonArray>
 #include <QJsonValue>
 
-class BakaEngine;
-
 class Settings : public QObject
 {
     Q_OBJECT
 public:
     explicit Settings(QString file, QObject *parent = 0);
-    ~Settings();
 
 public slots:
     void Load();
@@ -34,7 +31,6 @@ protected:
     QStringList SplitQStringList(QString list);
 
 private:
-    BakaEngine *baka;
     QJsonDocument document;
     QString file;
 };

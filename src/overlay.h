@@ -1,22 +1,22 @@
 #ifndef OVERLAY_H
 #define OVERLAY_H
 
-#include <QObject>
 #include <QLabel>
-#include <QImage>
 #include <QTimer>
+#include <QSharedPointer>
 
-class Overlay : public QObject
-{
-    Q_OBJECT
+struct Overlay {
 public:
-    explicit Overlay(QLabel *label, QImage *canvas, QTimer *timer, QObject *parent = 0);
+    Overlay();
+    Overlay(const Overlay &overlay);
     ~Overlay();
 
-private:
+    // we use a ptr because this label needs to have a parent of another object
+    //  and that object will try to delete it
     QLabel *label;
-    QImage *canvas;
-    QTimer *timer;
+
+    // sharing this pointer seems simpler for dealing with the copy constructor
+    QSharedPointer<QTimer> timer;
 };
 
 #endif // OVERLAY_H

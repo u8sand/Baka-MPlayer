@@ -9,10 +9,6 @@ Settings::Settings(QString file, QObject *parent):
     this->file = file;
 }
 
-Settings::~Settings()
-{
-}
-
 void Settings::Load()
 {
     QFile f(file);
@@ -94,7 +90,7 @@ void Settings::LoadIni()
         {
             QStringList recent = SplitQStringList(root["recent"].toString());
             QJsonArray R;
-            for(auto str : recent)
+            for(auto &str : recent)
             {
                 QJsonObject r;
                 r["path"] = str;

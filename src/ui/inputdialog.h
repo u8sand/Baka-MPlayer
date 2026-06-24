@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QString>
+#include <QScopedPointer>
 
 #include <functional>
 
@@ -23,8 +24,10 @@ private slots:
     void validate(QString input);
 
 private:
-    Ui::InputDialog *ui;
+    QScopedPointer<Ui::InputDialog> ui;
     const std::function<bool (QString)> &validation;
+
+    // Q_DISABLE_COPY(Ui::InputDialog)
 };
 
 #endif // INPUTDIALOG_H

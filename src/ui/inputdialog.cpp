@@ -18,10 +18,7 @@ InputDialog::InputDialog(QString prompt, QString title, const std::function<bool
             this, SLOT(validate(QString)));
 }
 
-InputDialog::~InputDialog()
-{
-    delete ui;
-}
+InputDialog::~InputDialog() {}
 
 QString InputDialog::getInput(QString prompt, QString title, const std::function<bool (QString)> &validation, QWidget *parent)
 {

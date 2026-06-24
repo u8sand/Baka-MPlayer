@@ -5,6 +5,7 @@
 #include "ui/mainwindow.h"
 #include "mpvhandler.h"
 #include "ui/keydialog.h"
+#include "ui_keydialog.h"
 
 #include <QFileDialog>
 #include <QMessageBox>
@@ -18,7 +19,7 @@ PreferencesDialog::PreferencesDialog(BakaEngine *baka, QWidget *parent) :
     ui->setupUi(this);
 
     ui->infoWidget->sortByColumn(0, Qt::AscendingOrder);
-    sortLock = new SortLock(ui->infoWidget);
+    sortLock.reset(new SortLock(ui->infoWidget));
 
     PopulateLangs();
 
@@ -53,13 +54,13 @@ PreferencesDialog::PreferencesDialog(BakaEngine *baka, QWidget *parent) :
     PopulateShortcuts();
 
     connect(ui->autoFitCheckBox, &QCheckBox::clicked,
-            [=](bool b)
+            this, [=](bool b)
             {
                 ui->comboBox->setEnabled(b);
             });
 
     connect(ui->changeButton, &QPushButton::clicked,
-            [=]
+            this, [=]
             {
                 QString dir = QFileDialog::getExistingDirectory(this, tr("Choose screenshot directory"), screenshotDir);
                 if(dir != QString())
@@ -67,13 +68,13 @@ PreferencesDialog::PreferencesDialog(BakaEngine *baka, QWidget *parent) :
             });
 
     connect(ui->addKeyButton, &QPushButton::clicked,
-            [=]
+            this, [=]
             {
                 SelectKey(true);
             });
 
     connect(ui->editKeyButton, &QPushButton::clicked,
-            [=]
+            this, [=]
             {
                 int i = ui->infoWidget->currentRow();
                 if(i == -1)
@@ -86,7 +87,7 @@ PreferencesDialog::PreferencesDialog(BakaEngine *baka, QWidget *parent) :
             });
 
     connect(ui->resetKeyButton, &QPushButton::clicked,
-            [=]
+            this, [=]
             {
                 if(QMessageBox::question(this, tr("Reset All Key Bindings?"), tr("Are you sure you want to reset all shortcut keys to its original bindings?")) == QMessageBox::Yes)
                 {
@@ -98,7 +99,7 @@ PreferencesDialog::PreferencesDialog(BakaEngine *baka, QWidget *parent) :
             });
 
     connect(ui->removeKeyButton, &QPushButton::clicked,
-            [=]
+            this, [=]
             {
                 int row = ui->infoWidget->currentRow();
                 if(row == -1)
@@ -109,14 +110,14 @@ PreferencesDialog::PreferencesDialog(BakaEngine *baka, QWidget *parent) :
             });
 
     connect(ui->infoWidget, &QTableWidget::currentCellChanged,
-            [=](int r,int,int,int)
+            this, [=](int r,int,int,int)
             {
                 ui->editKeyButton->setEnabled(r != -1);
                 ui->removeKeyButton->setEnabled(r != -1);
             });
 
     connect(ui->infoWidget, &QTableWidget::doubleClicked,
-            [=](const QModelIndex &index)
+            this, [=](const QModelIndex &index)
             {
                 int i = index.row();
                 SelectKey(false,
@@ -166,8 +167,6 @@ PreferencesDialog::~PreferencesDialog()
     }
     else
         baka->input = saved;
-    delete sortLock;
-    delete ui;
 }
 
 void PreferencesDialog::showPreferences(BakaEngine *baka, QWidget *parent)

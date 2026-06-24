@@ -128,7 +128,7 @@ QString ShortenPathToParent(const Recent &recent)
 QStringList ToNativeSeparators(QStringList list)
 {
     QStringList ret;
-    for(auto element : list)
+    for(auto &element : list)
     {
         if(Util::IsValidLocation(element))
             ret.push_back(element);
@@ -141,7 +141,7 @@ QStringList ToNativeSeparators(QStringList list)
 QStringList FromNativeSeparators(QStringList list)
 {
     QStringList ret;
-    for(auto element : list)
+    for(auto &element : list)
         ret.push_back(QDir::fromNativeSeparators(element));
     return ret;
 }

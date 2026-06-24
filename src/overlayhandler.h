@@ -3,13 +3,13 @@
 
 #include <QObject>
 #include <QString>
-#include <QImage>
 #include <QPoint>
 #include <QHash>
 #include <QFont>
 #include <QColor>
-#include <QLabel>
 #include <QMutex>
+#include <QTimer>
+#include <QSharedPointer>
 
 class BakaEngine;
 class Overlay;
@@ -32,10 +32,10 @@ protected slots:
 private:
     BakaEngine *baka;
 
-    QHash<int, Overlay*> overlays;
+    QHash<int, Overlay> overlays;
     QMutex overlay_mutex;
 
-    QTimer *refresh_timer;
+    QTimer refresh_timer;
     int min_overlay,
         max_overlay,
         overlay_id;

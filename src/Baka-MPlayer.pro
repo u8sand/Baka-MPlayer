@@ -11,7 +11,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = baka-mplayer
 TEMPLATE = app
 
-CONFIG += c++11 link_pkgconfig
+CONFIG += c++1y link_pkgconfig
 
 isEmpty(DESTDIR):DESTDIR=build
 OBJECTS_DIR = $${DESTDIR}/obj

@@ -15,7 +15,7 @@ CustomSplitter::CustomSplitter(QWidget *parent) :
 
 int CustomSplitter::position() const
 {
-    return sizes()[1];
+    return sizes().at(1);
 }
 
 int CustomSplitter::normalPosition() const

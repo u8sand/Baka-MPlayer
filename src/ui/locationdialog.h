@@ -2,6 +2,7 @@
 #define LOCATIONDIALOG_H
 
 #include <QDialog>
+#include <QScopedPointer>
 
 namespace Ui {
 class LocationDialog;
@@ -21,7 +22,7 @@ private slots:
     void validate(QString input);
 
 private:
-    Ui::LocationDialog *ui;
+    QScopedPointer<Ui::LocationDialog> ui;
 };
 
 #endif // LOCATIONDIALOG_H

@@ -2,6 +2,7 @@
 #define KEYDIALOG_H
 
 #include <QDialog>
+#include <QScopedPointer>
 
 namespace Ui {
 class KeyDialog;
@@ -21,7 +22,7 @@ protected:
     void SetButtons();
 
 private:
-    Ui::KeyDialog *ui;
+    QScopedPointer<Ui::KeyDialog> ui;
     bool add;
 };
 
